@@ -1,6 +1,8 @@
 
 import React, { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
+import Logo from './Logo';
+import OptimizedImage from './OptimizedImage';
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -39,6 +41,8 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col items-center justify-center text-center">
           <div className="animate-on-scroll opacity-0 max-w-3xl mx-auto space-y-4">
+            <Logo className="mx-auto mb-6" size="lg" />
+            
             <span 
               className={cn(
                 "inline-block mb-4 px-3 py-1 rounded-full",
@@ -82,14 +86,23 @@ const HeroSection = () => {
           
           <div className="animate-on-scroll opacity-0 mt-16 transition-all duration-500 delay-300">
             <div className="neo-morphism rounded-2xl p-2 max-w-5xl mx-auto">
-              <div className="aspect-video overflow-hidden rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
-                <span className="font-persian text-muted-foreground">تصویر نمایشی وب‌سایت</span>
+              <div className="aspect-video overflow-hidden rounded-xl">
+                <OptimizedImage 
+                  src="/images/web-design-showcase.jpg" 
+                  alt="تصویر نمایشی وب‌سایت طراحی شده توسط وب آ ب ث با طراحی اختصاصی و بهینه برای سئو" 
+                  className="w-full h-full"
+                />
               </div>
             </div>
           </div>
           
           <div className="animate-on-scroll opacity-0 mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {['بیش از 500 پروژه موفق', 'رتبه 1 در گوگل', 'طراحی اختصاصی', 'پشتیبانی 24/7'].map((item, index) => (
+            {[
+              { title: 'بیش از 500 پروژه موفق', image: '/images/projects-icon.svg', alt: 'آیکون پروژه‌های موفق سئو و توسعه وب' },
+              { title: 'رتبه 1 در گوگل', image: '/images/rank-icon.svg', alt: 'آیکون رتبه اول در گوگل' }, 
+              { title: 'طراحی اختصاصی', image: '/images/design-icon.svg', alt: 'آیکون طراحی اختصاصی وب‌سایت' },
+              { title: 'پشتیبانی 24/7', image: '/images/support-icon.svg', alt: 'آیکون پشتیبانی شبانه روزی وب‌سایت' }
+            ].map((item, index) => (
               <div 
                 key={index} 
                 className={cn(
@@ -97,7 +110,10 @@ const HeroSection = () => {
                   "transition-all duration-300 hover:shadow-md"
                 )}
               >
-                <p className="font-persian font-medium">{item}</p>
+                <div className="h-12 w-12 mx-auto mb-3">
+                  <OptimizedImage src={item.image} alt={item.alt} />
+                </div>
+                <p className="font-persian font-medium">{item.title}</p>
               </div>
             ))}
           </div>
