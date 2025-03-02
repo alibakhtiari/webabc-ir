@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
+import Logo from './Logo';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,17 +26,21 @@ const Navbar = () => {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4',
         {
-          'bg-white/90 backdrop-blur-md shadow-sm': isScrolled,
+          'bg-white/80 backdrop-blur-md shadow-sm': isScrolled,
           'bg-transparent': !isScrolled,
         }
       )}
     >
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between">
+        <div className={cn(
+          "flex items-center justify-between rounded-2xl transition-all duration-300",
+          {
+            "bg-white/90 backdrop-blur-lg shadow-sm py-3 px-5": isScrolled,
+            "py-2 px-4": !isScrolled
+          }
+        )}>
           <a href="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-bold tracking-tight text-primary">
-              WebABC
-            </span>
+            <Logo size="sm" />
           </a>
 
           {/* Desktop Navigation */}
@@ -44,7 +49,7 @@ const Navbar = () => {
             <NavLink href="#services">خدمات</NavLink>
             <NavLink href="#about">درباره ما</NavLink>
             <NavLink href="#contact">تماس با ما</NavLink>
-            <button className="px-4 py-2 rounded-md bg-primary text-white font-persian transition-all hover:bg-primary/90">
+            <button className="px-4 py-2 rounded-md bg-primary text-white font-persian transition-all hover:bg-primary/90 animate-fade-in">
               مشاوره رایگان
             </button>
           </nav>
@@ -67,7 +72,7 @@ const Navbar = () => {
       {/* Mobile Navigation */}
       <div
         className={cn(
-          'fixed inset-0 bg-white z-40 transition-transform duration-300 ease-in-out pt-20',
+          'fixed inset-0 bg-white/95 backdrop-blur-sm z-40 transition-transform duration-300 ease-in-out pt-20',
           {
             'translate-x-0': isMobileMenuOpen,
             'translate-x-full': !isMobileMenuOpen,
@@ -87,7 +92,7 @@ const Navbar = () => {
           <MobileNavLink href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
             تماس با ما
           </MobileNavLink>
-          <button className="w-full px-4 py-3 rounded-md bg-primary text-white font-persian transition-all hover:bg-primary/90">
+          <button className="w-full px-4 py-3 rounded-md bg-primary text-white font-persian transition-all hover:bg-primary/90 animate-fade-in">
             مشاوره رایگان
           </button>
         </nav>
@@ -100,7 +105,7 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
   return (
     <a
       href={href}
-      className="text-foreground/80 font-persian hover:text-primary transition-colors"
+      className="text-foreground/80 font-persian hover:text-primary transition-colors text-base font-medium animate-fade-in"
     >
       {children}
     </a>
@@ -119,7 +124,7 @@ const MobileNavLink = ({
   return (
     <a
       href={href}
-      className="text-foreground w-full text-center py-3 hover:text-primary transition-colors"
+      className="text-foreground w-full text-center py-3 hover:text-primary transition-colors animate-fade-in"
       onClick={onClick}
     >
       {children}
