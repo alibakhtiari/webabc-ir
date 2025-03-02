@@ -1,7 +1,7 @@
-
 import React, { useEffect, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
 import { cn } from '@/lib/utils';
 import { CheckCircle } from 'lucide-react';
 import {
@@ -170,6 +170,10 @@ const Services = () => {
 
   return (
     <div dir="rtl" className="font-persian relative overflow-x-hidden">
+      <SEOHead 
+        title="خدمات تخصصی سئو و توسعه وب | وب آ ب ث" 
+        description="ارائه خدمات حرفه‌ای سئو فنی، سئو محتوا، سئو محلی و توسعه وب‌سایت با استفاده از WordPress، React، Next.js، و فناوری‌های پیشرفته" 
+      />
       <Navbar />
       
       <main>

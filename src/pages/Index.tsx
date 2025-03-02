@@ -7,6 +7,7 @@ import ServicesSection from '@/components/ServicesSection';
 import BenefitsSection from '@/components/BenefitsSection';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
 
 const Index = () => {
   useEffect(() => {
@@ -31,6 +32,10 @@ const Index = () => {
 
   return (
     <div dir="rtl" className="font-persian relative overflow-x-hidden snap-container">
+      <SEOHead 
+        title="وب آ ب ث | خدمات سئو و طراحی وب‌سایت حرفه‌ای" 
+        description="ارائه دهنده خدمات تخصصی سئو و بهینه‌سازی برای موتورهای جستجو، طراحی وب‌سایت و توسعه اپلیکیشن‌های تحت وب با جدیدترین تکنولوژی‌ها" 
+      />
       <Navbar />
       <main>
         <HeroSection />
