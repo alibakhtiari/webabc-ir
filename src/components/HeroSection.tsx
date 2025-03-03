@@ -13,6 +13,7 @@ const HeroSection = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate-fade-in');
+            entry.target.classList.remove('opacity-0');
           }
         });
       },
@@ -20,7 +21,11 @@ const HeroSection = () => {
     );
     
     const elements = sectionRef.current?.querySelectorAll('.animate-on-scroll');
-    elements?.forEach((el) => observer.observe(el));
+    elements?.forEach((el) => {
+      // Start with opacity-0, but remove it when in view
+      el.classList.add('opacity-0');
+      observer.observe(el);
+    });
     
     return () => {
       elements?.forEach((el) => observer.unobserve(el));
@@ -40,7 +45,7 @@ const HeroSection = () => {
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col items-center justify-center text-center">
-          <div className="animate-on-scroll opacity-0 max-w-3xl mx-auto space-y-4">
+          <div className="animate-on-scroll max-w-3xl mx-auto space-y-4">
             <Logo className="mx-auto mb-6" size="lg" />
             
             <span 
@@ -84,7 +89,7 @@ const HeroSection = () => {
             </div>
           </div>
           
-          <div className="animate-on-scroll opacity-0 mt-16 transition-all duration-500 delay-300">
+          <div className="animate-on-scroll mt-16 transition-all duration-500 delay-300">
             <div className="neo-morphism rounded-2xl p-2 max-w-5xl mx-auto">
               <div className="aspect-video overflow-hidden rounded-xl">
                 <OptimizedImage 
@@ -96,7 +101,7 @@ const HeroSection = () => {
             </div>
           </div>
           
-          <div className="animate-on-scroll opacity-0 mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+          <div className="animate-on-scroll mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             {[
               { title: 'بیش از 500 پروژه موفق', image: '/images/projects-icon.svg', alt: 'آیکون پروژه‌های موفق سئو و توسعه وب' },
               { title: 'رتبه 1 در گوگل', image: '/images/rank-icon.svg', alt: 'آیکون رتبه اول در گوگل' }, 

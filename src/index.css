@@ -73,13 +73,26 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-persian;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
 /* Font for Persian text */
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* Currently loading from Google Fonts. To use local fonts in the future:
+1. Download Vazirmatn font files (woff2 format is recommended)
+2. Place them in the public/fonts directory
+3. Replace the Google Font import with this:
+
+@font-face {
+  font-family: 'Vazirmatn';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/Vazirmatn[wght].woff2') format('woff2-variations');
+}
+
+*/
 
 @layer utilities {
   .font-persian {
