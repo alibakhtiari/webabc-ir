@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
+import Logo from './Logo';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,23 +24,25 @@ const Navbar = () => {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4',
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out',
         {
-          'bg-white/90 backdrop-blur-md shadow-sm': isScrolled,
-          'bg-transparent': !isScrolled,
+          'py-3 bg-white/90 backdrop-blur-md shadow-sm': isScrolled,
+          'py-5 bg-transparent': !isScrolled,
         }
       )}
     >
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between">
+        <div className={cn(
+          "flex items-center justify-between",
+          "backdrop-blur-sm bg-white/80 rounded-xl px-4 py-2 mx-auto",
+          { "shadow-sm": isScrolled }
+        )}>
           <a href="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-bold tracking-tight text-primary">
-              WebABC
-            </span>
+            <Logo size="sm" />
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center gap-6">
             <NavLink href="/">خانه</NavLink>
             <NavLink href="#services">خدمات</NavLink>
             <NavLink href="#about">درباره ما</NavLink>
@@ -67,7 +70,7 @@ const Navbar = () => {
       {/* Mobile Navigation */}
       <div
         className={cn(
-          'fixed inset-0 bg-white z-40 transition-transform duration-300 ease-in-out pt-20',
+          'fixed inset-0 bg-white/95 backdrop-blur-md z-40 transition-transform duration-300 ease-in-out pt-20',
           {
             'translate-x-0': isMobileMenuOpen,
             'translate-x-full': !isMobileMenuOpen,
@@ -100,7 +103,7 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
   return (
     <a
       href={href}
-      className="text-foreground/80 font-persian hover:text-primary transition-colors"
+      className="text-foreground/80 font-persian text-base hover:text-primary transition-colors"
     >
       {children}
     </a>

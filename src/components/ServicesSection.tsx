@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { CheckCircle } from 'lucide-react';
@@ -26,22 +25,32 @@ const ServicesSection = () => {
   const [activeTab, setActiveTab] = useState(0);
   
   useEffect(() => {
+    const elements = sectionRef.current?.querySelectorAll('.animate-on-scroll');
+    elements?.forEach((el) => {
+      el.classList.add('animate-fade-up');
+      el.classList.remove('opacity-0');
+    });
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate-fade-up');
+            entry.target.classList.remove('opacity-0');
           }
         });
       },
       { threshold: 0.1 }
     );
     
-    const elements = sectionRef.current?.querySelectorAll('.animate-on-scroll');
-    elements?.forEach((el) => observer.observe(el));
+    if (elements) {
+      elements.forEach((el) => observer.observe(el));
+    }
     
     return () => {
-      elements?.forEach((el) => observer.unobserve(el));
+      if (elements) {
+        elements.forEach((el) => observer.unobserve(el));
+      }
     };
   }, []);
 
@@ -57,7 +66,7 @@ const ServicesSection = () => {
       </div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll opacity-0">
+        <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll opacity-0 transition-all duration-500">
           <span 
             className={cn(
               "inline-block mb-2 px-3 py-1 rounded-full",
@@ -98,7 +107,7 @@ const ServicesSection = () => {
           </div>
         </div>
         
-        <div className="animate-on-scroll opacity-0">
+        <div className="animate-on-scroll opacity-0 transition-all duration-500">
           <div 
             className="glass-morphism rounded-2xl p-8 transition-all duration-500"
             style={{ minHeight: '400px' }}
@@ -144,7 +153,7 @@ const ServicesSection = () => {
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 animate-on-scroll opacity-0">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 animate-on-scroll opacity-0 transition-all duration-500">
           {[
             { title: 'تحقیق کلمات کلیدی', desc: 'شناسایی بهترین کلمات کلیدی برای کسب و کار شما' },
             { title: 'بهینه‌سازی محتوا', desc: 'محتوای با کیفیت و بهینه شده برای موتورهای جستجو' },

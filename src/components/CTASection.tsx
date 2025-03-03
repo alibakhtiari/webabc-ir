@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
@@ -7,22 +6,34 @@ const CTASection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
+    // Apply animation classes immediately on component mount
+    const elements = sectionRef.current?.querySelectorAll('.animate-on-scroll');
+    elements?.forEach((el) => {
+      el.classList.add('animate-zoom-in');
+      el.classList.remove('opacity-0');
+    });
+
+    // Also set up the intersection observer for future scrolling
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate-zoom-in');
+            entry.target.classList.remove('opacity-0');
           }
         });
       },
       { threshold: 0.1 }
     );
     
-    const elements = sectionRef.current?.querySelectorAll('.animate-on-scroll');
-    elements?.forEach((el) => observer.observe(el));
+    if (elements) {
+      elements.forEach((el) => observer.observe(el));
+    }
     
     return () => {
-      elements?.forEach((el) => observer.unobserve(el));
+      if (elements) {
+        elements.forEach((el) => observer.unobserve(el));
+      }
     };
   }, []);
 
@@ -33,7 +44,7 @@ const CTASection = () => {
       className="py-24 relative overflow-hidden snap-section"
     >
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="animate-on-scroll opacity-0 max-w-5xl mx-auto">
+        <div className="animate-on-scroll opacity-0 transition-all duration-500 max-w-5xl mx-auto">
           <div 
             className={cn(
               "bg-primary rounded-3xl p-8 md:p-12",

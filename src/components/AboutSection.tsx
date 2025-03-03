@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -6,22 +5,34 @@ const AboutSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
+    // Apply animation classes immediately on component mount
+    const elements = sectionRef.current?.querySelectorAll('.animate-on-scroll');
+    elements?.forEach((el) => {
+      el.classList.add('animate-fade-up');
+      el.classList.remove('opacity-0');
+    });
+
+    // Also set up the intersection observer for future scrolling
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate-fade-up');
+            entry.target.classList.remove('opacity-0');
           }
         });
       },
       { threshold: 0.1 }
     );
     
-    const elements = sectionRef.current?.querySelectorAll('.animate-on-scroll');
-    elements?.forEach((el) => observer.observe(el));
+    if (elements) {
+      elements.forEach((el) => observer.observe(el));
+    }
     
     return () => {
-      elements?.forEach((el) => observer.unobserve(el));
+      if (elements) {
+        elements.forEach((el) => observer.unobserve(el));
+      }
     };
   }, []);
 
@@ -38,7 +49,7 @@ const AboutSection = () => {
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="animate-on-scroll opacity-0">
+          <div className="animate-on-scroll opacity-0 transition-all duration-500">
             <div className="neo-morphism rounded-2xl p-3 relative">
               <div className="aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
                 <span className="font-persian text-muted-foreground">تصویر تیم وب آ ب ث</span>
@@ -56,7 +67,7 @@ const AboutSection = () => {
             </div>
           </div>
           
-          <div className="animate-on-scroll opacity-0 space-y-6">
+          <div className="animate-on-scroll opacity-0 transition-all duration-500 space-y-6">
             <span 
               className={cn(
                 "inline-block mb-2 px-3 py-1 rounded-full",
