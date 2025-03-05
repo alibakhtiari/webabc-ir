@@ -11,6 +11,7 @@ import Portfolio from "./pages/Portfolio";
 import CaseStudies from "./pages/CaseStudies";
 import NotFound from "./pages/NotFound";
 import SeoServices from "./pages/SeoServices";
+import LocalSeoServices from "./pages/LocalSeoServices";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/seo-services" element={<SeoServices />} />
+            <Route path="/local-seo-services" element={<LocalSeoServices />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
