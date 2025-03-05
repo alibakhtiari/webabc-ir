@@ -1,11 +1,9 @@
-
 import React, { useEffect, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
 import { cn } from '@/lib/utils';
-import { CheckCircle, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { CheckCircle } from 'lucide-react';
 import {
   Accordion,
   AccordionContent,
@@ -33,8 +31,6 @@ const Services = () => {
     );
     
     document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-      // Start with opacity-0, but remove it when in view
-      el.classList.add('opacity-0');
       observer.observe(el);
     });
     
@@ -58,8 +54,7 @@ const Services = () => {
         'بهینه‌سازی موبایل و ریسپانسیو',
         'بهبود امنیت و عملکرد سرور'
       ],
-      icon: '🔧',
-      link: '/services/technical-seo'
+      icon: '🔧'
     },
     {
       title: 'سئو محتوا',
@@ -72,8 +67,7 @@ const Services = () => {
         'بهینه‌سازی تصاویر و رسانه‌ها',
         'ایجاد استراتژی محتوای بلندمدت'
       ],
-      icon: '📝',
-      link: '/services/content-seo'
+      icon: '📝'
     },
     {
       title: 'سئو محلی',
@@ -86,8 +80,7 @@ const Services = () => {
         'بهینه‌سازی برای جستجوهای "نزدیک من"',
         'گزارش‌های تحلیلی سئو محلی'
       ],
-      icon: '📍',
-      link: '/services/local-seo'
+      icon: '📍'
     },
     {
       title: 'سئو خارجی',
@@ -100,8 +93,7 @@ const Services = () => {
         'پایش و خنثی‌سازی لینک‌های مخرب',
         'گزارش‌های دوره‌ای پیشرفت'
       ],
-      icon: '🔗',
-      link: '/services/off-page-seo'
+      icon: '🔗'
     }
   ];
 
@@ -118,8 +110,7 @@ const Services = () => {
         'ارتقا و بهبود سایت‌های وردپرسی موجود',
         'پشتیبانی و نگهداری مداوم'
       ],
-      icon: '🔌',
-      link: '/services/wordpress-development'
+      icon: '🔌'
     },
     {
       title: 'توسعه فرانت‌اند با React و Next.js',
@@ -132,8 +123,7 @@ const Services = () => {
         'انیمیشن‌ها و تعاملات پیشرفته کاربری',
         'یکپارچه‌سازی با API‌های مختلف'
       ],
-      icon: '⚛️',
-      link: '/services/frontend-development'
+      icon: '⚛️'
     },
     {
       title: 'توسعه بک‌اند با پایتون و Node.js',
@@ -146,8 +136,7 @@ const Services = () => {
         'پیاده‌سازی سیستم‌های احراز هویت و مجوزدهی',
         'یکپارچه‌سازی با سرویس‌های ابری'
       ],
-      icon: '🔋',
-      link: '/services/backend-development'
+      icon: '🔋'
     }
   ];
 
@@ -229,7 +218,7 @@ const Services = () => {
           className="py-20 bg-white relative overflow-hidden"
         >
           <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+            <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll opacity-0">
               <span className="inline-block mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium">
                 سئو تخصصی
               </span>
@@ -247,14 +236,14 @@ const Services = () => {
               {seoServices.map((service, idx) => (
                 <div 
                   key={idx} 
-                  className="neo-morphism rounded-2xl p-6 animate-on-scroll"
+                  className="neo-morphism rounded-2xl p-6 animate-on-scroll opacity-0"
                   style={{ animationDelay: `${idx * 0.1}s` }}
                 >
                   <div className="text-4xl mb-4">{service.icon}</div>
                   <h3 className="text-xl font-bold mb-3">{service.title}</h3>
                   <p className="text-foreground/70 mb-4 text-sm">{service.description}</p>
                   
-                  <ul className="space-y-2 mb-6">
+                  <ul className="space-y-2">
                     {service.features.map((feature, fidx) => (
                       <li key={fidx} className="flex items-start text-sm">
                         <CheckCircle className="text-primary h-4 w-4 mt-1 ml-2 shrink-0" />
@@ -262,14 +251,6 @@ const Services = () => {
                       </li>
                     ))}
                   </ul>
-                  
-                  <Link
-                    to={service.link}
-                    className="flex items-center text-primary font-medium hover:underline text-sm"
-                  >
-                    <span>اطلاعات بیشتر</span>
-                    <ArrowRight className="w-4 h-4 mr-1" />
-                  </Link>
                 </div>
               ))}
             </div>
@@ -283,7 +264,7 @@ const Services = () => {
           className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden"
         >
           <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+            <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll opacity-0">
               <span className="inline-block mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium">
                 توسعه وب
               </span>
@@ -301,14 +282,14 @@ const Services = () => {
               {webdevServices.map((service, idx) => (
                 <div 
                   key={idx} 
-                  className="glass-morphism rounded-2xl p-8 animate-on-scroll"
+                  className="glass-morphism rounded-2xl p-8 animate-on-scroll opacity-0"
                   style={{ animationDelay: `${idx * 0.1}s` }}
                 >
                   <div className="text-4xl mb-4">{service.icon}</div>
                   <h3 className="text-xl font-bold mb-3">{service.title}</h3>
                   <p className="text-foreground/70 mb-6">{service.description}</p>
                   
-                  <ul className="space-y-3 mb-8">
+                  <ul className="space-y-3">
                     {service.features.map((feature, fidx) => (
                       <li key={fidx} className="flex items-start">
                         <CheckCircle className="text-primary h-5 w-5 mt-0.5 ml-2 shrink-0" />
@@ -316,14 +297,6 @@ const Services = () => {
                       </li>
                     ))}
                   </ul>
-                  
-                  <Link
-                    to={service.link}
-                    className="inline-flex items-center px-5 py-2.5 rounded-full bg-primary text-white transition-all hover:shadow-lg hover:translate-y-[-2px]"
-                  >
-                    <span>مشاهده جزئیات خدمات</span>
-                    <ArrowRight className="w-4 h-4 mr-2" />
-                  </Link>
                 </div>
               ))}
             </div>
