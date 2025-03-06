@@ -1,10 +1,11 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEOHead from '@/components/SEOHead';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, CheckCircle, Code, Database, Layout, ShoppingCart } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const WebDevelopmentServices = () => {
   const services = [
@@ -38,8 +39,10 @@ const WebDevelopmentServices = () => {
         description="خدمات حرفه‌ای طراحی سایت و توسعه وب با استفاده از تکنولوژی‌های مدرن وردپرس، ری‌اکت، نکست‌جی‌اس و نود‌جی‌اس برای کسب و کارهای مختلف"
       />
       
+      <Navbar />
+      
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <section className="py-20 pt-32 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden -z-10">
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
@@ -222,6 +225,8 @@ const WebDevelopmentServices = () => {
           </div>
         </div>
       </section>
+      
+      <Footer />
     </div>
   );
 };

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import SEOHead from '@/components/SEOHead';
 import { Button } from '@/components/ui/button';
@@ -15,6 +14,8 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const WordpressWoocommerceDevelopment = () => {
   const services = [
@@ -57,8 +58,10 @@ const WordpressWoocommerceDevelopment = () => {
         description="طراحی و توسعه حرفه‌ای سایت‌های وردپرسی و فروشگاه‌های ووکامرس با قالب‌های اختصاصی، سرعت بالا و امنیت تضمین شده"
       />
       
+      <Navbar />
+      
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <section className="py-20 pt-32 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden -z-10">
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
@@ -204,7 +207,7 @@ const WordpressWoocommerceDevelopment = () => {
             {[
               {
                 title: "فروشگاه محصولات دیجیتال",
-                desc: "طراحی و پیاده‌سازی فروشگاه اینترنتی محصولات دیجیتال با ووکامرس و سیستم پرداخت چندگانه"
+                desc: "طراحی و پیاده‌سازی فرو��گاه اینترنتی محصولات دیجیتال با ووکامرس و سیستم پرداخت چندگانه"
               },
               {
                 title: "پورتال خبری",
@@ -413,6 +416,8 @@ const WordpressWoocommerceDevelopment = () => {
           </div>
         </div>
       </section>
+      
+      <Footer />
     </div>
   );
 };
