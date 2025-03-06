@@ -13,7 +13,7 @@ import WordpressFAQSection from '@/components/wordpress/FAQSection';
 
 const WordpressWoocommerceDevelopment = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen font-persian" dir="rtl">
       <SEOHead 
         title="خدمات طراحی سایت با وردپرس و ووکامرس | توسعه وردپرس حرفه‌ای"
         description="طراحی و توسعه حرفه‌ای سایت‌های وردپرسی و فروشگاه‌های ووکامرس با قالب‌های اختصاصی، سرعت بالا و امنیت تضمین شده"

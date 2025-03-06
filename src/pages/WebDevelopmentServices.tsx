@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEOHead from '@/components/SEOHead';
@@ -33,7 +34,7 @@ const WebDevelopmentServices = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen font-persian" dir="rtl">
       <SEOHead 
         title="خدمات توسعه وب | طراحی سایت و توسعه اپلیکیشن"
         description="خدمات حرفه‌ای طراحی سایت و توسعه وب با استفاده از تکنولوژی‌های مدرن وردپرس، ری‌اکت، نکست‌جی‌اس و نود‌جی‌اس برای کسب و کارهای مختلف"
