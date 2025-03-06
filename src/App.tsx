@@ -12,6 +12,8 @@ import CaseStudies from "./pages/CaseStudies";
 import NotFound from "./pages/NotFound";
 import SeoServices from "./pages/SeoServices";
 import LocalSeoServices from "./pages/LocalSeoServices";
+import WebDevelopmentServices from "./pages/WebDevelopmentServices";
+import WordpressWoocommerceDevelopment from "./pages/WordpressWoocommerceDevelopment";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +31,8 @@ const App = () => (
             <Route path="/case-studies" element={<CaseStudies />} />
             <Route path="/seo-services" element={<SeoServices />} />
             <Route path="/local-seo-services" element={<LocalSeoServices />} />
+            <Route path="/web-development-services" element={<WebDevelopmentServices />} />
+            <Route path="/wordpress-woocommerce-development" element={<WordpressWoocommerceDevelopment />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
