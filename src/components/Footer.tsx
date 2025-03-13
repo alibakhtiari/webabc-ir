@@ -53,7 +53,7 @@ const Footer = () => {
                   { name: 'تیم ما', href: '#' },
                   { name: 'نمونه کارها', href: '#' },
                   { name: 'بلاگ', href: '#' },
-                  { name: 'تماس با ما', href: '#' },
+                  { name: 'تماس با ما', href: '/contact' },
                 ]
               },
               {

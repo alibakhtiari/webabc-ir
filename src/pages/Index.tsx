@@ -84,7 +84,7 @@ const Index = () => {
       </Helmet>
       
       <Navbar />
-      <main>
+      <main className="mt-20">
         <HeroSection />
         <ServicesSection />
         <AboutSection />

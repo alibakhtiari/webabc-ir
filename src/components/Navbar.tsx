@@ -38,7 +38,7 @@ const Navbar = () => {
       <div className="container mx-auto">
         <div className={cn(
           "flex items-center justify-between",
-          "backdrop-blur-xl bg-white/40 rounded-2xl px-6 py-3 shadow-lg border border-white/20",
+          "backdrop-blur-xl bg-white/40 rounded-full px-6 py-3 shadow-lg border border-white/20",
           { "shadow-md": isScrolled }
         )}>
           <Link to="/" className="flex items-center space-x-2">
@@ -51,8 +51,8 @@ const Navbar = () => {
             <ServicesDropdown />
             <NavLink to="/portfolio">نمونه کارها</NavLink>
             <NavLink to="/case-studies">مطالعات موردی</NavLink>
-            <NavLink to="#about">درباره ما</NavLink>
-            <NavLink to="#contact">تماس با ما</NavLink>
+            <NavLink to="/about">درباره ما</NavLink>
+            <NavLink to="/contact">تماس با ما</NavLink>
             <Button size="sm" className="px-4 py-2 rounded-md">
               مشاوره رایگان
             </Button>
