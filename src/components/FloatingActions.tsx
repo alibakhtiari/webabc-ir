@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { ArrowUp, MessageSquare, WhatsApp } from 'lucide-react';
+import { ArrowUp, MessageSquare, MessageCircleMore } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ConsultationForm from './ConsultationForm';
 import { useToast } from "@/hooks/use-toast";
@@ -64,7 +64,7 @@ const FloatingActions: React.FC = () => {
           className="bg-green-500 text-white shadow-lg hover:bg-green-600 rounded-full h-12 w-12"
           aria-label="تماس از طریق واتساپ"
         >
-          <WhatsApp className="h-5 w-5" />
+          <MessageCircleMore className="h-5 w-5" />
         </Button>
       </div>
       
