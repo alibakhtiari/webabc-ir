@@ -9,6 +9,8 @@ import { cn } from '@/lib/utils';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from './ui/button';
 import ConsultationForm from './ConsultationForm';
+import { useLanguage } from '@/contexts/LanguageContext';
+import LanguageSwitcher from './LanguageSwitcher';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -18,6 +20,7 @@ interface MobileMenuProps {
 const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [consultationOpen, setConsultationOpen] = useState(false);
+  const { t, language, languageMeta } = useLanguage();
 
   const handleConsultation = () => {
     onClose(); // Close the mobile menu
@@ -27,11 +30,11 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
   return (
     <>
       <Sheet open={isOpen} onOpenChange={onClose}>
-        <SheetContent side="left" className="w-3/4 sm:max-w-md p-0 font-persian" dir="rtl">
+        <SheetContent side={languageMeta.direction === 'rtl' ? 'left' : 'right'} className="w-3/4 sm:max-w-md p-0 font-persian" dir={languageMeta.direction}>
           <div className="flex flex-col h-full overflow-auto py-6">
             <div className="px-6 pb-6 border-b">
               <div className="flex items-center justify-between mb-6">
-                <Link to="/" className="text-xl font-bold" onClick={onClose}>
+                <Link to={`/${language}`} className="text-xl font-bold" onClick={onClose}>
                   WebABC
                 </Link>
               </div>
@@ -41,11 +44,11 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
               <ul className="space-y-6">
                 <li>
                   <Link 
-                    to="/" 
+                    to={`/${language}`}
                     className="text-lg font-medium" 
                     onClick={onClose}
                   >
-                    خانه
+                    {t('common.home')}
                   </Link>
                 </li>
   
@@ -54,7 +57,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                     onClick={() => setServicesOpen(!servicesOpen)}
                     className="w-full flex items-center justify-between text-lg font-medium"
                   >
-                    <span>خدمات</span>
+                    <span>{t('common.services')}</span>
                     <span className="text-gray-400">
                       {servicesOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                     </span>
@@ -67,81 +70,85 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                     )}
                   >
                     <Link 
-                      to="/services" 
-                      className="block pl-4 border-r-2 pr-3 text-foreground/80 hover:text-primary" 
+                      to={`/${language}/services`}
+                      className={`block ${languageMeta.direction === 'rtl' ? 'pr-3 border-r-2' : 'pl-3 border-l-2'} text-foreground/80 hover:text-primary`}
                       onClick={onClose}
                     >
-                      همه خدمات
+                      {t('common.allServices')}
                     </Link>
                     <Link 
-                      to="/seo-services" 
-                      className="block pl-4 border-r-2 pr-3 text-foreground/80 hover:text-primary" 
+                      to={`/${language}/seo-services`}
+                      className={`block ${languageMeta.direction === 'rtl' ? 'pr-3 border-r-2' : 'pl-3 border-l-2'} text-foreground/80 hover:text-primary`}
                       onClick={onClose}
                     >
-                      خدمات سئو
+                      {t('common.services')} SEO
                     </Link>
                     <Link 
-                      to="/local-seo-services" 
-                      className="block pl-4 border-r-2 pr-3 text-foreground/80 hover:text-primary" 
+                      to={`/${language}/local-seo-services`}
+                      className={`block ${languageMeta.direction === 'rtl' ? 'pr-3 border-r-2' : 'pl-3 border-l-2'} text-foreground/80 hover:text-primary`}
                       onClick={onClose}
                     >
-                      سئو محلی
+                      {t('common.services')} SEO {language === 'en' ? 'Local' : language === 'ar' ? 'المحلي' : 'محلی'}
                     </Link>
                     <Link 
-                      to="/web-development-services" 
-                      className="block pl-4 border-r-2 pr-3 text-foreground/80 hover:text-primary" 
+                      to={`/${language}/web-development-services`}
+                      className={`block ${languageMeta.direction === 'rtl' ? 'pr-3 border-r-2' : 'pl-3 border-l-2'} text-foreground/80 hover:text-primary`}
                       onClick={onClose}
                     >
-                      توسعه وب
+                      {language === 'en' ? 'Web Development' : language === 'ar' ? 'تطوير المواقع' : 'توسعه وب'}
                     </Link>
                     <Link 
-                      to="/wordpress-woocommerce-development" 
-                      className="block pl-4 border-r-2 pr-3 text-foreground/80 hover:text-primary" 
+                      to={`/${language}/wordpress-woocommerce-development`}
+                      className={`block ${languageMeta.direction === 'rtl' ? 'pr-3 border-r-2' : 'pl-3 border-l-2'} text-foreground/80 hover:text-primary`}
                       onClick={onClose}
                     >
-                      وردپرس و ووکامرس
+                      {t('wordpress.wordpressAndWoocommerce')}
                     </Link>
                   </div>
                 </li>
   
                 <li>
                   <Link 
-                    to="/portfolio" 
+                    to={`/${language}/portfolio`}
                     className="text-lg font-medium" 
                     onClick={onClose}
                   >
-                    نمونه کارها
+                    {t('common.portfolio')}
                   </Link>
                 </li>
   
                 <li>
                   <Link 
-                    to="/case-studies" 
+                    to={`/${language}/case-studies`}
                     className="text-lg font-medium" 
                     onClick={onClose}
                   >
-                    مطالعات موردی
+                    {t('common.caseStudies')}
                   </Link>
                 </li>
   
                 <li>
                   <Link 
-                    to="/about" 
+                    to={`/${language}/about`}
                     className="text-lg font-medium" 
                     onClick={onClose}
                   >
-                    درباره ما
+                    {t('common.about')}
                   </Link>
                 </li>
   
                 <li>
                   <Link 
-                    to="/contact" 
+                    to={`/${language}/contact`}
                     className="text-lg font-medium" 
                     onClick={onClose}
                   >
-                    تماس با ما
+                    {t('common.contact')}
                   </Link>
+                </li>
+                
+                <li>
+                  <LanguageSwitcher type="buttons" />
                 </li>
               </ul>
             </nav>
@@ -151,7 +158,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                 className="w-full"
                 onClick={handleConsultation}
               >
-                مشاوره رایگان
+                {t('common.freeConsultation')}
               </Button>
             </div>
           </div>

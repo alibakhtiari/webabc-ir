@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, ArrowRight, Globe, Code, Layout, ShoppingCart } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface NavLinkProps {
   to: string;
@@ -20,10 +21,12 @@ export const NavLink = ({ to, children }: NavLinkProps) => {
 };
 
 export const ServicesDropdown = () => {
+  const { t, language } = useLanguage();
+  
   return (
     <div className="relative group">
       <button className="flex items-center text-foreground/80 font-persian text-base hover:text-primary transition-colors">
-        خدمات
+        {t('common.services')}
         <ChevronDown className="h-4 w-4 mr-1 group-hover:rotate-180 transition-transform duration-200" />
       </button>
       
@@ -33,45 +36,45 @@ export const ServicesDropdown = () => {
           <div className="grid grid-cols-2 gap-6">
             {/* Left Column - Featured Service */}
             <div className="bg-primary/5 rounded-lg p-5">
-              <h3 className="text-lg font-bold text-primary mb-2">وردپرس و ووکامرس</h3>
+              <h3 className="text-lg font-bold text-primary mb-2">{t('wordpress.wordpressAndWoocommerce')}</h3>
               <p className="text-sm text-gray-600 mb-4">
-                طراحی و توسعه حرفه‌ای سایت‌های وردپرسی و فروشگاه‌های آنلاین با ووکامرس
+                {t('wordpress.subtitle')}
               </p>
               <Link 
-                to="/wordpress-woocommerce-development" 
+                to={`/${language}/wordpress-woocommerce-development`}
                 className="inline-flex items-center text-primary hover:text-primary/80 text-sm font-medium"
               >
-                مشاهده جزئیات
+                {t('common.viewDetails')}
                 <ArrowRight className="mr-1 h-4 w-4" />
               </Link>
             </div>
             
             {/* Right Column - Service Links */}
             <div>
-              <h3 className="text-sm font-medium text-gray-500 mb-3">همه خدمات</h3>
+              <h3 className="text-sm font-medium text-gray-500 mb-3">{t('common.allServices')}</h3>
               <ul className="space-y-4">
                 <ServiceLink 
-                  to="/services" 
-                  title="همه خدمات"
-                  description="مشاهده لیست کامل خدمات"
+                  to={`/${language}/services`}
+                  title={t('common.allServices')}
+                  description={t('common.viewAll')}
                   icon={<Globe />}
                 />
                 <ServiceLink 
-                  to="/seo-services" 
-                  title="خدمات سئو"
-                  description="بهینه‌سازی برای موتورهای جستجو"
+                  to={`/${language}/seo-services`}
+                  title={t('common.services') + " SEO"}
+                  description="SEO"
                   icon={<Globe />}
                 />
                 <ServiceLink 
-                  to="/local-seo-services" 
-                  title="سئو محلی"
-                  description="افزایش حضور محلی کسب و کار"
+                  to={`/${language}/local-seo-services`}
+                  title={t('common.services') + " SEO " + (language === 'en' ? 'Local' : language === 'ar' ? 'المحلي' : 'محلی')}
+                  description="SEO"
                   icon={<Globe />}
                 />
                 <ServiceLink 
-                  to="/web-development-services" 
-                  title="توسعه وب"
-                  description="طراحی و توسعه وب‌سایت‌های مدرن"
+                  to={`/${language}/web-development-services`}
+                  title={language === 'en' ? 'Web Development' : language === 'ar' ? 'تطوير المواقع' : 'توسعه وب'}
+                  description={language === 'en' ? 'Web Design & Development' : language === 'ar' ? 'تصميم وتطوير المواقع' : 'طراحی و توسعه وب‌سایت'}
                   icon={<Code />}
                 />
               </ul>

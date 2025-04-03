@@ -8,11 +8,14 @@ import { NavLink, ServicesDropdown } from './NavLinks';
 import MobileMenu from './MobileMenu';
 import { Button } from './ui/button';
 import ConsultationForm from './ConsultationForm';
+import LanguageSwitcher from './LanguageSwitcher';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [consultationOpen, setConsultationOpen] = useState(false);
+  const { t, language } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,39 +46,43 @@ const Navbar = () => {
           "backdrop-blur-xl bg-white/40 rounded-full px-6 py-3 shadow-lg border border-white/20",
           { "shadow-md": isScrolled }
         )}>
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to={`/${language}`} className="flex items-center space-x-2">
             <Logo size="sm" />
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
-            <NavLink to="/">خانه</NavLink>
+            <NavLink to={`/${language}`}>{t('common.home')}</NavLink>
             <ServicesDropdown />
-            <NavLink to="/portfolio">نمونه کارها</NavLink>
-            <NavLink to="/case-studies">مطالعات موردی</NavLink>
-            <NavLink to="/about">درباره ما</NavLink>
-            <NavLink to="/contact">تماس با ما</NavLink>
+            <NavLink to={`/${language}/portfolio`}>{t('common.portfolio')}</NavLink>
+            <NavLink to={`/${language}/case-studies`}>{t('common.caseStudies')}</NavLink>
+            <NavLink to={`/${language}/about`}>{t('common.about')}</NavLink>
+            <NavLink to={`/${language}/contact`}>{t('common.contact')}</NavLink>
+            <LanguageSwitcher />
             <Button 
               size="sm" 
               className="px-4 py-2 rounded-md"
               onClick={() => setConsultationOpen(true)}
             >
-              مشاوره رایگان
+              {t('common.freeConsultation')}
             </Button>
           </nav>
 
           {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden p-2" 
-            onClick={toggleMobileMenu}
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMobileMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <LanguageSwitcher type="dropdown" />
+            <button 
+              className="p-2" 
+              onClick={toggleMobileMenu}
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
 

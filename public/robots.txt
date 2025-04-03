@@ -5,3 +5,9 @@ Allow: /
 
 # Sitemap location
 Sitemap: https://yourwebsite.com/sitemap.xml
+
+# Language-specific sitemaps
+Sitemap: https://yourwebsite.com/sitemap-fa.xml
+Sitemap: https://yourwebsite.com/sitemap-en.xml
+Sitemap: https://yourwebsite.com/sitemap-ar.xml
+

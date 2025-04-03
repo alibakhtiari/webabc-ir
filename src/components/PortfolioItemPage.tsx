@@ -9,6 +9,9 @@ import { createBreadcrumbSchema } from '@/lib/schema';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 import LazyImage from '@/components/LazyImage';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { generateLanguageAlternates, getPathWithoutLanguage } from '@/lib/languageUtils';
+import { useLocation } from 'react-router-dom';
 
 interface PortfolioItemProps {
   portfolioItems: {
@@ -27,17 +30,21 @@ interface PortfolioItemProps {
 
 const PortfolioItemPage: React.FC<PortfolioItemProps> = ({ portfolioItems }) => {
   const { id } = useParams<{ id: string }>();
+  const { t, language, languageMeta } = useLanguage();
+  const location = useLocation();
+  const path = getPathWithoutLanguage(location.pathname);
+  const languageAlternates = generateLanguageAlternates(path, language);
   
   const item = portfolioItems.find(item => item.id === id);
   
   if (!item) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50" dir="rtl">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50" dir={languageMeta.direction}>
         <div className="text-center">
-          <h1 className="text-3xl font-bold mb-4">نمونه کار یافت نشد</h1>
-          <p className="mb-6">متأسفانه نمونه کار مورد نظر یافت نشد.</p>
+          <h1 className="text-3xl font-bold mb-4">{language === 'en' ? 'Portfolio item not found' : language === 'ar' ? 'لم يتم العثور على العنصر' : 'نمونه کار یافت نشد'}</h1>
+          <p className="mb-6">{language === 'en' ? 'The requested portfolio item could not be found.' : language === 'ar' ? 'لم يتم العثور على عنصر المحفظة المطلوب.' : 'متأسفانه نمونه کار مورد نظر یافت نشد.'}</p>
           <Button asChild>
-            <Link to="/portfolio">بازگشت به نمونه کارها</Link>
+            <Link to={`/${language}/portfolio`}>{t('common.backToPortfolio')}</Link>
           </Button>
         </div>
       </div>
@@ -46,9 +53,9 @@ const PortfolioItemPage: React.FC<PortfolioItemProps> = ({ portfolioItems }) => 
   
   // Schema markup for portfolio item
   const breadcrumbSchema = createBreadcrumbSchema([
-    { name: "صفحه اصلی", url: "https://webabc.com" },
-    { name: "نمونه کارها", url: "https://webabc.com/portfolio" },
-    { name: item.title, url: `https://webabc.com/portfolio/${item.id}` }
+    { name: language === 'en' ? 'Home' : language === 'ar' ? 'الرئيسية' : 'صفحه اصلی', url: `https://webabc.com/${language}` },
+    { name: t('common.portfolio'), url: `https://webabc.com/${language}/portfolio` },
+    { name: item.title, url: `https://webabc.com/${language}/portfolio/${item.id}` }
   ]);
   
   const portfolioItemSchema = {
@@ -59,16 +66,18 @@ const PortfolioItemPage: React.FC<PortfolioItemProps> = ({ portfolioItems }) => 
     "image": item.image,
     "creator": {
       "@type": "Organization",
-      "name": "WebABC"
-    }
+      "name": language === 'en' ? 'WebABC' : language === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث'
+    },
+    "inLanguage": language
   };
 
   return (
-    <div dir="rtl" className="font-persian min-h-screen flex flex-col">
+    <div dir={languageMeta.direction} className="font-persian min-h-screen flex flex-col">
       <SEOHead 
-        title={`${item.title} | نمونه کارهای وب آ ب ث`}
+        title={`${item.title} | ${t('common.portfolio')}`}
         description={item.description}
-        keywords={`${item.title}, ${item.category}, نمونه کار طراحی سایت, نمونه کار سئو, وب آ ب ث`}
+        keywords={`${item.title}, ${item.category}, ${language === 'en' ? 'portfolio, web design sample, seo sample' : language === 'ar' ? 'معرض الأعمال، نموذج تصميم الويب، نموذج تحسين محركات البحث' : 'نمونه کار طراحی سایت, نمونه کار سئو'}`}
+        languageAlternates={languageAlternates}
       />
       
       <SchemaMarkup schema={breadcrumbSchema} />
@@ -80,9 +89,9 @@ const PortfolioItemPage: React.FC<PortfolioItemProps> = ({ portfolioItems }) => 
         <div className="container mx-auto px-4">
           {/* Breadcrumb */}
           <div className="text-sm mb-6">
-            <Link to="/" className="text-gray-500 hover:text-primary">خانه</Link>
+            <Link to={`/${language}`} className="text-gray-500 hover:text-primary">{t('common.home')}</Link>
             <span className="mx-2">/</span>
-            <Link to="/portfolio" className="text-gray-500 hover:text-primary">نمونه کارها</Link>
+            <Link to={`/${language}/portfolio`} className="text-gray-500 hover:text-primary">{t('common.portfolio')}</Link>
             <span className="mx-2">/</span>
             <span className="text-primary">{item.title}</span>
           </div>
@@ -111,7 +120,7 @@ const PortfolioItemPage: React.FC<PortfolioItemProps> = ({ portfolioItems }) => 
             
             <div className="space-y-8">
               <div>
-                <h2 className="text-xl font-bold mb-3">توضیحات پروژه</h2>
+                <h2 className="text-xl font-bold mb-3">{language === 'en' ? 'Project Description' : language === 'ar' ? 'وصف المشروع' : 'توضیحات پروژه'}</h2>
                 <p className="text-gray-700 leading-relaxed">
                   {item.fullDescription || item.description}
                 </p>
@@ -119,14 +128,14 @@ const PortfolioItemPage: React.FC<PortfolioItemProps> = ({ portfolioItems }) => 
               
               {item.client && (
                 <div>
-                  <h2 className="text-xl font-bold mb-3">کارفرما</h2>
+                  <h2 className="text-xl font-bold mb-3">{language === 'en' ? 'Client' : language === 'ar' ? 'العميل' : 'کارفرما'}</h2>
                   <p className="text-gray-700">{item.client}</p>
                 </div>
               )}
               
               {item.technologies && (
                 <div>
-                  <h2 className="text-xl font-bold mb-3">تکنولوژی‌های استفاده شده</h2>
+                  <h2 className="text-xl font-bold mb-3">{language === 'en' ? 'Technologies Used' : language === 'ar' ? 'التقنيات المستخدمة' : 'تکنولوژی‌های استفاده شده'}</h2>
                   <div className="flex flex-wrap gap-2">
                     {item.technologies.map((tech, index) => (
                       <span key={index} className="bg-gray-100 rounded-full px-3 py-1 text-sm">
@@ -139,7 +148,7 @@ const PortfolioItemPage: React.FC<PortfolioItemProps> = ({ portfolioItems }) => 
               
               {item.results && (
                 <div>
-                  <h2 className="text-xl font-bold mb-3">نتایج</h2>
+                  <h2 className="text-xl font-bold mb-3">{language === 'en' ? 'Results' : language === 'ar' ? 'النتائج' : 'نتایج'}</h2>
                   <div className="grid grid-cols-2 gap-4">
                     {item.results.map((result, index) => (
                       <div key={index} className="bg-gray-50 p-4 rounded-lg">
@@ -153,17 +162,26 @@ const PortfolioItemPage: React.FC<PortfolioItemProps> = ({ portfolioItems }) => 
               
               <div className="flex flex-wrap gap-4 pt-4">
                 <Button asChild variant="outline">
-                  <Link to="/portfolio">
-                    <ArrowLeft className="mr-2 h-4 w-4" />
-                    بازگشت به نمونه کارها
+                  <Link to={`/${language}/portfolio`}>
+                    {languageMeta.direction === 'rtl' ? (
+                      <>
+                        {t('common.backToPortfolio')}
+                        <ArrowLeft className="mr-2 h-4 w-4" />
+                      </>
+                    ) : (
+                      <>
+                        <ArrowLeft className="mr-2 h-4 w-4" />
+                        {t('common.backToPortfolio')}
+                      </>
+                    )}
                   </Link>
                 </Button>
                 
                 {item.projectUrl && (
                   <Button asChild>
                     <a href={item.projectUrl} target="_blank" rel="noopener noreferrer">
-                      مشاهده وب‌سایت
-                      <ExternalLink className="mr-2 h-4 w-4" />
+                      {t('common.viewWebsite')}
+                      <ExternalLink className={languageMeta.direction === 'rtl' ? 'mr-2 h-4 w-4' : 'ml-2 h-4 w-4'} />
                     </a>
                   </Button>
                 )}

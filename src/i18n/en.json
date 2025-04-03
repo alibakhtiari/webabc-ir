@@ -1,0 +1,76 @@
+
+{
+  "common": {
+    "home": "Home",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "caseStudies": "Case Studies",
+    "about": "About Us",
+    "contact": "Contact Us",
+    "freeConsultation": "Free Consultation",
+    "allServices": "All Services",
+    "viewDetails": "View Details",
+    "sendRequest": "Send Request",
+    "cancel": "Cancel",
+    "backToTop": "Back to Top",
+    "contactViaWhatsApp": "Contact via WhatsApp",
+    "viewAll": "View All",
+    "contactUs": "Contact Us",
+    "sendEmail": "Send Email",
+    "readMore": "Read More",
+    "backToPortfolio": "Back to Portfolio",
+    "viewWebsite": "View Website",
+    "whatsappMessage": "Hello, I'm contacting you from your website and would like to receive more information."
+  },
+  "seo": {
+    "defaultTitle": "WebABC | Web Design and SEO Services",
+    "defaultDescription": "WebABC web design and SEO services company | Digital marketing solutions",
+    "author": "WebABC",
+    "siteName": "WebABC"
+  },
+  "consultation": {
+    "title": "Request Free Consultation",
+    "description": "Fill in the form below and our experts will contact you shortly.",
+    "fullName": "Full Name",
+    "phone": "Phone Number",
+    "email": "Email (Optional)",
+    "message": "Message",
+    "formSubmitted": "Form Submitted",
+    "formSubmittedDesc": "Our experts will contact you soon."
+  },
+  "footer": {
+    "companySince": "© 2024 WebABC. All rights reserved.",
+    "aboutCompany": "WebABC, specializing in SEO services and web development with over 10 years of experience in the digital marketing industry.",
+    "services": "Services",
+    "company": "Company",
+    "resources": "Resources",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "cookiePolicy": "Cookie Policy"
+  },
+  "wordpress": {
+    "title": "Professional WordPress & WooCommerce Development",
+    "subtitle": "Creating custom WordPress sites and WooCommerce online stores with unique design and optimal performance",
+    "wordpressAndWoocommerce": "WordPress & WooCommerce",
+    "wpServices": "WordPress Services",
+    "ourServices": "Our Services",
+    "servicesTitle": "WordPress & WooCommerce Development Services",
+    "servicesDescription": "We offer a comprehensive range of WordPress and WooCommerce specialized services to grow your online business",
+    "benefits": "Benefits",
+    "benefitsTitle": "Why WordPress & WooCommerce?",
+    "benefitsDescription": "WordPress and WooCommerce offer numerous advantages for online businesses, making them an ideal choice",
+    "pricing": "Pricing",
+    "pricingTitle": "WordPress Website Design Plans",
+    "pricingDescription": "Various WordPress website design plans tailored to the needs and budget of different businesses",
+    "faq": "FAQ",
+    "faqTitle": "Frequently Asked Questions",
+    "faqDescription": "Answers to common questions about WordPress and WooCommerce website design services",
+    "portfolio": "Portfolio",
+    "portfolioTitle": "Successful WordPress & WooCommerce Projects",
+    "portfolioDescription": "A look at some of the outstanding WordPress and WooCommerce projects designed and developed by our team",
+    "ctaTitle": "Ready to Start Your WordPress Project?",
+    "ctaDescription": "Contact us for a free consultation and more information about WordPress website design services",
+    "specialOffer": "Special Offer",
+    "orderPlan": "Order Plan"
+  }
+}

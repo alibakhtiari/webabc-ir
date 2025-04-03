@@ -1,0 +1,23 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://yourwebsite.com/fa</loc>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://yourwebsite.com/fa" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://yourwebsite.com/en" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://yourwebsite.com/ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yourwebsite.com" />
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://yourwebsite.com/fa/services</loc>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://yourwebsite.com/fa/services" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://yourwebsite.com/en/services" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://yourwebsite.com/ar/services" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Add other Persian URLs with alternates -->
+</urlset>
