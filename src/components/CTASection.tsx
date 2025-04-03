@@ -1,9 +1,13 @@
-import React, { useEffect, useRef } from 'react';
+
+import React, { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
+import ConsultationForm from './ConsultationForm';
+import { Link } from 'react-router-dom';
 
 const CTASection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [consultationOpen, setConsultationOpen] = useState(false);
   
   useEffect(() => {
     // Apply animation classes immediately on component mount
@@ -73,11 +77,13 @@ const CTASection = () => {
                     "transition-all duration-300 shadow-md hover:shadow-lg",
                     "hover:translate-y-[-2px] flex items-center"
                   )}
+                  onClick={() => setConsultationOpen(true)}
                 >
                   <span>دریافت مشاوره رایگان</span>
                   <ArrowRight className="h-4 w-4 mr-2" />
                 </button>
-                <button 
+                <Link
+                  to="/contact"
                   className={cn(
                     "px-6 py-3 rounded-full bg-transparent text-white",
                     "border border-white/30 transition-all duration-300",
@@ -85,7 +91,7 @@ const CTASection = () => {
                   )}
                 >
                   <span>تماس با ما</span>
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -116,6 +122,9 @@ const CTASection = () => {
           </div>
         </div>
       </div>
+      
+      {/* Consultation Form Dialog */}
+      <ConsultationForm open={consultationOpen} onOpenChange={setConsultationOpen} />
     </section>
   );
 };

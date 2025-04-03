@@ -1,10 +1,12 @@
 
 import React, { lazy, Suspense } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { createBreadcrumbSchema } from '@/lib/schema';
+import { portfolioItems } from '@/lib/portfolioData';
 
 // Lazy loading components
 const PortfolioGallery = lazy(() => import('@/components/PortfolioGallery'));
@@ -17,31 +19,6 @@ const GallerySkeleton = () => (
     ))}
   </div>
 );
-
-const portfolioItems = [
-  {
-    id: '1',
-    title: 'فروشگاه آنلاین لوازم خانگی',
-    category: 'فروشگاه آنلاین',
-    image: '/images/portfolio-1.jpg',
-    description: 'طراحی و توسعه فروشگاه آنلاین با افزایش 150% در فروش پس از بهینه‌سازی سئو'
-  },
-  {
-    id: '2',
-    title: 'وب‌سایت شرکت معماری',
-    category: 'سایت شرکتی',
-    image: '/images/portfolio-2.jpg',
-    description: 'طراحی سایت شرکتی با رابط کاربری مدرن و سازگار با موبایل'
-  },
-  {
-    id: '3',
-    title: 'پلتفرم آموزش آنلاین',
-    category: 'آموزشی',
-    image: '/images/portfolio-3.jpg',
-    description: 'توسعه پلتفرم LMS با قابلیت برگزاری کلاس‌های آنلاین و آزمون'
-  },
-  // Placeholder for more portfolio items
-];
 
 const Portfolio = () => {
   // Schema markup for portfolio page
@@ -90,9 +67,33 @@ const Portfolio = () => {
           </p>
         </div>
         
-        <Suspense fallback={<GallerySkeleton />}>
-          <PortfolioGallery items={portfolioItems} />
-        </Suspense>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {portfolioItems.map((item) => (
+            <Link to={`/portfolio/${item.id}`} key={item.id}>
+              <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                <div className="aspect-video bg-gray-100 relative">
+                  <div className="absolute inset-0 flex items-center justify-center text-gray-400">
+                    {item.image ? (
+                      <img 
+                        src={item.image} 
+                        alt={item.title} 
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    ) : 'تصویر نمونه کار'}
+                  </div>
+                </div>
+                <div className="p-5">
+                  <span className="inline-block px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded mb-2">
+                    {item.category}
+                  </span>
+                  <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+                  <p className="text-gray-600 text-sm line-clamp-2">{item.description}</p>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
       </main>
       <Footer />
     </div>

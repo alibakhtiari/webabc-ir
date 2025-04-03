@@ -1,9 +1,14 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Globe, Code, Layout } from 'lucide-react';
+import { 
+  Sheet,
+  SheetContent
+} from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from './ui/button';
+import ConsultationForm from './ConsultationForm';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -11,129 +16,151 @@ interface MobileMenuProps {
 }
 
 const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [consultationOpen, setConsultationOpen] = useState(false);
+
+  const handleConsultation = () => {
+    onClose(); // Close the mobile menu
+    setConsultationOpen(true); // Open the consultation form
+  };
+
   return (
-    <div
-      className={cn(
-        'fixed inset-0 bg-white/80 backdrop-blur-md z-40 transition-transform duration-300 ease-in-out pt-20',
-        {
-          'translate-x-0': isOpen,
-          'translate-x-full': !isOpen,
-        }
-      )}
-    >
-      <nav className="flex flex-col items-center space-y-6 p-6 font-persian text-lg">
-        <MobileNavLink to="/" onClick={onClose}>
-          خانه
-        </MobileNavLink>
-        
-        <div className="w-full text-center border-t border-b border-gray-100 py-5">
-          <p className="mb-4 text-primary font-bold">خدمات</p>
-          <div className="grid grid-cols-1 gap-5">
-            <MobileServiceLink 
-              to="/services" 
-              title="همه خدمات" 
-              description="مشاهده لیست کامل خدمات" 
-              icon={<Globe className="h-5 w-5" />}
-              onClick={onClose}
-            />
-            <MobileServiceLink 
-              to="/seo-services" 
-              title="خدمات سئو" 
-              description="بهینه‌سازی برای موتورهای جستجو" 
-              icon={<Globe className="h-5 w-5" />}
-              onClick={onClose}
-            />
-            <MobileServiceLink 
-              to="/local-seo-services" 
-              title="سئو محلی" 
-              description="افزایش حضور محلی کسب و کار" 
-              icon={<Globe className="h-5 w-5" />}
-              onClick={onClose}
-            />
-            <MobileServiceLink 
-              to="/web-development-services" 
-              title="توسعه وب" 
-              description="طراحی و توسعه وب‌سایت‌های مدرن" 
-              icon={<Code className="h-5 w-5" />}
-              onClick={onClose}
-            />
-            <MobileServiceLink 
-              to="/wordpress-woocommerce-development" 
-              title="وردپرس و ووکامرس" 
-              description="طراحی و توسعه سایت‌های وردپرسی"
-              icon={<Layout className="h-5 w-5" />}
-              onClick={onClose}
-            />
+    <>
+      <Sheet open={isOpen} onOpenChange={onClose}>
+        <SheetContent side="left" className="w-3/4 sm:max-w-md p-0 font-persian" dir="rtl">
+          <div className="flex flex-col h-full overflow-auto py-6">
+            <div className="px-6 pb-6 border-b">
+              <div className="flex items-center justify-between mb-6">
+                <Link to="/" className="text-xl font-bold" onClick={onClose}>
+                  WebABC
+                </Link>
+              </div>
+            </div>
+  
+            <nav className="flex-1 overflow-y-auto py-6 px-6">
+              <ul className="space-y-6">
+                <li>
+                  <Link 
+                    to="/" 
+                    className="text-lg font-medium" 
+                    onClick={onClose}
+                  >
+                    خانه
+                  </Link>
+                </li>
+  
+                <li className="border-b pb-6">
+                  <button 
+                    onClick={() => setServicesOpen(!servicesOpen)}
+                    className="w-full flex items-center justify-between text-lg font-medium"
+                  >
+                    <span>خدمات</span>
+                    <span className="text-gray-400">
+                      {servicesOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                    </span>
+                  </button>
+  
+                  <div 
+                    className={cn(
+                      "overflow-hidden transition-all mt-4 space-y-3",
+                      servicesOpen ? "max-h-96" : "max-h-0"
+                    )}
+                  >
+                    <Link 
+                      to="/services" 
+                      className="block pl-4 border-r-2 pr-3 text-foreground/80 hover:text-primary" 
+                      onClick={onClose}
+                    >
+                      همه خدمات
+                    </Link>
+                    <Link 
+                      to="/seo-services" 
+                      className="block pl-4 border-r-2 pr-3 text-foreground/80 hover:text-primary" 
+                      onClick={onClose}
+                    >
+                      خدمات سئو
+                    </Link>
+                    <Link 
+                      to="/local-seo-services" 
+                      className="block pl-4 border-r-2 pr-3 text-foreground/80 hover:text-primary" 
+                      onClick={onClose}
+                    >
+                      سئو محلی
+                    </Link>
+                    <Link 
+                      to="/web-development-services" 
+                      className="block pl-4 border-r-2 pr-3 text-foreground/80 hover:text-primary" 
+                      onClick={onClose}
+                    >
+                      توسعه وب
+                    </Link>
+                    <Link 
+                      to="/wordpress-woocommerce-development" 
+                      className="block pl-4 border-r-2 pr-3 text-foreground/80 hover:text-primary" 
+                      onClick={onClose}
+                    >
+                      وردپرس و ووکامرس
+                    </Link>
+                  </div>
+                </li>
+  
+                <li>
+                  <Link 
+                    to="/portfolio" 
+                    className="text-lg font-medium" 
+                    onClick={onClose}
+                  >
+                    نمونه کارها
+                  </Link>
+                </li>
+  
+                <li>
+                  <Link 
+                    to="/case-studies" 
+                    className="text-lg font-medium" 
+                    onClick={onClose}
+                  >
+                    مطالعات موردی
+                  </Link>
+                </li>
+  
+                <li>
+                  <Link 
+                    to="/about" 
+                    className="text-lg font-medium" 
+                    onClick={onClose}
+                  >
+                    درباره ما
+                  </Link>
+                </li>
+  
+                <li>
+                  <Link 
+                    to="/contact" 
+                    className="text-lg font-medium" 
+                    onClick={onClose}
+                  >
+                    تماس با ما
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+  
+            <div className="p-6 border-t">
+              <Button 
+                className="w-full"
+                onClick={handleConsultation}
+              >
+                مشاوره رایگان
+              </Button>
+            </div>
           </div>
-        </div>
-        
-        <MobileNavLink to="/portfolio" onClick={onClose}>
-          نمونه کارها
-        </MobileNavLink>
-        <MobileNavLink to="/case-studies" onClick={onClose}>
-          مطالعات موردی
-        </MobileNavLink>
-        <MobileNavLink to="#about" onClick={onClose}>
-          درباره ما
-        </MobileNavLink>
-        <MobileNavLink to="#contact" onClick={onClose}>
-          تماس با ما
-        </MobileNavLink>
-        <Button className="w-full px-4 py-3 rounded-md">
-          مشاوره رایگان
-        </Button>
-      </nav>
-    </div>
-  );
-};
+        </SheetContent>
+      </Sheet>
 
-interface MobileNavLinkProps {
-  to: string;
-  children: React.ReactNode;
-  onClick: () => void;
-}
-
-const MobileNavLink = ({ to, children, onClick }: MobileNavLinkProps) => {
-  return (
-    <Link
-      to={to}
-      className="text-foreground w-full text-center py-3 hover:text-primary transition-colors"
-      onClick={onClick}
-    >
-      {children}
-    </Link>
-  );
-};
-
-interface MobileServiceLinkProps {
-  to: string;
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-  onClick: () => void;
-}
-
-const MobileServiceLink = ({ 
-  to, 
-  title,
-  description,
-  icon,
-  onClick 
-}: MobileServiceLinkProps) => {
-  return (
-    <Link
-      to={to}
-      className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
-      onClick={onClick}
-    >
-      <span className="w-10 h-10 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
-        {icon}
-      </span>
-      <div className="text-right">
-        <span className="block font-medium text-base">{title}</span>
-        <span className="text-xs text-gray-500">{description}</span>
-      </div>
-    </Link>
+      {/* Consultation Form */}
+      <ConsultationForm open={consultationOpen} onOpenChange={setConsultationOpen} />
+    </>
   );
 };
 

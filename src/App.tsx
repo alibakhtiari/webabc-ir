@@ -6,6 +6,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
+import PagePreloader from './components/PagePreloader';
+import FloatingActions from './components/FloatingActions';
+import { portfolioItems } from './lib/portfolioData';
 
 // Loading indicator
 const LoadingScreen = () => (
@@ -18,6 +21,7 @@ const LoadingScreen = () => (
 const Index = lazy(() => import("./pages/Index"));
 const Services = lazy(() => import("./pages/Services"));
 const Portfolio = lazy(() => import("./pages/Portfolio"));
+const PortfolioItemPage = lazy(() => import("./components/PortfolioItemPage"));
 const CaseStudies = lazy(() => import("./pages/CaseStudies"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const SeoServices = lazy(() => import("./pages/SeoServices"));
@@ -36,11 +40,14 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <PagePreloader />
+          <FloatingActions />
           <Suspense fallback={<LoadingScreen />}>
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/services" element={<Services />} />
               <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/portfolio/:id" element={<PortfolioItemPage portfolioItems={portfolioItems} />} />
               <Route path="/case-studies" element={<CaseStudies />} />
               <Route path="/seo-services" element={<SeoServices />} />
               <Route path="/local-seo-services" element={<LocalSeoServices />} />

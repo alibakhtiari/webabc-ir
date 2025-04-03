@@ -7,10 +7,12 @@ import Logo from './Logo';
 import { NavLink, ServicesDropdown } from './NavLinks';
 import MobileMenu from './MobileMenu';
 import { Button } from './ui/button';
+import ConsultationForm from './ConsultationForm';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [consultationOpen, setConsultationOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,7 +55,11 @@ const Navbar = () => {
             <NavLink to="/case-studies">مطالعات موردی</NavLink>
             <NavLink to="/about">درباره ما</NavLink>
             <NavLink to="/contact">تماس با ما</NavLink>
-            <Button size="sm" className="px-4 py-2 rounded-md">
+            <Button 
+              size="sm" 
+              className="px-4 py-2 rounded-md"
+              onClick={() => setConsultationOpen(true)}
+            >
               مشاوره رایگان
             </Button>
           </nav>
@@ -75,6 +81,9 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
+      
+      {/* Consultation Form Dialog */}
+      <ConsultationForm open={consultationOpen} onOpenChange={setConsultationOpen} />
     </header>
   );
 };
