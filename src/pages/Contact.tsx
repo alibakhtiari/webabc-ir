@@ -1,13 +1,68 @@
-import React from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
+
+import React, { lazy, Suspense } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
+import SchemaMarkup from '@/components/SchemaMarkup';
+import { createBreadcrumbSchema } from '@/lib/schema';
+
+// Lazy loading components
+const Button = lazy(() => import('@/components/ui/button').then(mod => ({ default: mod.Button })));
+const Input = lazy(() => import('@/components/ui/input').then(mod => ({ default: mod.Input })));
+const Textarea = lazy(() => import('@/components/ui/textarea').then(mod => ({ default: mod.Textarea })));
+
+// Fallback components
+const ButtonSkeleton = () => (
+  <div className="w-full h-10 bg-primary/30 rounded animate-pulse"></div>
+);
+
+const InputSkeleton = () => (
+  <div className="w-full h-10 bg-gray-100 rounded animate-pulse"></div>
+);
+
+const TextareaSkeleton = () => (
+  <div className="w-full h-32 bg-gray-100 rounded animate-pulse"></div>
+);
 
 const Contact = () => {
+  // Schema markup for Contact page
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "صفحه اصلی", url: "https://webabc.com" },
+    { name: "تماس با ما", url: "https://webabc.com/contact" }
+  ]);
+
+  const contactSchema = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "تماس با وب آ ب ث",
+    "description": "برای ارتباط با تیم وب آ ب ث و دریافت مشاوره رایگان، با ما تماس بگیرید",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "WebABC",
+      "email": "info@webabc.com",
+      "telephone": "۰۲۱-۱۲۳۴۵۶۷۸",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "خیابان آزادی، بلوار کشاورز، پلاک ۱۲۳",
+        "addressLocality": "تهران",
+        "addressRegion": "تهران",
+        "postalCode": "123456",
+        "addressCountry": "IR"
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col" dir="rtl">
+      <SEOHead 
+        title="تماس با وب آ ب ث | مشاوره رایگان طراحی سایت و سئو" 
+        description="برای ارتباط با تیم وب آ ب ث و دریافت مشاوره رایگان در زمینه طراحی سایت، سئو و دیجیتال مارکتینگ با ما تماس بگیرید"
+        keywords="تماس با وب آ ب ث، مشاوره سئو، مشاوره طراحی سایت، شماره تماس وب آ ب ث"
+      />
+      
+      <SchemaMarkup schema={breadcrumbSchema} />
+      <SchemaMarkup schema={contactSchema} />
+      
       <Navbar />
       
       <main className="flex-1 max-w-4xl mx-auto mt-20 pb-12 px-4 sm:px-6 lg:px-8 w-full">
@@ -20,22 +75,30 @@ const Contact = () => {
               <form className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">نام کامل</label>
-                  <Input className="text-right" placeholder="نام خود را وارد کنید" />
+                  <Suspense fallback={<InputSkeleton />}>
+                    <Input className="text-right" placeholder="نام خود را وارد کنید" />
+                  </Suspense>
                 </div>
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">ایمیل</label>
-                  <Input type="email" className="text-right" placeholder="example@domain.com" />
+                  <Suspense fallback={<InputSkeleton />}>
+                    <Input type="email" className="text-right" placeholder="example@domain.com" />
+                  </Suspense>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">پیام</label>
-                  <Textarea rows={5} className="text-right" placeholder="متن پیام خود را بنویسید..." />
+                  <Suspense fallback={<TextareaSkeleton />}>
+                    <Textarea rows={5} className="text-right" placeholder="متن پیام خود را بنویسید..." />
+                  </Suspense>
                 </div>
 
-                <Button type="submit" className="w-full bg-primary hover:bg-primary-dark">
-                  ارسال پیام
-                </Button>
+                <Suspense fallback={<ButtonSkeleton />}>
+                  <Button type="submit" className="w-full bg-primary hover:bg-primary-dark">
+                    ارسال پیام
+                  </Button>
+                </Suspense>
               </form>
             </div>
 

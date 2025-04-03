@@ -1,10 +1,22 @@
 
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import React, { lazy, Suspense } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
-import PortfolioGallery from '@/components/PortfolioGallery';
+import SchemaMarkup from '@/components/SchemaMarkup';
+import { createBreadcrumbSchema } from '@/lib/schema';
+
+// Lazy loading components
+const PortfolioGallery = lazy(() => import('@/components/PortfolioGallery'));
+
+// Fallback component
+const GallerySkeleton = () => (
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-pulse">
+    {[1, 2, 3, 4, 5, 6].map(i => (
+      <div key={i} className="bg-gray-100 rounded-lg h-72"></div>
+    ))}
+  </div>
+);
 
 const portfolioItems = [
   {
@@ -32,24 +44,28 @@ const portfolioItems = [
 ];
 
 const Portfolio = () => {
-  // Schema markup for breadcrumbs
-  const breadcrumbSchema = {
+  // Schema markup for portfolio page
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "صفحه اصلی", url: "https://webabc.com" },
+    { name: "نمونه کارها", url: "https://webabc.com/portfolio" }
+  ]);
+
+  const portfolioSchema = {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
+    "@type": "CollectionPage",
+    "name": "نمونه کارهای طراحی سایت و سئو",
+    "description": "مجموعه‌ای از پروژه‌های موفق ما در زمینه طراحی سایت و سئو",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": portfolioItems.map((item, index) => ({
         "@type": "ListItem",
-        "position": 1,
-        "name": "صفحه اصلی",
-        "item": "https://yourwebsite.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "نمونه کارها",
-        "item": "https://yourwebsite.com/portfolio"
-      }
-    ]
+        "position": index + 1,
+        "url": `https://webabc.com/portfolio/${item.id}`,
+        "name": item.title,
+        "description": item.description,
+        "image": item.image
+      }))
+    }
   };
 
   return (
@@ -57,14 +73,11 @@ const Portfolio = () => {
       <SEOHead 
         title="نمونه کارها | وب آ ب ث" 
         description="مشاهده نمونه کارهای موفق طراحی سایت و سئو توسط تیم وب آ ب ث - پروژه‌های برتر طراحی وب‌سایت و بهینه‌سازی موتورهای جستجو" 
+        keywords="نمونه کار طراحی سایت، پروژه‌های سئو، نمونه کار وب‌سایت، طراحی سایت، سئو"
       />
       
-      {/* Schema Markup */}
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(breadcrumbSchema)}
-        </script>
-      </Helmet>
+      <SchemaMarkup schema={breadcrumbSchema} />
+      <SchemaMarkup schema={portfolioSchema} />
       
       <Navbar />
       <main className="container mx-auto px-4 py-16 md:py-24">
@@ -77,7 +90,9 @@ const Portfolio = () => {
           </p>
         </div>
         
-        <PortfolioGallery items={portfolioItems} />
+        <Suspense fallback={<GallerySkeleton />}>
+          <PortfolioGallery items={portfolioItems} />
+        </Suspense>
       </main>
       <Footer />
     </div>
