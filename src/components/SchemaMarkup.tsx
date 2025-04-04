@@ -13,7 +13,7 @@ const SchemaMarkup = ({ schema }: SchemaMarkupProps) => {
   // Add language attributes to schema if not already present
   const enhancedSchema = {
     ...schema,
-    inLanguage: language
+    inLanguage: schema.inLanguage || language
   };
 
   return (

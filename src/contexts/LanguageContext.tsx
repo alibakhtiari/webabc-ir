@@ -1,6 +1,7 @@
 
 import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { getPathWithoutLanguage, isLanguageRootPath, normalizePath } from '../lib/languageUtils';
 
 // Import all language files
 import faTranslations from '../i18n/fa.json';
@@ -85,17 +86,9 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     setLanguageState(lang);
     
     // Update URL to reflect language change
-    if (location.pathname.startsWith('/fa/') || 
-        location.pathname.startsWith('/en/') || 
-        location.pathname.startsWith('/ar/')) {
-      // Replace language code in URL
-      const pathWithoutLang = location.pathname.substring(3);
-      navigate(`/${lang}${pathWithoutLang}`);
-    } else if (location.pathname === '/') {
-      navigate(`/${lang}`);
-    } else {
-      navigate(`/${lang}${location.pathname}`);
-    }
+    const pathWithoutLang = getPathWithoutLanguage(location.pathname);
+    const newPath = normalizePath(`/${lang}${pathWithoutLang}`);
+    navigate(newPath);
   };
 
   // Translator function
@@ -137,18 +130,21 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     // Check if we need to redirect to a language-specific route
     const pathSegments = location.pathname.split('/').filter(Boolean);
     
-    if (pathSegments.length === 0 || 
-        (pathSegments.length > 0 && !Object.keys(languages).includes(pathSegments[0] as SupportedLanguage))) {
-      navigate(`/${language}${location.pathname === '/' ? '' : location.pathname}`);
+    if (pathSegments.length === 0) {
+      // Root path "/" - redirect to language home
+      navigate(`/${language}`, { replace: true });
+    } else if (!Object.keys(languages).includes(pathSegments[0] as SupportedLanguage)) {
+      // Path doesn't start with a language code - add the current language
+      navigate(`/${language}${location.pathname}`, { replace: true });
     } else if (pathSegments[0] !== language) {
-      // Update language state to match URL
+      // URL language is different from state language - update state
       const urlLang = pathSegments[0] as SupportedLanguage;
       if (Object.keys(languages).includes(urlLang)) {
         setLanguageState(urlLang);
         localStorage.setItem('language', urlLang);
       }
     }
-  }, []);
+  }, [location.pathname]);
 
   return (
     <LanguageContext.Provider 

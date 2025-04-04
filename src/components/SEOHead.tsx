@@ -1,7 +1,9 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { generateLanguageAlternates, getPathWithoutLanguage } from '@/lib/languageUtils';
+import { useLocation } from 'react-router-dom';
 
 export interface SEOHeadProps {
   title?: string;
@@ -29,9 +31,11 @@ const SEOHead = ({
   keywords,
   author,
   noIndex = false,
-  languageAlternates
+  languageAlternates: customLanguageAlternates
 }: SEOHeadProps) => {
   const { language, getSeoTitle, getSeoDescription, languageMeta } = useLanguage();
+  const location = useLocation();
+  const [languageAlternates, setLanguageAlternates] = useState<{lang: string, url: string}[]>([]);
   
   // Generate SEO title and description based on current language
   const seoTitle = getSeoTitle(title);
@@ -42,6 +46,17 @@ const SEOHead = ({
   
   // Generate canonical URL
   const currentUrl = canonicalUrl || window.location.href;
+
+  // Generate language alternates
+  useEffect(() => {
+    if (customLanguageAlternates) {
+      setLanguageAlternates(customLanguageAlternates);
+    } else {
+      const path = getPathWithoutLanguage(location.pathname);
+      const alternates = generateLanguageAlternates(path, language);
+      setLanguageAlternates(alternates);
+    }
+  }, [customLanguageAlternates, location.pathname, language]);
   
   return (
     <Helmet>
@@ -68,16 +83,16 @@ const SEOHead = ({
       <meta property="og:url" content={currentUrl} />
       <meta property="og:title" content={seoTitle} />
       <meta property="og:description" content={seoDescription} />
-      <meta property="og:image" content={ogImage} />
+      <meta property="og:image" content={ogImage.startsWith('http') ? ogImage : `${window.location.origin}${ogImage}`} />
       <meta property="og:site_name" content={language === 'en' ? 'WebABC' : language === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث'} />
-      <meta property="og:locale" content={language === 'en' ? 'en_US' : language === 'ar' ? 'ar_AR' : 'fa_IR'} />
+      <meta property="og:locale" content={language === 'en' ? 'en_US' : language === 'ar' ? 'ar_SA' : 'fa_IR'} />
       
       {/* Twitter */}
-      <meta property="twitter:card" content={twitterCard} />
-      <meta property="twitter:url" content={currentUrl} />
-      <meta property="twitter:title" content={seoTitle} />
-      <meta property="twitter:description" content={seoDescription} />
-      <meta property="twitter:image" content={ogImage} />
+      <meta name="twitter:card" content={twitterCard} />
+      <meta name="twitter:url" content={currentUrl} />
+      <meta name="twitter:title" content={seoTitle} />
+      <meta name="twitter:description" content={seoDescription} />
+      <meta name="twitter:image" content={ogImage.startsWith('http') ? ogImage : `${window.location.origin}${ogImage}`} />
 
       {/* Preconnect to important domains */}
       <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />

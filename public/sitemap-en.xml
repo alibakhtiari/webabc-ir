@@ -10,6 +10,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://yourwebsite.com" />
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <lastmod>2024-04-04</lastmod>
   </url>
   <url>
     <loc>https://yourwebsite.com/en/services</loc>
@@ -18,6 +19,33 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://yourwebsite.com/ar/services" />
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <lastmod>2024-04-04</lastmod>
   </url>
-  <!-- Add other English URLs with alternates -->
+  <url>
+    <loc>https://yourwebsite.com/en/portfolio</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yourwebsite.com/en/portfolio" />
+    <xhtml:link rel="alternate" hreflang="fa" href="https://yourwebsite.com/fa/portfolio" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://yourwebsite.com/ar/portfolio" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2024-04-04</lastmod>
+  </url>
+  <url>
+    <loc>https://yourwebsite.com/en/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yourwebsite.com/en/about" />
+    <xhtml:link rel="alternate" hreflang="fa" href="https://yourwebsite.com/fa/about" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://yourwebsite.com/ar/about" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2024-04-04</lastmod>
+  </url>
+  <url>
+    <loc>https://yourwebsite.com/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yourwebsite.com/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fa" href="https://yourwebsite.com/fa/contact" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://yourwebsite.com/ar/contact" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2024-04-04</lastmod>
+  </url>
 </urlset>

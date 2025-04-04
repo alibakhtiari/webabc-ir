@@ -10,4 +10,3 @@ Sitemap: https://yourwebsite.com/sitemap.xml
 Sitemap: https://yourwebsite.com/sitemap-fa.xml
 Sitemap: https://yourwebsite.com/sitemap-en.xml
 Sitemap: https://yourwebsite.com/sitemap-ar.xml
-
