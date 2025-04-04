@@ -46,7 +46,7 @@ export const ServicesDropdown = () => {
                 className="inline-flex items-center text-primary hover:text-primary/80 text-sm font-medium"
               >
                 {t('common.viewDetails')}
-                <ArrowRight className="ml-1 h-4 w-4" />
+                <ArrowRight className={`${isRtl ? 'mr-1' : 'ml-1'} h-4 w-4`} />
               </Link>
             </div>
             
@@ -95,6 +95,9 @@ interface ServiceLinkProps {
 }
 
 export const ServiceLink = ({ to, title, description, icon }: ServiceLinkProps) => {
+  const { languageMeta } = useLanguage();
+  const isRtl = languageMeta.direction === 'rtl';
+  
   return (
     <li>
       <Link 

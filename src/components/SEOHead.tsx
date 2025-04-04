@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { generateLanguageAlternates, getPathWithoutLanguage } from '@/lib/languageUtils';
+import { generateLanguageAlternates, getPathWithoutLanguage, getPageNameFromPath } from '@/lib/languageUtils';
 import { useLocation } from 'react-router-dom';
 
 export interface SEOHeadProps {
@@ -33,13 +33,16 @@ const SEOHead = ({
   noIndex = false,
   languageAlternates: customLanguageAlternates
 }: SEOHeadProps) => {
-  const { language, getSeoTitle, getSeoDescription, languageMeta } = useLanguage();
+  const { language, getSeoTitle, getSeoDescription, languageMeta, t } = useLanguage();
   const location = useLocation();
   const [languageAlternates, setLanguageAlternates] = useState<{lang: string, url: string}[]>([]);
   
-  // Generate SEO title and description based on current language
-  const seoTitle = getSeoTitle(title);
-  const seoDescription = getSeoDescription(description);
+  const pageName = getPageNameFromPath(location.pathname);
+  
+  // Generate SEO title and description based on current language and page context
+  const seoTitle = getSeoTitle(title || t(`${pageName}.title`));
+  const seoDescription = getSeoDescription(description || t(`${pageName}.description`));
+  const seoKeywords = keywords || t(`${pageName}.keywords`, { fallback: t('seo.keywords') });
   
   // Get author based on current language
   const seoAuthor = author || (language === 'en' ? 'WebABC' : language === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث');
@@ -74,7 +77,7 @@ const SEOHead = ({
       <link rel="alternate" hrefLang="x-default" href={window.location.origin} />
       
       {/* Basic SEO */}
-      {keywords && <meta name="keywords" content={keywords} />}
+      {seoKeywords && <meta name="keywords" content={seoKeywords} />}
       {seoAuthor && <meta name="author" content={seoAuthor} />}
       {noIndex && <meta name="robots" content="noindex,nofollow" />}
       

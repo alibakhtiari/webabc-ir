@@ -42,7 +42,9 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
 
   if (type === 'buttons') {
     return (
-      <div className={cn("flex space-x-2", className)}>
+      <div className={cn("flex space-x-2", className, {
+        "space-x-0 space-s-2": languageMeta.direction === 'rtl'
+      })}>
         {Object.entries(languages).map(([code, lang]) => (
           <Button
             key={code}
@@ -51,7 +53,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
             onClick={() => handleLanguageChange(code as SupportedLanguage)}
             className={cn(
               "px-3 min-w-[40px]",
-              languageMeta.direction === 'rtl' ? "ml-2" : "mr-2",
+              languageMeta.direction === 'rtl' ? "ms-2" : "me-2",
               language === code ? "bg-primary text-white" : "bg-transparent"
             )}
           >

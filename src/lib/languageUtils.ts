@@ -82,6 +82,25 @@ export const getContextualTranslationKey = (
 };
 
 /**
+ * Extracts page name from path for context-specific translations
+ * 
+ * @param path The current path
+ * @returns The page name or empty string
+ */
+export const getPageNameFromPath = (path: string): string => {
+  if (!path || path === '/') return 'home';
+  
+  const cleanPath = path.endsWith('/') ? path.slice(0, -1) : path;
+  const segments = cleanPath.split('/').filter(Boolean);
+  
+  // If there are no segments after language code, it's the homepage
+  if (segments.length === 0) return 'home';
+  
+  // Get the last segment as the page name
+  return segments[segments.length - 1];
+};
+
+/**
  * Generates a canonical URL for the current page
  * 
  * @param language The current language

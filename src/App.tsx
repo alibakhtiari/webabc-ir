@@ -47,7 +47,7 @@ const App = () => (
             <Suspense fallback={<LoadingScreen />}>
               <Routes>
                 {/* Root redirect - will be handled by LanguageProvider to redirect to the correct language */}
-                <Route path="/" element={<Navigate to="/fa" replace />} />
+                <Route path="/" element={<Navigate to="/en" replace />} />
                 
                 {/* Language-specific routes */}
                 {['fa', 'en', 'ar'].map(lang => (
