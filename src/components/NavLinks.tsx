@@ -21,17 +21,18 @@ export const NavLink = ({ to, children }: NavLinkProps) => {
 };
 
 export const ServicesDropdown = () => {
-  const { t, language } = useLanguage();
+  const { t, language, languageMeta } = useLanguage();
+  const isRtl = languageMeta.direction === 'rtl';
   
   return (
     <div className="relative group">
       <button className="flex items-center text-foreground/80 font-persian text-base hover:text-primary transition-colors">
         {t('common.services')}
-        <ChevronDown className="h-4 w-4 mr-1 group-hover:rotate-180 transition-transform duration-200" />
+        <ChevronDown className="h-4 w-4 ml-1 group-hover:rotate-180 transition-transform duration-200" />
       </button>
       
       {/* Mega Menu */}
-      <div className="absolute top-full right-0 mt-2 w-[680px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
+      <div className={`absolute top-full ${isRtl ? 'right-0' : 'left-0'} mt-2 w-[680px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50`}>
         <div className="glass-morphism p-6 animate-zoom-in shadow-xl">
           <div className="grid grid-cols-2 gap-6">
             {/* Left Column - Featured Service */}
@@ -45,7 +46,7 @@ export const ServicesDropdown = () => {
                 className="inline-flex items-center text-primary hover:text-primary/80 text-sm font-medium"
               >
                 {t('common.viewDetails')}
-                <ArrowRight className="mr-1 h-4 w-4" />
+                <ArrowRight className="ml-1 h-4 w-4" />
               </Link>
             </div>
             
@@ -61,20 +62,20 @@ export const ServicesDropdown = () => {
                 />
                 <ServiceLink 
                   to={`/${language}/seo-services`}
-                  title={t('common.services') + " SEO"}
-                  description="SEO"
+                  title={t('services.seoTitle')}
+                  description={t('services.seoDescription')}
                   icon={<Globe />}
                 />
                 <ServiceLink 
                   to={`/${language}/local-seo-services`}
-                  title={t('common.services') + " SEO " + (language === 'en' ? 'Local' : language === 'ar' ? 'المحلي' : 'محلی')}
-                  description="SEO"
+                  title={t('services.localSeoTitle')}
+                  description={t('services.localSeoDescription')}
                   icon={<Globe />}
                 />
                 <ServiceLink 
                   to={`/${language}/web-development-services`}
-                  title={language === 'en' ? 'Web Development' : language === 'ar' ? 'تطوير المواقع' : 'توسعه وب'}
-                  description={language === 'en' ? 'Web Design & Development' : language === 'ar' ? 'تصميم وتطوير المواقع' : 'طراحی و توسعه وب‌سایت'}
+                  title={t('services.webDevTitle')}
+                  description={t('services.webDevDescription')}
                   icon={<Code />}
                 />
               </ul>

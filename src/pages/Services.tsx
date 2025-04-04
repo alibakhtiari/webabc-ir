@@ -1,390 +1,301 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { lazy, Suspense } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
-import { cn } from '@/lib/utils';
-import { CheckCircle } from 'lucide-react';
-import { useLanguage } from '@/contexts/LanguageContext';
 import SchemaMarkup from '@/components/SchemaMarkup';
-import { createServiceSchema } from '@/lib/schema';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Link } from 'react-router-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { createBreadcrumbSchema } from '@/lib/schema';
+import { ChevronRight } from 'lucide-react';
 
-const Services = () => {
-  const seoRef = useRef<HTMLDivElement>(null);
-  const webdevRef = useRef<HTMLDivElement>(null);
-  const faqRef = useRef<HTMLDivElement>(null);
-  const { t, language } = useLanguage();
+const ServicesOverview = () => {
+  const { t, language, languageMeta } = useLanguage();
   
-  useEffect(() => {
-    // Animation for elements when they come into view
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-up');
-            entry.target.classList.remove('opacity-0');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    
-    document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-      observer.observe(el);
-    });
-    
-    return () => {
-      document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-        observer.unobserve(el);
-      });
-    };
-  }, []);
+  // Generate breadcrumb schema
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: t('common.home'), url: `${window.location.origin}/${language}` },
+    { name: t('common.services'), url: `${window.location.origin}/${language}/services` }
+  ]);
 
-  // Schema markup for services page
-  const serviceSchema = createServiceSchema(
-    t('services.title'),
-    t('services.description'),
-    window.location.href,
-    language === 'en' ? 'WebABC' : language === 'ar' ? 'ويب أ ب ج' : 'وب آ ب ث',
-    "/og-image.png",
-    language
-  );
+  // Services schema
+  const servicesSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": t('services.seoTitle'),
+        "url": `${window.location.origin}/${language}/seo-services`,
+        "description": t('services.seoDescription')
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": t('services.webDevTitle'),
+        "url": `${window.location.origin}/${language}/web-development-services`,
+        "description": t('services.webDevDescription')
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": t('wordpress.title'),
+        "url": `${window.location.origin}/${language}/wordpress-woocommerce-development`,
+        "description": t('wordpress.subtitle')
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": t('services.localSeoTitle'),
+        "url": `${window.location.origin}/${language}/local-seo-services`,
+        "description": t('services.localSeoDescription')
+      }
+    ]
+  };
 
   return (
-    <div className="relative overflow-x-hidden">
+    <div className="min-h-screen flex flex-col">
       <SEOHead 
         title={t('seo.servicesTitle')}
         description={t('seo.servicesDescription')}
         keywords={t('seo.keywords')}
+        ogType="website"
       />
-      <SchemaMarkup schema={serviceSchema} />
-      <Navbar />
+
+      <SchemaMarkup schema={[breadcrumbSchema, servicesSchema]} />
       
-      <main>
+      <Navbar />
+
+      <main className="flex-grow pt-20">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-b from-primary/5 to-background relative overflow-hidden">
-          <div className="container mx-auto px-4 relative z-10">
+        <section className="bg-gradient-to-b from-primary/5 to-white py-16 md:py-24">
+          <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <span className="inline-block mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium">
-                {t('common.services')}
-              </span>
-              
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                {t('services.title')}
-              </h1>
-              
-              <p className="text-lg text-foreground/80 mb-8 leading-relaxed">
-                {t('services.description')}
-              </p>
-              
-              <div className="flex flex-wrap gap-3 justify-center">
-                <a 
-                  href="#seo-services" 
-                  className="px-6 py-3 rounded-full bg-primary text-white font-medium transition-all hover:shadow-lg hover:translate-y-[-2px]"
-                >
-                  {t('seo.title')}
-                </a>
-                <a 
-                  href="#webdev-services" 
-                  className="px-6 py-3 rounded-full bg-white border border-primary/20 text-primary font-medium transition-all hover:shadow-lg hover:translate-y-[-2px]"
-                >
-                  {t('services.webDevelopmentTitle')}
-                </a>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('services.title')}</h1>
+              <p className="text-xl text-gray-600">{t('services.description')}</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Services List */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* SEO Services */}
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all">
+                <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="2" y1="12" x2="22" y2="12"/>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{t('seo.title')}</h3>
+                <p className="text-gray-600 mb-6">
+                  {t('seo.subtitle')}
+                </p>
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <span>{t('seo.onPageSeo')}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <span>{t('seo.offPageSeo')}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <span>{t('seo.technicalSeo')}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <span>{t('seo.localSeo')}</span>
+                  </li>
+                </ul>
+                <Link to={`/${language}/seo-services`} className="inline-flex items-center text-primary font-medium hover:underline">
+                  {t('common.readMore')}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </Link>
+              </div>
+
+              {/* Web Development Services */}
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all">
+                <div className="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center mb-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                    <polyline points="2 17 12 22 22 17"/>
+                    <polyline points="2 12 12 17 22 12"/>
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{t('services.webDevelopment')}</h3>
+                <p className="text-gray-600 mb-6">
+                  {t('services.webDevelopmentDescription')}
+                </p>
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <span>{t('services.feature.uiuxDesign')}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <span>{t('services.feature.responsiveDesign')}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <span>{t('services.feature.apiIntegration')}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <span>{t('services.feature.database')}</span>
+                  </li>
+                </ul>
+                <Link to={`/${language}/web-development-services`} className="inline-flex items-center text-primary font-medium hover:underline">
+                  {t('common.readMore')}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </Link>
+              </div>
+
+              {/* WordPress Services */}
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all">
+                <div className="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center mb-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-purple-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/>
+                    <path d="M18 14h-8"/>
+                    <path d="M15 18h-5"/>
+                    <path d="M10 6h8v4h-8V6Z"/>
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{t('wordpress.wordpressAndWoocommerce')}</h3>
+                <p className="text-gray-600 mb-6">
+                  {t('wordpress.subtitle')}
+                </p>
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <span>{t('wordpress.themeCustomization')}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <span>{t('wordpress.pluginDevelopment')}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <span>{t('wordpress.ecommerceSetup')}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <span>{t('wordpress.maintenanceSupport')}</span>
+                  </li>
+                </ul>
+                <Link to={`/${language}/wordpress-woocommerce-development`} className="inline-flex items-center text-primary font-medium hover:underline">
+                  {t('common.readMore')}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </Link>
+              </div>
+
+              {/* Local SEO Services */}
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all">
+                <div className="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center mb-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{t('seo.localSeo')}</h3>
+                <p className="text-gray-600 mb-6">
+                  {t('seo.localSeoDesc')}
+                </p>
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <span>{t('seo.feature.gmb')}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <span>{t('seo.feature.reviews')}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <span>{t('seo.feature.localKeywords')}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <span>{t('seo.feature.nearMe')}</span>
+                  </li>
+                </ul>
+                <Link to={`/${language}/local-seo-services`} className="inline-flex items-center text-primary font-medium hover:underline">
+                  {t('common.readMore')}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </Link>
               </div>
             </div>
           </div>
         </section>
-        
-        {/* SEO Services Section */}
-        <section 
-          id="seo-services" 
-          ref={seoRef}
-          className="py-20 bg-white relative overflow-hidden"
-        >
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll opacity-0">
-              <span className="inline-block mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium">
-                {t('seo.specializedSEO')}
-              </span>
-              
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                {t('seo.servicesTitle')}
-              </h2>
-              
-              <p className="text-foreground/80 leading-relaxed">
-                {t('seo.servicesDescription')}
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                {
-                  icon: '🔧',
-                  titleKey: 'seo.technicalSeo',
-                  descriptionKey: 'seo.technicalSeoDesc',
-                  features: [
-                    'seo.feature.pageSpeed',
-                    'seo.feature.technicalErrors',
-                    'seo.feature.urlStructure',
-                    'seo.feature.schema',
-                    'seo.feature.mobileFriendly',
-                    'seo.feature.security'
-                  ]
-                },
-                {
-                  icon: '📝',
-                  titleKey: 'seo.contentStrategy',
-                  descriptionKey: 'seo.contentStrategyDesc',
-                  features: [
-                    'seo.feature.keywordResearch',
-                    'seo.feature.qualityContent',
-                    'seo.feature.titleOptimization',
-                    'seo.feature.headings',
-                    'seo.feature.imageOptimization',
-                    'seo.feature.longTermStrategy'
-                  ]
-                },
-                {
-                  icon: '📍',
-                  titleKey: 'seo.localSeo',
-                  descriptionKey: 'seo.localSeoDesc',
-                  features: [
-                    'seo.feature.gmb',
-                    'seo.feature.reviews',
-                    'seo.feature.localKeywords',
-                    'seo.feature.localLinks',
-                    'seo.feature.nearMe',
-                    'seo.feature.localReports'
-                  ]
-                },
-                {
-                  icon: '🔗',
-                  titleKey: 'seo.offPageSeo',
-                  descriptionKey: 'seo.offPageSeoDesc',
-                  features: [
-                    'seo.feature.linkProfile',
-                    'seo.feature.linkOpportunities',
-                    'seo.feature.linkableContent',
-                    'seo.feature.authorityLinks',
-                    'seo.feature.toxicLinks',
-                    'seo.feature.progressReports'
-                  ]
-                }
-              ].map((service, idx) => (
-                <div 
-                  key={idx} 
-                  className="neo-morphism rounded-2xl p-6 animate-on-scroll opacity-0"
-                  style={{ animationDelay: `${idx * 0.1}s` }}
-                >
-                  <div className="text-4xl mb-4">{service.icon}</div>
-                  <h3 className="text-xl font-bold mb-3">{t(service.titleKey)}</h3>
-                  <p className="text-foreground/70 mb-4 text-sm">{t(service.descriptionKey)}</p>
-                  
-                  <ul className="space-y-2">
-                    {service.features.map((feature, fidx) => (
-                      <li key={fidx} className="flex items-start text-sm">
-                        <CheckCircle className="text-primary h-4 w-4 mt-1 ml-2 shrink-0" />
-                        <span>{t(feature)}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-        
-        {/* Web Development Services Section */}
-        <section 
-          id="webdev-services" 
-          ref={webdevRef}
-          className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden"
-        >
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll opacity-0">
-              <span className="inline-block mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium">
-                {t('services.webDevelopment')}
-              </span>
-              
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                {t('services.webDevelopmentTitle')}
-              </h2>
-              
-              <p className="text-foreground/80 leading-relaxed">
-                {t('services.webDevelopmentDescription')}
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-              {[
-                {
-                  icon: '🔌',
-                  titleKey: 'wordpress.title',
-                  descriptionKey: 'services.wordpressDesc',
-                  features: [
-                    'wordpress.themeCustomization',
-                    'wordpress.pluginDevelopment',
-                    'wordpress.performanceOptimization',
-                    'wordpress.ecommerceSetup',
-                    'wordpress.maintenanceSupport',
-                    'wordpress.seoOptimization'
-                  ]
-                },
-                {
-                  icon: '⚛️',
-                  titleKey: 'services.frontendDev',
-                  descriptionKey: 'services.frontendDesc',
-                  features: [
-                    'services.feature.uiuxDesign',
-                    'services.feature.reactNextjs',
-                    'services.feature.responsiveDesign',
-                    'services.feature.webVitals',
-                    'services.feature.animations',
-                    'services.feature.apiIntegration'
-                  ]
-                },
-                {
-                  icon: '🔋',
-                  titleKey: 'services.backendDev',
-                  descriptionKey: 'services.backendDesc',
-                  features: [
-                    'services.feature.restApi',
-                    'services.feature.python',
-                    'services.feature.nodejs',
-                    'services.feature.database',
-                    'services.feature.auth',
-                    'services.feature.cloudIntegration'
-                  ]
-                }
-              ].map((service, idx) => (
-                <div 
-                  key={idx} 
-                  className="glass-morphism rounded-2xl p-8 animate-on-scroll opacity-0"
-                  style={{ animationDelay: `${idx * 0.1}s` }}
-                >
-                  <div className="text-4xl mb-4">{service.icon}</div>
-                  <h3 className="text-xl font-bold mb-3">{t(service.titleKey)}</h3>
-                  <p className="text-foreground/70 mb-6">{t(service.descriptionKey)}</p>
-                  
-                  <ul className="space-y-3">
-                    {service.features.map((feature, fidx) => (
-                      <li key={fidx} className="flex items-start">
-                        <CheckCircle className="text-primary h-5 w-5 mt-0.5 ml-2 shrink-0" />
-                        <span>{t(feature)}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-        
+
         {/* FAQ Section */}
-        <section 
-          id="faq" 
-          ref={faqRef}
-          className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden"
-        >
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll opacity-0">
-              <span className="inline-block mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium">
-                {t('wordpress.faq')}
-              </span>
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-3xl font-bold text-center mb-12">{t('services.faqTitle')}</h2>
               
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                {t('services.faqTitle')}
-              </h2>
-              
-              <p className="text-foreground/80 leading-relaxed">
-                {t('services.faqDescription')}
-              </p>
-            </div>
-            
-            <div className="max-w-3xl mx-auto animate-on-scroll opacity-0">
-              <Accordion type="single" collapsible className="space-y-4">
-                {[
-                  {
-                    questionKey: 'services.faq.costQuestion',
-                    answerKey: 'services.faq.costAnswer'
-                  },
-                  {
-                    questionKey: 'services.faq.timelineQuestion',
-                    answerKey: 'services.faq.timelineAnswer'
-                  },
-                  {
-                    questionKey: 'services.faq.wordpressQuestion',
-                    answerKey: 'services.faq.wordpressAnswer'
-                  },
-                  {
-                    questionKey: 'services.faq.blackhatQuestion',
-                    answerKey: 'services.faq.blackhatAnswer'
-                  },
-                  {
-                    questionKey: 'services.faq.multilingualQuestion',
-                    answerKey: 'services.faq.multilingualAnswer'
-                  },
-                  {
-                    questionKey: 'services.faq.supportQuestion',
-                    answerKey: 'services.faq.supportAnswer'
-                  }
-                ].map((faq, idx) => (
-                  <AccordionItem 
-                    key={idx} 
-                    value={`faq-${idx}`}
-                    className="border border-gray-200 rounded-xl overflow-hidden shadow-sm bg-white"
-                  >
-                    <AccordionTrigger className="px-6 py-4 text-right text-lg font-medium hover:no-underline hover:bg-gray-50 text-foreground">
-                      {t(faq.questionKey)}
-                    </AccordionTrigger>
-                    <AccordionContent className="px-6 pb-4 pt-2 text-foreground/80 leading-relaxed">
-                      {t(faq.answerKey)}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
+              <div className="space-y-6">
+                <div className="bg-white p-6 rounded-lg shadow-md">
+                  <h3 className="text-xl font-semibold mb-2">{t('services.faq.costQuestion')}</h3>
+                  <p className="text-gray-600">{t('services.faq.costAnswer')}</p>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg shadow-md">
+                  <h3 className="text-xl font-semibold mb-2">{t('services.faq.timelineQuestion')}</h3>
+                  <p className="text-gray-600">{t('services.faq.timelineAnswer')}</p>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg shadow-md">
+                  <h3 className="text-xl font-semibold mb-2">{t('services.faq.wordpressQuestion')}</h3>
+                  <p className="text-gray-600">{t('services.faq.wordpressAnswer')}</p>
+                </div>
+                
+                <div className="bg-white p-6 rounded-lg shadow-md">
+                  <h3 className="text-xl font-semibold mb-2">{t('services.faq.multilingualQuestion')}</h3>
+                  <p className="text-gray-600">{t('services.faq.multilingualAnswer')}</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
-        
+
         {/* CTA Section */}
-        <section className="py-20 bg-primary text-white relative overflow-hidden">
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-3xl mx-auto text-center animate-on-scroll opacity-0">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                {t('services.ctaTitle')}
-              </h2>
-              
-              <p className="text-white/90 text-lg mb-10 leading-relaxed">
-                {t('services.ctaDescription')}
-              </p>
-              
-              <a 
-                href="#contact" 
-                className="inline-block px-8 py-4 rounded-full bg-white text-primary font-bold text-lg transition-all hover:shadow-lg hover:translate-y-[-2px]"
+        <section className="py-20 bg-primary text-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-3xl font-bold mb-6">{t('services.ctaTitle')}</h2>
+              <p className="text-xl mb-8 opacity-90">{t('services.ctaDescription')}</p>
+              <Link 
+                to={`/${language}/contact`}
+                className="inline-block px-8 py-3 bg-white text-primary font-bold rounded-full hover:shadow-lg transition-all"
               >
-                {t('common.freeConsultation')}
-              </a>
+                {t('common.contactUs')}
+              </Link>
             </div>
-          </div>
-          
-          {/* Background Decorations */}
-          <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-            <div className="absolute top-10 left-10 w-80 h-80 rounded-full bg-white/10 blur-3xl"></div>
-            <div className="absolute bottom-10 right-10 w-80 h-80 rounded-full bg-white/10 blur-3xl"></div>
           </div>
         </section>
       </main>
-      
+
       <Footer />
     </div>
   );
 };
 
-export default Services;
+export default ServicesOverview;
