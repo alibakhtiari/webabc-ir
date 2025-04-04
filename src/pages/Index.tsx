@@ -6,6 +6,7 @@ import HeroSection from '@/components/HeroSection';
 import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { createOrganizationSchema } from '@/lib/schema';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 // Lazy loading components
 const AboutSection = lazy(() => import('@/components/AboutSection'));
@@ -22,6 +23,8 @@ const SectionSkeleton = () => (
 );
 
 const Index = () => {
+  const { t, language, languageMeta } = useLanguage();
+
   useEffect(() => {
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -42,15 +45,20 @@ const Index = () => {
     });
   }, []);
 
-  // Schema markup for Local Business
-  const organizationSchema = createOrganizationSchema();
+  // Schema markup for Organization
+  const organizationSchema = createOrganizationSchema(
+    window.location.origin,
+    "/images/logo.jpg",
+    [{ telephone: "+98123456789", contactType: "customer service" }],
+    language
+  );
 
   return (
-    <div dir="rtl" className="font-persian relative overflow-x-hidden snap-container">
+    <div className="relative overflow-x-hidden">
       <SEOHead 
-        title="وب آ ب ث | خدمات سئو و طراحی وب‌سایت حرفه‌ای" 
-        description="ارائه دهنده خدمات تخصصی سئو و بهینه‌سازی برای موتورهای جستجو، طراحی وب‌سایت و توسعه اپلیکیشن‌های تحت وب با جدیدترین تکنولوژی‌ها" 
-        keywords="طراحی سایت، سئو، بهینه سازی سایت، طراحی وب، دیجیتال مارکتینگ، وردپرس"
+        title={t('index.heroTitle')} 
+        description={t('index.heroDescription')} 
+        keywords={t('index.heroKeywords')}
         ogType="website"
       />
       

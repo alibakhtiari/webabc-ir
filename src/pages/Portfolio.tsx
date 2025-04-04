@@ -1,5 +1,5 @@
 
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -7,6 +7,7 @@ import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { createBreadcrumbSchema } from '@/lib/schema';
 import { portfolioItems } from '@/lib/portfolioData';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 // Lazy loading components
 const PortfolioGallery = lazy(() => import('@/components/PortfolioGallery'));
@@ -21,23 +22,26 @@ const GallerySkeleton = () => (
 );
 
 const Portfolio = () => {
+  const { t, language } = useLanguage();
+
   // Schema markup for portfolio page
   const breadcrumbSchema = createBreadcrumbSchema([
-    { name: "صفحه اصلی", url: "https://webabc.com" },
-    { name: "نمونه کارها", url: "https://webabc.com/portfolio" }
+    { name: t('common.home'), url: `${window.location.origin}/${language}` },
+    { name: t('common.portfolio'), url: `${window.location.origin}/${language}/portfolio` }
   ]);
 
   const portfolioSchema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "نمونه کارهای طراحی سایت و سئو",
-    "description": "مجموعه‌ای از پروژه‌های موفق ما در زمینه طراحی سایت و سئو",
+    "name": t('portfolio.title'),
+    "description": t('portfolio.description'),
+    "inLanguage": language,
     "mainEntity": {
       "@type": "ItemList",
       "itemListElement": portfolioItems.map((item, index) => ({
         "@type": "ListItem",
         "position": index + 1,
-        "url": `https://webabc.com/portfolio/${item.id}`,
+        "url": `${window.location.origin}/${language}/portfolio/${item.id}`,
         "name": item.title,
         "description": item.description,
         "image": item.image
@@ -46,55 +50,71 @@ const Portfolio = () => {
   };
 
   return (
-    <div dir="rtl" className="font-persian relative overflow-x-hidden">
+    <div className="relative overflow-x-hidden">
       <SEOHead 
-        title="نمونه کارها | وب آ ب ث" 
-        description="مشاهده نمونه کارهای موفق طراحی سایت و سئو توسط تیم وب آ ب ث - پروژه‌های برتر طراحی وب‌سایت و بهینه‌سازی موتورهای جستجو" 
-        keywords="نمونه کار طراحی سایت، پروژه‌های سئو، نمونه کار وب‌سایت، طراحی سایت، سئو"
+        title={t('seo.portfolioTitle')}
+        description={t('seo.portfolioDescription')}
+        keywords={t('seo.keywords')}
       />
-      
-      <SchemaMarkup schema={breadcrumbSchema} />
       <SchemaMarkup schema={portfolioSchema} />
       
       <Navbar />
-      <main className="container mx-auto px-4 py-16 md:py-24">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h1 className="font-persian text-3xl md:text-4xl font-bold tracking-tight mb-6">
-            نمونه <span className="text-primary">کارهای موفق</span> ما
-          </h1>
-          <p className="font-persian text-foreground/80 leading-relaxed mb-8">
-            مجموعه‌ای از پروژه‌های موفق ما در زمینه طراحی سایت و سئو. هر پروژه نشان‌دهنده تعهد ما به کیفیت و نتایج قابل اندازه‌گیری است.
-          </p>
-        </div>
+      
+      <main className="mt-20">
+        {/* Hero Section */}
+        <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('portfolio.title')}</h1>
+              <p className="text-xl text-gray-600 mb-8">{t('portfolio.description')}</p>
+            </div>
+          </div>
+        </section>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {portfolioItems.map((item) => (
-            <Link to={`/portfolio/${item.id}`} key={item.id}>
-              <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-                <div className="aspect-video bg-gray-100 relative">
-                  <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                    {item.image ? (
-                      <img 
-                        src={item.image} 
-                        alt={item.title} 
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                    ) : 'تصویر نمونه کار'}
-                  </div>
-                </div>
-                <div className="p-5">
-                  <span className="inline-block px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded mb-2">
-                    {item.category}
-                  </span>
-                  <h3 className="text-lg font-bold mb-2">{item.title}</h3>
-                  <p className="text-gray-600 text-sm line-clamp-2">{item.description}</p>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
+        {/* Portfolio Gallery */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="mb-10 flex flex-wrap gap-4 justify-center">
+              <button className="px-6 py-2 rounded-full bg-primary text-white">
+                {t('portfolio.allProjects')}
+              </button>
+              <button className="px-6 py-2 rounded-full border border-gray-200 hover:bg-gray-50">
+                {t('portfolio.webDesign')}
+              </button>
+              <button className="px-6 py-2 rounded-full border border-gray-200 hover:bg-gray-50">
+                {t('portfolio.ecommerce')}
+              </button>
+              <button className="px-6 py-2 rounded-full border border-gray-200 hover:bg-gray-50">
+                {t('portfolio.seoProjects')}
+              </button>
+              <button className="px-6 py-2 rounded-full border border-gray-200 hover:bg-gray-50">
+                {t('portfolio.mobileApps')}
+              </button>
+            </div>
+            
+            <Suspense fallback={<GallerySkeleton />}>
+              <PortfolioGallery items={portfolioItems} />
+            </Suspense>
+          </div>
+        </section>
+        
+        {/* CTA Section */}
+        <section className="py-20 bg-primary text-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-3xl font-bold mb-6">{t('contact.getInTouch')}</h2>
+              <p className="text-xl mb-8 opacity-90">{t('services.ctaDescription')}</p>
+              <Link 
+                to={`/${language}/contact`}
+                className="inline-block px-8 py-3 bg-white text-primary font-bold rounded-full hover:shadow-lg transition-all"
+              >
+                {t('common.contactUs')}
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
+      
       <Footer />
     </div>
   );

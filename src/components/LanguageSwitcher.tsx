@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { getPathWithoutLanguage } from '@/lib/languageUtils';
 
 interface LanguageSwitcherProps {
@@ -24,10 +24,19 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
 }) => {
   const { language, setLanguage, languageMeta, t } = useLanguage();
   const location = useLocation();
+  const navigate = useNavigate();
   const currentPathWithoutLang = getPathWithoutLanguage(location.pathname);
 
   const handleLanguageChange = (lang: SupportedLanguage) => {
     console.log(`Switching language to: ${lang}, current path: ${location.pathname}, without lang: ${currentPathWithoutLang}`);
+    
+    if (lang === language) return;
+    
+    // Navigate directly to prevent 404 errors during language changes
+    const newPath = `/${lang}${currentPathWithoutLang}`;
+    navigate(newPath);
+    
+    // Then update the language in context
     setLanguage(lang);
   };
 
