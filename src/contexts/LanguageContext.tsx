@@ -53,6 +53,7 @@ interface LanguageContextType {
   languageMeta: LanguageMeta;
   getSeoTitle: (title?: string) => string;
   getSeoDescription: (description?: string) => string;
+  translations: typeof translations;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -100,7 +101,28 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
       if (result && result[k]) {
         result = result[k];
       } else {
-        console.warn(`Translation key not found: ${key}`);
+        console.warn(`Translation key not found: ${key} in ${language}`);
+        
+        // Try to find in English as a fallback
+        if (language !== 'en') {
+          let enResult = translations.en;
+          let found = true;
+          
+          for (const k2 of keys) {
+            if (enResult && enResult[k2]) {
+              enResult = enResult[k2];
+            } else {
+              found = false;
+              break;
+            }
+          }
+          
+          if (found && typeof enResult === 'string') {
+            console.info(`Using English fallback for: ${key}`);
+            return enResult;
+          }
+        }
+        
         return key;
       }
     }
@@ -154,7 +176,8 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
         t, 
         languageMeta: languages[language],
         getSeoTitle,
-        getSeoDescription
+        getSeoDescription,
+        translations
       }}
     >
       {children}

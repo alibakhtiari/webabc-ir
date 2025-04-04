@@ -10,6 +10,8 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useLocation } from 'react-router-dom';
+import { getPathWithoutLanguage } from '@/lib/languageUtils';
 
 interface LanguageSwitcherProps {
   type?: 'dropdown' | 'buttons';
@@ -20,7 +22,14 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   type = 'dropdown',
   className
 }) => {
-  const { language, setLanguage, languageMeta } = useLanguage();
+  const { language, setLanguage, languageMeta, t } = useLanguage();
+  const location = useLocation();
+  const currentPathWithoutLang = getPathWithoutLanguage(location.pathname);
+
+  const handleLanguageChange = (lang: SupportedLanguage) => {
+    console.log(`Switching language to: ${lang}, current path: ${location.pathname}, without lang: ${currentPathWithoutLang}`);
+    setLanguage(lang);
+  };
 
   if (type === 'buttons') {
     return (
@@ -30,9 +39,10 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
             key={code}
             variant={language === code ? "default" : "outline"}
             size="sm"
-            onClick={() => setLanguage(code as SupportedLanguage)}
+            onClick={() => handleLanguageChange(code as SupportedLanguage)}
             className={cn(
               "px-3 min-w-[40px]",
+              languageMeta.direction === 'rtl' ? "ml-2" : "mr-2",
               language === code ? "bg-primary text-white" : "bg-transparent"
             )}
           >
@@ -55,11 +65,11 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
           <span>{languageMeta.nativeName}</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align={languageMeta.direction === 'rtl' ? "start" : "end"}>
         {Object.entries(languages).map(([code, lang]) => (
           <DropdownMenuItem
             key={code}
-            onClick={() => setLanguage(code as SupportedLanguage)}
+            onClick={() => handleLanguageChange(code as SupportedLanguage)}
             className={cn(
               "cursor-pointer",
               language === code && "bg-primary/10"

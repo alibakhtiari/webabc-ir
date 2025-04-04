@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { createBreadcrumbSchema } from '@/lib/schema';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 // Lazy loading components
 const Button = lazy(() => import('@/components/ui/button').then(mod => ({ default: mod.Button })));
@@ -25,39 +26,45 @@ const TextareaSkeleton = () => (
 );
 
 const Contact = () => {
+  const { language, t, languageMeta } = useLanguage();
+  
   // Schema markup for Contact page
   const breadcrumbSchema = createBreadcrumbSchema([
-    { name: "صفحه اصلی", url: "https://webabc.com" },
-    { name: "تماس با ما", url: "https://webabc.com/contact" }
+    { name: t('common.home'), url: `https://webabc.com/${language}` },
+    { name: t('common.contact'), url: `https://webabc.com/${language}/contact` }
   ]);
 
   const contactSchema = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    "name": "تماس با وب آ ب ث",
-    "description": "برای ارتباط با تیم وب آ ب ث و دریافت مشاوره رایگان، با ما تماس بگیرید",
+    "name": t('common.contact'),
+    "description": language === 'en' ? "Contact WebABC team and get a free consultation" : language === 'ar' ? "اتصل بفريق ويب أ ب ج واحصل على استشارة مجانية" : "برای ارتباط با تیم وب آ ب ث و دریافت مشاوره رایگان، با ما تماس بگیرید",
     "mainEntity": {
       "@type": "Organization",
       "name": "WebABC",
       "email": "info@webabc.com",
-      "telephone": "۰۲۱-۱۲۳۴۵۶۷۸",
+      "telephone": language === 'en' ? "+98-21-12345678" : "۰۲۱-۱۲۳۴۵۶۷۸",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "خیابان آزادی، بلوار کشاورز، پلاک ۱۲۳",
-        "addressLocality": "تهران",
-        "addressRegion": "تهران",
+        "streetAddress": language === 'en' ? "123 Azadi St, Keshavarz Blvd" : language === 'ar' ? "شارع آزادي، بوليفارد كشاورز، المبنى ١٢٣" : "خیابان آزادی، بلوار کشاورز، پلاک ۱۲۳",
+        "addressLocality": language === 'en' ? "Tehran" : language === 'ar' ? "طهران" : "تهران",
+        "addressRegion": language === 'en' ? "Tehran" : language === 'ar' ? "طهران" : "تهران",
         "postalCode": "123456",
         "addressCountry": "IR"
       }
-    }
+    },
+    "inLanguage": language
   };
 
+  const textDirection = languageMeta.direction === 'rtl' ? 'text-right' : 'text-left';
+  const inputDirection = languageMeta.direction === 'rtl' ? 'text-right' : '';
+
   return (
-    <div className="min-h-screen flex flex-col" dir="rtl">
+    <div className="min-h-screen flex flex-col" dir={languageMeta.direction}>
       <SEOHead 
-        title="تماس با وب آ ب ث | مشاوره رایگان طراحی سایت و سئو" 
-        description="برای ارتباط با تیم وب آ ب ث و دریافت مشاوره رایگان در زمینه طراحی سایت، سئو و دیجیتال مارکتینگ با ما تماس بگیرید"
-        keywords="تماس با وب آ ب ث، مشاوره سئو، مشاوره طراحی سایت، شماره تماس وب آ ب ث"
+        title={t('contact.getInTouch')} 
+        description={language === 'en' ? "Contact WebABC team and get a free consultation in web design, SEO and digital marketing" : language === 'ar' ? "اتصل بفريق ويب أ ب ج واحصل على استشارة مجانية في تصميم الويب وتحسين محركات البحث والتسويق الرقمي" : "برای ارتباط با تیم وب آ ب ث و دریافت مشاوره رایگان در زمینه طراحی سایت، سئو و دیجیتال مارکتینگ با ما تماس بگیرید"}
+        keywords={language === 'en' ? "contact WebABC, SEO consultation, web design consultation, WebABC contact number" : language === 'ar' ? "اتصل بويب أ ب ج، استشارة تحسين محركات البحث، استشارة تصميم الويب، رقم الاتصال بويب أ ب ج" : "تماس با وب آ ب ث، مشاوره سئو، مشاوره طراحی سایت، شماره تماس وب آ ب ث"}
       />
       
       <SchemaMarkup schema={breadcrumbSchema} />
@@ -67,36 +74,36 @@ const Contact = () => {
       
       <main className="flex-1 max-w-4xl mx-auto mt-20 pb-12 px-4 sm:px-6 lg:px-8 w-full">
         <div className="space-y-12">
-          <h1 className="text-3xl font-bold text-center text-gray-800">تماس با ما</h1>
+          <h1 className="text-3xl font-bold text-center text-gray-800">{t('contact.getInTouch')}</h1>
 
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">
             {/* Contact Form */}
             <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
               <form className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">نام کامل</label>
+                  <label className={`block text-sm font-medium text-gray-700 mb-2 ${textDirection}`}>{t('consultation.fullName')}</label>
                   <Suspense fallback={<InputSkeleton />}>
-                    <Input className="text-right" placeholder="نام خود را وارد کنید" />
+                    <Input className={inputDirection} placeholder={t('consultation.fullName')} />
                   </Suspense>
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">ایمیل</label>
+                  <label className={`block text-sm font-medium text-gray-700 mb-2 ${textDirection}`}>{t('consultation.email')}</label>
                   <Suspense fallback={<InputSkeleton />}>
-                    <Input type="email" className="text-right" placeholder="example@domain.com" />
+                    <Input type="email" className={inputDirection} placeholder="example@domain.com" />
                   </Suspense>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">پیام</label>
+                  <label className={`block text-sm font-medium text-gray-700 mb-2 ${textDirection}`}>{t('consultation.message')}</label>
                   <Suspense fallback={<TextareaSkeleton />}>
-                    <Textarea rows={5} className="text-right" placeholder="متن پیام خود را بنویسید..." />
+                    <Textarea rows={5} className={inputDirection} placeholder={t('contact.yourMessage')} />
                   </Suspense>
                 </div>
 
                 <Suspense fallback={<ButtonSkeleton />}>
                   <Button type="submit" className="w-full bg-primary hover:bg-primary-dark">
-                    ارسال پیام
+                    {t('contact.submitMessage')}
                   </Button>
                 </Suspense>
               </form>
@@ -105,23 +112,23 @@ const Contact = () => {
             {/* Contact Info */}
             <div className="space-y-8">
               <div className="bg-gray-50 p-6 rounded-2xl">
-                <h2 className="text-2xl font-semibold text-gray-800 mb-4">اطلاعات تماس</h2>
+                <h2 className="text-2xl font-semibold text-gray-800 mb-4">{t('contact.contactInfo')}</h2>
                 <div className="space-y-4">
                   <div>
-                    <h3 className="font-medium text-gray-700">آدرس</h3>
+                    <h3 className="font-medium text-gray-700">{t('contact.officeAddress')}</h3>
                     <p className="text-gray-600 leading-relaxed">
-                      خیابان آزادی، بلوار کشاورز، پلاک ۱۲۳<br/>
-                      تهران، ایران
+                      {language === 'en' ? "123 Azadi St, Keshavarz Blvd" : language === 'ar' ? "شارع آزادي، بوليفارد كشاورز، المبنى ١٢٣" : "خیابان آزادی، بلوار کشاورز، پلاک ۱۲۳"}<br/>
+                      {language === 'en' ? "Tehran, Iran" : language === 'ar' ? "طهران، إيران" : "تهران، ایران"}
                     </p>
                   </div>
 
                   <div>
-                    <h3 className="font-medium text-gray-700">شماره تماس</h3>
-                    <p className="text-gray-600">۰۲۱-۱۲۳۴۵۶۷۸</p>
+                    <h3 className="font-medium text-gray-700">{t('contact.phoneNumber')}</h3>
+                    <p className="text-gray-600">{language === 'en' ? "+98-21-12345678" : "۰۲۱-۱۲۳۴۵۶۷۸"}</p>
                   </div>
 
                   <div>
-                    <h3 className="font-medium text-gray-700">ایمیل</h3>
+                    <h3 className="font-medium text-gray-700">{t('contact.emailAddress')}</h3>
                     <p className="text-gray-600">info@webabc.com</p>
                   </div>
                 </div>
@@ -132,7 +139,7 @@ const Contact = () => {
           {/* Map Embed */}
           <div className="mt-12 rounded-2xl overflow-hidden shadow-xl border border-gray-100">
             <iframe
-              title="موقعیت ما"
+              title={t('contact.locationMap')}
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.676897237655!2d51.38910441526849!3d35.73296868018775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e07118a35a56d%3A0x67cce5d4674ffa0f!2sAzadi%20Tower!5e0!3m2!1sen!2sir!4v1627987654325!5m2!1sen!2sir"
               width="100%"
               height="400"

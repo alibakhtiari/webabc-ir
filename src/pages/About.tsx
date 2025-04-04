@@ -7,6 +7,7 @@ import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { createBreadcrumbSchema } from '@/lib/schema';
 import LazyImage from '@/components/LazyImage';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 // Lazy loading components
 const Avatar = lazy(() => import('@/components/ui/avatar').then(mod => ({ default: mod.Avatar })));
@@ -23,24 +24,26 @@ const TeamMemberSkeleton = () => (
 );
 
 const About = () => {
+  const { language, t, languageMeta } = useLanguage();
+  
   // Schema markup for About page
   const breadcrumbSchema = createBreadcrumbSchema([
-    { name: "صفحه اصلی", url: "https://webabc.com" },
-    { name: "درباره ما", url: "https://webabc.com/about" }
+    { name: t('common.home'), url: `https://webabc.com/${language}` },
+    { name: t('common.about'), url: `https://webabc.com/${language}/about` }
   ]);
 
   const teamMembers = [
-    { id: 1, name: "علی رضایی", role: "توسعه دهنده ارشد" },
-    { id: 2, name: "مریم احمدی", role: "متخصص سئو" },
-    { id: 3, name: "محمد کریمی", role: "طراح رابط کاربری" }
+    { id: 1, name: language === 'en' ? "Ali Rezaei" : language === 'ar' ? "علي رضائي" : "علی رضایی", role: language === 'en' ? "Senior Developer" : language === 'ar' ? "مطور رئيسي" : "توسعه دهنده ارشد" },
+    { id: 2, name: language === 'en' ? "Maryam Ahmadi" : language === 'ar' ? "مريم أحمدي" : "مریم احمدی", role: language === 'en' ? "SEO Specialist" : language === 'ar' ? "أخصائي تحسين محركات البحث" : "متخصص سئو" },
+    { id: 3, name: language === 'en' ? "Mohammad Karimi" : language === 'ar' ? "محمد كريمي" : "محمد کریمی", role: language === 'en' ? "UI Designer" : language === 'ar' ? "مصمم واجهة المستخدم" : "طراح رابط کاربری" }
   ];
 
   return (
-    <div className="min-h-screen flex flex-col" dir="rtl">
+    <div className="min-h-screen flex flex-col" dir={languageMeta.direction}>
       <SEOHead 
-        title="درباره وب آ ب ث | تیم متخصص طراحی سایت و سئو" 
-        description="آشنایی با تیم متخصص وب آ ب ث - ارائه دهنده خدمات حرفه‌ای طراحی سایت، سئو و دیجیتال مارکتینگ با بیش از یک دهه تجربه"
-        keywords="درباره وب آ ب ث، تیم طراحی سایت، متخصصین سئو، دیجیتال مارکتینگ"
+        title={t('about.title')} 
+        description={t('about.subtitle')}
+        keywords={t('seo.keywords')}
       />
       
       <SchemaMarkup schema={breadcrumbSchema} />
@@ -51,26 +54,25 @@ const About = () => {
         <div className="space-y-16">
           {/* Hero Section */}
           <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">درباره وب آ ب ث</h1>
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">{t('about.title')}</h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              پیشرو در ارائه راهکارهای دیجیتال مارکتینگ و توسعه وب با بیش از یک دهه تجربه موفق
+              {t('about.subtitle')}
             </p>
           </div>
 
           {/* Mission Section */}
           <Card className="p-8 bg-gradient-to-br from-blue-50 to-purple-50 border-0">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">ماموریت ما</h2>
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4">{t('about.mission')}</h2>
               <p className="text-gray-600 leading-relaxed">
-                ما در وب آ ب ث با تکیه بر دانش روز و تیمی متخصص، کسب و کارها را در مسیر دیجیتالی شدن همراهی می‌کنیم.
-                هدف اصلی ما ایجاد ارزش پایدار برای مشتریان از طریق راهکارهای نوآورانه و نتیجه‌محور است.
+                {t('about.missionText')}
               </p>
             </div>
           </Card>
 
           {/* Team Section */}
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">تیم ما</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">{t('about.team')}</h2>
             <div className="grid md:grid-cols-3 gap-8">
               {teamMembers.map((member) => (
                 <Suspense key={member.id} fallback={<TeamMemberSkeleton />}>
@@ -90,16 +92,16 @@ const About = () => {
           {/* Stats Section */}
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <Card className="py-6 border-0 bg-blue-50">
-              <div className="text-3xl font-bold text-blue-600 mb-2">۱۰+</div>
-              <div className="text-gray-700">سال تجربه</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">10+</div>
+              <div className="text-gray-700">{t('about.yearsExperience')}</div>
             </Card>
             <Card className="py-6 border-0 bg-purple-50">
-              <div className="text-3xl font-bold text-purple-600 mb-2">۵۰۰+</div>
-              <div className="text-gray-700">پروژه موفق</div>
+              <div className="text-3xl font-bold text-purple-600 mb-2">500+</div>
+              <div className="text-gray-700">{t('about.successfulProjects')}</div>
             </Card>
             <Card className="py-6 border-0 bg-green-50">
-              <div className="text-3xl font-bold text-green-600 mb-2">۹۸%</div>
-              <div className="text-gray-700">رضایت مشتریان</div>
+              <div className="text-3xl font-bold text-green-600 mb-2">98%</div>
+              <div className="text-gray-700">{t('about.clientSatisfaction')}</div>
             </Card>
           </div>
         </div>

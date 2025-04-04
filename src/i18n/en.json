@@ -187,5 +187,46 @@
     "locationMap": "Our Location",
     "messageSent": "Message Sent Successfully",
     "messageFailed": "Failed to send message"
+  },
+  "about": {
+    "title": "About WebABC",
+    "subtitle": "Leading in Digital Marketing and Web Development with over a decade of successful experience",
+    "mission": "Our Mission",
+    "missionText": "At WebABC, we guide businesses through their digital transformation journey with our expert team and up-to-date knowledge. Our main goal is to create lasting value for our clients through innovative and results-oriented solutions.",
+    "team": "Our Team",
+    "yearsExperience": "Years of Experience",
+    "successfulProjects": "Successful Projects",
+    "clientSatisfaction": "Client Satisfaction"
+  },
+  "caseStudies": {
+    "title": "Case Studies",
+    "subtitle": "Success Stories and Case Studies",
+    "description": "Explore our case studies to see the journey from initial challenges to measurable results. Each case study demonstrates our commitment to delivering value.",
+    "challenge": "Challenge",
+    "solution": "Solution",
+    "results": "Results",
+    "ecommerceCase": {
+      "title": "200% Increase in Online Sales with SEO Optimization",
+      "category": "Case Study: Online Store",
+      "challenge": "A home appliance online store had quality products but low traffic and sales. The main issue was lack of proper search engine optimization and poor user experience.",
+      "solution": "Our team designed a comprehensive strategy including technical site optimization, content structure improvement, information architecture correction, and creation of dedicated landing pages for popular products.",
+      "results1": "200% increase in online sales over 6 months",
+      "results2": "150% improvement in organic traffic from Google",
+      "results3": "30% increase in conversion rate",
+      "results4": "25% decrease in bounce rate",
+      "testimonial": "Partnering with WebABC was one of our best business decisions. The results of our site optimization far exceeded our expectations."
+    }
+  },
+  "index": {
+    "heroTitle": "WebABC | Professional SEO and Web Design Services",
+    "heroDescription": "Provider of specialized SEO and search engine optimization services, web design and web application development with the latest technologies",
+    "heroKeywords": "website design, SEO, site optimization, web design, digital marketing, WordPress"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "subtitle": "Sorry, the page you're looking for doesn't exist.",
+    "backHome": "Back to Home",
+    "backPrevious": "Go Back",
+    "errorNumber": "404"
   }
 }

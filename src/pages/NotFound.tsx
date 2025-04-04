@@ -18,37 +18,11 @@ const NotFound = () => {
     );
   }, [location.pathname]);
 
-  const translations = {
-    fa: {
-      title: "صفحه یافت نشد",
-      subtitle: "متأسفانه صفحه مورد نظر شما پیدا نشد.",
-      backHome: "بازگشت به صفحه اصلی",
-      backPrevious: "بازگشت به صفحه قبلی",
-      errorNumber: "404"
-    },
-    en: {
-      title: "Page Not Found",
-      subtitle: "Sorry, the page you're looking for doesn't exist.",
-      backHome: "Back to Home",
-      backPrevious: "Go Back",
-      errorNumber: "404"
-    },
-    ar: {
-      title: "الصفحة غير موجودة",
-      subtitle: "عذراً، الصفحة التي تبحث عنها غير موجودة.",
-      backHome: "العودة إلى الصفحة الرئيسية",
-      backPrevious: "العودة للخلف",
-      errorNumber: "404"
-    }
-  };
-
-  const content = translations[language as keyof typeof translations] || translations.en;
-
   return (
     <>
       <SEOHead
-        title={content.title}
-        description={content.subtitle}
+        title={t('notFound.title')}
+        description={t('notFound.subtitle')}
         noIndex={true}
       />
       <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-background to-gray-100 p-4">
@@ -77,7 +51,7 @@ const NotFound = () => {
                 transition={{ delay: 0.3, duration: 0.5 }}
                 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold text-white text-2xl"
               >
-                {content.errorNumber}
+                {t('notFound.errorNumber')}
               </motion.div>
             </div>
           </div>
@@ -88,7 +62,7 @@ const NotFound = () => {
             transition={{ delay: 0.1, duration: 0.5 }}
             className="text-4xl font-bold text-gray-800 mb-4"
           >
-            {content.title}
+            {t('notFound.title')}
           </motion.h1>
           
           <motion.p
@@ -97,7 +71,7 @@ const NotFound = () => {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="text-xl text-gray-600 mb-8"
           >
-            {content.subtitle}
+            {t('notFound.subtitle')}
           </motion.p>
 
           <motion.div
@@ -114,7 +88,7 @@ const NotFound = () => {
             >
               <Link to={`/${language}`}>
                 <Home size={18} />
-                {content.backHome}
+                {t('notFound.backHome')}
               </Link>
             </Button>
             
@@ -125,7 +99,7 @@ const NotFound = () => {
               onClick={() => window.history.back()}
             >
               <ArrowLeft size={18} />
-              {content.backPrevious}
+              {t('notFound.backPrevious')}
             </Button>
           </motion.div>
         </motion.div>
