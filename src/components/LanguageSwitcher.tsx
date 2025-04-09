@@ -26,6 +26,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   const location = useLocation();
   const navigate = useNavigate();
   const currentPathWithoutLang = getPathWithoutLanguage(location.pathname);
+  const isRTL = languageMeta.direction === 'rtl';
 
   const handleLanguageChange = (lang: SupportedLanguage) => {
     console.log(`Switching language to: ${lang}, current path: ${location.pathname}, without lang: ${currentPathWithoutLang}`);
@@ -43,7 +44,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   if (type === 'buttons') {
     return (
       <div className={cn("flex space-x-2", className, {
-        "space-x-0 space-s-2": languageMeta.direction === 'rtl'
+        "space-x-0 space-s-2": isRTL
       })}>
         {Object.entries(languages).map(([code, lang]) => (
           <Button
@@ -53,7 +54,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
             onClick={() => handleLanguageChange(code as SupportedLanguage)}
             className={cn(
               "px-3 min-w-[40px]",
-              languageMeta.direction === 'rtl' ? "ms-2" : "me-2",
+              isRTL ? "ms-2" : "me-2",
               language === code ? "bg-primary text-white" : "bg-transparent"
             )}
           >
@@ -76,7 +77,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
           <span>{languageMeta.nativeName}</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align={languageMeta.direction === 'rtl' ? "start" : "end"}>
+      <DropdownMenuContent align={isRTL ? "start" : "end"}>
         {Object.entries(languages).map(([code, lang]) => (
           <DropdownMenuItem
             key={code}

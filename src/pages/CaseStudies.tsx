@@ -9,10 +9,13 @@ import Testimonial from '@/components/Testimonial';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getCanonicalUrl, generateLanguageAlternates } from '@/lib/languageUtils';
 import { useLocation } from 'react-router-dom';
+import { ArrowRight, ArrowLeft, FileText, Globe } from 'lucide-react';
 
 const CaseStudies = () => {
   const { language, t, languageMeta } = useLanguage();
   const location = useLocation();
+  const isRTL = languageMeta.direction === 'rtl';
+  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
   
   // Schema markup for breadcrumbs
   const breadcrumbSchema = {
@@ -69,7 +72,7 @@ const CaseStudies = () => {
           </p>
         </div>
         
-        {/* Case Study Example */}
+        {/* E-commerce Case Study */}
         <div className="neo-morphism rounded-2xl p-8 mb-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div>
@@ -120,7 +123,7 @@ const CaseStudies = () => {
               <div className="rounded-xl overflow-hidden">
                 <OptimizedImage 
                   src="/images/case-study-1.jpg" 
-                  alt={language === 'en' ? "Online store sales growth chart after SEO optimization by WebABC" : language === 'ar' ? "مخطط نمو مبيعات المتجر عبر الإنترنت بعد تحسين محركات البحث بواسطة ويب أ ب ج" : "نمودار افزایش فروش فروشگاه آنلاین پس از بهینه‌سازی سئو توسط وب آ ب ث"}
+                  alt={t('caseStudies.ecommerceCase.imageAlt')}
                   className="w-full h-auto"
                 />
               </div>
@@ -128,7 +131,7 @@ const CaseStudies = () => {
               <div className="rounded-xl overflow-hidden">
                 <OptimizedImage 
                   src="/images/case-study-1-results.jpg" 
-                  alt={language === 'en' ? "Keyword ranking improvement results for online store after SEO implementation by WebABC" : language === 'ar' ? "نتائج تحسين ترتيب الكلمات الرئيسية للمتجر عبر الإنترنت بعد تنفيذ تحسين محركات البحث بواسطة ويب أ ب ج" : "نتایج بهبود رتبه کلمات کلیدی فروشگاه آنلاین پس از اجرای سئو توسط وب آ ب ث"}
+                  alt={t('caseStudies.ecommerceCase.resultsImageAlt')}
                   className="w-full h-auto"
                 />
               </div>
@@ -136,7 +139,220 @@ const CaseStudies = () => {
           </div>
         </div>
         
-        {/* More case studies would go here */}
+        {/* WordPress Case Study */}
+        <div className="neo-morphism rounded-2xl p-8 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="order-2 lg:order-1 flex flex-col space-y-4">
+              <div className="rounded-xl overflow-hidden">
+                <OptimizedImage 
+                  src="/images/case-study-2.jpg" 
+                  alt={t('caseStudies.wordpressCase.imageAlt')}
+                  className="w-full h-auto"
+                />
+              </div>
+              
+              <div className="rounded-xl overflow-hidden">
+                <OptimizedImage 
+                  src="/images/case-study-2-results.jpg" 
+                  alt={t('caseStudies.wordpressCase.resultsImageAlt')}
+                  className="w-full h-auto"
+                />
+              </div>
+            </div>
+            
+            <div className="order-1 lg:order-2">
+              <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-persian text-sm mb-4">
+                {t('caseStudies.wordpressCase.category')}
+              </span>
+              
+              <h2 className="font-persian text-2xl font-bold mb-4">
+                {t('caseStudies.wordpressCase.title')}
+              </h2>
+              
+              <div className="space-y-4 mb-6">
+                <div>
+                  <h3 className="font-persian text-lg font-semibold mb-2">{t('caseStudies.challenge')}</h3>
+                  <p className="font-persian text-foreground/80">
+                    {t('caseStudies.wordpressCase.challenge')}
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="font-persian text-lg font-semibold mb-2">{t('caseStudies.solution')}</h3>
+                  <p className="font-persian text-foreground/80">
+                    {t('caseStudies.wordpressCase.solution')}
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="font-persian text-lg font-semibold mb-2">{t('caseStudies.results')}</h3>
+                  <ul className="list-disc list-inside font-persian text-foreground/80 space-y-1">
+                    <li>{t('caseStudies.wordpressCase.results1')}</li>
+                    <li>{t('caseStudies.wordpressCase.results2')}</li>
+                    <li>{t('caseStudies.wordpressCase.results3')}</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <Testimonial 
+                name={language === 'en' ? "Sara Johnson" : language === 'ar' ? "سارة جونسون" : "سارا جانسون"}
+                company={language === 'en' ? "Marketing Director at Beauty Brand" : language === 'ar' ? "مديرة التسويق في علامة الجمال" : "مدیر بازاریابی برند زیبایی"}
+                image="/images/testimonial-2.jpg"
+                quote={t('caseStudies.wordpressCase.testimonial')}
+                rating={5}
+              />
+            </div>
+          </div>
+        </div>
+        
+        {/* Local SEO Case Study */}
+        <div className="neo-morphism rounded-2xl p-8 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div>
+              <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-persian text-sm mb-4">
+                {t('caseStudies.localSeoCase.category')}
+              </span>
+              
+              <h2 className="font-persian text-2xl font-bold mb-4">
+                {t('caseStudies.localSeoCase.title')}
+              </h2>
+              
+              <div className="space-y-4 mb-6">
+                <div>
+                  <h3 className="font-persian text-lg font-semibold mb-2">{t('caseStudies.challenge')}</h3>
+                  <p className="font-persian text-foreground/80">
+                    {t('caseStudies.localSeoCase.challenge')}
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="font-persian text-lg font-semibold mb-2">{t('caseStudies.solution')}</h3>
+                  <p className="font-persian text-foreground/80">
+                    {t('caseStudies.localSeoCase.solution')}
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="font-persian text-lg font-semibold mb-2">{t('caseStudies.results')}</h3>
+                  <ul className="list-disc list-inside font-persian text-foreground/80 space-y-1">
+                    <li>{t('caseStudies.localSeoCase.results1')}</li>
+                    <li>{t('caseStudies.localSeoCase.results2')}</li>
+                    <li>{t('caseStudies.localSeoCase.results3')}</li>
+                    <li>{t('caseStudies.localSeoCase.results4')}</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <Testimonial 
+                name={language === 'en' ? "Ahmed Hassan" : language === 'ar' ? "أحمد حسن" : "احمد حسن"}
+                company={language === 'en' ? "Owner of Royal Dental Clinic" : language === 'ar' ? "مالك عيادة رويال للأسنان" : "صاحب کلینیک دندانپزشکی رویال"}
+                image="/images/testimonial-3.jpg"
+                quote={t('caseStudies.localSeoCase.testimonial')}
+                rating={5}
+              />
+            </div>
+            
+            <div className="flex flex-col space-y-4">
+              <div className="rounded-xl overflow-hidden">
+                <OptimizedImage 
+                  src="/images/case-study-3.jpg" 
+                  alt={t('caseStudies.localSeoCase.imageAlt')}
+                  className="w-full h-auto"
+                />
+              </div>
+              
+              <div className="rounded-xl overflow-hidden">
+                <OptimizedImage 
+                  src="/images/case-study-3-results.jpg" 
+                  alt={t('caseStudies.localSeoCase.resultsImageAlt')}
+                  className="w-full h-auto"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Web Development Case Study */}
+        <div className="neo-morphism rounded-2xl p-8 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="order-2 lg:order-1 flex flex-col space-y-4">
+              <div className="rounded-xl overflow-hidden">
+                <OptimizedImage 
+                  src="/images/case-study-4.jpg" 
+                  alt={t('caseStudies.webDevCase.imageAlt')}
+                  className="w-full h-auto"
+                />
+              </div>
+              
+              <div className="rounded-xl overflow-hidden">
+                <OptimizedImage 
+                  src="/images/case-study-4-results.jpg" 
+                  alt={t('caseStudies.webDevCase.resultsImageAlt')}
+                  className="w-full h-auto"
+                />
+              </div>
+            </div>
+            
+            <div className="order-1 lg:order-2">
+              <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-persian text-sm mb-4">
+                {t('caseStudies.webDevCase.category')}
+              </span>
+              
+              <h2 className="font-persian text-2xl font-bold mb-4">
+                {t('caseStudies.webDevCase.title')}
+              </h2>
+              
+              <div className="space-y-4 mb-6">
+                <div>
+                  <h3 className="font-persian text-lg font-semibold mb-2">{t('caseStudies.challenge')}</h3>
+                  <p className="font-persian text-foreground/80">
+                    {t('caseStudies.webDevCase.challenge')}
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="font-persian text-lg font-semibold mb-2">{t('caseStudies.solution')}</h3>
+                  <p className="font-persian text-foreground/80">
+                    {t('caseStudies.webDevCase.solution')}
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="font-persian text-lg font-semibold mb-2">{t('caseStudies.results')}</h3>
+                  <ul className="list-disc list-inside font-persian text-foreground/80 space-y-1">
+                    <li>{t('caseStudies.webDevCase.results1')}</li>
+                    <li>{t('caseStudies.webDevCase.results2')}</li>
+                    <li>{t('caseStudies.webDevCase.results3')}</li>
+                    <li>{t('caseStudies.webDevCase.results4')}</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <Testimonial 
+                name={language === 'en' ? "Maria Rodriguez" : language === 'ar' ? "ماريا رودريغيز" : "ماریا رودریگز"}
+                company={language === 'en' ? "CEO of FintechPro" : language === 'ar' ? "الرئيس التنفيذي لشركة فينتيك برو" : "مدیرعامل فینتک‌پرو"}
+                image="/images/testimonial-4.jpg"
+                quote={t('caseStudies.webDevCase.testimonial')}
+                rating={5}
+              />
+            </div>
+          </div>
+        </div>
+        
+        {/* Download Case Studies */}
+        <div className="text-center mt-12">
+          <p className="font-persian text-lg mb-4">{t('caseStudies.downloadHint')}</p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <a href="#" className="inline-flex items-center px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-colors">
+              <FileText className={`${isRTL ? 'ml-2' : 'mr-2'} h-4 w-4`} />
+              {t('caseStudies.downloadFull')}
+            </a>
+            <a href="#" className="inline-flex items-center px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-colors">
+              <Globe className={`${isRTL ? 'ml-2' : 'mr-2'} h-4 w-4`} />
+              {t('caseStudies.contactForMore')}
+            </a>
+          </div>
+        </div>
       </main>
       <Footer />
     </div>
