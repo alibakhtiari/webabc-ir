@@ -99,3 +99,47 @@ export const createArticleSchema = (
     "inLanguage": language
   };
 };
+
+export const createPersonSchema = (
+  name: string,
+  jobTitle: string,
+  bio: string,
+  image: string = "/images/team-default.jpg",
+  employerName?: string,
+  language: SupportedLanguage = 'en'
+) => {
+  // Use appropriate employer name based on language if not provided
+  const employer = employerName || (language === 'en' ? 'WebABC' : language === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث');
+  
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": name,
+    "jobTitle": jobTitle,
+    "description": bio,
+    "image": image,
+    "worksFor": {
+      "@type": "Organization",
+      "name": employer
+    },
+    "inLanguage": language
+  };
+};
+
+export const createServiceListSchema = (
+  services: Array<{name: string, description: string, url: string}>,
+  language: SupportedLanguage = 'en'
+) => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": services.map((service, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": service.name,
+      "url": service.url,
+      "description": service.description
+    })),
+    "inLanguage": language
+  };
+};

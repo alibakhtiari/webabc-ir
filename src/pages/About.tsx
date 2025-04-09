@@ -1,11 +1,11 @@
 
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Card } from '@/components/ui/card';
 import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
-import { createBreadcrumbSchema } from '@/lib/schema';
+import { createBreadcrumbSchema, createOrganizationSchema, createPersonSchema } from '@/lib/schema';
 import LazyImage from '@/components/LazyImage';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -25,18 +25,59 @@ const TeamMemberSkeleton = () => (
 
 const About = () => {
   const { language, t, languageMeta } = useLanguage();
+  const [teamMembers, setTeamMembers] = useState<any[]>([]);
+  const [schemaMarkup, setSchemaMarkup] = useState<any[]>([]);
   
-  // Schema markup for About page
-  const breadcrumbSchema = createBreadcrumbSchema([
-    { name: t('common.home'), url: `https://webabc.com/${language}` },
-    { name: t('common.about'), url: `https://webabc.com/${language}/about` }
-  ]);
+  useEffect(() => {
+    // Load team members from translations
+    const teamData = t('about.teamMembers', { fallback: '[]' });
+    
+    if (typeof teamData === 'string') {
+      try {
+        setTeamMembers(JSON.parse(teamData));
+      } catch (e) {
+        console.error('Failed to parse team members data', e);
+        setTeamMembers([]);
+      }
+    } else if (Array.isArray(teamData)) {
+      setTeamMembers(teamData);
+    }
+  }, [language, t]);
+  
+  useEffect(() => {
+    // Create schema markup
+    const baseUrl = window.location.origin;
+    
+    // Breadcrumb schema
+    const breadcrumbSchema = createBreadcrumbSchema([
+      { name: t('common.home'), url: `${baseUrl}/${language}` },
+      { name: t('common.about'), url: `${baseUrl}/${language}/about` }
+    ]);
 
-  const teamMembers = [
-    { id: 1, name: language === 'en' ? "Ali Rezaei" : language === 'ar' ? "علي رضائي" : "علی رضایی", role: language === 'en' ? "Senior Developer" : language === 'ar' ? "مطور رئيسي" : "توسعه دهنده ارشد" },
-    { id: 2, name: language === 'en' ? "Maryam Ahmadi" : language === 'ar' ? "مريم أحمدي" : "مریم احمدی", role: language === 'en' ? "SEO Specialist" : language === 'ar' ? "أخصائي تحسين محركات البحث" : "متخصص سئو" },
-    { id: 3, name: language === 'en' ? "Mohammad Karimi" : language === 'ar' ? "محمد كريمي" : "محمد کریمی", role: language === 'en' ? "UI Designer" : language === 'ar' ? "مصمم واجهة المستخدم" : "طراح رابط کاربری" }
-  ];
+    // Organization schema
+    const orgSchema = createOrganizationSchema(
+      baseUrl,
+      `${baseUrl}/images/logo.jpg`,
+      [
+        { telephone: "+1234567890", contactType: "customer service" }
+      ],
+      language
+    );
+    
+    // Person schemas for team members
+    const personSchemas = teamMembers.map((member, index) => 
+      createPersonSchema(
+        member.name,
+        member.role,
+        member.bio,
+        `/images/team-${index + 1}.jpg`,
+        undefined,
+        language
+      )
+    );
+    
+    setSchemaMarkup([breadcrumbSchema, orgSchema, ...personSchemas]);
+  }, [teamMembers, language, t]);
 
   return (
     <div className="min-h-screen flex flex-col" dir={languageMeta.direction}>
@@ -46,7 +87,7 @@ const About = () => {
         keywords={t('seo.keywords')}
       />
       
-      <SchemaMarkup schema={breadcrumbSchema} />
+      {schemaMarkup.length > 0 && <SchemaMarkup schema={schemaMarkup} />}
       
       <Navbar />
       
@@ -74,15 +115,18 @@ const About = () => {
           <div className="text-center">
             <h2 className="text-3xl font-bold text-gray-900 mb-8">{t('about.team')}</h2>
             <div className="grid md:grid-cols-3 gap-8">
-              {teamMembers.map((member) => (
-                <Suspense key={member.id} fallback={<TeamMemberSkeleton />}>
+              {teamMembers.map((member, index) => (
+                <Suspense key={index} fallback={<TeamMemberSkeleton />}>
                   <Card className="p-6 border-0 bg-white shadow-lg">
                     <Avatar className="w-24 h-24 mx-auto mb-4">
-                      <AvatarImage src={`/images/team-${member.id}.jpg`} />
+                      <AvatarImage src={`/images/team-${index + 1}.jpg`} />
                       <AvatarFallback>{member.name.substring(0, 2)}</AvatarFallback>
                     </Avatar>
                     <h3 className="text-xl font-semibold text-gray-800 mb-2">{member.name}</h3>
                     <p className="text-gray-600">{member.role}</p>
+                    {member.bio && (
+                      <p className="text-gray-500 mt-4 text-sm">{member.bio}</p>
+                    )}
                   </Card>
                 </Suspense>
               ))}

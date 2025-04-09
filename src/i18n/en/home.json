@@ -1,0 +1,33 @@
+
+{
+  "heroTitle": "WebABC | Professional SEO and Web Design Services",
+  "heroDescription": "Provider of specialized SEO and search engine optimization services, web design and web application development with the latest technologies",
+  "heroKeywords": "website design, SEO, site optimization, web design, digital marketing, WordPress",
+  "hero": {
+    "title": "Elevate Your Digital Presence with Expert Web Solutions",
+    "description": "We help businesses grow online with professional web development and SEO strategies that deliver real results.",
+    "primaryCta": "Explore Services",
+    "secondaryCta": "View Portfolio",
+    "imageAlt": "Digital marketing and web development illustration"
+  },
+  "footer": {
+    "companySince": "© 2024 WebABC. All rights reserved.",
+    "aboutCompany": "WebABC, specializing in SEO services and web development with over 10 years of experience in the digital marketing industry.",
+    "services": "Services",
+    "company": "Company",
+    "resources": "Resources",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "cookiePolicy": "Cookie Policy",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "followUs": "Follow Us",
+    "newsletter": "Newsletter",
+    "subscribePrompt": "Subscribe to receive our latest news",
+    "subscribeButton": "Subscribe",
+    "yourEmail": "Your email address",
+    "contactInfo": "Contact Information",
+    "quickLinks": "Quick Links"
+  }
+}

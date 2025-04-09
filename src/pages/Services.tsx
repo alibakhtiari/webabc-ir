@@ -1,61 +1,67 @@
 
-import React, { lazy, Suspense } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { createBreadcrumbSchema } from '@/lib/schema';
+import { createBreadcrumbSchema, createOrganizationSchema, createServiceListSchema } from '@/lib/schema';
 import { ChevronRight } from 'lucide-react';
 
 const ServicesOverview = () => {
   const { t, language, languageMeta } = useLanguage();
+  const [schemaMarkup, setSchemaMarkup] = useState<any[]>([]);
   
-  // Generate breadcrumb schema
-  const breadcrumbSchema = createBreadcrumbSchema([
-    { name: t('common.home'), url: `${window.location.origin}/${language}` },
-    { name: t('common.services'), url: `${window.location.origin}/${language}/services` }
-  ]);
+  useEffect(() => {
+    // Generate schemas
+    const baseUrl = window.location.origin;
+    
+    // Breadcrumb schema
+    const breadcrumbSchema = createBreadcrumbSchema([
+      { name: t('common.home'), url: `${baseUrl}/${language}` },
+      { name: t('common.services'), url: `${baseUrl}/${language}/services` }
+    ]);
 
-  // Services schema
-  const servicesSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "itemListElement": [
+    // Organization schema
+    const orgSchema = createOrganizationSchema(
+      baseUrl,
+      `${baseUrl}/images/logo.jpg`,
+      [
+        { telephone: "+1234567890", contactType: "customer service" }
+      ],
+      language
+    );
+    
+    // Service list schema
+    const serviceListSchema = createServiceListSchema([
       {
-        "@type": "ListItem",
-        "position": 1,
-        "name": t('services.seoTitle'),
-        "url": `${window.location.origin}/${language}/seo-services`,
-        "description": t('services.seoDescription')
+        name: t('services.seoTitle'),
+        description: t('services.seoDescription'),
+        url: `${baseUrl}/${language}/seo-services`
       },
       {
-        "@type": "ListItem",
-        "position": 2,
-        "name": t('services.webDevTitle'),
-        "url": `${window.location.origin}/${language}/web-development-services`,
-        "description": t('services.webDevDescription')
+        name: t('services.webDevTitle'),
+        description: t('services.webDevDescription'),
+        url: `${baseUrl}/${language}/web-development-services`
       },
       {
-        "@type": "ListItem",
-        "position": 3,
-        "name": t('wordpress.title'),
-        "url": `${window.location.origin}/${language}/wordpress-woocommerce-development`,
-        "description": t('wordpress.subtitle')
+        name: t('wordpress.title'),
+        description: t('wordpress.subtitle'),
+        url: `${baseUrl}/${language}/wordpress-woocommerce-development`
       },
       {
-        "@type": "ListItem",
-        "position": 4,
-        "name": t('services.localSeoTitle'),
-        "url": `${window.location.origin}/${language}/local-seo-services`,
-        "description": t('services.localSeoDescription')
+        name: t('services.localSeoTitle'),
+        description: t('services.localSeoDescription'),
+        url: `${baseUrl}/${language}/local-seo-services`
       }
-    ]
-  };
-
+    ], language);
+    
+    setSchemaMarkup([breadcrumbSchema, orgSchema, serviceListSchema]);
+  }, [language, t]);
+  
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col" dir={languageMeta.direction}>
       <SEOHead 
         title={t('seo.servicesTitle')}
         description={t('seo.servicesDescription')}
@@ -63,7 +69,7 @@ const ServicesOverview = () => {
         ogType="website"
       />
 
-      <SchemaMarkup schema={[breadcrumbSchema, servicesSchema]} />
+      {schemaMarkup.length > 0 && <SchemaMarkup schema={schemaMarkup} />}
       
       <Navbar />
 
@@ -97,27 +103,27 @@ const ServicesOverview = () => {
                 </p>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <ChevronRight className={`h-5 w-5 text-primary ${languageMeta.direction === 'rtl' ? 'ml-2' : 'mr-2'}`} />
                     <span>{t('seo.onPageSeo')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <ChevronRight className={`h-5 w-5 text-primary ${languageMeta.direction === 'rtl' ? 'ml-2' : 'mr-2'}`} />
                     <span>{t('seo.offPageSeo')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <ChevronRight className={`h-5 w-5 text-primary ${languageMeta.direction === 'rtl' ? 'ml-2' : 'mr-2'}`} />
                     <span>{t('seo.technicalSeo')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <ChevronRight className={`h-5 w-5 text-primary ${languageMeta.direction === 'rtl' ? 'ml-2' : 'mr-2'}`} />
                     <span>{t('seo.localSeo')}</span>
                   </li>
                 </ul>
-                <Link to={`/${language}/seo-services`} className="inline-flex items-center text-primary font-medium hover:underline">
+                <Link to={`/${language}/seo-services`} className={`inline-flex items-center text-primary font-medium hover:underline ${languageMeta.direction === 'rtl' ? 'flex-row-reverse' : ''}`}>
                   {t('common.readMore')}
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 ${languageMeta.direction === 'rtl' ? 'ml-2' : 'ml-2'}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
+                    <polyline points={languageMeta.direction === 'rtl' ? "19 5 12 12 19 19" : "12 5 19 12 12 19"}></polyline>
                   </svg>
                 </Link>
               </div>
@@ -137,27 +143,27 @@ const ServicesOverview = () => {
                 </p>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <ChevronRight className={`h-5 w-5 text-primary ${languageMeta.direction === 'rtl' ? 'ml-2' : 'mr-2'}`} />
                     <span>{t('services.feature.uiuxDesign')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <ChevronRight className={`h-5 w-5 text-primary ${languageMeta.direction === 'rtl' ? 'ml-2' : 'mr-2'}`} />
                     <span>{t('services.feature.responsiveDesign')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <ChevronRight className={`h-5 w-5 text-primary ${languageMeta.direction === 'rtl' ? 'ml-2' : 'mr-2'}`} />
                     <span>{t('services.feature.apiIntegration')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <ChevronRight className={`h-5 w-5 text-primary ${languageMeta.direction === 'rtl' ? 'ml-2' : 'mr-2'}`} />
                     <span>{t('services.feature.database')}</span>
                   </li>
                 </ul>
-                <Link to={`/${language}/web-development-services`} className="inline-flex items-center text-primary font-medium hover:underline">
+                <Link to={`/${language}/web-development-services`} className={`inline-flex items-center text-primary font-medium hover:underline ${languageMeta.direction === 'rtl' ? 'flex-row-reverse' : ''}`}>
                   {t('common.readMore')}
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 ${languageMeta.direction === 'rtl' ? 'ml-2' : 'ml-2'}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
+                    <polyline points={languageMeta.direction === 'rtl' ? "19 5 12 12 19 19" : "12 5 19 12 12 19"}></polyline>
                   </svg>
                 </Link>
               </div>
@@ -178,27 +184,27 @@ const ServicesOverview = () => {
                 </p>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <ChevronRight className={`h-5 w-5 text-primary ${languageMeta.direction === 'rtl' ? 'ml-2' : 'mr-2'}`} />
                     <span>{t('wordpress.themeCustomization')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <ChevronRight className={`h-5 w-5 text-primary ${languageMeta.direction === 'rtl' ? 'ml-2' : 'mr-2'}`} />
                     <span>{t('wordpress.pluginDevelopment')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <ChevronRight className={`h-5 w-5 text-primary ${languageMeta.direction === 'rtl' ? 'ml-2' : 'mr-2'}`} />
                     <span>{t('wordpress.ecommerceSetup')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <ChevronRight className={`h-5 w-5 text-primary ${languageMeta.direction === 'rtl' ? 'ml-2' : 'mr-2'}`} />
                     <span>{t('wordpress.maintenanceSupport')}</span>
                   </li>
                 </ul>
-                <Link to={`/${language}/wordpress-woocommerce-development`} className="inline-flex items-center text-primary font-medium hover:underline">
+                <Link to={`/${language}/wordpress-woocommerce-development`} className={`inline-flex items-center text-primary font-medium hover:underline ${languageMeta.direction === 'rtl' ? 'flex-row-reverse' : ''}`}>
                   {t('common.readMore')}
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 ${languageMeta.direction === 'rtl' ? 'ml-2' : 'ml-2'}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
+                    <polyline points={languageMeta.direction === 'rtl' ? "19 5 12 12 19 19" : "12 5 19 12 12 19"}></polyline>
                   </svg>
                 </Link>
               </div>
@@ -217,27 +223,27 @@ const ServicesOverview = () => {
                 </p>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <ChevronRight className={`h-5 w-5 text-primary ${languageMeta.direction === 'rtl' ? 'ml-2' : 'mr-2'}`} />
                     <span>{t('seo.feature.gmb')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <ChevronRight className={`h-5 w-5 text-primary ${languageMeta.direction === 'rtl' ? 'ml-2' : 'mr-2'}`} />
                     <span>{t('seo.feature.reviews')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <ChevronRight className={`h-5 w-5 text-primary ${languageMeta.direction === 'rtl' ? 'ml-2' : 'mr-2'}`} />
                     <span>{t('seo.feature.localKeywords')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary mr-2" />
+                    <ChevronRight className={`h-5 w-5 text-primary ${languageMeta.direction === 'rtl' ? 'ml-2' : 'mr-2'}`} />
                     <span>{t('seo.feature.nearMe')}</span>
                   </li>
                 </ul>
-                <Link to={`/${language}/local-seo-services`} className="inline-flex items-center text-primary font-medium hover:underline">
+                <Link to={`/${language}/local-seo-services`} className={`inline-flex items-center text-primary font-medium hover:underline ${languageMeta.direction === 'rtl' ? 'flex-row-reverse' : ''}`}>
                   {t('common.readMore')}
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 ${languageMeta.direction === 'rtl' ? 'ml-2' : 'ml-2'}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
+                    <polyline points={languageMeta.direction === 'rtl' ? "19 5 12 12 19 19" : "12 5 19 12 12 19"}></polyline>
                   </svg>
                 </Link>
               </div>

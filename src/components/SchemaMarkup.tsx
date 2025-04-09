@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 import { getPathWithoutLanguage, generateLanguageAlternates } from '@/lib/languageUtils';
 
 interface SchemaMarkupProps {
-  schema: Record<string, any>;
+  schema: Record<string, any> | Array<Record<string, any>>;
 }
 
 const SchemaMarkup = ({ schema }: SchemaMarkupProps) => {
@@ -14,20 +14,28 @@ const SchemaMarkup = ({ schema }: SchemaMarkupProps) => {
   const location = useLocation();
   const pathWithoutLang = getPathWithoutLanguage(location.pathname);
   
-  // Add language attributes to schema if not already present
-  const enhancedSchema = {
-    ...schema,
-    inLanguage: schema.inLanguage || language
-  };
+  // Convert schema to array if it's not already
+  const schemas = Array.isArray(schema) ? schema : [schema];
+  
+  // Add language attributes to schemas if not already present
+  const enhancedSchemas = schemas.map(schemaItem => {
+    return {
+      ...schemaItem,
+      inLanguage: schemaItem.inLanguage || language
+    };
+  });
 
   // Generate language alternate URLs for SEO
   const alternates = generateLanguageAlternates(pathWithoutLang, language);
 
   return (
     <Helmet>
-      <script type="application/ld+json">
-        {JSON.stringify(enhancedSchema)}
-      </script>
+      {/* Add each schema as a separate script */}
+      {enhancedSchemas.map((schemaItem, index) => (
+        <script key={index} type="application/ld+json">
+          {JSON.stringify(schemaItem)}
+        </script>
+      ))}
       
       {/* Add alternate language links */}
       {alternates.map(alt => (

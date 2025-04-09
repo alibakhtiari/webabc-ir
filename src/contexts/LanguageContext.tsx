@@ -3,10 +3,8 @@ import React, { createContext, useState, useContext, useEffect, ReactNode } from
 import { useNavigate, useLocation } from 'react-router-dom';
 import { getPathWithoutLanguage, isLanguageRootPath, normalizePath, getPageNameFromPath } from '../lib/languageUtils';
 
-// Import all language files
-import faTranslations from '../i18n/fa.json';
-import enTranslations from '../i18n/en.json';
-import arTranslations from '../i18n/ar.json';
+// Import translation system
+import { translations, getTranslation } from '../i18n';
 
 // Define supported languages
 export type SupportedLanguage = 'fa' | 'en' | 'ar';
@@ -37,13 +35,6 @@ export const languages: Record<SupportedLanguage, LanguageMeta> = {
     nativeName: 'العربية',
     direction: 'rtl',
   },
-};
-
-// Combine all translations
-const translations: Record<SupportedLanguage, any> = {
-  fa: faTranslations,
-  en: enTranslations,
-  ar: arTranslations,
 };
 
 interface LanguageContextType {
@@ -92,64 +83,44 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     navigate(newPath);
   };
 
-  // Try to get a value from nested objects using a dot-separated path
-  const getNestedValue = (obj: any, path: string[]): any => {
-    let value = obj;
-    for (const key of path) {
-      if (value && typeof value === 'object' && key in value) {
-        value = value[key];
-      } else {
-        return undefined;
-      }
-    }
-    return value;
-  };
-
   // Translator function with page-specific context
   const t = (key: string, options?: { fallback?: string }): string => {
-    const keys = key.split('.');
-    const currentTranslation = translations[language];
-    const pageName = getPageNameFromPath(location.pathname);
-    
-    // Try page-specific translation first
-    if (!key.startsWith('common.') && !key.startsWith('page.') && pageName) {
-      const pageSpecificKey = `page.${pageName}.${key}`;
-      const pageSpecificValue = getNestedValue(currentTranslation, pageSpecificKey.split('.'));
-      if (typeof pageSpecificValue === 'string') {
-        return pageSpecificValue;
+    try {
+      // Try to get the translation value
+      const value = getTranslation(language, key);
+      
+      if (typeof value === 'string') {
+        return value;
       }
-    }
-    
-    // Try direct translation
-    const directValue = getNestedValue(currentTranslation, keys);
-    if (typeof directValue === 'string') {
-      return directValue;
-    }
-    
-    // Try English fallback
-    if (language !== 'en') {
-      const englishValue = getNestedValue(translations.en, keys);
-      if (typeof englishValue === 'string') {
-        console.info(`Using English fallback for: ${key}`);
-        return englishValue;
+      
+      // Try English fallback
+      if (language !== 'en') {
+        const englishValue = getTranslation('en', key);
+        if (typeof englishValue === 'string') {
+          console.info(`Using English fallback for: ${key}`);
+          return englishValue;
+        }
       }
-    }
 
-    // Check if a custom fallback was provided
-    if (options?.fallback) {
-      return options.fallback;
+      // Check if a custom fallback was provided
+      if (options?.fallback) {
+        return options.fallback;
+      }
+      
+      // Log the missing key and return the original key as fallback
+      console.warn(`Translation key not found: ${key} in ${language}`);
+      return key;
+    } catch (error) {
+      console.error(`Error translating key: ${key}`, error);
+      return options?.fallback || key;
     }
-    
-    // Log the missing key and return the original key as fallback
-    console.warn(`Translation key not found: ${key} in ${language}`);
-    return key;
   };
 
   // Get SEO title with site name
   const getSeoTitle = (title?: string): string => {
     if (!title) {
       const pageName = getPageNameFromPath(location.pathname);
-      const pageTitle = t(`${pageName}.title`, { fallback: t('seo.defaultTitle') });
+      const pageTitle = t(`seo.${pageName}Title`, { fallback: t('seo.defaultTitle') });
       return pageTitle;
     }
     return `${title} | ${t('seo.siteName')}`;
@@ -159,7 +130,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const getSeoDescription = (description?: string): string => {
     if (!description) {
       const pageName = getPageNameFromPath(location.pathname);
-      return t(`${pageName}.description`, { fallback: t('seo.defaultDescription') });
+      return t(`seo.${pageName}Description`, { fallback: t('seo.defaultDescription') });
     }
     return description;
   };
