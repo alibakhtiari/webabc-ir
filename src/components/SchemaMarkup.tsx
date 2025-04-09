@@ -7,9 +7,11 @@ import { getPathWithoutLanguage, generateLanguageAlternates } from '@/lib/langua
 
 interface SchemaMarkupProps {
   schema: Record<string, any> | Array<Record<string, any>>;
+  noIndex?: boolean;
+  noFollow?: boolean;
 }
 
-const SchemaMarkup = ({ schema }: SchemaMarkupProps) => {
+const SchemaMarkup = ({ schema, noIndex = false, noFollow = false }: SchemaMarkupProps) => {
   const { language } = useLanguage();
   const location = useLocation();
   const pathWithoutLang = getPathWithoutLanguage(location.pathname);
@@ -19,15 +21,18 @@ const SchemaMarkup = ({ schema }: SchemaMarkupProps) => {
   
   // Add language attributes to schemas if not already present
   const enhancedSchemas = schemas.map(schemaItem => {
-    // Only add inLanguage if it's a type that supports it
+    // Only add inLanguage if it's a type that supports it and doesn't already have it
     const supportsLanguage = [
       'Article', 'BlogPosting', 'WebPage', 'ItemList', 'CollectionPage', 
-      'Service', 'Product', 'Review', 'Organization', 'Person', 'BreadcrumbList'
+      'Service', 'Product', 'Review', 'Organization', 'Person', 'FAQPage',
+      'BreadcrumbList', 'Event', 'Course', 'Recipe', 'JobPosting', 'VideoObject'
     ].includes(schemaItem['@type']);
     
     return {
       ...schemaItem,
-      ...(supportsLanguage && !schemaItem.inLanguage ? { inLanguage: language } : {})
+      ...(supportsLanguage && !schemaItem.inLanguage ? { 
+        inLanguage: language === 'en' ? 'en-US' : language === 'ar' ? 'ar-SA' : 'fa-IR' 
+      } : {})
     };
   });
 
@@ -65,6 +70,14 @@ const SchemaMarkup = ({ schema }: SchemaMarkupProps) => {
         rel="canonical" 
         href={`${window.location.origin}/${language}${pathWithoutLang}`} 
       />
+      
+      {/* Add robot meta tags if needed */}
+      {(noIndex || noFollow) && (
+        <meta 
+          name="robots" 
+          content={`${noIndex ? 'noindex' : 'index'},${noFollow ? 'nofollow' : 'follow'}`}
+        />
+      )}
     </Helmet>
   );
 };

@@ -7,6 +7,8 @@
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#4361ee",
+  "orientation": "any",
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "/logo-192.png",
@@ -19,6 +21,20 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/app-screenshot-1.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/images/app-screenshot-2.jpg",
+      "sizes": "720x1280",
+      "type": "image/jpeg",
+      "form_factor": "narrow"
     }
   ],
   "shortcuts": [
@@ -35,6 +51,23 @@
       "description": "View our work",
       "url": "/portfolio",
       "icons": [{ "src": "/portfolio-icon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Services",
+      "short_name": "Services",
+      "description": "See our services",
+      "url": "/services",
+      "icons": [{ "src": "/services-icon.png", "sizes": "96x96" }]
     }
-  ]
+  ],
+  "categories": [
+    "business",
+    "productivity",
+    "web design",
+    "digital marketing"
+  ],
+  "lang": "en",
+  "dir": "ltr",
+  "related_applications": [],
+  "iarc_rating_id": ""
 }

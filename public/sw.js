@@ -1,25 +1,22 @@
+// Service Worker for WebABC PWA
+const CACHE_NAME = 'webabc-cache-v1';
 
-// Service Worker for caching and offline functionality
-
-// Cache version - update this when making significant changes
-const CACHE_VERSION = 'v1';
-const CACHE_NAME = `webabc-cache-${CACHE_VERSION}`;
-
-// Assets to cache on install
+// Assets to cache initially
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
   '/favicon.svg',
-  '/logo.png',
   '/manifest.json',
-  // Add other critical assets here
+  '/logo-192.png',
+  '/logo-512.png',
+  '/images/hero-image.png'
 ];
 
-// Install event - precache critical assets
-self.addEventListener('install', (event) => {
+// Install event
+self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then((cache) => {
+      .then(cache => {
         console.log('Opened cache');
         return cache.addAll(PRECACHE_ASSETS);
       })
@@ -28,13 +25,14 @@ self.addEventListener('install', (event) => {
 });
 
 // Activate event - clean up old caches
-self.addEventListener('activate', (event) => {
+self.addEventListener('activate', event => {
+  const cacheWhitelist = [CACHE_NAME];
+  
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
+    caches.keys().then(cacheNames => {
       return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
-            console.log('Deleting old cache:', cacheName);
+        cacheNames.map(cacheName => {
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
             return caches.delete(cacheName);
           }
         })
@@ -43,60 +41,79 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch event - serve from cache or network
-self.addEventListener('fetch', (event) => {
-  // Skip non-GET requests and browser extensions
-  if (
-    event.request.method !== 'GET' ||
-    !event.request.url.startsWith(self.location.origin)
-  ) {
+// Fetch event - network first with cache fallback for pages, cache first for assets
+self.addEventListener('fetch', event => {
+  // Skip cross-origin requests
+  if (!event.request.url.startsWith(self.location.origin)) {
     return;
   }
-
-  // For HTML, always fetch fresh from network, fallback to cache
-  if (event.request.headers.get('Accept').includes('text/html')) {
+  
+  // For page navigation requests, use network first strategy
+  if (event.request.mode === 'navigate') {
     event.respondWith(
       fetch(event.request)
-        .then((response) => {
-          // Clone the response for caching
+        .then(response => {
+          // Cache the latest version of the page
           const responseToCache = response.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseToCache);
-          });
+          caches.open(CACHE_NAME)
+            .then(cache => {
+              cache.put(event.request, responseToCache);
+            });
+          
           return response;
         })
-        .catch(() => caches.match(event.request))
+        .catch(() => {
+          // If network fails, try to respond from cache
+          return caches.match(event.request);
+        })
     );
     return;
   }
-
-  // For images and other assets, use cache-first strategy
+  
+  // For static assets, use cache first strategy
+  if (event.request.url.match(/\.(js|css|png|jpg|jpeg|gif|svg|ico|webp|woff|woff2)$/)) {
+    event.respondWith(
+      caches.match(event.request)
+        .then(response => {
+          // Return from cache if available
+          if (response) {
+            return response;
+          }
+          
+          // Otherwise fetch from network and cache
+          return fetch(event.request)
+            .then(networkResponse => {
+              const responseToCache = networkResponse.clone();
+              caches.open(CACHE_NAME)
+                .then(cache => {
+                  cache.put(event.request, responseToCache);
+                });
+              
+              return networkResponse;
+            });
+        })
+    );
+    return;
+  }
+  
+  // For all other requests, try network first
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      
-      return fetch(event.request).then((response) => {
-        // Don't cache errors or non-successfull responses
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-          return response;
-        }
-
-        // Clone and cache successful responses
-        const responseToCache = response.clone();
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseToCache);
-        });
-
-        return response;
-      });
-    })
+    fetch(event.request)
+      .catch(() => {
+        return caches.match(event.request);
+      })
   );
 });
 
+// Handle messages from clients
+self.addEventListener('message', event => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
+
 // Handle push notifications
-self.addEventListener('push', (event) => {
+self.addEventListener('push', event => {
   const data = event.data.json();
   const options = {
     body: data.body,
@@ -111,7 +128,7 @@ self.addEventListener('push', (event) => {
 });
 
 // Handle notification click
-self.addEventListener('notificationclick', (event) => {
+self.addEventListener('notificationclick', event => {
   event.notification.close();
   event.waitUntil(
     clients.openWindow(event.notification.data || '/')

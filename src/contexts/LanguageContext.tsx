@@ -69,6 +69,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const [language, setLanguageState] = useState<SupportedLanguage>(detectUserLanguage());
   const navigate = useNavigate();
   const location = useLocation();
+  const [isInitialized, setIsInitialized] = useState(false);
 
   // Handle language change
   const setLanguage = (lang: SupportedLanguage) => {
@@ -83,71 +84,68 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     navigate(newPath);
   };
 
-  // Deep object access using dot notation
-  const deepGet = (obj: any, path: string): any => {
-    try {
-      return path.split('.').reduce((prev, curr) => {
-        return prev && prev[curr];
-      }, obj);
-    } catch (error) {
-      console.error(`Error accessing path: ${path}`, error);
-      return undefined;
-    }
-  };
-
-  // Enhanced translator function with nested object support
+  // Improved translation function with better error handling and fallbacks
   const t = (key: string, options?: { fallback?: string }): string => {
     try {
-      // Try to get the translation directly
+      if (!key) return options?.fallback || 'MISSING_KEY';
+      
+      // Split the key into category and path parts
       const parts = key.split('.');
+      if (parts.length < 2) {
+        console.warn(`Invalid translation key format: ${key}. Format should be 'category.key'`);
+        return options?.fallback || key;
+      }
+      
       const category = parts[0];
-      const path = parts.slice(1).join('.');
-      let value;
-
-      if (translations[language] && translations[language][category]) {
-        value = deepGet(translations[language][category], path);
-      }
-
-      if (typeof value === 'string') {
-        return value;
-      }
-
-      // Handle special case for portfolio.caseStudies path
-      if (key.startsWith('portfolio.caseStudies') || key.startsWith('caseStudies')) {
-        // Try to get from portfolio.caseStudies if key starts with caseStudies
-        const modifiedKey = key.startsWith('caseStudies') 
-          ? `portfolio.${key}` 
-          : key;
+      const path = parts.slice(1);
+      
+      // Check if the category exists in translations
+      if (!translations[language] || !translations[language][category]) {
+        console.warn(`Translation category not found: ${category} in ${language}`);
         
-        const modifiedParts = modifiedKey.split('.');
-        const modifiedCategory = modifiedParts[0];
-        const modifiedPath = modifiedParts.slice(1).join('.');
-        
-        if (translations[language] && translations[language][modifiedCategory]) {
-          value = deepGet(translations[language][modifiedCategory], modifiedPath);
-          if (typeof value === 'string') {
-            return value;
+        // Try English fallback for category
+        if (language !== 'en' && translations.en && translations.en[category]) {
+          let result = translations.en[category];
+          for (const pathPart of path) {
+            if (!result || typeof result !== 'object' || !(pathPart in result)) {
+              break;
+            }
+            result = result[pathPart];
+          }
+          
+          if (typeof result === 'string') {
+            return result;
           }
         }
+        
+        return options?.fallback || key;
       }
       
-      // Try English fallback
-      if (language !== 'en') {
-        const englishValue = getTranslation('en', key);
-        if (typeof englishValue === 'string') {
-          console.info(`Using English fallback for: ${key}`);
-          return englishValue;
+      // Navigate through path to get the translation
+      let result = translations[language][category];
+      for (const pathPart of path) {
+        if (!result || typeof result !== 'object' || !(pathPart in result)) {
+          console.warn(`Translation path not found: ${key} in ${language}`);
+          
+          // Try English fallback for specific key
+          if (language !== 'en') {
+            const englishValue = getTranslation('en', key);
+            if (typeof englishValue === 'string') {
+              return englishValue;
+            }
+          }
+          
+          return options?.fallback || key;
         }
-      }
-
-      // Check if a custom fallback was provided
-      if (options?.fallback) {
-        return options.fallback;
+        result = result[pathPart];
       }
       
-      // Log the missing key and return the original key as fallback
-      console.warn(`Translation key not found: ${key} in ${language}`);
-      return key;
+      if (typeof result !== 'string') {
+        console.warn(`Translation for ${key} is not a string:`, result);
+        return options?.fallback || key;
+      }
+      
+      return result;
     } catch (error) {
       console.error(`Error translating key: ${key}`, error);
       return options?.fallback || key;
@@ -181,24 +179,31 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
   // Initialize route based on selected language
   useEffect(() => {
+    if (isInitialized) return;
+    
     // Check if we need to redirect to a language-specific route
     const pathSegments = location.pathname.split('/').filter(Boolean);
     
     if (pathSegments.length === 0) {
       // Root path "/" - redirect to language home
       navigate(`/${language}`, { replace: true });
+      setIsInitialized(true);
     } else if (!Object.keys(languages).includes(pathSegments[0] as SupportedLanguage)) {
       // Path doesn't start with a language code - add the current language
       navigate(`/${language}${location.pathname}`, { replace: true });
+      setIsInitialized(true);
     } else if (pathSegments[0] !== language) {
       // URL language is different from state language - update state
       const urlLang = pathSegments[0] as SupportedLanguage;
       if (Object.keys(languages).includes(urlLang)) {
         setLanguageState(urlLang);
         localStorage.setItem('language', urlLang);
+        setIsInitialized(true);
       }
+    } else {
+      setIsInitialized(true);
     }
-  }, [location.pathname]);
+  }, [location.pathname, isInitialized, navigate, language]);
 
   return (
     <LanguageContext.Provider 

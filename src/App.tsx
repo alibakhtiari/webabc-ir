@@ -33,6 +33,9 @@ const WordpressWoocommerceDevelopment = lazy(() => import("./pages/WordpressWooc
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
 
+// Import portfolio data - fix the import method
+import { portfolioItems } from './lib/portfolioData';
+
 // Create and configure QueryClient
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -43,11 +46,6 @@ const queryClient = new QueryClient({
     },
   },
 });
-
-// Dynamically import portfolio data
-const portfolioData = lazy(() => import('./lib/portfolioData').then(module => ({
-  default: module.portfolioItems
-})));
 
 const App = () => {
   // Register service worker for PWA
@@ -84,7 +82,7 @@ const App = () => {
                       <Route path={`/${lang}/portfolio`} element={<Portfolio />} />
                       <Route path={`/${lang}/portfolio/:id`} element={
                         <Suspense fallback={<LoadingScreen />}>
-                          <PortfolioItemPage portfolioItems={[]} />
+                          <PortfolioItemPage portfolioItems={portfolioItems} />
                         </Suspense>
                       } />
                       <Route path={`/${lang}/case-studies`} element={<CaseStudies />} />
