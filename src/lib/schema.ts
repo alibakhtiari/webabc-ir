@@ -70,6 +70,32 @@ export const createServiceSchema = (
 };
 
 /**
+ * Create service list schema for multiple services
+ */
+export const createServiceListSchema = (
+  services: Array<{name: string, description: string, url: string}>,
+  language: SupportedLanguage = 'en'
+) => {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: services.map((service, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Service',
+        name: service.name,
+        description: service.description,
+        url: service.url,
+        inLanguage: language === 'en' ? 'en-US' : language === 'ar' ? 'ar-SA' : 'fa-IR'
+      }
+    })),
+    numberOfItems: services.length,
+    inLanguage: language === 'en' ? 'en-US' : language === 'ar' ? 'ar-SA' : 'fa-IR'
+  };
+};
+
+/**
  * Create person schema for about page
  */
 export const createPersonSchema = (

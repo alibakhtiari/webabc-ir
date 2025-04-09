@@ -53,9 +53,9 @@ const PortfolioItemPage: React.FC<PortfolioItemProps> = ({ portfolioItems }) => 
   
   // Schema markup for portfolio item
   const breadcrumbSchema = createBreadcrumbSchema([
-    { name: language === 'en' ? 'Home' : language === 'ar' ? 'الرئيسية' : 'صفحه اصلی', url: `https://webabc.com/${language}` },
-    { name: t('common.portfolio'), url: `https://webabc.com/${language}/portfolio` },
-    { name: item.title, url: `https://webabc.com/${language}/portfolio/${item.id}` }
+    { name: language === 'en' ? 'Home' : language === 'ar' ? 'الرئيسية' : 'صفحه اصلی', item: `https://webabc.com/${language}` },
+    { name: t('common.portfolio'), item: `https://webabc.com/${language}/portfolio` },
+    { name: item.title, item: `https://webabc.com/${language}/portfolio/${item.id}` }
   ]);
   
   const portfolioItemSchema = {

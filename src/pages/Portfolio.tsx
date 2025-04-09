@@ -1,4 +1,3 @@
-
 import React, { lazy, Suspense, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -26,8 +25,8 @@ const Portfolio = () => {
 
   // Schema markup for portfolio page
   const breadcrumbSchema = createBreadcrumbSchema([
-    { name: t('common.home'), url: `${window.location.origin}/${language}` },
-    { name: t('common.portfolio'), url: `${window.location.origin}/${language}/portfolio` }
+    { name: t('common.home'), item: `${window.location.origin}/${language}` },
+    { name: t('common.portfolio'), item: `${window.location.origin}/${language}/portfolio` }
   ]);
 
   const portfolioSchema = {

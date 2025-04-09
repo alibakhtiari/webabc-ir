@@ -30,8 +30,8 @@ const Contact = () => {
   
   // Schema markup for Contact page
   const breadcrumbSchema = createBreadcrumbSchema([
-    { name: t('common.home'), url: `https://webabc.com/${language}` },
-    { name: t('common.contact'), url: `https://webabc.com/${language}/contact` }
+    { name: t('common.home'), item: `https://webabc.com/${language}` },
+    { name: t('common.contact'), item: `https://webabc.com/${language}/contact` }
   ]);
 
   const contactSchema = {

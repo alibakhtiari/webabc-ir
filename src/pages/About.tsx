@@ -1,4 +1,3 @@
-
 import React, { lazy, Suspense, useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -50,8 +49,8 @@ const About = () => {
     
     // Breadcrumb schema
     const breadcrumbSchema = createBreadcrumbSchema([
-      { name: t('common.home'), url: `${baseUrl}/${language}` },
-      { name: t('common.about'), url: `${baseUrl}/${language}/about` }
+      { name: t('common.home'), item: `${baseUrl}/${language}` },
+      { name: t('common.about'), item: `${baseUrl}/${language}/about` }
     ]);
 
     // Organization schema
@@ -69,9 +68,10 @@ const About = () => {
       createPersonSchema(
         member.name,
         member.role,
-        member.bio,
+        member.bio || '',
         `/images/team-${index + 1}.jpg`,
-        undefined,
+        `${baseUrl}/${language}/team/${member.name.toLowerCase().replace(/\s+/g, '-')}`,
+        [],
         language
       )
     );

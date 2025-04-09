@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -6,7 +5,7 @@ import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { createBreadcrumbSchema, createOrganizationSchema, createServiceListSchema } from '@/lib/schema';
+import { createBreadcrumbSchema, createOrganizationSchema, createServiceSchema } from '@/lib/schema';
 import { ChevronRight } from 'lucide-react';
 
 const ServicesOverview = () => {
@@ -19,8 +18,8 @@ const ServicesOverview = () => {
     
     // Breadcrumb schema
     const breadcrumbSchema = createBreadcrumbSchema([
-      { name: t('common.home'), url: `${baseUrl}/${language}` },
-      { name: t('common.services'), url: `${baseUrl}/${language}/services` }
+      { name: t('common.home'), item: `${baseUrl}/${language}` },
+      { name: t('common.services'), item: `${baseUrl}/${language}/services` }
     ]);
 
     // Organization schema
@@ -33,31 +32,55 @@ const ServicesOverview = () => {
       language
     );
     
-    // Service list schema
-    const serviceListSchema = createServiceListSchema([
-      {
-        name: t('services.seoTitle'),
-        description: t('services.seoDescription'),
-        url: `${baseUrl}/${language}/seo-services`
-      },
-      {
-        name: t('services.webDevTitle'),
-        description: t('services.webDevDescription'),
-        url: `${baseUrl}/${language}/web-development-services`
-      },
-      {
-        name: t('wordpress.title'),
-        description: t('wordpress.subtitle'),
-        url: `${baseUrl}/${language}/wordpress-woocommerce-development`
-      },
-      {
-        name: t('services.localSeoTitle'),
-        description: t('services.localSeoDescription'),
-        url: `${baseUrl}/${language}/local-seo-services`
-      }
-    ], language);
+    // Service schemas
+    const seoServiceSchema = createServiceSchema(
+      t('services.seoTitle'),
+      t('services.seoDescription'),
+      `${baseUrl}/${language}/seo-services`,
+      `${baseUrl}/images/seo-service.jpg`,
+      'WebABC',
+      'Worldwide',
+      language
+    );
     
-    setSchemaMarkup([breadcrumbSchema, orgSchema, serviceListSchema]);
+    const webDevServiceSchema = createServiceSchema(
+      t('services.webDevTitle'),
+      t('services.webDevDescription'),
+      `${baseUrl}/${language}/web-development-services`,
+      `${baseUrl}/images/webdev-service.jpg`,
+      'WebABC',
+      'Worldwide',
+      language
+    );
+    
+    const wordpressServiceSchema = createServiceSchema(
+      t('wordpress.title'),
+      t('wordpress.subtitle'),
+      `${baseUrl}/${language}/wordpress-woocommerce-development`,
+      `${baseUrl}/images/wordpress-service.jpg`,
+      'WebABC',
+      'Worldwide',
+      language
+    );
+    
+    const localSeoServiceSchema = createServiceSchema(
+      t('services.localSeoTitle'),
+      t('services.localSeoDescription'),
+      `${baseUrl}/${language}/local-seo-services`,
+      `${baseUrl}/images/localseo-service.jpg`,
+      'WebABC',
+      'Worldwide',
+      language
+    );
+    
+    setSchemaMarkup([
+      breadcrumbSchema, 
+      orgSchema, 
+      seoServiceSchema,
+      webDevServiceSchema,
+      wordpressServiceSchema,
+      localSeoServiceSchema
+    ]);
   }, [language, t]);
   
   return (

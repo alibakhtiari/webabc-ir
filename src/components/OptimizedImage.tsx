@@ -2,6 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
+// Add TypeScript declaration for gtag
+declare global {
+  interface Window {
+    gtag?: (command: string, action: string, params: any) => void;
+  }
+}
+
 interface OptimizedImageProps {
   src: string;
   alt: string;

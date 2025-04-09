@@ -69,5 +69,17 @@
   "lang": "en",
   "dir": "ltr",
   "related_applications": [],
-  "iarc_rating_id": ""
+  "iarc_rating_id": "",
+  "share_target": {
+    "action": "/share",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "scope": "/",
+  "id": "WebABC-2025",
+  "version": "1.0.0"
 }
