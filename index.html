@@ -1,40 +1,81 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WebABC - خدمات طراحی سایت و سئو</title>
-    <meta name="description" content="شرکت طراحی سایت و خدمات سئو وب آ ب ث | راهکارهای دیجیتال مارکتینگ" />
-    <meta name="author" content="WebABC" />
-    <meta property="og:image" content="/og-image.png" />
+    <meta name="description" content="WebABC - Professional web design and development agency" />
+    <title>WebABC - Professional Web Design and Development Agency</title>
     
-    <!-- Preload critical assets -->
-    <link rel="preload" href="/src/main.tsx" as="script" />
-    <link rel="preload" href="/og-image.png" as="image" />
-    
-    <!-- Preconnect to external domains -->
+    <!-- Preconnect to important domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
-    <!-- Add Vazir Font from Google Fonts - load asynchronously -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+    <!-- Critical CSS -->
+    <style>
+      :root {
+        --font-persian: 'Vazirmatn', system-ui, sans-serif;
+        --background: 0 0% 100%;
+        --foreground: 222.2 84% 4.9%;
+        --primary: 221.2 83.2% 53.3%;
+        --primary-foreground: 210 40% 98%;
+      }
+      
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --background: 222.2 84% 4.9%;
+          --foreground: 210 40% 98%;
+        }
+      }
+      
+      body {
+        margin: 0;
+        background-color: hsl(var(--background));
+        color: hsl(var(--foreground));
+        font-family: var(--font-persian), system-ui, sans-serif;
+      }
+      
+      .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+      }
+      
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+        border-left-color: hsl(var(--primary));
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
     
-    <!-- Meta tags for SEO -->
-    <meta name="theme-color" content="#4338ca" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- Fonts - load asynchronously -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     
-    <!-- Fallback for users with JavaScript disabled -->
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap" />
-    </noscript>
+    <!-- Non-blocking JS preload -->
+    <link rel="modulepreload" href="/src/main.tsx" />
   </head>
-
   <body>
-    <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
+    <div id="root">
+      <!-- Initial loading state -->
+      <div class="loading">
+        <div class="spinner"></div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx" defer></script>
   </body>
 </html>

@@ -22,7 +22,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   type = 'dropdown',
   className
 }) => {
-  const { language, setLanguage, languageMeta, t } = useLanguage();
+  const { language, setLanguage, languageMeta } = useLanguage();
   const location = useLocation();
   const navigate = useNavigate();
   const currentPathWithoutLang = getPathWithoutLanguage(location.pathname);
@@ -43,8 +43,9 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
 
   if (type === 'buttons') {
     return (
-      <div className={cn("flex space-x-2", className, {
-        "space-x-0 space-s-2": isRTL
+      <div className={cn("flex", className, {
+        "space-x-2 rtl:space-x-reverse": !isRTL,
+        "space-x-2": isRTL
       })}>
         {Object.entries(languages).map(([code, lang]) => (
           <Button
@@ -54,7 +55,6 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
             onClick={() => handleLanguageChange(code as SupportedLanguage)}
             className={cn(
               "px-3 min-w-[40px]",
-              isRTL ? "ms-2" : "me-2",
               language === code ? "bg-primary text-white" : "bg-transparent"
             )}
           >
@@ -77,7 +77,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
           <span>{languageMeta.nativeName}</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align={isRTL ? "end" : "end"} alignOffset={0} side="bottom">
+      <DropdownMenuContent align="end" alignOffset={0}>
         {Object.entries(languages).map(([code, lang]) => (
           <DropdownMenuItem
             key={code}

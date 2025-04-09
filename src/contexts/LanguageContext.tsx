@@ -83,14 +83,52 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     navigate(newPath);
   };
 
-  // Translator function with page-specific context
+  // Deep object access using dot notation
+  const deepGet = (obj: any, path: string): any => {
+    try {
+      return path.split('.').reduce((prev, curr) => {
+        return prev && prev[curr];
+      }, obj);
+    } catch (error) {
+      console.error(`Error accessing path: ${path}`, error);
+      return undefined;
+    }
+  };
+
+  // Enhanced translator function with nested object support
   const t = (key: string, options?: { fallback?: string }): string => {
     try {
-      // Try to get the translation value
-      const value = getTranslation(language, key);
-      
+      // Try to get the translation directly
+      const parts = key.split('.');
+      const category = parts[0];
+      const path = parts.slice(1).join('.');
+      let value;
+
+      if (translations[language] && translations[language][category]) {
+        value = deepGet(translations[language][category], path);
+      }
+
       if (typeof value === 'string') {
         return value;
+      }
+
+      // Handle special case for portfolio.caseStudies path
+      if (key.startsWith('portfolio.caseStudies') || key.startsWith('caseStudies')) {
+        // Try to get from portfolio.caseStudies if key starts with caseStudies
+        const modifiedKey = key.startsWith('caseStudies') 
+          ? `portfolio.${key}` 
+          : key;
+        
+        const modifiedParts = modifiedKey.split('.');
+        const modifiedCategory = modifiedParts[0];
+        const modifiedPath = modifiedParts.slice(1).join('.');
+        
+        if (translations[language] && translations[language][modifiedCategory]) {
+          value = deepGet(translations[language][modifiedCategory], modifiedPath);
+          if (typeof value === 'string') {
+            return value;
+          }
+        }
       }
       
       // Try English fallback

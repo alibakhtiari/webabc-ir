@@ -1,0 +1,40 @@
+
+{
+  "name": "WebABC - Professional Web Design and Development Agency",
+  "short_name": "WebABC",
+  "description": "Professional SEO and web development services",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4361ee",
+  "icons": [
+    {
+      "src": "/logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Contact Us",
+      "short_name": "Contact",
+      "description": "Contact our team",
+      "url": "/contact",
+      "icons": [{ "src": "/contact-icon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Portfolio",
+      "short_name": "Portfolio",
+      "description": "View our work",
+      "url": "/portfolio",
+      "icons": [{ "src": "/portfolio-icon.png", "sizes": "96x96" }]
+    }
+  ]
+}

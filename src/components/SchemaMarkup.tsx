@@ -19,9 +19,15 @@ const SchemaMarkup = ({ schema }: SchemaMarkupProps) => {
   
   // Add language attributes to schemas if not already present
   const enhancedSchemas = schemas.map(schemaItem => {
+    // Only add inLanguage if it's a type that supports it
+    const supportsLanguage = [
+      'Article', 'BlogPosting', 'WebPage', 'ItemList', 'CollectionPage', 
+      'Service', 'Product', 'Review', 'Organization', 'Person', 'BreadcrumbList'
+    ].includes(schemaItem['@type']);
+    
     return {
       ...schemaItem,
-      inLanguage: schemaItem.inLanguage || language
+      ...(supportsLanguage && !schemaItem.inLanguage ? { inLanguage: language } : {})
     };
   });
 
