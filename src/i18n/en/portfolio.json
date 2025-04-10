@@ -16,6 +16,10 @@
   "results": "Results",
   "testimonial": "Client Testimonial",
   "relatedProjects": "Related Projects",
+  "viewDetails": "View Details",
+  "viewProject": "View Project",
+  "projectDetails": "Project Details",
+  "projectOverview": "Project Overview",
   "caseStudies": {
     "title": "Case Studies",
     "subtitle": "Success Stories and Case Studies",

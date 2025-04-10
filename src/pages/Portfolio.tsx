@@ -1,4 +1,5 @@
-import React, { lazy, Suspense, useEffect } from 'react';
+
+import React, { lazy, Suspense, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -22,6 +23,12 @@ const GallerySkeleton = () => (
 
 const Portfolio = () => {
   const { t, language } = useLanguage();
+  const [activeCategory, setActiveCategory] = useState('all');
+  
+  // Filter portfolio items based on active category
+  const filteredItems = activeCategory === 'all' 
+    ? portfolioItems
+    : portfolioItems.filter(item => item.category === activeCategory);
 
   // Schema markup for portfolio page
   const breadcrumbSchema = createBreadcrumbSchema([
@@ -74,25 +81,40 @@ const Portfolio = () => {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="mb-10 flex flex-wrap gap-4 justify-center">
-              <button className="px-6 py-2 rounded-full bg-primary text-white">
+              <button 
+                className={`px-6 py-2 rounded-full transition ${activeCategory === 'all' ? 'bg-primary text-white' : 'border border-gray-200 hover:bg-gray-50'}`}
+                onClick={() => setActiveCategory('all')}
+              >
                 {t('portfolio.allProjects')}
               </button>
-              <button className="px-6 py-2 rounded-full border border-gray-200 hover:bg-gray-50">
+              <button 
+                className={`px-6 py-2 rounded-full transition ${activeCategory === t('portfolio.webDesign') ? 'bg-primary text-white' : 'border border-gray-200 hover:bg-gray-50'}`}
+                onClick={() => setActiveCategory(t('portfolio.webDesign'))}
+              >
                 {t('portfolio.webDesign')}
               </button>
-              <button className="px-6 py-2 rounded-full border border-gray-200 hover:bg-gray-50">
+              <button 
+                className={`px-6 py-2 rounded-full transition ${activeCategory === t('portfolio.ecommerce') ? 'bg-primary text-white' : 'border border-gray-200 hover:bg-gray-50'}`}
+                onClick={() => setActiveCategory(t('portfolio.ecommerce'))}
+              >
                 {t('portfolio.ecommerce')}
               </button>
-              <button className="px-6 py-2 rounded-full border border-gray-200 hover:bg-gray-50">
+              <button 
+                className={`px-6 py-2 rounded-full transition ${activeCategory === 'SEO' ? 'bg-primary text-white' : 'border border-gray-200 hover:bg-gray-50'}`}
+                onClick={() => setActiveCategory('SEO')}
+              >
                 {t('portfolio.seoProjects')}
               </button>
-              <button className="px-6 py-2 rounded-full border border-gray-200 hover:bg-gray-50">
+              <button 
+                className={`px-6 py-2 rounded-full transition ${activeCategory === t('portfolio.mobileApps') ? 'bg-primary text-white' : 'border border-gray-200 hover:bg-gray-50'}`}
+                onClick={() => setActiveCategory(t('portfolio.mobileApps'))}
+              >
                 {t('portfolio.mobileApps')}
               </button>
             </div>
             
             <Suspense fallback={<GallerySkeleton />}>
-              <PortfolioGallery items={portfolioItems} />
+              <PortfolioGallery items={filteredItems} />
             </Suspense>
           </div>
         </section>

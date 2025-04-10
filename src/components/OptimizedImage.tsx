@@ -124,6 +124,7 @@ const OptimizedImage = ({
           width={width}
           height={height}
           loading={priority ? "eager" : "lazy"}
+          // @ts-ignore - fetchPriority exists in modern browsers
           fetchPriority={priority ? "high" : "auto"}
           decoding={priority ? "sync" : "async"}
           onLoad={handleLoad}
