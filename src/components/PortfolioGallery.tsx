@@ -39,11 +39,30 @@ const PortfolioGallery = ({ items, className }: PortfolioGalleryProps) => {
     }
   }, [items, activeCategory, language]);
 
-  // Get unique categories from the filtered items
-  const categories = ['all', ...new Set(displayItems.map(item => item.category))];
+  // Get unique categories from the language-filtered items
+  const filteredItems = items.filter(item => !item.language || item.language === language);
+  const categories = ['all', ...Array.from(new Set(filteredItems.map(item => item.category)))];
 
   return (
     <div className={cn("w-full", className)}>
+      {/* Category filters */}
+      <div className="flex flex-wrap gap-3 mb-8 justify-center">
+        {categories.map((category) => (
+          <button
+            key={category}
+            onClick={() => setActiveCategory(category)}
+            className={cn(
+              "px-4 py-2 rounded-full transition-colors",
+              activeCategory === category 
+                ? "bg-primary text-white" 
+                : "bg-gray-100 hover:bg-gray-200 text-gray-800"
+            )}
+          >
+            {category === 'all' ? 'All' : category}
+          </button>
+        ))}
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {displayItems.map((item) => (
           <Link 

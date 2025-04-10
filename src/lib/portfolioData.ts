@@ -176,7 +176,7 @@ export const portfolioItems = [
     category: 'E-commerce',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f',
     description: 'Custom e-commerce platform with advanced features and optimized checkout process',
-    fullDescription: 'We developed a custom e-commerce platform with advanced features including a streamlined checkout process, inventory management system, customer accounts, and integrated payment gateways. The platform was built with performance and conversion optimization in mind, resulting in a 35% increase in conversion rate compared to the client's previous solution.',
+    fullDescription: 'We developed a custom e-commerce platform with advanced features including a streamlined checkout process, inventory management system, customer accounts, and integrated payment gateways. The platform was built with performance and conversion optimization in mind, resulting in a 35% increase in conversion rate compared to the client\'s previous solution.',
     client: 'LuxHome Furnishings',
     projectUrl: 'https://example.com/luxhome',
     technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'AWS'],
