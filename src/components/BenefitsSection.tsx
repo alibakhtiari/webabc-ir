@@ -1,28 +1,32 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { ArrowRight, Check } from 'lucide-react';
 
 const BenefitsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-up');
-          }
-        });
+        const entry = entries[0];
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
       },
       { threshold: 0.1 }
     );
     
-    const elements = sectionRef.current?.querySelectorAll('.animate-on-scroll');
-    elements?.forEach((el) => observer.observe(el));
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
     
     return () => {
-      elements?.forEach((el) => observer.unobserve(el));
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
     };
   }, []);
 
@@ -57,7 +61,10 @@ const BenefitsSection = () => {
       </div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll opacity-0">
+        <div className={cn(
+          "text-center max-w-3xl mx-auto mb-16 transition-all duration-700",
+          isVisible ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-10"
+        )}>
           <span 
             className={cn(
               "inline-block mb-2 px-3 py-1 rounded-full",
@@ -81,8 +88,14 @@ const BenefitsSection = () => {
           {benefits.map((benefit, idx) => (
             <div 
               key={idx} 
-              className="animate-on-scroll opacity-0 glass-morphism p-6 rounded-xl transition-all duration-300 hover:shadow-md"
-              style={{ animationDelay: `${idx * 100}ms` }}
+              className={cn(
+                "glass-morphism p-6 rounded-xl transition-all duration-700",
+                "hover:shadow-md",
+                isVisible 
+                  ? "opacity-100 transform translate-y-0" 
+                  : "opacity-0 transform translate-y-10"
+              )}
+              style={{ transitionDelay: `${idx * 100}ms` }}
             >
               <div className="flex items-start space-x-4 space-x-reverse">
                 <div className="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
@@ -97,7 +110,10 @@ const BenefitsSection = () => {
           ))}
         </div>
         
-        <div className="animate-on-scroll opacity-0 neo-morphism rounded-2xl overflow-hidden">
+        <div className={cn(
+          "neo-morphism rounded-2xl overflow-hidden transition-all duration-700",
+          isVisible ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-10"
+        )} style={{ transitionDelay: "400ms" }}>
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <div className="p-8 md:p-12 flex flex-col justify-center">
               <span 
