@@ -1,110 +1,56 @@
 
-import React, { lazy, Suspense, useEffect } from 'react';
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { HelmetProvider } from 'react-helmet-async';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 import { LanguageProvider } from './contexts/LanguageContext';
+import LoadingSpinner from './components/LoadingSpinner';
 
-// Loading indicator
-const LoadingScreen = () => (
-  <div className="min-h-screen flex items-center justify-center">
-    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-  </div>
-);
+// Import core pages
+const Home = lazy(() => import('./pages/Home'));
+const About = lazy(() => import('./pages/About'));
+const Contact = lazy(() => import('./pages/Contact'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+const Services = lazy(() => import('./pages/Services'));
+const Portfolio = lazy(() => import('./pages/Portfolio'));
+const PortfolioItemPage = lazy(() => import('./components/PortfolioItemPage'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
 
-// Import critical components
-import PagePreloader from './components/PagePreloader';
-import FloatingActions from './components/FloatingActions';
+// Service pages
+const WebDesign = lazy(() => import('./pages/WebDesign'));
+const SeoService = lazy(() => import('./pages/SeoService'));
+const LocalSeo = lazy(() => import('./pages/LocalSeo'));
 
-// Lazy load all pages for better performance
-const Index = lazy(() => import("./pages/Index"));
-const Services = lazy(() => import("./pages/Services"));
-const Portfolio = lazy(() => import("./pages/Portfolio"));
-const PortfolioItemPage = lazy(() => import("./components/PortfolioItemPage"));
-const CaseStudies = lazy(() => import("./pages/CaseStudies"));
-const NotFound = lazy(() => import("./pages/NotFound"));
-const SeoServices = lazy(() => import("./pages/SeoServices"));
-const LocalSeoServices = lazy(() => import("./pages/LocalSeoServices"));
-const WebDevelopmentServices = lazy(() => import("./pages/WebDevelopmentServices"));
-const WordpressWoocommerceDevelopment = lazy(() => import("./pages/WordpressWoocommerceDevelopment"));
-const About = lazy(() => import("./pages/About"));
-const Contact = lazy(() => import("./pages/Contact"));
-
-// Import portfolio data - fix the import method
-import { portfolioItems } from './lib/portfolioData';
-
-// Create and configure QueryClient
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-      retry: 1,
-      staleTime: 5 * 60 * 1000, // 5 minutes
-    },
-  },
-});
-
-const App = () => {
-  // Register service worker for PWA
-  useEffect(() => {
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch(error => {
-          console.error('Service Worker registration failed:', error);
-        });
-      });
-    }
-  }, []);
-
+function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <HelmetProvider>
-        <BrowserRouter>
-          <LanguageProvider>
-            <TooltipProvider>
-              <Toaster />
-              <Sonner />
-              <PagePreloader />
-              <FloatingActions />
-              <Suspense fallback={<LoadingScreen />}>
-                <Routes>
-                  {/* Root redirect - will be handled by LanguageProvider to redirect to correct language */}
-                  <Route path="/" element={<Navigate to="/en" replace />} />
-                  
-                  {/* Language-specific routes */}
-                  {['fa', 'en', 'ar'].map(lang => (
-                    <React.Fragment key={lang}>
-                      <Route path={`/${lang}`} element={<Index />} />
-                      <Route path={`/${lang}/services`} element={<Services />} />
-                      <Route path={`/${lang}/portfolio`} element={<Portfolio />} />
-                      <Route path={`/${lang}/portfolio/:id`} element={
-                        <Suspense fallback={<LoadingScreen />}>
-                          <PortfolioItemPage portfolioItems={portfolioItems} />
-                        </Suspense>
-                      } />
-                      <Route path={`/${lang}/case-studies`} element={<CaseStudies />} />
-                      <Route path={`/${lang}/seo-services`} element={<SeoServices />} />
-                      <Route path={`/${lang}/local-seo-services`} element={<LocalSeoServices />} />
-                      <Route path={`/${lang}/web-development-services`} element={<WebDevelopmentServices />} />
-                      <Route path={`/${lang}/wordpress-woocommerce-development`} element={<WordpressWoocommerceDevelopment />} />
-                      <Route path={`/${lang}/contact`} element={<Contact />} />
-                      <Route path={`/${lang}/about`} element={<About />} />
-                    </React.Fragment>
-                  ))}
-                  
-                  {/* Catch-all route */}
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </Suspense>
-            </TooltipProvider>
-          </LanguageProvider>
-        </BrowserRouter>
-      </HelmetProvider>
-    </QueryClientProvider>
+    <Router>
+      <LanguageProvider>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Routes>
+            {/* Language-based routes */}
+            <Route path="/:lang" element={<Home />} />
+            <Route path="/:lang/about" element={<About />} />
+            <Route path="/:lang/contact" element={<Contact />} />
+            <Route path="/:lang/services" element={<Services />} />
+            <Route path="/:lang/portfolio" element={<Portfolio />} />
+            <Route path="/:lang/portfolio/:id" element={<PortfolioItemPage />} />
+            <Route path="/:lang/blog" element={<BlogPage />} />
+            <Route path="/:lang/blog/:slug" element={<BlogPostPage />} />
+            
+            {/* Service Pages */}
+            <Route path="/:lang/web-design" element={<WebDesign />} />
+            <Route path="/:lang/seo-services" element={<SeoService />} />
+            <Route path="/:lang/local-seo" element={<LocalSeo />} />
+            
+            {/* Redirect from root to default language */}
+            <Route path="/" element={<Navigate to="/en" replace />} />
+            
+            {/* 404 Route */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </LanguageProvider>
+    </Router>
   );
-};
+}
 
 export default App;

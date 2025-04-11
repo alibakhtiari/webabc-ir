@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { cn } from '@/lib/utils';
 
 // Add TypeScript declaration for gtag
@@ -76,7 +76,7 @@ const OptimizedImage = ({
     setIsLoaded(true);
     if (onLoad) onLoad();
     
-    // Report to Web Vitals
+    // Report to Web Vitals if available
     if (window.performance && priority) {
       const paintMetrics = performance.getEntriesByType('paint');
       const lcp = paintMetrics.find(entry => entry.name === 'largest-contentful-paint');
@@ -97,7 +97,17 @@ const OptimizedImage = ({
   };
 
   // Add image parameters for optimization (if using a CDN)
-  const optimizedSrc = src.startsWith('http') ? src : `${src}?q=${quality}&w=${width || 'auto'}`;
+  const optimizedSrc = src.startsWith('http') ? `${src}?q=${quality}&w=${width || 'auto'}` : src;
+  
+  // Create srcSet for responsive images
+  const createSrcSet = () => {
+    if (!src.startsWith('http')) return undefined;
+    
+    const widths = [320, 640, 960, 1280, 1920];
+    return widths
+      .map(w => `${src}?q=${quality}&w=${w} ${w}w`)
+      .join(', ');
+  };
 
   return (
     <div className={cn("overflow-hidden relative", className)} style={{ aspectRatio: width && height ? width / height : undefined }}>
@@ -130,6 +140,7 @@ const OptimizedImage = ({
           onLoad={handleLoad}
           onError={handleError}
           sizes={sizes}
+          srcSet={createSrcSet()}
           className={cn(
             "w-full h-full transition-opacity duration-300",
             isLoaded ? "opacity-100" : "opacity-0",
@@ -147,4 +158,5 @@ const OptimizedImage = ({
   );
 };
 
-export default OptimizedImage;
+// Memoize the component to prevent unnecessary re-renders
+export default memo(OptimizedImage);

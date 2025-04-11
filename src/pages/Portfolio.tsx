@@ -1,6 +1,6 @@
 
-import React, { lazy, Suspense, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { lazy, Suspense, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
@@ -8,27 +8,20 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import { createBreadcrumbSchema } from '@/lib/schema';
 import { portfolioItems } from '@/lib/portfolioData';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { motion } from 'framer-motion';
 
 // Lazy loading components
 const PortfolioGallery = lazy(() => import('@/components/PortfolioGallery'));
-
-// Fallback component
-const GallerySkeleton = () => (
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-pulse">
-    {[1, 2, 3, 4, 5, 6].map(i => (
-      <div key={i} className="bg-gray-100 rounded-lg h-72"></div>
-    ))}
-  </div>
-);
+const LoadingSpinner = lazy(() => import('@/components/LoadingSpinner'));
 
 const Portfolio = () => {
   const { t, language } = useLanguage();
-  const [activeCategory, setActiveCategory] = useState('all');
+  const location = useLocation();
   
-  // Filter portfolio items based on active category
-  const filteredItems = activeCategory === 'all' 
-    ? portfolioItems
-    : portfolioItems.filter(item => item.category === activeCategory);
+  useEffect(() => {
+    // Scroll to top on page load
+    window.scrollTo(0, 0);
+  }, [location]);
 
   // Schema markup for portfolio page
   const breadcrumbSchema = createBreadcrumbSchema([
@@ -44,77 +37,84 @@ const Portfolio = () => {
     "inLanguage": language,
     "mainEntity": {
       "@type": "ItemList",
-      "itemListElement": portfolioItems.map((item, index) => ({
-        "@type": "ListItem",
-        "position": index + 1,
-        "url": `${window.location.origin}/${language}/portfolio/${item.id}`,
-        "name": item.title,
-        "description": item.description,
-        "image": item.image
-      }))
+      "itemListElement": portfolioItems
+        .filter(item => !item.language || item.language === language)
+        .map((item, index) => ({
+          "@type": "ListItem",
+          "position": index + 1,
+          "url": `${window.location.origin}/${language}/portfolio/${item.id}`,
+          "name": item.title,
+          "description": item.description,
+          "image": item.image
+        }))
+    }
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 }
     }
   };
 
   return (
-    <div className="relative overflow-x-hidden">
+    <div dir={language === 'en' ? 'ltr' : 'rtl'} className={language === 'en' ? 'font-sans' : 'font-arabic'}>
       <SEOHead 
         title={t('seo.portfolioTitle')}
         description={t('seo.portfolioDescription')}
         keywords={t('seo.keywords')}
       />
-      <SchemaMarkup schema={portfolioSchema} />
+      <SchemaMarkup schema={[portfolioSchema, breadcrumbSchema]} />
       
       <Navbar />
       
-      <main className="mt-20">
+      <main>
         {/* Hero Section */}
-        <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-white">
+        <motion.section 
+          className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-white"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('portfolio.title')}</h1>
-              <p className="text-xl text-gray-600 mb-8">{t('portfolio.description')}</p>
+              <motion.h1 
+                className="text-4xl md:text-5xl font-bold mb-6"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                {t('portfolio.title')}
+              </motion.h1>
+              <motion.p 
+                className="text-xl text-gray-600 mb-8"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                {t('portfolio.description')}
+              </motion.p>
             </div>
           </div>
-        </section>
+        </motion.section>
         
         {/* Portfolio Gallery */}
         <section className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="mb-10 flex flex-wrap gap-4 justify-center">
-              <button 
-                className={`px-6 py-2 rounded-full transition ${activeCategory === 'all' ? 'bg-primary text-white' : 'border border-gray-200 hover:bg-gray-50'}`}
-                onClick={() => setActiveCategory('all')}
-              >
-                {t('portfolio.allProjects')}
-              </button>
-              <button 
-                className={`px-6 py-2 rounded-full transition ${activeCategory === t('portfolio.webDesign') ? 'bg-primary text-white' : 'border border-gray-200 hover:bg-gray-50'}`}
-                onClick={() => setActiveCategory(t('portfolio.webDesign'))}
-              >
-                {t('portfolio.webDesign')}
-              </button>
-              <button 
-                className={`px-6 py-2 rounded-full transition ${activeCategory === t('portfolio.ecommerce') ? 'bg-primary text-white' : 'border border-gray-200 hover:bg-gray-50'}`}
-                onClick={() => setActiveCategory(t('portfolio.ecommerce'))}
-              >
-                {t('portfolio.ecommerce')}
-              </button>
-              <button 
-                className={`px-6 py-2 rounded-full transition ${activeCategory === 'SEO' ? 'bg-primary text-white' : 'border border-gray-200 hover:bg-gray-50'}`}
-                onClick={() => setActiveCategory('SEO')}
-              >
-                {t('portfolio.seoProjects')}
-              </button>
-              <button 
-                className={`px-6 py-2 rounded-full transition ${activeCategory === t('portfolio.mobileApps') ? 'bg-primary text-white' : 'border border-gray-200 hover:bg-gray-50'}`}
-                onClick={() => setActiveCategory(t('portfolio.mobileApps'))}
-              >
-                {t('portfolio.mobileApps')}
-              </button>
-            </div>
-            
-            <Suspense fallback={<GallerySkeleton />}>
-              <PortfolioGallery items={filteredItems} />
+          <div className="container mx-auto">
+            <Suspense fallback={<LoadingSpinner />}>
+              <PortfolioGallery items={portfolioItems} />
             </Suspense>
           </div>
         </section>
@@ -123,14 +123,37 @@ const Portfolio = () => {
         <section className="py-20 bg-primary text-white">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-3xl font-bold mb-6">{t('contact.getInTouch')}</h2>
-              <p className="text-xl mb-8 opacity-90">{t('services.ctaDescription')}</p>
-              <Link 
-                to={`/${language}/contact`}
-                className="inline-block px-8 py-3 bg-white text-primary font-bold rounded-full hover:shadow-lg transition-all"
+              <motion.h2 
+                className="text-3xl font-bold mb-6"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
               >
-                {t('common.contactUs')}
-              </Link>
+                {t('contact.getInTouch')}
+              </motion.h2>
+              <motion.p 
+                className="text-xl mb-8 opacity-90"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              >
+                {t('services.ctaDescription')}
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <Link 
+                  to={`/${language}/contact`}
+                  className="inline-block px-8 py-3 bg-white text-primary font-bold rounded-full hover:shadow-lg transition-all"
+                >
+                  {t('common.contactUs')}
+                </Link>
+              </motion.div>
             </div>
           </div>
         </section>
