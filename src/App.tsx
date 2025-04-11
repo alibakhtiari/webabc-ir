@@ -5,8 +5,9 @@ import { LanguageProvider } from './contexts/LanguageContext';
 import LoadingSpinner from './components/LoadingSpinner';
 import { portfolioItems } from './lib/portfolioData';
 
-// Import core pages
+// Import core pages - make sure Home is properly imported
 const Home = lazy(() => import('./pages/Home'));
+const IndexPage = lazy(() => import('./pages/Index'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -22,11 +23,15 @@ const SeoService = lazy(() => import('./pages/SeoService'));
 const LocalSeo = lazy(() => import('./pages/LocalSeo'));
 
 function App() {
+  console.log("App rendering");
   return (
     <Router>
       <LanguageProvider>
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
+            {/* Root route - redirect to language home */}
+            <Route path="/" element={<Navigate to="/fa" replace />} />
+            
             {/* Language-based routes */}
             <Route path="/:lang" element={<Home />} />
             <Route path="/:lang/about" element={<About />} />
@@ -41,9 +46,6 @@ function App() {
             <Route path="/:lang/web-design" element={<WebDesign />} />
             <Route path="/:lang/seo-services" element={<SeoService />} />
             <Route path="/:lang/local-seo" element={<LocalSeo />} />
-            
-            {/* Redirect from root to default language */}
-            <Route path="/" element={<Navigate to="/en" replace />} />
             
             {/* 404 Route */}
             <Route path="*" element={<NotFound />} />

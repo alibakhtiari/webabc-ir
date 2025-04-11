@@ -1,5 +1,6 @@
 
 import React, { useEffect, lazy, Suspense } from 'react';
+import { useLocation } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HeroSection from '@/components/HeroSection';
@@ -22,9 +23,14 @@ const SectionSkeleton = () => (
   </div>
 );
 
-const Index = () => {
+const IndexPage = () => {
   const { t, language, languageMeta } = useLanguage();
-
+  const location = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+  
   useEffect(() => {
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -54,11 +60,11 @@ const Index = () => {
   );
 
   return (
-    <div className="relative overflow-x-hidden">
+    <div className="relative overflow-x-hidden" dir={languageMeta.direction === 'rtl' ? 'rtl' : 'ltr'}>
       <SEOHead 
-        title={t('index.heroTitle')} 
-        description={t('index.heroDescription')} 
-        keywords={t('index.heroKeywords')}
+        title={t('home.heroTitle', { fallback: 'Web Development & SEO Services' })} 
+        description={t('home.heroDescription', { fallback: 'Professional web development and SEO services to boost your online presence' })} 
+        keywords={t('home.heroKeywords', { fallback: 'web design, seo, digital marketing' })}
         ogType="website"
       />
       
@@ -89,4 +95,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default IndexPage;

@@ -1,19 +1,17 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { ArrowRight, Check } from 'lucide-react';
 
 const BenefitsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  
+  const [isVisible, setIsVisible] = useState(true);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.unobserve(entry.target);
         }
       },
       { threshold: 0.1 }
@@ -32,20 +30,20 @@ const BenefitsSection = () => {
 
   const benefits = [
     {
-      title: 'افزایش اعتبار برند',
-      description: 'با حضور قدرتمند در نتایج جستجو، اعتبار برند خود را افزایش دهید.',
+      title: "افزایش اعتبار برند",
+      description: "با حضور قدرتمند در نتایج جستجو، اعتبار برند خود را افزایش دهید.",
     },
     {
-      title: 'افزایش فروش و درآمد',
-      description: 'با جذب ترافیک هدفمند، نرخ تبدیل و فروش خود را افزایش دهید.',
+      title: "افزایش فروش و درآمد",
+      description: "با جذب ترافیک هدفمند، نرخ تبدیل و فروش خود را افزایش دهید.",
     },
     {
-      title: 'کاهش هزینه‌های تبلیغاتی',
-      description: 'با بهبود رتبه‌های ارگانیک، هزینه‌های تبلیغات کلیکی را کاهش دهید.',
+      title: "کاهش هزینه‌های تبلیغاتی",
+      description: "با بهبود رتبه‌های ارگانیک، هزینه‌های تبلیغات کلیکی را کاهش دهید.",
     },
     {
-      title: 'برتری نسبت به رقبا',
-      description: 'با استراتژی‌های سئوی پیشرفته، از رقبای خود پیشی بگیرید.',
+      title: "برتری نسبت به رقبا",
+      description: "با استراتژی‌های سئوی پیشرفته، از رقبای خود پیشی بگیرید.",
     },
   ];
 
@@ -54,7 +52,6 @@ const BenefitsSection = () => {
       ref={sectionRef} 
       className="py-24 relative overflow-hidden snap-section"
     >
-      {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-40 left-20 w-80 h-80 rounded-full bg-primary/5 blur-3xl"></div>
         <div className="absolute bottom-40 right-20 w-64 h-64 rounded-full bg-primary/10 blur-3xl"></div>
@@ -63,7 +60,7 @@ const BenefitsSection = () => {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className={cn(
           "text-center max-w-3xl mx-auto mb-16 transition-all duration-700",
-          isVisible ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-10"
+          "opacity-100 transform translate-y-0"
         )}>
           <span 
             className={cn(
@@ -85,17 +82,30 @@ const BenefitsSection = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {benefits.map((benefit, idx) => (
+          {[
+            {
+              title: "افزایش اعتبار برند",
+              description: "با حضور قدرتمند در نتایج جستجو، اعتبار برند خود را افزایش دهید.",
+            },
+            {
+              title: "افزایش فروش و درآمد",
+              description: "با جذب ترافیک هدفمند، نرخ تبدیل و فروش خود را افزایش دهید.",
+            },
+            {
+              title: "کاهش هزینه‌های تبلیغاتی",
+              description: "با بهبود رتبه‌های ارگانیک، هزینه‌های تبلیغات کلیکی را کاهش دهید.",
+            },
+            {
+              title: "برتری نسبت به رقبا",
+              description: "با استراتژی‌های سئوی پیشرفته، از رقبای خود پیشی بگیرید.",
+            },
+          ].map((benefit, idx) => (
             <div 
               key={idx} 
               className={cn(
                 "glass-morphism p-6 rounded-xl transition-all duration-700",
-                "hover:shadow-md",
-                isVisible 
-                  ? "opacity-100 transform translate-y-0" 
-                  : "opacity-0 transform translate-y-10"
+                "hover:shadow-md opacity-100 transform translate-y-0"
               )}
-              style={{ transitionDelay: `${idx * 100}ms` }}
             >
               <div className="flex items-start space-x-4 space-x-reverse">
                 <div className="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
@@ -112,8 +122,8 @@ const BenefitsSection = () => {
         
         <div className={cn(
           "neo-morphism rounded-2xl overflow-hidden transition-all duration-700",
-          isVisible ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-10"
-        )} style={{ transitionDelay: "400ms" }}>
+          "opacity-100 transform translate-y-0"
+        )}>
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <div className="p-8 md:p-12 flex flex-col justify-center">
               <span 
