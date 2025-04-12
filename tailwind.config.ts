@@ -123,8 +123,9 @@ export default {
 				'blur-in': 'blur-in 0.6s ease-out'
 			},
 			fontFamily: {
-				sans: ['Vazirmatn', 'Inter var', 'sans-serif'],
+				sans: ['Montserrat', 'system-ui', 'sans-serif'],
 				persian: ['Vazirmatn', 'sans-serif'],
+				arabic: ['Vazirmatn', 'sans-serif'],
 			}
 		}
 	},

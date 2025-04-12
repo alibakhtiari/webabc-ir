@@ -42,12 +42,12 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
   // Get SEO title wrapper
   const getContextSeoTitle = (title?: string): string => {
-    return getSeoTitle(title, language, location.pathname);
+    return getSeoTitle(language, location.pathname, title);
   };
 
   // Get SEO description wrapper
   const getContextSeoDescription = (description?: string): string => {
-    return getSeoDescription(description, language, location.pathname);
+    return getSeoDescription(language, location.pathname, description);
   };
 
   // Apply document direction based on language

@@ -85,12 +85,12 @@ export const getTranslatedString = (
 /**
  * Get SEO title with site name
  * 
- * @param title Optional title override
  * @param language Current language
  * @param pathname Current path
+ * @param title Optional title override
  * @returns Formatted SEO title
  */
-export const getSeoTitle = (title?: string, language: SupportedLanguage, pathname: string): string => {
+export const getSeoTitle = (language: SupportedLanguage, pathname: string, title?: string): string => {
   if (!title) {
     const pageName = getPageNameFromPath(pathname);
     const pageTitle = getTranslatedString(`seo.${pageName}Title`, language, { 
@@ -104,12 +104,12 @@ export const getSeoTitle = (title?: string, language: SupportedLanguage, pathnam
 /**
  * Get SEO description
  * 
- * @param description Optional description override
  * @param language Current language
  * @param pathname Current path
+ * @param description Optional description override
  * @returns SEO description
  */
-export const getSeoDescription = (description?: string, language: SupportedLanguage, pathname: string): string => {
+export const getSeoDescription = (language: SupportedLanguage, pathname: string, description?: string): string => {
   if (!description) {
     const pageName = getPageNameFromPath(pathname);
     return getTranslatedString(`seo.${pageName}Description`, language, { 
