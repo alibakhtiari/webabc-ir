@@ -41,6 +41,11 @@ import enHome from './en/home.json';
 import faHome from './fa/home.json';
 import arHome from './ar/home.json';
 
+// Benefits translations
+import enBenefits from './en/benefits.json';
+import faBenefits from './fa/benefits.json';
+import arBenefits from './ar/benefits.json';
+
 // Merge all translations
 export const translations = {
   en: {
@@ -52,6 +57,7 @@ export const translations = {
     portfolio: enPortfolio,
     contact: enContact,
     home: enHome,
+    benefits: enBenefits
   },
   fa: {
     common: faCommon,
@@ -62,6 +68,7 @@ export const translations = {
     portfolio: faPortfolio,
     contact: faContact,
     home: faHome,
+    benefits: faBenefits
   },
   ar: {
     common: arCommon,
@@ -72,6 +79,7 @@ export const translations = {
     portfolio: arPortfolio,
     contact: arContact,
     home: arHome,
+    benefits: arBenefits
   }
 };
 

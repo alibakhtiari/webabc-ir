@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -12,7 +11,6 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 const Home: React.FC = () => {
   const { t, language, languageMeta } = useLanguage();
-  const location = useLocation();
   
   return (
     <div dir={languageMeta.direction} className={languageMeta.fontFamily}>
@@ -25,7 +23,7 @@ const Home: React.FC = () => {
       
       <Navbar />
       
-      <main>
+      <main className="relative overflow-x-hidden">
         <HeroSection />
         <ServicesSection />
         <BenefitsSection />

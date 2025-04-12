@@ -1,36 +1,15 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { CheckCircle } from 'lucide-react';
-
-const services = [
-  {
-    title: 'سئو تخصصی و بهینه‌سازی',
-    description: 'افزایش رتبه وب‌سایت شما در موتورهای جستجو با استفاده از تکنیک‌های استاندارد سئو.',
-    features: ['تحقیق کلمات کلیدی', 'بهینه‌سازی محتوا', 'سئو فنی', 'لینک‌سازی خارجی', 'گزارش‌دهی ماهانه'],
-  },
-  {
-    title: 'طراحی سایت اختصاصی',
-    description: 'طراحی و توسعه وب‌سایت با رابط کاربری جذاب، کدنویسی تمیز و سازگار با موبایل.',
-    features: ['طراحی ریسپانسیو', 'رابط کاربری مدرن', 'سرعت بارگذاری بالا', 'سازگار با سئو', 'امنیت بالا'],
-  },
-  {
-    title: 'تولید محتوای تخصصی',
-    description: 'تولید محتوا با کیفیت، اصولی و بهینه شده برای کلمات کلیدی مرتبط با کسب و کار شما.',
-    features: ['محتوای تخصصی', 'بهینه‌شده برای سئو', 'استراتژی محتوا', 'تقویم انتشار', 'گرافیک اختصاصی'],
-  },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ServicesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState(0);
+  const { t } = useLanguage();
   
   useEffect(() => {
-    const elements = sectionRef.current?.querySelectorAll('.animate-on-scroll');
-    elements?.forEach((el) => {
-      el.classList.add('animate-fade-up');
-      el.classList.remove('opacity-0');
-    });
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -43,6 +22,7 @@ const ServicesSection = () => {
       { threshold: 0.1 }
     );
     
+    const elements = sectionRef.current?.querySelectorAll('.animate-on-scroll');
     if (elements) {
       elements.forEach((el) => observer.observe(el));
     }
@@ -53,6 +33,43 @@ const ServicesSection = () => {
       }
     };
   }, []);
+
+  // Use translations for services
+  const services = [
+    {
+      title: t('services.seo.title', { fallback: 'سئو تخصصی و بهینه‌سازی' }),
+      description: t('services.seo.description', { fallback: 'افزایش رتبه وب‌سایت شما در موتورهای جستجو با استفاده از تکنیک‌های استاندارد سئو.' }),
+      features: [
+        t('services.seo.features.0', { fallback: 'تحقیق کلمات کلیدی' }),
+        t('services.seo.features.1', { fallback: 'بهینه‌سازی محتوا' }),
+        t('services.seo.features.2', { fallback: 'سئو فنی' }),
+        t('services.seo.features.3', { fallback: 'لینک‌سازی خارجی' }),
+        t('services.seo.features.4', { fallback: 'گزارش‌دهی ماهانه' }),
+      ],
+    },
+    {
+      title: t('services.webDesign.title', { fallback: 'طراحی سایت اختصاصی' }),
+      description: t('services.webDesign.description', { fallback: 'طراحی و توسعه وب‌سایت با رابط کاربری جذاب، کدنویسی تمیز و سازگار با موبایل.' }),
+      features: [
+        t('services.webDesign.features.0', { fallback: 'طراحی ریسپانسیو' }),
+        t('services.webDesign.features.1', { fallback: 'رابط کاربری مدرن' }),
+        t('services.webDesign.features.2', { fallback: 'سرعت بارگذاری بالا' }),
+        t('services.webDesign.features.3', { fallback: 'سازگار با سئو' }),
+        t('services.webDesign.features.4', { fallback: 'امنیت بالا' }),
+      ],
+    },
+    {
+      title: t('services.contentCreation.title', { fallback: 'تولید محتوای تخصصی' }),
+      description: t('services.contentCreation.description', { fallback: 'تولید محتوا با کیفیت، اصولی و بهینه شده برای کلمات کلیدی مرتبط با کسب و کار شما.' }),
+      features: [
+        t('services.contentCreation.features.0', { fallback: 'محتوای تخصصی' }),
+        t('services.contentCreation.features.1', { fallback: 'بهینه‌شده برای سئو' }),
+        t('services.contentCreation.features.2', { fallback: 'استراتژی محتوا' }),
+        t('services.contentCreation.features.3', { fallback: 'تقویم انتشار' }),
+        t('services.contentCreation.features.4', { fallback: 'گرافیک اختصاصی' }),
+      ],
+    },
+  ];
 
   return (
     <section 
@@ -74,21 +91,22 @@ const ServicesSection = () => {
               "font-persian text-sm font-medium"
             )}
           >
-            خدمات ما
+            {t('services.sectionTag', { fallback: 'خدمات ما' })}
           </span>
           
           <h2 className="font-persian text-3xl md:text-4xl font-bold tracking-tight mb-6 text-balance">
-            راهکارهای <span className="text-primary">دیجیتال مارکتینگ</span> برای کسب و کار شما
+            {t('services.sectionTitle.prefix', { fallback: 'راهکارهای ' })}
+            <span className="text-primary">{t('services.sectionTitle.highlight', { fallback: 'دیجیتال مارکتینگ' })}</span>
+            {t('services.sectionTitle.suffix', { fallback: ' برای کسب و کار شما' })}
           </h2>
           
           <p className="font-persian text-foreground/80 leading-relaxed text-balance">
-            ما خدمات جامع سئو و توسعه وب را ارائه می‌دهیم تا کسب و کار شما در فضای آنلاین موفق شود.
-            تمامی خدمات ما با استانداردهای روز دنیا و متناسب با نیازهای بازار ایران طراحی شده‌اند.
+            {t('services.sectionDescription', { fallback: 'ما خدمات جامع سئو و توسعه وب را ارائه می‌دهیم تا کسب و کار شما در فضای آنلاین موفق شود. تمامی خدمات ما با استانداردهای روز دنیا و متناسب با نیازهای بازار ایران طراحی شده‌اند.' })}
           </p>
         </div>
         
         <div className="flex overflow-x-auto -mx-4 px-4 pb-4 mb-8 snap-x">
-          <div className="flex space-x-2 mx-auto font-persian">
+          <div className="flex space-x-2 space-x-reverse mx-auto font-persian">
             {services.map((service, idx) => (
               <button
                 key={idx}
@@ -138,14 +156,14 @@ const ServicesSection = () => {
                     "hover:translate-y-[-2px]"
                   )}
                 >
-                  مشاوره در مورد {services[activeTab].title}
+                  {t('services.consultButton', { fallback: 'مشاوره در مورد' })} {services[activeTab].title}
                 </button>
               </div>
               
               <div className="md:col-span-2">
                 <div className="aspect-square w-full rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
                   <span className="font-persian text-muted-foreground">
-                    تصویر {services[activeTab].title}
+                    {t('services.imagePrefix', { fallback: 'تصویر' })} {services[activeTab].title}
                   </span>
                 </div>
               </div>
@@ -155,9 +173,18 @@ const ServicesSection = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 animate-on-scroll opacity-0 transition-all duration-500">
           {[
-            { title: 'تحقیق کلمات کلیدی', desc: 'شناسایی بهترین کلمات کلیدی برای کسب و کار شما' },
-            { title: 'بهینه‌سازی محتوا', desc: 'محتوای با کیفیت و بهینه شده برای موتورهای جستجو' },
-            { title: 'لینک‌سازی خارجی', desc: 'استراتژی حرفه‌ای لینک‌سازی برای افزایش اعتبار سایت' },
+            { 
+              title: t('services.keyFeatures.0.title', { fallback: 'تحقیق کلمات کلیدی' }), 
+              desc: t('services.keyFeatures.0.desc', { fallback: 'شناسایی بهترین کلمات کلیدی برای کسب و کار شما' }) 
+            },
+            { 
+              title: t('services.keyFeatures.1.title', { fallback: 'بهینه‌سازی محتوا' }), 
+              desc: t('services.keyFeatures.1.desc', { fallback: 'محتوای با کیفیت و بهینه شده برای موتورهای جستجو' }) 
+            },
+            { 
+              title: t('services.keyFeatures.2.title', { fallback: 'لینک‌سازی خارجی' }), 
+              desc: t('services.keyFeatures.2.desc', { fallback: 'استراتژی حرفه‌ای لینک‌سازی برای افزایش اعتبار سایت' }) 
+            },
           ].map((item, idx) => (
             <div 
               key={idx} 

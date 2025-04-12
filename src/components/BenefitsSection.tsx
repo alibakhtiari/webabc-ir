@@ -2,16 +2,20 @@
 import React, { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { ArrowRight, Check } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const BenefitsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
   
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            // Add the animation class but don't remove it once added
             entry.target.classList.add('animate-fade-up');
+            entry.target.classList.remove('opacity-0');
           }
         });
       },
@@ -19,35 +23,41 @@ const BenefitsSection = () => {
     );
     
     const elements = sectionRef.current?.querySelectorAll('.animate-on-scroll');
-    elements?.forEach((el) => observer.observe(el));
+    if (elements) {
+      elements.forEach((el) => observer.observe(el));
+    }
     
     return () => {
-      elements?.forEach((el) => observer.unobserve(el));
+      if (elements) {
+        elements.forEach((el) => observer.unobserve(el));
+      }
     };
   }, []);
 
+  // Get benefits from translations instead of hardcoding
   const benefits = [
     {
-      title: 'افزایش اعتبار برند',
-      description: 'با حضور قدرتمند در نتایج جستجو، اعتبار برند خود را افزایش دهید.',
+      title: t('benefits.brandCredibility.title', { fallback: 'افزایش اعتبار برند' }),
+      description: t('benefits.brandCredibility.description', { fallback: 'با حضور قدرتمند در نتایج جستجو، اعتبار برند خود را افزایش دهید.' }),
     },
     {
-      title: 'افزایش فروش و درآمد',
-      description: 'با جذب ترافیک هدفمند، نرخ تبدیل و فروش خود را افزایش دهید.',
+      title: t('benefits.increaseSales.title', { fallback: 'افزایش فروش و درآمد' }),
+      description: t('benefits.increaseSales.description', { fallback: 'با جذب ترافیک هدفمند، نرخ تبدیل و فروش خود را افزایش دهید.' }),
     },
     {
-      title: 'کاهش هزینه‌های تبلیغاتی',
-      description: 'با بهبود رتبه‌های ارگانیک، هزینه‌های تبلیغات کلیکی را کاهش دهید.',
+      title: t('benefits.reduceCosts.title', { fallback: 'کاهش هزینه‌های تبلیغاتی' }),
+      description: t('benefits.reduceCosts.description', { fallback: 'با بهبود رتبه‌های ارگانیک، هزینه‌های تبلیغات کلیکی را کاهش دهید.' }),
     },
     {
-      title: 'برتری نسبت به رقبا',
-      description: 'با استراتژی‌های سئوی پیشرفته، از رقبای خود پیشی بگیرید.',
+      title: t('benefits.competitiveAdvantage.title', { fallback: 'برتری نسبت به رقبا' }),
+      description: t('benefits.competitiveAdvantage.description', { fallback: 'با استراتژی‌های سئوی پیشرفته، از رقبای خود پیشی بگیرید.' }),
     },
   ];
 
   return (
     <section 
       ref={sectionRef} 
+      id="benefits"
       className="py-24 relative overflow-hidden snap-section"
     >
       {/* Background elements */}
@@ -65,15 +75,17 @@ const BenefitsSection = () => {
               "font-persian text-sm font-medium"
             )}
           >
-            مزایای همکاری با ما
+            {t('benefits.sectionTag', { fallback: 'مزایای همکاری با ما' })}
           </span>
           
           <h2 className="font-persian text-3xl md:text-4xl font-bold tracking-tight mb-6 text-balance">
-            چرا <span className="text-primary">وب آ ب ث</span> را انتخاب کنید؟
+            {t('benefits.sectionTitle.prefix', { fallback: 'چرا ' })}
+            <span className="text-primary">{t('benefits.sectionTitle.highlight', { fallback: 'وب آ ب ث' })}</span>
+            {t('benefits.sectionTitle.suffix', { fallback: ' را انتخاب کنید؟' })}
           </h2>
           
           <p className="font-persian text-foreground/80 leading-relaxed text-balance">
-            ما با تمرکز بر نتایج ملموس و استراتژی‌های اثبات شده، به کسب و کار شما کمک می‌کنیم تا در دنیای دیجیتال امروزی رشد کند.
+            {t('benefits.sectionDescription', { fallback: 'ما با تمرکز بر نتایج ملموس و استراتژی‌های اثبات شده، به کسب و کار شما کمک می‌کنیم تا در دنیای دیجیتال امروزی رشد کند.' })}
           </p>
         </div>
         
@@ -107,23 +119,24 @@ const BenefitsSection = () => {
                   "font-persian text-sm font-medium"
                 )}
               >
-                تضمین نتیجه
+                {t('benefits.guaranteeTag', { fallback: 'تضمین نتیجه' })}
               </span>
               
               <h3 className="font-persian text-2xl md:text-3xl font-bold mb-6 text-balance">
-                نتایج ملموس با روش‌های <span className="text-primary">اثبات شده</span>
+                {t('benefits.guaranteeTitle.prefix', { fallback: 'نتایج ملموس با روش‌های ' })}
+                <span className="text-primary">{t('benefits.guaranteeTitle.highlight', { fallback: 'اثبات شده' })}</span>
               </h3>
               
               <p className="font-persian text-foreground/80 leading-relaxed mb-8 text-balance">
-                ما معتقدیم که سئو یک فرآیند مستمر است و با برنامه‌ریزی دقیق و استراتژی‌های اصولی، نتایج درازمدت و پایداری را برای کسب و کار شما به ارمغان می‌آوریم.
+                {t('benefits.guaranteeDescription', { fallback: 'ما معتقدیم که سئو یک فرآیند مستمر است و با برنامه‌ریزی دقیق و استراتژی‌های اصولی، نتایج درازمدت و پایداری را برای کسب و کار شما به ارمغان می‌آوریم.' })}
               </p>
               
               <ul className="space-y-4 mb-8">
                 {[
-                  'گزارش‌های ماهانه با متریک‌های دقیق',
-                  'شفافیت کامل در تمام مراحل همکاری',
-                  'تضمین بهبود رتبه در کلمات کلیدی هدف',
-                  'قراردادهای منعطف و بدون تعهد بلندمدت'
+                  t('benefits.guaranteeFeatures.0', { fallback: 'گزارش‌های ماهانه با متریک‌های دقیق' }),
+                  t('benefits.guaranteeFeatures.1', { fallback: 'شفافیت کامل در تمام مراحل همکاری' }),
+                  t('benefits.guaranteeFeatures.2', { fallback: 'تضمین بهبود رتبه در کلمات کلیدی هدف' }),
+                  t('benefits.guaranteeFeatures.3', { fallback: 'قراردادهای منعطف و بدون تعهد بلندمدت' })
                 ].map((item, idx) => (
                   <li key={idx} className="flex items-center font-persian">
                     <div className="w-6 h-6 flex items-center justify-center rounded-full bg-primary/10 text-primary mr-3 shrink-0">
@@ -142,7 +155,7 @@ const BenefitsSection = () => {
                     "hover:translate-y-[-2px] flex items-center"
                   )}
                 >
-                  <span>دریافت مشاوره رایگان</span>
+                  <span>{t('benefits.ctaButton', { fallback: 'دریافت مشاوره رایگان' })}</span>
                   <ArrowRight className="h-4 w-4 mr-2" />
                 </button>
               </div>
@@ -150,7 +163,7 @@ const BenefitsSection = () => {
             
             <div className="aspect-auto bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
               <span className="font-persian text-muted-foreground">
-                تصویر نتایج سئو
+                {t('benefits.imageAlt', { fallback: 'تصویر نتایج سئو' })}
               </span>
             </div>
           </div>

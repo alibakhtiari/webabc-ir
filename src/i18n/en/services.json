@@ -1,51 +1,59 @@
 
 {
-  "title": "Professional SEO and Web Development Services",
-  "description": "Comprehensive digital marketing solutions for your business growth. Using the latest technologies and up-to-date methods, we transform your website into a powerful tool for attracting customers.",
-  "webDevelopment": "Web Development",
-  "webDevelopmentTitle": "Website Design and Development Services",
-  "webDevelopmentDescription": "Our expert team designs modern, user-friendly, and search-engine-optimized websites. From simple corporate sites to complex online stores and interactive web applications, we offer solutions tailored to your needs.",
-  "wordpressDesc": "Professional design and development of WordPress websites, customized for the needs of your business",
-  "frontendDev": "Frontend Development with React and Next.js",
-  "frontendDesc": "Creating modern, fast, and responsive user interfaces using advanced frontend technologies",
-  "backendDev": "Backend Development with Python and Node.js",
-  "backendDesc": "Creating powerful, scalable, and secure infrastructures for web applications",
-  "seoTitle": "SEO Services",
-  "seoDescription": "Boost your website ranking",
-  "localSeoTitle": "Local SEO",
-  "localSeoDescription": "Dominate local searches",
-  "webDevTitle": "Web Development",
-  "webDevDescription": "Custom web solutions",
-  "feature": {
-    "uiuxDesign": "Modern UI/UX design and development",
-    "reactNextjs": "Implementation with React.js and Next.js",
-    "responsiveDesign": "Responsive design for all devices",
-    "webVitals": "Core Web Vitals optimization",
-    "animations": "Advanced user interactions and animations",
-    "apiIntegration": "Integration with various APIs",
-    "restApi": "Design and implementation of RESTful APIs",
-    "python": "Development with Django or Flask (Python)",
-    "nodejs": "Development with Express or NestJS (Node.js)",
-    "database": "Database management (SQL and NoSQL)",
-    "auth": "Implementation of authentication and authorization systems",
-    "cloudIntegration": "Integration with cloud services"
+  "sectionTag": "Our Services",
+  "sectionTitle": {
+    "prefix": "Digital Marketing ",
+    "highlight": "Solutions",
+    "suffix": " for Your Business"
   },
-  "faqTitle": "Answers to Your Common Questions",
-  "faqDescription": "Here we've answered some common questions about our SEO and web development services. If you have any other questions, please contact us.",
-  "ctaTitle": "Ready to Transform Your Business?",
-  "ctaDescription": "Contact us to discuss the specific needs of your project and provide a solution tailored to your business goals.",
-  "faq": {
-    "costQuestion": "How much do your SEO services cost?",
-    "costAnswer": "The cost of our SEO services varies depending on the specific needs of your business, the size of your website, the level of competition in your industry, and your goals. We provide a customized plan with transparent pricing for each client. Contact us for a free consultation and cost estimate.",
-    "timelineQuestion": "How long does it take to see SEO results?",
-    "timelineAnswer": "SEO is an ongoing and long-term process. You can typically see some initial changes in the first 3-4 months, but significant and sustainable results usually take between 6 to 12 months. This timeline depends on various factors such as competition, domain age, content quality, and technical structure of the site.",
-    "wordpressQuestion": "Do you only use WordPress for website development?",
-    "wordpressAnswer": "No, we use a wide range of technologies tailored to the needs of your project. In addition to WordPress, our team specializes in development with React, Next.js, Node.js, Python (Django/Flask), and other modern frameworks. We recommend the appropriate technology based on the specific requirements of your project.",
-    "blackhatQuestion": "Do you use black hat SEO methods?",
-    "blackhatAnswer": "Absolutely not. We only use white hat SEO techniques and ethical methods in accordance with Google guidelines. Our strategies focus on developing quality content, great user experience, and technical optimization. Using unethical methods may have short-term results but will ultimately lead to penalties and harm to your business.",
-    "multilingualQuestion": "Do you provide services for multilingual websites?",
-    "multilingualAnswer": "Yes, we specialize in designing and optimizing multilingual websites. Our team can provide appropriate technical solutions for implementing multilingual sites, including proper URL structure, hreflang tags, and content translation. We have specific experience in optimizing English-Persian sites.",
-    "supportQuestion": "Do you provide support services after project delivery?",
-    "supportAnswer": "Yes, we offer various support packages to ensure your website remains up-to-date, secure, and optimized. These services include security updates, regular backups, performance optimization, content updates, and technical troubleshooting. We also provide training for your team to manage the site."
-  }
+  "sectionDescription": "We provide comprehensive SEO and web development services to help your business succeed online. All our services are designed according to the latest global standards and tailored to specific market needs.",
+  "seo": {
+    "title": "Specialized SEO & Optimization",
+    "description": "Improve your website's ranking in search engines using standard SEO techniques.",
+    "features": [
+      "Keyword Research",
+      "Content Optimization",
+      "Technical SEO",
+      "External Link Building",
+      "Monthly Reporting"
+    ]
+  },
+  "webDesign": {
+    "title": "Custom Website Design",
+    "description": "Design and develop websites with attractive user interfaces, clean code, and mobile compatibility.",
+    "features": [
+      "Responsive Design",
+      "Modern UI",
+      "Fast Loading Speed",
+      "SEO-Friendly",
+      "High Security"
+    ]
+  },
+  "contentCreation": {
+    "title": "Specialized Content Creation",
+    "description": "High-quality content creation, optimized for keywords related to your business.",
+    "features": [
+      "Specialized Content",
+      "SEO-Optimized",
+      "Content Strategy",
+      "Publishing Calendar",
+      "Custom Graphics"
+    ]
+  },
+  "consultButton": "Consultation about",
+  "imagePrefix": "Image of",
+  "keyFeatures": [
+    {
+      "title": "Keyword Research",
+      "desc": "Identifying the best keywords for your business"
+    },
+    {
+      "title": "Content Optimization",
+      "desc": "Quality content optimized for search engines"
+    },
+    {
+      "title": "External Link Building",
+      "desc": "Professional link building strategy to increase site authority"
+    }
+  ]
 }
