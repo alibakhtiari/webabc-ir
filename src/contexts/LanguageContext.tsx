@@ -1,76 +1,23 @@
 
 import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { getPathWithoutLanguage, isLanguageRootPath, normalizePath, getPageNameFromPath } from '../lib/languageUtils';
+import { getPathWithoutLanguage, normalizePath, isLanguageRootPath, getPageNameFromPath } from '@/lib/languageUtils';
+import { getTranslatedString, getSeoTitle, getSeoDescription } from '@/lib/translationUtils';
+import { useLanguageDetection } from '@/hooks/useLanguageDetection';
+import { SupportedLanguage, LanguageMeta, languages, LanguageContextType } from '@/types/language';
 
 // Import translation system
-import { translations, getTranslation } from '../i18n';
-
-// Define supported languages
-export type SupportedLanguage = 'fa' | 'en' | 'ar';
-
-export type LanguageMeta = {
-  code: SupportedLanguage;
-  name: string;
-  nativeName: string;
-  direction: 'rtl' | 'ltr';
-  fontFamily: string;
-};
-
-export const languages: Record<SupportedLanguage, LanguageMeta> = {
-  fa: {
-    code: 'fa',
-    name: 'Persian',
-    nativeName: 'فارسی',
-    direction: 'rtl',
-    fontFamily: 'font-persian',
-  },
-  en: {
-    code: 'en',
-    name: 'English',
-    nativeName: 'English',
-    direction: 'ltr',
-    fontFamily: 'font-sans',
-  },
-  ar: {
-    code: 'ar',
-    name: 'Arabic',
-    nativeName: 'العربية',
-    direction: 'rtl',
-    fontFamily: 'font-arabic',
-  },
-};
-
-interface LanguageContextType {
-  language: SupportedLanguage;
-  setLanguage: (lang: SupportedLanguage) => void;
-  t: (key: string, options?: { fallback?: string }) => string;
-  languageMeta: LanguageMeta;
-  getSeoTitle: (title?: string) => string;
-  getSeoDescription: (description?: string) => string;
-  translations: typeof translations;
-}
+import { translations } from '@/i18n';
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
-
-// Detect user's preferred language
-const detectUserLanguage = (): SupportedLanguage => {
-  const storedLanguage = localStorage.getItem('language') as SupportedLanguage;
-  if (storedLanguage && Object.keys(languages).includes(storedLanguage)) {
-    return storedLanguage;
-  }
-
-  // Detect from browser
-  const browserLang = navigator.language.split('-')[0] as SupportedLanguage;
-  return Object.keys(languages).includes(browserLang) ? browserLang : 'fa';
-};
 
 interface LanguageProviderProps {
   children: ReactNode;
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  const [language, setLanguageState] = useState<SupportedLanguage>(detectUserLanguage());
+  const initialLanguage = useLanguageDetection();
+  const [language, setLanguageState] = useState<SupportedLanguage>(initialLanguage);
   const navigate = useNavigate();
   const location = useLocation();
   const [isInitialized, setIsInitialized] = useState(false);
@@ -88,91 +35,19 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     navigate(newPath);
   };
 
-  // Improved translation function with better error handling and fallbacks
+  // Translation function wrapper
   const t = (key: string, options?: { fallback?: string }): string => {
-    try {
-      if (!key) return options?.fallback || 'MISSING_KEY';
-      
-      // Split the key into category and path parts
-      const parts = key.split('.');
-      if (parts.length < 2) {
-        console.warn(`Invalid translation key format: ${key}. Format should be 'category.key'`);
-        return options?.fallback || key;
-      }
-      
-      const category = parts[0];
-      const path = parts.slice(1);
-      
-      // Check if the category exists in translations
-      if (!translations[language] || !translations[language][category]) {
-        console.warn(`Translation category not found: ${category} in ${language}`);
-        
-        // Try English fallback for category
-        if (language !== 'en' && translations.en && translations.en[category]) {
-          let result = translations.en[category];
-          for (const pathPart of path) {
-            if (!result || typeof result !== 'object' || !(pathPart in result)) {
-              break;
-            }
-            result = result[pathPart];
-          }
-          
-          if (typeof result === 'string') {
-            return result;
-          }
-        }
-        
-        return options?.fallback || key;
-      }
-      
-      // Navigate through path to get the translation
-      let result = translations[language][category];
-      for (const pathPart of path) {
-        if (!result || typeof result !== 'object' || !(pathPart in result)) {
-          console.warn(`Translation path not found: ${key} in ${language}`);
-          
-          // Try English fallback for specific key
-          if (language !== 'en') {
-            const englishValue = getTranslation('en', key);
-            if (typeof englishValue === 'string') {
-              return englishValue;
-            }
-          }
-          
-          return options?.fallback || key;
-        }
-        result = result[pathPart];
-      }
-      
-      if (typeof result !== 'string') {
-        console.warn(`Translation for ${key} is not a string:`, result);
-        return options?.fallback || key;
-      }
-      
-      return result;
-    } catch (error) {
-      console.error(`Error translating key: ${key}`, error);
-      return options?.fallback || key;
-    }
+    return getTranslatedString(key, language, options);
   };
 
-  // Get SEO title with site name
-  const getSeoTitle = (title?: string): string => {
-    if (!title) {
-      const pageName = getPageNameFromPath(location.pathname);
-      const pageTitle = t(`seo.${pageName}Title`, { fallback: t('seo.defaultTitle') });
-      return pageTitle;
-    }
-    return `${title} | ${t('seo.siteName')}`;
+  // Get SEO title wrapper
+  const getContextSeoTitle = (title?: string): string => {
+    return getSeoTitle(title, language, location.pathname);
   };
 
-  // Get SEO description
-  const getSeoDescription = (description?: string): string => {
-    if (!description) {
-      const pageName = getPageNameFromPath(location.pathname);
-      return t(`seo.${pageName}Description`, { fallback: t('seo.defaultDescription') });
-    }
-    return description;
+  // Get SEO description wrapper
+  const getContextSeoDescription = (description?: string): string => {
+    return getSeoDescription(description, language, location.pathname);
   };
 
   // Apply document direction based on language
@@ -216,8 +91,8 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
         setLanguage, 
         t, 
         languageMeta: languages[language],
-        getSeoTitle,
-        getSeoDescription,
+        getSeoTitle: getContextSeoTitle,
+        getSeoDescription: getContextSeoDescription,
         translations
       }}
     >
@@ -234,3 +109,7 @@ export const useLanguage = (): LanguageContextType => {
   }
   return context;
 };
+
+// Re-export types for convenience
+export type { SupportedLanguage, LanguageMeta };
+export { languages };

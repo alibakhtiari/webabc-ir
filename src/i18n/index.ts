@@ -1,5 +1,5 @@
 
-import { SupportedLanguage } from '@/contexts/LanguageContext';
+import { SupportedLanguage } from '@/types/language';
 
 // Common translations
 import enCommon from './en/common.json';
@@ -46,8 +46,15 @@ import enBenefits from './en/benefits.json';
 import faBenefits from './fa/benefits.json';
 import arBenefits from './ar/benefits.json';
 
+// Define the translations object with proper typing
+export interface TranslationsType {
+  [language: string]: {
+    [category: string]: any;
+  };
+}
+
 // Merge all translations
-export const translations = {
+export const translations: TranslationsType = {
   en: {
     common: enCommon,
     seo: enSeo,
@@ -83,7 +90,12 @@ export const translations = {
   }
 };
 
-// Helper function to get a translation
+/**
+ * Helper function to get a translation
+ * @param lang Language code
+ * @param key Translation key in dot notation (category.key)
+ * @returns The translated string or the key if not found
+ */
 export const getTranslation = (lang: SupportedLanguage, key: string): any => {
   const keys = key.split('.');
   
@@ -111,3 +123,6 @@ export const getTranslation = (lang: SupportedLanguage, key: string): any => {
   
   return result;
 };
+
+// Export everything for easy importing
+export default translations;
