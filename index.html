@@ -1,81 +1,16 @@
 
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="WebABC - Professional web design and development agency" />
-    <title>WebABC - Professional Web Design and Development Agency</title>
-    
-    <!-- Preconnect to important domains -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    <!-- Critical CSS -->
-    <style>
-      :root {
-        --font-persian: 'Vazirmatn', system-ui, sans-serif;
-        --background: 0 0% 100%;
-        --foreground: 222.2 84% 4.9%;
-        --primary: 221.2 83.2% 53.3%;
-        --primary-foreground: 210 40% 98%;
-      }
-      
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --background: 222.2 84% 4.9%;
-          --foreground: 210 40% 98%;
-        }
-      }
-      
-      body {
-        margin: 0;
-        background-color: hsl(var(--background));
-        color: hsl(var(--foreground));
-        font-family: var(--font-persian), system-ui, sans-serif;
-      }
-      
-      .loading {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        width: 100vw;
-      }
-      
-      .spinner {
-        width: 40px;
-        height: 40px;
-        border: 4px solid rgba(0, 0, 0, 0.1);
-        border-radius: 50%;
-        border-left-color: hsl(var(--primary));
-        animation: spin 1s linear infinite;
-      }
-      
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-    </style>
-    
-    <!-- Fonts - load asynchronously -->
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    
-    <!-- Non-blocking JS preload -->
-    <link rel="modulepreload" href="/src/main.tsx" />
+    <title>Modern Web Agency | SEO & Web Design Services</title>
+    <meta name="description" content="Professional web design, SEO optimization, and digital marketing solutions for businesses. Custom websites that convert visitors into customers." />
   </head>
   <body>
-    <div id="root">
-      <!-- Initial loading state -->
-      <div class="loading">
-        <div class="spinner"></div>
-      </div>
-    </div>
-    <script type="module" src="/src/main.tsx" defer></script>
+    <div id="root"></div>
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
