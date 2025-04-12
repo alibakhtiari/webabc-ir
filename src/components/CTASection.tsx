@@ -4,10 +4,12 @@ import { cn } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
 import ConsultationForm from './ConsultationForm';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const CTASection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [consultationOpen, setConsultationOpen] = useState(false);
+  const { t, language, languageMeta } = useLanguage();
   
   useEffect(() => {
     // Apply animation classes immediately on component mount
@@ -62,35 +64,36 @@ const CTASection = () => {
             </div>
             
             <div className="relative z-10 text-center">
-              <h2 className="font-persian text-3xl md:text-4xl font-bold text-white mb-6 text-balance">
-                آماده‌اید کسب و کار خود را به سطح بعدی ببرید؟
+              <h2 className={cn("text-3xl md:text-4xl font-bold text-white mb-6 text-balance", languageMeta.fontFamily)}>
+                {t('cta.title')}
               </h2>
               
-              <p className="font-persian text-white/90 text-lg mb-8 max-w-3xl mx-auto text-balance">
-                با یک مشاوره رایگان، استراتژی اختصاصی سئو و توسعه وب را برای کسب و کار خود دریافت کنید.
+              <p className={cn("text-white/90 text-lg mb-8 max-w-3xl mx-auto text-balance", languageMeta.fontFamily)}>
+                {t('cta.description')}
               </p>
               
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 font-persian">
+              <div className={cn("flex flex-col sm:flex-row items-center justify-center gap-4 mt-10", languageMeta.fontFamily)}>
                 <button 
                   className={cn(
                     "px-6 py-3 rounded-full bg-white text-primary font-medium",
                     "transition-all duration-300 shadow-md hover:shadow-lg",
-                    "hover:translate-y-[-2px] flex items-center"
+                    "hover:translate-y-[-2px] flex items-center",
+                    languageMeta.direction === 'rtl' ? 'flex-row-reverse' : ''
                   )}
                   onClick={() => setConsultationOpen(true)}
                 >
-                  <span>دریافت مشاوره رایگان</span>
-                  <ArrowRight className="h-4 w-4 mr-2" />
+                  <span>{t('cta.primaryButton')}</span>
+                  <ArrowRight className={cn("h-4 w-4", languageMeta.direction === 'rtl' ? 'ml-2' : 'mr-2')} />
                 </button>
                 <Link
-                  to="/contact"
+                  to={`/${language}/contact`}
                   className={cn(
                     "px-6 py-3 rounded-full bg-transparent text-white",
                     "border border-white/30 transition-all duration-300",
                     "hover:bg-white/10"
                   )}
                 >
-                  <span>تماس با ما</span>
+                  <span>{t('common.contact')}</span>
                 </Link>
               </div>
             </div>
@@ -99,24 +102,24 @@ const CTASection = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
             {[
               {
-                title: 'آدرس ما',
-                content: 'تهران، خیابان ولیعصر، ساختمان وب آ ب ث، طبقه 5'
+                title: t('contact.address'),
+                content: t('contact.addressValue')
               },
               {
-                title: 'شماره تماس',
-                content: '021-12345678'
+                title: t('contact.phone'),
+                content: t('contact.phoneValue')
               },
               {
-                title: 'ایمیل',
-                content: 'info@webabc.ir'
+                title: t('contact.email'),
+                content: t('contact.emailValue')
               }
             ].map((item, idx) => (
               <div 
                 key={idx} 
                 className="neo-morphism p-6 rounded-xl text-center transition-all duration-300 hover:shadow-md"
               >
-                <h3 className="font-persian text-xl font-medium mb-2">{item.title}</h3>
-                <p className="font-persian text-foreground/80">{item.content}</p>
+                <h3 className={cn("text-xl font-medium mb-2", languageMeta.fontFamily)}>{item.title}</h3>
+                <p className={cn("text-foreground/80", languageMeta.fontFamily)}>{item.content}</p>
               </div>
             ))}
           </div>
