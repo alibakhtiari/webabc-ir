@@ -53,15 +53,12 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 const detectUserLanguage = (): SupportedLanguage => {
   const storedLanguage = localStorage.getItem('language') as SupportedLanguage;
   if (storedLanguage && Object.keys(languages).includes(storedLanguage)) {
-    console.log("Using stored language:", storedLanguage);
     return storedLanguage;
   }
 
   // Detect from browser
   const browserLang = navigator.language.split('-')[0] as SupportedLanguage;
-  const detectedLang = Object.keys(languages).includes(browserLang) ? browserLang : 'fa';
-  console.log("Detected language from browser:", detectedLang);
-  return detectedLang;
+  return Object.keys(languages).includes(browserLang) ? browserLang : 'fa';
 };
 
 interface LanguageProviderProps {
@@ -69,31 +66,21 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  console.log("LanguageProvider initializing");
-  const [language, setLanguageState] = useState<SupportedLanguage>('fa'); // Start with default
+  const [language, setLanguageState] = useState<SupportedLanguage>(detectUserLanguage());
   const navigate = useNavigate();
   const location = useLocation();
   const [isInitialized, setIsInitialized] = useState(false);
-
-  // Initialize language on client-side only
-  useEffect(() => {
-    console.log("Setting initial language");
-    const detectedLang = detectUserLanguage();
-    setLanguageState(detectedLang);
-  }, []);
 
   // Handle language change
   const setLanguage = (lang: SupportedLanguage) => {
     if (lang === language) return;
     
-    console.log("Changing language to:", lang);
     localStorage.setItem('language', lang);
     setLanguageState(lang);
     
     // Update URL to reflect language change
     const pathWithoutLang = getPathWithoutLanguage(location.pathname);
     const newPath = normalizePath(`/${lang}${pathWithoutLang}`);
-    console.log("Navigating to new path:", newPath);
     navigate(newPath);
   };
 
@@ -186,43 +173,34 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
   // Apply document direction based on language
   useEffect(() => {
-    if (!language) return;
-    
-    console.log("Setting document direction and language:", languages[language].direction, language);
     document.documentElement.dir = languages[language].direction;
     document.documentElement.lang = language;
   }, [language]);
 
   // Initialize route based on selected language
   useEffect(() => {
-    if (isInitialized || !language) return;
-    console.log("Initializing language from URL, path:", location.pathname);
+    if (isInitialized) return;
     
     // Check if we need to redirect to a language-specific route
     const pathSegments = location.pathname.split('/').filter(Boolean);
-    console.log("Path segments:", pathSegments);
     
     if (pathSegments.length === 0) {
       // Root path "/" - redirect to language home
-      console.log("Redirecting to language home:", `/${language}`);
       navigate(`/${language}`, { replace: true });
       setIsInitialized(true);
     } else if (!Object.keys(languages).includes(pathSegments[0] as SupportedLanguage)) {
       // Path doesn't start with a language code - add the current language
-      console.log("Adding language to path:", `/${language}${location.pathname}`);
       navigate(`/${language}${location.pathname}`, { replace: true });
       setIsInitialized(true);
     } else if (pathSegments[0] !== language) {
       // URL language is different from state language - update state
       const urlLang = pathSegments[0] as SupportedLanguage;
       if (Object.keys(languages).includes(urlLang)) {
-        console.log("Updating language from URL:", urlLang);
         setLanguageState(urlLang);
         localStorage.setItem('language', urlLang);
         setIsInitialized(true);
       }
     } else {
-      console.log("Language already initialized correctly");
       setIsInitialized(true);
     }
   }, [location.pathname, isInitialized, navigate, language]);
