@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import { lazy, Suspense } from 'react';
 import { LanguageProvider } from './contexts/LanguageContext';
 import LoadingSpinner from './components/LoadingSpinner';
+import { portfolioItems } from './lib/portfolioData';
 
 // Import core pages
 const Home = lazy(() => import('./pages/Home'));
@@ -32,7 +33,7 @@ function App() {
             <Route path="/:lang/contact" element={<Contact />} />
             <Route path="/:lang/services" element={<Services />} />
             <Route path="/:lang/portfolio" element={<Portfolio />} />
-            <Route path="/:lang/portfolio/:id" element={<PortfolioItemPage />} />
+            <Route path="/:lang/portfolio/:id" element={<PortfolioItemPage portfolioItems={portfolioItems} />} />
             <Route path="/:lang/blog" element={<BlogPage />} />
             <Route path="/:lang/blog/:slug" element={<BlogPostPage />} />
             

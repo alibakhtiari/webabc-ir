@@ -14,6 +14,7 @@ export type LanguageMeta = {
   name: string;
   nativeName: string;
   direction: 'rtl' | 'ltr';
+  fontFamily: string;
 };
 
 export const languages: Record<SupportedLanguage, LanguageMeta> = {
@@ -22,18 +23,21 @@ export const languages: Record<SupportedLanguage, LanguageMeta> = {
     name: 'Persian',
     nativeName: 'فارسی',
     direction: 'rtl',
+    fontFamily: 'font-persian',
   },
   en: {
     code: 'en',
     name: 'English',
     nativeName: 'English',
     direction: 'ltr',
+    fontFamily: 'font-sans',
   },
   ar: {
     code: 'ar',
     name: 'Arabic',
     nativeName: 'العربية',
     direction: 'rtl',
+    fontFamily: 'font-arabic',
   },
 };
 
