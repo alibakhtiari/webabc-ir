@@ -1,3 +1,4 @@
+
 import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { getPathWithoutLanguage, isLanguageRootPath, normalizePath, getPageNameFromPath } from '../lib/languageUtils';
@@ -69,10 +70,17 @@ interface LanguageProviderProps {
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
   console.log("LanguageProvider initializing");
-  const [language, setLanguageState] = useState<SupportedLanguage>(detectUserLanguage());
+  const [language, setLanguageState] = useState<SupportedLanguage>('fa'); // Start with default
   const navigate = useNavigate();
   const location = useLocation();
   const [isInitialized, setIsInitialized] = useState(false);
+
+  // Initialize language on client-side only
+  useEffect(() => {
+    console.log("Setting initial language");
+    const detectedLang = detectUserLanguage();
+    setLanguageState(detectedLang);
+  }, []);
 
   // Handle language change
   const setLanguage = (lang: SupportedLanguage) => {
@@ -178,6 +186,8 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
   // Apply document direction based on language
   useEffect(() => {
+    if (!language) return;
+    
     console.log("Setting document direction and language:", languages[language].direction, language);
     document.documentElement.dir = languages[language].direction;
     document.documentElement.lang = language;
@@ -185,7 +195,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
   // Initialize route based on selected language
   useEffect(() => {
-    if (isInitialized) return;
+    if (isInitialized || !language) return;
     console.log("Initializing language from URL, path:", location.pathname);
     
     // Check if we need to redirect to a language-specific route

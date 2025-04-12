@@ -7,7 +7,6 @@ import { portfolioItems } from './lib/portfolioData';
 
 // Import core pages - make sure Home is properly imported
 const Home = lazy(() => import('./pages/Home'));
-const IndexPage = lazy(() => import('./pages/Index'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
 const NotFound = lazy(() => import('./pages/NotFound'));

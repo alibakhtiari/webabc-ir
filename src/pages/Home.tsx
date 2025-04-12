@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HeroSection from '@/components/HeroSection';
@@ -20,6 +20,11 @@ const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
+
+  if (!language) {
+    console.log("Language not loaded in Home component");
+    return <div>Loading language...</div>;
+  }
 
   return (
     <div dir={languageMeta.direction} className={language === 'en' ? 'font-sans' : 'font-persian'}>
