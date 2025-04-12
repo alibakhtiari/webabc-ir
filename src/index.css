@@ -5,7 +5,7 @@
 
 /* Import Montserrat font for LTR languages */
 @font-face {
-  font-family: 'Montserrat';
+  font-family: 'lato';
   font-style: normal;
   font-weight: normal;
   font-display: swap;
@@ -107,7 +107,7 @@
   }
   
   .font-sans {
-    font-family: 'Montserrat', system-ui, sans-serif;
+    font-family: 'lato', system-ui, sans-serif;
   }
   
   .text-balance {
