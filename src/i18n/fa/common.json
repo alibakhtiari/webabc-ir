@@ -38,5 +38,13 @@
   "oldestFirst": "قدیمی‌ترین",
   "resetFilters": "بازنشانی فیلترها",
   "noResults": "نتیجه‌ای یافت نشد",
-  "tryAgain": "تلاش مجدد"
+  "tryAgain": "تلاش مجدد",
+  "footer.aboutCompany": "درباره WebABC: ما یک آژانس بازاریابی دیجیتال و توسعه وب هستیم.",
+  "footer.services": "خدمات",
+  "footer.company": "شرکت",
+  "footer.resources": "منابع",
+  "footer.companySince": "از سال ۲۰۱۲",
+  "footer.privacyPolicy": "سیاست حفظ حریم خصوصی",
+  "footer.termsOfService": "شرایط استفاده",
+  "footer.cookiePolicy": "سیاست کوکی"
 }
