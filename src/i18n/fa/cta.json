@@ -4,5 +4,11 @@
   "description": "با یک مشاوره رایگان، استراتژی اختصاصی سئو و توسعه وب را برای کسب و کار خود دریافت کنید.",
   "primaryButton": "دریافت مشاوره رایگان",
   "secondaryButton": "تماس با ما",
-  "contactInfo": "اطلاعات تماس"
+  "contactInfo": "اطلاعات تماس",
+  "address": "آدرس",
+  "phone": "تلفن",
+  "email": "ایمیل",
+  "addressValue": "تهران، خیابان ولیعصر، پلاک ۱۵۶",
+  "phoneValue": "۰۲۱-۱۲۳۴۵۶۷۸",
+  "emailValue": "info@webabc.ir"
 }

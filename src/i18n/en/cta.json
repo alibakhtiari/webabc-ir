@@ -1,8 +1,14 @@
 
 {
-  "title": "Ready to Take Your Business to the Next Level?",
-  "description": "Get a custom SEO and web development strategy for your business with a free consultation.",
+  "title": "Ready to take your business to the next level?",
+  "description": "Get a free consultation and receive a custom SEO and web development strategy for your business.",
   "primaryButton": "Get Free Consultation",
   "secondaryButton": "Contact Us",
-  "contactInfo": "Contact Information"
+  "contactInfo": "Contact Information",
+  "address": "Address",
+  "phone": "Phone",
+  "email": "Email",
+  "addressValue": "123 Main Street, New York, NY 10001",
+  "phoneValue": "+1 (555) 123-4567",
+  "emailValue": "info@webabc.com"
 }

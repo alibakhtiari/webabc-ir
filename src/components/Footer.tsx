@@ -21,7 +21,7 @@ const Footer = () => {
               </Link>
               
               <p className={cn("text-foreground/70 mt-2", languageMeta.fontFamily)}>
-                {t('home.footer.aboutCompany')}
+                {t('footer.aboutCompany')}
               </p>
               
               <div className={cn("flex space-x-4 mt-4", isRtl && "space-x-reverse")}>
@@ -42,7 +42,7 @@ const Footer = () => {
           <div className="md:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-8">
             {[
               {
-                title: t('home.footer.services'),
+                title: t('footer.services'),
                 links: [
                   { name: t('services.seoTitle'), href: `/${language}/seo-services` },
                   { name: t('services.webDesignTitle'), href: `/${language}/web-design` },
@@ -52,7 +52,7 @@ const Footer = () => {
                 ]
               },
               {
-                title: t('home.footer.company'),
+                title: t('footer.company'),
                 links: [
                   { name: t('common.about'), href: `/${language}/about` },
                   { name: t('about.ourTeam'), href: `/${language}/team` },
@@ -62,7 +62,7 @@ const Footer = () => {
                 ]
               },
               {
-                title: t('home.footer.resources'),
+                title: t('footer.resources'),
                 links: [
                   { name: t('resources.seoGuide'), href: `/${language}/seo-guide` },
                   { name: t('resources.webDesignGuide'), href: `/${language}/web-design-guide` },
@@ -95,14 +95,14 @@ const Footer = () => {
         
         <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between">
           <p className={cn("text-foreground/70 text-sm", languageMeta.fontFamily)}>
-            {t('home.footer.companySince')}
+            {t('footer.companySince')}
           </p>
           
           <div className={cn("flex space-x-4 mt-4 md:mt-0", isRtl && "space-x-reverse")}>
             {[
-              { name: t('home.footer.privacyPolicy'), href: `/${language}/privacy` },
-              { name: t('home.footer.termsOfService'), href: `/${language}/terms` },
-              { name: t('home.footer.cookiePolicy'), href: `/${language}/cookies` }
+              { name: t('footer.privacyPolicy'), href: `/${language}/privacy` },
+              { name: t('footer.termsOfService'), href: `/${language}/terms` },
+              { name: t('footer.cookiePolicy'), href: `/${language}/cookies` }
             ].map((item, idx) => (
               <a 
                 key={idx} 

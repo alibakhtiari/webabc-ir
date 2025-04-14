@@ -77,13 +77,13 @@ const CTASection = () => {
                   className={cn(
                     "px-6 py-3 rounded-full bg-white text-primary font-medium",
                     "transition-all duration-300 shadow-md hover:shadow-lg",
-                    "hover:translate-y-[-2px] flex items-center",
+                    "hover:translate-y-[-2px] flex items-center gap-2",
                     languageMeta.direction === 'rtl' ? 'flex-row-reverse' : ''
                   )}
                   onClick={() => setConsultationOpen(true)}
                 >
                   <span>{t('cta.primaryButton')}</span>
-                  <ArrowRight className={cn("h-4 w-4", languageMeta.direction === 'rtl' ? 'ml-2' : 'mr-2')} />
+                  <ArrowRight className="h-4 w-4" />
                 </button>
                 <Link
                   to={`/${language}/contact`}
@@ -102,16 +102,16 @@ const CTASection = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
             {[
               {
-                title: t('contact.address'),
-                content: t('contact.addressValue')
+                title: t('cta.address'),
+                content: t('cta.addressValue')
               },
               {
-                title: t('contact.phone'),
-                content: t('contact.phoneValue')
+                title: t('cta.phone'),
+                content: t('cta.phoneValue')
               },
               {
-                title: t('contact.email'),
-                content: t('contact.emailValue')
+                title: t('cta.email'),
+                content: t('cta.emailValue')
               }
             ].map((item, idx) => (
               <div 
