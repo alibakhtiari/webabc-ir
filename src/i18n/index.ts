@@ -46,6 +46,11 @@ import enBenefits from './en/benefits.json';
 import faBenefits from './fa/benefits.json';
 import arBenefits from './ar/benefits.json';
 
+// CTA translations
+import enCta from './en/cta.json';
+import faCta from './fa/cta.json';
+import arCta from './ar/cta.json';
+
 // Define the translations object with proper typing
 export interface TranslationsType {
   [language: string]: {
@@ -64,7 +69,8 @@ export const translations: TranslationsType = {
     portfolio: enPortfolio,
     contact: enContact,
     home: enHome,
-    benefits: enBenefits
+    benefits: enBenefits,
+    cta: enCta
   },
   fa: {
     common: faCommon,
@@ -75,7 +81,8 @@ export const translations: TranslationsType = {
     portfolio: faPortfolio,
     contact: faContact,
     home: faHome,
-    benefits: faBenefits
+    benefits: faBenefits,
+    cta: faCta
   },
   ar: {
     common: arCommon,
@@ -86,7 +93,8 @@ export const translations: TranslationsType = {
     portfolio: arPortfolio,
     contact: arContact,
     home: arHome,
-    benefits: arBenefits
+    benefits: arBenefits,
+    cta: arCta
   }
 };
 
