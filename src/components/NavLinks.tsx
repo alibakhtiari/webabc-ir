@@ -31,9 +31,9 @@ export const ServicesDropdown = () => {
         <ChevronDown className="h-4 w-4 ml-1 group-hover:rotate-180 transition-transform duration-200" />
       </button>
       
-      {/* Mega Menu */}
+      {/* Mega Menu - removed backdrop-blur */}
       <div className={`absolute top-full ${isRtl ? 'right-0' : 'left-0'} mt-2 w-[680px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50`}>
-        <div className="glass-morphism p-6 animate-zoom-in shadow-xl">
+        <div className="bg-white p-6 animate-zoom-in shadow-xl rounded-lg">
           <div className="grid grid-cols-2 gap-6">
             {/* Left Column - Featured Service */}
             <div className="bg-primary/5 rounded-lg p-5">
@@ -67,7 +67,7 @@ export const ServicesDropdown = () => {
                   icon={<Globe />}
                 />
                 <ServiceLink 
-                  to={`/${language}/local-seo-services`}
+                  to={`/${language}/local-seo`}
                   title={t('services.localSeoTitle')}
                   description={t('services.localSeoDescription')}
                   icon={<Globe />}

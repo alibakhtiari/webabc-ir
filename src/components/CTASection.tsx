@@ -93,7 +93,7 @@ const CTASection = () => {
                     "hover:bg-white/10"
                   )}
                 >
-                  <span>{t('common.contact')}</span>
+                  <span>{t('cta.secondaryButton')}</span>
                 </Link>
               </div>
             </div>

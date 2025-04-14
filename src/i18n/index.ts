@@ -51,6 +51,21 @@ import enCta from './en/cta.json';
 import faCta from './fa/cta.json';
 import arCta from './ar/cta.json';
 
+// Resources translations
+import enResources from './en/resources.json';
+import faResources from './fa/resources.json';
+import arResources from './ar/resources.json';
+
+// Blog translations
+import enBlog from './en/blog.json';
+import faBlog from './fa/blog.json';
+import arBlog from './ar/blog.json';
+
+// Case Studies translations
+import enCaseStudies from './en/caseStudies.json';
+import faCaseStudies from './fa/caseStudies.json';
+import arCaseStudies from './ar/caseStudies.json';
+
 // Define the translations object with proper typing
 export interface TranslationsType {
   [language: string]: {
@@ -70,7 +85,10 @@ export const translations: TranslationsType = {
     contact: enContact,
     home: enHome,
     benefits: enBenefits,
-    cta: enCta
+    cta: enCta,
+    resources: enResources,
+    blog: enBlog,
+    caseStudies: enCaseStudies
   },
   fa: {
     common: faCommon,
@@ -82,7 +100,10 @@ export const translations: TranslationsType = {
     contact: faContact,
     home: faHome,
     benefits: faBenefits,
-    cta: faCta
+    cta: faCta,
+    resources: faResources,
+    blog: faBlog,
+    caseStudies: faCaseStudies
   },
   ar: {
     common: arCommon,
@@ -94,7 +115,10 @@ export const translations: TranslationsType = {
     contact: arContact,
     home: arHome,
     benefits: arBenefits,
-    cta: arCta
+    cta: arCta,
+    resources: arResources,
+    blog: arBlog,
+    caseStudies: arCaseStudies
   }
 };
 

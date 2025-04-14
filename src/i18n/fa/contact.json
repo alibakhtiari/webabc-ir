@@ -14,6 +14,12 @@
   "locationMap": "موقعیت ما",
   "messageSent": "پیام با موفقیت ارسال شد",
   "messageFailed": "ارسال پیام ناموفق بود",
+  "address": "آدرس",
+  "addressValue": "خیابان آزادی، بلوار کشاورز، پلاک ۱۲۳، تهران، ایران",
+  "phone": "تلفن",
+  "phoneValue": "۰۲۱-۱۲۳۴۵۶۷۸",
+  "email": "ایمیل",
+  "emailValue": "info@webabc.com",
   "consultation": {
     "title": "درخواست مشاوره رایگان",
     "description": "فرم زیر را پر کنید و کارشناسان ما به زودی با شما تماس خواهند گرفت.",

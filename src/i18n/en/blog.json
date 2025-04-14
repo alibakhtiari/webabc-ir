@@ -1,0 +1,17 @@
+
+{
+  "title": "Blog",
+  "recentPosts": "Recent Posts",
+  "readMore": "Read More",
+  "popularTopics": "Popular Topics",
+  "categories": "Categories",
+  "searchPlaceholder": "Search articles...",
+  "relatedArticles": "Related Articles",
+  "publishedOn": "Published on",
+  "minuteRead": "min read",
+  "author": "Author",
+  "shareArticle": "Share this article",
+  "tags": "Tags",
+  "subscribe": "Subscribe to our newsletter",
+  "subscribeDesc": "Get the latest articles and insights directly to your inbox"
+}

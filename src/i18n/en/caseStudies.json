@@ -1,0 +1,62 @@
+
+{
+  "title": "Case Studies",
+  "description": "Explore our case studies to see the journey from initial challenges to measurable results. Each case study demonstrates our commitment to delivering value.",
+  "challenge": "Challenge",
+  "solution": "Solution",
+  "results": "Results",
+  "downloadHint": "Want to learn more about our approach and outcomes?",
+  "downloadFull": "Download Full Case Studies",
+  "contactForMore": "Contact Us for More Information",
+  "ecommerceCase": {
+    "title": "200% Increase in Online Sales with SEO",
+    "category": "Case Study: E-commerce Store",
+    "challenge": "An online home appliance store had quality products but low traffic and sales. The main problem was lack of proper SEO and poor user experience.",
+    "solution": "Our team designed a comprehensive strategy including technical site optimization, content structure improvement, information architecture correction, and creation of custom landing pages for popular products.",
+    "results1": "200% increase in online sales over 6 months",
+    "results2": "150% improvement in organic traffic from Google",
+    "results3": "30% increase in conversion rate",
+    "results4": "25% decrease in bounce rate",
+    "testimonial": "Working with WebABC was one of our best business decisions. The results of optimizing our site exceeded our expectations by far.",
+    "imageAlt": "E-commerce store sales growth chart after SEO by WebABC",
+    "resultsImageAlt": "E-commerce store keyword ranking results after WebABC SEO implementation"
+  },
+  "wordpressCase": {
+    "title": "Brand Relaunch with Custom WordPress Site",
+    "category": "Case Study: WordPress Development",
+    "challenge": "A beauty brand needed a complete digital transformation of their outdated website which was difficult to update and wasn't generating leads or sales.",
+    "solution": "We developed a custom WordPress site with a distinctive theme, integrated e-commerce functionality, and implemented a content strategy focused on product education and beauty tips.",
+    "results1": "75% increase in average time on site",
+    "results2": "180% growth in newsletter subscriptions",
+    "results3": "95% increase in online product inquiries",
+    "testimonial": "The WebABC team delivered a website that perfectly represents our brand identity. The site is not only beautiful but also easy to use and has significantly enhanced our digital presence.",
+    "imageAlt": "Beauty brand WordPress site redesign showing responsive layout on multiple devices",
+    "resultsImageAlt": "Analytics dashboard showing improvements in user engagement metrics after site redesign"
+  },
+  "localSeoCase": {
+    "title": "500% Increase in Appointments through Local SEO Strategy",
+    "category": "Case Study: Local SEO",
+    "challenge": "A dental clinic was struggling to attract local patients despite offering excellent services. Their online presence was minimal, and they were outranked by competitors in local searches.",
+    "solution": "We implemented a comprehensive local SEO strategy including Google Business Profile optimization, local citation building, review management, and location-specific content creation.",
+    "results1": "500% increase in appointment bookings within 4 months",
+    "results2": "Top 3 rankings for all key local keywords",
+    "results3": "300% improvement in website traffic from local searches",
+    "results4": "Average 4.9/5 rating with over 120 reviews from new patients",
+    "testimonial": "The local SEO campaign transformed our business. We're now booked weeks in advance and had to hire additional staff to handle the growth. I highly recommend WebABC's local SEO services.",
+    "imageAlt": "Google Maps showing the dental clinic's higher ranking after local SEO",
+    "resultsImageAlt": "Chart showing growth in local search visibility and appointment bookings after SEO implementation"
+  },
+  "webDevCase": {
+    "title": "React-based Financial Platform with 99.9% Uptime",
+    "category": "Case Study: Web App Development",
+    "challenge": "A fintech startup needed a secure, scalable web application for financial data analysis and reporting, with stringent requirements for performance and reliability.",
+    "solution": "We developed a custom web application based on React with a Node.js backend, implementing advanced data visualization, real-time data processing, and bank-level security protocols.",
+    "results1": "99.9% uptime since launch",
+    "results2": "90% faster data processing compared to previous solution",
+    "results3": "Successfully passed external security audit with zero critical findings",
+    "results4": "Scalable architecture supporting 10x user growth without performance degradation",
+    "testimonial": "WebABC provided a robust platform that was critical for our business growth. Their attention to detail, especially around security and performance optimization, demonstrated their expertise in financial application development.",
+    "imageAlt": "Dashboard interface of the React financial platform showing data visualization components",
+    "resultsImageAlt": "Performance metrics showing system uptime and response time optimization after deployment"
+  }
+}

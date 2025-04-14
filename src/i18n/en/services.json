@@ -6,10 +6,12 @@
     "highlight": "Solutions",
     "suffix": " for Your Business"
   },
-  "sectionDescription": "We provide comprehensive SEO and web development services to help your business succeed online. All our services are designed according to the latest global standards and tailored to specific market needs.",
+  "sectionDescription": "We provide comprehensive SEO and web development services to help your business succeed online. All our services are designed according to the latest global standards and customized for the specific needs of the market.",
+  "title": "Professional SEO and Web Development Services",
+  "description": "Comprehensive digital marketing solutions for your business growth. Using the latest technologies and advanced techniques, we turn your website into a powerful tool for attracting customers.",
   "seo": {
-    "title": "Specialized SEO & Optimization",
-    "description": "Improve your website's ranking in search engines using standard SEO techniques.",
+    "title": "SEO & Specialized Optimization",
+    "description": "Improve your website ranking in search engines using standard SEO techniques.",
     "features": [
       "Keyword Research",
       "Content Optimization",
@@ -20,28 +22,28 @@
   },
   "webDesign": {
     "title": "Custom Website Design",
-    "description": "Design and develop websites with attractive user interfaces, clean code, and mobile compatibility.",
+    "description": "Design and development of websites with attractive UI, clean code and mobile compatibility.",
     "features": [
       "Responsive Design",
-      "Modern UI",
+      "Modern User Interface",
       "Fast Loading Speed",
-      "SEO-Friendly",
+      "SEO Friendly",
       "High Security"
     ]
   },
   "contentCreation": {
     "title": "Specialized Content Creation",
-    "description": "High-quality content creation, optimized for keywords related to your business.",
+    "description": "Production of high-quality content, optimized for keywords relevant to your business.",
     "features": [
       "Specialized Content",
-      "SEO-Optimized",
+      "SEO Optimized",
       "Content Strategy",
-      "Publishing Calendar",
+      "Publication Calendar",
       "Custom Graphics"
     ]
   },
-  "consultButton": "Consultation about",
-  "imagePrefix": "Image of",
+  "consultButton": "Consult about",
+  "imagePrefix": "Image",
   "keyFeatures": [
     {
       "title": "Keyword Research",
@@ -55,5 +57,40 @@
       "title": "External Link Building",
       "desc": "Professional link building strategy to increase site authority"
     }
-  ]
+  ],
+  "webDevelopment": "Web Development",
+  "webDevelopmentTitle": "Website Design and Development Services",
+  "webDevelopmentDescription": "Our specialist team designs modern, user-friendly, and SEO-optimized websites. From simple corporate websites to complex online stores and interactive web applications, we provide solutions tailored to your needs.",
+  "wordpressDesc": "Professional design and development of WordPress websites, customized for your business needs",
+  "frontendDev": "Frontend Development with React and Next.js",
+  "frontendDesc": "Creating modern, fast, and responsive user interfaces using advanced frontend technologies",
+  "backendDev": "Backend Development with Python and Node.js",
+  "backendDesc": "Creating powerful, scalable, and secure infrastructure for web applications",
+  "feature": {
+    "uiuxDesign": "Modern UI/UX Design and Development",
+    "reactNextjs": "Implementation with React.js and Next.js",
+    "responsiveDesign": "Responsive Design for all devices",
+    "webVitals": "Core Web Vitals Optimization",
+    "animations": "Advanced User Animations and Interactions",
+    "apiIntegration": "Integration with various APIs",
+    "restApi": "RESTful APIs Design and Implementation",
+    "python": "Development with Django or Flask (Python)",
+    "nodejs": "Development with Express or NestJS (Node.js)",
+    "database": "Database Management (SQL and NoSQL)",
+    "auth": "Authentication and Authorization System Implementation",
+    "cloudIntegration": "Integration with Cloud Services"
+  },
+  "seoTitle": "SEO Services",
+  "seoDescription": "Improve your website ranking",
+  "localSeoTitle": "Local SEO",
+  "localSeoDescription": "Excel in local searches",
+  "webDevTitle": "Web Development",
+  "webDevDescription": "Custom web solutions",
+  "faqTitle": "Answers to Your Frequently Asked Questions",
+  "faqDescription": "Here we've answered some common questions about our SEO and web development services. If you have more questions, please contact us.",
+  "ctaTitle": "Ready to Transform Your Business?",
+  "ctaDescription": "Contact us to discuss your project's specific needs and deliver a solution tailored to your business goals.",
+  "ourServices": "Our Services",
+  "technicalOptimization": "Technical Optimization",
+  "linkBuilding": "Link Building"
 }

@@ -15,11 +15,13 @@ const Portfolio = lazy(() => import('./pages/Portfolio'));
 const PortfolioItemPage = lazy(() => import('./components/PortfolioItemPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
+const CaseStudies = lazy(() => import('./pages/CaseStudies'));
 
 // Service pages
 const WebDesign = lazy(() => import('./pages/WebDesign'));
 const SeoService = lazy(() => import('./pages/SeoService'));
 const LocalSeo = lazy(() => import('./pages/LocalSeo'));
+const WebDevelopment = lazy(() => import('./pages/WebDevelopment'));
 
 function App() {
   return (
@@ -36,11 +38,13 @@ function App() {
             <Route path="/:lang/portfolio/:id" element={<PortfolioItemPage portfolioItems={portfolioItems} />} />
             <Route path="/:lang/blog" element={<BlogPage />} />
             <Route path="/:lang/blog/:slug" element={<BlogPostPage />} />
+            <Route path="/:lang/case-studies" element={<CaseStudies />} />
             
             {/* Service Pages */}
             <Route path="/:lang/web-design" element={<WebDesign />} />
             <Route path="/:lang/seo-services" element={<SeoService />} />
             <Route path="/:lang/local-seo" element={<LocalSeo />} />
+            <Route path="/:lang/web-development-services" element={<WebDevelopment />} />
             
             {/* Redirect from root to default language */}
             <Route path="/" element={<Navigate to="/en" replace />} />
