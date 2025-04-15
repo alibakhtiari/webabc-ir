@@ -1,7 +1,6 @@
 
 {
   "home": "Home",
-  "services": "Services",
   "portfolio": "Portfolio",
   "caseStudies": "Case Studies",
   "about": "About Us",
@@ -39,12 +38,12 @@
   "resetFilters": "Reset filters",
   "noResults": "No results found",
   "tryAgain": "Try Again",
-  "footer.aboutCompany": "About WebABC: We are a digital marketing and web development agency.",
-  "footer.services": "Services",
-  "footer.company": "Company",
-  "footer.resources": "Resources",
-  "footer.companySince": "Since 2012",
-  "footer.privacyPolicy": "Privacy Policy",
-  "footer.termsOfService": "Terms of Service",
-  "footer.cookiePolicy": "Cookie Policy"
+  "aboutCompany": "About WebABC: We are a digital marketing and web development agency.",
+  "services": "Services",
+  "company": "Company",
+  "resources": "Resources",
+  "companySince": "Since 2012",
+  "privacyPolicy": "Privacy Policy",
+  "termsOfService": "Terms of Service",
+  "cookiePolicy": "Cookie Policy"
 }

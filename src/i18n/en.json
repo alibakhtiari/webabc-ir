@@ -39,7 +39,7 @@
     "tryAgain": "Try Again"
   },
   "seo": {
-    "defaultTitle": "WebABC | Web Design and SEO Services",
+    "defaultTitle": "WebABC | Professional SEO and Web Design Services",
     "defaultDescription": "WebABC web design and SEO services company | Digital marketing solutions",
     "author": "WebABC",
     "siteName": "WebABC",
@@ -329,6 +329,12 @@
       "auth": "Implementation of authentication and authorization systems",
       "cloudIntegration": "Integration with cloud services"
     },
+    "seoTitle": "SEO Services",
+    "seoDescription": "Boost your website ranking",
+    "localSeoTitle": "Local SEO",
+    "localSeoDescription": "Dominate local searches",
+    "webDevTitle": "Web Development",
+    "webDevDescription": "Custom web solutions",
     "faqTitle": "Answers to Your Common Questions",
     "faqDescription": "Here we've answered some common questions about our SEO and web development services. If you have any other questions, please contact us.",
     "ctaTitle": "Ready to Transform Your Business?",
@@ -347,21 +353,5 @@
       "supportQuestion": "Do you provide support services after project delivery?",
       "supportAnswer": "Yes, we offer various support packages to ensure your website remains up-to-date, secure, and optimized. These services include security updates, regular backups, performance optimization, content updates, and technical troubleshooting. We also provide training for your team to manage the site."
     }
-  },
-  "hero": {
-    "title": "Elevate Your Digital Presence with Expert Web Solutions",
-    "description": "We help businesses grow online with professional web development and SEO strategies that deliver real results.",
-    "primaryCta": "Explore Services",
-    "secondaryCta": "View Portfolio",
-    "imageAlt": "Digital marketing and web development illustration"
-  },
-  
-  "services": {
-    "seoTitle": "SEO Services",
-    "seoDescription": "Boost your website ranking",
-    "localSeoTitle": "Local SEO",
-    "localSeoDescription": "Dominate local searches",
-    "webDevTitle": "Web Development",
-    "webDevDescription": "Custom web solutions"
   }
 }

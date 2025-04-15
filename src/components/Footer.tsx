@@ -19,11 +19,11 @@ const Footer = () => {
                   WebABC
                 </span>
               </Link>
-              
+
               <p className={cn("text-foreground/70 mt-2", languageMeta.fontFamily)}>
-                {t('footer.aboutCompany')}
+                {t('common.aboutCompany')}
               </p>
-              
+
               <div className={cn("flex space-x-4 mt-4", isRtl && "space-x-reverse")}>
                 {['twitter', 'instagram', 'linkedin', 'facebook'].map((social) => (
                   <a
@@ -38,11 +38,11 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="md:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-8">
             {[
               {
-                title: t('footer.services'),
+                title: t('common.services'),
                 links: [
                   { name: t('services.seoTitle'), href: `/${language}/seo-services` },
                   { name: t('services.webDesignTitle'), href: `/${language}/web-design` },
@@ -52,7 +52,7 @@ const Footer = () => {
                 ]
               },
               {
-                title: t('footer.company'),
+                title: t('common.company'),
                 links: [
                   { name: t('common.about'), href: `/${language}/about` },
                   { name: t('about.ourTeam'), href: `/${language}/team` },
@@ -62,7 +62,7 @@ const Footer = () => {
                 ]
               },
               {
-                title: t('footer.resources'),
+                title: t('common.resources'),
                 links: [
                   { name: t('resources.seoGuide'), href: `/${language}/seo-guide` },
                   { name: t('resources.webDesignGuide'), href: `/${language}/web-design-guide` },
@@ -79,8 +79,8 @@ const Footer = () => {
                 <ul className="space-y-2">
                   {category.links.map((link, linkIdx) => (
                     <li key={linkIdx}>
-                      <a 
-                        href={link.href} 
+                      <a
+                        href={link.href}
                         className={cn("text-foreground/70 hover:text-primary transition-colors", languageMeta.fontFamily)}
                       >
                         {link.name}
@@ -92,21 +92,21 @@ const Footer = () => {
             ))}
           </div>
         </div>
-        
+
         <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between">
           <p className={cn("text-foreground/70 text-sm", languageMeta.fontFamily)}>
-            {t('footer.companySince')}
+            {t('common.companySince')}
           </p>
-          
+
           <div className={cn("flex space-x-4 mt-4 md:mt-0", isRtl && "space-x-reverse")}>
             {[
-              { name: t('footer.privacyPolicy'), href: `/${language}/privacy` },
-              { name: t('footer.termsOfService'), href: `/${language}/terms` },
-              { name: t('footer.cookiePolicy'), href: `/${language}/cookies` }
+              { name: t('common.privacyPolicy'), href: `/${language}/privacy` },
+              { name: t('common.termsOfService'), href: `/${language}/terms` },
+              { name: t('common.cookiePolicy'), href: `/${language}/cookies` }
             ].map((item, idx) => (
-              <a 
-                key={idx} 
-                href={item.href} 
+              <a
+                key={idx}
+                href={item.href}
                 className={cn("text-sm text-foreground/70 hover:text-primary transition-colors", languageMeta.fontFamily)}
               >
                 {item.name}
