@@ -5,13 +5,13 @@ import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import SEOHead from '@/components/SEOHead';
 import CTASection from '@/components/CTASection';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
 const CaseStudies = () => {
   const { language, t, languageMeta } = useLanguage();
-
+  const Icon = languageMeta.direction === 'rtl' ? ArrowLeft : ArrowRight;
   const caseStudies = [
     {
       id: 'ecommerce-seo',
@@ -71,23 +71,23 @@ const CaseStudies = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col" dir={languageMeta.direction}>
-      <SEOHead 
-        title={t('caseStudies.title')} 
+    <div className={`min-h-screen flex flex-col ${languageMeta.fontFamily}`} dir={languageMeta.direction}>
+      <SEOHead
+        title={t('caseStudies.title')}
         description={t('caseStudies.description')}
       />
 
       <Navbar />
-      
+
       <main className="flex-1 pt-24">
         {/* Hero Section */}
         <section className="py-16 bg-gradient-to-r from-primary/5 to-primary/10">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className={`text-4xl md:text-5xl font-bold mb-6 ${languageMeta.fontFamily}`}>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 {t('caseStudies.title')}
               </h1>
-              <p className={`text-xl text-gray-600 ${languageMeta.fontFamily}`}>
+              <p className="text-xl text-gray-600">
                 {t('caseStudies.description')}
               </p>
             </div>
@@ -105,39 +105,39 @@ const CaseStudies = () => {
                   </div>
                   <div className="p-6">
                     <div className="mb-2">
-                      <span className={`text-sm font-medium text-primary ${languageMeta.fontFamily}`}>
+                      <span className="text-sm font-medium text-primary">
                         {study.category}
                       </span>
                     </div>
-                    <h3 className={`text-xl font-bold mb-4 ${languageMeta.fontFamily}`}>{study.title}</h3>
-                    
+                    <h3 className="text-xl font-bold mb-4">{study.title}</h3>
+
                     <div className="space-y-4">
                       <div>
-                        <h4 className={`font-semibold text-gray-800 ${languageMeta.fontFamily}`}>
+                        <h4 className="font-semibold text-gray-800">
                           {t('caseStudies.challenge')}
                         </h4>
-                        <p className={`text-gray-600 text-sm ${languageMeta.fontFamily}`}>
+                        <p className="text-gray-600 text-sm">
                           {study.challenge.substring(0, 100)}...
                         </p>
                       </div>
 
                       <div>
-                        <h4 className={`font-semibold text-gray-800 ${languageMeta.fontFamily}`}>
+                        <h4 className="font-semibold text-gray-800">
                           {t('caseStudies.results')}
                         </h4>
                         <ul className="list-disc pl-5 text-sm text-gray-600">
                           {study.results.slice(0, 2).map((result, idx) => (
-                            <li key={idx} className={`${languageMeta.fontFamily}`}>{result}</li>
+                            <li key={idx}>{result}</li>
                           ))}
                         </ul>
                       </div>
 
-                      <Link 
+                      <Link
                         to={`/${language}/case-studies/${study.id}`}
-                        className={`inline-flex items-center text-primary hover:text-primary/80 ${languageMeta.fontFamily}`}
+                        className="inline-flex items-center text-primary hover:text-primary/80"
                       >
                         {t('common.readMore')}
-                        <ArrowRight className={`${languageMeta.direction === 'rtl' ? 'mr-1' : 'ml-1'} h-4 w-4`} />
+                        <Icon className={`${languageMeta.direction === 'rtl' ? 'mr-1' : 'ml-1'} h-4 w-4`} />
                       </Link>
                     </div>
                   </div>
@@ -146,7 +146,7 @@ const CaseStudies = () => {
             </div>
 
             <div className="mt-16 text-center">
-              <h3 className={`text-2xl font-bold mb-4 ${languageMeta.fontFamily}`}>
+              <h3 className="text-2xl font-bold mb-4">
                 {t('caseStudies.downloadHint')}
               </h3>
               <Button size="lg">
