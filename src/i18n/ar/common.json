@@ -1,4 +1,3 @@
-
 {
   "home": "الرئيسية",
   "services": "الخدمات",
@@ -39,12 +38,12 @@
   "resetFilters": "إعادة ضبط التصفية",
   "noResults": "لم يتم العثور على نتائج",
   "tryAgain": "حاول مرة أخرى",
-  "footer.aboutCompany": "عن WebABC: نحن وكالة تسويق رقمي وتطوير مواقع.",
-  "footer.services": "الخدمات",
-  "footer.company": "الشركة",
-  "footer.resources": "الموارد",
-  "footer.companySince": "منذ 2012",
-  "footer.privacyPolicy": "سياسة الخصوصية",
-  "footer.termsOfService": "شروط الخدمة",
-  "footer.cookiePolicy": "سياسة الكوكيز"
+  "aboutCompany": "عن WebABC: نحن وكالة تسويق رقمي وتطوير مواقع.",
+  "company": "الشركة",
+  "resources": "الموارد",
+  "companySince": "منذ 2012",
+  "privacyPolicy": "سياسة الخصوصية",
+  "termsOfService": "شروط الخدمة",
+  "cookiePolicy": "سياسة الكوكيز",
+  "viewPortfolio": "عرض المشاريع"
 }

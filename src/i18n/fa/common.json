@@ -1,4 +1,3 @@
-
 {
   "home": "خانه",
   "portfolio": "نمونه‌کارها",
@@ -45,5 +44,6 @@
   "companySince": "از سال ۲۰۱۲",
   "privacyPolicy": "سیاست حفظ حریم خصوصی",
   "termsOfService": "شرایط استفاده",
-  "cookiePolicy": "سیاست کوکی"
+  "cookiePolicy": "سیاست کوکی",
+  "viewPortfolio": "مشاهده نمونه کارها"
 }

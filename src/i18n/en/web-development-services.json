@@ -1,0 +1,22 @@
+{
+  "webDevelopmentTitle": "Web Development Services",
+  "webDevelopmentDescription": "We offer comprehensive web development services to bring your ideas to life.",
+  "ourServices": "Our Services",
+  "frontendDev": "Frontend Development",
+  "frontendDesc": "We build beautiful and responsive user interfaces.",
+  "backendDev": "Backend Development",
+  "backendDesc": "We develop robust and scalable backend systems.",
+  "feature.uiuxDesign": "UI/UX Design",
+  "feature.reactNextjs": "React & Next.js Development",
+  "feature.responsiveDesign": "Responsive Design",
+  "feature.webVitals": "Web Vitals Optimization",
+  "feature.animations": "Animations & Interactions",
+  "feature.apiIntegration": "API Integration",
+  "feature.restApi": "REST API Development",
+  "feature.python": "Python Development",
+  "feature.nodejs": "Node.js Development",
+  "feature.database": "Database Design & Management",
+  "feature.auth": "Authentication & Authorization",
+  "feature.cloudIntegration": "Cloud Integration",
+  "keywords": "web development, services, react, nextjs"
+}

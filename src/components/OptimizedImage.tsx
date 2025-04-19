@@ -2,13 +2,6 @@
 import React, { useState, useEffect, memo } from 'react';
 import { cn } from '@/lib/utils';
 
-// Add TypeScript declaration for gtag
-declare global {
-  interface Window {
-    gtag?: (command: string, action: string, params: any) => void;
-  }
-}
-
 interface OptimizedImageProps {
   src: string;
   alt: string;
@@ -43,14 +36,14 @@ const OptimizedImage = ({
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [isInView, setIsInView] = useState(priority);
-  
+
   // Handle intersection observer for lazy loading
   useEffect(() => {
     if (priority) return; // Skip for priority images
-    
+
     const imgElement = document.querySelector(`img[data-src="${src}"]`);
     if (!imgElement) return;
-    
+
     const onIntersect = (entries: IntersectionObserverEntry[]) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -59,14 +52,14 @@ const OptimizedImage = ({
         }
       });
     };
-    
+
     const observer = new IntersectionObserver(onIntersect, {
       rootMargin: lazyBoundary,
       threshold: 0.1
     });
-    
+
     observer.observe(imgElement);
-    
+
     return () => {
       if (imgElement) observer.unobserve(imgElement);
     };
@@ -75,19 +68,6 @@ const OptimizedImage = ({
   const handleLoad = () => {
     setIsLoaded(true);
     if (onLoad) onLoad();
-    
-    // Report to Web Vitals if available
-    if (window.performance && priority) {
-      const paintMetrics = performance.getEntriesByType('paint');
-      const lcp = paintMetrics.find(entry => entry.name === 'largest-contentful-paint');
-      if (lcp && window.gtag) {
-        window.gtag('event', 'web_vitals', {
-          eventCategory: 'Web Vitals',
-          eventAction: 'LCP',
-          eventValue: Math.round(lcp.startTime)
-        });
-      }
-    }
   };
 
   const handleError = () => {
@@ -98,11 +78,11 @@ const OptimizedImage = ({
 
   // Add image parameters for optimization (if using a CDN)
   const optimizedSrc = src.startsWith('http') ? `${src}?q=${quality}&w=${width || 'auto'}` : src;
-  
+
   // Create srcSet for responsive images
   const createSrcSet = () => {
     if (!src.startsWith('http')) return undefined;
-    
+
     const widths = [320, 640, 960, 1280, 1920];
     return widths
       .map(w => `${src}?q=${quality}&w=${w} ${w}w`)
@@ -117,25 +97,23 @@ const OptimizedImage = ({
           <span className="sr-only">Loading image...</span>
         </div>
       )}
-      
+
       {/* Error state */}
       {hasError && (
         <div className={cn("absolute inset-0 flex items-center justify-center", placeholderColor)}>
           <p className="text-sm text-gray-500">Failed to load image</p>
         </div>
       )}
-      
+
       {/* Image */}
       {(isInView || priority) && (
-        <img 
+        <img
           src={optimizedSrc}
           data-src={src}
           alt={alt}
           width={width}
           height={height}
           loading={priority ? "eager" : "lazy"}
-          // @ts-ignore - fetchPriority exists in modern browsers
-          fetchPriority={priority ? "high" : "auto"}
           decoding={priority ? "sync" : "async"}
           onLoad={handleLoad}
           onError={handleError}
@@ -149,7 +127,7 @@ const OptimizedImage = ({
           )}
         />
       )}
-      
+
       {/* Preload high priority images */}
       {priority && !isLoaded && (
         <link rel="preload" as="image" href={optimizedSrc} />

@@ -1,4 +1,3 @@
-
 {
   "home": "Home",
   "portfolio": "Portfolio",
@@ -45,5 +44,6 @@
   "companySince": "Since 2012",
   "privacyPolicy": "Privacy Policy",
   "termsOfService": "Terms of Service",
-  "cookiePolicy": "Cookie Policy"
+  "cookiePolicy": "Cookie Policy",
+  "viewPortfolio": "View Portfolio"
 }

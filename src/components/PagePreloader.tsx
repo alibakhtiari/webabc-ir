@@ -8,7 +8,7 @@ import { initPageSpeedOptimizations, addNavigationHints } from '@/lib/pagespeedO
 const PagePreloader: React.FC = () => {
   const location = useLocation();
   const { language } = useLanguage();
-  
+
   // Routes to preload after initial page load
   const ROUTES_TO_PRELOAD = [
     'services',
@@ -24,25 +24,23 @@ const PagePreloader: React.FC = () => {
   useEffect(() => {
     // Initialize page speed optimizations
     initPageSpeedOptimizations();
-    
+
     // Only run preloading once on initial page load
     if (location.pathname === `/${language}` || window.performance.navigation.type === 1) {
       setTimeout(() => {
         // Generate full paths with language prefix
         const routesToPreload = ROUTES_TO_PRELOAD.map(route => `/${language}/${route}`);
-        
+
         // Add navigation hints
         addNavigationHints(routesToPreload);
-        
-        // Log preload activity
-        console.log(`Prefetching ${routesToPreload.length} routes for language: ${language}`);
+
       }, 1000); // Wait for 1 second after initial page load
     }
-    
+
     // Preload next/previous page based on current path
     const currentPath = getPathWithoutLanguage(location.pathname);
     const currentPathIndex = ROUTES_TO_PRELOAD.findIndex(route => currentPath.includes(route));
-    
+
     if (currentPathIndex !== -1) {
       // Preload next page if exists
       if (currentPathIndex < ROUTES_TO_PRELOAD.length - 1) {

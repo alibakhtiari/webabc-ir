@@ -93,5 +93,19 @@
   "ctaDescription": "Contact us to discuss your project's specific needs and deliver a solution tailored to your business goals.",
   "ourServices": "Our Services",
   "technicalOptimization": "Technical Optimization",
-  "linkBuilding": "Link Building"
+  "linkBuilding": "Link Building",
+  "faq": {
+    "costQuestion": "How much do your SEO services cost?",
+    "costAnswer": "The cost of our SEO services varies depending on the specific needs of your business, the size of your website, the level of competition in your industry, and your goals. We provide a customized plan with transparent pricing for each client. Contact us for a free consultation and cost estimate.",
+    "timelineQuestion": "How long does it take to see SEO results?",
+    "timelineAnswer": "SEO is an ongoing and long-term process. You can typically see some initial changes in the first 3-4 months, but significant and sustainable results usually take between 6 to 12 months. This timeline depends on various factors such as competition, domain age, content quality, and technical structure of the site.",
+    "wordpressQuestion": "Do you only use WordPress for website development?",
+    "wordpressAnswer": "No, we use a wide range of technologies tailored to the needs of your project. In addition to WordPress, our team specializes in development with React, Next.js, Node.js, Python (Django/Flask), and other modern frameworks. We recommend the appropriate technology based on the specific requirements of your project.",
+    "blackhatQuestion": "Do you use black hat SEO methods?",
+    "blackhatAnswer": "Absolutely not. We only use white hat SEO techniques and ethical methods in accordance with Google guidelines. Our strategies focus on developing quality content, great user experience, and technical optimization. Using unethical methods may have short-term results but will ultimately lead to penalties and harm to your business.",
+    "multilingualQuestion": "Do you provide services for multilingual websites?",
+    "multilingualAnswer": "Yes, we specialize in designing and optimizing multilingual websites. Our team can provide appropriate technical solutions for implementing multilingual sites, including proper URL structure, hreflang tags, and content translation. We have specific experience in optimizing English-Persian sites.",
+    "supportQuestion": "Do you provide support services after project delivery?",
+    "supportAnswer": "Yes, we offer various support packages to ensure your website remains up-to-date, secure, and optimized. These services include security updates, regular backups, performance optimization, content updates, and technical troubleshooting. We also provide training for your team to manage the site."
+  }
 }

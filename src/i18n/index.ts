@@ -1,4 +1,3 @@
-
 import { SupportedLanguage } from '@/types/language';
 
 // Common translations
@@ -66,6 +65,26 @@ import enCaseStudies from './en/caseStudies.json';
 import faCaseStudies from './fa/caseStudies.json';
 import arCaseStudies from './ar/caseStudies.json';
 
+// NotFound translations
+import enNotFound from './en/notFound.json';
+import faNotFound from './fa/notFound.json';
+import arNotFound from './ar/notFound.json';
+
+// Consultation translations
+import enConsultation from './en/consultation.json';
+import faConsultation from './fa/consultation.json';
+import arConsultation from './ar/consultation.json';
+
+// Local SEO translations
+import enLocalSeo from './en/local-seo.json';
+import faLocalSeo from './fa/local-seo.json';
+import arLocalSeo from './ar/local-seo.json';
+
+// Web Development Services translations
+import enWebDevelopmentServices from './en/web-development-services.json';
+import faWebDevelopmentServices from './fa/web-development-services.json';
+import arWebDevelopmentServices from './ar/web-development-services.json';
+
 // Define the translations object with proper typing
 export interface TranslationsType {
   [language: string]: {
@@ -88,7 +107,11 @@ export const translations: TranslationsType = {
     cta: enCta,
     resources: enResources,
     blog: enBlog,
-    caseStudies: enCaseStudies
+    caseStudies: enCaseStudies,
+    notFound: enNotFound,
+    consultation: enConsultation,
+    "local-seo": enLocalSeo,
+    "web-development-services": enWebDevelopmentServices
   },
   fa: {
     common: faCommon,
@@ -103,7 +126,11 @@ export const translations: TranslationsType = {
     cta: faCta,
     resources: faResources,
     blog: faBlog,
-    caseStudies: faCaseStudies
+    caseStudies: faCaseStudies,
+    notFound: faNotFound,
+    consultation: faConsultation,
+    "local-seo": faLocalSeo,
+    "web-development-services": faWebDevelopmentServices
   },
   ar: {
     common: arCommon,
@@ -118,7 +145,11 @@ export const translations: TranslationsType = {
     cta: arCta,
     resources: arResources,
     blog: arBlog,
-    caseStudies: arCaseStudies
+    caseStudies: arCaseStudies,
+    notFound: arNotFound,
+    consultation: arConsultation,
+    "local-seo": arLocalSeo,
+    "web-development-services": arWebDevelopmentServices
   }
 };
 

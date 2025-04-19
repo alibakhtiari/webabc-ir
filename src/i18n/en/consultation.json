@@ -1,0 +1,12 @@
+{
+  "formSubmitted": "Form submitted successfully",
+  "formSubmittedDesc": "We will contact you as soon as possible.",
+  "title": "Request a Consultation",
+  "description": "Fill out the form below to request a consultation.",
+  "fullName": "Full Name",
+  "phone": "Phone Number",
+  "email": "Email Address",
+  "message": "Message",
+  "cancel": "Cancel",
+  "sendRequest": "Send Request"
+}

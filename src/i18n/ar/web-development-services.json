@@ -1,0 +1,22 @@
+{
+  "webDevelopmentTitle": "خدمات تطوير الويب",
+  "webDevelopmentDescription": "نحن نقدم خدمات تطوير الويب الشاملة لتحويل أفكارك إلى واقع.",
+  "ourServices": "خدماتنا",
+  "frontendDev": "تطوير الواجهة الأمامية",
+  "frontendDesc": "نقوم ببناء واجهات مستخدم جميلة ومتجاوبة.",
+  "backendDev": "تطوير الواجهة الخلفية",
+  "backendDesc": "نقوم بتطوير أنظمة خلفية قوية وقابلة للتطوير.",
+  "feature.uiuxDesign": "تصميم واجهة المستخدم/تجربة المستخدم",
+  "feature.reactNextjs": "تطوير React و Next.js",
+  "feature.responsiveDesign": "تصميم متجاوب",
+  "feature.webVitals": "تحسين مقاييس أداء الويب",
+  "feature.animations": "الرسوم المتحركة والتفاعلات",
+  "feature.apiIntegration": "تكامل واجهة برمجة التطبيقات",
+  "feature.restApi": "تطوير واجهة برمجة التطبيقات REST",
+  "feature.python": "تطوير بايثون",
+  "feature.nodejs": "تطوير Node.js",
+  "feature.database": "تصميم وإدارة قواعد البيانات",
+  "feature.auth": "المصادقة والترخيص",
+  "feature.cloudIntegration": "تكامل السحابة",
+  "keywords": "تطوير الويب, خدمات, react, nextjs"
+}

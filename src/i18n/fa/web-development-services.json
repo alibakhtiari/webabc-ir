@@ -1,0 +1,22 @@
+{
+  "webDevelopmentTitle": "خدمات توسعه وب",
+  "webDevelopmentDescription": "ما خدمات جامع توسعه وب را برای به ثمر رساندن ایده‌های شما ارائه می‌دهیم.",
+  "ourServices": "خدمات ما",
+  "frontendDev": "توسعه فرانت‌اند",
+  "frontendDesc": "ما رابط‌های کاربری زیبا و پاسخگو می‌سازیم.",
+  "backendDev": "توسعه بک‌اند",
+  "backendDesc": "ما سیستم‌های بک‌اند قوی و مقیاس‌پذیر توسعه می‌دهیم.",
+  "feature.uiuxDesign": "طراحی UI/UX",
+  "feature.reactNextjs": "توسعه React و Next.js",
+  "feature.responsiveDesign": "طراحی واکنش‌گرا",
+  "feature.webVitals": "بهینه‌سازی Web Vitals",
+  "feature.animations": "انیمیشن‌ها و تعاملات",
+  "feature.apiIntegration": "یکپارچه‌سازی API",
+  "feature.restApi": "توسعه REST API",
+  "feature.python": "توسعه پایتون",
+  "feature.nodejs": "توسعه Node.js",
+  "feature.database": "طراحی و مدیریت پایگاه داده",
+  "feature.auth": "احراز هویت و مجوز",
+  "feature.cloudIntegration": "یکپارچه‌سازی با فضای ابری",
+  "keywords": "توسعه وب, خدمات, react, nextjs"
+}
