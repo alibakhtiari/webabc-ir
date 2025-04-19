@@ -7,23 +7,5 @@
   "team": "Our Team",
   "yearsExperience": "Years of Experience",
   "successfulProjects": "Successful Projects",
-  "clientSatisfaction": "Client Satisfaction",
-  "ourTeam": "Our Team",
-  "teamMembers": [
-    {
-      "name": "Ali Rezaei",
-      "role": "Senior Developer",
-      "bio": "With over 8 years of experience in web development, Ali has mastered modern frameworks and leads our technical team."
-    },
-    {
-      "name": "Maryam Ahmadi",
-      "role": "SEO Specialist",
-      "bio": "Certified Google specialist with expertise in technical SEO and content strategy. She has helped over 100 businesses improve their online visibility."
-    },
-    {
-      "name": "Mohammad Karimi",
-      "role": "UI Designer",
-      "bio": "Award-winning designer with a passion for creating beautiful and functional user interfaces that engage and convert visitors."
-    }
-  ]
+  "clientSatisfaction": "Client Satisfaction"
 }
