@@ -26,10 +26,10 @@ export const ServicesDropdown = () => {
   
   return (
     <div className="relative group">
-      <button className="flex items-center text-foreground/80 font-persian text-base hover:text-primary transition-colors">
+      <Link to={`/${language}/services`} className="flex items-center text-foreground/80 font-persian text-base hover:text-primary transition-colors">
         {t('common.services')}
         <ChevronDown className="h-4 w-4 ml-1 group-hover:rotate-180 transition-transform duration-200" />
-      </button>
+      </Link>
       
       {/* Mega Menu - removed backdrop-blur */}
       <div className={`absolute top-full ${isRtl ? 'right-0' : 'left-0'} mt-2 w-[680px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50`}>
