@@ -1,0 +1,7 @@
+name = "webabc-react"
+compatibility_date = "2024-01-01"
+
+# Add your worker configuration here. For example:
+# [[kv_namespaces]]
+# binding = "MY_KV"
+# id = "your-kv-namespace-id"
