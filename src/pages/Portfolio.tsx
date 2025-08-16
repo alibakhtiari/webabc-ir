@@ -8,7 +8,8 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import { createBreadcrumbSchema } from '@/lib/schema';
 import { portfolioItems } from '@/lib/portfolioData';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { motion } from 'framer-motion';
+import useIntersectionObserver from '@/hooks/useIntersectionObserver';
+import '@/animations.css';
 
 // Lazy loading components
 const PortfolioGallery = lazy(() => import('@/components/PortfolioGallery'));
@@ -50,25 +51,6 @@ const Portfolio = () => {
     }
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 }
-    }
-  };
-
   return (
     <div dir={language === 'en' ? 'ltr' : 'rtl'} className={language === 'en' ? 'font-sans' : 'font-arabic'}>
       <SEOHead 
@@ -82,33 +64,18 @@ const Portfolio = () => {
       
       <main>
         {/* Hero Section */}
-        <motion.section 
-          className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-white"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
+        <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-white animate-fadeIn">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <motion.h1 
-                className="text-4xl md:text-5xl font-bold mb-6"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fadeInUp delay-200">
                 {t('portfolio.title')}
-              </motion.h1>
-              <motion.p 
-                className="text-xl text-gray-600 mb-8"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
+              </h1>
+              <p className="text-xl text-gray-600 mb-8 animate-fadeInUp delay-300">
                 {t('portfolio.description')}
-              </motion.p>
+              </p>
             </div>
           </div>
-        </motion.section>
+        </section>
         
         {/* Portfolio Gallery */}
         <section className="py-16 bg-white">
@@ -123,37 +90,20 @@ const Portfolio = () => {
         <section className="py-20 bg-primary text-white">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <motion.h2 
-                className="text-3xl font-bold mb-6"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
+              <h2 className="text-3xl font-bold mb-6 animate-fadeInUp">
                 {t('contact.getInTouch')}
-              </motion.h2>
-              <motion.p 
-                className="text-xl mb-8 opacity-90"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-              >
+              </h2>
+              <p className="text-xl mb-8 opacity-90 animate-fadeInUp delay-200">
                 {t('services.ctaDescription')}
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
+              </p>
+              <div className="animate-fadeInUp delay-300">
                 <Link 
                   to={`/${language}/contact`}
                   className="inline-block px-8 py-3 bg-white text-primary font-bold rounded-full hover:shadow-lg transition-all"
                 >
                   {t('common.contactUs')}
                 </Link>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>

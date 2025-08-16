@@ -8,8 +8,9 @@ import SchemaMarkup from '@/components/SchemaMarkup';
 import { useLanguage } from '@/contexts/LanguageContext';
 import OptimizedImage from '@/components/OptimizedImage';
 import { createBreadcrumbSchema } from '@/lib/schema';
-import { motion } from 'framer-motion';
 import { ChartBar, Search, Globe, FileText, LinkIcon, PieChart } from 'lucide-react';
+import useIntersectionObserver from '@/hooks/useIntersectionObserver';
+import '@/animations.css';
 
 const SeoService = () => {
   const { t, language } = useLanguage();
@@ -44,12 +45,6 @@ const SeoService = () => {
     { name: t('seo.title'), item: `${window.location.origin}/${language}/seo-services` }
   ]);
 
-  const fadeInUp = {
-    initial: { y: 20, opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-    transition: { duration: 0.5 }
-  };
-
   return (
     <div dir={language === 'en' ? 'ltr' : 'rtl'} className={language === 'en' ? 'font-sans' : 'font-arabic'}>
       <SEOHead 
@@ -65,12 +60,7 @@ const SeoService = () => {
         <section className="bg-gradient-to-b from-primary/10 to-white py-16 md:py-24">
           <div className="container mx-auto px-4">
             <div className="flex flex-col lg:flex-row items-center gap-12">
-              <motion.div 
-                className="lg:w-1/2"
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-              >
+              <div className="lg:w-1/2 animate-fadeInLeft">
                 <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('seo.title')}</h1>
                 <p className="text-xl text-gray-700 mb-8">{t('seo.subtitle')}</p>
                 <div className="flex flex-wrap gap-4">
@@ -81,13 +71,8 @@ const SeoService = () => {
                     {t('common.viewPortfolio')}
                   </button>
                 </div>
-              </motion.div>
-              <motion.div 
-                className="lg:w-1/2"
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
+              </div>
+              <div className="lg:w-1/2 animate-fadeInRight">
                 <div className="rounded-2xl overflow-hidden shadow-2xl">
                   <OptimizedImage
                     src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
@@ -98,7 +83,7 @@ const SeoService = () => {
                     className="w-full h-auto"
                   />
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -106,12 +91,9 @@ const SeoService = () => {
         {/* SEO Services */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
-            <motion.h2 
-              className="text-3xl font-bold text-center mb-12"
-              {...fadeInUp}
-            >
+            <h2 className="text-3xl font-bold text-center mb-12 animate-fadeInUp">
               {t('seo.servicesTitle')}
-            </motion.h2>
+            </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <SeoServiceCard
@@ -176,12 +158,9 @@ const SeoService = () => {
         {/* Results & Case Studies */}
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
-            <motion.h2 
-              className="text-3xl font-bold text-center mb-12"
-              {...fadeInUp}
-            >
+            <h2 className="text-3xl font-bold text-center mb-12 animate-fadeInUp">
               Our Results
-            </motion.h2>
+            </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
               <ResultsCard number="250%" text="Average Traffic Increase" />
@@ -220,12 +199,9 @@ const SeoService = () => {
         {/* SEO Process */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
-            <motion.h2 
-              className="text-3xl font-bold text-center mb-12"
-              {...fadeInUp}
-            >
+            <h2 className="text-3xl font-bold text-center mb-12 animate-fadeInUp">
               Our SEO Process
-            </motion.h2>
+            </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <ProcessCard 
@@ -253,12 +229,9 @@ const SeoService = () => {
         {/* FAQ Section */}
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
-            <motion.h2 
-              className="text-3xl font-bold text-center mb-12"
-              {...fadeInUp}
-            >
+            <h2 className="text-3xl font-bold text-center mb-12 animate-fadeInUp">
               {t('services.faqTitle')}
-            </motion.h2>
+            </h2>
 
             <div className="max-w-3xl mx-auto space-y-6">
               <FaqItem
@@ -284,33 +257,15 @@ const SeoService = () => {
         {/* Call to Action */}
         <section className="py-16 bg-primary text-white">
           <div className="container mx-auto px-4 text-center">
-            <motion.h2 
-              className="text-3xl font-bold mb-6"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
+            <h2 className="text-3xl font-bold mb-6 animate-fadeIn">
               Ready to Improve Your Search Rankings?
-            </motion.h2>
-            <motion.p 
-              className="text-xl max-w-3xl mx-auto mb-8"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-            >
+            </h2>
+            <p className="text-xl max-w-3xl mx-auto mb-8 animate-fadeIn delay-100">
               Contact us today for a free website audit and SEO consultation. We'll show you exactly how we can improve your search visibility.
-            </motion.p>
-            <motion.button 
-              className="px-8 py-4 bg-white text-primary rounded-lg shadow-lg hover:shadow-xl transition-all font-bold"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
+            </p>
+            <button className="px-8 py-4 bg-white text-primary rounded-lg shadow-lg hover:shadow-xl transition-all font-bold animate-fadeInUp delay-200">
               {t('common.freeConsultation')}
-            </motion.button>
+            </button>
           </div>
         </section>
       </main>
@@ -329,13 +284,14 @@ const SeoServiceCard = ({ icon, title, description, features, color, iconColor }
   color: string,
   iconColor: string 
 }) => {
+  const [ref, isIntersecting] = useIntersectionObserver({ threshold: 0.1 });
+
   return (
-    <motion.div 
-      className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow bg-white"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
+    <div
+      ref={ref}
+      className={`rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow bg-white ${
+        isIntersecting ? 'animate-fadeInUp' : 'opacity-0'
+      }`}
     >
       <div className={`p-6 ${color}`}>
         <div className={`rounded-full w-12 h-12 flex items-center justify-center ${iconColor} bg-white mb-4`}>
@@ -356,35 +312,37 @@ const SeoServiceCard = ({ icon, title, description, features, color, iconColor }
           ))}
         </ul>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
 // Results Card Component
 const ResultsCard = ({ number, text }: { number: string, text: string }) => {
+  const [ref, isIntersecting] = useIntersectionObserver({ threshold: 0.1 });
+
   return (
-    <motion.div 
-      className="bg-white rounded-xl shadow-md p-6 text-center"
-      initial={{ opacity: 0, scale: 0.9 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
+    <div
+      ref={ref}
+      className={`bg-white rounded-xl shadow-md p-6 text-center ${
+        isIntersecting ? 'animate-scaleIn' : 'opacity-0'
+      }`}
     >
       <div className="text-4xl font-bold text-primary mb-2">{number}</div>
       <div className="text-gray-700">{text}</div>
-    </motion.div>
+    </div>
   );
 };
 
 // Case Study Card Component
 const CaseStudyCard = ({ title, category, image, result }: { title: string, category: string, image: string, result: string }) => {
+  const [ref, isIntersecting] = useIntersectionObserver({ threshold: 0.1 });
+
   return (
-    <motion.div 
-      className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
+    <div
+      ref={ref}
+      className={`bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow ${
+        isIntersecting ? 'animate-fadeInUp' : 'opacity-0'
+      }`}
     >
       <div className="relative">
         <OptimizedImage
@@ -405,19 +363,20 @@ const CaseStudyCard = ({ title, category, image, result }: { title: string, cate
           <span className="font-medium">{result}</span>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
 // Process Card Component
 const ProcessCard = ({ number, title, description, color }: { number: string, title: string, description: string, color: string }) => {
+  const [ref, isIntersecting] = useIntersectionObserver({ threshold: 0.1 });
+
   return (
-    <motion.div 
-      className="bg-white rounded-xl shadow-md p-6 relative overflow-hidden"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
+    <div
+      ref={ref}
+      className={`bg-white rounded-xl shadow-md p-6 relative overflow-hidden ${
+        isIntersecting ? 'animate-fadeInUp' : 'opacity-0'
+      }`}
     >
       <div className={`absolute top-0 left-0 w-2 h-full ${color}`}></div>
       <div className="mb-4">
@@ -425,21 +384,21 @@ const ProcessCard = ({ number, title, description, color }: { number: string, ti
       </div>
       <h3 className="text-xl font-bold mb-3">{title}</h3>
       <p className="text-gray-600">{description}</p>
-    </motion.div>
+    </div>
   );
 };
 
 // FAQ Item Component
 const FaqItem = ({ question, answer }: { question: string, answer: string }) => {
   const [isOpen, setIsOpen] = React.useState(false);
-  
+  const [ref, isIntersecting] = useIntersectionObserver({ threshold: 0.1 });
+
   return (
-    <motion.div 
-      className="border border-gray-200 rounded-lg overflow-hidden"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
+    <div
+      ref={ref}
+      className={`border border-gray-200 rounded-lg overflow-hidden ${
+        isIntersecting ? 'animate-fadeInUp' : 'opacity-0'
+      }`}
     >
       <button 
         className="flex justify-between items-center w-full p-4 text-left bg-white hover:bg-gray-50 transition-colors"
@@ -461,7 +420,7 @@ const FaqItem = ({ question, answer }: { question: string, answer: string }) => 
           <p className="text-gray-700">{answer}</p>
         </div>
       )}
-    </motion.div>
+    </div>
   );
 };
 
