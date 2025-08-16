@@ -4,8 +4,9 @@ import { useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { AlertCircle, Home, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 import SEOHead from "@/components/SEOHead";
+import useIntersectionObserver from "@/hooks/useIntersectionObserver";
+import "@/animations.css";
 
 const NotFound = () => {
   const location = useLocation();
@@ -26,60 +27,27 @@ const NotFound = () => {
         noIndex={true}
       />
       <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-background to-gray-100 p-4">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-md"
-        >
+        <div className="text-center max-w-md animate-fadeInUp">
           <div className="mb-6 flex justify-center">
             <div className="relative">
-              <motion.div
-                initial={{ scale: 0.8 }}
-                animate={{ scale: 1 }}
-                transition={{ 
-                  duration: 0.5, 
-                  type: "spring", 
-                  stiffness: 200
-                }}
-              >
+              <div className="animate-scaleIn">
                 <AlertCircle size={80} className="text-primary" />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.5 }}
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold text-white text-2xl"
-              >
+              </div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold text-white text-2xl animate-fadeIn delay-300">
                 {t('notFound.errorNumber')}
-              </motion.div>
+              </div>
             </div>
           </div>
 
-          <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-            className="text-4xl font-bold text-gray-800 mb-4"
-          >
+          <h1 className="text-4xl font-bold text-gray-800 mb-4 animate-fadeInUp delay-100">
             {t('notFound.title')}
-          </motion.h1>
+          </h1>
           
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-xl text-gray-600 mb-8"
-          >
+          <p className="text-xl text-gray-600 mb-8 animate-fadeInUp delay-200">
             {t('notFound.subtitle')}
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp delay-300">
             <Button
               variant="default"
               size="lg"
@@ -101,8 +69,8 @@ const NotFound = () => {
               <ArrowLeft size={18} />
               {t('notFound.backPrevious')}
             </Button>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </>
   );
