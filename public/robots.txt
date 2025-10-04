@@ -4,9 +4,9 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://yourwebsite.com/sitemap.xml
+Sitemap: https://webabc.ir/sitemap.xml
 
 # Language-specific sitemaps
-Sitemap: https://yourwebsite.com/sitemap-fa.xml
-Sitemap: https://yourwebsite.com/sitemap-en.xml
-Sitemap: https://yourwebsite.com/sitemap-ar.xml
+Sitemap: https://webabc.ir/sitemap-fa.xml
+Sitemap: https://webabc.ir/sitemap-en.xml
+Sitemap: https://webabc.ir/sitemap-ar.xml

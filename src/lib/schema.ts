@@ -4,10 +4,16 @@ import { SupportedLanguage } from '@/contexts/LanguageContext';
 /**
  * Create organization schema for SEO
  */
+interface ContactPoint {
+  telephone?: string;
+  contactType?: string;
+  [key: string]: unknown;
+}
+
 export const createOrganizationSchema = (
   url: string,
   logo: string,
-  contactPoints: Array<any> = [],
+  contactPoints: ContactPoint[] = [],
   language: SupportedLanguage = 'en'
 ) => {
   return {
@@ -143,6 +149,49 @@ export const createFAQSchema = (
         text: faq.answer
       }
     })),
+    inLanguage: language === 'en' ? 'en-US' : language === 'ar' ? 'ar-SA' : 'fa-IR'
+  };
+};
+
+/**
+ * Create WebSite schema for better search engine understanding
+ */
+export const createWebSiteSchema = (
+  url: string,
+  name: string,
+  description: string,
+  language: SupportedLanguage = 'en'
+) => {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    url,
+    name,
+    description,
+    inLanguage: language === 'en' ? 'en-US' : language === 'ar' ? 'ar-SA' : 'fa-IR',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${url}/?s={search_term_string}`,
+      'query-input': 'required name=search_term_string'
+    }
+  };
+};
+
+/**
+ * Create WebPage schema for individual pages
+ */
+export const createWebPageSchema = (
+  name: string,
+  description: string,
+  url: string,
+  language: SupportedLanguage = 'en'
+) => {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name,
+    description,
+    url,
     inLanguage: language === 'en' ? 'en-US' : language === 'ar' ? 'ar-SA' : 'fa-IR'
   };
 };

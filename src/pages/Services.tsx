@@ -3,24 +3,23 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
+import Breadcrumb from '@/components/Breadcrumb';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { createBreadcrumbSchema, createOrganizationSchema, createServiceSchema } from '@/lib/schema';
+import { createOrganizationSchema, createServiceSchema, createFAQSchema } from '@/lib/schema';
 import { ChevronRight } from 'lucide-react';
+
+interface SchemaData {
+  [key: string]: unknown;
+}
 
 const ServicesOverview = () => {
   const { t, language, languageMeta } = useLanguage();
-  const [schemaMarkup, setSchemaMarkup] = useState<any[]>([]);
-  
+  const [schemaMarkup, setSchemaMarkup] = useState<SchemaData[]>([]);
+
   useEffect(() => {
     // Generate schemas
     const baseUrl = window.location.origin;
-    
-    // Breadcrumb schema
-    const breadcrumbSchema = createBreadcrumbSchema([
-      { name: t('common.home'), item: `${baseUrl}/${language}` },
-      { name: t('common.services'), item: `${baseUrl}/${language}/services` }
-    ]);
 
     // Organization schema
     const orgSchema = createOrganizationSchema(
@@ -31,7 +30,7 @@ const ServicesOverview = () => {
       ],
       language
     );
-    
+
     // Service schemas
     const seoServiceSchema = createServiceSchema(
       t('services.seoTitle'),
@@ -42,7 +41,7 @@ const ServicesOverview = () => {
       'Worldwide',
       language
     );
-    
+
     const webDevServiceSchema = createServiceSchema(
       t('services.webDevTitle'),
       t('services.webDevDescription'),
@@ -52,7 +51,7 @@ const ServicesOverview = () => {
       'Worldwide',
       language
     );
-    
+
     const wordpressServiceSchema = createServiceSchema(
       t('wordpress.title'),
       t('wordpress.subtitle'),
@@ -62,7 +61,7 @@ const ServicesOverview = () => {
       'Worldwide',
       language
     );
-    
+
     const localSeoServiceSchema = createServiceSchema(
       t('services.localSeoTitle'),
       t('services.localSeoDescription'),
@@ -72,14 +71,34 @@ const ServicesOverview = () => {
       'Worldwide',
       language
     );
-    
+
+    // FAQ schema
+    const faqSchema = createFAQSchema([
+      {
+        question: t('services.faq.costQuestion'),
+        answer: t('services.faq.costAnswer')
+      },
+      {
+        question: t('services.faq.timelineQuestion'),
+        answer: t('services.faq.timelineAnswer')
+      },
+      {
+        question: t('services.faq.wordpressQuestion'),
+        answer: t('services.faq.wordpressAnswer')
+      },
+      {
+        question: t('services.faq.multilingualQuestion'),
+        answer: t('services.faq.multilingualAnswer')
+      }
+    ], language);
+
     setSchemaMarkup([
-      breadcrumbSchema, 
-      orgSchema, 
+      orgSchema,
       seoServiceSchema,
       webDevServiceSchema,
       wordpressServiceSchema,
-      localSeoServiceSchema
+      localSeoServiceSchema,
+      faqSchema
     ]);
   }, [language, t]);
   
@@ -93,8 +112,10 @@ const ServicesOverview = () => {
       />
 
       {schemaMarkup.length > 0 && <SchemaMarkup schema={schemaMarkup} />}
-      
+
       <Navbar />
+
+      <Breadcrumb />
 
       <main className="flex-grow pt-20">
         {/* Hero Section */}
@@ -103,6 +124,34 @@ const ServicesOverview = () => {
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('services.title')}</h1>
               <p className="text-xl text-gray-600">{t('services.description')}</p>
+
+              {/* Quick navigation links */}
+              <div className="flex flex-wrap gap-4 justify-center mt-8">
+                <Link
+                  to={`/${language}/seo-services`}
+                  className="px-4 py-2 bg-blue-50 text-blue-700 rounded-full hover:bg-blue-100 transition-colors"
+                >
+                  SEO Services
+                </Link>
+                <Link
+                  to={`/${language}/web-development-services`}
+                  className="px-4 py-2 bg-green-50 text-green-700 rounded-full hover:bg-green-100 transition-colors"
+                >
+                  Web Development
+                </Link>
+                <Link
+                  to={`/${language}/wordpress-woocommerce-development`}
+                  className="px-4 py-2 bg-purple-50 text-purple-700 rounded-full hover:bg-purple-100 transition-colors"
+                >
+                  WordPress
+                </Link>
+                <Link
+                  to={`/${language}/local-seo-services`}
+                  className="px-4 py-2 bg-red-50 text-red-700 rounded-full hover:bg-red-100 transition-colors"
+                >
+                  Local SEO
+                </Link>
+              </div>
             </div>
           </div>
         </section>

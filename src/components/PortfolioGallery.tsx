@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import OptimizedImage from './OptimizedImage';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { motion } from 'framer-motion';
 
 interface PortfolioItem {
   id: string;
@@ -86,20 +85,18 @@ const PortfolioGallery = ({ items, className }: PortfolioGalleryProps) => {
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap gap-3 justify-center">
             {categories.map((category) => (
-              <motion.button
+              <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
                 className={cn(
-                  "px-4 py-2 rounded-full transition-colors",
-                  activeCategory === category 
-                    ? "bg-primary text-white shadow-md" 
+                  "px-4 py-2 rounded-full transition-all duration-200 hover:scale-105 active:scale-95",
+                  activeCategory === category
+                    ? "bg-primary text-white shadow-md"
                     : "bg-gray-100 hover:bg-gray-200 text-gray-800"
                 )}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
               >
                 {getCategoryLabel(category)}
-              </motion.button>
+              </button>
             ))}
           </div>
         </div>
@@ -109,11 +106,9 @@ const PortfolioGallery = ({ items, className }: PortfolioGalleryProps) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {displayItems.length > 0 ? (
             displayItems.map((item) => (
-              <motion.div
+              <div
                 key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
+                className="animate-fade-up"
               >
                 <Link 
                   to={`/portfolio/${item.id}`} 
@@ -142,7 +137,7 @@ const PortfolioGallery = ({ items, className }: PortfolioGalleryProps) => {
                     </div>
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             ))
           ) : (
             <div className="col-span-3 text-center py-12">

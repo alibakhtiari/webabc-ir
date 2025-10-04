@@ -80,6 +80,7 @@ const SEOHead = ({
       {seoKeywords && <meta name="keywords" content={seoKeywords} />}
       {seoAuthor && <meta name="author" content={seoAuthor} />}
       {noIndex && <meta name="robots" content="noindex,nofollow" />}
+      {!noIndex && <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />}
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={ogType} />

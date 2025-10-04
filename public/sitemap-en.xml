@@ -3,49 +3,85 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://yourwebsite.com/en</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourwebsite.com/en" />
-    <xhtml:link rel="alternate" hreflang="fa" href="https://yourwebsite.com/fa" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://yourwebsite.com/ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://yourwebsite.com" />
+    <loc>https://webabc.ir/en</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en" />
+    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webabc.ir" />
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <lastmod>2024-04-04</lastmod>
+    <lastmod>2024-10-04</lastmod>
   </url>
   <url>
-    <loc>https://yourwebsite.com/en/services</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourwebsite.com/en/services" />
-    <xhtml:link rel="alternate" hreflang="fa" href="https://yourwebsite.com/fa/services" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://yourwebsite.com/ar/services" />
+    <loc>https://webabc.ir/en/services</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/services" />
+    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/services" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/services" />
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2024-04-04</lastmod>
+    <lastmod>2024-10-04</lastmod>
   </url>
   <url>
-    <loc>https://yourwebsite.com/en/portfolio</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourwebsite.com/en/portfolio" />
-    <xhtml:link rel="alternate" hreflang="fa" href="https://yourwebsite.com/fa/portfolio" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://yourwebsite.com/ar/portfolio" />
+    <loc>https://webabc.ir/en/portfolio</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/portfolio" />
+    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/portfolio" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/portfolio" />
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2024-04-04</lastmod>
+    <lastmod>2024-10-04</lastmod>
   </url>
   <url>
-    <loc>https://yourwebsite.com/en/about</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourwebsite.com/en/about" />
-    <xhtml:link rel="alternate" hreflang="fa" href="https://yourwebsite.com/fa/about" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://yourwebsite.com/ar/about" />
+    <loc>https://webabc.ir/en/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/about" />
+    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/about" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/about" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2024-04-04</lastmod>
+    <lastmod>2024-10-04</lastmod>
   </url>
   <url>
-    <loc>https://yourwebsite.com/en/contact</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://yourwebsite.com/en/contact" />
-    <xhtml:link rel="alternate" hreflang="fa" href="https://yourwebsite.com/fa/contact" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://yourwebsite.com/ar/contact" />
+    <loc>https://webabc.ir/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/contact" />
+    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/contact" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/contact" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2024-04-04</lastmod>
+    <lastmod>2024-10-04</lastmod>
+  </url>
+  <url>
+    <loc>https://webabc.ir/en/seo-services</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/seo-services" />
+    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/seo-services" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/seo-services" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2024-10-04</lastmod>
+  </url>
+  <url>
+    <loc>https://webabc.ir/en/web-development-services</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/web-development-services" />
+    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/web-development-services" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/web-development-services" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2024-10-04</lastmod>
+  </url>
+  <url>
+    <loc>https://webabc.ir/en/web-design</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/web-design" />
+    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/web-design" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/web-design" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2024-10-04</lastmod>
+  </url>
+  <url>
+    <loc>https://webabc.ir/en/case-studies</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/case-studies" />
+    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/case-studies" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/case-studies" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2024-10-04</lastmod>
   </url>
 </urlset>

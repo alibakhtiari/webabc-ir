@@ -73,6 +73,24 @@
   }
 }
 
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.95);
+  }
+}
+
 /* Vazir Font Utility */
 html, body {
   font-family: 'Vazirmatn', system-ui, sans-serif;

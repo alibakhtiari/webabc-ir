@@ -4,24 +4,23 @@ import Footer from '@/components/Footer';
 import { Card } from '@/components/ui/card';
 import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
-import { createBreadcrumbSchema, createOrganizationSchema } from '@/lib/schema';
+import Breadcrumb from '@/components/Breadcrumb';
+import { createOrganizationSchema } from '@/lib/schema';
 import { useLanguage } from '@/contexts/LanguageContext';
+
+interface SchemaData {
+  [key: string]: unknown;
+}
 
 
 
 const About = () => {
   const { language, t, languageMeta } = useLanguage();
-  const [schemaMarkup, setSchemaMarkup] = useState<any[]>([]);
+  const [schemaMarkup, setSchemaMarkup] = useState<SchemaData[]>([]);
 
   useEffect(() => {
     // Create schema markup
     const baseUrl = window.location.origin;
-
-    // Breadcrumb schema
-    const breadcrumbSchema = createBreadcrumbSchema([
-      { name: t('common.home'), item: `${baseUrl}/${language}` },
-      { name: t('common.about'), item: `${baseUrl}/${language}/about` }
-    ]);
 
     // Organization schema
     const orgSchema = createOrganizationSchema(
@@ -33,8 +32,8 @@ const About = () => {
       language
     );
 
-    setSchemaMarkup([breadcrumbSchema, orgSchema]);
-  }, [language, t]);
+    setSchemaMarkup([orgSchema]);
+  }, [language]);
 
   return (
     <div className="min-h-screen flex flex-col" dir={languageMeta.direction}>
@@ -45,6 +44,7 @@ const About = () => {
       />
 
       {schemaMarkup.length > 0 && <SchemaMarkup schema={schemaMarkup} />}
+      <Breadcrumb />
 
       <Navbar />
 
