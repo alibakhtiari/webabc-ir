@@ -17,6 +17,7 @@
   "sendEmail": "إرسال بريد إلكتروني",
   "readMore": "قراءة المزيد",
   "backToPortfolio": "العودة إلى معرض الأعمال",
+  "backToBlog": "العودة إلى المدونة",
   "viewWebsite": "عرض الموقع",
   "whatsappMessage": "مرحباً، أتواصل معكم من موقعكم وأرغب في الحصول على مزيد من المعلومات.",
   "notFound": {
@@ -39,6 +40,7 @@
   "noResults": "لم يتم العثور على نتائج",
   "tryAgain": "حاول مرة أخرى",
   "aboutCompany": "عن WebABC: نحن وكالة تسويق رقمي وتطوير مواقع.",
+  "blog": "المدونة",
   "company": "الشركة",
   "resources": "الموارد",
   "companySince": "منذ 2012",

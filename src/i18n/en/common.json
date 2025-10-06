@@ -16,6 +16,7 @@
   "sendEmail": "Send Email",
   "readMore": "Read More",
   "backToPortfolio": "Back to Portfolio",
+  "backToBlog": "Back to Blog",
   "viewWebsite": "View Website",
   "whatsappMessage": "Hello, I'm contacting you from your website and would like to receive more information.",
   "notFound": {
@@ -38,6 +39,7 @@
   "noResults": "No results found",
   "tryAgain": "Try Again",
   "aboutCompany": "About WebABC: We are a digital marketing and web development agency.",
+  "blog": "Blog",
   "services": "Services",
   "company": "Company",
   "resources": "Resources",
