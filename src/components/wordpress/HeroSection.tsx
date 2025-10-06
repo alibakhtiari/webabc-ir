@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import wordpressHero from '@/assets/wordpress-hero.jpg';
 
 const WordpressHeroSection = () => {
   const { t, language, languageMeta } = useLanguage();
@@ -39,12 +40,12 @@ const WordpressHeroSection = () => {
           <div className={`md:w-1/2 animate-fade-left ${isRTL ? 'md:order-1' : 'md:order-2'}`}>
             <div className="relative">
               <div className="bg-gray-100 rounded-2xl p-4 shadow-xl">
-                <div className="aspect-[4/3] bg-white rounded-lg flex items-center justify-center">
-                  {/* WordPress & WooCommerce image placeholder */}
-                  <div className="flex flex-col items-center justify-center text-center p-6">
-                    <ShoppingCart className="w-20 h-20 text-primary mb-4" />
-                    <p className="text-gray-600">{t('wordpress.ecommerceSetup', { fallback: 'E-commerce Setup' })}</p>
-                  </div>
+                <div className="aspect-[4/3] rounded-lg overflow-hidden">
+                  <img 
+                    src={wordpressHero} 
+                    alt="WordPress & WooCommerce Development"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
               <div className="absolute -bottom-6 -right-6 bg-primary/10 w-full h-full rounded-2xl -z-10"></div>

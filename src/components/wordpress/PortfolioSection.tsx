@@ -3,6 +3,9 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import portfolioEcommerce from '@/assets/portfolio-ecommerce.jpg';
+import portfolioNews from '@/assets/portfolio-news.jpg';
+import portfolioCorporate from '@/assets/portfolio-corporate.jpg';
 
 const WordpressPortfolioSection = () => {
   return (
@@ -22,23 +25,27 @@ const WordpressPortfolioSection = () => {
           {[
             {
               title: "فروشگاه محصولات دیجیتال",
-              desc: "طراحی و پیاده‌سازی فروشگاه اینترنتی محصولات دیجیتال با ووکامرس و سیستم پرداخت چندگانه"
+              desc: "طراحی و پیاده‌سازی فروشگاه اینترنتی محصولات دیجیتال با ووکامرس و سیستم پرداخت چندگانه",
+              image: portfolioEcommerce
             },
             {
               title: "پورتال خبری",
-              desc: "طراحی سایت خبری با قالب اختصاصی وردپرس و سیستم اشتراک‌گذاری و کامنت‌گذاری پیشرفته"
+              desc: "طراحی سایت خبری با قالب اختصاصی وردپرس و سیستم اشتراک‌گذاری و کامنت‌گذاری پیشرفته",
+              image: portfolioNews
             },
             {
               title: "سایت شرکتی چندزبانه",
-              desc: "طراحی سایت شرکتی چندزبانه با وردپرس و قابلیت‌های سفارشی برای معرفی خدمات و محصولات"
+              desc: "طراحی سایت شرکتی چندزبانه با وردپرس و قابلیت‌های سفارشی برای معرفی خدمات و محصولات",
+              image: portfolioCorporate
             }
           ].map((project, idx) => (
             <div key={idx} className="overflow-hidden rounded-xl shadow-lg group animate-fade-up">
-              <div className="aspect-[4/3] bg-gray-100 relative">
-                {/* Image placeholder */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <p className="text-gray-600">تصویر پروژه</p>
-                </div>
+              <div className="aspect-[4/3] relative overflow-hidden">
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                />
                 <div className="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <Button variant="secondary" size="sm">
                     مشاهده جزئیات

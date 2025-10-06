@@ -8,6 +8,9 @@ import CTASection from '@/components/CTASection';
 import { ArrowRight, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import portfolioEcommerce from '@/assets/portfolio-ecommerce.jpg';
+import portfolioNews from '@/assets/portfolio-news.jpg';
+import portfolioCorporate from '@/assets/portfolio-corporate.jpg';
 
 const CaseStudies = () => {
   const { language, t, languageMeta } = useLanguage();
@@ -17,7 +20,7 @@ const CaseStudies = () => {
       id: 'ecommerce-seo',
       title: t('caseStudies.ecommerceCase.title'),
       category: t('caseStudies.ecommerceCase.category'),
-      image: '/images/case-studies/ecommerce-seo.jpg',
+      image: portfolioEcommerce,
       challenge: t('caseStudies.ecommerceCase.challenge'),
       solution: t('caseStudies.ecommerceCase.solution'),
       results: [
@@ -31,7 +34,7 @@ const CaseStudies = () => {
       id: 'wordpress-rebrand',
       title: t('caseStudies.wordpressCase.title'),
       category: t('caseStudies.wordpressCase.category'),
-      image: '/images/case-studies/wordpress-rebrand.jpg',
+      image: portfolioNews,
       challenge: t('caseStudies.wordpressCase.challenge'),
       solution: t('caseStudies.wordpressCase.solution'),
       results: [
@@ -44,7 +47,7 @@ const CaseStudies = () => {
       id: 'local-seo-clinic',
       title: t('caseStudies.localSeoCase.title'),
       category: t('caseStudies.localSeoCase.category'),
-      image: '/images/case-studies/local-seo.jpg',
+      image: portfolioCorporate,
       challenge: t('caseStudies.localSeoCase.challenge'),
       solution: t('caseStudies.localSeoCase.solution'),
       results: [
@@ -58,7 +61,7 @@ const CaseStudies = () => {
       id: 'webapp-fintech',
       title: t('caseStudies.webDevCase.title'),
       category: t('caseStudies.webDevCase.category'),
-      image: '/images/case-studies/webapp-fintech.jpg',
+      image: portfolioEcommerce,
       challenge: t('caseStudies.webDevCase.challenge'),
       solution: t('caseStudies.webDevCase.solution'),
       results: [
@@ -100,8 +103,12 @@ const CaseStudies = () => {
             <div className="grid md:grid-cols-2 gap-8">
               {caseStudies.map((study, index) => (
                 <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                  <div className="aspect-video bg-gray-100">
-                    {/* Placeholder for case study image */}
+                  <div className="aspect-video overflow-hidden">
+                    <img 
+                      src={study.image} 
+                      alt={study.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div className="p-6">
                     <div className="mb-2">
