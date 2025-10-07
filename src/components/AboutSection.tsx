@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
+import teamImage from '@/assets/team-webabc.jpg';
 
 const AboutSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -51,8 +52,12 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="animate-on-scroll opacity-0 transition-all duration-500">
             <div className="neo-morphism rounded-2xl p-3 relative">
-              <div className="aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
-                <span className="font-persian text-muted-foreground">تصویر تیم وب آ ب ث</span>
+              <div className="aspect-square rounded-xl overflow-hidden">
+                <img 
+                  src={teamImage} 
+                  alt="WebABC Team" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               
               <div className="absolute -bottom-6 -right-6 glass-morphism rounded-lg p-4 w-64">
