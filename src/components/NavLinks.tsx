@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronDown, ArrowRight, Globe, Code, Layout, ShoppingCart } from 'lucide-react';
+import { ChevronDown, ArrowRight, Globe, Code } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface NavLinkProps {
@@ -10,9 +10,11 @@ interface NavLinkProps {
 }
 
 export const NavLink = ({ to, children }: NavLinkProps) => {
+  const { language } = useLanguage();
+  
   return (
     <Link
-      to={to}
+      to={`/${language}${to}`}
       className="text-foreground/80 font-persian text-base hover:text-primary transition-colors"
     >
       {children}
