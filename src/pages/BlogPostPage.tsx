@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -8,7 +8,9 @@ import SEOHead from '@/components/SEOHead';
 import { getBlogPost, BlogPost } from '@/lib/blogUtils';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Calendar, Clock, User, Share2, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Card } from '@/components/ui/card';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { Calendar, Clock, User, Share2, ArrowLeft, ArrowRight, ChevronDown, List, CheckCircle2 } from 'lucide-react';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import ReactMarkdown from 'react-markdown';
 
@@ -17,6 +19,7 @@ const BlogPostPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isTocOpen, setIsTocOpen] = useState(true);
 
   useEffect(() => {
     const loadPost = async () => {
@@ -38,6 +41,16 @@ const BlogPostPage: React.FC = () => {
       day: 'numeric',
     });
   };
+
+  const tableOfContents = useMemo(() => {
+    if (!post?.content) return [];
+    const headings = post.content.match(/^##\s+(.+)$/gm) || [];
+    return headings.map(heading => {
+      const text = heading.replace(/^##\s+/, '');
+      const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      return { text, id };
+    });
+  }, [post?.content]);
 
   if (isLoading) {
     return (
@@ -131,10 +144,90 @@ const BlogPostPage: React.FC = () => {
               </div>
             </div>
 
+            {/* Table of Contents */}
+            {tableOfContents.length > 0 && (
+              <Card className="mb-8 sticky top-24">
+                <Collapsible open={isTocOpen} onOpenChange={setIsTocOpen}>
+                  <CollapsibleTrigger asChild>
+                    <Button variant="ghost" className="w-full flex items-center justify-between p-6">
+                      <div className="flex items-center gap-2">
+                        <List className="w-5 h-5" />
+                        <span className="font-semibold">{t('blog.tableOfContents')}</span>
+                      </div>
+                      <ChevronDown className={`w-5 h-5 transition-transform ${isTocOpen ? 'rotate-180' : ''}`} />
+                    </Button>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <nav className="px-6 pb-6">
+                      <ul className="space-y-2">
+                        {tableOfContents.map((item, index) => (
+                          <li key={index}>
+                            <a
+                              href={`#${item.id}`}
+                              className="text-sm text-muted-foreground hover:text-primary transition-colors block py-1"
+                            >
+                              {item.text}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </nav>
+                  </CollapsibleContent>
+                </Collapsible>
+              </Card>
+            )}
+
+            {/* Key Takeaways */}
+            {post.keyTakeaways && post.keyTakeaways.length > 0 && (
+              <Card className="mb-8 bg-primary/5 border-primary/20">
+                <div className="p-6">
+                  <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-primary" />
+                    {t('blog.keyTakeaways')}
+                  </h2>
+                  <ul className="space-y-2">
+                    {post.keyTakeaways.map((takeaway, index) => (
+                      <li key={index} className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                        <span>{takeaway}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Card>
+            )}
+
             {/* Post Content */}
             <article className="prose prose-lg dark:prose-invert max-w-none mb-12">
-              <ReactMarkdown>{post.content}</ReactMarkdown>
+              <ReactMarkdown
+                components={{
+                  h2: ({ children }) => {
+                    const text = String(children);
+                    const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+                    return <h2 id={id}>{children}</h2>;
+                  },
+                }}
+              >
+                {post.content}
+              </ReactMarkdown>
             </article>
+
+            {/* FAQ Section */}
+            {post.faq && post.faq.length > 0 && (
+              <Card className="mb-8">
+                <div className="p-6">
+                  <h2 className="text-2xl font-bold mb-6">{t('blog.faq')}</h2>
+                  <div className="space-y-4">
+                    {post.faq.map((item, index) => (
+                      <div key={index} className="border-b last:border-0 pb-4 last:pb-0">
+                        <h3 className="font-semibold mb-2">{item.question}</h3>
+                        <p className="text-muted-foreground">{item.answer}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+            )}
 
             {/* Share Section */}
             <div className="border-t pt-8">

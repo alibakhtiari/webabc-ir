@@ -11,6 +11,8 @@ export interface BlogPost {
   image: string;
   readTime: number;
   content: string;
+  keyTakeaways?: string[];
+  faq?: { question: string; answer: string }[];
 }
 
 export interface BlogMetadata {
@@ -31,14 +33,18 @@ const blogPosts: Record<string, Record<string, string>> = {
     'seo-best-practices-2025': '/blog/en/seo-best-practices-2025.md',
     'web-design-trends-2025': '/blog/en/web-design-trends-2025.md',
     'digital-marketing-strategies': '/blog/en/digital-marketing-strategies.md',
+    'wordpress-vs-custom-development': '/blog/en/wordpress-vs-custom-development.md',
+    'mobile-first-design-2025': '/blog/en/mobile-first-design-2025.md',
   },
   ar: {
     'seo-best-practices-2025': '/blog/ar/seo-best-practices-2025.md',
     'web-design-trends-2025': '/blog/ar/web-design-trends-2025.md',
+    'wordpress-vs-custom-development': '/blog/ar/wordpress-vs-custom-development.md',
   },
   fa: {
     'seo-best-practices-2025': '/blog/fa/seo-best-practices-2025.md',
     'web-design-trends-2025': '/blog/fa/web-design-trends-2025.md',
+    'wordpress-vs-custom-development': '/blog/fa/wordpress-vs-custom-development.md',
   },
 };
 
@@ -64,6 +70,8 @@ export async function getBlogPost(slug: string, language: string): Promise<BlogP
       image: data.image,
       readTime: data.readTime,
       content,
+      keyTakeaways: data.keyTakeaways,
+      faq: data.faq,
     };
   } catch (error) {
     console.error(`Error loading blog post: ${slug}`, error);

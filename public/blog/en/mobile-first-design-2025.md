@@ -7,6 +7,19 @@ category: Web Design
 tags: [Mobile Design, Responsive Design, UX, UI]
 image: /src/assets/blog-web-design.jpg
 readTime: 7
+keyTakeaways:
+  - Mobile-first design prioritizes mobile experience before scaling up to desktop
+  - Google's mobile-first indexing makes mobile optimization essential for SEO
+  - Touch-friendly interfaces require minimum 44x44 pixel touch targets
+  - Progressive enhancement ensures core functionality works on all devices
+  - Performance optimization is critical for mobile user retention
+faq:
+  - question: What is the difference between mobile-first and responsive design?
+    answer: Mobile-first design starts with the mobile layout and progressively enhances for larger screens, while responsive design adapts a desktop layout to smaller screens. Mobile-first ensures better performance and user experience on mobile devices.
+  - question: What is the minimum touch target size for mobile?
+    answer: The recommended minimum touch target size is 44x44 pixels to ensure users can easily tap buttons and links without errors.
+  - question: Does mobile-first mean I should ignore desktop users?
+    answer: No, mobile-first means starting with mobile constraints and then progressively enhancing the experience for larger screens. You still deliver a great desktop experience.
 ---
 
 # Mobile-First Design in 2025: Essential Strategies
