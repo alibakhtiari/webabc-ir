@@ -7,6 +7,19 @@ category: SEO
 tags: [SEO, Search Engine Optimization, Digital Marketing, Google]
 image: /src/assets/blog-seo-tips.jpg
 readTime: 8
+keyTakeaways:
+  - Focus on Core Web Vitals to improve page experience and rankings
+  - Create E-E-A-T compliant content with real expertise and value
+  - Optimize for voice search and conversational queries
+  - Mobile-first indexing makes responsive design essential
+  - Technical SEO fundamentals remain critical for success
+faq:
+  - question: What are Core Web Vitals and why do they matter?
+    answer: Core Web Vitals are metrics that measure page experience including loading speed (LCP), interactivity (FID/INP), and visual stability (CLS). They directly impact your search rankings.
+  - question: How often should I update my SEO strategy?
+    answer: Review your SEO strategy quarterly and stay updated with Google algorithm changes. Regular content updates and technical audits are essential for maintaining rankings.
+  - question: What is E-E-A-T in SEO?
+    answer: E-E-A-T stands for Experience, Expertise, Authoritativeness, and Trustworthiness. It's Google's framework for evaluating content quality, especially important for health, finance, and other YMYL topics.
 ---
 
 # SEO Best Practices for 2025
