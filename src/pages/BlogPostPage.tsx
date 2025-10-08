@@ -11,7 +11,6 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
 import { Calendar, Clock, User, Share2, ArrowLeft, ArrowRight, ChevronDown, List, CheckCircle2 } from 'lucide-react';
-import LoadingSpinner from '@/components/LoadingSpinner';
 import ReactMarkdown from 'react-markdown';
 
 const BlogPostPage: React.FC = () => {
@@ -57,7 +56,7 @@ const BlogPostPage: React.FC = () => {
       <div dir={languageMeta.direction} className={languageMeta.fontFamily}>
         <Navbar />
         <div className="min-h-screen flex items-center justify-center">
-          <LoadingSpinner />
+          <div className="animate-pulse text-muted-foreground text-lg">Loading...</div>
         </div>
         <Footer />
       </div>

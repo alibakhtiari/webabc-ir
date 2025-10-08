@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
@@ -10,7 +9,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
-import LoadingSpinner from '@/components/LoadingSpinner';
 
 const BlogPage: React.FC = () => {
   const { t, language, languageMeta } = useLanguage();
@@ -97,7 +95,9 @@ const BlogPage: React.FC = () => {
         <section className="py-16">
           <div className="container mx-auto px-4">
             {isLoading ? (
-              <LoadingSpinner />
+              <div className="flex items-center justify-center py-16">
+                <div className="animate-pulse text-muted-foreground">Loading...</div>
+              </div>
             ) : filteredPosts.length === 0 ? (
               <div className="text-center py-16">
                 <p className="text-xl text-muted-foreground">{t('common.noResults')}</p>

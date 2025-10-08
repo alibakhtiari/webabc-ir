@@ -57,7 +57,8 @@ export async function getBlogPost(slug: string, language: string): Promise<BlogP
     if (!response.ok) return null;
 
     const markdown = await response.text();
-    const { data, content } = matter(markdown);
+    const parsed = matter(markdown);
+    const { data, content } = parsed;
 
     return {
       slug,
@@ -89,7 +90,8 @@ export async function getAllBlogPosts(language: string): Promise<BlogMetadata[]>
       if (!response.ok) continue;
 
       const markdown = await response.text();
-      const { data } = matter(markdown);
+      const parsed = matter(markdown);
+      const { data } = parsed;
 
       metadata.push({
         slug,

@@ -1,9 +1,13 @@
-
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { LanguageProvider } from './contexts/LanguageContext';
-import LoadingSpinner from './components/LoadingSpinner';
 import { portfolioItems } from './lib/portfolioData';
+import { Buffer } from 'buffer';
+
+// Polyfill Buffer for gray-matter
+if (typeof window !== 'undefined') {
+  window.Buffer = Buffer;
+}
 
 // Import core pages
 const Home = lazy(() => import('./pages/Home'));
@@ -26,7 +30,11 @@ function App() {
   return (
     <Router>
       <LanguageProvider>
-        <Suspense fallback={<LoadingSpinner />}>
+        <Suspense fallback={
+          <div className="min-h-screen flex items-center justify-center">
+            <div className="animate-pulse text-muted-foreground text-lg">Loading...</div>
+          </div>
+        }>
           <Routes>
             {/* Language-based routes */}
             <Route path="/:lang" element={<Home />} />
