@@ -5,6 +5,7 @@ import { useParams, Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
+import SchemaMarkup from '@/components/SchemaMarkup';
 import { getBlogPost, BlogPost } from '@/lib/blogUtils';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -81,13 +82,79 @@ const BlogPostPage: React.FC = () => {
     );
   }
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    image: post.image.startsWith('http') ? post.image : `${window.location.origin}${post.image}`,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      "@type": "Person",
+      name: post.author
+    },
+    publisher: {
+      "@type": "Organization",
+      name: language === 'en' ? 'WebABC' : language === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث',
+      logo: {
+        "@type": "ImageObject",
+        url: `${window.location.origin}/og-image.png`
+      }
+    },
+    keywords: post.tags.join(', '),
+    articleSection: post.category,
+    wordCount: post.content.split(/\s+/).length
+  };
+
+  const faqSchema = post.faq && post.faq.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: post.faq.map(item => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer
+      }
+    }))
+  } : null;
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: t('common.home'),
+        item: `${window.location.origin}/${language}`
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: t('blog.title'),
+        item: `${window.location.origin}/${language}/blog`
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: window.location.href
+      }
+    ]
+  };
+
   return (
     <div dir={languageMeta.direction} className={languageMeta.fontFamily}>
       <SEOHead 
         title={`${post.title} - ${t('blog.title')}`}
         description={post.description}
         keywords={post.tags.join(', ')}
+        ogImage={post.image}
+        ogType="article"
       />
+      <SchemaMarkup schema={faqSchema ? [articleSchema, faqSchema, breadcrumbSchema] : [articleSchema, breadcrumbSchema]} />
       
       <Navbar />
       
@@ -145,25 +212,27 @@ const BlogPostPage: React.FC = () => {
 
             {/* Table of Contents */}
             {tableOfContents.length > 0 && (
-              <Card className="mb-8 sticky top-24">
+              <Card className="mb-8 border-primary/20 bg-gradient-to-br from-primary/5 to-background shadow-lg">
                 <Collapsible open={isTocOpen} onOpenChange={setIsTocOpen}>
                   <CollapsibleTrigger asChild>
-                    <Button variant="ghost" className="w-full flex items-center justify-between p-6">
-                      <div className="flex items-center gap-2">
-                        <List className="w-5 h-5" />
-                        <span className="font-semibold">{t('blog.tableOfContents')}</span>
+                    <Button variant="ghost" className="w-full flex items-center justify-between p-6 hover:bg-primary/5">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 rounded-lg bg-primary/10">
+                          <List className="w-5 h-5 text-primary" />
+                        </div>
+                        <span className="font-bold text-lg">{t('blog.tableOfContents')}</span>
                       </div>
-                      <ChevronDown className={`w-5 h-5 transition-transform ${isTocOpen ? 'rotate-180' : ''}`} />
+                      <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isTocOpen ? 'rotate-180' : ''}`} />
                     </Button>
                   </CollapsibleTrigger>
                   <CollapsibleContent>
                     <nav className="px-6 pb-6">
-                      <ul className="space-y-2">
+                      <ul className="space-y-1">
                         {tableOfContents.map((item, index) => (
                           <li key={index}>
                             <a
                               href={`#${item.id}`}
-                              className="text-sm text-muted-foreground hover:text-primary transition-colors block py-1"
+                              className="text-sm text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all block py-2 px-3 rounded-md border-l-2 border-transparent hover:border-primary"
                             >
                               {item.text}
                             </a>
@@ -197,7 +266,7 @@ const BlogPostPage: React.FC = () => {
             )}
 
             {/* Post Content */}
-            <article className="prose prose-lg dark:prose-invert max-w-none mb-12">
+            <article className="prose prose-lg dark:prose-invert max-w-none mb-12 prose-headings:scroll-mt-24 prose-h2:text-3xl prose-h2:font-bold prose-h2:mb-4 prose-h2:mt-8 prose-p:leading-relaxed prose-p:text-foreground/90 prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-img:shadow-lg">
               <ReactMarkdown
                 components={{
                   h2: ({ children }) => {
