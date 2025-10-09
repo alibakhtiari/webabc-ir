@@ -1,0 +1,44 @@
+{
+  "title": "Service Areas",
+  "subtitle": "Professional Web Design & SEO Services Across the Region",
+  "description": "WebABC provides expert web design, development, and SEO services to businesses across multiple locations. Our team delivers customized digital solutions tailored to your local market.",
+  "ctaTitle": "Ready to Grow Your Business?",
+  "ctaDescription": "Contact us today for a free consultation and discover how we can help your business succeed online.",
+  "ctaButton": "Get Free Consultation",
+  "locationTitle": "We Serve",
+  "whyChooseUs": "Why Choose WebABC?",
+  "localExpertise": "Local Market Expertise",
+  "localExpertiseDesc": "We understand the unique challenges and opportunities in each market we serve",
+  "provenResults": "Proven Results",
+  "provenResultsDesc": "Track record of successful projects across different regions",
+  "multilingualSupport": "Multilingual Support",
+  "multilingualSupportDesc": "Communication in your preferred language - English, Arabic, and Persian",
+  "locations": [
+    {
+      "name": "Muscat",
+      "country": "Oman",
+      "description": "Providing cutting-edge web design and SEO services to businesses in Muscat. We help Omani companies establish a strong online presence and reach their target audience effectively.",
+      "services": [
+        "Web Design & Development",
+        "SEO Services",
+        "E-commerce Solutions",
+        "Digital Marketing",
+        "WordPress Development"
+      ],
+      "image": "/images/locations/muscat.jpg"
+    },
+    {
+      "name": "Dubai",
+      "country": "UAE",
+      "description": "Delivering premium digital solutions to businesses in Dubai. Our services help UAE-based companies compete in the dynamic Dubai market with innovative web solutions.",
+      "services": [
+        "Custom Web Development",
+        "Local SEO",
+        "Mobile App Development",
+        "Brand Strategy",
+        "Content Marketing"
+      ],
+      "image": "/images/locations/dubai.jpg"
+    }
+  ]
+}

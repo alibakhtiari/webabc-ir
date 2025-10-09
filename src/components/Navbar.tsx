@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
-import { NavLink, ServicesDropdown } from './NavLinks';
+import { NavLink, ServicesDropdown, NavLinks } from './NavLinks';
 import MobileMenu from './MobileMenu';
 import { Button } from './ui/button';
 import ConsultationForm from './ConsultationForm';
@@ -54,6 +54,7 @@ const Navbar = () => {
           <nav className="hidden md:flex items-center gap-6">
             <NavLink to="">{t('common.home')}</NavLink>
             <ServicesDropdown />
+            <NavLinks />
             <NavLink to="/portfolio">{t('common.portfolio')}</NavLink>
             <NavLink to="/blog">{t('common.blog')}</NavLink>
             <NavLink to="/about">{t('common.about')}</NavLink>

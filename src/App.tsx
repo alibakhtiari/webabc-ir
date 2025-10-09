@@ -25,6 +25,7 @@ const WebDesign = lazy(() => import('./pages/WebDesign'));
 const SeoService = lazy(() => import('./pages/SeoService'));
 const LocalSeo = lazy(() => import('./pages/LocalSeo'));
 const WebDevelopment = lazy(() => import('./pages/WebDevelopment'));
+const ServiceAreas = lazy(() => import('./pages/ServiceAreas'));
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
             <Route path="/:lang/seo-services" element={<SeoService />} />
             <Route path="/:lang/local-seo" element={<LocalSeo />} />
             <Route path="/:lang/web-development-services" element={<WebDevelopment />} />
+            <Route path="/:lang/service-areas" element={<ServiceAreas />} />
             
             {/* Redirect from root to default language */}
             <Route path="/" element={<Navigate to="/en" replace />} />

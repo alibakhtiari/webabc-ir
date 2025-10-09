@@ -22,6 +22,16 @@ export const NavLink = ({ to, children }: NavLinkProps) => {
   );
 };
 
+export const NavLinks = () => {
+  const { t, language } = useLanguage();
+  
+  return (
+    <>
+      <NavLink to="/service-areas">{t('common.serviceAreas')}</NavLink>
+    </>
+  );
+};
+
 export const ServicesDropdown = () => {
   const { t, language, languageMeta } = useLanguage();
   const isRtl = languageMeta.direction === 'rtl';
