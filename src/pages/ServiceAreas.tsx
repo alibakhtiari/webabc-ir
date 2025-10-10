@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -9,6 +9,9 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { MapPin, CheckCircle2, Globe, TrendingUp, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import enServiceAreas from '@/i18n/en/service-areas.json';
+import faServiceAreas from '@/i18n/fa/service-areas.json';
+import arServiceAreas from '@/i18n/ar/service-areas.json';
 
 interface Location {
   name: string;
@@ -21,8 +24,18 @@ interface Location {
 const ServiceAreas = () => {
   const { t, language, languageMeta } = useLanguage();
   
-  // Import service areas data
-  const serviceAreasData = require(`@/i18n/${language}/service-areas.json`);
+  // Get service areas data based on language
+  const serviceAreasData = useMemo(() => {
+    switch (language) {
+      case 'fa':
+        return faServiceAreas;
+      case 'ar':
+        return arServiceAreas;
+      default:
+        return enServiceAreas;
+    }
+  }, [language]);
+  
   const locations: Location[] = serviceAreasData.locations;
 
   const serviceAreaSchema = {
