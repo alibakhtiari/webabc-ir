@@ -15,10 +15,18 @@ import arServiceAreas from '@/i18n/ar/service-areas.json';
 
 interface Location {
   name: string;
+  slug: string;
   country: string;
   description: string;
+  longDescription: string;
   services: string[];
   image: string;
+  benefits: string[];
+  stats: {
+    projects: string;
+    clients: string;
+    experience: string;
+  };
 }
 
 const ServiceAreas = () => {
@@ -200,11 +208,18 @@ const ServiceAreas = () => {
                           ))}
                         </ul>
                       </div>
-                      <Button asChild className="w-fit">
-                        <Link to={`/${language}/contact`}>
-                          {t('common.contactUs')}
-                        </Link>
-                      </Button>
+                      <div className="flex gap-3">
+                        <Button asChild className="flex-1">
+                          <Link to={`/${language}/${location.slug}`}>
+                            {t('common.learnMore')}
+                          </Link>
+                        </Button>
+                        <Button asChild variant="outline" className="flex-1">
+                          <Link to={`/${language}/contact`}>
+                            {t('common.contactUs')}
+                          </Link>
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </Card>

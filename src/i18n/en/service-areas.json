@@ -16,8 +16,10 @@
   "locations": [
     {
       "name": "Muscat",
+      "slug": "muscat",
       "country": "Oman",
       "description": "Providing cutting-edge web design and SEO services to businesses in Muscat. We help Omani companies establish a strong online presence and reach their target audience effectively.",
+      "longDescription": "As Muscat's premier web design and SEO agency, we specialize in helping local businesses dominate the digital landscape. Our team understands the unique characteristics of the Omani market and creates tailored solutions that resonate with your target audience.",
       "services": [
         "Web Design & Development",
         "SEO Services",
@@ -25,12 +27,26 @@
         "Digital Marketing",
         "WordPress Development"
       ],
-      "image": "/images/locations/muscat.jpg"
+      "image": "/images/locations/muscat.jpg",
+      "benefits": [
+        "Local market expertise in Muscat",
+        "Arabic & English language support",
+        "Mobile-first responsive designs",
+        "Fast loading times optimized for Oman",
+        "Ongoing support and maintenance"
+      ],
+      "stats": {
+        "projects": "50+",
+        "clients": "35+",
+        "experience": "5+"
+      }
     },
     {
       "name": "Dubai",
+      "slug": "dubai",
       "country": "UAE",
       "description": "Delivering premium digital solutions to businesses in Dubai. Our services help UAE-based companies compete in the dynamic Dubai market with innovative web solutions.",
+      "longDescription": "Dubai's fast-paced business environment demands exceptional digital presence. We create stunning websites and implement powerful SEO strategies that help your business stand out in one of the world's most competitive markets.",
       "services": [
         "Custom Web Development",
         "Local SEO",
@@ -38,7 +54,19 @@
         "Brand Strategy",
         "Content Marketing"
       ],
-      "image": "/images/locations/dubai.jpg"
+      "image": "/images/locations/dubai.jpg",
+      "benefits": [
+        "Understanding of UAE business culture",
+        "Multilingual website solutions",
+        "E-commerce expertise for Dubai market",
+        "Results-driven digital strategies",
+        "24/7 customer support"
+      ],
+      "stats": {
+        "projects": "75+",
+        "clients": "50+",
+        "experience": "6+"
+      }
     }
   ]
 }
