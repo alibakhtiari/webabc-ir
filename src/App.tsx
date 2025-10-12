@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense } from 'react';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { portfolioItems } from './lib/portfolioData';
 import { Buffer } from 'buffer';
@@ -47,7 +47,7 @@ function App() {
             <Route path="/:lang/portfolio/:id" element={<PortfolioItemPage portfolioItems={portfolioItems} />} />
             <Route path="/:lang/blog" element={<BlogPage />} />
             <Route path="/:lang/blog/:slug" element={<BlogPostPage />} />
-            
+
             {/* Service Pages */}
             <Route path="/:lang/web-design" element={<WebDesign />} />
             <Route path="/:lang/seo-services" element={<SeoService />} />
@@ -55,10 +55,10 @@ function App() {
             <Route path="/:lang/web-development-services" element={<WebDevelopment />} />
             <Route path="/:lang/service-areas" element={<ServiceAreas />} />
             <Route path="/:lang/:slug" element={<LocationPage />} />
-            
+
             {/* Redirect from root to default language */}
-            <Route path="/" element={<Navigate to="/en" replace />} />
-            
+            <Route path="/" element={<Navigate to="/fa" replace />} />
+
             {/* 404 Route */}
             <Route path="*" element={<NotFound />} />
           </Routes>
