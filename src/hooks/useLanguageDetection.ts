@@ -8,8 +8,8 @@ import { SupportedLanguage } from '@/types/language';
  * @returns Detected language code
  */
 export const useLanguageDetection = (): SupportedLanguage => {
-  const [detectedLanguage, setDetectedLanguage] = useState<SupportedLanguage>('en');
-  
+  const [detectedLanguage, setDetectedLanguage] = useState<SupportedLanguage>('fa');
+
   useEffect(() => {
     // Get language from local storage first
     const storedLanguage = localStorage.getItem('language') as SupportedLanguage;
@@ -23,9 +23,9 @@ export const useLanguageDetection = (): SupportedLanguage => {
     if (['fa', 'en', 'ar'].includes(browserLang)) {
       setDetectedLanguage(browserLang);
     } else {
-      setDetectedLanguage('en'); // Default to English
+      setDetectedLanguage('fa'); // Default to Persian
     }
   }, []);
-  
+
   return detectedLanguage;
 };
