@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -47,7 +47,7 @@ const Navbar = () => {
           { "shadow-md": isScrolled }
         )}>
           <Link to={`/${language}`} className="flex items-center space-x-2">
-            <Logo size="sm" />
+            <Logo />
           </Link>
 
           {/* Desktop Navigation */}
