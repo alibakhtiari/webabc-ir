@@ -108,7 +108,7 @@ const Portfolio = () => {
 
       <Navbar />
 
-      <main className="min-h-screen pt-24">
+      <main className="min-h-screen">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-br from-primary/10 via-background to-primary/5">
           <div className="container mx-auto px-4">

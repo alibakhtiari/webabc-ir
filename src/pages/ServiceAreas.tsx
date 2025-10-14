@@ -31,7 +31,7 @@ interface Location {
 
 const ServiceAreas = () => {
   const { t, language, languageMeta } = useLanguage();
-  
+
   // Get service areas data based on language
   const serviceAreasData = useMemo(() => {
     switch (language) {
@@ -43,7 +43,7 @@ const ServiceAreas = () => {
         return enServiceAreas;
     }
   }, [language]);
-  
+
   const locations: Location[] = serviceAreasData.locations;
 
   const serviceAreaSchema = {
@@ -86,19 +86,19 @@ const ServiceAreas = () => {
 
   return (
     <div>
-      <SEOHead 
+      <SEOHead
         title={t('service-areas.title')}
         description={t('service-areas.description')}
       />
       <SchemaMarkup schema={[serviceAreaSchema, breadcrumbSchema]} />
-      
+
       <Navbar />
-      
+
       <main className="min-h-screen bg-background">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-br from-primary/10 via-primary/5 to-background relative overflow-hidden">
           <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-          <div className="container mx-auto px-4 relative">
+          <div className="container mx-auto px-4 relative pt-8">
             <div className="max-w-4xl mx-auto text-center">
               <Badge variant="secondary" className="mb-4 text-sm">
                 <MapPin className="w-4 h-4 inline mr-2" />
@@ -247,7 +247,7 @@ const ServiceAreas = () => {
           </div>
         </section>
       </main>
-      
+
       <Footer />
     </div>
   );
