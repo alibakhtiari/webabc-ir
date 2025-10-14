@@ -8,5 +8,16 @@
   "ourTeam": "تیم ما",
   "yearsExperience": "سال تجربه",
   "successfulProjects": "پروژه موفق",
-  "clientSatisfaction": "رضایت مشتری"
+  "clientSatisfaction": "رضایت مشتری",
+  "stats": {
+    "years": {
+      "value": "10+"
+    },
+    "projects": {
+      "value": "500+"
+    },
+    "satisfaction": {
+      "value": "98%"
+    }
+  }
 }

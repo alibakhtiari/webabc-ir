@@ -48,14 +48,13 @@
   "resetFilters": "بازنشانی فیلترها",
   "noResults": "نتیجه‌ای یافت نشد",
   "tryAgain": "تلاش مجدد",
-  "aboutCompany": "درباره WebABC: ما یک آژانس بازاریابی دیجیتال و توسعه وب هستیم.",
+  "aboutCompany": "درباره وب‌اِی‌بی‌سی: ما یک آژانس بازاریابی دیجیتال و توسعه وب هستیم.",
   "blog": "وبلاگ",
   "services": "خدمات",
   "company": "شرکت",
   "resources": "منابع",
-  "companySince": "از سال ۲۰۱۲",
+  "copyright": "© {year} وب‌اِی‌بی‌سی. تمامی حقوق محفوظ است.",
   "privacyPolicy": "سیاست حفظ حریم خصوصی",
   "termsOfService": "شرایط استفاده",
-  "cookiePolicy": "سیاست کوکی",
-  "viewPortfolio": "مشاهده نمونه کارها"
+  "cookiePolicy": "سیاست کوکی"
 }

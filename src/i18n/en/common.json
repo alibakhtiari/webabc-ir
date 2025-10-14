@@ -53,9 +53,8 @@
   "services": "Services",
   "company": "Company",
   "resources": "Resources",
-  "companySince": "Since 2012",
+  "copyright": "© {year} WebABC. All rights reserved.",
   "privacyPolicy": "Privacy Policy",
   "termsOfService": "Terms of Service",
-  "cookiePolicy": "Cookie Policy",
-  "viewPortfolio": "View Portfolio"
+  "cookiePolicy": "Cookie Policy"
 }

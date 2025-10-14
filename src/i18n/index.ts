@@ -90,6 +90,11 @@ import enServiceAreas from './en/service-areas.json';
 import faServiceAreas from './fa/service-areas.json';
 import arServiceAreas from './ar/service-areas.json';
 
+// Tools translations
+import enTools from './tools-en.json';
+import faTools from './tools-fa.json';
+import arTools from './tools-ar.json';
+
 // Define the translations object with proper typing
 export interface TranslationsType {
   [language: string]: {
@@ -117,7 +122,8 @@ export const translations: TranslationsType = {
     consultation: enConsultation,
     "local-seo": enLocalSeo,
     "web-development-services": enWebDevelopmentServices,
-    "service-areas": enServiceAreas
+    "service-areas": enServiceAreas,
+    tools: enTools
   },
   fa: {
     common: faCommon,
@@ -137,7 +143,8 @@ export const translations: TranslationsType = {
     consultation: faConsultation,
     "local-seo": faLocalSeo,
     "web-development-services": faWebDevelopmentServices,
-    "service-areas": faServiceAreas
+    "service-areas": faServiceAreas,
+    tools: faTools
   },
   ar: {
     common: arCommon,
@@ -157,7 +164,8 @@ export const translations: TranslationsType = {
     consultation: arConsultation,
     "local-seo": arLocalSeo,
     "web-development-services": arWebDevelopmentServices,
-    "service-areas": arServiceAreas
+    "service-areas": arServiceAreas,
+    tools: arTools
   }
 };
 

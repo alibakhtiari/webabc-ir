@@ -8,5 +8,16 @@
   "ourTeam": "Our Team",
   "yearsExperience": "Years of Experience",
   "successfulProjects": "Successful Projects",
-  "clientSatisfaction": "Client Satisfaction"
+  "clientSatisfaction": "Client Satisfaction",
+  "stats": {
+    "years": {
+      "value": "10+"
+    },
+    "projects": {
+      "value": "500+"
+    },
+    "satisfaction": {
+      "value": "98%"
+    }
+  }
 }

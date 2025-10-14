@@ -49,13 +49,12 @@
   "resetFilters": "إعادة ضبط التصفية",
   "noResults": "لم يتم العثور على نتائج",
   "tryAgain": "حاول مرة أخرى",
-  "aboutCompany": "عن WebABC: نحن وكالة تسويق رقمي وتطوير مواقع.",
+  "aboutCompany": "عن وب أي بي سي: نحن وكالة تسويق رقمي وتطوير مواقع.",
   "blog": "المدونة",
   "company": "الشركة",
   "resources": "الموارد",
-  "companySince": "منذ 2012",
+  "copyright": "© {year} وب أي بي سي. جميع الحقوق محفوظة.",
   "privacyPolicy": "سياسة الخصوصية",
   "termsOfService": "شروط الخدمة",
-  "cookiePolicy": "سياسة الكوكيز",
-  "viewPortfolio": "عرض المشاريع"
+  "cookiePolicy": "سياسة الكوكيز"
 }
