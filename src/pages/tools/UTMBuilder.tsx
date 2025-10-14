@@ -42,7 +42,7 @@ const UTMBuilder: React.FC = () => {
   };
 
   return (
-    <div dir={languageMeta.direction} className={languageMeta.fontFamily}>
+    <div>
       <SEOHead 
         title="UTM Link Builder"
         description="Create trackable campaign URLs with UTM parameters"

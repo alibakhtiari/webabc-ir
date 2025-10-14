@@ -60,7 +60,7 @@ const LoremGenerator: React.FC = () => {
   };
 
   return (
-    <div dir={languageMeta.direction} className={languageMeta.fontFamily}>
+    <div>
       <SEOHead 
         title="Lorem Ipsum Generator"
         description="Generate customizable placeholder text for your designs"

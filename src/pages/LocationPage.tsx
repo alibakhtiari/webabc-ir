@@ -108,7 +108,7 @@ const LocationPage = () => {
   };
 
   return (
-    <div dir={languageMeta.direction} className={languageMeta.fontFamily}>
+    <div>
       <SEOHead 
         title={`${t('common.webDesignAndDevelopment')} ${location.name} - ${location.country}`}
         description={location.longDescription}
@@ -173,7 +173,7 @@ const LocationPage = () => {
               <Card className="text-center border-primary/20 hover:shadow-lg transition-all hover:scale-105">
                 <CardContent className="pt-8">
                   <TrendingUp className="w-12 h-12 mx-auto mb-4 text-primary" />
-                  <div className="text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                  <div className="text-4xl font-bold mb-2 text-primary">
                     {location.stats.projects}
                   </div>
                   <p className="text-muted-foreground">{t('common.completedProjects')}</p>
@@ -183,7 +183,7 @@ const LocationPage = () => {
               <Card className="text-center border-primary/20 hover:shadow-lg transition-all hover:scale-105">
                 <CardContent className="pt-8">
                   <Users className="w-12 h-12 mx-auto mb-4 text-primary" />
-                  <div className="text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                  <div className="text-4xl font-bold mb-2 text-primary">
                     {location.stats.clients}
                   </div>
                   <p className="text-muted-foreground">{t('common.happyClients')}</p>
@@ -193,7 +193,7 @@ const LocationPage = () => {
               <Card className="text-center border-primary/20 hover:shadow-lg transition-all hover:scale-105">
                 <CardContent className="pt-8">
                   <Award className="w-12 h-12 mx-auto mb-4 text-primary" />
-                  <div className="text-4xl font-bold mb-2 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+                  <div className="text-4xl font-bold mb-2 text-primary">
                     {location.stats.experience}
                   </div>
                   <p className="text-muted-foreground">{t('common.yearsExperience')}</p>

@@ -24,7 +24,7 @@ const Home: React.FC = () => {
   );
   
   return (
-    <div dir={languageMeta.direction} className={languageMeta.fontFamily}>
+    <div>
       <SEOHead 
         title={t('home.heroTitle')} 
         description={t('home.heroDescription')} 

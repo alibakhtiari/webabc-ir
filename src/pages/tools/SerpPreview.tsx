@@ -18,7 +18,7 @@ const SerpPreview: React.FC = () => {
   const descriptionLength = description.length;
 
   return (
-    <div dir={languageMeta.direction} className={languageMeta.fontFamily}>
+    <div>
       <SEOHead 
         title="SERP Snippet Preview Tool"
         description="Preview how your webpage will appear in Google search results"

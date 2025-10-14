@@ -63,7 +63,7 @@ const ReadabilityChecker: React.FC = () => {
   const stats = text ? calculateReadability() : null;
 
   return (
-    <div dir={languageMeta.direction} className={languageMeta.fontFamily}>
+    <div>
       <SEOHead 
         title="Readability Checker"
         description="Analyze text readability with Flesch-Kincaid scores"

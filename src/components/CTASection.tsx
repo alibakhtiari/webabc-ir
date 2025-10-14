@@ -1,7 +1,6 @@
 
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { ArrowRight } from 'lucide-react';
 import ConsultationForm from './ConsultationForm';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';

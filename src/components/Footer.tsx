@@ -3,6 +3,7 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
+import { Twitter, Instagram, Linkedin, Facebook } from 'lucide-react';
 
 const Footer = () => {
   const { t, language, languageMeta } = useLanguage();
@@ -25,14 +26,19 @@ const Footer = () => {
               </p>
 
               <div className={cn("flex space-x-4 mt-4", isRtl && "space-x-reverse")}>
-                {['twitter', 'instagram', 'linkedin', 'facebook'].map((social) => (
+                {[
+                  { name: 'twitter', Icon: Twitter, url: 'https://twitter.com/webabc' },
+                  { name: 'instagram', Icon: Instagram, url: 'https://instagram.com/webabc' },
+                  { name: 'linkedin', Icon: Linkedin, url: 'https://linkedin.com/company/webabc' },
+                  { name: 'facebook', Icon: Facebook, url: 'https://facebook.com/webabc' }
+                ].map((social) => (
                   <a
-                    key={social}
-                    href={`https://${social}.com/webabc`}
-                    className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm transition-all hover:bg-primary hover:text-white"
+                    key={social.name}
+                    href={social.url}
+                    className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm transition-all hover:bg-primary hover:text-white text-gray-600 hover:text-white"
                   >
-                    <span className="sr-only">{social}</span>
-                    <div className="w-5 h-5" />
+                    <span className="sr-only">{social.name}</span>
+                    <social.Icon className="w-5 h-5" />
                   </a>
                 ))}
               </div>
@@ -93,26 +99,10 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row items-center justify-between">
+        <div className="pt-8 border-t border-gray-200 text-center">
           <p className={cn("text-foreground/70 text-sm", languageMeta.fontFamily)}>
-            {t('common.companySince')}
+            {t('common.copyright').replace('{year}', new Intl.DateTimeFormat(language, { year: 'numeric' }).format(new Date()))}
           </p>
-
-          <div className={cn("flex space-x-4 mt-4 md:mt-0", isRtl && "space-x-reverse")}>
-            {[
-              { name: t('common.privacyPolicy'), href: `/${language}/privacy` },
-              { name: t('common.termsOfService'), href: `/${language}/terms` },
-              { name: t('common.cookiePolicy'), href: `/${language}/cookies` }
-            ].map((item, idx) => (
-              <a
-                key={idx}
-                href={item.href}
-                className={cn("text-sm text-foreground/70 hover:text-primary transition-colors", languageMeta.fontFamily)}
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
         </div>
       </div>
     </footer>

@@ -85,7 +85,7 @@ const ServiceAreas = () => {
   };
 
   return (
-    <div dir={languageMeta.direction} className={languageMeta.fontFamily}>
+    <div>
       <SEOHead 
         title={t('service-areas.title')}
         description={t('service-areas.description')}
@@ -104,7 +104,7 @@ const ServiceAreas = () => {
                 <MapPin className="w-4 h-4 inline mr-2" />
                 {t('service-areas.locationTitle')}
               </Badge>
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-primary">
                 {t('service-areas.title')}
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8">

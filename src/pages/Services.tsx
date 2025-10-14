@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
@@ -103,7 +103,7 @@ const ServicesOverview = () => {
   }, [language, t]);
   
   return (
-    <div className="min-h-screen flex flex-col" dir={languageMeta.direction}>
+    <div className="min-h-screen flex flex-col">
       <SEOHead 
         title={t('seo.servicesTitle')}
         description={t('seo.servicesDescription')}
@@ -115,14 +115,13 @@ const ServicesOverview = () => {
 
       <Navbar />
 
-      <Breadcrumb />
-
       <main className="flex-grow pt-20">
         {/* Hero Section */}
         <section className="bg-gradient-to-b from-primary/5 to-white py-16 md:py-24">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('services.title')}</h1>
+              <Breadcrumb />
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-[1.5]">{t('services.title')}</h1>
               <p className="text-xl text-gray-600">{t('services.description')}</p>
 
               {/* Quick navigation links */}
@@ -131,25 +130,25 @@ const ServicesOverview = () => {
                   to={`/${language}/seo-services`}
                   className="px-4 py-2 bg-blue-50 text-blue-700 rounded-full hover:bg-blue-100 transition-colors"
                 >
-                  SEO Services
+                  {t('seo.title')}
                 </Link>
                 <Link
                   to={`/${language}/web-development-services`}
                   className="px-4 py-2 bg-green-50 text-green-700 rounded-full hover:bg-green-100 transition-colors"
                 >
-                  Web Development
+                  {t('services.webDevelopment')}
                 </Link>
                 <Link
                   to={`/${language}/wordpress-woocommerce-development`}
                   className="px-4 py-2 bg-purple-50 text-purple-700 rounded-full hover:bg-purple-100 transition-colors"
                 >
-                  WordPress
+                  {t('wordpress.title')}
                 </Link>
                 <Link
                   to={`/${language}/local-seo-services`}
                   className="px-4 py-2 bg-red-50 text-red-700 rounded-full hover:bg-red-100 transition-colors"
                 >
-                  Local SEO
+                  {t('seo.localSeo')}
                 </Link>
               </div>
             </div>

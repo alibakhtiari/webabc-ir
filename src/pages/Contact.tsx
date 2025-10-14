@@ -2,6 +2,7 @@
 import React, { lazy, Suspense } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
 import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { createBreadcrumbSchema } from '@/lib/schema';
@@ -60,7 +61,7 @@ const Contact = () => {
   const inputDirection = languageMeta.direction === 'rtl' ? 'text-right' : '';
 
   return (
-    <div className={`min-h-screen flex flex-col ${languageMeta.fontFamily}`} dir={languageMeta.direction}>
+    <div className={`min-h-screen flex flex-col ${languageMeta.fontFamily}`}>
       <SEOHead
         title={t('contact.getInTouch')}
         description={language === 'en' ? "Contact WebABC team and get a free consultation in web design, SEO and digital marketing" : language === 'ar' ? "اتصل بفريق ويب أ ب ج واحصل على استشارة مجانية في تصميم الويب وتحسين محركات البحث والتسويق الرقمي" : "برای ارتباط با تیم وب آ ب ث و دریافت مشاوره رایگان در زمینه طراحی سایت، سئو و دیجیتال مارکتینگ با ما تماس بگیرید"}
@@ -74,7 +75,10 @@ const Contact = () => {
 
       <main className="flex-1 max-w-4xl mx-auto mt-20 pb-12 px-4 sm:px-6 lg:px-8 w-full">
         <div className="space-y-12">
-          <h1 className="text-3xl font-bold text-center text-gray-800">{t('contact.getInTouch')}</h1>
+          <div className="text-center">
+            <Breadcrumb />
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-[1.5]">{t('contact.getInTouch')}</h1>
+          </div>
 
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">
             {/* Contact Form */}

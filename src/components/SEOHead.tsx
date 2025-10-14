@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { generateLanguageAlternates, getPathWithoutLanguage, getPageNameFromPath } from '@/lib/languageUtils';
@@ -21,9 +21,9 @@ export interface SEOHeadProps {
   }[];
 }
 
-const SEOHead = ({ 
-  title, 
-  description, 
+const SEOHead = ({
+  title,
+  description,
   canonicalUrl,
   ogImage = '/og-image.png',
   ogType = 'website',
@@ -35,18 +35,18 @@ const SEOHead = ({
 }: SEOHeadProps) => {
   const { language, getSeoTitle, getSeoDescription, languageMeta, t } = useLanguage();
   const location = useLocation();
-  const [languageAlternates, setLanguageAlternates] = useState<{lang: string, url: string}[]>([]);
-  
+  const [languageAlternates, setLanguageAlternates] = useState<{ lang: string, url: string }[]>([]);
+
   const pageName = getPageNameFromPath(location.pathname);
-  
+
   // Generate SEO title and description based on current language and page context
   const seoTitle = getSeoTitle(title || t(`${pageName}.title`));
   const seoDescription = getSeoDescription(description || t(`${pageName}.description`));
   const seoKeywords = keywords || t(`${pageName}.keywords`, { fallback: t('seo.keywords') });
-  
+
   // Get author based on current language
   const seoAuthor = author || (language === 'en' ? 'WebABC' : language === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث');
-  
+
   // Generate canonical URL
   const currentUrl = canonicalUrl || window.location.href;
 
@@ -60,28 +60,28 @@ const SEOHead = ({
       setLanguageAlternates(alternates);
     }
   }, [customLanguageAlternates, location.pathname, language]);
-  
+
   return (
     <Helmet>
       <html lang={language} dir={languageMeta.direction} />
       <title>{seoTitle}</title>
       <meta name="description" content={seoDescription} />
       <link rel="canonical" href={currentUrl} />
-      
+
       {/* Language alternates for SEO */}
       {languageAlternates?.map(({ lang, url }) => (
         <link key={lang} rel="alternate" hrefLang={lang} href={url} />
       ))}
-      
+
       {/* Default hreflang x-default */}
       <link rel="alternate" hrefLang="x-default" href={window.location.origin} />
-      
+
       {/* Basic SEO */}
       {seoKeywords && <meta name="keywords" content={seoKeywords} />}
       {seoAuthor && <meta name="author" content={seoAuthor} />}
       {noIndex && <meta name="robots" content="noindex,nofollow" />}
       {!noIndex && <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />}
-      
+
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={currentUrl} />
@@ -90,7 +90,7 @@ const SEOHead = ({
       <meta property="og:image" content={ogImage.startsWith('http') ? ogImage : `${window.location.origin}${ogImage}`} />
       <meta property="og:site_name" content={language === 'en' ? 'WebABC' : language === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث'} />
       <meta property="og:locale" content={language === 'en' ? 'en_US' : language === 'ar' ? 'ar_SA' : 'fa_IR'} />
-      
+
       {/* Twitter */}
       <meta name="twitter:card" content={twitterCard} />
       <meta name="twitter:url" content={currentUrl} />

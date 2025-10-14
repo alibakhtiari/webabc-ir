@@ -40,7 +40,7 @@ const MetaGenerator: React.FC = () => {
   };
 
   return (
-    <div dir={languageMeta.direction} className={languageMeta.fontFamily}>
+    <div>
       <SEOHead 
         title="Meta Tag Generator"
         description="Generate SEO-optimized meta tags for your website"

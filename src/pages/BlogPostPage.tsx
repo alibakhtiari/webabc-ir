@@ -54,7 +54,7 @@ const BlogPostPage: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div dir={languageMeta.direction} className={languageMeta.fontFamily}>
+      <div>
         <Navbar />
         <div className="min-h-screen flex items-center justify-center">
           <div className="animate-pulse text-muted-foreground text-lg">Loading...</div>
@@ -66,7 +66,7 @@ const BlogPostPage: React.FC = () => {
 
   if (!post) {
     return (
-      <div dir={languageMeta.direction} className={languageMeta.fontFamily}>
+      <div>
         <Navbar />
         <main className="container mx-auto px-4 py-12">
           <div className="text-center py-16">
@@ -146,7 +146,7 @@ const BlogPostPage: React.FC = () => {
   };
 
   return (
-    <div dir={languageMeta.direction} className={languageMeta.fontFamily}>
+    <div>
       <SEOHead 
         title={`${post.title} - ${t('blog.title')}`}
         description={post.description}

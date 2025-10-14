@@ -61,7 +61,7 @@ const Navbar = () => {
             <NavLink to="/contact">{t('common.contact')}</NavLink>
             <LanguageSwitcher />
             <Button
-              size="sm" 
+              size="sm"
               className="px-4 py-2 rounded-md"
               onClick={() => setConsultationOpen(true)}
             >
@@ -72,8 +72,8 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-2">
             <LanguageSwitcher type="dropdown" />
-            <button 
-              className="p-2" 
+            <button
+              className="p-2"
               onClick={toggleMobileMenu}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             >
@@ -89,7 +89,7 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
-      
+
       {/* Consultation Form Dialog */}
       <ConsultationForm open={consultationOpen} onOpenChange={setConsultationOpen} />
     </header>

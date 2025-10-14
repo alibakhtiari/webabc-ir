@@ -3,6 +3,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
 import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { getAllBlogPosts, getCategories, filterPostsByCategory, BlogMetadata } from '@/lib/blogUtils';
@@ -85,23 +86,24 @@ const BlogPage: React.FC = () => {
   };
 
   return (
-    <div dir={languageMeta.direction} className={languageMeta.fontFamily}>
-      <SEOHead 
+    <div>
+      <SEOHead
         title={t('blog.blogTitle')}
         description={t('blog.blogDescription')}
         keywords={t('seo.keywords')}
       />
       <SchemaMarkup schema={[blogListSchema, breadcrumbSchema]} />
-      
+
       <Navbar />
-      
+
       <main className="min-h-screen bg-background">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-br from-primary/10 via-primary/5 to-background relative overflow-hidden">
           <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
           <div className="container mx-auto px-4 relative">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+              <Breadcrumb />
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-primary">
                 {t('blog.title')}
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
@@ -153,8 +155,8 @@ const BlogPage: React.FC = () => {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredPosts.map((post, index) => (
-                  <Link 
-                    key={post.slug} 
+                  <Link
+                    key={post.slug}
                     to={`/${language}/blog/${post.slug}`}
                     className="group block h-full"
                     style={{ animationDelay: `${index * 50}ms` }}
@@ -185,7 +187,7 @@ const BlogPage: React.FC = () => {
                             </span>
                           </div>
                         </div>
-                        <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors text-xl leading-tight">
+                        <CardTitle className="line-clamp-2 group-hover:text-primary transition-colors text-xl leading-normal">
                           {post.title}
                         </CardTitle>
                         <CardDescription className="line-clamp-3 text-sm leading-relaxed">
@@ -206,7 +208,7 @@ const BlogPage: React.FC = () => {
           </div>
         </section>
       </main>
-      
+
       <Footer />
     </div>
   );

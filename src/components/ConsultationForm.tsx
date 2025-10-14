@@ -38,7 +38,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ open, onOpenChange 
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md" dir={languageMeta.direction}>
+      <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="text-center text-xl">{t('consultation.title')}</DialogTitle>
           <DialogDescription className="text-center">

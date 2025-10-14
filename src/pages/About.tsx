@@ -36,7 +36,7 @@ const About = () => {
   }, [language]);
 
   return (
-    <div className="min-h-screen flex flex-col" dir={languageMeta.direction}>
+    <div className="min-h-screen flex flex-col">
       <SEOHead
         title={t('about.title')}
         description={t('about.subtitle')}
@@ -44,15 +44,14 @@ const About = () => {
       />
 
       {schemaMarkup.length > 0 && <SchemaMarkup schema={schemaMarkup} />}
-      <Breadcrumb />
-
       <Navbar />
 
       <main className={`flex-1 max-w-6xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8 w-full ${languageMeta.fontFamily}`}>
         <div className="space-y-16">
           {/* Hero Section */}
           <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">{t('about.title')}</h1>
+            <Breadcrumb />
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-[1.5]">{t('about.title')}</h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               {t('about.subtitle')}
             </p>
@@ -72,15 +71,15 @@ const About = () => {
           {/* Stats Section */}
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <Card className="py-6 border-0 bg-blue-50">
-              <div className="text-3xl font-bold text-blue-600 mb-2">10+</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">{t('about.stats.years.value')}</div>
               <div className="text-gray-700">{t('about.yearsExperience')}</div>
             </Card>
             <Card className="py-6 border-0 bg-purple-50">
-              <div className="text-3xl font-bold text-purple-600 mb-2">500+</div>
+              <div className="text-3xl font-bold text-purple-600 mb-2">{t('about.stats.projects.value')}</div>
               <div className="text-gray-700">{t('about.successfulProjects')}</div>
             </Card>
             <Card className="py-6 border-0 bg-green-50">
-              <div className="text-3xl font-bold text-green-600 mb-2">98%</div>
+              <div className="text-3xl font-bold text-green-600 mb-2">{t('about.stats.satisfaction.value')}</div>
               <div className="text-gray-700">{t('about.clientSatisfaction')}</div>
             </Card>
           </div>

@@ -39,7 +39,7 @@ const PortfolioItemPage: React.FC<PortfolioItemProps> = ({ portfolioItems }) => 
   
   if (!item) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50" dir={languageMeta.direction}>
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
           <h1 className="text-3xl font-bold mb-4">{language === 'en' ? 'Portfolio item not found' : language === 'ar' ? 'لم يتم العثور على العنصر' : 'نمونه کار یافت نشد'}</h1>
           <p className="mb-6">{language === 'en' ? 'The requested portfolio item could not be found.' : language === 'ar' ? 'لم يتم العثور على عنصر المحفظة المطلوب.' : 'متأسفانه نمونه کار مورد نظر یافت نشد.'}</p>
@@ -72,7 +72,7 @@ const PortfolioItemPage: React.FC<PortfolioItemProps> = ({ portfolioItems }) => 
   };
 
   return (
-    <div dir={languageMeta.direction} className="font-persian min-h-screen flex flex-col">
+    <div className="font-persian min-h-screen flex flex-col">
       <SEOHead 
         title={`${item.title} | ${t('common.portfolio')}`}
         description={item.description}

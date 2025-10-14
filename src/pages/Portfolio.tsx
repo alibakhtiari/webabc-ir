@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
 import SEOHead from '@/components/SEOHead';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { portfolioItems } from '@/lib/portfolioData';
@@ -93,29 +94,30 @@ const Portfolio = () => {
     return category;
   };
 
-  const displayedItems = activeTab === 'all' 
-    ? filteredPortfolio 
+  const displayedItems = activeTab === 'all'
+    ? filteredPortfolio
     : filteredPortfolio.filter(item => item.category === activeTab);
 
   return (
-    <div className={languageMeta.fontFamily} dir={languageMeta.direction}>
-      <SEOHead 
+    <div className={languageMeta.fontFamily}>
+      <SEOHead
         title={t('seo.portfolioTitle')}
         description={t('seo.portfolioDescription')}
         keywords={t('seo.keywords')}
       />
-      
+
       <Navbar />
-      
+
       <main className="min-h-screen pt-24">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-br from-primary/10 via-background to-primary/5">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
+              <Breadcrumb />
               <Badge className="mb-4" variant="secondary">
                 {t('portfolio.title')}
               </Badge>
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-primary">
                 {t('portfolio.title')}
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -128,7 +130,7 @@ const Portfolio = () => {
         {/* Portfolio & Case Studies Tabs */}
         <section className="py-16">
           <div className="container mx-auto px-4">
-            <Tabs defaultValue="portfolio" className="w-full">
+            <Tabs defaultValue="portfolio" className="w-full" dir={languageMeta.direction}>
               <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-12">
                 <TabsTrigger value="portfolio">{t('common.portfolio')}</TabsTrigger>
                 <TabsTrigger value="case-studies">{t('common.caseStudies')}</TabsTrigger>
@@ -156,8 +158,8 @@ const Portfolio = () => {
                     <Link key={item.id} to={`/${language}/portfolio/${item.id}`}>
                       <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-300 border-2 hover:border-primary/50">
                         <div className="relative aspect-video overflow-hidden">
-                          <img 
-                            src={item.image} 
+                          <img
+                            src={item.image}
                             alt={item.title}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                           />
@@ -191,8 +193,8 @@ const Portfolio = () => {
                   {caseStudies.map((study) => (
                     <Card key={study.id} className="group hover:shadow-2xl transition-all duration-300 overflow-hidden border-2 hover:border-primary/50">
                       <div className="aspect-video overflow-hidden">
-                        <img 
-                          src={study.image} 
+                        <img
+                          src={study.image}
                           alt={study.title}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         />
@@ -273,7 +275,7 @@ const Portfolio = () => {
           </div>
         </section>
       </main>
-      
+
       <Footer />
     </div>
   );

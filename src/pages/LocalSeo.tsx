@@ -1,6 +1,6 @@
 
-import React from 'react';
 import Navbar from '@/components/Navbar';
+import Breadcrumb from '@/components/Breadcrumb';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import SEOHead from '@/components/SEOHead';
@@ -11,23 +11,24 @@ const LocalSeo = () => {
   const { t, languageMeta } = useLanguage();
 
   return (
-    <div className="min-h-screen flex flex-col" dir={languageMeta.direction}>
-      <SEOHead 
-        title={t('seo.localSEOTitle')} 
+    <div className="min-h-screen flex flex-col">
+      <SEOHead
+        title={t('seo.localSEOTitle')}
         description={t('seo.localSEODescription')}
       />
 
       <Navbar />
-      
+
       <main className="flex-1 pt-24">
         {/* Hero Section */}
         <section className="py-16 bg-gradient-to-r from-primary/5 to-primary/10">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className={`text-4xl md:text-5xl font-bold mb-6 ${languageMeta.fontFamily}`}>
+              <Breadcrumb />
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 {t('seo.localSeo')}
               </h1>
-              <p className={`text-xl text-gray-600 ${languageMeta.fontFamily}`}>
+              <p className="text-xl text-gray-600">
                 {t('seo.localSeoDesc')}
               </p>
             </div>

@@ -7,7 +7,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 const BenefitsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { t } = useLanguage();
-  
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -21,12 +21,12 @@ const BenefitsSection = () => {
       },
       { threshold: 0.1 }
     );
-    
+
     const elements = sectionRef.current?.querySelectorAll('.animate-on-scroll');
     if (elements) {
       elements.forEach((el) => observer.observe(el));
     }
-    
+
     return () => {
       if (elements) {
         elements.forEach((el) => observer.unobserve(el));
@@ -55,8 +55,8 @@ const BenefitsSection = () => {
   ];
 
   return (
-    <section 
-      ref={sectionRef} 
+    <section
+      ref={sectionRef}
       id="benefits"
       className="py-24 relative overflow-hidden snap-section"
     >
@@ -65,10 +65,10 @@ const BenefitsSection = () => {
         <div className="absolute top-40 left-20 w-80 h-80 rounded-full bg-primary/5 blur-3xl"></div>
         <div className="absolute bottom-40 right-20 w-64 h-64 rounded-full bg-primary/10 blur-3xl"></div>
       </div>
-      
+
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll opacity-0">
-          <span 
+          <span
             className={cn(
               "inline-block mb-2 px-3 py-1 rounded-full",
               "border border-primary/20 bg-primary/5 text-primary",
@@ -77,22 +77,22 @@ const BenefitsSection = () => {
           >
             {t('benefits.sectionTag', { fallback: 'مزایای همکاری با ما' })}
           </span>
-          
+
           <h2 className="font-persian text-3xl md:text-4xl font-bold tracking-tight mb-6 text-balance">
             {t('benefits.sectionTitle.prefix', { fallback: 'چرا ' })}
             <span className="text-primary">{t('benefits.sectionTitle.highlight', { fallback: 'وب آ ب ث' })}</span>
             {t('benefits.sectionTitle.suffix', { fallback: ' را انتخاب کنید؟' })}
           </h2>
-          
+
           <p className="font-persian text-foreground/80 leading-relaxed text-balance">
             {t('benefits.sectionDescription', { fallback: 'ما با تمرکز بر نتایج ملموس و استراتژی‌های اثبات شده، به کسب و کار شما کمک می‌کنیم تا در دنیای دیجیتال امروزی رشد کند.' })}
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {benefits.map((benefit, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className="animate-on-scroll opacity-0 glass-morphism p-6 rounded-xl transition-all duration-300 hover:shadow-md"
               style={{ animationDelay: `${idx * 100}ms` }}
             >
@@ -108,29 +108,26 @@ const BenefitsSection = () => {
             </div>
           ))}
         </div>
-        
+
         <div className="animate-on-scroll opacity-0 neo-morphism rounded-2xl overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <div className="p-8 md:p-12 flex flex-col justify-center">
-              <span 
-                className={cn(
-                  "inline-block mb-2 px-3 py-1 rounded-full",
-                  "border border-primary/20 bg-primary/5 text-primary",
-                  "font-persian text-sm font-medium"
-                )}
-              >
-                {t('benefits.guaranteeTag', { fallback: 'تضمین نتیجه' })}
-              </span>
-              
+              <div
+                className="flex max-w-max mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary">
+                <span>
+                  {t('benefits.guaranteeTag', { fallback: 'تضمین نتیجه' })}
+                </span>
+              </div>
+
               <h3 className="font-persian text-2xl md:text-3xl font-bold mb-6 text-balance">
                 {t('benefits.guaranteeTitle.prefix', { fallback: 'نتایج ملموس با روش‌های ' })}
                 <span className="text-primary">{t('benefits.guaranteeTitle.highlight', { fallback: 'اثبات شده' })}</span>
               </h3>
-              
+
               <p className="font-persian text-foreground/80 leading-relaxed mb-8 text-balance">
                 {t('benefits.guaranteeDescription', { fallback: 'ما معتقدیم که سئو یک فرآیند مستمر است و با برنامه‌ریزی دقیق و استراتژی‌های اصولی، نتایج درازمدت و پایداری را برای کسب و کار شما به ارمغان می‌آوریم.' })}
               </p>
-              
+
               <ul className="space-y-4 mb-8">
                 {[
                   t('benefits.guaranteeFeatures.0', { fallback: 'گزارش‌های ماهانه با متریک‌های دقیق' }),
@@ -146,9 +143,9 @@ const BenefitsSection = () => {
                   </li>
                 ))}
               </ul>
-              
+
               <div className="flex items-center space-x-2 space-x-reverse">
-                <button 
+                <button
                   className={cn(
                     "px-6 py-3 rounded-full bg-primary text-white font-persian",
                     "transition-all duration-300 shadow-md hover:shadow-lg",
@@ -160,7 +157,7 @@ const BenefitsSection = () => {
                 </button>
               </div>
             </div>
-            
+
             <div className="aspect-auto bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
               <span className="font-persian text-muted-foreground">
                 {t('benefits.imageAlt', { fallback: 'تصویر نتایج سئو' })}

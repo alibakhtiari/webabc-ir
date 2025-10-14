@@ -261,7 +261,7 @@ const SeoServices = () => {
                 خدمات تخصصی سئو
               </span>
               
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-normal">
                 خدمات <span className="text-primary">سئو</span> و بهینه‌سازی موتورهای جستجو
               </h1>
               

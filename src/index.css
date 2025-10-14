@@ -86,15 +86,18 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
+/* Global font families based on HTML lang attribute */
+html:lang(en) {
+  font-family: 'Lato', system-ui, sans-serif;
+}
 
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
+html:lang(fa) {
+  font-family: 'Vazirmatn', sans-serif;
+}
+html:lang(fa) .lucide-arrow-right {transform: rotate(180deg);}
+
+html:lang(ar) {
+  font-family: 'Vazirmatn', sans-serif;
 }
 
  #logoh{

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
+import Breadcrumb from '@/components/Breadcrumb';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import SEOHead from '@/components/SEOHead';
@@ -44,7 +45,7 @@ const HeadlineAnalyzer: React.FC = () => {
   const analysis = headline ? analyzeHeadline() : null;
 
   return (
-    <div dir={languageMeta.direction} className={languageMeta.fontFamily}>
+    <div>
       <SEOHead 
         title="Headline Analyzer"
         description="Score your headlines for better engagement"
@@ -54,6 +55,7 @@ const HeadlineAnalyzer: React.FC = () => {
       
       <main className="min-h-screen bg-gradient-to-b from-background to-muted/20 py-16">
         <div className="container mx-auto px-4 max-w-4xl">
+          <Breadcrumb />
           <h1 className="text-4xl font-bold mb-4 text-center">Headline Analyzer</h1>
           <p className="text-muted-foreground text-center mb-8">
             Analyze and score your headlines for maximum impact

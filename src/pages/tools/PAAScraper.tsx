@@ -16,7 +16,7 @@ const PAAScraper: React.FC = () => {
   const [questions] = useState<string[]>([]);
 
   return (
-    <div dir={languageMeta.direction} className={languageMeta.fontFamily}>
+    <div>
       <SEOHead 
         title="People Also Ask Scraper"
         description="Discover questions people ask about your keywords"

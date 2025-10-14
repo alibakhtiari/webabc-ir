@@ -1,8 +1,9 @@
 
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
 import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -49,7 +50,7 @@ const WebDesign = () => {
   };
 
   return (
-    <div dir={language === 'en' ? 'ltr' : 'rtl'} className={language === 'en' ? 'font-sans' : 'font-arabic'}>
+    <div dir={language === 'en' ? 'ltr' : 'rtl'}>
       <SEOHead 
         title={t('services.webDevelopmentTitle')}
         description={t('services.webDevelopmentDescription')}
@@ -62,6 +63,9 @@ const WebDesign = () => {
         {/* Hero Section */}
         <section className="bg-gradient-to-b from-primary/10 to-white py-16 md:py-24">
           <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto text-center mb-8">
+              <Breadcrumb />
+            </div>
             <div className="flex flex-col lg:flex-row items-center gap-12">
               <div className="lg:w-1/2 animate-fade-up">
                 <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('services.webDevelopmentTitle')}</h1>

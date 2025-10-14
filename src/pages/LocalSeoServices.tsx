@@ -1,9 +1,7 @@
 
-import React, { useEffect, useRef } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { useEffect, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { cn } from '@/lib/utils';
 import { CheckCircle, MapPin, Building, Search, Globe, Star, ArrowRight, MessageSquare } from 'lucide-react';
 import {
   Accordion,
@@ -18,7 +16,7 @@ const LocalSeoServices = () => {
   const gbpRef = useRef<HTMLDivElement>(null);
   const citationsRef = useRef<HTMLDivElement>(null);
   const faqRef = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     // Animation for elements when they come into view
     const observer = new IntersectionObserver(
@@ -32,11 +30,11 @@ const LocalSeoServices = () => {
       },
       { threshold: 0.1 }
     );
-    
+
     document.querySelectorAll('.animate-on-scroll').forEach((el) => {
       observer.observe(el);
     });
-    
+
     return () => {
       document.querySelectorAll('.animate-on-scroll').forEach((el) => {
         observer.unobserve(el);
@@ -242,13 +240,13 @@ const LocalSeoServices = () => {
 
   return (
     <div dir="rtl" className="font-persian relative overflow-x-hidden">
-      <SEOHead 
+      <SEOHead
         title="خدمات سئو محلی | بهینه‌سازی جستجوی محلی و گوگل بیزینس"
         description="خدمات تخصصی سئو محلی، بهینه‌سازی پروفایل کسب‌وکاری گوگل، مدیریت سایتیشن‌ها و بهبود رتبه در نتایج جستجوی محلی برای کسب‌وکارهای محلی"
       />
-      
+
       <Navbar />
-      
+
       <main>
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-b from-primary/5 to-background relative overflow-hidden">
@@ -257,30 +255,30 @@ const LocalSeoServices = () => {
               <span className="inline-block mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium">
                 خدمات تخصصی سئو محلی
               </span>
-              
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-normal">
                 خدمات <span className="text-primary">سئو محلی</span> و بهینه‌سازی جستجوی منطقه‌ای
               </h1>
-              
+
               <p className="text-lg text-foreground/80 mb-8 leading-relaxed">
                 با استفاده از تکنیک‌های پیشرفته سئو محلی، حضور کسب‌وکار شما را در نتایج جستجوی محلی گوگل تقویت می‌کنیم و مشتریان منطقه شما را به سمت کسب‌وکارتان هدایت می‌کنیم.
               </p>
-              
+
               <div className="flex flex-wrap gap-3 justify-center">
-                <a 
-                  href="#local-seo" 
+                <a
+                  href="#local-seo"
                   className="px-6 py-3 rounded-full bg-primary text-white font-medium transition-all hover:shadow-lg hover:translate-y-[-2px]"
                 >
                   سئو محلی
                 </a>
-                <a 
-                  href="#gbp" 
+                <a
+                  href="#gbp"
                   className="px-6 py-3 rounded-full bg-white border border-primary/20 text-primary font-medium transition-all hover:shadow-lg hover:translate-y-[-2px]"
                 >
                   گوگل بیزینس پروفایل
                 </a>
-                <a 
-                  href="#citations" 
+                <a
+                  href="#citations"
                   className="px-6 py-3 rounded-full bg-white border border-primary/20 text-primary font-medium transition-all hover:shadow-lg hover:translate-y-[-2px]"
                 >
                   سایتیشن‌ها (Citations)
@@ -288,14 +286,14 @@ const LocalSeoServices = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Background Decorations */}
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
             <div className="absolute top-20 right-20 w-64 h-64 rounded-full bg-primary/5 blur-3xl"></div>
             <div className="absolute bottom-20 left-20 w-64 h-64 rounded-full bg-primary/5 blur-3xl"></div>
           </div>
         </section>
-        
+
         {/* Introduction Section */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
@@ -304,15 +302,15 @@ const LocalSeoServices = () => {
                 <span className="inline-block mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium">
                   چرا سئو محلی؟
                 </span>
-                
+
                 <h2 className="text-3xl font-bold mb-6">
                   چرا <span className="text-primary">سئو محلی</span> برای کسب و کار شما ضروری است؟
                 </h2>
-                
+
                 <p className="text-foreground/80 mb-6 leading-relaxed">
                   در دنیای رقابتی امروز، حضور قدرتمند در نتایج جستجوی محلی می‌تواند تفاوت بزرگی در موفقیت کسب‌وکار شما ایجاد کند. حدود 46% از جستجوهای گوگل به دنبال اطلاعات محلی هستند.
                 </p>
-                
+
                 <ul className="space-y-3">
                   {[
                     'افزایش رؤیت‌پذیری در میان مشتریان محلی و بالقوه',
@@ -328,7 +326,7 @@ const LocalSeoServices = () => {
                   ))}
                 </ul>
               </div>
-              
+
               <div className="animate-on-scroll opacity-0 delay-200">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-2xl">
@@ -338,7 +336,7 @@ const LocalSeoServices = () => {
                     <h3 className="text-lg font-bold mb-2">نمایش در نقشه</h3>
                     <p className="text-foreground/70 text-sm">86% کاربران از گوگل مپ برای یافتن کسب‌وکارهای محلی استفاده می‌کنند.</p>
                   </div>
-                  
+
                   <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-2xl">
                     <div className="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
                       <Star className="h-6 w-6" />
@@ -346,7 +344,7 @@ const LocalSeoServices = () => {
                     <h3 className="text-lg font-bold mb-2">نظرات محلی</h3>
                     <p className="text-foreground/70 text-sm">93% مصرف‌کنندگان می‌گویند نظرات آنلاین بر تصمیم خرید آنها تأثیر می‌گذارد.</p>
                   </div>
-                  
+
                   <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-2xl">
                     <div className="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
                       <Building className="h-6 w-6" />
@@ -354,7 +352,7 @@ const LocalSeoServices = () => {
                     <h3 className="text-lg font-bold mb-2">سایتیشن‌ها</h3>
                     <p className="text-foreground/70 text-sm">سایتیشن‌های با کیفیت تا 25% رتبه شما را در نتایج محلی بهبود می‌بخشند.</p>
                   </div>
-                  
+
                   <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-2xl">
                     <div className="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
                       <ArrowRight className="h-6 w-6" />
@@ -367,10 +365,10 @@ const LocalSeoServices = () => {
             </div>
           </div>
         </section>
-        
+
         {/* Local SEO Services Section */}
-        <section 
-          id="local-seo" 
+        <section
+          id="local-seo"
           ref={localSeoRef}
           className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden"
         >
@@ -379,27 +377,27 @@ const LocalSeoServices = () => {
               <span className="inline-block mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium">
                 سئو محلی
               </span>
-              
+
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 خدمات <span className="text-primary">سئو محلی</span> برای کسب‌وکارهای منطقه‌ای
               </h2>
-              
+
               <p className="text-foreground/80 leading-relaxed">
                 سئو محلی به مجموعه استراتژی‌هایی اطلاق می‌شود که باعث افزایش رؤیت‌پذیری کسب‌وکار شما در نتایج جستجوی محلی می‌شود. این استراتژی‌ها به شما کمک می‌کند تا در زمانی که مشتریان بالقوه در نزدیکی شما به دنبال محصولات یا خدمات شما هستند، کسب‌وکارتان نمایش داده شود.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {localSeoServices.map((service, idx) => (
-                <div 
-                  key={idx} 
+                <div
+                  key={idx}
                   className="neo-morphism rounded-2xl p-8 animate-on-scroll opacity-0 transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px]"
                   style={{ animationDelay: `${idx * 0.1}s` }}
                 >
                   <div className="mb-6">{service.icon}</div>
                   <h3 className="text-xl font-bold mb-3">{service.title}</h3>
                   <p className="text-foreground/70 mb-6">{service.description}</p>
-                  
+
                   <ul className="space-y-3">
                     {service.features.map((feature, fidx) => (
                       <li key={fidx} className="flex items-start">
@@ -411,10 +409,10 @@ const LocalSeoServices = () => {
                 </div>
               ))}
             </div>
-            
+
             <div className="mt-12 text-center animate-on-scroll opacity-0">
-              <a 
-                href="#contact" 
+              <a
+                href="#contact"
                 className="inline-block px-8 py-4 rounded-full bg-primary text-white font-bold text-lg transition-all hover:shadow-lg hover:translate-y-[-2px]"
               >
                 مشاوره رایگان سئو محلی
@@ -422,10 +420,10 @@ const LocalSeoServices = () => {
             </div>
           </div>
         </section>
-        
+
         {/* Google Business Profile Section */}
-        <section 
-          id="gbp" 
+        <section
+          id="gbp"
           ref={gbpRef}
           className="py-20 bg-white relative overflow-hidden"
         >
@@ -434,27 +432,27 @@ const LocalSeoServices = () => {
               <span className="inline-block mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium">
                 گوگل بیزینس پروفایل
               </span>
-              
+
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 خدمات <span className="text-primary">بهینه‌سازی گوگل بیزینس پروفایل</span>
               </h2>
-              
+
               <p className="text-foreground/80 leading-relaxed">
                 پروفایل کسب‌وکاری گوگل (Google Business Profile) یکی از مهم‌ترین ابزارهای سئو محلی است. این پروفایل به شما اجازه می‌دهد اطلاعات کسب‌وکارتان را در گوگل مپ و جستجوی گوگل نمایش دهید و با مشتریان بالقوه تعامل داشته باشید.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {gbpServices.map((service, idx) => (
-                <div 
-                  key={idx} 
+                <div
+                  key={idx}
                   className="glass-morphism rounded-2xl p-8 animate-on-scroll opacity-0 transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px]"
                   style={{ animationDelay: `${idx * 0.1}s` }}
                 >
                   <div className="mb-6">{service.icon}</div>
                   <h3 className="text-xl font-bold mb-3">{service.title}</h3>
                   <p className="text-foreground/70 mb-6">{service.description}</p>
-                  
+
                   <ul className="space-y-3">
                     {service.features.map((feature, fidx) => (
                       <li key={fidx} className="flex items-start">
@@ -466,10 +464,10 @@ const LocalSeoServices = () => {
                 </div>
               ))}
             </div>
-            
+
             <div className="mt-12 text-center animate-on-scroll opacity-0">
-              <a 
-                href="#contact" 
+              <a
+                href="#contact"
                 className="inline-block px-8 py-4 rounded-full bg-primary text-white font-bold text-lg transition-all hover:shadow-lg hover:translate-y-[-2px]"
               >
                 مشاوره رایگان بهینه‌سازی GBP
@@ -477,10 +475,10 @@ const LocalSeoServices = () => {
             </div>
           </div>
         </section>
-        
+
         {/* Citations Section */}
-        <section 
-          id="citations" 
+        <section
+          id="citations"
           ref={citationsRef}
           className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden"
         >
@@ -489,27 +487,27 @@ const LocalSeoServices = () => {
               <span className="inline-block mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium">
                 سایتیشن‌ها
               </span>
-              
+
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 خدمات <span className="text-primary">مدیریت سایتیشن</span> و ثبت دایرکتوری‌های محلی
               </h2>
-              
+
               <p className="text-foreground/80 leading-relaxed">
                 سایتیشن‌ها (Citations) به هر جایی در وب اطلاق می‌شود که نام، آدرس و شماره تلفن (NAP) کسب‌وکار شما ذکر شده باشد. سایتیشن‌های با کیفیت و سازگار، یکی از مهم‌ترین فاکتورهای رتبه‌بندی در سئو محلی هستند.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {citationServices.map((service, idx) => (
-                <div 
-                  key={idx} 
+                <div
+                  key={idx}
                   className="neo-morphism rounded-2xl p-8 animate-on-scroll opacity-0 transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px]"
                   style={{ animationDelay: `${idx * 0.1}s` }}
                 >
                   <div className="mb-6">{service.icon}</div>
                   <h3 className="text-xl font-bold mb-3">{service.title}</h3>
                   <p className="text-foreground/70 mb-6">{service.description}</p>
-                  
+
                   <ul className="space-y-3">
                     {service.features.map((feature, fidx) => (
                       <li key={fidx} className="flex items-start">
@@ -521,10 +519,10 @@ const LocalSeoServices = () => {
                 </div>
               ))}
             </div>
-            
+
             <div className="mt-12 text-center animate-on-scroll opacity-0">
-              <a 
-                href="#contact" 
+              <a
+                href="#contact"
                 className="inline-block px-8 py-4 rounded-full bg-primary text-white font-bold text-lg transition-all hover:shadow-lg hover:translate-y-[-2px]"
               >
                 مشاوره رایگان مدیریت سایتیشن
@@ -532,7 +530,7 @@ const LocalSeoServices = () => {
             </div>
           </div>
         </section>
-        
+
         {/* Process Section */}
         <section className="py-20 bg-white relative overflow-hidden">
           <div className="container mx-auto px-4 relative z-10">
@@ -540,16 +538,16 @@ const LocalSeoServices = () => {
               <span className="inline-block mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium">
                 فرایند کار
               </span>
-              
+
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 روند <span className="text-primary">همکاری</span> و فرایند بهینه‌سازی سئو محلی
               </h2>
-              
+
               <p className="text-foreground/80 leading-relaxed">
                 ما یک فرایند شفاف و منظم برای پروژه‌های سئو محلی داریم تا اطمینان حاصل کنیم که کسب و کار شما بهترین نتایج ممکن را در بازار محلی به دست می‌آورد.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
               {[
                 { title: 'تحلیل وضعیت محلی', desc: 'بررسی وضعیت فعلی سئو محلی و رقبای منطقه', icon: <Search className="h-6 w-6" /> },
@@ -558,8 +556,8 @@ const LocalSeoServices = () => {
                 { title: 'محتوای محلی', desc: 'تولید محتوای هدفمند برای مخاطبان محلی', icon: <MessageSquare className="h-6 w-6" /> },
                 { title: 'گزارش و بهبود', desc: 'پایش نتایج و بهینه‌سازی مداوم استراتژی', icon: <Star className="h-6 w-6" /> },
               ].map((step, idx) => (
-                <div 
-                  key={idx} 
+                <div
+                  key={idx}
                   className="flex flex-col items-center animate-on-scroll opacity-0"
                   style={{ animationDelay: `${idx * 0.1}s` }}
                 >
@@ -576,10 +574,10 @@ const LocalSeoServices = () => {
             </div>
           </div>
         </section>
-        
+
         {/* FAQ Section */}
-        <section 
-          id="faq" 
+        <section
+          id="faq"
           ref={faqRef}
           className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden"
         >
@@ -588,21 +586,21 @@ const LocalSeoServices = () => {
               <span className="inline-block mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium">
                 سؤالات متداول
               </span>
-              
+
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 پاسخ به <span className="text-primary">سؤالات</span> رایج درباره سئو محلی
               </h2>
-              
+
               <p className="text-foreground/80 leading-relaxed">
                 در اینجا به برخی از سؤالات متداول درباره خدمات سئو محلی و بهینه‌سازی پروفایل کسب‌وکاری گوگل پاسخ داده‌ایم. اگر سؤال دیگری دارید، لطفاً با ما تماس بگیرید.
               </p>
             </div>
-            
+
             <div className="max-w-3xl mx-auto animate-on-scroll opacity-0">
               <Accordion type="single" collapsible className="space-y-4">
                 {faqs.map((faq, idx) => (
-                  <AccordionItem 
-                    key={idx} 
+                  <AccordionItem
+                    key={idx}
                     value={`faq-${idx}`}
                     className="border border-gray-200 rounded-xl overflow-hidden shadow-sm bg-white"
                   >
@@ -618,7 +616,7 @@ const LocalSeoServices = () => {
             </div>
           </div>
         </section>
-        
+
         {/* CTA Section */}
         <section id="contact" className="py-20 bg-primary text-white relative overflow-hidden">
           <div className="container mx-auto px-4 relative z-10">
@@ -626,20 +624,20 @@ const LocalSeoServices = () => {
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 آماده‌اید حضور محلی خود را تقویت کنید؟
               </h2>
-              
+
               <p className="text-white/90 text-lg mb-10 leading-relaxed">
                 با ما تماس بگیرید تا درباره نیازهای خاص سئو محلی شما گفتگو کنیم و راهکاری متناسب با کسب‌وکار و منطقه شما ارائه دهیم.
               </p>
-              
-              <a 
-                href="#contact-form" 
+
+              <a
+                href="#contact-form"
                 className="inline-block px-8 py-4 rounded-full bg-white text-primary font-bold text-lg transition-all hover:shadow-lg hover:translate-y-[-2px]"
               >
                 مشاوره رایگان سئو محلی
               </a>
             </div>
           </div>
-          
+
           {/* Background Decorations */}
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
             <div className="absolute top-10 left-10 w-80 h-80 rounded-full bg-white/10 blur-3xl"></div>
@@ -647,7 +645,7 @@ const LocalSeoServices = () => {
           </div>
         </section>
       </main>
-      
+
       <Footer />
     </div>
   );

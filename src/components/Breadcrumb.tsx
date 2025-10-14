@@ -30,10 +30,13 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customItems }) => {
       path: `/${language}`
     });
 
-    // Add language-specific segments
-    if (pathSegments.length > 0) {
-      pathSegments.forEach((segment, index) => {
-        const path = `/${language}/${pathSegments.slice(0, index + 1).join('/')}`;
+    // Filter out language segment from display
+    const segmentsWithoutLanguage = pathSegments.filter(segment => segment !== language);
+
+    // Add language-specific segments but without showing language in breadcrumb text
+    if (segmentsWithoutLanguage.length > 0) {
+      segmentsWithoutLanguage.forEach((segment, index) => {
+        const path = `/${language}/${segmentsWithoutLanguage.slice(0, index + 1).join('/')}`;
 
         // Translate segment names
         let name = segment;
@@ -62,6 +65,21 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customItems }) => {
           case 'case-studies':
             name = t('common.caseStudies');
             break;
+          case 'tools':
+            name = t('tools.title');
+            break;
+          case 'resources':
+            name = t('common.resources');
+            break;
+          case 'local-seo-services':
+            name = t('seo.localSeo');
+            break;
+          case 'wordpress-woocommerce-development':
+            name = t('wordpress.title');
+            break;
+          case 'blog':
+            name = t('common.blog') || 'Blog';
+            break;
           default:
             name = segment.charAt(0).toUpperCase() + segment.slice(1);
         }
@@ -86,8 +104,8 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customItems }) => {
   return (
     <>
       <SchemaMarkup schema={breadcrumbSchema} />
-      <nav aria-label="breadcrumb" className="mb-6">
-        <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+      <nav aria-label="breadcrumb" className="mb-4 pt-8">
+        <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 justify-center">
           {breadcrumbItems.map((item, index) => (
             <li key={index} className="flex items-center">
               {index > 0 && <span className="mx-2 text-gray-400">/</span>}

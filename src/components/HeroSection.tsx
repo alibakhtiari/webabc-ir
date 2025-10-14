@@ -17,7 +17,7 @@ const HeroSection = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="col-span-1 lg:col-span-6 text-center lg:text-start">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-normal">
               {t('home.hero.title', { fallback: 'Elevate Your Digital Presence with Expert Web Solutions' })}
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0">

@@ -30,7 +30,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
   return (
     <>
       <Sheet open={isOpen} onOpenChange={onClose}>
-        <SheetContent side={languageMeta.direction === 'rtl' ? 'left' : 'right'} className="w-3/4 sm:max-w-md p-0 font-persian" dir={languageMeta.direction}>
+        <SheetContent side={languageMeta.direction === 'rtl' ? 'left' : 'right'} className="w-3/4 sm:max-w-md p-0 font-persian">
           <div className="flex flex-col h-full overflow-auto py-6">
             <div className="px-6 pb-6 border-b">
               <div className="flex items-center justify-between mb-6">
