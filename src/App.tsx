@@ -37,6 +37,7 @@ const UTMBuilder = lazy(() => import('./pages/tools/UTMBuilder'));
 const HeadlineAnalyzer = lazy(() => import('./pages/tools/HeadlineAnalyzer'));
 const ReadabilityChecker = lazy(() => import('./pages/tools/ReadabilityChecker'));
 const LoremGenerator = lazy(() => import('./pages/tools/LoremGenerator'));
+const Tools = lazy(() => import('./pages/Tools'));
 
 function App() {
   return (
@@ -67,6 +68,7 @@ function App() {
 
             {/* Resources & Tools */}
             <Route path="/:lang/resources" element={<Resources />} />
+            <Route path="/:lang/tools" element={<Tools />} />
             <Route path="/:lang/tools/serp-preview" element={<SerpPreview />} />
             <Route path="/:lang/tools/meta-generator" element={<MetaGenerator />} />
             <Route path="/:lang/tools/paa-scraper" element={<PAAScraper />} />
