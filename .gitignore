@@ -27,3 +27,7 @@ package-lock.json
 /.wrangler
 /.next
 /.open-next
+bun.lock
+bun.lockb
+package-lock.json
+*.md
