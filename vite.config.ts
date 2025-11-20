@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 export default defineConfig(({ mode }) => ({
+  base: '/', // Ensure assets are loaded from root, not relative to current route
   server: {
     host: "::",
     port: 8080,
