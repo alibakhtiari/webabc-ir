@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -19,6 +19,13 @@ const BlogPage: React.FC = () => {
   const [categories, setCategories] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [isLoading, setIsLoading] = useState(true);
+  const [origin, setOrigin] = useState('');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setOrigin(window.location.origin);
+    }
+  }, []);
 
   useEffect(() => {
     const loadPosts = async () => {
@@ -51,18 +58,18 @@ const BlogPage: React.FC = () => {
     "@type": "Blog",
     name: t('blog.title'),
     description: t('blog.blogDescription'),
-    url: window.location.href,
+    url: typeof window !== 'undefined' ? window.location.href : '',
     blogPost: filteredPosts.slice(0, 10).map(post => ({
       "@type": "BlogPosting",
       headline: post.title,
       description: post.description,
-      image: post.image.startsWith('http') ? post.image : `${window.location.origin}${post.image}`,
+      image: post.image.startsWith('http') ? post.image : `${origin}${post.image}`,
       datePublished: post.date,
       author: {
         "@type": "Person",
         name: post.author
       },
-      url: `${window.location.origin}/${language}/blog/${post.slug}`
+      url: `${origin}/${language}/blog/${post.slug}`
     }))
   };
 
@@ -74,13 +81,13 @@ const BlogPage: React.FC = () => {
         "@type": "ListItem",
         position: 1,
         name: t('common.home'),
-        item: `${window.location.origin}/${language}`
+        item: `${origin}/${language}`
       },
       {
         "@type": "ListItem",
         position: 2,
         name: t('blog.title'),
-        item: window.location.href
+        item: typeof window !== 'undefined' ? window.location.href : ''
       }
     ]
   };
@@ -157,7 +164,7 @@ const BlogPage: React.FC = () => {
                 {filteredPosts.map((post, index) => (
                   <Link
                     key={post.slug}
-                    to={`/${language}/blog/${post.slug}`}
+                    href={`/${language}/blog/${post.slug}`}
                     className="group block h-full"
                     style={{ animationDelay: `${index * 50}ms` }}
                   >

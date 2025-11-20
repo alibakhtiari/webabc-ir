@@ -1,6 +1,7 @@
+"use client";
 
 import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useRouter, usePathname } from 'next/navigation';
 import { getPathWithoutLanguage, normalizePath, isLanguageRootPath, getPageNameFromPath } from '@/lib/languageUtils';
 import { getTranslatedString, getSeoTitle, getSeoDescription } from '@/lib/translationUtils';
 import { useLanguageDetection } from '@/hooks/useLanguageDetection';
@@ -13,26 +14,27 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 interface LanguageProviderProps {
   children: ReactNode;
+  defaultLanguage?: SupportedLanguage;
 }
 
-export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
+export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, defaultLanguage }) => {
   const initialLanguage = useLanguageDetection();
-  const [language, setLanguageState] = useState<SupportedLanguage>(initialLanguage);
-  const navigate = useNavigate();
-  const location = useLocation();
+  const [language, setLanguageState] = useState<SupportedLanguage>(defaultLanguage || initialLanguage);
+  const router = useRouter();
+  const pathname = usePathname();
   const [isInitialized, setIsInitialized] = useState(false);
 
   // Handle language change
   const setLanguage = (lang: SupportedLanguage) => {
     if (lang === language) return;
-    
+
     localStorage.setItem('language', lang);
     setLanguageState(lang);
-    
+
     // Update URL to reflect language change
-    const pathWithoutLang = getPathWithoutLanguage(location.pathname);
+    const pathWithoutLang = getPathWithoutLanguage(pathname || '');
     const newPath = normalizePath(`/${lang}${pathWithoutLang}`);
-    navigate(newPath);
+    router.push(newPath);
   };
 
   // Translation function wrapper
@@ -42,12 +44,12 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
   // Get SEO title wrapper
   const getContextSeoTitle = (title?: string): string => {
-    return getSeoTitle(language, location.pathname, title);
+    return getSeoTitle(language, pathname || '', title);
   };
 
   // Get SEO description wrapper
   const getContextSeoDescription = (description?: string): string => {
-    return getSeoDescription(language, location.pathname, description);
+    return getSeoDescription(language, pathname || '', description);
   };
 
   // Apply document direction based on language
@@ -58,18 +60,18 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
 
   // Initialize route based on selected language
   useEffect(() => {
-    if (isInitialized) return;
-    
+    if (isInitialized || !pathname) return;
+
     // Check if we need to redirect to a language-specific route
-    const pathSegments = location.pathname.split('/').filter(Boolean);
-    
+    const pathSegments = pathname.split('/').filter(Boolean);
+
     if (pathSegments.length === 0) {
       // Root path "/" - redirect to language home
-      navigate(`/${language}`, { replace: true });
+      router.replace(`/${language}`);
       setIsInitialized(true);
     } else if (!Object.keys(languages).includes(pathSegments[0] as SupportedLanguage)) {
       // Path doesn't start with a language code - add the current language
-      navigate(`/${language}${location.pathname}`, { replace: true });
+      router.replace(`/${language}${pathname}`);
       setIsInitialized(true);
     } else if (pathSegments[0] !== language) {
       // URL language is different from state language - update state
@@ -82,14 +84,14 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
     } else {
       setIsInitialized(true);
     }
-  }, [location.pathname, isInitialized, navigate, language]);
+  }, [pathname, isInitialized, router, language]);
 
   return (
-    <LanguageContext.Provider 
-      value={{ 
-        language, 
-        setLanguage, 
-        t, 
+    <LanguageContext.Provider
+      value={{
+        language,
+        setLanguage,
+        t,
         languageMeta: languages[language],
         getSeoTitle: getContextSeoTitle,
         getSeoDescription: getContextSeoDescription,

@@ -1,7 +1,7 @@
-
 import React, { useEffect, useState, useMemo } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'next/navigation';
+import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
@@ -16,10 +16,18 @@ import ReactMarkdown from 'react-markdown';
 
 const BlogPostPage: React.FC = () => {
   const { t, language, languageMeta } = useLanguage();
-  const { slug } = useParams<{ slug: string }>();
+  const params = useParams();
+  const slug = params?.slug as string;
   const [post, setPost] = useState<BlogPost | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isTocOpen, setIsTocOpen] = useState(false);
+  const [origin, setOrigin] = useState('');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setOrigin(window.location.origin);
+    }
+  }, []);
 
   useEffect(() => {
     const loadPost = async () => {
@@ -73,7 +81,7 @@ const BlogPostPage: React.FC = () => {
             <h1 className="text-3xl font-bold mb-4">{t('notFound.title')}</h1>
             <p className="text-xl text-muted-foreground mb-8">{t('notFound.message')}</p>
             <Button asChild>
-              <Link to={`/${language}/blog`}>{t('common.backToBlog')}</Link>
+              <Link href={`/${language}/blog`}>{t('common.backToBlog')}</Link>
             </Button>
           </div>
         </main>
@@ -87,7 +95,7 @@ const BlogPostPage: React.FC = () => {
     "@type": "BlogPosting",
     headline: post.title,
     description: post.description,
-    image: post.image.startsWith('http') ? post.image : `${window.location.origin}${post.image}`,
+    image: post.image.startsWith('http') ? post.image : `${origin}${post.image}`,
     datePublished: post.date,
     dateModified: post.date,
     author: {
@@ -99,7 +107,7 @@ const BlogPostPage: React.FC = () => {
       name: language === 'en' ? 'WebABC' : language === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث',
       logo: {
         "@type": "ImageObject",
-        url: `${window.location.origin}/og-image.png`
+        url: `${origin}/og-image.png`
       }
     },
     keywords: post.tags.join(', '),
@@ -128,26 +136,26 @@ const BlogPostPage: React.FC = () => {
         "@type": "ListItem",
         position: 1,
         name: t('common.home'),
-        item: `${window.location.origin}/${language}`
+        item: `${origin}/${language}`
       },
       {
         "@type": "ListItem",
         position: 2,
         name: t('blog.title'),
-        item: `${window.location.origin}/${language}/blog`
+        item: `${origin}/${language}/blog`
       },
       {
         "@type": "ListItem",
         position: 3,
         name: post.title,
-        item: window.location.href
+        item: typeof window !== 'undefined' ? window.location.href : ''
       }
     ]
   };
 
   return (
     <div>
-      <SEOHead 
+      <SEOHead
         title={`${post.title} - ${t('blog.title')}`}
         description={post.description}
         keywords={post.tags.join(', ')}
@@ -155,14 +163,14 @@ const BlogPostPage: React.FC = () => {
         ogType="article"
       />
       <SchemaMarkup schema={faqSchema ? [articleSchema, faqSchema, breadcrumbSchema] : [articleSchema, breadcrumbSchema]} />
-      
+
       <Navbar />
-      
+
       <main className="min-h-screen bg-background">
         {/* Back Button */}
         <div className="container mx-auto px-4 pt-8">
           <Button variant="ghost" asChild>
-            <Link to={`/${language}/blog`}>
+            <Link href={`/${language}/blog`}>
               {languageMeta.direction === 'rtl' ? (
                 <><ArrowRight className="mr-2 h-4 w-4" /> {t('common.backToBlog')}</>
               ) : (
@@ -309,7 +317,7 @@ const BlogPostPage: React.FC = () => {
           </div>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );

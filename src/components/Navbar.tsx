@@ -1,8 +1,9 @@
+"use client";
 
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import Logo from './Logo';
 import { NavLink, ServicesDropdown, NavLinks } from './NavLinks';
 import MobileMenu from './MobileMenu';
@@ -46,7 +47,7 @@ const Navbar = () => {
           "backdrop-blur-xl bg-white/40 rounded-full px-6 py-3 shadow-lg border border-white/20",
           { "shadow-md": isScrolled }
         )}>
-          <Link to={`/${language}`} className="flex items-center space-x-2">
+          <Link href={`/${language}`} className="flex items-center space-x-2">
             <Logo />
           </Link>
 

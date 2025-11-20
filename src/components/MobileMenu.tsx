@@ -1,7 +1,8 @@
+"use client";
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { 
+import Link from 'next/link';
+import {
   Sheet,
   SheetContent
 } from '@/components/ui/sheet';
@@ -34,26 +35,26 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
           <div className="flex flex-col h-full overflow-auto py-6">
             <div className="px-6 pb-6 border-b">
               <div className="flex items-center justify-between mb-6">
-                <Link to={`/${language}`} className="text-xl font-bold" onClick={onClose}>
+                <Link href={`/${language}`} className="text-xl font-bold" onClick={onClose}>
                   WebABC
                 </Link>
               </div>
             </div>
-  
+
             <nav className="flex-1 overflow-y-auto py-6 px-6">
               <ul className="space-y-6">
                 <li>
-                  <Link 
-                    to={`/${language}`}
-                    className="text-lg font-medium" 
+                  <Link
+                    href={`/${language}`}
+                    className="text-lg font-medium"
                     onClick={onClose}
                   >
                     {t('common.home')}
                   </Link>
                 </li>
-  
+
                 <li className="border-b pb-6">
-                  <button 
+                  <button
                     onClick={() => setServicesOpen(!servicesOpen)}
                     className="w-full flex items-center justify-between text-lg font-medium"
                   >
@@ -62,43 +63,43 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                       {servicesOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
                     </span>
                   </button>
-  
-                  <div 
+
+                  <div
                     className={cn(
                       "overflow-hidden transition-all mt-4 space-y-3",
                       servicesOpen ? "max-h-96" : "max-h-0"
                     )}
                   >
-                    <Link 
-                      to={`/${language}/services`}
+                    <Link
+                      href={`/${language}/services`}
                       className={`block ${languageMeta.direction === 'rtl' ? 'pr-3 border-r-2' : 'pl-3 border-l-2'} text-foreground/80 hover:text-primary`}
                       onClick={onClose}
                     >
                       {t('common.allServices')}
                     </Link>
-                    <Link 
-                      to={`/${language}/seo-services`}
+                    <Link
+                      href={`/${language}/seo-services`}
                       className={`block ${languageMeta.direction === 'rtl' ? 'pr-3 border-r-2' : 'pl-3 border-l-2'} text-foreground/80 hover:text-primary`}
                       onClick={onClose}
                     >
                       {t('common.services')} SEO
                     </Link>
-                    <Link 
-                      to={`/${language}/local-seo-services`}
+                    <Link
+                      href={`/${language}/local-seo-services`}
                       className={`block ${languageMeta.direction === 'rtl' ? 'pr-3 border-r-2' : 'pl-3 border-l-2'} text-foreground/80 hover:text-primary`}
                       onClick={onClose}
                     >
                       {t('common.services')} SEO {language === 'en' ? 'Local' : language === 'ar' ? 'المحلي' : 'محلی'}
                     </Link>
-                    <Link 
-                      to={`/${language}/web-development-services`}
+                    <Link
+                      href={`/${language}/web-development-services`}
                       className={`block ${languageMeta.direction === 'rtl' ? 'pr-3 border-r-2' : 'pl-3 border-l-2'} text-foreground/80 hover:text-primary`}
                       onClick={onClose}
                     >
                       {language === 'en' ? 'Web Development' : language === 'ar' ? 'تطوير المواقع' : 'توسعه وب'}
                     </Link>
-                    <Link 
-                      to={`/${language}/wordpress-woocommerce-development`}
+                    <Link
+                      href={`/${language}/wordpress-woocommerce-development`}
                       className={`block ${languageMeta.direction === 'rtl' ? 'pr-3 border-r-2' : 'pl-3 border-l-2'} text-foreground/80 hover:text-primary`}
                       onClick={onClose}
                     >
@@ -106,65 +107,65 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                     </Link>
                   </div>
                 </li>
-  
+
                 <li>
-                  <Link 
-                    to={`/${language}/portfolio`}
-                    className="text-lg font-medium" 
+                  <Link
+                    href={`/${language}/portfolio`}
+                    className="text-lg font-medium"
                     onClick={onClose}
                   >
                     {t('common.portfolio')}
                   </Link>
                 </li>
-  
+
                 <li>
-                  <Link 
-                    to={`/${language}/service-areas`}
-                    className="text-lg font-medium" 
+                  <Link
+                    href={`/${language}/service-areas`}
+                    className="text-lg font-medium"
                     onClick={onClose}
                   >
                     {t('common.serviceAreas')}
                   </Link>
                 </li>
-  
+
                 <li>
-                  <Link 
-                    to={`/${language}/blog`}
-                    className="text-lg font-medium" 
+                  <Link
+                    href={`/${language}/blog`}
+                    className="text-lg font-medium"
                     onClick={onClose}
                   >
                     {t('common.blog')}
                   </Link>
                 </li>
-  
+
                 <li>
-                  <Link 
-                    to={`/${language}/about`}
-                    className="text-lg font-medium" 
+                  <Link
+                    href={`/${language}/about`}
+                    className="text-lg font-medium"
                     onClick={onClose}
                   >
                     {t('common.about')}
                   </Link>
                 </li>
-  
+
                 <li>
-                  <Link 
-                    to={`/${language}/contact`}
-                    className="text-lg font-medium" 
+                  <Link
+                    href={`/${language}/contact`}
+                    className="text-lg font-medium"
                     onClick={onClose}
                   >
                     {t('common.contact')}
                   </Link>
                 </li>
-                
+
                 <li>
                   <LanguageSwitcher type="buttons" />
                 </li>
               </ul>
             </nav>
-  
+
             <div className="p-6 border-t">
-              <Button 
+              <Button
                 className="w-full"
                 onClick={handleConsultation}
               >

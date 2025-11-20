@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
+import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -155,13 +156,14 @@ const Portfolio = () => {
                 {/* Portfolio Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {displayedItems.map((item) => (
-                    <Link key={item.id} to={`/${language}/portfolio/${item.id}`}>
+                    <Link key={item.id} href={`/${language}/portfolio/${item.id}`}>
                       <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-300 border-2 hover:border-primary/50">
                         <div className="relative aspect-video overflow-hidden">
-                          <img
+                          <Image
                             src={item.image}
                             alt={item.title}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            fill
+                            className="object-cover group-hover:scale-110 transition-transform duration-500"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <div className="absolute bottom-4 left-4">
@@ -192,11 +194,12 @@ const Portfolio = () => {
                 <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                   {caseStudies.map((study) => (
                     <Card key={study.id} className="group hover:shadow-2xl transition-all duration-300 overflow-hidden border-2 hover:border-primary/50">
-                      <div className="aspect-video overflow-hidden">
-                        <img
+                      <div className="aspect-video overflow-hidden relative">
+                        <Image
                           src={study.image}
                           alt={study.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
                         />
                       </div>
                       <CardContent className="p-6">
@@ -261,12 +264,12 @@ const Portfolio = () => {
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Button size="lg" variant="secondary" className="rounded-full" asChild>
-                  <Link to={`/${language}/contact`}>
+                  <Link href={`/${language}/contact`}>
                     {t('cta.primaryButton')}
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="rounded-full bg-white/10 text-white hover:bg-white/20" asChild>
-                  <Link to={`/${language}/contact`}>
+                  <Link href={`/${language}/contact`}>
                     {t('cta.secondaryButton')}
                   </Link>
                 </Button>

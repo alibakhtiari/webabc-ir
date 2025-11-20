@@ -1,7 +1,8 @@
+"use client";
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ArrowRight } from 'lucide-react';
 import OptimizedImage from './OptimizedImage';
@@ -25,12 +26,12 @@ const HeroSection = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button size="lg" className="px-8" asChild>
-                <Link to={`/${language}/services`}>
+                <Link href={`/${language}/services`}>
                   {t('home.hero.primaryCta', { fallback: 'Explore Services' })}
                 </Link>
               </Button>
               <Button variant="outline" size="lg" className="px-8" asChild>
-                <Link to={`/${language}/portfolio`} className="flex items-center gap-2">
+                <Link href={`/${language}/portfolio`} className="flex items-center gap-2">
                   {t('home.hero.secondaryCta', { fallback: 'View Portfolio' })}
                   <ArrowIcon />
                 </Link>

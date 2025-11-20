@@ -1,8 +1,9 @@
+"use client";
 
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Twitter, Instagram, Linkedin, Facebook } from 'lucide-react';
 
 const Footer = () => {
@@ -15,7 +16,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div className="md:col-span-1">
             <div className="flex flex-col space-y-4">
-              <Link to={`/${language}`} className="flex items-center space-x-2">
+              <Link href={`/${language}`} className="flex items-center space-x-2">
                 <span className={cn("text-2xl font-bold tracking-tight text-primary", languageMeta.fontFamily)}>
                   WebABC
                 </span>

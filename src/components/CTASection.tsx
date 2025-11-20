@@ -1,8 +1,9 @@
+"use client";
 
 import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import ConsultationForm from './ConsultationForm';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const CTASection = () => {
@@ -84,7 +85,7 @@ const CTASection = () => {
                   <span>{t('cta.primaryButton')}</span>
                 </button>
                 <Link
-                  to={`/${language}/contact`}
+                  href={`/${language}/contact`}
                   className={cn(
                     "px-6 py-3 rounded-full bg-transparent text-white",
                     "border border-white/30 transition-all duration-300",

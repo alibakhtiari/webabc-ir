@@ -1,5 +1,8 @@
+"use client";
+
 import React from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { createBreadcrumbSchema } from '@/lib/schema';
 import SchemaMarkup from '@/components/SchemaMarkup';
@@ -15,13 +18,13 @@ interface BreadcrumbProps {
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ customItems }) => {
   const { t, language } = useLanguage();
-  const location = useLocation();
+  const pathname = usePathname();
 
   // Generate breadcrumb items based on current path
   const generateBreadcrumbItems = (): BreadcrumbItem[] => {
     if (customItems) return customItems;
 
-    const pathSegments = location.pathname.split('/').filter(Boolean);
+    const pathSegments = (pathname || '').split('/').filter(Boolean);
     const items: BreadcrumbItem[] = [];
 
     // Add home
@@ -115,7 +118,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customItems }) => {
                 </span>
               ) : (
                 <Link
-                  to={item.path}
+                  href={item.path}
                   className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
                 >
                   {item.name}
