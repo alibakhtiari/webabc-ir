@@ -3,7 +3,7 @@ import { getAssetFromKV } from '@cloudflare/kv-asset-handler';
 
 // This part is boilerplate from the Cloudflare Pages template
 declare const __STATIC_CONTENT_MANIFEST: string;
-const assetManifest = JSON.parse(__STATIC_content_MANIFEST);
+const assetManifest = JSON.parse(__STATIC_CONTENT_MANIFEST);
 
 // Define the country-to-language mappings
 const persianCountries = new Set(['IR', 'AF', 'TJ']); // Iran, Afghanistan, Tajikistan
@@ -41,14 +41,14 @@ export default {
       } else if (arabianCountries.has(country)) {
         lang = 'ar';
       }
-      
+
       // Reconstruct the URL with the determined language prefix.
       const redirectUrl = `https://${url.hostname}/${lang}${url.pathname}${url.search}${url.hash}`;
-      
+
       // Use a 302 temporary redirect. This is better for language preferences.
       return Response.redirect(redirectUrl, 302);
     }
-    
+
     // --- 3. Serve Static Assets ---
     // If no redirects occurred, serve the static file from KV storage.
     try {
