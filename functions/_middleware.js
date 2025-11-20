@@ -1,5 +1,5 @@
 // Cloudflare Pages Function for handling redirects and serving static assets
-// This file should be at: functions/_middleware.ts
+// Plain JavaScript version to avoid TypeScript compilation issues
 
 // Define the country-to-language mappings
 const persianCountries = new Set(['IR', 'AF', 'TJ']); // Iran, Afghanistan, Tajikistan
@@ -9,7 +9,7 @@ const arabianCountries = new Set([
     'DZ', 'MA', 'TN', 'LY', 'SD', 'MR'       // North Africa
 ]);
 
-export async function onRequest(context: any): Promise<Response> {
+export async function onRequest(context) {
     const { request, next } = context;
     const url = new URL(request.url);
 
