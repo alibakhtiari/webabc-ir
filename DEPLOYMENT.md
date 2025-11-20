@@ -59,7 +59,7 @@ webabc-react/
 
 ### 1. **wrangler.toml**
 - Configured for Cloudflare Pages
-- Points to `./dist` as build output directory
+- Uses `pages_build_output_dir = "./dist"` to point to Vite's build output
 
 ### 2. **functions/_middleware.ts**
 Handles:
