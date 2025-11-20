@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "next dev",
-    "build": "opennextjs-cloudflare build",
+    "build": "next build",
     "build:worker": "opennextjs-cloudflare build",
     "start": "next start",
     "lint": "next lint",
