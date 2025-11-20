@@ -7,10 +7,20 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
+
+# Build outputs
 dist
 dist-ssr
+.wrangler
+.next
+.open-next
 *.local
+
+# Lock files (optional - remove this line if you want to commit lock files)
+bun.lock
+bun.lockb
 
 # Editor directories and files
 .vscode/*
@@ -22,12 +32,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-package-lock.json
-package-lock.json
-/.wrangler
-/.next
-/.open-next
-bun.lock
-bun.lockb
-package-lock.json
-*.md
