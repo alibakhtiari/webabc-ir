@@ -13,6 +13,16 @@ export async function onRequest(context) {
     const { request, next } = context;
     const url = new URL(request.url);
 
+    // Skip redirects for static assets (CSS, JS, images, fonts, etc.)
+    const isAsset = /\.(css|js|json|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|webp|mp4|webm)$/i.test(url.pathname) ||
+        url.pathname.startsWith('/assets/') ||
+        url.pathname.startsWith('/fonts/') ||
+        url.pathname.startsWith('/images/');
+
+    if (isAsset) {
+        return next();
+    }
+
     // --- 1. WWW to non-WWW Redirect ---
     if (url.hostname.startsWith('www.')) {
         const newHostname = url.hostname.replace('www.', '');
