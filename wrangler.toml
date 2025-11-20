@@ -1,5 +1,4 @@
 name = "webabc"
 compatibility_date = "2025-10-12"
 
-[pages]
-build_output_dir = "./dist"
+pages_build_output_dir = "./dist"
