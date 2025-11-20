@@ -5,7 +5,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import SEOHead from '@/components/SEOHead';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Search, Tag, HelpCircle, Link2, FileText, BarChart, Type } from 'lucide-react';
 
 const Resources: React.FC = () => {
@@ -65,14 +65,14 @@ const Resources: React.FC = () => {
 
   return (
     <div>
-      <SEOHead 
+      <SEOHead
         title={t('resources.title')}
         description={t('resources.resourcesDesc')}
         keywords="SEO tools, free tools, meta tags, SERP preview, UTM builder"
       />
-      
+
       <Navbar />
-      
+
       <main className="min-h-screen bg-gradient-to-b from-background to-muted/20">
         <section className="container mx-auto px-4 py-16">
           <div className="text-center mb-12">
@@ -96,7 +96,7 @@ const Resources: React.FC = () => {
                   </CardHeader>
                   <CardContent>
                     <Button asChild className="w-full">
-                      <Link to={tool.link}>{t('resources.useTool')}</Link>
+                      <Link href={tool.link}>{t('resources.useTool')}</Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -116,7 +116,7 @@ const Resources: React.FC = () => {
                   </CardHeader>
                   <CardContent>
                     <Button asChild className="w-full">
-                      <Link to={tool.link}>{t('resources.useTool')}</Link>
+                      <Link href={tool.link}>{t('resources.useTool')}</Link>
                     </Button>
                   </CardContent>
                 </Card>
@@ -125,7 +125,7 @@ const Resources: React.FC = () => {
           </div>
         </section>
       </main>
-      
+
       <Footer />
     </div>
   );

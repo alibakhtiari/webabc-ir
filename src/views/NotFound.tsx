@@ -1,5 +1,6 @@
 
-import { useLocation, Link } from "react-router-dom";
+import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
 import { useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { AlertCircle, Home, ArrowLeft } from "lucide-react";
@@ -9,15 +10,16 @@ import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import "@/animations.css";
 
 const NotFound = () => {
-  const location = useLocation();
+  const pathname = usePathname();
+  const router = useRouter();
   const { language, t } = useLanguage();
 
   useEffect(() => {
     console.error(
       "404 Error: User attempted to access non-existent route:",
-      location.pathname
+      pathname
     );
-  }, [location.pathname]);
+  }, [pathname]);
 
   return (
     <>
@@ -42,7 +44,7 @@ const NotFound = () => {
           <h1 className="text-4xl font-bold text-gray-800 mb-4 animate-fadeInUp delay-100">
             {t('notFound.title')}
           </h1>
-          
+
           <p className="text-xl text-gray-600 mb-8 animate-fadeInUp delay-200">
             {t('notFound.subtitle')}
           </p>
@@ -54,17 +56,17 @@ const NotFound = () => {
               className="gap-2"
               asChild
             >
-              <Link to={`/${language}`}>
+              <Link href={`/${language}`}>
                 <Home size={18} />
                 {t('notFound.backHome')}
               </Link>
             </Button>
-            
+
             <Button
               variant="outline"
               size="lg"
               className="gap-2"
-              onClick={() => window.history.back()}
+              onClick={() => router.back()}
             >
               <ArrowLeft size={18} />
               {t('notFound.backPrevious')}

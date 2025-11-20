@@ -1,3 +1,4 @@
+"use client";
 
 import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
@@ -34,10 +35,10 @@ const LazyImage = ({
   }, [src]);
 
   return (
-    <img 
-      src={imageSrc} 
-      alt={alt} 
-      width={width} 
+    <img
+      src={imageSrc}
+      alt={alt}
+      width={width}
       height={height}
       loading="lazy"
       className={cn(

@@ -1,6 +1,5 @@
-
-import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -15,12 +14,16 @@ import '@/animations.css';
 
 const SeoService = () => {
   const { t, language } = useLanguage();
-  const location = useLocation();
+  const pathname = usePathname();
+  const [origin, setOrigin] = useState('');
 
   useEffect(() => {
     // Scroll to top on page load
     window.scrollTo(0, 0);
-  }, [location]);
+    if (typeof window !== 'undefined') {
+      setOrigin(window.location.origin);
+    }
+  }, [pathname]);
 
   // Create service schema for SEO
   const serviceSchema = {
@@ -31,7 +34,7 @@ const SeoService = () => {
     "provider": {
       "@type": "Organization",
       "name": language === 'en' ? 'WebABC' : language === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث',
-      "url": `${window.location.origin}/${language}`
+      "url": `${origin}/${language}`
     },
     "areaServed": {
       "@type": "Country",
@@ -41,14 +44,14 @@ const SeoService = () => {
   };
 
   const breadcrumbSchema = createBreadcrumbSchema([
-    { name: t('common.home'), item: `${window.location.origin}/${language}` },
-    { name: t('common.services'), item: `${window.location.origin}/${language}/services` },
-    { name: t('seo.title'), item: `${window.location.origin}/${language}/seo-services` }
+    { name: t('common.home'), item: `${origin}/${language}` },
+    { name: t('common.services'), item: `${origin}/${language}/services` },
+    { name: t('seo.title'), item: `${origin}/${language}/seo-services` }
   ]);
 
   return (
     <div dir={language === 'en' ? 'ltr' : 'rtl'} className={language === 'en' ? 'font-sans' : 'font-arabic'}>
-      <SEOHead 
+      <SEOHead
         title={t('seo.title')}
         description={t('seo.subtitle')}
         keywords="seo, search engine optimization, keyword research, content strategy, link building, technical seo"
@@ -113,7 +116,7 @@ const SeoService = () => {
                 color="bg-blue-50"
                 iconColor="text-blue-600"
               />
-              
+
               <SeoServiceCard
                 icon={<Globe className="w-6 h-6" />}
                 title={t('seo.technicalSeo')}
@@ -127,7 +130,7 @@ const SeoService = () => {
                 color="bg-green-50"
                 iconColor="text-green-600"
               />
-              
+
               <SeoServiceCard
                 icon={<LinkIcon className="w-6 h-6" />}
                 title={t('seo.offPageSeo')}
@@ -141,7 +144,7 @@ const SeoService = () => {
                 color="bg-purple-50"
                 iconColor="text-purple-600"
               />
-              
+
               <SeoServiceCard
                 icon={<PieChart className="w-6 h-6" />}
                 title={t('seo.localSeo')}
@@ -175,7 +178,7 @@ const SeoService = () => {
 
             <div className="mt-16">
               <h3 className="text-2xl font-bold text-center mb-8">Featured SEO Case Studies</h3>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <CaseStudyCard
                   title="E-commerce Traffic Growth"
@@ -208,19 +211,19 @@ const SeoService = () => {
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <ProcessCard 
+              <ProcessCard
                 number="01"
                 title="Research & Analysis"
                 description="We analyze your website, competitors, and target keywords to create a comprehensive SEO strategy."
                 color="bg-blue-500"
               />
-              <ProcessCard 
+              <ProcessCard
                 number="02"
                 title="Implementation"
                 description="Our team implements on-page and technical SEO optimizations based on our research findings."
                 color="bg-green-500"
               />
-              <ProcessCard 
+              <ProcessCard
                 number="03"
                 title="Monitor & Optimize"
                 description="We continuously monitor rankings and traffic, making data-driven adjustments to improve results."
@@ -280,22 +283,21 @@ const SeoService = () => {
 };
 
 // SEO Service Card Component
-const SeoServiceCard = ({ icon, title, description, features, color, iconColor }: { 
-  icon: React.ReactNode, 
-  title: string, 
-  description: string, 
+const SeoServiceCard = ({ icon, title, description, features, color, iconColor }: {
+  icon: React.ReactNode,
+  title: string,
+  description: string,
   features: string[],
   color: string,
-  iconColor: string 
+  iconColor: string
 }) => {
   const [ref, isIntersecting] = useIntersectionObserver({ threshold: 0.1 });
 
   return (
     <div
       ref={ref}
-      className={`rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow bg-white ${
-        isIntersecting ? 'animate-fadeInUp' : 'opacity-0'
-      }`}
+      className={`rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow bg-white ${isIntersecting ? 'animate-fadeInUp' : 'opacity-0'
+        }`}
     >
       <div className={`p-6 ${color}`}>
         <div className={`rounded-full w-12 h-12 flex items-center justify-center ${iconColor} bg-white mb-4`}>
@@ -327,9 +329,8 @@ const ResultsCard = ({ number, text }: { number: string, text: string }) => {
   return (
     <div
       ref={ref}
-      className={`bg-white rounded-xl shadow-md p-6 text-center ${
-        isIntersecting ? 'animate-scaleIn' : 'opacity-0'
-      }`}
+      className={`bg-white rounded-xl shadow-md p-6 text-center ${isIntersecting ? 'animate-scaleIn' : 'opacity-0'
+        }`}
     >
       <div className="text-4xl font-bold text-primary mb-2">{number}</div>
       <div className="text-gray-700">{text}</div>
@@ -344,9 +345,8 @@ const CaseStudyCard = ({ title, category, image, result }: { title: string, cate
   return (
     <div
       ref={ref}
-      className={`bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow ${
-        isIntersecting ? 'animate-fadeInUp' : 'opacity-0'
-      }`}
+      className={`bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow ${isIntersecting ? 'animate-fadeInUp' : 'opacity-0'
+        }`}
     >
       <div className="relative">
         <OptimizedImage
@@ -378,9 +378,8 @@ const ProcessCard = ({ number, title, description, color }: { number: string, ti
   return (
     <div
       ref={ref}
-      className={`bg-white rounded-xl shadow-md p-6 relative overflow-hidden ${
-        isIntersecting ? 'animate-fadeInUp' : 'opacity-0'
-      }`}
+      className={`bg-white rounded-xl shadow-md p-6 relative overflow-hidden ${isIntersecting ? 'animate-fadeInUp' : 'opacity-0'
+        }`}
     >
       <div className={`absolute top-0 left-0 w-2 h-full ${color}`}></div>
       <div className="mb-4">
@@ -400,20 +399,19 @@ const FaqItem = ({ question, answer }: { question: string, answer: string }) => 
   return (
     <div
       ref={ref}
-      className={`border border-gray-200 rounded-lg overflow-hidden ${
-        isIntersecting ? 'animate-fadeInUp' : 'opacity-0'
-      }`}
+      className={`border border-gray-200 rounded-lg overflow-hidden ${isIntersecting ? 'animate-fadeInUp' : 'opacity-0'
+        }`}
     >
-      <button 
+      <button
         className="flex justify-between items-center w-full p-4 text-left bg-white hover:bg-gray-50 transition-colors"
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className="font-medium">{question}</span>
-        <svg 
-          className={`w-5 h-5 transition-transform ${isOpen ? 'transform rotate-180' : ''}`} 
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24" 
+        <svg
+          className={`w-5 h-5 transition-transform ${isOpen ? 'transform rotate-180' : ''}`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>

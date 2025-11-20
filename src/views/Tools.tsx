@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import Breadcrumb from '@/components/Breadcrumb';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { createOrganizationSchema, createServiceSchema } from '@/lib/schema';
 import { ArrowRight, Wrench, Zap, Eye } from 'lucide-react';
@@ -94,7 +94,7 @@ const ToolsPage: React.FC = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <Breadcrumb />
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-[1.5]">{t('tools.title')}</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-[1.5]">{t('tools.title')}</h1>
               <p className="text-xl text-gray-600">{t('tools.description')}</p>
             </div>
           </div>
@@ -133,7 +133,7 @@ const ToolsPage: React.FC = () => {
                     </p>
 
                     <Link
-                      to={`/${language}/tools/${route}`}
+                      href={`/${language}/tools/${route}`}
                       className="inline-flex items-center text-blue-600 font-medium hover:underline group"
                     >
                       {t('common.readMore')}
@@ -178,7 +178,7 @@ const ToolsPage: React.FC = () => {
                     </p>
 
                     <Link
-                      to={`/${language}/tools/${route}`}
+                      href={`/${language}/tools/${route}`}
                       className="inline-flex items-center text-green-600 font-medium hover:underline group"
                     >
                       {t('common.readMore')}
@@ -236,7 +236,7 @@ const ToolsPage: React.FC = () => {
               <h2 className="text-3xl font-bold mb-6">{t('tools.ctaTitle')}</h2>
               <p className="text-xl mb-8 opacity-90">{t('tools.ctaDescription')}</p>
               <Link
-                to={`/${language}/contact`}
+                href={`/${language}/contact`}
                 className="inline-block px-8 py-3 bg-white text-primary font-bold rounded-full hover:shadow-lg transition-all"
               >
                 {t('common.contactUs')}

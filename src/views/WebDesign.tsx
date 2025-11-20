@@ -1,6 +1,5 @@
-
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -12,12 +11,16 @@ import { createBreadcrumbSchema } from '@/lib/schema';
 
 const WebDesign = () => {
   const { t, language } = useLanguage();
-  const location = useLocation();
+  const pathname = usePathname();
+  const [origin, setOrigin] = useState('');
 
   useEffect(() => {
     // Scroll to top on page load
     window.scrollTo(0, 0);
-  }, [location]);
+    if (typeof window !== 'undefined') {
+      setOrigin(window.location.origin);
+    }
+  }, [pathname]);
 
   // Create service schema for SEO
   const serviceSchema = {
@@ -28,7 +31,7 @@ const WebDesign = () => {
     "provider": {
       "@type": "Organization",
       "name": language === 'en' ? 'WebABC' : language === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث',
-      "url": `${window.location.origin}/${language}`
+      "url": `${origin}/${language}`
     },
     "areaServed": {
       "@type": "Country",
@@ -38,20 +41,14 @@ const WebDesign = () => {
   };
 
   const breadcrumbSchema = createBreadcrumbSchema([
-    { name: t('common.home'), item: `${window.location.origin}/${language}` },
-    { name: t('common.services'), item: `${window.location.origin}/${language}/services` },
-    { name: t('services.webDevelopmentTitle'), item: `${window.location.origin}/${language}/web-design` }
+    { name: t('common.home'), item: `${origin}/${language}` },
+    { name: t('common.services'), item: `${origin}/${language}/services` },
+    { name: t('services.webDevelopmentTitle'), item: `${origin}/${language}/web-design` }
   ]);
-
-  const fadeInUp = {
-    initial: { y: 20, opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-    transition: { duration: 0.5 }
-  };
 
   return (
     <div dir={language === 'en' ? 'ltr' : 'rtl'}>
-      <SEOHead 
+      <SEOHead
         title={t('services.webDevelopmentTitle')}
         description={t('services.webDevelopmentDescription')}
         keywords="web design, web development, responsive design, UI/UX design, WordPress, React"
@@ -176,35 +173,35 @@ const WebDesign = () => {
             <div className="relative">
               {/* Timeline bar */}
               <div className="absolute left-4 lg:left-1/2 transform lg:-translate-x-1/2 top-0 bottom-0 w-1 bg-primary/20"></div>
-              
+
               {/* Timeline steps */}
               <div className="space-y-12">
-                <TimelineItem 
-                  title="Discovery & Planning" 
+                <TimelineItem
+                  title="Discovery & Planning"
                   description="We analyze your requirements, target audience, and business goals to create a comprehensive project plan."
                   index={1}
                   isLeft={true}
                 />
-                <TimelineItem 
-                  title="Wireframing & Prototyping" 
+                <TimelineItem
+                  title="Wireframing & Prototyping"
                   description="We create wireframes and interactive prototypes to visualize the user interface and experience."
                   index={2}
                   isLeft={false}
                 />
-                <TimelineItem 
-                  title="Design & Development" 
+                <TimelineItem
+                  title="Design & Development"
                   description="Our designers and developers work together to create a visually stunning and technically robust website."
                   index={3}
                   isLeft={true}
                 />
-                <TimelineItem 
-                  title="Testing & Quality Assurance" 
+                <TimelineItem
+                  title="Testing & Quality Assurance"
                   description="We rigorously test the website for functionality, compatibility, and performance across all devices."
                   index={4}
                   isLeft={false}
                 />
-                <TimelineItem 
-                  title="Launch & Support" 
+                <TimelineItem
+                  title="Launch & Support"
                   description="We deploy your website and provide ongoing support and maintenance to keep it running smoothly."
                   index={5}
                   isLeft={true}

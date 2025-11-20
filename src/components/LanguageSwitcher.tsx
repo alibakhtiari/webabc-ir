@@ -1,3 +1,4 @@
+"use client";
 
 import React from 'react';
 import { useLanguage, languages, SupportedLanguage } from '@/contexts/LanguageContext';
@@ -10,7 +11,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { usePathname, useRouter } from 'next/navigation';
 import { getPathWithoutLanguage } from '@/lib/languageUtils';
 
 interface LanguageSwitcherProps {
@@ -18,25 +19,25 @@ interface LanguageSwitcherProps {
   className?: string;
 }
 
-const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ 
+const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   type = 'dropdown',
   className
 }) => {
   const { language, setLanguage, languageMeta } = useLanguage();
-  const location = useLocation();
-  const navigate = useNavigate();
-  const currentPathWithoutLang = getPathWithoutLanguage(location.pathname);
+  const pathname = usePathname();
+  const router = useRouter();
+  const currentPathWithoutLang = getPathWithoutLanguage(pathname || '');
   const isRTL = languageMeta.direction === 'rtl';
 
   const handleLanguageChange = (lang: SupportedLanguage) => {
-    console.log(`Switching language to: ${lang}, current path: ${location.pathname}, without lang: ${currentPathWithoutLang}`);
-    
+    console.log(`Switching language to: ${lang}, current path: ${pathname}, without lang: ${currentPathWithoutLang}`);
+
     if (lang === language) return;
-    
+
     // Navigate directly to prevent 404 errors during language changes
     const newPath = `/${lang}${currentPathWithoutLang}`;
-    navigate(newPath);
-    
+    router.push(newPath);
+
     // Then update the language in context
     setLanguage(lang);
   };
@@ -68,9 +69,9 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button 
-          variant="ghost" 
-          size="sm" 
+        <Button
+          variant="ghost"
+          size="sm"
           className={cn("flex items-center gap-1", className)}
         >
           <Globe className="h-4 w-4" />

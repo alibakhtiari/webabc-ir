@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { MapPin, CheckCircle2, Globe, TrendingUp, Users } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import enServiceAreas from '@/i18n/en/service-areas.json';
 import faServiceAreas from '@/i18n/fa/service-areas.json';
 import arServiceAreas from '@/i18n/ar/service-areas.json';
@@ -31,6 +31,13 @@ interface Location {
 
 const ServiceAreas = () => {
   const { t, language, languageMeta } = useLanguage();
+  const [origin, setOrigin] = useState('');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setOrigin(window.location.origin);
+    }
+  }, []);
 
   // Get service areas data based on language
   const serviceAreasData = useMemo(() => {
@@ -73,13 +80,13 @@ const ServiceAreas = () => {
         "@type": "ListItem",
         position: 1,
         name: t('common.home'),
-        item: `${window.location.origin}/${language}`
+        item: `${origin}/${language}`
       },
       {
         "@type": "ListItem",
         position: 2,
         name: t('service-areas.title'),
-        item: window.location.href
+        item: typeof window !== 'undefined' ? window.location.href : ''
       }
     ]
   };
@@ -210,12 +217,12 @@ const ServiceAreas = () => {
                       </div>
                       <div className="flex gap-3">
                         <Button asChild className="flex-1">
-                          <Link to={`/${language}/${location.slug}`}>
+                          <Link href={`/${language}/${location.slug}`}>
                             {t('common.learnMore')}
                           </Link>
                         </Button>
                         <Button asChild variant="outline" className="flex-1">
-                          <Link to={`/${language}/contact`}>
+                          <Link href={`/${language}/contact`}>
                             {t('common.contactUs')}
                           </Link>
                         </Button>
@@ -239,7 +246,7 @@ const ServiceAreas = () => {
                 {t('service-areas.ctaDescription')}
               </p>
               <Button asChild size="lg" className="text-lg px-8 py-6">
-                <Link to={`/${language}/contact`}>
+                <Link href={`/${language}/contact`}>
                   {t('service-areas.ctaButton')}
                 </Link>
               </Button>

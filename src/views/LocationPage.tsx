@@ -1,5 +1,6 @@
-import React, { useMemo } from 'react';
-import { useParams, Link, Navigate } from 'react-router-dom';
+import React, { useMemo, useEffect, useState } from 'react';
+import { useParams, useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -30,8 +31,17 @@ interface LocationData {
 }
 
 const LocationPage = () => {
-  const { slug } = useParams<{ slug: string }>();
+  const params = useParams();
+  const slug = params?.slug as string;
+  const router = useRouter();
   const { t, language, languageMeta } = useLanguage();
+  const [origin, setOrigin] = useState('');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setOrigin(window.location.origin);
+    }
+  }, []);
 
   // Get service areas data based on language
   const serviceAreasData = useMemo(() => {
@@ -52,9 +62,14 @@ const LocationPage = () => {
     );
   }, [serviceAreasData, slug]);
 
-  // If location not found, redirect to service areas page
+  useEffect(() => {
+    if (!location && slug) {
+      router.replace(`/${language}/service-areas`);
+    }
+  }, [location, language, router, slug]);
+
   if (!location) {
-    return <Navigate to={`/${language}/service-areas`} replace />;
+    return null; // Or a loading spinner while redirecting
   }
 
   const locationSchema = {
@@ -78,7 +93,7 @@ const LocationPage = () => {
     provider: {
       "@type": "Organization",
       name: t('common.companyName'),
-      url: window.location.origin
+      url: origin
     }
   };
 
@@ -90,33 +105,33 @@ const LocationPage = () => {
         "@type": "ListItem",
         position: 1,
         name: t('common.home'),
-        item: `${window.location.origin}/${language}`
+        item: `${origin}/${language}`
       },
       {
         "@type": "ListItem",
         position: 2,
         name: t('service-areas.title'),
-        item: `${window.location.origin}/${language}/service-areas`
+        item: `${origin}/${language}/service-areas`
       },
       {
         "@type": "ListItem",
         position: 3,
         name: location.name,
-        item: window.location.href
+        item: typeof window !== 'undefined' ? window.location.href : ''
       }
     ]
   };
 
   return (
     <div>
-      <SEOHead 
+      <SEOHead
         title={`${t('common.webDesignAndDevelopment')} ${location.name} - ${location.country}`}
         description={location.longDescription}
       />
       <SchemaMarkup schema={[locationSchema, breadcrumbSchema]} />
-      
+
       <Navbar />
-      
+
       <main className="min-h-screen bg-background">
         {/* Hero Section */}
         <section className="relative py-20 overflow-hidden">
@@ -131,7 +146,7 @@ const LocationPage = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-background/80"></div>
           </div>
-          
+
           <div className="container mx-auto px-4 relative">
             <div className="max-w-4xl mx-auto text-center">
               <div className="flex items-center justify-center gap-2 mb-6 animate-fade-in">
@@ -140,24 +155,24 @@ const LocationPage = () => {
                   {location.country}
                 </Badge>
               </div>
-              
+
               <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent animate-fade-in">
                 {t('common.webDesignAndDevelopment')} {location.name}
               </h1>
-              
+
               <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed animate-fade-in">
                 {location.description}
               </p>
-              
+
               <div className="flex flex-wrap gap-4 justify-center animate-fade-in">
                 <Button asChild size="lg" className="group">
-                  <Link to={`/${language}/contact`}>
+                  <Link href={`/${language}/contact`}>
                     {t('service-areas.ctaButton')}
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
-                  <Link to={`/${language}/portfolio`}>
+                  <Link href={`/${language}/portfolio`}>
                     {t('common.viewPortfolio')}
                   </Link>
                 </Button>
@@ -179,7 +194,7 @@ const LocationPage = () => {
                   <p className="text-muted-foreground">{t('common.completedProjects')}</p>
                 </CardContent>
               </Card>
-              
+
               <Card className="text-center border-primary/20 hover:shadow-lg transition-all hover:scale-105">
                 <CardContent className="pt-8">
                   <Users className="w-12 h-12 mx-auto mb-4 text-primary" />
@@ -189,7 +204,7 @@ const LocationPage = () => {
                   <p className="text-muted-foreground">{t('common.happyClients')}</p>
                 </CardContent>
               </Card>
-              
+
               <Card className="text-center border-primary/20 hover:shadow-lg transition-all hover:scale-105">
                 <CardContent className="pt-8">
                   <Award className="w-12 h-12 mx-auto mb-4 text-primary" />
@@ -276,13 +291,13 @@ const LocationPage = () => {
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Button asChild size="lg" className="text-lg px-8 py-6 group">
-                  <Link to={`/${language}/contact`}>
+                  <Link href={`/${language}/contact`}>
                     {t('service-areas.ctaButton')}
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="text-lg px-8 py-6">
-                  <Link to={`/${language}/service-areas`}>
+                  <Link href={`/${language}/service-areas`}>
                     {t('common.viewAllLocations')}
                   </Link>
                 </Button>
@@ -291,7 +306,7 @@ const LocationPage = () => {
           </div>
         </section>
       </main>
-      
+
       <Footer />
     </div>
   );

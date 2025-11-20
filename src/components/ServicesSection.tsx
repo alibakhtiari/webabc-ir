@@ -1,3 +1,4 @@
+"use client";
 
 import React, { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
@@ -8,7 +9,7 @@ const ServicesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState(0);
   const { t } = useLanguage();
-  
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -21,12 +22,12 @@ const ServicesSection = () => {
       },
       { threshold: 0.1 }
     );
-    
+
     const elements = sectionRef.current?.querySelectorAll('.animate-on-scroll');
     if (elements) {
       elements.forEach((el) => observer.observe(el));
     }
-    
+
     return () => {
       if (elements) {
         elements.forEach((el) => observer.unobserve(el));
@@ -72,19 +73,19 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section 
+    <section
       id="services"
-      ref={sectionRef} 
+      ref={sectionRef}
       className="py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden snap-section"
     >
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-primary/5 blur-3xl"></div>
       </div>
-      
+
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16 animate-on-scroll opacity-0 transition-all duration-500">
-          <span 
+          <span
             className={cn(
               "inline-block mb-2 px-3 py-1 rounded-full",
               "border border-primary/20 bg-primary/5 text-primary",
@@ -93,18 +94,18 @@ const ServicesSection = () => {
           >
             {t('services.sectionTag', { fallback: 'خدمات ما' })}
           </span>
-          
+
           <h2 className="font-persian text-3xl md:text-4xl font-bold tracking-tight mb-6 text-balance">
             {t('services.sectionTitle.prefix', { fallback: 'راهکارهای ' })}
             <span className="text-primary">{t('services.sectionTitle.highlight', { fallback: 'دیجیتال مارکتینگ' })}</span>
             {t('services.sectionTitle.suffix', { fallback: ' برای کسب و کار شما' })}
           </h2>
-          
+
           <p className="font-persian text-foreground/80 leading-relaxed text-balance">
             {t('services.sectionDescription', { fallback: 'ما خدمات جامع سئو و توسعه وب را ارائه می‌دهیم تا کسب و کار شما در فضای آنلاین موفق شود. تمامی خدمات ما با استانداردهای روز دنیا و متناسب با نیازهای بازار ایران طراحی شده‌اند.' })}
           </p>
         </div>
-        
+
         <div className="flex overflow-x-auto -mx-4 px-4 pb-4 mb-8 snap-x">
           <div className="flex space-x-2 space-x-reverse mx-auto font-persian">
             {services.map((service, idx) => (
@@ -124,9 +125,9 @@ const ServicesSection = () => {
             ))}
           </div>
         </div>
-        
+
         <div className="animate-on-scroll opacity-0 transition-all duration-500">
-          <div 
+          <div
             className="glass-morphism rounded-2xl p-8 transition-all duration-500"
             style={{ minHeight: '400px' }}
           >
@@ -135,11 +136,11 @@ const ServicesSection = () => {
                 <h3 className="font-persian text-2xl font-bold text-foreground">
                   {services[activeTab].title}
                 </h3>
-                
+
                 <p className="font-persian text-foreground/80 leading-relaxed">
                   {services[activeTab].description}
                 </p>
-                
+
                 <ul className="space-y-3 mt-6">
                   {services[activeTab].features.map((feature, idx) => (
                     <li key={idx} className="flex items-center font-persian">
@@ -148,8 +149,8 @@ const ServicesSection = () => {
                     </li>
                   ))}
                 </ul>
-                
-                <button 
+
+                <button
                   className={cn(
                     "mt-8 px-6 py-3 rounded-full bg-primary text-white font-persian",
                     "transition-all duration-300 shadow-md hover:shadow-lg",
@@ -159,7 +160,7 @@ const ServicesSection = () => {
                   {t('services.consultButton', { fallback: 'مشاوره در مورد' })} {services[activeTab].title}
                 </button>
               </div>
-              
+
               <div className="md:col-span-2">
                 <div className="aspect-square w-full rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
                   <span className="font-persian text-muted-foreground">
@@ -170,24 +171,24 @@ const ServicesSection = () => {
             </div>
           </div>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 animate-on-scroll opacity-0 transition-all duration-500">
           {[
-            { 
-              title: t('services.keyFeatures.0.title', { fallback: 'تحقیق کلمات کلیدی' }), 
-              desc: t('services.keyFeatures.0.desc', { fallback: 'شناسایی بهترین کلمات کلیدی برای کسب و کار شما' }) 
+            {
+              title: t('services.keyFeatures.0.title', { fallback: 'تحقیق کلمات کلیدی' }),
+              desc: t('services.keyFeatures.0.desc', { fallback: 'شناسایی بهترین کلمات کلیدی برای کسب و کار شما' })
             },
-            { 
-              title: t('services.keyFeatures.1.title', { fallback: 'بهینه‌سازی محتوا' }), 
-              desc: t('services.keyFeatures.1.desc', { fallback: 'محتوای با کیفیت و بهینه شده برای موتورهای جستجو' }) 
+            {
+              title: t('services.keyFeatures.1.title', { fallback: 'بهینه‌سازی محتوا' }),
+              desc: t('services.keyFeatures.1.desc', { fallback: 'محتوای با کیفیت و بهینه شده برای موتورهای جستجو' })
             },
-            { 
-              title: t('services.keyFeatures.2.title', { fallback: 'لینک‌سازی خارجی' }), 
-              desc: t('services.keyFeatures.2.desc', { fallback: 'استراتژی حرفه‌ای لینک‌سازی برای افزایش اعتبار سایت' }) 
+            {
+              title: t('services.keyFeatures.2.title', { fallback: 'لینک‌سازی خارجی' }),
+              desc: t('services.keyFeatures.2.desc', { fallback: 'استراتژی حرفه‌ای لینک‌سازی برای افزایش اعتبار سایت' })
             },
           ].map((item, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className="neo-morphism p-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:translate-y-[-2px]"
             >
               <div className="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
