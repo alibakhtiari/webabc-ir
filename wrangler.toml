@@ -1,13 +1,5 @@
 name = "webabc"
 compatibility_date = "2025-10-12"
-main = "src/worker.ts"
 
-
-[site]
-bucket = "./dist"
-
-#[pages]
-#build_output_dir = "./dist"
-
-#[build]
-#command = "npm run build"
+[pages]
+build_output_dir = "./dist"
