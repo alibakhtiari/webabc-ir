@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
@@ -7,28 +6,10 @@
     <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa" />
     <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://webabc.ir" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://webabc.ir/fa" />
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <lastmod>2024-10-04</lastmod>
-  </url>
-  <url>
-    <loc>https://webabc.ir/fa/services</loc>
-    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/services" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/services" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/services" />
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2024-10-04</lastmod>
-  </url>
-  <url>
-    <loc>https://webabc.ir/fa/portfolio</loc>
-    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/portfolio" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/portfolio" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/portfolio" />
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <lastmod>2024-10-04</lastmod>
+    <lastmod>2024-11-21</lastmod>
   </url>
   <url>
     <loc>https://webabc.ir/fa/about</loc>
@@ -37,16 +18,70 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/about" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2024-10-04</lastmod>
+    <lastmod>2024-11-21</lastmod>
+  </url>
+  <url>
+    <loc>https://webabc.ir/fa/services</loc>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/services" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/services" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/services" />
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <lastmod>2024-11-21</lastmod>
+  </url>
+  <url>
+    <loc>https://webabc.ir/fa/portfolio</loc>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/portfolio" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/portfolio" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/portfolio" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2024-11-21</lastmod>
   </url>
   <url>
     <loc>https://webabc.ir/fa/contact</loc>
     <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/contact" />
     <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/contact" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/contact" />
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2024-11-21</lastmod>
+  </url>
+  <url>
+    <loc>https://webabc.ir/fa/blog</loc>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/blog" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/blog" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/blog" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2024-11-21</lastmod>
+  </url>
+  <url>
+    <loc>https://webabc.ir/fa/faq</loc>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/faq" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/faq" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/faq" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2024-11-21</lastmod>
+  </url>
+  <url>
+    <loc>https://webabc.ir/fa/tools</loc>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/tools" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/tools" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/tools" />
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2024-10-04</lastmod>
+    <lastmod>2024-11-21</lastmod>
+  </url>
+  <url>
+    <loc>https://webabc.ir/fa/resources</loc>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/resources" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/resources" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/resources" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2024-11-21</lastmod>
   </url>
   <url>
     <loc>https://webabc.ir/fa/seo-services</loc>
@@ -54,8 +89,26 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/seo-services" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/seo-services" />
     <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <lastmod>2024-11-21</lastmod>
+  </url>
+  <url>
+    <loc>https://webabc.ir/fa/local-seo</loc>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/local-seo" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/local-seo" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/local-seo" />
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2024-10-04</lastmod>
+    <lastmod>2024-11-21</lastmod>
+  </url>
+  <url>
+    <loc>https://webabc.ir/fa/service-areas</loc>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/service-areas" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/service-areas" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/service-areas" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2024-11-21</lastmod>
   </url>
   <url>
     <loc>https://webabc.ir/fa/web-development-services</loc>
@@ -64,24 +117,15 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/web-development-services" />
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2024-10-04</lastmod>
+    <lastmod>2024-11-21</lastmod>
   </url>
   <url>
-    <loc>https://webabc.ir/fa/web-design</loc>
-    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/web-design" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/web-design" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/web-design" />
+    <loc>https://webabc.ir/fa/wordpress-woocommerce-development</loc>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/wordpress-woocommerce-development" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/wordpress-woocommerce-development" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/wordpress-woocommerce-development" />
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <lastmod>2024-10-04</lastmod>
-  </url>
-  <url>
-    <loc>https://webabc.ir/fa/case-studies</loc>
-    <xhtml:link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/case-studies" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://webabc.ir/en/case-studies" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/case-studies" />
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <lastmod>2024-10-04</lastmod>
+    <priority>0.8</priority>
+    <lastmod>2024-11-21</lastmod>
   </url>
 </urlset>
