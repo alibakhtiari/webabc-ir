@@ -1,4 +1,3 @@
-
 {
   "title": "Professional WordPress & WooCommerce Development",
   "subtitle": "Creating custom WordPress sites and WooCommerce online stores with unique design and optimal performance",
@@ -29,5 +28,13 @@
   "performanceOptimization": "Performance Optimization",
   "maintenanceSupport": "Maintenance & Support",
   "seoOptimization": "SEO Optimization",
-  "contentCreation": "Content Creation"
+  "contentCreation": "Content Creation",
+  "customTheme": "Custom Theme Design",
+  "customThemeDesc": "Unique and professional WordPress theme design tailored to your brand identity",
+  "woocommerce": "WooCommerce Store Setup",
+  "woocommerceDesc": "Complete e-commerce solution with payment gateways and inventory management",
+  "pluginDev": "Custom Plugin Development",
+  "pluginDevDesc": "Develop custom plugins to extend your WordPress functionality",
+  "responsive": "Responsive Design",
+  "responsiveDesc": "Mobile-friendly design that works perfectly on all devices"
 }

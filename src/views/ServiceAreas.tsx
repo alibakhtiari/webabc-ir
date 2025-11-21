@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useMemo, useEffect, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navbar from '@/components/Navbar';
@@ -217,7 +219,7 @@ const ServiceAreas = () => {
                       </div>
                       <div className="flex gap-3">
                         <Button asChild className="flex-1">
-                          <Link href={`/${language}/${location.slug}`}>
+                          <Link href={`/${language}/service-areas/${location.slug}`}>
                             {t('common.learnMore')}
                           </Link>
                         </Button>

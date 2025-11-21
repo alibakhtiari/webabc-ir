@@ -67,6 +67,60 @@
         "clients": "50+",
         "experience": "6+"
       }
+    },
+    {
+      "name": "Tehran",
+      "slug": "tehran",
+      "country": "Iran",
+      "description": "Providing advanced web design and SEO services to businesses in Tehran. We help Iranian companies establish a strong online presence and effectively reach their target audience.",
+      "longDescription": "As a leading web design and SEO agency in Tehran, we specialize in helping local businesses dominate the digital space. Our team understands the unique features of the Iranian market and creates customized solutions that resonate with your target audience.",
+      "services": [
+        "Web Design & Development",
+        "SEO Services",
+        "E-commerce Solutions",
+        "Digital Marketing",
+        "WordPress Development"
+      ],
+      "image": "/images/locations/tehran.jpg",
+      "benefits": [
+        "Local market expertise in Tehran",
+        "Persian & English language support",
+        "Mobile-first responsive designs",
+        "Optimized loading speed for Iran",
+        "Ongoing support and maintenance"
+      ],
+      "stats": {
+        "projects": "80+",
+        "clients": "60+",
+        "experience": "7+"
+      }
+    },
+    {
+      "name": "Qazvin",
+      "slug": "qazvin",
+      "country": "Iran",
+      "description": "Delivering professional digital solutions to businesses in Qazvin. Our services help Qazvin-based companies succeed in the competitive market with innovative web solutions.",
+      "longDescription": "Qazvin's dynamic business environment demands exceptional digital presence. We create stunning websites and implement powerful SEO strategies that help your business stand out in one of the most competitive markets.",
+      "services": [
+        "Custom Web Development",
+        "Local SEO",
+        "Mobile App Development",
+        "Brand Strategy",
+        "Content Marketing"
+      ],
+      "image": "/images/locations/qazvin.jpg",
+      "benefits": [
+        "Understanding of Qazvin business culture",
+        "Multilingual website solutions",
+        "E-commerce expertise",
+        "Results-driven digital strategies",
+        "24/7 support"
+      ],
+      "stats": {
+        "projects": "45+",
+        "clients": "35+",
+        "experience": "5+"
+      }
     }
   ]
 }
