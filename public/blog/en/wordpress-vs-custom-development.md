@@ -5,7 +5,7 @@ date: 2025-01-20
 author: WebABC Team
 category: Web Development
 tags: [WordPress, Custom Development, Web Design, CMS]
-image: /src/assets/wordpress-hero.jpg
+image: /images/wordpress-hero.jpg
 readTime: 6
 ---
 
