@@ -1,3 +1,4 @@
+"use client";
 
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
@@ -6,7 +7,6 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { AlertCircle, Home, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SEOHead from "@/components/SEOHead";
-import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import "@/animations.css";
 
 const NotFound = () => {

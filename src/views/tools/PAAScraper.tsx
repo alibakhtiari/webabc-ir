@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -17,13 +19,13 @@ const PAAScraper: React.FC = () => {
 
   return (
     <div>
-      <SEOHead 
+      <SEOHead
         title="People Also Ask Scraper"
         description="Discover questions people ask about your keywords"
       />
-      
+
       <Navbar />
-      
+
       <main className="min-h-screen bg-gradient-to-b from-background to-muted/20 py-16">
         <div className="container mx-auto px-4 max-w-4xl">
           <h1 className="text-4xl font-bold mb-4 text-center">People Also Ask Scraper</h1>
@@ -53,7 +55,7 @@ const PAAScraper: React.FC = () => {
                 <Alert>
                   <AlertCircle className="h-4 w-4" />
                   <AlertDescription>
-                    This tool demonstrates the interface. To scrape live "People Also Ask" data from Google, 
+                    This tool demonstrates the interface. To scrape live "People Also Ask" data from Google,
                     you would need to integrate with a third-party API service like SerpAPI, DataForSEO, or similar.
                   </AlertDescription>
                 </Alert>
@@ -111,7 +113,7 @@ const PAAScraper: React.FC = () => {
           </div>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );

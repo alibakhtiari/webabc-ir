@@ -50,6 +50,11 @@ import enCta from './en/cta.json';
 import faCta from './fa/cta.json';
 import arCta from './ar/cta.json';
 
+// FAQ translations
+import enFaq from './en/faq.json';
+import faFaq from './fa/faq.json';
+import arFaq from './ar/faq.json';
+
 // Resources translations
 import enResources from './en/resources.json';
 import faResources from './fa/resources.json';
@@ -91,9 +96,9 @@ import faServiceAreas from './fa/service-areas.json';
 import arServiceAreas from './ar/service-areas.json';
 
 // Tools translations
-import enTools from './tools-en.json';
-import faTools from './tools-fa.json';
-import arTools from './tools-ar.json';
+import enTools from './en/tools.json';
+import faTools from './fa/tools.json';
+import arTools from './ar/tools.json';
 
 // Define the translations object with proper typing
 export interface TranslationsType {
@@ -123,7 +128,8 @@ export const translations: TranslationsType = {
     "local-seo": enLocalSeo,
     "web-development-services": enWebDevelopmentServices,
     "service-areas": enServiceAreas,
-    tools: enTools
+    tools: enTools,
+    faq: enFaq
   },
   fa: {
     common: faCommon,
@@ -144,7 +150,8 @@ export const translations: TranslationsType = {
     "local-seo": faLocalSeo,
     "web-development-services": faWebDevelopmentServices,
     "service-areas": faServiceAreas,
-    tools: faTools
+    tools: faTools,
+    faq: faFaq
   },
   ar: {
     common: arCommon,
@@ -165,7 +172,8 @@ export const translations: TranslationsType = {
     "local-seo": arLocalSeo,
     "web-development-services": arWebDevelopmentServices,
     "service-areas": arServiceAreas,
-    tools: arTools
+    tools: arTools,
+    faq: arFaq
   }
 };
 
@@ -177,20 +185,20 @@ export const translations: TranslationsType = {
  */
 export const getTranslation = (lang: SupportedLanguage, key: string): any => {
   const keys = key.split('.');
-  
+
   if (keys.length < 2) {
     console.warn(`Invalid translation key: ${key}`);
     return key;
   }
-  
+
   const category = keys[0];
   const path = keys.slice(1);
-  
+
   if (!translations[lang] || !translations[lang][category]) {
     console.warn(`Translation category not found: ${category} in ${lang}`);
     return key;
   }
-  
+
   let result = translations[lang][category];
   for (const pathPart of path) {
     if (!result || typeof result !== 'object' || !(pathPart in result)) {
@@ -199,7 +207,7 @@ export const getTranslation = (lang: SupportedLanguage, key: string): any => {
     }
     result = result[pathPart];
   }
-  
+
   return result;
 };
 

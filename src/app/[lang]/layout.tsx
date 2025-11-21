@@ -1,4 +1,5 @@
 import { languages, SupportedLanguage } from "@/types/language";
+import "@/app/globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Metadata } from "next";
 import { Toaster } from "@/components/ui/toaster";
@@ -7,10 +8,8 @@ export async function generateStaticParams() {
     return Object.keys(languages).map((lang) => ({ lang }));
 }
 
-export const metadata: Metadata = {
-    title: "WebABC",
-    description: "Web Design and Development Services",
-};
+// Removed static metadata - using generateMetadata in page.tsx instead
+// This allows each page to have dynamic, localized metadata
 
 export default async function RootLayout({
     children,
@@ -24,8 +23,8 @@ export default async function RootLayout({
     const language = languages[supportedLang] || languages.fa;
 
     return (
-        <html lang={supportedLang} dir={language.direction}>
-            <body className={language.fontFamily}>
+        <html lang={supportedLang} dir={language.direction} suppressHydrationWarning>
+            <body className={language.fontFamily} suppressHydrationWarning>
                 <LanguageProvider defaultLanguage={supportedLang}>
                     {children}
                     <Toaster />

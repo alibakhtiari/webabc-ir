@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -115,7 +117,6 @@ const ToolsPage: React.FC = () => {
                 { key: 'paaScraper', route: 'paa-scraper' },
                 { key: 'utmBuilder', route: 'utm-builder' }
               ].map(({ key, route }) => {
-                const toolValue = t(`tools.${key}`);
                 return (
                   <div
                     key={key}
@@ -126,10 +127,10 @@ const ToolsPage: React.FC = () => {
                     </div>
 
                     <h3 className="text-2xl font-bold mb-4">
-                      {t(`tools.${key}.title`) || (toolValue as ToolTranslation)?.title || 'Tool'}
+                      {t(`tools.${key}.title`)}
                     </h3>
                     <p className="text-gray-600 mb-6 leading-relaxed">
-                      {t(`tools.${key}.description`) || (toolValue as ToolTranslation)?.description || 'A useful SEO tool'}
+                      {t(`tools.${key}.description`)}
                     </p>
 
                     <Link
@@ -160,7 +161,6 @@ const ToolsPage: React.FC = () => {
                 { key: 'readabilityChecker', route: 'readability-checker' },
                 { key: 'loremGenerator', route: 'lorem-generator' }
               ].map(({ key, route }) => {
-                const toolValue = t(`tools.${key}`);
                 return (
                   <div
                     key={key}
@@ -171,10 +171,10 @@ const ToolsPage: React.FC = () => {
                     </div>
 
                     <h3 className="text-2xl font-bold mb-4">
-                      {t(`tools.${key}.title`) || (toolValue as ToolTranslation)?.title || 'Tool'}
+                      {t(`tools.${key}.title`)}
                     </h3>
                     <p className="text-gray-600 mb-6 leading-relaxed">
-                      {t(`tools.${key}.description`) || (toolValue as ToolTranslation)?.description || 'A useful SEO tool'}
+                      {t(`tools.${key}.description`)}
                     </p>
 
                     <Link

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -24,7 +26,7 @@ const HeadlineAnalyzer: React.FC = () => {
     let score = 0;
     if (wordCount >= 6 && wordCount <= 12) score += 25;
     else if (wordCount >= 4 && wordCount <= 15) score += 15;
-    
+
     if (charCount >= 40 && charCount <= 60) score += 25;
     else if (charCount >= 30 && charCount <= 70) score += 15;
 
@@ -46,13 +48,13 @@ const HeadlineAnalyzer: React.FC = () => {
 
   return (
     <div>
-      <SEOHead 
+      <SEOHead
         title="Headline Analyzer"
         description="Score your headlines for better engagement"
       />
-      
+
       <Navbar />
-      
+
       <main className="min-h-screen bg-gradient-to-b from-background to-muted/20 py-16">
         <div className="container mx-auto px-4 max-w-4xl">
           <Breadcrumb />
@@ -88,11 +90,10 @@ const HeadlineAnalyzer: React.FC = () => {
                   <div>
                     <div className="flex justify-between mb-2">
                       <span className="font-semibold">Overall Score</span>
-                      <span className={`font-bold ${
-                        analysis.score >= 70 ? 'text-green-600' : 
-                        analysis.score >= 40 ? 'text-yellow-600' : 
-                        'text-red-600'
-                      }`}>
+                      <span className={`font-bold ${analysis.score >= 70 ? 'text-green-600' :
+                          analysis.score >= 40 ? 'text-yellow-600' :
+                            'text-red-600'
+                        }`}>
                         {analysis.score}/100
                       </span>
                     </div>
@@ -139,7 +140,7 @@ const HeadlineAnalyzer: React.FC = () => {
           </div>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );

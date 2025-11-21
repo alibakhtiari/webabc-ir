@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -41,13 +43,13 @@ const MetaGenerator: React.FC = () => {
 
   return (
     <div>
-      <SEOHead 
+      <SEOHead
         title="Meta Tag Generator"
         description="Generate SEO-optimized meta tags for your website"
       />
-      
+
       <Navbar />
-      
+
       <main className="min-h-screen bg-gradient-to-b from-background to-muted/20 py-16">
         <div className="container mx-auto px-4 max-w-4xl">
           <h1 className="text-4xl font-bold mb-4 text-center">Meta Tag Generator</h1>
@@ -120,7 +122,7 @@ const MetaGenerator: React.FC = () => {
           </div>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );

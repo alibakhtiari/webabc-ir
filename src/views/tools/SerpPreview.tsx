@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -19,13 +21,13 @@ const SerpPreview: React.FC = () => {
 
   return (
     <div>
-      <SEOHead 
+      <SEOHead
         title="SERP Snippet Preview Tool"
         description="Preview how your webpage will appear in Google search results"
       />
-      
+
       <Navbar />
-      
+
       <main className="min-h-screen bg-gradient-to-b from-background to-muted/20 py-16">
         <div className="container mx-auto px-4 max-w-4xl">
           <h1 className="text-4xl font-bold mb-4 text-center">SERP Snippet Preview</h1>
@@ -103,7 +105,7 @@ const SerpPreview: React.FC = () => {
           </div>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );
