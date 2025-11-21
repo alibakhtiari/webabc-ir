@@ -1,21 +1,36 @@
+"use client";
 
+import React from 'react';
 import Navbar from '@/components/Navbar';
 import Breadcrumb from '@/components/Breadcrumb';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import SEOHead from '@/components/SEOHead';
 import CTASection from '@/components/CTASection';
+import SchemaMarkup from '@/components/SchemaMarkup';
+import { createServiceSchema } from '@/lib/schema';
 import { Globe, Target, Search, MapPin, FileCheck, BarChart } from 'lucide-react';
 
 const LocalSeo = () => {
-  const { t, languageMeta } = useLanguage();
+  const { t, languageMeta, language } = useLanguage();
+
+  const serviceSchema = createServiceSchema(
+    t('localSeo.localSeoTitle'),
+    t('localSeo.localSeoDescription'),
+    `https://webabc.com/${language}/local-seo`,
+    "https://webabc.com/images/local-seo.jpg",
+    "WebABC",
+    "Worldwide",
+    language
+  );
 
   return (
     <div className="min-h-screen flex flex-col">
       <SEOHead
-        title={t('seo.localSEOTitle')}
-        description={t('seo.localSEODescription')}
+        title={t('localSeo.localSeoTitle')}
+        description={t('localSeo.localSeoDescription')}
       />
+      <SchemaMarkup schema={serviceSchema} />
 
       <Navbar />
 

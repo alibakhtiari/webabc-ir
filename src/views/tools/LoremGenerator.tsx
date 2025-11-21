@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -44,11 +46,11 @@ const LoremGenerator: React.FC = () => {
     const count = parseInt(paragraphs) || 3;
     const selectedTheme = loremThemes[theme as keyof typeof loremThemes];
     const result = [];
-    
+
     for (let i = 0; i < count; i++) {
       result.push(selectedTheme[i % selectedTheme.length]);
     }
-    
+
     setGeneratedText(result.join('\n\n'));
   };
 
@@ -61,13 +63,13 @@ const LoremGenerator: React.FC = () => {
 
   return (
     <div>
-      <SEOHead 
+      <SEOHead
         title="Lorem Ipsum Generator"
         description="Generate customizable placeholder text for your designs"
       />
-      
+
       <Navbar />
-      
+
       <main className="min-h-screen bg-gradient-to-b from-background to-muted/20 py-16">
         <div className="container mx-auto px-4 max-w-4xl">
           <h1 className="text-4xl font-bold mb-4 text-center">Lorem Ipsum Generator</h1>
@@ -133,7 +135,7 @@ const LoremGenerator: React.FC = () => {
           </div>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );

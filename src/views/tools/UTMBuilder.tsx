@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -20,7 +22,7 @@ const UTMBuilder: React.FC = () => {
 
   const buildUTMUrl = () => {
     if (!websiteUrl) return '';
-    
+
     const params = new URLSearchParams();
     if (source) params.append('utm_source', source);
     if (medium) params.append('utm_medium', medium);
@@ -43,13 +45,13 @@ const UTMBuilder: React.FC = () => {
 
   return (
     <div>
-      <SEOHead 
+      <SEOHead
         title="UTM Link Builder"
         description="Create trackable campaign URLs with UTM parameters"
       />
-      
+
       <Navbar />
-      
+
       <main className="min-h-screen bg-gradient-to-b from-background to-muted/20 py-16">
         <div className="container mx-auto px-4 max-w-4xl">
           <h1 className="text-4xl font-bold mb-4 text-center">UTM Link Builder</h1>
@@ -148,8 +150,8 @@ const UTMBuilder: React.FC = () => {
                 <div className="bg-muted p-4 rounded break-all">
                   {finalUrl || 'Fill in the fields above to generate your UTM URL'}
                 </div>
-                <Button 
-                  onClick={copyUrl} 
+                <Button
+                  onClick={copyUrl}
                   className="mt-4 w-full"
                   disabled={!finalUrl || !source || !medium || !campaign}
                 >
@@ -160,7 +162,7 @@ const UTMBuilder: React.FC = () => {
           </div>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );

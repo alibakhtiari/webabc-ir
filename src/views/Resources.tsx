@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -6,10 +8,22 @@ import SEOHead from '@/components/SEOHead';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import SchemaMarkup from '@/components/SchemaMarkup';
+import { createServiceSchema } from '@/lib/schema';
 import { Search, Tag, HelpCircle, Link2, FileText, BarChart, Type } from 'lucide-react';
 
 const Resources: React.FC = () => {
   const { t, language, languageMeta } = useLanguage();
+
+  const serviceSchema = createServiceSchema(
+    t('resources.title'),
+    t('resources.subtitle'),
+    `https://webabc.com/${language}/resources`,
+    "https://webabc.com/images/resources.jpg",
+    "WebABC",
+    "Worldwide",
+    language
+  );
 
   const tools = [
     {
@@ -70,6 +84,7 @@ const Resources: React.FC = () => {
         description={t('resources.resourcesDesc')}
         keywords="SEO tools, free tools, meta tags, SERP preview, UTM builder"
       />
+      <SchemaMarkup schema={serviceSchema} />
 
       <Navbar />
 

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -23,7 +25,7 @@ const ReadabilityChecker: React.FC = () => {
     const avgSyllablesPerWord = syllables / (words.length || 1);
 
     // Flesch Reading Ease
-    const fleschScore = Math.max(0, Math.min(100, 
+    const fleschScore = Math.max(0, Math.min(100,
       206.835 - 1.015 * avgWordsPerSentence - 84.6 * avgSyllablesPerWord
     ));
 
@@ -64,13 +66,13 @@ const ReadabilityChecker: React.FC = () => {
 
   return (
     <div>
-      <SEOHead 
+      <SEOHead
         title="Readability Checker"
         description="Analyze text readability with Flesch-Kincaid scores"
       />
-      
+
       <Navbar />
-      
+
       <main className="min-h-screen bg-gradient-to-b from-background to-muted/20 py-16">
         <div className="container mx-auto px-4 max-w-4xl">
           <h1 className="text-4xl font-bold mb-4 text-center">Readability Checker</h1>
@@ -157,7 +159,7 @@ const ReadabilityChecker: React.FC = () => {
           </div>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   );

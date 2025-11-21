@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@cloudflare/kv-asset-handler": "^0.4.0",
+    "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-collapsible": "^1.1.0",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-dropdown-menu": "^2.1.1",

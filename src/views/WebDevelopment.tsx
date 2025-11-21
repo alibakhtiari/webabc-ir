@@ -1,3 +1,4 @@
+"use client";
 
 import Navbar from '@/components/Navbar';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -5,10 +6,22 @@ import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import SEOHead from '@/components/SEOHead';
 import CTASection from '@/components/CTASection';
+import SchemaMarkup from '@/components/SchemaMarkup';
+import { createServiceSchema } from '@/lib/schema';
 import { Layout, Server } from 'lucide-react';
 
 const WebDevelopment = () => {
-  const { t, languageMeta } = useLanguage();
+  const { t, languageMeta, language } = useLanguage();
+
+  const serviceSchema = createServiceSchema(
+    t('services.webDevelopmentTitle'),
+    t('services.webDevelopmentDescription'),
+    `https://webabc.com/${language}/web-development-services`,
+    "https://webabc.com/images/web-development.jpg",
+    "WebABC",
+    "Worldwide",
+    language
+  );
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -16,6 +29,7 @@ const WebDevelopment = () => {
         title={t('seo.webDevTitle')}
         description={t('seo.webDevDescription')}
       />
+      <SchemaMarkup schema={serviceSchema} />
 
       <Navbar />
 

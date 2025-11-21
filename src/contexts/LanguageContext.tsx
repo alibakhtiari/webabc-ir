@@ -19,7 +19,11 @@ interface LanguageProviderProps {
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, defaultLanguage }) => {
   const initialLanguage = useLanguageDetection();
-  const [language, setLanguageState] = useState<SupportedLanguage>(defaultLanguage || initialLanguage);
+  // Ensure we always have a valid language
+  const safeDefaultLanguage = (defaultLanguage && languages[defaultLanguage]) ? defaultLanguage :
+    (initialLanguage && languages[initialLanguage]) ? initialLanguage : 'fa';
+
+  const [language, setLanguageState] = useState<SupportedLanguage>(safeDefaultLanguage);
   const router = useRouter();
   const pathname = usePathname();
   const [isInitialized, setIsInitialized] = useState(false);
@@ -92,7 +96,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, de
         language,
         setLanguage,
         t,
-        languageMeta: languages[language],
+        languageMeta: languages[language] || languages.fa,
         getSeoTitle: getContextSeoTitle,
         getSeoDescription: getContextSeoDescription,
         translations
