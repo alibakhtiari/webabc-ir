@@ -5,7 +5,7 @@ date: 2025-01-18
 author: Sarah Johnson
 category: Web Design
 tags: [Mobile Design, Responsive Design, UX, UI]
-image: /src/assets/blog-web-design.jpg
+image: /images/blog-web-design.jpg
 readTime: 7
 keyTakeaways:
   - Mobile-first design prioritizes mobile experience before scaling up to desktop

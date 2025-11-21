@@ -5,7 +5,7 @@ date: 2025-01-15
 author: WebABC Team
 category: SEO
 tags: [SEO, Search Engine Optimization, Digital Marketing, Google]
-image: /src/assets/blog-seo-tips.jpg
+image: /images/blog-seo-tips.jpg
 readTime: 8
 keyTakeaways:
   - Focus on Core Web Vitals to improve page experience and rankings

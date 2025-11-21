@@ -5,7 +5,7 @@ date: 2025-01-15
 author: فريق WebABC
 category: SEO
 tags: [سيو, تحسين محركات البحث, التسويق الرقمي, جوجل]
-image: /src/assets/blog-seo-tips.jpg
+image: /images/blog-seo-tips.jpg
 readTime: 8
 keyTakeaways:
   - التركيز على مؤشرات الويب الأساسية لتحسين تجربة الصفحة والترتيب

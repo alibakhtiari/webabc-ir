@@ -5,7 +5,7 @@ date: 2025-01-20
 author: فريق WebABC
 category: تطوير الويب
 tags: [ووردبريس, التطوير المخصص, تصميم الويب, نظام إدارة المحتوى]
-image: /src/assets/wordpress-hero.jpg
+image: /images/wordpress-hero.jpg
 readTime: 6
 ---
 
