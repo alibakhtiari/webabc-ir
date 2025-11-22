@@ -1,5 +1,8 @@
-name = "webabc-next"
-compatibility_date = "2025-10-12"
-compatibility_flags = ["nodejs_compat"]
-
-pages_build_output_dir = ".vercel/output/static"
+  main = ".open-next/worker.js"
+  name = "webabc-next"
+  compatibility_date = "2025-03-25"
+  account_id = "ac07c7450925ccb475ebfc9ab75103e1"
+  compatibility_flags = ["nodejs_compat"]
+  [assets]
+  directory = ".open-next/assets"
+  binding = "ASSETS"
