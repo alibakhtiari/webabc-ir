@@ -1,11 +1,13 @@
 {
   "localSeoTitle": "خدمات سئو محلی",
-  "localSeoDescription": "با خدمات سئوی محلی متخصص ما، توسط مشتریان در منطقه محلی خود دیده شوید.",
-  "feature.gmb": "بهینه سازی Google My Business",
-  "feature.localKeywords": "هدف قرار دادن کلمات کلیدی محلی",
-  "feature.nearMe": "بهینه سازی \"نزدیک من\"",
-  "feature.localLinks": "ساخت لینک محلی",
-  "feature.reviews": "مدیریت نظرات",
-  "feature.localReports": "گزارش سئوی محلی",
-  "keywords": "سئو محلی, Google My Business, نزدیک من, خدمات سئو"
+  "localSeoDescription": "با خدمات تخصصی سئو محلی ما، توسط مشتریان در منطقه خود دیده شوید.",
+  "feature": {
+    "gmb": "بهینه‌سازی پروفایل کسب‌وکار گوگل",
+    "localKeywords": "هدف‌گذاری کلمات کلیدی محلی",
+    "nearMe": "بهینه‌سازی برای جستجوهای «نزدیک من»",
+    "localLinks": "لینک‌سازی محلی",
+    "reviews": "مدیریت نظرات",
+    "localReports": "گزارش‌دهی سئو محلی"
+  },
+  "keywords": "سئو محلی, گوگل بیزینس, نزدیک من, خدمات سئو"
 }

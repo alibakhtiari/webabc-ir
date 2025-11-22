@@ -100,6 +100,16 @@ import enTools from './en/tools.json';
 import faTools from './fa/tools.json';
 import arTools from './ar/tools.json';
 
+// SEO Service translations
+import enSeoService from './en/seo-service.json';
+import faSeoService from './fa/seo-service.json';
+import arSeoService from './ar/seo-service.json';
+
+// Web Design translations
+import enWebDesign from './en/web-design.json';
+import faWebDesign from './fa/web-design.json';
+import arWebDesign from './ar/web-design.json';
+
 // Define the translations object with proper typing
 export interface TranslationsType {
   [language: string]: {
@@ -112,6 +122,7 @@ export const translations: TranslationsType = {
   en: {
     common: enCommon,
     seo: enSeo,
+    seoService: enSeoService,
     services: enServices,
     wordpress: enWordpress,
     about: enAbout,
@@ -127,6 +138,7 @@ export const translations: TranslationsType = {
     consultation: enConsultation,
     localSeo: enLocalSeo,
     webDevelopmentServices: enWebDevelopmentServices,
+    webDesign: enWebDesign,
     serviceAreas: enServiceAreas,
     tools: enTools,
     faq: enFaq
@@ -134,6 +146,7 @@ export const translations: TranslationsType = {
   fa: {
     common: faCommon,
     seo: faSeo,
+    seoService: faSeoService,
     services: faServices,
     wordpress: faWordpress,
     about: faAbout,
@@ -149,6 +162,7 @@ export const translations: TranslationsType = {
     consultation: faConsultation,
     localSeo: faLocalSeo,
     webDevelopmentServices: faWebDevelopmentServices,
+    webDesign: faWebDesign,
     serviceAreas: faServiceAreas,
     tools: faTools,
     faq: faFaq
@@ -156,6 +170,7 @@ export const translations: TranslationsType = {
   ar: {
     common: arCommon,
     seo: arSeo,
+    seoService: arSeoService,
     services: arServices,
     wordpress: arWordpress,
     about: arAbout,
@@ -171,6 +186,7 @@ export const translations: TranslationsType = {
     consultation: arConsultation,
     localSeo: arLocalSeo,
     webDevelopmentServices: arWebDevelopmentServices,
+    webDesign: arWebDesign,
     serviceAreas: arServiceAreas,
     tools: arTools,
     faq: arFaq

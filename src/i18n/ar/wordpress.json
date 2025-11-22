@@ -41,6 +41,10 @@
       }
     ]
   },
+  "themeCustomization": "تخصيص القوالب",
+  "pluginDevelopment": "تطوير الإضافات",
+  "ecommerceSetup": "إعداد المتجر الإلكتروني",
+  "maintenanceSupport": "الصيانة والدعم",
   "customTheme": "تصميم قالب مخصص",
   "customThemeDesc": "تصميم قالب ووردبريس فريد واحترافي مصمم خصيصًا لهوية علامتك التجارية",
   "woocommerce": "إعداد متجر ووكومرس",

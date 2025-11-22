@@ -41,10 +41,10 @@ const LocalSeo = () => {
             <div className="max-w-3xl mx-auto text-center">
               <Breadcrumb />
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                {t('seo.localSeo')}
+                {t('localSeo.localSeoTitle')}
               </h1>
               <p className="text-xl text-gray-600">
-                {t('seo.localSeoDesc')}
+                {t('localSeo.localSeoDescription')}
               </p>
             </div>
           </div>
@@ -57,33 +57,33 @@ const LocalSeo = () => {
               {[
                 {
                   icon: <Globe className="w-10 h-10 text-primary" />,
-                  title: t('seo.feature.gmb'),
-                  description: t('seo.feature.gmb')
+                  title: t('localSeo.feature.gmb'),
+                  description: t('localSeo.feature.gmb')
                 },
                 {
                   icon: <Target className="w-10 h-10 text-primary" />,
-                  title: t('seo.feature.localKeywords'),
-                  description: t('seo.feature.localKeywords')
+                  title: t('localSeo.feature.localKeywords'),
+                  description: t('localSeo.feature.localKeywords')
                 },
                 {
                   icon: <Search className="w-10 h-10 text-primary" />,
-                  title: t('seo.feature.nearMe'),
-                  description: t('seo.feature.nearMe')
+                  title: t('localSeo.feature.nearMe'),
+                  description: t('localSeo.feature.nearMe')
                 },
                 {
                   icon: <MapPin className="w-10 h-10 text-primary" />,
-                  title: t('seo.feature.localLinks'),
-                  description: t('seo.feature.localLinks')
+                  title: t('localSeo.feature.localLinks'),
+                  description: t('localSeo.feature.localLinks')
                 },
                 {
                   icon: <FileCheck className="w-10 h-10 text-primary" />,
-                  title: t('seo.feature.reviews'),
-                  description: t('seo.feature.reviews')
+                  title: t('localSeo.feature.reviews'),
+                  description: t('localSeo.feature.reviews')
                 },
                 {
                   icon: <BarChart className="w-10 h-10 text-primary" />,
-                  title: t('seo.feature.localReports'),
-                  description: t('seo.feature.localReports')
+                  title: t('localSeo.feature.localReports'),
+                  description: t('localSeo.feature.localReports')
                 }
               ].map((feature, index) => (
                 <div key={index} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">

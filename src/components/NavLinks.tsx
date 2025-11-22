@@ -118,7 +118,7 @@ export const ServiceLink = ({ to, title, description, icon }: ServiceLinkProps) 
         className="flex items-center gap-3 text-gray-800 hover:text-primary transition-colors group/link"
       >
         <span className="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-100 group-hover/link:bg-primary/10 transition-colors">
-          {React.cloneElement(icon as React.ReactElement, {
+          {React.cloneElement(icon as React.ReactElement<{ className?: string }>, {
             className: "h-5 w-5 text-gray-500 group-hover/link:text-primary"
           })}
         </span>

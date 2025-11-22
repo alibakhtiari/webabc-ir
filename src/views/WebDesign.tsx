@@ -28,8 +28,8 @@ const WebDesign = () => {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": t('services.webDevelopmentTitle'),
-    "description": t('services.webDevelopmentDescription'),
+    "name": t('webDesign.title'),
+    "description": t('webDesign.description'),
     "provider": {
       "@type": "Organization",
       "name": language === 'en' ? 'WebABC' : language === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث',
@@ -45,14 +45,14 @@ const WebDesign = () => {
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: t('common.home'), item: `${origin}/${language}` },
     { name: t('common.services'), item: `${origin}/${language}/services` },
-    { name: t('services.webDevelopmentTitle'), item: `${origin}/${language}/web-design` }
+    { name: t('webDesign.title'), item: `${origin}/${language}/web-design` }
   ]);
 
   return (
     <div dir={language === 'en' ? 'ltr' : 'rtl'}>
       <SEOHead
-        title={t('services.webDevelopmentTitle')}
-        description={t('services.webDevelopmentDescription')}
+        title={t('webDesign.title')}
+        description={t('webDesign.description')}
         keywords="web design, web development, responsive design, UI/UX design, WordPress, React"
       />
       <SchemaMarkup schema={[serviceSchema, breadcrumbSchema]} />
@@ -67,8 +67,8 @@ const WebDesign = () => {
             </div>
             <div className="flex flex-col lg:flex-row items-center gap-12">
               <div className="lg:w-1/2 animate-fade-up">
-                <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('services.webDevelopmentTitle')}</h1>
-                <p className="text-xl text-gray-700 mb-8">{t('services.webDevelopmentDescription')}</p>
+                <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('webDesign.title')}</h1>
+                <p className="text-xl text-gray-700 mb-8">{t('webDesign.description')}</p>
                 <div className="flex flex-wrap gap-4">
                   <button className="px-6 py-3 bg-primary text-white rounded-lg shadow-lg hover:shadow-xl transition-all">
                     {t('common.freeConsultation')}
@@ -98,7 +98,7 @@ const WebDesign = () => {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12 animate-fade-up">
-              {t('services.ourServices')}
+              {t('webDesign.ourServices')}
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -106,9 +106,9 @@ const WebDesign = () => {
                 <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                   <span className="text-primary text-2xl">✦</span>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{t('services.feature.uiuxDesign')}</h3>
+                <h3 className="text-xl font-bold mb-3">{t('webDesign.features.uiux.title')}</h3>
                 <p className="text-gray-600">
-                  Professional UI/UX design that ensures your website is not only beautiful but also user-friendly and effective.
+                  {t('webDesign.features.uiux.description')}
                 </p>
               </div>
 
@@ -116,9 +116,9 @@ const WebDesign = () => {
                 <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                   <span className="text-primary text-2xl">✦</span>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{t('services.feature.responsiveDesign')}</h3>
+                <h3 className="text-xl font-bold mb-3">{t('webDesign.features.responsive.title')}</h3>
                 <p className="text-gray-600">
-                  Fully responsive websites that look and function perfectly on all devices and screen sizes.
+                  {t('webDesign.features.responsive.description')}
                 </p>
               </div>
 
@@ -126,9 +126,9 @@ const WebDesign = () => {
                 <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                   <span className="text-primary text-2xl">✦</span>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{t('wordpress.themeCustomization')}</h3>
+                <h3 className="text-xl font-bold mb-3">{t('webDesign.features.wordpress.title')}</h3>
                 <p className="text-gray-600">
-                  Custom WordPress themes and plugins tailored to your specific business requirements.
+                  {t('webDesign.features.wordpress.description')}
                 </p>
               </div>
 
@@ -136,9 +136,9 @@ const WebDesign = () => {
                 <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                   <span className="text-primary text-2xl">✦</span>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{t('services.feature.reactNextjs')}</h3>
+                <h3 className="text-xl font-bold mb-3">{t('webDesign.features.react.title')}</h3>
                 <p className="text-gray-600">
-                  Modern web applications built with React.js and Next.js for superior performance and user experience.
+                  {t('webDesign.features.react.description')}
                 </p>
               </div>
 
@@ -146,9 +146,9 @@ const WebDesign = () => {
                 <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                   <span className="text-primary text-2xl">✦</span>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{t('wordpress.ecommerceSetup')}</h3>
+                <h3 className="text-xl font-bold mb-3">{t('webDesign.features.ecommerce.title')}</h3>
                 <p className="text-gray-600">
-                  E-commerce solutions with WooCommerce, Shopify, or custom platforms to sell your products or services online.
+                  {t('webDesign.features.ecommerce.description')}
                 </p>
               </div>
 
@@ -156,9 +156,9 @@ const WebDesign = () => {
                 <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                   <span className="text-primary text-2xl">✦</span>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{t('wordpress.seoOptimization')}</h3>
+                <h3 className="text-xl font-bold mb-3">{t('webDesign.features.seo.title')}</h3>
                 <p className="text-gray-600">
-                  SEO-friendly website architecture and optimization for better search engine visibility and ranking.
+                  {t('webDesign.features.seo.description')}
                 </p>
               </div>
             </div>
@@ -169,7 +169,7 @@ const WebDesign = () => {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12 animate-fade-up">
-              Our Web Design Process
+              {t('webDesign.process.title')}
             </h2>
 
             <div className="relative">
@@ -179,32 +179,32 @@ const WebDesign = () => {
               {/* Timeline steps */}
               <div className="space-y-12">
                 <TimelineItem
-                  title="Discovery & Planning"
-                  description="We analyze your requirements, target audience, and business goals to create a comprehensive project plan."
+                  title={t('webDesign.process.step1.title')}
+                  description={t('webDesign.process.step1.description')}
                   index={1}
                   isLeft={true}
                 />
                 <TimelineItem
-                  title="Wireframing & Prototyping"
-                  description="We create wireframes and interactive prototypes to visualize the user interface and experience."
+                  title={t('webDesign.process.step2.title')}
+                  description={t('webDesign.process.step2.description')}
                   index={2}
                   isLeft={false}
                 />
                 <TimelineItem
-                  title="Design & Development"
-                  description="Our designers and developers work together to create a visually stunning and technically robust website."
+                  title={t('webDesign.process.step3.title')}
+                  description={t('webDesign.process.step3.description')}
                   index={3}
                   isLeft={true}
                 />
                 <TimelineItem
-                  title="Testing & Quality Assurance"
-                  description="We rigorously test the website for functionality, compatibility, and performance across all devices."
+                  title={t('webDesign.process.step4.title')}
+                  description={t('webDesign.process.step4.description')}
                   index={4}
                   isLeft={false}
                 />
                 <TimelineItem
-                  title="Launch & Support"
-                  description="We deploy your website and provide ongoing support and maintenance to keep it running smoothly."
+                  title={t('webDesign.process.step5.title')}
+                  description={t('webDesign.process.step5.description')}
                   index={5}
                   isLeft={true}
                 />
@@ -217,7 +217,7 @@ const WebDesign = () => {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12 animate-fade-up">
-              Technologies We Use
+              {t('webDesign.technologies.title')}
             </h2>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -237,10 +237,10 @@ const WebDesign = () => {
         <section className="py-16 bg-primary text-white">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl font-bold mb-6 animate-fade-up">
-              {t('services.ctaTitle')}
+              {t('webDesign.cta.title')}
             </h2>
             <p className="text-xl max-w-3xl mx-auto mb-8 animate-fade-up" style={{ animationDelay: '0.1s' }}>
-              {t('services.ctaDescription')}
+              {t('webDesign.cta.description')}
             </p>
             <button className="px-8 py-4 bg-white text-primary rounded-lg shadow-lg hover:shadow-xl transition-all font-bold animate-fade-up" style={{ animationDelay: '0.2s' }}>
               {t('common.freeConsultation')}
