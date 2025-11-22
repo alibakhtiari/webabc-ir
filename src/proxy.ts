@@ -65,7 +65,7 @@ export const config = {
          * - assets (other static assets)
          * - src (source directory - contains assets)
          */
-        '/((?!api|_next/static|_next/image|favicon.ico|fonts|images|blog|assets|src).*)',
+        '/((?!api|_next/static|_next/image|favicon.ico|placeholder.svg|fonts|images|blog|assets|src).*)',
     ],
 };
 

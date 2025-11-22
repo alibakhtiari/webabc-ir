@@ -1,4 +1,3 @@
-
 {
   "title": "Our Portfolio",
   "description": "Explore our successful projects across various industries",
@@ -20,6 +19,9 @@
   "viewProject": "View Project",
   "projectDetails": "Project Details",
   "projectOverview": "Project Overview",
+  "keyResults": "Key Results",
+  "needSimilarProject": "Need a Similar Project?",
+  "ctaDescription": "Contact us today to discuss your project requirements and get a free quote.",
   "caseStudies": {
     "title": "Case Studies",
     "subtitle": "Success Stories and Case Studies",
