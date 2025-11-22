@@ -18,7 +18,7 @@ const WordpressWoocommerceDevelopment = () => {
         t('wordpress.title'),
         t('wordpress.subtitle'),
         `https://webabc.com/${language}/wordpress-woocommerce-development`,
-        "https://webabc.com/images/wordpress.jpg",
+        "https://webabc.com/images/wordpress.webp",
         "WebABC",
         "Worldwide",
         language

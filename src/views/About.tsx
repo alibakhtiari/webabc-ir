@@ -27,7 +27,7 @@ const About = () => {
     // Organization schema
     const orgSchema = createOrganizationSchema(
       baseUrl,
-      `${baseUrl}/images/logo.jpg`,
+      `${baseUrl}/images/logo.webp`,
       [
         { telephone: "+1234567890", contactType: "customer service" }
       ],

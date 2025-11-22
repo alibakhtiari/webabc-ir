@@ -24,7 +24,7 @@ const Home: React.FC = () => {
   // Create organization schema for SEO
   const organizationSchema = origin ? createOrganizationSchema(
     origin,
-    "/images/logo.jpg",
+    "/images/logo.webp",
     [{ telephone: "+98123456789", contactType: "customer service" }],
     language
   ) : null;
