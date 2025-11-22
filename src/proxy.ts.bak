@@ -53,18 +53,6 @@ export function proxy(request: NextRequest) {
 
 export const config = {
     matcher: [
-        /*
-         * Match all request paths except for the ones starting with:
-         * - api (API routes)
-         * - _next/static (static files)
-         * - _next/image (image optimization files)
-         * - favicon.ico (favicon file)
-         * - fonts (static fonts)
-         * - images (static images)
-         * - blog (static blog markdown files)
-         * - assets (other static assets)
-         * - src (source directory - contains assets)
-         */
         '/((?!api|_next/static|_next/image|favicon.ico|placeholder.svg|fonts|images|blog|assets|src).*)',
     ],
 };

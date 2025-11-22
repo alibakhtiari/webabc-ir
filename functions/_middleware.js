@@ -1,5 +1,8 @@
-// Cloudflare Pages Function for handling redirects and serving static assets
+// Cloudflare Pages Function for handling redirects and locale-based routing
 // Plain JavaScript version to avoid TypeScript compilation issues
+
+const locales = ["en", "fa", "ar"];
+const defaultLocale = "fa";
 
 // Define the country-to-language mappings
 const persianCountries = new Set(['IR', 'AF', 'TJ']); // Iran, Afghanistan, Tajikistan
@@ -12,14 +15,30 @@ const arabianCountries = new Set([
 export async function onRequest(context) {
     const { request, next } = context;
     const url = new URL(request.url);
+    const pathname = url.pathname;
 
-    // Skip redirects for static assets (CSS, JS, images, fonts, etc.)
-    const isAsset = /\.(css|js|json|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|webp|mp4|webm)$/i.test(url.pathname) ||
-        url.pathname.startsWith('/assets/') ||
-        url.pathname.startsWith('/fonts/') ||
-        url.pathname.startsWith('/images/');
+    console.log(`[Middleware] Processing request for: ${pathname}`);
 
-    if (isAsset) {
+    // Skip redirection for static SEO files
+    if (pathname.match(/^\/(sitemap.*\.xml|robots\.txt)$/)) {
+        return next();
+    }
+
+    // Skip redirects for Next.js internal routes and static assets
+    const skipPatterns = [
+        /^\/api\//,
+        /^\/_next\//,
+        /^\/favicon\.ico$/,
+        /^\/placeholder\.svg$/,
+        /\.(css|js|json|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|webp|mp4|webm)$/i,
+        /^\/fonts\//,
+        /^\/images\//,
+        /^\/blog\//,
+        /^\/assets\//,
+        /^\/src\//
+    ];
+
+    if (skipPatterns.some(pattern => pattern.test(pathname))) {
         return next();
     }
 
@@ -31,21 +50,37 @@ export async function onRequest(context) {
     }
 
     // --- 2. Geolocation Language Redirect ---
-    const country = request.headers.get('cf-ipcountry')?.toUpperCase();
-    const hasLangCode = /^\/(en|fa|ar)(\/|$)/.test(url.pathname);
+    // Check if the pathname already has a locale
+    const pathnameHasLocale = locales.some(
+        (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+    );
 
-    if (country && !hasLangCode) {
-        let lang = 'en'; // Default to English
-        if (persianCountries.has(country)) {
-            lang = 'fa';
-        } else if (arabianCountries.has(country)) {
-            lang = 'ar';
+    if (!pathnameHasLocale) {
+        // Detect country from Cloudflare header
+        const country = request.headers.get('cf-ipcountry')?.toUpperCase();
+        console.log(`[Middleware] Detected country: ${country || 'None (Local)'}`);
+
+        let targetLocale = defaultLocale;
+
+        if (country) {
+            if (persianCountries.has(country)) {
+                targetLocale = 'fa';
+            } else if (arabianCountries.has(country)) {
+                targetLocale = 'ar';
+            } else {
+                // Fallback to 'fa' as default for all other countries
+                targetLocale = 'fa';
+            }
         }
 
-        const redirectUrl = `https://${url.hostname}/${lang}${url.pathname}${url.search}${url.hash}`;
+        // Redirect to the target locale
+        const newPath = pathname === '/' ? `/${targetLocale}` : `/${targetLocale}${pathname}`;
+        console.log(`[Middleware] Redirecting to: ${newPath}`);
+
+        const redirectUrl = `https://${url.hostname}${newPath}${url.search}${url.hash}`;
         return Response.redirect(redirectUrl, 302);
     }
 
-    // Continue to the next middleware or serve the static asset
+    // Continue to the next middleware or serve the page
     return next();
 }
