@@ -1,0 +1,61 @@
+{
+    "title": "Web Design & Development",
+    "description": "Custom web design and development solutions tailored to your business needs.",
+    "ourServices": "Our Web Design Services",
+    "features": {
+        "uiux": {
+            "title": "UI/UX Design",
+            "description": "Professional UI/UX design that ensures your website is not only beautiful but also user-friendly and effective."
+        },
+        "responsive": {
+            "title": "Responsive Design",
+            "description": "Fully responsive websites that look and function perfectly on all devices and screen sizes."
+        },
+        "wordpress": {
+            "title": "WordPress Customization",
+            "description": "Custom WordPress themes and plugins tailored to your specific business requirements."
+        },
+        "react": {
+            "title": "React & Next.js",
+            "description": "Modern web applications built with React.js and Next.js for superior performance and user experience."
+        },
+        "ecommerce": {
+            "title": "E-commerce Solutions",
+            "description": "E-commerce solutions with WooCommerce, Shopify, or custom platforms to sell your products or services online."
+        },
+        "seo": {
+            "title": "SEO Optimization",
+            "description": "SEO-friendly website architecture and optimization for better search engine visibility and ranking."
+        }
+    },
+    "process": {
+        "title": "Our Web Design Process",
+        "step1": {
+            "title": "Discovery & Planning",
+            "description": "We analyze your requirements, target audience, and business goals to create a comprehensive project plan."
+        },
+        "step2": {
+            "title": "Wireframing & Prototyping",
+            "description": "We create wireframes and interactive prototypes to visualize the user interface and experience."
+        },
+        "step3": {
+            "title": "Design & Development",
+            "description": "Our designers and developers work together to create a visually stunning and technically robust website."
+        },
+        "step4": {
+            "title": "Testing & Quality Assurance",
+            "description": "We rigorously test the website for functionality, compatibility, and performance across all devices."
+        },
+        "step5": {
+            "title": "Launch & Support",
+            "description": "We deploy your website and provide ongoing support and maintenance to keep it running smoothly."
+        }
+    },
+    "technologies": {
+        "title": "Technologies We Use"
+    },
+    "cta": {
+        "title": "Ready to Transform Your Online Presence?",
+        "description": "Contact us today to discuss your web design project and let us help you build a website that drives results."
+    }
+}

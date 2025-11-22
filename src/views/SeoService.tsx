@@ -31,8 +31,8 @@ const SeoService = () => {
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": t('seo.title'),
-    "description": t('seo.subtitle'),
+    "name": t('seoService.title'),
+    "description": t('seoService.subtitle'),
     "provider": {
       "@type": "Organization",
       "name": language === 'en' ? 'WebABC' : language === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث',
@@ -48,14 +48,14 @@ const SeoService = () => {
   const breadcrumbSchema = createBreadcrumbSchema([
     { name: t('common.home'), item: `${origin}/${language}` },
     { name: t('common.services'), item: `${origin}/${language}/services` },
-    { name: t('seo.title'), item: `${origin}/${language}/seo-services` }
+    { name: t('seoService.title'), item: `${origin}/${language}/seo-services` }
   ]);
 
   return (
     <div dir={language === 'en' ? 'ltr' : 'rtl'} className={language === 'en' ? 'font-sans' : 'font-arabic'}>
       <SEOHead
-        title={t('seo.title')}
-        description={t('seo.subtitle')}
+        title={t('seoService.title')}
+        description={t('seoService.subtitle')}
         keywords="seo, search engine optimization, keyword research, content strategy, link building, technical seo"
       />
       <SchemaMarkup schema={[serviceSchema, breadcrumbSchema]} />
@@ -70,8 +70,8 @@ const SeoService = () => {
             </div>
             <div className="flex flex-col lg:flex-row items-center gap-12">
               <div className="lg:w-1/2 animate-fadeInLeft">
-                <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('seo.title')}</h1>
-                <p className="text-xl text-gray-700 mb-8">{t('seo.subtitle')}</p>
+                <h1 className="text-4xl md:text-5xl font-bold mb-6">{t('seoService.title')}</h1>
+                <p className="text-xl text-gray-700 mb-8">{t('seoService.subtitle')}</p>
                 <div className="flex flex-wrap gap-4">
                   <button className="px-6 py-3 bg-primary text-white rounded-lg shadow-lg hover:shadow-xl transition-all">
                     {t('common.freeConsultation')}
@@ -101,19 +101,19 @@ const SeoService = () => {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12 animate-fadeInUp">
-              {t('seo.servicesTitle')}
+              {t('seoService.servicesTitle')}
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <SeoServiceCard
                 icon={<Search className="w-6 h-6" />}
-                title={t('seo.onPageSeo')}
-                description={t('seo.contentStrategyDesc')}
+                title={t('seoService.onPageSeo')}
+                description={t('seoService.contentStrategyDesc')}
                 features={[
-                  t('seo.feature.keywordResearch'),
-                  t('seo.feature.qualityContent'),
-                  t('seo.feature.titleOptimization'),
-                  t('seo.feature.headings')
+                  t('seoService.feature.keywordResearch'),
+                  t('seoService.feature.qualityContent'),
+                  t('seoService.feature.titleOptimization'),
+                  t('seoService.feature.headings')
                 ]}
                 color="bg-blue-50"
                 iconColor="text-blue-600"
@@ -121,13 +121,13 @@ const SeoService = () => {
 
               <SeoServiceCard
                 icon={<Globe className="w-6 h-6" />}
-                title={t('seo.technicalSeo')}
-                description={t('seo.technicalSeoDesc')}
+                title={t('seoService.technicalSeo')}
+                description={t('seoService.technicalSeoDesc')}
                 features={[
-                  t('seo.feature.pageSpeed'),
-                  t('seo.feature.technicalErrors'),
-                  t('seo.feature.urlStructure'),
-                  t('seo.feature.schema')
+                  t('seoService.feature.pageSpeed'),
+                  t('seoService.feature.technicalErrors'),
+                  t('seoService.feature.urlStructure'),
+                  t('seoService.feature.schema')
                 ]}
                 color="bg-green-50"
                 iconColor="text-green-600"
@@ -135,13 +135,13 @@ const SeoService = () => {
 
               <SeoServiceCard
                 icon={<LinkIcon className="w-6 h-6" />}
-                title={t('seo.offPageSeo')}
-                description={t('seo.offPageSeoDesc')}
+                title={t('seoService.offPageSeo')}
+                description={t('seoService.offPageSeoDesc')}
                 features={[
-                  t('seo.feature.linkProfile'),
-                  t('seo.feature.linkOpportunities'),
-                  t('seo.feature.linkableContent'),
-                  t('seo.feature.authorityLinks')
+                  t('seoService.feature.linkProfile'),
+                  t('seoService.feature.linkOpportunities'),
+                  t('seoService.feature.linkableContent'),
+                  t('seoService.feature.authorityLinks')
                 ]}
                 color="bg-purple-50"
                 iconColor="text-purple-600"
@@ -149,13 +149,13 @@ const SeoService = () => {
 
               <SeoServiceCard
                 icon={<PieChart className="w-6 h-6" />}
-                title={t('seo.localSeo')}
-                description={t('seo.localSeoDesc')}
+                title={t('seoService.localSeo')}
+                description={t('seoService.localSeoDesc')}
                 features={[
-                  t('seo.feature.gmb'),
-                  t('seo.feature.reviews'),
-                  t('seo.feature.localKeywords'),
-                  t('seo.feature.nearMe')
+                  t('seoService.feature.gmb'),
+                  t('seoService.feature.reviews'),
+                  t('seoService.feature.localKeywords'),
+                  t('seoService.feature.nearMe')
                 ]}
                 color="bg-amber-50"
                 iconColor="text-amber-600"
@@ -168,37 +168,37 @@ const SeoService = () => {
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12 animate-fadeInUp">
-              Our Results
+              {t('seoService.results.title')}
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              <ResultsCard number="250%" text="Average Traffic Increase" />
-              <ResultsCard number="85%" text="Clients on First Page" />
-              <ResultsCard number="120+" text="SEO Projects Completed" />
-              <ResultsCard number="30%" text="Average Conversion Lift" />
+              <ResultsCard number="250%" text={t('seoService.results.trafficIncrease')} />
+              <ResultsCard number="85%" text={t('seoService.results.firstPage')} />
+              <ResultsCard number="120+" text={t('seoService.results.projectsCompleted')} />
+              <ResultsCard number="30%" text={t('seoService.results.conversionLift')} />
             </div>
 
             <div className="mt-16">
-              <h3 className="text-2xl font-bold text-center mb-8">Featured SEO Case Studies</h3>
+              <h3 className="text-2xl font-bold text-center mb-8">{t('seoService.caseStudies.title')}</h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <CaseStudyCard
-                  title="E-commerce Traffic Growth"
-                  category="E-commerce SEO"
+                  title={t('seoService.caseStudies.ecommerce.title')}
+                  category={t('seoService.caseStudies.ecommerce.category')}
                   image="https://images.unsplash.com/photo-1460925895917-afdab827c52f"
-                  result="+250% Organic Traffic"
+                  result={t('seoService.caseStudies.ecommerce.result')}
                 />
                 <CaseStudyCard
-                  title="Local Business Domination"
-                  category="Local SEO"
+                  title={t('seoService.caseStudies.local.title')}
+                  category={t('seoService.caseStudies.local.category')}
                   image="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
-                  result="Top 3 Rankings for Key Terms"
+                  result={t('seoService.caseStudies.local.result')}
                 />
                 <CaseStudyCard
-                  title="B2B Lead Generation"
-                  category="SEO & Content Strategy"
+                  title={t('seoService.caseStudies.b2b.title')}
+                  category={t('seoService.caseStudies.b2b.category')}
                   image="https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
-                  result="+180% Inbound Leads"
+                  result={t('seoService.caseStudies.b2b.result')}
                 />
               </div>
             </div>
@@ -209,26 +209,26 @@ const SeoService = () => {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-12 animate-fadeInUp">
-              Our SEO Process
+              {t('seoService.process.title')}
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <ProcessCard
                 number="01"
-                title="Research & Analysis"
-                description="We analyze your website, competitors, and target keywords to create a comprehensive SEO strategy."
+                title={t('seoService.process.step1.title')}
+                description={t('seoService.process.step1.description')}
                 color="bg-blue-500"
               />
               <ProcessCard
                 number="02"
-                title="Implementation"
-                description="Our team implements on-page and technical SEO optimizations based on our research findings."
+                title={t('seoService.process.step2.title')}
+                description={t('seoService.process.step2.description')}
                 color="bg-green-500"
               />
               <ProcessCard
                 number="03"
-                title="Monitor & Optimize"
-                description="We continuously monitor rankings and traffic, making data-driven adjustments to improve results."
+                title={t('seoService.process.step3.title')}
+                description={t('seoService.process.step3.description')}
                 color="bg-purple-500"
               />
             </div>
@@ -267,10 +267,10 @@ const SeoService = () => {
         <section className="py-16 bg-primary text-white">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl font-bold mb-6 animate-fadeIn">
-              Ready to Improve Your Search Rankings?
+              {t('seoService.cta.title')}
             </h2>
             <p className="text-xl max-w-3xl mx-auto mb-8 animate-fadeIn delay-100">
-              Contact us today for a free website audit and SEO consultation. We'll show you exactly how we can improve your search visibility.
+              {t('seoService.cta.description')}
             </p>
             <button className="px-8 py-4 bg-white text-primary rounded-lg shadow-lg hover:shadow-xl transition-all font-bold animate-fadeInUp delay-200">
               {t('common.freeConsultation')}

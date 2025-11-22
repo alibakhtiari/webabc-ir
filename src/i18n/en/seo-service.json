@@ -1,0 +1,75 @@
+{
+    "title": "SEO & Specialized Optimization",
+    "subtitle": "Improve your website ranking in search engines using standard SEO techniques.",
+    "servicesTitle": "Our SEO Services",
+    "onPageSeo": "On-Page SEO",
+    "contentStrategyDesc": "Comprehensive content strategy and optimization",
+    "technicalSeo": "Technical SEO",
+    "technicalSeoDesc": "Optimizing site structure and performance",
+    "offPageSeo": "Off-Page SEO",
+    "offPageSeoDesc": "Building authority and backlinks",
+    "localSeo": "Local SEO",
+    "localSeoDesc": "Dominating local search results",
+    "feature": {
+        "keywordResearch": "Keyword Research",
+        "qualityContent": "Quality Content Production",
+        "titleOptimization": "Title & Meta Optimization",
+        "headings": "Heading Structure",
+        "pageSpeed": "Page Speed Optimization",
+        "technicalErrors": "Fixing Technical Errors",
+        "urlStructure": "URL Structure Optimization",
+        "schema": "Schema Markup Implementation",
+        "linkProfile": "Link Profile Analysis",
+        "linkOpportunities": "Link Building Opportunities",
+        "linkableContent": "Creating Linkable Content",
+        "authorityLinks": "High Authority Backlinks",
+        "gmb": "Google Business Profile",
+        "reviews": "Review Management",
+        "localKeywords": "Local Keyword Targeting",
+        "nearMe": "Near Me Optimization"
+    },
+    "results": {
+        "title": "Our Results",
+        "trafficIncrease": "Average Traffic Increase",
+        "firstPage": "Clients on First Page",
+        "projectsCompleted": "SEO Projects Completed",
+        "conversionLift": "Average Conversion Lift"
+    },
+    "caseStudies": {
+        "title": "Featured SEO Case Studies",
+        "ecommerce": {
+            "title": "E-commerce Traffic Growth",
+            "category": "E-commerce SEO",
+            "result": "+250% Organic Traffic"
+        },
+        "local": {
+            "title": "Local Business Domination",
+            "category": "Local SEO",
+            "result": "Top 3 Rankings for Key Terms"
+        },
+        "b2b": {
+            "title": "B2B Lead Generation",
+            "category": "SEO & Content Strategy",
+            "result": "+180% Inbound Leads"
+        }
+    },
+    "process": {
+        "title": "Our SEO Process",
+        "step1": {
+            "title": "Research & Analysis",
+            "description": "We analyze your website, competitors, and target keywords to create a comprehensive SEO strategy."
+        },
+        "step2": {
+            "title": "Implementation",
+            "description": "Our team implements on-page and technical SEO optimizations based on our research findings."
+        },
+        "step3": {
+            "title": "Monitor & Optimize",
+            "description": "We continuously monitor rankings and traffic, making data-driven adjustments to improve results."
+        }
+    },
+    "cta": {
+        "title": "Ready to Improve Your Search Rankings?",
+        "description": "Contact us today for a free website audit and SEO consultation. We'll show you exactly how we can improve your search visibility."
+    }
+}

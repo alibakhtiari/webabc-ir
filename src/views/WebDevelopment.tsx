@@ -14,8 +14,8 @@ const WebDevelopment = () => {
   const { t, languageMeta, language } = useLanguage();
 
   const serviceSchema = createServiceSchema(
-    t('services.webDevelopmentTitle'),
-    t('services.webDevelopmentDescription'),
+    t('webDevelopmentServices.webDevelopmentTitle'),
+    t('webDevelopmentServices.webDevelopmentDescription'),
     `https://webabc.com/${language}/web-development-services`,
     "https://webabc.com/images/web-development.jpg",
     "WebABC",
@@ -26,8 +26,8 @@ const WebDevelopment = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <SEOHead
-        title={t('seo.webDevTitle')}
-        description={t('seo.webDevDescription')}
+        title={t('webDevelopmentServices.title')}
+        description={t('webDevelopmentServices.webDevelopmentDescription')}
       />
       <SchemaMarkup schema={serviceSchema} />
 
@@ -40,10 +40,10 @@ const WebDevelopment = () => {
             <div className="max-w-3xl mx-auto text-center">
               <Breadcrumb />
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                {t('services.webDevelopmentTitle')}
+                {t('webDevelopmentServices.webDevelopmentTitle')}
               </h1>
               <p className="text-xl text-gray-600">
-                {t('services.webDevelopmentDescription')}
+                {t('webDevelopmentServices.webDevelopmentDescription')}
               </p>
             </div>
           </div>
@@ -53,7 +53,7 @@ const WebDevelopment = () => {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold mb-12 text-center">
-              {t('services.ourServices')}
+              {t('webDevelopmentServices.ourServices')}
             </h2>
 
             <div className="grid md:grid-cols-2 gap-8">
@@ -63,17 +63,17 @@ const WebDevelopment = () => {
                   <Layout className="w-12 h-12 text-primary" />
                 </div>
                 <h3 className="text-2xl font-semibold mb-4">
-                  {t('services.frontendDev')}
+                  {t('webDevelopmentServices.frontendDev')}
                 </h3>
                 <p className="text-gray-600 mb-6">
-                  {t('services.frontendDesc')}
+                  {t('webDevelopmentServices.frontendDesc')}
                 </p>
                 <div className="space-y-3">
                   {['uiuxDesign', 'reactNextjs', 'responsiveDesign', 'webVitals', 'animations', 'apiIntegration'].map((feature, index) => (
                     <div key={index} className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
                       <span className="text-gray-700">
-                        {t(`services.feature.${feature}`)}
+                        {t(`webDevelopmentServices.feature.${feature}`)}
                       </span>
                     </div>
                   ))}
@@ -86,17 +86,17 @@ const WebDevelopment = () => {
                   <Server className="w-12 h-12 text-primary" />
                 </div>
                 <h3 className="text-2xl font-semibold mb-4">
-                  {t('services.backendDev')}
+                  {t('webDevelopmentServices.backendDev')}
                 </h3>
                 <p className="text-gray-600 mb-6">
-                  {t('services.backendDesc')}
+                  {t('webDevelopmentServices.backendDesc')}
                 </p>
                 <div className="space-y-3">
                   {['restApi', 'python', 'nodejs', 'database', 'auth', 'cloudIntegration'].map((feature, index) => (
                     <div key={index} className="flex items-center gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
                       <span className="text-gray-700">
-                        {t(`services.feature.${feature}`)}
+                        {t(`webDevelopmentServices.feature.${feature}`)}
                       </span>
                     </div>
                   ))}
