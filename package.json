@@ -1,10 +1,11 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "webabc_next_shadcn_ts",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "next dev",
+    "deploy": "next-on-pages deploy",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

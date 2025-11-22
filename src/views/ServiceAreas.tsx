@@ -11,6 +11,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { MapPin, CheckCircle2, Globe, TrendingUp, Users } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import enServiceAreas from '@/i18n/en/service-areas.json';
 import faServiceAreas from '@/i18n/fa/service-areas.json';
 import arServiceAreas from '@/i18n/ar/service-areas.json';
@@ -33,6 +34,7 @@ interface Location {
 
 const ServiceAreas = () => {
   const { t, language, languageMeta } = useLanguage();
+  const pathname = usePathname();
   const [origin, setOrigin] = useState('');
 
   useEffect(() => {
@@ -88,7 +90,7 @@ const ServiceAreas = () => {
         "@type": "ListItem",
         position: 2,
         name: t('service-areas.title'),
-        item: typeof window !== 'undefined' ? window.location.href : ''
+        item: `${origin}${pathname}`
       }
     ]
   };

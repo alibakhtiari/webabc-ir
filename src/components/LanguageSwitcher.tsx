@@ -66,6 +66,25 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
     );
   }
 
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <Button
+        variant="ghost"
+        size="sm"
+        className={cn("flex items-center gap-1", className)}
+      >
+        <Globe className="h-4 w-4" />
+        <span>{languageMeta.nativeName}</span>
+      </Button>
+    );
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

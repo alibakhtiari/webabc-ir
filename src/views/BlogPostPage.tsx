@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useMemo } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useParams } from 'next/navigation';
+import { useParams, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -19,6 +19,7 @@ import ReactMarkdown from 'react-markdown';
 const BlogPostPage: React.FC = () => {
   const { t, language, languageMeta } = useLanguage();
   const params = useParams();
+  const pathname = usePathname();
   const slug = params?.slug as string;
   const [post, setPost] = useState<BlogPost | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -150,7 +151,7 @@ const BlogPostPage: React.FC = () => {
         "@type": "ListItem",
         position: 3,
         name: post.title,
-        item: typeof window !== 'undefined' ? window.location.href : ''
+        item: `${origin}${pathname}`
       }
     ]
   };

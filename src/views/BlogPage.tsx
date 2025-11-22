@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -21,6 +22,7 @@ const BlogPage: React.FC = () => {
   const [categories, setCategories] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [isLoading, setIsLoading] = useState(true);
+  const pathname = usePathname();
   const [origin, setOrigin] = useState('');
 
   useEffect(() => {
@@ -60,7 +62,7 @@ const BlogPage: React.FC = () => {
     "@type": "Blog",
     name: t('blog.title'),
     description: t('blog.blogDescription'),
-    url: typeof window !== 'undefined' ? window.location.href : '',
+    url: `${origin}${pathname}`,
     blogPost: filteredPosts.slice(0, 10).map(post => ({
       "@type": "BlogPosting",
       headline: post.title,
@@ -89,7 +91,7 @@ const BlogPage: React.FC = () => {
         "@type": "ListItem",
         position: 2,
         name: t('blog.title'),
-        item: typeof window !== 'undefined' ? window.location.href : ''
+        item: `${origin}${pathname}`
       }
     ]
   };

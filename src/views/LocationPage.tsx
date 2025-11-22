@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo, useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams, useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navbar from '@/components/Navbar';
@@ -34,8 +34,9 @@ interface LocationData {
 
 const LocationPage = () => {
   const params = useParams();
-  const slug = params?.slug as string;
+  const slug = (params?.location || params?.slug) as string;
   const router = useRouter();
+  const pathname = usePathname();
   const { t, language, languageMeta } = useLanguage();
   const [origin, setOrigin] = useState('');
 
@@ -119,7 +120,7 @@ const LocationPage = () => {
         "@type": "ListItem",
         position: 3,
         name: location.name,
-        item: typeof window !== 'undefined' ? window.location.href : ''
+        item: `${origin}${pathname}`
       }
     ]
   };

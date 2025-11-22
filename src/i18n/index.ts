@@ -125,9 +125,9 @@ export const translations: TranslationsType = {
     caseStudies: enCaseStudies,
     notFound: enNotFound,
     consultation: enConsultation,
-    "local-seo": enLocalSeo,
-    "web-development-services": enWebDevelopmentServices,
-    "service-areas": enServiceAreas,
+    localSeo: enLocalSeo,
+    webDevelopmentServices: enWebDevelopmentServices,
+    serviceAreas: enServiceAreas,
     tools: enTools,
     faq: enFaq
   },
@@ -147,9 +147,9 @@ export const translations: TranslationsType = {
     caseStudies: faCaseStudies,
     notFound: faNotFound,
     consultation: faConsultation,
-    "local-seo": faLocalSeo,
-    "web-development-services": faWebDevelopmentServices,
-    "service-areas": faServiceAreas,
+    localSeo: faLocalSeo,
+    webDevelopmentServices: faWebDevelopmentServices,
+    serviceAreas: faServiceAreas,
     tools: faTools,
     faq: faFaq
   },
@@ -169,9 +169,9 @@ export const translations: TranslationsType = {
     caseStudies: arCaseStudies,
     notFound: arNotFound,
     consultation: arConsultation,
-    "local-seo": arLocalSeo,
-    "web-development-services": arWebDevelopmentServices,
-    "service-areas": arServiceAreas,
+    localSeo: arLocalSeo,
+    webDevelopmentServices: arWebDevelopmentServices,
+    serviceAreas: arServiceAreas,
     tools: arTools,
     faq: arFaq
   }

@@ -1,4 +1,5 @@
-name = "webabc"
+name = "webabc-next"
 compatibility_date = "2025-10-12"
+compatibility_flags = ["nodejs_compat"]
 
-pages_build_output_dir = "./dist"
+pages_build_output_dir = ".vercel/output/static"

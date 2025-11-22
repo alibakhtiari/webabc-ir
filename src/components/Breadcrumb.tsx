@@ -74,7 +74,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customItems }) => {
           case 'resources':
             name = t('common.resources');
             break;
-          case 'local-seo-services':
+          case 'local-seo':
             name = t('seo.localSeo');
             break;
           case 'wordpress-woocommerce-development':

@@ -1,4 +1,3 @@
-
 {
   "title": "معرض أعمالنا",
   "description": "استكشف مشاريعنا الناجحة عبر مختلف الصناعات",
@@ -16,6 +15,13 @@
   "results": "النتائج",
   "testimonial": "شهادة العميل",
   "relatedProjects": "مشاريع ذات صلة",
+  "viewDetails": "عرض التفاصيل",
+  "viewProject": "عرض المشروع",
+  "projectDetails": "تفاصيل المشروع",
+  "projectOverview": "نظرة عامة على المشروع",
+  "keyResults": "النتائج الرئيسية",
+  "needSimilarProject": "هل تحتاج إلى مشروع مماثل؟",
+  "ctaDescription": "اتصل بنا اليوم لمناقشة متطلبات مشروعك والحصول على عرض أسعار مجاني.",
   "caseStudies": {
     "title": "دراسات الحالة",
     "subtitle": "قصص النجاح ودراسات الحالة",
