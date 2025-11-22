@@ -1,69 +1,254 @@
-# Welcome to your Lovable project
+# WebABC - Next.js Multilingual Digital Marketing Website
 
-## Project info
+A modern, multilingual digital marketing and web development agency website built with Next.js 16, deployed on Cloudflare Pages.
 
-**URL**: https://lovable.dev/projects/5e18d1f6-cbc2-499b-b83d-5cac5946cf41
+## 🌍 Supported Languages
 
-## How can I edit this code?
+- **English (en)** - Default for international visitors
+- **Persian/Farsi (fa)** - Default for visitors from Iran, Afghanistan, Tajikistan
+- **Arabic (ar)** - Default for visitors from GCC countries and Middle East
 
-There are several ways of editing your application.
+## 🚀 Features
 
-**Use Lovable**
+- **Multilingual i18n**: Automatic language detection based on visitor's country (Cloudflare geolocation)
+- **Dynamic Routing**: All pages support dynamic language switching with `/[lang]/` prefix
+- **SEO Optimized**: 
+  - Dynamic meta tags for each language
+  - JSON-LD Schema markup for organization, services, articles
+  - Sitemap and robots.txt support
+  - Proper hreflang tags
+- **Portfolio System**: Dynamic portfolio pages with case studies
+- **Service Areas**: Location-specific pages with geolocation support
+- **Blog**: Markdown-based multilingual blog system
+- **Contact Forms**: Integrated contact and consultation request forms
+- **Modern UI**: Built with shadcn/ui and Tailwind CSS
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/5e18d1f6-cbc2-499b-b83d-5cac5946cf41) and start prompting.
+## 📦 Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Framework**: Next.js 16 (App Router)
+- **Runtime**: Cloudflare Workers (Edge)
+- **Deployment**: Cloudflare Pages via @opennextjs/cloudflare
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui (Radix UI)
+- **Icons**: Lucide React
 
-**Use your preferred IDE**
+## 🛠 Development
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Node.js 18+ and npm
+- Git
 
-Follow these steps:
+### Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+```bash
+# Clone the repository
+git clone https://github.com/alibakhtiari/webabc-react.git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to project directory
+cd webabc-react
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be available at `http://localhost:3000`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Available Scripts
 
-**Use GitHub Codespaces**
+```bash
+npm run dev       # Start development server
+npm run build     # Build for production
+npm run start     # Start production server locally
+npm run lint      # Run ESLint
+npm run preview   # Build and preview on Cloudflare Workers locally
+npm run deploy    # Build and deploy to Cloudflare Pages
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📁 Project Structure
 
-## What technologies are used for this project?
+```
+├── src/
+│   ├── app/[lang]/          # Next.js App Router pages (multilingual)
+│   ├── components/          # Reusable React components
+│   ├── contexts/            # React contexts (LanguageContext)
+│   ├── i18n/                # Translation files (en, fa, ar)
+│   ├── lib/                 # Utility functions and data
+│   └── views/               # Page-level view components
+├── functions/               # Cloudflare Pages Functions
+│   └── _middleware.js       # Geolocation-based routing
+├── public/                  # Static assets
+├── open-next.config.ts      # OpenNext Cloudflare configuration
+├── next.config.ts           # Next.js configuration
+└── wrangler.toml            # Cloudflare Workers configuration
+```
 
-This project is built with .
+## 🌐 Deployment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+This project is configured for deployment on Cloudflare Pages using OpenNext.
 
-## How can I deploy this project?
+### Deploy to Cloudflare Pages
 
-Simply open [Lovable](https://lovable.dev/projects/5e18d1f6-cbc2-499b-b83d-5cac5946cf41) and click on Share -> Publish.
+```bash
+# Build and deploy
+npm run deploy
+```
 
-## I want to use a custom domain - is that possible?
+### Environment Variables
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+Set these in your Cloudflare Pages dashboard:
+- `NODE_VERSION`: `18` (or higher)
+
+## 🗺 Adding New Service Area Locations
+
+To add more cities/locations to the Service Areas page:
+
+### 1. Update Translation Files
+
+Edit the following files for each language:
+- **English**: `src/i18n/en/service-areas.json`
+- **Arabic**: `src/i18n/ar/service-areas.json`
+- **Persian**: `src/i18n/fa/service-areas.json`
+
+### 2. Add Location Entry
+
+Find the `"locations"` array and add a new object:
+
+```json
+{
+  "name": "City Name",
+  "slug": "city-slug",
+  "country": "Country Name",
+  "description": "Brief description of services in this city",
+  "longDescription": "Detailed description for the location page",
+  "services": [
+    "Service 1",
+    "Service 2",
+    "Service 3"
+  ],
+  "image": "/images/locations/city-name.jpg",
+  "benefits": [
+    "Benefit 1",
+    "Benefit 2"
+  ],
+  "stats": {
+    "projects": "50+",
+    "clients": "35+",
+    "experience": "5+"
+  }
+}
+```
+
+### 3. Add Location Image
+
+Place images in `public/images/locations/` folder:
+- Recommended size: 1200x800 pixels
+- Format: JPG or WebP
+- Filename: `city-name.jpg`
+
+### 4. Example Locations
+
+#### English (Abu Dhabi):
+```json
+{
+  "name": "Abu Dhabi",
+  "slug": "abu-dhabi",
+  "country": "UAE",
+  "description": "Offering world-class web development and digital marketing services to businesses in Abu Dhabi.",
+  "services": [
+    "Web Design & Development",
+    "SEO Optimization",
+    "Mobile Applications",
+    "E-commerce Solutions"
+  ],
+  "image": "/images/locations/abu-dhabi.jpg"
+}
+```
+
+#### Persian (Isfahan):
+```json
+{
+  "name": "اصفهان",
+  "slug": "isfahan",
+  "country": "ایران",
+  "description": "ارائه خدمات حرفه‌ای طراحی وب و دیجیتال مارکتینگ به کسب‌وکارها در اصفهان.",
+  "services": [
+    "طراحی و توسعه وب",
+    "بهینه‌سازی سئو",
+    "توسعه اپلیکیشن موبایل",
+    "راهکارهای تجارت الکترونیک"
+  ],
+  "image": "/images/locations/isfahan.jpg"
+}
+```
+
+### Current Locations
+
+**English**: Muscat (Oman), Dubai (UAE)  
+**Persian**: Tehran (Iran), Qazvin (Iran)  
+**Arabic**: مسقط (Muscat), دبي (Dubai)
+
+## 📝 Adding Blog Posts
+
+1. Create markdown files in `public/blog/[lang]/` directory
+2. Add frontmatter with metadata:
+```markdown
+---
+title: "Post Title"
+date: "2024-01-01"
+author: "Author Name"
+excerpt: "Brief description"
+---
+
+Your content here...
+```
+
+## 🔧 Configuration
+
+### Locale Detection
+
+The middleware (`functions/_middleware.js`) automatically detects visitor country and redirects:
+- Persian countries (IR, AF, TJ) → `/fa`
+- Arabian countries (GCC + MENA) → `/ar`
+- All other countries → `/fa` (default)
+
+### Modifying Default Language
+
+To change the default language, update `defaultLocale` in:
+- `functions/_middleware.js`
+
+## 🐛 Troubleshooting
+
+### Build Errors
+
+If you encounter build errors:
+```bash
+# Clear Next.js cache
+rm -rf .next
+
+# Reinstall dependencies
+rm -rf node_modules package-lock.json
+npm install
+```
+
+### Translation Not Showing
+
+1. Check if the translation key exists in all language files
+2. Verify JSON syntax (no trailing commas)
+3. Clear browser cache and reload
+
+## 📄 License
+
+This project is proprietary and confidential.
+
+## 🤝 Support
+
+For support, email: ali.bakhtiarii@gmail.com
+
+---
+
+Built with ❤️ by WebABC Team
