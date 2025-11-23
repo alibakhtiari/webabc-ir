@@ -34,22 +34,39 @@ const FAQ: React.FC<FAQProps> = ({ items, title, description }) => {
 
                 <div className="max-w-3xl mx-auto">
                     {(title || description) && (
-                        <div className="text-center mb-10">
-                            {title && <h2 className="text-3xl font-bold mb-4">{title}</h2>}
-                            {description && <p className="text-gray-600 dark:text-gray-400">{description}</p>}
+                        <div className="text-center mb-10 animate-fadeInUp">
+                            {title && (
+                                <h2 className="text-3xl font-bold mb-4">
+                                    {title}
+                                </h2>
+                            )}
+                            {description && (
+                                <p className="text-gray-600 dark:text-gray-400">
+                                    {description}
+                                </p>
+                            )}
                         </div>
                     )}
 
-                    <Accordion type="single" collapsible className="w-full">
+                    <Accordion type="single" collapsible className="w-full space-y-4">
                         {items.map((item, index) => (
-                            <AccordionItem key={index} value={`item-${index}`}>
-                                <AccordionTrigger className={`text-left ${languageMeta.fontFamily}`}>
-                                    {item.question}
-                                </AccordionTrigger>
-                                <AccordionContent className={`text-gray-600 dark:text-gray-300 ${languageMeta.fontFamily}`}>
-                                    {item.answer}
-                                </AccordionContent>
-                            </AccordionItem>
+                            <div
+                                key={index}
+                                className="animate-fadeInUp"
+                                style={{ animationDelay: `${index * 100}ms` }}
+                            >
+                                <AccordionItem
+                                    value={`item-${index}`}
+                                    className="border border-gray-200 dark:border-gray-800 rounded-lg bg-white dark:bg-gray-900 overflow-hidden shadow-sm hover:shadow-md transition-shadow px-4"
+                                >
+                                    <AccordionTrigger className={`text-left hover:no-underline py-4 ${languageMeta.fontFamily} text-lg font-medium`}>
+                                        {item.question}
+                                    </AccordionTrigger>
+                                    <AccordionContent className={`text-gray-600 dark:text-gray-300 ${languageMeta.fontFamily} pb-4 leading-relaxed`}>
+                                        {item.answer}
+                                    </AccordionContent>
+                                </AccordionItem>
+                            </div>
                         ))}
                     </Accordion>
                 </div>
