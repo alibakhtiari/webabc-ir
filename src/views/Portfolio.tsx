@@ -14,9 +14,10 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
-import portfolioEcommerce from '@/images/portfolio-ecommerce.webp';
-import portfolioNews from '@/images/portfolio-news.webp';
-import portfolioCorporate from '@/images/portfolio-corporate.webp';
+
+const portfolioEcommerce = '/images/portfolio-ecommerce.webp';
+const portfolioNews = '/images/portfolio-news.webp';
+const portfolioCorporate = '/images/portfolio-corporate.webp';
 
 const Portfolio = () => {
   const { t, language, languageMeta } = useLanguage();
