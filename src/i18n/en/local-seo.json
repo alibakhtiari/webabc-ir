@@ -1,11 +1,58 @@
 {
-  "localSeoTitle": "Local SEO Services",
-  "localSeoDescription": "Get found by customers in your local area with our expert Local SEO services.",
-  "feature.gmb": "Google My Business Optimization",
-  "feature.localKeywords": "Local Keyword Targeting",
-  "feature.nearMe": "\"Near Me\" Optimization",
-  "feature.localLinks": "Local Link Building",
-  "feature.reviews": "Review Management",
-  "feature.localReports": "Local SEO Reporting",
-  "keywords": "local seo, google my business, near me, seo services"
+  "localSeoTitle": "Local SEO Services | Rank #1 in Google Maps & Local Search",
+  "localSeoDescription": "Skyrocket your local visibility with WebABC's proven Local SEO strategies. Get found by customers near you, dominate the Map Pack, and drive more foot traffic. Start growing today!",
+  "whatIs": {
+    "title": "What is Local SEO?",
+    "p1": "Local SEO is a search engine optimization (SEO) strategy that helps your business be more visible in local search results on Google. Any business that has a physical location or serves a geographic area can benefit from local SEO.",
+    "p2": "When potential customers search for services 'near me' or in their city, Local SEO ensures your business appears at the top of the results, including the Google Map Pack. It's about connecting with customers who are ready to buy in your area."
+  },
+  "features": {
+    "title": "Our Local SEO Features"
+  },
+  "feature": {
+    "gmb": "Google Business Profile",
+    "gmbDesc": "Complete optimization of your Google Business Profile (formerly GMB) to maximize visibility in Maps and local search.",
+    "localKeywords": "Local Keyword Targeting",
+    "localKeywordsDesc": "Researching and targeting high-intent keywords specific to your city and service area.",
+    "nearMe": "'Near Me' Optimization",
+    "nearMeDesc": "Strategies to capture traffic from users searching for immediate solutions nearby.",
+    "localLinks": "Local Link Building",
+    "localLinksDesc": "Acquiring high-quality backlinks from reputable local directories and community websites.",
+    "reviews": "Review Management",
+    "reviewsDesc": "Strategies to generate more positive reviews and manage your online reputation.",
+    "localReports": "Local Performance Reporting",
+    "localReportsDesc": "Detailed monthly reports tracking your local rankings, calls, and direction requests."
+  },
+  "process": {
+    "title": "Our Local SEO Process",
+    "description": "We follow a proven data-driven approach to improve your local rankings.",
+    "step1": {
+      "title": "Local Audit",
+      "desc": "We analyze your current local presence, competitors, and opportunities."
+    },
+    "step2": {
+      "title": "Strategy Development",
+      "desc": "Creating a customized plan targeting your specific location and industry."
+    },
+    "step3": {
+      "title": "Optimization & Citation",
+      "desc": "Optimizing your website, GMB, and building consistent NAP citations."
+    },
+    "step4": {
+      "title": "Monitoring & Growth",
+      "desc": "Continuous tracking and adjustment to ensure sustained top rankings."
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "description": "Common questions about our Local SEO services.",
+    "q1": "How long does it take to see results from Local SEO?",
+    "a1": "Typically, you can start seeing initial improvements in 3-4 months, with significant results in 6-12 months, depending on competition.",
+    "q2": "Do I need a physical address for Local SEO?",
+    "a2": "Ideally yes, but Service Area Businesses (SABs) like plumbers or electricians can also rank without showing their address publicly.",
+    "q3": "What is the Google Map Pack?",
+    "a3": "It's the block of three business listings that appears below the map in Google search results. It's the most valuable real estate for local businesses.",
+    "q4": "How do reviews affect my ranking?",
+    "a4": "Reviews are a major ranking factor. Quantity, quality, and recency of reviews all signal trust and authority to Google."
+  }
 }

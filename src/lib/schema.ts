@@ -22,11 +22,11 @@ export const createOrganizationSchema = (
     url,
     logo,
     name: language === 'en' ? 'WebABC' : language === 'ar' ? 'ويب إيه بي سي' : 'وب اِی‌بی‌سی',
-    description: language === 'en' 
-      ? 'Professional web development and SEO services company' 
-      : language === 'ar' 
-      ? 'شركة خدمات تطوير الويب واحترافية تحسين محركات البحث'
-      : 'شرکت خدمات توسعه وب و سئو حرفه‌ای',
+    description: language === 'en'
+      ? 'Professional web development and SEO services company'
+      : language === 'ar'
+        ? 'شركة خدمات تطوير الويب واحترافية تحسين محركات البحث'
+        : 'شرکت خدمات توسعه وب و سئو حرفه‌ای',
     contactPoint: contactPoints,
     sameAs: [
       'https://facebook.com/webabc',
@@ -43,6 +43,44 @@ export const createOrganizationSchema = (
       streetAddress: language === 'en' ? 'Valiasr St.' : language === 'ar' ? 'شارع ولي عصر' : 'خیابان ولیعصر'
     },
     inLanguage: language === 'en' ? 'en-US' : language === 'ar' ? 'ar-SA' : 'fa-IR'
+  };
+};
+
+
+/**
+ * Create LocalBusiness schema for local SEO
+ */
+export const createLocalBusinessSchema = (
+  url: string,
+  logo: string,
+  image: string,
+  contactPoints: ContactPoint[] = [],
+  priceRange: string = '$$',
+  language: SupportedLanguage = 'en'
+) => {
+  const orgSchema = createOrganizationSchema(url, logo, contactPoints, language);
+
+  return {
+    ...orgSchema,
+    '@type': 'LocalBusiness',
+    image,
+    priceRange,
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: [
+          'Monday',
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday',
+          'Saturday',
+          'Sunday'
+        ],
+        opens: '09:00',
+        closes: '18:00'
+      }
+    ]
   };
 };
 
@@ -79,7 +117,7 @@ export const createServiceSchema = (
  * Create service list schema for multiple services
  */
 export const createServiceListSchema = (
-  services: Array<{name: string, description: string, url: string}>,
+  services: Array<{ name: string, description: string, url: string }>,
   language: SupportedLanguage = 'en'
 ) => {
   return {
@@ -135,7 +173,7 @@ export const createPersonSchema = (
  * Create FAQ schema for services and other pages
  */
 export const createFAQSchema = (
-  faqs: Array<{question: string, answer: string}>,
+  faqs: Array<{ question: string, answer: string }>,
   language: SupportedLanguage = 'en'
 ) => {
   return {
@@ -200,7 +238,7 @@ export const createWebPageSchema = (
  * Create breadcrumb schema for navigation
  */
 export const createBreadcrumbSchema = (
-  items: Array<{name: string, item: string}>,
+  items: Array<{ name: string, item: string }>,
   language: SupportedLanguage = 'en'
 ) => {
   return {

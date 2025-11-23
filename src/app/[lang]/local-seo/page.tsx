@@ -14,6 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         title: t.localSeo?.localSeoTitle || "Local SEO Services | WebABC",
         description: t.localSeo?.localSeoDescription || "Boost Your Local Visibility",
         alternates: {
+            canonical: `https://webabc.ir/${supportedLang}/local-seo`,
             languages: {
                 'en': '/en/local-seo',
                 'fa': '/fa/local-seo',

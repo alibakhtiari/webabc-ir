@@ -14,6 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         title: t.webDevelopmentServices?.title || "Web Development Services | WebABC",
         description: t.webDevelopmentServices?.subtitle || "Custom Web Development Solutions",
         alternates: {
+            canonical: `https://webabc.ir/${supportedLang}/web-development-services`,
             languages: {
                 'en': '/en/web-development-services',
                 'fa': '/fa/web-development-services',

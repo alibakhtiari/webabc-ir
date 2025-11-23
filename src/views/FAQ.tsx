@@ -21,8 +21,8 @@ export default function FAQ() {
 
     // Generate organization schema
     const organizationSchema = createOrganizationSchema(
-        "https://webabc.com", // Replace with actual domain
-        "https://webabc.com/images/logo.jpg",
+        "https://webabc.ir", // Replace with actual domain
+        "https://webabc.ir/images/logo.jpg",
         [{ telephone: "+98123456789", contactType: "customer service" }],
         language
     );

@@ -17,8 +17,8 @@ const WordpressWoocommerceDevelopment = () => {
     const serviceSchema = createServiceSchema(
         t('wordpress.title'),
         t('wordpress.subtitle'),
-        `https://webabc.com/${language}/wordpress-woocommerce-development`,
-        "https://webabc.com/images/wordpress.webp",
+        `https://webabc.ir/${language}/wordpress-woocommerce-development`,
+        "https://webabc.ir/images/wordpress.webp",
         "WebABC",
         "Worldwide",
         language
