@@ -42,7 +42,7 @@ const HeroSection = () => {
             <div className="relative">
               <div className="absolute -z-10 inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 blur-3xl rounded-full transform scale-110"></div>
               <OptimizedImage
-                src="/images/hero-image.png"
+                src="/images/hero-image.webp"
                 alt={t('home.hero.imageAlt', { fallback: 'Digital marketing and web development illustration' })}
                 className="w-full h-auto object-cover rounded-lg shadow-2xl"
                 width={600}
