@@ -3,6 +3,7 @@ import "@/app/globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Metadata } from "next";
 import { Toaster } from "@/components/ui/toaster";
+import GlobalSchema from "@/components/GlobalSchema";
 
 export async function generateStaticParams() {
     return Object.keys(languages).map((lang) => ({ lang }));
@@ -26,6 +27,7 @@ export default async function RootLayout({
         <html lang={supportedLang} dir={language.direction} suppressHydrationWarning>
             <body className={language.fontFamily} suppressHydrationWarning>
                 <LanguageProvider defaultLanguage={supportedLang}>
+                    <GlobalSchema />
                     {children}
                     <Toaster />
                 </LanguageProvider>

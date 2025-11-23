@@ -14,6 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         title: t.contact?.title || "Contact Us | WebABC",
         description: t.contact?.subtitle || "Get in Touch with Our Team",
         alternates: {
+            canonical: `https://webabc.ir/${supportedLang}/contact`,
             languages: {
                 'en': '/en/contact',
                 'fa': '/fa/contact',

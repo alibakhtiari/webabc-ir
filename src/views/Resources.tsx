@@ -18,8 +18,8 @@ const Resources: React.FC = () => {
   const serviceSchema = createServiceSchema(
     t('resources.title'),
     t('resources.subtitle'),
-    `https://webabc.com/${language}/resources`,
-    "https://webabc.com/images/resources.jpg",
+    `https://webabc.ir/${language}/resources`,
+    "https://webabc.ir/images/resources.jpg",
     "WebABC",
     "Worldwide",
     language

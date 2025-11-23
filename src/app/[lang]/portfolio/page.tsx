@@ -14,6 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         title: t.portfolio?.title || "Portfolio | WebABC",
         description: t.portfolio?.description || "Our Recent Projects and Case Studies",
         alternates: {
+            canonical: `https://webabc.ir/${supportedLang}/portfolio`,
             languages: {
                 'en': '/en/portfolio',
                 'fa': '/fa/portfolio',

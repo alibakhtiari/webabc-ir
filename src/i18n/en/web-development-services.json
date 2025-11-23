@@ -1,12 +1,3 @@
-{
-  "title": "Web Development Services",
-  "subtitle": "Custom Web Development Solutions",
-  "webDevelopmentTitle": "Web Development Services",
-  "webDevelopmentDescription": "We offer comprehensive web development services to bring your ideas to life.",
-  "ourServices": "Our Services",
-  "frontendDev": "Frontend Development",
-  "frontendDesc": "We build beautiful and responsive user interfaces.",
-  "backendDev": "Backend Development",
   "backendDesc": "We develop robust and scalable backend systems.",
   "feature": {
     "uiuxDesign": "UI/UX Design",
@@ -22,5 +13,60 @@
     "auth": "Authentication & Authorization",
     "cloudIntegration": "Cloud Integration"
   },
-  "keywords": "web development, services, react, nextjs"
+  "whatIs": {
+    "title": "What is Custom Web Development?",
+    "p1": "Custom web development is the process of building a unique website or web application tailored specifically to your business needs, brand identity, and goals. Unlike template-based solutions, custom development offers flexibility, scalability, and performance.",
+    "p2": "We specialize in creating bespoke digital solutions using modern technologies like React, Next.js, and Node.js. Whether you need a complex enterprise platform, a dynamic e-commerce site, or a high-converting landing page, our team delivers code that is clean, secure, and optimized for growth."
+  },
+  "technologies": {
+    "title": "Technologies We Use",
+    "description": "We leverage the latest and most reliable technologies to build future-proof applications.",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Database",
+    "devops": "DevOps"
+  },
+  "industries": {
+    "title": "Industries We Serve",
+    "description": "We have experience delivering successful projects across various industries.",
+    "ecommerce": "E-commerce",
+    "healthcare": "Healthcare",
+    "fintech": "Fintech",
+    "education": "Education",
+    "realEstate": "Real Estate",
+    "travel": "Travel & Tourism"
+  },
+  "process": {
+    "title": "Our Development Process",
+    "description": "We follow an agile methodology to ensure transparency, quality, and timely delivery.",
+    "step1": {
+      "title": "Discovery & Planning",
+      "desc": "We start by understanding your requirements, target audience, and business objectives to create a detailed roadmap."
+    },
+    "step2": {
+      "title": "Design & Prototyping",
+      "desc": "Our designers create intuitive UI/UX wireframes and high-fidelity mockups for your approval."
+    },
+    "step3": {
+      "title": "Development & Testing",
+      "desc": "Our developers write clean, efficient code while conducting rigorous testing to ensure a bug-free experience."
+    },
+    "step4": {
+      "title": "Deployment & Support",
+      "desc": "We launch your application and provide ongoing maintenance and support to keep it running smoothly."
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "description": "Common questions about our web development services.",
+    "q1": "What technologies do you use?",
+    "a1": "We primarily use the MERN stack (MongoDB, Express, React, Node.js) and Next.js for frontend, along with Python (Django/Flask) for backend needs.",
+    "q2": "How long does it take to build a website?",
+    "a2": "The timeline varies based on complexity. A simple brochure site might take 2-4 weeks, while a complex web application could take 3-6 months.",
+    "q3": "Do you provide maintenance after launch?",
+    "a3": "Yes, we offer various maintenance packages to ensure your website remains secure, up-to-date, and performs optimally.",
+    "q4": "Is my website going to be mobile-friendly?",
+    "a4": "Absolutely. All our websites are designed with a mobile-first approach, ensuring they look and work perfectly on all devices."
+  },
+  "keywords": "web development services, custom web application, react development, next.js experts, node.js developers, python backend"
 }

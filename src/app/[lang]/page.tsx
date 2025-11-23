@@ -16,6 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         title: t.home?.title || "WebABC",
         description: t.home?.description || "Web Design and Development Services",
         alternates: {
+            canonical: `https://webabc.ir/${supportedLang}`,
             languages: {
                 'en': '/en',
                 'fa': '/fa',
