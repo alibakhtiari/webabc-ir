@@ -12,6 +12,7 @@ import OptimizedImage from '@/components/OptimizedImage';
 import { createBreadcrumbSchema } from '@/lib/schema';
 import { ChartBar, Search, Globe, FileText, LinkIcon, PieChart } from 'lucide-react';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
+import FAQ from '@/components/FAQ';
 import '@/animations.css';
 
 const SeoService = () => {
@@ -236,32 +237,15 @@ const SeoService = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-16 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12 animate-fadeInUp">
-              {t('services.faqTitle')}
-            </h2>
-
-            <div className="max-w-3xl mx-auto space-y-6">
-              <FaqItem
-                question={t('services.faq.costQuestion')}
-                answer={t('services.faq.costAnswer')}
-              />
-              <FaqItem
-                question={t('services.faq.timelineQuestion')}
-                answer={t('services.faq.timelineAnswer')}
-              />
-              <FaqItem
-                question={t('services.faq.blackhatQuestion')}
-                answer={t('services.faq.blackhatAnswer')}
-              />
-              <FaqItem
-                question={t('services.faq.multilingualQuestion')}
-                answer={t('services.faq.multilingualAnswer')}
-              />
-            </div>
-          </div>
-        </section>
+        <FAQ
+          items={[
+            { question: t('services.faq.costQuestion'), answer: t('services.faq.costAnswer') },
+            { question: t('services.faq.timelineQuestion'), answer: t('services.faq.timelineAnswer') },
+            { question: t('services.faq.blackhatQuestion'), answer: t('services.faq.blackhatAnswer') },
+            { question: t('services.faq.multilingualQuestion'), answer: t('services.faq.multilingualAnswer') }
+          ]}
+          title={t('services.faqTitle')}
+        />
 
         {/* Call to Action */}
         <section className="py-16 bg-primary text-white">
@@ -393,39 +377,6 @@ const ProcessCard = ({ number, title, description, color }: { number: string, ti
   );
 };
 
-// FAQ Item Component
-const FaqItem = ({ question, answer }: { question: string, answer: string }) => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [ref, isIntersecting] = useIntersectionObserver({ threshold: 0.1 });
 
-  return (
-    <div
-      ref={ref}
-      className={`border border-gray-200 rounded-lg overflow-hidden ${isIntersecting ? 'animate-fadeInUp' : 'opacity-0'
-        }`}
-    >
-      <button
-        className="flex justify-between items-center w-full p-4 text-left bg-white hover:bg-gray-50 transition-colors"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <span className="font-medium">{question}</span>
-        <svg
-          className={`w-5 h-5 transition-transform ${isOpen ? 'transform rotate-180' : ''}`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-        </svg>
-      </button>
-      {isOpen && (
-        <div className="p-4 bg-gray-50 border-t border-gray-200">
-          <p className="text-gray-700">{answer}</p>
-        </div>
-      )}
-    </div>
-  );
-};
 
 export default SeoService;

@@ -1,3 +1,12 @@
+{
+  "title": "Custom Web Development Services | React, Next.js, Node.js & Python Experts",
+  "subtitle": "Accelerate your growth with high-performance, scalable web applications. We build custom solutions using React, Next.js, and Python to drive results. Get your free consultation!",
+  "webDevelopmentTitle": "Web Development Services",
+  "webDevelopmentDescription": "We offer comprehensive web development services to bring your ideas to life.",
+  "ourServices": "Our Services",
+  "frontendDev": "Frontend Development",
+  "frontendDesc": "We build beautiful and responsive user interfaces.",
+  "backendDev": "Backend Development",
   "backendDesc": "We develop robust and scalable backend systems.",
   "feature": {
     "uiuxDesign": "UI/UX Design",
