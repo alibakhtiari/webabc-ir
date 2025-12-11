@@ -8,31 +8,13 @@ import ServicesSection from '@/components/ServicesSection';
 import BenefitsSection from '@/components/BenefitsSection';
 import CTASection from '@/components/CTASection';
 import { useLanguage } from '@/contexts/LanguageContext';
-import SchemaMarkup from '@/components/SchemaMarkup';
-import { createOrganizationSchema } from '@/lib/schema';
+import HomeSchema from '@/components/seo/schemas/HomeSchema';
 import PagePreloader from '@/components/PagePreloader';
 
 const Home: React.FC = () => {
-  const { t, language, languageMeta } = useLanguage();
-  const [origin, setOrigin] = useState('');
-
-  useEffect(() => {
-    setOrigin(window.location.origin);
-  }, []);
-
-  // Create organization schema for SEO
-  const organizationSchema = origin ? createOrganizationSchema(
-    origin,
-    "/images/logo.webp",
-    [{ telephone: "+98123456789", contactType: "customer service" }],
-    language
-  ) : null;
-
   return (
     <div>
-
-
-      {organizationSchema && <SchemaMarkup schema={organizationSchema} />}
+      <HomeSchema />
       <PagePreloader />
 
       <Navbar />
@@ -45,7 +27,7 @@ const Home: React.FC = () => {
       </main>
 
       <Footer />
-    </div>
+    </div >
   );
 };
 

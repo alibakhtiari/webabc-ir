@@ -6,8 +6,8 @@ import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import Breadcrumb from '@/components/Breadcrumb';
-import SchemaMarkup from '@/components/SchemaMarkup';
+import Breadcrumb from '@/components/seo/Breadcrumb';
+import LocationSchema from '@/components/seo/schemas/LocationSchema';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -75,35 +75,9 @@ const LocationPage = () => {
     return null; // Or a loading spinner while redirecting
   }
 
-  const locationSchema = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: `${t('common.companyName')} - ${location.name}`,
-    description: location.longDescription,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: location.name,
-      addressCountry: location.country
-    },
-    areaServed: {
-      "@type": "City",
-      name: location.name,
-      containedInPlace: {
-        "@type": "Country",
-        name: location.country
-      }
-    },
-    provider: {
-      "@type": "Organization",
-      name: t('common.companyName'),
-      url: origin
-    }
-  };
-
   return (
     <div>
-
-      <SchemaMarkup schema={locationSchema} />
+      <LocationSchema location={location} />
 
       <Navbar />
 

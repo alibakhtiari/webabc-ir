@@ -6,8 +6,8 @@ import { useParams, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import Breadcrumb from '@/components/Breadcrumb';
-import SchemaMarkup from '@/components/SchemaMarkup';
+import Breadcrumb from '@/components/seo/Breadcrumb';
+import BlogPostSchema from '@/components/seo/schemas/BlogPostSchema';
 import { BlogPost } from '@/lib/blogUtils';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -79,48 +79,10 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
     );
   }
 
-  const articleSchema = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.description,
-    image: post.image.startsWith('http') ? post.image : `${origin}${post.image}`,
-    datePublished: post.date,
-    dateModified: post.date,
-    author: {
-      "@type": "Person",
-      name: post.author
-    },
-    publisher: {
-      "@type": "Organization",
-      name: language === 'en' ? 'WebABC' : language === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث',
-      logo: {
-        "@type": "ImageObject",
-        url: `${origin}/og-image.png`
-      }
-    },
-    keywords: post.tags.join(', '),
-    articleSection: post.category,
-    wordCount: post.content.split(/\s+/).length
-  };
-
-  const faqSchema = post.faq && post.faq.length > 0 ? {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: post.faq.map(item => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer
-      }
-    }))
-  } : null;
-
   return (
     <div>
 
-      <SchemaMarkup schema={faqSchema ? [articleSchema, faqSchema] : articleSchema} />
+      <BlogPostSchema post={post} />
 
       <Navbar />
 

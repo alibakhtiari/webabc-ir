@@ -2,27 +2,16 @@
 
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import Breadcrumb from '@/components/Breadcrumb';
+import Breadcrumb from '@/components/seo/Breadcrumb';
 import Footer from '@/components/Footer';
 import FAQ from '@/components/FAQ';
 import { useLanguage } from '@/contexts/LanguageContext';
 import CTASection from '@/components/CTASection';
-import SchemaMarkup from '@/components/SchemaMarkup';
-import { createServiceSchema } from '@/lib/schema';
+import WebDevelopmentSchema from '@/components/seo/schemas/WebDevelopmentSchema';
 import { Layout, Server, Code2, Rocket, ShieldCheck, Smartphone, CheckCircle2, Database, Cloud, Globe, Briefcase, ShoppingCart, Stethoscope, GraduationCap, Home, Plane } from 'lucide-react';
 
 const WebDevelopment = () => {
   const { t, languageMeta, language } = useLanguage();
-
-  const serviceSchema = createServiceSchema(
-    t('webDevelopmentServices.webDevelopmentTitle'),
-    t('webDevelopmentServices.webDevelopmentDescription'),
-    `https://webabc.ir/${language}/web-development-services`,
-    "https://webabc.ir/images/web-development.jpg",
-    "WebABC",
-    "Worldwide",
-    language
-  );
 
   const faqItems = [
     {
@@ -46,7 +35,7 @@ const WebDevelopment = () => {
   return (
     <div className="min-h-screen flex flex-col">
 
-      <SchemaMarkup schema={serviceSchema} />
+      <WebDevelopmentSchema />
 
       <Navbar />
 

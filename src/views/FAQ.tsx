@@ -3,10 +3,9 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import SchemaMarkup from '@/components/SchemaMarkup';
-import Breadcrumb from '@/components/Breadcrumb';
+import Breadcrumb from '@/components/seo/Breadcrumb';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { createOrganizationSchema } from '@/lib/schema';
+import FAQPageSchema from '@/components/seo/schemas/FAQPageSchema';
 import {
     Accordion,
     AccordionContent,
@@ -18,15 +17,6 @@ export default function FAQ() {
     const { t, language, languageMeta } = useLanguage();
     const isRtl = languageMeta.direction === 'rtl';
 
-    // Generate organization schema
-    const organizationSchema = createOrganizationSchema(
-        "https://webabc.ir", // Replace with actual domain
-        "https://webabc.ir/images/logo.jpg",
-        [{ telephone: "+98123456789", contactType: "customer service" }],
-        language
-    );
-
-    // FAQ Schema
     const faqItems = [
         { q: 'faq.q1', a: 'faq.a1' },
         { q: 'faq.q2', a: 'faq.a2' },
@@ -35,24 +25,10 @@ export default function FAQ() {
         { q: 'faq.q5', a: 'faq.a5' },
     ];
 
-    const faqSchema = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": faqItems.map(item => ({
-            "@type": "Question",
-            "name": t(item.q),
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": t(item.a)
-            }
-        }))
-    };
-
     return (
         <div className="min-h-screen flex flex-col">
 
-
-            <SchemaMarkup schema={[organizationSchema, faqSchema]} />
+            <FAQPageSchema />
 
             <Navbar />
 

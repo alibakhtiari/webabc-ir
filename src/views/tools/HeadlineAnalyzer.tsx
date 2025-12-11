@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
-import Breadcrumb from '@/components/Breadcrumb';
+import Breadcrumb from '@/components/seo/Breadcrumb';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';

@@ -4,8 +4,8 @@ import React, { useMemo, useEffect, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import Breadcrumb from '@/components/Breadcrumb';
-import SchemaMarkup from '@/components/SchemaMarkup';
+import Breadcrumb from '@/components/seo/Breadcrumb';
+import ServiceAreasSchema from '@/components/seo/schemas/ServiceAreasSchema';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -57,29 +57,10 @@ const ServiceAreas = () => {
 
   const locations: Location[] = serviceAreasData.locations;
 
-  const serviceAreaSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: t('service-areas.title'),
-    description: t('service-areas.description'),
-    provider: {
-      "@type": "Organization",
-      name: language === 'en' ? 'WebABC' : language === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث'
-    },
-    areaServed: locations.map(loc => ({
-      "@type": "City",
-      name: loc.name,
-      containedInPlace: {
-        "@type": "Country",
-        name: loc.country
-      }
-    }))
-  };
-
   return (
     <div>
 
-      <SchemaMarkup schema={serviceAreaSchema} />
+      <ServiceAreasSchema />
 
       <Navbar />
 

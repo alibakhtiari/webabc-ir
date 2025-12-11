@@ -1,14 +1,12 @@
 "use client";
 
-import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import SchemaMarkup from '@/components/SchemaMarkup';
-import Breadcrumb from '@/components/Breadcrumb';
+import Breadcrumb from '@/components/seo/Breadcrumb';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { createOrganizationSchema, createServiceSchema, createFAQSchema } from '@/lib/schema';
 import { ChevronRight } from 'lucide-react';
+import ServicesSchema from '@/components/seo/schemas/ServicesSchema';
 
 interface SchemaData {
   [key: string]: unknown;
@@ -16,98 +14,10 @@ interface SchemaData {
 
 const ServicesOverview = () => {
   const { t, language, languageMeta } = useLanguage();
-  const [schemaMarkup, setSchemaMarkup] = useState<SchemaData[]>([]);
-
-  useEffect(() => {
-    // Generate schemas
-    const baseUrl = window.location.origin;
-
-    // Organization schema
-    const orgSchema = createOrganizationSchema(
-      baseUrl,
-      `${baseUrl}/images/logo.jpg`,
-      [
-        { telephone: "+1234567890", contactType: "customer service" }
-      ],
-      language
-    );
-
-    // Service schemas
-    const seoServiceSchema = createServiceSchema(
-      t('services.seoTitle'),
-      t('services.seoDescription'),
-      `${baseUrl}/${language}/seo-services`,
-      `${baseUrl}/images/seo-service.jpg`,
-      'WebABC',
-      'Worldwide',
-      language
-    );
-
-    const webDevServiceSchema = createServiceSchema(
-      t('services.webDevTitle'),
-      t('services.webDevDescription'),
-      `${baseUrl}/${language}/web-development-services`,
-      `${baseUrl}/images/webdev-service.jpg`,
-      'WebABC',
-      'Worldwide',
-      language
-    );
-
-    const wordpressServiceSchema = createServiceSchema(
-      t('wordpress.title'),
-      t('wordpress.subtitle'),
-      `${baseUrl}/${language}/wordpress-woocommerce-development`,
-      `${baseUrl}/images/wordpress-service.jpg`,
-      'WebABC',
-      'Worldwide',
-      language
-    );
-
-    const localSeoServiceSchema = createServiceSchema(
-      t('services.localSeoTitle'),
-      t('services.localSeoDescription'),
-      `${baseUrl}/${language}/local-seo-services`,
-      `${baseUrl}/images/localseo-service.jpg`,
-      'WebABC',
-      'Worldwide',
-      language
-    );
-
-    // FAQ schema
-    const faqSchema = createFAQSchema([
-      {
-        question: t('services.faq.costQuestion'),
-        answer: t('services.faq.costAnswer')
-      },
-      {
-        question: t('services.faq.timelineQuestion'),
-        answer: t('services.faq.timelineAnswer')
-      },
-      {
-        question: t('services.faq.wordpressQuestion'),
-        answer: t('services.faq.wordpressAnswer')
-      },
-      {
-        question: t('services.faq.multilingualQuestion'),
-        answer: t('services.faq.multilingualAnswer')
-      }
-    ], language);
-
-    setSchemaMarkup([
-      orgSchema,
-      seoServiceSchema,
-      webDevServiceSchema,
-      wordpressServiceSchema,
-      localSeoServiceSchema,
-      faqSchema
-    ]);
-  }, [language, t]);
-
   return (
     <div className="min-h-screen flex flex-col">
 
-
-      {schemaMarkup.length > 0 && <SchemaMarkup schema={schemaMarkup} />}
+      <ServicesSchema />
 
       <Navbar />
 

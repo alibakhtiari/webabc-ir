@@ -6,8 +6,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import Breadcrumb from '@/components/Breadcrumb';
-import SchemaMarkup from '@/components/SchemaMarkup';
+import Breadcrumb from '@/components/seo/Breadcrumb';
+import BlogSchema from '@/components/seo/schemas/BlogSchema';
 import { getCategories, filterPostsByCategory, BlogMetadata } from '@/lib/blogUtils';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -50,30 +50,10 @@ const BlogPage: React.FC<BlogPageProps> = ({ initialPosts }) => {
     });
   };
 
-  const blogListSchema = {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    name: t('blog.title'),
-    description: t('blog.blogDescription'),
-    url: `${origin}${pathname}`,
-    blogPost: filteredPosts.slice(0, 10).map(post => ({
-      "@type": "BlogPosting",
-      headline: post.title,
-      description: post.description,
-      image: post.image.startsWith('http') ? post.image : `${origin}${post.image}`,
-      datePublished: post.date,
-      author: {
-        "@type": "Person",
-        name: post.author
-      },
-      url: `${origin}/${language}/blog/${post.slug}`
-    }))
-  };
-
   return (
     <div>
 
-      <SchemaMarkup schema={blogListSchema} />
+      <BlogSchema posts={filteredPosts} />
 
       <Navbar />
 

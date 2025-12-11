@@ -4,9 +4,8 @@ import React, { lazy, Suspense, useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Card } from '@/components/ui/card';
-import SchemaMarkup from '@/components/SchemaMarkup';
-import Breadcrumb from '@/components/Breadcrumb';
-import { createOrganizationSchema } from '@/lib/schema';
+import Breadcrumb from '@/components/seo/Breadcrumb';
+import AboutSchema from '@/components/seo/schemas/AboutSchema';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface SchemaData {
@@ -17,30 +16,9 @@ interface SchemaData {
 
 const About = () => {
   const { language, t, languageMeta } = useLanguage();
-  const [schemaMarkup, setSchemaMarkup] = useState<SchemaData[]>([]);
-
-  useEffect(() => {
-    // Create schema markup
-    const baseUrl = window.location.origin;
-
-    // Organization schema
-    const orgSchema = createOrganizationSchema(
-      baseUrl,
-      `${baseUrl}/images/logo.webp`,
-      [
-        { telephone: "+1234567890", contactType: "customer service" }
-      ],
-      language
-    );
-
-    setSchemaMarkup([orgSchema]);
-  }, [language]);
-
   return (
     <div className="min-h-screen flex flex-col">
-
-
-      {schemaMarkup.length > 0 && <SchemaMarkup schema={schemaMarkup} />}
+      <AboutSchema />
       <Navbar />
 
       <main className={`flex-1 max-w-6xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8 w-full ${languageMeta.fontFamily}`}>
@@ -84,7 +62,7 @@ const About = () => {
       </main>
 
       <Footer />
-    </div>
+    </div >
   );
 };
 
