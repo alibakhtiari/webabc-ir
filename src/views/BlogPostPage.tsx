@@ -81,7 +81,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
 
       <div className="min-h-screen bg-background">
         {/* Back Button */}
-        <div className="container mx-auto px-4 pt-8">
+        <div className="container mx-auto px-4 pt-32">
           <Button variant="ghost" asChild>
             <Link href={`/${language}/blog`}>
               {languageMeta.direction === 'rtl' ? (

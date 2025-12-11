@@ -28,7 +28,7 @@ export default function FAQ() {
             <FAQPageSchema />
 
 
-            <div className="flex-grow pt-24 pb-16">
+            <div className="flex-grow pt-32 pb-16">
                 <div className="container mx-auto px-4">
                     <div className="max-w-3xl mx-auto">
                         <Breadcrumb />

@@ -106,7 +106,7 @@ const Portfolio = () => {
 
       <div className="min-h-screen">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-primary/10 via-background to-primary/5">
+        <section className="pt-32 pb-20 bg-gradient-to-br from-primary/10 via-background to-primary/5">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <Breadcrumb />
@@ -124,7 +124,7 @@ const Portfolio = () => {
         </section>
 
         {/* Portfolio & Case Studies Tabs */}
-        <section className="py-16">
+        < section className="py-16" >
           <div className="container mx-auto px-4">
             <Tabs defaultValue="portfolio" className="w-full" dir={languageMeta.direction}>
               <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-12">
@@ -245,10 +245,10 @@ const Portfolio = () => {
               </TabsContent>
             </Tabs>
           </div>
-        </section>
+        </section >
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-primary to-primary/80 text-white">
+        < section className="py-20 bg-gradient-to-br from-primary to-primary/80 text-white" >
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -271,8 +271,8 @@ const Portfolio = () => {
               </div>
             </div>
           </div>
-        </section>
-      </div>
+        </section >
+      </div >
     </>
   );
 };

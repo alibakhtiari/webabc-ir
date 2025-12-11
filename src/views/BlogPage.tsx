@@ -56,7 +56,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ initialPosts }) => {
 
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-to-br from-primary/10 via-primary/5 to-background relative overflow-hidden">
+        <section className="pt-32 pb-20 bg-gradient-to-br from-primary/10 via-primary/5 to-background relative overflow-hidden">
           <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
           <div className="container mx-auto px-4 relative">
             <div className="max-w-3xl mx-auto text-center">
