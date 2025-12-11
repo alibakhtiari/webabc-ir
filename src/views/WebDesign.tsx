@@ -2,8 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import WebDesignSchema from '@/components/seo/schemas/WebDesignSchema';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -25,12 +23,11 @@ const WebDesign = () => {
 
   // Create service schema for SEO
   return (
-    <div dir={language === 'en' ? 'ltr' : 'rtl'}>
+    <>
 
       <WebDesignSchema />
-      <Navbar />
 
-      <main className="pt-16">
+      <div className="pt-16">
         {/* Hero Section */}
         <section className="bg-gradient-to-b from-primary/10 to-white py-16 md:py-24">
           <div className="container mx-auto px-4">
@@ -219,10 +216,8 @@ const WebDesign = () => {
             </button>
           </div>
         </section>
-      </main>
-
-      <Footer />
-    </div >
+      </div>
+    </>
   );
 };
 

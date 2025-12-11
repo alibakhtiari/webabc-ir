@@ -1,9 +1,7 @@
 "use client";
 
 import React from 'react';
-import Navbar from '@/components/Navbar';
 import Breadcrumb from '@/components/seo/Breadcrumb';
-import Footer from '@/components/Footer';
 import FAQ from '@/components/FAQ';
 import { useLanguage } from '@/contexts/LanguageContext';
 import CTASection from '@/components/CTASection';
@@ -33,13 +31,11 @@ const WebDevelopment = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <>
 
       <WebDevelopmentSchema />
 
-      <Navbar />
-
-      <main className="flex-1 pt-24">
+      <div className="flex-1">
         {/* Hero Section */}
         <section className="py-16 bg-gradient-to-r from-primary/5 to-primary/10">
           <div className="container mx-auto px-4">
@@ -225,10 +221,8 @@ const WebDevelopment = () => {
 
         {/* CTA Section */}
         <CTASection />
-      </main>
-
-      <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

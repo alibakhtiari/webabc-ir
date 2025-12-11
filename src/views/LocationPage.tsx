@@ -4,8 +4,6 @@ import React, { useMemo, useEffect, useState } from 'react';
 import { useParams, useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import LocationSchema from '@/components/seo/schemas/LocationSchema';
 import { Card, CardContent } from '@/components/ui/card';
@@ -76,12 +74,11 @@ const LocationPage = () => {
   }
 
   return (
-    <div>
+    <>
       <LocationSchema location={location} />
 
-      <Navbar />
 
-      <main className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background">
         {/* Hero Section */}
         <section className="relative py-20 overflow-hidden">
           <div className="absolute inset-0">
@@ -261,10 +258,8 @@ const LocationPage = () => {
             </div>
           </div>
         </section>
-      </main>
-
-      <Footer />
-    </div >
+      </div>
+    </>
   );
 };
 

@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import HeroSection from '@/components/HeroSection';
 import ServicesSection from '@/components/ServicesSection';
 import BenefitsSection from '@/components/BenefitsSection';
@@ -13,21 +11,17 @@ import PagePreloader from '@/components/PagePreloader';
 
 const Home: React.FC = () => {
   return (
-    <div>
+    <>
       <HomeSchema />
       <PagePreloader />
 
-      <Navbar />
-
-      <main className="relative overflow-x-hidden">
+      <div className="relative overflow-x-hidden">
         <HeroSection />
         <ServicesSection />
         <BenefitsSection />
         <CTASection />
-      </main>
-
-      <Footer />
-    </div >
+      </div>
+    </>
   );
 };
 

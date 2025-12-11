@@ -1,24 +1,20 @@
 import { languages, SupportedLanguage } from "@/types/language";
 import "@/app/globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
-import { Metadata } from "next";
 import { Toaster } from "@/components/ui/toaster";
 import GlobalSchema from "@/components/GlobalSchema";
+import Navbar from "@/components/Navbar"; // Import Navbar
+import Footer from "@/components/Footer"; // Import Footer
+import { constructMetadata } from "@/lib/metadata";
+import { Vazirmatn, Lato } from "next/font/google";
+import { cn } from "@/lib/utils";
+import { getDictionary } from "@/i18n/get-dictionary";
 
 export async function generateStaticParams() {
     return Object.keys(languages).map((lang) => ({ lang }));
 }
 
-// Default metadata
-import { constructMetadata } from "@/lib/metadata";
-
 export const metadata = constructMetadata();
-
-// Removed static metadata - using generateMetadata in page.tsx instead
-// This allows each page to have dynamic, localized metadata
-
-import { Vazirmatn, Lato } from "next/font/google";
-import { cn } from "@/lib/utils";
 
 // Initialize fonts
 const vazirmatn = Vazirmatn({
@@ -34,10 +30,6 @@ const lato = Lato({
     display: "swap",
 });
 
-import { getDictionary } from "@/i18n/get-dictionary";
-
-// ... existing imports
-
 export default async function RootLayout({
     children,
     params,
@@ -48,25 +40,33 @@ export default async function RootLayout({
     const { lang } = await params;
     const supportedLang = lang as SupportedLanguage;
     const language = languages[supportedLang] || languages.fa;
-
-    // Fetch dictionary for the current language
     const dictionary = await getDictionary(supportedLang);
 
     return (
         <html lang={supportedLang} dir={language.direction} suppressHydrationWarning>
             <body
                 className={cn(
-                    // Apply font variables globally
                     vazirmatn.variable,
                     lato.variable,
-                    language.fontFamily, // Make sure your language config uses the CSS variable names (e.g., 'font-persian')
-                    "antialiased"
+                    language.fontFamily,
+                    "antialiased min-h-screen flex flex-col" // Added flex column layout
                 )}
                 suppressHydrationWarning
             >
                 <LanguageProvider defaultLanguage={supportedLang} dictionary={dictionary}>
                     <GlobalSchema />
-                    {children}
+
+                    {/* 1. Navbar is now Global */}
+                    <Navbar />
+
+                    {/* 2. Main Content Wrapper */}
+                    <main className="flex-1 w-full pt-20">
+                        {children}
+                    </main>
+
+                    {/* 3. Footer is now Global */}
+                    <Footer />
+
                     <Toaster />
                 </LanguageProvider>
             </body>

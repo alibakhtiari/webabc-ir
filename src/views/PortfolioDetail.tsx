@@ -4,8 +4,6 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound, useParams } from 'next/navigation';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { portfolioItems } from '@/lib/portfolioData';
@@ -32,12 +30,8 @@ const PortfolioDetail = () => {
     }
 
     return (
-        <div className={languageMeta.fontFamily}>
-
-
-            <Navbar />
-
-            <main className="min-h-screen pt-24 pb-16">
+        <>
+            <div className="min-h-screen pb-16">
                 <div className="container mx-auto px-4">
                     <Breadcrumb />
 
@@ -153,10 +147,8 @@ const PortfolioDetail = () => {
                         </div>
                     </div>
                 </div>
-            </main>
-
-            <Footer />
-        </div>
+            </div>
+        </>
     );
 };
 

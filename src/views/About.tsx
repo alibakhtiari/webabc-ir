@@ -1,8 +1,6 @@
 "use client";
 
 import React, { lazy, Suspense, useEffect, useState } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import { Card } from '@/components/ui/card';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import AboutSchema from '@/components/seo/schemas/AboutSchema';
@@ -17,11 +15,10 @@ interface SchemaData {
 const About = () => {
   const { language, t, languageMeta } = useLanguage();
   return (
-    <div className="min-h-screen flex flex-col">
+    <>
       <AboutSchema />
-      <Navbar />
 
-      <main className={`flex-1 max-w-6xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8 w-full ${languageMeta.fontFamily}`}>
+      <div className={`max-w-6xl mx-auto pb-12 px-4 sm:px-6 lg:px-8 w-full ${languageMeta.fontFamily}`}>
         <div className="space-y-16">
           {/* Hero Section */}
           <div className="text-center">
@@ -59,10 +56,8 @@ const About = () => {
             </Card>
           </div>
         </div>
-      </main>
-
-      <Footer />
-    </div >
+      </div>
+    </>
   );
 };
 

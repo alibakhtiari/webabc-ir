@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -45,10 +43,7 @@ const UTMBuilder: React.FC = () => {
   return (
     <div>
 
-
-      <Navbar />
-
-      <main className="min-h-screen bg-gradient-to-b from-background to-muted/20 py-16">
+      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 py-16">
         <div className="container mx-auto px-4 max-w-4xl">
           <h1 className="text-4xl font-bold mb-4 text-center">UTM Link Builder</h1>
           <p className="text-muted-foreground text-center mb-8">
@@ -157,9 +152,7 @@ const UTMBuilder: React.FC = () => {
             </Card>
           </div>
         </div>
-      </main>
-
-      <Footer />
+      </div>
     </div>
   );
 };
