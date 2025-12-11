@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { AlertCircle, Home, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import SEOHead from "@/components/SEOHead";
+// import SEOHead from "@/components/SEOHead";
 import "@/animations.css";
 
 const NotFound = () => {
@@ -23,11 +23,7 @@ const NotFound = () => {
 
   return (
     <>
-      <SEOHead
-        title={t('notFound.title')}
-        description={t('notFound.subtitle')}
-        noIndex={true}
-      />
+
       <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-background to-gray-100 p-4">
         <div className="text-center max-w-md animate-fadeInUp">
           <div className="mb-6 flex justify-center">

@@ -4,7 +4,6 @@ import React, { useMemo, useEffect, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -97,10 +96,7 @@ const ServiceAreas = () => {
 
   return (
     <div>
-      <SEOHead
-        title={t('service-areas.title')}
-        description={t('service-areas.description')}
-      />
+
       <SchemaMarkup schema={[serviceAreaSchema, breadcrumbSchema]} />
 
       <Navbar />

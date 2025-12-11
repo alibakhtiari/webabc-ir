@@ -4,7 +4,6 @@ import React, { lazy, Suspense } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
-import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { createBreadcrumbSchema } from '@/lib/schema';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -63,11 +62,7 @@ const Contact = () => {
 
   return (
     <div className={`min-h-screen flex flex-col ${languageMeta.fontFamily}`}>
-      <SEOHead
-        title={t('contact.getInTouch')}
-        description={language === 'en' ? "Contact WebABC team and get a free consultation in web design, SEO and digital marketing" : language === 'ar' ? "اتصل بفريق ويب أ ب ج واحصل على استشارة مجانية في تصميم الويب وتحسين محركات البحث والتسويق الرقمي" : "برای ارتباط با تیم وب آ ب ث و دریافت مشاوره رایگان در زمینه طراحی سایت، سئو و دیجیتال مارکتینگ با ما تماس بگیرید"}
-        keywords={language === 'en' ? "contact WebABC, SEO consultation, web design consultation, WebABC contact number" : language === 'ar' ? "اتصل بويب أ ب ج، استشارة تحسين محركات البحث، استشارة تصميم الويب، رقم الاتصال بويب أ ب ج" : "تماس با وب آ ب ث، مشاوره سئو، مشاوره طراحی سایت، شماره تماس وب آ ب ث"}
-      />
+
 
       <SchemaMarkup schema={breadcrumbSchema} />
       <SchemaMarkup schema={contactSchema} />

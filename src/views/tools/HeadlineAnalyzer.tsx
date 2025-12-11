@@ -5,7 +5,6 @@ import Navbar from '@/components/Navbar';
 import Breadcrumb from '@/components/Breadcrumb';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
-import SEOHead from '@/components/SEOHead';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
@@ -48,10 +47,7 @@ const HeadlineAnalyzer: React.FC = () => {
 
   return (
     <div>
-      <SEOHead
-        title="Headline Analyzer"
-        description="Score your headlines for better engagement"
-      />
+
 
       <Navbar />
 
@@ -91,8 +87,8 @@ const HeadlineAnalyzer: React.FC = () => {
                     <div className="flex justify-between mb-2">
                       <span className="font-semibold">Overall Score</span>
                       <span className={`font-bold ${analysis.score >= 70 ? 'text-green-600' :
-                          analysis.score >= 40 ? 'text-yellow-600' :
-                            'text-red-600'
+                        analysis.score >= 40 ? 'text-yellow-600' :
+                          'text-red-600'
                         }`}>
                         {analysis.score}/100
                       </span>

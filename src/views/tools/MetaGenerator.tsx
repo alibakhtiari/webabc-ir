@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
-import SEOHead from '@/components/SEOHead';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -43,10 +42,7 @@ const MetaGenerator: React.FC = () => {
 
   return (
     <div>
-      <SEOHead
-        title="Meta Tag Generator"
-        description="Generate SEO-optimized meta tags for your website"
-      />
+
 
       <Navbar />
 

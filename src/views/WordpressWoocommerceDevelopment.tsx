@@ -5,7 +5,6 @@ import Navbar from '@/components/Navbar';
 import Breadcrumb from '@/components/Breadcrumb';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
-import SEOHead from '@/components/SEOHead';
 import CTASection from '@/components/CTASection';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { createServiceSchema } from '@/lib/schema';
@@ -26,10 +25,7 @@ const WordpressWoocommerceDevelopment = () => {
 
     return (
         <div className="min-h-screen flex flex-col">
-            <SEOHead
-                title={t('wordpress.title')}
-                description={t('wordpress.subtitle')}
-            />
+
             <SchemaMarkup schema={serviceSchema} />
 
             <Navbar />

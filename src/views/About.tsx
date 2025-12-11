@@ -4,7 +4,6 @@ import React, { lazy, Suspense, useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Card } from '@/components/ui/card';
-import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import Breadcrumb from '@/components/Breadcrumb';
 import { createOrganizationSchema } from '@/lib/schema';
@@ -39,11 +38,7 @@ const About = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEOHead
-        title={t('about.title')}
-        description={t('about.subtitle')}
-        keywords={t('seo.keywords')}
-      />
+
 
       {schemaMarkup.length > 0 && <SchemaMarkup schema={schemaMarkup} />}
       <Navbar />

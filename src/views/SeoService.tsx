@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
-import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { useLanguage } from '@/contexts/LanguageContext';
 import OptimizedImage from '@/components/OptimizedImage';
@@ -54,11 +53,7 @@ const SeoService = () => {
 
   return (
     <div dir={language === 'en' ? 'ltr' : 'rtl'} className={language === 'en' ? 'font-sans' : 'font-arabic'}>
-      <SEOHead
-        title={t('seoService.title')}
-        description={t('seoService.subtitle')}
-        keywords="seo, search engine optimization, keyword research, content strategy, link building, technical seo"
-      />
+
       <SchemaMarkup schema={[serviceSchema, breadcrumbSchema]} />
       <Navbar />
 
