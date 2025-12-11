@@ -71,6 +71,6 @@ export const config = {
          * - images, fonts, assets (static assets)
          * - blog (if excluded in original)
          */
-        '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|images|fonts|assets|placeholder.svg|blog).*)',
+        '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|images|fonts|assets|blog).*)',
     ],
 }

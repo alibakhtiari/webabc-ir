@@ -9,7 +9,7 @@ const FAQPageSchema: React.FC = () => {
     // Generate organization schema
     const organizationSchema = createOrganizationSchema(
         "https://webabc.ir",
-        "https://webabc.ir/images/logo.jpg",
+        "https://webabc.ir/images/logo.webp",
         [{ telephone: "+98123456789", contactType: "customer service" }],
         language
     );
