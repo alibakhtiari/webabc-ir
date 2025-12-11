@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -127,10 +126,7 @@ const LocationPage = () => {
 
   return (
     <div>
-      <SEOHead
-        title={`${t('common.webDesignAndDevelopment')} ${location.name} - ${location.country}`}
-        description={location.longDescription}
-      />
+
       <SchemaMarkup schema={[locationSchema, breadcrumbSchema]} />
 
       <Navbar />

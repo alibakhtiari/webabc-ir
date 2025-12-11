@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
-import SEOHead from '@/components/SEOHead';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -21,10 +20,7 @@ const SerpPreview: React.FC = () => {
 
   return (
     <div>
-      <SEOHead
-        title="SERP Snippet Preview Tool"
-        description="Preview how your webpage will appear in Google search results"
-      />
+
 
       <Navbar />
 

@@ -6,7 +6,6 @@ import Breadcrumb from '@/components/Breadcrumb';
 import Footer from '@/components/Footer';
 import FAQ from '@/components/FAQ';
 import { useLanguage } from '@/contexts/LanguageContext';
-import SEOHead from '@/components/SEOHead';
 import CTASection from '@/components/CTASection';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { createServiceSchema, createLocalBusinessSchema } from '@/lib/schema';
@@ -55,10 +54,7 @@ const LocalSeo = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEOHead
-        title={t('localSeo.localSeoTitle')}
-        description={t('localSeo.localSeoDescription')}
-      />
+
       <SchemaMarkup schema={serviceSchema} />
       <SchemaMarkup schema={localBusinessSchema} />
 

@@ -8,7 +8,6 @@ import ServicesSection from '@/components/ServicesSection';
 import BenefitsSection from '@/components/BenefitsSection';
 import CTASection from '@/components/CTASection';
 import { useLanguage } from '@/contexts/LanguageContext';
-import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { createOrganizationSchema } from '@/lib/schema';
 import PagePreloader from '@/components/PagePreloader';
@@ -31,12 +30,7 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <SEOHead
-        title={t('home.heroTitle')}
-        description={t('home.heroDescription')}
-        keywords={t('home.heroKeywords')}
-        ogType="website"
-      />
+
 
       {organizationSchema && <SchemaMarkup schema={organizationSchema} />}
       <PagePreloader />

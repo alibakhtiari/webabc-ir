@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import Breadcrumb from '@/components/Breadcrumb';
 import Link from 'next/link';
@@ -80,11 +79,7 @@ const ToolsPage: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEOHead
-        title={`${t('tools.title')} | WebABC`}
-        description={t('tools.description')}
-        keywords={`${t('tools.title')}, ${t('tools.serpPreview.title')}, ${t('tools.metaGenerator.title')}, ${t('tools.headlineAnalyzer.title')}`}
-      />
+
 
       {schemaMarkup.length > 0 && <SchemaMarkup schema={schemaMarkup} />}
 

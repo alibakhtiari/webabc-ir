@@ -3,7 +3,6 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import Breadcrumb from '@/components/Breadcrumb';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -51,10 +50,7 @@ export default function FAQ() {
 
     return (
         <div className="min-h-screen flex flex-col">
-            <SEOHead
-                title={`${t('faq.title')} | WebABC`}
-                description={t('faq.description')}
-            />
+
 
             <SchemaMarkup schema={[organizationSchema, faqSchema]} />
 

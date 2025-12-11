@@ -4,7 +4,6 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
-import SEOHead from '@/components/SEOHead';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -79,11 +78,7 @@ const Resources: React.FC = () => {
 
   return (
     <div>
-      <SEOHead
-        title={t('resources.title')}
-        description={t('resources.resourcesDesc')}
-        keywords="SEO tools, free tools, meta tags, SERP preview, UTM builder"
-      />
+
       <SchemaMarkup schema={serviceSchema} />
 
       <Navbar />

@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
-import SEOHead from '@/components/SEOHead';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -63,10 +62,7 @@ const LoremGenerator: React.FC = () => {
 
   return (
     <div>
-      <SEOHead
-        title="Lorem Ipsum Generator"
-        description="Generate customizable placeholder text for your designs"
-      />
+
 
       <Navbar />
 

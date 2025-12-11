@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import Breadcrumb from '@/components/Breadcrumb';
 import Link from 'next/link';
@@ -106,12 +105,7 @@ const ServicesOverview = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEOHead
-        title={t('seo.servicesTitle')}
-        description={t('seo.servicesDescription')}
-        keywords={t('seo.keywords')}
-        ogType="website"
-      />
+
 
       {schemaMarkup.length > 0 && <SchemaMarkup schema={schemaMarkup} />}
 

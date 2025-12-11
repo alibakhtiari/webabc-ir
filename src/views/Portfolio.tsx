@@ -6,7 +6,6 @@ import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
-import SEOHead from '@/components/SEOHead';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { portfolioItems } from '@/lib/portfolioData';
 import { Button } from '@/components/ui/button';
@@ -104,11 +103,7 @@ const Portfolio = () => {
 
   return (
     <div className={languageMeta.fontFamily}>
-      <SEOHead
-        title={t('seo.portfolioTitle')}
-        description={t('seo.portfolioDescription')}
-        keywords={t('seo.keywords')}
-      />
+
 
       <Navbar />
 

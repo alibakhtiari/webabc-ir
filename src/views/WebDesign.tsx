@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
-import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { useLanguage } from '@/contexts/LanguageContext';
 import OptimizedImage from '@/components/OptimizedImage';
@@ -50,11 +49,7 @@ const WebDesign = () => {
 
   return (
     <div dir={language === 'en' ? 'ltr' : 'rtl'}>
-      <SEOHead
-        title={t('webDesign.title')}
-        description={t('webDesign.description')}
-        keywords="web design, web development, responsive design, UI/UX design, WordPress, React"
-      />
+
       <SchemaMarkup schema={[serviceSchema, breadcrumbSchema]} />
       <Navbar />
 

@@ -6,7 +6,6 @@ import Breadcrumb from '@/components/Breadcrumb';
 import Footer from '@/components/Footer';
 import FAQ from '@/components/FAQ';
 import { useLanguage } from '@/contexts/LanguageContext';
-import SEOHead from '@/components/SEOHead';
 import CTASection from '@/components/CTASection';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { createServiceSchema } from '@/lib/schema';
@@ -46,10 +45,7 @@ const WebDevelopment = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEOHead
-        title={t('webDevelopmentServices.title')}
-        description={t('webDevelopmentServices.webDevelopmentDescription')}
-      />
+
       <SchemaMarkup schema={serviceSchema} />
 
       <Navbar />
