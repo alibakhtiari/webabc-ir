@@ -1,5 +1,7 @@
-import LocationPage from "@/views/LocationPage";
+import LocationClient from "./LocationClient";
 import { languages, SupportedLanguage } from "@/types/language";
+import { Metadata } from "next";
+import { constructMetadata } from "@/lib/metadata";
 import enServiceAreas from '@/i18n/en/service-areas.json';
 import faServiceAreas from '@/i18n/fa/service-areas.json';
 import arServiceAreas from '@/i18n/ar/service-areas.json';
@@ -32,11 +34,6 @@ export async function generateStaticParams() {
 
     return params;
 }
-
-
-
-import { Metadata } from "next";
-import { constructMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string; location: string }> }): Promise<Metadata> {
     const { lang, location } = await params;
@@ -83,5 +80,5 @@ export default async function Page({
     params: Promise<{ lang: string; location: string }>;
 }) {
     const { lang } = await params;
-    return <LocationPage />;
+    return <LocationClient />;
 }

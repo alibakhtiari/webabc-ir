@@ -1,4 +1,4 @@
-import BlogPostPage from "@/views/BlogPostPage";
+import BlogPostClient from "./BlogPostClient";
 import { SupportedLanguage } from "@/types/language";
 import { getAllBlogPosts, getBlogPost } from "@/lib/blogData";
 import { languages } from "@/types/language";
@@ -61,8 +61,8 @@ export default async function Page({
     const post = await getBlogPost(slug, lang);
 
     if (!post) {
-        return <BlogPostPage post={null} />;
+        return <BlogPostClient post={null} />;
     }
 
-    return <BlogPostPage post={post} />;
+    return <BlogPostClient post={post} />;
 }

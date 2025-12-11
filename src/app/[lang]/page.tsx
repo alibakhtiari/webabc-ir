@@ -1,4 +1,9 @@
-import Home from "@/views/Home";
+import HeroSection from '@/components/HeroSection';
+import ServicesSection from '@/components/ServicesSection';
+import BenefitsSection from '@/components/BenefitsSection';
+import CTASection from '@/components/CTASection';
+import HomeSchema from '@/components/seo/schemas/HomeSchema';
+import PagePreloader from '@/components/PagePreloader';
 import { SupportedLanguage, languages } from "@/types/language";
 
 import { Metadata } from "next";
@@ -27,7 +32,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
             },
         },
     };
-
 }
 
 export async function generateStaticParams() {
@@ -40,5 +44,17 @@ export default async function Page({
     params: Promise<{ lang: string }>;
 }) {
     const { lang } = await params;
-    return <Home />;
+    return (
+        <>
+            <HomeSchema />
+            <PagePreloader />
+
+            <div className="relative overflow-x-hidden">
+                <HeroSection />
+                <ServicesSection />
+                <BenefitsSection />
+                <CTASection />
+            </div>
+        </>
+    );
 }

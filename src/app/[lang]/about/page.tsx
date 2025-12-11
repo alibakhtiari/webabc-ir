@@ -1,4 +1,4 @@
-import About from "@/views/About";
+import AboutClient from "./AboutClient";
 import { SupportedLanguage } from "@/types/language";
 import { Metadata } from "next";
 import { getDictionary } from "@/i18n/get-dictionary";
@@ -33,5 +33,5 @@ export default async function Page({
     params: Promise<{ lang: string }>;
 }) {
     const { lang } = await params;
-    return <About />;
+    return <AboutClient />;
 }
