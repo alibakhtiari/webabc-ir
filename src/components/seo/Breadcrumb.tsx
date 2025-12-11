@@ -47,6 +47,21 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customItems }) => {
           case 'services':
             name = t('common.services');
             break;
+          case 'seo':
+            name = t('seo.title');
+            break;
+          case 'web-development':
+            name = t('services.webDevelopment');
+            break;
+          case 'local-seo':
+            name = t('seo.localSeo');
+            break;
+          case 'wordpress-development':
+            name = t('wordpress.title');
+            break;
+          case 'web-design':
+            name = t('services.webDesign.title');
+            break;
           case 'portfolio':
             name = t('common.portfolio');
             break;
@@ -56,15 +71,6 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customItems }) => {
           case 'contact':
             name = t('common.contact');
             break;
-          case 'seo-services':
-            name = t('seo.title');
-            break;
-          case 'web-development-services':
-            name = t('services.webDevelopment');
-            break;
-          case 'web-design':
-            name = t('services.webDesign');
-            break;
           case 'case-studies':
             name = t('common.caseStudies');
             break;
@@ -73,12 +79,6 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customItems }) => {
             break;
           case 'resources':
             name = t('common.resources');
-            break;
-          case 'local-seo':
-            name = t('seo.localSeo');
-            break;
-          case 'wordpress-woocommerce-development':
-            name = t('wordpress.title');
             break;
           case 'service-areas':
             name = t('service-areas.title');
