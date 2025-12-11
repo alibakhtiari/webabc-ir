@@ -123,9 +123,9 @@ export default {
 				'blur-in': 'blur-in 0.6s ease-out'
 			},
 			fontFamily: {
-				sans: ['Lato', 'system-ui', 'sans-serif'],
-				persian: ['Vazirmatn', 'sans-serif'],
-				arabic: ['Vazirmatn', 'sans-serif'],
+				sans: ['var(--font-lato)', 'system-ui', 'sans-serif'],
+				persian: ['var(--font-vazirmatn)', 'sans-serif'],
+				arabic: ['var(--font-vazirmatn)', 'sans-serif'],
 			}
 		}
 	},
