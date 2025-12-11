@@ -3,7 +3,7 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { createLocalBusinessSchema } from '@/lib/schema';
-import SchemaMarkup from '@/components/SchemaMarkup';
+import SchemaMarkup from '@/components/seo/SchemaMarkup';
 
 const GlobalSchema = () => {
     const { language } = useLanguage();
