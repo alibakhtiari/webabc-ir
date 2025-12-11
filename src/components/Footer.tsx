@@ -51,8 +51,8 @@ const Footer = () => {
               {
                 title: t('common.services'),
                 links: [
-                  { name: t('services.seoTitle'), href: `/${language}/seo-services` },
-                  { name: t('services.webDesignTitle'), href: `/${language}/web-design` },
+                  { name: t('services.seoTitle'), href: `/${language}/services/seo` },
+                  { name: t('services.webDesignTitle'), href: `/${language}/services/web-design` },
                   { name: t('wordpress.contentCreation'), href: `/${language}/content-creation` },
                   { name: t('services.technicalOptimization'), href: `/${language}/technical-optimization` },
                   { name: t('services.linkBuilding'), href: `/${language}/link-building` },

@@ -1,36 +1,22 @@
 "use client";
 
 import React from 'react';
-import Breadcrumb from '@/components/seo/Breadcrumb';
-import { useLanguage } from '@/contexts/LanguageContext';
-import CTASection from '@/components/CTASection';
+import { ServicePageTemplate } from '@/components/templates/ServicePageTemplate';
 import WordpressSchema from '@/components/seo/schemas/WordpressSchema';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { ShoppingCart, Layout, Settings, Smartphone } from 'lucide-react';
 
 const WordpressWoocommerceDevelopment = () => {
-    const { t, languageMeta, language } = useLanguage();
+    const { t } = useLanguage();
 
     return (
         <>
-
             <WordpressSchema />
 
-            <div className="flex-1">
-                {/* Hero Section */}
-                <section className="py-16 bg-gradient-to-r from-primary/5 to-primary/10">
-                    <div className="container mx-auto px-4">
-                        <div className="max-w-3xl mx-auto text-center">
-                            <Breadcrumb />
-                            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                                {t('wordpress.title')}
-                            </h1>
-                            <p className="text-xl text-gray-600">
-                                {t('wordpress.subtitle')}
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
+            <ServicePageTemplate
+                title={t('wordpress.title')}
+                subtitle={t('wordpress.subtitle')}
+            >
                 {/* Features Section */}
                 <section className="py-16">
                     <div className="container mx-auto px-4">
@@ -69,10 +55,7 @@ const WordpressWoocommerceDevelopment = () => {
                         </div>
                     </div>
                 </section>
-
-                {/* CTA Section */}
-                <CTASection />
-            </div>
+            </ServicePageTemplate>
         </>
     );
 };

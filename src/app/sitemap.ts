@@ -5,7 +5,20 @@ const BASE_URL = 'https://webabc.ir';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // 1. Define static routes
-    const staticRoutes = ['', '/about', '/services', '/contact', '/portfolio', '/service-areas', '/faq'].flatMap(route =>
+    const staticRoutes = [
+        '',
+        '/about',
+        '/services',
+        '/services/seo',
+        '/services/web-development',
+        '/services/local-seo',
+        '/services/wordpress-development',
+        '/services/web-design',
+        '/contact',
+        '/portfolio',
+        '/service-areas',
+        '/faq'
+    ].flatMap(route =>
         ['en', 'fa', 'ar'].map(lang => ({
             url: `${BASE_URL}/${lang}${route}`,
             lastModified: new Date(),

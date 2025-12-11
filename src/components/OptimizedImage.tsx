@@ -17,6 +17,7 @@ interface OptimizedImageProps {
   sizes?: string;
   placeholderColor?: string;
   quality?: number;
+  fill?: boolean;
 }
 
 const OptimizedImage = ({
@@ -32,7 +33,8 @@ const OptimizedImage = ({
   objectFit = 'cover',
   sizes = '(max-width: 768px) 100vw, 50vw',
   placeholderColor = 'bg-gray-100',
-  quality = 85
+  quality = 85,
+  fill = false
 }: OptimizedImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -91,7 +93,7 @@ const OptimizedImage = ({
   };
 
   return (
-    <div className={cn("overflow-hidden relative", className)} style={{ aspectRatio: width && height ? width / height : undefined }}>
+    <div className={cn("overflow-hidden relative", className)} style={{ aspectRatio: (!fill && width && height) ? width / height : undefined }}>
       {/* Placeholder */}
       {(!isLoaded || !isInView) && !hasError && (
         <div className={cn("absolute inset-0 animate-pulse flex items-center justify-center", placeholderColor)}>

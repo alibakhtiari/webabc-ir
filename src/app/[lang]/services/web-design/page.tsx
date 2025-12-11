@@ -1,0 +1,164 @@
+"use client";
+
+import React from 'react';
+import { ServicePageTemplate } from '@/components/templates/ServicePageTemplate';
+import WebDesignSchema from '@/components/seo/schemas/WebDesignSchema';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { TimelineItem, TechItem } from '@/components/services/WebDesignComponents';
+
+const WebDesign = () => {
+    const { t } = useLanguage();
+
+    return (
+        <>
+            <WebDesignSchema />
+
+            <ServicePageTemplate
+                title={t('webDesign.title')}
+                subtitle={t('webDesign.description')}
+                heroImage="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+            >
+                {/* Services Details */}
+                <section className="py-16 bg-white">
+                    <div className="container mx-auto px-4">
+                        <h2 className="text-3xl font-bold text-center mb-12 animate-fade-up">
+                            {t('webDesign.ourServices')}
+                        </h2>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow animate-fade-up">
+                                <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                                    <span className="text-primary text-2xl">✦</span>
+                                </div>
+                                <h3 className="text-xl font-bold mb-3">{t('webDesign.features.uiux.title')}</h3>
+                                <p className="text-gray-600">
+                                    {t('webDesign.features.uiux.description')}
+                                </p>
+                            </div>
+
+                            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow animate-fade-up" style={{ animationDelay: '0.1s' }}>
+                                <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                                    <span className="text-primary text-2xl">✦</span>
+                                </div>
+                                <h3 className="text-xl font-bold mb-3">{t('webDesign.features.responsive.title')}</h3>
+                                <p className="text-gray-600">
+                                    {t('webDesign.features.responsive.description')}
+                                </p>
+                            </div>
+
+                            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow animate-fade-up" style={{ animationDelay: '0.2s' }}>
+                                <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                                    <span className="text-primary text-2xl">✦</span>
+                                </div>
+                                <h3 className="text-xl font-bold mb-3">{t('webDesign.features.wordpress.title')}</h3>
+                                <p className="text-gray-600">
+                                    {t('webDesign.features.wordpress.description')}
+                                </p>
+                            </div>
+
+                            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow animate-fade-up" style={{ animationDelay: '0.3s' }}>
+                                <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                                    <span className="text-primary text-2xl">✦</span>
+                                </div>
+                                <h3 className="text-xl font-bold mb-3">{t('webDesign.features.react.title')}</h3>
+                                <p className="text-gray-600">
+                                    {t('webDesign.features.react.description')}
+                                </p>
+                            </div>
+
+                            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow animate-fade-up" style={{ animationDelay: '0.4s' }}>
+                                <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                                    <span className="text-primary text-2xl">✦</span>
+                                </div>
+                                <h3 className="text-xl font-bold mb-3">{t('webDesign.features.ecommerce.title')}</h3>
+                                <p className="text-gray-600">
+                                    {t('webDesign.features.ecommerce.description')}
+                                </p>
+                            </div>
+
+                            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow animate-fade-up" style={{ animationDelay: '0.5s' }}>
+                                <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                                    <span className="text-primary text-2xl">✦</span>
+                                </div>
+                                <h3 className="text-xl font-bold mb-3">{t('webDesign.features.seo.title')}</h3>
+                                <p className="text-gray-600">
+                                    {t('webDesign.features.seo.description')}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Process */}
+                <section className="py-16 bg-gray-50">
+                    <div className="container mx-auto px-4">
+                        <h2 className="text-3xl font-bold text-center mb-12 animate-fade-up">
+                            {t('webDesign.process.title')}
+                        </h2>
+
+                        <div className="relative">
+                            {/* Timeline bar */}
+                            <div className="absolute left-4 lg:left-1/2 transform lg:-translate-x-1/2 top-0 bottom-0 w-1 bg-primary/20"></div>
+
+                            {/* Timeline steps */}
+                            <div className="space-y-12">
+                                <TimelineItem
+                                    title={t('webDesign.process.step1.title')}
+                                    description={t('webDesign.process.step1.description')}
+                                    index={1}
+                                    isLeft={true}
+                                />
+                                <TimelineItem
+                                    title={t('webDesign.process.step2.title')}
+                                    description={t('webDesign.process.step2.description')}
+                                    index={2}
+                                    isLeft={false}
+                                />
+                                <TimelineItem
+                                    title={t('webDesign.process.step3.title')}
+                                    description={t('webDesign.process.step3.description')}
+                                    index={3}
+                                    isLeft={true}
+                                />
+                                <TimelineItem
+                                    title={t('webDesign.process.step4.title')}
+                                    description={t('webDesign.process.step4.description')}
+                                    index={4}
+                                    isLeft={false}
+                                />
+                                <TimelineItem
+                                    title={t('webDesign.process.step5.title')}
+                                    description={t('webDesign.process.step5.description')}
+                                    index={5}
+                                    isLeft={true}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Technologies */}
+                <section className="py-16 bg-white">
+                    <div className="container mx-auto px-4">
+                        <h2 className="text-3xl font-bold text-center mb-12 animate-fade-up">
+                            {t('webDesign.technologies.title')}
+                        </h2>
+
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            <TechItem name="React" icon="⚛️" />
+                            <TechItem name="Next.js" icon="▲" />
+                            <TechItem name="WordPress" icon="W" />
+                            <TechItem name="Tailwind CSS" icon="🎨" />
+                            <TechItem name="Node.js" icon="🟢" />
+                            <TechItem name="MongoDB" icon="🍃" />
+                            <TechItem name="TypeScript" icon="TS" />
+                            <TechItem name="GraphQL" icon="◢" />
+                        </div>
+                    </div>
+                </section>
+            </ServicePageTemplate>
+        </>
+    );
+};
+
+export default WebDesign;
