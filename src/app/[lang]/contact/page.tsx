@@ -1,18 +1,21 @@
 import Contact from "@/views/Contact";
 import { SupportedLanguage } from "@/types/language";
 import { Metadata } from "next";
-import { translations } from "@/i18n";
+import { getDictionary } from "@/i18n/get-dictionary";
+import { constructMetadata } from "@/lib/metadata";
 
-export const dynamic = 'force-dynamic';
+
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params;
     const supportedLang = lang as SupportedLanguage;
-    const t = translations[supportedLang] || translations.fa;
+    const t = await getDictionary(supportedLang);
 
     return {
-        title: t.contact?.title || "Contact Us | WebABC",
-        description: t.contact?.subtitle || "Get in Touch with Our Team",
+        ...constructMetadata({
+            title: t.contact?.title || "Contact Us | WebABC",
+            description: t.contact?.subtitle || "Get in Touch with Our Team",
+        }),
         alternates: {
             canonical: `https://webabc.ir/${supportedLang}/contact`,
             languages: {

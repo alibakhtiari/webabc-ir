@@ -3,6 +3,8 @@ import { SupportedLanguage } from "@/types/language";
 import { getAllBlogPosts, getBlogPost } from "@/lib/blogData";
 import { languages } from "@/types/language";
 import { notFound } from "next/navigation";
+import { constructMetadata } from "@/lib/metadata";
+import { Metadata } from "next";
 
 export async function generateStaticParams() {
     const params = [];
@@ -23,6 +25,33 @@ export async function generateStaticParams() {
 
 // ... existing code ...
 
+export async function generateMetadata({ params }: { params: Promise<{ lang: string; slug: string }> }): Promise<Metadata> {
+    const { lang, slug } = await params;
+    const post = await getBlogPost(slug, lang);
+
+    if (!post) {
+        return {
+            title: "Post Not Found | WebABC",
+        };
+    }
+
+    return {
+        ...constructMetadata({
+            title: post.title,
+            description: post.description,
+            image: post.image,
+        }),
+        alternates: {
+            canonical: `https://webabc.ir/${lang}/blog/${slug}`,
+            languages: {
+                'en': `/en/blog/${slug}`,
+                'fa': `/fa/blog/${slug}`,
+                'ar': `/ar/blog/${slug}`,
+            },
+        },
+    };
+}
+
 export default async function Page({
     params,
 }: {
@@ -32,10 +61,7 @@ export default async function Page({
     const post = await getBlogPost(slug, lang);
 
     if (!post) {
-        // Option 1: Pass null to view and let it handle 404
         return <BlogPostPage post={null} />;
-        // Option 2: Use notFound()
-        // notFound(); 
     }
 
     return <BlogPostPage post={post} />;

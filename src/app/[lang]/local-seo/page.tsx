@@ -1,18 +1,21 @@
 import LocalSeo from "@/views/LocalSeo";
 import { SupportedLanguage } from "@/types/language";
 import { Metadata } from "next";
-import { translations } from "@/i18n";
+import { getDictionary } from "@/i18n/get-dictionary";
+import { constructMetadata } from "@/lib/metadata";
 
-export const dynamic = 'force-dynamic';
+
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params;
     const supportedLang = lang as SupportedLanguage;
-    const t = translations[supportedLang] || translations.fa;
+    const t = await getDictionary(supportedLang);
 
     return {
-        title: t.localSeo?.localSeoTitle || "Local SEO Services | WebABC",
-        description: t.localSeo?.localSeoDescription || "Boost Your Local Visibility",
+        ...constructMetadata({
+            title: t.localSeo?.localSeoTitle || "Local SEO Services | WebABC",
+            description: t.localSeo?.localSeoDescription || "Boost Your Local Visibility",
+        }),
         alternates: {
             canonical: `https://webabc.ir/${supportedLang}/local-seo`,
             languages: {

@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import PortfolioDetail from "@/views/PortfolioDetail";
 import { portfolioItems } from "@/lib/portfolioData";
 import { SupportedLanguage } from "@/types/language";
-import { translations } from "@/i18n";
+import { getDictionary } from "@/i18n/get-dictionary";
+import { constructMetadata } from "@/lib/metadata";
 
 import { languages } from "@/types/language";
 
@@ -27,7 +28,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ lang: string, id: string }> }): Promise<Metadata> {
     const { lang, id } = await params;
     const supportedLang = lang as SupportedLanguage;
-    const t = translations[supportedLang] || translations.fa;
+    const t = await getDictionary(supportedLang);
 
     const project = portfolioItems.find(item => item.id === id);
 
@@ -38,8 +39,11 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     }
 
     return {
-        title: `${project.title} | ${t.portfolio?.title || "Portfolio"}`,
-        description: project.description,
+        ...constructMetadata({
+            title: `${project.title} | ${t.portfolio?.title || "Portfolio"}`,
+            description: project.description,
+            image: project.image,
+        }),
         alternates: {
             languages: {
                 'en': `/en/portfolio/${id}`,

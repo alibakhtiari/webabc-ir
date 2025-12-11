@@ -1,18 +1,21 @@
 import BlogPage from "@/views/BlogPage";
 import { SupportedLanguage } from "@/types/language";
 import { Metadata } from "next";
-import { translations } from "@/i18n";
+import { getDictionary } from "@/i18n/get-dictionary";
+import { constructMetadata } from "@/lib/metadata";
 
 import { getAllBlogPosts } from "@/lib/blogData";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params;
     const supportedLang = lang as SupportedLanguage;
-    const t = translations[supportedLang] || translations.fa;
+    const t = await getDictionary(supportedLang);
 
     return {
-        title: t.blog?.title || "Blog | WebABC",
-        description: t.blog?.blogDescription || "Latest News and Articles",
+        ...constructMetadata({
+            title: t.blog?.title || "Blog | WebABC",
+            description: t.blog?.blogDescription || "Latest News and Articles",
+        }),
         alternates: {
             canonical: `https://webabc.ir/${supportedLang}/blog`,
             languages: {
