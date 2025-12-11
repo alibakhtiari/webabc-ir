@@ -19,7 +19,7 @@ const LazyImage = ({
   className,
   width,
   height,
-  placeholder = '/placeholder.svg',
+  placeholder = '/images/placeholder.svg',
   blur = true
 }: LazyImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);

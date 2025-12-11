@@ -154,7 +154,7 @@ const ServiceAreas = () => {
                           alt={`${location.name}, ${location.country}`}
                           className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                           onError={(e) => {
-                            e.currentTarget.src = '/placeholder.svg';
+                            e.currentTarget.src = '/images/placeholder.svg';
                           }}
                         />
                       </div>

@@ -90,7 +90,7 @@ const LocationPage = () => {
               alt={`${location.name}, ${location.country}`}
               className="w-full h-full object-cover"
               onError={(e) => {
-                e.currentTarget.src = '/placeholder.svg';
+                e.currentTarget.src = '/images/placeholder.svg';
               }}
             />
             <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-background/80"></div>
