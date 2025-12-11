@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/accordion";
 import { useLanguage } from '@/contexts/LanguageContext';
 import { createFAQSchema } from '@/lib/schema';
-import SchemaMarkup from '@/components/SchemaMarkup';
+import SchemaMarkup from '@/components/seo/SchemaMarkup';
 
 interface FAQItem {
     question: string;
