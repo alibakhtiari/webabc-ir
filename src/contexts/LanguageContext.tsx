@@ -8,7 +8,9 @@ import { useLanguageDetection } from '@/hooks/useLanguageDetection';
 import { SupportedLanguage, LanguageMeta, languages, LanguageContextType } from '@/types/language';
 
 // Import translation system
-import { translations } from '@/i18n';
+// Import translation system
+// import { translations } from '@/i18n';
+
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
@@ -17,7 +19,7 @@ interface LanguageProviderProps {
   defaultLanguage?: SupportedLanguage;
 }
 
-export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, defaultLanguage }) => {
+export const LanguageProvider: React.FC<LanguageProviderProps & { dictionary: any }> = ({ children, defaultLanguage, dictionary }) => {
   const initialLanguage = useLanguageDetection();
   // Ensure we always have a valid language
   const safeDefaultLanguage = (defaultLanguage && languages[defaultLanguage]) ? defaultLanguage :
@@ -43,17 +45,17 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, de
 
   // Translation function wrapper
   const t = (key: string, options?: { fallback?: string }): string => {
-    return getTranslatedString(key, language, options);
+    return getTranslatedString(key, language, dictionary, options);
   };
 
   // Get SEO title wrapper
   const getContextSeoTitle = (title?: string): string => {
-    return getSeoTitle(language, pathname || '', title);
+    return getSeoTitle(language, pathname || '', dictionary, title);
   };
 
   // Get SEO description wrapper
   const getContextSeoDescription = (description?: string): string => {
-    return getSeoDescription(language, pathname || '', description);
+    return getSeoDescription(language, pathname || '', dictionary, description);
   };
 
   // Apply document direction based on language
@@ -99,13 +101,14 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, de
         languageMeta: languages[language] || languages.fa,
         getSeoTitle: getContextSeoTitle,
         getSeoDescription: getContextSeoDescription,
-        translations
+        translations: dictionary // exposing the dictionary directly
       }}
     >
       {children}
     </LanguageContext.Provider>
   );
 };
+
 
 // Custom hook to use the language context
 export const useLanguage = (): LanguageContextType => {
