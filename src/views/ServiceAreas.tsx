@@ -4,6 +4,7 @@ import React, { useMemo, useEffect, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -75,29 +76,10 @@ const ServiceAreas = () => {
     }))
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: t('common.home'),
-        item: `${origin}/${language}`
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: t('service-areas.title'),
-        item: `${origin}${pathname}`
-      }
-    ]
-  };
-
   return (
     <div>
 
-      <SchemaMarkup schema={[serviceAreaSchema, breadcrumbSchema]} />
+      <SchemaMarkup schema={serviceAreaSchema} />
 
       <Navbar />
 
@@ -107,6 +89,7 @@ const ServiceAreas = () => {
           <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
           <div className="container mx-auto px-4 relative pt-8">
             <div className="max-w-4xl mx-auto text-center">
+              <Breadcrumb />
               <Badge variant="secondary" className="mb-4 text-sm">
                 <MapPin className="w-4 h-4 inline mr-2" />
                 {t('service-areas.locationTitle')}
@@ -256,7 +239,7 @@ const ServiceAreas = () => {
       </main>
 
       <Footer />
-    </div>
+    </div >
   );
 };
 
