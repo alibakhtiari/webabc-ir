@@ -80,6 +80,9 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customItems }) => {
           case 'wordpress-woocommerce-development':
             name = t('wordpress.title');
             break;
+          case 'service-areas':
+            name = t('service-areas.title');
+            break;
           case 'blog':
             name = t('common.blog') || 'Blog';
             break;

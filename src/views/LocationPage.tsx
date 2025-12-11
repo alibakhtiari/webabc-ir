@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -99,35 +100,10 @@ const LocationPage = () => {
     }
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: t('common.home'),
-        item: `${origin}/${language}`
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: t('service-areas.title'),
-        item: `${origin}/${language}/service-areas`
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: location.name,
-        item: `${origin}${pathname}`
-      }
-    ]
-  };
-
   return (
     <div>
 
-      <SchemaMarkup schema={[locationSchema, breadcrumbSchema]} />
+      <SchemaMarkup schema={locationSchema} />
 
       <Navbar />
 
@@ -148,6 +124,13 @@ const LocationPage = () => {
 
           <div className="container mx-auto px-4 relative">
             <div className="max-w-4xl mx-auto text-center">
+              <div className="mb-8">
+                <Breadcrumb customItems={[
+                  { name: t('common.home'), path: `/${language}` },
+                  { name: t('service-areas.title'), path: `/${language}/service-areas` },
+                  { name: location.name, path: `/${language}/service-areas/${location.slug}` }
+                ]} />
+              </div>
               <div className="flex items-center justify-center gap-2 mb-6 animate-fade-in">
                 <MapPin className="w-6 h-6 text-primary" />
                 <Badge variant="secondary" className="text-base px-4 py-1">
@@ -307,7 +290,7 @@ const LocationPage = () => {
       </main>
 
       <Footer />
-    </div>
+    </div >
   );
 };
 

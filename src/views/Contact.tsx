@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
 import SchemaMarkup from '@/components/SchemaMarkup';
-import { createBreadcrumbSchema } from '@/lib/schema';
+
 import { useLanguage } from '@/contexts/LanguageContext';
 
 // Lazy loading components
@@ -28,12 +28,6 @@ const TextareaSkeleton = () => (
 
 const Contact = () => {
   const { language, t, languageMeta } = useLanguage();
-
-  // Schema markup for Contact page
-  const breadcrumbSchema = createBreadcrumbSchema([
-    { name: t('common.home'), item: `https://webabc.ir/${language}` },
-    { name: t('common.contact'), item: `https://webabc.ir/${language}/contact` }
-  ]);
 
   const contactSchema = {
     "@context": "https://schema.org",
@@ -63,8 +57,6 @@ const Contact = () => {
   return (
     <div className={`min-h-screen flex flex-col ${languageMeta.fontFamily}`}>
 
-
-      <SchemaMarkup schema={breadcrumbSchema} />
       <SchemaMarkup schema={contactSchema} />
 
       <Navbar />
@@ -152,7 +144,7 @@ const Contact = () => {
       </main>
 
       <Footer />
-    </div>
+    </div >
   );
 };
 

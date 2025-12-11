@@ -6,6 +6,7 @@ import { useParams, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { BlogPost } from '@/lib/blogUtils';
 import { Badge } from '@/components/ui/badge';
@@ -116,35 +117,10 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
     }))
   } : null;
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: t('common.home'),
-        item: `${origin}/${language}`
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: t('blog.title'),
-        item: `${origin}/${language}/blog`
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: post.title,
-        item: `${origin}${pathname}`
-      }
-    ]
-  };
-
   return (
     <div>
 
-      <SchemaMarkup schema={faqSchema ? [articleSchema, faqSchema, breadcrumbSchema] : [articleSchema, breadcrumbSchema]} />
+      <SchemaMarkup schema={faqSchema ? [articleSchema, faqSchema] : articleSchema} />
 
       <Navbar />
 
@@ -165,6 +141,13 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
         {/* Hero Image */}
         <div className="container mx-auto px-4 py-8">
           <div className="max-w-4xl mx-auto">
+            <div className="mb-6">
+              <Breadcrumb customItems={[
+                { name: t('common.home'), path: `/${language}` },
+                { name: t('blog.title'), path: `/${language}/blog` },
+                { name: post.title, path: `/${language}/blog/${post.slug}` }
+              ]} />
+            </div>
             <div className="aspect-video rounded-xl overflow-hidden mb-8">
               <img
                 src={post.image}
@@ -301,7 +284,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
       </main>
 
       <Footer />
-    </div>
+    </div >
   );
 };
 

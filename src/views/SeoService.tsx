@@ -8,7 +8,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { useLanguage } from '@/contexts/LanguageContext';
 import OptimizedImage from '@/components/OptimizedImage';
-import { createBreadcrumbSchema } from '@/lib/schema';
+
 import { ChartBar, Search, Globe, FileText, LinkIcon, PieChart } from 'lucide-react';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import FAQ from '@/components/FAQ';
@@ -45,16 +45,10 @@ const SeoService = () => {
     "serviceType": "Search Engine Optimization"
   };
 
-  const breadcrumbSchema = createBreadcrumbSchema([
-    { name: t('common.home'), item: `${origin}/${language}` },
-    { name: t('common.services'), item: `${origin}/${language}/services` },
-    { name: t('seoService.title'), item: `${origin}/${language}/seo-services` }
-  ]);
-
   return (
     <div dir={language === 'en' ? 'ltr' : 'rtl'} className={language === 'en' ? 'font-sans' : 'font-arabic'}>
 
-      <SchemaMarkup schema={[serviceSchema, breadcrumbSchema]} />
+      <SchemaMarkup schema={serviceSchema} />
       <Navbar />
 
       <main className="pt-16">
@@ -259,7 +253,7 @@ const SeoService = () => {
       </main>
 
       <Footer />
-    </div>
+    </div >
   );
 };
 

@@ -70,29 +70,10 @@ const BlogPage: React.FC<BlogPageProps> = ({ initialPosts }) => {
     }))
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: t('common.home'),
-        item: `${origin}/${language}`
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: t('blog.title'),
-        item: `${origin}${pathname}`
-      }
-    ]
-  };
-
   return (
     <div>
 
-      <SchemaMarkup schema={[blogListSchema, breadcrumbSchema]} />
+      <SchemaMarkup schema={blogListSchema} />
 
       <Navbar />
 
@@ -210,7 +191,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ initialPosts }) => {
       </main>
 
       <Footer />
-    </div>
+    </div >
   );
 };
 

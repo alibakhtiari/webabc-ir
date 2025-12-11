@@ -8,7 +8,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import SchemaMarkup from '@/components/SchemaMarkup';
 import { useLanguage } from '@/contexts/LanguageContext';
 import OptimizedImage from '@/components/OptimizedImage';
-import { createBreadcrumbSchema } from '@/lib/schema';
+
 
 const WebDesign = () => {
   const { t, language } = useLanguage();
@@ -41,16 +41,10 @@ const WebDesign = () => {
     "serviceType": "Web Design and Development"
   };
 
-  const breadcrumbSchema = createBreadcrumbSchema([
-    { name: t('common.home'), item: `${origin}/${language}` },
-    { name: t('common.services'), item: `${origin}/${language}/services` },
-    { name: t('webDesign.title'), item: `${origin}/${language}/web-design` }
-  ]);
-
   return (
     <div dir={language === 'en' ? 'ltr' : 'rtl'}>
 
-      <SchemaMarkup schema={[serviceSchema, breadcrumbSchema]} />
+      <SchemaMarkup schema={serviceSchema} />
       <Navbar />
 
       <main className="pt-16">
@@ -245,7 +239,7 @@ const WebDesign = () => {
       </main>
 
       <Footer />
-    </div>
+    </div >
   );
 };
 
