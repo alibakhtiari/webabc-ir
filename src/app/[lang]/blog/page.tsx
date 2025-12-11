@@ -1,4 +1,4 @@
-import BlogPage from "@/views/BlogPage";
+import BlogClient from "./BlogClient";
 import { SupportedLanguage } from "@/types/language";
 import { Metadata } from "next";
 import { getDictionary } from "@/i18n/get-dictionary";
@@ -34,5 +34,5 @@ export default async function Page({
 }) {
     const { lang } = await params;
     const posts = await getAllBlogPosts(lang);
-    return <BlogPage initialPosts={posts} />;
+    return <BlogClient initialPosts={posts} />;
 }

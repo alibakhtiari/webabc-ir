@@ -1,0 +1,80 @@
+
+> webabc_next@1.0.1 build
+> next build
+
+   ظû▓ Next.js 16.0.8 (Turbopack)
+
+ ظأب The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+   Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 3 errors:
+./src/components/seo/schemas/HomeSchema.tsx:1:17
+Ecmascript file had an error
+> 1 | import React, { useEffect, useState } from 'react';
+    |                 ^^^^^^^^^
+  2 | import { useLanguage } from '@/contexts/LanguageContext';
+  3 | import SchemaMarkup from '@/components/seo/SchemaMarkup';
+  4 | import { createOrganizationSchema } from '@/lib/schema';
+
+You're importing a component that needs `useEffect`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import trace:
+  Server Component:
+    ./src/components/seo/schemas/HomeSchema.tsx
+    ./src/app/[lang]/page.tsx
+
+
+./src/components/seo/schemas/HomeSchema.tsx:1:28
+Ecmascript file had an error
+> 1 | import React, { useEffect, useState } from 'react';
+    |                            ^^^^^^^^
+  2 | import { useLanguage } from '@/contexts/LanguageContext';
+  3 | import SchemaMarkup from '@/components/seo/SchemaMarkup';
+  4 | import { createOrganizationSchema } from '@/lib/schema';
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+Import trace:
+  Server Component:
+    ./src/components/seo/schemas/HomeSchema.tsx
+    ./src/app/[lang]/page.tsx
+
+
+./src/app/[lang]/not-found.tsx:3:1
+Module not found: Can't resolve '@/views/NotFound'
+  1 | "use client";
+  2 |
+> 3 | import NotFound from "@/views/NotFound";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | export default function NotFoundPage() {
+  6 |     return <NotFound />;
+
+Import map: aliased to relative './src/views/NotFound' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./src/app/[lang]/not-found.tsx [Client Component Browser]
+    ./src/app/[lang]/not-found.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/app/[lang]/not-found.tsx [Client Component SSR]
+    ./src/app/[lang]/not-found.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (./src/components/seo/schemas/HomeSchema.tsx:1:17)
+    at <unknown> (./src/components/seo/schemas/HomeSchema.tsx:1:28)
+    at <unknown> (./src/app/[lang]/not-found.tsx:3:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)

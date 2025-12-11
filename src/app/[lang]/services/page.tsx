@@ -1,4 +1,4 @@
-import Services from "@/views/Services";
+import ServicesClient from "./ServicesClient";
 import { SupportedLanguage } from "@/types/language";
 import { Metadata } from "next";
 import { getDictionary } from "@/i18n/get-dictionary";
@@ -33,5 +33,5 @@ export default async function Page({
     params: Promise<{ lang: string }>;
 }) {
     const { lang } = await params;
-    return <Services />;
+    return <ServicesClient />;
 }

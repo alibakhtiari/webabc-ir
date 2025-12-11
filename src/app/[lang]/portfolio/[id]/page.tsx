@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import PortfolioDetail from "@/views/PortfolioDetail";
+import PortfolioDetailClient from "./PortfolioDetailClient";
 import { portfolioItems } from "@/lib/portfolioData";
 import { SupportedLanguage } from "@/types/language";
 import { getDictionary } from "@/i18n/get-dictionary";
@@ -67,5 +67,5 @@ export default async function Page({
         notFound();
     }
 
-    return <PortfolioDetail />;
+    return <PortfolioDetailClient />;
 }

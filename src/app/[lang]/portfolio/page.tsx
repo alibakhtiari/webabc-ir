@@ -1,4 +1,4 @@
-import Portfolio from "@/views/Portfolio";
+import PortfolioClient from "./PortfolioClient";
 import { SupportedLanguage } from "@/types/language";
 import { Metadata } from "next";
 import { getDictionary } from "@/i18n/get-dictionary";
@@ -33,5 +33,5 @@ export default async function Page({
     params: Promise<{ lang: string }>;
 }) {
     const { lang } = await params;
-    return <Portfolio />;
+    return <PortfolioClient />;
 }

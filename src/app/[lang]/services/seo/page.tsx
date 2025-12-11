@@ -140,6 +140,21 @@ const SeoService = () => {
                     </div>
                 </section>
 
+                {/* FAQ Section - Added Back */}
+                <section className="py-16 bg-gray-50">
+                    <div className="container mx-auto px-4">
+                        <FAQ
+                            items={[
+                                { question: t('services.faq.costQuestion'), answer: t('services.faq.costAnswer') },
+                                { question: t('services.faq.timelineQuestion'), answer: t('services.faq.timelineAnswer') },
+                                { question: t('services.faq.blackhatQuestion'), answer: t('services.faq.blackhatAnswer') },
+                                { question: t('services.faq.multilingualQuestion'), answer: t('services.faq.multilingualAnswer') }
+                            ]}
+                            title={t('services.faqTitle')}
+                        />
+                    </div>
+                </section>
+
                 {/* SEO Process */}
                 <section className="py-16 bg-white">
                     <div className="container mx-auto px-4">
