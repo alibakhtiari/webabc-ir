@@ -6,16 +6,27 @@ export function constructMetadata({
     image = '/images/og-image.jpg',
     icons = '/favicon.ico',
     noIndex = false,
+    metadataBase,
 }: {
     title?: string;
     description?: string;
     image?: string;
     icons?: string;
     noIndex?: boolean;
+    metadataBase?: URL;
 } = {}): Metadata {
     return {
         title,
         description,
+        alternates: {
+            canonical: 'https://webabc.ir',
+            languages: {
+                'en': 'https://webabc.ir/en',
+                'fa': 'https://webabc.ir/fa',
+                'ar': 'https://webabc.ir/ar',
+                'x-default': 'https://webabc.ir/en',
+            },
+        },
         openGraph: {
             title,
             description,
@@ -33,7 +44,7 @@ export function constructMetadata({
             creator: '@webabc_ir',
         },
         icons,
-        metadataBase: new URL('https://webabc.ir'),
+        metadataBase: metadataBase || new URL('https://webabc.ir'),
         ...(noIndex && {
             robots: {
                 index: false,
