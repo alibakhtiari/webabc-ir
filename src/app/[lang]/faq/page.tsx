@@ -1,19 +1,23 @@
 import FAQ from "@/views/FAQ";
 import { SupportedLanguage } from "@/types/language";
 import { Metadata } from "next";
-import { translations } from "@/i18n";
+import { getDictionary } from "@/i18n/get-dictionary";
+import { constructMetadata } from "@/lib/metadata";
 
-export const dynamic = 'force-dynamic';
+
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params;
     const supportedLang = lang as SupportedLanguage;
-    const t = translations[supportedLang] || translations.fa;
+    const t = await getDictionary(supportedLang);
 
     return {
-        title: t.faq?.title || "FAQ | WebABC",
-        description: t.faq?.description || "Frequently Asked Questions",
+        ...constructMetadata({
+            title: t.faq?.title || "FAQ | WebABC",
+            description: t.faq?.description || "Frequently Asked Questions",
+        }),
         alternates: {
+            canonical: `https://webabc.ir/${supportedLang}/faq`,
             languages: {
                 'en': '/en/faq',
                 'fa': '/fa/faq',

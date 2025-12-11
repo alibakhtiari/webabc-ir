@@ -2,7 +2,8 @@ import Home from "@/views/Home";
 import { SupportedLanguage } from "@/types/language";
 
 import { Metadata } from "next";
-import { translations } from "@/i18n";
+import { getDictionary } from "@/i18n/get-dictionary";
+import { constructMetadata } from "@/lib/metadata";
 
 // Force dynamic rendering to avoid SSR issues during build
 // export const dynamic = 'force-dynamic';
@@ -10,11 +11,13 @@ import { translations } from "@/i18n";
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params;
     const supportedLang = lang as SupportedLanguage;
-    const t = translations[supportedLang] || translations.fa;
+    const t = await getDictionary(supportedLang);
 
     return {
-        title: t.home?.title || "WebABC",
-        description: t.home?.description || "Web Design and Development Services",
+        ...constructMetadata({
+            title: t.home?.title || "WebABC",
+            description: t.home?.description || "Web Design and Development Services",
+        }),
         alternates: {
             canonical: `https://webabc.ir/${supportedLang}`,
             languages: {
@@ -24,6 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
             },
         },
     };
+
 }
 
 export default async function Page({

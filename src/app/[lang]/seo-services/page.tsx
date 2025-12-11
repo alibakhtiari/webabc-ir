@@ -1,19 +1,23 @@
 import SeoService from "@/views/SeoService";
 import { SupportedLanguage } from "@/types/language";
 import { Metadata } from "next";
-import { translations } from "@/i18n";
+import { getDictionary } from "@/i18n/get-dictionary";
+import { constructMetadata } from "@/lib/metadata";
 
-export const dynamic = 'force-dynamic';
+
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params;
     const supportedLang = lang as SupportedLanguage;
-    const t = translations[supportedLang] || translations.fa;
+    const t = await getDictionary(supportedLang);
 
     return {
-        title: t.seo?.title || "SEO Services | WebABC",
-        description: t.seo?.subtitle || "Expert SEO Services",
+        ...constructMetadata({
+            title: t.seo?.title || "SEO Services | WebABC",
+            description: t.seo?.subtitle || "Expert SEO Services",
+        }),
         alternates: {
+            canonical: `https://webabc.ir/${supportedLang}/seo-services`,
             languages: {
                 'en': '/en/seo-services',
                 'fa': '/fa/seo-services',

@@ -9,6 +9,11 @@ export async function generateStaticParams() {
     return Object.keys(languages).map((lang) => ({ lang }));
 }
 
+// Default metadata
+import { constructMetadata } from "@/lib/metadata";
+
+export const metadata = constructMetadata();
+
 // Removed static metadata - using generateMetadata in page.tsx instead
 // This allows each page to have dynamic, localized metadata
 
@@ -29,6 +34,10 @@ const lato = Lato({
     display: "swap",
 });
 
+import { getDictionary } from "@/i18n/get-dictionary";
+
+// ... existing imports
+
 export default async function RootLayout({
     children,
     params,
@@ -39,6 +48,9 @@ export default async function RootLayout({
     const { lang } = await params;
     const supportedLang = lang as SupportedLanguage;
     const language = languages[supportedLang] || languages.fa;
+
+    // Fetch dictionary for the current language
+    const dictionary = await getDictionary(supportedLang);
 
     return (
         <html lang={supportedLang} dir={language.direction} suppressHydrationWarning>
@@ -52,7 +64,7 @@ export default async function RootLayout({
                 )}
                 suppressHydrationWarning
             >
-                <LanguageProvider defaultLanguage={supportedLang}>
+                <LanguageProvider defaultLanguage={supportedLang} dictionary={dictionary}>
                     <GlobalSchema />
                     {children}
                     <Toaster />
@@ -61,3 +73,4 @@ export default async function RootLayout({
         </html>
     );
 }
+

@@ -1,19 +1,23 @@
 import Tools from "@/views/Tools";
 import { SupportedLanguage } from "@/types/language";
 import { Metadata } from "next";
-import { translations } from "@/i18n";
+import { getDictionary } from "@/i18n/get-dictionary";
+import { constructMetadata } from "@/lib/metadata";
 
-export const dynamic = 'force-dynamic';
+
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params;
     const supportedLang = lang as SupportedLanguage;
-    const t = translations[supportedLang] || translations.fa;
+    const t = await getDictionary(supportedLang);
 
     return {
-        title: t.tools?.title || "Tools | WebABC",
-        description: t.tools?.description || "Free SEO and Web Tools",
+        ...constructMetadata({
+            title: t.tools?.title || "Tools | WebABC",
+            description: t.tools?.description || "Free SEO and Web Tools",
+        }),
         alternates: {
+            canonical: `https://webabc.ir/${supportedLang}/tools`,
             languages: {
                 'en': '/en/tools',
                 'fa': '/fa/tools',
