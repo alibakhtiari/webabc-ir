@@ -6,9 +6,9 @@ import { useParams, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import SEOHead from '@/components/SEOHead';
+// import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
-import { getBlogPost, BlogPost } from '@/lib/blogUtils';
+import { BlogPost } from '@/lib/blogUtils';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -16,13 +16,17 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import { Calendar, Clock, User, Share2, ArrowLeft, ArrowRight, ChevronDown, List, CheckCircle2 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 
-const BlogPostPage: React.FC = () => {
+interface BlogPostPageProps {
+  post: BlogPost | null;
+}
+
+const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
   const { t, language, languageMeta } = useLanguage();
   const params = useParams();
   const pathname = usePathname();
   const slug = params?.slug as string;
-  const [post, setPost] = useState<BlogPost | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [post, setPost] = useState<BlogPost | null>(null); // Removed state
+  // const [isLoading, setIsLoading] = useState(true); // Removed loading state
   const [isTocOpen, setIsTocOpen] = useState(false);
   const [origin, setOrigin] = useState('');
 
@@ -32,17 +36,8 @@ const BlogPostPage: React.FC = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const loadPost = async () => {
-      if (!slug) return;
-      setIsLoading(true);
-      const blogPost = await getBlogPost(slug, language);
-      setPost(blogPost);
-      setIsLoading(false);
-    };
+  // Fetching logic removed
 
-    loadPost();
-  }, [slug, language]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -63,17 +58,8 @@ const BlogPostPage: React.FC = () => {
     });
   }, [post?.content]);
 
-  if (isLoading) {
-    return (
-      <div>
-        <Navbar />
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="animate-pulse text-muted-foreground text-lg">Loading...</div>
-        </div>
-        <Footer />
-      </div>
-    );
-  }
+  // Loading check removed
+
 
   if (!post) {
     return (
@@ -158,13 +144,7 @@ const BlogPostPage: React.FC = () => {
 
   return (
     <div>
-      <SEOHead
-        title={`${post.title} - ${t('blog.title')}`}
-        description={post.description}
-        keywords={post.tags.join(', ')}
-        ogImage={post.image}
-        ogType="article"
-      />
+
       <SchemaMarkup schema={faqSchema ? [articleSchema, faqSchema, breadcrumbSchema] : [articleSchema, breadcrumbSchema]} />
 
       <Navbar />

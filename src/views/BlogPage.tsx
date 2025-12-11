@@ -7,21 +7,25 @@ import { usePathname } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
-import SEOHead from '@/components/SEOHead';
+// import SEOHead from '@/components/SEOHead';
 import SchemaMarkup from '@/components/SchemaMarkup';
-import { getAllBlogPosts, getCategories, filterPostsByCategory, BlogMetadata } from '@/lib/blogUtils';
+import { getCategories, filterPostsByCategory, BlogMetadata } from '@/lib/blogUtils';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 
-const BlogPage: React.FC = () => {
+interface BlogPageProps {
+  initialPosts: BlogMetadata[];
+}
+
+const BlogPage: React.FC<BlogPageProps> = ({ initialPosts }) => {
   const { t, language, languageMeta } = useLanguage();
-  const [posts, setPosts] = useState<BlogMetadata[]>([]);
-  const [filteredPosts, setFilteredPosts] = useState<BlogMetadata[]>([]);
+  const [posts, setPosts] = useState<BlogMetadata[]>(initialPosts);
+  const [filteredPosts, setFilteredPosts] = useState<BlogMetadata[]>(initialPosts);
   const [categories, setCategories] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('');
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const pathname = usePathname();
   const [origin, setOrigin] = useState('');
 
@@ -29,20 +33,10 @@ const BlogPage: React.FC = () => {
     if (typeof window !== 'undefined') {
       setOrigin(window.location.origin);
     }
-  }, []);
+    setCategories(getCategories(initialPosts));
+  }, [initialPosts]);
 
-  useEffect(() => {
-    const loadPosts = async () => {
-      setIsLoading(true);
-      const blogPosts = await getAllBlogPosts(language);
-      setPosts(blogPosts);
-      setFilteredPosts(blogPosts);
-      setCategories(getCategories(blogPosts));
-      setIsLoading(false);
-    };
-
-    loadPosts();
-  }, [language]);
+  // useEffect for loading posts is removed as data is passed via props
 
   useEffect(() => {
     setFilteredPosts(filterPostsByCategory(posts, selectedCategory));
@@ -98,11 +92,7 @@ const BlogPage: React.FC = () => {
 
   return (
     <div>
-      <SEOHead
-        title={t('blog.blogTitle')}
-        description={t('blog.blogDescription')}
-        keywords={t('seo.keywords')}
-      />
+
       <SchemaMarkup schema={[blogListSchema, breadcrumbSchema]} />
 
       <Navbar />
