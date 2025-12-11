@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import Breadcrumb from '@/components/Breadcrumb';
-import SchemaMarkup from '@/components/SchemaMarkup';
+import Breadcrumb from '@/components/seo/Breadcrumb';
+import SeoServiceSchema from '@/components/seo/schemas/SeoServiceSchema';
 import { useLanguage } from '@/contexts/LanguageContext';
 import OptimizedImage from '@/components/OptimizedImage';
 
@@ -28,27 +28,10 @@ const SeoService = () => {
   }, [pathname]);
 
   // Create service schema for SEO
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": t('seoService.title'),
-    "description": t('seoService.subtitle'),
-    "provider": {
-      "@type": "Organization",
-      "name": language === 'en' ? 'WebABC' : language === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث',
-      "url": `${origin}/${language}`
-    },
-    "areaServed": {
-      "@type": "Country",
-      "name": "Global"
-    },
-    "serviceType": "Search Engine Optimization"
-  };
-
   return (
     <div dir={language === 'en' ? 'ltr' : 'rtl'} className={language === 'en' ? 'font-sans' : 'font-arabic'}>
 
-      <SchemaMarkup schema={serviceSchema} />
+      <SeoServiceSchema />
       <Navbar />
 
       <main className="pt-16">

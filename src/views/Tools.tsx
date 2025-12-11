@@ -1,13 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import SchemaMarkup from '@/components/SchemaMarkup';
-import Breadcrumb from '@/components/Breadcrumb';
+import Breadcrumb from '@/components/seo/Breadcrumb';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { createOrganizationSchema, createServiceSchema } from '@/lib/schema';
+import ToolsSchema from '@/components/seo/schemas/ToolsSchema';
 import { ArrowRight, Wrench, Zap, Eye } from 'lucide-react';
 
 interface SchemaData {
@@ -21,38 +20,6 @@ interface ToolTranslation {
 
 const ToolsPage: React.FC = () => {
   const { t, language, languageMeta } = useLanguage();
-  const [schemaMarkup, setSchemaMarkup] = useState<SchemaData[]>([]);
-
-  useEffect(() => {
-    // Generate schemas
-    const baseUrl = window.location.origin;
-
-    // Organization schema
-    const orgSchema = createOrganizationSchema(
-      baseUrl,
-      `${baseUrl}/images/logo.jpg`,
-      [
-        { telephone: "+1234567890", contactType: "customer service" }
-      ],
-      language
-    );
-
-    // Tools service schema
-    const toolsServiceSchema = createServiceSchema(
-      t('tools.title'),
-      t('tools.description'),
-      `${baseUrl}/${language}/tools`,
-      `${baseUrl}/images/tools-seo.jpg`,
-      'WebABC',
-      'Worldwide',
-      language
-    );
-
-    setSchemaMarkup([
-      orgSchema,
-      toolsServiceSchema
-    ]);
-  }, [language, t]);
 
   const toolIcons = {
     headlineAnalyzer: <Eye className="w-8 h-8 text-blue-600" />,
@@ -81,7 +48,7 @@ const ToolsPage: React.FC = () => {
     <div className="min-h-screen flex flex-col">
 
 
-      {schemaMarkup.length > 0 && <SchemaMarkup schema={schemaMarkup} />}
+      <ToolsSchema />
 
       <Navbar />
 

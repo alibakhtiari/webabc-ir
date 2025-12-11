@@ -2,36 +2,16 @@
 
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import Breadcrumb from '@/components/Breadcrumb';
+import Breadcrumb from '@/components/seo/Breadcrumb';
 import Footer from '@/components/Footer';
 import FAQ from '@/components/FAQ';
 import { useLanguage } from '@/contexts/LanguageContext';
 import CTASection from '@/components/CTASection';
-import SchemaMarkup from '@/components/SchemaMarkup';
-import { createServiceSchema, createLocalBusinessSchema } from '@/lib/schema';
+import LocalSeoSchema from '@/components/seo/schemas/LocalSeoSchema';
 import { Globe, Target, Search, MapPin, FileCheck, BarChart, CheckCircle2 } from 'lucide-react';
 
 const LocalSeo = () => {
   const { t, languageMeta, language } = useLanguage();
-
-  const serviceSchema = createServiceSchema(
-    t('localSeo.localSeoTitle'),
-    t('localSeo.localSeoDescription'),
-    `https://webabc.ir/${language}/local-seo`,
-    "https://webabc.ir/images/local-seo.jpg",
-    "WebABC",
-    "Worldwide",
-    language
-  );
-
-  const localBusinessSchema = createLocalBusinessSchema(
-    `https://webabc.ir/${language}`,
-    "https://webabc.ir/images/logo.webp",
-    "https://webabc.ir/images/hero-image.webp",
-    [{ telephone: "+98123456789", contactType: "customer service" }],
-    "$$",
-    language
-  );
 
   const faqItems = [
     {
@@ -55,8 +35,7 @@ const LocalSeo = () => {
   return (
     <div className="min-h-screen flex flex-col">
 
-      <SchemaMarkup schema={serviceSchema} />
-      <SchemaMarkup schema={localBusinessSchema} />
+      <LocalSeoSchema />
 
       <Navbar />
 

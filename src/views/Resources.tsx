@@ -7,22 +7,11 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import SchemaMarkup from '@/components/SchemaMarkup';
-import { createServiceSchema } from '@/lib/schema';
+import ResourcesSchema from '@/components/seo/schemas/ResourcesSchema';
 import { Search, Tag, HelpCircle, Link2, FileText, BarChart, Type } from 'lucide-react';
 
 const Resources: React.FC = () => {
   const { t, language, languageMeta } = useLanguage();
-
-  const serviceSchema = createServiceSchema(
-    t('resources.title'),
-    t('resources.subtitle'),
-    `https://webabc.ir/${language}/resources`,
-    "https://webabc.ir/images/resources.jpg",
-    "WebABC",
-    "Worldwide",
-    language
-  );
 
   const tools = [
     {
@@ -79,7 +68,7 @@ const Resources: React.FC = () => {
   return (
     <div>
 
-      <SchemaMarkup schema={serviceSchema} />
+      <ResourcesSchema />
 
       <Navbar />
 

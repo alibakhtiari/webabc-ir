@@ -5,8 +5,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import Breadcrumb from '@/components/Breadcrumb';
+import Breadcrumb from '@/components/seo/Breadcrumb';
 import { useLanguage } from '@/contexts/LanguageContext';
+import PortfolioSchema from '@/components/seo/schemas/PortfolioSchema';
 import { portfolioItems } from '@/lib/portfolioData';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -103,6 +104,7 @@ const Portfolio = () => {
 
   return (
     <div className={languageMeta.fontFamily}>
+      <PortfolioSchema />
 
 
       <Navbar />

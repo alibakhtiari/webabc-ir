@@ -2,31 +2,20 @@
 
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import Breadcrumb from '@/components/Breadcrumb';
+import Breadcrumb from '@/components/seo/Breadcrumb';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import CTASection from '@/components/CTASection';
-import SchemaMarkup from '@/components/SchemaMarkup';
-import { createServiceSchema } from '@/lib/schema';
+import WordpressSchema from '@/components/seo/schemas/WordpressSchema';
 import { ShoppingCart, Layout, Settings, Smartphone } from 'lucide-react';
 
 const WordpressWoocommerceDevelopment = () => {
     const { t, languageMeta, language } = useLanguage();
 
-    const serviceSchema = createServiceSchema(
-        t('wordpress.title'),
-        t('wordpress.subtitle'),
-        `https://webabc.ir/${language}/wordpress-woocommerce-development`,
-        "https://webabc.ir/images/wordpress.webp",
-        "WebABC",
-        "Worldwide",
-        language
-    );
-
     return (
         <div className="min-h-screen flex flex-col">
 
-            <SchemaMarkup schema={serviceSchema} />
+            <WordpressSchema />
 
             <Navbar />
 
