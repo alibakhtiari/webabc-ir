@@ -2,7 +2,7 @@
   name = "webabc-next"
   compatibility_date = "2025-03-25"
   account_id = "ac07c7450925ccb475ebfc9ab75103e1"
-  compatibility_flags = ["nodejs_compat"]
+  compatibility_flags = ["nodejs_compat_v2"]
   [assets]
   directory = ".open-next/assets"
   binding = "ASSETS"
