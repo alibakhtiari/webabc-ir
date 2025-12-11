@@ -4,8 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import BlogSchema from '@/components/seo/schemas/BlogSchema';
 import { getCategories, filterPostsByCategory, BlogMetadata } from '@/lib/blogUtils';
@@ -51,13 +49,12 @@ const BlogPage: React.FC<BlogPageProps> = ({ initialPosts }) => {
   };
 
   return (
-    <div>
+    <>
 
       <BlogSchema posts={filteredPosts} />
 
-      <Navbar />
 
-      <main className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-br from-primary/10 via-primary/5 to-background relative overflow-hidden">
           <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
@@ -168,10 +165,8 @@ const BlogPage: React.FC<BlogPageProps> = ({ initialPosts }) => {
             )}
           </div>
         </section>
-      </main>
-
-      <Footer />
-    </div >
+      </div>
+    </>
   );
 };
 

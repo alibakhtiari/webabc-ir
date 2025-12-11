@@ -1,8 +1,6 @@
 "use client";
 
 import React from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -45,14 +43,11 @@ const ToolsPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
-
+    <>
 
       <ToolsSchema />
 
-      <Navbar />
-
-      <main className="flex-grow pt-20">
+      <div className="flex-grow">
         {/* Hero Section */}
         <section className="bg-gradient-to-b from-primary/5 to-white py-16 md:py-24">
           <div className="container mx-auto px-4">
@@ -206,10 +201,8 @@ const ToolsPage: React.FC = () => {
             </div>
           </div>
         </section>
-      </main>
-
-      <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

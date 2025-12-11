@@ -1,8 +1,6 @@
 "use client";
 
 import React from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -66,13 +64,12 @@ const Resources: React.FC = () => {
   ];
 
   return (
-    <div>
+    <>
 
       <ResourcesSchema />
 
-      <Navbar />
 
-      <main className="min-h-screen bg-gradient-to-b from-background to-muted/20">
+      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
         <section className="container mx-auto px-4 py-16">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary">
@@ -123,10 +120,8 @@ const Resources: React.FC = () => {
             </div>
           </div>
         </section>
-      </main>
-
-      <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -1,9 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import Navbar from '@/components/Navbar';
 import Breadcrumb from '@/components/seo/Breadcrumb';
-import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
@@ -46,12 +44,9 @@ const HeadlineAnalyzer: React.FC = () => {
   const analysis = headline ? analyzeHeadline() : null;
 
   return (
-    <div>
+    <>
 
-
-      <Navbar />
-
-      <main className="min-h-screen bg-gradient-to-b from-background to-muted/20 py-16">
+      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 py-16">
         <div className="container mx-auto px-4 max-w-4xl">
           <Breadcrumb />
           <h1 className="text-4xl font-bold mb-4 text-center">Headline Analyzer</h1>
@@ -135,10 +130,8 @@ const HeadlineAnalyzer: React.FC = () => {
             )}
           </div>
         </div>
-      </main>
-
-      <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 

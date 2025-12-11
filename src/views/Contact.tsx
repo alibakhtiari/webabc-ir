@@ -1,8 +1,6 @@
 "use client";
 
 import React, { lazy, Suspense } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import ContactSchema from '@/components/seo/schemas/ContactSchema';
 
@@ -33,13 +31,11 @@ const Contact = () => {
   const inputDirection = languageMeta.direction === 'rtl' ? 'text-right' : '';
 
   return (
-    <div className={`min-h-screen flex flex-col ${languageMeta.fontFamily}`}>
+    <>
 
       <ContactSchema />
 
-      <Navbar />
-
-      <main className="flex-1 max-w-4xl mx-auto mt-20 pb-12 px-4 sm:px-6 lg:px-8 w-full">
+      <div className={`max-w-4xl mx-auto pb-12 px-4 sm:px-6 lg:px-8 w-full ${languageMeta.fontFamily}`}>
         <div className="space-y-12">
           <div className="text-center">
             <Breadcrumb />
@@ -119,10 +115,8 @@ const Contact = () => {
             ></iframe>
           </div>
         </div>
-      </main>
-
-      <Footer />
-    </div >
+      </div>
+    </>
   );
 };
 

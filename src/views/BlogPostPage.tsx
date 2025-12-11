@@ -4,8 +4,6 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useParams, usePathname } from 'next/navigation';
 import Link from 'next/link';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import BlogPostSchema from '@/components/seo/schemas/BlogPostSchema';
 import { BlogPost } from '@/lib/blogUtils';
@@ -63,30 +61,25 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
 
   if (!post) {
     return (
-      <div>
-        <Navbar />
-        <main className="container mx-auto px-4 py-12">
-          <div className="text-center py-16">
-            <h1 className="text-3xl font-bold mb-4">{t('notFound.title')}</h1>
-            <p className="text-xl text-muted-foreground mb-8">{t('notFound.message')}</p>
-            <Button asChild>
-              <Link href={`/${language}/blog`}>{t('common.backToBlog')}</Link>
-            </Button>
-          </div>
-        </main>
-        <Footer />
+      <div className="container mx-auto px-4 py-12">
+        <div className="text-center py-16">
+          <h1 className="text-3xl font-bold mb-4">{t('notFound.title')}</h1>
+          <p className="text-xl text-muted-foreground mb-8">{t('notFound.message')}</p>
+          <Button asChild>
+            <Link href={`/${language}/blog`}>{t('common.backToBlog')}</Link>
+          </Button>
+        </div>
       </div>
     );
   }
 
   return (
-    <div>
+    <>
 
       <BlogPostSchema post={post} />
 
-      <Navbar />
 
-      <main className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background">
         {/* Back Button */}
         <div className="container mx-auto px-4 pt-8">
           <Button variant="ghost" asChild>
@@ -243,10 +236,8 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
             </div>
           </div>
         </div>
-      </main>
-
-      <Footer />
-    </div >
+      </div>
+    </>
   );
 };
 

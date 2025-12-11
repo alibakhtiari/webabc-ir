@@ -1,8 +1,6 @@
 "use client";
 
 import React from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import { useLanguage } from '@/contexts/LanguageContext';
 import FAQPageSchema from '@/components/seo/schemas/FAQPageSchema';
@@ -26,13 +24,11 @@ export default function FAQ() {
     ];
 
     return (
-        <div className="min-h-screen flex flex-col">
-
+        <>
             <FAQPageSchema />
 
-            <Navbar />
 
-            <main className="flex-grow pt-24 pb-16">
+            <div className="flex-grow pt-24 pb-16">
                 <div className="container mx-auto px-4">
                     <div className="max-w-3xl mx-auto">
                         <Breadcrumb />
@@ -69,9 +65,7 @@ export default function FAQ() {
                         </div>
                     </div>
                 </div>
-            </main>
-
-            <Footer />
-        </div>
+            </div>
+        </>
     );
 }

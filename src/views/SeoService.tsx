@@ -2,8 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import SeoServiceSchema from '@/components/seo/schemas/SeoServiceSchema';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -29,12 +27,10 @@ const SeoService = () => {
 
   // Create service schema for SEO
   return (
-    <div dir={language === 'en' ? 'ltr' : 'rtl'} className={language === 'en' ? 'font-sans' : 'font-arabic'}>
-
+    <>
       <SeoServiceSchema />
-      <Navbar />
 
-      <main className="pt-16">
+      <div className="">
         {/* Hero Section */}
         <section className="bg-gradient-to-b from-primary/10 to-white py-16 md:py-24">
           <div className="container mx-auto px-4">
@@ -233,10 +229,8 @@ const SeoService = () => {
             </button>
           </div>
         </section>
-      </main>
-
-      <Footer />
-    </div >
+      </div>
+    </>
   );
 };
 

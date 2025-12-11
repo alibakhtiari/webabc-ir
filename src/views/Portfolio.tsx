@@ -3,8 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import { useLanguage } from '@/contexts/LanguageContext';
 import PortfolioSchema from '@/components/seo/schemas/PortfolioSchema';
@@ -103,13 +101,10 @@ const Portfolio = () => {
     : filteredPortfolio.filter(item => item.category === activeTab);
 
   return (
-    <div className={languageMeta.fontFamily}>
+    <>
       <PortfolioSchema />
 
-
-      <Navbar />
-
-      <main className="min-h-screen">
+      <div className="min-h-screen">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-br from-primary/10 via-background to-primary/5">
           <div className="container mx-auto px-4">
@@ -277,10 +272,8 @@ const Portfolio = () => {
             </div>
           </div>
         </section>
-      </main>
-
-      <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 
