@@ -78,28 +78,28 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                       {t('common.allServices')}
                     </Link>
                     <Link
-                      href={`/${language}/seo-services`}
+                      href={`/${language}/services/seo`}
                       className={`block ${languageMeta.direction === 'rtl' ? 'pr-3 border-r-2' : 'pl-3 border-l-2'} text-foreground/80 hover:text-primary`}
                       onClick={onClose}
                     >
                       {t('common.services')} SEO
                     </Link>
                     <Link
-                      href={`/${language}/local-seo-services`}
+                      href={`/${language}/services/local-seo`}
                       className={`block ${languageMeta.direction === 'rtl' ? 'pr-3 border-r-2' : 'pl-3 border-l-2'} text-foreground/80 hover:text-primary`}
                       onClick={onClose}
                     >
                       {t('common.services')} SEO {language === 'en' ? 'Local' : language === 'ar' ? 'المحلي' : 'محلی'}
                     </Link>
                     <Link
-                      href={`/${language}/web-development-services`}
+                      href={`/${language}/services/web-development`}
                       className={`block ${languageMeta.direction === 'rtl' ? 'pr-3 border-r-2' : 'pl-3 border-l-2'} text-foreground/80 hover:text-primary`}
                       onClick={onClose}
                     >
                       {language === 'en' ? 'Web Development' : language === 'ar' ? 'تطوير المواقع' : 'توسعه وب'}
                     </Link>
                     <Link
-                      href={`/${language}/wordpress-woocommerce-development`}
+                      href={`/${language}/services/wordpress-development`}
                       className={`block ${languageMeta.direction === 'rtl' ? 'pr-3 border-r-2' : 'pl-3 border-l-2'} text-foreground/80 hover:text-primary`}
                       onClick={onClose}
                     >

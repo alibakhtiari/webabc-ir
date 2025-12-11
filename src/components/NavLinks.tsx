@@ -55,7 +55,7 @@ export const ServicesDropdown = () => {
                 {t('wordpress.subtitle')}
               </p>
               <Link
-                href={`/${language}/wordpress-woocommerce-development`}
+                href={`/${language}/services/wordpress-development`}
                 className="inline-flex items-center text-primary hover:text-primary/80 text-sm font-medium"
               >
                 {t('common.viewDetails')}
@@ -74,19 +74,19 @@ export const ServicesDropdown = () => {
                   icon={<Globe />}
                 />
                 <ServiceLink
-                  to={`/${language}/seo-services`}
+                  to={`/${language}/services/seo`}
                   title={t('services.seoTitle')}
                   description={t('services.seoDescription')}
                   icon={<Globe />}
                 />
                 <ServiceLink
-                  to={`/${language}/local-seo`}
+                  to={`/${language}/services/local-seo`}
                   title={t('services.localSeoTitle')}
                   description={t('services.localSeoDescription')}
                   icon={<Globe />}
                 />
                 <ServiceLink
-                  to={`/${language}/web-development-services`}
+                  to={`/${language}/services/web-development`}
                   title={t('services.webDevTitle')}
                   description={t('services.webDevDescription')}
                   icon={<Code />}

@@ -29,25 +29,25 @@ const ServicesOverview = () => {
               {/* Quick navigation links */}
               <div className="flex flex-wrap gap-4 justify-center mt-8">
                 <Link
-                  href={`/${language}/seo-services`}
+                  href={`/${language}/services/seo`}
                   className="px-4 py-2 bg-blue-50 text-blue-700 rounded-full hover:bg-blue-100 transition-colors"
                 >
                   {t('seo.title')}
                 </Link>
                 <Link
-                  href={`/${language}/web-development-services`}
+                  href={`/${language}/services/web-development`}
                   className="px-4 py-2 bg-green-50 text-green-700 rounded-full hover:bg-green-100 transition-colors"
                 >
                   {t('services.webDevelopment')}
                 </Link>
                 <Link
-                  href={`/${language}/wordpress-woocommerce-development`}
+                  href={`/${language}/services/wordpress-development`}
                   className="px-4 py-2 bg-purple-50 text-purple-700 rounded-full hover:bg-purple-100 transition-colors"
                 >
                   {t('wordpress.title')}
                 </Link>
                 <Link
-                  href={`/${language}/local-seo`}
+                  href={`/${language}/services/local-seo`}
                   className="px-4 py-2 bg-red-50 text-red-700 rounded-full hover:bg-red-100 transition-colors"
                 >
                   {t('seo.localSeo')}
@@ -92,7 +92,7 @@ const ServicesOverview = () => {
                     <span>{t('seo.localSeo')}</span>
                   </li>
                 </ul>
-                <Link href={`/${language}/seo-services`} className="inline-flex items-center text-primary font-medium hover:underline rtl:flex-row-reverse">
+                <Link href={`/${language}/services/seo`} className="inline-flex items-center text-primary font-medium hover:underline rtl:flex-row-reverse">
                   {t('common.readMore')}
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 rtl:mr-2 ltr:ml-2 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -132,7 +132,7 @@ const ServicesOverview = () => {
                     <span>{t('services.feature.database')}</span>
                   </li>
                 </ul>
-                <Link href={`/${language}/web-development-services`} className="inline-flex items-center text-primary font-medium hover:underline rtl:flex-row-reverse">
+                <Link href={`/${language}/services/web-development`} className="inline-flex items-center text-primary font-medium hover:underline rtl:flex-row-reverse">
                   {t('common.readMore')}
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 rtl:mr-2 ltr:ml-2 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -173,7 +173,7 @@ const ServicesOverview = () => {
                     <span>{t('wordpress.maintenanceSupport')}</span>
                   </li>
                 </ul>
-                <Link href={`/${language}/wordpress-woocommerce-development`} className="inline-flex items-center text-primary font-medium hover:underline rtl:flex-row-reverse">
+                <Link href={`/${language}/services/wordpress-development`} className="inline-flex items-center text-primary font-medium hover:underline rtl:flex-row-reverse">
                   {t('common.readMore')}
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 rtl:mr-2 ltr:ml-2 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -212,7 +212,7 @@ const ServicesOverview = () => {
                     <span>{t('seo.feature.nearMe')}</span>
                   </li>
                 </ul>
-                <Link href={`/${language}/local-seo`} className="inline-flex items-center text-primary font-medium hover:underline rtl:flex-row-reverse">
+                <Link href={`/${language}/services/local-seo`} className="inline-flex items-center text-primary font-medium hover:underline rtl:flex-row-reverse">
                   {t('common.readMore')}
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 rtl:mr-2 ltr:ml-2 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
