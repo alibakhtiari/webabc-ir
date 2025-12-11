@@ -3,7 +3,7 @@ import { SupportedLanguage } from "@/types/language";
 import { Metadata } from "next";
 import { translations } from "@/i18n";
 
-export const dynamic = 'force-dynamic';
+import { getAllBlogPosts } from "@/lib/blogData";
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params;
@@ -30,5 +30,6 @@ export default async function Page({
     params: Promise<{ lang: string }>;
 }) {
     const { lang } = await params;
-    return <BlogPage />;
+    const posts = await getAllBlogPosts(lang);
+    return <BlogPage initialPosts={posts} />;
 }

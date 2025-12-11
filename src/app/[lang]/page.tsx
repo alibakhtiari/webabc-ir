@@ -5,7 +5,7 @@ import { Metadata } from "next";
 import { translations } from "@/i18n";
 
 // Force dynamic rendering to avoid SSR issues during build
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params;

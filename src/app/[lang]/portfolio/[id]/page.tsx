@@ -5,7 +5,24 @@ import { portfolioItems } from "@/lib/portfolioData";
 import { SupportedLanguage } from "@/types/language";
 import { translations } from "@/i18n";
 
-export const dynamic = 'force-dynamic';
+import { languages } from "@/types/language";
+
+// export const dynamic = 'force-dynamic';
+
+export async function generateStaticParams() {
+    const params = [];
+
+    for (const lang of Object.keys(languages)) {
+        for (const item of portfolioItems) {
+            params.push({
+                lang: lang,
+                id: item.id,
+            });
+        }
+    }
+
+    return params;
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string, id: string }> }): Promise<Metadata> {
     const { lang, id } = await params;
