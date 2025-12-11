@@ -12,6 +12,23 @@ export async function generateStaticParams() {
 // Removed static metadata - using generateMetadata in page.tsx instead
 // This allows each page to have dynamic, localized metadata
 
+import { Vazirmatn, Lato } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+// Initialize fonts
+const vazirmatn = Vazirmatn({
+    subsets: ["arabic"],
+    variable: "--font-vazirmatn",
+    display: "swap",
+});
+
+const lato = Lato({
+    weight: ["300", "400", "700"],
+    subsets: ["latin"],
+    variable: "--font-lato",
+    display: "swap",
+});
+
 export default async function RootLayout({
     children,
     params,
@@ -25,7 +42,16 @@ export default async function RootLayout({
 
     return (
         <html lang={supportedLang} dir={language.direction} suppressHydrationWarning>
-            <body className={language.fontFamily} suppressHydrationWarning>
+            <body
+                className={cn(
+                    // Apply font variables globally
+                    vazirmatn.variable,
+                    lato.variable,
+                    language.fontFamily, // Make sure your language config uses the CSS variable names (e.g., 'font-persian')
+                    "antialiased"
+                )}
+                suppressHydrationWarning
+            >
                 <LanguageProvider defaultLanguage={supportedLang}>
                     <GlobalSchema />
                     {children}
