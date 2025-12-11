@@ -8,9 +8,14 @@ import Logo from './Logo';
 import { NavLink, ServicesDropdown, NavLinks } from './NavLinks';
 import MobileMenu from './MobileMenu';
 import { Button } from './ui/button';
-import ConsultationForm from './ConsultationForm';
+import dynamic from 'next/dynamic';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useLanguage } from '@/contexts/LanguageContext';
+
+const ConsultationForm = dynamic(() => import('./ConsultationForm'), {
+  ssr: false,
+  loading: () => null,
+});
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -100,7 +105,9 @@ const Navbar = () => {
       <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
 
       {/* Consultation Form Dialog */}
-      <ConsultationForm open={consultationOpen} onOpenChange={setConsultationOpen} />
+      {consultationOpen && (
+        <ConsultationForm open={consultationOpen} onOpenChange={setConsultationOpen} />
+      )}
     </header>
   );
 };

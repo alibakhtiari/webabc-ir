@@ -10,11 +10,22 @@ import { Vazirmatn, Lato } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { getDictionary } from "@/i18n/get-dictionary";
 
+import { Viewport } from 'next';
+
 export async function generateStaticParams() {
     return Object.keys(languages).map((lang) => ({ lang }));
 }
 
-export const metadata = constructMetadata();
+export const viewport: Viewport = {
+    themeColor: '#ffffff',
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+};
+
+export const metadata = constructMetadata({
+    metadataBase: new URL('https://webabc.ir'),
+});
 
 // Initialize fonts
 const vazirmatn = Vazirmatn({
@@ -24,7 +35,7 @@ const vazirmatn = Vazirmatn({
 });
 
 const lato = Lato({
-    weight: ["300", "400", "700"],
+    weight: ["400", "700"],
     subsets: ["latin"],
     variable: "--font-lato",
     display: "swap",
