@@ -139,7 +139,7 @@ export const translations: TranslationsType = {
     localSeo: enLocalSeo,
     webDevelopmentServices: enWebDevelopmentServices,
     webDesign: enWebDesign,
-    serviceAreas: enServiceAreas,
+    'service-areas': enServiceAreas,
     tools: enTools,
     faq: enFaq
   },
@@ -163,7 +163,7 @@ export const translations: TranslationsType = {
     localSeo: faLocalSeo,
     webDevelopmentServices: faWebDevelopmentServices,
     webDesign: faWebDesign,
-    serviceAreas: faServiceAreas,
+    'service-areas': faServiceAreas,
     tools: faTools,
     faq: faFaq
   },
@@ -187,7 +187,7 @@ export const translations: TranslationsType = {
     localSeo: arLocalSeo,
     webDevelopmentServices: arWebDevelopmentServices,
     webDesign: arWebDesign,
-    serviceAreas: arServiceAreas,
+    'service-areas': arServiceAreas,
     tools: arTools,
     faq: arFaq
   }
