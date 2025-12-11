@@ -49,7 +49,7 @@ const ToolsPage: React.FC = () => {
 
       <div className="flex-grow">
         {/* Hero Section */}
-        <section className="bg-gradient-to-b from-primary/5 to-white py-16 md:py-24">
+        <section className="bg-gradient-to-b from-primary/5 to-white pt-32 pb-16 md:pt-40 md:pb-24">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <Breadcrumb />

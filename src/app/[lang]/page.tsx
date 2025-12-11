@@ -1,5 +1,5 @@
 import Home from "@/views/Home";
-import { SupportedLanguage } from "@/types/language";
+import { SupportedLanguage, languages } from "@/types/language";
 
 import { Metadata } from "next";
 import { getDictionary } from "@/i18n/get-dictionary";
@@ -28,6 +28,10 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         },
     };
 
+}
+
+export async function generateStaticParams() {
+    return Object.keys(languages).map((lang) => ({ lang }));
 }
 
 export default async function Page({

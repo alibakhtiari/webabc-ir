@@ -1,8 +1,9 @@
 "use client";
 
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useActionState } from 'react';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import ContactSchema from '@/components/seo/schemas/ContactSchema';
+import { submitContact } from '@/app/actions/submitContact';
 
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -27,16 +28,16 @@ const TextareaSkeleton = () => (
 
 const Contact = () => {
   const { language, t, languageMeta } = useLanguage();
+  const [state, formAction, isPending] = useActionState(submitContact, null);
 
   const textDirection = languageMeta.direction === 'rtl' ? 'text-right' : 'text-left';
   const inputDirection = languageMeta.direction === 'rtl' ? 'text-right' : '';
 
   return (
     <>
-
       <ContactSchema />
 
-      <div className={`max-w-4xl mx-auto pb-12 px-4 sm:px-6 lg:px-8 w-full ${languageMeta.fontFamily}`}>
+      <div className={`max-w-4xl mx-auto pt-28 pb-12 px-4 sm:px-6 lg:px-8 w-full ${languageMeta.fontFamily}`}>
         <div className="space-y-12">
           <div className="text-center">
             <Breadcrumb />
@@ -46,33 +47,63 @@ const Contact = () => {
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">
             {/* Contact Form */}
             <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
-              <form className="space-y-6">
+              <form action={formAction} className="space-y-6">
                 <div>
                   <label className={`block text-sm font-medium text-gray-700 mb-2 ${textDirection}`}>{t('consultation.fullName')}</label>
                   <Suspense fallback={<InputSkeleton />}>
-                    <Input className={inputDirection} placeholder={t('consultation.fullName')} />
+                    <Input
+                      name="name"
+                      className={inputDirection}
+                      placeholder={t('consultation.fullName')}
+                      required
+                    />
                   </Suspense>
+                  {state?.errors?.name && <p className="text-red-500 text-sm mt-1">{state.errors.name}</p>}
                 </div>
 
                 <div>
                   <label className={`block text-sm font-medium text-gray-700 mb-2 ${textDirection}`}>{t('consultation.email')}</label>
                   <Suspense fallback={<InputSkeleton />}>
-                    <Input type="email" className={inputDirection} placeholder="example@domain.com" />
+                    <Input
+                      name="email"
+                      type="email"
+                      className={inputDirection}
+                      placeholder="example@domain.com"
+                      required
+                    />
                   </Suspense>
+                  {state?.errors?.email && <p className="text-red-500 text-sm mt-1">{state.errors.email}</p>}
                 </div>
 
                 <div>
                   <label className={`block text-sm font-medium text-gray-700 mb-2 ${textDirection}`}>{t('consultation.message')}</label>
                   <Suspense fallback={<TextareaSkeleton />}>
-                    <Textarea rows={5} className={inputDirection} placeholder={t('contact.yourMessage')} />
+                    <Textarea
+                      name="message"
+                      rows={5}
+                      className={inputDirection}
+                      placeholder={t('contact.yourMessage')}
+                      required
+                    />
                   </Suspense>
+                  {state?.errors?.message && <p className="text-red-500 text-sm mt-1">{state.errors.message}</p>}
                 </div>
 
                 <Suspense fallback={<ButtonSkeleton />}>
-                  <Button type="submit" className="w-full bg-primary hover:bg-primary-dark">
-                    {t('contact.submitMessage')}
+                  <Button
+                    type="submit"
+                    disabled={isPending}
+                    className="w-full bg-primary hover:bg-primary-dark disabled:opacity-70"
+                  >
+                    {isPending ? t('common.loading') || 'Sending...' : t('contact.submitMessage')}
                   </Button>
                 </Suspense>
+
+                {state?.message && (
+                  <p className={`text-center text-sm ${state.message.includes('success') ? 'text-green-600' : 'text-red-600'}`}>
+                    {state.message}
+                  </p>
+                )}
               </form>
             </div>
 

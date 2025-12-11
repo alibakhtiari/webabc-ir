@@ -18,7 +18,7 @@ const About = () => {
     <>
       <AboutSchema />
 
-      <div className={`max-w-6xl mx-auto pb-12 px-4 sm:px-6 lg:px-8 w-full ${languageMeta.fontFamily}`}>
+      <div className={`max-w-6xl mx-auto pt-28 pb-12 px-4 sm:px-6 lg:px-8 w-full ${languageMeta.fontFamily}`}>
         <div className="space-y-16">
           {/* Hero Section */}
           <div className="text-center">

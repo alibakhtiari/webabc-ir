@@ -17,7 +17,22 @@ const GlobalSchema = () => {
         language
     );
 
-    return <SchemaMarkup schema={localBusinessSchema} />;
+    const websiteSchema = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "WebABC",
+        "url": "https://webabc.ir",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://webabc.ir/search?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+        }
+    };
+
+    return <SchemaMarkup schema={[localBusinessSchema, websiteSchema]} />;
 };
 
 export default GlobalSchema;
