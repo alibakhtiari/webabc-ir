@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { SupportedLanguage } from '@/types/language';
+import { SupportedLanguage, languages } from '@/types/language';
 
 /**
  * Hook to detect user's preferred language
@@ -11,16 +11,21 @@ export const useLanguageDetection = (): SupportedLanguage => {
   const [detectedLanguage, setDetectedLanguage] = useState<SupportedLanguage>('fa');
 
   useEffect(() => {
+    // Helper to validate language
+    const isValidLang = (lang: string): lang is SupportedLanguage => {
+      return Object.keys(languages).includes(lang);
+    };
+
     // Get language from local storage first
-    const storedLanguage = localStorage.getItem('language') as SupportedLanguage;
-    if (storedLanguage && ['fa', 'en', 'ar'].includes(storedLanguage)) {
+    const storedLanguage = localStorage.getItem('language');
+    if (storedLanguage && isValidLang(storedLanguage)) {
       setDetectedLanguage(storedLanguage);
       return;
     }
 
     // Detect from browser if not in storage
-    const browserLang = navigator.language.split('-')[0] as SupportedLanguage;
-    if (['fa', 'en', 'ar'].includes(browserLang)) {
+    const browserLang = navigator.language.split('-')[0];
+    if (isValidLang(browserLang)) {
       setDetectedLanguage(browserLang);
     } else {
       setDetectedLanguage('fa'); // Default to Persian
