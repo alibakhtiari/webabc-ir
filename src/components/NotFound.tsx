@@ -6,8 +6,6 @@ import { useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { AlertCircle, Home, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
-// import SEOHead from "@/components/SEOHead";
-import "@/animations.css";
 
 const NotFound = () => {
   const pathname = usePathname();
