@@ -15,6 +15,11 @@ interface OptimizedImageProps extends Omit<ImageProps, 'src'> {
 const OptimizedImage = ({ src, alt, className, priority, ...props }: OptimizedImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
+  // Reset loading state when src changes
+  useEffect(() => {
+    setIsLoaded(false);
+  }, [src]);
+
   // Normalize path to match keys in JSON (ensure leading slash)
   const normalizedSrc = src.startsWith('/') ? src : `/${src}`;
   const optimizedData = (imageMapData as any)[normalizedSrc];
@@ -28,7 +33,11 @@ const OptimizedImage = ({ src, alt, className, priority, ...props }: OptimizedIm
     const webpSrcSet = webp.map((v: any) => `${v.src} ${v.width}w`).join(', ');
 
     return (
-      <div className={cn("relative overflow-hidden", className)}>
+      <div className={cn(
+        "relative overflow-hidden",
+        props.fill ? "absolute inset-0 h-full w-full" : "",
+        className
+      )}>
         {/* Placeholder (Blur Layer) */}
         <div
           aria-hidden="true"
@@ -40,15 +49,16 @@ const OptimizedImage = ({ src, alt, className, priority, ...props }: OptimizedIm
         />
 
         <picture>
-          <source srcSet={avifSrcSet} type="image/avif" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
-          <source srcSet={webpSrcSet} type="image/webp" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+          <source srcSet={avifSrcSet} type="image/avif" sizes={props.sizes} />
+          <source srcSet={webpSrcSet} type="image/webp" sizes={props.sizes} />
           <img
             src={original}
             alt={alt}
             decoding={priority ? "sync" : "async"}
             loading={priority ? "eager" : "lazy"}
             className={cn(
-              "w-full h-auto object-cover transition-opacity duration-500",
+              "object-cover transition-opacity duration-500",
+              props.fill ? "absolute inset-0 h-full w-full" : "w-full h-auto",
               isLoaded ? "opacity-100" : "opacity-0"
             )}
             onLoad={() => setIsLoaded(true)}
