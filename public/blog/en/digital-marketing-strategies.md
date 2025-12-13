@@ -5,7 +5,7 @@ date: 2025-01-05
 author: WebABC Team
 category: Digital Marketing
 tags: [Digital Marketing, Small Business, Marketing Strategy, Social Media]
-image: /images/blog-digital-marketing.jpg
+image: /images/blog/digital-marketing.webp
 readTime: 7
 ---
 

@@ -5,7 +5,7 @@ date: 2025-01-15
 author: تیم WebABC
 category: سئو
 tags: [سئو, بهینه‌سازی موتورهای جستجو, دیجیتال مارکتینگ, گوگل]
-image: /images/blog-seo-tips.jpg
+image: /images/blog/seo-tips.webp
 readTime: 8
 ---
 

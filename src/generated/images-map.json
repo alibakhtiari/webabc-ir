@@ -75,424 +75,6 @@
     "width": 1024,
     "height": 1024
   },
-  "/images/service-wordpress.png": {
-    "avif": [
-      {
-        "src": "/images/service-wordpress-opt-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/service-wordpress-opt-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/service-wordpress-opt-1024.avif",
-        "width": 1024
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/service-wordpress-opt-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/service-wordpress-opt-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/service-wordpress-opt-1024.webp",
-        "width": 1024
-      }
-    ],
-    "original": "/images/service-wordpress.png",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAIDBAEH/8QAGhABAQEAAwEAAAAAAAAAAAAAAAECAxETUf/EABcBAQEBAQAAAAAAAAAAAAAAAAABAwX/xAAWEQEBAQAAAAAAAAAAAAAAAAAAEQH/2gAMAwEAAhEDEQA/APcd81+oeyrUqMldGNGmcopmb0JMGjWY5MQATmJ0AiP/2Q==",
-    "width": 1024,
-    "height": 1024
-  },
-  "/images/service-web-development.png": {
-    "avif": [
-      {
-        "src": "/images/service-web-development-opt-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/service-web-development-opt-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/service-web-development-opt-1024.avif",
-        "width": 1024
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/service-web-development-opt-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/service-web-development-opt-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/service-web-development-opt-1024.webp",
-        "width": 1024
-      }
-    ],
-    "original": "/images/service-web-development.png",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQADAAAAAAAAAAAAAAAAAAQBAgf/xAAcEAEAAgIDAQAAAAAAAAAAAAAAAgMBMQQREyH/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQP/xAAVEQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEQMRAD8A79fdtHO77tnkSQzlntWFqv1EmJCi29HPABWoAP/Z",
-    "width": 1024,
-    "height": 1024
-  },
-  "/images/service-web-design.png": {
-    "avif": [
-      {
-        "src": "/images/service-web-design-opt-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/service-web-design-opt-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/service-web-design-opt-1024.avif",
-        "width": 1024
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/service-web-design-opt-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/service-web-design-opt-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/service-web-design-opt-1024.webp",
-        "width": 1024
-      }
-    ],
-    "original": "/images/service-web-design.png",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAIEBQYH/8QAHRABAAICAgMAAAAAAAAAAAAAAAIRAQMEEyExMv/EABYBAQEBAAAAAAAAAAAAAAAAAAEAAv/EABURAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIRAxEAPwD2TttKM7Zmvda5qlZaXMS8CEfQE53jSzeGrxgBq/D5wAk//9k=",
-    "width": 1024,
-    "height": 1024
-  },
-  "/images/service-seo.png": {
-    "avif": [
-      {
-        "src": "/images/service-seo-opt-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/service-seo-opt-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/service-seo-opt-1024.avif",
-        "width": 1024
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/service-seo-opt-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/service-seo-opt-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/service-seo-opt-1024.webp",
-        "width": 1024
-      }
-    ],
-    "original": "/images/service-seo.png",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQADAAAAAAAAAAAAAAAAAAMCBAj/xAAYEAEBAQEBAAAAAAAAAAAAAAAAAQIDIf/EABcBAQEBAQAAAAAAAAAAAAAAAAEAAwT/xAAVEQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEQMRAD8A6I6aRu2fRCuiMFpvwTgC2OkRsBIkABf/2Q==",
-    "width": 1024,
-    "height": 1024
-  },
-  "/images/service-local-seo.png": {
-    "avif": [
-      {
-        "src": "/images/service-local-seo-opt-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/service-local-seo-opt-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/service-local-seo-opt-1024.avif",
-        "width": 1024
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/service-local-seo-opt-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/service-local-seo-opt-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/service-local-seo-opt-1024.webp",
-        "width": 1024
-      }
-    ],
-    "original": "/images/service-local-seo.png",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIDCP/EABgQAQEBAQEAAAAAAAAAAAAAAAABAhIh/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQID/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAMAwEAAhEDEQA/AOl97Z3aNVMDSNehECkpIAK5PACl/9k=",
-    "width": 1024,
-    "height": 1024
-  },
-  "/images/portfolio-samak-bartar.png": {
-    "avif": [
-      {
-        "src": "/images/portfolio-samak-bartar-opt-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio-samak-bartar-opt-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/portfolio-samak-bartar-opt-1024.avif",
-        "width": 1024
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/portfolio-samak-bartar-opt-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio-samak-bartar-opt-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/portfolio-samak-bartar-opt-1024.webp",
-        "width": 1024
-      }
-    ],
-    "original": "/images/portfolio-samak-bartar.png",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAUGBAf/xAAdEAACAQUBAQAAAAAAAAAAAAAAAwECBBEhMRIi/8QAGAEAAgMAAAAAAAAAAAAAAAAAAgQAAQP/xAAXEQEBAQEAAAAAAAAAAAAAAAAAAhIB/9oADAMBAAIRAxEAPwD0BFxzZQQ7ONmZQ7hStn82LzY8r9LNA4KG/MbAekyyCapyUraqQBSW/VFdU+YAAan/2Q==",
-    "width": 1024,
-    "height": 1024
-  },
-  "/images/portfolio-project-4.png": {
-    "avif": [
-      {
-        "src": "/images/portfolio-project-4-opt-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio-project-4-opt-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/portfolio-project-4-opt-1024.avif",
-        "width": 1024
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/portfolio-project-4-opt-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio-project-4-opt-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/portfolio-project-4-opt-1024.webp",
-        "width": 1024
-      }
-    ],
-    "original": "/images/portfolio-project-4.png",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAUEAwb/xAAfEAABBAICAwAAAAAAAAAAAAAAAQIEEgMhEzEUIjP/xAAVAQEBAAAAAAAAAAAAAAAAAAADAP/EABcRAQADAAAAAAAAAAAAAAAAAAACERL/2gAMAwEAAhEDEQA/APXeTZvZNnvs1ThjkevZnl50quwNWbNJUj6qDNIzJyrsElVrlr2ZJj3VXYAMTSQJGR3KuwAKJ//Z",
-    "width": 1024,
-    "height": 1024
-  },
-  "/images/portfolio-project-3.png": {
-    "avif": [
-      {
-        "src": "/images/portfolio-project-3-opt-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio-project-3-opt-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/portfolio-project-3-opt-1024.avif",
-        "width": 1024
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/portfolio-project-3-opt-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio-project-3-opt-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/portfolio-project-3-opt-1024.webp",
-        "width": 1024
-      }
-    ],
-    "original": "/images/portfolio-project-3.png",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAQDAQf/xAAZEAEAAwEBAAAAAAAAAAAAAAAAAQIDESH/xAAXAQADAQAAAAAAAAAAAAAAAAABAgME/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAEC/9oADAMBAAIRAxEAPwD1il+tq2SZK846zyqWNYt4OxXwMCHGFmURwEsqVRERwA5X/9k=",
-    "width": 1024,
-    "height": 1024
-  },
-  "/images/portfolio-project-2.png": {
-    "avif": [
-      {
-        "src": "/images/portfolio-project-2-opt-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio-project-2-opt-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/portfolio-project-2-opt-1024.avif",
-        "width": 1024
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/portfolio-project-2-opt-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio-project-2-opt-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/portfolio-project-2-opt-1024.webp",
-        "width": 1024
-      }
-    ],
-    "original": "/images/portfolio-project-2.png",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAIDBAb/xAAaEAEBAAMBAQAAAAAAAAAAAAABAAIDESFR/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgX/xAAWEQEBAQAAAAAAAAAAAAAAAAAAARH/2gAMAwEAAhEDEQA/AON24Fmy1nbZufbOvtUqTFZrPkrhOSJabsntQr2SdGJC8kkCf//Z",
-    "width": 1024,
-    "height": 1024
-  },
-  "/images/portfolio-project-1.png": {
-    "avif": [
-      {
-        "src": "/images/portfolio-project-1-opt-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio-project-1-opt-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/portfolio-project-1-opt-1024.avif",
-        "width": 1024
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/portfolio-project-1-opt-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio-project-1-opt-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/portfolio-project-1-opt-1024.webp",
-        "width": 1024
-      }
-    ],
-    "original": "/images/portfolio-project-1.png",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAQADAQAAAAAAAAAAAAAAAAQCAwUH/8QAHBAAAgIDAQEAAAAAAAAAAAAAAAEDEQIEQWES/8QAFgEBAQEAAAAAAAAAAAAAAAAAAgQD/8QAGBEBAQEBAQAAAAAAAAAAAAAAAAECExH/2gAMAwEAAhEDEQA/APTptm+kcmx6c97N9MHLfSaa8bXK1z+gg+2B9B5oIs8n0pwdoAlqmNiAASf/2Q==",
-    "width": 1024,
-    "height": 1024
-  },
-  "/images/portfolio-news.webp": {
-    "avif": [
-      {
-        "src": "/images/portfolio-news-opt-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio-news-opt-768.avif",
-        "width": 768
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/portfolio-news-opt-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio-news-opt-768.webp",
-        "width": 768
-      }
-    ],
-    "original": "/images/portfolio-news.webp",
-    "placeholder": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAABwAwCdASoUAA8APm0skkWkIqGYBABABsSygE6ZQAGVsEeZ/AAA/lRJmgUWwOeN5GqvtHLwhSaEDHUI+sUllm8AAAA=",
-    "width": 960,
-    "height": 720
-  },
-  "/images/portfolio-ecommerce.webp": {
-    "avif": [
-      {
-        "src": "/images/portfolio-ecommerce-opt-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio-ecommerce-opt-768.avif",
-        "width": 768
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/portfolio-ecommerce-opt-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio-ecommerce-opt-768.webp",
-        "width": 768
-      }
-    ],
-    "original": "/images/portfolio-ecommerce.webp",
-    "placeholder": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAACQAwCdASoUAA8APm0qkUWkIqGYBABABsSxgE6ZQAGnUKxCbnGQAP78FovQHGDixnVhQbNWjJkgzRsDDMeLiH9s6WgSQAAA",
-    "width": 960,
-    "height": 720
-  },
-  "/images/portfolio-corporate.webp": {
-    "avif": [
-      {
-        "src": "/images/portfolio-corporate-opt-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio-corporate-opt-768.avif",
-        "width": 768
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/portfolio-corporate-opt-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio-corporate-opt-768.webp",
-        "width": 768
-      }
-    ],
-    "original": "/images/portfolio-corporate.webp",
-    "placeholder": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAwCdASoUAA8APm0ukkWkIqGYBABABsSgCdMoRwACWOf2tAfVSv1AAP70VH0xAdwI//NZR4CwCIO4PHOTjigkwx5oznBe7IhBk+KAAAA=",
-    "width": 960,
-    "height": 720
-  },
   "/images/og-image.webp": {
     "avif": [
       {
@@ -653,128 +235,562 @@
     "width": 1920,
     "height": 1080
   },
-  "/images/blog-web-design.webp": {
+  "/images/services/wordpress.png": {
     "avif": [
       {
-        "src": "/images/blog-web-design-opt-640.avif",
+        "src": "/images/services/wordpress-opt-640.avif",
         "width": 640
       },
       {
-        "src": "/images/blog-web-design-opt-768.avif",
+        "src": "/images/services/wordpress-opt-768.avif",
         "width": 768
       },
       {
-        "src": "/images/blog-web-design-opt-1024.avif",
+        "src": "/images/services/wordpress-opt-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/services/wordpress-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/services/wordpress-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/services/wordpress-opt-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/services/wordpress.png",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAIDBAEH/8QAGhABAQEAAwEAAAAAAAAAAAAAAAECAxETUf/EABcBAQEBAQAAAAAAAAAAAAAAAAABAwX/xAAWEQEBAQAAAAAAAAAAAAAAAAAAEQH/2gAMAwEAAhEDEQA/APcd81+oeyrUqMldGNGmcopmb0JMGjWY5MQATmJ0AiP/2Q==",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/services/web-development.png": {
+    "avif": [
+      {
+        "src": "/images/services/web-development-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/services/web-development-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/services/web-development-opt-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/services/web-development-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/services/web-development-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/services/web-development-opt-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/services/web-development.png",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQADAAAAAAAAAAAAAAAAAAQBAgf/xAAcEAEAAgIDAQAAAAAAAAAAAAAAAgMBMQQREyH/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQP/xAAVEQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEQMRAD8A79fdtHO77tnkSQzlntWFqv1EmJCi29HPABWoAP/Z",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/services/web-design.png": {
+    "avif": [
+      {
+        "src": "/images/services/web-design-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/services/web-design-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/services/web-design-opt-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/services/web-design-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/services/web-design-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/services/web-design-opt-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/services/web-design.png",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAIEBQYH/8QAHRABAAICAgMAAAAAAAAAAAAAAAIRAQMEEyExMv/EABYBAQEBAAAAAAAAAAAAAAAAAAEAAv/EABURAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIRAxEAPwD2TttKM7Zmvda5qlZaXMS8CEfQE53jSzeGrxgBq/D5wAk//9k=",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/services/seo.png": {
+    "avif": [
+      {
+        "src": "/images/services/seo-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/services/seo-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/services/seo-opt-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/services/seo-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/services/seo-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/services/seo-opt-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/services/seo.png",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQADAAAAAAAAAAAAAAAAAAMCBAj/xAAYEAEBAQEBAAAAAAAAAAAAAAAAAQIDIf/EABcBAQEBAQAAAAAAAAAAAAAAAAEAAwT/xAAVEQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEQMRAD8A6I6aRu2fRCuiMFpvwTgC2OkRsBIkABf/2Q==",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/services/local-seo.png": {
+    "avif": [
+      {
+        "src": "/images/services/local-seo-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/services/local-seo-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/services/local-seo-opt-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/services/local-seo-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/services/local-seo-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/services/local-seo-opt-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/services/local-seo.png",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIDCP/EABgQAQEBAQEAAAAAAAAAAAAAAAABAhIh/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQID/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAMAwEAAhEDEQA/AOl97Z3aNVMDSNehECkpIAK5PACl/9k=",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/portfolio/samak-bartar.png": {
+    "avif": [
+      {
+        "src": "/images/portfolio/samak-bartar-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio/samak-bartar-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/portfolio/samak-bartar-opt-1024.avif",
         "width": 1024
       },
       {
-        "src": "/images/blog-web-design-opt-1280.avif",
+        "src": "/images/portfolio/samak-bartar-opt-1280.avif",
+        "width": 1280
+      },
+      {
+        "src": "/images/portfolio/samak-bartar-opt-1536.avif",
+        "width": 1536
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/portfolio/samak-bartar-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio/samak-bartar-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/portfolio/samak-bartar-opt-1024.webp",
+        "width": 1024
+      },
+      {
+        "src": "/images/portfolio/samak-bartar-opt-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/images/portfolio/samak-bartar-opt-1536.webp",
+        "width": 1536
+      }
+    ],
+    "original": "/images/portfolio/samak-bartar.png",
+    "placeholder": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABoElEQVR4nFXM226iQAAAUP4/2e3WahVFQBBFRCgq4ADjgPsHMne8tH+yYZp9aHKejzaMyTAmoxiP4va/ay9S4usw6r1F10F0fVVedtffu/bXrtXGezrZ00lC9YToCVbayU/jpH1P2tFHO1QGH+1rjP/EWJsdudFjxpEqRMG9A54p0wPWD3hywOM9ft/j0R4PEzxIsGblQuF2zqyM2RmzMqoQKyNmRsyUzFNipGSWkmlK9CMZK6MD0RzQOUA6QLpAOIC7gDsnptCFYp+onVMzp3PFyOg0I3pGxynVvPKmdKtSej3hFdwr+LJg39yCOYAtALUBs07MPFHjRGc503OmreHd79182CnSh3JdiXUlVopX8WXJ3ZI5JV8U3C6YWbA54DPAtAA9A/QI0GOL7gG69c7d5iy/+We5hmIFhQf5suJuxRcVt0pultwouRY2n2HzDJvnrnmEzT2s72F929bdtu4C1AVIbpD0kVwh4Z3FEgoXigXkViXMSmjR36/o8hVdPqPLU3lEzX3X3EJl2/TLppZ+LddIekgukXDOwobCguIfURC1DVhko/gAAAAASUVORK5CYII=",
+    "width": 1920,
+    "height": 945
+  },
+  "/images/portfolio/project-4.png": {
+    "avif": [
+      {
+        "src": "/images/portfolio/project-4-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio/project-4-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/portfolio/project-4-opt-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/portfolio/project-4-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio/project-4-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/portfolio/project-4-opt-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/portfolio/project-4.png",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAUEAwb/xAAfEAABBAICAwAAAAAAAAAAAAAAAQIEEgMhEzEUIjP/xAAVAQEBAAAAAAAAAAAAAAAAAAADAP/EABcRAQADAAAAAAAAAAAAAAAAAAACERL/2gAMAwEAAhEDEQA/APXeTZvZNnvs1ThjkevZnl50quwNWbNJUj6qDNIzJyrsElVrlr2ZJj3VXYAMTSQJGR3KuwAKJ//Z",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/portfolio/project-3.png": {
+    "avif": [
+      {
+        "src": "/images/portfolio/project-3-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio/project-3-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/portfolio/project-3-opt-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/portfolio/project-3-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio/project-3-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/portfolio/project-3-opt-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/portfolio/project-3.png",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAQDAQf/xAAZEAEAAwEBAAAAAAAAAAAAAAAAAQIDESH/xAAXAQADAQAAAAAAAAAAAAAAAAABAgME/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAEC/9oADAMBAAIRAxEAPwD1il+tq2SZK846zyqWNYt4OxXwMCHGFmURwEsqVRERwA5X/9k=",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/portfolio/project-2.png": {
+    "avif": [
+      {
+        "src": "/images/portfolio/project-2-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio/project-2-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/portfolio/project-2-opt-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/portfolio/project-2-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio/project-2-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/portfolio/project-2-opt-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/portfolio/project-2.png",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAIDBAb/xAAaEAEBAAMBAQAAAAAAAAAAAAABAAIDESFR/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgX/xAAWEQEBAQAAAAAAAAAAAAAAAAAAARH/2gAMAwEAAhEDEQA/AON24Fmy1nbZufbOvtUqTFZrPkrhOSJabsntQr2SdGJC8kkCf//Z",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/portfolio/project-1.png": {
+    "avif": [
+      {
+        "src": "/images/portfolio/project-1-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio/project-1-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/portfolio/project-1-opt-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/portfolio/project-1-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio/project-1-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/portfolio/project-1-opt-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/portfolio/project-1.png",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAQADAQAAAAAAAAAAAAAAAAQCAwUH/8QAHBAAAgIDAQEAAAAAAAAAAAAAAAEDEQIEQWES/8QAFgEBAQEAAAAAAAAAAAAAAAAAAgQD/8QAGBEBAQEBAQAAAAAAAAAAAAAAAAECExH/2gAMAwEAAhEDEQA/APTptm+kcmx6c97N9MHLfSaa8bXK1z+gg+2B9B5oIs8n0pwdoAlqmNiAASf/2Q==",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/portfolio/news.webp": {
+    "avif": [
+      {
+        "src": "/images/portfolio/news-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio/news-opt-768.avif",
+        "width": 768
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/portfolio/news-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio/news-opt-768.webp",
+        "width": 768
+      }
+    ],
+    "original": "/images/portfolio/news.webp",
+    "placeholder": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAABwAwCdASoUAA8APm0skkWkIqGYBABABsSygE6ZQAGVsEeZ/AAA/lRJmgUWwOeN5GqvtHLwhSaEDHUI+sUllm8AAAA=",
+    "width": 960,
+    "height": 720
+  },
+  "/images/portfolio/ecommerce.webp": {
+    "avif": [
+      {
+        "src": "/images/portfolio/ecommerce-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio/ecommerce-opt-768.avif",
+        "width": 768
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/portfolio/ecommerce-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio/ecommerce-opt-768.webp",
+        "width": 768
+      }
+    ],
+    "original": "/images/portfolio/ecommerce.webp",
+    "placeholder": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAACQAwCdASoUAA8APm0qkUWkIqGYBABABsSxgE6ZQAGnUKxCbnGQAP78FovQHGDixnVhQbNWjJkgzRsDDMeLiH9s6WgSQAAA",
+    "width": 960,
+    "height": 720
+  },
+  "/images/portfolio/corporate.webp": {
+    "avif": [
+      {
+        "src": "/images/portfolio/corporate-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio/corporate-opt-768.avif",
+        "width": 768
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/portfolio/corporate-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio/corporate-opt-768.webp",
+        "width": 768
+      }
+    ],
+    "original": "/images/portfolio/corporate.webp",
+    "placeholder": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAwCdASoUAA8APm0ukkWkIqGYBABABsSgCdMoRwACWOf2tAfVSv1AAP70VH0xAdwI//NZR4CwCIO4PHOTjigkwx5oznBe7IhBk+KAAAA=",
+    "width": 960,
+    "height": 720
+  },
+  "/images/blog/web-design.webp": {
+    "avif": [
+      {
+        "src": "/images/blog/web-design-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/blog/web-design-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/blog/web-design-opt-1024.avif",
+        "width": 1024
+      },
+      {
+        "src": "/images/blog/web-design-opt-1280.avif",
         "width": 1280
       }
     ],
     "webp": [
       {
-        "src": "/images/blog-web-design-opt-640.webp",
+        "src": "/images/blog/web-design-opt-640.webp",
         "width": 640
       },
       {
-        "src": "/images/blog-web-design-opt-768.webp",
+        "src": "/images/blog/web-design-opt-768.webp",
         "width": 768
       },
       {
-        "src": "/images/blog-web-design-opt-1024.webp",
+        "src": "/images/blog/web-design-opt-1024.webp",
         "width": 1024
       },
       {
-        "src": "/images/blog-web-design-opt-1280.webp",
+        "src": "/images/blog/web-design-opt-1280.webp",
         "width": 1280
       }
     ],
-    "original": "/images/blog-web-design.webp",
+    "original": "/images/blog/web-design.webp",
     "placeholder": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADQAwCdASoUAAsAPm0skkWkIqGYBABABsSygE6ZQAFZ6fmpcf6odQAA/o03vZbkWVeb9LrgSy8OuHxK0V4oYAAA",
     "width": 1280,
     "height": 720
   },
-  "/images/blog-seo-tips.webp": {
+  "/images/blog/seo-tips.webp": {
     "avif": [
       {
-        "src": "/images/blog-seo-tips-opt-640.avif",
+        "src": "/images/blog/seo-tips-opt-640.avif",
         "width": 640
       },
       {
-        "src": "/images/blog-seo-tips-opt-768.avif",
+        "src": "/images/blog/seo-tips-opt-768.avif",
         "width": 768
       },
       {
-        "src": "/images/blog-seo-tips-opt-1024.avif",
+        "src": "/images/blog/seo-tips-opt-1024.avif",
         "width": 1024
       },
       {
-        "src": "/images/blog-seo-tips-opt-1280.avif",
+        "src": "/images/blog/seo-tips-opt-1280.avif",
         "width": 1280
       }
     ],
     "webp": [
       {
-        "src": "/images/blog-seo-tips-opt-640.webp",
+        "src": "/images/blog/seo-tips-opt-640.webp",
         "width": 640
       },
       {
-        "src": "/images/blog-seo-tips-opt-768.webp",
+        "src": "/images/blog/seo-tips-opt-768.webp",
         "width": 768
       },
       {
-        "src": "/images/blog-seo-tips-opt-1024.webp",
+        "src": "/images/blog/seo-tips-opt-1024.webp",
         "width": 1024
       },
       {
-        "src": "/images/blog-seo-tips-opt-1280.webp",
+        "src": "/images/blog/seo-tips-opt-1280.webp",
         "width": 1280
       }
     ],
-    "original": "/images/blog-seo-tips.webp",
+    "original": "/images/blog/seo-tips.webp",
     "placeholder": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACwAgCdASoUAAsAPm0skkWkIqGYBABABsSzgABE+gAA/vqJ387HuD/oPi5PwgAA",
     "width": 1280,
     "height": 720
   },
-  "/images/blog-digital-marketing.webp": {
+  "/images/blog/digital-marketing.webp": {
     "avif": [
       {
-        "src": "/images/blog-digital-marketing-opt-640.avif",
+        "src": "/images/blog/digital-marketing-opt-640.avif",
         "width": 640
       },
       {
-        "src": "/images/blog-digital-marketing-opt-768.avif",
+        "src": "/images/blog/digital-marketing-opt-768.avif",
         "width": 768
       },
       {
-        "src": "/images/blog-digital-marketing-opt-1024.avif",
+        "src": "/images/blog/digital-marketing-opt-1024.avif",
         "width": 1024
       },
       {
-        "src": "/images/blog-digital-marketing-opt-1280.avif",
+        "src": "/images/blog/digital-marketing-opt-1280.avif",
         "width": 1280
       }
     ],
     "webp": [
       {
-        "src": "/images/blog-digital-marketing-opt-640.webp",
+        "src": "/images/blog/digital-marketing-opt-640.webp",
         "width": 640
       },
       {
-        "src": "/images/blog-digital-marketing-opt-768.webp",
+        "src": "/images/blog/digital-marketing-opt-768.webp",
         "width": 768
       },
       {
-        "src": "/images/blog-digital-marketing-opt-1024.webp",
+        "src": "/images/blog/digital-marketing-opt-1024.webp",
         "width": 1024
       },
       {
-        "src": "/images/blog-digital-marketing-opt-1280.webp",
+        "src": "/images/blog/digital-marketing-opt-1280.webp",
         "width": 1280
       }
     ],
-    "original": "/images/blog-digital-marketing.webp",
+    "original": "/images/blog/digital-marketing.webp",
     "placeholder": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADwAgCdASoUAAsAPm0skkWkIqGYBABABsSxgE6ZQAJDgAD++L6Cuh5Gq0E+Yl8rRgBp334W1LcdXjFQAAA=",
     "width": 1280,
     "height": 720

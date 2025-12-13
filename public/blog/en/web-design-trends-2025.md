@@ -5,7 +5,7 @@ date: 2025-01-10
 author: WebABC Team
 category: Web Design
 tags: [Web Design, UI/UX, Design Trends, User Experience]
-image: /images/blog-web-design.jpg
+image: /images/blog/web-design.webp
 readTime: 6
 ---
 

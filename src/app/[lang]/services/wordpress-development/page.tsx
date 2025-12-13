@@ -16,7 +16,7 @@ const WordpressWoocommerceDevelopment = () => {
             <ServicePageTemplate
                 title={t('wordpress.title')}
                 subtitle={t('wordpress.subtitle')}
-                heroImage="/images/service-wordpress.png"
+                heroImage="/images/services/wordpress.png"
             >
                 {/* Features Section */}
                 <section className="py-16">
