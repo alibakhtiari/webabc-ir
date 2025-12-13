@@ -1,0 +1,612 @@
+{
+  "/images/wordpress-hero.webp": {
+    "avif": [
+      {
+        "src": "/images/wordpress-hero-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/wordpress-hero-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/wordpress-hero-opt-1024.avif",
+        "width": 1024
+      },
+      {
+        "src": "/images/wordpress-hero-opt-1280.avif",
+        "width": 1280
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/wordpress-hero-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/wordpress-hero-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/wordpress-hero-opt-1024.webp",
+        "width": 1024
+      },
+      {
+        "src": "/images/wordpress-hero-opt-1280.webp",
+        "width": 1280
+      }
+    ],
+    "original": "/images/wordpress-hero.webp",
+    "placeholder": "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAACwAgCdASoUAA8APm0skkWkIqGYBABABsS0gABE+gAA/vd5FCZabzV/qkAAAA==",
+    "width": 1280,
+    "height": 960
+  },
+  "/images/team-webabc.webp": {
+    "avif": [
+      {
+        "src": "/images/team-webabc-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/team-webabc-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/team-webabc-opt-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/team-webabc-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/team-webabc-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/team-webabc-opt-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/team-webabc.webp",
+    "placeholder": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAAAQBACdASoUABQAPm0ylEekIqIhKAgAgA2JaQDD6BhZD8Ck2KwEtK4qYAD+7lBJRrbBgPrhs2EiFz0RGx/msACJlhAAAA==",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/service-wordpress.png": {
+    "avif": [
+      {
+        "src": "/images/service-wordpress-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/service-wordpress-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/service-wordpress-opt-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/service-wordpress-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/service-wordpress-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/service-wordpress-opt-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/service-wordpress.png",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAIDBAEH/8QAGhABAQEAAwEAAAAAAAAAAAAAAAECAxETUf/EABcBAQEBAQAAAAAAAAAAAAAAAAABAwX/xAAWEQEBAQAAAAAAAAAAAAAAAAAAEQH/2gAMAwEAAhEDEQA/APcd81+oeyrUqMldGNGmcopmb0JMGjWY5MQATmJ0AiP/2Q==",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/service-web-development.png": {
+    "avif": [
+      {
+        "src": "/images/service-web-development-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/service-web-development-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/service-web-development-opt-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/service-web-development-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/service-web-development-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/service-web-development-opt-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/service-web-development.png",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQADAAAAAAAAAAAAAAAAAAQBAgf/xAAcEAEAAgIDAQAAAAAAAAAAAAAAAgMBMQQREyH/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQP/xAAVEQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEQMRAD8A79fdtHO77tnkSQzlntWFqv1EmJCi29HPABWoAP/Z",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/service-web-design.png": {
+    "avif": [
+      {
+        "src": "/images/service-web-design-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/service-web-design-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/service-web-design-opt-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/service-web-design-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/service-web-design-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/service-web-design-opt-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/service-web-design.png",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAIEBQYH/8QAHRABAAICAgMAAAAAAAAAAAAAAAIRAQMEEyExMv/EABYBAQEBAAAAAAAAAAAAAAAAAAEAAv/EABURAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIRAxEAPwD2TttKM7Zmvda5qlZaXMS8CEfQE53jSzeGrxgBq/D5wAk//9k=",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/service-seo.png": {
+    "avif": [
+      {
+        "src": "/images/service-seo-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/service-seo-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/service-seo-opt-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/service-seo-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/service-seo-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/service-seo-opt-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/service-seo.png",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQADAAAAAAAAAAAAAAAAAAMCBAj/xAAYEAEBAQEBAAAAAAAAAAAAAAAAAQIDIf/EABcBAQEBAQAAAAAAAAAAAAAAAAEAAwT/xAAVEQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEQMRAD8A6I6aRu2fRCuiMFpvwTgC2OkRsBIkABf/2Q==",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/service-local-seo.png": {
+    "avif": [
+      {
+        "src": "/images/service-local-seo-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/service-local-seo-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/service-local-seo-opt-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/service-local-seo-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/service-local-seo-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/service-local-seo-opt-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/service-local-seo.png",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIDCP/EABgQAQEBAQEAAAAAAAAAAAAAAAABAhIh/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQID/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAMAwEAAhEDEQA/AOl97Z3aNVMDSNehECkpIAK5PACl/9k=",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/portfolio-news.webp": {
+    "avif": [
+      {
+        "src": "/images/portfolio-news-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio-news-opt-768.avif",
+        "width": 768
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/portfolio-news-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio-news-opt-768.webp",
+        "width": 768
+      }
+    ],
+    "original": "/images/portfolio-news.webp",
+    "placeholder": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAABwAwCdASoUAA8APm0skkWkIqGYBABABsSygE6ZQAGVsEeZ/AAA/lRJmgUWwOeN5GqvtHLwhSaEDHUI+sUllm8AAAA=",
+    "width": 960,
+    "height": 720
+  },
+  "/images/portfolio-ecommerce.webp": {
+    "avif": [
+      {
+        "src": "/images/portfolio-ecommerce-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio-ecommerce-opt-768.avif",
+        "width": 768
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/portfolio-ecommerce-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio-ecommerce-opt-768.webp",
+        "width": 768
+      }
+    ],
+    "original": "/images/portfolio-ecommerce.webp",
+    "placeholder": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAACQAwCdASoUAA8APm0qkUWkIqGYBABABsSxgE6ZQAGnUKxCbnGQAP78FovQHGDixnVhQbNWjJkgzRsDDMeLiH9s6WgSQAAA",
+    "width": 960,
+    "height": 720
+  },
+  "/images/portfolio-corporate.webp": {
+    "avif": [
+      {
+        "src": "/images/portfolio-corporate-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio-corporate-opt-768.avif",
+        "width": 768
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/portfolio-corporate-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio-corporate-opt-768.webp",
+        "width": 768
+      }
+    ],
+    "original": "/images/portfolio-corporate.webp",
+    "placeholder": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAwCdASoUAA8APm0ukkWkIqGYBABABsSgCdMoRwACWOf2tAfVSv1AAP70VH0xAdwI//NZR4CwCIO4PHOTjigkwx5oznBe7IhBk+KAAAA=",
+    "width": 960,
+    "height": 720
+  },
+  "/images/og-image.webp": {
+    "avif": [
+      {
+        "src": "/images/og-image-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/og-image-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/og-image-opt-1024.avif",
+        "width": 1024
+      },
+      {
+        "src": "/images/og-image-opt-1280.avif",
+        "width": 1280
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/og-image-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/og-image-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/og-image-opt-1024.webp",
+        "width": 1024
+      },
+      {
+        "src": "/images/og-image-opt-1280.webp",
+        "width": 1280
+      }
+    ],
+    "original": "/images/og-image.webp",
+    "placeholder": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAABQBACdASoUAAkAPm0qkUWkIqGYBABABsSxAE6ZQjgb0D8VQCQ1B3a6N8gAAP7zJZbrVMSP/h7GQUs//DC1zEvqU4/INFSTEkLitAAA",
+    "width": 1348,
+    "height": 623
+  },
+  "/images/og-image.jpg": {
+    "avif": [
+      {
+        "src": "/images/og-image-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/og-image-opt-768.avif",
+        "width": 768
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/og-image-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/og-image-opt-768.webp",
+        "width": 768
+      }
+    ],
+    "original": "/images/og-image.jpg",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAKABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABQAG/8QAGRABAAIDAAAAAAAAAAAAAAAAAARBAQIy/8QAFgEBAQEAAAAAAAAAAAAAAAAABgMF/8QAFxEBAAMAAAAAAAAAAAAAAAAAAAECBP/aAAwDAQACEQMRAD8AykWjUSgsSjMSimwRoJ6c4S05wk2ZL//Z",
+    "width": 877,
+    "height": 459
+  },
+  "/images/logo.webp": {
+    "avif": [],
+    "webp": [],
+    "original": "/images/logo.webp",
+    "placeholder": "data:image/webp;base64,UklGRjQAAABXRUJQVlA4ICgAAACwAgCdASoUAAYAPm0skkWkIqGYBABABsS0gABCBgAA/vq5OJsIAAAA",
+    "width": 260,
+    "height": 72
+  },
+  "/images/homepage-hero.png": {
+    "avif": [
+      {
+        "src": "/images/homepage-hero-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/homepage-hero-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/homepage-hero-opt-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/homepage-hero-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/homepage-hero-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/homepage-hero-opt-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/homepage-hero.png",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAMCBAj/xAAbEAEAAgMBAQAAAAAAAAAAAAAAASECAxETQf/EABgBAQADAQAAAAAAAAAAAAAAAAEAAgME/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oADAMBAAIRAxEAPwD0dt2Wj6WzslL66pGWuvHZQhj3gmFrOLYiLAxWKYxQAL//2Q==",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/hero-image.webp": {
+    "avif": [
+      {
+        "src": "/images/hero-image-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/hero-image-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/hero-image-opt-1024.avif",
+        "width": 1024
+      },
+      {
+        "src": "/images/hero-image-opt-1280.avif",
+        "width": 1280
+      },
+      {
+        "src": "/images/hero-image-opt-1536.avif",
+        "width": 1536
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/hero-image-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/hero-image-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/hero-image-opt-1024.webp",
+        "width": 1024
+      },
+      {
+        "src": "/images/hero-image-opt-1280.webp",
+        "width": 1280
+      },
+      {
+        "src": "/images/hero-image-opt-1536.webp",
+        "width": 1536
+      }
+    ],
+    "original": "/images/hero-image.webp",
+    "placeholder": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAABQAwCdASoUAAsAPm0skkWkIqGYBABABsSxAE6XqADo1uG0lAD++xLG6eslF8og/1X7lPEGPCvd7n5CsBQO2aVTghL9B8AosQngAAAA",
+    "width": 1920,
+    "height": 1080
+  },
+  "/images/blog-web-design.webp": {
+    "avif": [
+      {
+        "src": "/images/blog-web-design-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/blog-web-design-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/blog-web-design-opt-1024.avif",
+        "width": 1024
+      },
+      {
+        "src": "/images/blog-web-design-opt-1280.avif",
+        "width": 1280
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/blog-web-design-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/blog-web-design-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/blog-web-design-opt-1024.webp",
+        "width": 1024
+      },
+      {
+        "src": "/images/blog-web-design-opt-1280.webp",
+        "width": 1280
+      }
+    ],
+    "original": "/images/blog-web-design.webp",
+    "placeholder": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADQAwCdASoUAAsAPm0skkWkIqGYBABABsSygE6ZQAFZ6fmpcf6odQAA/o03vZbkWVeb9LrgSy8OuHxK0V4oYAAA",
+    "width": 1280,
+    "height": 720
+  },
+  "/images/blog-seo-tips.webp": {
+    "avif": [
+      {
+        "src": "/images/blog-seo-tips-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/blog-seo-tips-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/blog-seo-tips-opt-1024.avif",
+        "width": 1024
+      },
+      {
+        "src": "/images/blog-seo-tips-opt-1280.avif",
+        "width": 1280
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/blog-seo-tips-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/blog-seo-tips-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/blog-seo-tips-opt-1024.webp",
+        "width": 1024
+      },
+      {
+        "src": "/images/blog-seo-tips-opt-1280.webp",
+        "width": 1280
+      }
+    ],
+    "original": "/images/blog-seo-tips.webp",
+    "placeholder": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACwAgCdASoUAAsAPm0skkWkIqGYBABABsSzgABE+gAA/vqJ387HuD/oPi5PwgAA",
+    "width": 1280,
+    "height": 720
+  },
+  "/images/blog-digital-marketing.webp": {
+    "avif": [
+      {
+        "src": "/images/blog-digital-marketing-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/blog-digital-marketing-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/blog-digital-marketing-opt-1024.avif",
+        "width": 1024
+      },
+      {
+        "src": "/images/blog-digital-marketing-opt-1280.avif",
+        "width": 1280
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/blog-digital-marketing-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/blog-digital-marketing-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/blog-digital-marketing-opt-1024.webp",
+        "width": 1024
+      },
+      {
+        "src": "/images/blog-digital-marketing-opt-1280.webp",
+        "width": 1280
+      }
+    ],
+    "original": "/images/blog-digital-marketing.webp",
+    "placeholder": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADwAgCdASoUAAsAPm0skkWkIqGYBABABsSxgE6ZQAJDgAD++L6Cuh5Gq0E+Yl8rRgBp334W1LcdXjFQAAA=",
+    "width": 1280,
+    "height": 720
+  }
+}
