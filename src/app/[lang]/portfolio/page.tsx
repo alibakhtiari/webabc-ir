@@ -1,5 +1,6 @@
 import PortfolioClient from "./PortfolioClient";
-import { getAllPortfolioItems } from "@/lib/mdPortfolioData";
+import { getAllItems } from "@/lib/mdData";
+import { PortfolioItem } from "@/types/portfolio";
 import { SupportedLanguage } from "@/types/language";
 import { Metadata } from "next";
 import { getDictionary } from "@/i18n/get-dictionary";
@@ -34,6 +35,6 @@ export default async function Page({
     params: Promise<{ lang: string }>;
 }) {
     const { lang } = await params;
-    const items = await getAllPortfolioItems(lang);
+    const items = await getAllItems<PortfolioItem>('portfolio', lang);
     return <PortfolioClient items={items} />;
 }
