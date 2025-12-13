@@ -57,7 +57,7 @@ const FAQ: React.FC<FAQProps> = ({ items, title, description }) => {
                             >
                                 <AccordionItem
                                     value={`item-${index}`}
-                                    className="border border-gray-200 dark:border-gray-800 rounded-lg bg-white dark:bg-gray-900 overflow-hidden shadow-sm hover:shadow-md transition-shadow px-4"
+                                    className="border border-gray-200 dark:border-gray-800 rounded-lg bg-white dark:bg-gray-900 overflow-hidden shadow-xs hover:shadow-md transition-shadow px-4"
                                 >
                                     <AccordionTrigger className={`text-left hover:no-underline py-4 ${languageMeta.fontFamily} text-lg font-medium`}>
                                         {item.question}

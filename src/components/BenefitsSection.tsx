@@ -159,7 +159,7 @@ const BenefitsSection = () => {
               </div>
             </div>
 
-            <div className="aspect-auto bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+            <div className="aspect-auto bg-linear-to-br from-gray-50 to-gray-100 flex items-center justify-center">
               <span className="font-persian text-muted-foreground">
                 {t('benefits.imageAlt', { fallback: 'تصویر نتایج سئو' })}
               </span>

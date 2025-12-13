@@ -26,7 +26,7 @@ export const ServicePageTemplate = ({
     return (
         <div className={cn("service-page", className)}>
             {/* Dynamic Hero Section */}
-            <section className="bg-gradient-to-b from-primary/10 to-white pt-28 pb-16 md:pt-32 md:pb-24">
+            <section className="bg-linear-to-b from-primary/10 to-white pt-28 pb-16 md:pt-32 md:pb-24">
                 <div className="container mx-auto px-4">
                     <div className={cn("max-w-6xl mx-auto", !heroImage && "text-center")}>
                         <Breadcrumb />

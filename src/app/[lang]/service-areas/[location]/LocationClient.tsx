@@ -90,7 +90,7 @@ const LocationPage = () => {
                 e.currentTarget.src = '/images/placeholder.svg';
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-background/80"></div>
+            <div className="absolute inset-0 bg-linear-to-br from-background/95 via-background/90 to-background/80"></div>
           </div>
 
           <div className="container mx-auto px-4 relative">
@@ -109,7 +109,7 @@ const LocationPage = () => {
                 </Badge>
               </div>
 
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent animate-fade-in">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent animate-fade-in">
                 {t('common.webDesignAndDevelopment')} {location.name}
               </h1>
 
@@ -197,7 +197,7 @@ const LocationPage = () => {
                   <Card key={index} className="group hover:shadow-xl transition-all hover:scale-105 border-primary/20">
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1 group-hover:scale-110 transition-transform" />
+                        <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-1 group-hover:scale-110 transition-transform" />
                         <span className="text-lg font-medium">{service}</span>
                       </div>
                     </CardContent>
@@ -220,7 +220,7 @@ const LocationPage = () => {
                   <Card key={index} className="group hover:shadow-lg transition-all hover:translate-x-2 border-l-4 border-l-primary">
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1 group-hover:scale-110 transition-transform" />
+                        <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-1 group-hover:scale-110 transition-transform" />
                         <span className="text-lg text-muted-foreground">{benefit}</span>
                       </div>
                     </CardContent>
@@ -232,7 +232,7 @@ const LocationPage = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-primary/10 via-primary/5 to-background relative overflow-hidden">
+        <section className="py-20 bg-linear-to-br from-primary/10 via-primary/5 to-background relative overflow-hidden">
           <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
           <div className="container mx-auto px-4 relative">
             <div className="max-w-3xl mx-auto text-center">

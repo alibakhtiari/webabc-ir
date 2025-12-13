@@ -85,7 +85,7 @@ const ServicesSection = () => {
     <section
       id="services"
       ref={sectionRef}
-      className="py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden snap-section"
+      className="py-24 bg-linear-to-b from-white to-gray-50 relative overflow-hidden snap-section"
     >
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -123,7 +123,7 @@ const ServicesSection = () => {
                 onClick={() => setActiveTab(idx)}
                 className={cn(
                   "transition-all duration-300 px-6 py-3 rounded-full whitespace-nowrap",
-                  "focus:outline-none focus:ring-2 focus:ring-primary/40 snap-start",
+                  "focus:outline-hidden focus:ring-2 focus:ring-primary/40 snap-start",
                   activeTab === idx
                     ? "bg-primary text-white shadow-md"
                     : "bg-white text-foreground/80 border border-gray-200 hover:bg-gray-50"
