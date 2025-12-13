@@ -5,11 +5,11 @@ const locales = ["en", "fa", "ar"]
 const defaultLocale = "fa"
 
 // Define the country-to-language mappings
-const persianCountries = new Set(['IR', 'AF', 'TJ']) // Iran, Afghanistan, Tajikistan
+const persianCountries = new Set(['IR', 'AF', 'TJ'])
 const arabianCountries = new Set([
-    'SA', 'AE', 'EG', 'QA', 'KW', 'OM', 'BH', // GCC
-    'JO', 'LB', 'IQ', 'SY', 'YE', 'PS',      // Levant & Yemen
-    'DZ', 'MA', 'TN', 'LY', 'SD', 'MR'       // North Africa
+    'SA', 'AE', 'EG', 'QA', 'KW', 'OM', 'BH',
+    'JO', 'LB', 'IQ', 'SY', 'YE', 'PS',
+    'DZ', 'MA', 'TN', 'LY', 'SD', 'MR'
 ])
 
 export function middleware(request: NextRequest) {

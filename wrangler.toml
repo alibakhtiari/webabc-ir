@@ -1,8 +1,7 @@
 name = "webabc-next"
 main = ".open-next/worker.js"
-compatibility_date = "2025-03-25"
-account_id = "ac07c7450925ccb475ebfc9ab75103e1"
-compatibility_flags = ["nodejs_compat_v2"]
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
 
 [assets]
 directory = ".open-next/assets"
