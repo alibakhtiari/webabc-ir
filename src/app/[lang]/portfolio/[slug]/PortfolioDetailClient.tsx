@@ -3,21 +3,24 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { notFound, useParams } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { portfolioItems } from '@/lib/portfolioData';
+import { PortfolioItem } from '@/types/portfolio';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowLeft, ExternalLink, CheckCircle2, Calendar, User, Code } from 'lucide-react';
 
-const PortfolioDetail = () => {
-    const { t, language, languageMeta } = useLanguage();
-    const params = useParams();
-    const id = params?.id as string;
+import ReactMarkdown from 'react-markdown';
 
-    const project = portfolioItems.find(item => item.id === id);
+interface PortfolioDetailProps {
+    project: PortfolioItem;
+}
+
+const PortfolioDetail = ({ project }: PortfolioDetailProps) => {
+    const { t, language, languageMeta } = useLanguage();
+    const slug = project.slug;
 
     if (!project) {
         notFound();
@@ -29,11 +32,17 @@ const PortfolioDetail = () => {
         // Optional: Redirect or show warning, but for now we just show it
     }
 
+    const breadcrumbItems = [
+        { name: t('common.home'), path: `/${language}` },
+        { name: t('common.portfolio'), path: `/${language}/portfolio` },
+        { name: project.title, path: `/${language}/portfolio/${slug}` }
+    ];
+
     return (
         <>
             <div className="min-h-screen pt-32 pb-16">
                 <div className="container mx-auto px-4">
-                    <Breadcrumb />
+                    <Breadcrumb customItems={breadcrumbItems} />
 
                     <div className="mb-8">
                         <Link
@@ -74,9 +83,9 @@ const PortfolioDetail = () => {
 
                             <div>
                                 <h2 className="text-2xl font-bold mb-4">{t('portfolio.projectOverview')}</h2>
-                                <p className="text-lg text-muted-foreground leading-relaxed">
-                                    {project.fullDescription}
-                                </p>
+                                <div className="prose dark:prose-invert max-w-none text-muted-foreground">
+                                    <ReactMarkdown>{project.content}</ReactMarkdown>
+                                </div>
                             </div>
 
                             <div>

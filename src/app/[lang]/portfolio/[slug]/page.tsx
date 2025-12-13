@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import PortfolioDetailClient from "./PortfolioDetailClient";
-import { portfolioItems } from "@/lib/portfolioData";
+import { getPortfolioItem, getAllPortfolioItems } from "@/lib/mdPortfolioData";
 import { SupportedLanguage } from "@/types/language";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { constructMetadata } from "@/lib/metadata";
@@ -14,10 +14,11 @@ export async function generateStaticParams() {
     const params = [];
 
     for (const lang of Object.keys(languages)) {
-        for (const item of portfolioItems) {
+        const items = await getAllPortfolioItems(lang);
+        for (const item of items) {
             params.push({
                 lang: lang,
-                id: item.id,
+                slug: item.slug,
             });
         }
     }
@@ -25,12 +26,12 @@ export async function generateStaticParams() {
     return params;
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ lang: string, id: string }> }): Promise<Metadata> {
-    const { lang, id } = await params;
+export async function generateMetadata({ params }: { params: Promise<{ lang: string, slug: string }> }): Promise<Metadata> {
+    const { lang, slug } = await params;
     const supportedLang = lang as SupportedLanguage;
     const t = await getDictionary(supportedLang);
 
-    const project = portfolioItems.find(item => item.id === id);
+    const project = await getPortfolioItem(slug, lang);
 
     if (!project) {
         return {
@@ -46,9 +47,9 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         }),
         alternates: {
             languages: {
-                'en': `/en/portfolio/${id}`,
-                'fa': `/fa/portfolio/${id}`,
-                'ar': `/ar/portfolio/${id}`,
+                'en': `/en/portfolio/${slug}`,
+                'fa': `/fa/portfolio/${slug}`,
+                'ar': `/ar/portfolio/${slug}`,
             },
         },
     };
@@ -57,15 +58,15 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 export default async function Page({
     params,
 }: {
-    params: Promise<{ lang: string, id: string }>;
+    params: Promise<{ lang: string, slug: string }>;
 }) {
-    const { lang, id } = await params;
+    const { lang, slug } = await params;
 
     // Validate that project exists
-    const project = portfolioItems.find(item => item.id === id);
+    const project = await getPortfolioItem(slug, lang);
     if (!project) {
         notFound();
     }
 
-    return <PortfolioDetailClient />;
+    return <PortfolioDetailClient project={project} />;
 }

@@ -7,7 +7,7 @@ import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import { useLanguage } from '@/contexts/LanguageContext';
 import PortfolioSchema from '@/components/seo/schemas/PortfolioSchema';
-import { portfolioItems } from '@/lib/portfolioData';
+import { PortfolioItem } from '@/types/portfolio';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
@@ -18,7 +18,11 @@ const portfolioEcommerce = '/images/portfolio-ecommerce.webp';
 const portfolioNews = '/images/portfolio-news.webp';
 const portfolioCorporate = '/images/portfolio-corporate.webp';
 
-const Portfolio = () => {
+interface PortfolioClientProps {
+  items: PortfolioItem[];
+}
+
+const Portfolio = ({ items }: PortfolioClientProps) => {
   const { t, language, languageMeta } = useLanguage();
   const [activeTab, setActiveTab] = useState('all');
 
@@ -81,9 +85,7 @@ const Portfolio = () => {
   ];
 
   // Filter portfolio items by language
-  const filteredPortfolio = portfolioItems.filter(
-    item => !item.language || item.language === language
-  );
+  const filteredPortfolio = items;
 
   // Get unique categories
   const categories = ['all', ...Array.from(new Set(filteredPortfolio.map(item => item.category)))];
@@ -152,7 +154,7 @@ const Portfolio = () => {
                 {/* Portfolio Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {displayedItems.map((item) => (
-                    <Link key={item.id} href={`/${language}/portfolio/${item.id}`}>
+                    <Link key={item.slug} href={`/${language}/portfolio/${item.slug}`}>
                       <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-300 border-2 hover:border-primary/50">
                         <div className="relative aspect-video overflow-hidden">
                           <OptimizedImage
