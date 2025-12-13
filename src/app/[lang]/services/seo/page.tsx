@@ -120,19 +120,19 @@ const SeoService = () => {
                                 <CaseStudyCard
                                     title={t('seoService.caseStudies.ecommerce.title')}
                                     category={t('seoService.caseStudies.ecommerce.category')}
-                                    image="https://images.unsplash.com/photo-1460925895917-afdab827c52f"
+                                    image="/images/portfolio-project-4.png"
                                     result={t('seoService.caseStudies.ecommerce.result')}
                                 />
                                 <CaseStudyCard
                                     title={t('seoService.caseStudies.local.title')}
                                     category={t('seoService.caseStudies.local.category')}
-                                    image="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158"
+                                    image="/images/portfolio-project-3.png"
                                     result={t('seoService.caseStudies.local.result')}
                                 />
                                 <CaseStudyCard
                                     title={t('seoService.caseStudies.b2b.title')}
                                     category={t('seoService.caseStudies.b2b.category')}
-                                    image="https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
+                                    image="/images/portfolio-project-1.png"
                                     result={t('seoService.caseStudies.b2b.result')}
                                 />
                             </div>

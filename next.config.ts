@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
       default-src 'self';
       script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.google-analytics.com https://challenges.cloudflare.com;
       style-src 'self' 'unsafe-inline';
-      img-src 'self' blob: data: https://images.unsplash.com;
+      img-src 'self' blob: data:;
       font-src 'self';
       object-src 'none';
       base-uri 'self';

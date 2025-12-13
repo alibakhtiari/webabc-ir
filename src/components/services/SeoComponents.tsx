@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import Image from 'next/image';
+import OptimizedImage from '@/components/OptimizedImage';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 interface SeoServiceCardProps {
@@ -52,7 +52,7 @@ interface CaseStudyCardProps {
 export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ title, category, image, result }) => (
     <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
         <div className="relative h-48 overflow-hidden">
-            <Image
+            <OptimizedImage
                 src={image}
                 alt={title}
                 fill
