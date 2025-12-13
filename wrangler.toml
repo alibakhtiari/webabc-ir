@@ -1,8 +1,8 @@
-  main = ".open-next/worker.js"
-  name = "webabc-next"
-  compatibility_date = "2025-03-25"
-  account_id = "ac07c7450925ccb475ebfc9ab75103e1"
-  compatibility_flags = ["nodejs_compat_v2"]
-  [assets]
-  pages_build_output_dir = ".open-next/assets"
-  binding = "ASSETS"
+name = "webabc-next"
+main = ".open-next/worker.js"
+compatibility_date = "2025-03-25"
+account_id = "ac07c7450925ccb475ebfc9ab75103e1"
+compatibility_flags = ["nodejs_compat_v2"]
+
+# This must be at the top level for Cloudflare Pages
+pages_build_output_dir = ".open-next/assets"
