@@ -1,6 +1,7 @@
 import BlogPostClient from "./BlogPostClient";
 import { SupportedLanguage } from "@/types/language";
-import { getAllBlogPosts, getBlogPost } from "@/lib/blogData";
+import { getAllItems, getItem } from "@/lib/mdData";
+import { BlogPost } from "@/types/blog";
 import { languages } from "@/types/language";
 import { notFound } from "next/navigation";
 import { constructMetadata } from "@/lib/metadata";
@@ -11,7 +12,7 @@ export async function generateStaticParams() {
 
     // Loop through all languages and posts to generate paths
     for (const lang of Object.keys(languages)) {
-        const posts = await getAllBlogPosts(lang);
+        const posts = await getAllItems<BlogPost>('blog', lang);
         for (const post of posts) {
             params.push({
                 lang: lang,
@@ -27,7 +28,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string; slug: string }> }): Promise<Metadata> {
     const { lang, slug } = await params;
-    const post = await getBlogPost(slug, lang);
+    const post = await getItem<BlogPost>('blog', slug, lang);
 
     if (!post) {
         return {
@@ -58,7 +59,7 @@ export default async function Page({
     params: Promise<{ lang: string; slug: string }>;
 }) {
     const { lang, slug } = await params;
-    const post = await getBlogPost(slug, lang);
+    const post = await getItem<BlogPost>('blog', slug, lang);
 
     if (!post) {
         return <BlogPostClient post={null} />;

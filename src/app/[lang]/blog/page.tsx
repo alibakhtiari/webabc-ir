@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { constructMetadata } from "@/lib/metadata";
 
-import { getAllBlogPosts } from "@/lib/blogData";
+// import { getAllBlogPosts } from "@/lib/blogData"; // Removed
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params;
@@ -27,12 +27,21 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     };
 }
 
+import { getAllItems } from "@/lib/mdData";
+import { BlogPost } from "@/types/blog";
+
+// ... existing imports
+
 export default async function Page({
     params,
 }: {
     params: Promise<{ lang: string }>;
 }) {
     const { lang } = await params;
-    const posts = await getAllBlogPosts(lang);
-    return <BlogClient initialPosts={posts} />;
+    const posts = await getAllItems<BlogPost>('blog', lang);
+
+    // Sort by date (newest first)
+    const sortedPosts = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+    return <BlogClient initialPosts={sortedPosts} />;
 }

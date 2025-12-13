@@ -1,29 +1,6 @@
-export interface BlogPost {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  author: string;
-  category: string;
-  tags: string[];
-  image: string;
-  readTime: number;
-  content: string;
-  keyTakeaways?: string[];
-  faq?: { question: string; answer: string }[];
-}
+import { BlogPost, BlogMetadata } from '@/types/blog';
 
-export interface BlogMetadata {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  author: string;
-  category: string;
-  tags: string[];
-  image: string;
-  readTime: number;
-}
+export type { BlogPost, BlogMetadata };
 // Fetching functions moved to blogData.ts
 
 

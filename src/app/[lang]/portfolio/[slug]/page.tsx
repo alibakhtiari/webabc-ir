@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import PortfolioDetailClient from "./PortfolioDetailClient";
-import { getPortfolioItem, getAllPortfolioItems } from "@/lib/mdPortfolioData";
+import { getItem, getAllItems } from "@/lib/mdData";
+import { PortfolioItem } from "@/types/portfolio";
 import { SupportedLanguage } from "@/types/language";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { constructMetadata } from "@/lib/metadata";
@@ -14,7 +15,7 @@ export async function generateStaticParams() {
     const params = [];
 
     for (const lang of Object.keys(languages)) {
-        const items = await getAllPortfolioItems(lang);
+        const items = await getAllItems<PortfolioItem>('portfolio', lang);
         for (const item of items) {
             params.push({
                 lang: lang,
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     const supportedLang = lang as SupportedLanguage;
     const t = await getDictionary(supportedLang);
 
-    const project = await getPortfolioItem(slug, lang);
+    const project = await getItem<PortfolioItem>('portfolio', slug, lang);
 
     if (!project) {
         return {
@@ -63,7 +64,7 @@ export default async function Page({
     const { lang, slug } = await params;
 
     // Validate that project exists
-    const project = await getPortfolioItem(slug, lang);
+    const project = await getItem<PortfolioItem>('portfolio', slug, lang);
     if (!project) {
         notFound();
     }
