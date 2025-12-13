@@ -5,7 +5,7 @@ date: 2025-01-10
 author: تیم WebABC
 category: طراحی وب
 tags: [طراحی وب, رابط کاربری, ترندهای طراحی, تجربه کاربری]
-image: /images/blog-web-design.jpg
+image: /images/blog/web-design.webp
 readTime: 6
 ---
 

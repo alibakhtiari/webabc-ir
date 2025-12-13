@@ -5,7 +5,7 @@ date: 2025-01-10
 author: فريق WebABC
 category: تصميم الويب
 tags: [تصميم الويب, واجهة المستخدم, اتجاهات التصميم, تجربة المستخدم]
-image: /images/blog-web-design.jpg
+image: /images/blog/web-design.webp
 readTime: 6
 ---
 
