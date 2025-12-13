@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
 
+// Use env variable or fallback
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://webabc.ir';
+
 export function constructMetadata({
     title = 'WebABC - Web Design and Development Services',
     description = 'WebABC offers top-tier web design, development, and SEO services. Transform your digital presence with our expert team.',
@@ -19,12 +22,12 @@ export function constructMetadata({
         title,
         description,
         alternates: {
-            canonical: 'https://webabc.ir',
+            canonical: BASE_URL,
             languages: {
-                'en': 'https://webabc.ir/en',
-                'fa': 'https://webabc.ir/fa',
-                'ar': 'https://webabc.ir/ar',
-                'x-default': 'https://webabc.ir/en',
+                'en': `${BASE_URL}/en`,
+                'fa': `${BASE_URL}/fa`,
+                'ar': `${BASE_URL}/ar`,
+                'x-default': `${BASE_URL}/en`,
             },
         },
         openGraph: {
@@ -35,6 +38,7 @@ export function constructMetadata({
                     url: image,
                 },
             ],
+            url: BASE_URL,
         },
         twitter: {
             card: 'summary_large_image',
@@ -44,7 +48,7 @@ export function constructMetadata({
             creator: '@webabc_ir',
         },
         icons,
-        metadataBase: metadataBase || new URL('https://webabc.ir'),
+        metadataBase: metadataBase || new URL(BASE_URL),
         ...(noIndex && {
             robots: {
                 index: false,
