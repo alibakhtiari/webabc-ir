@@ -14,12 +14,16 @@ import { SupportedLanguage, LanguageMeta, languages, LanguageContextType } from 
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+// Define a generic Dictionary type or import the return type from get-dictionary
+type Dictionary = Record<string, any>;
+
 interface LanguageProviderProps {
   children: ReactNode;
   defaultLanguage?: SupportedLanguage;
+  dictionary: Dictionary;
 }
 
-export const LanguageProvider: React.FC<LanguageProviderProps & { dictionary: any }> = ({ children, defaultLanguage, dictionary }) => {
+export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, defaultLanguage, dictionary }) => {
   const initialLanguage = useLanguageDetection();
   // Ensure we always have a valid language
   const safeDefaultLanguage = (defaultLanguage && languages[defaultLanguage]) ? defaultLanguage :
