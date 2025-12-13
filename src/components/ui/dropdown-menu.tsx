@@ -91,7 +91,7 @@ const DropdownMenuContent = React.forwardRef<HTMLDivElement, DropdownMenuContent
       <div
         ref={combinedRef}
         className={cn(
-          "absolute z-50 mt-2 min-w-[8rem] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md",
+          "absolute z-50 mt-2 min-w-32 overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md",
           "animate-in fade-in-0 zoom-in-95 slide-in-from-top-2",
           alignmentClasses[align],
           className
@@ -121,7 +121,7 @@ const DropdownMenuItem = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+        "relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
         className
       )}
       onClick={handleClick}
