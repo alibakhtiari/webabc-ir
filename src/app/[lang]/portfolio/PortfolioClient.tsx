@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+// import Image from 'next/image'; // Rendered obsolete by OptimizedImage
+import OptimizedImage from '@/components/OptimizedImage';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import { useLanguage } from '@/contexts/LanguageContext';
 import PortfolioSchema from '@/components/seo/schemas/PortfolioSchema';
@@ -154,7 +155,7 @@ const Portfolio = () => {
                     <Link key={item.id} href={`/${language}/portfolio/${item.id}`}>
                       <Card className="group overflow-hidden hover:shadow-2xl transition-all duration-300 border-2 hover:border-primary/50">
                         <div className="relative aspect-video overflow-hidden">
-                          <Image
+                          <OptimizedImage
                             src={item.image}
                             alt={item.title}
                             fill
@@ -190,7 +191,7 @@ const Portfolio = () => {
                   {caseStudies.map((study) => (
                     <Card key={study.id} className="group hover:shadow-2xl transition-all duration-300 overflow-hidden border-2 hover:border-primary/50">
                       <div className="aspect-video overflow-hidden relative">
-                        <Image
+                        <OptimizedImage
                           src={study.image}
                           alt={study.title}
                           fill
