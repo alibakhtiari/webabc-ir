@@ -46,7 +46,7 @@ const HeroSection = () => {
                 alt={t('home.hero.imageAlt', { fallback: 'Digital marketing and web development illustration' })}
                 className="w-full h-auto object-cover rounded-lg shadow-2xl"
                 width={600}
-                height={400}
+                height={600}
                 priority={true}
               />
             </div>

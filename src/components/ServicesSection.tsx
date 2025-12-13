@@ -5,6 +5,8 @@ import { cn } from '@/lib/utils';
 import { CheckCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
+import OptimizedImage from './OptimizedImage';
+
 const ServicesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [activeTab, setActiveTab] = useState(0);
@@ -70,6 +72,13 @@ const ServicesSection = () => {
         t('services.contentCreation.features.4', { fallback: 'گرافیک اختصاصی' }),
       ],
     },
+  ];
+
+  // Map services to their generated images based on index or title key
+  const serviceImages = [
+    '/images/service-seo.png',
+    '/images/service-web-design.png',
+    '/images/blog-digital-marketing.webp', // Using a relevant existing image for Content Creation as we didn't generate one specifically named 'content-creation' yet, or reuse web-dev
   ];
 
   return (
@@ -162,10 +171,13 @@ const ServicesSection = () => {
               </div>
 
               <div className="md:col-span-2">
-                <div className="aspect-square w-full rounded-xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
-                  <span className="font-persian text-muted-foreground">
-                    {t('services.imagePrefix', { fallback: 'تصویر' })} {services[activeTab].title}
-                  </span>
+                <div className="aspect-square w-full rounded-xl overflow-hidden shadow-xl relative">
+                  <OptimizedImage
+                    src={serviceImages[activeTab] || '/images/hero-image.webp'}
+                    alt={services[activeTab].title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               </div>
             </div>
