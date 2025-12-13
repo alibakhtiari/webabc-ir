@@ -63,7 +63,7 @@ const ServiceAreas = () => {
 
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="pt-32 pb-20 bg-linear-to-br from-primary/10 via-primary/5 to-background relative overflow-hidden">
+        <section className="pt-32 pb-20 bg-gradient-to-br from-primary/10 via-primary/5 to-background relative overflow-hidden">
           <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
           <div className="container mx-auto px-4 relative pt-8">
             <div className="max-w-4xl mx-auto text-center">
@@ -170,7 +170,7 @@ const ServiceAreas = () => {
                         <ul className="space-y-2">
                           {location.services.map((service, idx) => (
                             <li key={idx} className="flex items-start gap-2">
-                              <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+                              <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                               <span className="text-muted-foreground">{service}</span>
                             </li>
                           ))}
@@ -197,7 +197,7 @@ const ServiceAreas = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-linear-to-br from-primary/10 to-background">
+        <section className="py-20 bg-gradient-to-br from-primary/10 to-background">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">

@@ -87,7 +87,7 @@ const LocalSeo = () => {
                                     description: t('localSeo.feature.localReportsDesc')
                                 }
                             ].map((feature, index) => (
-                                <div key={index} className="bg-white p-6 rounded-xl shadow-xs border border-gray-100 hover:shadow-md transition-shadow">
+                                <div key={index} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                                     <div className="mb-4">{feature.icon}</div>
                                     <h3 className={`text-xl font-semibold mb-3 ${languageMeta.fontFamily}`}>{feature.title}</h3>
                                     <p className={`text-gray-600 ${languageMeta.fontFamily}`}>{feature.description}</p>
@@ -107,7 +107,7 @@ const LocalSeo = () => {
                                 <ul className="space-y-4">
                                     {[1, 2, 3, 4].map((step) => (
                                         <li key={step} className="flex items-start gap-3">
-                                            <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-1" />
+                                            <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                                             <div>
                                                 <h4 className="font-semibold text-lg">{t(`localSeo.process.step${step}.title`)}</h4>
                                                 <p className="text-gray-500">{t(`localSeo.process.step${step}.desc`)}</p>
@@ -117,7 +117,7 @@ const LocalSeo = () => {
                                 </ul>
                             </div>
                             <div className="relative">
-                                <div className="absolute inset-0 bg-linear-to-tr from-primary/20 to-secondary/20 blur-3xl rounded-full"></div>
+                                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 blur-3xl rounded-full"></div>
                                 <img
                                     src="/images/services/local-seo.png"
                                     alt="Local SEO Process"

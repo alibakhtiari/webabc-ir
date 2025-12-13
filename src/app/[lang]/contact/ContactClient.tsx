@@ -41,7 +41,7 @@ const Contact = () => {
         <div className="space-y-12">
           <div className="text-center">
             <Breadcrumb />
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-normal">{t('contact.getInTouch')}</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-[1.5]">{t('contact.getInTouch')}</h1>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">

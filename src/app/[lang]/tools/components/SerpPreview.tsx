@@ -19,7 +19,7 @@ const SerpPreview: React.FC = () => {
   return (
     <>
 
-      <div className="min-h-screen bg-linear-to-b from-background to-muted/20 pt-32 pb-16">
+      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 pt-32 pb-16">
         <div className="container mx-auto px-4 max-w-4xl">
           <h1 className="text-4xl font-bold mb-4 text-center">SERP Snippet Preview</h1>
           <p className="text-muted-foreground text-center mb-8">

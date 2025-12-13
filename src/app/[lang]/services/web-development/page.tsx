@@ -60,7 +60,7 @@ const WebDevelopment = () => {
 
                         <div className="grid md:grid-cols-2 gap-8">
                             {/* Frontend Development */}
-                            <div className="bg-white p-8 rounded-xl shadow-xs border border-gray-100 hover:shadow-md transition-shadow">
+                            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                                 <div className="mb-4">
                                     <Layout className="w-12 h-12 text-primary" />
                                 </div>
@@ -83,7 +83,7 @@ const WebDevelopment = () => {
                             </div>
 
                             {/* Backend Development */}
-                            <div className="bg-white p-8 rounded-xl shadow-xs border border-gray-100 hover:shadow-md transition-shadow">
+                            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                                 <div className="mb-4">
                                     <Server className="w-12 h-12 text-primary" />
                                 </div>
@@ -122,7 +122,7 @@ const WebDevelopment = () => {
                                 { icon: <Cloud className="w-8 h-8" />, key: 'devops', items: ['Docker', 'AWS', 'CI/CD', 'Vercel'] }
                             ].map((tech, index) => (
                                 <div key={index} className="bg-gray-50 p-6 rounded-xl text-center">
-                                    <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary mx-auto mb-4 shadow-xs">
+                                    <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary mx-auto mb-4 shadow-sm">
                                         {tech.icon}
                                     </div>
                                     <h3 className="font-semibold mb-3">{t(`webDevelopmentServices.technologies.${tech.key}`)}</h3>
@@ -152,7 +152,7 @@ const WebDevelopment = () => {
                                 { icon: <Home />, key: 'realEstate' },
                                 { icon: <Plane />, key: 'travel' }
                             ].map((industry, index) => (
-                                <div key={index} className="bg-white p-4 rounded-lg text-center shadow-xs hover:shadow-md transition-all">
+                                <div key={index} className="bg-white p-4 rounded-lg text-center shadow-sm hover:shadow-md transition-all">
                                     <div className="text-primary mb-2 flex justify-center">{industry.icon}</div>
                                     <span className="font-medium text-sm">{t(`webDevelopmentServices.industries.${industry.key}`)}</span>
                                 </div>
@@ -177,7 +177,7 @@ const WebDevelopment = () => {
                                 { icon: <Rocket className="w-8 h-8" />, step: 4 }
                             ].map((item, index) => (
                                 <div key={index} className="relative">
-                                    <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-xs h-full hover:shadow-md transition-all">
+                                    <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm h-full hover:shadow-md transition-all">
                                         <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4">
                                             {item.icon}
                                         </div>
