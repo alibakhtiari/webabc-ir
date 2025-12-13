@@ -29,7 +29,7 @@ const SeoService = () => {
             <ServicePageTemplate
                 title={t('seoService.title')}
                 subtitle={t('seoService.subtitle')}
-                heroImage="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d"
+                heroImage="/images/service-seo.png"
                 heroButtons={HeroButtons}
             >
                 {/* SEO Services */}
