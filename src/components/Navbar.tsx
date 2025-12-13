@@ -17,6 +17,13 @@ const ConsultationForm = dynamic(() => import('./ConsultationForm'), {
   loading: () => null,
 });
 
+const navItems = [
+  { key: 'portfolio', label: 'common.portfolio', href: '/portfolio' },
+  { key: 'blog', label: 'common.blog', href: '/blog' },
+  { key: 'about', label: 'common.about', href: '/about' },
+  { key: 'contact', label: 'common.contact', href: '/contact' },
+];
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -69,10 +76,11 @@ const Navbar = () => {
             <NavLink to="">{t('common.home')}</NavLink>
             <ServicesDropdown />
             <NavLinks />
-            <NavLink to="/portfolio">{t('common.portfolio')}</NavLink>
-            <NavLink to="/blog">{t('common.blog')}</NavLink>
-            <NavLink to="/about">{t('common.about')}</NavLink>
-            <NavLink to="/contact">{t('common.contact')}</NavLink>
+
+            {navItems.map((item) => (
+              <NavLink key={item.key} to={item.href}>{t(item.label)}</NavLink>
+            ))}
+
             <LanguageSwitcher />
             <Button
               size="sm"
