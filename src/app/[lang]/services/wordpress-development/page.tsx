@@ -22,7 +22,7 @@ const WordpressWoocommerceDevelopment = () => {
                 <section className="py-16">
                     <div className="container mx-auto px-4">
                         <div className="grid md:grid-cols-2 gap-8">
-                            <div className="bg-white p-8 rounded-xl shadow-xs border border-gray-100">
+                            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
                                 <div className="mb-4">
                                     <Layout className="w-12 h-12 text-primary" />
                                 </div>
@@ -30,7 +30,7 @@ const WordpressWoocommerceDevelopment = () => {
                                 <p className="text-gray-600">{t('wordpress.customThemeDesc')}</p>
                             </div>
 
-                            <div className="bg-white p-8 rounded-xl shadow-xs border border-gray-100">
+                            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
                                 <div className="mb-4">
                                     <ShoppingCart className="w-12 h-12 text-primary" />
                                 </div>
@@ -38,7 +38,7 @@ const WordpressWoocommerceDevelopment = () => {
                                 <p className="text-gray-600">{t('wordpress.woocommerceDesc')}</p>
                             </div>
 
-                            <div className="bg-white p-8 rounded-xl shadow-xs border border-gray-100">
+                            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
                                 <div className="mb-4">
                                     <Settings className="w-12 h-12 text-primary" />
                                 </div>
@@ -46,7 +46,7 @@ const WordpressWoocommerceDevelopment = () => {
                                 <p className="text-gray-600">{t('wordpress.pluginDevDesc')}</p>
                             </div>
 
-                            <div className="bg-white p-8 rounded-xl shadow-xs border border-gray-100">
+                            <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
                                 <div className="mb-4">
                                     <Smartphone className="w-12 h-12 text-primary" />
                                 </div>

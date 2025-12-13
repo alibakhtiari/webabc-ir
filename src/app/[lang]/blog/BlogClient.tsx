@@ -56,7 +56,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ initialPosts }) => {
 
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="pt-32 pb-20 bg-linear-to-br from-primary/10 via-primary/5 to-background relative overflow-hidden">
+        <section className="pt-32 pb-20 bg-gradient-to-br from-primary/10 via-primary/5 to-background relative overflow-hidden">
           <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
           <div className="container mx-auto px-4 relative">
             <div className="max-w-3xl mx-auto text-center">
@@ -72,12 +72,12 @@ const BlogPage: React.FC<BlogPageProps> = ({ initialPosts }) => {
         </section>
 
         {/* Filter Section */}
-        <section className="py-8 bg-muted/30 backdrop-blur-xs sticky top-16 z-10 border-b shadow-xs">
+        <section className="py-8 bg-muted/30 backdrop-blur-sm sticky top-16 z-10 border-b shadow-sm">
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap gap-3 items-center justify-center">
               <span className="text-sm font-semibold text-foreground/80">{t('blog.filterBy')}:</span>
               <Button
-                variant={selectedCategory === '' ? 'default' : 'outline-solid'}
+                variant={selectedCategory === '' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setSelectedCategory('')}
                 className="transition-all duration-200 hover:scale-105"
@@ -87,7 +87,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ initialPosts }) => {
               {categories.map((category) => (
                 <Button
                   key={category}
-                  variant={selectedCategory === category ? 'default' : 'outline-solid'}
+                  variant={selectedCategory === category ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setSelectedCategory(category)}
                   className="transition-all duration-200 hover:scale-105"
@@ -121,7 +121,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ initialPosts }) => {
                   >
                     <Card className="h-full hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2 overflow-hidden border-border/50 hover:border-primary/30">
                       <div className="aspect-video overflow-hidden relative">
-                        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <img
                           src={post.image}
                           alt={post.title}

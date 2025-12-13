@@ -140,7 +140,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
 
             {/* Table of Contents */}
             {tableOfContents.length > 0 && (
-              <Card className="mb-8 border-primary/20 bg-linear-to-br from-primary/5 to-background shadow-lg">
+              <Card className="mb-8 border-primary/20 bg-gradient-to-br from-primary/5 to-background shadow-lg">
                 <Collapsible open={isTocOpen} onOpenChange={setIsTocOpen}>
                   <CollapsibleTrigger asChild>
                     <Button variant="ghost" className="w-full flex items-center justify-between p-6 hover:bg-primary/5">
@@ -184,7 +184,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
                   <ul className="space-y-2">
                     {post.keyTakeaways.map((takeaway, index) => (
                       <li key={index} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-primary mt-1 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
                         <span>{takeaway}</span>
                       </li>
                     ))}

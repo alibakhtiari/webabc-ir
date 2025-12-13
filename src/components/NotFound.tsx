@@ -24,14 +24,14 @@ const NotFound = () => {
   return (
     <>
 
-      <div className="min-h-screen flex flex-col items-center justify-center bg-linear-to-b from-background to-gray-100 p-4">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-background to-gray-100 p-4">
         <div className="text-center max-w-md animate-fadeInUp">
           <div className="mb-6 flex justify-center">
             <div className="relative">
               <div className="animate-scaleIn">
                 <AlertCircle size={80} className="text-primary" />
               </div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold text-white text-2xl animate-fade-in delay-300">
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold text-white text-2xl animate-fadeIn delay-300">
                 {t('notFound.errorNumber')}
               </div>
             </div>
