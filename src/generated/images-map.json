@@ -245,6 +245,40 @@
     "width": 1024,
     "height": 1024
   },
+  "/images/portfolio-samak-bartar.png": {
+    "avif": [
+      {
+        "src": "/images/portfolio-samak-bartar-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio-samak-bartar-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/portfolio-samak-bartar-opt-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/portfolio-samak-bartar-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio-samak-bartar-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/portfolio-samak-bartar-opt-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/portfolio-samak-bartar.png",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAUGBAf/xAAdEAACAQUBAQAAAAAAAAAAAAAAAwECBBEhMRIi/8QAGAEAAgMAAAAAAAAAAAAAAAAAAgQAAQP/xAAXEQEBAQEAAAAAAAAAAAAAAAAAAhIB/9oADAMBAAIRAxEAPwD0BFxzZQQ7ONmZQ7hStn82LzY8r9LNA4KG/MbAekyyCapyUraqQBSW/VFdU+YAAan/2Q==",
+    "width": 1024,
+    "height": 1024
+  },
   "/images/portfolio-project-4.png": {
     "avif": [
       {

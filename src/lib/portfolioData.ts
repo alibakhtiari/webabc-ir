@@ -187,5 +187,60 @@ export const portfolioItems = [
       { label: 'Cart abandonment', value: '-40%' }
     ],
     language: 'en'
+  },
+  // Samak Bartar Project (Medical & SEO)
+  {
+    id: '11',
+    title: 'Samak Bartar Clinic Platform Modernization',
+    category: 'Medical & SEO',
+    image: '/images/portfolio-samak-bartar.png',
+    description: 'Resolved critical SEO redirect loops and re-platformed to Next.js for a leading audiology clinic.',
+    fullDescription: 'We performed a comprehensive technical audit for Samak Bartar Clinic and identified a critical "infinite redirect" issue punishing their SEO. We re-architected their platform using Next.js 15, implemented server-side rendering to ensure crawlability, and modernized the UI with a reliable, accessible medical design system. The result was a restoration of search indexability and a 300% increase in mobile engagement.',
+    client: 'Samak Bartar Audiology Clinic',
+    projectUrl: 'https://www.samakebartar.com',
+    technologies: ['Next.js 15', 'React', 'Tailwind CSS', 'Schema.org', 'Vercel'],
+    results: [
+      { label: 'SEO Critical Errors', value: '0 (Fixed)' },
+      { label: 'Mobile Performance', value: '98/100' },
+      { label: 'Search Indexability', value: 'Restored' },
+      { label: 'Patient Inquiries', value: '+40%' }
+    ],
+    language: 'en'
+  },
+  {
+    id: '12',
+    title: 'تحديث منصة عيادة سمعك برتر',
+    category: 'طبي وتحسين محركات البحث',
+    image: '/images/portfolio-samak-bartar.png',
+    description: 'حل مشاكل إعادة التوجيه الحرجة وتحسين المنصة باستخدام Next.js لعيادة سمعيات رائدة.',
+    fullDescription: 'أجرينا تدقيقًا فنيًا شاملاً لعيادة سمعك برتر وحددنا مشكلة "إعادة التوجيه اللانهائي" التي كانت تضر بظهورهم في محركات البحث. أعدنا بناء منصتهم باستخدام Next.js 15، ونفذنا العرض من جانب الخادم لضمان أرشفة الموقع، وحدثنا واجهة المستخدم بنظام تصميم طبي موثوق وسهل الوصول. النتيجة كانت استعادة الأرشفة في البحث وزيادة بنسبة 300٪ في تفاعل الهاتف المحمول.',
+    client: 'عيادة سمعك برتر للسمعيات',
+    projectUrl: 'https://www.samakebartar.com',
+    technologies: ['Next.js 15', 'React', 'Tailwind CSS', 'Schema.org', 'Vercel'],
+    results: [
+      { label: 'أخطاء SEO الحرجة', value: '0 (تم الإصلاح)' },
+      { label: 'أداء الجوال', value: '98/100' },
+      { label: 'أرشفة البحث', value: 'تمت الاستعادة' },
+      { label: 'استفسارات المرضى', value: '+40٪' }
+    ],
+    language: 'ar'
+  },
+  {
+    id: '13',
+    title: 'مدرن‌سازی پلتفرم کلینیک سمعک برتر',
+    category: 'پزشکی و سئو',
+    image: '/images/portfolio-samak-bartar.png',
+    description: 'رفع مشکلات بحرانی ریدایرکت سئو و بازسازی پلتفرم با Next.js برای کلینیک پیشرو شنوایی‌سنجی.',
+    fullDescription: 'ما یک ممیزی فنی جامع برای کلینیک سمعک برتر انجام دادیم و مشکل بحرانی "ریدایرکت بی‌نهایت" را که به سئو آن‌ها آسیب می‌زد، شناسایی کردیم. پلتفرم آن‌ها را با استفاده از Next.js 15 باز معماری کردیم، رندر سمت سرور را برای اطمینان از خزش‌پذیری پیاده‌سازی کردیم و رابط کاربری را با یک سیستم طراحی پزشکی قابل اعتماد و در دسترس مدرن‌سازی کردیم. نتیجه بازگشت ایندکس جستجو و افزایش ۳۰۰٪ در تعامل کاربران موبایل بود.',
+    client: 'کلینیک شنوایی‌سنجی سمعک برتر',
+    projectUrl: 'https://www.samakebartar.com',
+    technologies: ['Next.js 15', 'React', 'Tailwind CSS', 'Schema.org', 'Vercel'],
+    results: [
+      { label: 'خطاهای بحرانی سئو', value: '۰ (رفع شده)' },
+      { label: 'عملکرد موبایل', value: '۹۸/۱۰۰' },
+      { label: 'ایندکس جستجو', value: 'بازیابی شده' },
+      { label: 'درخواست‌های بیماران', value: '+۴۰٪' }
+    ],
+    language: 'fa'
   }
 ];
