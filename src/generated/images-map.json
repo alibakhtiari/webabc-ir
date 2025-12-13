@@ -245,6 +245,142 @@
     "width": 1024,
     "height": 1024
   },
+  "/images/portfolio-project-4.png": {
+    "avif": [
+      {
+        "src": "/images/portfolio-project-4-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio-project-4-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/portfolio-project-4-opt-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/portfolio-project-4-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio-project-4-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/portfolio-project-4-opt-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/portfolio-project-4.png",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAUEAwb/xAAfEAABBAICAwAAAAAAAAAAAAAAAQIEEgMhEzEUIjP/xAAVAQEBAAAAAAAAAAAAAAAAAAADAP/EABcRAQADAAAAAAAAAAAAAAAAAAACERL/2gAMAwEAAhEDEQA/APXeTZvZNnvs1ThjkevZnl50quwNWbNJUj6qDNIzJyrsElVrlr2ZJj3VXYAMTSQJGR3KuwAKJ//Z",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/portfolio-project-3.png": {
+    "avif": [
+      {
+        "src": "/images/portfolio-project-3-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio-project-3-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/portfolio-project-3-opt-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/portfolio-project-3-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio-project-3-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/portfolio-project-3-opt-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/portfolio-project-3.png",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAQDAQf/xAAZEAEAAwEBAAAAAAAAAAAAAAAAAQIDESH/xAAXAQADAQAAAAAAAAAAAAAAAAABAgME/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAEC/9oADAMBAAIRAxEAPwD1il+tq2SZK846zyqWNYt4OxXwMCHGFmURwEsqVRERwA5X/9k=",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/portfolio-project-2.png": {
+    "avif": [
+      {
+        "src": "/images/portfolio-project-2-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio-project-2-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/portfolio-project-2-opt-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/portfolio-project-2-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio-project-2-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/portfolio-project-2-opt-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/portfolio-project-2.png",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAIDBAb/xAAaEAEBAAMBAQAAAAAAAAAAAAABAAIDESFR/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgX/xAAWEQEBAQAAAAAAAAAAAAAAAAAAARH/2gAMAwEAAhEDEQA/AON24Fmy1nbZufbOvtUqTFZrPkrhOSJabsntQr2SdGJC8kkCf//Z",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/portfolio-project-1.png": {
+    "avif": [
+      {
+        "src": "/images/portfolio-project-1-opt-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio-project-1-opt-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/portfolio-project-1-opt-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/portfolio-project-1-opt-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/portfolio-project-1-opt-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/portfolio-project-1-opt-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/portfolio-project-1.png",
+    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAQADAQAAAAAAAAAAAAAAAAQCAwUH/8QAHBAAAgIDAQEAAAAAAAAAAAAAAAEDEQIEQWES/8QAFgEBAQEAAAAAAAAAAAAAAAAAAgQD/8QAGBEBAQEBAQAAAAAAAAAAAAAAAAECExH/2gAMAwEAAhEDEQA/APTptm+kcmx6c97N9MHLfSaa8bXK1z+gg+2B9B5oIs8n0pwdoAlqmNiAASf/2Q==",
+    "width": 1024,
+    "height": 1024
+  },
   "/images/portfolio-news.webp": {
     "avif": [
       {
