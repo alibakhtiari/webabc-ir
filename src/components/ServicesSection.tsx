@@ -173,6 +173,7 @@ const ServicesSection = () => {
               <div className="md:col-span-2">
                 <div className="aspect-square w-full rounded-xl overflow-hidden shadow-xl relative">
                   <OptimizedImage
+                    key={activeTab}
                     src={serviceImages[activeTab] || '/images/hero-image.webp'}
                     alt={services[activeTab].title}
                     fill
