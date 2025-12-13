@@ -16,7 +16,7 @@ interface SeoServiceCardProps {
 export const SeoServiceCard: React.FC<SeoServiceCardProps> = ({ icon, title, description, features, color, iconColor }) => {
     return (
         <div className={`p-8 rounded-2xl ${color} hover:shadow-lg transition-all duration-300 border border-transparent hover:border-gray-100 group`}>
-            <div className={`w-14 h-14 rounded-xl bg-white flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform ${iconColor}`}>
+            <div className={`w-14 h-14 rounded-xl bg-white flex items-center justify-center mb-6 shadow-xs group-hover:scale-110 transition-transform ${iconColor}`}>
                 {icon}
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-4">{title}</h3>
@@ -58,7 +58,7 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ title, category, i
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
-            <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-primary uppercase tracking-wider">
+            <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-xs px-3 py-1 rounded-full text-xs font-semibold text-primary uppercase tracking-wider">
                 {category}
             </div>
         </div>

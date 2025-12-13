@@ -44,7 +44,7 @@ export const ServicesDropdown = () => {
         <ChevronDown className="h-4 w-4 ml-1 group-hover:rotate-180 transition-transform duration-200" />
       </Link>
 
-      {/* Mega Menu - removed backdrop-blur */}
+      {/* Mega Menu - removed backdrop-blur-sm */}
       <div className={`absolute top-full ${isRtl ? 'right-0' : 'left-0'} mt-2 w-[680px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50`}>
         <div className="bg-white p-6 animate-zoom-in shadow-xl rounded-lg">
           <div className="grid grid-cols-2 gap-6">

@@ -51,7 +51,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
         {Object.entries(languages).map(([code, lang]) => (
           <Button
             key={code}
-            variant={language === code ? "default" : "outline"}
+            variant={language === code ? "default" : "outline-solid"}
             size="sm"
             onClick={() => handleLanguageChange(code as SupportedLanguage)}
             className={cn(

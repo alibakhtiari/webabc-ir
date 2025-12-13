@@ -36,7 +36,7 @@ const Footer = () => {
                   <a
                     key={social.name}
                     href={social.url}
-                    className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm transition-all hover:bg-primary hover:text-white text-gray-600"
+                    className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-xs transition-all hover:bg-primary hover:text-white text-gray-600"
                   >
                     <span className="sr-only">{social.name}</span>
                     <social.Icon className="w-5 h-5" />

@@ -28,7 +28,7 @@ export default function FAQ() {
             <FAQPageSchema />
 
 
-            <div className="flex-grow pt-32 pb-16">
+            <div className="grow pt-32 pb-16">
                 <div className="container mx-auto px-4">
                     <div className="max-w-3xl mx-auto">
                         <Breadcrumb />
@@ -38,7 +38,7 @@ export default function FAQ() {
                             <p className="text-xl text-gray-600">{t('faq.subtitle')}</p>
                         </div>
 
-                        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
+                        <div className="bg-white rounded-2xl shadow-xs border border-gray-100 p-6 md:p-8">
                             <Accordion type="single" collapsible className="w-full space-y-4">
                                 {faqItems.map((item, index) => (
                                     <AccordionItem key={index} value={`item-${index}`} className="border border-gray-100 rounded-lg px-4">
