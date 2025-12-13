@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 const locales = ["en", "fa", "ar"]
-const defaultLocale = "fa"
+const defaultLocale = "en"
 
 // Define the country-to-language mappings
 const persianCountries = new Set(['IR', 'AF', 'TJ'])
