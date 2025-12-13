@@ -1,165 +1,52 @@
 import 'server-only';
 import { SupportedLanguage } from '@/types/language';
-import { TranslationsType } from './index';
 
-// We need to match the structure of the existing TranslationsType
-// or at least return a promise that resolves to it.
+// Define namespaces and their corresponding filenames
+const namespaces = {
+    common: 'common',
+    seo: 'seo',
+    services: 'services',
+    wordpress: 'wordpress',
+    about: 'about',
+    portfolio: 'portfolio',
+    contact: 'contact',
+    home: 'home',
+    benefits: 'benefits',
+    cta: 'cta',
+    resources: 'resources',
+    blog: 'blog',
+    caseStudies: 'caseStudies',
+    notFound: 'notFound',
+    consultation: 'consultation',
+    localSeo: 'local-seo',
+    webDevelopmentServices: 'web-development-services',
+    webDesign: 'web-design',
+    'service-areas': 'service-areas',
+    tools: 'tools',
+    faq: 'faq',
+    seoService: 'seo-service',
+} as const;
 
-// Map locales to their dynamic imports
-const dictionaries = {
-    en: () => Promise.all([
-        import('./en/common.json'),
-        import('./en/seo.json'),
-        import('./en/services.json'),
-        import('./en/wordpress.json'),
-        import('./en/about.json'),
-        import('./en/portfolio.json'),
-        import('./en/contact.json'),
-        import('./en/home.json'),
-        import('./en/benefits.json'),
-        import('./en/cta.json'),
-        import('./en/resources.json'),
-        import('./en/blog.json'),
-        import('./en/caseStudies.json'),
-        import('./en/notFound.json'),
-        import('./en/consultation.json'),
-        import('./en/local-seo.json'),
-        import('./en/web-development-services.json'),
-        import('./en/web-design.json'),
-        import('./en/service-areas.json'),
-        import('./en/tools.json'),
-        import('./en/faq.json'),
-        import('./en/seo-service.json'),
-    ]).then(([
-        common, seo, services, wordpress, about, portfolio, contact, home, benefits, cta, resources, blog, caseStudies, notFound, consultation, localSeo, webDevelopmentServices, webDesign, serviceAreas, tools, faq, seoService
-    ]) => ({
-        common: common.default,
-        seo: seo.default,
-        services: services.default,
-        wordpress: wordpress.default,
-        about: about.default,
-        portfolio: portfolio.default,
-        contact: contact.default,
-        home: home.default,
-        benefits: benefits.default,
-        cta: cta.default,
-        resources: resources.default,
-        blog: blog.default,
-        caseStudies: caseStudies.default,
-        notFound: notFound.default,
-        consultation: consultation.default,
-        localSeo: localSeo.default,
-        webDevelopmentServices: webDevelopmentServices.default,
-        webDesign: webDesign.default,
-        'service-areas': serviceAreas.default,
-        tools: tools.default,
-        faq: faq.default,
-        seoService: seoService.default,
-    })),
+type NamespaceKey = keyof typeof namespaces;
 
-    fa: () => Promise.all([
-        import('./fa/common.json'),
-        import('./fa/seo.json'),
-        import('./fa/services.json'),
-        import('./fa/wordpress.json'),
-        import('./fa/about.json'),
-        import('./fa/portfolio.json'),
-        import('./fa/contact.json'),
-        import('./fa/home.json'),
-        import('./fa/benefits.json'),
-        import('./fa/cta.json'),
-        import('./fa/resources.json'),
-        import('./fa/blog.json'),
-        import('./fa/caseStudies.json'),
-        import('./fa/notFound.json'),
-        import('./fa/consultation.json'),
-        import('./fa/local-seo.json'),
-        import('./fa/web-development-services.json'),
-        import('./fa/web-design.json'),
-        import('./fa/service-areas.json'),
-        import('./fa/tools.json'),
-        import('./fa/faq.json'),
-        import('./fa/seo-service.json'),
-    ]).then(([
-        common, seo, services, wordpress, about, portfolio, contact, home, benefits, cta, resources, blog, caseStudies, notFound, consultation, localSeo, webDevelopmentServices, webDesign, serviceAreas, tools, faq, seoService
-    ]) => ({
-        common: common.default,
-        seo: seo.default,
-        services: services.default,
-        wordpress: wordpress.default,
-        about: about.default,
-        portfolio: portfolio.default,
-        contact: contact.default,
-        home: home.default,
-        benefits: benefits.default,
-        cta: cta.default,
-        resources: resources.default,
-        blog: blog.default,
-        caseStudies: caseStudies.default,
-        notFound: notFound.default,
-        consultation: consultation.default,
-        localSeo: localSeo.default,
-        webDevelopmentServices: webDevelopmentServices.default,
-        webDesign: webDesign.default,
-        'service-areas': serviceAreas.default,
-        tools: tools.default,
-        faq: faq.default,
-        seoService: seoService.default,
-    })),
+// Helper to load all namespaces for a specific locale
+const loadLocaleDictionary = async (locale: string) => {
+    const entries = await Promise.all(
+        Object.entries(namespaces).map(async ([key, filename]) => {
+            const module = await import(`./${locale}/${filename}.json`);
+            return [key, module.default];
+        })
+    );
+    return Object.fromEntries(entries);
+};
 
-    ar: () => Promise.all([
-        import('./ar/common.json'),
-        import('./ar/seo.json'),
-        import('./ar/services.json'),
-        import('./ar/wordpress.json'),
-        import('./ar/about.json'),
-        import('./ar/portfolio.json'),
-        import('./ar/contact.json'),
-        import('./ar/home.json'),
-        import('./ar/benefits.json'),
-        import('./ar/cta.json'),
-        import('./ar/resources.json'),
-        import('./ar/blog.json'),
-        import('./ar/caseStudies.json'),
-        import('./ar/notFound.json'),
-        import('./ar/consultation.json'),
-        import('./ar/local-seo.json'),
-        import('./ar/web-development-services.json'),
-        import('./ar/web-design.json'),
-        import('./ar/service-areas.json'),
-        import('./ar/tools.json'),
-        import('./ar/faq.json'),
-        import('./ar/seo-service.json'),
-    ]).then(([
-        common, seo, services, wordpress, about, portfolio, contact, home, benefits, cta, resources, blog, caseStudies, notFound, consultation, localSeo, webDevelopmentServices, webDesign, serviceAreas, tools, faq, seoService
-    ]) => ({
-        common: common.default,
-        seo: seo.default,
-        services: services.default,
-        wordpress: wordpress.default,
-        about: about.default,
-        portfolio: portfolio.default,
-        contact: contact.default,
-        home: home.default,
-        benefits: benefits.default,
-        cta: cta.default,
-        resources: resources.default,
-        blog: blog.default,
-        caseStudies: caseStudies.default,
-        notFound: notFound.default,
-        consultation: consultation.default,
-        localSeo: localSeo.default,
-        webDevelopmentServices: webDevelopmentServices.default,
-        webDesign: webDesign.default,
-        'service-areas': serviceAreas.default,
-        tools: tools.default,
-        faq: faq.default,
-        seoService: seoService.default,
-    })),
+const dictionaries: Record<SupportedLanguage, () => Promise<any>> = {
+    en: () => loadLocaleDictionary('en'),
+    fa: () => loadLocaleDictionary('fa'),
+    ar: () => loadLocaleDictionary('ar'),
 };
 
 export const getDictionary = async (locale: SupportedLanguage) => {
-    // Use 'fa' as fallback if locale is not found
     const dictionaryLoader = dictionaries[locale] || dictionaries.fa;
     return dictionaryLoader();
 };
