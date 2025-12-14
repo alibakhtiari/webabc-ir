@@ -1,7 +1,14 @@
-import { redirect } from 'next/navigation';
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function RootPage() {
-    // This page should normally be intercepted by middleware.
-    // If it renders, it means middleware didn't redirect, so we force a redirect to default locale.
-    redirect('/fa');
+    const router = useRouter();
+
+    useEffect(() => {
+        router.replace('/fa');
+    }, [router]);
+
+    return null;
 }
