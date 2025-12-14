@@ -1,10 +1,8 @@
 "use client";
 
-import React, { lazy, Suspense, useActionState } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import ContactSchema from '@/components/seo/schemas/ContactSchema';
-import { submitContact } from '@/app/actions/submitContact';
-
 import { useLanguage } from '@/contexts/LanguageContext';
 
 // Lazy loading components
@@ -28,7 +26,45 @@ const TextareaSkeleton = () => (
 
 const Contact = () => {
   const { language, t, languageMeta } = useLanguage();
-  const [state, formAction, isPending] = useActionState(submitContact, null);
+
+  const [isPending, setIsPending] = useState(false);
+  const [responseMessage, setResponseMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsPending(true);
+    setResponseMessage(null);
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      // In development, the worker is likely at http://localhost:8787
+      // In production, it will be at your worker URL.
+      // TODO: Configure this URL via environment variables.
+      const apiUrl = process.env.NEXT_PUBLIC_WORKER_URL || 'http://localhost:8787';
+
+      const res = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      const result = await res.json(); // Safely handle if not JSON? ignoring for now as worker returns JSON.
+
+      if (res.ok) {
+        setResponseMessage({ type: 'success', text: result.message || t('contact.messageSent') || 'Message sent successfully!' });
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setResponseMessage({ type: 'error', text: result.error || 'Failed to send message.' });
+      }
+    } catch (error) {
+      setResponseMessage({ type: 'error', text: 'An error occurred. Please try again.' });
+    } finally {
+      setIsPending(false);
+    }
+  };
+
 
   const textDirection = languageMeta.direction === 'rtl' ? 'text-right' : 'text-left';
   const inputDirection = languageMeta.direction === 'rtl' ? 'text-right' : '';
@@ -47,7 +83,7 @@ const Contact = () => {
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">
             {/* Contact Form */}
             <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
-              <form action={formAction} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label className={`block text-sm font-medium text-gray-700 mb-2 ${textDirection}`}>{t('consultation.fullName')}</label>
                   <Suspense fallback={<InputSkeleton />}>
@@ -58,7 +94,6 @@ const Contact = () => {
                       required
                     />
                   </Suspense>
-                  {state?.errors?.name && <p className="text-red-500 text-sm mt-1">{state.errors.name}</p>}
                 </div>
 
                 <div>
@@ -72,7 +107,6 @@ const Contact = () => {
                       required
                     />
                   </Suspense>
-                  {state?.errors?.email && <p className="text-red-500 text-sm mt-1">{state.errors.email}</p>}
                 </div>
 
                 <div>
@@ -86,7 +120,6 @@ const Contact = () => {
                       required
                     />
                   </Suspense>
-                  {state?.errors?.message && <p className="text-red-500 text-sm mt-1">{state.errors.message}</p>}
                 </div>
 
                 <Suspense fallback={<ButtonSkeleton />}>
@@ -99,9 +132,9 @@ const Contact = () => {
                   </Button>
                 </Suspense>
 
-                {state?.message && (
-                  <p className={`text-center text-sm ${state.message.includes('success') ? 'text-green-600' : 'text-red-600'}`}>
-                    {state.message}
+                {responseMessage && (
+                  <p className={`text-center text-sm ${responseMessage.type === 'success' ? 'text-green-600' : 'text-red-600'}`}>
+                    {responseMessage.text}
                   </p>
                 )}
               </form>

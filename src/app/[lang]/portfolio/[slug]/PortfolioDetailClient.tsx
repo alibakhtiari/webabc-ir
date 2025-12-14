@@ -124,7 +124,7 @@ const PortfolioDetail = ({ project }: PortfolioDetailProps) => {
                                                 <div className="font-medium text-muted-foreground text-sm">{t('portfolio.technologies')}</div>
                                                 <div className="flex flex-wrap gap-2 mt-1">
                                                     {project.technologies.map((tech, idx) => {
-                                                        const key = tech.toLowerCase().replace(/\s+(.)/g, (match, group1) => group1.toUpperCase());
+                                                        const key = tech.toLowerCase().replace(/[^a-zA-Z0-9]/g, ' ').trim().replace(/\s+(.)/g, (match, group1) => group1.toUpperCase());
                                                         return (
                                                             <Badge key={idx} variant="outline" className="text-xs">
                                                                 {t(`portfolio.tech.${key}`, { fallback: tech })}

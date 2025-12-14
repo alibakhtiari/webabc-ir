@@ -1,27 +1,24 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
+import contentData from '@/generated/content.json';
 
-const BASE_DIR = path.join(process.cwd(), 'public');
+// Type definition for the content structure
+type ContentMap = {
+    [key: string]: {
+        [lang: string]: any[]
+    }
+};
+
+const typedContentData = contentData as ContentMap;
 
 export async function getItem<T>(subdirectory: string, slug: string, language: string): Promise<T | null> {
     try {
-        const filePath = path.join(BASE_DIR, subdirectory, language, `${slug}.md`);
+        const categoryData = typedContentData[subdirectory];
+        if (!categoryData) return null;
 
-        if (!fs.existsSync(filePath)) {
-            return null;
-        }
+        const langItems = categoryData[language];
+        if (!langItems) return null;
 
-        const fileContent = fs.readFileSync(filePath, 'utf8');
-        const { data, content } = matter(fileContent);
-
-        // Merge frontmatter with slug, language, and content
-        return {
-            ...data,
-            slug,
-            language,
-            content,
-        } as T;
+        const item = langItems.find((i: any) => i.slug === slug);
+        return item as T || null;
     } catch (error) {
         console.error(`Error loading item: ${subdirectory}/${language}/${slug}`, error);
         return null;
@@ -30,28 +27,22 @@ export async function getItem<T>(subdirectory: string, slug: string, language: s
 
 export async function getAllItems<T>(subdirectory: string, language: string): Promise<T[]> {
     try {
-        const langDir = path.join(BASE_DIR, subdirectory, language);
-
-        if (!fs.existsSync(langDir)) {
+        const categoryData = typedContentData[subdirectory];
+        if (!categoryData) {
+            console.warn(`[mdData] No data found for category: ${subdirectory}`);
             return [];
         }
 
-        const files = fs.readdirSync(langDir);
-        const items: T[] = [];
-
-        for (const file of files) {
-            if (file.endsWith('.md')) {
-                const slug = file.replace('.md', '');
-                const item = await getItem<T>(subdirectory, slug, language);
-                if (item) {
-                    items.push(item);
-                }
-            }
+        const langItems = categoryData[language];
+        if (!langItems) {
+            console.warn(`[mdData] No data found for language: ${language} in ${subdirectory}`);
+            return [];
         }
 
-        return items;
+        return langItems as T[];
     } catch (error) {
         console.error(`Error loading items for: ${subdirectory}/${language}`, error);
         return [];
     }
 }
+
