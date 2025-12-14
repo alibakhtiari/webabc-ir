@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { ArrowRight, Check } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import OptimizedImage from '@/components/OptimizedImage';
 
 const BenefitsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -159,10 +160,13 @@ const BenefitsSection = () => {
               </div>
             </div>
 
-            <div className="aspect-auto bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
-              <span className="font-persian text-muted-foreground">
-                {t('benefits.imageAlt', { fallback: 'تصویر نتایج سئو' })}
-              </span>
+            <div className="relative aspect-video lg:aspect-auto bg-gray-50 flex items-center justify-center min-h-[400px]">
+              <OptimizedImage
+                src="/images/seo-results.png"
+                alt={t('benefits.imageAlt', { fallback: 'تصویر نتایج سئو' })}
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
         </div>

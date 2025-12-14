@@ -10,6 +10,13 @@
   "client": "Client",
   "duration": "Duration",
   "technologies": "Technologies",
+  "tech": {
+    "wordpress": "WordPress",
+    "php": "PHP",
+    "mysql": "MySQL",
+    "customTheme": "Custom Theme",
+    "advancedSeo": "Advanced SEO"
+  },
   "category": "Category",
   "challenge": "Challenge",
   "solution": "Solution",
@@ -22,67 +29,5 @@
   "projectOverview": "Project Overview",
   "keyResults": "Key Results",
   "needSimilarProject": "Need a Similar Project?",
-  "ctaDescription": "Contact us today to discuss your project requirements and get a free quote.",
-  "caseStudies": {
-    "title": "Case Studies",
-    "subtitle": "Success Stories and Case Studies",
-    "description": "Explore our case studies to see the journey from initial challenges to measurable results. Each case study demonstrates our commitment to delivering value.",
-    "challenge": "Challenge",
-    "solution": "Solution",
-    "results": "Results",
-    "downloadHint": "Want to learn more about our approach and results?",
-    "downloadFull": "Download Full Case Studies",
-    "contactForMore": "Contact Us For More Information",
-    "ecommerceCase": {
-      "title": "200% Increase in Online Sales with SEO Optimization",
-      "category": "Case Study: Online Store",
-      "challenge": "A home appliance online store had quality products but low traffic and sales. The main issue was lack of proper search engine optimization and poor user experience.",
-      "solution": "Our team designed a comprehensive strategy including technical site optimization, content structure improvement, information architecture correction, and creation of dedicated landing pages for popular products.",
-      "results1": "200% increase in online sales over 6 months",
-      "results2": "150% improvement in organic traffic from Google",
-      "results3": "30% increase in conversion rate",
-      "results4": "25% decrease in bounce rate",
-      "testimonial": "Partnering with WebABC was one of our best business decisions. The results of our site optimization far exceeded our expectations.",
-      "imageAlt": "Online store sales growth chart after SEO optimization by WebABC",
-      "resultsImageAlt": "Keyword ranking improvement results for online store after SEO implementation by WebABC"
-    },
-    "wordpressCase": {
-      "title": "Brand Relaunch with Custom WordPress Website",
-      "category": "Case Study: WordPress Development",
-      "challenge": "A beauty brand needed a complete digital transformation of their outdated website that was difficult to update and wasn't generating leads or sales.",
-      "solution": "We developed a custom WordPress website with a premium theme, integrated e-commerce functionality, and implemented a content strategy focused on product education and beauty advice.",
-      "results1": "75% increase in average time on site",
-      "results2": "180% growth in newsletter subscriptions",
-      "results3": "95% increase in online product inquiries",
-      "testimonial": "The WebABC team delivered a website that perfectly represents our brand identity. The site is not only beautiful but also user-friendly and has significantly boosted our digital presence.",
-      "imageAlt": "WordPress website redesign for beauty brand showing responsive layout on multiple devices",
-      "resultsImageAlt": "Analytics dashboard showing improvements in user engagement metrics after website redesign"
-    },
-    "localSeoCase": {
-      "title": "500% More Appointments Through Local SEO Strategy",
-      "category": "Case Study: Local SEO",
-      "challenge": "A dental clinic was struggling to attract local patients despite offering excellent services. Their online presence was minimal, and they were outranked by competitors in local searches.",
-      "solution": "We implemented a comprehensive local SEO strategy including Google Business Profile optimization, local citation building, review management, and location-specific content creation.",
-      "results1": "500% increase in appointment bookings within 4 months",
-      "results2": "Top 3 rankings for all major local keywords",
-      "results3": "300% improvement in website traffic from local searches",
-      "results4": "4.9/5 average rating with over 120 new patient reviews",
-      "testimonial": "The local SEO campaign transformed our business. We're now booked weeks in advance and have had to hire additional staff to handle the growth. I highly recommend WebABC's local SEO services.",
-      "imageAlt": "Google Maps showing top ranking for dental clinic after local SEO optimization",
-      "resultsImageAlt": "Chart showing growth in local search visibility and appointment bookings after SEO implementation"
-    },
-    "webDevCase": {
-      "title": "React-based Financial Platform with 99.9% Uptime",
-      "category": "Case Study: Web Application Development",
-      "challenge": "A fintech startup needed a secure, scalable web application for financial data analysis and reporting, with strict requirements for performance and reliability.",
-      "solution": "We developed a custom React-based web application with a Node.js backend, implementing advanced data visualization, real-time data processing, and bank-level security protocols.",
-      "results1": "99.9% uptime since launch",
-      "results2": "90% faster data processing compared to previous solution",
-      "results3": "Successfully passed external security audit with zero critical findings",
-      "results4": "Scalable architecture supporting 10x user growth without performance degradation",
-      "testimonial": "WebABC delivered a robust platform that has been crucial to our business growth. The attention to detail, especially around security and performance optimization, demonstrated their expertise in financial application development.",
-      "imageAlt": "Dashboard interface of the React financial platform showing data visualization components",
-      "resultsImageAlt": "Performance metrics showing system uptime and response time improvement after deployment"
-    }
-  }
+  "ctaDescription": "Contact us today to discuss your project requirements and get a free quote."
 }

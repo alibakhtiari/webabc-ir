@@ -20,6 +20,14 @@
     "title": "UTM Link Builder",
     "description": "A form that helps marketers create URLs with UTM parameters for tracking their campaigns in Google Analytics."
   },
+  "keywordResearch": {
+    "title": "Keyword Research Tool",
+    "description": "Discover high-value keywords for your SEO strategy."
+  },
+  "faqGenerator": {
+    "title": "FAQ Schema Generator",
+    "description": "Generate FAQ Page Schema markup to improve your search visibility."
+  },
   "contentCreatorsTitle": "✍️ For Content Creators",
   "contentCreatorsDesc": "Content-focused tools can help your visitors create better content and see you as a valuable resource.",
   "headlineAnalyzer": {
