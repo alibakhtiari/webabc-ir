@@ -13,7 +13,8 @@ interface OptimizedImageProps extends Omit<ImageProps, 'src'> {
   alt: string;
 }
 
-const OptimizedImage = ({ src, alt, className, priority, ...props }: OptimizedImageProps) => {
+const OptimizedImage = ({ src, alt, className, priority, fill, ...props }: OptimizedImageProps) => {
+
   const [isLoaded, setIsLoaded] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
@@ -44,10 +45,10 @@ const OptimizedImage = ({ src, alt, className, priority, ...props }: OptimizedIm
       <div
         className={cn(
           "relative overflow-hidden",
-          props.fill ? "absolute inset-0 h-full w-full" : "",
+          fill ? "absolute inset-0 h-full w-full" : "",
           className
         )}
-        style={!props.fill && width && height ? { aspectRatio: `${width} / ${height}` } : undefined}
+        style={!fill && width && height ? { aspectRatio: `${width} / ${height}` } : undefined}
       >
         {/* Placeholder (Blur Layer) */}
         <div
@@ -67,12 +68,12 @@ const OptimizedImage = ({ src, alt, className, priority, ...props }: OptimizedIm
             src={original}
             alt={alt}
             decoding="async"
-            width={!props.fill ? width : undefined}
-            height={!props.fill ? height : undefined}
+            width={!fill ? width : undefined}
+            height={!fill ? height : undefined}
             loading={priority ? "eager" : "lazy"}
             className={cn(
               "object-cover transition-opacity duration-500",
-              props.fill ? "absolute inset-0 h-full w-full" : "w-full h-auto",
+              fill ? "absolute inset-0 h-full w-full" : "w-full h-auto",
               isLoaded ? "opacity-100" : "opacity-0"
             )}
             onLoad={() => setIsLoaded(true)}
@@ -89,6 +90,7 @@ const OptimizedImage = ({ src, alt, className, priority, ...props }: OptimizedIm
       <Image
         src={src}
         alt={alt}
+        fill={fill}
         className={cn("transition-opacity duration-500", isLoaded ? "opacity-100" : "opacity-0")}
         onLoad={(e) => {
           const target = e.target as HTMLImageElement;
