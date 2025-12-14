@@ -11,7 +11,9 @@ const TOOLS = [
     'paa-scraper',
     'readability-checker',
     'serp-preview',
-    'utm-builder'
+    'utm-builder',
+    'faq-generator',
+    'keyword-research'
 ];
 
 export async function generateStaticParams() {

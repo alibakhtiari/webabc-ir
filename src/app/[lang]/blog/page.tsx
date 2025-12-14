@@ -5,6 +5,11 @@ import { getDictionary } from "@/i18n/get-dictionary";
 import { constructMetadata } from "@/lib/metadata";
 
 // import { getAllBlogPosts } from "@/lib/blogData"; // Removed
+import { languages } from "@/types/language";
+
+export async function generateStaticParams() {
+    return Object.keys(languages).map((lang) => ({ lang }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
     const { lang } = await params;
