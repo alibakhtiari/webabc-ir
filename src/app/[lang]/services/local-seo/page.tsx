@@ -120,7 +120,7 @@ const LocalSeo = () => {
                             <div className="relative">
                                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 blur-3xl rounded-full"></div>
                                 <OptimizedImage
-                                    src="/images/services/local-seo.png"
+                                    src="/images/services/local-seo.webp"
                                     alt="Local SEO Process"
                                     className="relative rounded-2xl shadow-2xl w-full h-auto object-cover"
                                 />

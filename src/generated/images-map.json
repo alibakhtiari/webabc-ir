@@ -1,81 +1,5 @@
 {
-  "/images/wordpress-hero.webp": {
-    "avif": [
-      {
-        "src": "/images/wordpress-hero-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/wordpress-hero-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/wordpress-hero-1024.avif",
-        "width": 1024
-      },
-      {
-        "src": "/images/wordpress-hero-1280.avif",
-        "width": 1280
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/wordpress-hero-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/wordpress-hero-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/wordpress-hero-1024.webp",
-        "width": 1024
-      },
-      {
-        "src": "/images/wordpress-hero-1280.webp",
-        "width": 1280
-      }
-    ],
-    "original": "/images/wordpress-hero.webp",
-    "placeholder": "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAACwAgCdASoUAA8APm0skkWkIqGYBABABsS0gABE+gAA/vd5FCZabzV/qkAAAA==",
-    "width": 1280,
-    "height": 960
-  },
-  "/images/team-webabc.webp": {
-    "avif": [
-      {
-        "src": "/images/team-webabc-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/team-webabc-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/team-webabc-1024.avif",
-        "width": 1024
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/team-webabc-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/team-webabc-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/team-webabc-1024.webp",
-        "width": 1024
-      }
-    ],
-    "original": "/images/team-webabc.webp",
-    "placeholder": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAAAQBACdASoUABQAPm0ylEekIqIhKAgAgA2JaQDD6BhZD8Ck2KwEtK4qYAD+7lBJRrbBgPrhs2EiFz0RGx/msACJlhAAAA==",
-    "width": 1024,
-    "height": 1024
-  },
-  "/images/seo-results.png": {
+  "/images/seo-results.webp": {
     "avif": [
       {
         "src": "/images/seo-results-640.avif",
@@ -104,20 +28,12 @@
         "width": 1024
       }
     ],
-    "original": "/images/seo-results.png",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAMEBf/EABkQAQEBAQEBAAAAAAAAAAAAAAABAhEhA//EABUBAQEAAAAAAAAAAAAAAAAAAAYD/8QAGhEAAgMBAQAAAAAAAAAAAAAAAAIBBTESQf/aAAwDAQACEQMRAD8A61wnv5tXiez9WkHVkYY9Y9FNc6LdSLVwvbU92gioRq/CFt6AuLlw/9k=",
+    "original": "/images/seo-results.webp",
+    "placeholder": "data:image/webp;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAMEBf/EABkQAQEBAQEBAAAAAAAAAAAAAAABAhEhA//EABUBAQEAAAAAAAAAAAAAAAAAAAYD/8QAGhEAAgMBAQAAAAAAAAAAAAAAAAIBBTESQf/aAAwDAQACEQMRAD8A61wnv5tXiez9WkHVkYY9Y9FNc6LdSLVwvbU92gioRq/CFt6AuLlw/9k=",
     "width": 1024,
     "height": 1024
   },
-  "/images/logo.webp": {
-    "avif": [],
-    "webp": [],
-    "original": "/images/logo.webp",
-    "placeholder": "data:image/webp;base64,UklGRjQAAABXRUJQVlA4ICgAAACwAgCdASoUAAYAPm0skkWkIqGYBABABsS0gABCBgAA/vq5OJsIAAAA",
-    "width": 260,
-    "height": 72
-  },
-  "/images/homepage-hero.png": {
+  "/images/homepage-hero.webp": {
     "avif": [
       {
         "src": "/images/homepage-hero-640.avif",
@@ -146,12 +62,12 @@
         "width": 1024
       }
     ],
-    "original": "/images/homepage-hero.png",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAQEAAwAAAAAAAAAAAAAAAAMCAQQI/8QAGxABAAICAwAAAAAAAAAAAAAAAAEDAiEREzH/xAAYAQEAAwEAAAAAAAAAAAAAAAABAAIDBP/EABYRAQEBAAAAAAAAAAAAAAAAAAABEf/aAAwDAQACEQMRAD8A9HWWI9jNkpb5dUjLXbxs0I4+Awuc4YiAMVikRoBC/9k=",
+    "original": "/images/homepage-hero.webp",
+    "placeholder": "data:image/webp;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAQEAAwAAAAAAAAAAAAAAAAMCAQQI/8QAGxABAAICAwAAAAAAAAAAAAAAAAEDAiEREzH/xAAYAQEAAwEAAAAAAAAAAAAAAAABAAIDBP/EABYRAQEBAAAAAAAAAAAAAAAAAAABEf/aAAwDAQACEQMRAD8A9HWWI9jNkpb5dUjLXbxs0I4+Awuc4YiAMVikRoBC/9k=",
     "width": 1024,
     "height": 1024
   },
-  "/images/services/wordpress.png": {
+  "/images/services/wordpress.webp": {
     "avif": [
       {
         "src": "/images/services/wordpress-640.avif",
@@ -180,12 +96,12 @@
         "width": 1024
       }
     ],
-    "original": "/images/services/wordpress.png",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAIDBAEH/8QAGxABAQEAAwEBAAAAAAAAAAAAAAECAxFhEyH/xAAXAQEBAQEAAAAAAAAAAAAAAAABAAMF/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oADAMBAAIRAxEAPwD3HfN6h9v1VqVGSujkaNM5fRTM3oGQtGsxyZgIJzE6ACf/2Q==",
+    "original": "/images/services/wordpress.webp",
+    "placeholder": "data:image/webp;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAIDBAEH/8QAGxABAQEAAwEBAAAAAAAAAAAAAAECAxFhEyH/xAAXAQEBAQEAAAAAAAAAAAAAAAABAAMF/8QAFhEBAQEAAAAAAAAAAAAAAAAAABEB/9oADAMBAAIRAxEAPwD3HfN6h9v1VqVGSujGjTOX0UzN6BMLRrMcmYCCcxOgAn//2Q==",
     "width": 1024,
     "height": 1024
   },
-  "/images/services/web-development.png": {
+  "/images/services/web-development.webp": {
     "avif": [
       {
         "src": "/images/services/web-development-640.avif",
@@ -214,12 +130,12 @@
         "width": 1024
       }
     ],
-    "original": "/images/services/web-development.png",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQADAAAAAAAAAAAAAAAAAAQBAgf/xAAcEAEAAgIDAQAAAAAAAAAAAAAAAQIDEQQTITH/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQP/xAAWEQEBAQAAAAAAAAAAAAAAAAAAARH/2gAMAwEAAhEDEQA/AO/Z82to75vfrPIshvadqwtV9okiwpq3PCO8AFaxAAr/2Q==",
+    "original": "/images/services/web-development.webp",
+    "placeholder": "data:image/webp;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQADAAAAAAAAAAAAAAAAAAQBAgf/xAAcEAEAAgIDAQAAAAAAAAAAAAAAAQIDMQQREyH/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQP/xAAWEQEBAQAAAAAAAAAAAAAAAAAAARH/2gAMAwEAAhEDEQA/AO/Z8u0d833bPIshvae1YWq/USRYU1bnjaO8AFaxAAr/2Q==",
     "width": 1024,
     "height": 1024
   },
-  "/images/services/web-design.png": {
+  "/images/services/web-design.webp": {
     "avif": [
       {
         "src": "/images/services/web-design-640.avif",
@@ -248,12 +164,12 @@
         "width": 1024
       }
     ],
-    "original": "/images/services/web-design.png",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAIEBQYH/8QAHBABAAEFAQEAAAAAAAAAAAAAAAIBAwQRMSET/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQAC/8QAFREBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhEDEQA/APZPrtKM9sy1e2uWpbLVXaS8EI8AnOY0q+NbG5QBDV6PAEH/2Q==",
+    "original": "/images/services/web-design.webp",
+    "placeholder": "data:image/webp;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAIEBQYH/8QAHBABAAEFAQEAAAAAAAAAAAAAAAIBAwQRITET/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQAC/8QAFREBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhEDEQA/APZPrtKM9sy1e2uWpbLVXaS4IR8AnOY0q8a2N5QBDV6NOAIP/9k=",
     "width": 1024,
     "height": 1024
   },
-  "/images/services/seo.png": {
+  "/images/services/seo.webp": {
     "avif": [
       {
         "src": "/images/services/seo-640.avif",
@@ -282,12 +198,12 @@
         "width": 1024
       }
     ],
-    "original": "/images/services/seo.png",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQADAAAAAAAAAAAAAAAAAAMCBAj/xAAXEAEBAQEAAAAAAAAAAAAAAAAAAQID/8QAFwEBAQEBAAAAAAAAAAAAAAAAAQADBP/EABURAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIRAxEAPwDojppG7Z9Ea6IwVmxOALY6RGwFESAAv//Z",
+    "original": "/images/services/seo.webp",
+    "placeholder": "data:image/webp;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQADAAAAAAAAAAAAAAAAAAMCBAj/xAAXEAEBAQEAAAAAAAAAAAAAAAAAAQID/8QAFwEBAQEBAAAAAAAAAAAAAAAAAQADBP/EABURAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIRAxEAPwDojppG7Z9Ea6IwVmxOALY6RGwFESAAv//Z",
     "width": 1024,
     "height": 1024
   },
-  "/images/services/local-seo.png": {
+  "/images/services/local-seo.webp": {
     "avif": [
       {
         "src": "/images/services/local-seo-640.avif",
@@ -316,12 +232,12 @@
         "width": 1024
       }
     ],
-    "original": "/images/services/local-seo.png",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIDCP/EABgQAQEBAQEAAAAAAAAAAAAAAAABAhIh/8QAFwEBAQEBAAAAAAAAAAAAAAAAAQIAA//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oADAMBAAIRAxEAPwDpfe2d2jVSHSNehAUlJAYrk8AKX//Z",
+    "original": "/images/services/local-seo.webp",
+    "placeholder": "data:image/webp;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIDCP/EABgQAQEBAQEAAAAAAAAAAAAAAAABAhIh/8QAFwEBAQEBAAAAAAAAAAAAAAAAAQIAA//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oADAMBAAIRAxEAPwDpfe2d2jVSHSNehAUlJAYrk8AKX//Z",
     "width": 1024,
     "height": 1024
   },
-  "/images/services/link-building.png": {
+  "/images/services/link-building.webp": {
     "avif": [
       {
         "src": "/images/services/link-building-640.avif",
@@ -350,12 +266,12 @@
         "width": 1024
       }
     ],
-    "original": "/images/services/link-building.png",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAAIDAAAAAAAAAAAAAAAAAAMEAQIH/8QAGBABAQEBAQAAAAAAAAAAAAAAAAECEQP/xAAWAQEBAQAAAAAAAAAAAAAAAAACBQH/xAAWEQEBAQAAAAAAAAAAAAAAAAAAEQH/2gAMAwEAAhEDEQA/AOIXCPXmsSxjXFuJmaqXznRLqzoMKts6pq3gExX1b0ACf//Z",
+    "original": "/images/services/link-building.webp",
+    "placeholder": "data:image/webp;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAAIDAAAAAAAAAAAAAAAAAAMEAQIH/8QAGBAAAwEBAAAAAAAAAAAAAAAAAAECEQP/xAAWAQEBAQAAAAAAAAAAAAAAAAACBQH/xAAWEQEBAQAAAAAAAAAAAAAAAAAAEQH/2gAMAwEAAhEDEQA/AOIOCOuZYWGKwtxMzVR81oJKa0BhVvNMU3gAmK9N6AAG/9k=",
     "width": 1024,
     "height": 1024
   },
-  "/images/services/content-creation.png": {
+  "/images/services/content-creation.webp": {
     "avif": [
       {
         "src": "/images/services/content-creation-640.avif",
@@ -384,12 +300,114 @@
         "width": 1024
       }
     ],
-    "original": "/images/services/content-creation.png",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAIDBAf/xAAbEAADAAMBAQAAAAAAAAAAAAAAAQIDERIhMf/EABcBAQEBAQAAAAAAAAAAAAAAAAEFAgP/xAAWEQEBAQAAAAAAAAAAAAAAAAAAEQH/2gAMAwEAAhEDEQA/AOTY8ei5TpFnGiNNIqVKQaBXV+gKY15DJmpoANOMd2+voAMOj//Z",
+    "original": "/images/services/content-creation.webp",
+    "placeholder": "data:image/webp;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAIDBAf/xAAbEAADAQEAAwAAAAAAAAAAAAAAAQIDERIhMf/EABcBAQEBAQAAAAAAAAAAAAAAAAEFAgP/xAAWEQEBAQAAAAAAAAAAAAAAAAAAEQH/2gAMAwEAAhEDEQA/AOTZ58LlPEWKOEaaRUqUg0Cur9gKY16GTamgA04x3b8voAMOj//Z",
     "width": 1024,
     "height": 1024
   },
-  "/images/portfolio/zeytoun-masoud.png": {
+  "/images/locations/tehran.webp": {
+    "avif": [
+      {
+        "src": "/images/locations/tehran-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/locations/tehran-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/locations/tehran-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/locations/tehran-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/locations/tehran-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/locations/tehran-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/locations/tehran.webp",
+    "placeholder": "data:image/webp;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAQEAAwAAAAAAAAAAAAAAAAUDAQQG/8QAHhAAAQQCAwEAAAAAAAAAAAAAAAECAxEEURMxQRT/xAAYAQADAQEAAAAAAAAAAAAAAAABBAUAAv/EABYRAQEBAAAAAAAAAAAAAAAAAAAUAf/aAAwDAQACEQMRAD8A9XyIcpKhKfk16ZLl16M1E5VvmTYIf2psGpGZPme7Z0pJXX2AS8UtYrM++wAdA//Z",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/locations/qazvin.webp": {
+    "avif": [
+      {
+        "src": "/images/locations/qazvin-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/locations/qazvin-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/locations/qazvin-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/locations/qazvin-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/locations/qazvin-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/locations/qazvin-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/locations/qazvin.webp",
+    "placeholder": "data:image/webp;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAQADAQAAAAAAAAAAAAAAAAUBAgQG/8QAHhAAAgICAgMAAAAAAAAAAAAAAAEDUQJBBBQFE1L/xAAXAQADAQAAAAAAAAAAAAAAAAACAwQA/8QAGBEBAQEBAQAAAAAAAAAAAAAAAAEDEwL/2gAMAwEAAhEDEQA/AKeHHa0dGELWi4vHNaNlwHQ3PWxN6xlRVG6Bb6LoDu4eMeq68fyHBHQBDFbHowoABM//2Q==",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/locations/dubai.webp": {
+    "avif": [
+      {
+        "src": "/images/locations/dubai-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/locations/dubai-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/locations/dubai-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/locations/dubai-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/locations/dubai-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/locations/dubai-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/locations/dubai.webp",
+    "placeholder": "data:image/webp;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAUEBv/EAB0QAAEFAQADAAAAAAAAAAAAAAABAgMEIRIRIjH/xAAXAQEBAQEAAAAAAAAAAAAAAAAEAwUG/8QAGhEBAAIDAQAAAAAAAAAAAAAAAAIEAxETFP/aAAwDAQACEQMRAD8A1Q+ChXVMIUNhM0o17CZpvTsuax1tLrHJyDCyf1+gP6CuDhoJHZpUrSOzQAsyIqUb3cpoAILP/9k=",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/portfolio/zeytoun-masoud.webp": {
     "avif": [
       {
         "src": "/images/portfolio/zeytoun-masoud-640.avif",
@@ -442,12 +460,12 @@
         "width": 1920
       }
     ],
-    "original": "/images/portfolio/zeytoun-masoud.png",
-    "placeholder": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAABYUlEQVR4nEXMV3KCUAAAQG6WGGtQxt5i7/0WiSh2UVCx4jEiHQER75R5RJKZ/V6ocT8276emcWoZdMug28C5Y5w7j39tUwugmw+6YdB1g64ZJ6h025Zvu/JtV9H3VeBQs9T1Y+3+VL0fqvqhoh/K+r5kKuo7KKOusuo6p67z6iavbgoaVdCo4tP2VwGg8hqV06isRmW0TUbbpLU1FJcXCXmZvC4/rkTqSqQUMm3JKKu0JaWQKYX8UMikQiYUIq4QsesSCorTsDgLS7OINI9K85iExyQ8LuNxefEnBuBRGY/IeFjGQ9I8KM0D0gzy8UOEHyH8yC+M/cI4IEyCwDQkPgVNAXHqByaIOPEJY68whoUR5GJ7HrbvYTGYxWBu4OUGPmCIWKnP5OWHMD985wcefuDmMBeHObg+ZPv+fLt82S9dxwV1XlAXg7qZHmCmbouL7TnZnoNF7SxqY9BXpvvCdH8AwDMOi73ePFMAAAAASUVORK5CYII=",
+    "original": "/images/portfolio/zeytoun-masoud.webp",
+    "placeholder": "data:image/webp;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAABWUlEQVR4nF3MZ26CYAAAUG7WGgfOuvfedfQWrSgOVBQHTjxGZX8iIt6p+bTBtMn7/ZDadVe77uv6vqEzDZ1pQoePv5p3Df1QvzH1G1PTmXedqep7pHhZlS7r0mVd1jYVaFt92hkq2raibcvatqRtitqmAK2R9HmeOS8y50X2vMypy7xK51W68Gv1kIfonEpnVTqj0ml1mYIWSBRMYmAaP00TJypxopLKLPU0NySVWUKZxe9iChVRqMhpivilYUAaBeVRSB6HITIik1FARsHEEAGTMCDDgAwBMgjIABj75LFPHiFuoecW+h6h7xUHXnHgEwm/SPil4T8+aeiViDeJ8EiEWxq4xIFT7CM2ro1yHTuHOzjcyeMuvuvmu/cRpgaX0HMKPYfQtQtdVMCtPG7hO4jp+9N0/DIfW5YjZmUxG4uhbBuFI0wfbFDbyrUtHGbmMBOHvbKtF7b1A5gJDml/w0Y8AAAAAElFTkSuQmCC",
     "width": 3840,
     "height": 1600
   },
-  "/images/portfolio/samake-bartar.png": {
+  "/images/portfolio/samake-bartar.webp": {
     "avif": [
       {
         "src": "/images/portfolio/samake-bartar-640.avif",
@@ -500,12 +518,12 @@
         "width": 1920
       }
     ],
-    "original": "/images/portfolio/samake-bartar.png",
-    "placeholder": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAABUUlEQVR4nB3MWZKkIBAAUO9/q+5a3BWQHYXMBLWq5xITGvG+X9Wr3Em6LNgu2AhsBDQCap5qnt63F48vHp88Plh88PTL4w9PPzxWkymjzqPOg8qDol5SL7GT2C3Q3ppLqpf0Fukl0mtJT5EeIv2KVDG3M7szW2ZTZpOnK6JR0aBwUNhfoJPQSmgk1DLVEt4SXhKeEqolHMIfwu/C7dwVZguzeTZ5NjQZGg2OGgeNvcZOQ6ug1dhoqDW8FVR6+6j1VOshwyHDvlxLEa5wl7nLzNJsabI4WhwM9gY7g63BxmBtoLLpa+LHxNNsp96Oe9nvpSw+C5+5z8zR7GhydBWOeoutxcZi5eHPw9enj0sfm857OfS2q3VXa5FrWUIWIfOQmafZ0+Rp8Nh76hxWG/1b6W/Fb4Cvh6tw6bTxMPEw234t21WINfM1s0BzyFOgIVDv6T8Y1ZVvvAs8OAAAAABJRU5ErkJggg==",
+    "original": "/images/portfolio/samake-bartar.webp",
+    "placeholder": "data:image/webp;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAABQklEQVR4nB3MWXKDMBAAUe5/qyS22RftG6CZEQg7uURKVL3f7qpXqZfUSeoEdgJbjg2HhkPNoGbxdXsW+4Ptj2X/YfH79sViNZlj1GnUaVBUSOpluXQC2ltTxFrEFy+eIj54/OHxm8dqcWdhj9mk2aRJp0nTWEY4KOwL6CS0t0ZCLeEl4SnhIaESIYuQuT+5O7k7mD0WWy6zoanAUeOgsS+gU9BqaBTUCl4KKr291XapNcuQZTiFP4U7ysUl5tJiabY0WRotjgYHg53B1mBjsDZY2fix+9vsl9kuvWW9ZhXO+3IIn7hPzKfF0exocmUxOOwtdhYbi5WHXw8fH9+uuGy5ZL1ltZ5qPeR6iJB4SCykxdPsafI0eOo9dQ6rjf5W+l3xE+AT4F0u+2X3bPZstlNvp9rKgq+Jr4kFmgNNgcZQ+n87PZWQRyBS9AAAAABJRU5ErkJggg==",
     "width": 3840,
     "height": 1600
   },
-  "/images/portfolio/samake-bartar-old.png": {
+  "/images/portfolio/samake-bartar-old.webp": {
     "avif": [
       {
         "src": "/images/portfolio/samake-bartar-old-640.avif",
@@ -558,12 +576,12 @@
         "width": 1920
       }
     ],
-    "original": "/images/portfolio/samake-bartar-old.png",
-    "placeholder": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAB0UlEQVR4nAXBCVeaAAAAYH7z9va2tTZbVuZMLfNGERRBRAQvxFvLJSAeeKACAl7l26/Y9wG8/5MQ+CwGv0ihr6Pwt0nkYhr9IYOX89ivRdymQFerxPUatm/gGxW51ZIOPeXYovcG6jTTfwA+8l2IXojgpRT7OYrbJtDvaeJ6BtvnyO0y6VBS92vUuUm7VOxBw916xrMlvAbxaGWfdqQP4CGbkLgSYbuE3IyTdxPUIaedM8y1wB+UjGdFeDfZJ5X0aTm/TgWMfNCkQxYd3jGRfSEK8OidkHYMMaeEu8YZ95TwytnHOelb5p4VKrCmQyoT1grRbRE0SnGzBFnlxK4C71nkWE0CfNYtkJ5h7nFE+SZ5v0wHZ0x4UYgoRXBVim8qkMbCehUxuJTJoVYN29XxQyNzbBKnVhbgGb9YCEjF0LgUmZZBuRKfs4llFV5xyU0NVeuY3sCNJmG2SKud23eoQzd/7DGnXuHjtQgILDisxiQOGtfgaT05a6CLJqa0Mus2oXZIvUsZPdp8YXavxX2/fPhbOb6x74Pqx4A783VAbCLDZmrUSk/auNwh5l1y2aNWL/Smz2j90vatbA5Yi+f2Qv0gNE5i833YOkud86j7b9z7D+kwVLFZYRGtAAAAAElFTkSuQmCC",
+    "original": "/images/portfolio/samake-bartar-old.webp",
+    "placeholder": "data:image/webp;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAB0UlEQVR4nAXBiVqaAAAAYJ55+/Zta22uLM1KM/NGERBBRAUvPPDWJSiKeKAiCkpa21Ps/wH+5ZPg+zz0fxEDX8fBb1LoYhr+IYOX88ivRdSiQL9X0PU6Zt3ANypyu0VtGmrfxe90zKEn7gE+9F0IXwzBSzHycxy1SNCVHLuewdY5crtEbUr8bo05Nol7FX/cEk6NcO2TT3vSbaSeD5QHGEAWIXY1hK0icjOJ2yTMLiccM/xhQTwqSdeKfNqknlXKs6W8Wtq3y/j1bMCggwcmdGTCAI/ZhIR9hDtE4mGSdE7Jp1nKPac8y/SLkvGtswGVDm6Z8C4H7vNRvQAZxdihBJssYrIowKecAuUapd3jjEfKemXaP2OCi1xIyYOrQnRThLYlWGORfTmuVzCjih9rhMkl3zjyVE8BPO0d5nxiPjAuhKQiKJeicza2LMOrCrqpYmoN1zhiVyf1BmU008dWxmzTbx3m3Mm9d/OAwIKjckSsQJMqPK2hMw5b1HGlkVw3SbVFae3MvkPrXebQyx/7RbNfOr2y59fy+6D6wVcBgUNGjfi4kZCahNwm5x1q2c2sevSmx2z7hd2foj5gDb5y5GumwJ2G9fOo8SG2/o7b/yad/8wMVJg9zcLXAAAAAElFTkSuQmCC",
     "width": 3840,
     "height": 1600
   },
-  "/images/portfolio/samake-alpha.png": {
+  "/images/portfolio/samake-alpha.webp": {
     "avif": [
       {
         "src": "/images/portfolio/samake-alpha-640.avif",
@@ -616,12 +634,12 @@
         "width": 1920
       }
     ],
-    "original": "/images/portfolio/samake-alpha.png",
-    "placeholder": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAABaUlEQVR4nB3LV3LbMBQAQN7/NJkkimVZFhtYQBAdD51VOkhGntnfLZ4wPy19Ofby7BX4K4hXFM8ozySPJPYktiTWyJfIcqAhzN4R6yawWJuxODQ+DDmBnG4+HT09PT07AtsD2wLdAl0DzX5OngQ3OYcBBgO9Mp1QqNjUsGu8G3zAdNhpt2R3ZHNk82R1ZPFT9lN0ONjR2QGg0wZJ3QrVMFEVq+hWOWxq2Mz4BuMGeLV4sTjbMdkx2sFD7wCBabVupKq4LKl4EHYvMkdZdIvsFtUvul9Mv5ghw5Cgj9AF6DwgZ1rQtVaVVCUX31TcCf/C9Fok1iTeZoGyRFmhrLusu2S6aFAwrTetMw2oyqhSyYeQd8ZvM//E7DrMlyLSOr5/k2T7pt6iboNuvK6drq0ujXpoeZfii4nbzK4T+zfSS0/+FJ5WgdaR11H8kHVUdVC1V5VTpVUlqO+feePik/IPQi+Y/h3m32j69R+T4IYn0j+vcAAAAABJRU5ErkJggg==",
+    "original": "/images/portfolio/samake-alpha.webp",
+    "placeholder": "data:image/webp;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAABXUlEQVR4nB3CB3KjQBAAQP7/miu7TrasQM5smJnNCwjMR1yiq5NfNR5mOgw7LD+cOLw4gvwNcj9vQa5BLF7MngfPvJusHY0ZlO5RtclO/a6GXY+7mXY77Zbtjm3nl2erY7ObohuDHZztrem0bkk1SLXEMnlBu1G3Ub+pYdPDy4wv+76eZztE2wfTOd0a3WhVE1WAhYCcyyxZZL1Cs2K7Uruq7l13i+5m3c2mi7r1unGqNqpSVBIWALmQKRPPkd+TWZSzrBaoF2xmOqv3qJqgaq9qqypDhcKcMANIhXwwcRv5Tz99J4EXUZRRlhGqiFXEOlIVqQpUeSodFYZyjRlBCvCQ8s7FbeLXgX214yXxLAs8D6IIsgxwxtJj4bFwmFvMNKYKnijvUt64uE78e2CXbvrfDJ+JY6lnmRf5u8w9FB5yB7nDzGJq4KngQfIO8keIK+NfI7v002c7flT9vz+i1oVBtzAI9wAAAABJRU5ErkJggg==",
     "width": 3840,
     "height": 1600
   },
-  "/images/portfolio/samak-bartar.png": {
+  "/images/portfolio/samak-bartar.webp": {
     "avif": [
       {
         "src": "/images/portfolio/samak-bartar-640.avif",
@@ -674,12 +692,12 @@
         "width": 1920
       }
     ],
-    "original": "/images/portfolio/samak-bartar.png",
-    "placeholder": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABqklEQVR4nDXMW26iUAAAUPafTMZUsVhAEIRaFFB5CVdAmBXIfQPqLGXCbSc530dahEiewP+6ZdjJYScHnRzcF+F9Edznwpsw87uZ3/32u19+Jylnsjpj5YSVE1r9gN+USfcuLI+dLMyPcH6Eb2E3C6GkxlSbEAFrMdZjpMVIiyZqDNUIfkRwFUElgsoZLs9IPsPFCc5PSDIyZmbMyKiRUjOlRkrMCTaEdYrXCdITpCVITdBHglYxUmL0HiM5QpKV93bOrZzbObNzZuXUvlDrQr5tJti8YCPD6wzrGdZSrKZ4lWIlwZIDBhcMDugdwF3AHcDcgjkFdQq6FeyCWAXZ5MTMiZGT9YXoF6Jm5CMj0q4chUHoBb678s8Jcyd0CyY2oJuCmgU1CqrnVM2p5NWPff3w6nE/Gbx68Kreq/qvCd9VfFcyV9hemX1lFmAmoAagekGlQ/Pym6fw8JvH4TYebsPhNuzrYV/3Xt1/1XxX88+KuxVzSm6XzCqZeWVrwKTgz9+wfQXtK2yfYfsM2kfQjkEz+s14aIZD0+9vvXf7KdyabytuV9wqmVGyf+XftL9y4bZjAAAAAElFTkSuQmCC",
+    "original": "/images/portfolio/samak-bartar.webp",
+    "placeholder": "data:image/webp;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABoElEQVR4nDXGCY6iQABAUe6fTKbHnRakRFFRARFkL5D2BEKtgPYcZVKVnuTl5ysTD029duq2ol4juM3Me07dHxNp7D5H7nPkPP84zYfT/HaaX+dGWfhE9bHqI/WKRP32v2YhtPNLM780M2l6aSZeO/bakdd+eK2yDKkWEgnrIdZCpAVID5GcdhmgZYA+g1aVFtd2fkWzK5r4aOwjxYgZiBmIKIgpiAmICIgwiLAhICPCqxvWb0iTljekhngR4nmIZwFSzLTbpHyTMokKCd2kxEyEtQQSbMR4FWM9xlqElxFRI7y4YcXK+13eSVxiVsZ2ObUyYZvRTUbNjKxTAaRklRA9IVpCPmOiHMrBhoMNext2NuwOkP8o2F7aFcwq6Danm5yaOQUZNTK6SqmWUuVYvU/V61QNUn+q+mPVCSW3pQPke8h2kFmQbQtmFmxdMCNnekaVc/3t1G+nfkmDcx/O917qTpJddXbF96VglXwLmQk5KJhRMMV9/PUe397jLb28r5f7NQh179T9ue5PdXesO/veHe7dvuJWxbclN0sOIPsHC6K1C8/RpbIAAAAASUVORK5CYII=",
     "width": 1920,
     "height": 945
   },
-  "/images/portfolio/ramzarz-negaran.png": {
+  "/images/portfolio/ramzarz-negaran.webp": {
     "avif": [
       {
         "src": "/images/portfolio/ramzarz-negaran-640.avif",
@@ -732,90 +750,12 @@
         "width": 1920
       }
     ],
-    "original": "/images/portfolio/ramzarz-negaran.png",
-    "placeholder": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAABTklEQVR4nE3NWW6CUABAUVZhFRmKgCCgRisKIiAzLqIyzw/d/1/zQJIm9/fkIofZ73H2/Pl6nuaRvIjOaHxZxgqWqHhyJVKNzG5kplOZTuXGKjdWhUnnJlPcmeLOFsjxKzrNo9MiktH4giYKlih4quKpRmQ3Mte/84EVJj0ApryzpcWW1hqGnOaxvIjPaHJZJgoG2ZXINDK/QVZAtiqhYSqLrax1bXOVzdUOX9t8jchoMshUwTIVz65EPsjCoCAz6WpkNmS1wzUO37ibIaFBRqb8YzpVGh9WWyzM5hqHa12+dTetJ7Se0Hli50ktouCZiueDLCZZmXQ9yMZetxPrPKHzReBLIJBAsAXBDiAj00ZGVSZdmR823jqX7zwB+GLviyCQ+mDbh7s+3MOQYVjqVDUNm2nYuTzwNsAXQCD2gfQKt69w937sX4/9+3GA/QFow303d8WdjAAAAABJRU5ErkJggg==",
+    "original": "/images/portfolio/ramzarz-negaran.webp",
+    "placeholder": "data:image/webp;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAABSUlEQVR4nDXNSXKCQABAUU5hFBlEQBRQS4OCoMwCOURkbCYbc/9dqhut+ttXnzhMfo+Tx/fXQ5ump1l6JjN9nhlUfqFzkykstryy5W1R3rjKXlb2Ejg8cATgCsAVAXH8SrVpqs2yE5npZK7Pc4MuLnRhMeWVra6LCjNseOAKtSvWnlh7KxShTbPTLDuPjELMZErrzQBiy9rla1doPLHxVq0voQKp9dctcSJznSz0eWFQpUmXJlNhCWwOMYdvRuZjFkhdsO7CDU7uiJEZH2YtwI2r7TdrXbH1xM5fdYHUB+s+3PR3+YlSnnf1SRhUeaErLMH1LRuHb11hZH0g9SFiyEQKjFQYqzDewngHiZFZLGZcY/ON82bj7Rmu4V2GkTJECozVId6+kt2Q7Idk/yLwsL5xzWfYfYaYbWAkD7EyxOorQezvZ487oP4BYtx9NbLKIn4AAAAASUVORK5CYII=",
     "width": 3840,
     "height": 1600
   },
-  "/images/portfolio/news.webp": {
-    "avif": [
-      {
-        "src": "/images/portfolio/news-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio/news-768.avif",
-        "width": 768
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/portfolio/news-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio/news-768.webp",
-        "width": 768
-      }
-    ],
-    "original": "/images/portfolio/news.webp",
-    "placeholder": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAABwAwCdASoUAA8APm0skkWkIqGYBABABsSygE6ZQAGVsEeZ/AAA/lRJmgUWwOeN5GqvtHLwhSaEDHUI+sUllm8AAAA=",
-    "width": 960,
-    "height": 720
-  },
-  "/images/portfolio/ecommerce.webp": {
-    "avif": [
-      {
-        "src": "/images/portfolio/ecommerce-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio/ecommerce-768.avif",
-        "width": 768
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/portfolio/ecommerce-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio/ecommerce-768.webp",
-        "width": 768
-      }
-    ],
-    "original": "/images/portfolio/ecommerce.webp",
-    "placeholder": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAACQAwCdASoUAA8APm0qkUWkIqGYBABABsSxgE6ZQAGnUKxCbnGQAP78FovQHGDixnVhQbNWjJkgzRsDDMeLiH9s6WgSQAAA",
-    "width": 960,
-    "height": 720
-  },
-  "/images/portfolio/corporate.webp": {
-    "avif": [
-      {
-        "src": "/images/portfolio/corporate-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio/corporate-768.avif",
-        "width": 768
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/portfolio/corporate-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/portfolio/corporate-768.webp",
-        "width": 768
-      }
-    ],
-    "original": "/images/portfolio/corporate.webp",
-    "placeholder": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAwCdASoUAA8APm0ukkWkIqGYBABABsSgCdMoRwACWOf2tAfVSv1AAP70VH0xAdwI//NZR4CwCIO4PHOTjigkwx5oznBe7IhBk+KAAAA=",
-    "width": 960,
-    "height": 720
-  },
-  "/images/portfolio/4-seasons-carpet-clean.png": {
+  "/images/portfolio/4-seasons-carpet-clean.webp": {
     "avif": [
       {
         "src": "/images/portfolio/4-seasons-carpet-clean-640.avif",
@@ -868,271 +808,9 @@
         "width": 1920
       }
     ],
-    "original": "/images/portfolio/4-seasons-carpet-clean.png",
-    "placeholder": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAzUlEQVR4nG3ObW4DIQxF0dn/LoO/wDaG6QoqA1EmaqUniz9Hl8s1XMOqa3Vlbdwa1YoiIAIsQFyIX8Qv5IJ596MgA13dRvrWrbqJfXvOleU3KGeUGK/uo1u4dmtu1VRUuTWulSQ9Zvz04QsT4BU+0+fnuz89/fGQtYNh4z5jxfvGzayqSsbffU6PJLjwGgEQwDXiHk+v/3namPj4lIln3CPm6CN8hEU3dzVrqttLbSzHE/HxKTHx+JnjnssPj7D+8O3jmSvR8sgIhIBQfgGul7Ke8gAWzwAAAABJRU5ErkJggg==",
+    "original": "/images/portfolio/4-seasons-carpet-clean.webp",
+    "placeholder": "data:image/webp;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAzUlEQVR4nG3Oa27EMAgE4Nz/lmteNmBweoKKOKvNVpVGI/58Gg7XcA3rrt2VdfAY1DuKgAiwNOJG/CJ+ITes3kdDBjqmZfkxrbuJfXv++A3aHSqMx/ScFq7Thls3FVUeg3snKY8sQJVGDF+YAI/wVb6en/709NcXfnuCjeeKa3xuPMy6qtT4e5/LIwle+AoBEMCRcebT63+eNia+fcnCK86MlTPDMyymuavZUN1e+mC5PRHfviQWzp+V57p8eoTNhx8fz9yJLo+MQAgI7ReuFbKenXDaIgAAAABJRU5ErkJggg==",
     "width": 3840,
     "height": 1600
-  },
-  "/images/locations/tehran.jpg": {
-    "avif": [
-      {
-        "src": "/images/locations/tehran-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/locations/tehran-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/locations/tehran-1024.avif",
-        "width": 1024
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/locations/tehran-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/locations/tehran-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/locations/tehran-1024.webp",
-        "width": 1024
-      }
-    ],
-    "original": "/images/locations/tehran.jpg",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAQEAAwAAAAAAAAAAAAAAAAUDAQQG/8QAHhAAAQQCAwEAAAAAAAAAAAAAAAECAxEEURMxQRT/xAAYAQADAQEAAAAAAAAAAAAAAAABBAUAAv/EABYRAQEBAAAAAAAAAAAAAAAAAAAUAf/aAAwDAQACEQMRAD8A9XyIcpKhKfk16ZLl16M1E5VvmTYIf2psGpGZPme7Z0pJXX2AS8UmKzPvsAHQP//Z",
-    "width": 1024,
-    "height": 1024
-  },
-  "/images/locations/qazvin.jpg": {
-    "avif": [
-      {
-        "src": "/images/locations/qazvin-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/locations/qazvin-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/locations/qazvin-1024.avif",
-        "width": 1024
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/locations/qazvin-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/locations/qazvin-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/locations/qazvin-1024.webp",
-        "width": 1024
-      }
-    ],
-    "original": "/images/locations/qazvin.jpg",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAQADAQAAAAAAAAAAAAAAAAUBAgQG/8QAHhAAAgICAgMAAAAAAAAAAAAAAAEDUQJBBBQFE1L/xAAXAQADAQAAAAAAAAAAAAAAAAACAwQA/8QAGBEBAQEBAQAAAAAAAAAAAAAAAAEDEwL/2gAMAwEAAhEDEQA/AKeHHa0dGELWi4vHNaNlwHQ3PWxN6xlRVG6Bb6LoDe4eMeq68fyHBHQBFFbHojoABM//2Q==",
-    "width": 1024,
-    "height": 1024
-  },
-  "/images/locations/muscat.webp": {
-    "avif": [
-      {
-        "src": "/images/locations/muscat-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/locations/muscat-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/locations/muscat-1024.avif",
-        "width": 1024
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/locations/muscat-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/locations/muscat-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/locations/muscat-1024.webp",
-        "width": 1024
-      }
-    ],
-    "original": "/images/locations/muscat.webp",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAMFBgIE/8QAHRAAAQQCAwAAAAAAAAAAAAAAAAECBGERFAMxQf/EABgBAAIDAAAAAAAAAAAAAAAAAAIEAAED/8QAGBEBAQEBAQAAAAAAAAAAAAAAAAETAgP/2gAMAwEAAhEDEQA/ANHsWNmylWRZw6Vj0cnpSN4i827Bnll2AtVZx5nOUg5HKAYDiBXuz2ACCf/Z",
-    "width": 1024,
-    "height": 1024
-  },
-  "/images/locations/dubai.jpg": {
-    "avif": [
-      {
-        "src": "/images/locations/dubai-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/locations/dubai-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/locations/dubai-1024.avif",
-        "width": 1024
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/locations/dubai-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/locations/dubai-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/locations/dubai-1024.webp",
-        "width": 1024
-      }
-    ],
-    "original": "/images/locations/dubai.jpg",
-    "placeholder": "data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAUEBv/EAB4QAAEEAgMBAAAAAAAAAAAAAAABAgMEEiERMVEi/8QAFwEBAQEBAAAAAAAAAAAAAAAABAMFBv/EABoRAQACAwEAAAAAAAAAAAAAAAACBAMRExT/2gAMAwEAAhEDEQA/ANUPBQrqmiFDYT0o17Ca2b07LmsdbS6xyYgwsn+ewH9BXBw0EjvSpWkdrYAWZEVKN7sewAQWf//Z",
-    "width": 1024,
-    "height": 1024
-  },
-  "/images/blog/web-design.webp": {
-    "avif": [
-      {
-        "src": "/images/blog/web-design-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/blog/web-design-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/blog/web-design-1024.avif",
-        "width": 1024
-      },
-      {
-        "src": "/images/blog/web-design-1280.avif",
-        "width": 1280
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/blog/web-design-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/blog/web-design-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/blog/web-design-1024.webp",
-        "width": 1024
-      },
-      {
-        "src": "/images/blog/web-design-1280.webp",
-        "width": 1280
-      }
-    ],
-    "original": "/images/blog/web-design.webp",
-    "placeholder": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADQAwCdASoUAAsAPm0skkWkIqGYBABABsSygE6ZQAFZ6fmpcf6odQAA/o03vZbkWVeb9LrgSy8OuHxK0V4oYAAA",
-    "width": 1280,
-    "height": 720
-  },
-  "/images/blog/seo-tips.webp": {
-    "avif": [
-      {
-        "src": "/images/blog/seo-tips-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/blog/seo-tips-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/blog/seo-tips-1024.avif",
-        "width": 1024
-      },
-      {
-        "src": "/images/blog/seo-tips-1280.avif",
-        "width": 1280
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/blog/seo-tips-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/blog/seo-tips-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/blog/seo-tips-1024.webp",
-        "width": 1024
-      },
-      {
-        "src": "/images/blog/seo-tips-1280.webp",
-        "width": 1280
-      }
-    ],
-    "original": "/images/blog/seo-tips.webp",
-    "placeholder": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACwAgCdASoUAAsAPm0skkWkIqGYBABABsSzgABE+gAA/vqJ387HuD/oPi5PwgAA",
-    "width": 1280,
-    "height": 720
-  },
-  "/images/blog/digital-marketing.webp": {
-    "avif": [
-      {
-        "src": "/images/blog/digital-marketing-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/blog/digital-marketing-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/blog/digital-marketing-1024.avif",
-        "width": 1024
-      },
-      {
-        "src": "/images/blog/digital-marketing-1280.avif",
-        "width": 1280
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/blog/digital-marketing-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/blog/digital-marketing-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/blog/digital-marketing-1024.webp",
-        "width": 1024
-      },
-      {
-        "src": "/images/blog/digital-marketing-1280.webp",
-        "width": 1280
-      }
-    ],
-    "original": "/images/blog/digital-marketing.webp",
-    "placeholder": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADwAgCdASoUAAsAPm0skkWkIqGYBABABsSxgE6ZQAJDgAD++L6Cuh5Gq0E+Yl8rRgBp334W1LcdXjFQAAA=",
-    "width": 1280,
-    "height": 720
   }
 }

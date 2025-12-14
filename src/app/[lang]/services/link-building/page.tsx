@@ -12,7 +12,7 @@ const LinkBuilding = () => {
         <ServicePageTemplate
             title={t('linkBuilding.title')}
             subtitle={t('linkBuilding.description')}
-            heroImage="/images/services/link-building.png"
+            heroImage="/images/services/link-building.webp"
         >
             {/* Services Details */}
             <section className="py-16 bg-white">

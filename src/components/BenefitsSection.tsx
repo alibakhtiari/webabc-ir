@@ -162,7 +162,7 @@ const BenefitsSection = () => {
 
             <div className="relative aspect-video lg:aspect-auto bg-gray-50 flex items-center justify-center min-h-[400px]">
               <OptimizedImage
-                src="/images/seo-results.png"
+                src="/images/seo-results.webp"
                 alt={t('benefits.imageAlt', { fallback: 'تصویر نتایج سئو' })}
                 fill
                 className="object-cover"

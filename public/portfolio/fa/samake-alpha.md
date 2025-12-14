@@ -2,7 +2,7 @@
 title: "تحول دیجیتال کلینیک شنوایی سمعک آلفا"
 slug: "samake-alpha"
 category: "سئو پزشکی و طراحی وب"
-image: "/images/portfolio/samake-alpha.png"
+image: "/images/portfolio/samake-alpha.webp"
 description: "بازسازی کامل دیجیتال برای کلینیک سمعک آلفا، مهاجرت از سیستم‌های قدیمی به پلتفرم امن و پرسرعت وردپرس."
 client: "کلینیک سمعک آلفا"
 projectUrl: "https://www.samakealpha.com"

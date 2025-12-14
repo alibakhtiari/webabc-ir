@@ -36,7 +36,7 @@ const WebDevelopment = () => {
             <ServicePageTemplate
                 title={t('webDevelopmentServices.webDevelopmentTitle')}
                 subtitle={t('webDevelopmentServices.webDevelopmentDescription')}
-                heroImage="/images/services/web-development.png"
+                heroImage="/images/services/web-development.webp"
             >
                 {/* What is Custom Web Development? */}
                 <section className="py-16">

@@ -76,8 +76,8 @@ const ServicesSection = () => {
 
   // Map services to their generated images based on index or title key
   const serviceImages = [
-    '/images/services/seo.png',
-    '/images/services/web-design.png',
+    '/images/services/seo.webp',
+    '/images/services/web-design.webp',
     '/images/blog/digital-marketing.webp', // Using a relevant existing image for Content Creation as we didn't generate one specifically named 'content-creation' yet, or reuse web-dev
   ];
 

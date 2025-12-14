@@ -2,7 +2,7 @@
 title: "Ramzarz Negaran – Premier Legal Crypto Mining Platform"
 slug: "ramzarz-negaran"
 category: "E-commerce & Custom Development"
-image: "/images/portfolio/ramzarz-negaran.png"
+image: "/images/portfolio/ramzarz-negaran.webp"
 description: "Iran's leading hub for legal cryptocurrency mining hardware, featuring custom profitability calculators and real-time market data."
 client: "Ramzarz Negaran"
 projectUrl: "https://ramzarznegaran.com"

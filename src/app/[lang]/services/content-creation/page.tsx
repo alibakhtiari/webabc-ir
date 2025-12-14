@@ -12,7 +12,7 @@ const ContentCreation = () => {
         <ServicePageTemplate
             title={t('contentCreation.title')}
             subtitle={t('contentCreation.description')}
-            heroImage="/images/services/content-creation.png"
+            heroImage="/images/services/content-creation.webp"
         >
             {/* Services Details */}
             <section className="py-16 bg-white">

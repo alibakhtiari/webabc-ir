@@ -2,7 +2,7 @@
 title: "التحول الرقمي لعيادة سماك ألفا"
 slug: "samake-alpha"
 category: "تحسين محركات البحث الطبي وتصميم الويب"
-image: "/images/portfolio/samake-alpha.png"
+image: "/images/portfolio/samake-alpha.webp"
 description: "تجديد رقمي شامل لعيادة ألفا للمعينات السمعية، والانتقال من الأنظمة القديمة إلى منصة ووردبريس آمنة وعالية السرعة."
 client: "عيادة سماك ألفا"
 projectUrl: "https://www.samakealpha.com"

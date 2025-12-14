@@ -2,7 +2,7 @@
 title: "تحديث وترحيل موقع عيادة سمعك برتر"
 slug: "samake-bartar"
 category: "تطوير الويب وتحسين محركات البحث"
-image: "/images/portfolio/samak-bartar.png"
+image: "/images/portfolio/samak-bartar.webp"
 description: "نقل ناجح من جوملا (Joomla) إلى منصة ووردبريس (WordPress) عالية الأداء ومحسنة لمحركات البحث."
 client: "عيادة سمعك برتر للسمعيات"
 projectUrl: "https://www.samakebartar.com"
