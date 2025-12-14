@@ -71,7 +71,7 @@ export default async function RootLayout({
                     <Navbar />
 
                     {/* 2. Main Content Wrapper */}
-                    <main className="flex-1 w-full pt-20 md:pt-24 xl:pt-28">
+                    <main className="flex-1 w-full">
                         {children}
                     </main>
 
