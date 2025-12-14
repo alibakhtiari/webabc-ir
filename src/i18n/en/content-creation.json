@@ -1,0 +1,61 @@
+{
+    "title": "Content Creation Services",
+    "description": "High-quality, engaging content that drives traffic and builds brand authority.",
+    "ourServices": "Our Content Services",
+    "features": {
+        "blogging": {
+            "title": "Blog Writing",
+            "description": "SEO-optimized blog posts that rank high and engage your audience."
+        },
+        "copywriting": {
+            "title": "Copywriting",
+            "description": "Persuasive copy for landing pages, ads, and sales materials."
+        },
+        "strategy": {
+            "title": "Content Strategy",
+            "description": "Comprehensive content plans aligned with your business goals."
+        },
+        "social": {
+            "title": "Social Media Content",
+            "description": "Engaging posts and captions for your social media channels."
+        },
+        "email": {
+            "title": "Email Marketing",
+            "description": "Newsletters and automated sequences that nurture leads."
+        },
+        "editing": {
+            "title": "Editing & Proofreading",
+            "description": "Polishing your existing content to perfection."
+        }
+    },
+    "process": {
+        "title": "Our Content Process",
+        "step1": {
+            "title": "Research & Strategy",
+            "description": "We analyze your audience and competitors to find the best topics."
+        },
+        "step2": {
+            "title": "Creation & Drafting",
+            "description": "Our expert writers craft compelling and original content."
+        },
+        "step3": {
+            "title": "Optimization (SEO)",
+            "description": "We optimize every piece for search engines and readability."
+        },
+        "step4": {
+            "title": "Review & Edits",
+            "description": "Rigorous quality checks to ensure accuracy and tone."
+        },
+        "step5": {
+            "title": "Publishing & Promotion",
+            "description": "We help you distribute your content to reach the right people."
+        }
+    },
+    "technologies": {
+        "title": "Tools We Use"
+    },
+    "cta": {
+        "title": "Ready to Tell Your Story?",
+        "description": "Start creating content that converts. Contact us today."
+    }
+}
