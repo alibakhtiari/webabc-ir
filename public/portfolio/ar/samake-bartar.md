@@ -1,6 +1,6 @@
 ---
 title: "تحديث وترحيل موقع عيادة سمعك برتر"
-slug: "samak-bartar"
+slug: "samake-bartar"
 category: "تطوير الويب وتحسين محركات البحث"
 image: "/images/portfolio/samak-bartar.png"
 description: "نقل ناجح من جوملا (Joomla) إلى منصة ووردبريس (WordPress) عالية الأداء ومحسنة لمحركات البحث."
