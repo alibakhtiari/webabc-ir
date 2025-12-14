@@ -62,7 +62,6 @@ const Footer = () => {
                 title: t('common.company'),
                 links: [
                   { name: t('common.about'), href: `/${language}/about` },
-                  { name: t('about.ourTeam'), href: `/${language}/team` },
                   { name: t('common.portfolio'), href: `/${language}/portfolio` },
                   { name: t('blog.title'), href: `/${language}/blog` },
                   { name: t('common.contact'), href: `/${language}/contact` },
