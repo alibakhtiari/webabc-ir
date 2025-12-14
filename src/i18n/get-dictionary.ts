@@ -13,9 +13,9 @@ const namespaces = {
     home: 'home',
     benefits: 'benefits',
     cta: 'cta',
-    resources: 'resources',
+
     blog: 'blog',
-    caseStudies: 'caseStudies',
+
     notFound: 'notFound',
     consultation: 'consultation',
     localSeo: 'local-seo',
@@ -25,6 +25,8 @@ const namespaces = {
     tools: 'tools',
     faq: 'faq',
     seoService: 'seo-service',
+    contentCreation: 'content-creation',
+    linkBuilding: 'link-building',
 } as const;
 
 type NamespaceKey = keyof typeof namespaces;

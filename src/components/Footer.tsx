@@ -53,9 +53,9 @@ const Footer = () => {
                 links: [
                   { name: t('services.seoTitle'), href: `/${language}/services/seo` },
                   { name: t('services.webDesignTitle'), href: `/${language}/services/web-design` },
-                  { name: t('wordpress.contentCreation'), href: `/${language}/content-creation` },
+                  { name: t('services.contentCreationTitle'), href: `/${language}/services/content-creation` },
                   { name: t('services.technicalOptimization'), href: `/${language}/technical-optimization` },
-                  { name: t('services.linkBuilding'), href: `/${language}/link-building` },
+                  { name: t('services.linkBuildingTitle'), href: `/${language}/services/link-building` },
                 ]
               },
               {
@@ -69,13 +69,13 @@ const Footer = () => {
                 ]
               },
               {
-                title: t('common.resources'),
+                title: t('tools.title'),
                 links: [
-                  { name: t('resources.seoGuide'), href: `/${language}/seo-guide` },
-                  { name: t('resources.webDesignGuide'), href: `/${language}/web-design-guide` },
-                  { name: t('resources.specializedArticles'), href: `/${language}/articles` },
-                  { name: t('resources.freeTools'), href: `/${language}/tools` },
-                  { name: t('resources.faq'), href: `/${language}/faq` },
+                  { name: t('tools.metaGenerator.title'), href: `/${language}/tools/meta-generator` },
+                  { name: t('tools.serpPreview.title'), href: `/${language}/tools/serp-preview` },
+                  { name: t('tools.keywordResearch.title'), href: `/${language}/tools/keyword-research` },
+                  { name: t('tools.utmBuilder.title'), href: `/${language}/tools/utm-builder` },
+                  { name: t('tools.faqGenerator.title'), href: `/${language}/tools/faq-generator` },
                 ]
               }
             ].map((category, idx) => (
@@ -86,12 +86,12 @@ const Footer = () => {
                 <ul className="space-y-2">
                   {category.links.map((link, linkIdx) => (
                     <li key={linkIdx}>
-                      <a
+                      <Link
                         href={link.href}
                         className={cn("text-foreground/70 hover:text-primary transition-colors", languageMeta.fontFamily)}
                       >
                         {link.name}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
