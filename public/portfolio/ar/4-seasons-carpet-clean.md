@@ -2,7 +2,7 @@
 title: "فور سيزونز كاربت كلين - محرك النمو الرقمي والسئو المحلي"
 slug: "4-seasons-carpet-clean"
 category: "السئو المحلي والتسويق الآلي"
-image: "/images/portfolio/4-seasons-carpet-clean.png"
+image: "/images/portfolio/4-seasons-carpet-clean.webp"
 description: "بناء نظام بيئي رقمي يهيمن على نتائج البحث المحلية ويعظم القيمة العمرية للعميل من خلال التسويق الآلي لعلامة تجارية رائدة في مجال التنظيف في لندن."
 client: "4 Seasons Carpet Clean"
 projectUrl: "https://4seasonscarpetclean.co.uk"

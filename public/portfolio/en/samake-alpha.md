@@ -2,7 +2,7 @@
 title: "Samake Alpha – Audiology Center Digital Transformation"
 slug: "samake-alpha"
 category: "Healthcare SEO & Web Design"
-image: "/images/portfolio/samake-alpha.png"
+image: "/images/portfolio/samake-alpha.webp"
 description: "A comprehensive digital overhaul for Alpha Hearing Aid Clinic, migrating from legacy systems to a secure, high-speed WordPress platform."
 client: "Samake Alpha Clinic"
 projectUrl: "https://www.samakealpha.com"

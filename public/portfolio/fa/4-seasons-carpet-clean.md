@@ -2,7 +2,7 @@
 title: "فور سیزنز کارپت کلین - موتور رشد دیجیتال و سئو محلی"
 slug: "4-seasons-carpet-clean"
 category: "سئو محلی و بازاریابی خودکار"
-image: "/images/portfolio/4-seasons-carpet-clean.png"
+image: "/images/portfolio/4-seasons-carpet-clean.webp"
 description: "ساخت یک اکوسیستم دیجیتال برای برند برتر نظافت در لندن که بر نتایج جستجوی محلی تسلط دارد و ارزش طول عمر مشتری را از طریق بازاریابی خودکار به حداکثر می رساند."
 client: "4 Seasons Carpet Clean"
 projectUrl: "https://4seasonscarpetclean.co.uk"

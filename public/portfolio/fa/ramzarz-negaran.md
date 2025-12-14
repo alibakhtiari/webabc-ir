@@ -2,7 +2,7 @@
 title: "رمزارز نگاران - اولین پلتفرم قانونی استخراج رمزارز"
 slug: "ramzarz-negaran"
 category: "تجارت الکترونیک و توسعه اختصاصی"
-image: "/images/portfolio/ramzarz-negaran.png"
+image: "/images/portfolio/ramzarz-negaran.webp"
 description: "مرجع تخصصی سخت‌افزار استخراج قانونی رمزارز در ایران، با ماشین‌حساب سودآوری اختصاصی و داده‌های لحظه‌ای بازار."
 client: "رمزارز نگاران"
 projectUrl: "https://ramzarznegaran.com"

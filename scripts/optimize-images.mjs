@@ -4,7 +4,10 @@ import path from 'path';
 import { glob } from 'glob';
 
 // CONFIGURATION
-const INPUT_DIR = 'public/images';
+
+// CONFIGURATION
+const INPUT_DIR = 'public'; // Root public folder
+const SRC_DIR = 'src'; // Source code folder to look for references
 const OUTPUT_JSON_PATH = 'src/generated/images-map.json';
 const WIDTHS = [640, 768, 1024, 1280, 1536, 1920];
 const QUALITY = {
@@ -12,133 +15,111 @@ const QUALITY = {
     webp: 80
 };
 
-
 async function optimizeImages() {
-    console.log('🚀 Starting image optimization...');
+    console.log('🚀 Starting image optimization & conversion...');
 
     // Ensure generated directory exists
     const jsonDir = path.dirname(OUTPUT_JSON_PATH);
     try { await fs.access(jsonDir); }
     catch { await fs.mkdir(jsonDir, { recursive: true }); }
 
-    // Find all images (jpg, png, webp)
-    const files = await glob(`${INPUT_DIR}/**/*.{jpg,jpeg,png,webp}`, { ignore: ['**/*-[0-9]*', '**/og-image.webp'] });
+    // Find all images (jpg, png, webp) in subdirectories of public
+    // We want to avoid modifying files in the root of 'public' (like favicon.ico, etc unless specified)
+    // The user said "except root".
+    const allFiles = await glob(`${INPUT_DIR}/**/*.{jpg,jpeg,png,webp}`);
 
+    // Filter out root files (files directly in 'public/') and existing numbered variations
+    const filesToProcess = allFiles.filter(file => {
+        const relativePath = path.relative(INPUT_DIR, file);
+        const isInSubDir = relativePath.includes(path.sep);
+        const isVariation = /-\d+\.(avif|webp|jpg|jpeg|png)$/.test(file);
+        return isInSubDir && !isVariation;
+    });
 
+    const replacementMap = new Map(); // oldPathString -> newPathString
     const imageMap = {};
 
-    for (const file of files) {
-        const filename = path.basename(file);
+    for (const file of filesToProcess) {
         const dir = path.dirname(file);
         const ext = path.extname(file);
-        const name = path.basename(file, ext);
+        const name = path.basename(file, ext); // filename without ext
+        const filename = path.basename(file);
 
-        // Skip already optimized files (ending in hyphen + numbers)
-        if (/-\d+$/.test(name)) continue;
+        // We only care about converting PNG/JPG/JPEG to WebP
+        if (ext === '.webp' || ext === '.avif') {
+            // If it's already webp, just ensure we map it for the JSON generation if strictly needed,
+            // But the user specifically asked to "replace... into webp".
+            // We'll skip existing WebPs for conversion, but we might need to process them for generation of other sizes if we were doing that.
+            // For this specific request "replace... into webp", we focus on non-webp.
+            continue;
+        }
 
-
-        console.log(`📸 Processing: ${filename}`);
+        console.log(`📸 Converting: ${filename} -> WebP`);
 
         const imageBuffer = await fs.readFile(file);
         const sharpInstance = sharp(imageBuffer);
         const metadata = await sharpInstance.metadata();
 
-        // 1. Generate Low Quality Image Placeholder (LQIP) - Base64
-        const placeholderBuffer = await sharpInstance
-            .clone() // Clone before mutating for placeholder
-            .resize(20) // Tiny size
-            .blur(10)   // High blur
-            .toBuffer();
-        const base64Placeholder = `data:image/${metadata.format};base64,${placeholderBuffer.toString('base64')}`;
+        const webpFilename = `${name}.webp`;
+        const webpPath = path.join(dir, webpFilename);
 
-        // 2. Generate Responsive Sizes
+        // 1. Convert to WebP (Overwrite/Create)
+        await sharpInstance
+            .clone()
+            .webp({
+                quality: QUALITY.webp,
+                effort: 4,
+                smartSubsample: true
+            })
+            .toFile(webpPath);
+
+        // 2. Map for replacement
+        // e.g. /images/portfolio/foo.png -> /images/portfolio/foo.webp
+        const relativeOld = '/' + path.relative(INPUT_DIR, file).replace(/\\/g, '/');
+        const relativeNew = '/' + path.relative(INPUT_DIR, webpPath).replace(/\\/g, '/');
+
+        replacementMap.set(relativeOld, relativeNew);
+
+        // 3. Delete original
+        await fs.unlink(file);
+        console.log(`   🗑️ Deleted original: ${filename}`);
+
+        // 4. Generate Responsive Sizes (for the NEW webp file)
+        // We act as if the loop is now processing the new webp file for the image map
+        // (Simplified: We just generate sizes from the sharp instance we already have)
+
         const variants = {
             avif: [],
             webp: [],
-            original: `/${path.relative('public', file).replace(/\\/g, '/')}`
+            original: relativeNew
         };
 
-        // Parallel processing for all sizes and formats
+        const base64Placeholder = await sharpInstance.clone().resize(20).blur(10).toBuffer()
+            .then(buf => `data:image/webp;base64,${buf.toString('base64')}`);
+
         await Promise.all(WIDTHS.map(async (width) => {
-            if (width > metadata.width) return; // Don't upscale
+            if (width > metadata.width) return;
 
             const suffix = `-${width}`;
 
-
-            // AVIF (High compression, slower generation)
+            // AVIF
             const avifName = `${name}${suffix}.avif`;
             const avifPath = path.join(dir, avifName);
-            await sharpInstance
-                .clone()
-                .resize(width)
-                .avif({
-                    quality: QUALITY.avif,
-                    effort: 4, // 0-9 (higher = smaller file, slower build)
-                    chromaSubsampling: '4:2:0' // Standard for web images
-                })
-                .toFile(avifPath);
-            variants.avif.push({
-                src: `/${path.relative('public', avifPath).replace(/\\/g, '/')}`,
-                width
-            });
+            await sharpInstance.clone().resize(width).avif({ quality: QUALITY.avif, effort: 4, chromaSubsampling: '4:2:0' }).toFile(avifPath);
+            variants.avif.push({ src: '/' + path.relative(INPUT_DIR, avifPath).replace(/\\/g, '/'), width });
 
-            // WebP (Faster generation, widely supported)
-            const webpName = `${name}${suffix}.webp`;
-            const webpPath = path.join(dir, webpName);
-            await sharpInstance
-                .clone()
-                .resize(width)
-                .webp({
-                    quality: QUALITY.webp,
-                    effort: 4, // 0-6 (higher = smaller file)
-                    smartSubsample: true
-                })
-                .toFile(webpPath);
-            variants.webp.push({
-                src: `/${path.relative('public', webpPath).replace(/\\/g, '/')}`,
-                width
-            });
+            // WebP Sized
+            const webpSizedName = `${name}${suffix}.webp`;
+            const webpSizedPath = path.join(dir, webpSizedName);
+            await sharpInstance.clone().resize(width).webp({ quality: QUALITY.webp, effort: 4, smartSubsample: true }).toFile(webpSizedPath);
+            variants.webp.push({ src: '/' + path.relative(INPUT_DIR, webpSizedPath).replace(/\\/g, '/'), width });
         }));
 
-        // 3. OPTIMIZE ORIGINAL (Overwrite source file)
-        // We already have the 'imageBuffer' in memory, so we can safely overwrite the file.
-
-        // Define optimization settings for originals
-        const originalQuality = 80;
-
-        if (metadata.format === 'jpeg' || metadata.format === 'jpg') {
-            await sharpInstance
-                .clone()
-                .jpeg({
-                    quality: originalQuality,
-                    mozjpeg: true, // Uses advanced Mozilla compression (slower but better)
-                    progressive: true // Better loading experience
-                })
-                .toFile(file); // ⚠️ Overwrites the original
-
-            console.log(`   📉 Optimized original JPEG: ${filename}`);
-        }
-        else if (metadata.format === 'png') {
-            await sharpInstance
-                .clone()
-                .png({
-                    quality: originalQuality,
-                    compressionLevel: 9, // Max compression
-                    palette: true, // Use indexed colors (huge saving for simple PNGs)
-                    effort: 10     // Max CPU effort
-                })
-                .toFile(file); // ⚠️ Overwrites the original
-
-            console.log(`   📉 Optimized original PNG: ${filename}`);
-        }
-
-        // Sort variants by width for correct srcSet generation
         variants.avif.sort((a, b) => a.width - b.width);
         variants.webp.sort((a, b) => a.width - b.width);
 
-        // Save to map using the relative path as key
-        const relativeKey = path.relative('public', file).replace(/\\/g, '/');
-        imageMap[`/${relativeKey}`] = {
+        // Remove leading slash for map key if preferred, or keep it. Previous script had leading slash.
+        imageMap[relativeNew] = {
             ...variants,
             placeholder: base64Placeholder,
             width: metadata.width,
@@ -146,9 +127,36 @@ async function optimizeImages() {
         };
     }
 
+    // UPDATE REFERENCES IN CODEBASE
+    if (replacementMap.size > 0) {
+        console.log('📝 Updating references in source code...');
+        const sourceFiles = await glob(`${SRC_DIR}/**/*.{tsx,ts,jsx,js,css,scss,md,json}`);
+        const publicFiles = await glob(`${INPUT_DIR}/**/*.md`); // Also update markdown in public if any (like portfolios)
+
+        const allCodeFiles = [...sourceFiles, ...publicFiles];
+
+        for (const filePath of allCodeFiles) {
+            let content = await fs.readFile(filePath, 'utf-8');
+            let hasChanges = false;
+
+            for (const [oldPath, newPath] of replacementMap.entries()) {
+                if (content.includes(oldPath)) {
+                    // Global replace
+                    content = content.split(oldPath).join(newPath);
+                    hasChanges = true;
+                }
+            }
+
+            if (hasChanges) {
+                await fs.writeFile(filePath, content, 'utf-8');
+                console.log(`   ✨ Updated references in: ${path.relative(process.cwd(), filePath)}`);
+            }
+        }
+    }
+
     // Write the map file
     await fs.writeFile(OUTPUT_JSON_PATH, JSON.stringify(imageMap, null, 2));
-    console.log(`✅ Done! Image map saved to ${OUTPUT_JSON_PATH}`);
+    console.log(`✅ Done! Image map saved and code updated.`);
 }
 
 optimizeImages().catch(console.error);

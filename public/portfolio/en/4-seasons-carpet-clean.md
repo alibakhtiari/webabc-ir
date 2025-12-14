@@ -2,7 +2,7 @@
 title: "4 Seasons Carpet Clean – Local SEO & Digital Growth Engine"
 slug: "4-seasons-carpet-clean"
 category: "Local SEO & Automated Marketing"
-image: "/images/portfolio/4-seasons-carpet-clean.png"
+image: "/images/portfolio/4-seasons-carpet-clean.webp"
 description: "Building a digital ecosystem that dominates local search results (Map Pack) and maximizes Customer Lifetime Value through automated marketing for a top-rated London cleaning brand."
 client: "4 Seasons Carpet Clean"
 projectUrl: "https://4seasonscarpetclean.co.uk"

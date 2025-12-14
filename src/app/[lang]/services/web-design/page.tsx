@@ -18,7 +18,7 @@ const WebDesign = () => {
             <ServicePageTemplate
                 title={t('webDesign.title')}
                 subtitle={t('webDesign.description')}
-                heroImage="/images/services/web-design.png"
+                heroImage="/images/services/web-design.webp"
             >
                 {/* Services Details */}
                 <section className="py-16 bg-white">
