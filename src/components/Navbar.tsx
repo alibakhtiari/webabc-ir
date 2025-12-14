@@ -67,8 +67,8 @@ const Navbar = () => {
           "backdrop-blur-xl bg-white/40 rounded-full px-6 py-3 shadow-lg border border-white/20",
           { "shadow-md": isScrolled }
         )}>
-          <Link href={`/${language}`} className="flex items-center space-x-2">
-            <Logo />
+          <Link href={`/${language}`} className="flex items-center space-x-2" aria-label={t('common.home') || "Home"}>
+            <Logo className="w-[140px] xs:w-[160px] sm:w-[180px] xl:w-[260px] h-auto transition-all" />
           </Link>
 
           {/* Desktop Navigation */}
