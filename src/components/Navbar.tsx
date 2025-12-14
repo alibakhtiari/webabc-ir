@@ -61,7 +61,7 @@ const Navbar = () => {
         }
       )}
     >
-      <div className="container mx-auto">
+      <div className="mx-auto max-w-7xl">
         <div className={cn(
           "flex items-center justify-between",
           "backdrop-blur-xl bg-white/40 rounded-full px-6 py-3 shadow-lg border border-white/20",
