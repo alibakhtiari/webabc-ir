@@ -6,7 +6,7 @@ image: "/images/portfolio/samak-bartar.webp"
 description: "نقل ناجح من جوملا (Joomla) إلى منصة ووردبريس (WordPress) عالية الأداء ومحسنة لمحركات البحث."
 client: "عيادة سمعك برتر للسمعيات"
 projectUrl: "https://www.samakebartar.com"
-technologies: ["WordPress", "PHP", "MySQL", "قالب مخصص", "SEO متقدم"]
+technologies: ["WordPress", "PHP", "MySQL", "Custom Theme", "Advanced SEO"]
 results:
   - label: "نقل المنصة"
     value: "Joomla ➝ WP"
