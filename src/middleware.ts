@@ -29,7 +29,7 @@ export function middleware(request: NextRequest) {
         pathname.startsWith('/images') ||
         pathname.startsWith('/fonts') ||
         pathname.startsWith('/assets') ||
-        pathname.startsWith('/blog') ||
+        pathname.startsWith('/assets') ||
         pathname === '/favicon.ico' ||
         pathname === '/sitemap.xml' ||
         pathname === '/robots.txt'
@@ -74,6 +74,6 @@ export const config = {
          * - images, fonts, assets (static assets)
          * - blog
          */
-        '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|images|fonts|assets|blog).*)',
+        '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|images|fonts|assets).*)',
     ],
 }
