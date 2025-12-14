@@ -1,0 +1,7 @@
+name = "contact-worker"
+main = "src/index.ts"
+compatibility_date = "2024-05-29"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+# RESEND_API_KEY will be set via secrets
