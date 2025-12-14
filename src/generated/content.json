@@ -1,0 +1,840 @@
+{
+  "portfolio": {
+    "ar": [
+      {
+        "title": "فور سيزونز كاربت كلين - محرك النمو الرقمي والسئو المحلي",
+        "slug": "4-seasons-carpet-clean",
+        "category": "السئو المحلي والتسويق الآلي",
+        "image": "/images/portfolio/4-seasons-carpet-clean.webp",
+        "description": "بناء نظام بيئي رقمي يهيمن على نتائج البحث المحلية ويعظم القيمة العمرية للعميل من خلال التسويق الآلي لعلامة تجارية رائدة في مجال التنظيف في لندن.",
+        "client": "4 Seasons Carpet Clean",
+        "projectUrl": "https://4seasonscarpetclean.co.uk",
+        "technologies": [
+          "WordPress",
+          "GBP Optimization",
+          "Email Automation",
+          "Schema Markup",
+          "Local SEO"
+        ],
+        "results": [
+          {
+            "label": "الرؤية المحلية",
+            "value": "أفضل ٣ خرائط"
+          },
+          {
+            "label": "السمعة",
+            "value": "+٤٠٪ مراجعات"
+          },
+          {
+            "label": "الاحتفاظ",
+            "value": "١٥٪ إعادة تنشيط"
+          },
+          {
+            "label": "السرعة (جوال)",
+            "value": "تحميل < ١ ثانية"
+          }
+        ],
+        "language": "ar",
+        "content": "\r\n## ١. نظرة عامة على المشروع\r\n\r\nفور سيزونز لتنظيف السجاد (4 Seasons Carpet Clean) ليس مجرد مزود خدمة؛ إنها علامة تجارية محلية ذات تصنيف عالٍ في سوق التنظيف شديد التنافسية في لندن. كان دوري هو بناء نظام بيئي رقمي يهيمن على نتائج البحث المحلية (Map Pack) ويعظم القيمة العمرية للعميل (LTV) من خلال التسويق الآلي.\r\n\r\n## ٢. التحدي\r\n\r\n*   **غير مرئي في البحث المحلي:** كافحت الشركة للظهور في \"Local Pack\" (أعلى ٣ خرائط جوجل) لكلمات رئيسية عالية القيمة مثل \"منظف سجاد بادينغتون\".\r\n*   **انخفاض الاحتفاظ:** بينما كانت جودة الخدمة عالية، لم يكن هناك نظام لتحويل عملاء \"إزالة البقع الطارئة\" لمرة واحدة إلى عملاء موسميين متكررين.\r\n*   **عدم اتساق البيانات:** كانت تفاصيل الاتصال غير المتسقة عبر الويب تضر بسلطة النطاق (Domain Authority).\r\n\r\n## ٣. الحل (نهجنا)\r\n\r\n### السئو التقني المحلي (استراتيجية \"حزمة الخرائط\")\r\n*   **تدقيق اتساق NAP:** قمت بتنفيذ تنظيف صارم لـ \"الاسم، العنوان، الهاتف\" (NAP) عبر جميع الأدلة الرئيسية (Yell, Yelp, Thomson Local). ضمان نقاط بيانات متطابقة عبر الويب أرسل إشارة ثقة إلى خوارزمية جوجل المحلية.\r\n*   **بناء الاستشهادات:** بناء استشهادات محلية عالية الجودة في أدلة موثوقة مقرها لندن لتعزيز سلطة النطاق دون المخاطرة بعقوبات المحتوى المزعج.\r\n*   **تحسين ملف جوجل التجاري (GMB):** تحسين ملف جوجل التجاري بالكامل بصور ذات علامات جغرافية، وقوائم خدمات، وزرع \"سؤال وجواب\" لزيادة الظهور في عمليات البحث القريبة.\r\n\r\n### نظام بيئي للتسويق متعدد القنوات\r\n*   **أتمتة التسويق عبر البريد الإلكتروني:** إعداد تدفقات \"تذكير موسمي\" آلية (مثل \"تنظيف الربيع\" أو \"تجديد ٦ أشهر\") لإعادة إشراك العملاء السابقين، وتحويل الخدمات الفردية إلى إيرادات متكررة.\r\n*   **حلقة توليد المراجعات:** تنفيذ تسلسل تلقائي للرسائل القصيرة/البريد الإلكتروني بعد الخدمة يطلب مراجعات على Trustpilot وجوجل. أدى ذلك إلى تقييم ٥ نجوم (أكثر من ٢٤٠ مراجعة) والذي يعمل الآن كدليل اجتماعي رئيسي للعلامة التجارية.\r\n*   **توطين المحتوى:** إنشاء صفحات هبوط محلية للغاية تستهدف أحياء محددة (مثل \"تنظيف المفروشات كنسينغتون\") لالتقاط حركة البحث طويلة الذيل.\r\n\r\n### تطوير يركز على التحويل\r\n*   **تكامل الثقة:** تضمين موجز مباشر لمراجعات Trustpilot/Google مباشرة في القسم الرئيسي (Hero Section)، مما يؤكد صحة العلامة التجارية للزوار الجدد على الفور.\r\n*   **السرعة والجوال:** تحقيق أوقات تحميل أقل من ثانية واحدة على الأجهزة المحمولة (حيث يحدث ٨٠٪ من عمليات البحث عن التنظيف الطارئ) من خلال تقديم تنسيقات صور الجيل التالي (WebP) للمعرض الثقيل \"قبل/بعد\".\r\n\r\n## ٤. النتائج الرئيسية\r\n\r\n*   **هيمنة حزمة الخرائط:** تحقيق الظهور في أفضل ٣ نتائج للكلمات الرئيسية الأساسية في منطقة الرمز البريدي W2 المستهدفة.\r\n*   **سرعة المراجعة:** زادت المطالبات الآلية من استيعاب المراجعات بنسبة ٤٠٪، مما عزز العلامة التجارية كخدمة مصنفة رقم ١ في المنطقة.\r\n*   **الأعمال المتكررة:** نجحت حملات البريد الإلكتروني في إعادة تنشيط ١٥٪ من قاعدة العملاء الخاملة في الربع الأول.\r\n"
+      },
+      {
+        "title": "رمز أرز نكاران - منصة تعدين العملات المشفرة القانونية الرائدة",
+        "slug": "ramzarz-negaran",
+        "category": "التجارة الإلكترونية والتطوير المخصص",
+        "image": "/images/portfolio/ramzarz-negaran.webp",
+        "description": "المركز الرائد في إيران لأجهزة تعدين العملات المشفرة القانونية، ويتميز بحاسبات ربحية مخصصة وبيانات سوق فورية.",
+        "client": "رمز أرز نكاران",
+        "projectUrl": "https://ramzarznegaran.com",
+        "technologies": [
+          "WordPress",
+          "WooCommerce",
+          "Custom JS",
+          "REST APIs",
+          "Programmatic SEO"
+        ],
+        "results": [
+          {
+            "label": "مصدر الزيارات",
+            "value": "أداة الحاسبة"
+          },
+          {
+            "label": "تصنيف البحث",
+            "value": "#١ (تعدين قانوني)"
+          },
+          {
+            "label": "تفاعل المستخدم",
+            "value": "احتفاظ عالٍ"
+          },
+          {
+            "label": "التقنية",
+            "value": "ووردبريس مخصص"
+          }
+        ],
+        "language": "ar",
+        "content": "\r\n## ١. نظرة عامة على المشروع\r\n\r\nرمز أرز نكاران (Ramzarz Negaran) ليس مجرد متجر للتجارة الإلكترونية؛ إنه المحور الرائد في إيران لأجهزة تعدين العملات المشفرة **القانونية**. تطلب المشروع منصة قوية تجمع بين حجم كبير من التجارة الإلكترونية، وأدوات بيانات معقدة في الوقت الفعلي، وحجز الخدمات (الإصلاح/الاستضافة)، كل ذلك مع بناء ثقة هائلة في سوق متقلب.\r\n\r\n## ٢. التحدي\r\n\r\n*   **نقص الثقة:** سوق العملات المشفرة مليء بالاحتيال. كان الموقع بحاجة إلى إيصال الشرعية فورًا (تراخيص، موقع فعلي).\r\n*   **تعقيد البيانات:** احتاج المستخدمون إلى حساب عائد الاستثمار (ROI) بناءً على أسعار العملات المتقلبة وتعريفات الكهرباء المحددة (صناعية مقابل منزلية).\r\n*   **إدارة المخزون:** التعامل مع كتالوج متنوع من ASICs، ومنصات GPU، وقطع الغيار بمستويات مخزون متفاوتة.\r\n\r\n## ٣. الحل (نهجنا)\r\n\r\n### تطوير أدوات مساعدة متقدمة\r\n*   **حاسبة ربحية مخصصة:** هندسة \"حاسبة تعدين\" في الوقت الفعلي تسحب صعوبة الشبكة وأسعار العملات مباشرة. يمكن للمستخدمين التبديل بين أسعار الكهرباء (مثل الصناعية، التصدير) لرؤية صافي الربح الدقيق - وهي ميزة حاسمة للتحويل.\r\n*   **بيانات السوق الحية:** دمج واجهات برمجة تطبيقات (APIs) خارجية لعرض أسعار صرف BTC و ETH و USDT في الوقت الفعلي، مما يبقي المستخدمين في الموقع لفترة أطول.\r\n\r\n### السئو التقني والبنية\r\n*   **السئو البرمجي:** هيكلة صفحات \"الحاسبة\" و \"السعر\" لالتقاط حركة مرور معلوماتية عالية الحجم وتوجيهها إلى صفحات المنتج.\r\n*   **تطبيق Schema Markup:** تطبيق `Product` و `FAQ` schema لضمان نتائج غنية في جوجل، مع إبراز السعر والتوافر مباشرة في نتائج البحث.\r\n*   **تحسين السرعة:** تنفيذ التحميل الكسول (Lazy Loading) لشبكات المنتجات الثقيلة وتحسين الأصول لضمان تحميل الحاسبة الغنية بالبيانات فورًا على الجوال.\r\n\r\n### تصميم تجربة مستخدم يركز على الثقة\r\n*   **إشارات المصداقية:** وضع استراتيجي لتراخيص \"وزارة الصناعة\" وشارات \"إينماد\" (Enamad) لتقليل قلق الشراء.\r\n*   **تكامل الخدمات:** بناء تدفق سلس لحجز \"إصلاحات التعدين\" و \"خدمات الاستضافة\"، مما يحول المشترين لمرة واحدة إلى عملاء خدمة متكررين.\r\n\r\n## ٤. النتائج الرئيسية\r\n\r\n*   **جذب الزيارات:** أصبحت صفحة \"حاسبة التعدين\" نقطة دخول رئيسية، مما قلل بشكل كبير من تكلفة اكتساب العملاء (CAC).\r\n*   **الحالة المرجعية:** يسيطر الموقع الآن على نتائج البحث المحلية لكلمات رئيسية مثل \"تعدين قانوني\" و \"إصلاح التعدين\".\r\n*   **الاحتفاظ بالمستخدمين:** زادت الأدوات في الوقت الفعلي من متوسط مدة الجلسة من خلال إشراك المستخدمين بالبيانات الحية.\r\n"
+      },
+      {
+        "title": "التحول الرقمي لعيادة سماك ألفا",
+        "slug": "samake-alpha",
+        "category": "تحسين محركات البحث الطبي وتصميم الويب",
+        "image": "/images/portfolio/samake-alpha.webp",
+        "description": "تجديد رقمي شامل لعيادة ألفا للمعينات السمعية، والانتقال من الأنظمة القديمة إلى منصة ووردبريس آمنة وعالية السرعة.",
+        "client": "عيادة سماك ألفا",
+        "projectUrl": "https://www.samakealpha.com",
+        "technologies": [
+          "WordPress",
+          "PHP 8.4",
+          "Local SEO",
+          "UX Design",
+          "Migration"
+        ],
+        "results": [
+          {
+            "label": "الأمان",
+            "value": "آمن ١٠٠٪"
+          },
+          {
+            "label": "الأداء",
+            "value": "٩٥+ (ممتاز)"
+          },
+          {
+            "label": "سئو محلي",
+            "value": "رقم ١ في جوردان"
+          },
+          {
+            "label": "تجربة الجوال",
+            "value": "محسنة"
+          }
+        ],
+        "language": "ar",
+        "content": "\r\n## ١. التحدي: الأنظمة القديمة والوصول المحدود\r\n\r\nكانت سماك ألفا تعمل على بنية تحتية قديمة للويب تشكل مخاطر أمنية وتفشل في جذب السوق المتنامي عبر الهاتف المحمول. وشملت المشاكل:\r\n\r\n*   **التهديدات الأمنية:** الاعتماد على إصدارات PHP القديمة عرض بيانات المرضى للخطر.\r\n*   **ضعف الظهور المحلي:** على الرغم من كونها عيادة رائدة في جوردان (طهران)، لم يكن الموقع يظهر في نتائج البحث المهمة بسبب ضعف السئو التقني.\r\n*   **بطء التصفح عبر الجوال:** واجه المرضى صعوبة في حجز المواعيد بسبب بطء التحميل والتصميم غير المتجاوب.\r\n\r\n## ٢. الحل: حديث، آمن، وسريع\r\n\r\nقمنا بإجراء ترحيل كامل للمنصة وإعادة تصميم شاملة.\r\n\r\n*   **تحديث المنصة:** الانتقال إلى نظام ووردبريس قوي يعمل بـ PHP 8.4 لضمان أقصى سرعة وأمان.\r\n*   **تصميم للجوال أولاً:** تنفيذ استراتيجية استجابة تضمن عمل الموقع بشكل مثالي على جميع الأجهزة.\r\n*   **تكامل الحجز:** تبسيط رحلة المستخدم لحجز تقييمات السمع والاستشارات.\r\n\r\n## ٣. السئو والسيطرة المحلية\r\n\r\nلضمان ريادة سماك ألفا في السوق:\r\n\r\n*   **استراتيجية السئو المحلي:** تحسين ملف جوجل للأعمال لضمان الظهور في عمليات البحث عن \"عيادة سمعيات\".\r\n*   **هيكلة المحتوى:** إعادة هيكلة صفحات الخدمات لمساعدة المرضى في العثور على المعلومات بسهولة.\r\n*   **التحسين التقني:** تحقيق درجات ممتازة في مؤشرات أداء الويب الأساسية (Core Web Vitals).\r\n\r\n## ٤. تحسين معدل التحويل (CRO)\r\n\r\nركزنا على تحويل الزوار إلى مرضى.\r\n\r\n*   **إشارات الثقة:** عرض مؤهلات أخصائيي السمعيات (إحسان علي بور، سارة باقري) لبناء الثقة.\r\n*   **دعوات واضحة للعمل:** وضع أزرار \"حجز موعد\" بشكل استراتيجي.\r\n\r\n## ٥. النتائج\r\n\r\n*   **الأمان:** تم التحديث بالكامل إلى معيار PHP 8.4.\r\n*   **الأداء:** درجات ثابتة تتجاوز ٩٠ في اختبارات الأداء.\r\n*   **النمو:** زيادة كبيرة في الزيارات العضوية والمواعيد عبر الإنترنت.\r\n"
+      },
+      {
+        "title": "تحديث وترحيل موقع عيادة سمعك برتر",
+        "slug": "samake-bartar",
+        "category": "تطوير الويب وتحسين محركات البحث",
+        "image": "/images/portfolio/samak-bartar.webp",
+        "description": "نقل ناجح من جوملا (Joomla) إلى منصة ووردبريس (WordPress) عالية الأداء ومحسنة لمحركات البحث.",
+        "client": "عيادة سمعك برتر للسمعيات",
+        "projectUrl": "https://www.samakebartar.com",
+        "technologies": [
+          "WordPress",
+          "PHP",
+          "MySQL",
+          "Custom Theme",
+          "Advanced SEO"
+        ],
+        "results": [
+          {
+            "label": "نقل المنصة",
+            "value": "Joomla ➝ WP"
+          },
+          {
+            "label": "سرعة الصفحة",
+            "value": "98/100"
+          },
+          {
+            "label": "أخطاء SEO",
+            "value": "0 (تم الحل)"
+          },
+          {
+            "label": "زيارات الجوال",
+            "value": "+300%"
+          }
+        ],
+        "language": "ar",
+        "content": "\r\nنفذنا تحولاً رقمياً شاملاً لعيادة سمعك برتر من خلال نقل موقعهم القديم المبني على جوملا إلى حل ووردبريس مخصص ومحسن للغاية. كان النظام السابق يعاني من بطء التحميل ومشاكل \"إعادة التوجيه اللانهائي\" التي أضرت بترتيب الموقع في البحث. قام فريقنا بتطوير قالب خفيف الوزن، وتنظيف قاعدة البيانات، وتنفيذ استراتيجية SEO طبية قوية. النتيجة هي موقع سريع وسهل الاستخدام استعاد ظهوره الطبيعي في البحث ويوفر تجربة ممتازة للمرضى.\r\n"
+      },
+      {
+        "title": "زيتون مسعود - التحول الرقمي للزراعة التقليدية",
+        "slug": "zeytoun-masoud",
+        "category": "التجارة الإلكترونية واللوجستيات",
+        "image": "/images/portfolio/zeytoun-masoud.webp",
+        "description": "تحويل منتج زيتون تقليدي إلى علامة تجارية للتجارة الإلكترونية ذات حجم مبيعات مرتفع مع أنظمة B2B/B2C هجينة ومنطق لوجستي ديناميكي.",
+        "client": "زيتون مسعود",
+        "projectUrl": "https://zeytounmasoud.ir",
+        "technologies": [
+          "WordPress",
+          "WooCommerce",
+          "Custom Shipping Plugin",
+          "SMS API",
+          "SEO Schema"
+        ],
+        "results": [
+          {
+            "label": "الوصول",
+            "value": "تغطية وطنية"
+          },
+          {
+            "label": "عملاء الجملة",
+            "value": "+٥٠ مطعم"
+          },
+          {
+            "label": "الزيارات",
+            "value": "رقم ١ محتوى تعليمي"
+          },
+          {
+            "label": "اللوجستيات",
+            "value": "تسعير ديناميكي"
+          }
+        ],
+        "language": "ar",
+        "content": "\r\n## ١. نظرة عامة على المشروع\r\n\r\nزيتون مسعود هو منتج رائد لمنتجات الزيتون العضوي ومقره في رودبار، عاصمة الزيتون في المنطقة. كان الهدف هو تحويل مشروع تجاري تقليدي ناجح إلى علامة تجارية للتجارة الإلكترونية ذات حجم مبيعات مرتفع تخدم كلاً من عملاء التجزئة ومشترين الجملة B2B (الفنادق والمطاعم).\r\n\r\n## ٢. التحدي\r\n\r\n*   **القيود الإقليمية:** كان العمل مقتصرًا على حركة السير في رودبار. كانوا بحاجة للوصول إلى جمهور وطني دون فقدان صوت العلامة التجارية \"التقليدي/الأصيل\".\r\n*   **تعقيد اللوجستيات:** يتطلب بيع المنتجات الغذائية الثقيلة والسائلة (الزيوت، المخللات) منطق شحن متخصص لمنع الكسر وحساب تكاليف التوصيل الدقيقة.\r\n*   **حاجز الثقة:** غالبًا ما يتردد المستخدمون في شراء المنتجات الغذائية عبر الإنترنت. احتاج الموقع إلى نقل نضارة المنتج والشهادة العضوية فورًا.\r\n\r\n## ٣. الحل (نهجنا)\r\n\r\n### بنية التجارة الإلكترونية\r\n*   **نظام B2B/B2C الهجين:** تطوير بنية تحتية مزدوجة للتسعير. يرى عملاء التجزئة الأسعار القياسية، بينما يصل أصحاب المطاعم المعتمدون إلى \"بوابة الجملة\" مع خصومات كبيرة وفواتير معفاة من الضرائب.\r\n*   **حاسبة الشحن الديناميكية:** دمج خوارزمية شحن مخصصة تحسب التكاليف بناءً على طبقات الوزن (أمر حيوي لعلب زيت الزيتون الثقيلة) والمسافة، مما يمنع خسارة الأرباح في اللوجستيات.\r\n\r\n### استراتيجية السئو والمحتوى\r\n*   **السيطرة على المجال المتخصص:** استهداف الكلمات الرئيسية ذات النية العالية مثل \"زيتون رودبار الأصلي\" و \"زيت زيتون معصور على البارد\".\r\n*   **مركز المحتوى التعليمي:** بناء قسم \"مدونة\" يثقف المستخدمين حول تحديد زيت الزيتون النقي (مثل \"هل يتجمد زيت الزيتون؟\"). التقط هذا حركة المرور المعلوماتية ووضع العلامة التجارية كسلطة صادقة، مما زاد معدلات التحويل مباشرة.\r\n\r\n### تسويق الثقة والاحتفاظ\r\n*   **تكامل الدليل الاجتماعي:** عرض شارات الثقة \"إينماد\" (Enamad) و \"ساماندهي\" (Samandehi) بشكل بارز في التذييل وعند الدفع لتقليل الاحتكاك.\r\n*   **أتمتة الرسائل القصيرة:** تنفيذ نظام الرسائل القصيرة للمعاملات لإشعار العملاء بحالة الطلب، وهو أمر بالغ الأهمية لبناء الثقة في السوق المحلي.\r\n\r\n## ٤. النتائج الرئيسية\r\n\r\n*   **الوصول الوطني:** توسعت المبيعات من مدينة واحدة إلى تغطية وطنية في غضون ٦ أشهر.\r\n*   **نمو الجملة:** ضمت بوابة B2B المخصصة أكثر من ٥٠ عميل مطعم كبير، مما خلق تدفق إيرادات متكرر ومستمر.\r\n*   **الزيارات العضوية:** تحتل منشورات المدونة التعليمية الآن المرتبة الأولى لأسئلة الصناعة الرئيسية، مما يؤدي إلى زيارات مجانية وعالية الجودة يوميًا.\r\n"
+      }
+    ],
+    "en": [
+      {
+        "title": "4 Seasons Carpet Clean – Local SEO & Digital Growth Engine",
+        "slug": "4-seasons-carpet-clean",
+        "category": "Local SEO & Automated Marketing",
+        "image": "/images/portfolio/4-seasons-carpet-clean.webp",
+        "description": "Building a digital ecosystem that dominates local search results (Map Pack) and maximizes Customer Lifetime Value through automated marketing for a top-rated London cleaning brand.",
+        "client": "4 Seasons Carpet Clean",
+        "projectUrl": "https://4seasonscarpetclean.co.uk",
+        "technologies": [
+          "WordPress",
+          "GBP Optimization",
+          "Email Automation",
+          "Schema Markup",
+          "Local SEO"
+        ],
+        "results": [
+          {
+            "label": "Local Visibility",
+            "value": "Map Pack Top 3"
+          },
+          {
+            "label": "Reputation",
+            "value": "+40% Reviews"
+          },
+          {
+            "label": "Retention",
+            "value": "15% Reactivation"
+          },
+          {
+            "label": "Speed (Mobile)",
+            "value": "<1s Load Time"
+          }
+        ],
+        "language": "en",
+        "content": "\r\n## 1. Project Overview\r\n\r\n4 Seasons Carpet Clean isn't just a service provider; it's a top-rated local brand in London's hyper-competitive cleaning market. My role was to build a digital ecosystem that dominates local search results (Map Pack) and maximizes Customer Lifetime Value (LTV) through automated marketing.\r\n\r\n## 2. The Challenge\r\n\r\n*   **Invisible in Local Search:** The business struggled to appear in the \"Local Pack\" (Google Maps top 3) for high-value keywords like \"Carpet Cleaner Paddington.\"\r\n*   **Low Retention:** While service quality was high, there was no system to turn one-time \"emergency stain removal\" clients into recurring seasonal customers.\r\n*   **Data Inconsistency:** Inconsistent contact details across the web were hurting domain authority.\r\n\r\n## 3. The Solution\r\n\r\n### Technical Local SEO (The \"Map Pack\" Strategy)\r\n*   **NAP Consistency Audit:** I executed a strict \"Name, Address, Phone\" (NAP) cleanup across all major directories (Yell, Yelp, Thomson Local). Ensuring identical data points across the web signaled trust to Google's local algorithm.\r\n*   **Citation Building:** Built high-quality local citations on authoritative London-based directories to boost domain authority without risking spam penalties.\r\n*   **GMB Optimization:** Fully optimized the Google Business Profile with geo-tagged images, service menus, and \"Q&A\" seeding to increase visibility in local proximity searches.\r\n\r\n### Omnichannel Marketing Ecosystem\r\n*   **Email Marketing Automation:** Set up automated \"Seasonal Reminder\" flows (e.g., \"Spring Cleaning\" or \"6-Month Refresh\") to re-engage past customers, turning single services into recurring revenue.\r\n*   **Review Generation Loop:** Implemented an automated SMS/Email post-service sequence that requests reviews on Trustpilot and Google. This fueled the 240+ 5-star rating that now serves as the brand's main social proof.\r\n*   **Content Localization:** Created hyper-local landing pages targeting specific boroughs (e.g., \"Upholstery Cleaning Kensington\") to capture long-tail search traffic.\r\n\r\n### Conversion-Focused Development\r\n*   **Trust Integration:** Embedded a live API feed of Trustpilot/Google reviews directly onto the hero section, instantly validating the brand to new visitors.\r\n*   **Speed & Mobile:** Achieved <1s load times on mobile devices (where 80% of emergency cleaning searches happen) by serving next-gen image formats (WebP) for the heavy \"Before/After\" gallery.\r\n\r\n## 4. Key Results\r\n\r\n*   **Map Pack Domination:** Achieved top 3 visibility for core keywords in the target W2 postcode area.\r\n*   **Review Velocity:** Automated prompts increased review intake by 40%, cementing the brand as the #1 rated service in the area.\r\n*   **Repeat Business:** Email campaigns successfully reactivated 15% of the dormant customer base in the first quarter.\r\n"
+      },
+      {
+        "title": "Ramzarz Negaran – Premier Legal Crypto Mining Platform",
+        "slug": "ramzarz-negaran",
+        "category": "E-commerce & Custom Development",
+        "image": "/images/portfolio/ramzarz-negaran.webp",
+        "description": "Iran's leading hub for legal cryptocurrency mining hardware, featuring custom profitability calculators and real-time market data.",
+        "client": "Ramzarz Negaran",
+        "projectUrl": "https://ramzarznegaran.com",
+        "technologies": [
+          "WordPress",
+          "WooCommerce",
+          "Custom JS",
+          "REST APIs",
+          "Programmatic SEO"
+        ],
+        "results": [
+          {
+            "label": "Traffic Source",
+            "value": "Calculator Tool"
+          },
+          {
+            "label": "SERP Rank",
+            "value": "#1 (Legal Miner)"
+          },
+          {
+            "label": "Engagement",
+            "value": "High Retention"
+          },
+          {
+            "label": "Tech Stack",
+            "value": "Custom WP"
+          }
+        ],
+        "language": "en",
+        "content": "\r\n## 1. Project Overview\r\n\r\nRamzarz Negaran is not just an e-commerce store; it is Iran's leading hub for **legal** cryptocurrency mining hardware. The project required a robust platform that combines high-volume e-commerce, complex real-time data tools, and service booking (repairs/hosting), all while establishing immense trust in a volatile market.\r\n\r\n## 2. The Challenge\r\n\r\n*   **Trust Deficit:** The crypto market is plagued by scams. The site needed to immediately communicate legitimacy (Licenses, Physical Location).\r\n*   **Data Complexity:** Users needed to calculate ROI (Return on Investment) based on fluctuating coin prices and specific electricity tariffs (Industrial vs. Household).\r\n*   **Inventory Management:** Handling a diverse catalog of ASICs, GPU rigs, and spare parts with varying stock levels.\r\n\r\n## 3. The Solution\r\n\r\n### Advanced Utility Development\r\n*   **Custom Profitability Calculator:** Engineered a real-time \"Mining Calculator\" that pulls live network difficulty and coin prices. Users can toggle between electricity rates (e.g., Industrial, Export) to see exact net profit—a critical feature for conversion.\r\n*   **Live Market Data:** Integrated external APIs to display real-time exchange rates for BTC, ETH, and USDT, keeping users on the site longer.\r\n\r\n### Technical SEO & Architecture\r\n*   **Programmatic SEO:** Structured the \"Calculator\" and \"Price\" pages to capture high-volume informational traffic and funnel it to product pages.\r\n*   **Schema Markup Implementation:** Applied `Product` and `FAQ` schema to ensure rich results in Google, highlighting price and availability directly in SERPs.\r\n*   **Speed Optimization:** Implemented lazy loading for heavy product grids and optimized assets to ensure the data-heavy calculator loads instantly on mobile.\r\n\r\n### Trust-Centric UX Design\r\n*   **Credibility Signals:** Strategically placed \"Ministry of Industry\" licenses and \"Enamad\" badges to reduce purchase anxiety.\r\n*   **Service Integration:** Built a seamless flow for booking \"Miner Repairs\" and \"Hosting Services,\" turning one-time buyers into recurring service clients.\r\n\r\n## 4. Key Results\r\n\r\n*   **Traffic Magnet:** The \"Miner Calculator\" page became a top entry point, significantly lowering Customer Acquisition Cost (CAC).\r\n*   **Authority Status:** The site now dominates local SERPs for keywords like \"Legal Miner\" and \"Miner Repair.\"\r\n*   **User Retention:** Real-time tools increased average session duration by keeping users engaged with live data.\r\n"
+      },
+      {
+        "title": "Samake Alpha – Audiology Center Digital Transformation",
+        "slug": "samake-alpha",
+        "category": "Healthcare SEO & Web Design",
+        "image": "/images/portfolio/samake-alpha.webp",
+        "description": "A comprehensive digital overhaul for Alpha Hearing Aid Clinic, migrating from legacy systems to a secure, high-speed WordPress platform.",
+        "client": "Samake Alpha Clinic",
+        "projectUrl": "https://www.samakealpha.com",
+        "technologies": [
+          "WordPress",
+          "PHP 8.4",
+          "Local SEO",
+          "UX Design",
+          "Migration"
+        ],
+        "results": [
+          {
+            "label": "Security",
+            "value": "100% Secure"
+          },
+          {
+            "label": "Performance",
+            "value": "95+ (Green)"
+          },
+          {
+            "label": "Local SEO",
+            "value": "#1 in Jordan"
+          },
+          {
+            "label": "Mobile Exp",
+            "value": "Optimized"
+          }
+        ],
+        "language": "en",
+        "content": "\r\n## 1. The Challenge: Legacy Systems & Limited Reach\r\n\r\nSamake Alpha (Alpha Hearing Aid Clinic) was operating on an outdated web infrastructure that posed security risks and failed to capture the growing mobile market for audiology services. Issues included:\r\n\r\n*   **Security Vulnerabilities:** Reliance on deprecated PHP versions exposed patient data entry points to potential threats.\r\n*   **Poor Local Visibility:** Despite being a top clinic in Jordan (Tehran), the site wasn't ranking for key \"near me\" search terms due to poor technical SEO.\r\n*   **Slow Mobile Experience:** Potential patients trying to book appointments on mobile devices faced slow load times and a non-responsive layout.\r\n\r\n## 2. The Solution: Modern, Secure, & Fast\r\n\r\nWe undertook a complete platform migration and design overhaul.\r\n\r\n*   **Platform Modernization:** Migrated the site to a robust WordPress ecosystem running on PHP 8.4 for maximum speed and security.\r\n*   **Mobile-First Design:** Implemented a new responsiveness strategy ensuring the site looks and works perfectly on all devices, from phones to desktops.\r\n*   **Appointment Integration:** Streamlined the user journey for booking hearing assessments and consultations.\r\n\r\n## 3. SEO & Local Dominance\r\n\r\nTo ensure Samake Alpha leads the market:\r\n\r\n*   **Local SEO Strategy:** Optimized Google Business Profile and on-page signals to dominate \"Hearing Aid Clinic in Jordan\" searches.\r\n*   **Content Architecture:** Restructured service pages for clarity, helping patients easy find information about hearing tests, tinnitus, and hearing aid fittings.\r\n*   **Technical Optimization:** Achieved top-tier Core Web Vitals scores.\r\n\r\n## 4. CRO (Conversion Rate Optimization)\r\n\r\nWe focused on turning visitors into patients.\r\n\r\n*   **Trust Signals:** Prominently measured and displayed credentials of Audiologists (Ehsan Alipour, Sara Bagheri) to build immediate trust.\r\n*   **Clear CTAs:** \"Book Appointment\" buttons were placed strategically to capture user intent at peak moments.\r\n\r\n## 5. The Results\r\n\r\n*   **Security:** Fully patched and migrated to PHP 8.4.\r\n*   **Performance:** Consistently scores 90+ on mobile/desktop performance tests.\r\n*   **Growth:** Significant increase in organic traffic and online appointments.\r\n"
+      },
+      {
+        "title": "Samakebartar.com – Modernization & SEO Turnaround",
+        "slug": "samake-bartar",
+        "category": "CMS Migration & SEO",
+        "image": "/images/portfolio/samak-bartar.webp",
+        "description": "Successful migration from legacy Joomla to PHP 8.4 WordPress, resolving keyword cannibalization and security debts.",
+        "client": "Samakebartar",
+        "projectUrl": "https://www.samakebartar.com",
+        "technologies": [
+          "WordPress",
+          "PHP 8.4",
+          "Technical SEO",
+          "CRO",
+          "Migration"
+        ],
+        "results": [
+          {
+            "label": "Security",
+            "value": "100% Remediation"
+          },
+          {
+            "label": "Performance",
+            "value": "95+ (Green)"
+          },
+          {
+            "label": "Traffic Quality",
+            "value": "Improved"
+          },
+          {
+            "label": "Tech Stack",
+            "value": "PHP 8.4"
+          }
+        ],
+        "language": "en",
+        "content": "\r\n## 1. The Challenge: Technical Debt & Stagnant Growth\r\n\r\nSamakebartar.com was running on a legacy Joomla architecture powered by an end-of-life version of PHP (7.x), creating significant security vulnerabilities. Beyond the security risks, the site was suffering from \"invisible\" SEO issues:\r\n\r\n*   **Keyword Cannibalization:** Multiple pages were competing for the same search terms, confusing Google and diluting ranking power.\r\n*   **Poor Performance:** Outdated code led to slow load times and low Core Web Vitals scores.\r\n*   **Low Engagement:** The UX was outdated, resulting in a low Click-Through Rate (CTR) and poor conversion.\r\n\r\n## 2. The Solution: Security-First Migration\r\n\r\nWe executed a full-scale migration from Joomla to a modern WordPress environment.\r\n\r\n*   **Infrastructure Upgrade:** Moved from vulnerable PHP 7 to the bleeding-edge PHP 8.4, ensuring maximum security, speed, and future-proofing.\r\n*   **Data Integrity:** Migrated thousands of database entries (content, users, media) with zero data loss.\r\n*   **Hardened Security:** Eliminated legacy vulnerabilities inherent in the old Joomla installation.\r\n\r\n## 3. SEO & Performance Overhaul\r\n\r\nMigration was just the first step. We rebuilt the site's engine to rank higher and convert better.\r\n\r\n*   **Fixed Keyword Cannibalization:** Audited the content map and consolidated competing pages. We set up proper 301 redirects to merge authority, clarifying the site structure for search engines.\r\n*   **PageSpeed Optimization:** Achieved \"Green\" scores on Google PageSpeed Insights by implementing modern caching, image compression, and minifying the new PHP 8.4 compatible code.\r\n*   **CTR Improvement:** Rewrote meta titles and descriptions to target user intent, resulting in higher visibility in SERPs (Search Engine Results Pages).\r\n\r\n## 4. CRO (Conversion Rate Optimization)\r\n\r\nTraffic is vanity; conversion is sanity. We redesigned key landing pages to focus on user action.\r\n\r\n*   **Simplified User Journeys:** Reduced the number of clicks required to convert.\r\n*   **Clear Call-to-Actions (CTAs):** Placed strategically based on heat map data.\r\n\r\n## 5. The Results\r\n\r\n*   **Security:** 100% remediation of PHP 7 vulnerabilities.\r\n*   **Performance:** PageSpeed score increased to 95+.\r\n*   **Growth:** Organic traffic quality improved by resolving cannibalization issues.\r\n*   **Tech:** Fully upgraded to PHP 8.4 standard.\r\n"
+      },
+      {
+        "title": "Zeytoun Masoud – Digital Transformation for Traditional Agriculture",
+        "slug": "zeytoun-masoud",
+        "category": "E-commerce & Logistics",
+        "image": "/images/portfolio/zeytoun-masoud.webp",
+        "description": "Transforming a traditional brick-and-mortar olive producer into a high-volume e-commerce brand with hybrid B2B/B2C systems and dynamic logistics logic.",
+        "client": "Zeytoun Masoud",
+        "projectUrl": "https://zeytounmasoud.ir",
+        "technologies": [
+          "WordPress",
+          "WooCommerce",
+          "Custom Shipping Plugin",
+          "SMS API",
+          "SEO Schema"
+        ],
+        "results": [
+          {
+            "label": "Reach",
+            "value": "National Coverage"
+          },
+          {
+            "label": "B2B Clients",
+            "value": "50+ Restaurants"
+          },
+          {
+            "label": "Traffic",
+            "value": "#1 Educational Posts"
+          },
+          {
+            "label": "Logistics",
+            "value": "Dynamic Pricing"
+          }
+        ],
+        "language": "en",
+        "content": "\r\n## 1. Project Overview\r\n\r\nZeytoun Masoud is a premier producer of organic olive products based in Rudbar, the olive capital of the region. The goal was to transform a successful traditional brick-and-mortar business into a high-volume e-commerce brand that serves both retail customers and B2B wholesale buyers (hotels, restaurants).\r\n\r\n## 2. The Challenge\r\n\r\n*   **Regional Limitations:** The business was limited to foot traffic in Rudbar. They needed to reach a national audience without losing the \"traditional/authentic\" brand voice.\r\n*   **Logistics Complexity:** Selling heavy, liquid-based food products (oils, pickles) requires specialized shipping logic to prevent breakage and calculate accurate delivery costs.\r\n*   **Trust Barrier:** Users are often hesitant to buy food products online. The site needed to convey freshness and organic certification immediately.\r\n\r\n## 3. The Solution\r\n\r\n### E-commerce Architecture\r\n*   **Hybrid B2B/B2C System:** Developed a dual-pricing infrastructure. Retail customers see standard pricing, while verified restaurant owners access a \"Wholesale Portal\" with bulk discounts and tax-exempt invoices.\r\n*   **Dynamic Shipping Calculator:** Integrated a custom shipping algorithm that calculates costs based on weight tiers (vital for heavy olive oil tins) and distance, preventing profit loss on logistics.\r\n\r\n### SEO & Content Strategy\r\n*   **Niche Domination:** Targeted high-intent keywords like \"Original Rudbar Olive\" and \"Cold Pressed Olive Oil.\"\r\n*   **Educational Content Hub:** Built a \"Blog\" section that educates users on identifying pure olive oil (e.g., \"Does Olive Oil Freeze?\"). This captured informational traffic and positioned the brand as an honest authority, directly increasing conversion rates.\r\n\r\n### Trust & Retention Marketing\r\n*   **Social Proof Integration:** Displayed \"Enamad\" and \"Samandehi\" trust badges prominently in the footer and checkout to reduce friction.\r\n*   **SMS Automation:** Implemented a transactional SMS system (via KavehNegar/IPPanel) to notify customers of order status, which is crucial for building trust in the local market.\r\n\r\n## 4. Key Results\r\n\r\n*   **National Reach:** Sales expanded from a single city to nationwide coverage within 6 months.\r\n*   **Wholesale Growth:** The dedicated B2B portal onboarded 50+ major restaurant clients, creating a consistent recurring revenue stream.\r\n*   **Organic Traffic:** Educational blog posts now rank #1 for key industry questions, driving free, high-quality traffic daily.\r\n"
+      }
+    ],
+    "fa": [
+      {
+        "title": "فور سیزنز کارپت کلین - موتور رشد دیجیتال و سئو محلی",
+        "slug": "4-seasons-carpet-clean",
+        "category": "سئو محلی و بازاریابی خودکار",
+        "image": "/images/portfolio/4-seasons-carpet-clean.webp",
+        "description": "ساخت یک اکوسیستم دیجیتال برای برند برتر نظافت در لندن که بر نتایج جستجوی محلی تسلط دارد و ارزش طول عمر مشتری را از طریق بازاریابی خودکار به حداکثر می رساند.",
+        "client": "4 Seasons Carpet Clean",
+        "projectUrl": "https://4seasonscarpetclean.co.uk",
+        "technologies": [
+          "WordPress",
+          "GBP Optimization",
+          "Email Automation",
+          "Schema Markup",
+          "Local SEO"
+        ],
+        "results": [
+          {
+            "label": "دیده شدن محلی",
+            "value": "۳ لینک برتر نقشه"
+          },
+          {
+            "label": "شهرت",
+            "value": "+۴۰٪ نظرات"
+          },
+          {
+            "label": "حفظ مشتری",
+            "value": "۱۵٪ فعال‌سازی مجدد"
+          },
+          {
+            "label": "سرعت (موبایل)",
+            "value": "زمان لود < ۱ ثانیه"
+          }
+        ],
+        "language": "fa",
+        "content": "\r\n## ۱. نمای کلی پروژه\r\n\r\nفور سیزنز کارپت کلین (4 Seasons Carpet Clean) فقط یک ارائه‌دهنده خدمات نیست؛ بلکه یک برند محلی برتر در بازار فوق‌رقابتی نظافت لندن است. نقش من ساخت یک اکوسیستم دیجیتال بود که بر نتایج جستجوی محلی (Google Map Pack) تسلط داشته باشد و ارزش طول عمر مشتری (LTV) را از طریق بازاریابی خودکار به حداکثر برساند.\r\n\r\n## ۲. چالش‌ها\r\n\r\n*   **نامرئی بودن در جستجوی محلی:** این کسب‌وکار برای ظاهر شدن در \"Local Pack\" (۳ نتیجه اول نقشه‌های گوگل) برای کلمات کلیدی باارزشی مانند \"قالیشویی پدینگتون\" مشکل داشت.\r\n*   **نرخ حفظ پایین:** با وجود کیفیت بالای خدمات، هیچ سیستمی برای تبدیل مشتریان یک‌بار مصرف \"لکه برداری اضطراری\" به مشتریان فصلی تکرارشونده وجود نداشت.\r\n*   **ناهماهنگی داده‌ها:** اطلاعات تماس ناهماهنگ در سراسر وب به اعتبار دامنه آسیب می‌زد.\r\n\r\n## ۳. راهکار (رویکرد ما)\r\n\r\n### سئو فنی محلی (استراتژی \"پک نقشه\")\r\n*   **ممیزی هماهنگی NAP:** من یک پاکسازی دقیق \"نام، آدرس، تلفن\" (NAP) را در تمام دایرکتوری‌های اصلی (Yell, Yelp, Thomson Local) اجرا کردم. اطمینان از نقاط داده یکسان در سراسر وب، سیگنال اعتماد را به الگوریتم محلی گوگل ارسال کرد.\r\n*   **سایتیشن سازی (Citation Building):** ایجاد استنادات محلی با کیفیت بالا در دایرکتوری‌های معتبر مستقر در لندن برای افزایش اعتبار دامنه بدون ریسک جریمه‌های اسپم.\r\n*   **بهینه‌سازی پروفایل گوگل (GMB):** بهینه‌سازی کامل پروفایل کسب‌وکار گوگل با تصاویر دارای برچسب جغرافیایی، منوهای خدمات و کاشت \"پرسش و پاسخ\" برای افزایش دیده شدن در جستجوهای نزدیک.\r\n\r\n### اکوسیستم بازاریابی همه‌کاناله\r\n*   **اتوماسیون ایمیل مارکتینگ:** راه‌اندازی جریان‌های \"یادآور فصلی\" خودکار (مثلاً \"نظافت بهاره\" یا \"نوسازی ۶ ماهه\") برای درگیر کردن مجدد مشتریان گذشته و تبدیل خدمات تکی به درآمد تکرارشونده.\r\n*   **حلقه تولید نظرات:** اجرای یک توالی خودکار پیامک/ایمیل پس از خدمات که درخواست نظر در Trustpilot و گوگل می‌کند. این باعث ایجاد رتبه ۵ ستاره (بیش از ۲۴۰ نظر) شد که اکنون به عنوان اثبات اجتماعی اصلی برند عمل می‌کند.\r\n*   **بومی‌سازی محتوا:** ایجاد صفحات فرود (Landing Pages) بسیار محلی که مناطق خاصی را هدف قرار می‌دهند (مثلاً \"شستشوی مبلمان کنزینگتون\") تا ترافیک جستجوی دم‌دراز (Long-tail) جذب شود.\r\n\r\n### توسعه متمرکز بر تبدیل\r\n*   **یکپارچه‌سازی اعتماد:** تعبیه فید زنده نظرات Trustpilot/Google مستقیماً در بخش قهرمان سایت، که برند را فوراً برای بازدیدکنندگان جدید تأیید می‌کند.\r\n*   **سرعت و موبایل:** دستیابی به زمان لود زیر ۱ ثانیه در دستگاه‌های موبایل (جایی که ۸۰٪ جستجوهای نظافت اضطراری اتفاق می‌افتد) با ارائه فرمت‌های تصویر نسل بعدی (WebP) برای گالری سنگین \"قبل/بعد\".\r\n\r\n## ۴. نتایج کلیدی\r\n\r\n*   **تسلط بر پک نقشه:** دستیابی به دیده شدن در ۳ نتیجه اول برای کلمات کلیدی اصلی در منطقه هدف کد پستی W2.\r\n*   **سرعت ثبت نظرات:** درخواست‌های خودکار میزان ثبت نظرات را ۴۰٪ افزایش داد و برند را به عنوان سرویس دارای رتبه شماره ۱ در منطقه تثبیت کرد.\r\n*   **کسب‌وکار تکراری:** کمپین‌های ایمیلی با موفقیت ۱۵٪ از پایگاه مشتریان غیرفعال را در سه ماهه اول دوباره فعال کردند.\r\n"
+      },
+      {
+        "title": "رمزارز نگاران - اولین پلتفرم قانونی استخراج رمزارز",
+        "slug": "ramzarz-negaran",
+        "category": "تجارت الکترونیک و توسعه اختصاصی",
+        "image": "/images/portfolio/ramzarz-negaran.webp",
+        "description": "مرجع تخصصی سخت‌افزار استخراج قانونی رمزارز در ایران، با ماشین‌حساب سودآوری اختصاصی و داده‌های لحظه‌ای بازار.",
+        "client": "رمزارز نگاران",
+        "projectUrl": "https://ramzarznegaran.com",
+        "technologies": [
+          "WordPress",
+          "WooCommerce",
+          "Custom JS",
+          "REST APIs",
+          "Programmatic SEO"
+        ],
+        "results": [
+          {
+            "label": "منبع ترافیک",
+            "value": "ابزار ماشین‌حساب"
+          },
+          {
+            "label": "رتبه جستجو",
+            "value": "#۱ (ماینر قانونی)"
+          },
+          {
+            "label": "تعامل کاربر",
+            "value": "ماندگاری بالا"
+          },
+          {
+            "label": "فناوری",
+            "value": "وردپرس سفارشی"
+          }
+        ],
+        "language": "fa",
+        "content": "\r\n## ۱. نمای کلی پروژه\r\n\r\nرمزارز نگاران تنها یک فروشگاه اینترنتی نیست؛ بلکه مرکز اصلی سخت‌افزار استخراج **قانونی** رمزارز در ایران است. این پروژه نیازمند پلتفرمی قدرتمند بود که ترکیبی از تجارت الکترونیک با حجم بالا، ابزارهای داده‌ای پیچیده و رزرو خدمات (تعمیرات/هاستینگ) را ارائه دهد، در حالی که در بازاری پرنوسان، اعتمادی عمیق ایجاد کند.\r\n\r\n## ۲. چالش‌ها\r\n\r\n*   **کمبود اعتماد:** بازار کریپتو پر از کلاهبرداری است. سایت باید فوراً مشروعیت خود را (مجوزها، مکان فیزیکی) نشان می‌داد.\r\n*   **پیچیدگی داده‌ها:** کاربران نیاز داشتند بازگشت سرمایه (ROI) را بر اساس قیمت‌های نوسانی ارزها و تعرفه‌های خاص برق (صنعتی در مقابل خانگی) محاسبه کنند.\r\n*   **مدیریت موجودی:** مدیریت کاتالوگ متنوعی از ASICها، ریگ‌های GPU و قطعات یدکی با سطوح موجودی متغیر.\r\n\r\n## ۳. راهکار (رویکرد ما)\r\n\r\n### توسعه ابزارهای پیشرفته\r\n*   **ماشین‌حساب سودآوری اختصاصی:** طراحی یک \"ماشین‌حساب ماینینگ\" لحظه‌ای که سختی شبکه و قیمت ارزها را به صورت زنده دریافت می‌کند. کاربران می‌توانند تعرفه‌های برق (مانند صنعتی، صادراتی) را تغییر دهند تا سود خالص دقیق را ببینند—ویژگی حیاتی برای تبدیل سربه‌خرید.\r\n*   **داده‌های زنده بازار:** ادغام APIهای خارجی برای نمایش نرخ لحظه‌ای تبدیل BTC، ETH و USDT که باعث ماندگاری بیشتر کاربران در سایت می‌شود.\r\n\r\n### سئو فنی و معماری\r\n*   **سئو برنامه‌نویسی‌شده (Programmatic SEO):** ساختاردهی صفحات \"ماشین‌حساب\" و \"قیمت\" برای جذب ترافیک اطلاعاتی با حجم بالا و هدایت آن به صفحات محصول.\r\n*   **پیاده‌سازی اسکیما (Schema Markup):** اعمال اسکیمای `Product` و `FAQ` برای اطمینان از نمایش غنی در گوگل و برجسته کردن قیمت و موجودی مستقیماً در نتایج جستجو.\r\n*   **بهینه‌سازی سرعت:** پیاده‌سازی لود تنبل (Lazy Loading) برای گریدهای سنگین محصول و بهینه‌سازی دارایی‌ها تا ماشین‌حساب داده‌محور در موبایل فوراً لود شود.\r\n\r\n### طراحی تجربه کاربری مبتنی بر اعتماد\r\n*   **سیگنال‌های اعتبار:** قرار دادن استراتژیک مجوزهای \"وزارت صنعت\" و \"اینماد\" برای کاهش نگرانی خرید.\r\n*   **یکپارچه‌سازی خدمات:** ایجاد جریانی پیوسته برای رزرو \"تعمیرات ماینر\" و \"خدمات هاستینگ\"، که خریداران یک‌بار مصرف را به مشتریان خدمات تکراری تبدیل می‌کند.\r\n\r\n## ۴. نتایج کلیدی\r\n\r\n*   **آهنربای ترافیک:** صفحه \"ماشین‌حساب ماینر\" به یکی از برترین نقاط ورود تبدیل شد و هزینه جذب مشتری (CAC) را به شدت کاهش داد.\r\n*   **وضعیت مرجعیت:** سایت اکنون برای کلمات کلیدی مانند \"ماینر قانونی\" و \"تعمیر ماینر\" در نتایج جستجو تسلط دارد.\r\n*   **حفظ کاربر:** ابزارهای لحظه‌ای با درگیر کردن کاربران با داده‌های زنده، میانگین مدت زمان حضور در سایت را افزایش دادند.\r\n"
+      },
+      {
+        "title": "تحول دیجیتال کلینیک شنوایی سمعک آلفا",
+        "slug": "samake-alpha",
+        "category": "سئو پزشکی و طراحی وب",
+        "image": "/images/portfolio/samake-alpha.webp",
+        "description": "بازسازی کامل دیجیتال برای کلینیک سمعک آلفا، مهاجرت از سیستم‌های قدیمی به پلتفرم امن و پرسرعت وردپرس.",
+        "client": "کلینیک سمعک آلفا",
+        "projectUrl": "https://www.samakealpha.com",
+        "technologies": [
+          "WordPress",
+          "PHP 8.4",
+          "Local SEO",
+          "UX Design",
+          "Migration"
+        ],
+        "results": [
+          {
+            "label": "امنیت",
+            "value": "۱۰۰٪ ایمن"
+          },
+          {
+            "label": "عملکرد",
+            "value": "۹۵+ (سبز)"
+          },
+          {
+            "label": "سئو محلی",
+            "value": "رتبه ۱ جردن"
+          },
+          {
+            "label": "تجربه موبایل",
+            "value": "بهینه‌شده"
+          }
+        ],
+        "language": "fa",
+        "content": "\r\n## ۱. چالش: سیستم‌های قدیمی و دسترسی محدود\r\n\r\nسمعک آلفا بر روی زیرساخت وب قدیمی فعالیت می‌کرد که خطرات امنیتی داشت و نمی‌توانست بازار رو به رشد موبایل را جذب کند. مشکلات شامل موارد زیر بود:\r\n\r\n*   **آسیب‌پذیری‌های امنیتی:** تکیه بر نسخه‌های منسوخ PHP داده‌های بیماران را در معرض تهدید قرار می‌داد.\r\n*   **دیده شدن ضعیف محلی:** با وجود اینکه یکی از برترین کلینیک‌های جردن (تهران) بود، سایت برای کلمات کلیدی \"نزدیک من\" رتبه خوبی نداشت.\r\n*   **تجربه موبایل کند:** بیمارانی که سعی در رزرو نوبت با موبایل داشتند با سرعت پایین و طراحی غیرواکنش‌گرا مواجه می‌شدند.\r\n\r\n## ۲. راهکار: مدرن، امن و سریع\r\n\r\nما مهاجرت کامل پلتفرم و بازطراحی را انجام دادیم.\r\n\r\n*   **مدرن‌سازی پلتفرم:** مهاجرت به اکوسیستم قدرتمند وردپرس با PHP 8.4 برای حداکثر سرعت و امنیت.\r\n*   **طراحی موبایل-ول:** اجرای استراتژی واکنش‌گرا که اطمینان می‌دهد سایت در تمام دستگاه‌ها عالی کار می‌کند.\r\n*   **یکپارچه‌سازی نوبت‌دهی:** ساده‌سازی مسیر کاربر برای رزرو ارزیابی شنوایی و مشاوره.\r\n\r\n## ۳. سئو و تسلط محلی\r\n\r\nبرای اطمینان از پیشرو بودن سمعک آلفا:\r\n\r\n*   **استراتژی سئو محلی:** بهینه‌سازی پروفایل گوگل و سیگنال‌های درون‌صفحه‌ای برای تسلط بر جستجوهای \"کلینیک سمعک در جردن\".\r\n*   **معماری محتوا:** ساختاردهی مجدد صفحات خدمات برای شفافیت و کمک به بیماران جهت یافتن اطلاعات.\r\n*   **بهینه‌سازی فنی:** دستیابی به امتیازات برتر Core Web Vitals.\r\n\r\n## ۴. بهبود نرخ تبدیل (CRO)\r\n\r\nما بر تبدیل بازدیدکنندگان به بیمار تمرکز کردیم.\r\n\r\n*   **سیگنال‌های اعتماد:** نمایش برجسته مدارک ادیولوژیست‌ها (احسان علی‌پور، سارا باقری) برای ایجاد اعتماد فوری.\r\n*   **فراخوان‌های واضح:** دکمه‌های \"رزرو نوبت\" به صورت استراتژیک قرار داده شدند.\r\n\r\n## ۵. نتایج\r\n\r\n*   **امنیت:** کاملاً پچ شده و مهاجرت به استاندارد PHP 8.4.\r\n*   **عملکرد:** امتیاز ثابت ۹۰+ در تست‌های عملکرد موبایل و دسکتاپ.\r\n*   **رشد:** افزایش قابل توجه ترافیک ارگانیک و نوبت‌های آنلاین.\r\n"
+      },
+      {
+        "title": "بازسازی و مهاجرت وب‌سایت کلینیک سمعک برتر",
+        "slug": "samake-bartar",
+        "category": "توسعه وب و سئو",
+        "image": "/images/portfolio/samak-bartar.webp",
+        "description": "مهاجرت موفق از جوملا به یک پلتفرم وردپرس حرفه‌ای، پرسرعت و بهینه‌سازی شده برای گوگل.",
+        "client": "کلینیک شنوایی‌سنجی سمعک برتر",
+        "projectUrl": "https://www.samakebartar.com",
+        "technologies": [
+          "WordPress",
+          "PHP",
+          "MySQL",
+          "Custom Theme",
+          "Advanced SEO"
+        ],
+        "results": [
+          {
+            "label": "مهاجرت پلتفرم",
+            "value": "Joomla ➝ WP"
+          },
+          {
+            "label": "امتیاز سرعت",
+            "value": "۹۸/۱۰۰"
+          },
+          {
+            "label": "خطاهای سئو",
+            "value": "۰ (رفع شده)"
+          },
+          {
+            "label": "ترافیک موبایل",
+            "value": "+۳۰۰٪"
+          }
+        ],
+        "language": "fa",
+        "content": "\r\nما یک تحول دیجیتال کامل را برای کلینیک شنوایی‌سنجی سمعک برتر با مهاجرت وب‌سایت قدیمی آن‌ها از جوملا به یک راهکار وردپرس اختصاصی و کاملاً بهینه اجرا کردیم. سیستم قبلی از کندی سرعت و خطاهای بحرانی \"ریدایرکت بی‌نهایت\" رنج می‌برد که به رتبه‌بندی گوگل آسیب جدی زده بود. تیم ما با طراحی یک قالب سبک، پاکسازی دیتابیس و اجرای استراتژی سئو پزشکی، وب‌سایتی سریع و کاربرپسند ارائه داد که جایگاه خود را در نتایج جستجو پس گرفت و تجربه کاربری فوق‌العاده‌ای برای بیماران فراهم کرد.\r\n"
+      },
+      {
+        "title": "زیتون مسعود - تحول دیجیتال در کشاورزی سنتی",
+        "slug": "zeytoun-masoud",
+        "category": "تجارت الکترونیک و لجستیک",
+        "image": "/images/portfolio/zeytoun-masoud.webp",
+        "description": "تبدیل یک تولیدکننده سنتی زیتون به یک برند تجارت الکترونیک پرفروش با سیستم‌های ترکیبی B2B/B2C و منطق لجستیکی پویا.",
+        "client": "زیتون مسعود",
+        "projectUrl": "https://zeytounmasoud.ir",
+        "technologies": [
+          "WordPress",
+          "WooCommerce",
+          "Custom Shipping Plugin",
+          "SMS API",
+          "SEO Schema"
+        ],
+        "results": [
+          {
+            "label": "دسترسی",
+            "value": "پوشش کشوری"
+          },
+          {
+            "label": "مشتریان عمده",
+            "value": "+۵۰ رستوران"
+          },
+          {
+            "label": "ترافیک",
+            "value": "رتبه ۱ محتوای آموزشی"
+          },
+          {
+            "label": "لجستیک",
+            "value": "قیمت‌گذاری پویا"
+          }
+        ],
+        "language": "fa",
+        "content": "\r\n## ۱. نمای کلی پروژه\r\n\r\nزیتون مسعود یکی از تولیدکنندگان برتر محصولات زیتون ارگانیک مستقر در رودبار، پایتخت زیتون منطقه است. هدف، تبدیل یک کسب‌وکار موفق سنتی به یک برند تجارت الکترونیک با حجم بالا بود که هم به مشتریان خرد و هم به خریداران عمده B2B (هتل‌ها، رستوران‌ها) خدمت‌رسانی کند.\r\n\r\n## ۲. چالش‌ها\r\n\r\n*   **محدودیت‌های منطقه‌ای:** کسب‌وکار محدود به مشتریان حضوری در رودبار بود. آن‌ها نیاز داشتند بدون از دست دادن صدای برند \"سنتی/اصیل\"، به مخاطبی ملی دست یابند.\r\n*   **پیچیدگی لجستیک:** فروش محصولات غذایی سنگین و مایع (روغن‌ها، ترشی‌ها) نیازمند منطق حمل‌ونقل تخصصی برای جلوگیری از شکستگی و محاسبه دقیق هزینه‌های ارسال است.\r\n*   **مانع اعتماد:** کاربران اغلب برای خرید آنلاین محصولات غذایی تردید دارند. سایت باید فوراً تازگی و گواهی ارگانیک را منتقل می‌کرد.\r\n\r\n## ۳. راهکار (رویکرد ما)\r\n\r\n### معماری تجارت الکترونیک\r\n*   **سیستم ترکیبی B2B/B2C:** توسعه زیرساخت قیمت‌گذاری دوگانه. مشتریان خرد قیمت‌های استاندارد را می‌بینند، در حالی که رستوران‌داران تأییدشده به یک \"پرتال عمده‌فروشی\" با تخفیف‌های حجمی و فاکتورهای رسمی دسترسی دارند.\r\n*   **ماشین‌حساب حمل‌ونقل پویا:** ادغام یک الگوریتم حمل‌ونقل سفارشی که هزینه‌ها را بر اساس طبقات وزنی (حیاتی برای حلب‌های سنگین روغن زیتون) و مسافت محاسبه می‌کند تا از ضرر سود در لجستیک جلوگیری شود.\r\n\r\n### استراتژی سئو و محتوا\r\n*   **تسلط بر نیش مارکت:** هدف‌گذاری کلمات کلیدی با قصد خرید بالا مانند \"زیتون اصل رودبار\" و \"روغن زیتون فرابکر\".\r\n*   **هاب محتوای آموزشی:** ایجاد بخش \"بلاگ\" که به کاربران در شناسایی روغن زیتون خالص آموزش می‌دهد (مانند \"آیا روغن زیتون یخ می‌زند؟\"). این کار ترافیک اطلاعاتی را جذب کرد و برند را به عنوان یک مرجع صادق تثبیت نمود که مستقیماً نرخ تبدیل را افزایش داد.\r\n\r\n### بازاریابی اعتماد و حفظ مشتری\r\n*   **یکپارچه‌سازی اثبات اجتماعی:** نمایش نمادهای اعتماد \"اینماد\" و \"ساماندهی\" به صورت برجسته در فوتر و صفحه پرداخت برای کاهش اصطکاک.\r\n*   **اتوماسیون پیامکی:** پیاده‌سازی سیستم پیامک تراکنشی (از طریق کاوه نگار/IPPanel) برای اطلاع‌رسانی وضعیت سفارش به مشتریان، که برای ایجاد اعتماد در بازار داخلی حیاتی است.\r\n\r\n## ۴. نتایج کلیدی\r\n\r\n*   **دسترسی ملی:** فروش در عرض ۶ ماه از یک شهر به پوشش سراسری گسترش یافت.\r\n*   **رشد عمده‌فروشی:** پرتال اختصاصی B2B بیش از ۵۰ مشتری رستورانی بزرگ را جذب کرد و جریان درآمد تکرارشونده ثابتی ایجاد نمود.\r\n*   **ترافیک ارگانیک:** پست‌های آموزشی بلاگ اکنون برای سوالات کلیدی صنعت رتبه ۱ را دارند و روزانه ترافیک رایگان و باکیفیت بالا را هدایت می‌کنند.\r\n"
+      }
+    ]
+  },
+  "blog": {
+    "ar": [
+      {
+        "title": "أفضل ممارسات تحسين محركات البحث لعام 2025",
+        "description": "اكتشف أحدث استراتيجيات وتقنيات تحسين محركات البحث لتعزيز ترتيب موقعك في محركات البحث",
+        "date": "2025-01-15T00:00:00.000Z",
+        "author": "فريق WebABC",
+        "category": "SEO",
+        "tags": [
+          "سيو",
+          "تحسين محركات البحث",
+          "التسويق الرقمي",
+          "جوجل"
+        ],
+        "image": "/images/blog/seo-tips.webp",
+        "readTime": 8,
+        "keyTakeaways": [
+          "التركيز على مؤشرات الويب الأساسية لتحسين تجربة الصفحة والترتيب",
+          "إنشاء محتوى متوافق مع E-E-A-T يوفر قيمة حقيقية",
+          "التحسين للبحث الصوتي والاستعلامات الحوارية",
+          "فهرسة الجوال أولاً تجعل التصميم المتجاوب ضرورياً",
+          "أساسيات تحسين محركات البحث التقنية لا تزال حاسمة"
+        ],
+        "faq": [
+          {
+            "question": "ما هي مؤشرات الويب الأساسية ولماذا هي مهمة؟",
+            "answer": "مؤشرات الويب الأساسية هي مقاييس تقيس تجربة الصفحة بما في ذلك سرعة التحميل (LCP) والتفاعلية (FID/INP) والاستقرار البصري (CLS). تؤثر بشكل مباشر على ترتيبك في نتائج البحث."
+          },
+          {
+            "question": "كم مرة يجب أن أحدث استراتيجية تحسين محركات البحث؟",
+            "answer": "راجع استراتيجية تحسين محركات البحث كل ثلاثة أشهر وابق على اطلاع بتحديثات خوارزمية Google. التحديثات المنتظمة للمحتوى والمراجعات التقنية ضرورية للحفاظ على الترتيب."
+          },
+          {
+            "question": "ما هو E-E-A-T في تحسين محركات البحث؟",
+            "answer": "E-E-A-T تعني الخبرة والخبرة الفنية والموثوقية والجدارة بالثقة. إنه إطار عمل Google لتقييم جودة المحتوى، وهو مهم بشكل خاص للصحة والمال والموضوعات الأخرى المتعلقة بحياتك أو أموالك (YMYL)."
+          }
+        ],
+        "slug": "seo-best-practices-2025",
+        "language": "ar",
+        "content": "\r\n# أفضل ممارسات تحسين محركات البحث لعام 2025\r\n\r\nيستمر تحسين محركات البحث في التطور، والبقاء في الطليعة أمر بالغ الأهمية للحفاظ على ظهور قوي على الإنترنت. في هذا الدليل الشامل، سنستكشف استراتيجيات تحسين محركات البحث الأكثر فعالية لعام 2025.\r\n\r\n## 1. مؤشرات الويب الأساسية لا تزال حاسمة\r\n\r\nتظل مؤشرات الويب الأساسية من Google عامل ترتيب مهم. ركز على:\r\n\r\n- **أكبر رسم محتوى (LCP)**: استهدف أقل من 2.5 ثانية\r\n- **تأخير الإدخال الأول (FID)**: احتفظ به أقل من 100 ميلي ثانية\r\n- **التحول التراكمي في التخطيط (CLS)**: حافظ على درجة أقل من 0.1\r\n- **التفاعل مع الرسم التالي (INP)**: المقياس الجديد الذي يحل محل FID\r\n\r\n## 2. تحسين المحتوى بواسطة الذكاء الاصطناعي\r\n\r\nمع تغيير الذكاء الاصطناعي لكيفية إنشاء المحتوى واستهلاكه:\r\n\r\n- أنشئ محتوى شاملاً وموثوقاً يوفر قيمة حقيقية\r\n- ركز على E-E-A-T (الخبرة، الخبرة الفنية، السلطة، الجدارة بالثقة)\r\n- استخدم البيانات المنظمة لمساعدة محركات البحث على فهم محتواك\r\n- قم بالتحسين للاستعلامات الحوارية والبحث الصوتي\r\n\r\n## 3. فهرسة الجوال أولاً\r\n\r\nتحسين الجوال غير قابل للتفاوض:\r\n\r\n- تأكد من التصميم المتجاوب عبر جميع الأجهزة\r\n- قم بتحسين الصور ومقاطع الفيديو لتحميل الجوال\r\n- قم بتطبيق AMP أو تقنيات مماثلة لتجارب جوال أسرع\r\n- اختبر موقعك بانتظام على أجهزة الجوال المختلفة\r\n\r\n## 4. أساسيات تحسين محركات البحث التقنية\r\n\r\nلا تتجاهل الأساسيات:\r\n\r\n- حافظ على بنية موقع نظيفة وقابلة للزحف\r\n- قم بتحسين خريطة موقع XML وملف robots.txt\r\n- أصلح الروابط المعطلة وأخطاء 404\r\n- قم بتطبيق علامات canonical المناسبة\r\n- استخدم HTTPS عبر موقعك بالكامل\r\n\r\n## 5. تحسين محركات البحث المحلية لنمو الأعمال\r\n\r\nللشركات التي تخدم مناطق جغرافية محددة:\r\n\r\n- قم بتحسين ملف تعريف نشاطي التجاري على Google\r\n- اجمع وقم بالرد على مراجعات العملاء\r\n- أنشئ محتوى خاصاً بالموقع\r\n- قم ببناء الاستشهادات والروابط الخلفية المحلية\r\n\r\n## الخلاصة\r\n\r\nيتطلب تحسين محركات البحث في عام 2025 نهجاً شاملاً يجمع بين التميز التقني والمحتوى عالي الجودة وتحسين تجربة المستخدم. ابق على اطلاع بتحديثات الخوارزمية وقم بتكييف استراتيجيتك باستمرار للحفاظ على ظهور قوي في البحث.\r\n\r\nهل أنت مستعد لتحسين تحسين محركات البحث لموقعك؟ اتصل بـ WebABC للحصول على تدقيق واستراتيجية شاملة لتحسين محركات البحث.\r\n"
+      },
+      {
+        "title": "اتجاهات تصميم الويب الحديثة لعام 2025",
+        "description": "استكشف أحدث اتجاهات تصميم الويب وأنشئ مواقع ويب مذهلة تجذب وتحول الزوار",
+        "date": "2025-01-10T00:00:00.000Z",
+        "author": "فريق WebABC",
+        "category": "تصميم الويب",
+        "tags": [
+          "تصميم الويب",
+          "واجهة المستخدم",
+          "اتجاهات التصميم",
+          "تجربة المستخدم"
+        ],
+        "image": "/images/blog/web-design.webp",
+        "readTime": 6,
+        "slug": "web-design-trends-2025",
+        "language": "ar",
+        "content": "\r\n# اتجاهات تصميم الويب الحديثة لعام 2025\r\n\r\nمشهد تصميم الويب يتطور باستمرار. إليك أهم الاتجاهات التي تشكل الصناعة في عام 2025.\r\n\r\n## 1. التصميم البسيط مع الطباعة الجريئة\r\n\r\nالأقل هو الأكثر في 2025. تخطيطات نظيفة مع:\r\n\r\n- طباعة كبيرة ومعبرة\r\n- مساحات بيضاء واسعة\r\n- تسلسل هرمي مركز للمحتوى\r\n- استخدام استراتيجي لألوان مميزة\r\n\r\n## 2. الوضع الداكن كمعيار\r\n\r\nالوضع الداكن الآن متوقع، وليس اختياري:\r\n\r\n- تطبيق كشف تفضيلات النظام\r\n- توفير خيارات تبديل سهلة\r\n- ضمان نسب تباين مناسبة\r\n- التصميم مع كلا الوضعين في الاعتبار منذ البداية\r\n\r\n## 3. التفاعلات الدقيقة والرسوم المتحركة\r\n\r\nالرسوم المتحركة الدقيقة تعزز تجربة المستخدم:\r\n\r\n- تأثيرات التمرير على العناصر التفاعلية\r\n- رسوم متحركة لحالة التحميل\r\n- رسوم متحركة تنشط بالتمرير\r\n- ملاحظات التحقق من النموذج\r\n\r\n## 4. التصميم الذي يعطي الأولوية لإمكانية الوصول\r\n\r\nالتصميم الشامل ضروري:\r\n\r\n- الامتثال لـ WCAG 2.2\r\n- دعم التنقل بلوحة المفاتيح\r\n- تحسين قارئ الشاشة\r\n- اعتبارات تباين اللون\r\n\r\n## 5. تحسين الأداء\r\n\r\nالسرعة ميزة:\r\n\r\n- التحميل البطيء للصور والمحتوى\r\n- تحميل الخط المحسن\r\n- حد أدنى من JavaScript\r\n- قدرات تطبيق الويب التقدمي\r\n\r\n## الخلاصة\r\n\r\nتصميم الويب الرائع في 2025 يوازن بين الجماليات والوظائف، مع ضمان أن كل عنصر يخدم غرضًا مع خلق تجارب مستخدم رائعة.\r\n\r\nتحتاج إلى موقع ويب حديث؟ اتصل بـ WebABC للحصول على خدمات تصميم الويب الاحترافية.\r\n"
+      },
+      {
+        "title": "ووردبريس مقابل التطوير المخصص - أيهما مناسب لعملك؟",
+        "description": "قارن بين ووردبريس والتطوير المخصص للويب لاتخاذ قرار مستنير لمشروعك القادم",
+        "date": "2025-01-20T00:00:00.000Z",
+        "author": "فريق WebABC",
+        "category": "تطوير الويب",
+        "tags": [
+          "ووردبريس",
+          "التطوير المخصص",
+          "تصميم الويب",
+          "نظام إدارة المحتوى"
+        ],
+        "image": "/images/wordpress-hero.webp",
+        "readTime": 6,
+        "slug": "wordpress-vs-custom-development",
+        "language": "ar",
+        "content": "\r\n# ووردبريس مقابل التطوير المخصص: أيهما مناسب لعملك؟\r\n\r\nيعد الاختيار بين ووردبريس والتطوير المخصص أحد أهم القرارات التي ستتخذها لمشروع الويب الخاص بك. دعنا نستكشف كلا الخيارين لمساعدتك على اتخاذ قرار مستنير.\r\n\r\n## ووردبريس: الخيار الشائع\r\n\r\nيشغل ووردبريس أكثر من 40٪ من جميع مواقع الويب على الإنترنت. إليك سبب شعبيته:\r\n\r\n### مزايا ووردبريس\r\n\r\n- **الإعداد السريع**: أطلق موقعك في أيام، وليس أشهر\r\n- **فعال من حيث التكلفة**: تكاليف تطوير أولية أقل\r\n- **نظام بيئي ضخم**: آلاف القوالب والإضافات المتاحة\r\n- **إدارة محتوى سهلة**: واجهة سهلة الاستخدام للمستخدمين غير التقنيين\r\n- **مجتمع كبير**: دعم وموارد واسعة\r\n\r\n### قيود ووردبريس\r\n\r\n- **عبء الأداء**: يمكن أن يكون أبطأ بسبب الإضافات والقوالب\r\n- **مخاوف أمنية**: هدف شائع للقراصنة\r\n- **حدود التخصيص**: قد تتطلب الميزات المعقدة كودًا مخصصًا واسع النطاق\r\n- **اعتماد الإضافات**: الاعتماد على الإضافات من طرف ثالث\r\n\r\n## التطوير المخصص: حلول مصممة خصيصًا\r\n\r\nيعني التطوير المخصص بناء موقع الويب الخاص بك من الصفر باستخدام أطر عمل حديثة.\r\n\r\n### مزايا التطوير المخصص\r\n\r\n- **تحكم كامل**: مرونة كاملة في الميزات والوظائف\r\n- **أداء محسّن**: برمجة ما تحتاجه فقط\r\n- **قابلية التوسع**: أسهل للتوسع مع نمو عملك\r\n- **تصميم فريد**: تميز بواجهات مخصصة حقًا\r\n- **أمان أفضل**: أقل عرضة للهجمات الشائعة\r\n\r\n### عيوب التطوير المخصص\r\n\r\n- **تكلفة أولية أعلى**: استثمار مقدم أكثر تكلفة\r\n- **جدول زمني أطول**: يستغرق وقتًا أطول للتطوير\r\n- **خبرة فنية مطلوبة**: يحتاج إلى مطورين ماهرين للصيانة\r\n- **لا توجد إصلاحات سريعة**: تتطلب التحديثات والتغييرات عمل التطوير\r\n\r\n## متى تختار ووردبريس\r\n\r\nووردبريس مثالي إذا كنت:\r\n\r\n1. بحاجة إلى موقع ويب بسرعة\r\n2. لديك ميزانية محدودة\r\n3. تتطلب وظائف قياسية (مدونة، محفظة، تجارة إلكترونية أساسية)\r\n4. تريد إدارة محتوى سهلة\r\n5. تخطط لإدارة الموقع بنفسك\r\n\r\n## متى تختار التطوير المخصص\r\n\r\nالتطوير المخصص أفضل عندما:\r\n\r\n1. تحتاج إلى وظائف فريدة ومعقدة\r\n2. الأداء حرج\r\n3. تقوم ببناء تطبيق ويب\r\n4. قابلية التوسع أولوية\r\n5. لديك متطلبات أمنية محددة\r\n\r\n## النهج الهجين\r\n\r\nتجد العديد من الشركات النجاح مع نهج هجين:\r\n\r\n- استخدم ووردبريس للأقسام الغنية بالمحتوى (مدونة، أخبار)\r\n- بناء تطبيقات مخصصة للميزات المعقدة\r\n- دمج كلا النظامين بسلاسة\r\n\r\n## الخلاصة\r\n\r\nلا توجد إجابة واحدة تناسب الجميع. يتفوق ووردبريس في مواقع الويب المدفوعة بالمحتوى ذات المتطلبات القياسية، بينما يتألق التطوير المخصص للتطبيقات الفريدة التي تحتاج إلى ميزات محددة.\r\n\r\nضع في اعتبارك ميزانيتك، والجدول الزمني، والمتطلبات الفنية، والأهداف طويلة المدى عند اتخاذ قرارك.\r\n\r\n**هل تحتاج إلى مساعدة في اتخاذ القرار؟** اتصل بـ WebABC للحصول على استشارة مجانية لتحديد أفضل نهج لمشروعك.\r\n"
+      }
+    ],
+    "en": [
+      {
+        "title": "Effective Digital Marketing Strategies for Small Businesses",
+        "description": "Learn proven digital marketing strategies to grow your small business online",
+        "date": "2025-01-05T00:00:00.000Z",
+        "author": "WebABC Team",
+        "category": "Digital Marketing",
+        "tags": [
+          "Digital Marketing",
+          "Small Business",
+          "Marketing Strategy",
+          "Social Media"
+        ],
+        "image": "/images/blog/digital-marketing.webp",
+        "readTime": 7,
+        "slug": "digital-marketing-strategies",
+        "language": "en",
+        "content": "\r\n# Effective Digital Marketing Strategies for Small Businesses\r\n\r\nDigital marketing levels the playing field for small businesses. Here's how to maximize your online presence with limited resources.\r\n\r\n## 1. Content Marketing Foundation\r\n\r\nQuality content attracts and retains customers:\r\n\r\n- Create valuable blog posts addressing customer pain points\r\n- Develop how-to guides and tutorials\r\n- Share case studies and success stories\r\n- Maintain consistency in publishing\r\n\r\n## 2. Social Media Engagement\r\n\r\nChoose platforms where your audience is active:\r\n\r\n- Focus on 2-3 platforms initially\r\n- Post consistently and engage authentically\r\n- Use platform-specific features (Stories, Reels, etc.)\r\n- Monitor and respond to comments\r\n\r\n## 3. Email Marketing\r\n\r\nOne of the highest ROI channels:\r\n\r\n- Build your email list organically\r\n- Segment your audience for targeted campaigns\r\n- Personalize messages based on customer behavior\r\n- Test and optimize subject lines and content\r\n\r\n## 4. Local SEO Optimization\r\n\r\nCritical for location-based businesses:\r\n\r\n- Claim and optimize Google Business Profile\r\n- Encourage customer reviews\r\n- Create location-specific landing pages\r\n- Build local citations\r\n\r\n## 5. Paid Advertising\r\n\r\nStrategic budget allocation:\r\n\r\n- Start with small budgets and test\r\n- Use retargeting to re-engage visitors\r\n- Focus on high-intent keywords\r\n- Track ROI meticulously\r\n\r\n## Measuring Success\r\n\r\nKey metrics to track:\r\n\r\n- Website traffic and engagement\r\n- Conversion rates\r\n- Customer acquisition cost\r\n- Return on ad spend\r\n- Email open and click rates\r\n\r\n## Conclusion\r\n\r\nSuccessful digital marketing for small businesses requires focus, consistency, and continuous optimization. Start with strategies that align with your goals and resources.\r\n\r\nReady to grow your business online? Contact WebABC for customized digital marketing solutions.\r\n"
+      },
+      {
+        "title": "Mobile-First Design in 2025 - Essential Strategies",
+        "description": "Learn why mobile-first design is crucial and how to implement it effectively in your web projects",
+        "date": "2025-01-18T00:00:00.000Z",
+        "author": "Sarah Johnson",
+        "category": "Web Design",
+        "tags": [
+          "Mobile Design",
+          "Responsive Design",
+          "UX",
+          "UI"
+        ],
+        "image": "/images/blog/web-design.webp",
+        "readTime": 7,
+        "keyTakeaways": [
+          "Mobile-first design prioritizes mobile experience before scaling up to desktop",
+          "Google's mobile-first indexing makes mobile optimization essential for SEO",
+          "Touch-friendly interfaces require minimum 44x44 pixel touch targets",
+          "Progressive enhancement ensures core functionality works on all devices",
+          "Performance optimization is critical for mobile user retention"
+        ],
+        "faq": [
+          {
+            "question": "What is the difference between mobile-first and responsive design?",
+            "answer": "Mobile-first design starts with the mobile layout and progressively enhances for larger screens, while responsive design adapts a desktop layout to smaller screens. Mobile-first ensures better performance and user experience on mobile devices."
+          },
+          {
+            "question": "What is the minimum touch target size for mobile?",
+            "answer": "The recommended minimum touch target size is 44x44 pixels to ensure users can easily tap buttons and links without errors."
+          },
+          {
+            "question": "Does mobile-first mean I should ignore desktop users?",
+            "answer": "No, mobile-first means starting with mobile constraints and then progressively enhancing the experience for larger screens. You still deliver a great desktop experience."
+          }
+        ],
+        "slug": "mobile-first-design-2025",
+        "language": "en",
+        "content": "\r\n# Mobile-First Design in 2025: Essential Strategies\r\n\r\nWith over 60% of web traffic coming from mobile devices, mobile-first design is no longer optional—it's essential. Here's everything you need to know.\r\n\r\n## What is Mobile-First Design?\r\n\r\nMobile-first design means designing for mobile devices first, then progressively enhancing the experience for larger screens. This approach ensures optimal performance and user experience on smaller devices.\r\n\r\n## Why Mobile-First Matters in 2025\r\n\r\n### 1. Google's Mobile-First Indexing\r\n\r\nGoogle primarily uses the mobile version of your site for indexing and ranking. A poor mobile experience directly impacts your SEO.\r\n\r\n### 2. User Expectations\r\n\r\nUsers expect fast, seamless mobile experiences. Slow or poorly designed mobile sites lead to:\r\n\r\n- Higher bounce rates\r\n- Lower conversions\r\n- Reduced engagement\r\n- Negative brand perception\r\n\r\n### 3. Performance Benefits\r\n\r\nMobile-first forces you to prioritize:\r\n\r\n- Essential content\r\n- Optimized images\r\n- Minimal code\r\n- Fast loading times\r\n\r\n## Key Principles of Mobile-First Design\r\n\r\n### 1. Content Hierarchy\r\n\r\nPrioritize content based on mobile user needs:\r\n\r\n- Most important content first\r\n- Clear, scannable headlines\r\n- Concise paragraphs\r\n- Strategic use of white space\r\n\r\n### 2. Touch-Friendly Interface\r\n\r\nDesign for fingers, not cursors:\r\n\r\n- Minimum touch target size: 44x44 pixels\r\n- Adequate spacing between interactive elements\r\n- Clear visual feedback for interactions\r\n- Easy-to-reach navigation\r\n\r\n### 3. Performance Optimization\r\n\r\nSpeed is critical on mobile:\r\n\r\n- Optimize and compress images\r\n- Minimize HTTP requests\r\n- Use lazy loading\r\n- Implement browser caching\r\n- Minimize CSS and JavaScript\r\n\r\n### 4. Progressive Enhancement\r\n\r\nStart with core functionality, then add:\r\n\r\n- Enhanced features for larger screens\r\n- Advanced interactions\r\n- Additional visual elements\r\n- Complex layouts\r\n\r\n## Mobile-First Development Workflow\r\n\r\n### 1. Strategy Phase\r\n\r\n- Define mobile user goals\r\n- Identify key user journeys\r\n- Prioritize features and content\r\n- Plan information architecture\r\n\r\n### 2. Design Phase\r\n\r\n- Create mobile wireframes first\r\n- Design mobile mockups\r\n- Test with real users\r\n- Refine based on feedback\r\n\r\n### 3. Development Phase\r\n\r\n- Write mobile CSS first\r\n- Use media queries for larger screens\r\n- Test on real devices\r\n- Optimize performance continuously\r\n\r\n## Common Mobile-First Mistakes to Avoid\r\n\r\n1. **Hiding Important Content**: Don't hide critical information on mobile\r\n2. **Tiny Text**: Use readable font sizes (minimum 16px)\r\n3. **Pop-ups**: Avoid intrusive interstitials on mobile\r\n4. **Horizontal Scrolling**: Never require horizontal scrolling\r\n5. **Fixed Elements**: Be careful with fixed headers/footers\r\n\r\n## Testing Your Mobile Design\r\n\r\nEssential testing steps:\r\n\r\n- Test on real devices, not just emulators\r\n- Check various screen sizes\r\n- Test different network speeds\r\n- Verify touch interactions\r\n- Validate with Google Mobile-Friendly Test\r\n\r\n## Mobile-First CSS Example\r\n\r\n```css\r\n/* Mobile styles (default) */\r\n.container {\r\n  width: 100%;\r\n  padding: 1rem;\r\n}\r\n\r\n/* Tablet and up */\r\n@media (min-width: 768px) {\r\n  .container {\r\n    max-width: 720px;\r\n    margin: 0 auto;\r\n  }\r\n}\r\n\r\n/* Desktop and up */\r\n@media (min-width: 1024px) {\r\n  .container {\r\n    max-width: 960px;\r\n    padding: 2rem;\r\n  }\r\n}\r\n```\r\n\r\n## Conclusion\r\n\r\nMobile-first design is essential for success in 2025. By prioritizing mobile users, you create faster, more accessible websites that perform better in search rankings and deliver superior user experiences.\r\n\r\nRemember: mobile-first doesn't mean mobile-only. It means starting with the most constrained environment and progressively enhancing for larger screens.\r\n\r\n**Ready to go mobile-first?** Contact WebABC to transform your website with modern mobile-first design strategies.\r\n"
+      },
+      {
+        "title": "SEO Best Practices for 2025",
+        "description": "Discover the latest SEO strategies and techniques to boost your website's ranking in search engines",
+        "date": "2025-01-15T00:00:00.000Z",
+        "author": "WebABC Team",
+        "category": "SEO",
+        "tags": [
+          "SEO",
+          "Search Engine Optimization",
+          "Digital Marketing",
+          "Google"
+        ],
+        "image": "/images/blog/seo-tips.webp",
+        "readTime": 8,
+        "keyTakeaways": [
+          "Focus on Core Web Vitals to improve page experience and rankings",
+          "Create E-E-A-T compliant content with real expertise and value",
+          "Optimize for voice search and conversational queries",
+          "Mobile-first indexing makes responsive design essential",
+          "Technical SEO fundamentals remain critical for success"
+        ],
+        "faq": [
+          {
+            "question": "What are Core Web Vitals and why do they matter?",
+            "answer": "Core Web Vitals are metrics that measure page experience including loading speed (LCP), interactivity (FID/INP), and visual stability (CLS). They directly impact your search rankings."
+          },
+          {
+            "question": "How often should I update my SEO strategy?",
+            "answer": "Review your SEO strategy quarterly and stay updated with Google algorithm changes. Regular content updates and technical audits are essential for maintaining rankings."
+          },
+          {
+            "question": "What is E-E-A-T in SEO?",
+            "answer": "E-E-A-T stands for Experience, Expertise, Authoritativeness, and Trustworthiness. It's Google's framework for evaluating content quality, especially important for health, finance, and other YMYL topics."
+          }
+        ],
+        "slug": "seo-best-practices-2025",
+        "language": "en",
+        "content": "\r\n# SEO Best Practices for 2025\r\n\r\nSearch Engine Optimization continues to evolve, and staying ahead of the curve is crucial for maintaining strong online visibility. In this comprehensive guide, we'll explore the most effective SEO strategies for 2025.\r\n\r\n## 1. Core Web Vitals Are Still Critical\r\n\r\nGoogle's Core Web Vitals remain a significant ranking factor. Focus on:\r\n\r\n- **Largest Contentful Paint (LCP)**: Aim for under 2.5 seconds\r\n- **First Input Delay (FID)**: Keep it below 100 milliseconds\r\n- **Cumulative Layout Shift (CLS)**: Maintain a score below \r\n- **Interaction to Next Paint (INP)**: The new metric replacing FID\r\n\r\n## 2. AI-Powered Content Optimization\r\n\r\nWith AI changing how content is created and consumed:\r\n\r\n- Create comprehensive, authoritative content that provides real value\r\n- Focus on E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness)\r\n- Use structured data to help search engines understand your content\r\n- Optimize for conversational queries and voice search\r\n\r\n## 3. Mobile-First Indexing\r\n\r\nMobile optimization is non-negotiable:\r\n\r\n- Ensure responsive design across all devices\r\n- Optimize images and videos for mobile loading\r\n- Implement AMP or similar technologies for faster mobile experiences\r\n- Test your site regularly on various mobile devices\r\n\r\n## 4. Technical SEO Fundamentals\r\n\r\nDon't overlook the basics:\r\n\r\n- Maintain a clean, crawlable site structure\r\n- Optimize your XML sitemap and robots.txt\r\n- Fix broken links and 404 errors\r\n- Implement proper canonical tags\r\n- Use HTTPS across your entire site\r\n\r\n## 5. Local SEO for Business Growth\r\n\r\nFor businesses serving specific geographic areas:\r\n\r\n- Optimize your Google Business Profile\r\n- Collect and respond to customer reviews\r\n- Create location-specific content\r\n- Build local citations and backlinks\r\n\r\n## Conclusion\r\n\r\nSEO in 2025 requires a holistic approach combining technical excellence, quality content, and user experience optimization. Stay informed about algorithm updates and continuously adapt your strategy to maintain strong search visibility.\r\n\r\nReady to improve your website's SEO? Contact WebABC for a comprehensive SEO audit and strategy.\r\n"
+      },
+      {
+        "title": "Modern Web Design Trends for 2025",
+        "description": "Explore the latest web design trends and create stunning websites that engage and convert",
+        "date": "2025-01-10T00:00:00.000Z",
+        "author": "WebABC Team",
+        "category": "Web Design",
+        "tags": [
+          "Web Design",
+          "UI/UX",
+          "Design Trends",
+          "User Experience"
+        ],
+        "image": "/images/blog/web-design.webp",
+        "readTime": 6,
+        "slug": "web-design-trends-2025",
+        "language": "en",
+        "content": "\r\n# Modern Web Design Trends for 2025\r\n\r\nThe web design landscape is constantly evolving. Here are the top trends shaping the industry in 2025.\r\n\r\n## 1. Minimalist Design with Bold Typography\r\n\r\nLess is more in 2025. Clean layouts with:\r\n\r\n- Large, expressive typography\r\n- Ample white space\r\n- Focused content hierarchy\r\n- Strategic use of color accents\r\n\r\n## 2. Dark Mode as Standard\r\n\r\nDark mode is now expected, not optional:\r\n\r\n- Implement system preference detection\r\n- Provide easy toggle options\r\n- Ensure proper contrast ratios\r\n- Design with both modes in mind from the start\r\n\r\n## 3. Micro-Interactions and Animations\r\n\r\nSubtle animations enhance user experience:\r\n\r\n- Hover effects on interactive elements\r\n- Loading state animations\r\n- Scroll-triggered animations\r\n- Form validation feedback\r\n\r\n## 4. Accessibility-First Design\r\n\r\nInclusive design is essential:\r\n\r\n- WCAG 2.2 compliance\r\n- Keyboard navigation support\r\n- Screen reader optimization\r\n- Color contrast considerations\r\n\r\n## 5. Performance Optimization\r\n\r\nSpeed is a feature:\r\n\r\n- Lazy loading images and content\r\n- Optimized font loading\r\n- Minimal JavaScript\r\n- Progressive Web App capabilities\r\n\r\n## Conclusion\r\n\r\nGreat web design in 2025 balances aesthetics with functionality, ensuring every element serves a purpose while creating delightful user experiences.\r\n\r\nNeed a modern website? Contact WebABC for professional web design services.\r\n"
+      },
+      {
+        "title": "WordPress vs Custom Development - Which is Right for Your Business?",
+        "description": "Compare WordPress and custom web development to make an informed decision for your next project",
+        "date": "2025-01-20T00:00:00.000Z",
+        "author": "WebABC Team",
+        "category": "Web Development",
+        "tags": [
+          "WordPress",
+          "Custom Development",
+          "Web Design",
+          "CMS"
+        ],
+        "image": "/images/wordpress-hero.webp",
+        "readTime": 6,
+        "slug": "wordpress-vs-custom-development",
+        "language": "en",
+        "content": "\r\n# WordPress vs Custom Development: Which is Right for Your Business?\r\n\r\nChoosing between WordPress and custom development is one of the most critical decisions you'll make for your web project. Let's explore both options to help you make an informed choice.\r\n\r\n## WordPress: The Popular Choice\r\n\r\nWordPress powers over 40% of all websites on the internet. Here's why it's so popular:\r\n\r\n### Advantages of WordPress\r\n\r\n- **Quick Setup**: Launch your website in days, not months\r\n- **Cost-Effective**: Lower initial development costs\r\n- **Huge Ecosystem**: Thousands of themes and plugins available\r\n- **Easy Content Management**: User-friendly interface for non-technical users\r\n- **Large Community**: Extensive support and resources\r\n\r\n### WordPress Limitations\r\n\r\n- **Performance Overhead**: Can be slower due to plugins and themes\r\n- **Security Concerns**: Popular target for hackers\r\n- **Customization Limits**: Complex features may require extensive custom code\r\n- **Plugin Dependencies**: Reliance on third-party plugins\r\n\r\n## Custom Development: Tailored Solutions\r\n\r\nCustom development means building your website from scratch using modern frameworks.\r\n\r\n### Advantages of Custom Development\r\n\r\n- **Complete Control**: Full flexibility over features and functionality\r\n- **Optimized Performance**: Code only what you need\r\n- **Scalability**: Easier to scale as your business grows\r\n- **Unique Design**: Stand out with truly custom interfaces\r\n- **Better Security**: Less vulnerable to common attacks\r\n\r\n### Custom Development Drawbacks\r\n\r\n- **Higher Initial Cost**: More expensive upfront investment\r\n- **Longer Timeline**: Takes more time to develop\r\n- **Technical Expertise Required**: Needs skilled developers for maintenance\r\n- **No Quick Fixes**: Updates and changes require development work\r\n\r\n## When to Choose WordPress\r\n\r\nWordPress is ideal if you:\r\n\r\n1. Need a website quickly\r\n2. Have a limited budget\r\n3. Require standard functionality (blog, portfolio, basic e-commerce)\r\n4. Want easy content management\r\n5. Plan to manage the site yourself\r\n\r\n## When to Choose Custom Development\r\n\r\nCustom development is better when:\r\n\r\n1. You need unique, complex functionality\r\n2. Performance is critical\r\n3. You're building a web application\r\n4. Scalability is a priority\r\n5. You have specific security requirements\r\n\r\n## The Hybrid Approach\r\n\r\nMany businesses find success with a hybrid approach:\r\n\r\n- Use WordPress for content-heavy sections (blog, news)\r\n- Build custom applications for complex features\r\n- Integrate both systems seamlessly\r\n\r\n## Conclusion\r\n\r\nThere's no one-size-fits-all answer. WordPress excels for content-driven websites with standard requirements, while custom development shines for unique applications needing specific features.\r\n\r\nConsider your budget, timeline, technical requirements, and long-term goals when making your decision.\r\n\r\n**Need help deciding?** Contact WebABC for a free consultation to determine the best approach for your project.\r\n"
+      }
+    ],
+    "fa": [
+      {
+        "title": "بهترین روش‌های سئو برای سال 2025",
+        "description": "جدیدترین استراتژی‌ها و تکنیک‌های سئو را برای بهبود رتبه وب‌سایت خود در موتورهای جستجو کشف کنید",
+        "date": "2025-01-15T00:00:00.000Z",
+        "author": "تیم WebABC",
+        "category": "سئو",
+        "tags": [
+          "سئو",
+          "بهینه‌سازی موتورهای جستجو",
+          "دیجیتال مارکتینگ",
+          "گوگل"
+        ],
+        "image": "/images/blog/seo-tips.webp",
+        "readTime": 8,
+        "slug": "seo-best-practices-2025",
+        "language": "fa",
+        "content": "\r\n# بهترین روش‌های سئو برای سال 2025\r\n\r\nبهینه‌سازی موتورهای جستجو به تکامل خود ادامه می‌دهد و پیشرو ماندن برای حفظ دیده‌شدن قوی آنلاین بسیار مهم است. در این راهنمای جامع، مؤثرترین استراتژی‌های سئو برای سال 2025 را بررسی خواهیم کرد.\r\n\r\n## 1. شاخص‌های اصلی وب همچنان حیاتی هستند\r\n\r\nCore Web Vitals گوگل همچنان یک عامل رتبه‌بندی مهم است. تمرکز کنید روی:\r\n\r\n- **بزرگترین رنگ محتوا (LCP)**: هدف زیر 2.5 ثانیه\r\n- **تأخیر اولین ورودی (FID)**: زیر 100 میلی‌ثانیه نگه دارید\r\n- **تغییر تجمعی چیدمان (CLS)**: امتیاز زیر 0.1 حفظ کنید\r\n- **تعامل تا رنگ بعدی (INP)**: معیار جدید جایگزین FID\r\n\r\n## 2. بهینه‌سازی محتوا با هوش مصنوعی\r\n\r\nبا تغییر نحوه ایجاد و مصرف محتوا توسط هوش مصنوعی:\r\n\r\n- محتوای جامع و معتبر ایجاد کنید که ارزش واقعی ارائه دهد\r\n- روی E-E-A-T (تجربه، تخصص، اقتدار، قابل اعتماد بودن) تمرکز کنید\r\n- از داده‌های ساختاریافته برای کمک به موتورهای جستجو در درک محتوای خود استفاده کنید\r\n- برای پرس‌وجوهای مکالمه‌ای و جستجوی صوتی بهینه‌سازی کنید\r\n\r\n## 3. ایندکس موبایل اول\r\n\r\nبهینه‌سازی موبایل غیرقابل مذاکره است:\r\n\r\n- اطمینان حاصل کنید طراحی واکنش‌گرا در همه دستگاه‌ها\r\n- تصاویر و ویدیوها را برای بارگذاری موبایل بهینه کنید\r\n- AMP یا فناوری‌های مشابه را برای تجربه‌های سریع‌تر موبایل پیاده‌سازی کنید\r\n- سایت خود را به طور منظم روی دستگاه‌های موبایل مختلف آزمایش کنید\r\n\r\n## 4. اصول سئوی تکنیکال\r\n\r\nاصول اولیه را نادیده نگیرید:\r\n\r\n- ساختار سایت تمیز و قابل خزش را حفظ کنید\r\n- نقشه سایت XML و robots.txt خود را بهینه کنید\r\n- لینک‌های خراب و خطاهای 404 را برطرف کنید\r\n- تگ‌های canonical مناسب را پیاده‌سازی کنید\r\n- از HTTPS در کل سایت خود استفاده کنید\r\n\r\n## 5. سئوی محلی برای رشد کسب‌وکار\r\n\r\nبرای کسب‌وکارهایی که مناطق جغرافیایی خاصی را سرویس می‌دهند:\r\n\r\n- پروفایل کسب‌وکار گوگل خود را بهینه کنید\r\n- نظرات مشتریان را جمع‌آوری و پاسخ دهید\r\n- محتوای خاص مکان ایجاد کنید\r\n- استنادات و بک‌لینک‌های محلی بسازید\r\n\r\n## نتیجه‌گیری\r\n\r\nسئو در سال 2025 نیاز به رویکرد جامعی دارد که تعالی فنی، محتوای با کیفیت و بهینه‌سازی تجربه کاربر را ترکیب کند. از به‌روزرسانی‌های الگوریتم مطلع بمانید و استراتژی خود را مداوم تطبیق دهید تا دیده‌شدن قوی در جستجو را حفظ کنید.\r\n\r\nآماده بهبود سئوی وب‌سایت خود هستید؟ برای ممیزی و استراتژی جامع سئو با WebABC تماس بگیرید.\r\n"
+      },
+      {
+        "title": "ترندهای طراحی وب مدرن برای 2025",
+        "description": "جدیدترین ترندهای طراحی وب را کشف کنید و وب‌سایت‌های خیره‌کننده‌ای بسازید که جذب و تبدیل می‌کنند",
+        "date": "2025-01-10T00:00:00.000Z",
+        "author": "تیم WebABC",
+        "category": "طراحی وب",
+        "tags": [
+          "طراحی وب",
+          "رابط کاربری",
+          "ترندهای طراحی",
+          "تجربه کاربری"
+        ],
+        "image": "/images/blog/web-design.webp",
+        "readTime": 6,
+        "slug": "web-design-trends-2025",
+        "language": "fa",
+        "content": "\r\n# ترندهای طراحی وب مدرن برای 2025\r\n\r\nمنظره طراحی وب به طور مداوم در حال تکامل است. اینها برترین ترندهایی هستند که صنعت را در سال 2025 شکل می‌دهند.\r\n\r\n## 1. طراحی مینیمالیست با تایپوگرافی پررنگ\r\n\r\nکمتر در 2025 بیشتر است. چیدمان‌های تمیز با:\r\n\r\n- تایپوگرافی بزرگ و بیانی\r\n- فضای سفید فراوان\r\n- سلسله‌مراتب محتوای متمرکز\r\n- استفاده استراتژیک از رنگ‌های برجسته\r\n\r\n## 2. حالت تاریک به عنوان استاندارد\r\n\r\nحالت تاریک اکنون انتظار می‌رود، نه اختیاری:\r\n\r\n- پیاده‌سازی تشخیص ترجیحات سیستم\r\n- ارائه گزینه‌های تغییر آسان\r\n- اطمینان از نسبت‌های کنتراست مناسب\r\n- طراحی با هر دو حالت از همان ابتدا\r\n\r\n## 3. تعاملات خرد و انیمیشن‌ها\r\n\r\nانیمیشن‌های ظریف تجربه کاربر را بهبود می‌بخشند:\r\n\r\n- افکت‌های hover روی عناصر تعاملی\r\n- انیمیشن‌های حالت بارگذاری\r\n- انیمیشن‌های فعال شده با اسکرول\r\n- بازخورد اعتبارسنجی فرم\r\n\r\n## 4. طراحی با اولویت دسترسی\r\n\r\nطراحی فراگیر ضروری است:\r\n\r\n- انطباق با WCAG 2.2\r\n- پشتیبانی از ناوبری صفحه‌کلید\r\n- بهینه‌سازی صفحه‌خوان\r\n- ملاحظات کنتراست رنگ\r\n\r\n## 5. بهینه‌سازی عملکرد\r\n\r\nسرعت یک ویژگی است:\r\n\r\n- بارگذاری تنبل تصاویر و محتوا\r\n- بارگذاری فونت بهینه‌شده\r\n- حداقل JavaScript\r\n- قابلیت‌های Progressive Web App\r\n\r\n## نتیجه‌گیری\r\n\r\nطراحی وب عالی در 2025 زیبایی‌شناسی را با کارکرد متعادل می‌کند و اطمینان می‌دهد که هر عنصر هدفی را دنبال می‌کند در حالی که تجربیات کاربری لذت‌بخش ایجاد می‌کند.\r\n\r\nبه یک وب‌سایت مدرن نیاز دارید؟ برای خدمات حرفه‌ای طراحی وب با WebABC تماس بگیرید.\r\n"
+      },
+      {
+        "title": "وردپرس در مقابل توسعه سفارشی - کدام برای کسب‌وکار شما مناسب است؟",
+        "description": "مقایسه وردپرس و توسعه وب سفارشی برای تصمیم‌گیری آگاهانه در پروژه بعدی شما",
+        "date": "2025-01-20T00:00:00.000Z",
+        "author": "تیم WebABC",
+        "category": "توسعه وب",
+        "tags": [
+          "وردپرس",
+          "توسعه سفارشی",
+          "طراحی وب",
+          "سیستم مدیریت محتوا"
+        ],
+        "image": "/images/wordpress-hero.webp",
+        "readTime": 6,
+        "keyTakeaways": [
+          "وردپرس برای وب‌سایت‌های کوچک تا متوسط با بودجه محدود ایده‌آل است",
+          "توسعه سفارشی برای پروژه‌های پیچیده و منحصر به فرد بهترین انتخاب است",
+          "وردپرس راه‌اندازی سریع‌تر و هزینه کمتری دارد",
+          "توسعه سفارشی کنترل کامل و مقیاس‌پذیری بهتر ارائه می‌دهد",
+          "انتخاب بستگی به نیازها و اهداف بلندمدت شما دارد"
+        ],
+        "faq": [
+          {
+            "question": "آیا وردپرس برای کسب‌وکار من مناسب است؟",
+            "answer": "وردپرس برای اکثر وب‌سایت‌های کوچک تا متوسط، وبلاگ‌ها و فروشگاه‌های آنلاین عالی است. اگر نیازهای خاص یا عملکردهای پیچیده دارید، توسعه سفارشی را در نظر بگیرید."
+          },
+          {
+            "question": "توسعه سفارشی چقدر گران‌تر از وردپرس است؟",
+            "answer": "توسعه سفارشی معمولاً 3 تا 5 برابر گران‌تر از راه‌حل وردپرس است، اما ارزش بلندمدت و مقیاس‌پذیری بهتری ارائه می‌دهد."
+          },
+          {
+            "question": "آیا می‌توانم بعداً از وردپرس به توسعه سفارشی مهاجرت کنم؟",
+            "answer": "بله، اما می‌تواند پیچیده و پرهزینه باشد. بهتر است از ابتدا نیازهای بلندمدت خود را ارزیابی کنید."
+          }
+        ],
+        "slug": "wordpress-vs-custom-development",
+        "language": "fa",
+        "content": "\r\n# وردپرس در مقابل توسعه سفارشی: کدام برای کسب‌وکار شما مناسب است؟\r\n\r\nانتخاب بین وردپرس و توسعه سفارشی یکی از مهم‌ترین تصمیماتی است که برای پروژه وب خود خواهید گرفت. بیایید هر دو گزینه را بررسی کنیم تا به شما در تصمیم‌گیری آگاهانه کمک کنیم.\r\n\r\n## وردپرس: انتخاب محبوب\r\n\r\nوردپرس بیش از 40٪ از تمام وب‌سایت‌های اینترنت را قدرت می‌بخشد. دلیل محبوبیت آن:\r\n\r\n### مزایای وردپرس\r\n\r\n- **راه‌اندازی سریع**: وب‌سایت خود را در چند روز راه‌اندازی کنید، نه ماه‌ها\r\n- **مقرون به صرفه**: هزینه‌های توسعه اولیه کمتر\r\n- **اکوسیستم عظیم**: هزاران قالب و افزونه در دسترس\r\n- **مدیریت آسان محتوا**: رابط کاربری آسان برای کاربران غیرفنی\r\n- **جامعه بزرگ**: پشتیبانی و منابع گسترده\r\n\r\n### محدودیت‌های وردپرس\r\n\r\n- **بار عملکرد**: می‌تواند به دلیل افزونه‌ها و قالب‌ها کندتر باشد\r\n- **نگرانی‌های امنیتی**: هدف رایج هکرها\r\n- **محدودیت‌های سفارشی‌سازی**: ویژگی‌های پیچیده ممکن است نیاز به کد سفارشی گسترده داشته باشند\r\n- **وابستگی به افزونه**: اتکا به افزونه‌های شخص ثالث\r\n\r\n## توسعه سفارشی: راه‌حل‌های متناسب\r\n\r\nتوسعه سفارشی به معنای ساخت وب‌سایت از ابتدا با استفاده از فریم‌ورک‌های مدرن است.\r\n\r\n### مزایای توسعه سفارشی\r\n\r\n- **کنترل کامل**: انعطاف‌پذیری کامل بر روی ویژگی‌ها و عملکرد\r\n- **عملکرد بهینه**: فقط آنچه نیاز دارید کدنویسی کنید\r\n- **مقیاس‌پذیری**: راحت‌تر با رشد کسب‌وکار شما مقیاس می‌شود\r\n- **طراحی منحصر به فرد**: با رابط‌های واقعاً سفارشی متمایز شوید\r\n- **امنیت بهتر**: کمتر در معرض حملات رایج\r\n\r\n### معایب توسعه سفارشی\r\n\r\n- **هزینه اولیه بالاتر**: سرمایه‌گذاری اولیه گران‌تر\r\n- **زمان طولانی‌تر**: زمان بیشتری برای توسعه می‌برد\r\n- **تخصص فنی مورد نیاز**: نیاز به توسعه‌دهندگان ماهر برای نگهداری\r\n- **بدون راه‌حل سریع**: به‌روزرسانی‌ها و تغییرات نیاز به کار توسعه دارند\r\n\r\n## چه زمانی وردپرس را انتخاب کنیم\r\n\r\nوردپرس ایده‌آل است اگر:\r\n\r\n1. به سرعت به وب‌سایت نیاز دارید\r\n2. بودجه محدود دارید\r\n3. به عملکرد استاندارد نیاز دارید (وبلاگ، نمونه کار، تجارت الکترونیک پایه)\r\n4. مدیریت محتوای آسان می‌خواهید\r\n5. قصد دارید خودتان سایت را مدیریت کنید\r\n\r\n## چه زمانی توسعه سفارشی را انتخاب کنیم\r\n\r\nتوسعه سفارشی بهتر است وقتی:\r\n\r\n1. به عملکرد منحصر به فرد و پیچیده نیاز دارید\r\n2. عملکرد حیاتی است\r\n3. در حال ساخت یک اپلیکیشن وب هستید\r\n4. مقیاس‌پذیری اولویت است\r\n5. نیازهای امنیتی خاص دارید\r\n\r\n## رویکرد ترکیبی\r\n\r\nبسیاری از کسب‌وکارها با رویکرد ترکیبی موفق می‌شوند:\r\n\r\n- از وردپرس برای بخش‌های محتوا محور استفاده کنید (وبلاگ، اخبار)\r\n- اپلیکیشن‌های سفارشی برای ویژگی‌های پیچیده بسازید\r\n- هر دو سیستم را به طور یکپارچه ادغام کنید\r\n\r\n## نتیجه‌گیری\r\n\r\nهیچ پاسخ یکسانی برای همه وجود ندارد. وردپرس برای وب‌سایت‌های محتوا محور با نیازهای استاندارد عالی است، در حالی که توسعه سفارشی برای اپلیکیشن‌های منحصر به فرد که نیاز به ویژگی‌های خاص دارند درخشان است.\r\n\r\nهنگام تصمیم‌گیری، بودجه، زمان‌بندی، نیازهای فنی و اهداف بلندمدت خود را در نظر بگیرید.\r\n\r\n**به کمک برای تصمیم‌گیری نیاز دارید؟** با WebABC تماس بگیرید تا مشاوره رایگان دریافت کنید و بهترین رویکرد برای پروژه خود را تعیین کنید.\r\n"
+      }
+    ]
+  }
+}
