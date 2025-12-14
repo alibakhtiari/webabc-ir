@@ -72,7 +72,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden xl:flex items-center gap-6">
             <NavLink to="">{t('common.home')}</NavLink>
             <ServicesDropdown />
             <NavLinks />
@@ -92,7 +92,7 @@ const Navbar = () => {
           </nav>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center gap-2">
+          <div className="xl:hidden flex items-center gap-2">
             <LanguageSwitcher type="dropdown" />
             <button
               className="p-2"
