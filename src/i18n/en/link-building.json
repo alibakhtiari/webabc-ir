@@ -1,0 +1,61 @@
+{
+    "title": "Link Building Services",
+    "description": "Boost your domain authority and search rankings with high-quality backlinks.",
+    "ourServices": "Our Link Building Strategies",
+    "features": {
+        "guestPosting": {
+            "title": "Guest Posting",
+            "description": "Securing placements on authoritative blogs in your industry."
+        },
+        "brokenLink": {
+            "title": "Broken Link Building",
+            "description": "Replacing broken links on other sites with your relevant content."
+        },
+        "outreach": {
+            "title": "Manual Outreach",
+            "description": "Directly contacting webmasters to promote your best content."
+        },
+        "unlinkedMentions": {
+            "title": "Unlinked Mentions",
+            "description": "Turning brand mentions into clickable backlinks."
+        },
+        "authority": {
+            "title": "Authority Building",
+            "description": "Establishing your site as a thought leader to earn natural links."
+        },
+        "audit": {
+            "title": "Backlink Audit",
+            "description": "Analyzing and disavowing toxic links to protect your SEO."
+        }
+    },
+    "process": {
+        "title": "Our Link Building Process",
+        "step1": {
+            "title": "Analysis & Strategy",
+            "description": "We evaluate your current backlink profile and identify opportunities."
+        },
+        "step2": {
+            "title": "Prospecting",
+            "description": "finding high-quality, relevant websites to target."
+        },
+        "step3": {
+            "title": "Content Creation",
+            "description": "Creating link-worthy assets like infographics or guest posts."
+        },
+        "step4": {
+            "title": "Outreach",
+            "description": "Personalized communication to secure link placements."
+        },
+        "step5": {
+            "title": "Reporting",
+            "description": "Transparent reporting on acquired links and SEO impact."
+        }
+    },
+    "technologies": {
+        "title": "Tools We Use"
+    },
+    "cta": {
+        "title": "Boost Your Authority Today",
+        "description": "Get high-quality backlinks that drive real results. Let's discuss your strategy."
+    }
+}

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ChevronDown, ArrowRight, Globe, Code } from 'lucide-react';
+import { ChevronDown, ArrowRight, Globe, Code, PenTool, Link2 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface NavLinkProps {
@@ -90,6 +90,18 @@ export const ServicesDropdown = () => {
                   title={t('services.webDevTitle')}
                   description={t('services.webDevDescription')}
                   icon={<Code />}
+                />
+                <ServiceLink
+                  to={`/${language}/services/content-creation`}
+                  title={t('services.contentCreationTitle')}
+                  description={t('services.contentCreationDescription')}
+                  icon={<PenTool />}
+                />
+                <ServiceLink
+                  to={`/${language}/services/link-building`}
+                  title={t('services.linkBuildingTitle')}
+                  description={t('services.linkBuildingDescription')}
+                  icon={<Link2 />}
                 />
               </ul>
             </div>

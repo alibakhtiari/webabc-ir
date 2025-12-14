@@ -5,9 +5,11 @@ import { ServicePageTemplate } from '@/components/templates/ServicePageTemplate'
 import WebDesignSchema from '@/components/seo/schemas/WebDesignSchema';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { TimelineItem, TechItem } from '@/components/services/WebDesignComponents';
+import Link from 'next/link';
+import { PenTool, Link2, ArrowRight } from 'lucide-react';
 
 const WebDesign = () => {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
 
     return (
         <>
@@ -137,6 +139,44 @@ const WebDesign = () => {
                     </div>
                 </section>
 
+                {/* Complementary Services */}
+                <section className="py-16 bg-white">
+                    <div className="container mx-auto px-4">
+                        <h2 className="text-3xl font-bold text-center mb-12 animate-fade-up">
+                            {t('common.complementaryServices')}
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                            {/* Content Creation Card */}
+                            <Link href={`/${language}/services/content-creation`} className="group bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 animate-fade-up border border-gray-100">
+                                <div className="flex items-center gap-4 mb-4">
+                                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform">
+                                        <PenTool className="w-6 h-6" />
+                                    </div>
+                                    <h3 className="text-xl font-bold">{t('services.contentCreationTitle')}</h3>
+                                </div>
+                                <p className="text-gray-600 mb-6">{t('services.contentCreationDescription')}</p>
+                                <div className="flex items-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform">
+                                    {t('common.learnMore')} <ArrowRight className="w-4 h-4 ml-2" />
+                                </div>
+                            </Link>
+
+                            {/* Link Building Card */}
+                            <Link href={`/${language}/services/link-building`} className="group bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 animate-fade-up border border-gray-100" style={{ animationDelay: '0.1s' }}>
+                                <div className="flex items-center gap-4 mb-4">
+                                    <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 group-hover:scale-110 transition-transform">
+                                        <Link2 className="w-6 h-6" />
+                                    </div>
+                                    <h3 className="text-xl font-bold">{t('services.linkBuildingTitle')}</h3>
+                                </div>
+                                <p className="text-gray-600 mb-6">{t('services.linkBuildingDescription')}</p>
+                                <div className="flex items-center text-purple-600 font-medium group-hover:translate-x-2 transition-transform">
+                                    {t('common.learnMore')} <ArrowRight className="w-4 h-4 ml-2" />
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
+                </section>
+
                 {/* Technologies */}
                 <section className="py-16 bg-white">
                     <div className="container mx-auto px-4">
@@ -156,7 +196,7 @@ const WebDesign = () => {
                         </div>
                     </div>
                 </section>
-            </ServicePageTemplate>
+            </ServicePageTemplate >
         </>
     );
 };
