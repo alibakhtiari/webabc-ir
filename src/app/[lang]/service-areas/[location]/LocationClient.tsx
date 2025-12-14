@@ -10,6 +10,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { MapPin, CheckCircle2, ArrowRight, TrendingUp, Users, Award } from 'lucide-react';
+import OptimizedImage from '@/components/OptimizedImage';
 import enServiceAreas from '@/i18n/en/service-areas.json';
 import faServiceAreas from '@/i18n/fa/service-areas.json';
 import arServiceAreas from '@/i18n/ar/service-areas.json';
@@ -82,13 +83,10 @@ const LocationPage = () => {
         {/* Hero Section */}
         <section className="relative pt-32 pb-20 overflow-hidden">
           <div className="absolute inset-0">
-            <img
+            <OptimizedImage
               src={location.image}
               alt={`${location.name}, ${location.country}`}
               className="w-full h-full object-cover"
-              onError={(e) => {
-                e.currentTarget.src = '/images/placeholder.svg';
-              }}
             />
             <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/90 to-background/80"></div>
           </div>

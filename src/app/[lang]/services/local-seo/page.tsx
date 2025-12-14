@@ -6,6 +6,7 @@ import LocalSeoSchema from '@/components/seo/schemas/LocalSeoSchema';
 import FAQ from '@/components/FAQ';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Globe, Target, Search, MapPin, FileCheck, BarChart, CheckCircle2 } from 'lucide-react';
+import OptimizedImage from '@/components/OptimizedImage';
 
 const LocalSeo = () => {
     const { t, languageMeta } = useLanguage();
@@ -118,7 +119,7 @@ const LocalSeo = () => {
                             </div>
                             <div className="relative">
                                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 blur-3xl rounded-full"></div>
-                                <img
+                                <OptimizedImage
                                     src="/images/services/local-seo.png"
                                     alt="Local SEO Process"
                                     className="relative rounded-2xl shadow-2xl w-full h-auto object-cover"

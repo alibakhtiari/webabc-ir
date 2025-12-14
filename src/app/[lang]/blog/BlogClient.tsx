@@ -11,6 +11,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import OptimizedImage from '@/components/OptimizedImage';
 
 interface BlogPageProps {
   initialPosts: BlogMetadata[];
@@ -122,11 +123,10 @@ const BlogPage: React.FC<BlogPageProps> = ({ initialPosts }) => {
                     <Card className="h-full hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2 overflow-hidden border-border/50 hover:border-primary/30">
                       <div className="aspect-video overflow-hidden relative">
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <img
+                        <OptimizedImage
                           src={post.image}
                           alt={post.title}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                          loading="lazy"
                         />
                       </div>
                       <CardHeader className="space-y-3">
