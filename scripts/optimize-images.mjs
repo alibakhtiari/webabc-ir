@@ -6,8 +6,12 @@ import { glob } from 'glob';
 // CONFIGURATION
 const INPUT_DIR = 'public/images';
 const OUTPUT_JSON_PATH = 'src/generated/images-map.json';
-const WIDTHS = [640, 768, 1024, 1280, 1536]; // Standard responsive breakpoints
-const QUALITY = 80;
+const WIDTHS = [640, 768, 1024, 1280, 1536, 1920];
+const QUALITY = {
+    avif: 60,
+    webp: 80
+};
+
 
 async function optimizeImages() {
     console.log('🚀 Starting image optimization...');
@@ -18,7 +22,9 @@ async function optimizeImages() {
     catch { await fs.mkdir(jsonDir, { recursive: true }); }
 
     // Find all images (jpg, png, webp)
-    const files = await glob(`${INPUT_DIR}/**/*.{jpg,jpeg,png,webp}`, { ignore: '**/*-opt-*' });
+    const files = await glob(`${INPUT_DIR}/**/*.{jpg,jpeg,png,webp}`, { ignore: ['**/*-[0-9]*', '**/og-image.webp'] });
+
+
     const imageMap = {};
 
     for (const file of files) {
@@ -27,8 +33,9 @@ async function optimizeImages() {
         const ext = path.extname(file);
         const name = path.basename(file, ext);
 
-        // Skip already optimized files if re-running
-        if (name.endsWith('-opt')) continue;
+        // Skip already optimized files (ending in hyphen + numbers)
+        if (/-\d+$/.test(name)) continue;
+
 
         console.log(`📸 Processing: ${filename}`);
 
@@ -38,6 +45,7 @@ async function optimizeImages() {
 
         // 1. Generate Low Quality Image Placeholder (LQIP) - Base64
         const placeholderBuffer = await sharpInstance
+            .clone() // Clone before mutating for placeholder
             .resize(20) // Tiny size
             .blur(10)   // High blur
             .toBuffer();
@@ -54,26 +62,75 @@ async function optimizeImages() {
         await Promise.all(WIDTHS.map(async (width) => {
             if (width > metadata.width) return; // Don't upscale
 
-            const suffix = `-opt-${width}`;
+            const suffix = `-${width}`;
 
-            // AVIF
+
+            // AVIF (High compression, slower generation)
             const avifName = `${name}${suffix}.avif`;
             const avifPath = path.join(dir, avifName);
-            await sharpInstance.clone().resize(width).avif({ quality: QUALITY }).toFile(avifPath);
+            await sharpInstance
+                .clone()
+                .resize(width)
+                .avif({
+                    quality: QUALITY.avif,
+                    effort: 4, // 0-9 (higher = smaller file, slower build)
+                    chromaSubsampling: '4:2:0' // Standard for web images
+                })
+                .toFile(avifPath);
             variants.avif.push({
                 src: `/${path.relative('public', avifPath).replace(/\\/g, '/')}`,
                 width
             });
 
-            // WebP
+            // WebP (Faster generation, widely supported)
             const webpName = `${name}${suffix}.webp`;
             const webpPath = path.join(dir, webpName);
-            await sharpInstance.clone().resize(width).webp({ quality: QUALITY }).toFile(webpPath);
+            await sharpInstance
+                .clone()
+                .resize(width)
+                .webp({
+                    quality: QUALITY.webp,
+                    effort: 4, // 0-6 (higher = smaller file)
+                    smartSubsample: true
+                })
+                .toFile(webpPath);
             variants.webp.push({
                 src: `/${path.relative('public', webpPath).replace(/\\/g, '/')}`,
                 width
             });
         }));
+
+        // 3. OPTIMIZE ORIGINAL (Overwrite source file)
+        // We already have the 'imageBuffer' in memory, so we can safely overwrite the file.
+
+        // Define optimization settings for originals
+        const originalQuality = 80;
+
+        if (metadata.format === 'jpeg' || metadata.format === 'jpg') {
+            await sharpInstance
+                .clone()
+                .jpeg({
+                    quality: originalQuality,
+                    mozjpeg: true, // Uses advanced Mozilla compression (slower but better)
+                    progressive: true // Better loading experience
+                })
+                .toFile(file); // ⚠️ Overwrites the original
+
+            console.log(`   📉 Optimized original JPEG: ${filename}`);
+        }
+        else if (metadata.format === 'png') {
+            await sharpInstance
+                .clone()
+                .png({
+                    quality: originalQuality,
+                    compressionLevel: 9, // Max compression
+                    palette: true, // Use indexed colors (huge saving for simple PNGs)
+                    effort: 10     // Max CPU effort
+                })
+                .toFile(file); // ⚠️ Overwrites the original
+
+            console.log(`   📉 Optimized original PNG: ${filename}`);
+        }
 
         // Sort variants by width for correct srcSet generation
         variants.avif.sort((a, b) => a.width - b.width);
