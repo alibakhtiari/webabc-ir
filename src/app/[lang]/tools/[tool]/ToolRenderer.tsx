@@ -12,6 +12,8 @@ const PaaScraper = dynamic(() => import('../components/PAAScraper'));
 const ReadabilityChecker = dynamic(() => import('../components/ReadabilityChecker'));
 const SerpPreview = dynamic(() => import('../components/SerpPreview'));
 const UtmBuilder = dynamic(() => import('../components/UTMBuilder'));
+const FaqGenerator = dynamic(() => import('../components/FaqGenerator'));
+const KeywordResearch = dynamic(() => import('../components/KeywordResearch'));
 
 interface ToolRendererProps {
     tool: string;
@@ -33,6 +35,10 @@ const ToolRenderer: React.FC<ToolRendererProps> = ({ tool }) => {
             return <SerpPreview />;
         case 'utm-builder':
             return <UtmBuilder />;
+        case 'faq-generator':
+            return <FaqGenerator />;
+        case 'keyword-research':
+            return <KeywordResearch />;
         default:
             return notFound();
     }
