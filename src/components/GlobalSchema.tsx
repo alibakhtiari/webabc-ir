@@ -11,7 +11,7 @@ const GlobalSchema = () => {
     const localBusinessSchema = createLocalBusinessSchema(
         `https://webabc.ir/${language}`,
         "https://webabc.ir/images/logo.webp",
-        "https://webabc.ir/images/hero-image.webp",
+        "https://webabc.ir/images/og-image.webp",
         [{ telephone: "+98123456789", contactType: "customer service" }],
         "$$",
         language

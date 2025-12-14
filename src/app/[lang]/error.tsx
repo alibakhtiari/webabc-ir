@@ -11,7 +11,6 @@ export default function Error({
     reset: () => void
 }) {
     useEffect(() => {
-        // Log the error to an error reporting service
         console.error(error)
     }, [error])
 
@@ -21,7 +20,6 @@ export default function Error({
             <p className="text-gray-600 mb-6">We apologize for the inconvenience.</p>
             <Button
                 onClick={
-                    // Attempt to recover by trying to re-render the segment
                     () => reset()
                 }
             >
