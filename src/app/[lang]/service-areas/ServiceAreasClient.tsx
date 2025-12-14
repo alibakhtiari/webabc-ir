@@ -13,6 +13,7 @@ import { usePathname } from 'next/navigation';
 import enServiceAreas from '@/i18n/en/service-areas.json';
 import faServiceAreas from '@/i18n/fa/service-areas.json';
 import arServiceAreas from '@/i18n/ar/service-areas.json';
+import OptimizedImage from '@/components/OptimizedImage';
 
 interface Location {
   name: string;
@@ -146,13 +147,10 @@ const ServiceAreas = () => {
                   <div className="grid md:grid-cols-2 gap-0">
                     <div className={`order-1 ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
                       <div className="aspect-video md:aspect-auto md:h-full overflow-hidden">
-                        <img
+                        <OptimizedImage
                           src={location.image}
                           alt={`${location.name}, ${location.country}`}
                           className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                          onError={(e) => {
-                            e.currentTarget.src = '/images/placeholder.svg';
-                          }}
                         />
                       </div>
                     </div>
