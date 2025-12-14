@@ -19,7 +19,7 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@opennextjs/cloudflare": "^1.14.4",
+    "@opennextjs/cloudflare": "^1.14.6",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "glob": "^13.0.0",
@@ -30,7 +30,6 @@
     "react-dom": "latest",
     "react-markdown": "^10.1.0",
     "resend": "^6.6.0",
-    "sharp": "^0.34.5",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.4.0",
     "tailwindcss-animate": "^1.0.7",
@@ -50,6 +49,7 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "globals": "^15.9.0",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4.1.18",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
