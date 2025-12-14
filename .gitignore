@@ -17,6 +17,7 @@ dist-ssr
 .next
 .open-next
 *.local
+out/
 
 # Lock files (optional - remove this line if you want to commit lock files)
 bun.lock
