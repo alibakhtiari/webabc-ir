@@ -6,7 +6,7 @@ import WebDesignSchema from '@/components/seo/schemas/WebDesignSchema';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { TimelineItem, TechItem } from '@/components/services/WebDesignComponents';
 import Link from 'next/link';
-import { PenTool, Link2, ArrowRight } from 'lucide-react';
+import { PenTool, Link2, ArrowRight, ArrowLeft } from 'lucide-react';
 
 const WebDesign = () => {
     const { t, language } = useLanguage();
@@ -156,7 +156,8 @@ const WebDesign = () => {
                                 </div>
                                 <p className="text-gray-600 mb-6">{t('services.contentCreationDescription')}</p>
                                 <div className="flex items-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform">
-                                    {t('common.learnMore')} <ArrowRight className="w-4 h-4 ml-2" />
+                                    {t('common.learnMore')}
+                                    {language === 'fa' || language === 'ar' ? <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1" /> : <ArrowRight className="w-4 h-4 ml-2" />}
                                 </div>
                             </Link>
 

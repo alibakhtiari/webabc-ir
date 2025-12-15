@@ -4,14 +4,14 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowLeft } from 'lucide-react';
 import OptimizedImage from './OptimizedImage';
 
 const HeroSection = () => {
   const { t, language, languageMeta } = useLanguage();
 
   const isRTL = languageMeta.direction === 'rtl';
-  const ArrowIcon = isRTL ? () => <ArrowRight className="h-4 w-4 rotate-180" /> : () => <ArrowRight className="h-4 w-4" />;
+  const ArrowIcon = isRTL ? () => <ArrowLeft className="h-4 w-4" /> : () => <ArrowRight className="h-4 w-4" />;
 
   return (
     <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-primary/5 to-white">
