@@ -1,0 +1,57 @@
+{
+    "title": "Modern Web Development (React, Next.js, Astro)",
+    "description": "Build high-performance, scalable, and secure web applications using the latest technologies globally.",
+    "ourServices": "Our Modern Stack Services",
+    "technologies": {
+        "title": "Technologies We Use"
+    },
+    "features": {
+        "nextjs": {
+            "title": "Next.js Development",
+            "description": "Server-side rendering and static site generation for lightning-fast capability and SEO."
+        },
+        "react": {
+            "title": "React Applications",
+            "description": "Interactive and dynamic user interfaces with reusable components."
+        },
+        "astro": {
+            "title": "Astro Architecture",
+            "description": "Content-focused websites optimized for speed with zero JavaScript by default."
+        },
+        "headless": {
+            "title": "Headless CMS (Strapi)",
+            "description": "Flexible content management with Strapi or other headless CMS solutions."
+        },
+        "performance": {
+            "title": "Performance Optimization",
+            "description": "Core Web Vitals optimization and advanced caching strategies."
+        },
+        "pwa": {
+            "title": "PWA Development",
+            "description": "Progressive Web Apps that work offline and provide a native-like experience."
+        }
+    },
+    "process": {
+        "title": "Our Development Process",
+        "step1": {
+            "title": "Requirement Analysis",
+            "description": "Understanding your business needs and selecting the right tech stack."
+        },
+        "step2": {
+            "title": "Architecture Design",
+            "description": "Planning the component structure, database schema, and API integration."
+        },
+        "step3": {
+            "title": "Development",
+            "description": "Agile development with clean, maintainable, and type-safe code."
+        },
+        "step4": {
+            "title": "Testing & QA",
+            "description": "Rigorous testing for functionality, performance, and accessibility."
+        },
+        "step5": {
+            "title": "Deployment",
+            "description": "CI/CD setup and deployment to cloud platforms like Vercel or cloudflare."
+        }
+    }
+}
