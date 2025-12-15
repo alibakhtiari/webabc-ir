@@ -39,12 +39,10 @@ const Contact = () => {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      // In development, the worker is likely at http://localhost:8787
-      // In production, it will be at your worker URL.
-      // TODO: Configure this URL via environment variables.
-      const apiUrl = process.env.NEXT_PUBLIC_WORKER_URL || 'http://localhost:8787';
+      // Use local Cloudflare Pages Function
+      const apiUrl = '/api/contact';
 
-      const res = await fetch(apiUrl, {
+      const res = await fetch(apiUrl, { 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
