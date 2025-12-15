@@ -5,7 +5,7 @@ import Breadcrumb from '@/components/seo/Breadcrumb';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ToolsSchema from '@/components/seo/schemas/ToolsSchema';
-import { ArrowRight, Wrench, Zap, Eye } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Wrench, Zap, Eye } from 'lucide-react';
 
 interface SchemaData {
   [key: string]: unknown;
@@ -95,7 +95,11 @@ const ToolsPage: React.FC = () => {
                       className="inline-flex items-center text-blue-600 font-medium hover:underline group"
                     >
                       {t('common.readMore')}
-                      <ArrowRight className={`w-4 h-4 ${languageMeta.direction === 'rtl' ? 'mr-2 rotate-180' : 'ml-2'} group-hover:translate-x-1 transition-transform`} />
+                      {languageMeta.direction === 'rtl' ? (
+                        <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+                      ) : (
+                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                      )}
                     </Link>
                   </div>
                 );
@@ -139,7 +143,11 @@ const ToolsPage: React.FC = () => {
                       className="inline-flex items-center text-green-600 font-medium hover:underline group"
                     >
                       {t('common.readMore')}
-                      <ArrowRight className={`w-4 h-4 ${languageMeta.direction === 'rtl' ? 'mr-2 rotate-180' : 'ml-2'} group-hover:translate-x-1 transition-transform`} />
+                      {languageMeta.direction === 'rtl' ? (
+                        <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+                      ) : (
+                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                      )}
                     </Link>
                   </div>
                 );
