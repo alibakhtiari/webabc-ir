@@ -19,9 +19,8 @@ interface MobileMenuProps {
 }
 
 const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
-  const [servicesOpen, setServicesOpen] = useState(false);
   const [consultationOpen, setConsultationOpen] = useState(false);
-  const { t, language, languageMeta } = useLanguage();
+  const { t, language } = useLanguage();
 
   const handleConsultation = () => {
     onClose(); // Close the mobile menu
@@ -31,7 +30,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
   return (
     <>
       <Sheet open={isOpen} onOpenChange={onClose}>
-        <SheetContent side={languageMeta.direction === 'rtl' ? 'left' : 'right'} className="w-3/4 sm:max-w-md p-0 font-persian">
+        <SheetContent side="right" className="w-[90%] sm:max-w-lg p-0 font-persian">
           <div className="flex flex-col h-full overflow-auto py-6">
             <div className="px-6 pb-6 border-b">
               <div className="flex items-center justify-between mb-6">
@@ -54,57 +53,88 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                 </li>
 
                 <li className="border-b pb-6">
-                  <button
-                    onClick={() => setServicesOpen(!servicesOpen)}
-                    className="w-full flex items-center justify-between text-lg font-medium"
-                  >
+                  <div className="w-full flex items-center justify-between text-lg font-medium mb-4">
                     <span>{t('common.services')}</span>
-                    <span className="text-gray-400">
-                      {servicesOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                    </span>
-                  </button>
+                  </div>
 
-                  <div
-                    className={cn(
-                      "overflow-hidden transition-all mt-4 space-y-3",
-                      servicesOpen ? "max-h-96" : "max-h-0"
-                    )}
-                  >
+                  <div className="space-y-6">
                     <Link
                       href={`/${language}/services`}
-                      className={`block ${languageMeta.direction === 'rtl' ? 'pr-3 border-r-2' : 'pl-3 border-l-2'} text-foreground/80 hover:text-primary`}
+                      className={`block ps-3 border-s-2 text-foreground/80 hover:text-primary font-medium`}
                       onClick={onClose}
                     >
                       {t('common.allServices')}
                     </Link>
-                    <Link
-                      href={`/${language}/services/seo`}
-                      className={`block ${languageMeta.direction === 'rtl' ? 'pr-3 border-r-2' : 'pl-3 border-l-2'} text-foreground/80 hover:text-primary`}
-                      onClick={onClose}
-                    >
-                      {t('common.services')} SEO
-                    </Link>
-                    <Link
-                      href={`/${language}/services/local-seo`}
-                      className={`block ${languageMeta.direction === 'rtl' ? 'pr-3 border-r-2' : 'pl-3 border-l-2'} text-foreground/80 hover:text-primary`}
-                      onClick={onClose}
-                    >
-                      {t('common.services')} SEO {language === 'en' ? 'Local' : language === 'ar' ? 'المحلي' : 'محلی'}
-                    </Link>
-                    <Link
-                      href={`/${language}/services/web-development`}
-                      className={`block ${languageMeta.direction === 'rtl' ? 'pr-3 border-r-2' : 'pl-3 border-l-2'} text-foreground/80 hover:text-primary`}
-                      onClick={onClose}
-                    >
-                      {language === 'en' ? 'Web Development' : language === 'ar' ? 'تطوير المواقع' : 'توسعه وب'}
-                    </Link>
-                    <Link
-                      href={`/${language}/services/wordpress-development`}
-                      className={`block ${languageMeta.direction === 'rtl' ? 'pr-3 border-r-2' : 'pl-3 border-l-2'} text-foreground/80 hover:text-primary`}
-                      onClick={onClose}
-                    >
-                      {t('wordpress.wordpressAndWoocommerce')}
-                    </Link>
+
+                    {/* SEO Services Group */}
+                    <div className="ps-3">
+                      <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-3">{t('common.seoServices')}</h4>
+                      <div className="grid grid-cols-2 gap-3 ps-2 border-s border-border/50">
+                        <Link
+                          href={`/${language}/services/seo`}
+                          className="block text-foreground/80 hover:text-primary text-sm break-words"
+                          onClick={onClose}
+                        >
+                          {t('services.seoTitle')}
+                        </Link>
+                        <Link
+                          href={`/${language}/services/local-seo`}
+                          className="block text-foreground/80 hover:text-primary text-sm break-words"
+                          onClick={onClose}
+                        >
+                          {t('services.localSeoTitle')}
+                        </Link>
+                        <Link
+                          href={`/${language}/services/link-building`}
+                          className="block text-foreground/80 hover:text-primary text-sm break-words"
+                          onClick={onClose}
+                        >
+                          {t('services.linkBuildingTitle')}
+                        </Link>
+                        <Link
+                          href={`/${language}/services/content-creation`}
+                          className="block text-foreground/80 hover:text-primary text-sm break-words"
+                          onClick={onClose}
+                        >
+                          {t('services.contentCreationTitle')}
+                        </Link>
+                      </div>
+                    </div>
+
+                    {/* Development Services Group */}
+                    <div className="ps-3">
+                      <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-3">{t('common.developmentServices')}</h4>
+                      <div className="grid grid-cols-2 gap-3 ps-2 border-s border-border/50">
+                        <Link
+                          href={`/${language}/services/web-development`}
+                          className="block text-foreground/80 hover:text-primary text-sm break-words"
+                          onClick={onClose}
+                        >
+                          {t('services.webDevTitle')}
+                        </Link>
+                        <Link
+                          href={`/${language}/services/wordpress-development`}
+                          className="block text-foreground/80 hover:text-primary text-sm break-words"
+                          onClick={onClose}
+                        >
+                          {t('wordpress.wordpressAndWoocommerce')}
+                        </Link>
+                        <Link
+                          href={`/${language}/services/web-design`}
+                          className="block text-foreground/80 hover:text-primary text-sm break-words"
+                          onClick={onClose}
+                        >
+                          {t('common.webDesignAndDevelopment')}
+                        </Link>
+                        <Link
+                          href={`/${language}/services/modern-web-development`}
+                          className="block text-foreground/80 hover:text-primary text-sm break-words"
+                          onClick={onClose}
+                        >
+                          {t('common.modernWebDevelopment')}
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                 </li>
 

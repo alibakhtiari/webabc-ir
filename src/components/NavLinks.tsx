@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ChevronDown, ArrowRight, Globe, Code, PenTool, Link2 } from 'lucide-react';
+import { ChevronDown, ArrowRight, Globe, Code, PenTool, Link2, Zap } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface NavLinkProps {
@@ -41,38 +41,20 @@ export const ServicesDropdown = () => {
     <div className="relative group">
       <Link href={`/${language}/services`} className="flex items-center text-foreground/80 font-persian text-base hover:text-primary transition-colors">
         {t('common.services')}
-        <ChevronDown className="h-4 w-4 ml-1 group-hover:rotate-180 transition-transform duration-200" />
+        <ChevronDown className="h-4 w-4 ms-1 group-hover:rotate-180 transition-transform duration-200" />
       </Link>
 
       {/* Mega Menu - removed backdrop-blur */}
       <div className={`absolute top-full ${isRtl ? 'right-0' : 'left-0'} mt-2 w-[680px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50`}>
         <div className="bg-white p-6 animate-zoom-in shadow-xl rounded-lg">
-          <div className="grid grid-cols-2 gap-6">
-            {/* Left Column - Featured Service */}
-            <div className="bg-primary/5 rounded-lg p-5">
-              <h3 className="text-lg font-bold text-primary mb-2">{t('wordpress.wordpressAndWoocommerce')}</h3>
-              <p className="text-sm text-gray-600 mb-4">
-                {t('wordpress.subtitle')}
-              </p>
-              <Link
-                href={`/${language}/services/wordpress-development`}
-                className="inline-flex items-center text-primary hover:text-primary/80 text-sm font-medium"
-              >
-                {t('common.viewDetails')}
-                <ArrowRight className={`${isRtl ? 'mr-1' : 'ml-1'} h-4 w-4`} />
-              </Link>
-            </div>
-
-            {/* Right Column - Service Links */}
-            <div>
-              <h3 className="text-sm font-medium text-gray-500 mb-3">{t('common.allServices')}</h3>
-              <ul className="space-y-4">
-                <ServiceLink
-                  to={`/${language}/services`}
-                  title={t('common.allServices')}
-                  description={t('common.viewAll')}
-                  icon={<Globe />}
-                />
+          <div className="grid grid-cols-2 gap-8">
+            {/* SEO Services Column */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-2 mb-2 pb-2 border-b border-gray-100">
+                <Globe className="w-5 h-5 text-primary" />
+                <h3 className="font-bold text-lg text-primary">{t('common.seoServices')}</h3>
+              </div>
+              <ul className="space-y-3">
                 <ServiceLink
                   to={`/${language}/services/seo`}
                   title={t('services.seoTitle')}
@@ -86,10 +68,10 @@ export const ServicesDropdown = () => {
                   icon={<Globe />}
                 />
                 <ServiceLink
-                  to={`/${language}/services/web-development`}
-                  title={t('services.webDevTitle')}
-                  description={t('services.webDevDescription')}
-                  icon={<Code />}
+                  to={`/${language}/services/link-building`}
+                  title={t('services.linkBuildingTitle')}
+                  description={t('services.linkBuildingDescription')}
+                  icon={<Link2 />}
                 />
                 <ServiceLink
                   to={`/${language}/services/content-creation`}
@@ -97,13 +79,51 @@ export const ServicesDropdown = () => {
                   description={t('services.contentCreationDescription')}
                   icon={<PenTool />}
                 />
+              </ul>
+            </div>
+
+            {/* Development Services Column */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-2 mb-2 pb-2 border-b border-gray-100">
+                <Code className="w-5 h-5 text-primary" />
+                <h3 className="font-bold text-lg text-primary">{t('common.developmentServices')}</h3>
+              </div>
+              <ul className="space-y-3">
                 <ServiceLink
-                  to={`/${language}/services/link-building`}
-                  title={t('services.linkBuildingTitle')}
-                  description={t('services.linkBuildingDescription')}
-                  icon={<Link2 />}
+                  to={`/${language}/services/web-development`}
+                  title={t('services.webDevTitle')}
+                  description={t('services.webDevDescription')}
+                  icon={<Code />}
+                />
+                <ServiceLink
+                  to={`/${language}/services/wordpress-development`}
+                  title={t('wordpress.wordpressAndWoocommerce')}
+                  description={t('wordpress.subtitle')}
+                  icon={<Code />}
+                />
+                <ServiceLink
+                  to={`/${language}/services/web-design`}
+                  title={t('common.webDesignAndDevelopment')}
+                  description={t('services.webDevDescription')}
+                  icon={<PenTool />}
+                />
+                <ServiceLink
+                  to={`/${language}/services/modern-web-development`}
+                  title={t('common.modernWebDevelopment')}
+                  description={t('modern-web.description')?.substring(0, 50) + '...'}
+                  icon={<Zap />}
                 />
               </ul>
+              {/* Featured / View All Link at bottom of dev column or separate? */}
+              <div className="pt-4 mt-2 border-t border-gray-100">
+                <Link
+                  href={`/${language}/services`}
+                  className="inline-flex items-center text-primary font-medium hover:underline text-sm"
+                >
+                  {t('common.viewAll')} {t('common.services')}
+                  <ArrowRight className="ms-1 h-4 w-4" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
