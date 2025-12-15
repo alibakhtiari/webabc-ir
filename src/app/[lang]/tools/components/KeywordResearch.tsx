@@ -37,7 +37,8 @@ const KeywordResearch = () => {
                     </CardContent>
                 </Card>
             </div>
-            );
+        </div>
+    );
 };
 
-            export default KeywordResearch;
+export default KeywordResearch;
