@@ -1,0 +1,22 @@
+{
+    "title": "Speed Optimization",
+    "subtitle": "Boost speed & Core Web Vitals",
+    "description": "Optimize loading time and pass Core Web Vitals assessments.",
+    "features": [
+        "Image Optimization",
+        "Code Minification",
+        "Caching Configuration",
+        "Database Optimization",
+        "CDN Setup"
+    ],
+    "faq": {
+        "q1": "How fast will my site apply?",
+        "a1": "We aim for scores of 90+ on Google PageSpeed Insights and loading times under 2 seconds. However, results depend on your hosting and site complexity.",
+        "q2": "Is this a one-time service?",
+        "a2": "Yes, the optimization is a one-time project. However, adding non-optimized content later can slow it down again.",
+        "q3": "Do you need access to my hosting?",
+        "a3": "Yes, we typically need FTP/SFTP access and admin access to your WordPress dashboard or server.",
+        "q4": "Will this break my site design?",
+        "a4": "We act carefully to ensure optimizations do not affect visual layout. We test everything on a staging environment first."
+    }
+}

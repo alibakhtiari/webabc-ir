@@ -18,7 +18,12 @@
       "Technical SEO",
       "External Link Building",
       "Monthly Reporting"
-    ]
+    ],
+    "onPageSeo": "On-Page SEO",
+    "offPageSeo": "Off-Page SEO",
+    "technicalSeo": "Technical SEO",
+    "localSeo": "Local SEO",
+    "localSeoDesc": "Attract local customers by optimizing Google Maps and local search"
   },
   "webDesign": {
     "title": "Custom Website Design",

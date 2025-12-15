@@ -1,0 +1,22 @@
+{
+    "title": "UI/UX Audit",
+    "subtitle": "Expert user experience review",
+    "description": "Identify usability issues and improve your conversion rates.",
+    "features": [
+        "Video Walkthrough",
+        "Conversion Analysis",
+        "Usability Testing",
+        "Accessibility Check",
+        "Design Recommendations"
+    ],
+    "faq": {
+        "q1": "What do I get in the audit?",
+        "a1": "You receive a comprehensive video review of your site and a PDF report detailing issues and suggesting actionable fixes.",
+        "q2": "Can you fix the issues you find?",
+        "a2": "Yes! After the audit, we can provide a quote to implement the recommended design and structure changes.",
+        "q3": "How long does it take?",
+        "a3": "Most audits are completed within 3-5 business days.",
+        "q4": "Is this for new sites only?",
+        "a4": "No, it is valuable for any existing site that isn't converting visitors into customers at the desired rate."
+    }
+}
