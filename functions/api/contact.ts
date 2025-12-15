@@ -2,14 +2,32 @@ import { Resend } from 'resend';
 
 interface Env {
     RESEND_API_KEY: string;
+    TURNSTILE_SECRET_KEY?: string;
 }
 
 export const onRequestPost = async ({ request, env }: { request: Request, env: Env }) => {
     try {
-        const { name, email, message } = await request.json() as any;
+        const { name, email, message, token } = await request.json() as any;
 
         if (!env.RESEND_API_KEY) {
             return new Response(JSON.stringify({ error: 'Missing API Key' }), { status: 500 });
+        }
+
+        // Verify Turnstile Token
+        if (token && env.TURNSTILE_SECRET_KEY) {
+            const turnstileResult = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    secret: env.TURNSTILE_SECRET_KEY,
+                    response: token,
+                }),
+            });
+
+            const outcome = await turnstileResult.json() as any;
+            if (!outcome.success) {
+                return new Response(JSON.stringify({ error: 'Invalid Captcha' }), { status: 403 });
+            }
         }
 
         const resend = new Resend(env.RESEND_API_KEY);
