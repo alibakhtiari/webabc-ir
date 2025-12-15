@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "images:optimize": "node scripts/optimize-images.mjs",
-    "deploy": "wrangler pages deploy out",
+    "deploy": "next build && wrangler pages deploy out",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "browserslist": [
