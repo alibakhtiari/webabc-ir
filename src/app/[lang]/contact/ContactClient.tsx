@@ -4,6 +4,7 @@ import React, { lazy, Suspense, useState } from 'react';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import ContactSchema from '@/components/seo/schemas/ContactSchema';
 import { useLanguage } from '@/contexts/LanguageContext';
+import ContactForm from '@/components/ContactForm';
 
 // Lazy loading components
 const Button = lazy(() => import('@/components/ui/button').then(mod => ({ default: mod.Button })));
@@ -27,41 +28,7 @@ const TextareaSkeleton = () => (
 const Contact = () => {
   const { language, t, languageMeta } = useLanguage();
 
-  const [isPending, setIsPending] = useState(false);
-  const [responseMessage, setResponseMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsPending(true);
-    setResponseMessage(null);
-
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
-
-    try {
-      // Use local Cloudflare Pages Function
-      const apiUrl = '/api/contact';
-
-      const res = await fetch(apiUrl, { 
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-
-      const result = await res.json(); // Safely handle if not JSON? ignoring for now as worker returns JSON.
-
-      if (res.ok) {
-        setResponseMessage({ type: 'success', text: result.message || t('contact.messageSent') || 'Message sent successfully!' });
-        (e.target as HTMLFormElement).reset();
-      } else {
-        setResponseMessage({ type: 'error', text: result.error || 'Failed to send message.' });
-      }
-    } catch (error) {
-      setResponseMessage({ type: 'error', text: 'An error occurred. Please try again.' });
-    } finally {
-      setIsPending(false);
-    }
-  };
 
 
   const textDirection = languageMeta.direction === 'rtl' ? 'text-right' : 'text-left';
@@ -81,61 +48,7 @@ const Contact = () => {
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">
             {/* Contact Form */}
             <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label className={`block text-sm font-medium text-gray-700 mb-2 ${textDirection}`}>{t('consultation.fullName')}</label>
-                  <Suspense fallback={<InputSkeleton />}>
-                    <Input
-                      name="name"
-                      className={inputDirection}
-                      placeholder={t('consultation.fullName')}
-                      required
-                    />
-                  </Suspense>
-                </div>
-
-                <div>
-                  <label className={`block text-sm font-medium text-gray-700 mb-2 ${textDirection}`}>{t('consultation.email')}</label>
-                  <Suspense fallback={<InputSkeleton />}>
-                    <Input
-                      name="email"
-                      type="email"
-                      className={inputDirection}
-                      placeholder="example@domain.com"
-                      required
-                    />
-                  </Suspense>
-                </div>
-
-                <div>
-                  <label className={`block text-sm font-medium text-gray-700 mb-2 ${textDirection}`}>{t('consultation.message')}</label>
-                  <Suspense fallback={<TextareaSkeleton />}>
-                    <Textarea
-                      name="message"
-                      rows={5}
-                      className={inputDirection}
-                      placeholder={t('contact.yourMessage')}
-                      required
-                    />
-                  </Suspense>
-                </div>
-
-                <Suspense fallback={<ButtonSkeleton />}>
-                  <Button
-                    type="submit"
-                    disabled={isPending}
-                    className="w-full bg-primary hover:bg-primary-dark disabled:opacity-70"
-                  >
-                    {isPending ? t('common.loading') || 'Sending...' : t('contact.submitMessage')}
-                  </Button>
-                </Suspense>
-
-                {responseMessage && (
-                  <p className={`text-center text-sm ${responseMessage.type === 'success' ? 'text-green-600' : 'text-red-600'}`}>
-                    {responseMessage.text}
-                  </p>
-                )}
-              </form>
+              <ContactForm />
             </div>
 
             {/* Contact Info */}
