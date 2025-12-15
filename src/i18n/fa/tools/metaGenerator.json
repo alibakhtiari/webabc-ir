@@ -1,0 +1,16 @@
+{
+    "title": "مولد متا تگ",
+    "description": "فرمی ساده که متا تگ‌ها (عنوان، توضیحات، تگ‌های شبکه اجتماعی) را برای کپی در بخش <head> وب‌سایت تولید می‌کند.",
+    "enterInfo": "اطلاعات خود را وارد کنید",
+    "pageTitle": "عنوان صفحه",
+    "titlePlaceholder": "عنوان صفحه شما",
+    "metaDescription": "توضیحات متا",
+    "descPlaceholder": "توضیح مختصری از صفحه شما",
+    "keywords": "کلمات کلیدی (جدا شده با ویرگول)",
+    "keywordsPlaceholder": "کلمه1، کلمه2، کلمه3",
+    "ogImage": "آدرس تصویر Open Graph",
+    "ogImagePlaceholder": "https://example.com/image.jpg",
+    "generatedTags": "متا تگ‌های تولید شده",
+    "copy": "کپی در کلیپ‌بورد",
+    "copied": "در کلیپ‌بورد کپی شد!"
+}

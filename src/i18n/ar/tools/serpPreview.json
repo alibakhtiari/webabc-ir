@@ -1,0 +1,17 @@
+{
+    "title": "أداة معاينة مقتطف نتائج البحث",
+    "description": "تظهر معاينة لكيفية ظهور صفحة ويب في نتائج بحث جوجل. أدخل علامة العنوان، وصف Meta، وURL الخاص بك لتحسين مقتطفاتك للحصول على معدلات نقر أعلى.",
+    "enterDetails": "أدخل تفاصيلك",
+    "fillDetails": "املأ معلومات الميتا الخاصة بك",
+    "titleTag": "وسم العنوان",
+    "url": "الرابط",
+    "metaDescription": "وصف الميتا",
+    "googlePreview": "معاينة بحث جوجل",
+    "previewDesc": "كيف سيظهر في نتائج البحث",
+    "charsMax": "حرف (الحد الأقصى",
+    "placeholderTitle": "عنوان صفحتك",
+    "placeholderUrl": "https://example.com/page",
+    "placeholderDesc": "وصف الميتا الخاص بك",
+    "previewTitleDefault": "سيظهر عنوان صفحتك هنا",
+    "previewDescDefault": "سيظهر وصف الميتا الخاص بك هنا. اجعله جذابًا لتحسين معدلات النقر من نتائج البحث."
+}

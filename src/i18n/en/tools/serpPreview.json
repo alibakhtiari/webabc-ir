@@ -1,0 +1,17 @@
+{
+    "title": "SERP Snippet Preview Tool",
+    "description": "Shows a preview of how a webpage will look in Google's search results. Enter your title tag, meta description, and URL to optimize your snippets for higher click-through rates.",
+    "enterDetails": "Enter Your Details",
+    "fillDetails": "Fill in your meta information",
+    "titleTag": "Title Tag",
+    "url": "URL",
+    "metaDescription": "Meta Description",
+    "googlePreview": "Google Search Preview",
+    "previewDesc": "How it will appear in search results",
+    "charsMax": "characters (max",
+    "placeholderTitle": "Your page title",
+    "placeholderUrl": "https://example.com/page",
+    "placeholderDesc": "Your meta description",
+    "previewTitleDefault": "Your Page Title Will Appear Here",
+    "previewDescDefault": "Your meta description will appear here. Make it compelling to improve click-through rates from search results."
+}

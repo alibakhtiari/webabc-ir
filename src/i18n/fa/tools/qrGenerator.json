@@ -1,0 +1,12 @@
+{
+    "title": "سازنده کد QR",
+    "description": "کدهای QR سفارشی برای لینک‌ها، متن‌ها یا استفاده تجاری خود را فوراً ایجاد کنید.",
+    "settings": "تنظیمات QR",
+    "contentLabel": "محتوا (آدرس یا متن)",
+    "placeholder": "https://example.com",
+    "fgColor": "رنگ پیش‌زمینه",
+    "bgColor": "رنگ پس‌زمینه",
+    "preview": "پیش‌نمایش",
+    "download": "دانلود کد QR",
+    "downloadSuccess": "کد QR با موفقیت دانلود شد!"
+}

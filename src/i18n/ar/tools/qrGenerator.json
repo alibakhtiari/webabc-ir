@@ -1,0 +1,12 @@
+{
+    "title": "مولد رمز الاستجابة السريعة (QR)",
+    "description": "أنشئ رموز QR مخصصة للروابط والنصوص والاستخدام التجاري على الفور.",
+    "settings": "إعدادات QR",
+    "contentLabel": "المحتوى (الرابط أو النص)",
+    "placeholder": "https://example.com",
+    "fgColor": "لون الأمامية",
+    "bgColor": "لون الخلفية",
+    "preview": "معاينة",
+    "download": "تحميل رمز QR",
+    "downloadSuccess": "تم تحميل رمز QR بنجاح!"
+}

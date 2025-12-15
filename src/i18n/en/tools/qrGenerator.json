@@ -1,0 +1,12 @@
+{
+    "title": "QR Code Generator",
+    "description": "Generate custom QR codes for your links, text, or business use instantly.",
+    "settings": "QR Settings",
+    "contentLabel": "Content (URL or Text)",
+    "placeholder": "https://example.com",
+    "fgColor": "Foreground Color",
+    "bgColor": "Background Color",
+    "preview": "Preview",
+    "download": "Download QR Code",
+    "downloadSuccess": "QR Code downloaded successfully!"
+}

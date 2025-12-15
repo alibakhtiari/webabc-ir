@@ -27,6 +27,25 @@ const namespaces = {
     seoService: 'seo-service',
     contentCreation: 'content-creation',
     linkBuilding: 'link-building',
+    'modern-web': 'modern-web',
+
+    // Tools Namespaces
+    serpPreview: 'tools/serpPreview',
+    keywordResearch: 'tools/keywordResearch',
+    faqGenerator: 'tools/faqGenerator',
+    headlineAnalyzer: 'tools/headlineAnalyzer',
+    readabilityChecker: 'tools/readabilityChecker',
+    loremGenerator: 'tools/loremGenerator',
+    costCalculator: 'tools/costCalculator',
+    privacyGenerator: 'tools/privacyGenerator',
+    glassGen: 'tools/glassGen',
+    metaGenerator: 'tools/metaGenerator',
+    paaScraper: 'tools/paaScraper',
+    utmBuilder: 'tools/utmBuilder',
+    qrGenerator: 'tools/qrGenerator',
+    slugGenerator: 'tools/slugGenerator',
+    socialPreview: 'tools/socialPreview',
+    gradientGen: 'tools/gradientGen',
 } as const;
 
 type NamespaceKey = keyof typeof namespaces;

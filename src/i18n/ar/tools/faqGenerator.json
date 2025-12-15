@@ -1,0 +1,15 @@
+{
+    "title": "منشئ مخطط الأسئلة الشائعة",
+    "description": "قم بإنشاء ترميز مخطط صفحة الأسئلة الشائعة لتحسين ظهورك في البحث.",
+    "addQuestion": "إضافة سؤال",
+    "questionLabel": "السؤال",
+    "answerLabel": "الجواب",
+    "generateSchema": "توليد المخطط",
+    "copyJson": "نسخ الكود",
+    "delete": "حذف",
+    "preview": "معاينة",
+    "schemaResult": "نتيجة المخطط",
+    "copied": "تم النسخ!",
+    "noQuestions": "أضف سؤالاً واحداً على الأقل لتوليد المخطط.",
+    "placeholder": "// سيظهر مخطط JSON-LD هنا..."
+}
