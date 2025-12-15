@@ -98,7 +98,7 @@ const BenefitsSection = () => {
               className="animate-on-scroll opacity-0 glass-morphism p-6 rounded-xl transition-all duration-300 hover:shadow-md"
               style={{ animationDelay: `${idx * 100}ms` }}
             >
-              <div className="flex items-start space-x-4 space-x-reverse">
+              <div className="flex items-start gap-4">
                 <div className="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
                   <Check className="h-5 w-5" />
                 </div>
@@ -138,7 +138,7 @@ const BenefitsSection = () => {
                   t('benefits.guaranteeFeatures.3', { fallback: 'قراردادهای منعطف و بدون تعهد بلندمدت' })
                 ].map((item, idx) => (
                   <li key={idx} className="flex items-center font-persian">
-                    <div className="w-6 h-6 flex items-center justify-center rounded-full bg-primary/10 text-primary mr-3 shrink-0">
+                    <div className="w-6 h-6 flex items-center justify-center rounded-full bg-primary/10 text-primary me-3 shrink-0">
                       <Check className="h-4 w-4" />
                     </div>
                     <span>{item}</span>
@@ -156,9 +156,9 @@ const BenefitsSection = () => {
                 >
                   <span>{t('benefits.ctaButton', { fallback: 'دریافت مشاوره رایگان' })}</span>
                   {languageMeta.direction === 'rtl' ? (
-                    <ArrowLeft className="h-4 w-4 mr-2" />
+                    <ArrowLeft className="h-4 w-4 me-2" />
                   ) : (
-                    <ArrowRight className="h-4 w-4 ml-2" />
+                    <ArrowRight className="h-4 w-4 ms-2" />
                   )}
                 </button>
               </div>
