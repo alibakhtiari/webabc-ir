@@ -1,0 +1,22 @@
+{
+    "title": "Website Maintenance",
+    "subtitle": "Secure & up-to-date website",
+    "description": "Comprehensive care plans to keep your site secure and fast.",
+    "features": [
+        "Weekly Plugin Updates",
+        "Daily Cloud Backups",
+        "Uptime Monitoring",
+        "Security Scans",
+        "Content Updates"
+    ],
+    "faq": {
+        "q1": "What does the maintenance plan include?",
+        "a1": "Our plan includes weekly updates of plugins, themes, and WordPress core, daily off-site cloud backups, 24/7 uptime monitoring, security scans, and small content updates.",
+        "q2": "Do I really need a maintenance plan?",
+        "a2": "Yes. Just like a car needs oil changes, a website needs maintenance. Without it, your site becomes vulnerable to hackers, slow, and may break when meaningful hosting updates occur.",
+        "q3": "Can I cancel anytime?",
+        "a3": "Absolutely. We believe in earning your business every month. There are no long-term lock-in contracts.",
+        "q4": "What if my site gets hacked?",
+        "a4": "If you are on our maintenance plan, we will fix your hacked site for free. We take preventing this very seriously."
+    }
+}

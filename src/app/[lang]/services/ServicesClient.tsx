@@ -3,7 +3,7 @@
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, ShieldCheck, Zap, Layout } from 'lucide-react';
 import ServicesSchema from '@/components/seo/schemas/ServicesSchema';
 
 interface SchemaData {
@@ -213,6 +213,114 @@ const ServicesOverview = () => {
                   </li>
                 </ul>
                 <Link href={`/${language}/services/local-seo`} className="inline-flex items-center text-primary font-medium hover:underline rtl:flex-row-reverse">
+                  {t('common.readMore')}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ms-2 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </Link>
+              </div>
+
+              {/* Maintenance Services */}
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all">
+                <div className="w-16 h-16 bg-cyan-50 rounded-2xl flex items-center justify-center mb-6">
+                  <ShieldCheck className="h-8 w-8 text-cyan-500" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{t('maintenance.title')}</h3>
+                <p className="text-gray-600 mb-6">
+                  {t('maintenance.subtitle')}
+                </p>
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
+                    <span>{t('maintenance.features.0')}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
+                    <span>{t('maintenance.features.1')}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
+                    <span>{t('maintenance.features.2')}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
+                    <span>{t('maintenance.features.3')}</span>
+                  </li>
+                </ul>
+                <Link href={`/${language}/services/website-maintenance`} className="inline-flex items-center text-primary font-medium hover:underline rtl:flex-row-reverse">
+                  {t('common.readMore')}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ms-2 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </Link>
+              </div>
+
+              {/* Speed Optimization Services */}
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all">
+                <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center mb-6">
+                  <Zap className="h-8 w-8 text-orange-500" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{t('speedOptimization.title')}</h3>
+                <p className="text-gray-600 mb-6">
+                  {t('speedOptimization.subtitle')}
+                </p>
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
+                    <span>{t('speedOptimization.features.0')}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
+                    <span>{t('speedOptimization.features.1')}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
+                    <span>{t('speedOptimization.features.2')}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
+                    <span>{t('speedOptimization.features.3')}</span>
+                  </li>
+                </ul>
+                <Link href={`/${language}/services/speed-optimization`} className="inline-flex items-center text-primary font-medium hover:underline rtl:flex-row-reverse">
+                  {t('common.readMore')}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ms-2 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </Link>
+              </div>
+
+              {/* UI/UX Audit Services */}
+              <div className="bg-white rounded-lg p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all">
+                <div className="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center mb-6">
+                  <Layout className="h-8 w-8 text-indigo-500" />
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{t('uiUxAudit.title')}</h3>
+                <p className="text-gray-600 mb-6">
+                  {t('uiUxAudit.subtitle')}
+                </p>
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
+                    <span>{t('uiUxAudit.features.0')}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
+                    <span>{t('uiUxAudit.features.1')}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
+                    <span>{t('uiUxAudit.features.2')}</span>
+                  </li>
+                  <li className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
+                    <span>{t('uiUxAudit.features.3')}</span>
+                  </li>
+                </ul>
+                <Link href={`/${language}/services/ui-ux-audit`} className="inline-flex items-center text-primary font-medium hover:underline rtl:flex-row-reverse">
                   {t('common.readMore')}
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ms-2 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
