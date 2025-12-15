@@ -2,7 +2,8 @@
 
 import React from 'react';
 import OptimizedImage from '@/components/OptimizedImage';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface SeoServiceCardProps {
     icon: React.ReactNode;
@@ -14,6 +15,7 @@ interface SeoServiceCardProps {
 }
 
 export const SeoServiceCard: React.FC<SeoServiceCardProps> = ({ icon, title, description, features, color, iconColor }) => {
+    const { languageMeta } = useLanguage();
     return (
         <div className={`p-8 rounded-2xl ${color} hover:shadow-lg transition-all duration-300 border border-transparent hover:border-gray-100 group`}>
             <div className={`w-14 h-14 rounded-xl bg-white flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform ${iconColor}`}>
@@ -26,7 +28,7 @@ export const SeoServiceCard: React.FC<SeoServiceCardProps> = ({ icon, title, des
             <ul className="space-y-3">
                 {features.map((feature, idx) => (
                     <li key={idx} className="flex items-center text-gray-700 text-sm">
-                        <CheckCircle2 className={`w-4 h-4 mr-2 ${iconColor} opacity-80`} />
+                        <CheckCircle2 className={`w-4 h-4 me-2 ${iconColor} opacity-80`} />
                         {feature}
                     </li>
                 ))}
