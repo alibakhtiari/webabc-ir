@@ -1,6 +1,6 @@
-# Deployment Guide: Static Site & Email Worker
+# Deployment Guide: Static Site & Pages Functions
 
-This guide covers how to deploy the **static Next.js application** to **Cloudflare Pages** and the **email handling Worker** to **Cloudflare Workers**.
+This guide covers how to deploy the **static Next.js application** with **Cloudflare Pages Functions** for the contact form.
 
 ## Prerequisites
 
@@ -15,83 +15,51 @@ This guide covers how to deploy the **static Next.js application** to **Cloudfla
 
 ---
 
-## Part 1: Deploying the Email Worker (Backend)
+## Part 1: Initial Setup
 
-The contact form relies on this worker to send emails. We deploy it first to get the URL.
-
-1. **Navigate to the API directory:**
-   ```bash
-   cd api
-   ```
-
-2. **Install Dependencies:**
+1. **Install Dependencies:**
    ```bash
    npm install
    ```
+   *This installs `resend` and other project dependencies.*
 
-3. **Set the Resend API Key Secret:**
-   This securely stores your API key in Cloudflare.
-   ```bash
-   wrangler secret put RESEND_API_KEY
-   ```
-   *Enter your Resend API key when prompted.*
-
-4. **Deploy the Worker:**
-   ```bash
-   wrangler deploy
-   ```
-   *Note the URL output at the end (e.g., `https://contact-worker.your-subdomain.workers.dev`). You will need this.*
+2. **Verify Functions:**
+   Ensure `functions/api/contact.ts` exists. This file handles the email sending logic automatically.
 
 ---
 
-## Part 2: Configuring the Frontend
-
-1. **Navigate back to the project root:**
-   ```bash
-   cd ..
-   ```
-
-2. **Configure the Worker URL:**
-   Create or edit `.env.production` (or `.env.local` for local testing) and add your worker URL:
-   ```env
-   NEXT_PUBLIC_WORKER_URL=https://your-worker-name.your-subdomain.workers.dev
-   ```
-   *Note: Since we are doing a static export, this value is baked into the HTML at build time. If you change it, you must rebuild.*
-
----
-
-## Part 3: Deploying the Static Site (Frontend)
+## Part 2: Deployment
 
 1. **Build the Project:**
    Generate the static HTML files into the `out/` directory.
    ```bash
    npm run build
    ```
-   *Ensure the build completes successfully.*
 
 2. **Deploy to Cloudflare Pages:**
-   This command uploads the `out` folder to Cloudflare Pages.
+   This command uploads the `out` folder and the `functions` directory.
    ```bash
    npm run deploy
    ```
-   *(This runs `wrangler pages deploy out` under the hood).*
 
-3. **Follow the Prompts:**
-   - Select your Cloudflare account.
-   - You can create a new project (e.g., `webabc-next`) or select an existing one.
+3. **Configure Environment Variables:**
+   - Go to your project settings in the **Cloudflare Dashboard**.
+   - Navigate to **Settings** > **Environment variables**.
+   - Add a new variable:
+     - **Variable name**: `RESEND_API_KEY`
+     - **Value**: Your actual Resend API key.
+   - **Important**: You must redeploy (step 2) or use the dashboard to create a new deployment for the variable to take effect if added after initial deploy.
 
 ---
 
-## Part 4: Verification
+## Part 3: Verification
 
-1. **Visit your Pages URL** (provided after step 3).
+1. **Visit your Pages URL**.
 2. **Go to the Contact Page** and send a test message.
-3. **Check your Email** to confirm receipt (check spam folders too).
-4. **Check Worker Logs** (if needed):
-   Go to Cloudflare Dashboard > Workers & Pages > `contact-worker` > Logs to see real-time execution logs.
+3. **Check your Email** to confirm receipt.
 
 ## Troubleshooting
 
-- **Form doesn't send/404 Error**: Ensure `NEXT_PUBLIC_WORKER_URL` is correct and you ran `npm run build` *after* setting it.
-- **CORS Error**: The worker is configured to allow requests from any origin (`*`). If you changed this, ensure your Pages domain is allowed.
-- **Build Fails**: Run `npm run build` locally to see error details. Ensure `api/` folder is excluded from `tsconfig.json` (already configured).
+- **Form Error (500)**: Check if `RESEND_API_KEY` is set correctly in Cloudflare Dashboard.
+- **Build Fails**: Ensure `out/` is generated.
+- **Authentication Error**: If deployment fails with auth error, run `wrangler login` again or clear conflicting env vars: `$env:CLOUDFLARE_API_TOKEN = ""; npm run deploy`.
