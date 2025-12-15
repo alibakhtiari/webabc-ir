@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Palette, Copy, RefreshCw, ArrowRight } from 'lucide-react';
-import { useLanguage } from '@/context/LanguageContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { toast } from 'sonner';
 
 export default function GradientGenerator() {

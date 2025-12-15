@@ -1,6 +1,6 @@
 "use client";
 
-import ServicePageTemplate from '@/components/templates/ServicePageTemplate';
+import { ServicePageTemplate } from '@/components/templates/ServicePageTemplate';
 import { useLanguage } from '@/contexts/LanguageContext';
 import FAQ from '@/components/FAQ';
 import { CheckCircle2, Layout } from 'lucide-react';

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Share2, Upload, Layout, Image as ImageIcon } from 'lucide-react';
-import { useLanguage } from '@/context/LanguageContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { toast } from 'sonner';
 
 export default function SocialMediaPreview() {
