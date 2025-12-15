@@ -8,73 +8,76 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { AlertCircle } from 'lucide-react';
+import Breadcrumb from '@/components/seo/Breadcrumb';
 
 const PAAScraper: React.FC = () => {
-  const { languageMeta } = useLanguage();
+  const { languageMeta, t } = useLanguage();
   const [keyword, setKeyword] = useState('');
   const [questions] = useState<string[]>([]);
 
   return (
     <>
 
-      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 pt-32 pb-16">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h1 className="text-4xl font-bold mb-4 text-center">People Also Ask Scraper</h1>
-          <p className="text-muted-foreground text-center mb-8">
-            Discover common questions about your keywords for content ideas
-          </p>
+      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 pt-20 pb-10 md:pt-32 md:pb-16">
+        <div className="container mx-auto px-4 max-w-4xl space-y-6 md:space-y-8">
+          <Breadcrumb />
+          <div className="text-center space-y-3 md:space-y-4">
+            <h1 className="text-2xl md:text-4xl font-bold tracking-tight px-4">{t('paaScraper.title')}</h1>
+            <p className="text-lg md:text-xl text-muted-foreground px-2">
+              {t('paaScraper.description')}
+            </p>
+          </div>
 
           <div className="grid gap-8">
             <Card>
               <CardHeader>
-                <CardTitle>Enter Keyword</CardTitle>
+                <CardTitle>{t('paaScraper.enterKeyword')}</CardTitle>
                 <CardDescription>
-                  Find questions people are asking about your topic
+                  {t('paaScraper.enterKeywordDesc')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
-                  <Label htmlFor="keyword">Keyword or Topic</Label>
+                  <Label htmlFor="keyword">{t('paaScraper.keywordLabel')}</Label>
                   <Input
                     id="keyword"
                     value={keyword}
                     onChange={(e) => setKeyword(e.target.value)}
-                    placeholder="e.g., web design, SEO, digital marketing"
+                    placeholder={t('paaScraper.placeholder')}
                   />
                 </div>
 
                 <Alert>
                   <AlertCircle className="h-4 w-4" />
                   <AlertDescription>
-                    This tool demonstrates the interface. To scrape live "People Also Ask" data from Google,
-                    you would need to integrate with a third-party API service like SerpAPI, DataForSEO, or similar.
+                    {t('paaScraper.demoAlert')}
                   </AlertDescription>
                 </Alert>
 
                 <Button className="w-full" disabled>
-                  Search Questions (Demo Mode)
+                  {t('paaScraper.searchButton')}
                 </Button>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle>Example Questions</CardTitle>
+                <CardTitle>{t('paaScraper.exampleQuestions')}</CardTitle>
                 <CardDescription>
-                  Common "People Also Ask" questions for: Web Design
+                  {t('paaScraper.exampleDesc')}
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3">
                   {[
-                    "What is web design and why is it important?",
-                    "How much does a website design cost?",
-                    "What are the key principles of good web design?",
-                    "What is the difference between web design and web development?",
-                    "How long does it take to design a website?",
-                    "What tools do web designers use?",
-                    "Is web design a good career?",
-                    "What skills do you need for web design?"
+                    t('paaScraper.q1'),
+                    t('paaScraper.q2'),
+                    t('paaScraper.q3'),
+                    t('paaScraper.q4'),
+                    t('paaScraper.q5'),
+                    t('paaScraper.q6'),
+                    t('paaScraper.q7'),
+                    t('paaScraper.q8')
                   ].map((q, i) => (
                     <li key={i} className="p-3 bg-muted rounded flex items-start gap-2">
                       <span className="text-primary font-semibold">{i + 1}.</span>
@@ -88,7 +91,7 @@ const PAAScraper: React.FC = () => {
             {questions.length > 0 && (
               <Card>
                 <CardHeader>
-                  <CardTitle>Results</CardTitle>
+                  <CardTitle>{t('paaScraper.results')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">

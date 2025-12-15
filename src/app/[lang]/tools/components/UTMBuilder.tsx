@@ -7,9 +7,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
+import Breadcrumb from '@/components/seo/Breadcrumb';
 
 const UTMBuilder: React.FC = () => {
-  const { languageMeta } = useLanguage();
+  const { languageMeta, t } = useLanguage();
   const [websiteUrl, setWebsiteUrl] = useState('');
   const [source, setSource] = useState('');
   const [medium, setMedium] = useState('');
@@ -36,98 +37,101 @@ const UTMBuilder: React.FC = () => {
   const copyUrl = () => {
     if (finalUrl) {
       navigator.clipboard.writeText(finalUrl);
-      toast.success('URL copied to clipboard!');
+      toast.success(t('utmBuilder.copied'));
     }
   };
 
   return (
     <div>
 
-      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 pt-32 pb-16">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h1 className="text-4xl font-bold mb-4 text-center">UTM Link Builder</h1>
-          <p className="text-muted-foreground text-center mb-8">
-            Create trackable URLs with UTM parameters for Google Analytics
-          </p>
+      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 pt-20 pb-10 md:pt-32 md:pb-16">
+        <div className="container mx-auto px-4 max-w-4xl space-y-6 md:space-y-8">
+          <Breadcrumb />
+          <div className="text-center space-y-3 md:space-y-4">
+            <h1 className="text-2xl md:text-4xl font-bold tracking-tight px-4">{t('utmBuilder.title')}</h1>
+            <p className="text-lg md:text-xl text-muted-foreground px-2">
+              {t('utmBuilder.description')}
+            </p>
+          </div>
 
           <div className="grid gap-8">
             <Card>
               <CardHeader>
-                <CardTitle>Campaign Details</CardTitle>
+                <CardTitle>{t('utmBuilder.campaignDetails')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
-                  <Label htmlFor="url">Website URL (required)</Label>
+                  <Label htmlFor="url">{t('utmBuilder.websiteUrl')}</Label>
                   <Input
                     id="url"
                     value={websiteUrl}
                     onChange={(e) => setWebsiteUrl(e.target.value)}
-                    placeholder="https://example.com"
+                    placeholder={t('utmBuilder.urlPlaceholder')}
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="source">Campaign Source (required)</Label>
+                  <Label htmlFor="source">{t('utmBuilder.source')}</Label>
                   <Input
                     id="source"
                     value={source}
                     onChange={(e) => setSource(e.target.value)}
-                    placeholder="google, newsletter, facebook"
+                    placeholder={t('utmBuilder.sourcePlaceholder')}
                   />
                   <p className="text-sm text-muted-foreground mt-1">
-                    The referrer: google, newsletter, facebook, etc.
+                    {t('utmBuilder.sourceHelp')}
                   </p>
                 </div>
 
                 <div>
-                  <Label htmlFor="medium">Campaign Medium (required)</Label>
+                  <Label htmlFor="medium">{t('utmBuilder.medium')}</Label>
                   <Input
                     id="medium"
                     value={medium}
                     onChange={(e) => setMedium(e.target.value)}
-                    placeholder="cpc, email, social"
+                    placeholder={t('utmBuilder.mediumPlaceholder')}
                   />
                   <p className="text-sm text-muted-foreground mt-1">
-                    Marketing medium: cpc, email, social, etc.
+                    {t('utmBuilder.mediumHelp')}
                   </p>
                 </div>
 
                 <div>
-                  <Label htmlFor="campaign">Campaign Name (required)</Label>
+                  <Label htmlFor="campaign">{t('utmBuilder.campaign')}</Label>
                   <Input
                     id="campaign"
                     value={campaign}
                     onChange={(e) => setCampaign(e.target.value)}
-                    placeholder="summer_sale, product_launch"
+                    placeholder={t('utmBuilder.campaignPlaceholder')}
                   />
                   <p className="text-sm text-muted-foreground mt-1">
-                    Product, promo code, or slogan
+                    {t('utmBuilder.campaignHelp')}
                   </p>
                 </div>
 
                 <div>
-                  <Label htmlFor="term">Campaign Term (optional)</Label>
+                  <Label htmlFor="term">{t('utmBuilder.term')}</Label>
                   <Input
                     id="term"
                     value={term}
                     onChange={(e) => setTerm(e.target.value)}
-                    placeholder="running+shoes"
+                    placeholder={t('utmBuilder.termPlaceholder')}
                   />
                   <p className="text-sm text-muted-foreground mt-1">
-                    Identify paid search keywords
+                    {t('utmBuilder.termHelp')}
                   </p>
                 </div>
 
                 <div>
-                  <Label htmlFor="content">Campaign Content (optional)</Label>
+                  <Label htmlFor="content">{t('utmBuilder.content')}</Label>
                   <Input
                     id="content"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
-                    placeholder="logolink, textlink"
+                    placeholder={t('utmBuilder.contentPlaceholder')}
                   />
                   <p className="text-sm text-muted-foreground mt-1">
-                    Differentiate ads or links
+                    {t('utmBuilder.contentHelp')}
                   </p>
                 </div>
               </CardContent>
@@ -135,18 +139,18 @@ const UTMBuilder: React.FC = () => {
 
             <Card>
               <CardHeader>
-                <CardTitle>Generated UTM URL</CardTitle>
+                <CardTitle>{t('utmBuilder.generatedUrl')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="bg-muted p-4 rounded break-all">
-                  {finalUrl || 'Fill in the fields above to generate your UTM URL'}
+                  {finalUrl || t('utmBuilder.fillFields')}
                 </div>
                 <Button
                   onClick={copyUrl}
                   className="mt-4 w-full"
                   disabled={!finalUrl || !source || !medium || !campaign}
                 >
-                  Copy URL
+                  {t('utmBuilder.copyUrl')}
                 </Button>
               </CardContent>
             </Card>

@@ -9,7 +9,7 @@ import { Label } from '@/components/ui/label';
 import { Progress } from '@/components/ui/progress';
 
 const HeadlineAnalyzer: React.FC = () => {
-  const { languageMeta } = useLanguage();
+  const { t, languageMeta } = useLanguage();
   const [headline, setHeadline] = useState('');
 
   const analyzeHeadline = () => {
@@ -46,26 +46,28 @@ const HeadlineAnalyzer: React.FC = () => {
   return (
     <>
 
-      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 pt-32 pb-16">
-        <div className="container mx-auto px-4 max-w-4xl">
+      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 pt-20 pb-10 md:pt-32 md:pb-16">
+        <div className="container mx-auto px-4 max-w-4xl space-y-6 md:space-y-8">
           <Breadcrumb />
-          <h1 className="text-4xl font-bold mb-4 text-center">Headline Analyzer</h1>
-          <p className="text-muted-foreground text-center mb-8">
-            Analyze and score your headlines for maximum impact
-          </p>
+          <div className="text-center space-y-3 md:space-y-4">
+            <h1 className="text-2xl md:text-4xl font-bold tracking-tight px-4">{t('headlineAnalyzer.title')}</h1>
+            <p className="text-lg md:text-xl text-muted-foreground px-2">
+              {t('headlineAnalyzer.description')}
+            </p>
+          </div>
 
           <div className="grid gap-8">
             <Card>
               <CardHeader>
-                <CardTitle>Enter Your Headline</CardTitle>
+                <CardTitle>{t('headlineAnalyzer.enterHeadline')}</CardTitle>
               </CardHeader>
               <CardContent>
-                <Label htmlFor="headline">Headline</Label>
+                <Label htmlFor="headline">{t('headlineAnalyzer.headlineLabel')}</Label>
                 <Textarea
                   id="headline"
                   value={headline}
                   onChange={(e) => setHeadline(e.target.value)}
-                  placeholder="Enter your headline here..."
+                  placeholder={t('headlineAnalyzer.placeholder')}
                   rows={3}
                   className="mt-2"
                 />
@@ -75,12 +77,12 @@ const HeadlineAnalyzer: React.FC = () => {
             {analysis && (
               <Card>
                 <CardHeader>
-                  <CardTitle>Analysis Results</CardTitle>
+                  <CardTitle>{t('headlineAnalyzer.results')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div>
                     <div className="flex justify-between mb-2">
-                      <span className="font-semibold">Overall Score</span>
+                      <span className="font-semibold">{t('headlineAnalyzer.overallScore')}</span>
                       <span className={`font-bold ${analysis.score >= 70 ? 'text-green-600' :
                         analysis.score >= 40 ? 'text-yellow-600' :
                           'text-red-600'
@@ -93,35 +95,35 @@ const HeadlineAnalyzer: React.FC = () => {
 
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="p-4 bg-muted rounded">
-                      <div className="text-sm text-muted-foreground">Word Count</div>
+                      <div className="text-sm text-muted-foreground">{t('headlineAnalyzer.wordCount')}</div>
                       <div className="text-2xl font-bold">{analysis.wordCount}</div>
-                      <div className="text-sm">Ideal: 6-12 words</div>
+                      <div className="text-sm">{t('headlineAnalyzer.wordCountIdeal')}</div>
                     </div>
 
                     <div className="p-4 bg-muted rounded">
-                      <div className="text-sm text-muted-foreground">Character Count</div>
+                      <div className="text-sm text-muted-foreground">{t('headlineAnalyzer.charCount')}</div>
                       <div className="text-2xl font-bold">{analysis.charCount}</div>
-                      <div className="text-sm">Ideal: 40-60 characters</div>
+                      <div className="text-sm">{t('headlineAnalyzer.charCountIdeal')}</div>
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <div className="flex items-center justify-between p-3 bg-muted rounded">
-                      <span>Contains Number</span>
+                      <span>{t('headlineAnalyzer.containsNumber')}</span>
                       <span className={analysis.hasNumber ? 'text-green-600 font-semibold' : 'text-muted-foreground'}>
-                        {analysis.hasNumber ? '✓ Yes' : '✗ No'}
+                        {analysis.hasNumber ? t('headlineAnalyzer.yes') : t('headlineAnalyzer.no')}
                       </span>
                     </div>
                     <div className="flex items-center justify-between p-3 bg-muted rounded">
-                      <span>Contains Question</span>
+                      <span>{t('headlineAnalyzer.containsQuestion')}</span>
                       <span className={analysis.hasQuestion ? 'text-green-600 font-semibold' : 'text-muted-foreground'}>
-                        {analysis.hasQuestion ? '✓ Yes' : '✗ No'}
+                        {analysis.hasQuestion ? t('headlineAnalyzer.yes') : t('headlineAnalyzer.no')}
                       </span>
                     </div>
                     <div className="flex items-center justify-between p-3 bg-muted rounded">
-                      <span>Emotional Words</span>
+                      <span>{t('headlineAnalyzer.emotionalWords')}</span>
                       <span className={analysis.hasEmotion ? 'text-green-600 font-semibold' : 'text-muted-foreground'}>
-                        {analysis.hasEmotion ? '✓ Yes' : '✗ No'}
+                        {analysis.hasEmotion ? t('headlineAnalyzer.yes') : t('headlineAnalyzer.no')}
                       </span>
                     </div>
                   </div>

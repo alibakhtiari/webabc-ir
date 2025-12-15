@@ -8,9 +8,10 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { toast } from 'sonner';
+import Breadcrumb from '@/components/seo/Breadcrumb';
 
 const LoremGenerator: React.FC = () => {
-  const { languageMeta } = useLanguage();
+  const { languageMeta, t } = useLanguage();
   const [paragraphs, setParagraphs] = useState('3');
   const [theme, setTheme] = useState('classic');
   const [generatedText, setGeneratedText] = useState('');
@@ -54,29 +55,32 @@ const LoremGenerator: React.FC = () => {
   const copyToClipboard = () => {
     if (generatedText) {
       navigator.clipboard.writeText(generatedText);
-      toast.success('Copied to clipboard!');
+      toast.success(t('loremGenerator.copied'));
     }
   };
 
   return (
     <>
 
-      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 pt-32 pb-16">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h1 className="text-4xl font-bold mb-4 text-center">Lorem Ipsum Generator</h1>
-          <p className="text-muted-foreground text-center mb-8">
-            Generate customizable placeholder text for your designs
-          </p>
+      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 pt-20 pb-10 md:pt-32 md:pb-16">
+        <div className="container mx-auto px-4 max-w-4xl space-y-6 md:space-y-8">
+          <Breadcrumb />
+          <div className="text-center space-y-3 md:space-y-4">
+            <h1 className="text-2xl md:text-4xl font-bold tracking-tight px-4">{t('loremGenerator.title')}</h1>
+            <p className="text-lg md:text-xl text-muted-foreground px-2">
+              {t('loremGenerator.description')}
+            </p>
+          </div>
 
           <div className="grid gap-8">
             <Card>
               <CardHeader>
-                <CardTitle>Settings</CardTitle>
+                <CardTitle>{t('loremGenerator.settings')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="paragraphs">Number of Paragraphs</Label>
+                    <Label htmlFor="paragraphs">{t('loremGenerator.numParagraphs')}</Label>
                     <Input
                       id="paragraphs"
                       type="number"
@@ -88,22 +92,22 @@ const LoremGenerator: React.FC = () => {
                   </div>
 
                   <div>
-                    <Label htmlFor="theme">Theme</Label>
+                    <Label htmlFor="theme">{t('loremGenerator.theme')}</Label>
                     <Select value={theme} onValueChange={setTheme}>
                       <SelectTrigger id="theme">
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="classic">Classic Lorem Ipsum</SelectItem>
-                        <SelectItem value="startup">Startup Lorem</SelectItem>
-                        <SelectItem value="design">Designer Lorem</SelectItem>
+                        <SelectItem value="classic">{t('loremGenerator.themeClassic')}</SelectItem>
+                        <SelectItem value="startup">{t('loremGenerator.themeStartup')}</SelectItem>
+                        <SelectItem value="design">{t('loremGenerator.themeDesign')}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                 </div>
 
                 <Button onClick={generateLorem} className="w-full">
-                  Generate Text
+                  {t('loremGenerator.generate')}
                 </Button>
               </CardContent>
             </Card>
@@ -111,14 +115,14 @@ const LoremGenerator: React.FC = () => {
             {generatedText && (
               <Card>
                 <CardHeader>
-                  <CardTitle>Generated Text</CardTitle>
+                  <CardTitle>{t('loremGenerator.generatedTitle')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="bg-muted p-4 rounded whitespace-pre-wrap">
                     {generatedText}
                   </div>
                   <Button onClick={copyToClipboard} className="mt-4 w-full">
-                    Copy to Clipboard
+                    {t('loremGenerator.copy')}
                   </Button>
                 </CardContent>
               </Card>

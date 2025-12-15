@@ -5,7 +5,7 @@ import Breadcrumb from '@/components/seo/Breadcrumb';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ToolsSchema from '@/components/seo/schemas/ToolsSchema';
-import { ArrowRight, ArrowLeft, Wrench, Zap, Eye } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Wrench, Zap, Eye, Calculator, Share2, Palette } from 'lucide-react';
 
 interface SchemaData {
   [key: string]: unknown;
@@ -26,7 +26,13 @@ const ToolsPage: React.FC = () => {
     paaScraper: <Eye className="w-8 h-8 text-orange-600" />,
     readabilityChecker: <Eye className="w-8 h-8 text-red-600" />,
     serpPreview: <Wrench className="w-8 h-8 text-indigo-600" />,
-    utmBuilder: <Wrench className="w-8 h-8 text-teal-600" />
+    utmBuilder: <Wrench className="w-8 h-8 text-teal-600" />,
+    qrGenerator: <Zap className="w-8 h-8 text-yellow-600" />,
+    costCalculator: <Calculator className="w-8 h-8 text-green-600" />,
+    privacyGenerator: <Wrench className="w-8 h-8 text-slate-600" />,
+    slugGenerator: <Wrench className="w-8 h-8 text-indigo-600" />,
+    socialPreview: <Share2 className="w-8 h-8 text-blue-500" />,
+    gradientGen: <Palette className="w-8 h-8 text-pink-500" />
   };
 
   const getToolRoute = (toolName: string) => {
@@ -37,7 +43,14 @@ const ToolsPage: React.FC = () => {
       paaScraper: 'paa-scraper',
       readabilityChecker: 'readability-checker',
       serpPreview: 'serp-preview',
-      utmBuilder: 'utm-builder'
+      utmBuilder: 'utm-builder',
+      qrGenerator: 'qr-generator',
+      costCalculator: 'cost-calculator',
+      privacyGenerator: 'privacy-policy-generator',
+      slugGenerator: 'slug-generator',
+      socialPreview: 'social-media-preview',
+      gradientGen: 'css-gradient-generator',
+      glassGen: 'glassmorphism-generator'
     };
     return routeMap[toolName] || toolName;
   };
@@ -47,14 +60,14 @@ const ToolsPage: React.FC = () => {
 
       <ToolsSchema />
 
-      <div className="flex-grow">
+      <div className="flex-grow w-full overflow-x-hidden">
         {/* Hero Section */}
-        <section className="bg-gradient-to-b from-primary/5 to-white pt-32 pb-16 md:pt-40 md:pb-24">
+        <section className="bg-gradient-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <Breadcrumb />
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-[1.5]">{t('tools.title')}</h1>
-              <p className="text-xl text-gray-600">{t('tools.description')}</p>
+              <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-[1.5]">{t('tools.title')}</h1>
+              <p className="text-lg md:text-xl text-gray-600">{t('tools.description')}</p>
             </div>
           </div>
         </section>
@@ -72,7 +85,9 @@ const ToolsPage: React.FC = () => {
                 { key: 'serpPreview', route: 'serp-preview' },
                 { key: 'metaGenerator', route: 'meta-generator' },
                 { key: 'paaScraper', route: 'paa-scraper' },
-                { key: 'utmBuilder', route: 'utm-builder' }
+                { key: 'utmBuilder', route: 'utm-builder' },
+                { key: 'slugGenerator', route: 'slug-generator' },
+                { key: 'socialPreview', route: 'social-media-preview' }
               ].map(({ key, route }) => {
                 return (
                   <div
@@ -84,10 +99,10 @@ const ToolsPage: React.FC = () => {
                     </div>
 
                     <h3 className="text-2xl font-bold mb-4">
-                      {t(`tools.${key}.title`)}
+                      {t(`${key}.title`)}
                     </h3>
                     <p className="text-gray-600 mb-6 leading-relaxed">
-                      {t(`tools.${key}.description`)}
+                      {t(`${key}.description`)}
                     </p>
 
                     <Link
@@ -96,9 +111,9 @@ const ToolsPage: React.FC = () => {
                     >
                       {t('common.readMore')}
                       {languageMeta.direction === 'rtl' ? (
-                        <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+                        <ArrowLeft className="w-4 h-4 me-2 group-hover:-translate-x-1 transition-transform" />
                       ) : (
-                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-4 h-4 ms-2 group-hover:translate-x-1 transition-transform" />
                       )}
                     </Link>
                   </div>
@@ -120,7 +135,12 @@ const ToolsPage: React.FC = () => {
               {[
                 { key: 'headlineAnalyzer', route: 'headline-analyzer' },
                 { key: 'readabilityChecker', route: 'readability-checker' },
-                { key: 'loremGenerator', route: 'lorem-generator' }
+                { key: 'loremGenerator', route: 'lorem-generator' },
+                { key: 'qrGenerator', route: 'qr-generator' },
+                { key: 'costCalculator', route: 'cost-calculator' },
+                { key: 'privacyGenerator', route: 'privacy-policy-generator' },
+                { key: 'glassGen', route: 'glassmorphism-generator' },
+                { key: 'gradientGen', route: 'css-gradient-generator' }
               ].map(({ key, route }) => {
                 return (
                   <div
@@ -132,10 +152,10 @@ const ToolsPage: React.FC = () => {
                     </div>
 
                     <h3 className="text-2xl font-bold mb-4">
-                      {t(`tools.${key}.title`)}
+                      {t(`${key}.title`)}
                     </h3>
                     <p className="text-gray-600 mb-6 leading-relaxed">
-                      {t(`tools.${key}.description`)}
+                      {t(`${key}.description`)}
                     </p>
 
                     <Link
@@ -144,9 +164,9 @@ const ToolsPage: React.FC = () => {
                     >
                       {t('common.readMore')}
                       {languageMeta.direction === 'rtl' ? (
-                        <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+                        <ArrowLeft className="w-4 h-4 me-2 group-hover:-translate-x-1 transition-transform" />
                       ) : (
-                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-4 h-4 ms-2 group-hover:translate-x-1 transition-transform" />
                       )}
                     </Link>
                   </div>
