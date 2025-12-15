@@ -48,6 +48,10 @@ This guide covers how to deploy the **static Next.js application** with **Cloudf
    - Add a new variable:
      - **Variable name**: `RESEND_API_KEY`
      - **Value**: Your actual Resend API key.
+     - **Variable name**: `TURNSTILE_SECRET_KEY`
+     - **Value**: Your Cloudflare Turnstile Secret Key.
+     - **Variable name**: `NEXT_PUBLIC_TURNSTILE_SITE_KEY`
+     - **Value**: Your Cloudflare Turnstile Site Key.
    - **Important**: You must redeploy (step 2) or use the dashboard to create a new deployment for the variable to take effect if added after initial deploy.
 
 ---
