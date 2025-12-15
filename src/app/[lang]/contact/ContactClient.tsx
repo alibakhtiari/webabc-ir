@@ -66,7 +66,7 @@ const Contact = () => {
 
                   <div>
                     <h3 className="font-medium text-gray-700">{t('contact.phoneNumber')}</h3>
-                    <p className="text-gray-600">{language === 'en' ? "+98-21-12345678" : "۰۲۱-۱۲۳۴۵۶۷۸"}</p>
+                    <p className="text-gray-600" dir="ltr">{language === 'en' ? "+98 912 581 1880" : "+98 912 581 1880"}</p>
                   </div>
 
                   <div>
