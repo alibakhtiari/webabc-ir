@@ -10,7 +10,7 @@ import { getCategories, filterPostsByCategory, BlogMetadata } from '@/lib/blogUt
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import { Calendar, Clock, ArrowRight, ArrowLeft } from 'lucide-react';
 import OptimizedImage from '@/components/OptimizedImage';
 
 interface BlogPageProps {
@@ -155,7 +155,11 @@ const BlogPage: React.FC<BlogPageProps> = ({ initialPosts }) => {
                       <CardContent className="pt-0">
                         <div className="flex items-center text-primary font-medium text-sm group-hover:gap-2 gap-1 transition-all">
                           {t('blog.readMore')}
-                          <ArrowRight className={`h-4 w-4 group-hover:translate-x-1 transition-transform ${languageMeta.direction === 'rtl' ? 'rotate-180' : ''}`} />
+                          {languageMeta.direction === 'rtl' ? (
+                            <ArrowLeft className="h-4 w-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+                          ) : (
+                            <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                          )}
                         </div>
                       </CardContent>
                     </Card>

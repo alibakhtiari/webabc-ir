@@ -11,7 +11,7 @@ import { PortfolioItem } from '@/types/portfolio';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowLeft } from 'lucide-react';
 
 interface PortfolioClientProps {
   items: PortfolioItem[];
@@ -110,7 +110,11 @@ const Portfolio = ({ items }: PortfolioClientProps) => {
                       </p>
                       <div className="flex items-center text-primary font-medium">
                         {t('common.viewDetails')}
-                        <ArrowRight className={`${languageMeta.direction === 'rtl' ? 'mr-2' : 'ml-2'} h-4 w-4 group-hover:translate-x-1 transition-transform`} />
+                        {languageMeta.direction === 'rtl' ? (
+                          <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
+                        ) : (
+                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                        )}
                       </div>
                     </CardContent>
                   </Card>

@@ -9,7 +9,7 @@ import LocationSchema from '@/components/seo/schemas/LocationSchema';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { MapPin, CheckCircle2, ArrowRight, TrendingUp, Users, Award } from 'lucide-react';
+import { MapPin, CheckCircle2, ArrowRight, ArrowLeft, TrendingUp, Users, Award } from 'lucide-react';
 import OptimizedImage from '@/components/OptimizedImage';
 import enServiceAreas from '@/i18n/en/service-areas.json';
 import faServiceAreas from '@/i18n/fa/service-areas.json';
@@ -119,7 +119,11 @@ const LocationPage = () => {
                 <Button asChild size="lg" className="group">
                   <Link href={`/${language}/contact`}>
                     {t('service-areas.ctaButton')}
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                    {languageMeta.direction === 'rtl' ? (
+                      <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
+                    ) : (
+                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                    )}
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
@@ -244,7 +248,11 @@ const LocationPage = () => {
                 <Button asChild size="lg" className="text-lg px-8 py-6 group">
                   <Link href={`/${language}/contact`}>
                     {t('service-areas.ctaButton')}
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                    {languageMeta.direction === 'rtl' ? (
+                      <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
+                    ) : (
+                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                    )}
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="text-lg px-8 py-6">

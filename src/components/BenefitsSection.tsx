@@ -2,13 +2,13 @@
 
 import React, { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Check } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import OptimizedImage from '@/components/OptimizedImage';
 
 const BenefitsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const { t } = useLanguage();
+  const { t, language, languageMeta } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -155,7 +155,11 @@ const BenefitsSection = () => {
                   )}
                 >
                   <span>{t('benefits.ctaButton', { fallback: 'دریافت مشاوره رایگان' })}</span>
-                  <ArrowRight className="h-4 w-4 mr-2" />
+                  {languageMeta.direction === 'rtl' ? (
+                    <ArrowLeft className="h-4 w-4 mr-2" />
+                  ) : (
+                    <ArrowRight className="h-4 w-4 ml-2" />
+                  )}
                 </button>
               </div>
             </div>
