@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   output: 'export',
   reactStrictMode: true,
   experimental: {
+    turbopack: {
+      root: process.cwd(),
+    }
   },
   images: {
     unoptimized: true,
