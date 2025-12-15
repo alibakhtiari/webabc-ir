@@ -1,0 +1,11 @@
+{
+    "title": "URL Slug Generator",
+    "description": "Convert text into SEO-friendly URL slugs. Removes special characters and replaces spaces with hyphens.",
+    "inputLabel": "Enter Text",
+    "placeholder": "e.g. How to Buy Bitcoin in 2025!",
+    "generate": "Generate Slug",
+    "resultLabel": "Generated Slug",
+    "copy": "Copy Slug",
+    "copied": "Slug copied to clipboard!",
+    "generated": "Slug generated!"
+}

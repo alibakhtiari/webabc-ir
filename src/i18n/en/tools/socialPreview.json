@@ -1,0 +1,12 @@
+{
+    "title": "Social Media Preview",
+    "description": "Visualize how your content will look when shared on social media platforms like Facebook, Twitter, and LinkedIn.",
+    "imageLabel": "Image URL or Upload",
+    "titleLabel": "Title",
+    "titlePlaceholder": "Your Post Title",
+    "descriptionLabel": "Description",
+    "descriptionPlaceholder": "A brief description of your content...",
+    "defaultTitle": "Your Title Here",
+    "defaultDesc": "Your description will appear here...",
+    "previewNote": "This is a simulation. Actual appearance may vary slightly by platform."
+}

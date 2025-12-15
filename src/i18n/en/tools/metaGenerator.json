@@ -1,0 +1,16 @@
+{
+    "title": "Meta Tag Generator",
+    "description": "A simple form that generates meta tags (title, description, social media open graph tags) for users to copy and paste into their website's <head> section.",
+    "enterInfo": "Enter Your Information",
+    "pageTitle": "Page Title",
+    "titlePlaceholder": "Your page title",
+    "metaDescription": "Meta Description",
+    "descPlaceholder": "A brief description of your page",
+    "keywords": "Keywords (comma-separated)",
+    "keywordsPlaceholder": "keyword1, keyword2, keyword3",
+    "ogImage": "Open Graph Image URL",
+    "ogImagePlaceholder": "https://example.com/image.jpg",
+    "generatedTags": "Generated Meta Tags",
+    "copy": "Copy to Clipboard",
+    "copied": "Copied to clipboard!"
+}

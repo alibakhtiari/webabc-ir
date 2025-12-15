@@ -1,0 +1,14 @@
+{
+    "title": "Lorem Ipsum Generator",
+    "description": "A customizable generator for placeholder text. You could make it fun by adding different themes (e.g., \"startup lorem ipsum\", \"designer lorem ipsum\").",
+    "settings": "Settings",
+    "numParagraphs": "Number of Paragraphs",
+    "theme": "Theme",
+    "themeClassic": "Classic Lorem Ipsum",
+    "themeStartup": "Startup Lorem",
+    "themeDesign": "Designer Lorem",
+    "generate": "Generate Text",
+    "generatedTitle": "Generated Text",
+    "copy": "Copy to Clipboard",
+    "copied": "Copied to clipboard!"
+}

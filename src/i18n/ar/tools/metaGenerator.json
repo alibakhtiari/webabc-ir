@@ -1,0 +1,16 @@
+{
+    "title": "مولد علامات Meta",
+    "description": "نموذج بسيط يقوم بإنشاء علامات Meta (العنوان، الوصف، علامات وسائل التواصل الاجتماعي) للمستخدمين لنسخها ولصقها في قسم <head> لموقعهم.",
+    "enterInfo": "أدخل معلوماتك",
+    "pageTitle": "عنوان الصفحة",
+    "titlePlaceholder": "عنوان صفحتك",
+    "metaDescription": "وصف الميتا",
+    "descPlaceholder": "وصف موجز لصفحتك",
+    "keywords": "الكلمات الرئيسية (مفصولة بفواصل)",
+    "keywordsPlaceholder": "كلمة1، كلمة2، كلمة3",
+    "ogImage": "رابط صورة Open Graph",
+    "ogImagePlaceholder": "https://example.com/image.jpg",
+    "generatedTags": "علامات الميتا المولدة",
+    "copy": "نسخ إلى الحافظة",
+    "copied": "تم النسخ إلى الحافظة!"
+}

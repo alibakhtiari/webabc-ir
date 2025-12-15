@@ -1,0 +1,21 @@
+{
+    "title": "\"People Also Ask\" Scraper",
+    "description": "Takes a keyword and scrapes the \"People Also Ask\" section from Google search results. This is great for content creators looking for blog post ideas and to answer common user questions.",
+    "enterKeyword": "Enter Keyword",
+    "enterKeywordDesc": "Find questions people are asking about your topic",
+    "keywordLabel": "Keyword or Topic",
+    "placeholder": "e.g., web design, SEO, digital marketing",
+    "demoAlert": "This tool demonstrates the interface. To scrape live \"People Also Ask\" data from Google, you would need to integrate with a third-party API service like SerpAPI, DataForSEO, or similar.",
+    "searchButton": "Search Questions (Demo Mode)",
+    "exampleQuestions": "Example Questions",
+    "exampleDesc": "Common \"People Also Ask\" questions for: Web Design",
+    "results": "Results",
+    "q1": "What is web design and why is it important?",
+    "q2": "How much does a website design cost?",
+    "q3": "What are the key principles of good web design?",
+    "q4": "What is the difference between web design and web development?",
+    "q5": "How long does it take to design a website?",
+    "q6": "What tools do web designers use?",
+    "q7": "Is web design a good career?",
+    "q8": "What skills do you need for web design?"
+}

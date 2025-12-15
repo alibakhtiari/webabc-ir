@@ -1,0 +1,15 @@
+{
+    "title": "FAQ Schema Generator",
+    "description": "Generate FAQ Page Schema markup to improve your search visibility.",
+    "addQuestion": "Add Question",
+    "questionLabel": "Question",
+    "answerLabel": "Answer",
+    "generateSchema": "Generate Schema",
+    "copyJson": "Copy JSON",
+    "delete": "Delete",
+    "preview": "Preview",
+    "schemaResult": "FAQ Schema Result",
+    "copied": "Copied to clipboard!",
+    "noQuestions": "Add at least one question to generate schema.",
+    "placeholder": "// JSON-LD Schema will appear here..."
+}

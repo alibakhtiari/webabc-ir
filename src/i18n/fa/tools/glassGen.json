@@ -1,0 +1,14 @@
+{
+    "title": "سازنده افکت شیشه‌ای CSS",
+    "description": "افکت‌های شیشه‌ای مدرن برای رابط کاربری خود ایجاد کنید.",
+    "settings": "تنظیمات افکت",
+    "blur": "تاری (Blur)",
+    "opacity": "شفافیت (Opacity)",
+    "saturation": "اشباع رنگ",
+    "color": "رنگ پایه",
+    "preview": "پیش‌نمایش زنده",
+    "cssOutput": "کد CSS",
+    "copy": "کپی CSS",
+    "copied": "کد کپی شد!",
+    "previewText": "جلوه شیشه‌ای"
+}

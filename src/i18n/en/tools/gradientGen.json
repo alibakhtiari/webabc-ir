@@ -1,0 +1,9 @@
+{
+    "title": "CSS Gradient Generator",
+    "description": "Create beautiful CSS gradients with a simple visual editor.",
+    "colors": "Select Colors",
+    "direction": "Direction",
+    "randomize": "Randomize",
+    "copy": "Copy CSS",
+    "copied": "CSS copied to clipboard!"
+}

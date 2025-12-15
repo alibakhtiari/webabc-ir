@@ -1,0 +1,18 @@
+{
+    "title": "Headline Analyzer",
+    "description": "Scores headlines based on factors like length, word balance, sentiment, and clarity. This can help content creators write more compelling headlines.",
+    "enterHeadline": "Enter Your Headline",
+    "headlineLabel": "Headline",
+    "placeholder": "Enter your headline here...",
+    "results": "Analysis Results",
+    "overallScore": "Overall Score",
+    "wordCount": "Word Count",
+    "wordCountIdeal": "Ideal: 6-12 words",
+    "charCount": "Character Count",
+    "charCountIdeal": "Ideal: 40-60 characters",
+    "containsNumber": "Contains Number",
+    "containsQuestion": "Contains Question",
+    "emotionalWords": "Emotional Words",
+    "yes": "✓ Yes",
+    "no": "✗ No"
+}
