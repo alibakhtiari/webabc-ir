@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
     root: process.cwd(),
   },
   experimental: {
+    viewTransition: true,
   },
   images: {
     unoptimized: true,
