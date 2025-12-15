@@ -3,10 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: 'export',
   reactStrictMode: true,
+  turbopack: {
+    root: process.cwd(),
+  },
   experimental: {
-    turbopack: {
-      root: process.cwd(),
-    }
   },
   images: {
     unoptimized: true,
@@ -17,8 +17,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Static export does not support headers() or redirects() in next.config.js
-  // Use _headers or _redirects files for Cloudflare Pages if needed.
 };
 
 export default nextConfig;
