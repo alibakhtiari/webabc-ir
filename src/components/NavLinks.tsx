@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ChevronDown, ArrowRight, Globe, Code, PenTool, Link2, Zap } from 'lucide-react';
+import { ChevronDown, ArrowRight, ArrowLeft, Globe, Code, PenTool, Link2, Zap, ShieldCheck, Layout } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface NavLinkProps {
@@ -45,9 +45,9 @@ export const ServicesDropdown = () => {
       </Link>
 
       {/* Mega Menu - removed backdrop-blur */}
-      <div className={`absolute top-full ${isRtl ? 'right-0' : 'left-0'} mt-2 w-[680px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50`}>
+      <div className={`absolute top-full ${isRtl ? 'right-0' : 'left-0'} mt-2 w-[950px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50`}>
         <div className="bg-white p-6 animate-zoom-in shadow-xl rounded-lg">
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid grid-cols-3 gap-8">
             {/* SEO Services Column */}
             <div className="space-y-4">
               <div className="flex items-center gap-2 mb-2 pb-2 border-b border-gray-100">
@@ -114,17 +114,49 @@ export const ServicesDropdown = () => {
                   icon={<Zap />}
                 />
               </ul>
-              {/* Featured / View All Link at bottom of dev column or separate? */}
-              <div className="pt-4 mt-2 border-t border-gray-100">
-                <Link
-                  href={`/${language}/services`}
-                  className="inline-flex items-center text-primary font-medium hover:underline text-sm"
-                >
-                  {t('common.viewAll')} {t('common.services')}
-                  <ArrowRight className="ms-1 h-4 w-4" />
-                </Link>
-              </div>
             </div>
+            {/* Support Services Column */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-2 mb-2 pb-2 border-b border-gray-100">
+                <ShieldCheck className="w-5 h-5 text-primary" />
+                <h3 className="font-bold text-lg text-primary">{t('common.supportServices')}</h3>
+              </div>
+              <ul className="space-y-3">
+                <ServiceLink
+                  to={`/${language}/services/website-maintenance`}
+                  title={t('maintenance.title')}
+                  description={t('maintenance.subtitle')}
+                  icon={<ShieldCheck />}
+                />
+                <ServiceLink
+                  to={`/${language}/services/speed-optimization`}
+                  title={t('speedOptimization.title')}
+                  description={t('speedOptimization.subtitle')}
+                  icon={<Zap />}
+                />
+                <ServiceLink
+                  to={`/${language}/services/ui-ux-audit`}
+                  title={t('uiUxAudit.title')}
+                  description={t('uiUxAudit.subtitle')}
+                  icon={<Layout />}
+                />
+              </ul>
+            </div>
+          </div>
+
+          {/* Footer - View All Services */}
+          <div className="pt-4 mt-6 border-t border-gray-100 flex justify-end">
+            <Link
+              href={`/${language}/services`}
+              className="inline-flex items-center text-primary font-bold hover:underline"
+            >
+              {t('common.viewAll')} {t('common.services')}
+              {isRtl ? (
+                <ArrowLeft className="mr-2 h-4 w-4" />
+              ) : (
+                <ArrowRight className="ml-2 h-4 w-4" />
+              )}
+            </Link>
           </div>
         </div>
       </div>
@@ -140,9 +172,6 @@ interface ServiceLinkProps {
 }
 
 export const ServiceLink = ({ to, title, description, icon }: ServiceLinkProps) => {
-  const { languageMeta } = useLanguage();
-  const isRtl = languageMeta.direction === 'rtl';
-
   return (
     <li>
       <Link
@@ -156,7 +185,7 @@ export const ServiceLink = ({ to, title, description, icon }: ServiceLinkProps) 
         </span>
         <div>
           <span className="block font-medium">{title}</span>
-          <span className="text-xs text-gray-500">{description}</span>
+          <span className="text-xs text-gray-500 line-clamp-1 text-ellipsis overflow-hidden">{description}</span>
         </div>
       </Link>
     </li>

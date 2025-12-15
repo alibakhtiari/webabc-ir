@@ -73,7 +73,6 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden xl:flex items-center gap-6">
-            <NavLink to="">{t('common.home')}</NavLink>
             <ServicesDropdown />
             <NavLinks />
 
