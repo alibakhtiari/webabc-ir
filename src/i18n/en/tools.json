@@ -4,55 +4,8 @@
   "description": "Enhance your digital marketing strategy with our comprehensive suite of free online tools. From SEO optimization to content creation, we've got everything you need.",
   "seoMarketersTitle": "📈 For SEO & Digital Marketers",
   "seoMarketersDesc": "These tools will attract users who are looking to improve their website's performance in search engines.",
-  "serpPreview": {
-    "title": "SERP Snippet Preview Tool",
-    "description": "Shows a preview of how a webpage will look in Google's search results. Enter your title tag, meta description, and URL to optimize your snippets for higher click-through rates."
-  },
-  "metaGenerator": {
-    "title": "Meta Tag Generator",
-    "description": "A simple form that generates meta tags (title, description, social media open graph tags) for users to copy and paste into their website's <head> section."
-  },
-  "paaScraper": {
-    "title": "\"People Also Ask\" Scraper",
-    "description": "Takes a keyword and scrapes the \"People Also Ask\" section from Google search results. This is great for content creators looking for blog post ideas and to answer common user questions."
-  },
-  "utmBuilder": {
-    "title": "UTM Link Builder",
-    "description": "A form that helps marketers create URLs with UTM parameters for tracking their campaigns in Google Analytics."
-  },
-  "keywordResearch": {
-    "title": "Keyword Research Tool",
-    "description": "Discover high-value keywords for your SEO strategy."
-  },
-  "faqGenerator": {
-    "title": "FAQ Schema Generator",
-    "description": "Generate FAQ Page Schema markup to improve your search visibility.",
-    "addQuestion": "Add Question",
-    "questionLabel": "Question",
-    "answerLabel": "Answer",
-    "generateSchema": "Generate Schema",
-    "copyJson": "Copy JSON",
-    "delete": "Delete",
-    "preview": "Preview",
-    "schemaResult": "FAQ Schema Result",
-    "copied": "Copied to clipboard!",
-    "noQuestions": "Add at least one question to generate schema.",
-    "placeholder": "// JSON-LD Schema will appear here..."
-  },
   "contentCreatorsTitle": "✍️ For Content Creators",
   "contentCreatorsDesc": "Content-focused tools can help your visitors create better content and see you as a valuable resource.",
-  "headlineAnalyzer": {
-    "title": "Headline Analyzer",
-    "description": "Scores headlines based on factors like length, word balance, sentiment, and clarity. This can help content creators write more compelling headlines."
-  },
-  "readabilityChecker": {
-    "title": "Readability Checker",
-    "description": "Analyzes a piece of text and gives it a readability score (e.g., Flesch-Kincaid). This helps writers ensure their content is easy to understand for a broad audience."
-  },
-  "loremGenerator": {
-    "title": "Lorem Ipsum Generator",
-    "description": "A customizable generator for placeholder text. You could make it fun by adding different themes (e.g., \"startup lorem ipsum\", \"designer lorem ipsum\")."
-  },
   "featuresTitle": "Why Use Our SEO Tools?",
   "featuresDesc": "Our tools are designed to help you optimize your website for better search engine rankings and user experience.",
   "features": {
