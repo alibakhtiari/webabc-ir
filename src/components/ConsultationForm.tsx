@@ -26,9 +26,9 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ open, onOpenChange 
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-center text-xl">{t('consultation.title')}</DialogTitle>
+          <DialogTitle className="text-center text-xl">{t('contact.consultation.title')}</DialogTitle>
           <DialogDescription className="text-center">
-            {t('consultation.description')}
+            {t('contact.consultation.description')}
           </DialogDescription>
         </DialogHeader>
 

@@ -80,19 +80,19 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSuccess, className }) => {
     return (
         <form onSubmit={handleSubmit} className={`space-y-6 ${className || ''}`}>
             <div>
-                <label className={`block text-sm font-medium text-gray-700 mb-2 ${textDirection}`}>{t('consultation.fullName')}</label>
+                <label className={`block text-sm font-medium text-gray-700 mb-2 ${textDirection}`}>{t('contact.consultation.fullName')}</label>
                 <Suspense fallback={<InputSkeleton />}>
                     <Input
                         name="name"
                         className={inputDirection}
-                        placeholder={t('consultation.fullName')}
+                        placeholder={t('contact.consultation.fullName')}
                         required
                     />
                 </Suspense>
             </div>
 
             <div>
-                <label className={`block text-sm font-medium text-gray-700 mb-2 ${textDirection}`}>{t('consultation.email')}</label>
+                <label className={`block text-sm font-medium text-gray-700 mb-2 ${textDirection}`}>{t('contact.consultation.email')}</label>
                 <Suspense fallback={<InputSkeleton />}>
                     <Input
                         name="email"
@@ -105,7 +105,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSuccess, className }) => {
             </div>
 
             <div>
-                <label className={`block text-sm font-medium text-gray-700 mb-2 ${textDirection}`}>{t('consultation.message')}</label>
+                <label className={`block text-sm font-medium text-gray-700 mb-2 ${textDirection}`}>{t('contact.consultation.message')}</label>
                 <Suspense fallback={<TextareaSkeleton />}>
                     <Textarea
                         name="message"
