@@ -76,25 +76,25 @@ const ServicesOverview = () => {
                 </p>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary rtl:ml-2 ltr:mr-2 rtl:rotate-180" />
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
                     <span>{t('seo.onPageSeo')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary rtl:ml-2 ltr:mr-2 rtl:rotate-180" />
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
                     <span>{t('seo.offPageSeo')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary rtl:ml-2 ltr:mr-2 rtl:rotate-180" />
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
                     <span>{t('seo.technicalSeo')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary rtl:ml-2 ltr:mr-2 rtl:rotate-180" />
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
                     <span>{t('seo.localSeo')}</span>
                   </li>
                 </ul>
                 <Link href={`/${language}/services/seo`} className="inline-flex items-center text-primary font-medium hover:underline rtl:flex-row-reverse">
                   {t('common.readMore')}
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 rtl:mr-2 ltr:ml-2 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ms-2 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                     <polyline points="12 5 19 12 12 19"></polyline>
                   </svg>
@@ -116,25 +116,25 @@ const ServicesOverview = () => {
                 </p>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary rtl:ml-2 ltr:mr-2 rtl:rotate-180" />
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
                     <span>{t('services.feature.uiuxDesign')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary rtl:ml-2 ltr:mr-2 rtl:rotate-180" />
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
                     <span>{t('services.feature.responsiveDesign')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary rtl:ml-2 ltr:mr-2 rtl:rotate-180" />
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
                     <span>{t('services.feature.apiIntegration')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary rtl:ml-2 ltr:mr-2 rtl:rotate-180" />
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
                     <span>{t('services.feature.database')}</span>
                   </li>
                 </ul>
                 <Link href={`/${language}/services/web-development`} className="inline-flex items-center text-primary font-medium hover:underline rtl:flex-row-reverse">
                   {t('common.readMore')}
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 rtl:mr-2 ltr:ml-2 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ms-2 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                     <polyline points="12 5 19 12 12 19"></polyline>
                   </svg>
@@ -157,25 +157,25 @@ const ServicesOverview = () => {
                 </p>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary rtl:ml-2 ltr:mr-2 rtl:rotate-180" />
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
                     <span>{t('wordpress.themeCustomization')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary rtl:ml-2 ltr:mr-2 rtl:rotate-180" />
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
                     <span>{t('wordpress.pluginDevelopment')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary rtl:ml-2 ltr:mr-2 rtl:rotate-180" />
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
                     <span>{t('wordpress.ecommerceSetup')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary rtl:ml-2 ltr:mr-2 rtl:rotate-180" />
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
                     <span>{t('wordpress.maintenanceSupport')}</span>
                   </li>
                 </ul>
                 <Link href={`/${language}/services/wordpress-development`} className="inline-flex items-center text-primary font-medium hover:underline rtl:flex-row-reverse">
                   {t('common.readMore')}
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 rtl:mr-2 ltr:ml-2 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ms-2 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                     <polyline points="12 5 19 12 12 19"></polyline>
                   </svg>
@@ -196,15 +196,15 @@ const ServicesOverview = () => {
                 </p>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary rtl:ml-2 ltr:mr-2 rtl:rotate-180" />
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
                     <span>{t('seo.feature.gmb')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary rtl:ml-2 ltr:mr-2 rtl:rotate-180" />
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
                     <span>{t('seo.feature.reviews')}</span>
                   </li>
                   <li className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-primary rtl:ml-2 ltr:mr-2 rtl:rotate-180" />
+                    <ChevronRight className="h-5 w-5 text-primary me-2 rtl:rotate-180" />
                     <span>{t('seo.feature.localKeywords')}</span>
                   </li>
                   <li className="flex items-center">
@@ -214,7 +214,7 @@ const ServicesOverview = () => {
                 </ul>
                 <Link href={`/${language}/services/local-seo`} className="inline-flex items-center text-primary font-medium hover:underline rtl:flex-row-reverse">
                   {t('common.readMore')}
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 rtl:mr-2 ltr:ml-2 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ms-2 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                     <polyline points="12 5 19 12 12 19"></polyline>
                   </svg>

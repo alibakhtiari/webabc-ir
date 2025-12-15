@@ -111,9 +111,9 @@ const Portfolio = ({ items }: PortfolioClientProps) => {
                       <div className="flex items-center text-primary font-medium">
                         {t('common.viewDetails')}
                         {languageMeta.direction === 'rtl' ? (
-                          <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
+                          <ArrowLeft className="ms-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                         ) : (
-                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                          <ArrowRight className="ms-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                         )}
                       </div>
                     </CardContent>

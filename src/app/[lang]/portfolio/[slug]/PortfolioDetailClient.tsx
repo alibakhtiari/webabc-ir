@@ -49,7 +49,7 @@ const PortfolioDetail = ({ project }: PortfolioDetailProps) => {
                             href={`/${language}/portfolio`}
                             className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors mb-6"
                         >
-                            <ArrowLeft className={`h-4 w-4 ${languageMeta.direction === 'rtl' ? 'ml-2 rotate-180' : 'mr-2'}`} />
+                            <ArrowLeft className={`h-4 w-4 ${languageMeta.direction === 'rtl' ? 'rotate-180' : ''} me-2`} />
                             {t('common.backToPortfolio')}
                         </Link>
 

@@ -116,7 +116,7 @@ const ServicesSection = () => {
         </div>
 
         <div className="flex overflow-x-auto -mx-4 px-4 pb-4 mb-8 snap-x">
-          <div className="flex space-x-2 space-x-reverse mx-auto font-persian">
+          <div className="flex gap-2 mx-auto font-persian">
             {services.map((service, idx) => (
               <button
                 key={idx}
@@ -153,7 +153,7 @@ const ServicesSection = () => {
                 <ul className="space-y-3 mt-6">
                   {services[activeTab].features.map((feature, idx) => (
                     <li key={idx} className="flex items-center font-persian">
-                      <CheckCircle className="text-primary h-5 w-5 mr-2 shrink-0" />
+                      <CheckCircle className="text-primary h-5 w-5 me-2 shrink-0" />
                       <span>{feature}</span>
                     </li>
                   ))}

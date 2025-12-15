@@ -156,9 +156,9 @@ const BlogPage: React.FC<BlogPageProps> = ({ initialPosts }) => {
                         <div className="flex items-center text-primary font-medium text-sm group-hover:gap-2 gap-1 transition-all">
                           {t('blog.readMore')}
                           {languageMeta.direction === 'rtl' ? (
-                            <ArrowLeft className="h-4 w-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+                            <ArrowLeft className="h-4 w-4 ms-2 group-hover:-translate-x-1 transition-transform" />
                           ) : (
-                            <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                            <ArrowRight className="h-4 w-4 ms-2 group-hover:translate-x-1 transition-transform" />
                           )}
                         </div>
                       </CardContent>
