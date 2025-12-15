@@ -8,9 +8,10 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
+import Breadcrumb from '@/components/seo/Breadcrumb';
 
 const MetaGenerator: React.FC = () => {
-  const { languageMeta } = useLanguage();
+  const { t, languageMeta } = useLanguage();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [keywords, setKeywords] = useState('');
@@ -35,63 +36,66 @@ const MetaGenerator: React.FC = () => {
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(generatedCode);
-    toast.success('Copied to clipboard!');
+    toast.success(t('metaGenerator.copied') || 'Copied to clipboard!');
   };
 
   return (
     <>
 
-      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 pt-32 pb-16">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h1 className="text-4xl font-bold mb-4 text-center">Meta Tag Generator</h1>
-          <p className="text-muted-foreground text-center mb-8">
-            Generate SEO and social media meta tags for your website
-          </p>
+      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 pt-20 pb-10 md:pt-32 md:pb-16">
+        <div className="container mx-auto px-4 max-w-4xl space-y-6 md:space-y-8">
+          <Breadcrumb />
+          <div className="text-center space-y-3 md:space-y-4">
+            <h1 className="text-2xl md:text-4xl font-bold tracking-tight px-4">{t('metaGenerator.title')}</h1>
+            <p className="text-lg md:text-xl text-muted-foreground px-2">
+              {t('metaGenerator.description')}
+            </p>
+          </div>
 
           <div className="grid gap-8">
             <Card>
               <CardHeader>
-                <CardTitle>Enter Your Information</CardTitle>
+                <CardTitle>{t('metaGenerator.enterInfo')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
-                  <Label htmlFor="title">Page Title</Label>
+                  <Label htmlFor="title">{t('metaGenerator.pageTitle')}</Label>
                   <Input
                     id="title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    placeholder="Your page title"
+                    placeholder={t('metaGenerator.titlePlaceholder')}
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="description">Meta Description</Label>
+                  <Label htmlFor="description">{t('metaGenerator.metaDescription')}</Label>
                   <Textarea
                     id="description"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    placeholder="A brief description of your page"
+                    placeholder={t('metaGenerator.descPlaceholder')}
                     rows={3}
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="keywords">Keywords (comma-separated)</Label>
+                  <Label htmlFor="keywords">{t('metaGenerator.keywords')}</Label>
                   <Input
                     id="keywords"
                     value={keywords}
                     onChange={(e) => setKeywords(e.target.value)}
-                    placeholder="keyword1, keyword2, keyword3"
+                    placeholder={t('metaGenerator.keywordsPlaceholder')}
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="ogImage">Open Graph Image URL</Label>
+                  <Label htmlFor="ogImage">{t('metaGenerator.ogImage')}</Label>
                   <Input
                     id="ogImage"
                     value={ogImage}
                     onChange={(e) => setOgImage(e.target.value)}
-                    placeholder="https://example.com/image.jpg"
+                    placeholder={t('metaGenerator.ogImagePlaceholder')}
                   />
                 </div>
               </CardContent>
@@ -99,14 +103,14 @@ const MetaGenerator: React.FC = () => {
 
             <Card>
               <CardHeader>
-                <CardTitle>Generated Meta Tags</CardTitle>
+                <CardTitle>{t('metaGenerator.generatedTags')}</CardTitle>
               </CardHeader>
               <CardContent>
-                <pre className="bg-muted p-4 rounded text-sm overflow-x-auto">
+                <pre className="bg-muted p-4 rounded text-sm whitespace-pre-wrap break-words">
                   <code>{generatedCode}</code>
                 </pre>
                 <Button onClick={copyToClipboard} className="mt-4 w-full">
-                  Copy to Clipboard
+                  {t('metaGenerator.copy')}
                 </Button>
               </CardContent>
             </Card>

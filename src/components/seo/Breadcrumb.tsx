@@ -63,8 +63,8 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customItems }) => {
           const toolKey = toolKeyMap[segment];
           if (toolKey) {
             // @ts-ignore
-            const toolTitle = t(`tools.${toolKey}.title`);
-            if (toolTitle && toolTitle !== `tools.${toolKey}.title`) {
+            const toolTitle = t(`${toolKey}.title`);
+            if (toolTitle && toolTitle !== `${toolKey}.title`) {
               name = toolTitle;
             }
           }
@@ -141,7 +141,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customItems }) => {
     <>
       <SchemaMarkup schema={breadcrumbSchema} />
       <nav aria-label="breadcrumb" className="mb-4 pt-8">
-        <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 justify-center">
+        <ol className="flex flex-wrap items-center gap-2 text-sm text-gray-600 dark:text-gray-400 justify-center">
           {breadcrumbItems.map((item, index) => (
             <li key={index} className="flex items-center">
               {index > 0 && <span className="mx-2 text-gray-400">/</span>}

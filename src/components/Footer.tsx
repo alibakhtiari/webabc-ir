@@ -70,11 +70,11 @@ const Footer = () => {
               {
                 title: t('tools.title'),
                 links: [
-                  { name: t('tools.metaGenerator.title'), href: `/${language}/tools/meta-generator` },
-                  { name: t('tools.serpPreview.title'), href: `/${language}/tools/serp-preview` },
-                  { name: t('tools.keywordResearch.title'), href: `/${language}/tools/keyword-research` },
-                  { name: t('tools.utmBuilder.title'), href: `/${language}/tools/utm-builder` },
-                  { name: t('tools.faqGenerator.title'), href: `/${language}/tools/faq-generator` },
+                  { name: t('metaGenerator.title'), href: `/${language}/tools/meta-generator` },
+                  { name: t('serpPreview.title'), href: `/${language}/tools/serp-preview` },
+                  { name: t('keywordResearch.title'), href: `/${language}/tools/keyword-research` },
+                  { name: t('utmBuilder.title'), href: `/${language}/tools/utm-builder` },
+                  { name: t('faqGenerator.title'), href: `/${language}/tools/faq-generator` },
                 ]
               }
             ].map((category, idx) => (

@@ -46,7 +46,7 @@ const FaqGenerator = () => {
         const validFaqs = faqs.filter(f => f.question.trim() && f.answer.trim());
 
         if (validFaqs.length === 0) {
-            toast.error(t('tools.faqGenerator.noQuestions') || "Add at least one question");
+            toast.error(t('faqGenerator.noQuestions') || "Add at least one question");
             return;
         }
 
@@ -70,19 +70,19 @@ const FaqGenerator = () => {
         if (!generatedSchema) return;
         navigator.clipboard.writeText(generatedSchema);
         setCopied(true);
-        toast.success(t('tools.faqGenerator.copied') || "Copied!");
+        toast.success(t('faqGenerator.copied') || "Copied!");
         setTimeout(() => setCopied(false), 2000);
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 pt-32 pb-16">
-            <div className="container mx-auto px-4 max-w-4xl space-y-8">
+        <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 pt-20 pb-10 md:pt-32 md:pb-16">
+            <div className="container mx-auto px-4 max-w-4xl space-y-6 md:space-y-8">
                 <Breadcrumb />
 
-                <div className="text-center space-y-4">
-                    <h1 className="text-4xl font-bold tracking-tight">{t('tools.faqGenerator.title')}</h1>
-                    <p className="text-xl text-muted-foreground">
-                        {t('tools.faqGenerator.description')}
+                <div className="text-center space-y-3 md:space-y-4">
+                    <h1 className="text-2xl md:text-4xl font-bold tracking-tight px-4">{t('faqGenerator.title')}</h1>
+                    <p className="text-lg md:text-xl text-muted-foreground px-2">
+                        {t('faqGenerator.description')}
                     </p>
                 </div>
 
@@ -96,24 +96,24 @@ const FaqGenerator = () => {
                                         <div className="flex-1 space-y-4">
                                             <div>
                                                 <label className="text-sm font-medium mb-1 block">
-                                                    {t('tools.faqGenerator.questionLabel')} #{index + 1}
+                                                    {t('faqGenerator.questionLabel')} #{index + 1}
                                                 </label>
                                                 <Input
                                                     dir={isRtl ? 'rtl' : 'ltr'}
                                                     value={faq.question}
                                                     onChange={(e) => updateFaq(faq.id, 'question', e.target.value)}
-                                                    placeholder={t('tools.faqGenerator.questionLabel')}
+                                                    placeholder={t('faqGenerator.questionLabel')}
                                                 />
                                             </div>
                                             <div>
                                                 <label className="text-sm font-medium mb-1 block">
-                                                    {t('tools.faqGenerator.answerLabel')} #{index + 1}
+                                                    {t('faqGenerator.answerLabel')} #{index + 1}
                                                 </label>
                                                 <Textarea
                                                     dir={isRtl ? 'rtl' : 'ltr'}
                                                     value={faq.answer}
                                                     onChange={(e) => updateFaq(faq.id, 'answer', e.target.value)}
-                                                    placeholder={t('tools.faqGenerator.answerLabel')}
+                                                    placeholder={t('faqGenerator.answerLabel')}
                                                     rows={3}
                                                 />
                                             </div>
@@ -134,12 +134,12 @@ const FaqGenerator = () => {
 
                         <div className="flex gap-4">
                             <Button onClick={addFaq} variant="outline" className="flex-1">
-                                <Plus className="h-4 w-4 mr-2" />
-                                {t('tools.faqGenerator.addQuestion')}
+                                <Plus className="h-4 w-4 me-2" />
+                                {t('faqGenerator.addQuestion')}
                             </Button>
                             <Button onClick={generateSchema} className="flex-1">
-                                <Code className="h-4 w-4 mr-2" />
-                                {t('tools.faqGenerator.generateSchema')}
+                                <Code className="h-4 w-4 me-2" />
+                                {t('faqGenerator.generateSchema')}
                             </Button>
                         </div>
                     </div>
@@ -149,7 +149,7 @@ const FaqGenerator = () => {
                         <Card className="h-full">
                             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                                 <CardTitle className="text-lg font-medium">
-                                    {t('tools.faqGenerator.schemaResult')}
+                                    {t('faqGenerator.schemaResult')}
                                 </CardTitle>
                                 <Button
                                     variant="outline"
@@ -158,17 +158,17 @@ const FaqGenerator = () => {
                                     disabled={!generatedSchema}
                                 >
                                     {copied ? (
-                                        <Check className="h-4 w-4 mr-2 text-green-500" />
+                                        <Check className="h-4 w-4 me-2 text-green-500" />
                                     ) : (
-                                        <Copy className="h-4 w-4 mr-2" />
+                                        <Copy className="h-4 w-4 me-2" />
                                     )}
-                                    {t('tools.faqGenerator.copyJson')}
+                                    {t('faqGenerator.copyJson')}
                                 </Button>
                             </CardHeader>
                             <CardContent>
                                 <div className="relative rounded-md bg-slate-950 p-4 min-h-[400px] font-mono text-sm text-slate-50 overflow-auto">
-                                    <pre>
-                                        {generatedSchema || t('tools.faqGenerator.placeholder') || "// JSON-LD Schema will appear here..."}
+                                    <pre className="whitespace-pre-wrap break-words">
+                                        {generatedSchema || t('faqGenerator.placeholder') || "// JSON-LD Schema will appear here..."}
                                     </pre>
                                 </div>
                             </CardContent>
