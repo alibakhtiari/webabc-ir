@@ -36,7 +36,8 @@
     "preview": "Preview",
     "schemaResult": "FAQ Schema Result",
     "copied": "Copied to clipboard!",
-    "noQuestions": "Add at least one question to generate schema."
+    "noQuestions": "Add at least one question to generate schema.",
+    "placeholder": "// JSON-LD Schema will appear here..."
   },
   "contentCreatorsTitle": "✍️ For Content Creators",
   "contentCreatorsDesc": "Content-focused tools can help your visitors create better content and see you as a valuable resource.",

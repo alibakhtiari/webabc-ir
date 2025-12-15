@@ -43,6 +43,33 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customItems }) => {
 
         // Translate segment names
         let name = segment;
+        const parentSegment = segmentsWithoutLanguage[index - 1];
+
+        if (parentSegment === 'tools') {
+          // Attempt to translate tool name from tools.json using camelCase key
+          // Mapping for tool slugs to i18n keys
+          const toolKeyMap: Record<string, string> = {
+            'headline-analyzer': 'headlineAnalyzer',
+            'lorem-generator': 'loremGenerator',
+            'meta-generator': 'metaGenerator',
+            'paa-scraper': 'paaScraper',
+            'readability-checker': 'readabilityChecker',
+            'serp-preview': 'serpPreview',
+            'utm-builder': 'utmBuilder',
+            'faq-generator': 'faqGenerator',
+            'keyword-research': 'keywordResearch'
+          };
+
+          const toolKey = toolKeyMap[segment];
+          if (toolKey) {
+            // @ts-ignore
+            const toolTitle = t(`tools.${toolKey}.title`);
+            if (toolTitle && toolTitle !== `tools.${toolKey}.title`) {
+              name = toolTitle;
+            }
+          }
+        }
+
         switch (segment) {
           case 'services':
             name = t('common.services');
@@ -87,7 +114,10 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customItems }) => {
             name = t('common.blog') || 'Blog';
             break;
           default:
-            name = segment.charAt(0).toUpperCase() + segment.slice(1);
+            // Keep name as is if not matched above or in tools check
+            if (name === segment) {
+              name = segment.charAt(0).toUpperCase() + segment.slice(1);
+            }
         }
 
         items.push({ name, path });
