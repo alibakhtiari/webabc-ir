@@ -3,6 +3,7 @@ import { getAllItems } from '@/lib/mdData';
 import { BlogPost } from '@/types/blog';
 
 const BASE_URL = 'https://webabc.ir';
+export const dynamic = 'force-static';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // 1. Define static routes
