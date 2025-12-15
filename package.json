@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
     "images:optimize": "node scripts/optimize-images.mjs",
-    "deploy": "next build && wrangler pages deploy out"
+    "deploy": "next build --webpack && wrangler pages deploy out"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
