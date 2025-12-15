@@ -7,18 +7,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
     "images:optimize": "node scripts/optimize-images.mjs",
-    "deploy": "next build && wrangler pages deploy out",
-    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
+    "deploy": "next build && wrangler pages deploy out"
   },
-  "browserslist": [
-    "defaults",
-    "not ie 11",
-    "not op_mini all"
-  ],
   "dependencies": {
-    "@opennextjs/cloudflare": "^1.14.6",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "glob": "^13.0.0",
