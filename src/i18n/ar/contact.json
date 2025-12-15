@@ -18,9 +18,11 @@
   "address": "العنوان",
   "addressValue": "دبي، الإمارات العربية المتحدة، برج ويب، الطابق 5",
   "phone": "الهاتف",
-  "phoneValue": "+971 4 123 4567",
+  "phoneValue": "+98 912 581 1880",
   "email": "البريد الإلكتروني",
-  "emailValue": "info@webabc.ae",
+  "emailValue": "info@webabc.ir",
+  "whatsapp": "واتساب",
+  "callNow": "إتصل الآن",
   "consultation": {
     "title": "طلب استشارة مجانية",
     "description": "املأ النموذج أدناه وسيتواصل خبراؤنا معك قريباً.",
