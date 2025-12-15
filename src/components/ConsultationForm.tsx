@@ -41,7 +41,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ open, onOpenChange 
               aria-label={t('contact.whatsapp') || "WhatsApp"}
               title={t('contact.whatsapp') || "WhatsApp"}
             >
-              <MessageCircle className="w-4 h-4 mr-2" aria-hidden="true" />
+              <MessageCircle className="w-4 h-4 me-2" aria-hidden="true" />
               {t('contact.whatsapp') || "WhatsApp"}
             </a>
           </Button>
@@ -51,7 +51,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ open, onOpenChange 
               aria-label={t('contact.callNow') || "Call Now"}
               title={t('contact.callNow') || "Call Now"}
             >
-              <Phone className="w-4 h-4 mr-2" aria-hidden="true" />
+              <Phone className="w-4 h-4 me-2" aria-hidden="true" />
               {t('contact.callNow') || "Call Now"}
             </a>
           </Button>

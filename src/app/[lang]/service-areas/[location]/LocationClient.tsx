@@ -120,9 +120,9 @@ const LocationPage = () => {
                   <Link href={`/${language}/contact`}>
                     {t('service-areas.ctaButton')}
                     {languageMeta.direction === 'rtl' ? (
-                      <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
+                      <ArrowLeft className="w-5 h-5 me-2 group-hover:-translate-x-1 transition-transform" />
                     ) : (
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-5 h-5 ms-2 group-hover:translate-x-1 transition-transform" />
                     )}
                   </Link>
                 </Button>
@@ -249,9 +249,9 @@ const LocationPage = () => {
                   <Link href={`/${language}/contact`}>
                     {t('service-areas.ctaButton')}
                     {languageMeta.direction === 'rtl' ? (
-                      <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
+                      <ArrowLeft className="w-5 h-5 me-2 group-hover:-translate-x-1 transition-transform" />
                     ) : (
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-5 h-5 ms-2 group-hover:translate-x-1 transition-transform" />
                     )}
                   </Link>
                 </Button>

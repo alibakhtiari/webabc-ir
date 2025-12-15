@@ -86,9 +86,9 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
           <Button variant="ghost" asChild>
             <Link href={`/${language}/blog`}>
               {languageMeta.direction === 'rtl' ? (
-                <><ArrowRight className="mr-2 h-4 w-4" /> {t('common.backToBlog')}</>
+                <><ArrowRight className="me-2 h-4 w-4" /> {t('common.backToBlog')}</>
               ) : (
-                <><ArrowLeft className="mr-2 h-4 w-4" /> {t('common.backToBlog')}</>
+                <><ArrowLeft className="me-2 h-4 w-4" /> {t('common.backToBlog')}</>
               )}
             </Link>
           </Button>

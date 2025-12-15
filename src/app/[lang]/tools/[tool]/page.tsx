@@ -42,7 +42,9 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         'paa-scraper': 'paaScraper',
         'readability-checker': 'readabilityChecker',
         'serp-preview': 'serpPreview',
-        'utm-builder': 'utmBuilder'
+        'utm-builder': 'utmBuilder',
+        'faq-generator': 'faqGenerator',
+        'keyword-research': 'keywordResearch'
     };
 
     const key = toolKeyMap[tool] || tool;

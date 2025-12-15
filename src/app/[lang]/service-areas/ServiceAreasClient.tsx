@@ -70,7 +70,7 @@ const ServiceAreas = () => {
             <div className="max-w-4xl mx-auto text-center">
               <Breadcrumb />
               <Badge variant="secondary" className="mb-4 text-sm">
-                <MapPin className="w-4 h-4 inline mr-2" />
+                <MapPin className="w-4 h-4 inline me-2" />
                 {t('service-areas.locationTitle')}
               </Badge>
               <h1 className="text-5xl md:text-6xl font-bold mb-6 text-primary">

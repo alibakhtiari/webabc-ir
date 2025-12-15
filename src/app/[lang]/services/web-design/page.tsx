@@ -157,7 +157,7 @@ const WebDesign = () => {
                                 <p className="text-gray-600 mb-6">{t('services.contentCreationDescription')}</p>
                                 <div className="flex items-center text-blue-600 font-medium group-hover:translate-x-2 transition-transform">
                                     {t('common.learnMore')}
-                                    {language === 'fa' || language === 'ar' ? <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1" /> : <ArrowRight className="w-4 h-4 ml-2" />}
+                                    {language === 'fa' || language === 'ar' ? <ArrowLeft className="w-4 h-4 me-2 group-hover:-translate-x-1" /> : <ArrowRight className="w-4 h-4 ms-2" />}
                                 </div>
                             </Link>
 
@@ -171,7 +171,7 @@ const WebDesign = () => {
                                 </div>
                                 <p className="text-gray-600 mb-6">{t('services.linkBuildingDescription')}</p>
                                 <div className="flex items-center text-purple-600 font-medium group-hover:translate-x-2 transition-transform">
-                                    {t('common.learnMore')} <ArrowRight className="w-4 h-4 ml-2" />
+                                    {t('common.learnMore')} <ArrowRight className="w-4 h-4 ms-2" />
                                 </div>
                             </Link>
                         </div>
