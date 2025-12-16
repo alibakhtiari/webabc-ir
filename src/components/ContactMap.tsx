@@ -15,7 +15,7 @@ const ContactMap = () => {
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
-                {...{ fetchpriority: "low" }}
+                {...{ fetchPriority: "low" }}
             ></iframe>
         </div>
     );
