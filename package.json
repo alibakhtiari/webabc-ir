@@ -11,9 +11,13 @@
     "deploy": "next build --webpack && wrangler pages deploy out"
   },
   "browserslist": [
-    "defaults",
-    "not IE 11",
-    "not dead"
+    "chrome >= 92",
+    "firefox >= 90",
+    "edge >= 92",
+    "safari >= 15.4",
+    "ios >= 15.4",
+    "not dead",
+    "not op_mini all"
   ],
   "dependencies": {
     "class-variance-authority": "^0.7.1",
