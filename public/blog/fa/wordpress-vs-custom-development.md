@@ -5,7 +5,7 @@ date: 2025-01-20
 author: تیم WebABC
 category: توسعه وب
 tags: [وردپرس, توسعه سفارشی, طراحی وب, سیستم مدیریت محتوا]
-image: /images/wordpress-hero.webp
+image: /images/blog/wordpress-hero.webp
 readTime: 6
 keyTakeaways:
   - وردپرس برای وب‌سایت‌های کوچک تا متوسط با بودجه محدود ایده‌آل است
