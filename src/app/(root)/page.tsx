@@ -1,7 +1,14 @@
-import { redirect } from 'next/navigation';
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function RootPage() {
-    // This generates a static HTML file with a meta-refresh tag.
-    // It effectively contains 0kb of client-side JavaScript.
-    redirect('/fa');
+    const router = useRouter();
+
+    useEffect(() => {
+        router.replace('/fa');
+    }, [router]);
+
+    return null;
 }
