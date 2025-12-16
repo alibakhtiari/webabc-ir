@@ -48,7 +48,7 @@ const WebsiteMaintenance = () => {
                     className="inline-flex items-center gap-2 bg-cyan-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-cyan-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
                     {t('maintenance.ctaButton')}
-                    <ArrowRight className="w-5 h-5 rtl:rotate-180" />
+                    <ArrowRight className={`w-5 h-5 ${language === 'fa' || language === 'ar' ? 'rotate-180' : ''}`} />
                 </Link>
             }
         >
