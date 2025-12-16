@@ -1,22 +1,58 @@
 {
-    "title": "Website Maintenance",
-    "subtitle": "Secure & up-to-date website",
-    "description": "Comprehensive care plans to keep your site secure and fast.",
+    "title": "Website Maintenance & Care Plans",
+    "subtitle": "Secure, fast, and always online – so you can focus on your business.",
+    "description": "Don't let technical issues slow you down. Our premium care plans ensure your website remains secure, optimized, and up-to-date while you focus on growing your business.",
     "features": [
-        "Weekly Plugin Updates",
-        "Daily Cloud Backups",
-        "Uptime Monitoring",
-        "Security Scans",
-        "Content Updates"
+        "24/7 Security Monitoring & Cleanup",
+        "Weekly Safe Updates (Core, Theme, Plugins)",
+        "Daily Cloud Backups (Off-site)",
+        "Performance Optimization & Uptime Monitoring",
+        "Priority Support & Content Edits"
     ],
+    "benefits": {
+        "0": {
+            "title": "Total Peace of Mind",
+            "description": "Never worry about your website breaking or getting hacked. We handle everything technical so you can sleep soundly."
+        },
+        "1": {
+            "title": "Maximize Revenue",
+            "description": "A fast, always-online website converts better. Our uptime monitoring and performance tweaks ensure you never miss a sale."
+        },
+        "2": {
+            "title": "Protect Your Reputation",
+            "description": "Security breaches destroy trust. We keep your customer data safe and your brand reputation spotless with military-grade security."
+        },
+        "3": {
+            "title": "Save Time & Money",
+            "description": "Hiring a developer for individual fixes is expensive. Our flat-rate plans provide a dedicated technical team for a fraction of the cost."
+        }
+    },
+    "process": {
+        "0": {
+            "title": "Onboarding & Audit",
+            "description": "We analyze your site, backup everything, and fix any immediate issues to get you to a 'clean slate'."
+        },
+        "1": {
+            "title": "Optimization",
+            "description": "We implement caching, security firewalls, and performance tweaks to boost speed and safety immediately."
+        },
+        "2": {
+            "title": "Weekly Routine",
+            "description": "Every week, we visually inspect your site, perform safe updates, and run cloud backups."
+        },
+        "3": {
+            "title": "Monthly Reporting",
+            "description": "You receive a detailed PDF report showing exactly what we did, your uptime, and your security status."
+        }
+    },
     "faq": {
-        "q1": "What does the maintenance plan include?",
-        "a1": "Our plan includes weekly updates of plugins, themes, and WordPress core, daily off-site cloud backups, 24/7 uptime monitoring, security scans, and small content updates.",
-        "q2": "Do I really need a maintenance plan?",
-        "a2": "Yes. Just like a car needs oil changes, a website needs maintenance. Without it, your site becomes vulnerable to hackers, slow, and may break when meaningful hosting updates occur.",
-        "q3": "Can I cancel anytime?",
-        "a3": "Absolutely. We believe in earning your business every month. There are no long-term lock-in contracts.",
-        "q4": "What if my site gets hacked?",
-        "a4": "If you are on our maintenance plan, we will fix your hacked site for free. We take preventing this very seriously."
+        "q1": "What typically is included in the Care Plan?",
+        "a1": "Our comprehensive plan covers everything needed to keep your site healthy. This includes weekly updates of all software, daily off-site backups to a secure cloud, real-time security scanning, uptime monitoring, and priority technical support. Think of it as an insurance policy and a dedicated tech team for your website.",
+        "q2": "Why do I need a maintenance plan?",
+        "a2": "Websites are complex software that require constant care. Without regular updates, they become vulnerable to hackers, slow down, or break completely. Our plan prevents these expensive disasters, giving you peace of mind and ensuring your digital storefront is always open for business.",
+        "q3": "Am I locked into a long-term contract?",
+        "a3": "No. We believe in earning your trust every single month. Our plans are month-to-month, and you can cancel anytime legally and hassle-free. We want you to stay because you love the service, not because you have to.",
+        "q4": "What happens if my site gets hacked while on your plan?",
+        "a4": "In the unlikely event that your site is compromised while under our watch, we will clean and restore it completely free of charge. We take full responsibility for your website's security so you don't have to worry about it."
     }
 }
