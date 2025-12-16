@@ -1,22 +1,58 @@
 {
-    "title": "UI/UX Audit",
-    "subtitle": "Expert user experience review",
-    "description": "Identify usability issues and improve your conversion rates.",
+    "title": "Professional UI/UX Audit",
+    "subtitle": "Uncover hidden friction points that are killing your conversions.",
+    "description": "Stop guessing why visitors aren't buying. Our expert audit identifies exactly where users get stuck, frustrated, or confused, providing you with a roadmap to double your conversion rate.",
     "features": [
-        "Video Walkthrough",
-        "Conversion Analysis",
-        "Usability Testing",
-        "Accessibility Check",
-        "Design Recommendations"
+        "Comprehensive Video Walkthrough Analysis",
+        "Heuristic Evaluation & Usability Testing",
+        "Conversion Funnel Friction Analysis",
+        "Accessiblity Compliance Check",
+        "Actionable PDF Report & Fix Roadmap"
     ],
+    "benefits": {
+        "0": {
+            "title": "Stop Guessing, Start Knowing",
+            "description": "Opinions don't sell; data does. We replace team debates with objective analysis of where and why users are leaving your site."
+        },
+        "1": {
+            "title": "Double Your ROI",
+            "description": "It is cheaper to convert existing traffic than to buy new traffic. Fixing usability issues is the highest-ROI activity you can do."
+        },
+        "2": {
+            "title": "Fresh Pair of Eyes",
+            "description": "You are too close to your own product to see the flaws. We provide an unbiased, expert perspective on the first-time user experience."
+        },
+        "3": {
+            "title": "Actionable Roadmap",
+            "description": "We don’t just list problems; we give you prioritized solution. You get a checklist ready for your developers to implement immediately."
+        }
+    },
+    "process": {
+        "0": {
+            "title": "Discovery",
+            "description": "We learn your business goals, target audience, and key conversion metrics to understand what 'success' looks like."
+        },
+        "1": {
+            "title": "Heuristic Review",
+            "description": "Our experts evaluate your site against 10 globally recognized usability principles (Jacob Nielsen’s heuristics)."
+        },
+        "2": {
+            "title": "Walkthrough Analysis",
+            "description": "We simulate real user journeys (purchasing, signing up) and record a video detailing every friction point encountered."
+        },
+        "3": {
+            "title": "Strategy Delivery",
+            "description": "You receive the video and a prioritized PDF report. We walk you through the findings to ensure total clarity."
+        }
+    },
     "faq": {
-        "q1": "What do I get in the audit?",
-        "a1": "You receive a comprehensive video review of your site and a PDF report detailing issues and suggesting actionable fixes.",
-        "q2": "Can you fix the issues you find?",
-        "a2": "Yes! After the audit, we can provide a quote to implement the recommended design and structure changes.",
-        "q3": "How long does it take?",
-        "a3": "Most audits are completed within 3-5 business days.",
-        "q4": "Is this for new sites only?",
-        "a4": "No, it is valuable for any existing site that isn't converting visitors into customers at the desired rate."
+        "q1": "What exactly do I get with an audit?",
+        "a1": "You receive a complete diagnostic of your website. This includes a 20+ minute video walkthrough where we analyze your site in real-time as a user, plus a detailed PDF report prioritizing issues by severity with specific, actionable recommendations on how to fix them.",
+        "q2": "Can you implement the changes for me?",
+        "a2": "Absolutely. While the audit is a standalone diagnostic service, many clients hire us afterwards to implement the recommended fixes. We can provide a separate quote for accurate execution of the optimization roadmap.",
+        "q3": "How long does an audit take?",
+        "a3": "A thorough manual audit takes time. We typically deliver your comprehensive video and report within 3-5 business days from booking.",
+        "q4": "Is this useful for an old website?",
+        "a4": "It is arguably *most* useful for established sites. If you have traffic but low sales, an audit often provides the highest ROI of any marketing investment by fixing the leaky bucket before you pour more water (ads) into it."
     }
 }
