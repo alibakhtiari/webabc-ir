@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, ImgHTMLAttributes } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image, { ImageProps } from 'next/image';
 import { cn } from '@/lib/utils';
 import imageMap from '@/generated/images-map.json';
