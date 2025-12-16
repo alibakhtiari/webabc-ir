@@ -4,6 +4,7 @@ import React from 'react';
 import { ServicePageTemplate } from '@/components/templates/ServicePageTemplate';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PenTool, FileText, Search, Share2, Mail, Edit3, BarChart, CheckCircle } from 'lucide-react';
+import ServiceHeroButtons from '@/components/ServiceHeroButtons';
 
 const ContentCreation = () => {
     const { t } = useLanguage();
@@ -13,6 +14,7 @@ const ContentCreation = () => {
             title={t('contentCreation.title')}
             subtitle={t('contentCreation.description')}
             heroImage="/images/services/content-creation.webp"
+            heroButtons={<ServiceHeroButtons />}
         >
             {/* Services Details */}
             <section className="py-16 bg-white">

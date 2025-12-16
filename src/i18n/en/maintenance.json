@@ -45,6 +45,8 @@
             "description": "You receive a detailed PDF report showing exactly what we did, your uptime, and your security status."
         }
     },
+    "heroDescription": "Comprehensive website care plans that keep your business secure, fast, and always open. Don't let technical headaches slow your growth.",
+    "ctaButton": "Get Started Now",
     "faq": {
         "q1": "What typically is included in the Care Plan?",
         "a1": "Our comprehensive plan covers everything needed to keep your site healthy. This includes weekly updates of all software, daily off-site backups to a secure cloud, real-time security scanning, uptime monitoring, and priority technical support. Think of it as an insurance policy and a dedicated tech team for your website.",

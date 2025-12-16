@@ -45,44 +45,43 @@ async function optimizeImages() {
         const name = path.basename(file, ext); // filename without ext
         const filename = path.basename(file);
 
-        // We only care about converting PNG/JPG/JPEG to WebP
-        if (ext === '.webp' || ext === '.avif') {
-            // If it's already webp, just ensure we map it for the JSON generation if strictly needed,
-            // But the user specifically asked to "replace... into webp".
-            // We'll skip existing WebPs for conversion, but we might need to process them for generation of other sizes if we were doing that.
-            // For this specific request "replace... into webp", we focus on non-webp.
-            continue;
-        }
-
-        console.log(`📸 Converting: ${filename} -> WebP`);
-
+        // Read file and metadata for ALL processed files
         const imageBuffer = await fs.readFile(file);
         const sharpInstance = sharp(imageBuffer);
         const metadata = await sharpInstance.metadata();
 
-        const webpFilename = `${name}.webp`;
-        const webpPath = path.join(dir, webpFilename);
+        let webpPath = file;
+        let relativeNew = '/' + path.relative(INPUT_DIR, file).replace(/\\/g, '/');
 
-        // 1. Convert to WebP (Overwrite/Create)
-        await sharpInstance
-            .clone()
-            .webp({
-                quality: QUALITY.webp,
-                effort: 4,
-                smartSubsample: true
-            })
-            .toFile(webpPath);
+        // IF NOT WEBP/AVIF, Convert to WebP
+        if (ext !== '.webp' && ext !== '.avif') {
+            console.log(`📸 Converting: ${filename} -> WebP`);
 
-        // 2. Map for replacement
-        // e.g. /images/portfolio/foo.png -> /images/portfolio/foo.webp
-        const relativeOld = '/' + path.relative(INPUT_DIR, file).replace(/\\/g, '/');
-        const relativeNew = '/' + path.relative(INPUT_DIR, webpPath).replace(/\\/g, '/');
+            const webpFilename = `${name}.webp`;
+            webpPath = path.join(dir, webpFilename);
 
-        replacementMap.set(relativeOld, relativeNew);
+            // 1. Convert to WebP (Overwrite/Create)
+            await sharpInstance
+                .clone()
+                .webp({
+                    quality: QUALITY.webp,
+                    effort: 4,
+                    smartSubsample: true
+                })
+                .toFile(webpPath);
 
-        // 3. Delete original
-        await fs.unlink(file);
-        console.log(`   🗑️ Deleted original: ${filename}`);
+            // 2. Map for replacement
+            const relativeOld = '/' + path.relative(INPUT_DIR, file).replace(/\\/g, '/');
+            relativeNew = '/' + path.relative(INPUT_DIR, webpPath).replace(/\\/g, '/');
+
+            replacementMap.set(relativeOld, relativeNew);
+
+            // 3. Delete original
+            await fs.unlink(file);
+            console.log(`   🗑️ Deleted original: ${filename}`);
+        } else {
+            console.log(`ℹ️  Processing existing: ${filename}`);
+        }
 
         // 4. Generate Responsive Sizes (for the NEW webp file)
         // We act as if the loop is now processing the new webp file for the image map

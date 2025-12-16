@@ -1,12 +1,14 @@
 "use client";
 
+import Link from 'next/link';
 import { ServicePageTemplate } from '@/components/templates/ServicePageTemplate';
 import { useLanguage } from '@/contexts/LanguageContext';
 import FAQ from '@/components/FAQ';
-import { CheckCircle2, Zap } from 'lucide-react';
+import { CheckCircle2, Zap, ArrowRight } from 'lucide-react';
+import ServiceHeroButtons from '@/components/ServiceHeroButtons';
 
 const SpeedOptimization = () => {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
 
     const features = [
         t('speedOptimization.features.0'),
@@ -39,7 +41,17 @@ const SpeedOptimization = () => {
         <ServicePageTemplate
             title={t('speedOptimization.title')}
             subtitle={t('speedOptimization.subtitle')}
+            description={t('speedOptimization.heroDescription')}
             heroImage="/images/services/speed-optimization.webp"
+            heroButtons={
+                <Link
+                    href={`/${language}/contact`}
+                    className="inline-flex items-center gap-2 bg-orange-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-orange-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                >
+                    {t('speedOptimization.ctaButton')}
+                    <ArrowRight className="w-5 h-5 rtl:rotate-180" />
+                </Link>
+            }
         >
             <div className="container mx-auto px-4 py-12">
                 <div className="max-w-4xl mx-auto">

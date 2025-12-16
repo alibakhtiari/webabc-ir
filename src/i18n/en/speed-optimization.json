@@ -45,6 +45,8 @@
             "description": "We re-test with Google PageSpeed tools and deliver a before-and-after report proving the speed gains."
         }
     },
+    "heroDescription": "Boost your Google rankings and conversion rates with a lightning-fast website. We optimize Code, Images, and Server settings for maximum performance.",
+    "ctaButton": "Boost My Speed",
     "faq": {
         "q1": "How much faster will my website be?",
         "a1": "While every site is unique, we guarantee a significant improvement. We aim for a 'green' score (90+) on Google PageSpeed Insights and load times under 2 seconds. This improvement is critical for both user experience and Google rankings.",

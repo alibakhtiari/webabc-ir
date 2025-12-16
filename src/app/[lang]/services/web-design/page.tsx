@@ -7,6 +7,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { TimelineItem, TechItem } from '@/components/services/WebDesignComponents';
 import Link from 'next/link';
 import { PenTool, Link2, ArrowRight, ArrowLeft } from 'lucide-react';
+import ServiceHeroButtons from '@/components/ServiceHeroButtons';
 
 const WebDesign = () => {
     const { t, language } = useLanguage();
@@ -19,6 +20,7 @@ const WebDesign = () => {
                 title={t('webDesign.title')}
                 subtitle={t('webDesign.description')}
                 heroImage="/images/services/web-design.webp"
+                heroButtons={<ServiceHeroButtons />}
             >
                 {/* Services Details */}
                 <section className="py-16 bg-white">
