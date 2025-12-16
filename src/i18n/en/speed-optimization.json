@@ -1,22 +1,58 @@
 {
-    "title": "Speed Optimization",
-    "subtitle": "Boost speed & Core Web Vitals",
-    "description": "Optimize loading time and pass Core Web Vitals assessments.",
+    "title": "Core Web Vitals & Speed Optimization",
+    "subtitle": "Lightning-fast load times for better SEO and higher conversions.",
+    "description": "A slow website costs you money. We optimize your site's code, images, and server settings to achieve 90+ Google PageSpeed scores, ensuring you pass Core Web Vitals and rank higher.",
     "features": [
-        "Image Optimization",
-        "Code Minification",
-        "Caching Configuration",
-        "Database Optimization",
-        "CDN Setup"
+        "Advanced Caching & CDN Configuration",
+        "Image Compression & Next-Gen Formats",
+        "Code Minification (CSS/JS/HTML)",
+        "Database Cleanup & Optimization",
+        "Core Web Vitals Assessment Pass"
     ],
+    "benefits": {
+        "0": {
+            "title": "Rank Higher on Google",
+            "description": "Google explicitly favors faster websites. Passing Core Web Vitals is a direct ranking signal that pushes you above competitors."
+        },
+        "1": {
+            "title": "Boost Conversion Rates",
+            "description": "A 1-second delay reduces conversions by 7%. Speed is the simplest way to increase sales without spending more on ads."
+        },
+        "2": {
+            "title": "Better User Experience",
+            "description": "Users hate waiting. A snappy website keeps visitors engaged, lowers bounce rates, and builds trust in your brand."
+        },
+        "3": {
+            "title": "Save on Hosting Costs",
+            "description": "Optimized code uses fewer server resources. This means your site can handle more traffic without needing expensive server upgrades."
+        }
+    },
+    "process": {
+        "0": {
+            "title": "Deep Performance Audit",
+            "description": "We analyze every file, script, and query to find exactly what is slowing you down, establishing a baseline score."
+        },
+        "1": {
+            "title": "Code & Asset Optimization",
+            "description": "We minify code, compress images, and defer non-essential scripts to make the initial load instant."
+        },
+        "2": {
+            "title": "Server-Side Tuning",
+            "description": "We configure advanced caching (Redis/Varnish) and CDNs to serve your content from the edge, closest to your users."
+        },
+        "3": {
+            "title": "Verification & Reporting",
+            "description": "We re-test with Google PageSpeed tools and deliver a before-and-after report proving the speed gains."
+        }
+    },
     "faq": {
-        "q1": "How fast will my site apply?",
-        "a1": "We aim for scores of 90+ on Google PageSpeed Insights and loading times under 2 seconds. However, results depend on your hosting and site complexity.",
-        "q2": "Is this a one-time service?",
-        "a2": "Yes, the optimization is a one-time project. However, adding non-optimized content later can slow it down again.",
-        "q3": "Do you need access to my hosting?",
-        "a3": "Yes, we typically need FTP/SFTP access and admin access to your WordPress dashboard or server.",
-        "q4": "Will this break my site design?",
-        "a4": "We act carefully to ensure optimizations do not affect visual layout. We test everything on a staging environment first."
+        "q1": "How much faster will my website be?",
+        "a1": "While every site is unique, we guarantee a significant improvement. We aim for a 'green' score (90+) on Google PageSpeed Insights and load times under 2 seconds. This improvement is critical for both user experience and Google rankings.",
+        "q2": "Is this a one-time fix or a monthly service?",
+        "a2": "Our optimization is a comprehensive one-time project. We overhaul your site's technical foundation. However, maintaining this speed over time as you add new content may require occasional check-ups, which are covered in our Maintenance Plans.",
+        "q3": "Will optimizing speed break my site's design?",
+        "a3": "Never. We meticulously test every change on a staging environment before applying it to your live site. We insure your layout, functionality, and design remain intact—just much faster.",
+        "q4": "Do you need access to my server?",
+        "a4": "Yes, to perform deep optimizations, we will need administrative access to your WordPress dashboard and your hosting control panel (FTP/SFTP). We treat your credentials with the highest level of security."
     }
 }
