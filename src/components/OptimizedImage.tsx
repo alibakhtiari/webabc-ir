@@ -15,7 +15,7 @@ interface OptimizedImageProps extends Omit<ImageProps, 'src'> {
 
 const OptimizedImage = ({ src, alt, className, priority, fill, ...props }: OptimizedImageProps) => {
 
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(priority ? true : false);
   const imgRef = useRef<HTMLImageElement>(null);
 
   // Reset loading state when src changes
@@ -55,7 +55,7 @@ const OptimizedImage = ({ src, alt, className, priority, fill, ...props }: Optim
           aria-hidden="true"
           className={cn(
             "absolute inset-0 bg-cover bg-center transition-opacity duration-500 will-change-opacity",
-            isLoaded ? "opacity-0" : "opacity-100"
+            (isLoaded || priority) ? "opacity-0" : "opacity-100"
           )}
           style={{ backgroundImage: `url(${placeholder})`, filter: 'blur(20px)', transform: "scale(1.1)" }}
         />
@@ -71,10 +71,11 @@ const OptimizedImage = ({ src, alt, className, priority, fill, ...props }: Optim
             width={!fill ? width : undefined}
             height={!fill ? height : undefined}
             loading={priority ? "eager" : "lazy"}
+            fetchPriority={priority ? "high" : "auto"}
             className={cn(
               "object-cover transition-opacity duration-500",
               fill ? "absolute inset-0 h-full w-full" : "w-full h-auto",
-              isLoaded ? "opacity-100" : "opacity-0"
+              (isLoaded || priority) ? "opacity-100" : "opacity-0"
             )}
             onLoad={() => setIsLoaded(true)}
             {...props}
