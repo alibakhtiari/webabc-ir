@@ -113,6 +113,15 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customItems }) => {
           case 'blog':
             name = t('common.blog') || 'Blog';
             break;
+          case 'website-maintenance':
+            name = t('maintenance.title');
+            break;
+          case 'speed-optimization':
+            name = t('speedOptimization.title');
+            break;
+          case 'ui-ux-audit':
+            name = t('uiUxAudit.title');
+            break;
           default:
             // Keep name as is if not matched above or in tools check
             if (name === segment) {
