@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
   experimental: {
     viewTransition: true,
     inlineCss: true,
+    optimizePackageImports: ['lucide-react', 'zod', 'sonner'],
   },
   images: {
     unoptimized: true,
