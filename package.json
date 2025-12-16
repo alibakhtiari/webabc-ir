@@ -10,6 +10,11 @@
     "images:optimize": "node scripts/optimize-images.mjs",
     "deploy": "next build --webpack && wrangler pages deploy out"
   },
+  "browserslist": [
+    "defaults",
+    "not IE 11",
+    "not dead"
+  ],
   "dependencies": {
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
