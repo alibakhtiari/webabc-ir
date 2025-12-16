@@ -39,7 +39,7 @@ const WebsiteMaintenance = () => {
         <ServicePageTemplate
             title={t('maintenance.title')}
             subtitle={t('maintenance.subtitle')}
-            heroImage="/images/services/maintenance.webp"
+            heroImage="/images/services/website-maintenance.webp"
         >
             <div className="container mx-auto px-4 py-12">
                 <div className="max-w-4xl mx-auto">
@@ -59,6 +59,39 @@ const WebsiteMaintenance = () => {
                                 <div key={index} className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
                                     <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
                                     <span className="font-medium text-gray-700">{feature}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Benefits Section */}
+                    <div className="mb-20">
+                        <h2 className="text-3xl font-bold text-center mb-10">{t('common.whyChooseUs') || "Why Choose Our Care Plans?"}</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            {[0, 1, 2, 3].map((i) => (
+                                <div key={i} className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                    <h3 className="text-xl font-bold mb-3 text-cyan-700">
+                                        {t(`maintenance.benefits.${i}.title`)}
+                                    </h3>
+                                    <p className="text-gray-600 leading-relaxed">
+                                        {t(`maintenance.benefits.${i}.description`)}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Process Section */}
+                    <div className="mb-20">
+                        <h2 className="text-3xl font-bold text-center mb-10">{t('common.howItWorks') || "Our Monthly Process"}</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                            {[0, 1, 2, 3].map((i) => (
+                                <div key={i} className="relative p-6 pt-12 bg-white rounded-xl border border-gray-200 text-center">
+                                    <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 bg-cyan-600 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
+                                        {i + 1}
+                                    </div>
+                                    <h3 className="font-bold text-lg mb-3 mt-2">{t(`maintenance.process.${i}.title`)}</h3>
+                                    <p className="text-sm text-gray-600">{t(`maintenance.process.${i}.description`)}</p>
                                 </div>
                             ))}
                         </div>
