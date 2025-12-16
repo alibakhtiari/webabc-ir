@@ -7,6 +7,7 @@ import FAQ from '@/components/FAQ';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Globe, Target, Search, MapPin, FileCheck, BarChart, CheckCircle2 } from 'lucide-react';
 import OptimizedImage from '@/components/OptimizedImage';
+import ServiceHeroButtons from '@/components/ServiceHeroButtons';
 
 const LocalSeo = () => {
     const { t, languageMeta } = useLanguage();
@@ -37,6 +38,7 @@ const LocalSeo = () => {
             <ServicePageTemplate
                 title={t('localSeo.localSeoTitle')}
                 subtitle={t('localSeo.localSeoDescription')}
+                heroButtons={<ServiceHeroButtons />}
             >
                 {/* What is Local SEO? */}
                 <section className="py-16">

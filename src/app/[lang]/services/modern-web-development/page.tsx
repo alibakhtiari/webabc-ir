@@ -7,6 +7,7 @@ import { TimelineItem, TechItem } from '@/components/services/WebDesignComponent
 import Link from 'next/link';
 import { PenTool, Link2, ArrowRight, ArrowLeft, Code, Database, Server, Smartphone, Layout, Zap, Rocket } from 'lucide-react';
 import WebDesignSchema from '@/components/seo/schemas/WebDesignSchema'; // Using WebDesign schema as base or create new if needed
+import ServiceHeroButtons from '@/components/ServiceHeroButtons';
 
 const ModernWebDevelopment = () => {
     const { t, language } = useLanguage();
@@ -32,7 +33,8 @@ const ModernWebDevelopment = () => {
             <ServicePageTemplate
                 title={t('modern-web.title')}
                 subtitle={t('modern-web.description')}
-                heroImage="/images/services/modern-web-development.png"
+                heroImage="/images/services/modern-web-development.webp"
+                heroButtons={<ServiceHeroButtons />}
             >
                 {/* Services Details */}
                 <section className="py-16 bg-white">

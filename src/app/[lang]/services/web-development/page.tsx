@@ -6,6 +6,7 @@ import WebDevelopmentSchema from '@/components/seo/schemas/WebDevelopmentSchema'
 import FAQ from '@/components/FAQ';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Layout, Server, Code2, Rocket, ShieldCheck, ShoppingCart, Stethoscope, Briefcase, GraduationCap, Home, Plane, Database, Cloud } from 'lucide-react';
+import ServiceHeroButtons from '@/components/ServiceHeroButtons';
 
 const WebDevelopment = () => {
     const { t } = useLanguage();
@@ -37,6 +38,7 @@ const WebDevelopment = () => {
                 title={t('webDevelopmentServices.webDevelopmentTitle')}
                 subtitle={t('webDevelopmentServices.webDevelopmentDescription')}
                 heroImage="/images/services/web-development.webp"
+                heroButtons={<ServiceHeroButtons />}
             >
                 {/* What is Custom Web Development? */}
                 <section className="py-16">

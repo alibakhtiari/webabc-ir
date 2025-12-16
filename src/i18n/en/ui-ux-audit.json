@@ -45,6 +45,8 @@
             "description": "You receive the video and a prioritized PDF report. We walk you through the findings to ensure total clarity."
         }
     },
+    "heroDescription": "Get a comprehensive 20+ minute video audit of your website. Identify friction points and get a clear roadmap to increase sales.",
+    "ctaButton": "Get My Audit",
     "faq": {
         "q1": "What exactly do I get with an audit?",
         "a1": "You receive a complete diagnostic of your website. This includes a 20+ minute video walkthrough where we analyze your site in real-time as a user, plus a detailed PDF report prioritizing issues by severity with specific, actionable recommendations on how to fix them.",

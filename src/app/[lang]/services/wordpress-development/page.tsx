@@ -5,6 +5,7 @@ import { ServicePageTemplate } from '@/components/templates/ServicePageTemplate'
 import WordpressSchema from '@/components/seo/schemas/WordpressSchema';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ShoppingCart, Layout, Settings, Smartphone } from 'lucide-react';
+import ServiceHeroButtons from '@/components/ServiceHeroButtons';
 
 const WordpressWoocommerceDevelopment = () => {
     const { t } = useLanguage();
@@ -17,6 +18,7 @@ const WordpressWoocommerceDevelopment = () => {
                 title={t('wordpress.title')}
                 subtitle={t('wordpress.subtitle')}
                 heroImage="/images/services/wordpress.webp"
+                heroButtons={<ServiceHeroButtons />}
             >
                 {/* Features Section */}
                 <section className="py-16">

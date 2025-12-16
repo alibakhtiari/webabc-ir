@@ -1,12 +1,14 @@
 "use client";
 
+import Link from 'next/link';
 import { ServicePageTemplate } from '@/components/templates/ServicePageTemplate';
 import { useLanguage } from '@/contexts/LanguageContext';
 import FAQ from '@/components/FAQ';
-import { CheckCircle2, ShieldCheck } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, ArrowRight } from 'lucide-react';
+import ServiceHeroButtons from '@/components/ServiceHeroButtons';
 
 const WebsiteMaintenance = () => {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
 
     const features = [
         t('maintenance.features.0'),
@@ -40,6 +42,15 @@ const WebsiteMaintenance = () => {
             title={t('maintenance.title')}
             subtitle={t('maintenance.subtitle')}
             heroImage="/images/services/website-maintenance.webp"
+            heroButtons={
+                <Link
+                    href={`/${language}/contact`}
+                    className="inline-flex items-center gap-2 bg-cyan-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-cyan-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                >
+                    {t('maintenance.ctaButton')}
+                    <ArrowRight className="w-5 h-5 rtl:rotate-180" />
+                </Link>
+            }
         >
             <div className="container mx-auto px-4 py-12">
                 <div className="max-w-4xl mx-auto">

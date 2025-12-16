@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 interface ServicePageProps {
     title: string;
     subtitle: string;
+    description?: string; // Added description prop
     heroImage?: string; // Optional: If provided, renders split layout
     heroButtons?: React.ReactNode; // Optional: For CTA buttons in hero
     children: React.ReactNode;
@@ -18,6 +19,7 @@ interface ServicePageProps {
 export const ServicePageTemplate = ({
     title,
     subtitle,
+    description,
     heroImage,
     heroButtons,
     children,
@@ -37,9 +39,14 @@ export const ServicePageTemplate = ({
                                 <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight">
                                     {title}
                                 </h1>
-                                <p className="text-xl text-gray-700 mb-8 leading-relaxed">
+                                <p className="text-xl font-medium text-primary mb-6 leading-relaxed">
                                     {subtitle}
                                 </p>
+                                {description && (
+                                    <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                                        {description}
+                                    </p>
+                                )}
                                 {heroButtons && (
                                     <div className={cn("flex flex-wrap gap-4", !heroImage && "justify-center")}>
                                         {heroButtons}
@@ -50,7 +57,7 @@ export const ServicePageTemplate = ({
                             {/* Optional Hero Image */}
                             {heroImage && (
                                 <div className="lg:w-1/2 w-full mt-8 lg:mt-0">
-                                    <div className="rounded-2xl overflow-hidden shadow-2xl relative aspect-video">
+                                    <div className="rounded-2xl overflow-hidden shadow-2xl relative min-h-[300px] h-[300px] lg:h-[400px] w-full">
                                         <OptimizedImage
                                             src={heroImage}
                                             alt={title}

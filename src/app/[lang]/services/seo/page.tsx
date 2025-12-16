@@ -7,20 +7,10 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Search, Globe, LinkIcon, PieChart } from 'lucide-react';
 import FAQ from '@/components/FAQ';
 import { SeoServiceCard, ResultsCard, ProcessCard } from '@/components/services/SeoComponents';
+import ServiceHeroButtons from '@/components/ServiceHeroButtons';
 
 const SeoService = () => {
     const { t } = useLanguage();
-
-    const HeroButtons = (
-        <>
-            <button className="px-6 py-3 bg-primary text-white rounded-lg shadow-lg hover:shadow-xl transition-all">
-                {t('common.freeConsultation')}
-            </button>
-            <button className="px-6 py-3 border border-primary text-primary rounded-lg hover:bg-primary/5 transition-all">
-                {t('common.viewPortfolio')}
-            </button>
-        </>
-    );
 
     return (
         <>
@@ -30,7 +20,7 @@ const SeoService = () => {
                 title={t('seoService.title')}
                 subtitle={t('seoService.subtitle')}
                 heroImage="/images/services/seo.webp"
-                heroButtons={HeroButtons}
+                heroButtons={<ServiceHeroButtons />}
             >
                 {/* SEO Services */}
                 <section className="py-16 bg-white">
