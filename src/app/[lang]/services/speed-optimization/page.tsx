@@ -64,6 +64,39 @@ const SpeedOptimization = () => {
                         </div>
                     </div>
 
+                    {/* Benefits Section */}
+                    <div className="mb-20">
+                        <h2 className="text-3xl font-bold text-center mb-10">{t('common.whyChooseUs') || "Why Optimize?"}</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            {[0, 1, 2, 3].map((i) => (
+                                <div key={i} className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                    <h3 className="text-xl font-bold mb-3 text-orange-600">
+                                        {t(`speedOptimization.benefits.${i}.title`)}
+                                    </h3>
+                                    <p className="text-gray-600 leading-relaxed">
+                                        {t(`speedOptimization.benefits.${i}.description`)}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Process Section */}
+                    <div className="mb-20">
+                        <h2 className="text-3xl font-bold text-center mb-10">{t('common.howItWorks') || "Our Optimization Process"}</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                            {[0, 1, 2, 3].map((i) => (
+                                <div key={i} className="relative p-6 pt-12 bg-white rounded-xl border border-gray-200 text-center">
+                                    <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
+                                        {i + 1}
+                                    </div>
+                                    <h3 className="font-bold text-lg mb-3 mt-2">{t(`speedOptimization.process.${i}.title`)}</h3>
+                                    <p className="text-sm text-gray-600">{t(`speedOptimization.process.${i}.description`)}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
                     <FAQ items={faqItems} />
                 </div>
             </div>
