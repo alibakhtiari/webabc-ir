@@ -21,14 +21,14 @@ interface OptimizedImageProps extends Omit<ImageProps, 'src'> {
 }
 
 const OptimizedImage = ({ src, alt, className, priority, fill, ...props }: OptimizedImageProps) => {
-
+  // If priority is true, we consider it loaded immediately to skip animations
   const [isLoaded, setIsLoaded] = useState(!!priority);
   const imgRef = useRef<HTMLImageElement>(null);
 
-  // 2. FIX: Check priority when resetting state
   useEffect(() => {
-    setIsLoaded(!!priority);
-  }, [src, priority]);
+    // If priority is true, ensure we stay loaded
+    if (priority) setIsLoaded(true);
+  }, [priority]);
 
   useEffect(() => {
     if (imgRef.current?.complete) {
@@ -53,14 +53,17 @@ const OptimizedImage = ({ src, alt, className, priority, fill, ...props }: Optim
         )}
         style={!fill && width && height ? { aspectRatio: `${width} / ${height}` } : undefined}
       >
-        <div
-          aria-hidden="true"
-          className={cn(
-            "absolute inset-0 bg-cover bg-center transition-opacity duration-500 will-change-opacity",
-            (isLoaded || priority) ? "opacity-0" : "opacity-100"
-          )}
-          style={{ backgroundImage: `url(${placeholder})`, filter: 'blur(20px)', transform: "scale(1.1)" }}
-        />
+        {/* Only render blur placeholder if NOT priority */}
+        {!priority && (
+          <div
+            aria-hidden="true"
+            className={cn(
+              "absolute inset-0 bg-cover bg-center transition-opacity duration-500 will-change-opacity",
+              isLoaded ? "opacity-0" : "opacity-100"
+            )}
+            style={{ backgroundImage: `url(${placeholder})`, filter: 'blur(20px)', transform: "scale(1.1)" }}
+          />
+        )}
 
         <picture>
           <source srcSet={avifSrcSet} type="image/avif" sizes={props.sizes} />
@@ -73,10 +76,11 @@ const OptimizedImage = ({ src, alt, className, priority, fill, ...props }: Optim
             width={!fill ? width : undefined}
             height={!fill ? height : undefined}
             loading={priority ? "eager" : "lazy"}
-            // 3. FIX: Add fetchPriority="high" specifically here
             fetchPriority={priority ? "high" : "auto"}
+            // conditionally apply transition class. If priority, pure opacity-100, no transition.
             className={cn(
-              "object-cover transition-opacity duration-500",
+              "object-cover",
+              !priority && "transition-opacity duration-500",
               fill ? "absolute inset-0 h-full w-full" : "w-full h-auto",
               (isLoaded || priority) ? "opacity-100" : "opacity-0"
             )}
@@ -96,7 +100,10 @@ const OptimizedImage = ({ src, alt, className, priority, fill, ...props }: Optim
         alt={alt}
         fill={fill}
         priority={priority}
-        className={cn("transition-opacity duration-500", (isLoaded || priority) ? "opacity-100" : "opacity-0")}
+        className={cn(
+          !priority && "transition-opacity duration-500",
+          (isLoaded || priority) ? "opacity-100" : "opacity-0"
+        )}
         onLoad={(e) => {
           const target = e.target as HTMLImageElement;
           if (target.src.indexOf('data:') !== 0) setIsLoaded(true);

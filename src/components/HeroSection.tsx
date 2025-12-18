@@ -48,6 +48,7 @@ const HeroSection = () => {
                 width={600}
                 height={600}
                 priority={true}
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
           </div>
