@@ -31,7 +31,7 @@ const namespaces = {
 
     // Tools Namespaces
     serpPreview: 'tools/serpPreview',
-    keywordResearch: 'tools/keywordResearch',
+
     faqGenerator: 'tools/faqGenerator',
     headlineAnalyzer: 'tools/headlineAnalyzer',
     readabilityChecker: 'tools/readabilityChecker',

@@ -4,22 +4,10 @@ const nextConfig: NextConfig = {
   output: 'export',
   reactStrictMode: true,
   compiler: {
-    // Remove console.log in production to reduce JS size
     removeConsole: process.env.NODE_ENV === "production",
   },
   turbopack: {
     root: process.cwd(),
-  },
-  experimental: {
-    viewTransition: true,
-    inlineCss: true,
-    optimizePackageImports: [
-      'lucide-react',
-      'zod',
-      'sonner',
-      'date-fns',
-      'lodash'
-    ],
   },
   images: {
     unoptimized: true,

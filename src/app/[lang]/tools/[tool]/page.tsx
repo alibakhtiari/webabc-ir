@@ -13,7 +13,7 @@ const TOOLS = [
     'serp-preview',
     'utm-builder',
     'faq-generator',
-    'keyword-research'
+
 ];
 
 export async function generateStaticParams() {
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         'serp-preview': 'serpPreview',
         'utm-builder': 'utmBuilder',
         'faq-generator': 'faqGenerator',
-        'keyword-research': 'keywordResearch'
+
     };
 
     const key = toolKeyMap[tool] || tool;
@@ -84,7 +84,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string;
         'serp-preview': 'serpPreview',
         'utm-builder': 'utmBuilder',
         'faq-generator': 'faqGenerator',
-        'keyword-research': 'keywordResearch'
+
     };
 
     const key = toolKeyMap[tool] || tool;

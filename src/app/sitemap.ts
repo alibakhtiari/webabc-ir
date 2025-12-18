@@ -46,7 +46,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
 
     // 3. Tools & Locations (Manually list these if they aren't in a DB/MD file)
-    const tools = ['headline-analyzer', 'lorem-generator', 'meta-generator', 'paa-scraper', 'readability-checker', 'serp-preview', 'utm-builder', 'faq-generator', 'keyword-research'];
+    const tools = ['headline-analyzer', 'lorem-generator', 'meta-generator', 'paa-scraper', 'readability-checker', 'serp-preview', 'utm-builder', 'faq-generator'];
     const locations = ['dubai', 'tehran', 'muscat', 'qazvin']; // Add all location slugs
 
     const miscRoutes = languages.flatMap(lang => [

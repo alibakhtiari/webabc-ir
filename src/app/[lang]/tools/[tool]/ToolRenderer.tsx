@@ -14,7 +14,7 @@ const ReadabilityChecker = dynamic(() => import('../components/ReadabilityChecke
 const SerpPreview = dynamic(() => import('../components/SerpPreview'), { loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-xl" /> });
 const UtmBuilder = dynamic(() => import('../components/UTMBuilder'), { loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-xl" /> });
 const FaqGenerator = dynamic(() => import('../components/FaqGenerator'), { loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-xl" /> });
-const KeywordResearch = dynamic(() => import('../components/KeywordResearch'), { loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-xl" /> });
+
 
 interface ToolRendererProps {
     tool: string;
@@ -38,8 +38,7 @@ const ToolRenderer: React.FC<ToolRendererProps> = ({ tool }) => {
             return <UtmBuilder />;
         case 'faq-generator':
             return <FaqGenerator />;
-        case 'keyword-research':
-            return <KeywordResearch />;
+
         default:
             return notFound();
     }
