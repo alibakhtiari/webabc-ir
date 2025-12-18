@@ -57,7 +57,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customItems }) => {
             'serp-preview': 'serpPreview',
             'utm-builder': 'utmBuilder',
             'faq-generator': 'faqGenerator',
-            'keyword-research': 'keywordResearch'
+
           };
 
           const toolKey = toolKeyMap[segment];
