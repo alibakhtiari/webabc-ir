@@ -32,7 +32,34 @@ const GlobalSchema = () => {
         }
     };
 
-    return <SchemaMarkup schema={[localBusinessSchema, websiteSchema]} />;
+    const organizationSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        '@id': 'https://webabc.ir/#organization',
+        'name': 'WebABC',
+        'url': `https://webabc.ir/${language}`,
+        'logo': {
+            '@type': 'ImageObject',
+            'url': 'https://webabc.ir/images/logo.webp',
+            'width': 512,
+            'height': 512
+        },
+        'contactPoint': {
+            '@type': 'ContactPoint',
+            'telephone': '+989125811880',
+            'contactType': 'customer service',
+            'areaServed': ['IR', 'AE', 'OM'],
+            'availableLanguage': ['en', 'fa', 'ar']
+        },
+        'sameAs': [
+            'https://twitter.com/webabc',
+            'https://instagram.com/webabc',
+            'https://linkedin.com/company/webabc',
+            'https://facebook.com/webabc'
+        ]
+    };
+
+    return <SchemaMarkup schema={[localBusinessSchema, websiteSchema, organizationSchema]} />;
 };
 
 export default GlobalSchema;

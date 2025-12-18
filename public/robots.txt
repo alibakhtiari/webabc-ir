@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /private/
+Disallow: /api/
+Disallow: /_next/
 Sitemap: https://webabc.ir/sitemap.xml
