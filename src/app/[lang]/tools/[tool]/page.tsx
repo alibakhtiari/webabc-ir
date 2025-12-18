@@ -70,6 +70,51 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
 }
 
 export default async function Page({ params }: { params: Promise<{ lang: string; tool: string }> }) {
-    const { tool } = await params;
-    return <ToolRenderer tool={tool} />;
+    const { lang, tool } = await params;
+    const supportedLang = lang as SupportedLanguage;
+    const t = await getDictionary(supportedLang);
+
+    // Reuse mapping logic for JSON-LD
+    const toolKeyMap: Record<string, string> = {
+        'headline-analyzer': 'headlineAnalyzer',
+        'lorem-generator': 'loremGenerator',
+        'meta-generator': 'metaGenerator',
+        'paa-scraper': 'paaScraper',
+        'readability-checker': 'readabilityChecker',
+        'serp-preview': 'serpPreview',
+        'utm-builder': 'utmBuilder',
+        'faq-generator': 'faqGenerator',
+        'keyword-research': 'keywordResearch'
+    };
+
+    const key = toolKeyMap[tool] || tool;
+    // @ts-ignore
+    const title = t.tools?.[key]?.title || `${tool} Tool`;
+    // @ts-ignore
+    const description = t.tools?.[key]?.description || "WebABC SEO Tool";
+
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        'name': title,
+        'description': description,
+        'applicationCategory': 'UtilitiesApplication',
+        'operatingSystem': 'Web',
+        'offers': {
+            '@type': 'Offer',
+            'price': '0',
+            'priceCurrency': 'USD'
+        },
+        'url': `https://webabc.ir/${lang}/tools/${tool}`
+    };
+
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <ToolRenderer tool={tool} />
+        </>
+    );
 }

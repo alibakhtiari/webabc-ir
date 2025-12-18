@@ -1,27 +1,20 @@
 import { MetadataRoute } from 'next';
 import { getAllItems } from '@/lib/mdData';
 import { BlogPost } from '@/types/blog';
+import { PortfolioItem } from '@/types/portfolio';
 
 const BASE_URL = 'https://webabc.ir';
 export const dynamic = 'force-static';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    // 1. Define static routes
+    const languages = ['en', 'fa', 'ar'];
+    // 1. Static Routes
     const staticRoutes = [
-        '',
-        '/about',
-        '/services',
-        '/services/seo',
-        '/services/web-development',
-        '/services/local-seo',
-        '/services/wordpress-development',
-        '/services/web-design',
-        '/contact',
-        '/portfolio',
-        '/service-areas',
-        '/faq'
+        '', '/about', '/services', '/contact', '/portfolio', '/service-areas', '/faq', '/tools',
+        '/services/seo', '/services/web-development', '/services/local-seo',
+        '/services/wordpress-development', '/services/web-design'
     ].flatMap(route =>
-        ['en', 'fa', 'ar'].map(lang => ({
+        languages.map(lang => ({
             url: `${BASE_URL}/${lang}${route}`,
             lastModified: new Date(),
             changeFrequency: 'weekly' as const,
@@ -29,18 +22,47 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         }))
     );
 
-    // 2. Fetch dynamic blog routes
-    let blogRoutes: MetadataRoute.Sitemap = [];
-    for (const lang of ['en', 'fa', 'ar']) {
+    // 2. Dynamic Blog Routes
+    let dynamicRoutes: MetadataRoute.Sitemap = [];
+
+    for (const lang of languages) {
+        // Blogs
         const posts = await getAllItems<BlogPost>('blog', lang);
-        const routes = posts.map(post => ({
+        dynamicRoutes.push(...posts.map(post => ({
             url: `${BASE_URL}/${lang}/blog/${post.slug}`,
             lastModified: new Date(post.date),
             changeFrequency: 'weekly' as const,
             priority: 0.7,
-        }));
-        blogRoutes = [...blogRoutes, ...routes];
+        })));
+
+        // Portfolio
+        const portfolios = await getAllItems<PortfolioItem>('portfolio', lang);
+        dynamicRoutes.push(...portfolios.map(item => ({
+            url: `${BASE_URL}/${lang}/portfolio/${item.slug}`,
+            lastModified: new Date(), // Or item.date if available
+            changeFrequency: 'monthly' as const,
+            priority: 0.6,
+        })));
     }
 
-    return [...staticRoutes, ...blogRoutes];
+    // 3. Tools & Locations (Manually list these if they aren't in a DB/MD file)
+    const tools = ['headline-analyzer', 'lorem-generator', 'meta-generator', 'paa-scraper', 'readability-checker', 'serp-preview', 'utm-builder', 'faq-generator', 'keyword-research'];
+    const locations = ['dubai', 'tehran', 'muscat', 'qazvin']; // Add all location slugs
+
+    const miscRoutes = languages.flatMap(lang => [
+        ...tools.map(tool => ({
+            url: `${BASE_URL}/${lang}/tools/${tool}`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.7,
+        })),
+        ...locations.map(loc => ({
+            url: `${BASE_URL}/${lang}/service-areas/${loc}`,
+            lastModified: new Date(),
+            changeFrequency: 'monthly' as const,
+            priority: 0.7,
+        }))
+    ]);
+
+    return [...staticRoutes, ...dynamicRoutes, ...miscRoutes];
 }
