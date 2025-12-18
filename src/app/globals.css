@@ -1,9 +1,85 @@
 @import 'tailwindcss';
 
-@plugin 'tailwindcss-animate';
+
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
+
+/* TailwindCSS Animate Utilities */
+@utility animate-in {
+  animation-name: enter;
+  animation-duration: 150ms;
+  --tw-enter-opacity: initial;
+  --tw-enter-scale: initial;
+  --tw-enter-translate-x: initial;
+  --tw-enter-translate-y: initial;
+  --tw-enter-rotate: initial;
+}
+@utility animate-out {
+  animation-name: exit;
+  animation-duration: 150ms;
+  --tw-exit-opacity: initial;
+  --tw-exit-scale: initial;
+  --tw-exit-translate-x: initial;
+  --tw-exit-translate-y: initial;
+  --tw-exit-rotate: initial;
+}
+
+@utility fade-in-* {
+  --tw-enter-opacity: --value(--opacity-*); 
+}
+@utility fade-in {
+  --tw-enter-opacity: 0;
+}
+@utility fade-out-* {
+  --tw-exit-opacity: --value(--opacity-*);
+}
+@utility fade-out {
+  --tw-exit-opacity: 0;
+}
+
+@utility zoom-in-* {
+  --tw-enter-scale: calc(--value(integer) / 100);
+}
+@utility zoom-out-* {
+  --tw-exit-scale: calc(--value(integer) / 100);
+}
+
+@utility slide-in-from-top-* {
+  --tw-enter-translate-y: calc(var(--spacing) * -1 * --value(integer));
+}
+@utility slide-in-from-bottom-* {
+  --tw-enter-translate-y: calc(var(--spacing) * --value(integer));
+}
+@utility slide-in-from-left-* {
+  --tw-enter-translate-x: calc(var(--spacing) * -1 * --value(integer));
+}
+@utility slide-in-from-right-* {
+  --tw-enter-translate-x: calc(var(--spacing) * --value(integer));
+}
+
+@utility slide-out-to-top-* {
+  --tw-exit-translate-y: calc(var(--spacing) * -1 * --value(integer));
+}
+@utility slide-out-to-bottom-* {
+  --tw-exit-translate-y: calc(var(--spacing) * --value(integer));
+}
+@utility slide-out-to-left-* {
+  --tw-exit-translate-x: calc(var(--spacing) * -1 * --value(integer));
+}
+@utility slide-out-to-right-* {
+  --tw-exit-translate-x: calc(var(--spacing) * --value(integer));
+}
+
+/* Base slide utilities */
+@utility slide-in-from-top { --tw-enter-translate-y: -100%; }
+@utility slide-in-from-bottom { --tw-enter-translate-y: 100%; }
+@utility slide-in-from-left { --tw-enter-translate-x: -100%; }
+@utility slide-in-from-right { --tw-enter-translate-x: 100%; }
+@utility slide-out-to-top { --tw-exit-translate-y: -100%; }
+@utility slide-out-to-bottom { --tw-exit-translate-y: 100%; }
+@utility slide-out-to-left { --tw-exit-translate-x: -100%; }
+@utility slide-out-to-right { --tw-exit-translate-x: 100%; }
 
 @utility container {
   margin-inline: auto;
@@ -184,6 +260,21 @@
     to {
       opacity: 1;
       filter: blur(0);
+    }
+  }
+
+  /* TailwindCSS Animate Keyframes */
+  @keyframes enter {
+    from {
+      opacity: var(--tw-enter-opacity, 1);
+      transform: translate3d(var(--tw-enter-translate-x, 0), var(--tw-enter-translate-y, 0), 0) scale3d(var(--tw-enter-scale, 1), var(--tw-enter-scale, 1), 1) rotate(var(--tw-enter-rotate, 0));
+    }
+  }
+
+  @keyframes exit {
+    to {
+      opacity: var(--tw-exit-opacity, 1);
+      transform: translate3d(var(--tw-exit-translate-x, 0), var(--tw-exit-translate-y, 0), 0) scale3d(var(--tw-exit-scale, 1), var(--tw-exit-scale, 1), 1) rotate(var(--tw-exit-rotate, 0));
     }
   }
 }
