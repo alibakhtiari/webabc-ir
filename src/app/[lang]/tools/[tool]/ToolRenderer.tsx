@@ -5,15 +5,16 @@ import dynamic from 'next/dynamic';
 import { notFound } from 'next/navigation';
 
 // Dynamically import tool components to reduce initial bundle size
-const HeadlineAnalyzer = dynamic(() => import('../components/HeadlineAnalyzer'));
-const LoremGenerator = dynamic(() => import('../components/LoremGenerator'));
-const MetaGenerator = dynamic(() => import('../components/MetaGenerator'));
-const PaaScraper = dynamic(() => import('../components/PAAScraper'));
-const ReadabilityChecker = dynamic(() => import('../components/ReadabilityChecker'));
-const SerpPreview = dynamic(() => import('../components/SerpPreview'));
-const UtmBuilder = dynamic(() => import('../components/UTMBuilder'));
-const FaqGenerator = dynamic(() => import('../components/FaqGenerator'));
-const KeywordResearch = dynamic(() => import('../components/KeywordResearch'));
+// Dynamically import tool components to reduce initial bundle size
+const HeadlineAnalyzer = dynamic(() => import('../components/HeadlineAnalyzer'), { loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-xl" /> });
+const LoremGenerator = dynamic(() => import('../components/LoremGenerator'), { loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-xl" /> });
+const MetaGenerator = dynamic(() => import('../components/MetaGenerator'), { loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-xl" /> });
+const PaaScraper = dynamic(() => import('../components/PAAScraper'), { loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-xl" /> });
+const ReadabilityChecker = dynamic(() => import('../components/ReadabilityChecker'), { loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-xl" /> });
+const SerpPreview = dynamic(() => import('../components/SerpPreview'), { loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-xl" /> });
+const UtmBuilder = dynamic(() => import('../components/UTMBuilder'), { loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-xl" /> });
+const FaqGenerator = dynamic(() => import('../components/FaqGenerator'), { loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-xl" /> });
+const KeywordResearch = dynamic(() => import('../components/KeywordResearch'), { loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-xl" /> });
 
 interface ToolRendererProps {
     tool: string;

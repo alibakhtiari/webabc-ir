@@ -67,11 +67,19 @@ export default async function RootLayout({
                 <LanguageProvider defaultLanguage={supportedLang} dictionary={dictionary}>
                     <GlobalSchema />
 
+                    {/* Skip Link for Accessibility */}
+                    <a
+                        href="#main-content"
+                        className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-md transition-all"
+                    >
+                        Skip to main content
+                    </a>
+
                     {/* 1. Navbar is now Global */}
                     <Navbar />
 
                     {/* 2. Main Content Wrapper */}
-                    <main className="flex-1 w-full">
+                    <main id="main-content" className="flex-1 w-full focus:outline-none" tabIndex={-1}>
                         {children}
                     </main>
 

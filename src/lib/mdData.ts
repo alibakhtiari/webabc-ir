@@ -1,4 +1,5 @@
-import contentData from '@/generated/content.json';
+// Remove top-level import
+// import contentData from '@/generated/content.json';
 
 // Type definition for the content structure
 type ContentMap = {
@@ -7,11 +8,12 @@ type ContentMap = {
     }
 };
 
-const typedContentData = contentData as ContentMap;
-
 export async function getItem<T>(subdirectory: string, slug: string, language: string): Promise<T | null> {
     try {
-        const categoryData = typedContentData[subdirectory];
+        // Dynamic import
+        const contentData = await import('@/generated/content.json').then(m => m.default as ContentMap);
+
+        const categoryData = contentData[subdirectory];
         if (!categoryData) return null;
 
         const langItems = categoryData[language];
@@ -27,7 +29,10 @@ export async function getItem<T>(subdirectory: string, slug: string, language: s
 
 export async function getAllItems<T>(subdirectory: string, language: string): Promise<T[]> {
     try {
-        const categoryData = typedContentData[subdirectory];
+        // Dynamic import
+        const contentData = await import('@/generated/content.json').then(m => m.default as ContentMap);
+
+        const categoryData = contentData[subdirectory];
         if (!categoryData) {
             console.warn(`[mdData] No data found for category: ${subdirectory}`);
             return [];
