@@ -34,18 +34,24 @@ export async function generateStaticParams() {
     return Object.keys(languages).map((lang) => ({ lang }));
 }
 
+import { getImageData } from '@/lib/imageUtils';
+
 export default async function Page({
     params,
 }: {
     params: Promise<{ lang: string }>;
 }) {
     const { lang } = await params;
+
+    // Fetch critical image data on server
+    const heroImgData = getImageData('/images/homepage-hero.webp');
+
     return (
         <>
             <HomeSchema />
 
             <div className="relative overflow-x-hidden">
-                <HeroSection />
+                <HeroSection heroImgData={heroImgData} />
                 <ServicesSection />
                 <BenefitsSection />
                 <CTASection />
