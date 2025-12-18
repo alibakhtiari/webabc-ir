@@ -3,9 +3,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Image, { ImageProps } from 'next/image';
 import { cn } from '@/lib/utils';
-import imageMap from '@/generated/images-map.json';
-
-const imageMapData = imageMap as Record<string, any>;
 
 // 1. Add this Type Declaration to avoid TypeScript errors with fetchPriority
 declare module 'react' {
@@ -18,9 +15,10 @@ interface OptimizedImageProps extends Omit<ImageProps, 'src'> {
   src: string;
   className?: string;
   alt: string;
+  imageData?: any;
 }
 
-const OptimizedImage = ({ src, alt, className, priority, fill, ...props }: OptimizedImageProps) => {
+const OptimizedImage = ({ src, alt, className, priority, fill, imageData, ...props }: OptimizedImageProps) => {
   // If priority is true, we consider it loaded immediately to skip animations
   const [isLoaded, setIsLoaded] = useState(!!priority);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -36,8 +34,8 @@ const OptimizedImage = ({ src, alt, className, priority, fill, ...props }: Optim
     }
   }, []);
 
-  const normalizedSrc = src.startsWith('/') ? src : `/${src}`;
-  const optimizedData = imageMapData[normalizedSrc];
+  // Use prop if available, otherwise fallback (which likely means no optim data)
+  const optimizedData = imageData;
 
   if (optimizedData) {
     const { avif, webp, placeholder, original, width, height } = optimizedData;
@@ -72,7 +70,7 @@ const OptimizedImage = ({ src, alt, className, priority, fill, ...props }: Optim
             ref={imgRef}
             src={original}
             alt={alt}
-            decoding="async"
+            decoding={priority ? "sync" : "async"}
             width={!fill ? width : undefined}
             height={!fill ? height : undefined}
             loading={priority ? "eager" : "lazy"}
