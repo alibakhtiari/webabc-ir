@@ -15,6 +15,7 @@
   --tw-enter-translate-y: initial;
   --tw-enter-rotate: initial;
 }
+
 @utility animate-out {
   animation-name: exit;
   animation-duration: 150ms;
@@ -26,14 +27,17 @@
 }
 
 @utility fade-in-* {
-  --tw-enter-opacity: --value(--opacity-*); 
+  --tw-enter-opacity: --value(--opacity-*);
 }
+
 @utility fade-in {
   --tw-enter-opacity: 0;
 }
+
 @utility fade-out-* {
   --tw-exit-opacity: --value(--opacity-*);
 }
+
 @utility fade-out {
   --tw-exit-opacity: 0;
 }
@@ -41,6 +45,7 @@
 @utility zoom-in-* {
   --tw-enter-scale: calc(--value(integer) / 100);
 }
+
 @utility zoom-out-* {
   --tw-exit-scale: calc(--value(integer) / 100);
 }
@@ -48,12 +53,15 @@
 @utility slide-in-from-top-* {
   --tw-enter-translate-y: calc(var(--spacing) * -1 * --value(integer));
 }
+
 @utility slide-in-from-bottom-* {
   --tw-enter-translate-y: calc(var(--spacing) * --value(integer));
 }
+
 @utility slide-in-from-left-* {
   --tw-enter-translate-x: calc(var(--spacing) * -1 * --value(integer));
 }
+
 @utility slide-in-from-right-* {
   --tw-enter-translate-x: calc(var(--spacing) * --value(integer));
 }
@@ -61,25 +69,51 @@
 @utility slide-out-to-top-* {
   --tw-exit-translate-y: calc(var(--spacing) * -1 * --value(integer));
 }
+
 @utility slide-out-to-bottom-* {
   --tw-exit-translate-y: calc(var(--spacing) * --value(integer));
 }
+
 @utility slide-out-to-left-* {
   --tw-exit-translate-x: calc(var(--spacing) * -1 * --value(integer));
 }
+
 @utility slide-out-to-right-* {
   --tw-exit-translate-x: calc(var(--spacing) * --value(integer));
 }
 
 /* Base slide utilities */
-@utility slide-in-from-top { --tw-enter-translate-y: -100%; }
-@utility slide-in-from-bottom { --tw-enter-translate-y: 100%; }
-@utility slide-in-from-left { --tw-enter-translate-x: -100%; }
-@utility slide-in-from-right { --tw-enter-translate-x: 100%; }
-@utility slide-out-to-top { --tw-exit-translate-y: -100%; }
-@utility slide-out-to-bottom { --tw-exit-translate-y: 100%; }
-@utility slide-out-to-left { --tw-exit-translate-x: -100%; }
-@utility slide-out-to-right { --tw-exit-translate-x: 100%; }
+@utility slide-in-from-top {
+  --tw-enter-translate-y: -100%;
+}
+
+@utility slide-in-from-bottom {
+  --tw-enter-translate-y: 100%;
+}
+
+@utility slide-in-from-left {
+  --tw-enter-translate-x: -100%;
+}
+
+@utility slide-in-from-right {
+  --tw-enter-translate-x: 100%;
+}
+
+@utility slide-out-to-top {
+  --tw-exit-translate-y: -100%;
+}
+
+@utility slide-out-to-bottom {
+  --tw-exit-translate-y: 100%;
+}
+
+@utility slide-out-to-left {
+  --tw-exit-translate-x: -100%;
+}
+
+@utility slide-out-to-right {
+  --tw-exit-translate-x: 100%;
+}
 
 @utility container {
   margin-inline: auto;
@@ -259,7 +293,6 @@
 
     to {
       opacity: 1;
-      filter: blur(0);
     }
   }
 
@@ -295,88 +328,6 @@
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
-  }
-}
-
-@utility font-persian {
-  font-family: 'Vazirmatn', sans-serif;
-}
-
-@utility font-arabic {
-  font-family: 'Vazirmatn', sans-serif;
-}
-
-@utility font-sans {
-  font-family: 'lato', system-ui, sans-serif;
-}
-
-@utility text-balance {
-  text-wrap: balance;
-}
-
-@utility glass-morphism {
-  @apply bg-white/80 backdrop-blur-md border border-white/20 rounded-xl shadow-lg;
-}
-
-@utility neo-morphism {
-  @apply bg-white;
-  box-shadow: 0 8px 30px rgb(0 0 0 / 0.06);
-}
-
-@utility content-transition {
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@utility snap-container {
-  scroll-snap-type: y mandatory;
-}
-
-@utility snap-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-}
-
-@layer utilities {}
-
-@layer base {
-
-  /* Restored animations from App.css/animations.css */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes scaleIn {
-    from {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  /* Utility classes mapping */
-  .animate-fadeInUp {
-    animation: fadeInUp 0.6s ease-out forwards;
-  }
-
-  .animate-scaleIn {
-    animation: scaleIn 0.5s ease-out forwards;
-  }
-
-  .animate-fadeIn {
-    /* mapped to existing fade-in */
-    animation: fade-in 0.6s ease-out forwards;
   }
 
   :root {
@@ -442,6 +393,44 @@
   }
 }
 
+@utility font-persian {
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+@utility font-arabic {
+  font-family: 'Vazirmatn', sans-serif;
+}
+
+@utility font-sans {
+  font-family: 'lato', system-ui, sans-serif;
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility glass-morphism {
+  @apply bg-white/80 backdrop-blur-md border border-white/20 rounded-xl shadow-lg;
+}
+
+@utility neo-morphism {
+  @apply bg-white;
+  box-shadow: 0 8px 30px rgb(0 0 0 / 0.06);
+}
+
+@utility content-transition {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility snap-container {
+  scroll-snap-type: y mandatory;
+}
+
+@utility snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
 @layer utilities {
 
   /* Global font families based on HTML lang attribute */
@@ -459,41 +448,5 @@
 
   html:lang(ar) {
     font-family: 'Vazirmatn', sans-serif;
-  }
-
-  #logoh {
-    fill: #2d59c3;
-    stroke: #2d59c3;
-  }
-
-  #logoh {
-    fill-opacity: 1;
-    stroke-width: 0;
-    stroke-dasharray: 100% 0;
-    animation: stroke-offset 3s ease-out;
-  }
-
-  @keyframes stroke-offset {
-    0% {
-      fill-opacity: 0;
-      stroke-width: 0;
-      stroke-dasharray: 0 100%;
-    }
-
-    25% {
-      stroke-width: 1px;
-    }
-
-    50% {
-      fill-opacity: 0;
-    }
-
-    75% {
-      stroke-width: 2px;
-    }
-
-    100% {
-      stroke-width: 0;
-    }
   }
 }

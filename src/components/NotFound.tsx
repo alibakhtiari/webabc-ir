@@ -23,27 +23,27 @@ const NotFound = () => {
     <>
 
       <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-background to-gray-100 p-4">
-        <div className="text-center max-w-md animate-fadeInUp">
+        <div className="text-center max-w-md animate-fade-up">
           <div className="mb-6 flex justify-center">
             <div className="relative">
-              <div className="animate-scaleIn">
+              <div className="animate-zoom-in">
                 <AlertCircle size={80} className="text-primary" />
               </div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold text-white text-2xl animate-fadeIn delay-300">
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 font-bold text-white text-2xl animate-fade-in delay-300">
                 {t('notFound.errorNumber')}
               </div>
             </div>
           </div>
 
-          <h1 className="text-4xl font-bold text-gray-800 mb-4 animate-fadeInUp delay-100">
+          <h1 className="text-4xl font-bold text-gray-800 mb-4 animate-fade-up delay-100">
             {t('notFound.title')}
           </h1>
 
-          <p className="text-xl text-gray-600 mb-8 animate-fadeInUp delay-200">
+          <p className="text-xl text-gray-600 mb-8 animate-fade-up delay-200">
             {t('notFound.subtitle')}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fadeInUp delay-300">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up delay-300">
             <Button
               variant="default"
               size="lg"
