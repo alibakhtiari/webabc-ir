@@ -4,6 +4,7 @@ import React from 'react';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import CTASection from '@/components/CTASection';
 import OptimizedImage from '@/components/OptimizedImage';
+import { getImageData } from '@/lib/imageUtils';
 import { cn } from '@/lib/utils';
 
 interface ServicePageProps {
@@ -60,6 +61,7 @@ export const ServicePageTemplate = ({
                                     <div className="rounded-2xl overflow-hidden shadow-2xl relative min-h-[300px] h-[300px] lg:h-[400px] w-full">
                                         <OptimizedImage
                                             src={heroImage}
+                                            imageData={getImageData(heroImage)}
                                             alt={title}
                                             priority={true}
                                             fill

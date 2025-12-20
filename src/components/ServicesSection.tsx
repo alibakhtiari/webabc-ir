@@ -6,6 +6,7 @@ import { CheckCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 import OptimizedImage from './OptimizedImage';
+import { getImageData } from '@/lib/imageUtils';
 
 const ServicesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -175,6 +176,7 @@ const ServicesSection = () => {
                   <OptimizedImage
                     key={activeTab}
                     src={serviceImages[activeTab] || '/images/og-image.webp'}
+                    imageData={getImageData(serviceImages[activeTab] || '/images/og-image.webp')}
                     alt={services[activeTab].title}
                     fill
                     className="object-cover"
