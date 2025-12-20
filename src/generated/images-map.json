@@ -1,48 +1,14 @@
 {
-  "/images/wordpress-hero.webp": {
-    "avif": [
-      {
-        "src": "/images/wordpress-hero-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/wordpress-hero-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/wordpress-hero-1024.avif",
-        "width": 1024
-      },
-      {
-        "src": "/images/wordpress-hero-1280.avif",
-        "width": 1280
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/wordpress-hero-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/wordpress-hero-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/wordpress-hero-1024.webp",
-        "width": 1024
-      },
-      {
-        "src": "/images/wordpress-hero-1280.webp",
-        "width": 1280
-      }
-    ],
-    "original": "/images/wordpress-hero.webp",
-    "placeholder": "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAACwAgCdASoUAA8APm0skkWkIqGYBABABsS0gABE+gAA/vd5FCZabzV/qkAAAA==",
-    "width": 1280,
-    "height": 960
-  },
   "/images/team-webabc.webp": {
     "avif": [
+      {
+        "src": "/images/team-webabc-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/team-webabc-480.avif",
+        "width": 480
+      },
       {
         "src": "/images/team-webabc-640.avif",
         "width": 640
@@ -57,6 +23,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/team-webabc-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/team-webabc-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/team-webabc-640.webp",
         "width": 640
@@ -78,6 +52,14 @@
   "/images/seo-results.webp": {
     "avif": [
       {
+        "src": "/images/seo-results-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/seo-results-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/seo-results-640.avif",
         "width": 640
       },
@@ -91,6 +73,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/seo-results-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/seo-results-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/seo-results-640.webp",
         "width": 640
@@ -112,6 +102,14 @@
   "/images/og-image.webp": {
     "avif": [
       {
+        "src": "/images/og-image-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/og-image-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/og-image-640.avif",
         "width": 640
       },
@@ -129,6 +127,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/og-image-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/og-image-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/og-image-640.webp",
         "width": 640
@@ -162,6 +168,14 @@
   "/images/homepage-hero.webp": {
     "avif": [
       {
+        "src": "/images/homepage-hero-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/homepage-hero-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/homepage-hero-640.avif",
         "width": 640
       },
@@ -175,6 +189,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/homepage-hero-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/homepage-hero-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/homepage-hero-640.webp",
         "width": 640
@@ -196,6 +218,14 @@
   "/images/services/wordpress.webp": {
     "avif": [
       {
+        "src": "/images/services/wordpress-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/services/wordpress-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/services/wordpress-640.avif",
         "width": 640
       },
@@ -209,6 +239,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/services/wordpress-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/services/wordpress-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/services/wordpress-640.webp",
         "width": 640
@@ -230,6 +268,14 @@
   "/images/services/website-maintenance.webp": {
     "avif": [
       {
+        "src": "/images/services/website-maintenance-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/services/website-maintenance-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/services/website-maintenance-640.avif",
         "width": 640
       },
@@ -244,6 +290,14 @@
     ],
     "webp": [
       {
+        "src": "/images/services/website-maintenance-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/services/website-maintenance-480.webp",
+        "width": 480
+      },
+      {
         "src": "/images/services/website-maintenance-640.webp",
         "width": 640
       },
@@ -257,12 +311,20 @@
       }
     ],
     "original": "/images/services/website-maintenance.webp",
-    "placeholder": "data:image/webp;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAQFAwf/xAAeEAABAwQDAAAAAAAAAAAAAAAAAQIDBBFBYRQhMf/EABcBAAMBAAAAAAAAAAAAAAAAAAECBAD/xAAWEQEBAQAAAAAAAAAAAAAAAAAAARH/2gAMAwEAAhEDEQA/APRGw6Orae+CyOIpjhvgoSszjaBtJT9eAGmTwohdC1ADUsVI1LAAB3//2Q==",
+    "placeholder": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAwCdASoUABQAPm0wkkc4IqGmqAqrAA2JZzuAGxADaeIIXclaSvigAP7w99t148X8tcm7DuJj0aZrod5jZ7NO/uoQ+86mikFd9AoxuZr4AA==",
     "width": 1024,
     "height": 1024
   },
   "/images/services/web-development.webp": {
     "avif": [
+      {
+        "src": "/images/services/web-development-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/services/web-development-480.avif",
+        "width": 480
+      },
       {
         "src": "/images/services/web-development-640.avif",
         "width": 640
@@ -277,6 +339,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/services/web-development-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/services/web-development-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/services/web-development-640.webp",
         "width": 640
@@ -298,6 +368,14 @@
   "/images/services/web-design.webp": {
     "avif": [
       {
+        "src": "/images/services/web-design-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/services/web-design-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/services/web-design-640.avif",
         "width": 640
       },
@@ -311,6 +389,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/services/web-design-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/services/web-design-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/services/web-design-640.webp",
         "width": 640
@@ -332,6 +418,14 @@
   "/images/services/ui-ux-audit.webp": {
     "avif": [
       {
+        "src": "/images/services/ui-ux-audit-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/services/ui-ux-audit-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/services/ui-ux-audit-640.avif",
         "width": 640
       },
@@ -346,6 +440,14 @@
     ],
     "webp": [
       {
+        "src": "/images/services/ui-ux-audit-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/services/ui-ux-audit-480.webp",
+        "width": 480
+      },
+      {
         "src": "/images/services/ui-ux-audit-640.webp",
         "width": 640
       },
@@ -359,12 +461,20 @@
       }
     ],
     "original": "/images/services/ui-ux-audit.webp",
-    "placeholder": "data:image/webp;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGgABAAIDAQAAAAAAAAAAAAAAAAMFAQIEB//EABkQAQEBAQEBAAAAAAAAAAAAAAABAhEDBP/EABYBAQEBAAAAAAAAAAAAAAAAAAACBP/EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oADAMBAAIRAxEAPwD2+7616hxvqfM62UYEswFFd89WHjAQOiScASP/2Q==",
+    "placeholder": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAgCdASoUABQAPm0ylUekIqIhKAgAgA2JZwAAPbaYoAD+9gra5hNl/1bS+w/WqPvu+L/YbflT19DGPeR3F3NdXIAAAA==",
     "width": 1024,
     "height": 1024
   },
   "/images/services/speed-optimization.webp": {
     "avif": [
+      {
+        "src": "/images/services/speed-optimization-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/services/speed-optimization-480.avif",
+        "width": 480
+      },
       {
         "src": "/images/services/speed-optimization-640.avif",
         "width": 640
@@ -380,6 +490,14 @@
     ],
     "webp": [
       {
+        "src": "/images/services/speed-optimization-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/services/speed-optimization-480.webp",
+        "width": 480
+      },
+      {
         "src": "/images/services/speed-optimization-640.webp",
         "width": 640
       },
@@ -393,12 +511,20 @@
       }
     ],
     "original": "/images/services/speed-optimization.webp",
-    "placeholder": "data:image/webp;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAIBAwf/xAAXEAEBAQEAAAAAAAAAAAAAAAAAARES/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQAC/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAMAwEAAhEDEQA/APYmyNkVIG4zB05CImRcgAqkASf/2Q==",
+    "placeholder": "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAAAQAwCdASoUABQAPm0ylUekIqIhKAgAgA2JaQDLpBi5qiAA/vS0Krk/SOcvkZuQNIAAAA==",
     "width": 1024,
     "height": 1024
   },
   "/images/services/seo.webp": {
     "avif": [
+      {
+        "src": "/images/services/seo-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/services/seo-480.avif",
+        "width": 480
+      },
       {
         "src": "/images/services/seo-640.avif",
         "width": 640
@@ -413,6 +539,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/services/seo-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/services/seo-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/services/seo-640.webp",
         "width": 640
@@ -434,6 +568,14 @@
   "/images/services/modern-web-development.webp": {
     "avif": [
       {
+        "src": "/images/services/modern-web-development-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/services/modern-web-development-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/services/modern-web-development-640.avif",
         "width": 640
       },
@@ -447,6 +589,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/services/modern-web-development-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/services/modern-web-development-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/services/modern-web-development-640.webp",
         "width": 640
@@ -468,6 +618,14 @@
   "/images/services/local-seo.webp": {
     "avif": [
       {
+        "src": "/images/services/local-seo-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/services/local-seo-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/services/local-seo-640.avif",
         "width": 640
       },
@@ -481,6 +639,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/services/local-seo-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/services/local-seo-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/services/local-seo-640.webp",
         "width": 640
@@ -502,6 +668,14 @@
   "/images/services/link-building.webp": {
     "avif": [
       {
+        "src": "/images/services/link-building-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/services/link-building-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/services/link-building-640.avif",
         "width": 640
       },
@@ -515,6 +689,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/services/link-building-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/services/link-building-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/services/link-building-640.webp",
         "width": 640
@@ -536,6 +718,14 @@
   "/images/services/content-creation.webp": {
     "avif": [
       {
+        "src": "/images/services/content-creation-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/services/content-creation-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/services/content-creation-640.avif",
         "width": 640
       },
@@ -549,6 +739,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/services/content-creation-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/services/content-creation-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/services/content-creation-640.webp",
         "width": 640
@@ -570,6 +768,14 @@
   "/images/locations/tehran.webp": {
     "avif": [
       {
+        "src": "/images/locations/tehran-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/locations/tehran-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/locations/tehran-640.avif",
         "width": 640
       },
@@ -583,6 +789,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/locations/tehran-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/locations/tehran-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/locations/tehran-640.webp",
         "width": 640
@@ -604,6 +818,14 @@
   "/images/locations/qazvin.webp": {
     "avif": [
       {
+        "src": "/images/locations/qazvin-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/locations/qazvin-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/locations/qazvin-640.avif",
         "width": 640
       },
@@ -617,6 +839,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/locations/qazvin-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/locations/qazvin-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/locations/qazvin-640.webp",
         "width": 640
@@ -638,6 +868,14 @@
   "/images/locations/muscat.webp": {
     "avif": [
       {
+        "src": "/images/locations/muscat-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/locations/muscat-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/locations/muscat-640.avif",
         "width": 640
       },
@@ -651,6 +889,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/locations/muscat-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/locations/muscat-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/locations/muscat-640.webp",
         "width": 640
@@ -672,6 +918,14 @@
   "/images/locations/dubai.webp": {
     "avif": [
       {
+        "src": "/images/locations/dubai-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/locations/dubai-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/locations/dubai-640.avif",
         "width": 640
       },
@@ -685,6 +939,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/locations/dubai-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/locations/dubai-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/locations/dubai-640.webp",
         "width": 640
@@ -705,6 +967,14 @@
   },
   "/images/portfolio/zeytoun-masoud.webp": {
     "avif": [
+      {
+        "src": "/images/portfolio/zeytoun-masoud-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/portfolio/zeytoun-masoud-480.avif",
+        "width": 480
+      },
       {
         "src": "/images/portfolio/zeytoun-masoud-640.avif",
         "width": 640
@@ -731,6 +1001,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/portfolio/zeytoun-masoud-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/portfolio/zeytoun-masoud-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/portfolio/zeytoun-masoud-640.webp",
         "width": 640
@@ -764,6 +1042,14 @@
   "/images/portfolio/samake-bartar.webp": {
     "avif": [
       {
+        "src": "/images/portfolio/samake-bartar-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/portfolio/samake-bartar-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/portfolio/samake-bartar-640.avif",
         "width": 640
       },
@@ -789,6 +1075,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/portfolio/samake-bartar-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/portfolio/samake-bartar-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/portfolio/samake-bartar-640.webp",
         "width": 640
@@ -822,6 +1116,14 @@
   "/images/portfolio/samake-bartar-old.webp": {
     "avif": [
       {
+        "src": "/images/portfolio/samake-bartar-old-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/portfolio/samake-bartar-old-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/portfolio/samake-bartar-old-640.avif",
         "width": 640
       },
@@ -847,6 +1149,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/portfolio/samake-bartar-old-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/portfolio/samake-bartar-old-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/portfolio/samake-bartar-old-640.webp",
         "width": 640
@@ -880,6 +1190,14 @@
   "/images/portfolio/samake-alpha.webp": {
     "avif": [
       {
+        "src": "/images/portfolio/samake-alpha-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/portfolio/samake-alpha-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/portfolio/samake-alpha-640.avif",
         "width": 640
       },
@@ -905,6 +1223,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/portfolio/samake-alpha-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/portfolio/samake-alpha-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/portfolio/samake-alpha-640.webp",
         "width": 640
@@ -938,6 +1264,14 @@
   "/images/portfolio/samak-bartar.webp": {
     "avif": [
       {
+        "src": "/images/portfolio/samak-bartar-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/portfolio/samak-bartar-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/portfolio/samak-bartar-640.avif",
         "width": 640
       },
@@ -963,6 +1297,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/portfolio/samak-bartar-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/portfolio/samak-bartar-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/portfolio/samak-bartar-640.webp",
         "width": 640
@@ -996,6 +1338,14 @@
   "/images/portfolio/ramzarz-negaran.webp": {
     "avif": [
       {
+        "src": "/images/portfolio/ramzarz-negaran-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/portfolio/ramzarz-negaran-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/portfolio/ramzarz-negaran-640.avif",
         "width": 640
       },
@@ -1021,6 +1371,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/portfolio/ramzarz-negaran-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/portfolio/ramzarz-negaran-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/portfolio/ramzarz-negaran-640.webp",
         "width": 640
@@ -1054,6 +1412,14 @@
   "/images/portfolio/4-seasons-carpet-clean.webp": {
     "avif": [
       {
+        "src": "/images/portfolio/4-seasons-carpet-clean-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/portfolio/4-seasons-carpet-clean-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/portfolio/4-seasons-carpet-clean-640.avif",
         "width": 640
       },
@@ -1079,6 +1445,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/portfolio/4-seasons-carpet-clean-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/portfolio/4-seasons-carpet-clean-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/portfolio/4-seasons-carpet-clean-640.webp",
         "width": 640
@@ -1109,8 +1483,74 @@
     "width": 3840,
     "height": 1600
   },
+  "/images/blog/wordpress-hero.webp": {
+    "avif": [
+      {
+        "src": "/images/blog/wordpress-hero-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/blog/wordpress-hero-480.avif",
+        "width": 480
+      },
+      {
+        "src": "/images/blog/wordpress-hero-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/blog/wordpress-hero-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/blog/wordpress-hero-1024.avif",
+        "width": 1024
+      },
+      {
+        "src": "/images/blog/wordpress-hero-1280.avif",
+        "width": 1280
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/blog/wordpress-hero-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/blog/wordpress-hero-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/blog/wordpress-hero-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/blog/wordpress-hero-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/blog/wordpress-hero-1024.webp",
+        "width": 1024
+      },
+      {
+        "src": "/images/blog/wordpress-hero-1280.webp",
+        "width": 1280
+      }
+    ],
+    "original": "/images/blog/wordpress-hero.webp",
+    "placeholder": "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAACwAgCdASoUAA8APm0skkWkIqGYBABABsS0gABE+gAA/vd5FCZabzV/qkAAAA==",
+    "width": 1280,
+    "height": 960
+  },
   "/images/blog/web-design.webp": {
     "avif": [
+      {
+        "src": "/images/blog/web-design-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/blog/web-design-480.avif",
+        "width": 480
+      },
       {
         "src": "/images/blog/web-design-640.avif",
         "width": 640
@@ -1129,6 +1569,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/blog/web-design-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/blog/web-design-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/blog/web-design-640.webp",
         "width": 640
@@ -1154,6 +1602,14 @@
   "/images/blog/seo-tips.webp": {
     "avif": [
       {
+        "src": "/images/blog/seo-tips-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/blog/seo-tips-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/blog/seo-tips-640.avif",
         "width": 640
       },
@@ -1171,6 +1627,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/blog/seo-tips-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/blog/seo-tips-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/blog/seo-tips-640.webp",
         "width": 640
@@ -1196,6 +1660,14 @@
   "/images/blog/digital-marketing.webp": {
     "avif": [
       {
+        "src": "/images/blog/digital-marketing-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/blog/digital-marketing-480.avif",
+        "width": 480
+      },
+      {
         "src": "/images/blog/digital-marketing-640.avif",
         "width": 640
       },
@@ -1213,6 +1685,14 @@
       }
     ],
     "webp": [
+      {
+        "src": "/images/blog/digital-marketing-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/blog/digital-marketing-480.webp",
+        "width": 480
+      },
       {
         "src": "/images/blog/digital-marketing-640.webp",
         "width": 640

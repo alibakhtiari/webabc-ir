@@ -9,7 +9,7 @@ import { glob } from 'glob';
 const INPUT_DIR = 'public'; // Root public folder
 const SRC_DIR = 'src'; // Source code folder to look for references
 const OUTPUT_JSON_PATH = 'src/generated/images-map.json';
-const WIDTHS = [640, 768, 1024, 1280, 1536, 1920];
+const WIDTHS = [320, 480, 640, 768, 1024, 1280, 1536, 1920];
 const QUALITY = {
     avif: 60,
     webp: 80

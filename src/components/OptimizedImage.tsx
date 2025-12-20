@@ -4,7 +4,21 @@ import { useState, useEffect, useRef } from 'react';
 import Image, { ImageProps } from 'next/image';
 import { cn } from '@/lib/utils';
 
-// 1. Add this Type Declaration to avoid TypeScript errors with fetchPriority
+// Type definition for the generated JSON structure
+interface ImageVariant {
+  src: string;
+  width: number;
+}
+
+interface ImageData {
+  avif: ImageVariant[];
+  webp: ImageVariant[];
+  placeholder: string;
+  original: string;
+  width: number;
+  height: number;
+}
+
 declare module 'react' {
   interface ImgHTMLAttributes<T> extends HTMLAttributes<T> {
     fetchPriority?: 'high' | 'low' | 'auto';
@@ -15,32 +29,32 @@ interface OptimizedImageProps extends Omit<ImageProps, 'src'> {
   src: string;
   className?: string;
   alt: string;
-  imageData?: any;
+  imageData?: ImageData | any; // Allow loose typing if needed, but prefer ImageData
 }
 
-const OptimizedImage = ({ src, alt, className, priority, fill, imageData, ...props }: OptimizedImageProps) => {
-  // If priority is true, we consider it loaded immediately to skip animations
+const OptimizedImage = ({ src, alt, className, priority, fill, imageData, sizes, ...props }: OptimizedImageProps) => {
+  // If priority is set, initialized state is true immediately.
   const [isLoaded, setIsLoaded] = useState(!!priority);
   const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    // If priority is true, ensure we stay loaded
-    if (priority) setIsLoaded(true);
-  }, [priority]);
+    // Only add listener if NOT priority and not yet loaded
+    if (priority) return;
 
-  useEffect(() => {
     if (imgRef.current?.complete) {
       setIsLoaded(true);
     }
-  }, []);
+  }, [priority]);
 
-  // Use prop if available, otherwise fallback (which likely means no optim data)
-  const optimizedData = imageData;
+  // Use prop if available
+  const optimizedData = imageData as ImageData;
 
   if (optimizedData) {
     const { avif, webp, placeholder, original, width, height } = optimizedData;
-    const avifSrcSet = avif.map((v: any) => `${v.src} ${v.width}w`).join(', ');
-    const webpSrcSet = webp.map((v: any) => `${v.src} ${v.width}w`).join(', ');
+
+    // Create source sets
+    const avifSrcSet = avif.map((v) => `${v.src} ${v.width}w`).join(', ');
+    const webpSrcSet = webp.map((v) => `${v.src} ${v.width}w`).join(', ');
 
     return (
       <div
@@ -49,9 +63,10 @@ const OptimizedImage = ({ src, alt, className, priority, fill, imageData, ...pro
           fill ? "absolute inset-0 h-full w-full" : "",
           className
         )}
+        // Reserve space to prevent layout shift (CLS) if not 'fill'
         style={!fill && width && height ? { aspectRatio: `${width} / ${height}` } : undefined}
       >
-        {/* Only render blur placeholder if NOT priority */}
+        {/* Placeholder: Only render if NOT priority to avoid LCP dirtying */}
         {!priority && (
           <div
             aria-hidden="true"
@@ -59,13 +74,17 @@ const OptimizedImage = ({ src, alt, className, priority, fill, imageData, ...pro
               "absolute inset-0 bg-cover bg-center transition-opacity duration-500 will-change-opacity",
               isLoaded ? "opacity-0" : "opacity-100"
             )}
-            style={{ backgroundImage: `url(${placeholder})`, filter: 'blur(20px)', transform: "scale(1.1)" }}
+            style={{
+              backgroundImage: `url(${placeholder})`,
+              filter: 'blur(20px)',
+              transform: "scale(1.1)" // Prevent blur edges showing white
+            }}
           />
         )}
 
         <picture>
-          <source srcSet={avifSrcSet} type="image/avif" sizes={props.sizes} />
-          <source srcSet={webpSrcSet} type="image/webp" sizes={props.sizes} />
+          <source srcSet={avifSrcSet} type="image/avif" sizes={sizes} />
+          <source srcSet={webpSrcSet} type="image/webp" sizes={sizes} />
           <img
             ref={imgRef}
             src={original}
@@ -75,7 +94,8 @@ const OptimizedImage = ({ src, alt, className, priority, fill, imageData, ...pro
             height={!fill ? height : undefined}
             loading={priority ? "eager" : "lazy"}
             fetchPriority={priority ? "high" : "auto"}
-            // conditionally apply transition class. If priority, pure opacity-100, no transition.
+            // Pass sizes to img as well for fallback consistency
+            sizes={sizes}
             className={cn(
               "object-cover",
               !priority && "transition-opacity duration-500",
@@ -83,14 +103,14 @@ const OptimizedImage = ({ src, alt, className, priority, fill, imageData, ...pro
               (isLoaded || priority) ? "opacity-100" : "opacity-0"
             )}
             onLoad={() => setIsLoaded(true)}
-            {...props}
+            {...props as any}
           />
         </picture>
       </div>
     );
   }
 
-  // Fallback for unoptimized images
+  // Fallback for unoptimized images (using Next/Image)
   return (
     <div className={cn("relative overflow-hidden", className)}>
       <Image
@@ -98,12 +118,14 @@ const OptimizedImage = ({ src, alt, className, priority, fill, imageData, ...pro
         alt={alt}
         fill={fill}
         priority={priority}
+        sizes={sizes}
         className={cn(
           !priority && "transition-opacity duration-500",
           (isLoaded || priority) ? "opacity-100" : "opacity-0"
         )}
         onLoad={(e) => {
           const target = e.target as HTMLImageElement;
+          // Ensure we don't fade in tiny data-uri placeholders
           if (target.src.indexOf('data:') !== 0) setIsLoaded(true);
         }}
         {...props}
