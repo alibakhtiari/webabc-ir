@@ -50,10 +50,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ heroImgData }) => {
                 imageData={heroImgData}
                 alt={t('home.hero.imageAlt', { fallback: 'Digital marketing and web development illustration' })}
                 className="w-full h-auto object-cover rounded-lg shadow-2xl"
-                width={600}
-                height={600}
                 priority={true}
-                loading="eager"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
