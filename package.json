@@ -36,6 +36,7 @@
     "@tailwindcss/postcss": "^4.1.18",
     "@tailwindcss/typography": "^0.5.19",
     "@types/glob": "^8.1.0",
+    "@types/next": "^8.0.7",
     "@types/node": "^22.5.5",
     "@types/react": "^19.2.6",
     "@types/react-dom": "^19.2.3",
