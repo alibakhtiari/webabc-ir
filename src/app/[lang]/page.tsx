@@ -2,7 +2,7 @@ import HeroSection from '@/components/HeroSection';
 import ServicesSection from '@/components/ServicesSection';
 import BenefitsSection from '@/components/BenefitsSection';
 import CTASection from '@/components/CTASection';
-import HomeSchema from '@/components/seo/schemas/HomeSchema';
+// HomeSchema removed in favor of Server Side Rendering
 import { SupportedLanguage, languages } from "@/types/language";
 
 import { Metadata } from "next";
@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         ...constructMetadata({
             title: t.home?.title || "WebABC",
             description: t.home?.description || "Web Design and Development Services",
+            preloadHero: '/images/homepage-hero.webp',
         }),
         alternates: {
             canonical: `https://webabc.ir/${supportedLang}`,
@@ -35,6 +36,7 @@ export async function generateStaticParams() {
 }
 
 import { getImageData } from '@/lib/imageUtils';
+import { createOrganizationSchema } from '@/lib/schema';
 
 export default async function Page({
     params,
@@ -44,11 +46,29 @@ export default async function Page({
     const { lang } = await params;
 
     // Fetch critical image data on server
-    const heroImgData = getImageData('/images/homepage-hero.webp');
+    const rawHeroData = getImageData('/images/homepage-hero.webp');
+
+    // Optimization: Create a clean copy without the placeholder to avoid bloating HTML
+    const heroImgData = rawHeroData ? { ...rawHeroData } : null;
+    if (heroImgData) {
+        delete heroImgData.placeholder;
+    }
+
+    // SEO: Generate Organization Schema Server Side
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://webabc.ir';
+    const organizationSchema = createOrganizationSchema(
+        baseUrl,
+        "/images/logo.webp",
+        [{ telephone: "+989123456789", contactType: "customer service" }], // Update with actual phone if available or keep generic
+        lang as SupportedLanguage
+    );
 
     return (
         <>
-            <HomeSchema />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+            />
 
             <div className="relative overflow-x-hidden">
                 <HeroSection heroImgData={heroImgData} />
