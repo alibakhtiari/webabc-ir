@@ -34,7 +34,7 @@ const FAQ: React.FC<FAQProps> = ({ items, title, description }) => {
 
                 <div className="max-w-3xl mx-auto">
                     {(title || description) && (
-                        <div className="text-center mb-10 animate-fadeInUp">
+                        <div className="text-center mb-10 animate-fade-up">
                             {title && (
                                 <h2 className="text-3xl font-bold mb-4">
                                     {title}
@@ -52,7 +52,7 @@ const FAQ: React.FC<FAQProps> = ({ items, title, description }) => {
                         {items.map((item, index) => (
                             <div
                                 key={index}
-                                className="animate-fadeInUp"
+                                className="animate-fade-up"
                                 style={{ animationDelay: `${index * 100}ms` }}
                             >
                                 <AccordionItem

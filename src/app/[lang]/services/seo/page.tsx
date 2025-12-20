@@ -25,7 +25,7 @@ const SeoService = () => {
                 {/* SEO Services */}
                 <section className="py-16 bg-white">
                     <div className="container mx-auto px-4">
-                        <h2 className="text-3xl font-bold text-center mb-12 animate-fadeInUp">
+                        <h2 className="text-3xl font-bold text-center mb-12 animate-fade-up">
                             {t('seoService.servicesTitle')}
                         </h2>
 
@@ -92,7 +92,7 @@ const SeoService = () => {
                 {/* Results Only - Case Studies Removed */}
                 <section className="py-16 bg-gray-50">
                     <div className="container mx-auto px-4">
-                        <h2 className="text-3xl font-bold text-center mb-12 animate-fadeInUp">
+                        <h2 className="text-3xl font-bold text-center mb-12 animate-fade-up">
                             {t('seoService.results.title')}
                         </h2>
 
@@ -123,7 +123,7 @@ const SeoService = () => {
                 {/* SEO Process */}
                 <section className="py-16 bg-white">
                     <div className="container mx-auto px-4">
-                        <h2 className="text-3xl font-bold text-center mb-12 animate-fadeInUp">
+                        <h2 className="text-3xl font-bold text-center mb-12 animate-fade-up">
                             {t('seoService.process.title')}
                         </h2>
 
