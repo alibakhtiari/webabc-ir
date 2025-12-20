@@ -7,6 +7,7 @@ import FAQ from '@/components/FAQ';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Globe, Target, Search, MapPin, FileCheck, BarChart, CheckCircle2 } from 'lucide-react';
 import OptimizedImage from '@/components/OptimizedImage';
+import { getImageData } from '@/lib/imageUtils';
 import ServiceHeroButtons from '@/components/ServiceHeroButtons';
 
 const LocalSeo = () => {
@@ -123,6 +124,7 @@ const LocalSeo = () => {
                                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 blur-3xl rounded-full"></div>
                                 <OptimizedImage
                                     src="/images/services/local-seo.webp"
+                                    imageData={getImageData('/images/services/local-seo.webp')}
                                     alt="Local SEO Process"
                                     className="relative rounded-2xl shadow-2xl w-full h-auto object-cover"
                                 />

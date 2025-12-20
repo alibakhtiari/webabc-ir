@@ -1,8 +1,8 @@
 "use client";
 
 import React from 'react';
-import OptimizedImage from '@/components/OptimizedImage';
-import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
+
+import { CheckCircle2 } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface SeoServiceCardProps {
