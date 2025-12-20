@@ -14,6 +14,7 @@ import enServiceAreas from '@/i18n/en/service-areas.json';
 import faServiceAreas from '@/i18n/fa/service-areas.json';
 import arServiceAreas from '@/i18n/ar/service-areas.json';
 import OptimizedImage from '@/components/OptimizedImage';
+import { getImageData } from '@/lib/imageUtils';
 
 interface Location {
   name: string;
@@ -149,6 +150,7 @@ const ServiceAreas = () => {
                       <div className="aspect-video md:aspect-auto md:h-full overflow-hidden">
                         <OptimizedImage
                           src={location.image}
+                          imageData={getImageData(location.image)}
                           alt={`${location.name}, ${location.country}`}
                           className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                         />

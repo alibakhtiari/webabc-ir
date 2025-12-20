@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 // import Image from 'next/image'; // Rendered obsolete by OptimizedImage
 import OptimizedImage from '@/components/OptimizedImage';
+import { getImageData } from '@/lib/imageUtils';
 import Breadcrumb from '@/components/seo/Breadcrumb';
 import { useLanguage } from '@/contexts/LanguageContext';
 import PortfolioSchema from '@/components/seo/schemas/PortfolioSchema';
@@ -91,6 +92,7 @@ const Portfolio = ({ items }: PortfolioClientProps) => {
                     <div className="relative aspect-video overflow-hidden">
                       <OptimizedImage
                         src={item.image}
+                        imageData={getImageData(item.image)}
                         alt={item.title}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-500"

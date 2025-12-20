@@ -14,6 +14,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import { Calendar, Clock, User, Share2, ArrowLeft, ArrowRight, ChevronDown, List, CheckCircle2 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import OptimizedImage from '@/components/OptimizedImage';
+import { getImageData } from '@/lib/imageUtils';
 
 interface BlogPostPageProps {
   post: BlogPost | null;
@@ -107,6 +108,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
             <div className="aspect-video rounded-xl overflow-hidden mb-8">
               <OptimizedImage
                 src={post.image}
+                imageData={getImageData(post.image)}
                 alt={post.title}
                 className="w-full h-full object-cover"
               />

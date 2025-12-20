@@ -12,6 +12,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Calendar, Clock, ArrowRight, ArrowLeft } from 'lucide-react';
 import OptimizedImage from '@/components/OptimizedImage';
+import { getImageData } from '@/lib/imageUtils';
 
 interface BlogPageProps {
   initialPosts: BlogMetadata[];
@@ -125,6 +126,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ initialPosts }) => {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <OptimizedImage
                           src={post.image}
+                          imageData={getImageData(post.image)}
                           alt={post.title}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         />

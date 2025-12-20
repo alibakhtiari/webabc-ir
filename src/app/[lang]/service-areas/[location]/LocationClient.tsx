@@ -11,6 +11,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { MapPin, CheckCircle2, ArrowRight, ArrowLeft, TrendingUp, Users, Award } from 'lucide-react';
 import OptimizedImage from '@/components/OptimizedImage';
+import { getImageData } from '@/lib/imageUtils';
 import enServiceAreas from '@/i18n/en/service-areas.json';
 import faServiceAreas from '@/i18n/fa/service-areas.json';
 import arServiceAreas from '@/i18n/ar/service-areas.json';
@@ -85,6 +86,7 @@ const LocationPage = () => {
           <div className="absolute inset-0">
             <OptimizedImage
               src={location.image}
+              imageData={getImageData(location.image)}
               alt={`${location.name}, ${location.country}`}
               className="w-full h-full object-cover"
             />
