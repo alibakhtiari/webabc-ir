@@ -16,7 +16,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ].flatMap(route =>
         languages.map(lang => ({
             url: `${BASE_URL}/${lang}${route}`,
-            lastModified: new Date(),
             changeFrequency: 'weekly' as const,
             priority: route === '' ? 1 : 0.8,
         }))
@@ -39,7 +38,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         const portfolios = await getAllItems<PortfolioItem>('portfolio', lang);
         dynamicRoutes.push(...portfolios.map(item => ({
             url: `${BASE_URL}/${lang}/portfolio/${item.slug}`,
-            lastModified: new Date(), // Or item.date if available
+            // lastModified: new Date(), // Generally static unless updated
             changeFrequency: 'monthly' as const,
             priority: 0.6,
         })));
@@ -52,13 +51,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const miscRoutes = languages.flatMap(lang => [
         ...tools.map(tool => ({
             url: `${BASE_URL}/${lang}/tools/${tool}`,
-            lastModified: new Date(),
             changeFrequency: 'monthly' as const,
             priority: 0.7,
         })),
         ...locations.map(loc => ({
             url: `${BASE_URL}/${lang}/service-areas/${loc}`,
-            lastModified: new Date(),
             changeFrequency: 'monthly' as const,
             priority: 0.7,
         }))
