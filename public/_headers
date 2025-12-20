@@ -1,21 +1,11 @@
-# Cache static assets (images, fonts, css) for 1 year
+# Cache static assets (images, css, js) for 1 year
 /images/*
   Cache-Control: public, max-age=31536000, immutable
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
-
-# Cache Next.js static build files (hashed)
 /_next/static/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Ensure HTML is not cached aggressively (so users get updates)
+# Cache HTML pages for 1 hour (revalidate more often)
 /*.html
-  Cache-Control: public, max-age=0, must-revalidate
-
-# Security Headers for all pages
-/*
-  X-Frame-Options: DENY
-  X-Content-Type-Options: nosniff
-  Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
-  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Cache-Control: public, max-age=3600, must-revalidate
