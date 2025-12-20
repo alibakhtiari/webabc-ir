@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: 'export',
-
+  reactCompiler: true,
   reactStrictMode: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
@@ -13,12 +13,10 @@ const nextConfig: NextConfig = {
   experimental: {
     viewTransition: true,
     inlineCss: true,
+    esmExternals: true,
     optimizePackageImports: [
       'lucide-react',
-      'zod',
-      'sonner',
-      'date-fns',
-      'lodash'
+      'sonner'
     ],
   },
   images: {
