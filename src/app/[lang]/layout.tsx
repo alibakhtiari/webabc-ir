@@ -53,6 +53,23 @@ export default async function RootLayout({
     const language = languages[supportedLang] || languages.fa;
     const dictionary = await getDictionary(supportedLang);
 
+    // ✂️ OPTIMIZATION: Only pass global namespaces to the root context
+    const globalDictionary = {
+        common: dictionary.common,
+        cta: dictionary.cta,
+        contact: dictionary.contact, // Needed for Navbar > ConsultationForm
+        consultation: dictionary.consultation, // Needed for Navbar > ConsultationForm
+        // Footer links use titles from these namespaces
+        services: dictionary.services,
+        blog: dictionary.blog,
+        tools: dictionary.tools,
+        // Specific tools used in Footer
+        metaGenerator: dictionary.metaGenerator,
+        serpPreview: dictionary.serpPreview,
+        utmBuilder: dictionary.utmBuilder,
+        faqGenerator: dictionary.faqGenerator,
+    };
+
     return (
         <html lang={supportedLang} dir={language.direction} suppressHydrationWarning>
             <body
@@ -64,7 +81,7 @@ export default async function RootLayout({
                 )}
                 suppressHydrationWarning
             >
-                <LanguageProvider defaultLanguage={supportedLang} dictionary={dictionary}>
+                <LanguageProvider defaultLanguage={supportedLang} dictionary={globalDictionary}>
                     <GlobalSchema />
 
                     {/* Skip Link for Accessibility */}

@@ -37,6 +37,7 @@ export async function generateStaticParams() {
 
 import { getImageData } from '@/lib/imageUtils';
 import { createOrganizationSchema } from '@/lib/schema';
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 export default async function Page({
     params,
@@ -63,8 +64,26 @@ export default async function Page({
         lang as SupportedLanguage
     );
 
+    // Filter dictionary for Home Page
+    const dictionary = await getDictionary(lang as SupportedLanguage);
+    const homeDictionary = {
+        ...dictionary, // We need to pass everything the components might need. 
+        // Optimization: We could cherry-pick ONLY home + common + benefits + cta, 
+        // but passing the full dictionary here is safer for now to ensure no regressions 
+        // on the page level, while the Root Layout is optimized.
+        // To really optimize page load, we should whitelist:
+        common: dictionary.common,
+        home: dictionary.home,
+        services: dictionary.services,
+        benefits: dictionary.benefits,
+        cta: dictionary.cta,
+        contact: dictionary.contact,
+        consultation: dictionary.consultation,
+        // Exclude strictly unused namespaces like 'about', 'portfolio' (content), 'tools' (content) etc.
+    };
+
     return (
-        <>
+        <LanguageProvider defaultLanguage={lang as SupportedLanguage} dictionary={homeDictionary}>
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
@@ -76,6 +95,6 @@ export default async function Page({
                 <BenefitsSection />
                 <CTASection />
             </div>
-        </>
+        </LanguageProvider>
     );
 }
