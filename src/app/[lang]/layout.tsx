@@ -57,9 +57,8 @@ export default async function RootLayout({
     const globalDictionary = {
         common: dictionary.common,
         cta: dictionary.cta,
-        contact: dictionary.contact, // Needed for Navbar > ConsultationForm
-        consultation: dictionary.consultation, // Needed for Navbar > ConsultationForm
-        // Footer links use titles from these namespaces
+        contact: dictionary.contact,
+        consultation: dictionary.consultation,
         services: dictionary.services,
         blog: dictionary.blog,
         tools: dictionary.tools,
@@ -68,6 +67,20 @@ export default async function RootLayout({
         serpPreview: dictionary.serpPreview,
         utmBuilder: dictionary.utmBuilder,
         faqGenerator: dictionary.faqGenerator,
+        // Missing namespaces for Navbar & Breadcrumbs
+        wordpress: dictionary.wordpress,
+        'modern-web': dictionary['modern-web'],
+        maintenance: dictionary.maintenance,
+        speedOptimization: dictionary.speedOptimization,
+        uiUxAudit: dictionary.uiUxAudit,
+        webDesign: dictionary.webDesign,
+        seo: dictionary.seo,
+        localSeo: dictionary.localSeo,
+        linkBuilding: dictionary.linkBuilding,
+        contentCreation: dictionary.contentCreation,
+        webDevelopmentServices: dictionary.webDevelopmentServices,
+        about: dictionary.about,
+        'service-areas': dictionary['service-areas'],
     };
 
     return (
