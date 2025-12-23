@@ -1,4 +1,54 @@
 {
+  "/images/wordpress-hero.webp": {
+    "avif": [
+      {
+        "src": "/images/wordpress-hero-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/wordpress-hero-480.avif",
+        "width": 480
+      },
+      {
+        "src": "/images/wordpress-hero-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/wordpress-hero-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/wordpress-hero-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/wordpress-hero-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/wordpress-hero-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/wordpress-hero-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/wordpress-hero-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/wordpress-hero-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/wordpress-hero.webp",
+    "placeholder": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAABQAwCdASoUABQAPm0ylUekIqIhKAgAgA2JZwC7ABZl2+APcAD++OX/fSMWyd/b2JmGEBVx0UdMzmgA",
+    "width": 1024,
+    "height": 1024
+  },
   "/images/team-webabc.webp": {
     "avif": [
       {
@@ -212,6 +262,438 @@
     ],
     "original": "/images/homepage-hero.webp",
     "placeholder": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAABQAwCdASoUABQAPm0ylUekIqIhKAgAgA2JZwC7ABZl2+APcAD++OX/fSMWyd/b2JmGEBVx0UdMzmgA",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/blog/wordpress-hero.webp": {
+    "avif": [
+      {
+        "src": "/images/blog/wordpress-hero-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/blog/wordpress-hero-480.avif",
+        "width": 480
+      },
+      {
+        "src": "/images/blog/wordpress-hero-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/blog/wordpress-hero-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/blog/wordpress-hero-1024.avif",
+        "width": 1024
+      },
+      {
+        "src": "/images/blog/wordpress-hero-1280.avif",
+        "width": 1280
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/blog/wordpress-hero-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/blog/wordpress-hero-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/blog/wordpress-hero-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/blog/wordpress-hero-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/blog/wordpress-hero-1024.webp",
+        "width": 1024
+      },
+      {
+        "src": "/images/blog/wordpress-hero-1280.webp",
+        "width": 1280
+      }
+    ],
+    "original": "/images/blog/wordpress-hero.webp",
+    "placeholder": "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAACwAgCdASoUAA8APm0skkWkIqGYBABABsS0gABE+gAA/vd5FCZabzV/qkAAAA==",
+    "width": 1280,
+    "height": 960
+  },
+  "/images/blog/web-design.webp": {
+    "avif": [
+      {
+        "src": "/images/blog/web-design-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/blog/web-design-480.avif",
+        "width": 480
+      },
+      {
+        "src": "/images/blog/web-design-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/blog/web-design-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/blog/web-design-1024.avif",
+        "width": 1024
+      },
+      {
+        "src": "/images/blog/web-design-1280.avif",
+        "width": 1280
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/blog/web-design-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/blog/web-design-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/blog/web-design-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/blog/web-design-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/blog/web-design-1024.webp",
+        "width": 1024
+      },
+      {
+        "src": "/images/blog/web-design-1280.webp",
+        "width": 1280
+      }
+    ],
+    "original": "/images/blog/web-design.webp",
+    "placeholder": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADQAwCdASoUAAsAPm0skkWkIqGYBABABsSygE6ZQAFZ6fmpcf6odQAA/o03vZbkWVeb9LrgSy8OuHxK0V4oYAAA",
+    "width": 1280,
+    "height": 720
+  },
+  "/images/blog/seo-tips.webp": {
+    "avif": [
+      {
+        "src": "/images/blog/seo-tips-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/blog/seo-tips-480.avif",
+        "width": 480
+      },
+      {
+        "src": "/images/blog/seo-tips-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/blog/seo-tips-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/blog/seo-tips-1024.avif",
+        "width": 1024
+      },
+      {
+        "src": "/images/blog/seo-tips-1280.avif",
+        "width": 1280
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/blog/seo-tips-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/blog/seo-tips-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/blog/seo-tips-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/blog/seo-tips-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/blog/seo-tips-1024.webp",
+        "width": 1024
+      },
+      {
+        "src": "/images/blog/seo-tips-1280.webp",
+        "width": 1280
+      }
+    ],
+    "original": "/images/blog/seo-tips.webp",
+    "placeholder": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACwAgCdASoUAAsAPm0skkWkIqGYBABABsSzgABE+gAA/vqJ387HuD/oPi5PwgAA",
+    "width": 1280,
+    "height": 720
+  },
+  "/images/blog/digital-marketing.webp": {
+    "avif": [
+      {
+        "src": "/images/blog/digital-marketing-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/blog/digital-marketing-480.avif",
+        "width": 480
+      },
+      {
+        "src": "/images/blog/digital-marketing-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/blog/digital-marketing-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/blog/digital-marketing-1024.avif",
+        "width": 1024
+      },
+      {
+        "src": "/images/blog/digital-marketing-1280.avif",
+        "width": 1280
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/blog/digital-marketing-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/blog/digital-marketing-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/blog/digital-marketing-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/blog/digital-marketing-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/blog/digital-marketing-1024.webp",
+        "width": 1024
+      },
+      {
+        "src": "/images/blog/digital-marketing-1280.webp",
+        "width": 1280
+      }
+    ],
+    "original": "/images/blog/digital-marketing.webp",
+    "placeholder": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADwAgCdASoUAAsAPm0skkWkIqGYBABABsSxgE6ZQAJDgAD++L6Cuh5Gq0E+Yl8rRgBp334W1LcdXjFQAAA=",
+    "width": 1280,
+    "height": 720
+  },
+  "/images/locations/tehran.webp": {
+    "avif": [
+      {
+        "src": "/images/locations/tehran-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/locations/tehran-480.avif",
+        "width": 480
+      },
+      {
+        "src": "/images/locations/tehran-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/locations/tehran-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/locations/tehran-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/locations/tehran-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/locations/tehran-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/locations/tehran-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/locations/tehran-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/locations/tehran-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/locations/tehran.webp",
+    "placeholder": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQBACdASoUABQAPm0ukkakIqGhKA1QgA2JZQCdM47Bqf+d6sq79L5PHAD+0vLpe03NLnk3ycm1x/Zx2WDOKJ4ZsnTxeYQHGKZhW4KnRprPf74R3VAAAA==",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/locations/qazvin.webp": {
+    "avif": [
+      {
+        "src": "/images/locations/qazvin-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/locations/qazvin-480.avif",
+        "width": 480
+      },
+      {
+        "src": "/images/locations/qazvin-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/locations/qazvin-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/locations/qazvin-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/locations/qazvin-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/locations/qazvin-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/locations/qazvin-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/locations/qazvin-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/locations/qazvin-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/locations/qazvin.webp",
+    "placeholder": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAwCdASoUABQAPm0ukkakIqGhKA1QgA2JZQC7AA9ia1wjQ9kirKRAAPce5ZDz72fi8+xoGFwxy2qrbjbaePLLAAo/ecWFympgAAAA",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/locations/muscat.webp": {
+    "avif": [
+      {
+        "src": "/images/locations/muscat-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/locations/muscat-480.avif",
+        "width": 480
+      },
+      {
+        "src": "/images/locations/muscat-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/locations/muscat-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/locations/muscat-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/locations/muscat-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/locations/muscat-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/locations/muscat-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/locations/muscat-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/locations/muscat-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/locations/muscat.webp",
+    "placeholder": "data:image/webp;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAMFBgIE/8QAHhAAAQQCAwEAAAAAAAAAAAAAAAECFGEEEQMxQVH/xAAYAQACAwAAAAAAAAAAAAAAAAACBAABA//EABgRAQEBAQEAAAAAAAAAAAAAAAABEwID/9oADAMBAAIRAxEAPwDRyLEmylXIs4dla9HJ6UjeIvZafQZ6ZYC1VnHlc5SDkcoBgOIFe7fYAIJ//9k=",
+    "width": 1024,
+    "height": 1024
+  },
+  "/images/locations/dubai.webp": {
+    "avif": [
+      {
+        "src": "/images/locations/dubai-320.avif",
+        "width": 320
+      },
+      {
+        "src": "/images/locations/dubai-480.avif",
+        "width": 480
+      },
+      {
+        "src": "/images/locations/dubai-640.avif",
+        "width": 640
+      },
+      {
+        "src": "/images/locations/dubai-768.avif",
+        "width": 768
+      },
+      {
+        "src": "/images/locations/dubai-1024.avif",
+        "width": 1024
+      }
+    ],
+    "webp": [
+      {
+        "src": "/images/locations/dubai-320.webp",
+        "width": 320
+      },
+      {
+        "src": "/images/locations/dubai-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/images/locations/dubai-640.webp",
+        "width": 640
+      },
+      {
+        "src": "/images/locations/dubai-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/images/locations/dubai-1024.webp",
+        "width": 1024
+      }
+    ],
+    "original": "/images/locations/dubai.webp",
+    "placeholder": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAwBACdASoUABQAPm0skkYkIqGhKA1QgA2JQBWGbQ8cV/AC3QRzrGKYN+AA2cqOQtYXC2C/+Cpse6Ubx//kUFnXjnWWdDMxkKKPnfm/WpeUxpzc+NBtIBrLKHGY8G+AAAA=",
     "width": 1024,
     "height": 1024
   },
@@ -661,7 +1143,7 @@
       }
     ],
     "original": "/images/services/local-seo.webp",
-    "placeholder": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAAAQAwCdASoUABQAPm00lkekIyIhKAgAgA2JaQC90BhwwEAA/vnNa42xAY+eL8tICdoDWg4eAAA=",
+    "placeholder": "data:image/webp;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAMEAQf/xAAaEAADAQEBAQAAAAAAAAAAAAAAAQIRAzEh/8QAFwEBAQEBAAAAAAAAAAAAAAAAAQUAAv/EABYRAQEBAAAAAAAAAAAAAAAAAAABEf/aAAwDAQACEQMRAD8A8g5ckUfFZ4d5UsRR2sLSHbWOuX0FapaAdazc7eFHdZ6AY1GregAC/9k=",
     "width": 1024,
     "height": 1024
   },
@@ -762,206 +1244,6 @@
     ],
     "original": "/images/services/content-creation.webp",
     "placeholder": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAACQBACdASoUABQAPm0ylUepIqIhKAgBIA2JZQC7ABEdu0CIHXY/jQTVx2ySMkAA/vhQr3v1b6182bsOX6+8odh54fg1SN1ib+CjJ/OlXepQAA==",
-    "width": 1024,
-    "height": 1024
-  },
-  "/images/locations/tehran.webp": {
-    "avif": [
-      {
-        "src": "/images/locations/tehran-320.avif",
-        "width": 320
-      },
-      {
-        "src": "/images/locations/tehran-480.avif",
-        "width": 480
-      },
-      {
-        "src": "/images/locations/tehran-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/locations/tehran-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/locations/tehran-1024.avif",
-        "width": 1024
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/locations/tehran-320.webp",
-        "width": 320
-      },
-      {
-        "src": "/images/locations/tehran-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/images/locations/tehran-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/locations/tehran-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/locations/tehran-1024.webp",
-        "width": 1024
-      }
-    ],
-    "original": "/images/locations/tehran.webp",
-    "placeholder": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAQBACdASoUABQAPm0ukkakIqGhKA1QgA2JZQCdM47Bqf+d6sq79L5PHAD+0vLpe03NLnk3ycm1x/Zx2WDOKJ4ZsnTxeYQHGKZhW4KnRprPf74R3VAAAA==",
-    "width": 1024,
-    "height": 1024
-  },
-  "/images/locations/qazvin.webp": {
-    "avif": [
-      {
-        "src": "/images/locations/qazvin-320.avif",
-        "width": 320
-      },
-      {
-        "src": "/images/locations/qazvin-480.avif",
-        "width": 480
-      },
-      {
-        "src": "/images/locations/qazvin-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/locations/qazvin-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/locations/qazvin-1024.avif",
-        "width": 1024
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/locations/qazvin-320.webp",
-        "width": 320
-      },
-      {
-        "src": "/images/locations/qazvin-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/images/locations/qazvin-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/locations/qazvin-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/locations/qazvin-1024.webp",
-        "width": 1024
-      }
-    ],
-    "original": "/images/locations/qazvin.webp",
-    "placeholder": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAwCdASoUABQAPm0ukkakIqGhKA1QgA2JZQC7AA9ia1wjQ9kirKRAAPce5ZDz72fi8+xoGFwxy2qrbjbaePLLAAo/ecWFympgAAAA",
-    "width": 1024,
-    "height": 1024
-  },
-  "/images/locations/muscat.webp": {
-    "avif": [
-      {
-        "src": "/images/locations/muscat-320.avif",
-        "width": 320
-      },
-      {
-        "src": "/images/locations/muscat-480.avif",
-        "width": 480
-      },
-      {
-        "src": "/images/locations/muscat-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/locations/muscat-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/locations/muscat-1024.avif",
-        "width": 1024
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/locations/muscat-320.webp",
-        "width": 320
-      },
-      {
-        "src": "/images/locations/muscat-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/images/locations/muscat-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/locations/muscat-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/locations/muscat-1024.webp",
-        "width": 1024
-      }
-    ],
-    "original": "/images/locations/muscat.webp",
-    "placeholder": "data:image/webp;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAUABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAMFBgIE/8QAHhAAAQQCAwEAAAAAAAAAAAAAAAECFGEEEQMxQVH/xAAYAQACAwAAAAAAAAAAAAAAAAACBAABA//EABgRAQEBAQEAAAAAAAAAAAAAAAABEwID/9oADAMBAAIRAxEAPwDRyLEmylXIs4dla9HJ6UjeIvZafQZ6ZYC1VnHlc5SDkcoBgOIFe7fYAIJ//9k=",
-    "width": 1024,
-    "height": 1024
-  },
-  "/images/locations/dubai.webp": {
-    "avif": [
-      {
-        "src": "/images/locations/dubai-320.avif",
-        "width": 320
-      },
-      {
-        "src": "/images/locations/dubai-480.avif",
-        "width": 480
-      },
-      {
-        "src": "/images/locations/dubai-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/locations/dubai-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/locations/dubai-1024.avif",
-        "width": 1024
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/locations/dubai-320.webp",
-        "width": 320
-      },
-      {
-        "src": "/images/locations/dubai-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/images/locations/dubai-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/locations/dubai-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/locations/dubai-1024.webp",
-        "width": 1024
-      }
-    ],
-    "original": "/images/locations/dubai.webp",
-    "placeholder": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAwBACdASoUABQAPm0skkYkIqGhKA1QgA2JQBWGbQ8cV/AC3QRzrGKYN+AA2cqOQtYXC2C/+Cpse6Ubx//kUFnXjnWWdDMxkKKPnfm/WpeUxpzc+NBtIBrLKHGY8G+AAAA=",
     "width": 1024,
     "height": 1024
   },
@@ -1482,237 +1764,5 @@
     "placeholder": "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAACwAgCdASoUAAgAPm0skkWkIqGYBABABsS0gAA9kAAA/vlju+j2/sYw240AAA==",
     "width": 3840,
     "height": 1600
-  },
-  "/images/blog/wordpress-hero.webp": {
-    "avif": [
-      {
-        "src": "/images/blog/wordpress-hero-320.avif",
-        "width": 320
-      },
-      {
-        "src": "/images/blog/wordpress-hero-480.avif",
-        "width": 480
-      },
-      {
-        "src": "/images/blog/wordpress-hero-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/blog/wordpress-hero-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/blog/wordpress-hero-1024.avif",
-        "width": 1024
-      },
-      {
-        "src": "/images/blog/wordpress-hero-1280.avif",
-        "width": 1280
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/blog/wordpress-hero-320.webp",
-        "width": 320
-      },
-      {
-        "src": "/images/blog/wordpress-hero-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/images/blog/wordpress-hero-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/blog/wordpress-hero-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/blog/wordpress-hero-1024.webp",
-        "width": 1024
-      },
-      {
-        "src": "/images/blog/wordpress-hero-1280.webp",
-        "width": 1280
-      }
-    ],
-    "original": "/images/blog/wordpress-hero.webp",
-    "placeholder": "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAACwAgCdASoUAA8APm0skkWkIqGYBABABsS0gABE+gAA/vd5FCZabzV/qkAAAA==",
-    "width": 1280,
-    "height": 960
-  },
-  "/images/blog/web-design.webp": {
-    "avif": [
-      {
-        "src": "/images/blog/web-design-320.avif",
-        "width": 320
-      },
-      {
-        "src": "/images/blog/web-design-480.avif",
-        "width": 480
-      },
-      {
-        "src": "/images/blog/web-design-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/blog/web-design-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/blog/web-design-1024.avif",
-        "width": 1024
-      },
-      {
-        "src": "/images/blog/web-design-1280.avif",
-        "width": 1280
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/blog/web-design-320.webp",
-        "width": 320
-      },
-      {
-        "src": "/images/blog/web-design-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/images/blog/web-design-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/blog/web-design-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/blog/web-design-1024.webp",
-        "width": 1024
-      },
-      {
-        "src": "/images/blog/web-design-1280.webp",
-        "width": 1280
-      }
-    ],
-    "original": "/images/blog/web-design.webp",
-    "placeholder": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADQAwCdASoUAAsAPm0skkWkIqGYBABABsSygE6ZQAFZ6fmpcf6odQAA/o03vZbkWVeb9LrgSy8OuHxK0V4oYAAA",
-    "width": 1280,
-    "height": 720
-  },
-  "/images/blog/seo-tips.webp": {
-    "avif": [
-      {
-        "src": "/images/blog/seo-tips-320.avif",
-        "width": 320
-      },
-      {
-        "src": "/images/blog/seo-tips-480.avif",
-        "width": 480
-      },
-      {
-        "src": "/images/blog/seo-tips-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/blog/seo-tips-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/blog/seo-tips-1024.avif",
-        "width": 1024
-      },
-      {
-        "src": "/images/blog/seo-tips-1280.avif",
-        "width": 1280
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/blog/seo-tips-320.webp",
-        "width": 320
-      },
-      {
-        "src": "/images/blog/seo-tips-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/images/blog/seo-tips-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/blog/seo-tips-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/blog/seo-tips-1024.webp",
-        "width": 1024
-      },
-      {
-        "src": "/images/blog/seo-tips-1280.webp",
-        "width": 1280
-      }
-    ],
-    "original": "/images/blog/seo-tips.webp",
-    "placeholder": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACwAgCdASoUAAsAPm0skkWkIqGYBABABsSzgABE+gAA/vqJ387HuD/oPi5PwgAA",
-    "width": 1280,
-    "height": 720
-  },
-  "/images/blog/digital-marketing.webp": {
-    "avif": [
-      {
-        "src": "/images/blog/digital-marketing-320.avif",
-        "width": 320
-      },
-      {
-        "src": "/images/blog/digital-marketing-480.avif",
-        "width": 480
-      },
-      {
-        "src": "/images/blog/digital-marketing-640.avif",
-        "width": 640
-      },
-      {
-        "src": "/images/blog/digital-marketing-768.avif",
-        "width": 768
-      },
-      {
-        "src": "/images/blog/digital-marketing-1024.avif",
-        "width": 1024
-      },
-      {
-        "src": "/images/blog/digital-marketing-1280.avif",
-        "width": 1280
-      }
-    ],
-    "webp": [
-      {
-        "src": "/images/blog/digital-marketing-320.webp",
-        "width": 320
-      },
-      {
-        "src": "/images/blog/digital-marketing-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/images/blog/digital-marketing-640.webp",
-        "width": 640
-      },
-      {
-        "src": "/images/blog/digital-marketing-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/blog/digital-marketing-1024.webp",
-        "width": 1024
-      },
-      {
-        "src": "/images/blog/digital-marketing-1280.webp",
-        "width": 1280
-      }
-    ],
-    "original": "/images/blog/digital-marketing.webp",
-    "placeholder": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADwAgCdASoUAAsAPm0skkWkIqGYBABABsSxgE6ZQAJDgAD++L6Cuh5Gq0E+Yl8rRgBp334W1LcdXjFQAAA=",
-    "width": 1280,
-    "height": 720
   }
 }
