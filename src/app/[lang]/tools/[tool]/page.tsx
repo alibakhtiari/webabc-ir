@@ -13,6 +13,13 @@ const TOOLS = [
     'serp-preview',
     'utm-builder',
     'faq-generator',
+    'cost-calculator',
+    'privacy-policy-generator',
+    'qr-generator',
+    'social-media-preview',
+    'css-gradient-generator',
+    'glassmorphism-generator',
+    'slug-generator',
 
 ];
 
@@ -44,7 +51,13 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         'serp-preview': 'serpPreview',
         'utm-builder': 'utmBuilder',
         'faq-generator': 'faqGenerator',
-
+        'cost-calculator': 'costCalculator',
+        'privacy-policy-generator': 'privacyGenerator',
+        'qr-generator': 'qrGenerator',
+        'social-media-preview': 'socialPreview',
+        'css-gradient-generator': 'gradientGen',
+        'glassmorphism-generator': 'glassGen',
+        'slug-generator': 'slugGenerator',
     };
 
     const key = toolKeyMap[tool] || tool;
