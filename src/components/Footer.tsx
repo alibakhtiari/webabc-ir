@@ -54,7 +54,7 @@ const Footer = () => {
                   { name: t('services.seoTitle'), href: `/${language}/services/seo` },
                   { name: t('services.webDesignTitle'), href: `/${language}/services/web-design` },
                   { name: t('services.contentCreationTitle'), href: `/${language}/services/content-creation` },
-                  { name: t('services.technicalOptimization'), href: `/${language}/technical-optimization` },
+                  { name: t('services.technicalOptimization'), href: `/${language}/services/speed-optimization` },
                   { name: t('services.linkBuildingTitle'), href: `/${language}/services/link-building` },
                 ]
               },
