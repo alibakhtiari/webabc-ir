@@ -128,7 +128,8 @@ const BlogPage: React.FC<BlogPageProps> = ({ initialPosts }) => {
                           src={post.image}
                           imageData={getImageData(post.image)}
                           alt={post.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
                         />
                       </div>
                       <CardHeader className="space-y-3">

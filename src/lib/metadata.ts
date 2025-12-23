@@ -18,6 +18,8 @@ export function constructMetadata({
     noIndex = false,
     metadataBase,
     preloadHero,
+    slug = '',
+    lang = 'en',
 }: {
     title?: string;
     description?: string;
@@ -26,6 +28,8 @@ export function constructMetadata({
     noIndex?: boolean;
     metadataBase?: URL;
     preloadHero?: string | PreloadOptions;
+    slug?: string;
+    lang?: string;
 } = {}): Metadata {
     // General Preload Logic
     if (preloadHero) {
@@ -61,16 +65,19 @@ export function constructMetadata({
             }
         }
     }
+
+    const safeSlug = slug.startsWith('/') ? slug : (slug ? `/${slug}` : '');
+
     return {
         title,
         description,
         alternates: {
-            canonical: BASE_URL,
+            canonical: `${BASE_URL}/${lang}${safeSlug}`,
             languages: {
-                'en': `${BASE_URL}/en`,
-                'fa': `${BASE_URL}/fa`,
-                'ar': `${BASE_URL}/ar`,
-                'x-default': `${BASE_URL}/en`,
+                'en': `${BASE_URL}/en${safeSlug}`,
+                'fa': `${BASE_URL}/fa${safeSlug}`,
+                'ar': `${BASE_URL}/ar${safeSlug}`,
+                'x-default': `${BASE_URL}/en${safeSlug}`,
             },
         },
         openGraph: {
@@ -81,7 +88,7 @@ export function constructMetadata({
                     url: image,
                 },
             ],
-            url: BASE_URL,
+            url: `${BASE_URL}/${lang}${safeSlug}`,
         },
         twitter: {
             card: 'summary_large_image',

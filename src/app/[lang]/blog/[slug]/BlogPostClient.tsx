@@ -105,12 +105,13 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
                 { name: post.title, path: `/${language}/blog/${post.slug}` }
               ]} />
             </div>
-            <div className="aspect-video rounded-xl overflow-hidden mb-8">
+            <div className="aspect-video rounded-xl overflow-hidden mb-8 relative">
               <OptimizedImage
                 src={post.image}
                 imageData={getImageData(post.image)}
                 alt={post.title}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
               />
             </div>
 
