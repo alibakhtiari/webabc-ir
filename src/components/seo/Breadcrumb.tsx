@@ -57,6 +57,13 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customItems }) => {
             'serp-preview': 'serpPreview',
             'utm-builder': 'utmBuilder',
             'faq-generator': 'faqGenerator',
+            'slug-generator': 'slugGenerator',
+            'social-media-preview': 'socialPreview',
+            'privacy-policy-generator': 'privacyGenerator',
+            'cost-calculator': 'costCalculator',
+            'qr-code-generator': 'qrGenerator',
+            'glassmorphism-generator': 'glassGen',
+            'css-gradient-generator': 'gradientGen',
 
           };
 
@@ -121,6 +128,15 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customItems }) => {
             break;
           case 'ui-ux-audit':
             name = t('uiUxAudit.title');
+            break;
+          case 'link-building':
+            name = t('linkBuilding.title');
+            break;
+          case 'content-creation':
+            name = t('contentCreation.title');
+            break;
+          case 'modern-web-development':
+            name = t('modern-web.title');
             break;
           default:
             // Keep name as is if not matched above or in tools check
