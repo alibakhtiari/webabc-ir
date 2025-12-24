@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { ServicePageTemplate } from '@/components/templates/ServicePageTemplate';
+import ServiceHero from '@/components/templates/ServiceHero';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { PenTool, FileText, Search, Share2, Mail, Edit3, BarChart, CheckCircle } from 'lucide-react';
 import ServiceHeroButtons from '@/components/ServiceHeroButtons';
@@ -12,10 +13,14 @@ const ContentCreation = () => {
 
     return (
         <ServicePageTemplate
-            title={t('contentCreation.title')}
-            subtitle={t('contentCreation.description')}
-            heroImage="/images/services/content-creation.webp"
-            heroButtons={<ServiceHeroButtons />}
+            hero={
+                <ServiceHero
+                    title={t('contentCreation.title')}
+                    subtitle={t('contentCreation.description')}
+                    heroImage="/images/services/content-creation.webp"
+                    heroButtons={<ServiceHeroButtons />}
+                />
+            }
         >
             {/* Services Details */}
             <section className="py-16 bg-white">

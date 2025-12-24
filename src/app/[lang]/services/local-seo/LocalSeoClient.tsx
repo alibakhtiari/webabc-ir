@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { ServicePageTemplate } from '@/components/templates/ServicePageTemplate';
+import ServiceHero from '@/components/templates/ServiceHero';
 import LocalSeoSchema from '@/components/seo/schemas/LocalSeoSchema';
 import FAQ from '@/components/FAQ';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -37,10 +38,14 @@ const LocalSeo = () => {
             <LocalSeoSchema />
 
             <ServicePageTemplate
-                title={t('localSeo.localSeoTitle')}
-                subtitle={t('localSeo.localSeoDescription')}
-                heroImage="/images/services/local-seo.webp"
-                heroButtons={<ServiceHeroButtons />}
+                hero={
+                    <ServiceHero
+                        title={t('localSeo.localSeoTitle')}
+                        subtitle={t('localSeo.localSeoDescription')}
+                        heroImage="/images/services/local-seo.webp"
+                        heroButtons={<ServiceHeroButtons />}
+                    />
+                }
             >
                 {/* Features Section */}
                 <section className="py-16 bg-white">

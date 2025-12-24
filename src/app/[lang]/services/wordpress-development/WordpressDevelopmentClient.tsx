@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { ServicePageTemplate } from '@/components/templates/ServicePageTemplate';
+import ServiceHero from '@/components/templates/ServiceHero';
 import WordpressSchema from '@/components/seo/schemas/WordpressSchema';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ShoppingCart, Layout, Settings, Smartphone } from 'lucide-react';
@@ -16,10 +17,14 @@ const WordpressWoocommerceDevelopment = () => {
             <WordpressSchema />
 
             <ServicePageTemplate
-                title={t('wordpress.title')}
-                subtitle={t('wordpress.subtitle')}
-                heroImage="/images/services/wordpress.webp"
-                heroButtons={<ServiceHeroButtons />}
+                hero={
+                    <ServiceHero
+                        title={t('wordpress.title')}
+                        subtitle={t('wordpress.subtitle')}
+                        heroImage="/images/services/wordpress.webp"
+                        heroButtons={<ServiceHeroButtons />}
+                    />
+                }
             >
                 {/* Features Section */}
                 <section className="py-16">
