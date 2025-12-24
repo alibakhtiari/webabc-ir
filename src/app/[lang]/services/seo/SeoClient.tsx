@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { ServicePageTemplate } from '@/components/templates/ServicePageTemplate';
+import ServiceHero from '@/components/templates/ServiceHero';
 import SeoServiceSchema from '@/components/seo/schemas/SeoServiceSchema';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Search, Globe, LinkIcon, PieChart } from 'lucide-react';
@@ -18,10 +19,14 @@ const SeoService = () => {
             <SeoServiceSchema />
 
             <ServicePageTemplate
-                title={t('seoService.title')}
-                subtitle={t('seoService.subtitle')}
-                heroImage="/images/services/seo.webp"
-                heroButtons={<ServiceHeroButtons />}
+                hero={
+                    <ServiceHero
+                        title={t('seoService.title')}
+                        subtitle={t('seoService.subtitle')}
+                        heroImage="/images/services/seo.webp"
+                        heroButtons={<ServiceHeroButtons />}
+                    />
+                }
             >
                 {/* SEO Services */}
                 <section className="py-16 bg-white">

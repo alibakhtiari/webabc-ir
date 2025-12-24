@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { ServicePageTemplate } from '@/components/templates/ServicePageTemplate';
+import ServiceHero from '@/components/templates/ServiceHero';
 import { useLanguage } from '@/contexts/LanguageContext';
 import FAQ from '@/components/FAQ';
 import { CheckCircle2, Zap, ArrowRight } from 'lucide-react';
@@ -40,18 +41,22 @@ const SpeedOptimization = () => {
 
     return (
         <ServicePageTemplate
-            title={t('speedOptimization.title')}
-            subtitle={t('speedOptimization.subtitle')}
-            description={t('speedOptimization.heroDescription')}
-            heroImage="/images/services/speed-optimization.webp"
-            heroButtons={
-                <Link
-                    href={`/${language}/contact`}
-                    className="inline-flex items-center gap-2 bg-orange-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-orange-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                >
-                    {t('speedOptimization.ctaButton')}
-                    <ArrowRight className={`w-5 h-5 ${language === 'fa' || language === 'ar' ? 'rotate-180' : ''}`} />
-                </Link>
+            hero={
+                <ServiceHero
+                    title={t('speedOptimization.title')}
+                    subtitle={t('speedOptimization.subtitle')}
+                    description={t('speedOptimization.heroDescription')}
+                    heroImage="/images/services/speed-optimization.webp"
+                    heroButtons={
+                        <Link
+                            href={`/${language}/contact`}
+                            className="inline-flex items-center gap-2 bg-orange-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-orange-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                        >
+                            {t('speedOptimization.ctaButton')}
+                            <ArrowRight className={`w-5 h-5 ${language === 'fa' || language === 'ar' ? 'rotate-180' : ''}`} />
+                        </Link>
+                    }
+                />
             }
         >
             <div className="container mx-auto px-4 py-12">

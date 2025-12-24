@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { ServicePageTemplate } from '@/components/templates/ServicePageTemplate';
+import ServiceHero from '@/components/templates/ServiceHero';
 import { useLanguage } from '@/contexts/LanguageContext';
 import FAQ from '@/components/FAQ';
 import { CheckCircle2, ShieldCheck, ArrowRight } from 'lucide-react';
@@ -41,17 +42,21 @@ const WebsiteMaintenance = () => {
 
     return (
         <ServicePageTemplate
-            title={t('maintenance.title')}
-            subtitle={t('maintenance.subtitle')}
-            heroImage="/images/services/website-maintenance.webp"
-            heroButtons={
-                <Link
-                    href={`/${language}/contact`}
-                    className="inline-flex items-center gap-2 bg-cyan-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-cyan-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                >
-                    {t('maintenance.ctaButton')}
-                    <ArrowRight className={`w-5 h-5 ${language === 'fa' || language === 'ar' ? 'rotate-180' : ''}`} />
-                </Link>
+            hero={
+                <ServiceHero
+                    title={t('maintenance.title')}
+                    subtitle={t('maintenance.subtitle')}
+                    heroImage="/images/services/website-maintenance.webp"
+                    heroButtons={
+                        <Link
+                            href={`/${language}/contact`}
+                            className="inline-flex items-center gap-2 bg-cyan-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-cyan-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                        >
+                            {t('maintenance.ctaButton')}
+                            <ArrowRight className={`w-5 h-5 ${language === 'fa' || language === 'ar' ? 'rotate-180' : ''}`} />
+                        </Link>
+                    }
+                />
             }
         >
             <div className="container mx-auto px-4 py-12">
