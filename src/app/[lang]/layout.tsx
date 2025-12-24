@@ -3,6 +3,7 @@ import "@/app/globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Toaster } from "@/components/ui/toaster";
 import GlobalSchema from "@/components/GlobalSchema";
+import { SkipLink } from "@/components/ui/SkipLink";
 import Navbar from "@/components/Navbar"; // Import Navbar
 import Footer from "@/components/Footer"; // Import Footer
 import { constructMetadata } from "@/lib/metadata";
@@ -111,12 +112,7 @@ export default async function RootLayout({
                     <GlobalSchema />
 
                     {/* Skip Link for Accessibility */}
-                    <a
-                        href="#main-content"
-                        className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-md transition-all"
-                    >
-                        Skip to main content
-                    </a>
+                    <SkipLink />
 
                     {/* 1. Navbar is now Global */}
                     <Navbar />
