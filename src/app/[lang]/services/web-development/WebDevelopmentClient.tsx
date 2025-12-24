@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { ServicePageTemplate } from '@/components/templates/ServicePageTemplate';
+import ServiceHero from '@/components/templates/ServiceHero';
 import WebDevelopmentSchema from '@/components/seo/schemas/WebDevelopmentSchema';
 import FAQ from '@/components/FAQ';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -36,10 +37,14 @@ const WebDevelopment = () => {
             <WebDevelopmentSchema />
 
             <ServicePageTemplate
-                title={t('webDevelopmentServices.webDevelopmentTitle')}
-                subtitle={t('webDevelopmentServices.webDevelopmentDescription')}
-                heroImage="/images/services/web-development.webp"
-                heroButtons={<ServiceHeroButtons />}
+                hero={
+                    <ServiceHero
+                        title={t('webDevelopmentServices.webDevelopmentTitle')}
+                        subtitle={t('webDevelopmentServices.webDevelopmentDescription')}
+                        heroImage="/images/services/web-development.webp"
+                        heroButtons={<ServiceHeroButtons />}
+                    />
+                }
             >
                 {/* What is Custom Web Development? */}
                 <section className="py-16">

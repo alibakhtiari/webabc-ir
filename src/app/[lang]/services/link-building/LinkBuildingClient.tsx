@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { ServicePageTemplate } from '@/components/templates/ServicePageTemplate';
+import ServiceHero from '@/components/templates/ServiceHero';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Link2, Search, Share2, Shield, TrendingUp, Users } from 'lucide-react';
 import ServiceHeroButtons from '@/components/ServiceHeroButtons';
@@ -12,13 +13,25 @@ const LinkBuilding = () => {
 
     return (
         <ServicePageTemplate
-            title={t('linkBuilding.title')}
-            subtitle={t('linkBuilding.description')}
-            heroImage="/images/services/link-building.webp"
-            heroButtons={<ServiceHeroButtons />}
+            hero={
+                <ServiceHero
+                    title={t('linkBuilding.title')}
+                    subtitle={t('linkBuilding.description')}
+                    heroImage="/images/services/link-building.webp"
+                    heroButtons={<ServiceHeroButtons />}
+                />
+            }
+            cta={
+                <section className="py-20 bg-primary text-white">
+                    <div className="container mx-auto px-4 text-center">
+                        <h2 className="text-3xl font-bold mb-4">{t('linkBuilding.cta.title')}</h2>
+                        <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">{t('linkBuilding.cta.description')}</p>
+                    </div>
+                </section>
+            }
         >
             {/* Services Details */}
-            <section className="py-16 bg-white">
+            < section className="py-16 bg-white" >
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-bold text-center mb-12 animate-fade-up">
                         {t('linkBuilding.ourServices')}
@@ -45,10 +58,10 @@ const LinkBuilding = () => {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Process */}
-            <section className="py-16 bg-gray-50">
+            < section className="py-16 bg-gray-50" >
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-bold text-center mb-12 animate-fade-up">
                         {t('linkBuilding.process.title')}
@@ -72,16 +85,8 @@ const LinkBuilding = () => {
                         ))}
                     </div>
                 </div>
-            </section>
-
-            {/* CTA */}
-            <section className="py-20 bg-primary text-white">
-                <div className="container mx-auto px-4 text-center">
-                    <h2 className="text-3xl font-bold mb-4">{t('linkBuilding.cta.title')}</h2>
-                    <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">{t('linkBuilding.cta.description')}</p>
-                </div>
-            </section>
-        </ServicePageTemplate>
+            </section >
+        </ServicePageTemplate >
     );
 };
 
