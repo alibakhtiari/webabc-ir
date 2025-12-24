@@ -31,6 +31,10 @@ const Collapsible = React.forwardRef<HTMLDivElement, CollapsibleProps>(
             >
                 {React.Children.map(children, (child) => {
                     if (React.isValidElement(child)) {
+                        // Avoid passing custom props to DOM elements (div, span, etc.)
+                        if (typeof child.type === 'string') {
+                            return child;
+                        }
                         return React.cloneElement(child as React.ReactElement<any>, {
                             isOpen,
                             handleOpenChange,
