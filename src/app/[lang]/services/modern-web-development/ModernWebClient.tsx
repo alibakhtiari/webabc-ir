@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { ServicePageTemplate } from '@/components/templates/ServicePageTemplate';
+import ServiceHero from '@/components/templates/ServiceHero';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { TimelineItem, TechItem } from '@/components/services/WebDesignComponents';
 import Link from 'next/link';
@@ -32,10 +33,14 @@ const ModernWebDevelopment = () => {
             <WebDesignSchema />
 
             <ServicePageTemplate
-                title={t('modern-web.title')}
-                subtitle={t('modern-web.description')}
-                heroImage="/images/services/modern-web-development.webp"
-                heroButtons={<ServiceHeroButtons />}
+                hero={
+                    <ServiceHero
+                        title={t('modern-web.title')}
+                        subtitle={t('modern-web.description')}
+                        heroImage="/images/services/modern-web-development.webp"
+                        heroButtons={<ServiceHeroButtons />}
+                    />
+                }
             >
                 {/* Services Details */}
                 <section className="py-16 bg-white">

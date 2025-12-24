@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { ServicePageTemplate } from '@/components/templates/ServicePageTemplate';
+import ServiceHero from '@/components/templates/ServiceHero';
 import WebDesignSchema from '@/components/seo/schemas/WebDesignSchema';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { TimelineItem, TechItem } from '@/components/services/WebDesignComponents';
@@ -18,10 +19,14 @@ const WebDesign = () => {
             <WebDesignSchema />
 
             <ServicePageTemplate
-                title={t('webDesign.title')}
-                subtitle={t('webDesign.description')}
-                heroImage="/images/services/web-design.webp"
-                heroButtons={<ServiceHeroButtons />}
+                hero={
+                    <ServiceHero
+                        title={t('webDesign.title')}
+                        subtitle={t('webDesign.description')}
+                        heroImage="/images/services/web-design.webp"
+                        heroButtons={<ServiceHeroButtons />}
+                    />
+                }
             >
                 {/* Services Details */}
                 <section className="py-16 bg-white">
