@@ -550,6 +550,24 @@
   "blog": {
     "ar": [
       {
+        "title": "Effective Digital Marketing Strategies for Small Businesses",
+        "description": "Learn proven digital marketing strategies to grow your small business online",
+        "date": "2025-01-05T00:00:00.000Z",
+        "author": "WebABC Team",
+        "category": "Digital Marketing",
+        "tags": [
+          "Digital Marketing",
+          "Small Business",
+          "Marketing Strategy",
+          "Social Media"
+        ],
+        "image": "/images/blog/digital-marketing.webp",
+        "readTime": 7,
+        "slug": "digital-marketing-strategies",
+        "language": "ar",
+        "content": "\r\n# Effective Digital Marketing Strategies for Small Businesses\r\n\r\nDigital marketing levels the playing field for small businesses. Here's how to maximize your online presence with limited resources.\r\n\r\n## 1. Content Marketing Foundation\r\n\r\nQuality content attracts and retains customers:\r\n\r\n- Create valuable blog posts addressing customer pain points\r\n- Develop how-to guides and tutorials\r\n- Share case studies and success stories\r\n- Maintain consistency in publishing\r\n\r\n## 2. Social Media Engagement\r\n\r\nChoose platforms where your audience is active:\r\n\r\n- Focus on 2-3 platforms initially\r\n- Post consistently and engage authentically\r\n- Use platform-specific features (Stories, Reels, etc.)\r\n- Monitor and respond to comments\r\n\r\n## 3. Email Marketing\r\n\r\nOne of the highest ROI channels:\r\n\r\n- Build your email list organically\r\n- Segment your audience for targeted campaigns\r\n- Personalize messages based on customer behavior\r\n- Test and optimize subject lines and content\r\n\r\n## 4. Local SEO Optimization\r\n\r\nCritical for location-based businesses:\r\n\r\n- Claim and optimize Google Business Profile\r\n- Encourage customer reviews\r\n- Create location-specific landing pages\r\n- Build local citations\r\n\r\n## 5. Paid Advertising\r\n\r\nStrategic budget allocation:\r\n\r\n- Start with small budgets and test\r\n- Use retargeting to re-engage visitors\r\n- Focus on high-intent keywords\r\n- Track ROI meticulously\r\n\r\n## Measuring Success\r\n\r\nKey metrics to track:\r\n\r\n- Website traffic and engagement\r\n- Conversion rates\r\n- Customer acquisition cost\r\n- Return on ad spend\r\n- Email open and click rates\r\n\r\n## Conclusion\r\n\r\nSuccessful digital marketing for small businesses requires focus, consistency, and continuous optimization. Start with strategies that align with your goals and resources.\r\n\r\nReady to grow your business online? Contact WebABC for customized digital marketing solutions.\r\n"
+      },
+      {
         "title": "أفضل ممارسات تحسين محركات البحث لعام 2025",
         "description": "اكتشف أحدث استراتيجيات وتقنيات تحسين محركات البحث لتعزيز ترتيب موقعك في محركات البحث",
         "date": "2025-01-15T00:00:00.000Z",
@@ -618,7 +636,7 @@
           "تصميم الويب",
           "نظام إدارة المحتوى"
         ],
-        "image": "/images/wordpress-hero.webp",
+        "image": "/images/blog/wordpress-hero.webp",
         "readTime": 6,
         "slug": "wordpress-vs-custom-development",
         "language": "ar",
@@ -752,7 +770,7 @@
           "Web Design",
           "CMS"
         ],
-        "image": "/images/wordpress-hero.webp",
+        "image": "/images/blog/wordpress-hero.webp",
         "readTime": 6,
         "slug": "wordpress-vs-custom-development",
         "language": "en",
@@ -760,6 +778,45 @@
       }
     ],
     "fa": [
+      {
+        "title": "Mobile-First Design in 2025 - Essential Strategies",
+        "description": "Learn why mobile-first design is crucial and how to implement it effectively in your web projects",
+        "date": "2025-01-18T00:00:00.000Z",
+        "author": "Sarah Johnson",
+        "category": "Web Design",
+        "tags": [
+          "Mobile Design",
+          "Responsive Design",
+          "UX",
+          "UI"
+        ],
+        "image": "/images/blog/web-design.webp",
+        "readTime": 7,
+        "keyTakeaways": [
+          "Mobile-first design prioritizes mobile experience before scaling up to desktop",
+          "Google's mobile-first indexing makes mobile optimization essential for SEO",
+          "Touch-friendly interfaces require minimum 44x44 pixel touch targets",
+          "Progressive enhancement ensures core functionality works on all devices",
+          "Performance optimization is critical for mobile user retention"
+        ],
+        "faq": [
+          {
+            "question": "What is the difference between mobile-first and responsive design?",
+            "answer": "Mobile-first design starts with the mobile layout and progressively enhances for larger screens, while responsive design adapts a desktop layout to smaller screens. Mobile-first ensures better performance and user experience on mobile devices."
+          },
+          {
+            "question": "What is the minimum touch target size for mobile?",
+            "answer": "The recommended minimum touch target size is 44x44 pixels to ensure users can easily tap buttons and links without errors."
+          },
+          {
+            "question": "Does mobile-first mean I should ignore desktop users?",
+            "answer": "No, mobile-first means starting with mobile constraints and then progressively enhancing the experience for larger screens. You still deliver a great desktop experience."
+          }
+        ],
+        "slug": "mobile-first-design-2025",
+        "language": "fa",
+        "content": "\r\n# Mobile-First Design in 2025: Essential Strategies\r\n\r\nWith over 60% of web traffic coming from mobile devices, mobile-first design is no longer optional—it's essential. Here's everything you need to know.\r\n\r\n## What is Mobile-First Design?\r\n\r\nMobile-first design means designing for mobile devices first, then progressively enhancing the experience for larger screens. This approach ensures optimal performance and user experience on smaller devices.\r\n\r\n## Why Mobile-First Matters in 2025\r\n\r\n### 1. Google's Mobile-First Indexing\r\n\r\nGoogle primarily uses the mobile version of your site for indexing and ranking. A poor mobile experience directly impacts your SEO.\r\n\r\n### 2. User Expectations\r\n\r\nUsers expect fast, seamless mobile experiences. Slow or poorly designed mobile sites lead to:\r\n\r\n- Higher bounce rates\r\n- Lower conversions\r\n- Reduced engagement\r\n- Negative brand perception\r\n\r\n### 3. Performance Benefits\r\n\r\nMobile-first forces you to prioritize:\r\n\r\n- Essential content\r\n- Optimized images\r\n- Minimal code\r\n- Fast loading times\r\n\r\n## Key Principles of Mobile-First Design\r\n\r\n### 1. Content Hierarchy\r\n\r\nPrioritize content based on mobile user needs:\r\n\r\n- Most important content first\r\n- Clear, scannable headlines\r\n- Concise paragraphs\r\n- Strategic use of white space\r\n\r\n### 2. Touch-Friendly Interface\r\n\r\nDesign for fingers, not cursors:\r\n\r\n- Minimum touch target size: 44x44 pixels\r\n- Adequate spacing between interactive elements\r\n- Clear visual feedback for interactions\r\n- Easy-to-reach navigation\r\n\r\n### 3. Performance Optimization\r\n\r\nSpeed is critical on mobile:\r\n\r\n- Optimize and compress images\r\n- Minimize HTTP requests\r\n- Use lazy loading\r\n- Implement browser caching\r\n- Minimize CSS and JavaScript\r\n\r\n### 4. Progressive Enhancement\r\n\r\nStart with core functionality, then add:\r\n\r\n- Enhanced features for larger screens\r\n- Advanced interactions\r\n- Additional visual elements\r\n- Complex layouts\r\n\r\n## Mobile-First Development Workflow\r\n\r\n### 1. Strategy Phase\r\n\r\n- Define mobile user goals\r\n- Identify key user journeys\r\n- Prioritize features and content\r\n- Plan information architecture\r\n\r\n### 2. Design Phase\r\n\r\n- Create mobile wireframes first\r\n- Design mobile mockups\r\n- Test with real users\r\n- Refine based on feedback\r\n\r\n### 3. Development Phase\r\n\r\n- Write mobile CSS first\r\n- Use media queries for larger screens\r\n- Test on real devices\r\n- Optimize performance continuously\r\n\r\n## Common Mobile-First Mistakes to Avoid\r\n\r\n1. **Hiding Important Content**: Don't hide critical information on mobile\r\n2. **Tiny Text**: Use readable font sizes (minimum 16px)\r\n3. **Pop-ups**: Avoid intrusive interstitials on mobile\r\n4. **Horizontal Scrolling**: Never require horizontal scrolling\r\n5. **Fixed Elements**: Be careful with fixed headers/footers\r\n\r\n## Testing Your Mobile Design\r\n\r\nEssential testing steps:\r\n\r\n- Test on real devices, not just emulators\r\n- Check various screen sizes\r\n- Test different network speeds\r\n- Verify touch interactions\r\n- Validate with Google Mobile-Friendly Test\r\n\r\n## Mobile-First CSS Example\r\n\r\n```css\r\n/* Mobile styles (default) */\r\n.container {\r\n  width: 100%;\r\n  padding: 1rem;\r\n}\r\n\r\n/* Tablet and up */\r\n@media (min-width: 768px) {\r\n  .container {\r\n    max-width: 720px;\r\n    margin: 0 auto;\r\n  }\r\n}\r\n\r\n/* Desktop and up */\r\n@media (min-width: 1024px) {\r\n  .container {\r\n    max-width: 960px;\r\n    padding: 2rem;\r\n  }\r\n}\r\n```\r\n\r\n## Conclusion\r\n\r\nMobile-first design is essential for success in 2025. By prioritizing mobile users, you create faster, more accessible websites that perform better in search rankings and deliver superior user experiences.\r\n\r\nRemember: mobile-first doesn't mean mobile-only. It means starting with the most constrained environment and progressively enhancing for larger screens.\r\n\r\n**Ready to go mobile-first?** Contact WebABC to transform your website with modern mobile-first design strategies.\r\n"
+      },
       {
         "title": "بهترین روش‌های سئو برای سال 2025",
         "description": "جدیدترین استراتژی‌ها و تکنیک‌های سئو را برای بهبود رتبه وب‌سایت خود در موتورهای جستجو کشف کنید",
@@ -808,7 +865,7 @@
           "طراحی وب",
           "سیستم مدیریت محتوا"
         ],
-        "image": "/images/wordpress-hero.webp",
+        "image": "/images/blog/wordpress-hero.webp",
         "readTime": 6,
         "keyTakeaways": [
           "وردپرس برای وب‌سایت‌های کوچک تا متوسط با بودجه محدود ایده‌آل است",
