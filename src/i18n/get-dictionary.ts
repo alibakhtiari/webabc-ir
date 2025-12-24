@@ -7,6 +7,20 @@ const namespaces = {
     seo: 'seo',
     services: 'services',
     wordpress: 'wordpress',
+    'modern-web': 'modern-web',
+    maintenance: 'maintenance',
+    speedOptimization: 'speed-optimization',
+    uiUxAudit: 'ui-ux-audit',
+    webDesign: 'web-design',
+    localSeo: 'local-seo',
+    linkBuilding: 'link-building',
+    contentCreation: 'content-creation',
+    webDevelopmentServices: 'web-development-services',
+    'service-areas': 'service-areas',
+    seoService: 'seo-service',
+    tools: 'tools',
+    faq: 'faq',
+
     about: 'about',
     portfolio: 'portfolio',
     contact: 'contact',
@@ -18,20 +32,9 @@ const namespaces = {
 
     notFound: 'notFound',
     consultation: 'consultation',
-    localSeo: 'local-seo',
-    webDevelopmentServices: 'web-development-services',
-    webDesign: 'web-design',
-    'service-areas': 'service-areas',
-    tools: 'tools',
-    faq: 'faq',
-    seoService: 'seo-service',
-    contentCreation: 'content-creation',
-    linkBuilding: 'link-building',
-    'modern-web': 'modern-web',
 
     // Tools Namespaces
     serpPreview: 'tools/serpPreview',
-
     faqGenerator: 'tools/faqGenerator',
     headlineAnalyzer: 'tools/headlineAnalyzer',
     readabilityChecker: 'tools/readabilityChecker',
@@ -46,11 +49,6 @@ const namespaces = {
     slugGenerator: 'tools/slugGenerator',
     socialPreview: 'tools/socialPreview',
     gradientGen: 'tools/gradientGen',
-
-    // New Services
-    maintenance: 'maintenance',
-    speedOptimization: 'speed-optimization',
-    uiUxAudit: 'ui-ux-audit',
 } as const;
 
 type NamespaceKey = keyof typeof namespaces;

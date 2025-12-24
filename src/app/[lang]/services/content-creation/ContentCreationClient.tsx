@@ -21,9 +21,17 @@ const ContentCreation = () => {
                     heroButtons={<ServiceHeroButtons />}
                 />
             }
+            cta={
+                <section className="py-20 bg-primary text-white">
+                    <div className="container mx-auto px-4 text-center">
+                        <h2 className="text-3xl font-bold mb-4">{t('contentCreation.cta.title')}</h2>
+                        <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">{t('contentCreation.cta.description')}</p>
+                    </div>
+                </section>
+            }
         >
             {/* Services Details */}
-            <section className="py-16 bg-white">
+            < section className="py-16 bg-white" >
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-bold text-center mb-12 animate-fade-up">
                         {t('contentCreation.ourServices')}
@@ -50,10 +58,10 @@ const ContentCreation = () => {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* Process */}
-            <section className="py-16 bg-gray-50">
+            < section className="py-16 bg-gray-50" >
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-bold text-center mb-12 animate-fade-up">
                         {t('contentCreation.process.title')}
@@ -77,16 +85,11 @@ const ContentCreation = () => {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* CTA */}
-            <section className="py-20 bg-primary text-white">
-                <div className="container mx-auto px-4 text-center">
-                    <h2 className="text-3xl font-bold mb-4">{t('contentCreation.cta.title')}</h2>
-                    <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">{t('contentCreation.cta.description')}</p>
-                </div>
-            </section>
-        </ServicePageTemplate>
+
+        </ServicePageTemplate >
     );
 };
 
