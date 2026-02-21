@@ -11,20 +11,12 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     const supportedLang = lang as SupportedLanguage;
     const t = await getDictionary(supportedLang);
 
-    return {
-        ...constructMetadata({
-            title: t.faq?.title || "FAQ | WebABC",
-            description: t.faq?.description || "Frequently Asked Questions",
-        }),
-        alternates: {
-            canonical: `https://webabc.ir/${supportedLang}/faq`,
-            languages: {
-                'en': '/en/faq',
-                'fa': '/fa/faq',
-                'ar': '/ar/faq',
-            },
-        },
-    };
+    return constructMetadata({
+        title: t.faq?.title || "FAQ | WebABC",
+        description: t.faq?.description || "Frequently Asked Questions",
+        lang: supportedLang,
+        slug: '/faq',
+    });
 }
 
 export default async function Page({
