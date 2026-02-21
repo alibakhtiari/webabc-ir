@@ -1,6 +1,6 @@
 {
     "title": "CSS Glassmorphism Generator",
-    "description": "Create modern glass effects for your UI with this CSS generator.",
+    "description": "Generate modern CSS glassmorphism effects for your UI designs. Customize blur, opacity, and saturation to create beautiful glass-like components effortlessly.",
     "settings": "Effect Settings",
     "blur": "Blur",
     "opacity": "Opacity",

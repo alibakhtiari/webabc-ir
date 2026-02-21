@@ -1,6 +1,6 @@
 {
     "title": "URL Slug Generator",
-    "description": "Convert text into SEO-friendly URL slugs. Removes special characters and replaces spaces with hyphens.",
+    "description": "Generate clean, SEO-friendly URL slugs from any text. Remove special characters and optimize your website URLs for better search engine indexing and readability.",
     "inputLabel": "Enter Text",
     "placeholder": "e.g. How to Buy Bitcoin in 2025!",
     "generate": "Generate Slug",

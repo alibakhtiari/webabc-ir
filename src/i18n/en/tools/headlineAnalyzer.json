@@ -1,6 +1,6 @@
 {
     "title": "Headline Analyzer",
-    "description": "Scores headlines based on factors like length, word balance, sentiment, and clarity. This can help content creators write more compelling headlines.",
+    "description": "Optimize your blog headlines for better clarity, sentiment, and engagement. Our analyzer helps you write compelling titles that drive more clicks and views.",
     "enterHeadline": "Enter Your Headline",
     "headlineLabel": "Headline",
     "placeholder": "Enter your headline here...",

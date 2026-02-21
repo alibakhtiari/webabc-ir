@@ -1,6 +1,6 @@
 {
     "title": "Readability Checker",
-    "description": "Analyzes a piece of text and gives it a readability score (e.g., Flesch-Kincaid). This helps writers ensure their content is easy to understand for a broad audience.",
+    "description": "Analyze your content's readability with our online checker. Get scores and grade levels to ensure your writing is clear and easy for your audience to understand.",
     "enterText": "Enter Your Text",
     "textLabel": "Text to Analyze",
     "placeholder": "Paste your text here...",
