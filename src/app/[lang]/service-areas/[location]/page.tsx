@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
             serviceAreas = enServiceAreas;
     }
 
-    const locationData = serviceAreas.locations.find((l: any) => l.slug === location);
+    const locationData = serviceAreas.locations.find((l: { slug: string; name: string }) => l.slug === location);
 
     if (!locationData) {
         return {
@@ -58,20 +58,12 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         };
     }
 
-    return {
-        ...constructMetadata({
-            title: `${locationData.name} | WebABC`,
-            description: `Web Design and SEO Services in ${locationData.name}`,
-        }),
-        alternates: {
-            canonical: `https://webabc.ir/${lang}/service-areas/${location}`,
-            languages: {
-                'en': `/en/service-areas/${location}`,
-                'fa': `/fa/service-areas/${location}`,
-                'ar': `/ar/service-areas/${location}`,
-            },
-        },
-    };
+    return constructMetadata({
+        title: `${locationData.name} | WebABC`,
+        description: `Web Design and SEO Services in ${locationData.name}`,
+        lang: lang,
+        slug: `/service-areas/${location}`,
+    });
 }
 
 export default async function Page({
