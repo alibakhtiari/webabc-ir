@@ -3,7 +3,7 @@ title: "Zeytoun Masoud – Digital Transformation for Traditional Agriculture"
 slug: "zeytoun-masoud"
 category: "E-commerce & Logistics"
 image: "/images/portfolio/zeytoun-masoud.webp"
-description: "Transforming a traditional brick-and-mortar olive producer into a high-volume e-commerce brand with hybrid B2B/B2C systems and dynamic logistics logic."
+description: "Transforming a traditional olive producer into a national e-commerce brand. Explore Zeytoun Masoud's hybrid B2B/B2C systems and dynamic logistics solutions."
 client: "Zeytoun Masoud"
 projectUrl: "https://zeytounmasoud.ir"
 technologies: ["WordPress", "WooCommerce", "Custom Shipping Plugin", "SMS API", "SEO Schema"]

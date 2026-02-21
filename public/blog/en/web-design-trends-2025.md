@@ -1,6 +1,6 @@
 ---
 title: Modern Web Design Trends for 2025
-description: Explore the latest web design trends and create stunning websites that engage and convert
+description: Explore cutting-edge web design trends for 2025. From minimalist layouts to accessibility-first design, learn how to create stunning websites that convert.
 date: 2025-01-10
 author: WebABC Team
 category: Web Design
