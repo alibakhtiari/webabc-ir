@@ -1,6 +1,6 @@
 ---
 title: Mobile-First Design in 2025 - Essential Strategies
-description: Learn why mobile-first design is crucial and how to implement it effectively in your web projects
+description: Master mobile-first design in 2025. Learn why prioritizing mobile experience is crucial for SEO and UX, and how to implement touch-friendly web projects.
 date: 2025-01-18
 author: Sarah Johnson
 category: Web Design

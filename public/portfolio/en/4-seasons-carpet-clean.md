@@ -3,7 +3,7 @@ title: "4 Seasons Carpet Clean – Local SEO & Digital Growth Engine"
 slug: "4-seasons-carpet-clean"
 category: "Local SEO & Automated Marketing"
 image: "/images/portfolio/4-seasons-carpet-clean.webp"
-description: "Building a digital ecosystem that dominates local search results (Map Pack) and maximizes Customer Lifetime Value through automated marketing for a top-rated London cleaning brand."
+description: "Discover how WebABC built a local SEO ecosystem for 4 Seasons Carpet Clean in London, dominating the Map Pack and boosting revenue through automation."
 client: "4 Seasons Carpet Clean"
 projectUrl: "https://4seasonscarpetclean.co.uk"
 technologies: ["WordPress", "GBP Optimization", "Email Automation", "Schema Markup", "Local SEO"]

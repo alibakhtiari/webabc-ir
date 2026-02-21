@@ -1,6 +1,6 @@
 ---
 title: Effective Digital Marketing Strategies for Small Businesses
-description: Learn proven digital marketing strategies to grow your small business online
+description: Learn proven digital marketing strategies to grow your small business online. Explore content marketing, social media, email, and local SEO tips from WebABC.
 date: 2025-01-05
 author: WebABC Team
 category: Digital Marketing

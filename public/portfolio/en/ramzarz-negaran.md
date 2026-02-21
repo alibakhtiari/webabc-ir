@@ -3,7 +3,7 @@ title: "Ramzarz Negaran – Premier Legal Crypto Mining Platform"
 slug: "ramzarz-negaran"
 category: "E-commerce & Custom Development"
 image: "/images/portfolio/ramzarz-negaran.webp"
-description: "Iran's leading hub for legal cryptocurrency mining hardware, featuring custom profitability calculators and real-time market data."
+description: "Case study: How WebABC developed Iran's leading legal crypto mining platform with real-time profitability calculators and trust-centric e-commerce design."
 client: "Ramzarz Negaran"
 projectUrl: "https://ramzarznegaran.com"
 technologies: ["WordPress", "WooCommerce", "Custom JS", "REST APIs", "Programmatic SEO"]

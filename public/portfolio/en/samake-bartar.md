@@ -3,7 +3,7 @@ title: "Samakebartar.com – Modernization & SEO Turnaround"
 slug: "samake-bartar"
 category: "CMS Migration & SEO"
 image: "/images/portfolio/samak-bartar.webp"
-description: "Successful migration from legacy Joomla to PHP 8.4 WordPress, resolving keyword cannibalization and security debts."
+description: "Modernizing Samakebartar.com: Migration from legacy Joomla to PHP 8.4 WordPress, resolving keyword cannibalization and achieving 95+ PageSpeed scores."
 client: "Samakebartar"
 projectUrl: "https://www.samakebartar.com"
 technologies: ["WordPress", "PHP 8.4", "Technical SEO", "CRO", "Migration"]
