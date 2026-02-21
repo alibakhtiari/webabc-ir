@@ -40,20 +40,13 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         };
     }
 
-    return {
-        ...constructMetadata({
-            title: `${project.title} | ${t.portfolio?.title || "Portfolio"}`,
-            description: project.description,
-            image: project.image,
-        }),
-        alternates: {
-            languages: {
-                'en': `/en/portfolio/${slug}`,
-                'fa': `/fa/portfolio/${slug}`,
-                'ar': `/ar/portfolio/${slug}`,
-            },
-        },
-    };
+    return constructMetadata({
+        title: `${project.title} | ${t.portfolio?.title || "Portfolio"}`,
+        description: project.description,
+        image: project.image,
+        lang: supportedLang,
+        slug: `/portfolio/${slug}`,
+    });
 }
 
 export default async function Page({
