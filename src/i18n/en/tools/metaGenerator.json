@@ -1,6 +1,6 @@
 {
     "title": "Meta Tag Generator",
-    "description": "A simple form that generates meta tags (title, description, social media open graph tags) for users to copy and paste into their website's <head> section.",
+    "description": "Generate optimized meta tags, titles, and social Open Graph tags for your website. Improve your search apperance and social sharing results instantly.",
     "enterInfo": "Enter Your Information",
     "pageTitle": "Page Title",
     "titlePlaceholder": "Your page title",

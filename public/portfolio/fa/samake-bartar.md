@@ -3,7 +3,7 @@ title: "بازسازی و مهاجرت وب‌سایت کلینیک سمعک ب�
 slug: "samak-bartar"
 category: "توسعه وب و سئو"
 image: "/images/portfolio/samak-bartar.webp"
-description: "مهاجرت موفق از جوملا به یک پلتفرم وردپرس حرفه‌ای، پرسرعت و بهینه‌سازی شده برای گوگل."
+description: بازسازی سایت سمعک برتر: مهاجرت از جوملا به وردپرس با تمرکز بر سئوی تکنیکال، رفع هم‌خواری کلمات کلیدی و دستیابی به رتبه‌های برتر در صنعت شنوایی‌سنجی.
 client: "کلینیک شنوایی‌سنجی سمعک برتر"
 projectUrl: "https://www.samakebartar.com"
 technologies: ["WordPress", "PHP", "MySQL", "Custom Theme", "Advanced SEO"]

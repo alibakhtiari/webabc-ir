@@ -3,7 +3,7 @@ title: "رمز أرز نكاران - منصة تعدين العملات المش
 slug: "ramzarz-negaran"
 category: "التجارة الإلكترونية والتطوير المخصص"
 image: "/images/portfolio/ramzarz-negaran.webp"
-description: "المركز الرائد في إيران لأجهزة تعدين العملات المشفرة القانونية، ويتميز بحاسبات ربحية مخصصة وبيانات سوق فورية."
+description: مشروع رمز أرز نكاران: تطوير أول منصة قانونية لتعدين العملات المشفرة في إيران مع حاسبة ربحية زنده ونظام متقدم لإدارة الثقة وسلاسل الإمداد.
 client: "رمز أرز نكاران"
 projectUrl: "https://ramzarznegaran.com"
 technologies: ["WordPress", "WooCommerce", "Custom JS", "REST APIs", "Programmatic SEO"]
