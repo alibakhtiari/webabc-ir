@@ -36,21 +36,13 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         };
     }
 
-    return {
-        ...constructMetadata({
-            title: post.title,
-            description: post.description,
-            image: post.image,
-        }),
-        alternates: {
-            canonical: `https://webabc.ir/${lang}/blog/${slug}`,
-            languages: {
-                'en': `/en/blog/${slug}`,
-                'fa': `/fa/blog/${slug}`,
-                'ar': `/ar/blog/${slug}`,
-            },
-        },
-    };
+    return constructMetadata({
+        title: post.title,
+        description: post.description,
+        image: post.image,
+        lang: lang,
+        slug: `/blog/${slug}`,
+    });
 }
 
 export default async function Page({

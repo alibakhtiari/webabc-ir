@@ -16,20 +16,12 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     const supportedLang = lang as SupportedLanguage;
     const t = await getDictionary(supportedLang);
 
-    return {
-        ...constructMetadata({
-            title: t.blog?.title || "Blog | WebABC",
-            description: t.blog?.blogDescription || "Latest News and Articles",
-        }),
-        alternates: {
-            canonical: `https://webabc.ir/${supportedLang}/blog`,
-            languages: {
-                'en': '/en/blog',
-                'fa': '/fa/blog',
-                'ar': '/ar/blog',
-            },
-        },
-    };
+    return constructMetadata({
+        title: t.blog?.title || "Blog | WebABC",
+        description: t.blog?.blogDescription || "Latest News and Articles",
+        lang: supportedLang,
+        slug: '/blog',
+    });
 }
 
 import { getAllItems } from "@/lib/mdData";

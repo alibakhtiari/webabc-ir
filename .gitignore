@@ -34,3 +34,5 @@ bun.lockb
 *.njsproj
 *.sln
 *.sw?
+*.csv
+package-lock.json

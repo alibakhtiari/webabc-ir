@@ -14,21 +14,13 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     const supportedLang = lang as SupportedLanguage;
     const t = await getDictionary(supportedLang);
 
-    return {
-        ...constructMetadata({
-            title: t.home?.title || "WebABC",
-            description: t.home?.description || "Web Design and Development Services",
-            preloadHero: '/images/homepage-hero.webp',
-        }),
-        alternates: {
-            canonical: `https://webabc.ir/${supportedLang}`,
-            languages: {
-                'en': '/en',
-                'fa': '/fa',
-                'ar': '/ar',
-            },
-        },
-    };
+    return constructMetadata({
+        title: t.home?.title || "WebABC",
+        description: t.home?.description || "Web Design and Development Services",
+        preloadHero: '/images/homepage-hero.webp',
+        lang: supportedLang,
+        slug: '',
+    });
 }
 
 export async function generateStaticParams() {

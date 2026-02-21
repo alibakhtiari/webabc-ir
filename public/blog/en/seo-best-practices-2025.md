@@ -1,6 +1,6 @@
 ---
 title: SEO Best Practices for 2025
-description: Discover the latest SEO strategies and techniques to boost your website's ranking in search engines
+description: Stay ahead with SEO best practices for 2025. Discover latest strategies for Core Web Vitals, AI optimization, and technical SEO to boost your search rankings.
 date: 2025-01-15
 author: WebABC Team
 category: SEO

@@ -1,6 +1,6 @@
 {
     "title": "Lorem Ipsum Generator",
-    "description": "A customizable generator for placeholder text. You could make it fun by adding different themes (e.g., \"startup lorem ipsum\", \"designer lorem ipsum\").",
+    "description": "Generate customizable placeholder text for your design projects. Choose from classic Lorem Ipsum or fun, modern startup and designer themes for your layouts.",
     "settings": "Settings",
     "numParagraphs": "Number of Paragraphs",
     "theme": "Theme",

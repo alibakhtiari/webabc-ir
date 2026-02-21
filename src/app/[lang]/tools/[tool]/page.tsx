@@ -61,25 +61,15 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     };
 
     const key = toolKeyMap[tool] || tool;
-    // @ts-ignore
-    const title = t.tools?.[key]?.title || "Tool | WebABC";
-    // @ts-ignore
-    const description = t.tools?.[key]?.description || "WebABC SEO Tool";
+    const title = t[key]?.title || "Tool | WebABC";
+    const description = t[key]?.description || "WebABC SEO Tool";
 
-    return {
-        ...constructMetadata({
-            title: `${title} | WebABC Tools`,
-            description: description,
-        }),
-        alternates: {
-            canonical: `https://webabc.ir/${lang}/tools/${tool}`,
-            languages: {
-                'en': `/en/tools/${tool}`,
-                'fa': `/fa/tools/${tool}`,
-                'ar': `/ar/tools/${tool}`,
-            },
-        },
-    };
+    return constructMetadata({
+        title: `${title} | WebABC Tools`,
+        description: description,
+        lang: supportedLang,
+        slug: `/tools/${tool}`,
+    });
 }
 
 export default async function Page({ params }: { params: Promise<{ lang: string; tool: string }> }) {
@@ -101,10 +91,8 @@ export default async function Page({ params }: { params: Promise<{ lang: string;
     };
 
     const key = toolKeyMap[tool] || tool;
-    // @ts-ignore
-    const title = t.tools?.[key]?.title || `${tool} Tool`;
-    // @ts-ignore
-    const description = t.tools?.[key]?.description || "WebABC SEO Tool";
+    const title = t[key]?.title || `${tool} Tool`;
+    const description = t[key]?.description || "WebABC SEO Tool";
 
     const jsonLd = {
         '@context': 'https://schema.org',

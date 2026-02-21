@@ -3,7 +3,7 @@ title: "التحول الرقمي لعيادة سماك ألفا"
 slug: "samake-alpha"
 category: "تحسين محركات البحث الطبي وتصميم الويب"
 image: "/images/portfolio/samake-alpha.webp"
-description: "تجديد رقمي شامل لعيادة ألفا للمعينات السمعية، والانتقال من الأنظمة القديمة إلى منصة ووردبريس آمنة وعالية السرعة."
+description: التحول الرقمي لعيادة سماك ألفا: ترقية شاملة لمنصة PHP 8.4، تحقيق سرعة تحميل فائقة وتصدر نتائج البحث الطبية في منطقه جردن بطهران.
 client: "عيادة سماك ألفا"
 projectUrl: "https://www.samakealpha.com"
 technologies: ["WordPress", "PHP 8.4", "Local SEO", "UX Design", "Migration"]
