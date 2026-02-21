@@ -7,11 +7,11 @@
   },
   "sectionDescription": "We provide comprehensive SEO and web development services to help your business succeed online. All our services are designed according to the latest global standards and customized for the specific needs of the market.",
   "title": "Professional SEO and Web Development Services",
-  "description": "Comprehensive digital marketing solutions for your business growth. Using the latest technologies and advanced techniques, we turn your website into a powerful tool for attracting customers.",
-  "subtitle": "Comprehensive Digital Marketing Solutions",
+  "description": "Expert SEO and web development solutions to grow your business. We build high-performance, responsive websites and implement data-driven strategies for maximum online visibility.",
+  "subtitle": "Comprehensive Digital Marketing & Web Development Solutions",
   "seo": {
     "title": "SEO & Specialized Optimization",
-    "description": "Improve your website ranking in search engines using standard SEO techniques.",
+    "description": "Professional SEO services to boost your search engine ranking. We use advanced, standard techniques to increase organic traffic, improve visibility, and grow your online presence.",
     "features": [
       "Keyword Research",
       "Content Optimization",
@@ -27,7 +27,7 @@
   },
   "webDesign": {
     "title": "Custom Website Design",
-    "description": "Design and development of websites with attractive UI, clean code and mobile compatibility.",
+    "description": "Custom web design and development services for modern businesses. We create attractive, SEO-friendly, and mobile-responsive websites that engage users and drive conversions.",
     "features": [
       "Responsive Design",
       "Modern User Interface",
@@ -38,7 +38,7 @@
   },
   "contentCreation": {
     "title": "Specialized Content Creation",
-    "description": "Production of high-quality content, optimized for keywords relevant to your business.",
+    "description": "High-quality content creation services tailored to your niche. We produce SEO-optimized articles and copy that resonate with your audience and improve search performance.",
     "features": [
       "Specialized Content",
       "SEO Optimized",
@@ -65,7 +65,7 @@
   ],
   "webDevelopment": "Web Development",
   "webDevelopmentTitle": "Website Design and Development Services",
-  "webDevelopmentDescription": "Our specialist team designs modern, user-friendly, and SEO-optimized websites. From simple corporate websites to complex online stores and interactive web applications, we provide solutions tailored to your needs.",
+  "webDevelopmentDescription": "Modern, user-friendly, and SEO-optimized website development. From corporate sites to complex e-commerce platforms, we build secure and scalable solutions for your business.",
   "wordpressDesc": "Professional design and development of WordPress websites, customized for your business needs",
   "frontendDev": "Frontend Development with React and Next.js",
   "frontendDesc": "Creating modern, fast, and responsive user interfaces using advanced frontend technologies",

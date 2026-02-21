@@ -1,6 +1,6 @@
 {
     "title": "FAQ Schema Generator",
-    "description": "Generate FAQ Page Schema markup to improve your search visibility.",
+    "description": "Create valid FAQ Page Schema markup (JSON-LD) for your website. Improve your search visibility and get rich results in Google with our easy-to-use generator.",
     "addQuestion": "Add Question",
     "questionLabel": "Question",
     "answerLabel": "Answer",
