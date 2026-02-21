@@ -3,7 +3,7 @@ title: "زيتون مسعود - التحول الرقمي للزراعة الت�
 slug: "zeytoun-masoud"
 category: "التجارة الإلكترونية واللوجستيات"
 image: "/images/portfolio/zeytoun-masoud.webp"
-description: "تحويل منتج زيتون تقليدي إلى علامة تجارية للتجارة الإلكترونية ذات حجم مبيعات مرتفع مع أنظمة B2B/B2C هجينة ومنطق لوجستي ديناميكي."
+description: زيتون مسعود: تحويل علامة تجارية تقليدية إلى رائدة في التجارة الإلكترونية الوطنية مع نظام B2B متخصص ولوجستيات شحن ديناميكية متطورة.
 client: "زيتون مسعود"
 projectUrl: "https://zeytounmasoud.ir"
 technologies: ["WordPress", "WooCommerce", "Custom Shipping Plugin", "SMS API", "SEO Schema"]
