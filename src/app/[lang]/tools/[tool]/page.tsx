@@ -61,8 +61,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     };
 
     const key = toolKeyMap[tool] || tool;
-    const title = t.tools?.[key]?.title || "Tool | WebABC";
-    const description = t.tools?.[key]?.description || "WebABC SEO Tool";
+    const title = t[key]?.title || "Tool | WebABC";
+    const description = t[key]?.description || "WebABC SEO Tool";
 
     return constructMetadata({
         title: `${title} | WebABC Tools`,
@@ -91,8 +91,8 @@ export default async function Page({ params }: { params: Promise<{ lang: string;
     };
 
     const key = toolKeyMap[tool] || tool;
-    const title = t.tools?.[key]?.title || `${tool} Tool`;
-    const description = t.tools?.[key]?.description || "WebABC SEO Tool";
+    const title = t[key]?.title || `${tool} Tool`;
+    const description = t[key]?.description || "WebABC SEO Tool";
 
     const jsonLd = {
         '@context': 'https://schema.org',
