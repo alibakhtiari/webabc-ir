@@ -3,7 +3,7 @@ title: "زیتون مسعود - تحول دیجیتال در کشاورزی سن
 slug: "zeytoun-masoud"
 category: "تجارت الکترونیک و لجستیک"
 image: "/images/portfolio/zeytoun-masoud.webp"
-description: "تبدیل یک تولیدکننده سنتی زیتون به یک برند تجارت الکترونیک پرفروش با سیستم‌های ترکیبی B2B/B2C و منطق لجستیکی پویا."
+description: زیتون مسعود: تبدیل یک تولیدکننده سنتی به برند ملی تجارت الکترونیک با پرتال اختصاصی B2B، لجستیک هوشمند حمل‌ونقل و استراتژی محتوای آموزشی موفق.
 client: "زیتون مسعود"
 projectUrl: "https://zeytounmasoud.ir"
 technologies: ["WordPress", "WooCommerce", "Custom Shipping Plugin", "SMS API", "SEO Schema"]
