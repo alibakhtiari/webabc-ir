@@ -3,7 +3,7 @@ title: "فور سيزونز كاربت كلين - محرك النمو الرقم
 slug: "4-seasons-carpet-clean"
 category: "السئو المحلي والتسويق الآلي"
 image: "/images/portfolio/4-seasons-carpet-clean.webp"
-description: "بناء نظام بيئي رقمي يهيمن على نتائج البحث المحلية ويعظم القيمة العمرية للعميل من خلال التسويق الآلي لعلامة تجارية رائدة في مجال التنظيف في لندن."
+description: دراسة حالة: كيف حققت WebABC السيطرة على نتائج البحث المحلية في لندن لمغسلة فور سيزونز، مع زيادة 40% في تقييمات العملاء وأتمتة فعالة للتسويق.
 client: "4 Seasons Carpet Clean"
 projectUrl: "https://4seasonscarpetclean.co.uk"
 technologies: ["WordPress", "GBP Optimization", "Email Automation", "Schema Markup", "Local SEO"]
