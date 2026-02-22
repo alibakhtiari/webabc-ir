@@ -28,7 +28,15 @@ const Sheet: React.FC<SheetProps> = ({ open, onOpenChange, children }) => {
     <div className="fixed inset-0 z-50">
       <div
         className="fixed inset-0 bg-black/80"
+        role="button"
+        tabIndex={-1}
+        aria-label="Close sheet"
         onClick={() => onOpenChange?.(false)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            onOpenChange?.(false);
+          }
+        }}
       />
       {children}
     </div>
@@ -85,13 +93,18 @@ SheetFooter.displayName = "SheetFooter";
 const SheetTitle = React.forwardRef<
   HTMLHeadingElement,
   React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
-  <h2
-    ref={ref}
-    className={cn("text-lg font-semibold text-foreground", className)}
-    {...props}
-  />
-));
+>(({ className, children, ...props }, ref) => {
+  if (!children) return null;
+  return (
+    <h2
+      ref={ref}
+      className={cn("text-lg font-semibold text-foreground", className)}
+      {...props}
+    >
+      {children}
+    </h2>
+  );
+});
 SheetTitle.displayName = "SheetTitle";
 
 const SheetDescription = React.forwardRef<

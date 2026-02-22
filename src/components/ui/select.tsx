@@ -138,15 +138,25 @@ const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
     const { value: selectedValue, onValueChange } = React.useContext(SelectContext);
     const isSelected = selectedValue === value;
 
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        onValueChange(value);
+      }
+    };
+
     return (
       <div
         ref={ref}
+        role="option"
+        aria-selected={isSelected}
+        tabIndex={0}
         className={cn(
           "relative flex w-full cursor-pointer select-none items-center rounded-sm py-1.5 px-2 text-sm outline-hidden hover:bg-accent hover:text-accent-foreground",
           isSelected && "bg-accent text-accent-foreground",
           className
         )}
         onClick={() => onValueChange(value)}
+        onKeyDown={handleKeyDown}
         {...props}
       >
         {children}
