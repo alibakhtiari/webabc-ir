@@ -42,7 +42,7 @@ export function constructMetadata({
         if (imgData) {
             // 1. Prioritize AVIF (Modern Browsers)
             if (imgData.avif && imgData.avif.length > 0) {
-                const srcSet = imgData.avif.map((v: any) => `${v.src} ${v.width}w`).join(', ');
+                const srcSet = imgData.avif.map((v: { src: string; width: number }) => `${v.src} ${v.width}w`).join(', ');
                 ReactDOM.preload(imgData.avif[imgData.avif.length - 1].src, {
                     as: 'image',
                     imageSrcSet: srcSet,

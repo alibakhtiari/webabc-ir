@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { getPathWithoutLanguage, generateLanguageAlternates } from '@/lib/languageUtils';
 
 interface SchemaMarkupProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   schema: Record<string, any> | Array<Record<string, any>>;
   noIndex?: boolean;
   noFollow?: boolean;

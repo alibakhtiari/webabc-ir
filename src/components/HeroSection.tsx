@@ -8,6 +8,7 @@ import { ArrowRight, ArrowLeft } from 'lucide-react';
 import OptimizedImage from './OptimizedImage';
 
 interface HeroSectionProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   heroImgData: any;
 }
 

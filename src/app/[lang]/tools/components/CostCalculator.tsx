@@ -27,30 +27,24 @@ const CostCalculator: React.FC = () => {
         multilingual: false
     });
 
-    const [totalCost, setTotalCost] = useState(baseCost);
+    let totalCost = baseCost;
 
-    useEffect(() => {
-        let cost = baseCost;
+    // Pages cost: $50 per page after 5 pages
+    if (features.pages > 5) {
+        totalCost += (features.pages - 5) * 50;
+    }
 
-        // Pages cost: $50 per page after 5 pages
-        if (features.pages > 5) {
-            cost += (features.pages - 5) * 50;
-        }
+    // Design cost
+    if (features.design === 'custom') {
+        totalCost += 1000;
+    }
 
-        // Design cost
-        if (features.design === 'custom') {
-            cost += 1000;
-        }
-
-        // Feature costs
-        if (features.ecommerce) cost += 1500;
-        if (features.seo) cost += 300;
-        if (features.blog) cost += 400;
-        if (features.auth) cost += 600;
-        if (features.multilingual) cost += 800;
-
-        setTotalCost(cost);
-    }, [features]);
+    // Feature costs
+    if (features.ecommerce) totalCost += 1500;
+    if (features.seo) totalCost += 300;
+    if (features.blog) totalCost += 400;
+    if (features.auth) totalCost += 600;
+    if (features.multilingual) totalCost += 800;
 
     const handleEmailQuote = () => {
         // For V1, simple mailto

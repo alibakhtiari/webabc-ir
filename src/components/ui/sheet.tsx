@@ -29,7 +29,7 @@ const Sheet: React.FC<SheetProps> = ({ open, onOpenChange, children }) => {
       <div
         className="fixed inset-0 bg-black/80"
         role="button"
-        tabIndex={-1}
+        tabIndex={0}
         aria-label="Close sheet"
         onClick={() => onOpenChange?.(false)}
         onKeyDown={(e) => {
@@ -57,6 +57,7 @@ const SheetContent = React.forwardRef<HTMLDivElement, SheetContentProps>(
     };
 
     return (
+      // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
       <div
         ref={ref}
         className={cn(

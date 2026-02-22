@@ -19,7 +19,8 @@ export async function getItem<T>(subdirectory: string, slug: string, language: s
         const langItems = categoryData[language];
         if (!langItems) return null;
 
-        const item = langItems.find((i: any) => (i as Record<string, unknown>).slug === slug);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const item = (langItems as any[]).find((i: any) => i.slug === slug);
         return item as T || null;
     } catch (error) {
         console.error(`Error loading item: ${subdirectory}/${language}/${slug}`, error);
