@@ -7,7 +7,6 @@ import { SkipLink } from "@/components/ui/SkipLink";
 import Navbar from "@/components/Navbar"; // Import Navbar
 import Footer from "@/components/Footer"; // Import Footer
 import { constructMetadata } from "@/lib/metadata";
-import { iranSansX, lato } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { getDictionary } from "@/i18n/get-dictionary";
 
@@ -96,7 +95,6 @@ export default async function RootLayout({
             </head>
             <body
                 className={cn(
-                    language.direction === 'rtl' ? iranSansX.variable : lato.variable,
                     language.fontFamily,
                     "antialiased min-h-screen flex flex-col" // Added flex column layout
                 )}
