@@ -45,5 +45,5 @@ export interface LanguageContextType {
   languageMeta: LanguageMeta;
   getSeoTitle: (title?: string) => string;
   getSeoDescription: (description?: string) => string;
-  translations: any; // Importing actual translations type would create circular dependency
+  translations: Record<string, unknown>; // Importing actual translations type would create circular dependency
 }

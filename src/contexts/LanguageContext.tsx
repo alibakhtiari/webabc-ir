@@ -85,17 +85,17 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, de
     } else if (!Object.keys(languages).includes(pathSegments[0] as SupportedLanguage)) {
       // Path doesn't start with a language code - add the current language
       router.replace(`/${language}${pathname}`);
-      setIsInitialized(true);
+      requestAnimationFrame(() => setIsInitialized(true));
     } else if (pathSegments[0] !== language) {
       // URL language is different from state language - update state
       const urlLang = pathSegments[0] as SupportedLanguage;
       if (Object.keys(languages).includes(urlLang)) {
-        setLanguageState(urlLang);
+        requestAnimationFrame(() => setLanguageState(urlLang));
         localStorage.setItem('language', urlLang);
-        setIsInitialized(true);
+        requestAnimationFrame(() => setIsInitialized(true));
       }
     } else {
-      setIsInitialized(true);
+      requestAnimationFrame(() => setIsInitialized(true));
     }
   }, [pathname, isInitialized, router, language]);
 

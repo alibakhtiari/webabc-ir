@@ -25,6 +25,7 @@ export function constructMetadata({
     description?: string;
     image?: string;
     icons?: string;
+    dictionary?: Record<string, unknown>;
     noIndex?: boolean;
     metadataBase?: URL;
     preloadHero?: string | PreloadOptions;
@@ -42,7 +43,6 @@ export function constructMetadata({
             // 1. Prioritize AVIF (Modern Browsers)
             if (imgData.avif && imgData.avif.length > 0) {
                 const srcSet = imgData.avif.map((v: any) => `${v.src} ${v.width}w`).join(', ');
-                // @ts-ignore - ReactDOM.preload types might be missing in some versions
                 ReactDOM.preload(imgData.avif[imgData.avif.length - 1].src, {
                     as: 'image',
                     imageSrcSet: srcSet,
@@ -53,8 +53,7 @@ export function constructMetadata({
             }
             // 2. Fallback to WebP
             else if (imgData.webp && imgData.webp.length > 0) {
-                const srcSet = imgData.webp.map((v: any) => `${v.src} ${v.width}w`).join(', ');
-                // @ts-ignore
+                const srcSet = imgData.webp.map((v: { src: string; width: number }) => `${v.src} ${v.width}w`).join(', ');
                 ReactDOM.preload(imgData.webp[imgData.webp.length - 1].src, {
                     as: 'image',
                     imageSrcSet: srcSet,
