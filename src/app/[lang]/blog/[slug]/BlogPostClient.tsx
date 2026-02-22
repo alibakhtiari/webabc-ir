@@ -28,13 +28,13 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
   // const [post, setPost] = useState<BlogPost | null>(null); // Removed state
   // const [isLoading, setIsLoading] = useState(true); // Removed loading state
   const [isTocOpen, setIsTocOpen] = useState(false);
-  const [origin, setOrigin] = useState('');
+  const [origin, setOrigin] = useState(() => (typeof window !== 'undefined' ? window.location.origin : ''));
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && !origin) {
       setOrigin(window.location.origin);
     }
-  }, []);
+  }, [origin]);
 
   // Fetching logic removed
 
@@ -56,7 +56,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
       const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-');
       return { text, id };
     });
-  }, [post?.content]);
+  }, [post?.content, post]);
 
   // Loading check removed
 

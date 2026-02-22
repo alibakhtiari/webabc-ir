@@ -25,14 +25,17 @@ interface LanguageProviderProps {
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, defaultLanguage, dictionary }) => {
   const initialLanguage = useLanguageDetection();
-  // Ensure we always have a valid language
-  const safeDefaultLanguage = (defaultLanguage && languages[defaultLanguage]) ? defaultLanguage :
-    (initialLanguage && languages[initialLanguage]) ? initialLanguage : 'fa';
-
-  const [language, setLanguageState] = useState<SupportedLanguage>(safeDefaultLanguage);
+  const [language, setLanguageState] = useState<SupportedLanguage>(initialLanguage);
   const router = useRouter();
   const pathname = usePathname();
   const [isInitialized, setIsInitialized] = useState(false);
+
+  useEffect(() => {
+    if (initialLanguage && initialLanguage !== language) {
+      setLanguageState(initialLanguage);
+    }
+    setIsInitialized(true);
+  }, [initialLanguage]);
 
   // Handle language change
   const setLanguage = (lang: SupportedLanguage) => {
@@ -78,7 +81,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, de
     if (pathSegments.length === 0) {
       // Root path "/" - redirect to language home
       router.replace(`/${language}`);
-      setIsInitialized(true);
+      requestAnimationFrame(() => setIsInitialized(true));
     } else if (!Object.keys(languages).includes(pathSegments[0] as SupportedLanguage)) {
       // Path doesn't start with a language code - add the current language
       router.replace(`/${language}${pathname}`);

@@ -7,30 +7,31 @@ import { SupportedLanguage, languages } from '@/types/language';
  * 
  * @returns Detected language code
  */
-export const useLanguageDetection = (): SupportedLanguage => {
-  const [detectedLanguage, setDetectedLanguage] = useState<SupportedLanguage>('fa');
+const getInitialLanguage = (): SupportedLanguage => {
+  if (typeof window === 'undefined') return 'fa';
 
-  useEffect(() => {
-    // Helper to validate language
-    const isValidLang = (lang: string): lang is SupportedLanguage => {
-      return Object.keys(languages).includes(lang);
-    };
+  const isValidLang = (lang: string): lang is SupportedLanguage => {
+    return lang in languages;
+  };
 
-    // Get language from local storage first
+  try {
     const storedLanguage = localStorage.getItem('language');
     if (storedLanguage && isValidLang(storedLanguage)) {
-      setDetectedLanguage(storedLanguage);
-      return;
+      return storedLanguage;
     }
 
-    // Detect from browser if not in storage
     const browserLang = navigator.language.split('-')[0];
     if (isValidLang(browserLang)) {
-      setDetectedLanguage(browserLang);
-    } else {
-      setDetectedLanguage('fa'); // Default to Persian
+      return browserLang;
     }
-  }, []);
+  } catch (e) {
+    console.error('Error detecting language:', e);
+  }
+  return 'fa';
+};
+
+export const useLanguageDetection = (): SupportedLanguage => {
+  const [detectedLanguage] = useState<SupportedLanguage>(getInitialLanguage);
 
   return detectedLanguage;
 };
