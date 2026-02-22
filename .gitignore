@@ -36,3 +36,4 @@ bun.lockb
 *.sw?
 *.csv
 package-lock.json
+tsconfig.tsbuildinfo
