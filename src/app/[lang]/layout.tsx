@@ -7,7 +7,7 @@ import { SkipLink } from "@/components/ui/SkipLink";
 import Navbar from "@/components/Navbar"; // Import Navbar
 import Footer from "@/components/Footer"; // Import Footer
 import { constructMetadata } from "@/lib/metadata";
-import { Vazirmatn, Lato } from "next/font/google";
+import { iranSansX, lato } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { getDictionary } from "@/i18n/get-dictionary";
 
@@ -28,19 +28,6 @@ export const metadata = constructMetadata({
     metadataBase: new URL('https://webabc.ir'),
 });
 
-// Initialize fonts
-const vazirmatn = Vazirmatn({
-    subsets: ["arabic"],
-    variable: "--font-vazirmatn",
-    display: "swap",
-});
-
-const lato = Lato({
-    weight: ["400", "700"],
-    subsets: ["latin"],
-    variable: "--font-lato",
-    display: "swap",
-});
 
 export default async function RootLayout({
     children,
@@ -99,10 +86,17 @@ export default async function RootLayout({
 
     return (
         <html lang={supportedLang} dir={language.direction} suppressHydrationWarning>
+            <head>
+                {/* Manual selective preloading for fonts based on direction */}
+                {language.direction === 'rtl' ? (
+                    <link rel="preload" href="/fonts/rtl.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+                ) : (
+                    <link rel="preload" href="/fonts/ltr.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+                )}
+            </head>
             <body
                 className={cn(
-                    vazirmatn.variable,
-                    lato.variable,
+                    language.direction === 'rtl' ? iranSansX.variable : lato.variable,
                     language.fontFamily,
                     "antialiased min-h-screen flex flex-col" // Added flex column layout
                 )}
