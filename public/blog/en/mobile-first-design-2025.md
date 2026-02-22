@@ -22,7 +22,6 @@ faq:
     answer: No, mobile-first means starting with mobile constraints and then progressively enhancing the experience for larger screens. You still deliver a great desktop experience.
 ---
 
-# Mobile-First Design in 2025: Essential Strategies
 
 With over 60% of web traffic coming from mobile devices, mobile-first design is no longer optional—it's essential. Here's everything you need to know.
 
