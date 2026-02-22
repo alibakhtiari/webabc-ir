@@ -11,11 +11,13 @@ interface HeroSectionProps {
   heroImgData: any;
 }
 
+const ArrowIcon = ({ isRTL }: { isRTL: boolean }) =>
+  isRTL ? <ArrowLeft className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />;
+
 const HeroSection: React.FC<HeroSectionProps> = ({ heroImgData }) => {
   const { t, language, languageMeta } = useLanguage();
 
   const isRTL = languageMeta.direction === 'rtl';
-  const ArrowIcon = isRTL ? () => <ArrowLeft className="h-4 w-4" /> : () => <ArrowRight className="h-4 w-4" />;
 
   return (
     <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-primary/5 to-white">
@@ -37,7 +39,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ heroImgData }) => {
               <Button variant="outline" size="lg" className="px-8" asChild>
                 <Link href={`/${language}/portfolio`} className="flex items-center gap-2">
                   {t('home.hero.secondaryCta', { fallback: 'View Portfolio' })}
-                  <ArrowIcon />
+                  <ArrowIcon isRTL={isRTL} />
                 </Link>
               </Button>
             </div>
