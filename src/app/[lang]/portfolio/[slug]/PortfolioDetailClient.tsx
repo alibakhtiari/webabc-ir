@@ -84,7 +84,15 @@ const PortfolioDetail = ({ project }: PortfolioDetailProps) => {
                             <div>
                                 <h2 className="text-2xl font-bold mb-4">{t('portfolio.projectOverview')}</h2>
                                 <div className="prose dark:prose-invert max-w-none text-muted-foreground">
-                                    <ReactMarkdown>{project.content}</ReactMarkdown>
+                                    <ReactMarkdown
+                                        components={{
+                                            h1: ({ children }) => (
+                                                <h2 className="text-3xl font-bold mb-4 mt-8">{children}</h2>
+                                            ),
+                                        }}
+                                    >
+                                        {project.content}
+                                    </ReactMarkdown>
                                 </div>
                             </div>
 

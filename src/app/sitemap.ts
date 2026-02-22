@@ -10,9 +10,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const languages = ['en', 'fa', 'ar'];
     // 1. Static Routes
     const staticRoutes = [
-        '', '/about', '/services', '/contact', '/portfolio', '/service-areas', '/faq', '/tools',
+        '', '/about', '/services', '/contact', '/portfolio', '/service-areas', '/faq', '/tools', '/blog',
         '/services/seo', '/services/web-development', '/services/local-seo',
-        '/services/wordpress-development', '/services/web-design'
+        '/services/wordpress-development', '/services/web-design',
+        '/services/content-creation', '/services/link-building', '/services/modern-web-development',
+        '/services/speed-optimization', '/services/ui-ux-audit', '/services/website-maintenance'
     ].flatMap(route =>
         languages.map(lang => ({
             url: `${BASE_URL}/${lang}${route}`,
@@ -22,7 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     );
 
     // 2. Dynamic Blog Routes
-    let dynamicRoutes: MetadataRoute.Sitemap = [];
+    const dynamicRoutes: MetadataRoute.Sitemap = [];
 
     for (const lang of languages) {
         // Blogs
@@ -45,7 +47,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
 
     // 3. Tools & Locations (Manually list these if they aren't in a DB/MD file)
-    const tools = ['headline-analyzer', 'lorem-generator', 'meta-generator', 'paa-scraper', 'readability-checker', 'serp-preview', 'utm-builder', 'faq-generator'];
+    const tools = [
+        'headline-analyzer', 'lorem-generator', 'meta-generator', 'paa-scraper',
+        'readability-checker', 'serp-preview', 'utm-builder', 'faq-generator',
+        'cost-calculator', 'privacy-policy-generator', 'qr-generator',
+        'social-media-preview', 'css-gradient-generator', 'glassmorphism-generator',
+        'slug-generator'
+    ];
     const locations = ['dubai', 'tehran', 'muscat', 'qazvin']; // Add all location slugs
 
     const miscRoutes = languages.flatMap(lang => [
