@@ -201,6 +201,9 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
             <article className="prose prose-lg dark:prose-invert max-w-none mb-12 prose-headings:scroll-mt-24 prose-h2:text-3xl prose-h2:font-bold prose-h2:mb-4 prose-h2:mt-8 prose-p:leading-relaxed prose-p:text-foreground/90 prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-img:shadow-lg">
               <ReactMarkdown
                 components={{
+                  h1: ({ children }) => {
+                    return <h2 className="text-3xl font-bold mb-4 mt-8">{children}</h2>;
+                  },
                   h2: ({ children }) => {
                     const text = String(children);
                     const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-');
