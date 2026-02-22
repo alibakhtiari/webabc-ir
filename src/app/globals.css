@@ -143,6 +143,22 @@
   }
 }
 
+@font-face {
+  font-family: 'IRANSansX';
+  src: url('/fonts/rtl.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('/fonts/ltr.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
@@ -194,9 +210,9 @@
   --animate-zoom-in: zoom-in 0.6s ease-out;
   --animate-blur-in: blur-in 0.6s ease-out;
 
-  --font-sans: var(--font-lato), system-ui, sans-serif;
-  --font-persian: var(--font-iran-sans-x), sans-serif;
-  --font-arabic: var(--font-iran-sans-x), sans-serif;
+  --font-sans: 'Lato', system-ui, sans-serif;
+  --font-persian: 'IRANSansX', sans-serif;
+  --font-arabic: 'IRANSansX', sans-serif;
 
   @keyframes accordion-down {
     from {
