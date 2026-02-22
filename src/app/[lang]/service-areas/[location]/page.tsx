@@ -58,9 +58,24 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         };
     }
 
+    let title, description;
+    switch (lang) {
+        case 'fa':
+            title = `خدمات طراحی سایت و سئو در ${locationData.name} | آژانس وب‌ اِی‌بی‌سی`;
+            description = `خدمات تخصصی طراحی سایت، سئو و دیجیتال مارکتینگ در ${locationData.name} توسط تیم وب‌ اِی‌بی‌سی.`;
+            break;
+        case 'ar':
+            title = `خدمات تصميم المواقع والسيو في ${locationData.name} | وكالة WebABC`;
+            description = `خدمات احترافية في تصميم المواقع وتحسين محركات البحث في ${locationData.name} من قبل فريق WebABC.`;
+            break;
+        default:
+            title = `Web Design & SEO Services in ${locationData.name} | WebABC Agency`;
+            description = `Professional Web Design and SEO services in ${locationData.name} by WebABC team. Comprehensive digital growth solutions.`;
+    }
+
     return constructMetadata({
-        title: `${locationData.name} | WebABC`,
-        description: `Web Design and SEO Services in ${locationData.name}`,
+        title,
+        description,
         lang: lang,
         slug: `/service-areas/${location}`,
     });
