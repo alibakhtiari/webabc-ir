@@ -28,7 +28,15 @@ const Dialog: React.FC<DialogProps> = ({ open, onOpenChange, children }) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div
         className="fixed inset-0 bg-black/80"
+        role="button"
+        tabIndex={-1}
+        aria-label="Close dialog"
         onClick={() => onOpenChange?.(false)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            onOpenChange?.(false);
+          }
+        }}
       />
       {children}
     </div>
@@ -73,13 +81,18 @@ DialogFooter.displayName = "DialogFooter";
 const DialogTitle = React.forwardRef<
   HTMLHeadingElement,
   React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
-  <h2
-    ref={ref}
-    className={cn("text-lg font-semibold leading-none tracking-tight", className)}
-    {...props}
-  />
-));
+>(({ className, children, ...props }, ref) => {
+  if (!children) return null;
+  return (
+    <h2
+      ref={ref}
+      className={cn("text-lg font-semibold leading-none tracking-tight", className)}
+      {...props}
+    >
+      {children}
+    </h2>
+  );
+});
 DialogTitle.displayName = "DialogTitle";
 
 const DialogDescription = React.forwardRef<

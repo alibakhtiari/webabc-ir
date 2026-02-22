@@ -117,14 +117,24 @@ const DropdownMenuItem = React.forwardRef<
     setOpen(false);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      onClick?.(e as any);
+      setOpen(false);
+    }
+  };
+
   return (
     <div
       ref={ref}
+      role="menuitem"
+      tabIndex={0}
       className={cn(
         "relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
         className
       )}
       onClick={handleClick}
+      onKeyDown={handleKeyDown}
       {...props}
     />
   );
