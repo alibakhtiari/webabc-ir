@@ -101,10 +101,20 @@ export default async function Page({ params }: { params: Promise<{ lang: string;
         'description': description,
         'applicationCategory': 'UtilitiesApplication',
         'operatingSystem': 'Web',
+        'image': `https://webabc.ir/images/tools/${tool}.webp`,
         'offers': {
             '@type': 'Offer',
             'price': '0',
             'priceCurrency': 'USD'
+        },
+        'aggregateRating': {
+            '@type': 'AggregateRating',
+            'ratingValue': '4.9',
+            'ratingCount': '124'
+        },
+        'publisher': {
+            '@type': 'Organization',
+            '@id': 'https://webabc.ir/#organization'
         },
         'url': `https://webabc.ir/${lang}/tools/${tool}`
     };

@@ -7,12 +7,13 @@ import SchemaMarkup from '@/components/seo/SchemaMarkup';
 
 const GlobalSchema = () => {
     const { language } = useLanguage();
+    const origin = "https://webabc.ir";
 
     const localBusinessSchema = createLocalBusinessSchema(
-        `https://webabc.ir/${language}`,
-        "https://webabc.ir/images/logo.webp",
-        "https://webabc.ir/images/og-image.webp",
-        [{ telephone: "+98123456789", contactType: "customer service" }],
+        `${origin}/${language}`,
+        `${origin}/images/logo.webp`,
+        `${origin}/images/og-image.webp`,
+        [{ telephone: "+989125811880", contactType: "customer service" }],
         "$$",
         language
     );
@@ -20,13 +21,14 @@ const GlobalSchema = () => {
     const websiteSchema = {
         "@context": "https://schema.org",
         "@type": "WebSite",
+        "@id": `${origin}/#website`,
         "name": "WebABC",
-        "url": "https://webabc.ir",
+        "url": origin,
         "potentialAction": {
             "@type": "SearchAction",
             "target": {
                 "@type": "EntryPoint",
-                "urlTemplate": "https://webabc.ir/search?q={search_term_string}"
+                "urlTemplate": `${origin}/search?q={search_term_string}`
             },
             "query-input": "required name=search_term_string"
         }
@@ -35,15 +37,16 @@ const GlobalSchema = () => {
     const organizationSchema = {
         '@context': 'https://schema.org',
         '@type': 'Organization',
-        '@id': 'https://webabc.ir/#organization',
+        '@id': `${origin}/#organization`,
         'name': 'WebABC',
-        'url': `https://webabc.ir/${language}`,
+        'url': `${origin}/${language}`,
         'logo': {
             '@type': 'ImageObject',
-            'url': 'https://webabc.ir/images/logo.webp',
+            'url': `${origin}/images/logo.webp`,
             'width': 512,
             'height': 512
         },
+        'image': `${origin}/images/logo.webp`,
         'contactPoint': {
             '@type': 'ContactPoint',
             'telephone': '+989125811880',
