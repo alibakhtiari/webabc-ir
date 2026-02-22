@@ -10,9 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     const t = await getDictionary(supportedLang);
 
     return constructMetadata({
-        // @ts-ignore
         title: t['modern-web']?.title,
-        // @ts-ignore
         description: t['modern-web']?.description,
         slug: '/services/modern-web-development',
         lang: supportedLang,

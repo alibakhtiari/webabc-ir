@@ -29,7 +29,7 @@ const Dialog: React.FC<DialogProps> = ({ open, onOpenChange, children }) => {
       <div
         className="fixed inset-0 bg-black/80"
         role="button"
-        tabIndex={-1}
+        tabIndex={0}
         aria-label="Close dialog"
         onClick={() => onOpenChange?.(false)}
         onKeyDown={(e) => {
@@ -47,6 +47,7 @@ const DialogContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, children, ...props }, ref) => (
+  // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
   <div
     ref={ref}
     className={cn(
@@ -119,6 +120,7 @@ const DialogClose = React.forwardRef<HTMLButtonElement, DialogCloseProps>(
     };
 
     if (asChild && React.isValidElement(children)) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       return React.cloneElement(children as React.ReactElement<any>, {
         onClick: handleClick,
       });

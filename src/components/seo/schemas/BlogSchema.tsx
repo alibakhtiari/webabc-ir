@@ -15,7 +15,7 @@ const BlogSchema: React.FC<BlogSchemaProps> = ({ posts }) => {
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            setOrigin(window.location.origin);
+            requestAnimationFrame(() => setOrigin(window.location.origin));
         }
     }, []);
 

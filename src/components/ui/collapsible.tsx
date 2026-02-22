@@ -35,6 +35,7 @@ const Collapsible = React.forwardRef<HTMLDivElement, CollapsibleProps>(
                         if (typeof child.type === 'string') {
                             return child;
                         }
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         return React.cloneElement(child as React.ReactElement<any>, {
                             isOpen,
                             handleOpenChange,
@@ -61,6 +62,7 @@ const CollapsibleTrigger = React.forwardRef<HTMLButtonElement, CollapsibleTrigge
         };
 
         if (asChild && React.isValidElement(children)) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             return React.cloneElement(children as React.ReactElement<any>, {
                 onClick: handleClick,
                 "data-state": isOpen ? "open" : "closed",

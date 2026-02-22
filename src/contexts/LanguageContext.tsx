@@ -15,12 +15,13 @@ import { SupportedLanguage, LanguageMeta, languages, LanguageContextType } from 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 // Define a generic Dictionary type or import the return type from get-dictionary
-type Dictionary = Record<string, any>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type TranslationDictionary = Record<string, any>;
 
 interface LanguageProviderProps {
   children: ReactNode;
   defaultLanguage?: SupportedLanguage;
-  dictionary: Dictionary;
+  dictionary: TranslationDictionary;
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, defaultLanguage, dictionary }) => {
@@ -32,10 +33,10 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, de
 
   useEffect(() => {
     if (initialLanguage && initialLanguage !== language) {
-      setLanguageState(initialLanguage);
+      requestAnimationFrame(() => setLanguageState(initialLanguage));
     }
-    setIsInitialized(true);
-  }, [initialLanguage]);
+    requestAnimationFrame(() => setIsInitialized(true));
+  }, [initialLanguage, language]);
 
   // Handle language change
   const setLanguage = (lang: SupportedLanguage) => {

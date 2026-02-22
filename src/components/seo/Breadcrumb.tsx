@@ -69,7 +69,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ customItems }) => {
 
           const toolKey = toolKeyMap[segment];
           if (toolKey) {
-            // @ts-ignore
+
             const toolTitle = t(`${toolKey}.title`);
             if (toolTitle && toolTitle !== `${toolKey}.title`) {
               name = toolTitle;

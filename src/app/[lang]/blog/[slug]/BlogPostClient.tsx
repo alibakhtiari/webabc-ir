@@ -32,7 +32,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined' && !origin) {
-      setOrigin(window.location.origin);
+      requestAnimationFrame(() => setOrigin(window.location.origin));
     }
   }, [origin]);
 
@@ -56,7 +56,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
       const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-');
       return { text, id };
     });
-  }, [post?.content, post]);
+  }, [post]);
 
   // Loading check removed
 
