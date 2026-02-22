@@ -14,7 +14,7 @@ import { getPageNameFromPath } from './languageUtils';
 export const getTranslatedString = (
   key: string,
   language: SupportedLanguage,
-  dictionary: any,
+  dictionary: Record<string, any>,
   options?: { fallback?: string }
 ): string => {
   try {

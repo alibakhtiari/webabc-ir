@@ -14,7 +14,7 @@ export const generateLanguageAlternates = (
 ): Array<{ lang: string, url: string }> => {
   const languages: SupportedLanguage[] = ['fa', 'en', 'ar'];
   const baseUrl = window.location.origin;
-  
+
   return languages.map(lang => ({
     lang,
     url: `${baseUrl}/${lang}${path}`
@@ -70,14 +70,14 @@ export const getContextualTranslationKey = (
   pagePath: string
 ): string => {
   // Extract the page name from the path (e.g., '/contact' -> 'contact')
-  const pageMatch = pagePath.match(/\/([^\/]+)$/);
+  const pageMatch = pagePath.match(/\/([^/]+)$/);
   const pageName = pageMatch ? pageMatch[1] : '';
-  
+
   // If we have a specific page translation, try to use it
   if (pageName && baseKey.startsWith('page.')) {
     return `page.${pageName}.${baseKey.substring(5)}`;
   }
-  
+
   return baseKey;
 };
 
@@ -89,13 +89,13 @@ export const getContextualTranslationKey = (
  */
 export const getPageNameFromPath = (path: string): string => {
   if (!path || path === '/') return 'home';
-  
+
   const cleanPath = path.endsWith('/') ? path.slice(0, -1) : path;
   const segments = cleanPath.split('/').filter(Boolean);
-  
+
   // If there are no segments after language code, it's the homepage
   if (segments.length === 0) return 'home';
-  
+
   // Get the last segment as the page name
   return segments[segments.length - 1];
 };
