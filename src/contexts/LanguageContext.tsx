@@ -25,18 +25,30 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, defaultLanguage, dictionary }) => {
+  // Use defaultLanguage from URL params as the primary source of truth for initial render
+  // This prevents hydration mismatches where server uses 'fa' but client detects 'ar'
   const initialLanguage = useLanguageDetection();
-  const [language, setLanguageState] = useState<SupportedLanguage>(initialLanguage);
+  const [language, setLanguageState] = useState<SupportedLanguage>(defaultLanguage || initialLanguage || 'fa');
   const router = useRouter();
   const pathname = usePathname();
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    if (initialLanguage && initialLanguage !== language) {
-      requestAnimationFrame(() => setLanguageState(initialLanguage));
+    // Only update to detected language if we are on the root path and haven't initialized
+    if (!pathname || pathname === '/') {
+      if (initialLanguage && initialLanguage !== language) {
+        requestAnimationFrame(() => setLanguageState(initialLanguage));
+      }
     }
     requestAnimationFrame(() => setIsInitialized(true));
-  }, [initialLanguage, language]);
+  }, [initialLanguage, pathname, language]);
+
+  // Sync language state with URL defaultLanguage if URL changes
+  useEffect(() => {
+    if (defaultLanguage && defaultLanguage !== language) {
+      requestAnimationFrame(() => setLanguageState(defaultLanguage));
+    }
+  }, [defaultLanguage, language]);
 
   // Handle language change
   const setLanguage = (lang: SupportedLanguage) => {
