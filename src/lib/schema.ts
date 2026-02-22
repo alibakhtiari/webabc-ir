@@ -16,18 +16,26 @@ export const createOrganizationSchema = (
   contactPoints: ContactPoint[] = [],
   language: SupportedLanguage = 'en'
 ) => {
+  const name = language === 'en' ? 'WebABC' : language === 'ar' ? 'ويب إيه بي سي' : 'وب اِی‌بی‌سی';
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': 'https://webabc.ir/#organization',
     url,
     logo,
-    name: language === 'en' ? 'WebABC' : language === 'ar' ? 'ويب إيه بي سي' : 'وب اِی‌بی‌سی',
+    image: `${url.split('/').slice(0, 3).join('/')}/images/logo.webp`,
+    name,
     description: language === 'en'
       ? 'Professional web development and SEO services company'
       : language === 'ar'
         ? 'شركة خدمات تطوير الويب واحترافية تحسين محركات البحث'
         : 'شرکت خدمات توسعه وب و سئو حرفه‌ای',
-    contactPoint: contactPoints,
+    contactPoint: contactPoints.map(cp => ({
+      '@type': 'ContactPoint',
+      ...cp,
+      areaServed: ['IR', 'AE', 'OM'],
+      availableLanguage: ['en', 'fa', 'ar']
+    })),
     sameAs: [
       'https://facebook.com/webabc',
       'https://twitter.com/webabc',
@@ -41,8 +49,7 @@ export const createOrganizationSchema = (
       addressRegion: language === 'en' ? 'Tehran Province' : language === 'ar' ? 'محافظة طهران' : 'استان تهران',
       postalCode: '1234567890',
       streetAddress: language === 'en' ? 'Valiasr St.' : language === 'ar' ? 'شارع ولي عصر' : 'خیابان ولیعصر'
-    },
-    inLanguage: language === 'en' ? 'en-US' : language === 'ar' ? 'ar-SA' : 'fa-IR'
+    }
   };
 };
 
@@ -63,8 +70,10 @@ export const createLocalBusinessSchema = (
   return {
     ...orgSchema,
     '@type': 'LocalBusiness',
+    '@id': 'https://webabc.ir/#localbusiness',
     image,
     priceRange,
+    telephone: contactPoints[0]?.telephone || "+989125811880",
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
@@ -203,13 +212,17 @@ export const createWebSiteSchema = (
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
+    '@id': 'https://webabc.ir/#website',
     url,
     name,
     description,
     inLanguage: language === 'en' ? 'en-US' : language === 'ar' ? 'ar-SA' : 'fa-IR',
     potentialAction: {
       '@type': 'SearchAction',
-      target: `${url}/?s={search_term_string}`,
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${url}/search?q={search_term_string}`
+      },
       'query-input': 'required name=search_term_string'
     }
   };

@@ -4,20 +4,25 @@ import { createOrganizationSchema } from '@/lib/schema';
 import SchemaMarkup from '@/components/seo/SchemaMarkup';
 
 const AboutSchema = () => {
-    const { language } = useLanguage();
+    const { language, t } = useLanguage();
     const baseUrl = 'https://webabc.ir'; // Hardcoding base URL for SSR consistency or use a config
 
     // Organization schema
-    const orgSchema = createOrganizationSchema(
-        baseUrl,
-        `${baseUrl}/images/logo.webp`,
-        [
-            { telephone: "+1234567890", contactType: "customer service" }
-        ],
-        language
-    );
+    const orgSchema = {
+        "@id": "https://webabc.ir/#organization"
+    };
 
-    return <SchemaMarkup schema={orgSchema} />;
+    const aboutPageSchema = {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": language === 'en' ? 'About Us' : language === 'ar' ? 'من نحن' : 'درباره ما',
+        "description": t('about.description'),
+        "mainEntity": {
+            "@id": "https://webabc.ir/#organization"
+        }
+    };
+
+    return <SchemaMarkup schema={aboutPageSchema} />;
 };
 
 export default AboutSchema;
