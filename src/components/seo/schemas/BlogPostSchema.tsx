@@ -13,13 +13,14 @@ const BlogPostSchema: React.FC<BlogPostSchemaProps> = ({ post }) => {
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            setOrigin(window.location.origin);
+            requestAnimationFrame(() => setOrigin(window.location.origin));
         }
     }, []);
 
     const articleSchema = {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
+        "@id": `${origin}/${language}/blog/${post.slug}#article`,
         headline: post.title,
         description: post.description,
         image: post.image.startsWith('http') ? post.image : `${origin}${post.image}`,
@@ -27,15 +28,15 @@ const BlogPostSchema: React.FC<BlogPostSchemaProps> = ({ post }) => {
         dateModified: post.date,
         author: {
             "@type": "Person",
-            name: post.author
+            "name": post.author,
+            "url": `${origin}/about`
         },
         publisher: {
-            "@type": "Organization",
-            name: language === 'en' ? 'WebABC' : language === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث',
-            logo: {
-                "@type": "ImageObject",
-                url: `${origin}/og-image.png`
-            }
+            "@id": "https://webabc.ir/#organization"
+        },
+        mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": `${origin}/${language}/blog/${post.slug}`
         },
         keywords: post.tags.join(', '),
         articleSection: post.category,

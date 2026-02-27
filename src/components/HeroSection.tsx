@@ -8,17 +8,20 @@ import { ArrowRight, ArrowLeft } from 'lucide-react';
 import OptimizedImage from './OptimizedImage';
 
 interface HeroSectionProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   heroImgData: any;
 }
+
+const ArrowIcon = ({ isRTL }: { isRTL: boolean }) =>
+  isRTL ? <ArrowLeft className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />;
 
 const HeroSection: React.FC<HeroSectionProps> = ({ heroImgData }) => {
   const { t, language, languageMeta } = useLanguage();
 
   const isRTL = languageMeta.direction === 'rtl';
-  const ArrowIcon = isRTL ? () => <ArrowLeft className="h-4 w-4" /> : () => <ArrowRight className="h-4 w-4" />;
 
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-primary/5 to-white">
+    <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-linear-to-b from-primary/5 to-white">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="col-span-1 lg:col-span-6 text-center lg:text-start">
@@ -37,14 +40,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({ heroImgData }) => {
               <Button variant="outline" size="lg" className="px-8" asChild>
                 <Link href={`/${language}/portfolio`} className="flex items-center gap-2">
                   {t('home.hero.secondaryCta', { fallback: 'View Portfolio' })}
-                  <ArrowIcon />
+                  <ArrowIcon isRTL={isRTL} />
                 </Link>
               </Button>
             </div>
           </div>
           <div className="col-span-1 lg:col-span-6">
             <div className="relative">
-              <div className="absolute -z-10 inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 blur-3xl rounded-full transform scale-110"></div>
+              <div className="absolute -z-10 inset-0 bg-linear-to-tr from-primary/20 to-secondary/20 blur-3xl rounded-full transform scale-110"></div>
               <OptimizedImage
                 src="/images/homepage-hero.webp"
                 imageData={heroImgData}

@@ -11,12 +11,7 @@ export default function GradientGenerator() {
     const [color1, setColor1] = useState('#4f46e5');
     const [color2, setColor2] = useState('#ec4899');
     const [direction, setDirection] = useState(135);
-    const [cssCode, setCssCode] = useState('');
-
-    useEffect(() => {
-        const code = `background: linear-gradient(${direction}deg, ${color1}, ${color2});`;
-        setCssCode(code);
-    }, [color1, color2, direction]);
+    const cssCode = `background: linear-gradient(${direction}deg, ${color1}, ${color2});`;
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(cssCode);
@@ -31,7 +26,7 @@ export default function GradientGenerator() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 pt-20 pb-10 md:pt-32 md:pb-16">
+        <div className="min-h-screen bg-linear-to-b from-background to-muted/20 pt-20 pb-10 md:pt-32 md:pb-16">
             <div className="container mx-auto px-4 max-w-4xl space-y-6 md:space-y-8">
                 <Breadcrumb />
                 <div className="text-center space-y-3 md:space-y-4">

@@ -72,28 +72,28 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                       <div className="grid grid-cols-2 gap-3 ps-2 border-s border-border/50">
                         <Link
                           href={`/${language}/services/seo`}
-                          className="block text-foreground/80 hover:text-primary text-sm break-words"
+                          className="block text-foreground/80 hover:text-primary text-sm wrap-break-word"
                           onClick={onClose}
                         >
                           {t('services.seoTitle')}
                         </Link>
                         <Link
                           href={`/${language}/services/local-seo`}
-                          className="block text-foreground/80 hover:text-primary text-sm break-words"
+                          className="block text-foreground/80 hover:text-primary text-sm wrap-break-word"
                           onClick={onClose}
                         >
                           {t('services.localSeoTitle')}
                         </Link>
                         <Link
                           href={`/${language}/services/link-building`}
-                          className="block text-foreground/80 hover:text-primary text-sm break-words"
+                          className="block text-foreground/80 hover:text-primary text-sm wrap-break-word"
                           onClick={onClose}
                         >
                           {t('services.linkBuildingTitle')}
                         </Link>
                         <Link
                           href={`/${language}/services/content-creation`}
-                          className="block text-foreground/80 hover:text-primary text-sm break-words"
+                          className="block text-foreground/80 hover:text-primary text-sm wrap-break-word"
                           onClick={onClose}
                         >
                           {t('services.contentCreationTitle')}
@@ -107,28 +107,28 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                       <div className="grid grid-cols-2 gap-3 ps-2 border-s border-border/50">
                         <Link
                           href={`/${language}/services/web-development`}
-                          className="block text-foreground/80 hover:text-primary text-sm break-words"
+                          className="block text-foreground/80 hover:text-primary text-sm wrap-break-word"
                           onClick={onClose}
                         >
                           {t('services.webDevTitle')}
                         </Link>
                         <Link
                           href={`/${language}/services/wordpress-development`}
-                          className="block text-foreground/80 hover:text-primary text-sm break-words"
+                          className="block text-foreground/80 hover:text-primary text-sm wrap-break-word"
                           onClick={onClose}
                         >
                           {t('wordpress.wordpressAndWoocommerce')}
                         </Link>
                         <Link
                           href={`/${language}/services/web-design`}
-                          className="block text-foreground/80 hover:text-primary text-sm break-words"
+                          className="block text-foreground/80 hover:text-primary text-sm wrap-break-word"
                           onClick={onClose}
                         >
                           {t('common.webDesignAndDevelopment')}
                         </Link>
                         <Link
                           href={`/${language}/services/modern-web-development`}
-                          className="block text-foreground/80 hover:text-primary text-sm break-words"
+                          className="block text-foreground/80 hover:text-primary text-sm wrap-break-word"
                           onClick={onClose}
                         >
                           {t('common.modernWebDevelopment')}

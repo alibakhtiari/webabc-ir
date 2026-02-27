@@ -14,7 +14,8 @@ import { getPageNameFromPath } from './languageUtils';
 export const getTranslatedString = (
   key: string,
   language: SupportedLanguage,
-  dictionary: any,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  dictionary: Record<string, any>,
   options?: { fallback?: string }
 ): string => {
   try {
@@ -75,7 +76,8 @@ export const getTranslatedString = (
 export const getSeoTitle = (
   language: SupportedLanguage,
   pathname: string,
-  dictionary: any,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  dictionary: Record<string, any>,
   title?: string
 ): string => {
   if (!title) {
@@ -100,7 +102,8 @@ export const getSeoTitle = (
 export const getSeoDescription = (
   language: SupportedLanguage,
   pathname: string,
-  dictionary: any,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  dictionary: Record<string, any>,
   description?: string
 ): string => {
   if (!description) {

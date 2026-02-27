@@ -9,7 +9,6 @@ image: /images/blog/digital-marketing.webp
 readTime: 7
 ---
 
-# Effective Digital Marketing Strategies for Small Businesses
 
 Digital marketing levels the playing field for small businesses. Here's how to maximize your online presence with limited resources.
 

@@ -60,13 +60,13 @@ const ToolsPage: React.FC = () => {
 
       <ToolsSchema />
 
-      <div className="flex-grow w-full overflow-x-hidden">
+      <div className="grow w-full overflow-x-hidden">
         {/* Hero Section */}
-        <section className="bg-gradient-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24">
+        <section className="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <Breadcrumb />
-              <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-[1.5]">{t('tools.title')}</h1>
+              <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-normal">{t('tools.title')}</h1>
               <p className="text-lg md:text-xl text-gray-600">{t('tools.description')}</p>
             </div>
           </div>

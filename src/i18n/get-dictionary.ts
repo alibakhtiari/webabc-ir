@@ -49,6 +49,9 @@ const namespaces = {
     slugGenerator: 'tools/slugGenerator',
     socialPreview: 'tools/socialPreview',
     gradientGen: 'tools/gradientGen',
+
+    cookieNotice: 'cookie',
+    privacyPolicy: 'privacy',
 } as const;
 
 type NamespaceKey = keyof typeof namespaces;
@@ -64,6 +67,7 @@ const loadLocaleDictionary = async (locale: string) => {
     return Object.fromEntries(entries);
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const dictionaries: Record<SupportedLanguage, () => Promise<any>> = {
     en: () => loadLocaleDictionary('en'),
     fa: () => loadLocaleDictionary('fa'),

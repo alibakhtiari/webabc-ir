@@ -13,28 +13,42 @@ declare module 'react' {
 
 // 2. FIX: Omit 'priority' from ImageProps to silence the deprecation warning
 // and redefine it manually below.
+interface SourceData {
+  src: string;
+  width: number;
+}
+
+interface ImageData {
+  avif: SourceData[];
+  webp: SourceData[];
+  placeholder: string;
+  original: string;
+  width: number;
+  height: number;
+}
+
 interface OptimizedImageProps extends Omit<ImageProps, 'src' | 'priority'> {
   src: string;
   className?: string;
   alt: string;
-  imageData?: any;
-  priority?: boolean; // Manually define it here
+  imageData?: ImageData;
+  priority?: boolean;
 }
 
 const OptimizedImage = ({ src, alt, className, priority, fill, imageData, sizes, ...props }: OptimizedImageProps) => {
-  const [isLoaded, setIsLoaded] = useState(!!priority);
+  const [isLoaded, setIsLoaded] = useState(() => !!priority);
   const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     if (!priority && imgRef.current?.complete) {
-      setIsLoaded(true);
+      requestAnimationFrame(() => setIsLoaded(true));
     }
   }, [priority]);
 
   if (imageData) {
     const { avif, webp, placeholder, original, width, height } = imageData;
-    const avifSrcSet = avif.map((v: any) => `${v.src} ${v.width}w`).join(', ');
-    const webpSrcSet = webp.map((v: any) => `${v.src} ${v.width}w`).join(', ');
+    const avifSrcSet = avif.map((v: SourceData) => `${v.src} ${v.width}w`).join(', ');
+    const webpSrcSet = webp.map((v: SourceData) => `${v.src} ${v.width}w`).join(', ');
 
     return (
       <div

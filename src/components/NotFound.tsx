@@ -22,7 +22,7 @@ const NotFound = () => {
   return (
     <>
 
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-background to-gray-100 p-4">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-linear-to-b from-background to-gray-100 p-4">
         <div className="text-center max-w-md animate-fade-up">
           <div className="mb-6 flex justify-center">
             <div className="relative">

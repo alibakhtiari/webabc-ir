@@ -24,7 +24,7 @@ const ServiceHero = ({
     className
 }: ServiceHeroProps) => {
     return (
-        <section className={cn("bg-gradient-to-b from-primary/10 to-white pt-28 pb-16 md:pt-32 md:pb-24", className)}>
+        <section className={cn("bg-linear-to-b from-primary/10 to-white pt-28 pb-16 md:pt-32 md:pb-24", className)}>
             <div className="container mx-auto px-4">
                 <div className={cn("max-w-6xl mx-auto", !heroImage && "text-center")}>
                     <Breadcrumb />

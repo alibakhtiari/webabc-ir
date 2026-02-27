@@ -10,9 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     const t = await getDictionary(supportedLang);
 
     return constructMetadata({
-        // @ts-ignore
         title: t.contentCreation?.title,
-        // @ts-ignore
         description: t.contentCreation?.subtitle,
         slug: '/services/content-creation',
         lang: supportedLang,

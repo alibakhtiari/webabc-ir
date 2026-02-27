@@ -9,7 +9,6 @@ image: /images/blog/web-design.webp
 readTime: 6
 ---
 
-# Modern Web Design Trends for 2025
 
 The web design landscape is constantly evolving. Here are the top trends shaping the industry in 2025.
 

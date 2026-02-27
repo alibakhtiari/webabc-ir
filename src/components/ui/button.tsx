@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
@@ -43,9 +41,10 @@ export interface ButtonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, children, ...props }, ref) => {
-    // If asChild is true, clone the child element and merge props
     if (asChild && React.isValidElement(children)) {
+      // eslint-disable-next-line react-hooks/refs, @typescript-eslint/no-explicit-any
       return React.cloneElement(children as React.ReactElement<any>, {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         className: cn(buttonVariants({ variant, size }), className, (children as any).props?.className),
         ref,
         ...props,

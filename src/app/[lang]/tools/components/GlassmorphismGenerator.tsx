@@ -36,7 +36,7 @@ border: 1px solid rgba(255, 255, 255, 0.3);`;
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 pt-20 pb-10 md:pt-32 md:pb-16">
+        <div className="min-h-screen bg-linear-to-b from-background to-muted/20 pt-20 pb-10 md:pt-32 md:pb-16">
             <div className="container mx-auto px-4 max-w-4xl space-y-6 md:space-y-8">
                 <Breadcrumb />
                 <div className="text-center space-y-3 md:space-y-4">
@@ -115,7 +115,7 @@ border: 1px solid rgba(255, 255, 255, 0.3);`;
                         </CardHeader>
                         <CardContent className="space-y-6">
                             {/* Preview Box with Pattern Background */}
-                            <div className="h-64 rounded-lg bg-gradient-to-br from-purple-500 via-pink-500 to-red-500 flex items-center justify-center p-8 relative overflow-hidden">
+                            <div className="h-64 rounded-lg bg-linear-to-br from-purple-500 via-pink-500 to-red-500 flex items-center justify-center p-8 relative overflow-hidden">
                                 {/* Abstract shapes for glass effect */}
                                 <div className="absolute top-4 left-4 w-16 h-16 bg-white/30 rounded-full blur-xl"></div>
                                 <div className="absolute bottom-4 right-4 w-24 h-24 bg-blue-500/30 rounded-full blur-xl"></div>

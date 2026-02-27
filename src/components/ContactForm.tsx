@@ -63,7 +63,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSuccess, className }) => {
                 body: JSON.stringify(payload)
             });
 
-            const result = await res.json() as any;
+            const result = await res.json() as { message?: string, error?: string };
 
             if (res.ok) {
                 setResponseMessage({ type: 'success', text: result.message || t('contact.messageSent') || 'Message sent successfully!' });

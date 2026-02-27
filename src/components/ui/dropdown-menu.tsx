@@ -36,6 +36,7 @@ const DropdownMenuTrigger: React.FC<DropdownMenuTriggerProps> = ({ asChild, chil
   const handleClick = () => setOpen(!open);
 
   if (asChild && React.isValidElement(children)) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return React.cloneElement(children as React.ReactElement<any>, {
       onClick: handleClick,
     });
@@ -117,14 +118,25 @@ const DropdownMenuItem = React.forwardRef<
     setOpen(false);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      onClick?.(e as any);
+      setOpen(false);
+    }
+  };
+
   return (
     <div
       ref={ref}
+      role="menuitem"
+      tabIndex={0}
       className={cn(
         "relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
         className
       )}
       onClick={handleClick}
+      onKeyDown={handleKeyDown}
       {...props}
     />
   );
