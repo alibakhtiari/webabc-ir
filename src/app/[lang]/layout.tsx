@@ -6,6 +6,7 @@ import GlobalSchema from "@/components/GlobalSchema";
 import { SkipLink } from "@/components/ui/SkipLink";
 import Navbar from "@/components/Navbar"; // Import Navbar
 import Footer from "@/components/Footer"; // Import Footer
+import CookieBanner from "@/components/CookieBanner"; // Import CookieBanner
 import { constructMetadata } from "@/lib/metadata";
 import { cn } from "@/lib/utils";
 import { getDictionary } from "@/i18n/get-dictionary";
@@ -46,6 +47,7 @@ export default async function RootLayout({
         cta: dictionary.cta,
         contact: dictionary.contact,
         consultation: dictionary.consultation,
+        cookieNotice: dictionary.cookieNotice,
         services: dictionary.services,
         blog: dictionary.blog,
         tools: dictionary.tools,
@@ -117,6 +119,7 @@ export default async function RootLayout({
                     {/* 3. Footer is now Global */}
                     <Footer />
 
+                    <CookieBanner />
                     <Toaster />
                 </LanguageProvider>
             </body>
