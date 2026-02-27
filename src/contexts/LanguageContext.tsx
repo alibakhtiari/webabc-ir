@@ -7,15 +7,10 @@ import { getTranslatedString, getSeoTitle, getSeoDescription } from '@/lib/trans
 import { useLanguageDetection } from '@/hooks/useLanguageDetection';
 import { SupportedLanguage, LanguageMeta, languages, LanguageContextType } from '@/types/language';
 
-// Import translation system
-// Import translation system
-// import { translations } from '@/i18n';
-
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 // Define a generic Dictionary type or import the return type from get-dictionary
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type TranslationDictionary = Record<string, any>;
 
 interface LanguageProviderProps {
@@ -25,8 +20,7 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, defaultLanguage, dictionary }) => {
-  // Use defaultLanguage from URL params as the primary source of truth for initial render
-  // This prevents hydration mismatches where server uses 'fa' but client detects 'ar'
+
   const initialLanguage = useLanguageDetection();
   const [language, setLanguageState] = useState<SupportedLanguage>(defaultLanguage || initialLanguage || 'fa');
   const router = useRouter();
