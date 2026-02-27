@@ -11,7 +11,7 @@ import { SupportedLanguage, LanguageMeta, languages, LanguageContextType } from 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 // Define a generic Dictionary type or import the return type from get-dictionary
-export type TranslationDictionary = Record<string, any>;
+export type TranslationDictionary = Record<string, unknown>;
 
 interface LanguageProviderProps {
   children: ReactNode;

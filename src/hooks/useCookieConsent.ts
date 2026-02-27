@@ -14,9 +14,11 @@ export const useCookieConsent = () => {
 
     useEffect(() => {
         const storedConsent = localStorage.getItem(CONSENT_KEY) as CookieConsentState | null;
-        setState({
-            isMounted: true,
-            consentState: storedConsent || 'pending'
+        requestAnimationFrame(() => {
+            setState({
+                isMounted: true,
+                consentState: storedConsent || 'pending'
+            });
         });
     }, []);
 
