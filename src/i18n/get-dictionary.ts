@@ -49,6 +49,9 @@ const namespaces = {
     slugGenerator: 'tools/slugGenerator',
     socialPreview: 'tools/socialPreview',
     gradientGen: 'tools/gradientGen',
+
+    cookieNotice: 'cookie',
+    privacyPolicy: 'privacy',
 } as const;
 
 type NamespaceKey = keyof typeof namespaces;
