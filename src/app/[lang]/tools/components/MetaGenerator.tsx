@@ -42,7 +42,7 @@ const MetaGenerator: React.FC = () => {
   return (
     <>
 
-      <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 pt-20 pb-10 md:pt-32 md:pb-16">
+      <div className="min-h-screen bg-linear-to-b from-background to-muted/20 pt-20 pb-10 md:pt-32 md:pb-16">
         <div className="container mx-auto px-4 max-w-4xl space-y-6 md:space-y-8">
           <Breadcrumb />
           <div className="text-center space-y-3 md:space-y-4">
@@ -106,7 +106,7 @@ const MetaGenerator: React.FC = () => {
                 <CardTitle>{t('metaGenerator.generatedTags')}</CardTitle>
               </CardHeader>
               <CardContent>
-                <pre className="bg-muted p-4 rounded text-sm whitespace-pre-wrap break-words">
+                <pre className="bg-muted p-4 rounded text-sm whitespace-pre-wrap wrap-break-word">
                   <code>{generatedCode}</code>
                 </pre>
                 <Button onClick={copyToClipboard} className="mt-4 w-full">

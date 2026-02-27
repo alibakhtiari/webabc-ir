@@ -21,7 +21,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ heroImgData }) => {
   const isRTL = languageMeta.direction === 'rtl';
 
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-primary/5 to-white">
+    <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-linear-to-b from-primary/5 to-white">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="col-span-1 lg:col-span-6 text-center lg:text-start">
@@ -47,7 +47,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ heroImgData }) => {
           </div>
           <div className="col-span-1 lg:col-span-6">
             <div className="relative">
-              <div className="absolute -z-10 inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 blur-3xl rounded-full transform scale-110"></div>
+              <div className="absolute -z-10 inset-0 bg-linear-to-tr from-primary/20 to-secondary/20 blur-3xl rounded-full transform scale-110"></div>
               <OptimizedImage
                 src="/images/homepage-hero.webp"
                 imageData={heroImgData}

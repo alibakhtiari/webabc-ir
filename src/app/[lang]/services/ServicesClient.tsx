@@ -17,13 +17,13 @@ const ServicesOverview = () => {
 
       <ServicesSchema />
 
-      <div className="flex-grow">
+      <div className="grow">
         {/* Hero Section */}
-        <section className="bg-gradient-to-b from-primary/5 to-white pt-32 pb-16 md:pt-40 md:pb-24">
+        <section className="bg-linear-to-b from-primary/5 to-white pt-32 pb-16 md:pt-40 md:pb-24">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <Breadcrumb />
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-[1.5]">{t('services.title')}</h1>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-normal">{t('services.title')}</h1>
               <p className="text-xl text-gray-600">{t('services.description')}</p>
 
               {/* Quick navigation links */}

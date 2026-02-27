@@ -75,7 +75,7 @@ const FaqGenerator = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 pt-20 pb-10 md:pt-32 md:pb-16">
+        <div className="min-h-screen bg-linear-to-b from-background to-muted/20 pt-20 pb-10 md:pt-32 md:pb-16">
             <div className="container mx-auto px-4 max-w-4xl space-y-6 md:space-y-8">
                 <Breadcrumb />
 
@@ -167,7 +167,7 @@ const FaqGenerator = () => {
                             </CardHeader>
                             <CardContent>
                                 <div className="relative rounded-md bg-slate-950 p-4 min-h-[400px] font-mono text-sm text-slate-50 overflow-auto">
-                                    <pre className="whitespace-pre-wrap break-words">
+                                    <pre className="whitespace-pre-wrap wrap-break-word">
                                         {generatedSchema || t('faqGenerator.placeholder') || "// JSON-LD Schema will appear here..."}
                                     </pre>
                                 </div>

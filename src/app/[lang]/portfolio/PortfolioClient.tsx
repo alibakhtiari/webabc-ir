@@ -49,7 +49,7 @@ const Portfolio = ({ items }: PortfolioClientProps) => {
 
       <div className="min-h-screen">
         {/* Hero Section */}
-        <section className="pt-32 pb-20 bg-gradient-to-br from-primary/10 via-background to-primary/5">
+        <section className="pt-32 pb-20 bg-linear-to-br from-primary/10 via-background to-primary/5">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <Breadcrumb />
@@ -97,7 +97,7 @@ const Portfolio = ({ items }: PortfolioClientProps) => {
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="absolute bottom-4 left-4">
                           <Badge className="bg-primary/90">{getCategoryLabel(item.category)}</Badge>
                         </div>
@@ -128,7 +128,7 @@ const Portfolio = ({ items }: PortfolioClientProps) => {
         </section>
 
         {/* CTA Section */}
-        < section className="py-20 bg-gradient-to-br from-primary to-primary/80 text-white" >
+        < section className="py-20 bg-linear-to-br from-primary to-primary/80 text-white" >
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
