@@ -70,7 +70,7 @@ const ContentCreation = () => {
                     <div className="max-w-4xl mx-auto space-y-8">
                         {[1, 2, 3, 4, 5].map((step) => (
                             <div key={step} className="flex gap-6 animate-fade-up" style={{ animationDelay: `${step * 0.1}s` }}>
-                                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl">
+                                <div className="shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl">
                                     {step}
                                 </div>
                                 <div>

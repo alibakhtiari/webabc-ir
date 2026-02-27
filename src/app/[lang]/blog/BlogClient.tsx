@@ -58,7 +58,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ initialPosts }) => {
 
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="pt-32 pb-20 bg-gradient-to-br from-primary/10 via-primary/5 to-background relative overflow-hidden">
+        <section className="pt-32 pb-20 bg-linear-to-br from-primary/10 via-primary/5 to-background relative overflow-hidden">
           <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
           <div className="container mx-auto px-4 relative">
             <div className="max-w-3xl mx-auto text-center">
@@ -123,7 +123,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ initialPosts }) => {
                   >
                     <Card className="h-full hover:shadow-2xl transition-all duration-300 group-hover:-translate-y-2 overflow-hidden border-border/50 hover:border-primary/30">
                       <div className="aspect-video overflow-hidden relative">
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <OptimizedImage
                           src={post.image}
                           imageData={getImageData(post.image)}

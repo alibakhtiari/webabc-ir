@@ -12,7 +12,7 @@ export const TimelineItem = ({ title, description, index, isLeft }: { title: str
                     <p className="text-gray-600">{description}</p>
                 </div>
             </div>
-            <div className="absolute start-0 lg:start-1/2 top-0 flex items-center justify-center w-8 h-8 bg-primary rounded-full text-white -translate-x-1/2 rtl:translate-x-1/2 ms-4 lg:ms-0 shadow-md z-10 animate-fade-up">
+            <div className="absolute inset-s-0 lg:inset-s-1/2 top-0 flex items-center justify-center w-8 h-8 bg-primary rounded-full text-white -translate-x-1/2 rtl:translate-x-1/2 ms-4 lg:ms-0 shadow-md z-10 animate-fade-up">
                 {index}
             </div>
             <div className={`lg:w-1/2 ${!isLeft ? 'lg:pe-12 hidden lg:block' : 'lg:ps-12 hidden lg:block'}`}></div>

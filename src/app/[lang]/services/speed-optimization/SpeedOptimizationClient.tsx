@@ -75,7 +75,7 @@ const SpeedOptimization = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {features.map((feature, index) => (
                                 <div key={index} className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
-                                    <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
+                                    <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0" />
                                     <span className="font-medium text-gray-700">{feature}</span>
                                 </div>
                             ))}
@@ -87,7 +87,7 @@ const SpeedOptimization = () => {
                         <h2 className="text-3xl font-bold text-center mb-10">{t('common.whyChooseUs') || "Why Optimize?"}</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             {[0, 1, 2, 3].map((i) => (
-                                <div key={i} className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div key={i} className="bg-linear-to-br from-gray-50 to-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                                     <h3 className="text-xl font-bold mb-3 text-orange-600">
                                         {t(`speedOptimization.benefits.${i}.title`)}
                                     </h3>

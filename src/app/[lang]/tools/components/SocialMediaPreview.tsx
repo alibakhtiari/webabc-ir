@@ -25,7 +25,7 @@ export default function SocialMediaPreview() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 pt-20 pb-10 md:pt-32 md:pb-16">
+        <div className="min-h-screen bg-linear-to-b from-background to-muted/20 pt-20 pb-10 md:pt-32 md:pb-16">
             <div className="container mx-auto px-4 max-w-6xl space-y-6 md:space-y-8">
                 <Breadcrumb />
                 <div className="text-center space-y-3 md:space-y-4">
@@ -134,7 +134,7 @@ export default function SocialMediaPreview() {
                                 {/* Twitter Preview */}
                                 {activeTab === 'twitter' && (
                                     <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
-                                        <div className="aspect-[2/1] bg-gray-100 relative">
+                                        <div className="aspect-2/1 bg-gray-100 relative">
                                             {ogImage ? (
                                                 <img src={ogImage} alt="Preview" className="w-full h-full object-cover" />
                                             ) : (
