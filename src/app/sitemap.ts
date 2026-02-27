@@ -10,7 +10,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const languages = ['en', 'fa', 'ar'];
     // 1. Static Routes
     const staticRoutes = [
-        '', '/about', '/services', '/contact', '/portfolio', '/service-areas', '/faq', '/tools', '/blog',
+        '', '/about', '/services', '/contact', '/portfolio', '/service-areas', '/faq', '/tools', '/blog', '/privacy',
         '/services/seo', '/services/web-development', '/services/local-seo',
         '/services/wordpress-development', '/services/web-design',
         '/services/content-creation', '/services/link-building', '/services/modern-web-development',
