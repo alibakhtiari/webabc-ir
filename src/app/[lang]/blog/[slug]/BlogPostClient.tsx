@@ -28,13 +28,13 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
   // const [post, setPost] = useState<BlogPost | null>(null); // Removed state
   // const [isLoading, setIsLoading] = useState(true); // Removed loading state
   const [isTocOpen, setIsTocOpen] = useState(false);
-  const [origin, setOrigin] = useState('');
+  const [origin, setOrigin] = useState(() => (typeof window !== 'undefined' ? window.location.origin : ''));
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setOrigin(window.location.origin);
+    if (typeof window !== 'undefined' && !origin) {
+      requestAnimationFrame(() => setOrigin(window.location.origin));
     }
-  }, []);
+  }, [origin]);
 
   // Fetching logic removed
 
@@ -56,7 +56,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
       const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-');
       return { text, id };
     });
-  }, [post?.content]);
+  }, [post]);
 
   // Loading check removed
 
@@ -144,7 +144,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
 
             {/* Table of Contents */}
             {tableOfContents.length > 0 && (
-              <Card className="mb-8 border-primary/20 bg-gradient-to-br from-primary/5 to-background shadow-lg">
+              <Card className="mb-8 border-primary/20 bg-linear-to-br from-primary/5 to-background shadow-lg">
                 <Collapsible open={isTocOpen} onOpenChange={setIsTocOpen}>
                   <CollapsibleTrigger asChild>
                     <Button variant="ghost" className="w-full flex items-center justify-between p-6 hover:bg-primary/5">
@@ -188,7 +188,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
                   <ul className="space-y-2">
                     {post.keyTakeaways.map((takeaway, index) => (
                       <li key={index} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-primary mt-1 shrink-0" />
                         <span>{takeaway}</span>
                       </li>
                     ))}
@@ -201,6 +201,9 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ post }) => {
             <article className="prose prose-lg dark:prose-invert max-w-none mb-12 prose-headings:scroll-mt-24 prose-h2:text-3xl prose-h2:font-bold prose-h2:mb-4 prose-h2:mt-8 prose-p:leading-relaxed prose-p:text-foreground/90 prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-img:shadow-lg">
               <ReactMarkdown
                 components={{
+                  h1: ({ children }) => {
+                    return <h2 className="text-3xl font-bold mb-4 mt-8">{children}</h2>;
+                  },
                   h2: ({ children }) => {
                     const text = String(children);
                     const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-');

@@ -7,32 +7,42 @@ import { getTranslatedString, getSeoTitle, getSeoDescription } from '@/lib/trans
 import { useLanguageDetection } from '@/hooks/useLanguageDetection';
 import { SupportedLanguage, LanguageMeta, languages, LanguageContextType } from '@/types/language';
 
-// Import translation system
-// Import translation system
-// import { translations } from '@/i18n';
-
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 // Define a generic Dictionary type or import the return type from get-dictionary
-type Dictionary = Record<string, any>;
+export type TranslationDictionary = Record<string, unknown>;
 
 interface LanguageProviderProps {
   children: ReactNode;
   defaultLanguage?: SupportedLanguage;
-  dictionary: Dictionary;
+  dictionary: TranslationDictionary;
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, defaultLanguage, dictionary }) => {
-  const initialLanguage = useLanguageDetection();
-  // Ensure we always have a valid language
-  const safeDefaultLanguage = (defaultLanguage && languages[defaultLanguage]) ? defaultLanguage :
-    (initialLanguage && languages[initialLanguage]) ? initialLanguage : 'fa';
 
-  const [language, setLanguageState] = useState<SupportedLanguage>(safeDefaultLanguage);
+  const initialLanguage = useLanguageDetection();
+  const [language, setLanguageState] = useState<SupportedLanguage>(defaultLanguage || initialLanguage || 'fa');
   const router = useRouter();
   const pathname = usePathname();
   const [isInitialized, setIsInitialized] = useState(false);
+
+  useEffect(() => {
+    // Only update to detected language if we are on the root path and haven't initialized
+    if (!pathname || pathname === '/') {
+      if (initialLanguage && initialLanguage !== language) {
+        requestAnimationFrame(() => setLanguageState(initialLanguage));
+      }
+    }
+    requestAnimationFrame(() => setIsInitialized(true));
+  }, [initialLanguage, pathname, language]);
+
+  // Sync language state with URL defaultLanguage if URL changes
+  useEffect(() => {
+    if (defaultLanguage && defaultLanguage !== language) {
+      requestAnimationFrame(() => setLanguageState(defaultLanguage));
+    }
+  }, [defaultLanguage, language]);
 
   // Handle language change
   const setLanguage = (lang: SupportedLanguage) => {
@@ -78,21 +88,21 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children, de
     if (pathSegments.length === 0) {
       // Root path "/" - redirect to language home
       router.replace(`/${language}`);
-      setIsInitialized(true);
+      requestAnimationFrame(() => setIsInitialized(true));
     } else if (!Object.keys(languages).includes(pathSegments[0] as SupportedLanguage)) {
       // Path doesn't start with a language code - add the current language
       router.replace(`/${language}${pathname}`);
-      setIsInitialized(true);
+      requestAnimationFrame(() => setIsInitialized(true));
     } else if (pathSegments[0] !== language) {
       // URL language is different from state language - update state
       const urlLang = pathSegments[0] as SupportedLanguage;
       if (Object.keys(languages).includes(urlLang)) {
-        setLanguageState(urlLang);
+        requestAnimationFrame(() => setLanguageState(urlLang));
         localStorage.setItem('language', urlLang);
-        setIsInitialized(true);
+        requestAnimationFrame(() => setIsInitialized(true));
       }
     } else {
-      setIsInitialized(true);
+      requestAnimationFrame(() => setIsInitialized(true));
     }
   }, [pathname, isInitialized, router, language]);
 

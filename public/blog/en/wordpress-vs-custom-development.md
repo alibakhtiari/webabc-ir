@@ -9,7 +9,6 @@ image: /images/blog/wordpress-hero.webp
 readTime: 6
 ---
 
-# WordPress vs Custom Development: Which is Right for Your Business?
 
 Choosing between WordPress and custom development is one of the most critical decisions you'll make for your web project. Let's explore both options to help you make an informed choice.
 

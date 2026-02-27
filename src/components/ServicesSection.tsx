@@ -86,7 +86,7 @@ const ServicesSection = () => {
     <section
       id="services"
       ref={sectionRef}
-      className="py-24 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden snap-section"
+      className="py-24 bg-linear-to-b from-white to-gray-50 relative overflow-hidden snap-section"
     >
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">

@@ -24,8 +24,14 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   className
 }) => {
   const { language, setLanguage, languageMeta } = useLanguage();
+  const [mounted, setMounted] = React.useState(false);
   const pathname = usePathname();
   const router = useRouter();
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const currentPathWithoutLang = getPathWithoutLanguage(pathname || '');
   const isRTL = languageMeta.direction === 'rtl';
 
@@ -65,12 +71,6 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
       </div>
     );
   }
-
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
 
   if (!mounted) {
     return (

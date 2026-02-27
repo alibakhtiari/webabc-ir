@@ -65,6 +65,7 @@ const Footer = () => {
                   { name: t('common.portfolio'), href: `/${language}/portfolio` },
                   { name: t('blog.title'), href: `/${language}/blog` },
                   { name: t('common.contact'), href: `/${language}/contact` },
+                  { name: t('common.privacyPolicy'), href: `/${language}/privacy` },
                 ]
               },
               {

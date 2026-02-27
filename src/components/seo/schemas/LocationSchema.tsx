@@ -18,15 +18,19 @@ const LocationSchema: React.FC<LocationSchemaProps> = ({ location }) => {
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            setOrigin(window.location.origin);
+            requestAnimationFrame(() => setOrigin(window.location.origin));
         }
     }, []);
 
     const locationSchema = {
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
+        "@id": `${origin}/#location-${location.name.toLowerCase().replace(/\s+/g, '-')}`,
         name: `${t('common.companyName')} - ${location.name}`,
         description: location.longDescription,
+        image: `${origin}/images/og-image.webp`,
+        telephone: "+989125811880",
+        priceRange: "$$",
         address: {
             "@type": "PostalAddress",
             addressLocality: location.name,
@@ -41,9 +45,7 @@ const LocationSchema: React.FC<LocationSchemaProps> = ({ location }) => {
             }
         },
         provider: {
-            "@type": "Organization",
-            name: t('common.companyName'),
-            url: origin
+            "@id": "https://webabc.ir/#organization"
         }
     };
 

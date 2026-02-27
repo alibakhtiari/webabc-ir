@@ -1,7 +1,7 @@
 {
   "name": "webabc-next-static",
   "private": true,
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "scripts": {
     "dev": "next dev",
@@ -9,7 +9,8 @@
     "start": "next start",
     "images:optimize": "node scripts/optimize-images.mjs",
     "deploy": "next build --webpack && wrangler pages deploy out",
-    "analyze": "next experimental-analyze"
+    "analyze": "next experimental-analyze",
+    "lint": "eslint src && tsc --noemit"
   },
   "browserslist": [
     "chrome 111",
@@ -34,8 +35,7 @@
     "@cloudflare/workers-types": "^4.20260228.0",
     "@eslint/js": "^9.39.2",
     "@next/bundle-analyzer": "^16.1.6",
-    "@tailwindcss/postcss": "^4.2.0",
-    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/postcss": "^4.2.1",
     "@types/node": "^25.2.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
@@ -49,10 +49,9 @@
     "gray-matter": "^4.0.3",
     "react-markdown": "^10.1.0",
     "sharp": "^0.34.5",
-    "tailwindcss": "^4.2.0",
+    "tailwindcss": "^4.2.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.54.0",
-    "wrangler": "^4.67.0"
+    "typescript-eslint": "^8.54.0"
   }
 }
