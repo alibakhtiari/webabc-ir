@@ -1,0 +1,44 @@
+# WebABC - Web Design & Development Agency
+
+WebABC (https://webabc.ir) is a premier digital agency specializing in modern web design, speed optimization, search engine optimization (SEO), and custom web application development. The platform is built using Astro v5 for high-speed, zero-JS static delivery.
+
+## Localized Directories
+All primary routes support three language locales:
+- `/en` - English (LTR)
+- `/fa` - Persian (RTL, Default)
+- `/ar` - Arabic (RTL)
+
+## Site Map & Key Pages
+- `/` - Default landing page (redirects to default locale `/fa`)
+- `/[lang]` - Localized Home Page (featuring service highlights, agency workflow, stats, and testimonials)
+- `/[lang]/about` - About WebABC, our team, mission, and offices (Tehran, Muscat, Dubai, Qazvin)
+- `/[lang]/services` - Directory of specialized service areas
+- `/[lang]/services/web-development` - Enterprise web application engineering
+- `/[lang]/services/web-design` - Premium UI/UX design and wireframing
+- `/[lang]/services/seo` - Technical, content, and on-page SEO services
+- `/[lang]/services/local-seo` - Local search engine optimization & map pack ranking
+- `/[lang]/services/wordpress-development` - PHP 8.4 WordPress optimization and migration
+- `/[lang]/services/speed-optimization` - Core Web Vitals optimization
+- `/[lang]/services/link-building` - Strategic authority and citation growth
+- `/[lang]/services/content-creation` - Optimized localized copywriting
+- `/[lang]/services/ui-ux-audit` - User experience diagnostic audits
+- `/[lang]/services/website-maintenance` - Ongoing maintenance and support
+- `/[lang]/portfolio` - Listing of completed projects and case studies
+- `/[lang]/service-areas` - Locations served (Tehran, Dubai, Muscat, Qazvin)
+- `/[lang]/faq` - Frequently asked questions with structured FAQPage schemas
+- `/[lang]/contact` - Contact and free blueprint request form with Turnstile Captcha
+- `/[lang]/privacy` - Privacy policy and user compliance terms
+
+## SEO Utility Tools
+A suite of native utilities built on Vanilla JS:
+- `/[lang]/tools/keyword-density-analyzer` - Analyze search term frequencies and avoid keyword stuffing
+- `/[lang]/tools/seo-title-checker` - Verify titles against pixel length limits
+- `/[lang]/tools/robots-generator` - Construct customized robots.txt files
+- `/[lang]/tools/json-formatter` - Validate and format JSON structures
+- `/[lang]/tools/meta-generator` - Generate HTML head tags
+- `/[lang]/tools/readability-checker` - Analyze text flow and structure
+- `/[lang]/tools/utm-builder` - Generate UTM tracking parameters
+
+## Contact Information
+- Website: https://webabc.ir
+- Email: info@webabc.ir
