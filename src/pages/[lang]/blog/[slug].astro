@@ -62,6 +62,7 @@ const articleSchema = {
     "name": post.data.author || "WebABC Team",
     "url": post.data.author === 'Ali Bakhtiari' ? 'https://aliib.ir/' : `${origin}/${supportedLang}/about`,
     ...(post.data.author === 'Ali Bakhtiari' ? {
+      "image": `${origin}/Ali Bakhtiari.webp`,
       "sameAs": [
         "https://www.linkedin.com/in/alibakhtiarii/",
         "https://github.com/alibakhtiari",
@@ -182,8 +183,8 @@ const authorRole = post.data.author === 'Ali Bakhtiari'
       <!-- EEAT Author Box Component -->
       <div class="my-12 p-6 md:p-8 bg-white border border-gray-100 rounded-2xl shadow-xs flex flex-col md:flex-row gap-6 items-center md:items-start font-persian">
         {post.data.author === 'Ali Bakhtiari' ? (
-          <div class="w-16 h-16 rounded-full bg-linear-to-tr from-primary to-primary/60 text-white flex-shrink-0 flex items-center justify-center text-xl font-bold font-sans shadow-md border-2 border-white ring-4 ring-primary/10">
-            AB
+          <div class="w-16 h-16 rounded-full overflow-hidden bg-gray-50 flex-shrink-0 flex items-center justify-center border-2 border-white ring-4 ring-primary/10 shadow-md">
+            <img src="/Ali Bakhtiari.webp" alt="Ali Bakhtiari" class="w-full h-full object-cover" />
           </div>
         ) : (
           <div class="w-16 h-16 rounded-full overflow-hidden bg-gray-50 flex-shrink-0 flex items-center justify-center border border-gray-100">
