@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+import Breadcrumbs from './Breadcrumbs.astro';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  description?: string;
+  heroImage?: string;
+  breadcrumbs: Array<{ label: string; url?: string }>;
+  lang: string;
+  gradient?: string;
+  className?: string;
+}
+
+const {
+  title,
+  subtitle,
+  description,
+  heroImage,
+  breadcrumbs,
+  lang,
+  gradient = "bg-linear-to-b from-primary/10 to-white",
+  className = ""
+} = Astro.props;
+---
+
+<section class={`pt-28 pb-16 md:pt-32 md:pb-24 relative overflow-hidden ${gradient} ${className}`}>
+  <div class="container mx-auto px-4 max-w-6xl">
+    <Breadcrumbs items={breadcrumbs} lang={lang} centered={!heroImage} />
+
+    <div class={`mt-8 ${heroImage ? "flex flex-col lg:flex-row items-center gap-12" : "text-center max-w-3xl mx-auto"}`}>
+      <!-- Text Content -->
+      <div class={`${heroImage ? "lg:w-1/2 w-full" : "w-full"}`}>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight font-persian">
+          {title}
+        </h1>
+        <p class="text-xl font-medium text-primary mb-6 leading-relaxed font-persian">
+          {subtitle}
+        </p>
+        {description && (
+          <p class="text-lg text-gray-600 mb-8 leading-relaxed font-persian">
+            {description}
+          </p>
+        )}
+        <div class={`flex flex-wrap gap-4 ${!heroImage ? "justify-center" : ""}`}>
+          <slot />
+        </div>
+      </div>
+
+      <!-- Optional Hero Image -->
+      {heroImage && (
+        <div class="lg:w-1/2 w-full mt-8 lg:mt-0">
+          <div class="rounded-2xl overflow-hidden shadow-2xl relative h-[300px] lg:h-[400px] w-full">
+            <Image
+              src={heroImage}
+              alt={title}
+              width={600}
+              height={400}
+              class="object-cover w-full h-full"
+              loading="eager"
+            />
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
