@@ -136,15 +136,15 @@ const currentPathWithoutLang = Astro.url.pathname.replace(/^\/(en|fa|ar)/, '') |
           <div class="space-y-4">
             <a href={linkPath('')} class="block text-lg font-medium text-gray-900 hover:text-primary transition-colors">{t('common.home')}</a>
             
-            <!-- Services Nested Menu -->
+             <!-- Services Nested Menu -->
             <div class="border-y border-gray-100 py-4 my-2 space-y-4">
               <div class="text-lg font-bold text-gray-900">{t('common.services')}</div>
-              <a href={linkPath('/services')} class="block ps-3 border-l-2 border-primary/40 text-foreground/80 hover:text-primary font-medium">{t('common.allServices')}</a>
+              <a href={linkPath('/services')} class="block ps-3 border-s-2 border-primary/40 text-foreground/80 hover:text-primary font-medium">{t('common.allServices')}</a>
               
               <!-- SEO Services Subgroup -->
               <div class="ps-3 space-y-2">
                 <h4 class="text-xs font-bold text-muted-foreground uppercase tracking-wider">{t('common.seoServices')}</h4>
-                <div class="grid grid-cols-2 gap-2 border-l border-gray-100 ps-3">
+                <div class="grid grid-cols-2 gap-2 border-s border-gray-100 ps-3">
                   <a href={linkPath('/services/seo')} class="text-sm text-foreground/80 hover:text-primary py-1">{t('services.seoTitle')}</a>
                   <a href={linkPath('/services/local-seo')} class="text-sm text-foreground/80 hover:text-primary py-1">{t('services.localSeoTitle')}</a>
                   <a href={linkPath('/services/link-building')} class="text-sm text-foreground/80 hover:text-primary py-1">{t('services.linkBuildingTitle')}</a>
@@ -155,7 +155,7 @@ const currentPathWithoutLang = Astro.url.pathname.replace(/^\/(en|fa|ar)/, '') |
               <!-- Development Services Subgroup -->
               <div class="ps-3 space-y-2">
                 <h4 class="text-xs font-bold text-muted-foreground uppercase tracking-wider">{t('common.developmentServices')}</h4>
-                <div class="grid grid-cols-2 gap-2 border-l border-gray-100 ps-3">
+                <div class="grid grid-cols-2 gap-2 border-s border-gray-100 ps-3">
                   <a href={linkPath('/services/web-development')} class="text-sm text-foreground/80 hover:text-primary py-1">{t('services.webDevTitle')}</a>
                   <a href={linkPath('/services/wordpress-development')} class="text-sm text-foreground/80 hover:text-primary py-1">{t('wordpress.wordpressAndWoocommerce')}</a>
                   <a href={linkPath('/services/web-design')} class="text-sm text-foreground/80 hover:text-primary py-1">{t('common.webDesignAndDevelopment')}</a>
