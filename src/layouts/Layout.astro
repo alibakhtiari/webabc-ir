@@ -1,0 +1,80 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import { languages, type SupportedLanguage } from '../types/language';
+import { getDictionary } from '../i18n/get-dictionary';
+import '../styles/globals.css';
+
+function createOrganizationSchema(url: string, logo: string, contactPoints: { telephone: string; contactType: string }[], lang: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "url": url,
+    "logo": `${url}${logo}`,
+    "name": "WebABC",
+    "contactPoint": contactPoints.map(cp => ({
+      "@type": "ContactPoint",
+      "telephone": cp.telephone,
+      "contactType": cp.contactType
+    }))
+  };
+}
+
+interface Props {
+  title?: string;
+  description?: string;
+  lang: SupportedLanguage;
+  slug?: string;
+}
+
+const { title, description, lang, slug = '' } = Astro.props;
+
+const languageMeta = languages[lang] || languages.fa;
+const isRtl = languageMeta.direction === 'rtl';
+const dictionary = await getDictionary(lang);
+
+const siteUrl = 'https://webabc.ir';
+const canonicalPath = slug ? `/${lang}/${slug}` : `/${lang}`;
+const canonicalUrl = `${siteUrl}${canonicalPath}`;
+
+// Get default meta titles/descriptions from dictionary
+const pageTitle = title || dictionary.home?.title || 'WebABC';
+const pageDescription = description || dictionary.home?.description || 'Web Design and Development Services';
+
+// Schema Organisation
+const organizationSchema = createOrganizationSchema(
+  siteUrl,
+  '/images/logo.webp',
+  [{ telephone: '+989123456789', contactType: 'customer service' }],
+  lang
+);
+---
+
+<!doctype html>
+<html lang={lang} dir={languageMeta.direction} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    
+    <!-- SEO / Canonical / alternates -->
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="en" href={`${siteUrl}/en${slug ? `/${slug}` : ''}`} />
+    <link rel="alternate" hreflang="fa" href={`${siteUrl}/fa${slug ? `/${slug}` : ''}`} />
+    <link rel="alternate" hreflang="ar" href={`${siteUrl}/ar${slug ? `/${slug}` : ''}`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}/en${slug ? `/${slug}` : ''}`} />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <!-- Inline Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    
+    <ClientRouter />
+    
+    <slot name="head" />
+  </head>
+  <body class={`bg-background text-foreground min-h-screen flex flex-col font-${lang === 'en' ? 'sans' : lang === 'ar' ? 'arabic' : 'persian'}`}>
+    <slot />
+  </body>
+</html>

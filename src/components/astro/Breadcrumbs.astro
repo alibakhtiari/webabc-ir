@@ -1,0 +1,37 @@
+---
+interface Props {
+  items: { label: string; url?: string }[];
+  lang: string;
+}
+
+const { items, lang } = Astro.props;
+
+// Generate Breadcrumb Schema JSON-LD
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": items.map((item, idx) => ({
+    "@type": "ListItem",
+    "position": idx + 1,
+    "name": item.label,
+    ...(item.url ? { "item": `https://webabc.ir${item.url}` } : {})
+  }))
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+<nav class="text-sm text-gray-500 mb-6 font-persian flex items-center gap-1.5 flex-wrap">
+  {items.map((item, idx) => (
+    <>
+      {idx > 0 && <span class="text-gray-400 select-none mx-0.5">/</span>}
+      {item.url ? (
+        <a href={item.url} class="hover:underline hover:text-primary transition-all">
+          {item.label}
+        </a>
+      ) : (
+        <span class="text-gray-700 font-medium">{item.label}</span>
+      )}
+    </>
+  ))}
+</nav>
