@@ -1,6 +1,5 @@
 name = "webabc-ir"
-compatibility_date = "2025-12-13"
-compatibility_flags = ["nodejs_compat"]
+compatibility_date = "2026-07-20"
 
 [assets]
 directory = "./dist"
