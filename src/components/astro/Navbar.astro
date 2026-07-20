@@ -12,17 +12,17 @@ const dictionary = await getDictionary(lang);
 const isRtl = languages[lang]?.direction === 'rtl';
 
 // Helper to translate strings
-const t = (key: string) => {
+const t = (key: string, options?: { fallback: string }) => {
   const parts = key.split('.');
   let current: any = dictionary;
   for (const part of parts) {
     if (current && current[part] !== undefined) {
       current = current[part];
     } else {
-      return key;
+      return options?.fallback || key;
     }
   }
-  return typeof current === 'string' ? current : key;
+  return typeof current === 'string' ? current : options?.fallback || key;
 };
 
 // Generate relative paths correctly based on lang
