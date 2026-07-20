@@ -5,6 +5,7 @@ import Footer from '../../../components/astro/Footer.astro';
 import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
 import { type SupportedLanguage, languages } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
 
 export async function getStaticPaths() {
   return [
@@ -20,18 +21,7 @@ const dictionary = await getDictionary(supportedLang);
 const isRtl = languages[supportedLang]?.direction === 'rtl';
 
 // Helper to translate strings
-const t = (key: string, options?: { fallback: string }) => {
-  const parts = key.split('.');
-  let current: any = dictionary;
-  for (const part of parts) {
-    if (current && current[part] !== undefined) {
-      current = current[part];
-    } else {
-      return options?.fallback || key;
-    }
-  }
-  return typeof current === 'string' ? current : options?.fallback || key;
-};
+const t = createTranslator(dictionary);
 
 const titleText = t('tools.title', { fallback: 'SEO & Marketing Utilities' });
 const descriptionText = t('tools.description', { fallback: 'A comprehensive suite of free local tools to analyze SEO ranking tags and format developer configs.' });
@@ -56,6 +46,14 @@ const contentTools = [
   { key: 'privacyGenerator', route: 'privacy-policy-generator' },
   { key: 'glassGen', route: 'glassmorphism-generator' },
   { key: 'gradientGen', route: 'css-gradient-generator' }
+];
+
+// Technical/developer tools — nested under the `tools` namespace (tools.<key>.title),
+// unlike the flat top-level namespaces used above.
+const devTools = [
+  { key: 'jsonFormatter', route: 'json-formatter' },
+  { key: 'robotsGenerator', route: 'robots-generator' },
+  { key: 'keywordDensity', route: 'keyword-density-analyzer' }
 ];
 
 const breadcrumbs = [
@@ -114,6 +112,28 @@ const breadcrumbs = [
             <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-xs hover:shadow-lg transition-all duration-300 group font-persian">
               <h3 class="text-2xl font-bold mb-4">{t(`${key}.title`, { fallback: key })}</h3>
               <p class="text-gray-500 mb-6 text-sm leading-relaxed">{t(`${key}.description`, { fallback: 'Optimize copy formatting and styling guidelines.' })}</p>
+              <a href={`/${supportedLang}/tools/${route}`} class="text-primary font-bold text-sm inline-flex items-center gap-1">
+                {t('common.readMore', { fallback: 'Launch Tool' })} &rarr;
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Developer & Technical SEO Tools -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4 max-w-6xl font-sans">
+        <div class="text-center mb-12 font-persian">
+          <h2 class="text-3xl font-bold mb-4 text-primary">{t('tools.technicalTitle', { fallback: 'Technical SEO Utilities' })}</h2>
+          <p class="text-xl text-gray-500 max-w-3xl mx-auto">{t('tools.technicalDesc', { fallback: 'Crawler directives, structured data, and content formatting helpers.' })}</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {devTools.map(({ key, route }) => (
+            <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-xs hover:shadow-lg transition-all duration-300 group font-persian">
+              <h3 class="text-2xl font-bold mb-4">{t(`tools.${key}.title`, { fallback: key })}</h3>
+              <p class="text-gray-500 mb-6 text-sm leading-relaxed">{t(`tools.${key}.description`, { fallback: 'Optimize technical configurations for search engines.' })}</p>
               <a href={`/${supportedLang}/tools/${route}`} class="text-primary font-bold text-sm inline-flex items-center gap-1">
                 {t('common.readMore', { fallback: 'Launch Tool' })} &rarr;
               </a>

@@ -3,14 +3,14 @@ import Layout from '../../../layouts/Layout.astro';
 import Hero from '../../../components/astro/Hero.astro';
 import { type SupportedLanguage, languages } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
 
 export async function getStaticPaths() {
+  // Tools with their own dedicated page under src/pages/[lang]/tools/ are intentionally
+  // excluded here — this route only serves the remaining not-yet-built placeholder tools.
   const tools = [
-    'headline-analyzer', 'lorem-generator', 'meta-generator', 'paa-scraper',
-    'readability-checker', 'serp-preview', 'utm-builder', 'faq-generator',
-    'cost-calculator', 'privacy-policy-generator', 'qr-generator',
-    'social-media-preview', 'css-gradient-generator', 'glassmorphism-generator',
-    'slug-generator'
+    'lorem-generator', 'meta-generator', 'faq-generator', 'qr-generator',
+    'css-gradient-generator'
   ];
 
   const params = [];
@@ -29,35 +29,14 @@ const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
 
 // Helper to translate strings
-const t = (key: string, options?: { fallback: string }) => {
-  const parts = key.split('.');
-  let current: any = dictionary;
-  for (const part of parts) {
-    if (current && current[part] !== undefined) {
-      current = current[part];
-    } else {
-      return options?.fallback || key;
-    }
-  }
-  return typeof current === 'string' ? current : options?.fallback || key;
-};
+const t = createTranslator(dictionary);
 
 // Map slug to translation namespaces
 const toolMapping: Record<string, string> = {
-  'serp-preview': 'serpPreview',
   'faq-generator': 'faqGenerator',
-  'headline-analyzer': 'headlineAnalyzer',
-  'readability-checker': 'readabilityChecker',
   'lorem-generator': 'loremGenerator',
-  'cost-calculator': 'costCalculator',
-  'privacy-policy-generator': 'privacyGenerator',
-  'glassmorphism-generator': 'glassGen',
   'meta-generator': 'metaGenerator',
-  'paa-scraper': 'paaScraper',
-  'utm-builder': 'utmBuilder',
   'qr-generator': 'qrGenerator',
-  'slug-generator': 'slugGenerator',
-  'social-media-preview': 'socialPreview',
   'css-gradient-generator': 'gradientGen'
 };
 
@@ -88,7 +67,7 @@ const breadcrumbs = [
 ];
 ---
 
-<Layout title={meta.title} description={meta.desc} lang={supportedLang} slug={`tools/${tool}`}>
+<Layout title={meta.title} description={meta.desc} lang={supportedLang} slug={`tools/${tool}`} noindex={true}>
   <Hero title={meta.title} description={meta.desc} breadcrumbs={breadcrumbs} lang={supportedLang} />
 
   <!-- Workspace card -->

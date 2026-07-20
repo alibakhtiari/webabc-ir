@@ -5,6 +5,7 @@ import Footer from '../../../components/astro/Footer.astro';
 import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
 import { type SupportedLanguage } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
 
 export async function getStaticPaths() {
   return [
@@ -19,18 +20,7 @@ const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
 
 // Helper to translate strings
-const t = (key: string, options?: { fallback: string }) => {
-  const parts = key.split('.');
-  let current: any = dictionary;
-  for (const part of parts) {
-    if (current && current[part] !== undefined) {
-      current = current[part];
-    } else {
-      return options?.fallback || key;
-    }
-  }
-  return typeof current === 'string' ? current : options?.fallback || key;
-};
+const t = createTranslator(dictionary);
 
 const titleText = t('tools.robotsGenerator.title', { fallback: 'Robots.txt & Sitemap Graph Builder' });
 const descriptionText = t('tools.robotsGenerator.description', { fallback: 'Easily construct optimized crawler directives and map your sitemap configurations dynamically.' });
@@ -161,7 +151,7 @@ const breadcrumbs = [
   <Footer lang={supportedLang} />
 </Layout>
 
-<script is:inline>
+<script is:inline data-astro-rerun>
   // Robots.txt generator logic
   const uaSelect = document.getElementById('ua-select');
   const delaySelect = document.getElementById('delay-select');
