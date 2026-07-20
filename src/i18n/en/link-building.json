@@ -57,5 +57,15 @@
     "cta": {
         "title": "Boost Your Authority Today",
         "description": "Get high-quality backlinks that drive real results. Let's discuss your strategy."
+    },
+    "faq": {
+        "q1": "Is this white-hat, Google-safe link building?",
+        "a1": "Yes — manual outreach, guest posting, and broken-link replacement only. No PBNs, link farms, or paid link schemes that risk a Google penalty.",
+        "q2": "How many backlinks will I get per month?",
+        "a2": "Quality over quantity — typically 4-10 high-authority links per month depending on your niche and plan, rather than a high-volume, low-quality count.",
+        "q3": "How do you choose which sites to get links from?",
+        "a3": "We vet every prospective site for topical relevance, real organic traffic, and domain authority, and run a spam-score check before outreach.",
+        "q4": "How long until link building affects my rankings?",
+        "a4": "Backlinks typically take 2-4 months to fully influence rankings as Google recrawls and indexes them, then re-evaluates trust and authority signals."
     }
 }

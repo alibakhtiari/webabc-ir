@@ -29,5 +29,19 @@
   "cta": {
     "title": "Need More Advanced Tools?",
     "description": "Contact us for custom SEO tools and advanced analytics solutions tailored to your business needs."
+  },
+  "technicalTitle": "Technical SEO Utilities",
+  "technicalDesc": "Crawler directives, structured data, and content formatting helpers.",
+  "jsonFormatter": {
+    "title": "Clientside JSON Formatter & Validator",
+    "description": "Safely format, validate, and structure your JSON data completely inside your browser."
+  },
+  "robotsGenerator": {
+    "title": "Robots.txt & Sitemap Graph Builder",
+    "description": "Easily construct optimized crawler directives and map your sitemap configurations dynamically."
+  },
+  "keywordDensity": {
+    "title": "Semantic Keyword Density Analyzer",
+    "description": "Analyze text structures to identify keyword frequency and avoid over-optimization before publishing."
   }
 }

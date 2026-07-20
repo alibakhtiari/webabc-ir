@@ -17,6 +17,7 @@ const namespaces = {
     webDevelopmentServices: 'web-development-services',
     'service-areas': 'service-areas',
     seoService: 'seo-service',
+    ecommerce: 'ecommerce',
     tools: 'tools',
     faq: 'faq',
 

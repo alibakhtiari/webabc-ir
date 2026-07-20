@@ -1,6 +1,6 @@
 {
-  "title": "Professional WordPress & WooCommerce Development",
-  "subtitle": "Custom WordPress and WooCommerce development services. We create high-performance, secure, and SEO-optimized online stores and websites tailored to your brand.",
+  "title": "WordPress & WooCommerce Development Services | WebABC",
+  "subtitle": "Custom WordPress & WooCommerce development — fast, secure, SEO-optimized stores built for growth. Get a free consultation today.",
   "wordpressAndWoocommerce": "WordPress & WooCommerce",
   "wpServices": "WordPress Services",
   "ourServices": "Our Services",
@@ -36,5 +36,15 @@
   "pluginDev": "Custom Plugin Development",
   "pluginDevDesc": "Develop custom plugins to extend your WordPress functionality",
   "responsive": "Responsive Design",
-  "responsiveDesc": "Mobile-friendly design that works perfectly on all devices"
+  "responsiveDesc": "Mobile-friendly design that works perfectly on all devices",
+  "faq": {
+    "q1": "Should I choose WordPress or a custom-coded website?",
+    "a1": "WordPress is faster and cheaper to launch with a flexible CMS for content-heavy sites. If you need a highly custom application or maximum performance, our custom web development service may be a better fit — we'll help you decide during the consultation.",
+    "q2": "Can you migrate my existing WooCommerce store without downtime?",
+    "a2": "Yes. We stage the new store, test payments and inventory sync fully, then cut over during a low-traffic window with 301 redirects mapped for every product and category URL.",
+    "q3": "Do you build custom themes or use page builders?",
+    "a3": "We hand-code custom themes for performance and full design control, rather than relying on bloated page-builder plugins that slow down Core Web Vitals scores.",
+    "q4": "What ongoing WordPress maintenance do I need?",
+    "a4": "Core, theme, and plugin updates, security scanning, and backups. We offer a dedicated Website Maintenance plan if you'd rather not manage this yourself."
+  }
 }
