@@ -1,0 +1,184 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import Footer from '../../../components/astro/Footer.astro';
+import { type SupportedLanguage, languages } from '../../../types/language';
+import { getDictionary } from '../../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'fa' } },
+    { params: { lang: 'ar' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+const isRtl = languages[supportedLang]?.direction === 'rtl';
+
+const t = createTranslator(dictionary);
+
+const titleText = t('utmBuilder.title', { fallback: 'UTM Link Builder' });
+const descriptionText = t('utmBuilder.description', { fallback: 'Create trackable URLs with UTM parameters for Google Analytics.' });
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": `https://webabc.ir/${supportedLang}/tools/utm-builder/#webapp`,
+  "name": titleText,
+  "description": descriptionText,
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires HTML5 support",
+  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+};
+
+const breadcrumbs = [
+  { label: t('common.home'), url: `/${supportedLang}` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: titleText }
+];
+
+const fillFieldsText = t('utmBuilder.fillFields', { fallback: 'Fill in the fields above to generate your UTM URL' });
+---
+
+<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/utm-builder">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <main class="grow w-full overflow-x-hidden bg-gray-50/50 pb-20 pt-20">
+    <!-- Hero Section -->
+    <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+          <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
+          <h1 class="text-3xl md:text-5xl font-bold mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent leading-normal font-persian">
+            {titleText}
+          </h1>
+          <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-persian">
+            {descriptionText}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Workspace -->
+    <section class="container mx-auto px-4 mt-12 font-sans">
+      <div class="max-w-3xl mx-auto space-y-6">
+        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-5 font-persian">
+          <h3 class="text-sm font-bold text-gray-800">{t('utmBuilder.campaignDetails', { fallback: 'Campaign Details' })}</h3>
+
+          <div class="space-y-1.5">
+            <label for="utm-url" class="text-sm font-medium text-gray-700">{t('utmBuilder.websiteUrl', { fallback: 'Website URL (required)' })}</label>
+            <input id="utm-url" type="text" dir="ltr" placeholder={t('utmBuilder.urlPlaceholder', { fallback: 'https://example.com' })} class="w-full border border-gray-200 rounded-lg px-4 h-11 focus:outline-none focus:border-primary" />
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="utm-source" class="text-sm font-medium text-gray-700">{t('utmBuilder.source', { fallback: 'Campaign Source (required)' })}</label>
+            <input id="utm-source" type="text" dir="ltr" placeholder={t('utmBuilder.sourcePlaceholder', { fallback: 'google, newsletter, facebook' })} class="w-full border border-gray-200 rounded-lg px-4 h-11 focus:outline-none focus:border-primary" />
+            <p class="text-xs text-gray-400">{t('utmBuilder.sourceHelp', { fallback: 'The referrer: google, newsletter, facebook, etc.' })}</p>
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="utm-medium" class="text-sm font-medium text-gray-700">{t('utmBuilder.medium', { fallback: 'Campaign Medium (required)' })}</label>
+            <input id="utm-medium" type="text" dir="ltr" placeholder={t('utmBuilder.mediumPlaceholder', { fallback: 'cpc, email, social' })} class="w-full border border-gray-200 rounded-lg px-4 h-11 focus:outline-none focus:border-primary" />
+            <p class="text-xs text-gray-400">{t('utmBuilder.mediumHelp', { fallback: 'Marketing medium: cpc, email, social, etc.' })}</p>
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="utm-campaign" class="text-sm font-medium text-gray-700">{t('utmBuilder.campaign', { fallback: 'Campaign Name (required)' })}</label>
+            <input id="utm-campaign" type="text" dir="ltr" placeholder={t('utmBuilder.campaignPlaceholder', { fallback: 'summer_sale, product_launch' })} class="w-full border border-gray-200 rounded-lg px-4 h-11 focus:outline-none focus:border-primary" />
+            <p class="text-xs text-gray-400">{t('utmBuilder.campaignHelp', { fallback: 'Product, promo code, or slogan' })}</p>
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="utm-term" class="text-sm font-medium text-gray-700">{t('utmBuilder.term', { fallback: 'Campaign Term (optional)' })}</label>
+            <input id="utm-term" type="text" dir="ltr" placeholder={t('utmBuilder.termPlaceholder', { fallback: 'running+shoes' })} class="w-full border border-gray-200 rounded-lg px-4 h-11 focus:outline-none focus:border-primary" />
+            <p class="text-xs text-gray-400">{t('utmBuilder.termHelp', { fallback: 'Identify paid search keywords' })}</p>
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="utm-content" class="text-sm font-medium text-gray-700">{t('utmBuilder.content', { fallback: 'Campaign Content (optional)' })}</label>
+            <input id="utm-content" type="text" dir="ltr" placeholder={t('utmBuilder.contentPlaceholder', { fallback: 'logolink, textlink' })} class="w-full border border-gray-200 rounded-lg px-4 h-11 focus:outline-none focus:border-primary" />
+            <p class="text-xs text-gray-400">{t('utmBuilder.contentHelp', { fallback: 'Differentiate ads or links' })}</p>
+          </div>
+        </div>
+
+        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian">
+          <h3 class="text-sm font-bold text-gray-800">{t('utmBuilder.generatedUrl', { fallback: 'Generated UTM URL' })}</h3>
+          <div id="utm-output" dir="ltr" class="w-full min-h-[3rem] border border-gray-200 rounded-xl p-4 bg-gray-50/50 text-gray-500 font-mono text-sm break-all">
+            {fillFieldsText}
+          </div>
+          <button id="utm-copy" disabled class="w-full py-3 bg-primary text-white font-bold rounded-xl shadow-sm hover:bg-primary/95 transition-all text-sm disabled:opacity-40 disabled:cursor-not-allowed">
+            {t('utmBuilder.copyUrl', { fallback: 'Copy URL' })}
+          </button>
+          <p id="utm-copy-feedback" class="text-xs text-green-600 font-semibold font-persian opacity-0 transition-opacity">
+            {t('utmBuilder.copied', { fallback: 'URL copied to clipboard!' })}
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={supportedLang} />
+</Layout>
+
+<script type="application/json" id="utm-fill-text">{JSON.stringify(fillFieldsText)}</script>
+
+<script is:inline data-astro-rerun>
+  const fillFieldsText = JSON.parse(document.getElementById('utm-fill-text').textContent);
+
+  const urlInput = document.getElementById('utm-url');
+  const sourceInput = document.getElementById('utm-source');
+  const mediumInput = document.getElementById('utm-medium');
+  const campaignInput = document.getElementById('utm-campaign');
+  const termInput = document.getElementById('utm-term');
+  const contentInput = document.getElementById('utm-content');
+
+  const output = document.getElementById('utm-output');
+  const copyBtn = document.getElementById('utm-copy');
+  const copyFeedback = document.getElementById('utm-copy-feedback');
+
+  function buildUrl() {
+    const url = urlInput.value.trim();
+    if (!url) return '';
+
+    const params = new URLSearchParams();
+    if (sourceInput.value.trim()) params.append('utm_source', sourceInput.value.trim());
+    if (mediumInput.value.trim()) params.append('utm_medium', mediumInput.value.trim());
+    if (campaignInput.value.trim()) params.append('utm_campaign', campaignInput.value.trim());
+    if (termInput.value.trim()) params.append('utm_term', termInput.value.trim());
+    if (contentInput.value.trim()) params.append('utm_content', contentInput.value.trim());
+
+    const qs = params.toString();
+    return qs ? `${url}?${qs}` : url;
+  }
+
+  function update() {
+    const finalUrl = buildUrl();
+    if (finalUrl) {
+      output.textContent = finalUrl;
+      output.classList.remove('text-gray-500');
+      output.classList.add('text-primary');
+    } else {
+      output.textContent = fillFieldsText;
+      output.classList.add('text-gray-500');
+      output.classList.remove('text-primary');
+    }
+    copyBtn.disabled = !(finalUrl && sourceInput.value.trim() && mediumInput.value.trim() && campaignInput.value.trim());
+  }
+
+  [urlInput, sourceInput, mediumInput, campaignInput, termInput, contentInput].forEach(el => {
+    el.addEventListener('input', update);
+  });
+
+  copyBtn.addEventListener('click', () => {
+    const finalUrl = buildUrl();
+    if (!finalUrl) return;
+    navigator.clipboard.writeText(finalUrl).then(() => {
+      copyFeedback.classList.remove('opacity-0');
+      setTimeout(() => copyFeedback.classList.add('opacity-0'), 1800);
+    });
+  });
+</script>

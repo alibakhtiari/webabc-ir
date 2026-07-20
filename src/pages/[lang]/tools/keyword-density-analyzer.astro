@@ -5,6 +5,7 @@ import Footer from '../../../components/astro/Footer.astro';
 import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
 import { type SupportedLanguage } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
 
 export async function getStaticPaths() {
   return [
@@ -19,18 +20,7 @@ const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
 
 // Helper to translate strings
-const t = (key: string, options?: { fallback: string }) => {
-  const parts = key.split('.');
-  let current: any = dictionary;
-  for (const part of parts) {
-    if (current && current[part] !== undefined) {
-      current = current[part];
-    } else {
-      return options?.fallback || key;
-    }
-  }
-  return typeof current === 'string' ? current : options?.fallback || key;
-};
+const t = createTranslator(dictionary);
 
 const titleText = t('tools.keywordDensity.title', { fallback: 'Semantic Keyword Density Analyzer' });
 const descriptionText = t('tools.keywordDensity.description', { fallback: 'Analyze text structures to identify keyword frequency and avoid over-optimization before publishing.' });
@@ -145,7 +135,7 @@ const breadcrumbs = [
   <Footer lang={supportedLang} />
 </Layout>
 
-<script is:inline>
+<script is:inline data-astro-rerun>
   // Keyword density analyzer client logic
   const textarea = document.getElementById('analyzer-textarea');
   const wordCountSpan = document.getElementById('word-count');

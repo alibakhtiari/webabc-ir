@@ -4,6 +4,7 @@ import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
 import Footer from '../../../components/astro/Footer.astro';
 import { type SupportedLanguage, languages } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
 
 export async function getStaticPaths() {
   return [
@@ -19,21 +20,22 @@ const dictionary = await getDictionary(supportedLang);
 const isRtl = languages[supportedLang]?.direction === 'rtl';
 
 // Helper to translate strings
-const t = (key: string, options?: { fallback: string }) => {
-  const parts = key.split('.');
-  let current: any = dictionary;
-  for (const part of parts) {
-    if (current && current[part] !== undefined) {
-      current = current[part];
-    } else {
-      return options?.fallback || key;
-    }
-  }
-  return typeof current === 'string' ? current : options?.fallback || key;
-};
+const t = createTranslator(dictionary);
 
 const titleText = t('headlineAnalyzer.title', { fallback: 'SEO Headline Analyzer' });
 const descriptionText = t('headlineAnalyzer.description', { fallback: 'Analyze your headlines for CTR, sentiment, readability and character length to optimize for SEO rankings.' });
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": `https://webabc.ir/${supportedLang}/tools/headline-analyzer/#webapp`,
+  "name": titleText,
+  "description": descriptionText,
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires HTML5 support",
+  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+};
 
 const breadcrumbs = [
   { label: t('common.home'), url: `/${supportedLang}` },
@@ -43,6 +45,7 @@ const breadcrumbs = [
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/headline-analyzer">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
   <main class="grow w-full overflow-x-hidden bg-gray-50/50 pb-20 pt-20">
     <!-- Hero Section -->
     <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
@@ -155,12 +158,53 @@ const breadcrumbs = [
 
       </div>
     </section>
+
+    <!-- SEO Guide Content -->
+    <section class="container mx-auto px-4 mt-16 font-sans">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div class="space-y-3">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900">How This Headline Checker Scores Your Title</h2>
+          <p class="text-gray-600 leading-relaxed">
+            This free SEO headline checker and blog title analyzer scores your headline across three factors that
+            correlate with organic click-through rate: <strong>length</strong> (titles between 50–60 characters
+            avoid truncation in Google search snippets), <strong>power words &amp; numbers</strong> (headlines with
+            a number and an emotional trigger word see measurably higher CTR), and <strong>sentiment balance</strong>
+            (questions and exclamations tend to drive more curiosity clicks than flat statements).
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-4">
+          <div class="bg-white border border-gray-100 rounded-xl p-5">
+            <h3 class="text-sm font-bold text-gray-800 mb-2">Headline vs. Title Tag</h3>
+            <p class="text-xs text-gray-500 leading-relaxed">
+              Your on-page headline (H1) and your search-result title tag can be different. Analyze your H1 here,
+              then check the exact &lt;title&gt; and meta description Google will show with our
+              <a href={`/${supportedLang}/tools/seo-title-checker`} class="text-primary font-semibold hover:underline">SEO Title Checker</a>.
+            </p>
+          </div>
+          <div class="bg-white border border-gray-100 rounded-xl p-5">
+            <h3 class="text-sm font-bold text-gray-800 mb-2">Ideal Headline Length</h3>
+            <p class="text-xs text-gray-500 leading-relaxed">
+              Aim for 50–60 characters. Shorter headlines lack context and keyword coverage; longer ones risk
+              truncation on both desktop and mobile SERPs.
+            </p>
+          </div>
+          <div class="bg-white border border-gray-100 rounded-xl p-5">
+            <h3 class="text-sm font-bold text-gray-800 mb-2">Power Words That Work</h3>
+            <p class="text-xs text-gray-500 leading-relaxed">
+              Words like "proven", "free", "ultimate", or "essential" paired with a digit (e.g. "7 Tips") are the
+              highest-performing combination for blog and article headlines.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <Footer lang={supportedLang} />
 </Layout>
 
-<script is:inline>
+<script is:inline data-astro-rerun>
   const input = document.getElementById('headline-input');
   const analyzeBtn = document.getElementById('analyze-btn');
   const charCount = document.getElementById('char-count');

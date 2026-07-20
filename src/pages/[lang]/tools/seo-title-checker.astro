@@ -5,6 +5,7 @@ import Footer from '../../../components/astro/Footer.astro';
 import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
 import { type SupportedLanguage } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
 
 export async function getStaticPaths() {
   return [
@@ -19,18 +20,7 @@ const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
 
 // Helper to translate strings
-const t = (key: string, options?: { fallback: string }) => {
-  const parts = key.split('.');
-  let current: any = dictionary;
-  for (const part of parts) {
-    if (current && current[part] !== undefined) {
-      current = current[part];
-    } else {
-      return options?.fallback || key;
-    }
-  }
-  return typeof current === 'string' ? current : options?.fallback || key;
-};
+const t = createTranslator(dictionary);
 
 const titleText = t('seoTitleChecker.title', { fallback: 'SEO Title & Meta Checker' });
 const descriptionText = t('seoTitleChecker.description', { fallback: 'Analyze and preview your meta titles and descriptions for Google search results.' });
@@ -228,12 +218,52 @@ const breadcrumbs = [
 
       </div>
     </section>
+
+    <!-- SEO Guide Content -->
+    <section class="container mx-auto px-4 mt-16 font-sans">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div class="space-y-3">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Why Title Tags &amp; Meta Descriptions Matter</h2>
+          <p class="text-gray-600 leading-relaxed">
+            This SEO title checker previews exactly how your &lt;title&gt; and meta description will render in
+            Google search results, in both pixel width and character count — the two limits Google actually
+            truncates on. Getting this right improves click-through rate even when your ranking position doesn't
+            change, since a compelling snippet earns more clicks than a plain one at the same position.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-4">
+          <div class="bg-white border border-gray-100 rounded-xl p-5">
+            <h3 class="text-sm font-bold text-gray-800 mb-2">Title Tag vs. Headline (H1)</h3>
+            <p class="text-xs text-gray-500 leading-relaxed">
+              Your title tag doesn't have to match your on-page H1 word-for-word. Check your blog post or article
+              headline separately with our
+              <a href={`/${supportedLang}/tools/headline-analyzer`} class="text-primary font-semibold hover:underline">SEO Headline Analyzer</a>.
+            </p>
+          </div>
+          <div class="bg-white border border-gray-100 rounded-xl p-5">
+            <h3 class="text-sm font-bold text-gray-800 mb-2">Ideal Title Width</h3>
+            <p class="text-xs text-gray-500 leading-relaxed">
+              Keep titles under ~580px (roughly 50–60 characters). Google truncates by pixel width, not a fixed
+              character count, so wide characters like "W" or capitals cut off sooner than you'd expect.
+            </p>
+          </div>
+          <div class="bg-white border border-gray-100 rounded-xl p-5">
+            <h3 class="text-sm font-bold text-gray-800 mb-2">Meta Description Length</h3>
+            <p class="text-xs text-gray-500 leading-relaxed">
+              Aim for 110–160 characters (~990px). Front-load your focus keyword and end with a clear reason to
+              click, since Google may rewrite descriptions that don't match the query intent.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <Footer lang={supportedLang} />
 </Layout>
 
-<script is:inline>
+<script is:inline data-astro-rerun>
   // SEO calculations logic in pure Vanilla JS
   const POWER_WORDS = [
     'best', 'free', 'top', 'guide', 'checklist', 'how', 'why', 'easy', 'simple',
