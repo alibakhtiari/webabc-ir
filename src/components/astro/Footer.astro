@@ -10,6 +10,11 @@ const { lang } = Astro.props;
 const dictionary = await getDictionary(lang);
 const isRtl = languages[lang]?.direction === 'rtl';
 
+const copyrightYear = new Intl.DateTimeFormat(
+  lang === 'fa' ? 'fa-IR' : lang === 'ar' ? 'ar-SA' : 'en-US',
+  { year: 'numeric' }
+).format(new Date());
+
 // Helper to translate strings
 const t = (key: string) => {
   const parts = key.split('.');
@@ -98,7 +103,7 @@ const linkPath = (path: string) => {
 
     <div class="py-4 border-t border-gray-200 text-center">
       <p class={`text-foreground/70 text-sm font-${lang === 'en' ? 'sans' : 'persian'}`}>
-        {t('common.copyright').replace('{year}', new Date().getFullYear().toString())}
+        {t('common.copyright').replace('{year}', copyrightYear)}
       </p>
     </div>
   </div>
