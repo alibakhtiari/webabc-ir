@@ -16,6 +16,7 @@ export async function getStaticPaths() {
 const { lang } = Astro.params;
 const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
+const isRtl = supportedLang === 'fa' || supportedLang === 'ar';
 
 // Helper to translate strings
 const t = createTranslator(dictionary);
@@ -53,7 +54,7 @@ const breadcrumbs = [
                 Providing localized high-performance web development and customized SEO campaigns.
               </p>
               <a href={`/${supportedLang}/service-areas/${loc}`} class="text-primary font-bold text-sm inline-flex items-center gap-1">
-                {t('common.viewDetails', { fallback: 'View Details' })} &rarr;
+                {t('common.viewDetails', { fallback: 'View Details' })} {isRtl ? '←' : '→'}
               </a>
             </div>
           ))}

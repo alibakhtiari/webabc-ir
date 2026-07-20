@@ -18,6 +18,7 @@ export async function getStaticPaths() {
 const { lang } = Astro.params;
 const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
+const isRtl = supportedLang === 'fa' || supportedLang === 'ar';
 
 // Helper to translate strings
 const t = createTranslator(dictionary);
@@ -214,8 +215,8 @@ const faqList = [
             </div>
 
             <!-- Learn More Link -->
-            <a href={`/${supportedLang}/services/${service.slug}`} class="text-primary font-bold text-sm inline-flex items-center gap-1 font-persian self-start mt-4 group-hover:translate-x-0.5 transition-transform">
-              {t('common.readMore', { fallback: 'Read More' })} &rarr;
+            <a href={`/${supportedLang}/services/${service.slug}`} class={`text-primary font-bold text-sm inline-flex items-center gap-1 font-persian self-start mt-4 ${isRtl ? 'group-hover:-translate-x-0.5' : 'group-hover:translate-x-0.5'} transition-transform`}>
+              {t('common.readMore', { fallback: 'Read More' })} {isRtl ? '←' : '→'}
             </a>
           </div>
         ))}
