@@ -8,6 +8,7 @@ import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import { type SupportedLanguage, languages } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -30,18 +31,7 @@ if (!post) {
 }
 
 // Helper to translate strings
-const t = (key: string, options?: { fallback: string }) => {
-  const parts = key.split('.');
-  let current: any = dictionary;
-  for (const part of parts) {
-    if (current && current[part] !== undefined) {
-      current = current[part];
-    } else {
-      return options?.fallback || key;
-    }
-  }
-  return typeof current === 'string' ? current : options?.fallback || key;
-};
+const t = createTranslator(dictionary);
 
 // Formatter date
 const formatDate = (dateString: string | Date) => {
@@ -67,7 +57,6 @@ const articleSchema = {
   "description": post.data.description,
   "image": post.data.image.startsWith('http') ? post.data.image : `${origin}${post.data.image}`,
   "datePublished": post.data.date,
-  "dateModified": post.data.date,
   "author": {
     "@type": "Person",
     "name": post.data.author || "WebABC Team",

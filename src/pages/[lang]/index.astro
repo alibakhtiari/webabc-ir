@@ -4,6 +4,7 @@ import HeroSection from '../../components/astro/HeroSection.astro';
 import ServicesSection from '../../components/astro/ServicesSection.astro';
 import BenefitsSection from '../../components/astro/BenefitsSection.astro';
 import CTASection from '../../components/astro/CTASection.astro';
+import FAQ from '../../components/astro/FAQ.astro';
 import { type SupportedLanguage } from '../../types/language';
 import { getDictionary } from '../../i18n/get-dictionary';
 
@@ -21,11 +22,37 @@ const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
 const title = dictionary.home?.title || 'WebABC';
 const description = dictionary.home?.description || 'Web Design and Development Services';
+
+const homeFaqList = [1, 2, 3, 4]
+  .map(n => ({
+    question: dictionary.home?.faq?.[`q${n}`] || '',
+    answer: dictionary.home?.faq?.[`a${n}`] || ''
+  }))
+  .filter(item => item.question && item.answer);
+
+const siteUrl = 'https://webabc.ir';
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteUrl}/${supportedLang}#website`,
+  "url": `${siteUrl}/${supportedLang}`,
+  "name": "WebABC",
+  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
+  "publisher": { "@id": `${siteUrl}/#organization` }
+};
 ---
 
 <Layout title={title} description={description} lang={supportedLang} slug="" mainClass="relative overflow-x-hidden pt-0">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(websiteSchema)} />
   <HeroSection lang={supportedLang} />
   <ServicesSection lang={supportedLang} />
   <BenefitsSection lang={supportedLang} />
+  {homeFaqList.length > 0 && (
+    <section class="py-16 bg-gray-50/50 border-y border-gray-100">
+      <div class="container mx-auto px-4 max-w-3xl">
+        <FAQ faqList={homeFaqList} lang={supportedLang} />
+      </div>
+    </section>
+  )}
   <CTASection lang={supportedLang} />
 </Layout>

@@ -4,6 +4,7 @@ import Hero from '../../../components/astro/Hero.astro';
 import CTA from '../../../components/astro/CTA.astro';
 import { type SupportedLanguage, languages } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
 
 export async function getStaticPaths() {
   const locations = ['dubai', 'tehran', 'muscat', 'qazvin'];
@@ -23,18 +24,7 @@ const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
 
 // Helper to translate strings
-const t = (key: string, options?: { fallback: string }) => {
-  const parts = key.split('.');
-  let current: any = dictionary;
-  for (const part of parts) {
-    if (current && current[part] !== undefined) {
-      current = current[part];
-    } else {
-      return options?.fallback || key;
-    }
-  }
-  return typeof current === 'string' ? current : options?.fallback || key;
-};
+const t = createTranslator(dictionary);
 
 const serviceAreasData = dictionary['service-areas'] || {};
 const locationsList = serviceAreasData.locations || [];
@@ -52,9 +42,26 @@ const breadcrumbs = [
   { label: t('service-areas.title', { fallback: 'Service Areas' }), url: `/${supportedLang}/service-areas` },
   { label: locationInfo.name }
 ];
+
+const origin = 'https://webabc.ir';
+const locationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${origin}/${supportedLang}/service-areas/${slug}#service`,
+  "name": titleText,
+  "description": descriptionText,
+  "provider": { "@id": `${origin}/#organization` },
+  "areaServed": {
+    "@type": "City",
+    "name": locationInfo.name,
+    "containedInPlace": locationInfo.country ? { "@type": "Country", "name": locationInfo.country } : undefined
+  },
+  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+};
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug={`service-areas/${slug}`}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(locationSchema)} />
   <Hero title={titleText} description={descriptionText} breadcrumbs={breadcrumbs} lang={supportedLang} />
 
   <!-- Details and AEO Panel -->
