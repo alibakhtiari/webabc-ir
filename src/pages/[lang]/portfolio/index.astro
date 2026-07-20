@@ -76,16 +76,17 @@ function t(key: string, options?: { fallback: string }) {
       <!-- Category Filter -->
       <div class="flex flex-wrap gap-3 justify-center mb-12 font-persian">
         {categories.map((category, idx) => (
-          <button
+          <a
+            href={`/${supportedLang}/portfolio?category=${encodeURIComponent(category)}`}
             data-filter-btn={category}
-            class={`px-5 py-2.5 text-xs font-semibold rounded-full border border-gray-200 transition-all ${
+            class={`px-5 py-2.5 text-xs font-semibold rounded-full border border-gray-200 cursor-pointer transition-all ${
               idx === 0
                 ? "bg-primary text-white shadow-sm"
                 : "bg-white text-gray-700 hover:bg-gray-50"
             }`}
           >
             {getCategoryLabel(category)}
-          </button>
+          </a>
         ))}
       </div>
 
@@ -137,29 +138,55 @@ function t(key: string, options?: { fallback: string }) {
 </Layout>
 
 <script is:inline>
-  // Simple client-side portfolio filtering
+  // Dynamic client-side portfolio filtering with URL parameter tracking
   const filterBtns = document.querySelectorAll('[data-filter-btn]');
   const portfolioCards = document.querySelectorAll('[data-portfolio-card]');
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const selected = btn.getAttribute('data-filter-btn');
-
-      // Update active button state styling
-      filterBtns.forEach(b => {
-        b.className = "px-5 py-2.5 text-xs font-semibold rounded-full border border-gray-200 bg-white text-gray-700 hover:bg-gray-50";
-      });
-      btn.className = "px-5 py-2.5 text-xs font-semibold rounded-full border border-gray-200 bg-primary text-white shadow-sm";
-
-      // Toggle cards visibility
-      portfolioCards.forEach(card => {
-        const cardCat = card.getAttribute('data-portfolio-card');
-        if (selected === 'all' || cardCat === selected) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
+  function applyFilter(selected) {
+    // Update active button state styling
+    filterBtns.forEach(b => {
+      b.className = "px-5 py-2.5 text-xs font-semibold rounded-full border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 cursor-pointer transition-all";
     });
+    const activeBtn = document.querySelector(`[data-filter-btn="${selected}"]`) || document.querySelector('[data-filter-btn="all"]');
+    if (activeBtn) {
+      activeBtn.className = "px-5 py-2.5 text-xs font-semibold rounded-full border border-gray-200 bg-primary text-white shadow-sm cursor-pointer transition-all";
+    }
+
+    // Toggle cards visibility
+    portfolioCards.forEach(card => {
+      const cardCat = card.getAttribute('data-portfolio-card');
+      if (selected === 'all' || cardCat === selected) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const selected = btn.getAttribute('data-filter-btn');
+      
+      applyFilter(selected);
+
+      // Update URL query parameters without reloading
+      const url = new URL(window.location);
+      if (selected === 'all') {
+        url.searchParams.delete('category');
+      } else {
+        url.searchParams.set('category', selected);
+      }
+      window.history.pushState({}, '', url);
+    });
+  });
+
+  // Handle initial page load filter state from URL parameter
+  window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialCategory = urlParams.get('category');
+    if (initialCategory) {
+      applyFilter(decodeURIComponent(initialCategory));
+    }
   });
 </script>
