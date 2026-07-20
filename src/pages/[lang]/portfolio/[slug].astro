@@ -63,8 +63,8 @@ const breadcrumbs = [
 <Layout title={`${project.data.title} | ${t('portfolio.title', { fallback: 'Portfolio' })}`} description={project.data.description} lang={supportedLang} slug={`portfolio/${slug}`}>
   <Navbar lang={supportedLang} />
 
-  <main class="grow w-full overflow-x-hidden bg-gray-50/50 pb-20 pt-20">
-    <div class="container mx-auto px-4 pt-16">
+  <main class="grow w-full overflow-x-hidden bg-gray-50/50 pt-24 pb-20">
+    <div class="container mx-auto px-4 pt-4">
       <a href={`/${supportedLang}/portfolio`} class="px-4 py-2 hover:bg-gray-100 rounded-lg transition-all inline-flex items-center gap-2 text-primary font-medium text-sm">
         {isRtl ? (
           <svg class="w-4 h-4 transform rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
