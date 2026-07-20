@@ -1,9 +1,19 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import Hero from '../../../components/astro/Hero.astro';
+import ServiceHero from '../../../components/astro/ServiceHero.astro';
 import CTA from '../../../components/astro/CTA.astro';
 import { type SupportedLanguage, languages } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
+
+// Import custom service content components
+import SeoContent from '../../../components/services/SeoContent.astro';
+import LocalSeoContent from '../../../components/services/LocalSeoContent.astro';
+import WebDevContent from '../../../components/services/WebDevContent.astro';
+import WordpressContent from '../../../components/services/WordpressContent.astro';
+import ModernWebContent from '../../../components/services/ModernWebContent.astro';
+import WebDesignContent from '../../../components/services/WebDesignContent.astro';
+import MarketingServiceContent from '../../../components/services/MarketingServiceContent.astro';
+import AuditMaintenanceContent from '../../../components/services/AuditMaintenanceContent.astro';
 
 export async function getStaticPaths() {
   const slugs = [
@@ -26,6 +36,7 @@ export async function getStaticPaths() {
 const { lang, slug } = Astro.params;
 const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
+const isRtl = languages[supportedLang]?.direction === 'rtl';
 
 // Helper to translate strings
 const t = (key: string, options?: { fallback: string }) => {
@@ -41,137 +52,154 @@ const t = (key: string, options?: { fallback: string }) => {
   return typeof current === 'string' ? current : options?.fallback || key;
 };
 
-// Map slug to translation keys
-const slugNamespaceMap: Record<string, string> = {
-  'seo': 'seoService',
-  'web-development': 'webDevelopmentServices',
-  'local-seo': 'localSeo',
-  'wordpress-development': 'wordpress',
-  'web-design': 'webDesign',
-  'content-creation': 'contentCreation',
-  'link-building': 'linkBuilding',
-  'modern-web-development': 'modern-web',
-  'speed-optimization': 'speedOptimization',
-  'ui-ux-audit': 'uiUxAudit',
-  'website-maintenance': 'maintenance',
+// Map slug to translation namespaces & keys
+const slugInfoMap: Record<string, { ns: string; titleKey: string; subtitleKey: string; img: string }> = {
+  'seo': { ns: 'seoService', titleKey: 'seoService.title', subtitleKey: 'seoService.subtitle', img: '/images/services/seo.webp' },
+  'local-seo': { ns: 'localSeo', titleKey: 'localSeo.localSeoTitle', subtitleKey: 'localSeo.localSeoDescription', img: '/images/services/local-seo.webp' },
+  'web-development': { ns: 'webDevelopmentServices', titleKey: 'webDevelopmentServices.webDevelopmentTitle', subtitleKey: 'webDevelopmentServices.webDevelopmentDescription', img: '/images/services/web-development.webp' },
+  'wordpress-development': { ns: 'wordpress', titleKey: 'wordpress.title', subtitleKey: 'wordpress.subtitle', img: '/images/services/wordpress.webp' },
+  'web-design': { ns: 'webDesign', titleKey: 'webDesign.title', subtitleKey: 'webDesign.description', img: '/images/services/web-design.webp' },
+  'modern-web-development': { ns: 'modern-web', titleKey: 'modern-web.title', subtitleKey: 'modern-web.description', img: '/images/services/modern-web-development.webp' },
+  'content-creation': { ns: 'contentCreation', titleKey: 'contentCreation.title', subtitleKey: 'contentCreation.description', img: '/images/services/content-creation.webp' },
+  'link-building': { ns: 'linkBuilding', titleKey: 'linkBuilding.title', subtitleKey: 'linkBuilding.description', img: '/images/services/link-building.webp' },
+  'speed-optimization': { ns: 'speedOptimization', titleKey: 'speedOptimization.title', subtitleKey: 'speedOptimization.subtitle', img: '/images/services/speed-optimization.webp' },
+  'ui-ux-audit': { ns: 'uiUxAudit', titleKey: 'uiUxAudit.title', subtitleKey: 'uiUxAudit.subtitle', img: '/images/services/ui-ux-audit.webp' },
+  'website-maintenance': { ns: 'maintenance', titleKey: 'maintenance.title', subtitleKey: 'maintenance.subtitle', img: '/images/services/website-maintenance.webp' },
 };
 
-const ns = slugNamespaceMap[slug] || 'services';
+const info = slugInfoMap[slug];
+const ns = info ? info.ns : 'services';
 const serviceData = dictionary[ns] || {};
 
-const pageTitle = serviceData.title || serviceData.subtitle || t(`services.${slug.replace(/-([a-z])/g, (_, c) => c.toUpperCase())}`, { fallback: slug });
-const pageDesc = serviceData.description || serviceData.subtitle || t(`services.${slug.replace(/-([a-z])/g, (_, c) => c.toUpperCase())}Desc`, { fallback: 'Professional services to grow your digital presence.' });
-
-// Safely extract features
-const features = serviceData.features || serviceData.feature || {};
-const featureList = Object.entries(features).map(([_, value]: [string, any]) => {
-  if (typeof value === 'string') return { title: value, desc: '' };
-  return { title: value.title || '', desc: value.description || '' };
-});
-
-// Safely extract process steps
-const processData = serviceData.process || {};
-const processSteps = Object.entries(processData)
-  .filter(([key]) => key.startsWith('step'))
-  .map(([_, value]: [string, any]) => ({
-    title: value.title || '',
-    desc: value.description || ''
-  }));
+const pageTitle = t(info?.titleKey || '', { fallback: slug });
+const pageDesc = t(info?.subtitleKey || '', { fallback: 'Professional services to grow your digital presence.' });
+const heroImage = info ? info.img : `/images/services/${slug}.webp`;
 
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.services'), url: `/${supportedLang}/services` },
+  { label: t('common.home', { fallback: 'Home' }), url: `/${supportedLang}` },
+  { label: t('common.services', { fallback: 'Services' }), url: `/${supportedLang}/services` },
   { label: pageTitle }
 ];
 
-const getRelatedProjects = (slugVal: string) => {
-  if (['seo', 'local-seo', 'link-building'].includes(slugVal)) {
-    return [
-      { title: supportedLang === 'fa' ? 'رمزارز نگاران' : supportedLang === 'ar' ? 'رمز أرز نكاران' : 'Ramzarz Negaran', slug: 'ramzarz-negaran', desc: t('seo.title', { fallback: 'Legal Crypto Mining Platform SEO Domination' }) },
-      { title: supportedLang === 'fa' ? 'سمعک آلفا' : supportedLang === 'ar' ? 'سمعك ألفا' : 'Samake Alpha', slug: 'samake-alpha', desc: t('local-seo.title', { fallback: 'Audiology Center Local SEO Transformation' }) }
-    ];
-  }
-  if (['web-development', 'web-design', 'wordpress-development', 'modern-web-development', 'speed-optimization'].includes(slugVal)) {
-    return [
-      { title: supportedLang === 'fa' ? 'زیتون مسعود' : supportedLang === 'ar' ? 'زيتون مسعود' : 'Zeytoun Masoud', slug: 'zeytoun-masoud', desc: t('web-design.title', { fallback: 'Traditional Agriculture E-commerce Transformation' }) },
-      { title: supportedLang === 'fa' ? 'رمزارز نگاران' : supportedLang === 'ar' ? 'رمز أرز نكاران' : 'Ramzarz Negaran', slug: 'ramzarz-negaran', desc: t('wordpress.title', { fallback: 'High-Volume Custom WooCommerce Integration' }) }
-    ];
-  }
-  return [];
-};
+// Schema Generator Helper
+function createPageSchema(slugVal: string, langVal: string, titleVal: string, descVal: string) {
+  const isEn = langVal === 'en';
+  const providerName = isEn ? 'WebABC' : (langVal === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث');
+  const providerUrl = `https://webabc.ir/${langVal}`;
+  
+  const baseSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": titleVal,
+    "description": descVal,
+    "provider": {
+      "@type": "Organization",
+      "name": providerName,
+      "url": providerUrl
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Global"
+    }
+  };
 
-const relatedProjects = getRelatedProjects(slug);
+  if (slugVal === 'seo') {
+    return { ...baseSchema, "serviceType": "Search Engine Optimization" };
+  }
+  if (slugVal === 'local-seo') {
+    const service = { ...baseSchema, "serviceType": "Local SEO Optimization" };
+    const localBusiness = {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": `${providerUrl}/#localbusiness`,
+      "name": providerName,
+      "url": providerUrl,
+      "logo": "https://webabc.ir/images/logo.webp",
+      "image": "https://webabc.ir/images/og-image.jpg",
+      "telephone": "+98123456789",
+      "priceRange": "$$"
+    };
+    return [service, localBusiness];
+  }
+  if (slugVal === 'web-development') {
+    return { ...baseSchema, "serviceType": "Custom Web Development" };
+  }
+  if (slugVal === 'wordpress-development') {
+    return { ...baseSchema, "serviceType": "WordPress Development" };
+  }
+  if (slugVal === 'web-design' || slugVal === 'modern-web-development') {
+    return { ...baseSchema, "serviceType": "Web Design" };
+  }
+  if (slugVal === 'speed-optimization') {
+    return { ...baseSchema, "serviceType": "Website Optimization" };
+  }
+  if (slugVal === 'ui-ux-audit') {
+    return { ...baseSchema, "serviceType": "UI/UX Consulting" };
+  }
+  if (slugVal === 'website-maintenance') {
+    return { ...baseSchema, "serviceType": "Website Maintenance" };
+  }
+  
+  return baseSchema;
+}
+
+const pageSchema = createPageSchema(slug, supportedLang, pageTitle, pageDesc);
 ---
 
 <Layout title={pageTitle} description={pageDesc} lang={supportedLang} slug={`services/${slug}`}>
-  <Hero title={pageTitle} description={pageDesc} breadcrumbs={breadcrumbs} lang={supportedLang} />
+  <!-- Inject Schema into Layout Head -->
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)} />
 
-  <!-- Detailed Content Container -->
+  <!-- Premium Side-Image Hero Section -->
+  <ServiceHero 
+    title={pageTitle} 
+    subtitle={pageDesc} 
+    heroImage={heroImage} 
+    breadcrumbs={breadcrumbs} 
+    lang={supportedLang}
+  >
+    <!-- Action buttons -->
+    <a href={`/${supportedLang}/contact`} class="px-6 py-3 bg-primary text-white font-bold rounded-xl shadow-md hover:bg-primary/95 transition-all duration-300 hover:-translate-y-0.5 font-persian text-sm">
+      {t('common.freeConsultation', { fallback: 'Free Consultation' })}
+    </a>
+    <a href={`/${supportedLang}/portfolio`} class="px-6 py-3 bg-white border border-gray-200 text-gray-700 font-bold rounded-xl shadow-xs hover:bg-gray-50 transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-2 font-persian text-sm">
+      {t('common.viewPortfolio', { fallback: 'View Portfolio' })}
+      {isRtl ? (
+        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+      ) : (
+        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+      )}
+    </a>
+  </ServiceHero>
+
+  <!-- Detailed Content Section -->
   <section class="py-16 font-sans">
-    <div class="container mx-auto px-4 max-w-3xl space-y-12">
+    <div class="container mx-auto px-4 max-w-4xl space-y-12">
       
-      {featureList.length > 0 && (
-        <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-xs space-y-6 font-persian">
-          <h2 class="text-2xl font-bold text-gray-800">{serviceData.servicesTitle || t('services.deliverables', { fallback: 'Key Features & Deliverables' })}</h2>
-          <div class="grid gap-6">
-            {featureList.map((feat) => (
-              <div class="flex items-start gap-3">
-                <div class="mt-1 bg-primary/10 text-primary p-1 rounded-full shrink-0">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-                </div>
-                <div>
-                  <h3 class="font-bold text-gray-900 text-lg">{feat.title}</h3>
-                  {feat.desc && <p class="text-gray-500 text-sm mt-1 leading-relaxed">{feat.desc}</p>}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+      {slug === 'seo' && <SeoContent lang={supportedLang} dictionary={dictionary} />}
+      {slug === 'local-seo' && <LocalSeoContent lang={supportedLang} dictionary={dictionary} />}
+      {slug === 'web-development' && <WebDevContent lang={supportedLang} dictionary={dictionary} />}
+      {slug === 'wordpress-development' && <WordpressContent lang={supportedLang} dictionary={dictionary} />}
+      {slug === 'modern-web-development' && <ModernWebContent lang={supportedLang} dictionary={dictionary} />}
+      {slug === 'web-design' && <WebDesignContent lang={supportedLang} dictionary={dictionary} />}
+      
+      {['content-creation', 'link-building'].includes(slug) && (
+        <MarketingServiceContent slug={slug} lang={supportedLang} dictionary={dictionary} />
       )}
-
-      {processSteps.length > 0 && (
-        <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-xs space-y-6 font-persian">
-          <h2 class="text-2xl font-bold text-gray-800">{processData.title || t('services.process', { fallback: 'Our Execution Process' })}</h2>
-          <div class="relative border-l border-primary/20 pl-6 space-y-8 ml-4">
-            {processSteps.map((step, idx) => (
-              <div class="relative">
-                <div class="absolute -left-[35px] top-1 bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold font-mono">
-                  {idx + 1}
-                </div>
-                <div>
-                  <h3 class="font-bold text-gray-900 text-lg">{step.title}</h3>
-                  <p class="text-gray-500 text-sm mt-1 leading-relaxed">{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {relatedProjects.length > 0 && (
-        <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-xs space-y-6 font-persian">
-          <h2 class="text-2xl font-bold text-gray-800">{t('portfolio.caseStudies', { fallback: 'Related Case Studies' })}</h2>
-          <div class="grid gap-6">
-            {relatedProjects.map((proj) => (
-              <div class="border-b border-gray-100 pb-4 last:border-b-0 last:pb-0">
-                <a href={`/${supportedLang}/portfolio/${proj.slug}`} class="font-bold text-primary hover:underline text-lg block">
-                  {proj.title}
-                </a>
-                <p class="text-gray-500 text-sm mt-1">{proj.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+      
+      {['speed-optimization', 'ui-ux-audit', 'website-maintenance'].includes(slug) && (
+        <AuditMaintenanceContent slug={slug} lang={supportedLang} dictionary={dictionary} />
       )}
 
       <!-- Premium Consultation CTA -->
       <CTA 
         lang={supportedLang} 
-        title={serviceData.cta?.title || t('services.ctaTitle')} 
-        description={serviceData.cta?.description || t('services.ctaDescription')} 
-        buttonText={t('common.contactUs')} 
+        title={serviceData.cta?.title || t('services.ctaTitle', { fallback: 'Ready to Elevate Your Digital Footprint?' })} 
+        description={serviceData.cta?.description || t('services.ctaDescription', { fallback: 'Contact our team for a tailored approach.' })} 
+        buttonText={t('common.contactUs', { fallback: 'Contact Us' })} 
       />
 
     </div>
   </section>
 </Layout>
+
