@@ -1,0 +1,39 @@
+{
+  "title": "E-commerce Website Design & Development Services",
+  "subtitle": "Custom Shopify, WooCommerce, and headless e-commerce stores built to convert — fast checkouts, secure payments, and SEO-ready product pages.",
+  "whatIs": {
+    "title": "What Is E-commerce Web Design?",
+    "p1": "E-commerce web design is the process of building an online store that turns visitors into paying customers — combining fast product discovery, a frictionless checkout, and secure payment processing in one experience.",
+    "p2": "We build stores on Shopify and WooCommerce for fast, reliable launches, or fully custom headless storefronts (Next.js/Astro + a commerce API) when performance and unique branding matter most."
+  },
+  "ourServices": "E-commerce Offerings",
+  "storeSetup": "Store Setup & Migration",
+  "storeSetupDesc": "New store launches on Shopify or WooCommerce, or migration from an existing platform with zero data loss.",
+  "customStorefronts": "Custom Storefronts",
+  "customStorefrontsDesc": "Headless, fully custom storefronts for brands that need unique UX beyond template themes.",
+  "feature": {
+    "productPages": "SEO-Optimized Product Pages",
+    "checkout": "Fast, Secure Checkout Flow",
+    "payments": "Payment Gateway Integration",
+    "inventory": "Inventory & Order Management",
+    "mobile": "Mobile-First Shopping Experience",
+    "schema": "Product & Offer Schema Markup"
+  },
+  "platforms": {
+    "title": "Platforms We Build On",
+    "description": "The right platform depends on your catalog size, budget, and growth plans."
+  },
+  "faqTitle": "Frequently Asked Questions",
+  "faq": {
+    "q1": "Shopify or WooCommerce — which is right for my store?",
+    "a1": "Shopify suits fast launches with predictable hosting costs and no maintenance overhead. WooCommerce suits stores that need deep customization or are already invested in the WordPress ecosystem. We'll recommend one based on your catalog size and budget.",
+    "q2": "Can you migrate my existing store without losing SEO rankings?",
+    "a2": "Yes — we map every existing product/category URL to its new equivalent and set up 301 redirects, preserving your search rankings through the migration.",
+    "q3": "Do you set up payment gateways and shipping?",
+    "a3": "Yes, including regional payment gateways, tax rules, and shipping zone configuration as part of every store build.",
+    "q4": "How long does an e-commerce store take to launch?",
+    "a4": "A Shopify/WooCommerce store with a standard catalog typically launches in 3-6 weeks; custom headless storefronts take 8-12 weeks depending on scope."
+  },
+  "ctaTitle": "Ready to Launch Your Online Store?",
+  "ctaDescription": "Get a free consultation and a fixed quote for your e-commerce project."
+}
