@@ -2,6 +2,7 @@
 import Logo from './Logo.astro';
 import { getDictionary } from '../../i18n/get-dictionary';
 import { languages, type SupportedLanguage } from '../../types/language';
+import { createTranslator } from '@/i18n/translate';
 
 interface Props {
   lang: SupportedLanguage;
@@ -12,18 +13,7 @@ const dictionary = await getDictionary(lang);
 const isRtl = languages[lang]?.direction === 'rtl';
 
 // Helper to translate strings
-const t = (key: string, options?: { fallback: string }) => {
-  const parts = key.split('.');
-  let current: any = dictionary;
-  for (const part of parts) {
-    if (current && current[part] !== undefined) {
-      current = current[part];
-    } else {
-      return options?.fallback || key;
-    }
-  }
-  return typeof current === 'string' ? current : options?.fallback || key;
-};
+const t = createTranslator(dictionary);
 
 // Generate relative paths correctly based on lang
 const linkPath = (path: string) => {
@@ -124,9 +114,9 @@ const currentPathWithoutLang = Astro.url.pathname.replace(/^\/(en|fa|ar)/, '') |
                       </a>
                     </li>
                     <li>
-                      <a href={linkPath('/services/modern-web-development')} class="block text-sm text-gray-700 hover:text-primary transition-colors font-persian">
-                        <span class="block font-semibold">{t('common.modernWebDevelopment', { fallback: 'Next.js & Astro' })}</span>
-                        <span class="text-[11px] text-gray-400 line-clamp-1">{t('modern-web.description', { fallback: 'Server-side pre-rendered webapps' })}</span>
+                      <a href={linkPath('/services/ecommerce')} class="block text-sm text-gray-700 hover:text-primary transition-colors font-persian">
+                        <span class="block font-semibold">{t('ecommerce.title', { fallback: 'E-commerce' })}</span>
+                        <span class="text-[11px] text-gray-400 line-clamp-1">{t('ecommerce.storeSetup', { fallback: 'Shopify & WooCommerce stores' })}</span>
                       </a>
                     </li>
                   </ul>
@@ -268,7 +258,7 @@ const currentPathWithoutLang = Astro.url.pathname.replace(/^\/(en|fa|ar)/, '') |
                   <a href={linkPath('/services/web-development')} class="text-sm text-foreground/80 hover:text-primary py-1">{t('services.webDevTitle')}</a>
                   <a href={linkPath('/services/wordpress-development')} class="text-sm text-foreground/80 hover:text-primary py-1">{t('wordpress.wordpressAndWoocommerce')}</a>
                   <a href={linkPath('/services/web-design')} class="text-sm text-foreground/80 hover:text-primary py-1">{t('common.webDesignAndDevelopment')}</a>
-                  <a href={linkPath('/services/modern-web-development')} class="text-sm text-foreground/80 hover:text-primary py-1">{t('common.modernWebDevelopment')}</a>
+                  <a href={linkPath('/services/ecommerce')} class="text-sm text-foreground/80 hover:text-primary py-1">{t('ecommerce.title', { fallback: 'E-commerce' })}</a>
                 </div>
               </div>
             </div>

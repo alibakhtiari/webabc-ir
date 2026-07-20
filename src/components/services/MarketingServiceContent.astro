@@ -1,6 +1,8 @@
 ---
 import TLDR from '../astro/TLDR.astro';
+import FAQ from '../astro/FAQ.astro';
 import { type SupportedLanguage } from '../../types/language';
+import { createTranslator } from '@/i18n/translate';
 
 interface Props {
   slug: string;
@@ -11,18 +13,7 @@ interface Props {
 const { slug, lang, dictionary } = Astro.props;
 
 // Translate helpers
-const t = (key: string, fallback: string) => {
-  const parts = key.split('.');
-  let current = dictionary;
-  for (const part of parts) {
-    if (current && current[part] !== undefined) {
-      current = current[part];
-    } else {
-      return fallback;
-    }
-  }
-  return typeof current === 'string' ? current : fallback;
-};
+const t = createTranslator(dictionary);
 
 // Takeaways
 const takeawaysMap: Record<string, Record<string, string[]>> = {
@@ -76,17 +67,20 @@ const marketingSchema = {
   "@type": "Service",
   "name": t(`${ns}.title`, slug),
   "description": t(`${ns}.description`, ""),
-  "provider": {
-    "@type": "Organization",
-    "name": lang === 'en' ? 'WebABC' : lang === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث',
-    "url": `https://webabc.ir/${lang}`
-  },
+  "provider": { "@id": "https://webabc.ir/#organization" },
   "areaServed": {
     "@type": "Country",
     "name": "Global"
   },
   "serviceType": schemaTypeMap[slug] || "Digital Marketing"
 };
+
+const faqList = [1, 2, 3, 4]
+  .map(n => ({
+    question: t(`${ns}.faq.q${n}`, ""),
+    answer: t(`${ns}.faq.a${n}`, "")
+  }))
+  .filter(item => item.question && item.answer);
 
 // Content features definitions
 const contentCreationFeatures = [
@@ -180,4 +174,11 @@ const features = slug === 'content-creation' ? contentCreationFeatures : linkBui
       </div>
     </div>
   </section>
+
+  <!-- FAQ Section -->
+  {faqList.length > 0 && (
+    <section class="max-w-3xl mx-auto">
+      <FAQ faqList={faqList} lang={lang} />
+    </section>
+  )}
 </div>

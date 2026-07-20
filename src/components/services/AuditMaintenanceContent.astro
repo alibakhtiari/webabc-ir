@@ -2,6 +2,7 @@
 import TLDR from '../astro/TLDR.astro';
 import FAQ from '../astro/FAQ.astro';
 import { type SupportedLanguage } from '../../types/language';
+import { createTranslator } from '@/i18n/translate';
 
 interface Props {
   slug: string;
@@ -12,18 +13,7 @@ interface Props {
 const { slug, lang, dictionary } = Astro.props;
 
 // Translate helpers
-const t = (key: string, fallback: string) => {
-  const parts = key.split('.');
-  let current = dictionary;
-  for (const part of parts) {
-    if (current && current[part] !== undefined) {
-      current = current[part];
-    } else {
-      return fallback;
-    }
-  }
-  return typeof current === 'string' ? current : fallback;
-};
+const t = createTranslator(dictionary);
 
 // Map slug to namespace
 const slugNamespaceMap: Record<string, string> = {

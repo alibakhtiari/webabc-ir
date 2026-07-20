@@ -1,6 +1,8 @@
 ---
 import TLDR from '../astro/TLDR.astro';
+import FAQ from '../astro/FAQ.astro';
 import { type SupportedLanguage } from '../../types/language';
+import { createTranslator } from '@/i18n/translate';
 
 interface Props {
   lang: SupportedLanguage;
@@ -10,18 +12,7 @@ interface Props {
 const { lang, dictionary } = Astro.props;
 
 // Translate helpers
-const t = (key: string, fallback: string) => {
-  const parts = key.split('.');
-  let current = dictionary;
-  for (const part of parts) {
-    if (current && current[part] !== undefined) {
-      current = current[part];
-    } else {
-      return fallback;
-    }
-  }
-  return typeof current === 'string' ? current : fallback;
-};
+const t = createTranslator(dictionary);
 
 // Takeaways
 const takeawaysMap = {
@@ -52,17 +43,20 @@ const wordpressSchema = {
   "@type": "Service",
   "name": t('wordpress.title', "WordPress & WooCommerce Development"),
   "description": t('wordpress.subtitle', "Professional WordPress CMS websites and high-performance WooCommerce online stores."),
-  "provider": {
-    "@type": "Organization",
-    "name": lang === 'en' ? 'WebABC' : lang === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث',
-    "url": `https://webabc.ir/${lang}`
-  },
+  "provider": { "@id": "https://webabc.ir/#organization" },
   "areaServed": {
     "@type": "Country",
     "name": "Global"
   },
   "serviceType": "WordPress Development"
 };
+
+const faqList = [1, 2, 3, 4]
+  .map(n => ({
+    question: t(`wordpress.faq.q${n}`, ""),
+    answer: t(`wordpress.faq.a${n}`, "")
+  }))
+  .filter(item => item.question && item.answer);
 ---
 
 <!-- Inject Schema into head slot of Layout -->
@@ -116,4 +110,11 @@ const wordpressSchema = {
       </div>
     </div>
   </section>
+
+  <!-- FAQ Section -->
+  {faqList.length > 0 && (
+    <section class="max-w-3xl mx-auto">
+      <FAQ faqList={faqList} lang={lang} />
+    </section>
+  )}
 </div>
