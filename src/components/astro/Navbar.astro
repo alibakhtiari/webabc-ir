@@ -41,7 +41,7 @@ const currentPathWithoutLang = Astro.url.pathname.replace(/^\/(en|fa|ar)/, '') |
       </a>
 
       <!-- Desktop Navigation Menu -->
-      <nav class="hidden xl:flex items-center gap-6">
+      <nav class="hidden xl:flex items-center justify-center gap-6 grow mx-4">
         <!-- Services Mega Menu -->
         <div class="relative group">
           <button class={`flex items-center gap-1 text-sm font-medium text-foreground/80 hover:text-primary transition-colors font-${lang === 'en' ? 'sans' : 'persian'}`}>
@@ -171,7 +171,10 @@ const currentPathWithoutLang = Astro.url.pathname.replace(/^\/(en|fa|ar)/, '') |
             {t(item.label)}
           </a>
         ))}
+      </nav>
 
+      <!-- Desktop Right-Side Actions -->
+      <div class="hidden xl:flex items-center gap-4">
         <!-- Language Select -->
         <div class="relative group">
           <button class="flex items-center gap-1 text-sm font-medium text-foreground/80 hover:text-primary transition-colors">
@@ -188,7 +191,7 @@ const currentPathWithoutLang = Astro.url.pathname.replace(/^\/(en|fa|ar)/, '') |
         <button id="open-consultation-btn" class="px-4 py-2 bg-primary text-white text-sm font-medium rounded-md hover:bg-primary/95 transition-all">
           {t('common.freeConsultation')}
         </button>
-      </nav>
+      </div>
 
       <!-- Mobile Controls -->
       <div class="xl:hidden flex items-center gap-3">
