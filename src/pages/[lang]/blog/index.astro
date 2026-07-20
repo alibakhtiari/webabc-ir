@@ -18,6 +18,7 @@ export async function getStaticPaths() {
 const { lang } = Astro.params;
 const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
+const isRtl = supportedLang === 'fa' || supportedLang === 'ar';
 
 // Helper to translate strings
 const t = createTranslator(dictionary);
@@ -152,7 +153,7 @@ const breadcrumbs = [
                     </p>
                     
                     <div class="flex items-center text-primary font-semibold text-sm gap-1 group-hover:gap-2 transition-all font-persian">
-                      {t('blog.readMore', { fallback: 'Read More' })} &rarr;
+                      {t('blog.readMore', { fallback: 'Read More' })} {isRtl ? '←' : '→'}
                     </div>
                   </div>
                 </a>

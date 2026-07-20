@@ -87,7 +87,7 @@ const breadcrumbs = [
               <h3 class="text-2xl font-bold mb-4">{t(`${key}.title`, { fallback: key })}</h3>
               <p class="text-gray-500 mb-6 text-sm leading-relaxed">{t(`${key}.description`, { fallback: 'Optimize assets and verify index markers.' })}</p>
               <a href={`/${supportedLang}/tools/${route}`} class="text-primary font-bold text-sm inline-flex items-center gap-1">
-                {t('common.readMore', { fallback: 'Launch Tool' })} &rarr;
+                {t('common.readMore', { fallback: 'Launch Tool' })} {isRtl ? '←' : '→'}
               </a>
             </div>
           ))}
@@ -109,7 +109,7 @@ const breadcrumbs = [
               <h3 class="text-2xl font-bold mb-4">{t(`${key}.title`, { fallback: key })}</h3>
               <p class="text-gray-500 mb-6 text-sm leading-relaxed">{t(`${key}.description`, { fallback: 'Optimize copy formatting and styling guidelines.' })}</p>
               <a href={`/${supportedLang}/tools/${route}`} class="text-primary font-bold text-sm inline-flex items-center gap-1">
-                {t('common.readMore', { fallback: 'Launch Tool' })} &rarr;
+                {t('common.readMore', { fallback: 'Launch Tool' })} {isRtl ? '←' : '→'}
               </a>
             </div>
           ))}
@@ -131,7 +131,7 @@ const breadcrumbs = [
               <h3 class="text-2xl font-bold mb-4">{t(`tools.${key}.title`, { fallback: key })}</h3>
               <p class="text-gray-500 mb-6 text-sm leading-relaxed">{t(`tools.${key}.description`, { fallback: 'Optimize technical configurations for search engines.' })}</p>
               <a href={`/${supportedLang}/tools/${route}`} class="text-primary font-bold text-sm inline-flex items-center gap-1">
-                {t('common.readMore', { fallback: 'Launch Tool' })} &rarr;
+                {t('common.readMore', { fallback: 'Launch Tool' })} {isRtl ? '←' : '→'}
               </a>
             </div>
           ))}
