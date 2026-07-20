@@ -13,7 +13,22 @@ export default defineConfig({
   experimental: {
     svgOptimizer: svgoOptimizer()
   },
-  integrations: [sitemap(), mdx()],
+  integrations: [
+    sitemap({
+      // Root `/` only exists as a locale-redirect target (see functions/_middleware.ts),
+      // it has no content of its own — exclude it so it isn't indexed as an orphan URL.
+      filter: (page) => page !== 'https://webabc.ir/',
+      // Canonical tags site-wide (see Layout.astro) never use a trailing slash;
+      // strip it here so the sitemap matches what's actually crawled/canonicalized.
+      serialize: (item) => {
+        if (item.url !== 'https://webabc.ir/' && item.url.endsWith('/')) {
+          item.url = item.url.slice(0, -1);
+        }
+        return item;
+      },
+    }),
+    mdx(),
+  ],
   vite: {
     plugins: [tailwind()],
     resolve: {
