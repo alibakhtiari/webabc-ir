@@ -1,11 +1,9 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import Navbar from '../../../components/astro/Navbar.astro';
-import Footer from '../../../components/astro/Footer.astro';
 import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
 import TableOfContents from '../../../components/astro/TableOfContents.astro';
-import FAQ from '../../../components/astro/FAQ.astro';
 import TLDR from '../../../components/astro/TLDR.astro';
+import FAQ from '../../../components/astro/FAQ.astro';
 import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import { type SupportedLanguage, languages } from '../../../types/language';
@@ -46,7 +44,7 @@ const t = (key: string, options?: { fallback: string }) => {
 };
 
 // Formatter date
-const formatDate = (dateString: string) => {
+const formatDate = (dateString: string | Date) => {
   const date = new Date(dateString);
   return date.toLocaleDateString(supportedLang === 'ar' ? 'ar-SA' : supportedLang === 'fa' ? 'fa-IR' : 'en-US', {
     year: 'numeric',
@@ -93,89 +91,111 @@ const breadcrumbs = [
   { label: t('blog.title'), url: `/${supportedLang}/blog` },
   { label: post.data.title }
 ];
+
+const translatedAuthor = (post.data.author || '').includes('Team') || (post.data.author || '').includes('تیم') || (post.data.author || '').includes('فريق')
+  ? (supportedLang === 'fa' ? 'تیم وب اِی‌بی‌سی' : supportedLang === 'ar' ? 'فريق وب إي بي سي' : 'WebABC Team')
+  : post.data.author;
+
+const authorBio = supportedLang === 'fa'
+  ? 'تیم تخصصی وب اِی‌بی‌سی متشکل از کارشناسان ارشد سئو و طراحان وب با بیش از یک دهه تجربه در توسعه سیستم‌های تحت وب و بهینه‌سازی موتورهای جستجو.'
+  : supportedLang === 'ar'
+  ? 'فريق خبراء وب إي بي سي يضم نخبة من مستشاري السيو ومطوري الويب ذوي الخبرة الطويلة في تحسين محركات البحث وتطوير التطبيقات.'
+  : 'The WebABC editorial team consists of senior SEO strategists and web developers with over a decade of experience in building high-performance applications.';
 ---
 
 <Layout title={post.data.title} description={post.data.description} lang={supportedLang} slug={`blog/${slug}`}>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(articleSchema)} />
-  <Navbar lang={supportedLang} />
 
-  <main class="grow w-full overflow-x-hidden bg-gray-50/50 pt-0 pb-20">
-    <div class="container mx-auto px-4 pt-32">
-      <a href={`/${supportedLang}/blog`} class="px-4 py-2 hover:bg-gray-100 rounded-lg transition-all inline-flex items-center gap-2 text-primary font-medium text-sm">
-        {languages[supportedLang]?.direction === 'rtl' ? (
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-        ) : (
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-        )}
-        {t('common.backToBlog', { fallback: 'Back to Blog' })}
-      </a>
-    </div>
+  <div class="container mx-auto px-4 pt-32">
+    <a href={`/${supportedLang}/blog`} class="px-4 py-2 hover:bg-gray-100 rounded-lg transition-all inline-flex items-center gap-2 text-primary font-medium text-sm">
+      {languages[supportedLang]?.direction === 'rtl' ? (
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+      ) : (
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+      )}
+      {t('common.backToBlog', { fallback: 'Back to Blog' })}
+    </a>
+  </div>
 
-    <!-- Post Wrapper -->
-    <div class="container mx-auto px-4 py-8">
-      <div class="max-w-3xl mx-auto">
-        
-        <!-- Breadcrumbs Component -->
-        <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
+  <!-- Post Wrapper -->
+  <div class="container mx-auto px-4 py-8">
+    <div class="max-w-3xl mx-auto">
+      
+      <!-- Breadcrumbs Component -->
+      <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
 
-        <div class="aspect-video rounded-2xl overflow-hidden mb-8 shadow-xs">
-          <Image
-            src={post.data.image}
-            alt={post.data.title}
-            width={800}
-            height={450}
-            class="object-cover w-full h-full"
-          />
-        </div>
-
-        <!-- Post Info Header -->
-        <div class="mb-8 space-y-4">
-          <div class="flex flex-wrap gap-2">
-            <span class="px-2.5 py-1 text-xs font-semibold rounded bg-primary text-white uppercase">{post.data.category}</span>
-            {post.data.tags?.map(tag => (
-              <span class="px-2.5 py-1 text-xs font-semibold rounded bg-gray-100 text-gray-600">#{tag}</span>
-            ))}
-          </div>
-
-          <h1 class="text-4xl md:text-5xl font-bold mb-6 font-persian leading-tight">{post.data.title}</h1>
-
-          <div class="flex flex-wrap items-center gap-4 text-gray-500 text-sm font-mono">
-            <span class="flex items-center gap-1">
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-              {post.data.author}
-            </span>
-            <span class="flex items-center gap-1">
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-              {formatDate(post.data.date)}
-            </span>
-            <span class="flex items-center gap-1">
-              <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-              {post.data.readTime} mins
-            </span>
-          </div>
-        </div>
-
-        <!-- Table of Contents Component -->
-        <TableOfContents headings={headings} lang={supportedLang} />
-
-        <!-- TLDR Component (Key Takeaways summary callout) -->
-        {post.data.keyTakeaways && post.data.keyTakeaways.length > 0 && (
-          <TLDR takeaways={post.data.keyTakeaways} lang={supportedLang} />
-        )}
-
-        <!-- Content Body -->
-        <article class="prose prose-lg max-w-none mb-12 font-persian">
-          <Content />
-        </article>
-
-        <!-- FAQ Component -->
-        {post.data.faq && post.data.faq.length > 0 && (
-          <FAQ faqList={post.data.faq} lang={supportedLang} />
-        )}
-
+      <div class="aspect-video rounded-2xl overflow-hidden mb-8 shadow-xs">
+        <Image
+          src={post.data.image}
+          alt={post.data.title}
+          width={800}
+          height={450}
+          class="object-cover w-full h-full"
+        />
       </div>
-    </div>
-  </main>
 
-  <Footer lang={supportedLang} />
+      <!-- Post Info Header -->
+      <div class="mb-8 space-y-4">
+        <div class="flex flex-wrap gap-2">
+          <span class="px-2.5 py-1 text-xs font-semibold rounded bg-primary text-white uppercase">{post.data.category}</span>
+          {post.data.tags?.map(tag => (
+            <a
+              href={`/${supportedLang}/blog?tag=${encodeURIComponent(tag)}`}
+              class="px-2.5 py-1 text-xs font-semibold rounded bg-gray-100 text-gray-600 hover:bg-primary/10 hover:text-primary transition-all"
+            >
+              #{tag}
+            </a>
+          ))}
+        </div>
+
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 font-persian leading-tight">{post.data.title}</h1>
+
+        <div class="flex flex-wrap items-center gap-4 text-gray-500 text-sm font-mono">
+          <span class="flex items-center gap-1">
+            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+            {translatedAuthor}
+          </span>
+          <span class="flex items-center gap-1">
+            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+            {formatDate(post.data.date)}
+          </span>
+          <span class="flex items-center gap-1">
+            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            {post.data.readTime} {t('blog.minuteRead', { fallback: 'mins' })}
+          </span>
+        </div>
+      </div>
+
+      <!-- Table of Contents Component -->
+      <TableOfContents headings={headings} lang={supportedLang} />
+
+      <!-- TLDR Component (Key Takeaways summary callout) -->
+      {post.data.keyTakeaways && post.data.keyTakeaways.length > 0 && (
+        <TLDR takeaways={post.data.keyTakeaways} lang={supportedLang} />
+      )}
+
+      <!-- Content Body -->
+      <article class="prose prose-lg max-w-none mb-12 font-persian">
+        <Content />
+      </article>
+
+      <!-- EEAT Author Box Component -->
+      <div class="my-12 p-6 md:p-8 bg-white border border-gray-100 rounded-2xl shadow-xs flex flex-col md:flex-row gap-6 items-center md:items-start font-persian">
+        <div class="w-16 h-16 rounded-full overflow-hidden bg-gray-50 flex-shrink-0 flex items-center justify-center border border-gray-100">
+          <img src="/images/logo.webp" alt="WebABC logo" class="w-12 h-auto" />
+        </div>
+        <div class="space-y-2 text-center md:text-start">
+          <h4 class="text-xs font-bold text-primary uppercase tracking-wider">{t('blog.author', { fallback: 'Author' })}</h4>
+          <h3 class="text-lg font-bold text-gray-900">{translatedAuthor}</h3>
+          <p class="text-sm text-gray-600 leading-relaxed max-w-2xl">{authorBio}</p>
+        </div>
+      </div>
+
+      <!-- FAQ Component -->
+      {post.data.faq && post.data.faq.length > 0 && (
+        <FAQ faqList={post.data.faq} lang={supportedLang} />
+      )}
+
+    </div>
+  </div>
 </Layout>
