@@ -2,9 +2,10 @@
 interface Props {
   items: { label: string; url?: string }[];
   lang: string;
+  centered?: boolean;
 }
 
-const { items, lang } = Astro.props;
+const { items, lang, centered = false } = Astro.props;
 
 // Generate Breadcrumb Schema JSON-LD
 const schema = {
@@ -21,7 +22,7 @@ const schema = {
 
 <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
-<nav class="text-sm text-gray-500 mb-6 font-persian flex items-center gap-1.5 flex-wrap">
+<nav class={`text-sm text-gray-500 mb-6 font-persian flex items-center gap-1.5 flex-wrap ${centered ? 'justify-center' : ''}`}>
   {items.map((item, idx) => (
     <>
       {idx > 0 && <span class="text-gray-400 select-none mx-0.5">/</span>}
