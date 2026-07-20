@@ -74,13 +74,15 @@ const linkPath = (path: string) => {
           <ul class="space-y-2">
             <li><a href={linkPath('/about')} class="text-foreground/70 hover:text-primary transition-colors">{t('common.about')}</a></li>
             <li><a href={linkPath('/portfolio')} class="text-foreground/70 hover:text-primary transition-colors">{t('common.portfolio')}</a></li>
-            <li><a href={linkPath('/blog')} class="text-foreground/70 hover:text-primary transition-colors">{t('blog.title')}</a></li>
+            <li><a href={linkPath('/blog')} class="text-foreground/70 hover:text-primary transition-colors">{t('common.blog')}</a></li>
             <li><a href={linkPath('/contact')} class="text-foreground/70 hover:text-primary transition-colors">{t('common.contact')}</a></li>
             <li><a href={linkPath('/privacy')} class="text-foreground/70 hover:text-primary transition-colors">{t('common.privacyPolicy')}</a></li>
           </ul>
         </div>
         <div>
-          <h3 class={`text-lg font-medium mb-4 font-${lang === 'en' ? 'sans' : 'persian'}`}>{t('tools.title')}</h3>
+          <h3 class={`text-lg font-medium mb-4 font-${lang === 'en' ? 'sans' : 'persian'}`}>
+            <a href={linkPath('/tools')} class="hover:text-primary transition-colors">{t('common.tools')}</a>
+          </h3>
           <ul class="space-y-2">
             <li><a href={linkPath('/tools/meta-generator')} class="text-foreground/70 hover:text-primary transition-colors">{t('metaGenerator.title')}</a></li>
             <li><a href={linkPath('/tools/serp-preview')} class="text-foreground/70 hover:text-primary transition-colors">{t('serpPreview.title')}</a></li>
