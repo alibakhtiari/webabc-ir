@@ -1,0 +1,217 @@
+---
+import TLDR from '../astro/TLDR.astro';
+import FAQ from '../astro/FAQ.astro';
+import { type SupportedLanguage } from '../../types/language';
+
+interface Props {
+  slug: string;
+  lang: SupportedLanguage;
+  dictionary: any;
+}
+
+const { slug, lang, dictionary } = Astro.props;
+
+// Translate helpers
+const t = (key: string, fallback: string) => {
+  const parts = key.split('.');
+  let current = dictionary;
+  for (const part of parts) {
+    if (current && current[part] !== undefined) {
+      current = current[part];
+    } else {
+      return fallback;
+    }
+  }
+  return typeof current === 'string' ? current : fallback;
+};
+
+// Map slug to namespace
+const slugNamespaceMap: Record<string, string> = {
+  'speed-optimization': 'speedOptimization',
+  'ui-ux-audit': 'uiUxAudit',
+  'website-maintenance': 'maintenance',
+};
+
+const ns = slugNamespaceMap[slug] || 'services';
+
+// Takeaways
+const takeawaysMap: Record<string, Record<string, string[]>> = {
+  'speed-optimization': {
+    en: [
+      "Improve Core Web Vitals (LCP, INP, CLS) to maximize search ranks.",
+      "Optimize images, minify assets, defer JavaScript, and set caching rules.",
+      "Get faster conversion rates and reduce user bounce rates on all devices."
+    ],
+    fa: [
+      "بهبود معیارهای هسته حیاتی وب (Core Web Vitals) برای افزایش رتبه گوگل.",
+      "بهینه‌سازی تصاویر، فشرده‌سازی کدها، بارگذاری تنبل و تنظیمات کش سرور.",
+      "افزایش سرعت تبدیل کاربر به مشتری و کاهش چشمگیر نرخ پرش سایت."
+    ],
+    ar: [
+      "تحسين مؤشرات أداء الويب الأساسية (Core Web Vitals) لزيادة ترتيب جوجل.",
+      "ضغط الصور، تصغير حجم الملفات البرمجية، وتفعيل نظام الكاش التلقائي.",
+      "زيادة سرعة التصفح لتقليل معدلات ارتداد الزوار وزيادة المبيعات."
+    ]
+  },
+  'ui-ux-audit': {
+    en: [
+      "Analyze user flows, heuristics, and accessibility targets.",
+      "Identify conversion bottlenecks and design inconsistencies.",
+      "Receive a detailed visual report with actionable optimization advice."
+    ],
+    fa: [
+      "تحلیل دقیق مسیر حرکت کاربر، روانشناسی طراحی و دسترسی‌پذیری.",
+      "شناسایی گلوگاه‌های کاهش فروش و ناهماهنگی‌های بصری رابط کاربری.",
+      "ارائه گزارش تصویری جامع با پیشنهادهای عملی برای بازطراحی."
+    ],
+    ar: [
+      "تحليل مسارات تصفح الزوار وتقييم سهولة الاستخدام والوصول للخدمات.",
+      "تحديد العقبات التي تمنع إتمام عمليات الشراء أو التسجيل.",
+      "الحصول على تقرير مرئي مفصل يحتوي على توصيات عملية قابلة للتنفيذ."
+    ]
+  },
+  'website-maintenance': {
+    en: [
+      "Regular core, theme, and plugin updates to prevent security holes.",
+      "Automated cloud backup regimes and uptime monitoring scans.",
+      "Fast troubleshooting support and page content edits as needed."
+    ],
+    fa: [
+      "بروزرسانی مداوم هسته، قالب و افزونه‌ها برای جلوگیری از رخنه‌های امنیتی.",
+      "پشتیبان‌گیری خودکار ابری به همراه پایش مستمر پایداری و در دسترس بودن سایت.",
+      "پشتیبانی فنی سریع و رفع خطاهای ناگهانی در کوتاه‌ترین زمان ممکن."
+    ],
+    ar: [
+      "تحديثات دورية للنظام والقوالب والإضافات لمنع الثغرات الأمنية.",
+      "نسخ احتياطي تلقائي وسحابي مع مراقبة استقرار وتوفر الموقع 24/7.",
+      "دعم فني سريع لحل المشاكل التقنية وتعديل محتوى الصفحات عند الطلب."
+    ]
+  }
+};
+
+const takeaways = takeawaysMap[slug]?.[lang] || takeawaysMap[slug]?.en || [];
+
+const auditMaintenanceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": t(`${ns}.title`, slug),
+  "description": t(`${ns}.subtitle`, ""),
+  "provider": {
+    "@type": "Organization",
+    "name": lang === 'en' ? 'WebABC' : lang === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث',
+    "url": `https://webabc.ir/${lang}`
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Global"
+  },
+  "serviceType": slug === 'speed-optimization' ? 'Website Optimization' : slug === 'ui-ux-audit' ? 'UI/UX Consulting' : 'Website Maintenance'
+};
+
+// Features checklist (0 to 4)
+const features = [0, 1, 2, 3, 4].map(idx => t(`${ns}.features.${idx}`, `Feature ${idx + 1}`));
+
+// Benefits grid (0 to 3)
+const benefits = [0, 1, 2, 3].map(idx => ({
+  title: t(`${ns}.benefits.${idx}.title`, `Benefit ${idx + 1}`),
+  description: t(`${ns}.benefits.${idx}.description`, "")
+}));
+
+// Process steps (0 to 3)
+const processes = [0, 1, 2, 3].map(idx => ({
+  title: t(`${ns}.process.${idx}.title`, `Step ${idx + 1}`),
+  description: t(`${ns}.process.${idx}.description`, "")
+}));
+
+// FAQ items (q1/a1 to q4/a4)
+const faqList = [1, 2, 3, 4].map(idx => ({
+  question: t(`${ns}.faq.q${idx}`, ""),
+  answer: t(`${ns}.faq.a${idx}`, "")
+})).filter(item => item.question && item.answer);
+
+// Custom theme styling properties
+const colorThemes: Record<string, { bg: string, text: string, iconColor: string, border: string, headerText: string }> = {
+  'speed-optimization': { bg: 'bg-orange-500', text: 'text-orange-500', iconColor: 'text-orange-500', border: 'border-orange-100', headerText: 'text-orange-600' },
+  'ui-ux-audit': { bg: 'bg-indigo-600', text: 'text-indigo-600', iconColor: 'text-indigo-500', border: 'border-indigo-100', headerText: 'text-indigo-600' },
+  'website-maintenance': { bg: 'bg-cyan-600', text: 'text-cyan-600', iconColor: 'text-cyan-500', border: 'border-cyan-100', headerText: 'text-cyan-700' }
+};
+
+const theme = colorThemes[slug] || colorThemes['website-maintenance'];
+---
+
+<!-- Inject Schema into head slot of Layout -->
+<script type="application/ld+json" slot="head" set:html={JSON.stringify(auditMaintenanceSchema)} />
+
+<div class="space-y-16 py-8">
+  <!-- Key Takeaways (TL;DR) -->
+  {takeaways.length > 0 && (
+    <div class="max-w-3xl mx-auto">
+      <TLDR takeaways={takeaways} lang={lang} />
+    </div>
+  )}
+
+  <div class="max-w-4xl mx-auto">
+    <!-- Main description paragraph -->
+    <div class="prose max-w-none mb-12">
+      <p class="text-xl text-gray-600 leading-relaxed text-center font-persian">
+        {t(`${ns}.description`, "")}
+      </p>
+    </div>
+
+    <!-- Core Features Checklist Card -->
+    <div class="bg-white p-8 rounded-2xl shadow-xs border border-gray-100 mb-16">
+      <h3 class="text-2xl font-bold mb-6 flex items-center gap-3 font-persian">
+        {slug === 'speed-optimization' && <svg class="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>}
+        {slug === 'ui-ux-audit' && <svg class="w-8 h-8 text-indigo-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>}
+        {slug === 'website-maintenance' && <svg class="w-8 h-8 text-cyan-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 11 11 13 15 9"></polyline></svg>}
+        {t(`${ns}.title`, slug)}
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-persian">
+        {features.map((feature) => (
+          <div class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50/50 transition-colors">
+            <svg class="w-5 h-5 text-green-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span class="font-semibold text-gray-700 text-sm">{feature}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Benefits Section -->
+    <div class="mb-20">
+      <h2 class="text-3xl font-bold text-center mb-10 font-persian">{t('common.whyChooseUs', "Why Choose Us")}</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {benefits.map((benefit) => (
+          <div class="bg-linear-to-br from-gray-50/50 to-white p-6 rounded-2xl border border-gray-100 shadow-xs hover:shadow-md transition-shadow">
+            <h3 class={`text-xl font-bold mb-3 ${theme.headerText} font-persian`}>
+              {benefit.title}
+            </h3>
+            <p class="text-gray-600 leading-relaxed text-sm font-persian">
+              {benefit.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Process Section -->
+    <div class="mb-20">
+      <h2 class="text-3xl font-bold text-center mb-10 font-persian">{t('common.howItWorks', "Our Work Process")}</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {processes.map((process, i) => (
+          <div class="relative p-6 pt-12 bg-white rounded-2xl border border-gray-200/80 text-center shadow-xs hover:shadow-md transition-shadow">
+            <div class={`absolute -top-5 left-1/2 -translate-x-1/2 w-10 h-10 ${theme.bg} text-white rounded-full flex items-center justify-center font-bold text-lg shadow-md`}>
+              {i + 1}
+            </div>
+            <h3 class="font-bold text-lg mb-3 mt-2 text-gray-800 font-persian">{process.title}</h3>
+            <p class="text-xs text-gray-500 leading-relaxed font-persian">{process.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- FAQ Accordion -->
+    {faqList.length > 0 && (
+      <FAQ faqList={faqList} lang={lang} />
+    )}
+  </div>
+</div>

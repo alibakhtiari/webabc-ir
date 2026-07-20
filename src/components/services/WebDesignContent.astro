@@ -1,0 +1,212 @@
+---
+import TLDR from '../astro/TLDR.astro';
+import { type SupportedLanguage } from '../../types/language';
+
+interface Props {
+  lang: SupportedLanguage;
+  dictionary: any;
+}
+
+const { lang, dictionary } = Astro.props;
+
+const isRtl = lang === 'fa' || lang === 'ar';
+
+// Translate helpers
+const t = (key: string, fallback: string) => {
+  const parts = key.split('.');
+  let current = dictionary;
+  for (const part of parts) {
+    if (current && current[part] !== undefined) {
+      current = current[part];
+    } else {
+      return fallback;
+    }
+  }
+  return typeof current === 'string' ? current : fallback;
+};
+
+// Takeaways
+const takeawaysMap = {
+  en: [
+    "Stunning UI/UX designs focused on Conversion Rate Optimization (CRO).",
+    "Flawless responsiveness across desktop, tablet, and mobile screens.",
+    "Integrated WordPress CMS structures for easy publishing.",
+    "Built-in search engine optimized design guidelines for maximum organic reach."
+  ],
+  fa: [
+    "طراحی‌های خیره‌کننده UI/UX با تمرکز بر افزایش نرخ تبدیل کاربر به مشتری.",
+    "ریسپانسیو بی‌نقص و هماهنگ در انواع ابعاد دسکتاپ، تبلت و موبایل.",
+    "طراحی قالب‌های مدیریت محتوای وردپرس برای ویرایش آسان محتوا توسط شما.",
+    "رعایت اصول سئوی تکنیکال در طراحی جهت کسب حداکثر رتبه ارگانیک گوگل."
+  ],
+  ar: [
+    "واجهات وتجربة مستخدم (UI/UX) مذهلة تركز على زيادة معدلات التحويل.",
+    "تصميمات متجاوبة تماماً مع الشاشات المختلفة (الهواتف، الأجهزة اللوحية، الكمبيوتر).",
+    "دعم كامل لإدارة المحتوى عبر نظام وردبرس لتسهيل تعديل النصوص والصور.",
+    "تصميم متوافق مع معايير محركات البحث (SEO) لضمان ظهور قوي في جوجل."
+  ]
+};
+
+const takeaways = takeawaysMap[lang] || takeawaysMap.en;
+
+const webDesignSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": t('webDesign.title', "Creative Web Design"),
+  "description": t('webDesign.description', "Professional user interface design and corporate website structures."),
+  "provider": {
+    "@type": "Organization",
+    "name": lang === 'en' ? 'WebABC' : lang === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث',
+    "url": `https://webabc.ir/${lang}`
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Global"
+  },
+  "serviceType": "Web Design"
+};
+---
+
+<!-- Inject Schema into head slot of Layout -->
+<script type="application/ld+json" slot="head" set:html={JSON.stringify(webDesignSchema)} />
+
+<div class="space-y-16 py-8">
+  <!-- Key Takeaways (TL;DR) -->
+  <div class="max-w-3xl mx-auto">
+    <TLDR takeaways={takeaways} lang={lang} />
+  </div>
+
+  <!-- Services Details -->
+  <section class="bg-white">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12 font-persian">
+        {t('webDesign.ourServices', "Web Design Offerings")}
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {[
+          { key: 'uiux' },
+          { key: 'responsive' },
+          { key: 'wordpress' },
+          { key: 'react' },
+          { key: 'ecommerce' },
+          { key: 'seo' }
+        ].map(({ key }) => (
+          <div class="bg-white p-6 rounded-2xl shadow-xs hover:shadow-lg transition-all duration-300 border border-gray-100 flex flex-col">
+            <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-4 text-primary text-2xl font-bold">
+              ✦
+            </div>
+            <h3 class="text-xl font-bold mb-3 font-persian">{t(`webDesign.features.${key}.title`, key)}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed font-persian flex-grow">
+              {t(`webDesign.features.${key}.description`, "")}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Timeline -->
+  <section class="py-16 bg-gray-50/50 rounded-3xl p-8 border border-gray-100">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-16 font-persian">
+        {t('webDesign.process.title', "Our Design & Prototyping Process")}
+      </h2>
+
+      <div class="relative max-w-4xl mx-auto">
+        <!-- Timeline Center Line -->
+        <div class="absolute left-4 lg:left-1/2 transform lg:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-primary/20"></div>
+
+        <!-- Alternating steps -->
+        <div class="space-y-12">
+          {[1, 2, 3, 4, 5].map((step) => {
+            const isLeft = step % 2 !== 0;
+            return (
+              <div class="relative flex flex-col lg:flex-row items-start">
+                <div class={`lg:w-1/2 w-full ${isLeft ? 'lg:pe-12 lg:text-end' : 'lg:ps-12 lg:order-last'}`}>
+                  <div class="bg-white p-6 rounded-2xl shadow-xs border border-gray-100/50 hover:shadow-md transition-shadow">
+                    <h3 class="text-xl font-bold mb-2 font-persian">{t(`webDesign.process.step${step}.title`, `Step ${step}`)}</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed font-persian">{t(`webDesign.process.step${step}.description`, "")}</p>
+                  </div>
+                </div>
+                <div class="absolute left-4 lg:left-1/2 top-4 transform -translate-x-1/2 flex items-center justify-center w-8 h-8 bg-primary text-white rounded-full text-sm font-bold shadow-md z-10">
+                  {step}
+                </div>
+                <div class="lg:w-1/2 hidden lg:block"></div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Complementary Services -->
+  <section class="py-12 bg-gray-50/50 rounded-3xl p-8 border border-gray-100">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12 font-persian">
+        {t('common.complementaryServices', "Complementary Services")}
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Content Creation Card -->
+        <a href={`/${lang}/services/content-creation`} class="group bg-white p-8 rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 border border-gray-100 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 group-hover:scale-105 transition-transform">
+                ✍️
+              </div>
+              <h3 class="text-xl font-bold font-persian">{t('services.contentCreationTitle', "Content Creation")}</h3>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed font-persian">{t('services.contentCreationDescription', "")}</p>
+          </div>
+          <div class="flex items-center text-blue-600 font-bold text-sm mt-6 group-hover:translate-x-1 transition-transform font-persian">
+            {t('common.learnMore', "Learn More")} {isRtl ? '←' : '→'}
+          </div>
+        </a>
+
+        <!-- Link Building Card -->
+        <a href={`/${lang}/services/link-building`} class="group bg-white p-8 rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 border border-gray-100 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600 group-hover:scale-105 transition-transform">
+                🔗
+              </div>
+              <h3 class="text-xl font-bold font-persian">{t('services.linkBuildingTitle', "Link Building")}</h3>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed font-persian">{t('services.linkBuildingDescription', "")}</p>
+          </div>
+          <div class="flex items-center text-purple-600 font-bold text-sm mt-6 group-hover:translate-x-1 transition-transform font-persian">
+            {t('common.learnMore', "Learn More")} {isRtl ? '←' : '→'}
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technologies Grid -->
+  <section class="bg-white">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12 font-persian">
+        {t('webDesign.technologies.title', "Design Technologies We Use")}
+      </h2>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+        {[
+          { name: "React", icon: "⚛️" },
+          { name: "Next.js", icon: "▲" },
+          { name: "WordPress", icon: "W" },
+          { name: "Tailwind CSS", icon: "🎨" },
+          { name: "Node.js", icon: "🟢" },
+          { name: "MongoDB", icon: "🍃" },
+          { name: "TypeScript", icon: "TS" },
+          { name: "GraphQL", icon: "◢" }
+        ].map((tech) => (
+          <div class="bg-white p-6 rounded-2xl shadow-xs hover:shadow-md border border-gray-100 flex flex-col items-center justify-center aspect-square transition-all duration-300 hover:-translate-y-1">
+            <div class="text-4xl mb-3">{tech.icon}</div>
+            <div class="font-bold text-gray-800 text-sm">{tech.name}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</div>

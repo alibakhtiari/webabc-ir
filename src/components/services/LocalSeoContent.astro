@@ -1,0 +1,175 @@
+---
+import TLDR from '../astro/TLDR.astro';
+import { type SupportedLanguage } from '../../types/language';
+
+interface Props {
+  lang: SupportedLanguage;
+  dictionary: any;
+}
+
+const { lang, dictionary } = Astro.props;
+
+// Translate helpers
+const t = (key: string, fallback: string) => {
+  const parts = key.split('.');
+  let current = dictionary;
+  for (const part of parts) {
+    if (current && current[part] !== undefined) {
+      current = current[part];
+    } else {
+      return fallback;
+    }
+  }
+  return typeof current === 'string' ? current : fallback;
+};
+
+// Custom takeaways for Local SEO page
+const takeawaysMap = {
+  en: [
+    "Dominate local Google Search and Google Maps rankings.",
+    "Optimize Google Business Profile and local citation builder services.",
+    "Target 'near me' key search phrases and build authority with local backlinks."
+  ],
+  fa: [
+    "تسلط بر رتبه‌های گوگل مپ و نتایج جستجوی محلی گوگل.",
+    "بهینه‌سازی کامل پروفایل کسب‌وکار گوگل (Google Business Profile) و ثبت در نقشه‌ها.",
+    "هدف‌گیری عبارات کلیدی محلی و نزدیک من (Near Me) همراه با لینک‌سازی محلی."
+  ],
+  ar: [
+    "السيطرة على نتائج البحث المحلية في جوجل وموقع خرائط جوجل.",
+    "تحسين حساب نشاطي التجاري على جوجل وبناء الإشارات المحلية.",
+    "استهداف العبارات البحثية المحلية 'بالقرب مني' وبناء روابط محلية موثوقة."
+  ]
+};
+
+const takeaways = takeawaysMap[lang] || takeawaysMap.en;
+
+const localSeoSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": t('localSeo.localSeoTitle', "Local SEO Optimization"),
+  "description": t('localSeo.localSeoDescription', "Get found by customers in your area. We optimize your Google Maps and local search presence."),
+  "provider": {
+    "@type": "Organization",
+    "name": lang === 'en' ? 'WebABC' : lang === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث',
+    "url": `https://webabc.ir/${lang}`
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Global"
+  },
+  "serviceType": "Local SEO Optimization"
+};
+---
+
+<!-- Inject Schema into head slot of Layout -->
+<script type="application/ld+json" slot="head" set:html={JSON.stringify(localSeoSchema)} />
+
+<div class="space-y-16 py-8">
+  <!-- Key Takeaways (TL;DR) -->
+  <div class="max-w-3xl mx-auto">
+    <TLDR takeaways={takeaways} lang={lang} />
+  </div>
+
+  <!-- Features Section -->
+  <section class="bg-white">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12 font-persian">
+        {t('localSeo.features.title', "Local SEO Solutions")}
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Card 1: GMB -->
+        <div class="p-6 rounded-2xl bg-blue-50/50 hover:shadow-lg transition-all duration-300 border border-transparent hover:border-blue-100/50 group">
+          <div class="w-14 h-14 rounded-xl bg-white flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform text-blue-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 font-persian">{t('localSeo.feature.gmb', "Google Business Profile")}</h3>
+          <p class="text-gray-600 text-sm leading-relaxed font-persian">
+            {t('localSeo.feature.gmbDesc', "Claiming, optimizing, and keeping your Google Business Profile updated.")}
+          </p>
+        </div>
+
+        <!-- Card 2: Local Keywords -->
+        <div class="p-6 rounded-2xl bg-green-50/50 hover:shadow-lg transition-all duration-300 border border-transparent hover:border-green-100/50 group">
+          <div class="w-14 h-14 rounded-xl bg-white flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform text-green-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 font-persian">{t('localSeo.feature.localKeywords', "Local Keyword Targeting")}</h3>
+          <p class="text-gray-600 text-sm leading-relaxed font-persian">
+            {t('localSeo.feature.localKeywordsDesc', "Targeting local keywords that potential customers in your area search for.")}
+          </p>
+        </div>
+
+        <!-- Card 3: Near Me -->
+        <div class="p-6 rounded-2xl bg-purple-50/50 hover:shadow-lg transition-all duration-300 border border-transparent hover:border-purple-100/50 group">
+          <div class="w-14 h-14 rounded-xl bg-white flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform text-purple-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 font-persian">{t('localSeo.feature.nearMe', "Near Me Optimization")}</h3>
+          <p class="text-gray-600 text-sm leading-relaxed font-persian">
+            {t('localSeo.feature.nearMeDesc', "Structuring layout content to capture highly-relevant 'near me' search queries.")}
+          </p>
+        </div>
+
+        <!-- Card 4: Local Links -->
+        <div class="p-6 rounded-2xl bg-amber-50/50 hover:shadow-lg transition-all duration-300 border border-transparent hover:border-amber-100/50 group">
+          <div class="w-14 h-14 rounded-xl bg-white flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform text-amber-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-12a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 font-persian">{t('localSeo.feature.localLinks', "Local Link Building")}</h3>
+          <p class="text-gray-600 text-sm leading-relaxed font-persian">
+            {t('localSeo.feature.localLinksDesc', "Earning high-quality backlinks from popular regional sites and directories.")}
+          </p>
+        </div>
+
+        <!-- Card 5: Reviews -->
+        <div class="p-6 rounded-2xl bg-rose-50/50 hover:shadow-lg transition-all duration-300 border border-transparent hover:border-rose-100/50 group">
+          <div class="w-14 h-14 rounded-xl bg-white flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform text-rose-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="21"></line><polyline points="8 17 10 19 15 14"></polyline></svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 font-persian">{t('localSeo.feature.reviews', "Review Management")}</h3>
+          <p class="text-gray-600 text-sm leading-relaxed font-persian">
+            {t('localSeo.feature.reviewsDesc', "Strategies for gathering positive client reviews and professional responses.")}
+          </p>
+        </div>
+
+        <!-- Card 6: Reports -->
+        <div class="p-6 rounded-2xl bg-indigo-50/50 hover:shadow-lg transition-all duration-300 border border-transparent hover:border-indigo-100/50 group">
+          <div class="w-14 h-14 rounded-xl bg-white flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 transition-transform text-indigo-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 font-persian">{t('localSeo.feature.localReports', "Local Performance Reports")}</h3>
+          <p class="text-gray-600 text-sm leading-relaxed font-persian">
+            {t('localSeo.feature.localReportsDesc', "Clear details on rank growth, Google Maps traffic, and interactions.")}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="py-16 bg-gray-50/50 rounded-3xl p-8 border border-gray-100">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12 font-persian">
+        {t('localSeo.process.title', "Our Execution Process")}
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[1, 2, 3, 4].map((step) => (
+          <div class="relative p-8 rounded-2xl bg-white hover:shadow-xl transition-all border border-gray-100/80 group">
+            <div class="absolute -top-4 -left-4 w-12 h-12 bg-primary text-white rounded-xl shadow-lg flex items-center justify-center text-xl font-bold group-hover:scale-110 transition-transform rotate-3 group-hover:rotate-6">
+              0{step}
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4 mt-2 font-persian">
+              {t(`localSeo.process.step${step}.title`, `Step ${step}`)}
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed font-persian">
+              {t(`localSeo.process.step${step}.desc`, "")}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</div>
