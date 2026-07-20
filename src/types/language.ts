@@ -47,3 +47,14 @@ export interface LanguageContextType {
   getSeoDescription: (description?: string) => string;
   translations: Record<string, unknown>; // Importing actual translations type would create circular dependency
 }
+
+/**
+ * Returns static paths boilerplate for pages that only parameterize on lang
+ */
+export function getLanguageStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'fa' } },
+    { params: { lang: 'ar' } },
+  ];
+}
