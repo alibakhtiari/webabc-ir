@@ -40,7 +40,7 @@ export default function CookieBanner() {
 
             {/* Cookie Banner UI */}
             {isVisible && (
-                <div className="fixed bottom-0 left-0 right-0 z-[100] p-4 pb-6 bg-white border-t border-gray-200 shadow-xl sm:p-6 dark:bg-gray-900 dark:border-gray-800">
+                <div className="fixed bottom-0 left-0 right-0 z-100 p-4 pb-6 bg-white border-t border-gray-200 shadow-xl sm:p-6 dark:bg-gray-900 dark:border-gray-800">
                     <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
                         <p className="text-sm text-gray-600 dark:text-gray-300 flex-1">
                             {t('cookieNotice.message')}
