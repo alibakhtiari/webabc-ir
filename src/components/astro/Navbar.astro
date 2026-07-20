@@ -31,6 +31,7 @@ const linkPath = (path: string) => {
 };
 
 const navItems = [
+  { key: 'service-areas', label: 'common.serviceAreas', href: '/service-areas' },
   { key: 'portfolio', label: 'common.portfolio', href: '/portfolio' },
   { key: 'blog', label: 'common.blog', href: '/blog' },
   { key: 'about', label: 'common.about', href: '/about' },
@@ -51,19 +52,127 @@ const currentPathWithoutLang = Astro.url.pathname.replace(/^\/(en|fa|ar)/, '') |
 
       <!-- Desktop Navigation Menu -->
       <nav class="hidden xl:flex items-center gap-6">
-        <!-- Services dropdown (simplified to simple navigation in Astro for speed, or dropdown trigger) -->
+        <!-- Services Mega Menu -->
         <div class="relative group">
           <button class={`flex items-center gap-1 text-sm font-medium text-foreground/80 hover:text-primary transition-colors font-${lang === 'en' ? 'sans' : 'persian'}`}>
             {t('common.services')}
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
-          <!-- Hover Dropdown content -->
-          <div class="absolute top-full left-0 mt-2 w-56 rounded-md shadow-lg bg-white border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2">
-            <a href={linkPath('/services/seo')} class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">{t('services.seoTitle')}</a>
-            <a href={linkPath('/services/web-design')} class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">{t('services.webDesignTitle')}</a>
-            <a href={linkPath('/services/content-creation')} class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">{t('services.contentCreationTitle')}</a>
-            <a href={linkPath('/services/speed-optimization')} class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">{t('services.technicalOptimization')}</a>
-            <a href={linkPath('/services/link-building')} class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">{t('services.linkBuildingTitle')}</a>
+          
+          <!-- Mega Menu dropdown content -->
+          <div class={`absolute top-full ${isRtl ? 'right-[-100px]' : 'left-[-100px]'} mt-2 w-[720px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50`}>
+            <div class="bg-white p-6 shadow-2xl rounded-2xl border border-gray-100">
+              <div class="grid grid-cols-3 gap-6 text-start">
+                
+                <!-- SEO Services Column -->
+                <div class="space-y-4">
+                  <div class="flex items-center gap-2 mb-2 pb-2 border-b border-gray-100">
+                    <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                    <h3 class="font-bold text-sm text-primary font-persian">{t('common.seoServices', { fallback: 'SEO Services' })}</h3>
+                  </div>
+                  <ul class="space-y-3">
+                    <li>
+                      <a href={linkPath('/services/seo')} class="block text-sm text-gray-700 hover:text-primary transition-colors font-persian">
+                        <span class="block font-semibold">{t('services.seoTitle', { fallback: 'SEO Optimization' })}</span>
+                        <span class="text-[11px] text-gray-400 line-clamp-1">{t('services.seoDescription', { fallback: 'Search ranking growth' })}</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href={linkPath('/services/local-seo')} class="block text-sm text-gray-700 hover:text-primary transition-colors font-persian">
+                        <span class="block font-semibold">{t('services.localSeoTitle', { fallback: 'Local SEO' })}</span>
+                        <span class="text-[11px] text-gray-400 line-clamp-1">{t('services.localSeoDescription', { fallback: 'Google Maps marketing' })}</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href={linkPath('/services/link-building')} class="block text-sm text-gray-700 hover:text-primary transition-colors font-persian">
+                        <span class="block font-semibold">{t('services.linkBuildingTitle', { fallback: 'Link Building' })}</span>
+                        <span class="text-[11px] text-gray-400 line-clamp-1">{t('services.linkBuildingDescription', { fallback: 'Authority enhancement' })}</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href={linkPath('/services/content-creation')} class="block text-sm text-gray-700 hover:text-primary transition-colors font-persian">
+                        <span class="block font-semibold">{t('services.contentCreationTitle', { fallback: 'Content Strategy' })}</span>
+                        <span class="text-[11px] text-gray-400 line-clamp-1">{t('services.contentCreationDescription', { fallback: 'SEO articles writing' })}</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Development Column -->
+                <div class="space-y-4">
+                  <div class="flex items-center gap-2 mb-2 pb-2 border-b border-gray-100">
+                    <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    <h3 class="font-bold text-sm text-primary font-persian">{t('common.developmentServices', { fallback: 'Development' })}</h3>
+                  </div>
+                  <ul class="space-y-3">
+                    <li>
+                      <a href={linkPath('/services/web-development')} class="block text-sm text-gray-700 hover:text-primary transition-colors font-persian">
+                        <span class="block font-semibold">{t('services.webDevTitle', { fallback: 'Web Development' })}</span>
+                        <span class="text-[11px] text-gray-400 line-clamp-1">{t('services.webDevDescription', { fallback: 'Custom web projects coding' })}</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href={linkPath('/services/wordpress-development')} class="block text-sm text-gray-700 hover:text-primary transition-colors font-persian">
+                        <span class="block font-semibold">{t('wordpress.wordpressAndWoocommerce', { fallback: 'WordPress & Shop' })}</span>
+                        <span class="text-[11px] text-gray-400 line-clamp-1">{t('wordpress.subtitle', { fallback: 'CMS sites development' })}</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href={linkPath('/services/web-design')} class="block text-sm text-gray-700 hover:text-primary transition-colors font-persian">
+                        <span class="block font-semibold">{t('common.webDesignAndDevelopment', { fallback: 'Web Design' })}</span>
+                        <span class="text-[11px] text-gray-400 line-clamp-1">{t('services.webDevDescription', { fallback: 'Premium layouts & prototypes' })}</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href={linkPath('/services/modern-web-development')} class="block text-sm text-gray-700 hover:text-primary transition-colors font-persian">
+                        <span class="block font-semibold">{t('common.modernWebDevelopment', { fallback: 'Next.js & Astro' })}</span>
+                        <span class="text-[11px] text-gray-400 line-clamp-1">{t('modern-web.description', { fallback: 'Server-side pre-rendered webapps' })}</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Support Services Column -->
+                <div class="space-y-4">
+                  <div class="flex items-center gap-2 mb-2 pb-2 border-b border-gray-100">
+                    <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    <h3 class="font-bold text-sm text-primary font-persian">{t('common.supportServices', { fallback: 'Support' })}</h3>
+                  </div>
+                  <ul class="space-y-3">
+                    <li>
+                      <a href={linkPath('/services/website-maintenance')} class="block text-sm text-gray-700 hover:text-primary transition-colors font-persian">
+                        <span class="block font-semibold">{t('maintenance.title', { fallback: 'Maintenance' })}</span>
+                        <span class="text-[11px] text-gray-400 line-clamp-1">{t('maintenance.subtitle', { fallback: 'Backup, updates & uptime monitoring' })}</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href={linkPath('/services/speed-optimization')} class="block text-sm text-gray-700 hover:text-primary transition-colors font-persian">
+                        <span class="block font-semibold">{t('speedOptimization.title', { fallback: 'Speed Optimization' })}</span>
+                        <span class="text-[11px] text-gray-400 line-clamp-1">{t('speedOptimization.subtitle', { fallback: 'Core Web Vitals tuning' })}</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href={linkPath('/services/ui-ux-audit')} class="block text-sm text-gray-700 hover:text-primary transition-colors font-persian">
+                        <span class="block font-semibold">{t('uiUxAudit.title', { fallback: 'UI/UX Audit' })}</span>
+                        <span class="text-[11px] text-gray-400 line-clamp-1">{t('uiUxAudit.subtitle', { fallback: 'Usability, flows & audit report' })}</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+              
+              <div class="pt-4 mt-6 border-t border-gray-100 flex justify-end">
+                <a href={linkPath('/services')} class="inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline">
+                  {t('common.viewAll')} {t('common.services')}
+                  {isRtl ? (
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                  ) : (
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                  )}
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
