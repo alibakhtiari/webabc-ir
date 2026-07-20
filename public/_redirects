@@ -1,0 +1,7 @@
+# /public/_redirects
+/en/tools/headline-analyzer  /en/tools/headline-analyzer  200
+/fa/tools/slug-generator      /fa/tools/slug-generator      200
+/en/tools/seo-title-checker  /en/tools/seo-title-checker  200
+/fa/tools/seo-title-checker  /fa/tools/seo-title-checker  200
+/ar/tools/seo-title-checker  /ar/tools/seo-title-checker  200
+/sitemap.xml                  /sitemap-index.xml            301

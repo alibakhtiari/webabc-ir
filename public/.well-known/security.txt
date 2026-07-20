@@ -1,0 +1,5 @@
+# Security Policy for WebABC
+Contact: mailto:security@webabc.ir
+Preferred-Languages: en, fa, ar
+Canonical: https://webabc.ir/.well-known/security.txt
+Policy: https://webabc.ir/en/privacy
