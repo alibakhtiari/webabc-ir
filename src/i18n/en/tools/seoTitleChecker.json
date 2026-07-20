@@ -1,0 +1,42 @@
+{
+  "title": "SEO Title & Meta Description Analyzer",
+  "description": "Optimize your website's title tags and meta descriptions for search visibility and organic click-through rates. Real-time scores and length validation.",
+  "labels": {
+    "titleInput": "Page Title Tag",
+    "descriptionInput": "Meta Description Tag",
+    "keywordInput": "Target Keyword (Optional)",
+    "analyze": "Analyze",
+    "serpPreview": "Google SERP Preview",
+    "desktop": "Desktop",
+    "mobile": "Mobile",
+    "overallScore": "Overall SEO Score",
+    "titleScore": "Title Score",
+    "descScore": "Description Score",
+    "tips": "Actionable Optimization Tips"
+  },
+  "placeholders": {
+    "title": "e.g., Best SEO Title Checker: Free Title & Meta Description Analyzer",
+    "description": "e.g., Paste your page meta description here to analyze and improve click-through rates on search engine result pages...",
+    "keyword": "e.g., SEO title checker"
+  },
+  "metrics": {
+    "perfect": "Perfect",
+    "tooLong": "Too Long",
+    "tooShort": "Too Short",
+    "charCount": "characters",
+    "pixelCount": "pixels"
+  },
+  "tipsList": {
+    "titleLengthPerfect": "Title length is ideal for desktop and mobile search snippets.",
+    "titleTooLong": "Title is too long and will be truncated in search results (keep it under 60 chars or 580px).",
+    "titleTooShort": "Title is too short. Use more space to describe your page and add key terms.",
+    "descLengthPerfect": "Meta description length is ideal for CTR optimization.",
+    "descTooLong": "Meta description is too long and will get cut off (keep it under 160 chars or 990px).",
+    "descTooShort": "Meta description is too short. Expand it to highlight key benefits and invite clicks.",
+    "keywordInTitle": "Target keyword was found near the beginning of the title tag! This is excellent for ranking.",
+    "keywordMissingTitle": "Target keyword is missing from your title tag. Consider adding it for better relevance.",
+    "hasNumber": "Your title contains numbers. Titles with numbers generally have a 36% higher CTR.",
+    "hasPowerWord": "Your title contains a power word (like Best, Free, Top). This boosts user curiosity.",
+    "missingPowerWord": "Consider adding a power word (e.g., 'Best', 'Free', 'Guide') to increase CTR."
+  }
+}

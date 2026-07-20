@@ -83,6 +83,7 @@ export default async function RootLayout({
         privacyGenerator: dictionary.privacyGenerator,
         qrGenerator: dictionary.qrGenerator,
         readabilityChecker: dictionary.readabilityChecker,
+        seoTitleChecker: dictionary.seoTitleChecker,
     };
 
     return (
