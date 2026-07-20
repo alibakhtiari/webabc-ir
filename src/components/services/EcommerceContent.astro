@@ -1,5 +1,4 @@
 ---
-import TLDR from '../astro/TLDR.astro';
 import FAQ from '../astro/FAQ.astro';
 import { type SupportedLanguage } from '../../types/language';
 import { createTranslator } from '@/i18n/translate';
@@ -13,28 +12,7 @@ const { lang, dictionary } = Astro.props;
 
 const t = createTranslator(dictionary);
 
-const takeawaysMap = {
-  en: [
-    "Custom Shopify, WooCommerce, or headless storefronts built to convert.",
-    "Fast, secure checkout with regional payment gateway integration.",
-    "SEO-optimized product pages with Product/Offer schema markup.",
-    "Zero-ranking-loss migration from your existing store, with full 301 mapping."
-  ],
-  fa: [
-    "فروشگاه اختصاصی روی شاپیفای، ووکامرس یا زیرساخت هدلس با تمرکز بر افزایش فروش.",
-    "پرداخت سریع و امن با اتصال درگاه‌های پرداخت منطقه‌ای.",
-    "صفحات محصول بهینه برای سئو با اسکیمای Product و Offer.",
-    "مهاجرت بدون افت رتبه از فروشگاه فعلی شما، با نگاشت کامل ریدایرکت ۳۰۱."
-  ],
-  ar: [
-    "متاجر مخصصة على Shopify أو WooCommerce أو Headless مصممة لزيادة المبيعات.",
-    "دفع سريع وآمن مع ربط بوابات الدفع الإقليمية.",
-    "صفحات منتجات محسّنة لمحركات البحث مع بيانات منظمة Product وOffer.",
-    "نقل دون فقدان الترتيب من متجرك الحالي، مع تحويلات 301 كاملة."
-  ]
-};
 
-const takeaways = takeawaysMap[lang] || takeawaysMap.en;
 
 const ecommerceSchema = {
   "@context": "https://schema.org",
@@ -58,11 +36,7 @@ const faqList = [1, 2, 3, 4]
 <script type="application/ld+json" slot="head" set:html={JSON.stringify(ecommerceSchema)} />
 
 <div class="space-y-16 py-8">
-  <!-- Key Takeaways (TL;DR) -->
-  <div class="max-w-3xl mx-auto">
-    <TLDR takeaways={takeaways} lang={lang} />
-  </div>
-
+  
   <!-- What is E-commerce Web Design? -->
   <section class="bg-white">
     <div class="max-w-4xl mx-auto text-center space-y-6">

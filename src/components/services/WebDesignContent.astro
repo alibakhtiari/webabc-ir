@@ -1,5 +1,4 @@
 ---
-import TLDR from '../astro/TLDR.astro';
 import FAQ from '../astro/FAQ.astro';
 import { type SupportedLanguage } from '../../types/language';
 import { createTranslator } from '@/i18n/translate';
@@ -16,29 +15,7 @@ const isRtl = lang === 'fa' || lang === 'ar';
 // Translate helpers
 const t = createTranslator(dictionary);
 
-// Takeaways
-const takeawaysMap = {
-  en: [
-    "Stunning UI/UX designs focused on Conversion Rate Optimization (CRO).",
-    "Flawless responsiveness across desktop, tablet, and mobile screens.",
-    "Consistent design systems and brand identity across every page.",
-    "Built-in search engine optimized design guidelines for maximum organic reach."
-  ],
-  fa: [
-    "طراحی‌های خیره‌کننده UI/UX با تمرکز بر افزایش نرخ تبدیل کاربر به مشتری.",
-    "ریسپانسیو بی‌نقص و هماهنگ در انواع ابعاد دسکتاپ، تبلت و موبایل.",
-    "سیستم طراحی یکپارچه و هویت بصری ثابت در تمام صفحات.",
-    "رعایت اصول سئوی تکنیکال در طراحی جهت کسب حداکثر رتبه ارگانیک گوگل."
-  ],
-  ar: [
-    "واجهات وتجربة مستخدم (UI/UX) مذهلة تركز على زيادة معدلات التحويل.",
-    "تصميمات متجاوبة تماماً مع الشاشات المختلفة (الهواتف، الأجهزة اللوحية، الكمبيوتر).",
-    "نظام تصميم متسق وهوية بصرية موحدة عبر جميع الصفحات.",
-    "تصميم متوافق مع معايير محركات البحث (SEO) لضمان ظهور قوي في جوجل."
-  ]
-};
 
-const takeaways = takeawaysMap[lang] || takeawaysMap.en;
 
 const webDesignSchema = {
   "@context": "https://schema.org",
@@ -65,11 +42,7 @@ const faqList = [1, 2, 3, 4]
 <script type="application/ld+json" slot="head" set:html={JSON.stringify(webDesignSchema)} />
 
 <div class="space-y-16 py-8">
-  <!-- Key Takeaways (TL;DR) -->
-  <div class="max-w-3xl mx-auto">
-    <TLDR takeaways={takeaways} lang={lang} />
-  </div>
-
+  
   <!-- Services Details -->
   <section class="bg-white">
     <div class="max-w-6xl mx-auto">

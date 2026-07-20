@@ -1,5 +1,4 @@
 ---
-import TLDR from '../astro/TLDR.astro';
 import FAQ from '../astro/FAQ.astro';
 import { type SupportedLanguage } from '../../types/language';
 import { createTranslator } from '@/i18n/translate';
@@ -14,29 +13,7 @@ const { lang, dictionary } = Astro.props;
 // Translate helpers
 const t = createTranslator(dictionary);
 
-// Takeaways
-const takeawaysMap = {
-  en: [
-    "Custom responsive frontend interfaces and secure backend API architectures.",
-    "Modern tech stacks (Next.js, Node.js, Python, PostgreSQL, Docker).",
-    "Solutions tailored for E-commerce, Healthcare, Fintech, and SaaS.",
-    "Comprehensive QA, clean testing cycles, and fast server deployment."
-  ],
-  fa: [
-    "طراحی رابط‌های کاربری ریسپانسیو اختصاصی و توسعه ساختار امن بک‌اند API.",
-    "استفاده از تکنولوژی‌های مدرن (React, Node.js, Python, PostgreSQL, Docker).",
-    "توسعه راهکارهای تخصصی برای فروشگاه‌ها، سلامت، فین‌تک و وب‌اپلیکیشن‌ها.",
-    "تضمین کیفیت با تست‌های دقیق و استقرار سریع و پایدار روی سرور."
-  ],
-  ar: [
-    "تصميم واجهات أمامية متجاوبة وبنية خلفية آمنة وموثوقة للـ APIs.",
-    "استخدام تقنيات برمجية حديثة وقوية (React, Node.js, Python, PostgreSQL).",
-    "حلول مخصصة للتجارة الإلكترونية والرعاية الصحية والتكنولوجيا المالية.",
-    "ضمان جودة الأكواد من خلال دورات اختبار دقيقة ونشر سريع على السحابة."
-  ]
-};
 
-const takeaways = takeawaysMap[lang] || takeawaysMap.en;
 
 const faqList = [1, 2, 3, 4]
   .map(n => ({
@@ -67,11 +44,7 @@ const webDevSchema = {
 <script type="application/ld+json" slot="head" set:html={JSON.stringify(webDevSchema)} />
 
 <div class="space-y-16 py-8">
-  <!-- Key Takeaways (TL;DR) -->
-  <div class="max-w-3xl mx-auto">
-    <TLDR takeaways={takeaways} lang={lang} />
-  </div>
-
+  
   <!-- What is Custom Web Development? -->
   <section class="bg-white">
     <div class="max-w-4xl mx-auto text-center space-y-6">

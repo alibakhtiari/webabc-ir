@@ -1,5 +1,4 @@
 ---
-import TLDR from '../astro/TLDR.astro';
 import FAQ from '../astro/FAQ.astro';
 import { type SupportedLanguage } from '../../types/language';
 import { createTranslator } from '@/i18n/translate';
@@ -15,45 +14,7 @@ const { slug, lang, dictionary } = Astro.props;
 // Translate helpers
 const t = createTranslator(dictionary);
 
-// Takeaways
-const takeawaysMap: Record<string, Record<string, string[]>> = {
-  'content-creation': {
-    en: [
-      "Engaging SEO blogging and copy strategy built to drive client interactions.",
-      "Professional social media outreach, newsletter campaigns, and copywriting.",
-      "Clear workflow processes from keyword maps to final editor checks."
-    ],
-    fa: [
-      "تولید محتوای متنی و سئوی وبلاگ با هدف افزایش درگیری و تعامل مخاطب.",
-      "نویسندگی تبلیغاتی (کپی‌رایتینگ)، کمپین‌های ایمیلی و محتوای شبکه‌های اجتماعی.",
-      "فرآیند سازمان‌یافته از تحقیق کلمات کلیدی تا نگارش و ویراستاری نهایی."
-    ],
-    ar: [
-      "كتابة مدونات متوافقة مع السيو وصياغة نصوص تهدف لزيادة تفاعل العملاء.",
-      "حملات البريد الإلكتروني الإعلانية ومحتوى شبكات التواصل الاجتماعي.",
-      "خطوات عمل منظمة بدءاً من البحث عن الكلمات المفتاحية إلى المراجعة والتدقيق."
-    ]
-  },
-  'link-building': {
-    en: [
-      "White-hat link building and manual outreach strategies to boost rankings.",
-      "Quality guest posting, broken link replacement, and directory citations.",
-      "High authority, spam-free backlinks that offer long-term organic growth."
-    ],
-    fa: [
-      "لینک‌سازی کلاه‌سفید و استراتژی‌های ارتباطی دستی برای افزایش رتبه گوگل.",
-      "رپورتاژ آگهی‌های باکیفیت، جایگزینی لینک‌های شکسته و ثبت در دایرکتوری‌های معتبر.",
-      "کسب بک‌لینک‌های باکیفیت و دائمی بدون اسپم جهت رشد ارگانیک درازمدت."
-    ],
-    ar: [
-      "بناء روابط خلفية (باکلینکس) آمنة وسليمة 100% لزيادة ترتيب موقعك.",
-      "كتابة مقالات ضيوف (Guest Posts) ذات جودة، وإصلاح الروابط المعطلة.",
-      "روابط خلفية قوية وخالية من السبام تضمن نمواً عضوياً طويل الأجل."
-    ]
-  }
-};
 
-const takeaways = takeawaysMap[slug]?.[lang] || takeawaysMap[slug]?.en || [];
 
 const ns = slug === 'content-creation' ? 'contentCreation' : 'linkBuilding';
 
@@ -109,12 +70,7 @@ const features = slug === 'content-creation' ? contentCreationFeatures : linkBui
 
 <div class="space-y-16 py-8">
   <!-- Key Takeaways (TL;DR) -->
-  {takeaways.length > 0 && (
-    <div class="max-w-3xl mx-auto">
-      <TLDR takeaways={takeaways} lang={lang} />
-    </div>
-  )}
-
+  
   <!-- Services Details -->
   <section class="bg-white">
     <div class="max-w-6xl mx-auto">
