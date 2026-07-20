@@ -1,0 +1,207 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/astro/Navbar.astro';
+import Footer from '../../../components/astro/Footer.astro';
+import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import { type SupportedLanguage, languages } from '../../../types/language';
+import { getDictionary } from '../../../i18n/get-dictionary';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'fa' } },
+    { params: { lang: 'ar' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+
+// Helper to translate strings
+const t = (key: string, options?: { fallback: string }) => {
+  const parts = key.split('.');
+  let current: any = dictionary;
+  for (const part of parts) {
+    if (current && current[part] !== undefined) {
+      current = current[part];
+    } else {
+      return options?.fallback || key;
+    }
+  }
+  return typeof current === 'string' ? current : options?.fallback || key;
+};
+
+// Fetch items
+const allBlogEntries = await getCollection('blog');
+const posts = allBlogEntries
+  .filter(entry => entry.id.startsWith(`${supportedLang}/`))
+  .map(entry => ({
+    ...entry.data,
+    slug: entry.id.replace(`${supportedLang}/`, '')
+  }));
+const sortedPosts = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+const categories = [...new Set(sortedPosts.map(p => p.category))];
+
+const titleText = t('blog.title', { fallback: 'Blog' });
+const descriptionText = t('blog.blogDescription', { fallback: 'Latest Articles and Industry Insights' });
+
+// Schema definitions
+const origin = 'https://webabc.ir';
+const currentUrl = `${origin}/${supportedLang}/blog`;
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": titleText,
+  "description": descriptionText,
+  "url": currentUrl,
+  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
+  "blogPost": sortedPosts.slice(0, 10).map(post => ({
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.description,
+    "image": post.image.startsWith('http') ? post.image : `${origin}${post.image}`,
+    "datePublished": post.date,
+    "author": {
+      "@type": "Person",
+      "name": post.author || "WebABC Team"
+    },
+    "url": `${origin}/${supportedLang}/blog/${post.slug}`
+  }))
+};
+
+const breadcrumbs = [
+  { label: t('common.home'), url: `/${supportedLang}` },
+  { label: titleText }
+];
+---
+
+<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="blog">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(blogSchema)} />
+  <Navbar lang={supportedLang} />
+
+  <main class="grow w-full overflow-x-hidden bg-gray-50/50 pb-20 pt-20">
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 bg-linear-to-br from-primary/10 via-primary/5 to-background relative overflow-hidden">
+      <div class="container mx-auto px-4 relative">
+        <div class="max-w-3xl mx-auto text-center">
+          <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
+          <h1 class="text-5xl md:text-6xl font-bold mb-6 text-primary font-persian">
+            {titleText}
+          </h1>
+          <p class="text-xl md:text-2xl text-muted-foreground leading-relaxed font-persian">
+            {descriptionText}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="py-6 bg-white border-y border-gray-100 sticky top-20 z-10 shadow-xs font-persian">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-wrap gap-3 items-center justify-center">
+          <span class="text-sm font-semibold text-gray-600">{t('blog.filterBy', { fallback: 'Filter By' })}:</span>
+          <button
+            data-filter-btn="all"
+            class="filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-primary text-white shadow-sm"
+          >
+            {t('blog.allCategories', { fallback: 'All Categories' })}
+          </button>
+          {categories.map((category) => (
+            <button
+              data-filter-btn={category}
+              class="filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700"
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Posts Grid -->
+    <section class="py-16 font-sans">
+      <div class="container mx-auto px-4">
+        {sortedPosts.length === 0 ? (
+          <div class="text-center py-16 font-persian">
+            <p class="text-xl text-gray-500">{t('common.noResults', { fallback: 'No results found.' })}</p>
+          </div>
+        ) : (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {sortedPosts.map((post) => (
+              <div data-post-card={post.category} class="group block bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+                <a href={`/${supportedLang}/blog/${post.slug}`} class="block">
+                  <div class="aspect-video overflow-hidden relative">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      width={400}
+                      height={225}
+                      class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div class="p-6 space-y-4">
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <span class="px-2.5 py-1 text-xs font-semibold rounded bg-gray-100 text-gray-600 uppercase">
+                        {post.category}
+                      </span>
+                      <span class="text-xs text-gray-400 font-mono">
+                        {new Date(post.date).toLocaleDateString(supportedLang === 'ar' ? 'ar-SA' : supportedLang === 'fa' ? 'fa-IR' : 'en-US', {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                        })}
+                      </span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors leading-snug font-persian">
+                      {post.title}
+                    </h3>
+                    <p class="text-sm text-gray-500 line-clamp-3 leading-relaxed font-persian">
+                      {post.description}
+                    </p>
+                    
+                    <div class="flex items-center text-primary font-semibold text-sm gap-1 group-hover:gap-2 transition-all font-persian">
+                      {t('blog.readMore', { fallback: 'Read More' })} &rarr;
+                    </div>
+                  </div>
+                </a>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={supportedLang} />
+</Layout>
+
+<script is:inline>
+  // Simple client-side category filtering
+  const filterBtns = document.querySelectorAll('[data-filter-btn]');
+  const postCards = document.querySelectorAll('[data-post-card]');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selected = btn.getAttribute('data-filter-btn');
+
+      // Update active button state styling
+      filterBtns.forEach(b => {
+        b.className = "filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700";
+      });
+      btn.className = "filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-primary text-white shadow-sm";
+
+      // Toggle cards visibility
+      postCards.forEach(card => {
+        const cardCat = card.getAttribute('data-post-card');
+        if (selected === 'all' || cardCat === selected) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>

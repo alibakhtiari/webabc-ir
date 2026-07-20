@@ -1,0 +1,18 @@
+---
+// Redirect root / to default language (/fa)
+---
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0;url=/fa" />
+    <script is:inline>
+      // Client-side quick redirect based on browser or saved language
+      const savedLang = typeof localStorage !== 'undefined' && localStorage.getItem('language');
+      const supportedLangs = ['en', 'fa', 'ar'];
+      const targetLang = supportedLangs.includes(savedLang) ? savedLang : 'fa';
+      window.location.replace('/' + targetLang);
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
