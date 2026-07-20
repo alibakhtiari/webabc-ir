@@ -106,19 +106,8 @@ const authorBio = supportedLang === 'fa'
 <Layout title={post.data.title} description={post.data.description} lang={supportedLang} slug={`blog/${slug}`}>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(articleSchema)} />
 
-  <div class="container mx-auto px-4 pt-32">
-    <a href={`/${supportedLang}/blog`} class="px-4 py-2 hover:bg-gray-100 rounded-lg transition-all inline-flex items-center gap-2 text-primary font-medium text-sm">
-      {languages[supportedLang]?.direction === 'rtl' ? (
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-      ) : (
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-      )}
-      {t('common.backToBlog', { fallback: 'Back to Blog' })}
-    </a>
-  </div>
-
   <!-- Post Wrapper -->
-  <div class="container mx-auto px-4 py-8">
+  <div class="container mx-auto px-4 pt-32 pb-8">
     <div class="max-w-3xl mx-auto">
       
       <!-- Breadcrumbs Component -->
