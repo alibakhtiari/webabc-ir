@@ -1,17 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/astro/Breadcrumbs.astro';
-import { type SupportedLanguage } from '../../types/language';
+import { getLanguageStaticPaths, type SupportedLanguage } from '../../types/language';
 import { getDictionary } from '../../i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
 
-export async function getStaticPaths() {
-  return [
-    { params: { lang: 'en' } },
-    { params: { lang: 'fa' } },
-    { params: { lang: 'ar' } },
-  ];
-}
+export const getStaticPaths = getLanguageStaticPaths;
 
 const { lang } = Astro.params;
 const supportedLang = lang as SupportedLanguage;
