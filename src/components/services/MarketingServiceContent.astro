@@ -1,0 +1,183 @@
+---
+import TLDR from '../astro/TLDR.astro';
+import { type SupportedLanguage } from '../../types/language';
+
+interface Props {
+  slug: string;
+  lang: SupportedLanguage;
+  dictionary: any;
+}
+
+const { slug, lang, dictionary } = Astro.props;
+
+// Translate helpers
+const t = (key: string, fallback: string) => {
+  const parts = key.split('.');
+  let current = dictionary;
+  for (const part of parts) {
+    if (current && current[part] !== undefined) {
+      current = current[part];
+    } else {
+      return fallback;
+    }
+  }
+  return typeof current === 'string' ? current : fallback;
+};
+
+// Takeaways
+const takeawaysMap: Record<string, Record<string, string[]>> = {
+  'content-creation': {
+    en: [
+      "Engaging SEO blogging and copy strategy built to drive client interactions.",
+      "Professional social media outreach, newsletter campaigns, and copywriting.",
+      "Clear workflow processes from keyword maps to final editor checks."
+    ],
+    fa: [
+      "تولید محتوای متنی و سئوی وبلاگ با هدف افزایش درگیری و تعامل مخاطب.",
+      "نویسندگی تبلیغاتی (کپی‌رایتینگ)، کمپین‌های ایمیلی و محتوای شبکه‌های اجتماعی.",
+      "فرآیند سازمان‌یافته از تحقیق کلمات کلیدی تا نگارش و ویراستاری نهایی."
+    ],
+    ar: [
+      "كتابة مدونات متوافقة مع السيو وصياغة نصوص تهدف لزيادة تفاعل العملاء.",
+      "حملات البريد الإلكتروني الإعلانية ومحتوى شبكات التواصل الاجتماعي.",
+      "خطوات عمل منظمة بدءاً من البحث عن الكلمات المفتاحية إلى المراجعة والتدقيق."
+    ]
+  },
+  'link-building': {
+    en: [
+      "White-hat link building and manual outreach strategies to boost rankings.",
+      "Quality guest posting, broken link replacement, and directory citations.",
+      "High authority, spam-free backlinks that offer long-term organic growth."
+    ],
+    fa: [
+      "لینک‌سازی کلاه‌سفید و استراتژی‌های ارتباطی دستی برای افزایش رتبه گوگل.",
+      "رپورتاژ آگهی‌های باکیفیت، جایگزینی لینک‌های شکسته و ثبت در دایرکتوری‌های معتبر.",
+      "کسب بک‌لینک‌های باکیفیت و دائمی بدون اسپم جهت رشد ارگانیک درازمدت."
+    ],
+    ar: [
+      "بناء روابط خلفية (باکلینکس) آمنة وسليمة 100% لزيادة ترتيب موقعك.",
+      "كتابة مقالات ضيوف (Guest Posts) ذات جودة، وإصلاح الروابط المعطلة.",
+      "روابط خلفية قوية وخالية من السبام تضمن نمواً عضوياً طويل الأجل."
+    ]
+  }
+};
+
+const takeaways = takeawaysMap[slug]?.[lang] || takeawaysMap[slug]?.en || [];
+
+const ns = slug === 'content-creation' ? 'contentCreation' : 'linkBuilding';
+
+const schemaTypeMap: Record<string, string> = {
+  'content-creation': 'Content Strategy & Copywriting',
+  'link-building': 'Authority Link Building'
+};
+
+const marketingSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": t(`${ns}.title`, slug),
+  "description": t(`${ns}.description`, ""),
+  "provider": {
+    "@type": "Organization",
+    "name": lang === 'en' ? 'WebABC' : lang === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث',
+    "url": `https://webabc.ir/${lang}`
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Global"
+  },
+  "serviceType": schemaTypeMap[slug] || "Digital Marketing"
+};
+
+// Content features definitions
+const contentCreationFeatures = [
+  { key: 'blogging', icon: 'FileText', color: 'text-blue-500' },
+  { key: 'copywriting', icon: 'PenTool', color: 'text-green-500' },
+  { key: 'strategy', icon: 'BarChart', color: 'text-purple-500' },
+  { key: 'social', icon: 'Share2', color: 'text-pink-500' },
+  { key: 'email', icon: 'Mail', color: 'text-orange-500' },
+  { key: 'editing', icon: 'Edit3', color: 'text-indigo-500' }
+];
+
+const linkBuildingFeatures = [
+  { key: 'guestPosting', icon: 'Users', color: 'text-blue-500' },
+  { key: 'brokenLink', icon: 'Link2', color: 'text-red-500' },
+  { key: 'outreach', icon: 'Share2', color: 'text-green-500' },
+  { key: 'unlinkedMentions', icon: 'Search', color: 'text-purple-500' },
+  { key: 'authority', icon: 'TrendingUp', color: 'text-orange-500' },
+  { key: 'audit', icon: 'Shield', color: 'text-indigo-500' }
+];
+
+const features = slug === 'content-creation' ? contentCreationFeatures : linkBuildingFeatures;
+---
+
+<!-- Inject Schema into head slot of Layout -->
+<script type="application/ld+json" slot="head" set:html={JSON.stringify(marketingSchema)} />
+
+<div class="space-y-16 py-8">
+  <!-- Key Takeaways (TL;DR) -->
+  {takeaways.length > 0 && (
+    <div class="max-w-3xl mx-auto">
+      <TLDR takeaways={takeaways} lang={lang} />
+    </div>
+  )}
+
+  <!-- Services Details -->
+  <section class="bg-white">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12 font-persian">
+        {t(`${ns}.ourServices`, "Our Services")}
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {features.map(({ key, icon, color }) => (
+          <div class="bg-white p-6 rounded-2xl shadow-xs hover:shadow-lg transition-all border border-gray-100 flex flex-col">
+            <div class="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center mb-4 text-primary">
+              {icon === 'FileText' && <svg class={`w-8 h-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>}
+              {icon === 'PenTool' && <svg class={`w-8 h-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>}
+              {icon === 'BarChart' && <svg class={`w-8 h-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>}
+              {icon === 'Share2' && <svg class={`w-8 h-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>}
+              {icon === 'Mail' && <svg class={`w-8 h-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>}
+              {icon === 'Edit3' && <svg class={`w-8 h-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>}
+              {icon === 'Users' && <svg class={`w-8 h-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>}
+              {icon === 'Link2' && <svg class={`w-8 h-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg>}
+              {icon === 'Search' && <svg class={`w-8 h-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>}
+              {icon === 'TrendingUp' && <svg class={`w-8 h-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>}
+              {icon === 'Shield' && <svg class={`w-8 h-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>}
+            </div>
+            <h3 class="text-xl font-bold mb-3 font-persian">{t(`${ns}.features.${key}.title`, key)}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed font-persian flex-grow">
+              {t(`${ns}.features.${key}.description`, "")}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="py-16 bg-gray-50/50 rounded-3xl p-8 border border-gray-100">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12 font-persian">
+        {t(`${ns}.process.title`, "Our Process")}
+      </h2>
+
+      <div class="space-y-8 max-w-2xl mx-auto">
+        {[1, 2, 3, 4, 5].map((step) => (
+          <div class="flex gap-6 items-start font-persian">
+            <div class="shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl shadow-xs">
+              {step}
+            </div>
+            <div class="space-y-1 mt-1">
+              <h3 class="text-xl font-bold text-gray-900">
+                {t(`${ns}.process.step${step}.title`, `Step ${step}`)}
+              </h3>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                {t(`${ns}.process.step${step}.description`, "")}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</div>

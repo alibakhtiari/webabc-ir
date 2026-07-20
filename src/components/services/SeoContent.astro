@@ -1,0 +1,249 @@
+---
+import TLDR from '../astro/TLDR.astro';
+import { type SupportedLanguage } from '../../types/language';
+
+interface Props {
+  lang: SupportedLanguage;
+  dictionary: any;
+}
+
+const { lang, dictionary } = Astro.props;
+
+// Translate helpers
+const t = (key: string, fallback: string) => {
+  const parts = key.split('.');
+  let current = dictionary;
+  for (const part of parts) {
+    if (current && current[part] !== undefined) {
+      current = current[part];
+    } else {
+      return fallback;
+    }
+  }
+  return typeof current === 'string' ? current : fallback;
+};
+
+// Custom takeaways for SEO page
+const takeawaysMap = {
+  en: [
+    "Proven search ranking strategies to drive organic traffic and visibility.",
+    "On-page, technical, off-page, and local SEO services tailored for your goals.",
+    "Continuous monitoring, data-driven optimizations, and transparent reports."
+  ],
+  fa: [
+    "استراتژی‌های اثبات‌شده برای افزایش رتبه و جذب ترافیک ارگانیک هدفمند.",
+    "ارائه خدمات تخصصی سئوی داخلی، فنی، خارجی و محلی متناسب با اهداف شما.",
+    "مانیتورینگ مستمر، بهینه‌سازی‌های داده‌محور و گزارش‌های شفاف ماهانه."
+  ],
+  ar: [
+    "استراتيجيات مثبتة لتحسين ترتيب البحث وجذب الزوار والعملاء المهتمين.",
+    "خدمات تحسين محركات البحث الداخلية والفنية والخارجية والمحلية المخصصة لأهدافك.",
+    "مراقبة مستمرة، تحسينات قائمة على البيانات وتقارير أداء شهرية شفافة."
+  ]
+};
+
+const takeaways = takeawaysMap[lang] || takeawaysMap.en;
+
+const seoSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": t('seoService.title', "SEO & Specialized Optimization"),
+  "description": t('seoService.subtitle', "Boost your website's search engine ranking with our expert SEO services."),
+  "provider": {
+    "@type": "Organization",
+    "name": lang === 'en' ? 'WebABC' : lang === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث',
+    "url": `https://webabc.ir/${lang}`
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Global"
+  },
+  "serviceType": "Search Engine Optimization"
+};
+---
+
+<!-- Inject Schema into head slot of Layout -->
+<script type="application/ld+json" slot="head" set:html={JSON.stringify(seoSchema)} />
+
+<div class="space-y-16 py-8">
+  <!-- Key Takeaways (TL;DR) -->
+  <div class="max-w-3xl mx-auto">
+    <TLDR takeaways={takeaways} lang={lang} />
+  </div>
+
+  <!-- Services Cards Section -->
+  <section class="bg-white">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12 font-persian">
+        {t('seoService.servicesTitle', "Our SEO Services")}
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <!-- Card 1: On-Page SEO -->
+        <div class="p-8 rounded-2xl bg-blue-50/50 hover:shadow-lg transition-all duration-300 border border-transparent hover:border-blue-100/50 group">
+          <div class="w-14 h-14 rounded-xl bg-white flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform text-blue-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4 font-persian">{t('seoService.onPageSeo', "On-Page SEO")}</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed font-persian">
+            {t('seoService.contentStrategyDesc', "Comprehensive content strategy and optimization")}
+          </p>
+          <ul class="space-y-3 font-persian">
+            {[
+              t('seoService.feature.keywordResearch', "Keyword Research"),
+              t('seoService.feature.qualityContent', "Quality Content Production"),
+              t('seoService.feature.titleOptimization', "Title & Meta Optimization"),
+              t('seoService.feature.headings', "Heading Structure")
+            ].map((feat) => (
+              <li class="flex items-center text-gray-700 text-sm gap-2">
+                <svg class="w-4 h-4 text-blue-600 shrink-0 opacity-80" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                <span>{feat}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Card 2: Technical SEO -->
+        <div class="p-8 rounded-2xl bg-green-50/50 hover:shadow-lg transition-all duration-300 border border-transparent hover:border-green-100/50 group">
+          <div class="w-14 h-14 rounded-xl bg-white flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform text-green-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4 font-persian">{t('seoService.technicalSeo', "Technical SEO")}</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed font-persian">
+            {t('seoService.technicalSeoDesc', "Optimizing site structure and performance")}
+          </p>
+          <ul class="space-y-3 font-persian">
+            {[
+              t('seoService.feature.pageSpeed', "Page Speed Optimization"),
+              t('seoService.feature.technicalErrors', "Fixing Technical Errors"),
+              t('seoService.feature.urlStructure', "URL Structure Optimization"),
+              t('seoService.feature.schema', "Schema Markup Implementation")
+            ].map((feat) => (
+              <li class="flex items-center text-gray-700 text-sm gap-2">
+                <svg class="w-4 h-4 text-green-600 shrink-0 opacity-80" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                <span>{feat}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Card 3: Off-Page SEO -->
+        <div class="p-8 rounded-2xl bg-purple-50/50 hover:shadow-lg transition-all duration-300 border border-transparent hover:border-purple-100/50 group">
+          <div class="w-14 h-14 rounded-xl bg-white flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform text-purple-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4 font-persian">{t('seoService.offPageSeo', "Off-Page SEO")}</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed font-persian">
+            {t('seoService.offPageSeoDesc', "Building authority and backlinks")}
+          </p>
+          <ul class="space-y-3 font-persian">
+            {[
+              t('seoService.feature.linkProfile', "Link Profile Analysis"),
+              t('seoService.feature.linkOpportunities', "Link Building Opportunities"),
+              t('seoService.feature.linkableContent', "Creating Linkable Content"),
+              t('seoService.feature.authorityLinks', "High Authority Backlinks")
+            ].map((feat) => (
+              <li class="flex items-center text-gray-700 text-sm gap-2">
+                <svg class="w-4 h-4 text-purple-600 shrink-0 opacity-80" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                <span>{feat}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Card 4: Local SEO -->
+        <div class="p-8 rounded-2xl bg-amber-50/50 hover:shadow-lg transition-all duration-300 border border-transparent hover:border-amber-100/50 group">
+          <div class="w-14 h-14 rounded-xl bg-white flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform text-amber-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4 font-persian">{t('seoService.localSeo', "Local SEO")}</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed font-persian">
+            {t('seoService.localSeoDesc', "Dominating local search results")}
+          </p>
+          <ul class="space-y-3 font-persian">
+            {[
+              t('seoService.feature.gmb', "Google Business Profile"),
+              t('seoService.feature.reviews', "Review Management"),
+              t('seoService.feature.localKeywords', "Local Keyword Targeting"),
+              t('seoService.feature.nearMe', "Near Me Optimization")
+            ].map((feat) => (
+              <li class="flex items-center text-gray-700 text-sm gap-2">
+                <svg class="w-4 h-4 text-amber-600 shrink-0 opacity-80" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                <span>{feat}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results Section -->
+  <section class="py-16 bg-gray-50/50 rounded-3xl p-8 border border-gray-100">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12 font-persian">
+        {t('seoService.results.title', "Our Results")}
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white p-6 rounded-2xl shadow-xs hover:shadow-md transition-all text-center border border-gray-100/80">
+          <div class="text-4xl font-extrabold text-primary mb-2">250%</div>
+          <p class="text-gray-600 font-medium text-sm font-persian">{t('seoService.results.trafficIncrease', "Average Traffic Increase")}</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-xs hover:shadow-md transition-all text-center border border-gray-100/80">
+          <div class="text-4xl font-extrabold text-primary mb-2">85%</div>
+          <p class="text-gray-600 font-medium text-sm font-persian">{t('seoService.results.firstPage', "Clients on First Page")}</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-xs hover:shadow-md transition-all text-center border border-gray-100/80">
+          <div class="text-4xl font-extrabold text-primary mb-2">120+</div>
+          <p class="text-gray-600 font-medium text-sm font-persian">{t('seoService.results.projectsCompleted', "SEO Projects Completed")}</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow-xs hover:shadow-md transition-all text-center border border-gray-100/80">
+          <div class="text-4xl font-extrabold text-primary mb-2">30%</div>
+          <p class="text-gray-600 font-medium text-sm font-persian">{t('seoService.results.conversionLift', "Average Conversion Lift")}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="bg-white">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12 font-persian">
+        {t('seoService.process.title', "Our SEO Process")}
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="relative p-8 rounded-2xl bg-gray-50/50 hover:bg-white hover:shadow-xl transition-all border border-transparent hover:border-gray-100 group">
+          <div class="absolute -top-4 -left-4 w-12 h-12 bg-blue-500 text-white rounded-xl shadow-lg flex items-center justify-center text-xl font-bold group-hover:scale-110 transition-transform rotate-3 group-hover:rotate-6">
+            01
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4 mt-2 font-persian">{t('seoService.process.step1.title', "Research & Analysis")}</h3>
+          <p class="text-gray-600 leading-relaxed font-persian">
+            {t('seoService.process.step1.description', "We analyze your website, competitors, and target keywords to create a comprehensive SEO strategy.")}
+          </p>
+        </div>
+
+        <div class="relative p-8 rounded-2xl bg-gray-50/50 hover:bg-white hover:shadow-xl transition-all border border-transparent hover:border-gray-100 group">
+          <div class="absolute -top-4 -left-4 w-12 h-12 bg-green-500 text-white rounded-xl shadow-lg flex items-center justify-center text-xl font-bold group-hover:scale-110 transition-transform rotate-3 group-hover:rotate-6">
+            02
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4 mt-2 font-persian">{t('seoService.process.step2.title', "Implementation")}</h3>
+          <p class="text-gray-600 leading-relaxed font-persian">
+            {t('seoService.process.step2.description', "Our team implements on-page and technical SEO optimizations based on our research findings.")}
+          </p>
+        </div>
+
+        <div class="relative p-8 rounded-2xl bg-gray-50/50 hover:bg-white hover:shadow-xl transition-all border border-transparent hover:border-gray-100 group">
+          <div class="absolute -top-4 -left-4 w-12 h-12 bg-purple-500 text-white rounded-xl shadow-lg flex items-center justify-center text-xl font-bold group-hover:scale-110 transition-transform rotate-3 group-hover:rotate-6">
+            03
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4 mt-2 font-persian">{t('seoService.process.step3.title', "Monitor & Optimize")}</h3>
+          <p class="text-gray-600 leading-relaxed font-persian">
+            {t('seoService.process.step3.description', "We continuously monitor rankings and traffic, making data-driven adjustments to improve results.")}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

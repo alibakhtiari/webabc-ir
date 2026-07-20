@@ -1,0 +1,212 @@
+---
+import TLDR from '../astro/TLDR.astro';
+import { type SupportedLanguage } from '../../types/language';
+
+interface Props {
+  lang: SupportedLanguage;
+  dictionary: any;
+}
+
+const { lang, dictionary } = Astro.props;
+
+const isRtl = lang === 'fa' || lang === 'ar';
+
+// Translate helpers
+const t = (key: string, fallback: string) => {
+  const parts = key.split('.');
+  let current = dictionary;
+  for (const part of parts) {
+    if (current && current[part] !== undefined) {
+      current = current[part];
+    } else {
+      return fallback;
+    }
+  }
+  return typeof current === 'string' ? current : fallback;
+};
+
+// Takeaways
+const takeawaysMap = {
+  en: [
+    "High-speed server-side rendered pages using Next.js 14 and Astro.",
+    "Decoupled headless CMS configurations for absolute content editing freedom.",
+    "Tailwind CSS styling and TypeScript for secure, error-free client experiences.",
+    "Seamless deploys via Vercel, Netlify, and serverless Cloudflare Workers."
+  ],
+  fa: [
+    "توسعه وب‌سایت‌های فوق‌سریع SSR با استفاده از Next.js 14 و Astro.",
+    "اتصال به سیستم‌های مدیریت محتوای بدون سرور (Headless CMS) برای مدیریت آسان محتوا.",
+    "کدنویسی با TypeScript و استایل‌دهی مدرن با Tailwind CSS جهت امنیت و زیبایی.",
+    "استقرار ابری و بدون قطعی روی سرویس‌های Vercel و کلودفلر."
+  ],
+  ar: [
+    "تطوير صفحات ويب فائقة السرعة (SSR) باستخدام تقنيات Next.js 14 و Astro.",
+    "ربط لوحات تحكم منفصلة (Headless CMS) لتسهيل تعديل المحتوى وإدارته.",
+    "استخدام لغة TypeScript البرمجية و Tailwind CSS لتصميم واجهات جذابة وخالية من الأخطاء.",
+    "نشر المواقع والخدمات بنظام خوادم سحابية متطورة وسريعة للغاية."
+  ]
+};
+
+const takeaways = takeawaysMap[lang] || takeawaysMap.en;
+
+const modernWebSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": t('modern-web.title', "Next.js & Astro Web Development"),
+  "description": t('modern-web.description', "State-of-the-art server-side rendered apps built with Next.js and Astro for maximum speed."),
+  "provider": {
+    "@type": "Organization",
+    "name": lang === 'en' ? 'WebABC' : lang === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث',
+    "url": `https://webabc.ir/${lang}`
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Global"
+  },
+  "serviceType": "Modern Web Development"
+};
+---
+
+<!-- Inject Schema into head slot of Layout -->
+<script type="application/ld+json" slot="head" set:html={JSON.stringify(modernWebSchema)} />
+
+<div class="space-y-16 py-8">
+  <!-- Key Takeaways (TL;DR) -->
+  <div class="max-w-3xl mx-auto">
+    <TLDR takeaways={takeaways} lang={lang} />
+  </div>
+
+  <!-- Services Details -->
+  <section class="bg-white">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12 font-persian">
+        {t('modern-web.ourServices', "Modern Development Features")}
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {[
+          { key: 'nextjs', icon: '⚡', color: 'text-yellow-500' },
+          { key: 'react', icon: '⚛️', color: 'text-blue-500' },
+          { key: 'astro', icon: '🚀', color: 'text-orange-500' },
+          { key: 'headless', icon: '👾', color: 'text-purple-500' },
+          { key: 'performance', icon: '📈', color: 'text-green-500' },
+          { key: 'pwa', icon: '📱', color: 'text-indigo-500' }
+        ].map(({ key, icon }) => (
+          <div class="bg-white p-6 rounded-2xl shadow-xs hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100 flex flex-col">
+            <div class="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center mb-4 border border-primary/10 text-2xl">
+              {icon}
+            </div>
+            <h3 class="text-xl font-bold mb-3 font-persian">{t(`modern-web.features.${key}.title`, key)}</h3>
+            <p class="text-gray-600 text-sm leading-relaxed font-persian flex-grow">
+              {t(`modern-web.features.${key}.description`, "")}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Timeline -->
+  <section class="py-16 bg-gray-50/50 rounded-3xl p-8 border border-gray-100">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-16 font-persian">
+        {t('modern-web.process.title', "Our Modern Development Process")}
+      </h2>
+
+      <div class="relative max-w-4xl mx-auto">
+        <!-- Timeline Center Line -->
+        <div class="absolute left-4 lg:left-1/2 transform lg:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-primary/20"></div>
+
+        <!-- Alternating steps -->
+        <div class="space-y-12">
+          {[1, 2, 3, 4, 5].map((step) => {
+            const isLeft = step % 2 !== 0;
+            return (
+              <div class="relative flex flex-col lg:flex-row items-start">
+                <div class={`lg:w-1/2 w-full ${isLeft ? 'lg:pe-12 lg:text-end' : 'lg:ps-12 lg:order-last'}`}>
+                  <div class="bg-white p-6 rounded-2xl shadow-xs border border-gray-100/50 hover:shadow-md transition-shadow">
+                    <h3 class="text-xl font-bold mb-2 font-persian">{t(`modern-web.process.step${step}.title`, `Step ${step}`)}</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed font-persian">{t(`modern-web.process.step${step}.description`, "")}</p>
+                  </div>
+                </div>
+                <div class="absolute left-4 lg:left-1/2 top-4 transform -translate-x-1/2 flex items-center justify-center w-8 h-8 bg-primary text-white rounded-full text-sm font-bold shadow-md z-10">
+                  {step}
+                </div>
+                <div class="lg:w-1/2 hidden lg:block"></div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technologies Grid -->
+  <section class="bg-white">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12 font-persian">
+        {t('modern-web.technologies.title', "Technologies We Master")}
+      </h2>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+        {[
+          { name: "Next.js 14", icon: "▲" },
+          { name: "React", icon: "⚛️" },
+          { name: "Astro", icon: "🚀" },
+          { name: "Strapi CMS", icon: "👾" },
+          { name: "TypeScript", icon: "TS" },
+          { name: "Tailwind CSS", icon: "🎨" },
+          { name: "Vercel", icon: "▲" },
+          { name: "Supabase", icon: "⚡" }
+        ].map((tech) => (
+          <div class="bg-white p-6 rounded-2xl shadow-xs hover:shadow-md border border-gray-100 flex flex-col items-center justify-center aspect-square transition-all duration-300 hover:-translate-y-1">
+            <div class="text-4xl mb-3">{tech.icon}</div>
+            <div class="font-bold text-gray-800 text-sm">{tech.name}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Complementary Services -->
+  <section class="py-12 bg-gray-50/50 rounded-3xl p-8 border border-gray-100">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12 font-persian">
+        {t('common.complementaryServices', "Complementary Services")}
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- SEO Link Card -->
+        <a href={`/${lang}/services/seo`} class="group bg-white p-8 rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 border border-gray-100 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-green-600 group-hover:scale-105 transition-transform">
+                🚀
+              </div>
+              <h3 class="text-xl font-bold font-persian">{t('services.seoTitle', "SEO Optimization")}</h3>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed font-persian">{t('services.seoDescription', "")}</p>
+          </div>
+          <div class="flex items-center text-green-600 font-bold text-sm mt-6 group-hover:translate-x-1 transition-transform font-persian">
+            {t('common.learnMore', "Learn More")} {isRtl ? '←' : '→'}
+          </div>
+        </a>
+
+        <!-- Web Design Link Card -->
+        <a href={`/${lang}/services/web-design`} class="group bg-white p-8 rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 border border-gray-100 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 group-hover:scale-105 transition-transform">
+                🎨
+              </div>
+              <h3 class="text-xl font-bold font-persian">{t('common.webDesignAndDevelopment', "Web Design")}</h3>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed font-persian">{t('webDesign.description', "")}</p>
+          </div>
+          <div class="flex items-center text-blue-600 font-bold text-sm mt-6 group-hover:translate-x-1 transition-transform font-persian">
+            {t('common.learnMore', "Learn More")} {isRtl ? '←' : '→'}
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
