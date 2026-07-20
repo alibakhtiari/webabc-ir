@@ -1,8 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import Navbar from '../../../components/astro/Navbar.astro';
-import Footer from '../../../components/astro/Footer.astro';
-import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import Hero from '../../../components/astro/Hero.astro';
 import { type SupportedLanguage, languages } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
 import { getCollection } from 'astro:content';
@@ -21,31 +19,23 @@ const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
 const isRtl = languages[supportedLang]?.direction === 'rtl';
 
-// Helper to translate strings
-const t = (key: string, options?: { fallback: string }) => {
-  const parts = key.split('.');
-  let current: any = dictionary;
-  for (const part of parts) {
-    if (current && current[part] !== undefined) {
-      current = current[part];
-    } else {
-      return options?.fallback || key;
-    }
-  }
-  return typeof current === 'string' ? current : options?.fallback || key;
-};
+// Fetch projects
+const allProjects = await getCollection('portfolio');
+const filteredProjects = allProjects.filter((proj) => proj.id.startsWith(`${supportedLang}/`));
 
-const allPortfolioEntries = await getCollection('portfolio');
-const items = allPortfolioEntries
-  .filter(entry => entry.id.startsWith(`${supportedLang}/`))
-  .map(entry => ({
-    ...entry.data,
-    slug: entry.id.replace(`${supportedLang}/`, '')
-  }));
-const categories = ['all', ...Array.from(new Set(items.map(item => item.category)))];
+const items = filteredProjects.map((p) => ({
+  slug: p.id.replace(`${supportedLang}/`, '').replace(/\.mdx?$/, ''),
+  title: p.data.title,
+  description: p.data.description,
+  category: p.data.category,
+  image: p.data.image,
+  tags: p.data.tags || [],
+}));
 
-const titleText = t('portfolio.title', { fallback: 'Portfolio' });
-const descriptionText = t('portfolio.description', { fallback: 'Our Recent Projects and Case Studies' });
+const categories = ['all', ...new Set(items.map((item) => item.category))];
+
+const titleText = t('portfolio.title', { fallback: 'Case Studies' });
+const descriptionText = t('portfolio.subtitle', { fallback: 'Showcasing our projects' });
 
 const getCategoryLabel = (category: string) => {
   if (category === 'all') return t('portfolio.allProjects', { fallback: 'All Projects' });
@@ -60,95 +50,90 @@ const breadcrumbs = [
   { label: t('common.home'), url: `/${supportedLang}` },
   { label: titleText }
 ];
+
+// Helper to translate strings
+function t(key: string, options?: { fallback: string }) {
+  const parts = key.split('.');
+  let current: any = dictionary;
+  for (const part of parts) {
+    if (current && current[part] !== undefined) {
+      current = current[part];
+    } else {
+      return options?.fallback || key;
+    }
+  }
+  return typeof current === 'string' ? current : options?.fallback || key;
+}
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="portfolio">
-  <Navbar lang={supportedLang} />
+  <Hero title={titleText} description={descriptionText} breadcrumbs={breadcrumbs} lang={supportedLang} />
 
-  <main class="grow w-full overflow-x-hidden bg-gray-50/50 pt-24 pb-20">
-    <!-- Hero Section -->
-    <section class="pt-8 pb-20 bg-linear-to-br from-primary/10 via-background to-primary/5">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center">
-          <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
-          <h1 class="text-5xl md:text-6xl font-bold mb-6 text-primary font-persian">
-            {titleText}
-          </h1>
-          <p class="text-xl text-gray-600 max-w-2xl mx-auto font-persian">
-            {descriptionText}
-          </p>
-        </div>
+  <!-- Portfolio Grid Section -->
+  <section class="py-16 font-sans">
+    <div class="container mx-auto px-4">
+
+      <!-- Category Filter -->
+      <div class="flex flex-wrap gap-3 justify-center mb-12 font-persian">
+        {categories.map((category, idx) => (
+          <button
+            data-filter-btn={category}
+            class={`px-5 py-2.5 text-xs font-semibold rounded-full border border-gray-200 transition-all ${
+              idx === 0
+                ? "bg-primary text-white shadow-sm"
+                : "bg-white text-gray-700 hover:bg-gray-50"
+            }`}
+          >
+            {getCategoryLabel(category)}
+          </button>
+        ))}
       </div>
-    </section>
 
-    <!-- Portfolio Grid Section -->
-    <section class="py-16 font-sans">
-      <div class="container mx-auto px-4">
-
-        <!-- Category Filter -->
-        <div class="flex flex-wrap gap-3 justify-center mb-12 font-persian">
-          {categories.map((category, idx) => (
-            <button
-              data-filter-btn={category}
-              class={`px-5 py-2.5 text-xs font-semibold rounded-full border border-gray-200 transition-all ${
-                idx === 0
-                  ? "bg-primary text-white shadow-sm"
-                  : "bg-white text-gray-700 hover:bg-gray-50"
-              }`}
-            >
-              {getCategoryLabel(category)}
-            </button>
-          ))}
-        </div>
-
-        <!-- Portfolio Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {items.map((item) => (
-            <div data-portfolio-card={item.category} class="group bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
-              <a href={`/${supportedLang}/portfolio/${item.slug}`} class="block">
-                <div class="relative aspect-video overflow-hidden">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    width={400}
-                    height={225}
-                    class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div class="absolute bottom-4 left-4">
-                      <span class="px-2.5 py-1 text-xs font-semibold rounded bg-primary text-white">
-                        {getCategoryLabel(item.category)}
-                      </span>
-                    </div>
+      <!-- Portfolio Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {items.map((item) => (
+          <div data-portfolio-card={item.category} class="group bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+            <a href={`/${supportedLang}/portfolio/${item.slug}`} class="block">
+              <div class="relative aspect-video overflow-hidden">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={400}
+                  height={225}
+                  class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                />
+                <div class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div class="absolute bottom-4 left-4">
+                    <span class="px-2.5 py-1 text-xs font-semibold rounded bg-primary text-white">
+                      {getCategoryLabel(item.category)}
+                    </span>
                   </div>
                 </div>
-                <div class="p-6 space-y-4">
-                  <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors line-clamp-1 font-persian">
-                    {item.title}
-                  </h3>
-                  <p class="text-gray-500 line-clamp-2 mb-4 font-persian text-sm leading-relaxed">
-                    {item.description}
-                  </p>
-                  
-                  <div class="flex items-center text-primary font-semibold text-sm gap-1 group-hover:gap-2 transition-all font-persian">
-                    {t('common.viewDetails', { fallback: 'View Details' })}
-                    {isRtl ? (
-                      <svg class="h-4 w-4 transform rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    ) : (
-                      <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    )}
-                  </div>
+              </div>
+              <div class="p-6 space-y-4">
+                <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors line-clamp-1 font-persian">
+                  {item.title}
+                </h3>
+                <p class="text-gray-500 line-clamp-2 mb-4 font-persian text-sm leading-relaxed">
+                  {item.description}
+                </p>
+                
+                <div class="flex items-center text-primary font-semibold text-sm gap-1 group-hover:gap-2 transition-all font-persian">
+                  {t('common.viewDetails', { fallback: 'View Details' })}
+                  {isRtl ? (
+                    <svg class="h-4 w-4 transform rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                  ) : (
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                  )}
                 </div>
-              </a>
-            </div>
-          ))}
-        </div>
-
+              </div>
+            </a>
+          </div>
+        ))}
       </div>
-    </section>
-  </main>
 
-  <Footer lang={supportedLang} />
+    </div>
+  </section>
 </Layout>
 
 <script is:inline>

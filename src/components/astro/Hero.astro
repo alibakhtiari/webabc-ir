@@ -1,0 +1,41 @@
+---
+import Breadcrumbs from './Breadcrumbs.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  breadcrumbs: Array<{ label: string; url?: string }>;
+  lang: string;
+  gradient?: string;
+  className?: string;
+}
+
+const {
+  title,
+  description,
+  breadcrumbs,
+  lang,
+  gradient = "bg-linear-to-br from-primary/10 via-background to-primary/5",
+  className = ""
+} = Astro.props;
+---
+
+<section class={`pt-36 pb-20 relative overflow-hidden ${gradient} ${className}`}>
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="max-w-4xl mx-auto text-center space-y-6">
+      <Breadcrumbs items={breadcrumbs} lang={lang} />
+      
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight font-persian">
+        {title}
+      </h1>
+      
+      {description && (
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto font-persian leading-relaxed">
+          {description}
+        </p>
+      )}
+      
+      <slot />
+    </div>
+  </div>
+</section>
