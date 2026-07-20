@@ -49,6 +49,7 @@ const namespaces = {
     slugGenerator: 'tools/slugGenerator',
     socialPreview: 'tools/socialPreview',
     gradientGen: 'tools/gradientGen',
+    seoTitleChecker: 'tools/seoTitleChecker',
 
     cookieNotice: 'cookie',
     privacyPolicy: 'privacy',
