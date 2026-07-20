@@ -1,0 +1,328 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import Footer from '../../../components/astro/Footer.astro';
+import { type SupportedLanguage, languages } from '../../../types/language';
+import { getDictionary } from '../../../i18n/get-dictionary';
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'fa' } },
+    { params: { lang: 'ar' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+const isRtl = languages[supportedLang]?.direction === 'rtl';
+
+// Helper to translate strings
+const t = (key: string, options?: { fallback: string }) => {
+  const parts = key.split('.');
+  let current: any = dictionary;
+  for (const part of parts) {
+    if (current && current[part] !== undefined) {
+      current = current[part];
+    } else {
+      return options?.fallback || key;
+    }
+  }
+  return typeof current === 'string' ? current : options?.fallback || key;
+};
+
+const titleText = t('headlineAnalyzer.title', { fallback: 'SEO Headline Analyzer' });
+const descriptionText = t('headlineAnalyzer.description', { fallback: 'Analyze your headlines for CTR, sentiment, readability and character length to optimize for SEO rankings.' });
+
+const breadcrumbs = [
+  { label: t('common.home'), url: `/${supportedLang}` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: titleText }
+];
+---
+
+<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/headline-analyzer">
+  <main class="grow w-full overflow-x-hidden bg-gray-50/50 pb-20 pt-20">
+    <!-- Hero Section -->
+    <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+          <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
+          <h1 class="text-3xl md:text-5xl font-bold mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent leading-normal font-persian">
+            {titleText}
+          </h1>
+          <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-persian">
+            {descriptionText}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Workspace -->
+    <section class="container mx-auto px-4 mt-12 font-sans">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto">
+        
+        <!-- Input Panel -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4">
+            <label for="headline-input" class="block text-sm font-semibold text-gray-700 font-persian">
+              {t('headlineAnalyzer.inputLabel', { fallback: 'Enter your headline:' })}
+            </label>
+            <input
+              type="text"
+              id="headline-input"
+              placeholder={t('headlineAnalyzer.placeholder', { fallback: 'e.g., 10 Quick Ways to Boost Your SEO Rankings Today' })}
+              class="w-full border border-gray-200 rounded-xl p-4 focus:outline-none focus:border-primary text-base font-persian"
+            />
+            
+            <div class="flex justify-between items-center">
+              <span id="char-count" class="text-xs text-gray-500 font-persian">0 / 60 characters</span>
+              <button id="analyze-btn" class="px-5 py-2.5 bg-primary text-white text-xs font-semibold rounded-lg hover:bg-primary/95 shadow-sm transition-all font-persian">
+                {t('headlineAnalyzer.button', { fallback: 'Analyze' })}
+              </button>
+            </div>
+          </div>
+
+          <!-- Optimization Tips -->
+          <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-3 font-persian">
+            <h3 class="text-sm font-bold text-gray-800">SEO Headline Best Practices:</h3>
+            <ul class="text-xs text-gray-600 space-y-2 list-disc list-inside">
+              <li>Keep it between 50-60 characters so it doesn't get cut off in Google SERPs.</li>
+              <li>Include your primary keyword naturally near the beginning.</li>
+              <li>Use a number (e.g., "7 Tips") to increase click-through rates by up to 36%.</li>
+              <li>Add emotional triggers or power words (like "Proven", "Instantly", "Unbelievable").</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Output Panel / Analyzer Dashboard -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-6 flex flex-col min-h-[400px]">
+            
+            <!-- Circular Score Display -->
+            <div class="flex items-center gap-6 border-b border-gray-50 pb-6">
+              <div class="relative w-24 h-24 flex items-center justify-center rounded-full bg-gray-50 border-4 border-gray-100" id="score-circle">
+                <span class="text-3xl font-bold text-gray-400" id="score-val">0</span>
+                <span class="absolute text-[10px] text-gray-400 bottom-2">Score</span>
+              </div>
+              <div class="space-y-1">
+                <h4 class="text-lg font-bold text-gray-800 font-persian" id="grade-text">Awaiting Input</h4>
+                <p class="text-xs text-gray-500 font-persian" id="grade-desc">Type a headline to see real-time quality analytics.</p>
+              </div>
+            </div>
+
+            <!-- Analysis Categories -->
+            <div class="space-y-4 grow">
+              
+              <!-- Length Indicator -->
+              <div class="space-y-1.5">
+                <div class="flex justify-between text-xs">
+                  <span class="font-medium text-gray-700 font-persian">SEO Length Match</span>
+                  <span class="font-semibold text-gray-600 font-persian" id="length-status">-</span>
+                </div>
+                <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                  <div class="h-full bg-gray-300 w-0 transition-all duration-300" id="length-bar"></div>
+                </div>
+              </div>
+
+              <!-- Keyword Presence -->
+              <div class="space-y-1.5">
+                <div class="flex justify-between text-xs">
+                  <span class="font-medium text-gray-700 font-persian">Sentiment Balance</span>
+                  <span class="font-semibold text-gray-600 font-persian" id="sentiment-status">-</span>
+                </div>
+                <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                  <div class="h-full bg-gray-300 w-0 transition-all duration-300" id="sentiment-bar"></div>
+                </div>
+              </div>
+
+              <!-- Power Words Presence -->
+              <div class="space-y-1.5">
+                <div class="flex justify-between text-xs">
+                  <span class="font-medium text-gray-700 font-persian">Power Words & Numbers</span>
+                  <span class="font-semibold text-gray-600 font-persian" id="power-status">-</span>
+                </div>
+                <div class="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                  <div class="h-full bg-gray-300 w-0 transition-all duration-300" id="power-bar"></div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={supportedLang} />
+</Layout>
+
+<script is:inline>
+  const input = document.getElementById('headline-input');
+  const analyzeBtn = document.getElementById('analyze-btn');
+  const charCount = document.getElementById('char-count');
+  
+  const scoreVal = document.getElementById('score-val');
+  const scoreCircle = document.getElementById('score-circle');
+  const gradeText = document.getElementById('grade-text');
+  const gradeDesc = document.getElementById('grade-desc');
+  
+  const lengthStatus = document.getElementById('length-status');
+  const lengthBar = document.getElementById('length-bar');
+  
+  const sentimentStatus = document.getElementById('sentiment-status');
+  const sentimentBar = document.getElementById('sentiment-bar');
+  
+  const powerStatus = document.getElementById('power-status');
+  const powerBar = document.getElementById('power-bar');
+
+  // List of common Power/Emotional Words
+  const powerWords = [
+    'proven', 'boost', 'free', 'easy', 'quick', 'boost', 'secret', 'guide', 'best',
+    'top', 'amazing', 'essential', 'insane', 'incredible', 'ultimate', 'how to', 'why',
+    'بهترین', 'سریع', 'رایگان', 'راز', 'آموزش', 'افزایش', 'چگونه', 'چرا', 'فرمول', 'ساده',
+    'أفضل', 'مجاني', 'سر', 'كيفية', 'زيادة', 'طريقة', 'سهل', 'دليل'
+  ];
+
+  function analyzeHeadline() {
+    const text = input.value.trim();
+    if (!text) return;
+
+    let score = 30; // base score
+
+    // 1. Length check (ideal is between 50-60 characters)
+    const len = text.length;
+    let lenScore = 0;
+    let lenText = 'Too Short';
+    let lenColorClass = 'bg-red-500';
+
+    if (len >= 50 && len <= 60) {
+      lenScore = 100;
+      lenText = 'Perfect (50-60 chars)';
+      lenColorClass = 'bg-green-500';
+      score += 35;
+    } else if (len >= 40 && len < 50) {
+      lenScore = 75;
+      lenText = 'Good Length';
+      lenColorClass = 'bg-yellow-500';
+      score += 25;
+    } else if (len > 60 && len <= 75) {
+      lenScore = 75;
+      lenText = 'Slightly Long';
+      lenColorClass = 'bg-yellow-500';
+      score += 20;
+    } else if (len > 75) {
+      lenScore = 40;
+      lenText = 'Too Long (Will truncate)';
+      lenColorClass = 'bg-red-500';
+      score += 5;
+    } else {
+      lenScore = 30;
+      lenText = 'Too Short';
+      lenColorClass = 'bg-red-500';
+      score += 10;
+    }
+
+    lengthStatus.innerText = lenText;
+    lengthBar.style.width = `${lenScore}%`;
+    lengthBar.className = `h-full transition-all duration-300 ${lenColorClass}`;
+
+    // 2. Power words and numbers check
+    const words = text.toLowerCase().split(/\s+/);
+    const hasNumber = /\d+/.test(text);
+    let powerCount = 0;
+    
+    words.forEach(w => {
+      if (powerWords.some(pw => w.includes(pw))) {
+        powerCount++;
+      }
+    });
+
+    let powerScore = 0;
+    let powerText = 'No triggers';
+    let powerColorClass = 'bg-red-500';
+
+    if (powerCount > 0 && hasNumber) {
+      powerScore = 100;
+      powerText = 'Numbers & Triggers Present';
+      powerColorClass = 'bg-green-500';
+      score += 35;
+    } else if (powerCount > 0 || hasNumber) {
+      powerScore = 70;
+      powerText = 'Good Trigger Usage';
+      powerColorClass = 'bg-yellow-500';
+      score += 20;
+    } else {
+      powerScore = 20;
+      powerText = 'Add numbers or power words';
+      powerColorClass = 'bg-red-500';
+    }
+
+    powerStatus.innerText = powerText;
+    powerBar.style.width = `${powerScore}%`;
+    powerBar.className = `h-full transition-all duration-300 ${powerColorClass}`;
+
+    // 3. Sentiment Balance
+    // Simple sentiment analyzer based on question marks, exclamation marks, and strong positive verbs
+    const hasExclamation = text.includes('!');
+    const hasQuestion = text.includes('?');
+    let sentimentScore = 50;
+    let sentimentText = 'Neutral / Balanced';
+    let sentimentColorClass = 'bg-gray-400';
+
+    if (hasExclamation) {
+      sentimentScore = 90;
+      sentimentText = 'Highly Engaging!';
+      sentimentColorClass = 'bg-green-500';
+      score += 10;
+    } else if (hasQuestion) {
+      sentimentScore = 85;
+      sentimentText = 'Curiosity Inducing';
+      sentimentColorClass = 'bg-blue-500';
+      score += 10;
+    } else {
+      score += 5;
+    }
+
+    sentimentStatus.innerText = sentimentText;
+    sentimentBar.style.width = `${sentimentScore}%`;
+    sentimentBar.className = `h-full transition-all duration-300 ${sentimentColorClass}`;
+
+    // Cap score at 100
+    score = Math.min(100, score);
+    
+    // Update Score Circle & Grade
+    scoreVal.innerText = score;
+    
+    let grade = 'Needs Work';
+    let desc = 'Try adding emotional numbers, action verbs, or optimizing length.';
+    let circleColor = 'border-red-500 text-red-500';
+
+    if (score >= 80) {
+      grade = 'Excellent Headline!';
+      desc = 'Your title is perfectly optimized for search performance and user click-through rates.';
+      circleColor = 'border-green-500 text-green-500 bg-green-50/50';
+    } else if (score >= 60) {
+      grade = 'Decent Headline';
+      desc = 'A few minor tweaks (like length or power words) could significantly boost your CTR.';
+      circleColor = 'border-yellow-500 text-yellow-500 bg-yellow-50/50';
+    }
+
+    gradeText.innerText = grade;
+    gradeDesc.innerText = desc;
+    scoreCircle.className = `relative w-24 h-24 flex items-center justify-center rounded-full border-4 transition-all duration-300 ${circleColor}`;
+  }
+
+  input.addEventListener('input', () => {
+    const len = input.value.trim().length;
+    charCount.innerText = `${len} / 60 characters`;
+    if (len > 0) {
+      analyzeHeadline();
+    }
+  });
+
+  analyzeBtn.addEventListener('click', analyzeHeadline);
+</script>

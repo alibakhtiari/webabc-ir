@@ -1,0 +1,246 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import Footer from '../../../components/astro/Footer.astro';
+import { type SupportedLanguage, languages } from '../../../types/language';
+import { getDictionary } from '../../../i18n/get-dictionary';
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'fa' } },
+    { params: { lang: 'ar' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+const isRtl = languages[supportedLang]?.direction === 'rtl';
+
+// Helper to translate strings
+const t = (key: string, options?: { fallback: string }) => {
+  const parts = key.split('.');
+  let current: any = dictionary;
+  for (const part of parts) {
+    if (current && current[part] !== undefined) {
+      current = current[part];
+    } else {
+      return options?.fallback || key;
+    }
+  }
+  return typeof current === 'string' ? current : options?.fallback || key;
+};
+
+const titleText = t('costCalculator.title', { fallback: 'Website Cost Estimator' });
+const descriptionText = t('costCalculator.description', { fallback: 'Estimate the cost of your web development or SEO campaign in seconds with our interactive calculator.' });
+
+const breadcrumbs = [
+  { label: t('common.home'), url: `/${supportedLang}` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: titleText }
+];
+---
+
+<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/cost-calculator">
+  <main class="grow w-full overflow-x-hidden bg-gray-50/50 pb-20 pt-20">
+    <!-- Hero Section -->
+    <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+          <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
+          <h1 class="text-3xl md:text-5xl font-bold mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent leading-normal font-persian">
+            {titleText}
+          </h1>
+          <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-persian">
+            {descriptionText}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Calculator Workspace -->
+    <section class="container mx-auto px-4 mt-12 font-sans">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto">
+        
+        <!-- Interactive Controls -->
+        <div class="lg:col-span-8 space-y-6">
+          
+          <!-- Step 1: Website Type -->
+          <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian">
+            <h3 class="text-base font-bold text-gray-800">1. Project Type</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <label class="border border-gray-200 hover:border-primary rounded-xl p-4 cursor-pointer flex flex-col items-center text-center space-y-2 transition-all relative">
+                <input type="radio" name="site-type" value="wordpress" class="absolute top-4 right-4" checked />
+                <span class="text-xl">WordPress</span>
+                <span class="text-xs text-gray-500">Flexible CMS & Blog</span>
+              </label>
+              <label class="border border-gray-200 hover:border-primary rounded-xl p-4 cursor-pointer flex flex-col items-center text-center space-y-2 transition-all relative">
+                <input type="radio" name="site-type" value="custom" class="absolute top-4 right-4" />
+                <span class="text-xl">Custom Coding</span>
+                <span class="text-xs text-gray-500">Next.js / Astro Webapp</span>
+              </label>
+              <label class="border border-gray-200 hover:border-primary rounded-xl p-4 cursor-pointer flex flex-col items-center text-center space-y-2 transition-all relative">
+                <input type="radio" name="site-type" value="ecommerce" class="absolute top-4 right-4" />
+                <span class="text-xl">E-commerce</span>
+                <span class="text-xs text-gray-500">Shopify / WooCommerce Store</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 2: Page count slider -->
+          <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian">
+            <div class="flex justify-between items-center">
+              <h3 class="text-base font-bold text-gray-800">2. Number of Pages</h3>
+              <span id="page-count-val" class="font-bold text-primary">5 Pages</span>
+            </div>
+            <input
+              type="range"
+              id="page-count-slider"
+              min="1"
+              max="50"
+              value="5"
+              class="w-full h-2 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-primary"
+            />
+          </div>
+
+          <!-- Step 3: Additional Features -->
+          <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian">
+            <h3 class="text-base font-bold text-gray-800">3. Features & Addons</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <label class="flex items-center gap-3 border border-gray-100 hover:bg-gray-50/50 rounded-xl p-3 cursor-pointer transition-all">
+                <input type="checkbox" id="feature-multilingual" value="500" class="w-4 h-4 rounded text-primary" />
+                <div class="flex flex-col">
+                  <span class="text-sm font-semibold text-gray-800">Multilingual (RTL/LTR)</span>
+                  <span class="text-xs text-gray-500">Arabic, Farsi, and English support</span>
+                </div>
+              </label>
+              <label class="flex items-center gap-3 border border-gray-100 hover:bg-gray-50/50 rounded-xl p-3 cursor-pointer transition-all">
+                <input type="checkbox" id="feature-seo" value="400" class="w-4 h-4 rounded text-primary" />
+                <div class="flex flex-col">
+                  <span class="text-sm font-semibold text-gray-800">Advanced SEO Setup</span>
+                  <span class="text-xs text-gray-500">Optimized schemas and structures</span>
+                </div>
+              </label>
+              <label class="flex items-center gap-3 border border-gray-100 hover:bg-gray-50/50 rounded-xl p-3 cursor-pointer transition-all">
+                <input type="checkbox" id="feature-speed" value="300" class="w-4 h-4 rounded text-primary" />
+                <div class="flex flex-col">
+                  <span class="text-sm font-semibold text-gray-800">Speed Optimization</span>
+                  <span class="text-xs text-gray-500">Core Web Vitals max performance</span>
+                </div>
+              </label>
+              <label class="flex items-center gap-3 border border-gray-100 hover:bg-gray-50/50 rounded-xl p-3 cursor-pointer transition-all">
+                <input type="checkbox" id="feature-security" value="250" class="w-4 h-4 rounded text-primary" />
+                <div class="flex flex-col">
+                  <span class="text-sm font-semibold text-gray-800">WAF & Security Shield</span>
+                  <span class="text-xs text-gray-500">Anti-DDoS, SSL & firewall hardening</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Sticky Pricing Summary Widget -->
+        <div class="lg:col-span-4">
+          <div class="bg-white border border-gray-100 rounded-2xl shadow-lg p-6 space-y-6 sticky top-28 font-persian">
+            <h3 class="text-lg font-bold text-gray-800 border-b border-gray-50 pb-4">Estimate Breakdown</h3>
+            
+            <div class="space-y-3 text-sm">
+              <div class="flex justify-between">
+                <span class="text-gray-500">Base Type Cost:</span>
+                <span class="font-semibold text-gray-700" id="base-cost-text">$800</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-500">Pages Cost:</span>
+                <span class="font-semibold text-gray-700" id="pages-cost-text">$250</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-500">Addons & Features:</span>
+                <span class="font-semibold text-gray-700" id="addons-cost-text">$0</span>
+              </div>
+            </div>
+
+            <div class="border-t border-gray-100 pt-6 flex flex-col justify-center items-center space-y-2">
+              <span class="text-xs text-gray-400 font-medium">Estimated Budget</span>
+              <span class="text-4xl font-extrabold text-primary" id="total-price-text">$1,050</span>
+            </div>
+
+            <button class="w-full py-3 bg-primary text-white font-bold rounded-xl shadow-md hover:bg-primary/95 transition-all text-sm">
+              Book Consultation
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={supportedLang} />
+</Layout>
+
+<script is:inline>
+  const siteTypeRadios = document.querySelectorAll('input[name="site-type"]');
+  const slider = document.getElementById('page-count-slider');
+  const pageValText = document.getElementById('page-count-val');
+  
+  const featureMultilingual = document.getElementById('feature-multilingual');
+  const featureSEO = document.getElementById('feature-seo');
+  const featureSpeed = document.getElementById('feature-speed');
+  const featureSecurity = document.getElementById('feature-security');
+
+  const baseCostText = document.getElementById('base-cost-text');
+  const pagesCostText = document.getElementById('pages-cost-text');
+  const addonsCostText = document.getElementById('addons-cost-text');
+  const totalPriceText = document.getElementById('total-price-text');
+
+  function calculatePrice() {
+    // 1. Get radio site-type value
+    let basePrice = 800;
+    let selectedType = 'wordpress';
+    siteTypeRadios.forEach(radio => {
+      if (radio.checked) {
+        selectedType = radio.value;
+      }
+    });
+
+    if (selectedType === 'wordpress') {
+      basePrice = 800;
+    } else if (selectedType === 'custom') {
+      basePrice = 1500;
+    } else if (selectedType === 'ecommerce') {
+      basePrice = 1800;
+    }
+
+    // 2. Page multiplier
+    const pageCount = parseInt(slider.value);
+    pageValText.innerText = `${pageCount} Page${pageCount > 1 ? 's' : ''}`;
+    const pagesCost = pageCount * 50;
+
+    // 3. Checkbox additions
+    let addonsCost = 0;
+    if (featureMultilingual.checked) addonsCost += parseFloat(featureMultilingual.value);
+    if (featureSEO.checked) addonsCost += parseFloat(featureSEO.value);
+    if (featureSpeed.checked) addonsCost += parseFloat(featureSpeed.value);
+    if (featureSecurity.checked) addonsCost += parseFloat(featureSecurity.value);
+
+    // Sum total
+    const total = basePrice + pagesCost + addonsCost;
+
+    // Update markup
+    baseCostText.innerText = `$${basePrice.toLocaleString()}`;
+    pagesCostText.innerText = `$${pagesCost.toLocaleString()}`;
+    addonsCostText.innerText = `$${addonsCost.toLocaleString()}`;
+    totalPriceText.innerText = `$${total.toLocaleString()}`;
+  }
+
+  // Bind change listeners
+  siteTypeRadios.forEach(radio => radio.addEventListener('change', calculatePrice));
+  slider.addEventListener('input', calculatePrice);
+  [featureMultilingual, featureSEO, featureSpeed, featureSecurity].forEach(chk => {
+    chk.addEventListener('change', calculatePrice);
+  });
+
+  // Run initial calculation
+  calculatePrice();
+</script>
