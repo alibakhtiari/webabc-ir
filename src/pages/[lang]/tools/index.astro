@@ -1,0 +1,128 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/astro/Navbar.astro';
+import Footer from '../../../components/astro/Footer.astro';
+import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import { type SupportedLanguage, languages } from '../../../types/language';
+import { getDictionary } from '../../../i18n/get-dictionary';
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'fa' } },
+    { params: { lang: 'ar' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+const isRtl = languages[supportedLang]?.direction === 'rtl';
+
+// Helper to translate strings
+const t = (key: string, options?: { fallback: string }) => {
+  const parts = key.split('.');
+  let current: any = dictionary;
+  for (const part of parts) {
+    if (current && current[part] !== undefined) {
+      current = current[part];
+    } else {
+      return options?.fallback || key;
+    }
+  }
+  return typeof current === 'string' ? current : options?.fallback || key;
+};
+
+const titleText = t('tools.title', { fallback: 'SEO & Marketing Utilities' });
+const descriptionText = t('tools.description', { fallback: 'A comprehensive suite of free local tools to analyze SEO ranking tags and format developer configs.' });
+
+// Match slugs exactly to old sitemap parameters
+const seoTools = [
+  { key: 'serpPreview', route: 'serp-preview' },
+  { key: 'metaGenerator', route: 'meta-generator' },
+  { key: 'paaScraper', route: 'paa-scraper' },
+  { key: 'utmBuilder', route: 'utm-builder' },
+  { key: 'slugGenerator', route: 'slug-generator' },
+  { key: 'socialPreview', route: 'social-media-preview' },
+  { key: 'seoTitleChecker', route: 'seo-title-checker' } // Map to our newly migrated one!
+];
+
+const contentTools = [
+  { key: 'headlineAnalyzer', route: 'headline-analyzer' },
+  { key: 'readabilityChecker', route: 'readability-checker' },
+  { key: 'loremGenerator', route: 'lorem-generator' },
+  { key: 'qrGenerator', route: 'qr-generator' },
+  { key: 'costCalculator', route: 'cost-calculator' },
+  { key: 'privacyGenerator', route: 'privacy-policy-generator' },
+  { key: 'glassGen', route: 'glassmorphism-generator' },
+  { key: 'gradientGen', route: 'css-gradient-generator' }
+];
+
+const breadcrumbs = [
+  { label: t('common.home'), url: `/${supportedLang}` },
+  { label: titleText }
+];
+---
+
+<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools">
+  <Navbar lang={supportedLang} />
+
+  <main class="grow w-full overflow-x-hidden bg-gray-50/50 pb-20 pt-20 font-sans">
+    <!-- Hero Section -->
+    <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+          <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
+          <h1 class="text-3xl md:text-5xl font-bold mb-6 leading-normal font-persian">{titleText}</h1>
+          <p class="text-lg md:text-xl text-gray-600 font-persian leading-relaxed">{descriptionText}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEO Marketers Tools Grid -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="text-center mb-12 font-persian">
+          <h2 class="text-3xl font-bold mb-4 text-primary">{t('tools.seoMarketersTitle', { fallback: 'SEO & Search Utilities' })}</h2>
+          <p class="text-xl text-gray-500 max-w-3xl mx-auto">{t('tools.seoMarketersDesc', { fallback: 'Optimize your on-page and technical configurations.' })}</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {seoTools.map(({ key, route }) => (
+            <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-xs hover:shadow-lg transition-all duration-300 group font-persian">
+              <h3 class="text-2xl font-bold mb-4">{t(`${key}.title`, { fallback: key })}</h3>
+              <p class="text-gray-500 mb-6 text-sm leading-relaxed">{t(`${key}.description`, { fallback: 'Optimize assets and verify index markers.' })}</p>
+              <a href={`/${supportedLang}/tools/${route}`} class="text-primary font-bold text-sm inline-flex items-center gap-1">
+                {t('common.readMore', { fallback: 'Launch Tool' })} &rarr;
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Creators Tools Grid -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4 max-w-6xl font-sans">
+        <div class="text-center mb-12 font-persian">
+          <h2 class="text-3xl font-bold mb-4 text-green-600">{t('tools.contentCreatorsTitle', { fallback: 'Developer & Layout Utilities' })}</h2>
+          <p class="text-xl text-gray-500 max-w-3xl mx-auto">{t('tools.contentCreatorsDesc', { fallback: 'Helpers for generators and web layout components.' })}</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {contentTools.map(({ key, route }) => (
+            <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-xs hover:shadow-lg transition-all duration-300 group font-persian">
+              <h3 class="text-2xl font-bold mb-4">{t(`${key}.title`, { fallback: key })}</h3>
+              <p class="text-gray-500 mb-6 text-sm leading-relaxed">{t(`${key}.description`, { fallback: 'Optimize copy formatting and styling guidelines.' })}</p>
+              <a href={`/${supportedLang}/tools/${route}`} class="text-primary font-bold text-sm inline-flex items-center gap-1">
+                {t('common.readMore', { fallback: 'Launch Tool' })} &rarr;
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={supportedLang} />
+</Layout>

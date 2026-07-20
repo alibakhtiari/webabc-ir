@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/astro/Navbar.astro';
+import HeroSection from '../../components/astro/HeroSection.astro';
+import ServicesSection from '../../components/astro/ServicesSection.astro';
+import BenefitsSection from '../../components/astro/BenefitsSection.astro';
+import CTASection from '../../components/astro/CTASection.astro';
+import Footer from '../../components/astro/Footer.astro';
+import { type SupportedLanguage } from '../../types/language';
+import { getDictionary } from '../../i18n/get-dictionary';
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'fa' } },
+    { params: { lang: 'ar' } },
+  ];
+}
+
+const { lang } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+
+const dictionary = await getDictionary(supportedLang);
+const title = dictionary.home?.title || 'WebABC';
+const description = dictionary.home?.description || 'Web Design and Development Services';
+---
+
+<Layout title={title} description={description} lang={supportedLang} slug="">
+  <Navbar lang={supportedLang} />
+  
+  <main class="relative overflow-x-hidden pt-20">
+    <HeroSection lang={supportedLang} />
+    <ServicesSection lang={supportedLang} />
+    <BenefitsSection lang={supportedLang} />
+    <CTASection lang={supportedLang} />
+  </main>
+
+  <Footer lang={supportedLang} />
+</Layout>
