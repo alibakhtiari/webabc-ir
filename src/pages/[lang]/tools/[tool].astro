@@ -1,8 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import Navbar from '../../../components/astro/Navbar.astro';
-import Footer from '../../../components/astro/Footer.astro';
-import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import Hero from '../../../components/astro/Hero.astro';
 import { type SupportedLanguage, languages } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
 
@@ -44,8 +42,36 @@ const t = (key: string, options?: { fallback: string }) => {
   return typeof current === 'string' ? current : options?.fallback || key;
 };
 
-// Map slug to translation keys
+// Map slug to translation namespaces
+const toolMapping: Record<string, string> = {
+  'serp-preview': 'serpPreview',
+  'faq-generator': 'faqGenerator',
+  'headline-analyzer': 'headlineAnalyzer',
+  'readability-checker': 'readabilityChecker',
+  'lorem-generator': 'loremGenerator',
+  'cost-calculator': 'costCalculator',
+  'privacy-policy-generator': 'privacyGenerator',
+  'glassmorphism-generator': 'glassGen',
+  'meta-generator': 'metaGenerator',
+  'paa-scraper': 'paaScraper',
+  'utm-builder': 'utmBuilder',
+  'qr-generator': 'qrGenerator',
+  'slug-generator': 'slugGenerator',
+  'social-media-preview': 'socialPreview',
+  'css-gradient-generator': 'gradientGen'
+};
+
 const getToolMetadata = (toolVal: string) => {
+  const nsKey = toolMapping[toolVal];
+  const dictionarySection = nsKey ? (dictionary as any)[nsKey] : null;
+  
+  if (dictionarySection && dictionarySection.title) {
+    return {
+      title: dictionarySection.title,
+      desc: dictionarySection.description || dictionarySection.subtitle || `Use our free online ${toolVal} tool.`
+    };
+  }
+  
   const formattedTitle = toolVal.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
   return {
     title: formattedTitle,
@@ -63,38 +89,25 @@ const breadcrumbs = [
 ---
 
 <Layout title={meta.title} description={meta.desc} lang={supportedLang} slug={`tools/${tool}`}>
-  <Navbar lang={supportedLang} />
+  <Hero title={meta.title} description={meta.desc} breadcrumbs={breadcrumbs} lang={supportedLang} />
 
-  <main class="grow w-full overflow-x-hidden bg-gray-50/50 pt-0 pb-20">
-    <section class="bg-linear-to-b from-primary/5 to-white pt-36 pb-16 md:pb-24">
-      <div class="container mx-auto px-4 max-w-4xl text-center space-y-6">
-          <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
-
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight font-persian">{meta.title}</h1>
-        <p class="text-xl text-gray-600 font-persian leading-relaxed">{meta.desc}</p>
-      </div>
-    </section>
-
-    <!-- Workspace card -->
-    <section class="py-16 bg-white font-sans font-persian">
-      <div class="container mx-auto px-4 max-w-3xl">
-        <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-xs text-center space-y-6">
-          <h2 class="text-2xl font-bold text-gray-900">{meta.title} Workspace</h2>
-          <p class="text-gray-500 leading-relaxed max-w-lg mx-auto">
-            This tool is currently undergoing automated refactoring to support faster client side calculations and offline processing.
-          </p>
-          <div class="pt-4">
-            <a
-              href={`/${supportedLang}/contact`}
-              class="inline-block px-8 py-3 bg-primary text-white font-bold rounded-lg shadow-sm hover:bg-primary/95 transition-all"
-            >
-              Request Access
-            </a>
-          </div>
+  <!-- Workspace card -->
+  <section class="py-16 bg-white font-sans font-persian">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-xs text-center space-y-6">
+        <h2 class="text-2xl font-bold text-gray-900">{meta.title} Workspace</h2>
+        <p class="text-gray-500 leading-relaxed max-w-lg mx-auto">
+          This tool is currently undergoing automated refactoring to support faster client side calculations and offline processing.
+        </p>
+        <div class="pt-4">
+          <a
+            href={`/${supportedLang}/contact`}
+            class="inline-block px-8 py-3 bg-primary text-white font-bold rounded-lg shadow-sm hover:bg-primary/95 transition-all"
+          >
+            Request Access
+          </a>
         </div>
       </div>
-    </section>
-  </main>
-
-  <Footer lang={supportedLang} />
+    </div>
+  </section>
 </Layout>
