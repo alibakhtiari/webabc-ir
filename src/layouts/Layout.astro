@@ -15,7 +15,13 @@ function createOrganizationSchema(url: string, logo: string, contactPoints: { te
       "@type": "ContactPoint",
       "telephone": cp.telephone,
       "contactType": cp.contactType
-    }))
+    })),
+    "sameAs": [
+      "https://facebook.com/webabc",
+      "https://twitter.com/webabc",
+      "https://instagram.com/webabc",
+      "https://linkedin.com/company/webabc"
+    ]
   };
 }
 
