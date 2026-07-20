@@ -1,0 +1,72 @@
+---
+import { getDictionary } from '../../i18n/get-dictionary';
+import { type SupportedLanguage } from '../../types/language';
+
+interface Props {
+  faqList: { question: string; answer: string }[];
+  lang: SupportedLanguage;
+}
+
+const { faqList, lang } = Astro.props;
+const dictionary = await getDictionary(lang);
+
+const titleText = dictionary.blog?.faq || 'سوالات متداول';
+
+// Generate FAQ Schema JSON-LD
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": lang === 'en' ? 'en-US' : lang === 'ar' ? 'ar-SA' : 'fa-IR',
+  "mainEntity": faqList.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+<div class="mb-8 border border-gray-100 rounded-2xl p-6 bg-white shadow-xs font-persian">
+  <h2 class="text-2xl font-bold mb-6 text-gray-900 flex items-center gap-2">
+    <span class="text-primary">❓</span> {titleText}
+  </h2>
+  
+  <div class="space-y-4">
+    {faqList.map((item, idx) => (
+      <div class="border-b border-gray-100 last:border-0 pb-4 last:pb-0">
+        <button
+          class="faq-btn w-full flex items-center justify-between py-2 text-start font-bold text-gray-800 hover:text-primary transition-all focus:outline-none"
+          data-faq-target={`faq-answer-${idx}`}
+        >
+          <span>{item.question}</span>
+          <svg class="faq-icon w-5 h-5 transition-transform duration-300 text-gray-400 shrink-0 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div id={`faq-answer-${idx}`} class="faq-answer hidden mt-2 text-gray-600 text-sm leading-relaxed pr-2">
+          {item.answer}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script is:inline>
+  const faqButtons = document.querySelectorAll('.faq-btn');
+  faqButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-faq-target');
+      const targetAnswer = document.getElementById(targetId);
+      const icon = btn.querySelector('.faq-icon');
+      
+      if (targetAnswer && icon) {
+        const isHidden = targetAnswer.classList.toggle('hidden');
+        icon.classList.toggle('rotate-180', !isHidden);
+      }
+    });
+  });
+</script>

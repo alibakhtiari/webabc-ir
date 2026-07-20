@@ -1,0 +1,104 @@
+---
+import { getDictionary } from '../../i18n/get-dictionary';
+import { languages, type SupportedLanguage } from '../../types/language';
+
+interface Props {
+  lang: SupportedLanguage;
+}
+
+const { lang } = Astro.props;
+const dictionary = await getDictionary(lang);
+const isRtl = languages[lang]?.direction === 'rtl';
+
+// Helper to translate strings
+const t = (key: string) => {
+  const parts = key.split('.');
+  let current: any = dictionary;
+  for (const part of parts) {
+    if (current && current[part] !== undefined) {
+      current = current[part];
+    } else {
+      return key;
+    }
+  }
+  return typeof current === 'string' ? current : key;
+};
+
+const linkPath = (path: string) => {
+  return `/${lang}${path}`;
+};
+---
+
+<footer class="bg-gray-50 pt-16 border-t border-gray-100 font-sans">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+      <div class="md:col-span-1">
+        <div class="flex flex-col space-y-4">
+          <a href={linkPath('')} class="flex items-center space-x-2">
+            <span class={`text-2xl font-bold tracking-tight text-primary font-${lang === 'en' ? 'sans' : 'persian'}`}>
+              WebABC
+            </span>
+          </a>
+
+          <p class={`text-foreground/70 mt-2 font-${lang === 'en' ? 'sans' : 'persian'}`}>
+            {t('common.aboutCompany')}
+          </p>
+
+          <div class={`flex space-x-4 mt-4 ${isRtl ? 'space-x-reverse' : ''}`}>
+            <!-- Social Icons -->
+            <a href="https://twitter.com/webabc" class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm hover:bg-primary hover:text-white text-gray-600 transition-all">
+              <span class="sr-only">Twitter</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+            </a>
+            <a href="https://instagram.com/webabc" class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm hover:bg-primary hover:text-white text-gray-600 transition-all">
+              <span class="sr-only">Instagram</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path stroke-linecap="round" stroke-linejoin="round" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://linkedin.com/company/webabc" class="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm hover:bg-primary hover:text-white text-gray-600 transition-all">
+              <span class="sr-only">LinkedIn</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-8">
+        <div>
+          <h3 class={`text-lg font-medium mb-4 font-${lang === 'en' ? 'sans' : 'persian'}`}>{t('common.services')}</h3>
+          <ul class="space-y-2">
+            <li><a href={linkPath('/services/seo')} class="text-foreground/70 hover:text-primary transition-colors">{t('services.seoTitle')}</a></li>
+            <li><a href={linkPath('/services/web-design')} class="text-foreground/70 hover:text-primary transition-colors">{t('services.webDesignTitle')}</a></li>
+            <li><a href={linkPath('/services/content-creation')} class="text-foreground/70 hover:text-primary transition-colors">{t('services.contentCreationTitle')}</a></li>
+            <li><a href={linkPath('/services/speed-optimization')} class="text-foreground/70 hover:text-primary transition-colors">{t('services.technicalOptimization')}</a></li>
+            <li><a href={linkPath('/services/link-building')} class="text-foreground/70 hover:text-primary transition-colors">{t('services.linkBuildingTitle')}</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class={`text-lg font-medium mb-4 font-${lang === 'en' ? 'sans' : 'persian'}`}>{t('common.company')}</h3>
+          <ul class="space-y-2">
+            <li><a href={linkPath('/about')} class="text-foreground/70 hover:text-primary transition-colors">{t('common.about')}</a></li>
+            <li><a href={linkPath('/portfolio')} class="text-foreground/70 hover:text-primary transition-colors">{t('common.portfolio')}</a></li>
+            <li><a href={linkPath('/blog')} class="text-foreground/70 hover:text-primary transition-colors">{t('blog.title')}</a></li>
+            <li><a href={linkPath('/contact')} class="text-foreground/70 hover:text-primary transition-colors">{t('common.contact')}</a></li>
+            <li><a href={linkPath('/privacy')} class="text-foreground/70 hover:text-primary transition-colors">{t('common.privacyPolicy')}</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class={`text-lg font-medium mb-4 font-${lang === 'en' ? 'sans' : 'persian'}`}>{t('tools.title')}</h3>
+          <ul class="space-y-2">
+            <li><a href={linkPath('/tools/meta-generator')} class="text-foreground/70 hover:text-primary transition-colors">{t('metaGenerator.title')}</a></li>
+            <li><a href={linkPath('/tools/serp-preview')} class="text-foreground/70 hover:text-primary transition-colors">{t('serpPreview.title')}</a></li>
+            <li><a href={linkPath('/tools/utm-builder')} class="text-foreground/70 hover:text-primary transition-colors">{t('utmBuilder.title')}</a></li>
+            <li><a href={linkPath('/tools/faq-generator')} class="text-foreground/70 hover:text-primary transition-colors">{t('faqGenerator.title')}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="py-4 border-t border-gray-200 text-center">
+      <p class={`text-foreground/70 text-sm font-${lang === 'en' ? 'sans' : 'persian'}`}>
+        {t('common.copyright').replace('{year}', new Date().getFullYear().toString())}
+      </p>
+    </div>
+  </div>
+</footer>
