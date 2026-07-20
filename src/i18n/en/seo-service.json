@@ -71,5 +71,15 @@
     "cta": {
         "title": "Ready to Improve Your Search Rankings?",
         "description": "Contact us today for a free website audit and SEO consultation. We'll show you exactly how we can improve your search visibility."
+    },
+    "faq": {
+        "q1": "How long does SEO take to show results?",
+        "a1": "Most sites see initial movement in 3-4 months, with significant ranking gains in 6-12 months. Timeline depends on your site's current authority, competition, and how technically clean the starting point is.",
+        "q2": "Do you guarantee a #1 Google ranking?",
+        "a2": "No reputable agency can guarantee a specific position — Google's algorithm is outside anyone's direct control. We guarantee a documented, data-driven process and transparent monthly reporting on rankings, traffic, and conversions.",
+        "q3": "What's included in a monthly SEO report?",
+        "a3": "Keyword ranking changes, organic traffic and conversion trends, technical issues fixed, and content/link building completed that month, benchmarked against the previous period.",
+        "q4": "Do I need separate technical, on-page, and local SEO, or is it one service?",
+        "a4": "For most businesses it's one integrated strategy — we tailor the mix of technical fixes, content optimization, and local signals based on your specific ranking gaps rather than selling them as separate add-ons."
     }
 }

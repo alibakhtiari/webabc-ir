@@ -57,5 +57,15 @@
     "cta": {
         "title": "Ready to Tell Your Story?",
         "description": "Start creating content that converts. Contact us today."
+    },
+    "faq": {
+        "q1": "Do you write in-house or use AI-generated content?",
+        "a1": "Every piece is written and edited by native-language human writers. We use research tools to speed up fact-finding, but final copy is never raw AI output.",
+        "q2": "How many articles or posts do I get per month?",
+        "a2": "Volume is scoped to your plan — from a few in-depth pillar articles to a full weekly blogging cadence. We'll size it to your traffic goals during the consultation.",
+        "q3": "Do you handle keyword research, or do I provide topics?",
+        "a3": "We do full keyword and competitor research to find topics with real search demand, though we're happy to incorporate topics you already have in mind.",
+        "q4": "Is content published directly to my site, or do I review it first?",
+        "a4": "You review and approve every piece before it goes live — we can also publish directly to your CMS once you're comfortable with the workflow."
     }
 }

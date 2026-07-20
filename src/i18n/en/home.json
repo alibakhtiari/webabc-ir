@@ -30,5 +30,16 @@
     "yourEmail": "Your email address",
     "contactInfo": "Contact Information",
     "quickLinks": "Quick Links"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "q1": "What services does WebABC provide?",
+    "a1": "We provide web design, custom web development, WordPress & WooCommerce development, e-commerce stores, SEO (technical, on-page, local, and link building), UI/UX audits, speed optimization, and ongoing website maintenance.",
+    "q2": "Do you work with clients outside Iran?",
+    "a2": "Yes — our site and team operate in English, Persian (Farsi), and Arabic, and we serve clients across the Middle East and internationally, remotely or with on-site consultations in select cities.",
+    "q3": "How much does a typical project cost?",
+    "a3": "It depends on scope, platform, and features. Use our free Website Cost Calculator for an instant estimate, or book a free consultation for an exact, itemized quote.",
+    "q4": "How do I get started?",
+    "a4": "Book a free consultation through our contact page. We'll discuss your goals, recommend the right service, and provide a clear project timeline and quote."
   }
 }
