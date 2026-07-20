@@ -92,10 +92,21 @@ const currentPathWithoutLang = Astro.url.pathname.replace(/^\/(en|fa|ar)/, '') |
       </nav>
 
       <!-- Mobile Controls -->
-      <div class="xl:hidden flex items-center gap-2">
-        <a href={`/fa${currentPathWithoutLang}`} class="text-xs font-bold px-2 py-1 rounded bg-gray-100">FA</a>
-        <a href={`/en${currentPathWithoutLang}`} class="text-xs font-bold px-2 py-1 rounded bg-gray-100">EN</a>
-        <a href={`/ar${currentPathWithoutLang}`} class="text-xs font-bold px-2 py-1 rounded bg-gray-100">AR</a>
+      <div class="xl:hidden flex items-center gap-3">
+        <!-- Mobile Language Selector -->
+        <div class="relative">
+          <button id="mobile-lang-btn" class="flex items-center gap-1.5 text-sm font-semibold px-3 py-1.5 rounded-full bg-white/80 hover:bg-gray-100 text-gray-700 border border-gray-100 shadow-xs transition-all">
+            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+            <span>{languages[lang]?.nativeName}</span>
+          </button>
+          <div id="mobile-lang-dropdown" class="hidden absolute top-full right-0 mt-2 w-32 rounded-xl shadow-xl bg-white border border-gray-100 z-50 py-1">
+            {Object.entries(languages).map(([code, meta]) => (
+              <a href={`/${code}${currentPathWithoutLang}`} class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 text-center font-medium">
+                {meta.nativeName}
+              </a>
+            ))}
+          </div>
+        </div>
         
         <button id="mobile-menu-btn" class="p-2 text-foreground/80 hover:text-foreground focus:outline-none" aria-label="Toggle Menu">
           <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -107,18 +118,70 @@ const currentPathWithoutLang = Astro.url.pathname.replace(/^\/(en|fa|ar)/, '') |
 
   <!-- Mobile Dropdown drawer Menu -->
   <div id="mobile-drawer" class="hidden fixed inset-0 z-40 bg-black/50 backdrop-blur-xs transition-opacity duration-300">
-    <div class="fixed top-20 left-4 right-4 bg-white rounded-2xl shadow-2xl p-6 border border-gray-100 max-h-[80vh] overflow-y-auto">
-      <div class="flex flex-col space-y-4 font-persian">
-        <a href={linkPath('/services/seo')} class="text-base font-semibold py-2 border-b border-gray-50 text-gray-800">{t('services.seoTitle')}</a>
-        <a href={linkPath('/services/web-design')} class="text-base font-semibold py-2 border-b border-gray-50 text-gray-800">{t('services.webDesignTitle')}</a>
-        <a href={linkPath('/services/content-creation')} class="text-base font-semibold py-2 border-b border-gray-50 text-gray-800">{t('services.contentCreationTitle')}</a>
+    <div class="fixed top-24 left-4 right-4 bg-white rounded-2xl shadow-2xl p-6 border border-gray-100 max-h-[85vh] overflow-y-auto">
+      <div class={`flex flex-col space-y-6 font-${lang === 'en' ? 'sans' : 'persian'}`}>
         
-        {navItems.map((item) => (
-          <a href={linkPath(item.href)} class="text-base font-semibold py-2 border-b border-gray-50 text-gray-800">
-            {t(item.label)}
-          </a>
-        ))}
-        <button id="open-consultation-btn-mobile" class="w-full py-3 bg-primary text-white rounded-xl shadow-md text-center font-medium mt-4">
+        <!-- Header -->
+        <div class="pb-4 border-b border-gray-100 flex items-center justify-between">
+          <span class="text-xl font-bold text-gray-900">WebABC</span>
+          <button id="mobile-drawer-close" class="text-gray-400 hover:text-gray-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+
+        <!-- Links List -->
+        <div class="space-y-4">
+          <a href={linkPath('')} class="block text-lg font-medium text-gray-900 hover:text-primary transition-colors">{t('common.home')}</a>
+          
+          <!-- Services Nested Menu -->
+          <div class="border-y border-gray-100 py-4 my-2 space-y-4">
+            <div class="text-lg font-bold text-gray-900">{t('common.services')}</div>
+            <a href={linkPath('/services')} class="block ps-3 border-l-2 border-primary/40 text-foreground/80 hover:text-primary font-medium">{t('common.allServices')}</a>
+            
+            <!-- SEO Services Subgroup -->
+            <div class="ps-3 space-y-2">
+              <h4 class="text-xs font-bold text-muted-foreground uppercase tracking-wider">{t('common.seoServices')}</h4>
+              <div class="grid grid-cols-2 gap-2 border-l border-gray-100 ps-3">
+                <a href={linkPath('/services/seo')} class="text-sm text-foreground/80 hover:text-primary py-1">{t('services.seoTitle')}</a>
+                <a href={linkPath('/services/local-seo')} class="text-sm text-foreground/80 hover:text-primary py-1">{t('services.localSeoTitle')}</a>
+                <a href={linkPath('/services/link-building')} class="text-sm text-foreground/80 hover:text-primary py-1">{t('services.linkBuildingTitle')}</a>
+                <a href={linkPath('/services/content-creation')} class="text-sm text-foreground/80 hover:text-primary py-1">{t('services.contentCreationTitle')}</a>
+              </div>
+            </div>
+
+            <!-- Development Services Subgroup -->
+            <div class="ps-3 space-y-2">
+              <h4 class="text-xs font-bold text-muted-foreground uppercase tracking-wider">{t('common.developmentServices')}</h4>
+              <div class="grid grid-cols-2 gap-2 border-l border-gray-100 ps-3">
+                <a href={linkPath('/services/web-development')} class="text-sm text-foreground/80 hover:text-primary py-1">{t('services.webDevTitle')}</a>
+                <a href={linkPath('/services/wordpress-development')} class="text-sm text-foreground/80 hover:text-primary py-1">{t('wordpress.wordpressAndWoocommerce')}</a>
+                <a href={linkPath('/services/web-design')} class="text-sm text-foreground/80 hover:text-primary py-1">{t('common.webDesignAndDevelopment')}</a>
+                <a href={linkPath('/services/modern-web-development')} class="text-sm text-foreground/80 hover:text-primary py-1">{t('common.modernWebDevelopment')}</a>
+              </div>
+            </div>
+          </div>
+
+          <a href={linkPath('/portfolio')} class="block text-lg font-medium text-gray-900 hover:text-primary transition-colors">{t('common.portfolio')}</a>
+          <a href={linkPath('/service-areas')} class="block text-lg font-medium text-gray-900 hover:text-primary transition-colors">{t('common.serviceAreas')}</a>
+          <a href={linkPath('/blog')} class="block text-lg font-medium text-gray-900 hover:text-primary transition-colors">{t('common.blog')}</a>
+          <a href={linkPath('/about')} class="block text-lg font-medium text-gray-900 hover:text-primary transition-colors">{t('common.about')}</a>
+          <a href={linkPath('/contact')} class="block text-lg font-medium text-gray-900 hover:text-primary transition-colors">{t('common.contact')}</a>
+        </div>
+
+        <!-- Language buttons Inline -->
+        <div class="flex gap-2 py-4 justify-center border-t border-gray-100">
+          {Object.entries(languages).map(([code, meta]) => (
+            <a
+              href={`/${code}${currentPathWithoutLang}`}
+              class={`px-4 py-2 text-xs font-bold rounded-lg border transition-all ${lang === code ? 'bg-primary text-white border-primary' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'}`}
+            >
+              {meta.nativeName}
+            </a>
+          ))}
+        </div>
+
+        <!-- Button -->
+        <button id="open-consultation-btn-mobile" class="w-full py-3 bg-primary text-white rounded-xl shadow-md text-center font-bold">
           {t('common.freeConsultation')}
         </button>
       </div>
@@ -172,12 +235,34 @@ const currentPathWithoutLang = Astro.url.pathname.replace(/^\/(en|fa|ar)/, '') |
   // Mobile Menu Drawer Control
   const mobileBtn = document.getElementById('mobile-menu-btn');
   const drawer = document.getElementById('mobile-drawer');
+  const drawerCloseBtn = document.getElementById('mobile-drawer-close');
+
   if (mobileBtn && drawer) {
     mobileBtn.addEventListener('click', () => {
-      drawer.classList.toggle('hidden');
+      drawer.classList.remove('hidden');
     });
+    if (drawerCloseBtn) {
+      drawerCloseBtn.addEventListener('click', () => {
+        drawer.classList.add('hidden');
+      });
+    }
     drawer.addEventListener('click', (e) => {
       if (e.target === drawer) drawer.classList.add('hidden');
+    });
+  }
+
+  // Mobile Language Dropdown Toggle
+  const mobileLangBtn = document.getElementById('mobile-lang-btn');
+  const mobileLangDropdown = document.getElementById('mobile-lang-dropdown');
+  if (mobileLangBtn && mobileLangDropdown) {
+    mobileLangBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mobileLangDropdown.classList.toggle('hidden');
+    });
+    document.addEventListener('click', (e) => {
+      if (!mobileLangBtn.contains(e.target)) {
+        mobileLangDropdown.classList.add('hidden');
+      }
     });
   }
 
