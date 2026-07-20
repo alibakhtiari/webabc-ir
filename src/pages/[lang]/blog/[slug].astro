@@ -60,7 +60,18 @@ const articleSchema = {
   "author": {
     "@type": "Person",
     "name": post.data.author || "WebABC Team",
-    "url": `${origin}/${supportedLang}/about`
+    "url": post.data.author === 'Ali Bakhtiari' ? 'https://alibakhtiari.ir' : `${origin}/${supportedLang}/about`,
+    ...(post.data.author === 'Ali Bakhtiari' ? {
+      "sameAs": [
+        "https://www.linkedin.com/in/alibakhtiarii/",
+        "https://github.com/alibakhtiari",
+        "https://www.instagram.com/aliibakhtiari/",
+        "https://www.facebook.com/Alii.bakhtiari",
+        "https://x.com/aliib1991",
+        "https://alibakhtiari.ir",
+        "https://aliib.ir"
+      ]
+    } : {})
   },
   "publisher": {
     "@id": "https://webabc.ir/#organization"
@@ -85,11 +96,22 @@ const translatedAuthor = (post.data.author || '').includes('Team') || (post.data
   ? (supportedLang === 'fa' ? 'تیم وب اِی‌بی‌سی' : supportedLang === 'ar' ? 'فريق وب إي بي سي' : 'WebABC Team')
   : post.data.author;
 
-const authorBio = supportedLang === 'fa'
-  ? 'تیم تخصصی وب اِی‌بی‌سی متشکل از کارشناسان ارشد سئو و طراحان وب با بیش از یک دهه تجربه در توسعه سیستم‌های تحت وب و بهینه‌سازی موتورهای جستجو.'
-  : supportedLang === 'ar'
-  ? 'فريق خبراء وب إي بي سي يضم نخبة من مستشاري السيو ومطوري الويب ذوي الخبرة الطويلة في تحسين محركات البحث وتطوير التطبيقات.'
-  : 'The WebABC editorial team consists of senior SEO strategists and web developers with over a decade of experience in building high-performance applications.';
+const authorBio = post.data.author === 'Ali Bakhtiari'
+  ? (supportedLang === 'fa'
+    ? 'من علی بختیاری هستم، توسعه‌دهنده ۳۵ ساله وردپرس و متخصص سئو با اشتیاق فراوان برای خلق تجربه‌های دیجیتال استثنایی. با سال‌ها تجربه، تخصص من در طراحی و ساخت وب‌سایت‌هایی است که علاوه بر جذابیت بصری، برای موتورهای جستجو نیز بهینه‌سازی شده‌اند.'
+    : supportedLang === 'ar'
+    ? 'أنا علي بختياري، مطور ووردبريس ومستشار سيو (SEO) أبلغ من العمر 35 عاماً، شغوف بتقديم تجارب رقمية استثنائية. من خلال سنوات خبرتي الطويلة، أتخصص في إنشاء مواقع ويب ليست فقط جذابة بصرياً ولكنها محسنة بالكامل لمحركات البحث.'
+    : 'I\'m Ali Bakhtiari, a 35-year-old WordPress developer and SEO specialist with a passion for crafting exceptional digital experiences. With years of experience under my belt, I specialize in creating websites that are not only visually appealing but also optimized for search engines.')
+  : (supportedLang === 'fa'
+    ? 'تیم تخصصی وب اِی‌بی‌سی متشکل از کارشناسان ارشد سئو و طراحان وب با بیش از یک دهه تجربه در توسعه سیستم‌های تحت وب و بهینه‌سازی موتورهای جستجو.'
+    : supportedLang === 'ar'
+    ? 'فريق خبراء وب إي بي سي يضم نخبة من مستشاري السيو ومطوري الويب ذوي الخبرة الطويلة في تحسين محركات البحث وتطوير التطبيقات.'
+    : 'The WebABC editorial team consists of senior SEO strategists and web developers with over a decade of experience in building high-performance applications.');
+  
+const authorRole = post.data.author === 'Ali Bakhtiari'
+  ? (supportedLang === 'fa' ? 'توسعه‌دهنده وردپرس و متخصص سئو' : supportedLang === 'ar' ? 'مطور ووردبريس وأخصائي سيو' : 'WordPress Developer & SEO Specialist')
+  : '';
+
 ---
 
 <Layout title={post.data.title} description={post.data.description} lang={supportedLang} slug={`blog/${slug}`}>
@@ -159,15 +181,51 @@ const authorBio = supportedLang === 'fa'
 
       <!-- EEAT Author Box Component -->
       <div class="my-12 p-6 md:p-8 bg-white border border-gray-100 rounded-2xl shadow-xs flex flex-col md:flex-row gap-6 items-center md:items-start font-persian">
-        <div class="w-16 h-16 rounded-full overflow-hidden bg-gray-50 flex-shrink-0 flex items-center justify-center border border-gray-100">
-          <img src="/images/logo.webp" alt="WebABC logo" class="w-12 h-auto" />
-        </div>
-        <div class="space-y-2 text-center md:text-start">
-          <h4 class="text-xs font-bold text-primary uppercase tracking-wider">{t('blog.author', { fallback: 'Author' })}</h4>
-          <h3 class="text-lg font-bold text-gray-900">{translatedAuthor}</h3>
+        {post.data.author === 'Ali Bakhtiari' ? (
+          <div class="w-16 h-16 rounded-full bg-linear-to-tr from-primary to-primary/60 text-white flex-shrink-0 flex items-center justify-center text-xl font-bold font-sans shadow-md border-2 border-white ring-4 ring-primary/10">
+            AB
+          </div>
+        ) : (
+          <div class="w-16 h-16 rounded-full overflow-hidden bg-gray-50 flex-shrink-0 flex items-center justify-center border border-gray-100">
+            <img src="/images/logo.webp" alt="WebABC logo" class="w-12 h-auto" />
+          </div>
+        )}
+        <div class="space-y-3 text-center md:text-start grow">
+          <div class="space-y-0.5">
+            <h4 class="text-xs font-bold text-primary uppercase tracking-wider">{t('blog.author', { fallback: 'Author' })}</h4>
+            <h3 class="text-lg font-bold text-gray-900">{translatedAuthor}</h3>
+            {authorRole && <p class="text-xs text-gray-400 font-medium">{authorRole}</p>}
+          </div>
           <p class="text-sm text-gray-600 leading-relaxed max-w-2xl">{authorBio}</p>
+          
+          {post.data.author === 'Ali Bakhtiari' && (
+            <div class="flex flex-wrap gap-4 pt-2 justify-center md:justify-start">
+              <a href="https://www.linkedin.com/in/alibakhtiarii/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#0077b5] transition-colors" title="LinkedIn">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+              <a href="https://github.com/alibakhtiari" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#24292e] transition-colors" title="GitHub">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+              </a>
+              <a href="https://www.instagram.com/aliibakhtiari/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#e1306c] transition-colors" title="Instagram">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              </a>
+              <a href="https://www.facebook.com/Alii.bakhtiari" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#1877f2] transition-colors" title="Facebook">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+              </a>
+              <a href="https://x.com/aliib1991" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#1da1f2] transition-colors" title="Twitter (X)">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="https://alibakhtiari.ir" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition-colors" title="Website">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              </a>
+              <a href="mailto:Ali.Bakhtiarii@gmail.com" class="text-gray-400 hover:text-[#dd4b39] transition-colors" title="Email">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </a>
+            </div>
+          )}
         </div>
       </div>
+
 
       <!-- FAQ Component -->
       {post.data.faq && post.data.faq.length > 0 && (
