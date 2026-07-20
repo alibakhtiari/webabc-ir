@@ -1,29 +1,28 @@
-# WebABC - Next.js Multilingual Digital Marketing Website
+# WebABC - Astro Multilingual Website
 
-A modern, multilingual digital marketing and web development agency website built with Next.js 16, deployed on Cloudflare Pages.
+A modern, fast, multilingual digital marketing and web development agency website built with Astro v5, deployed on Cloudflare Pages.
 
 ## 🌍 Supported Languages
 
-- **English (en)** - Default for international visitors
-- **Persian/Farsi (fa)** - Default for visitors from Iran, Afghanistan, Tajikistan
-- **Arabic (ar)** - Default for visitors from GCC countries and Middle East
+- **Persian/Farsi (fa)** - Default locale (RTL)
+- **English (en)** - LTR
+- **Arabic (ar)** - RTL
 
 ## 🚀 Features
 
-- **Multilingual i18n**: Automatic language detection based on visitor's country (Cloudflare geolocation).
-- **Dynamic Routing**: URL-based language switching (`/[lang]/`).
-- **SEO Optimized**: Dynamic meta tags, JSON-LD Schema, sitemap, and hreflang support.
-- **Performance**: Built with Next.js App Router and Cloudflare Edge.
-- **Components**: Modern UI with shadcn/ui and Tailwind CSS.
-- **Content**: Markdown-based blog and portfolio system.
+- **Zero-JS Static Delivery**: Utilizing Astro's Islands Architecture to eliminate runtime framework overhead.
+- **Multilingual i18n**: Bidirectional routing and static generation mapping (`/en`, `/fa`, `/ar`).
+- **SEO/AEO/GEO Optimized**: Semantic schema graphs (`WebApplication`, `FAQPage`, etc.), hreflang alternate link tags, and structured AEO sideboards.
+- **Client-Side SEO Utilities**: Free non-API utility tools (Robots Generator, Keyword Density Analyzer, SEO Title Checker, JSON Formatter, etc.).
+- **Performance**: High performance scoring via native Astro image optimization (`<Image />`) and SVGO build-time processing.
+- **Validation**: Strict translation key consistency checker script.
 
 ## 📦 Tech Stack
 
-- **Framework**: Next.js 16 (App Router)
-- **Deployment**: Cloudflare Pages (via `@opennextjs/cloudflare`)
+- **Framework**: Astro v5 (Static Output)
+- **Deployment**: Cloudflare Pages
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS, shadcn/ui
-- **Icons**: Lucide React
+- **Styling**: Tailwind CSS
 
 ## 🛠 Development
 
@@ -35,45 +34,32 @@ A modern, multilingual digital marketing and web development agency website buil
 ### Installation
 
 ```bash
-git clone https://github.com/alibakhtiari/webabc-react.git
-cd webabc-react
+git clone https://github.com/alibakhtiari/webabc-ir.git
+cd webabc-ir
 npm install
 npm run dev
 ```
 
-Visit `http://localhost:3000` to see the app.
+Visit `http://localhost:4321` to see the site.
 
 ### Key Scripts
 
-- `npm run dev`: Start development server
-- `npm run build`: Build for production
-- `npm run preview`: Build and preview locally with Cloudflare runtime
-- `npm run deploy`: Deploy to Cloudflare Pages
+- `npm run dev`: Start development server.
+- `npm run build`: Build static pages to `dist/`.
+- `npm run preview`: Preview production build locally.
+- `npm run translations:check`: Validate key consistency across translation files.
+- `npm run deploy`: Deploy static site to Cloudflare Pages.
 
 ## 🔧 Configuration
 
-### Locale Detection
-
-The middleware (`src/middleware.ts`) automatically detects the visitor's country using Cloudflare headers (`cf-ipcountry`) and redirects them to the appropriate language:
-- **Persian (fa)**: IR, AF, TJ
-- **Arabic (ar)**: GCC & MENA countries
-- **English (en)**: All other regions
-
-### Environment Variables
-
-Configure these in your Cloudflare Pages dashboard:
-- `NODE_VERSION`: `18` (or higher)
-- `NEXT_PUBLIC_SITE_URL`: Your production URL (e.g., `https://webabc.ir`)
+- **Alternate Links**: The global `<Layout />` dynamically injects bi-directional self-referential canonicals and `hreflang` alternate links.
+- **Sitemap**: Automatically built using `@astrojs/sitemap` to match all 163 static routes.
 
 ## 📝 Content Management
 
-- **Blog Posts**: Add markdown files to `public/blog/[lang]/`.
-- **Service Areas**: Manage locations in `src/i18n/[lang]/service-areas.json`.
-- **Translations**: Update JSON files in `src/i18n/[lang]/`.
-
-## 🤝 Support
-
-For support, email: ali.bakhtiarii@gmail.com
+- **Portfolios / Blogs**: Managed statically inside `src/content/` collections.
+- **Service Areas / Locations**: Configured via localized dictionary files in `src/i18n/[lang]/service-areas.json`.
+- **Translations**: Standard JSON namespaces inside `src/i18n/[lang]/`.
 
 ---
 

@@ -1,4 +1,4 @@
-import { SupportedLanguage } from '@/types/language';
+import type { SupportedLanguage } from '@/types/language';
 
 // Define the translations object with proper typing
 // We keep this interface for type safety in components
