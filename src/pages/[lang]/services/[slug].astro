@@ -1,8 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import Navbar from '../../../components/astro/Navbar.astro';
-import Footer from '../../../components/astro/Footer.astro';
-import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import Hero from '../../../components/astro/Hero.astro';
+import CTA from '../../../components/astro/CTA.astro';
 import { type SupportedLanguage, languages } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
 
@@ -84,80 +83,95 @@ const breadcrumbs = [
   { label: t('services.title', { fallback: 'Services' }), url: `/${supportedLang}/services` },
   { label: pageTitle }
 ];
+
+const getRelatedProjects = (slugVal: string) => {
+  if (['seo', 'local-seo', 'link-building'].includes(slugVal)) {
+    return [
+      { title: supportedLang === 'fa' ? 'رمزارز نگاران' : supportedLang === 'ar' ? 'رمز أرز نكاران' : 'Ramzarz Negaran', slug: 'ramzarz-negaran', desc: t('seo.title', { fallback: 'Legal Crypto Mining Platform SEO Domination' }) },
+      { title: supportedLang === 'fa' ? 'سمعک آلفا' : supportedLang === 'ar' ? 'سمعك ألفا' : 'Samake Alpha', slug: 'samake-alpha', desc: t('local-seo.title', { fallback: 'Audiology Center Local SEO Transformation' }) }
+    ];
+  }
+  if (['web-development', 'web-design', 'wordpress-development', 'modern-web-development', 'speed-optimization'].includes(slugVal)) {
+    return [
+      { title: supportedLang === 'fa' ? 'زیتون مسعود' : supportedLang === 'ar' ? 'زيتون مسعود' : 'Zeytoun Masoud', slug: 'zeytoun-masoud', desc: t('web-design.title', { fallback: 'Traditional Agriculture E-commerce Transformation' }) },
+      { title: supportedLang === 'fa' ? 'رمزارز نگاران' : supportedLang === 'ar' ? 'رمز أرز نكاران' : 'Ramzarz Negaran', slug: 'ramzarz-negaran', desc: t('wordpress.title', { fallback: 'High-Volume Custom WooCommerce Integration' }) }
+    ];
+  }
+  return [];
+};
+
+const relatedProjects = getRelatedProjects(slug);
 ---
 
 <Layout title={pageTitle} description={pageDesc} lang={supportedLang} slug={`services/${slug}`}>
-  <Navbar lang={supportedLang} />
+  <Hero title={pageTitle} description={pageDesc} breadcrumbs={breadcrumbs} lang={supportedLang} />
 
-  <main class="grow w-full overflow-x-hidden bg-gray-50/50 pt-0 pb-20">
-    <section class="bg-linear-to-b from-primary/5 to-white pt-36 pb-16 md:pb-24">
-      <div class="container mx-auto px-4 max-w-4xl">
-        <div class="text-center space-y-6">
-          <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
-
-          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight font-persian">{pageTitle}</h1>
-          <p class="text-xl text-gray-600 font-persian leading-relaxed">{pageDesc}</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Detailed Content Container -->
-    <section class="py-16 font-sans">
-      <div class="container mx-auto px-4 max-w-3xl space-y-12">
-        
-        {featureList.length > 0 && (
-          <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-xs space-y-6 font-persian">
-            <h2 class="text-2xl font-bold text-gray-800">{serviceData.servicesTitle || t('services.deliverables', { fallback: 'Key Features & Deliverables' })}</h2>
-            <div class="grid gap-6">
-              {featureList.map((feat) => (
-                <div class="flex items-start gap-3">
-                  <div class="mt-1 bg-primary/10 text-primary p-1 rounded-full shrink-0">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-                  </div>
-                  <div>
-                    <h3 class="font-bold text-gray-900 text-lg">{feat.title}</h3>
-                    {feat.desc && <p class="text-gray-500 text-sm mt-1 leading-relaxed">{feat.desc}</p>}
-                  </div>
+  <!-- Detailed Content Container -->
+  <section class="py-16 font-sans">
+    <div class="container mx-auto px-4 max-w-3xl space-y-12">
+      
+      {featureList.length > 0 && (
+        <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-xs space-y-6 font-persian">
+          <h2 class="text-2xl font-bold text-gray-800">{serviceData.servicesTitle || t('services.deliverables', { fallback: 'Key Features & Deliverables' })}</h2>
+          <div class="grid gap-6">
+            {featureList.map((feat) => (
+              <div class="flex items-start gap-3">
+                <div class="mt-1 bg-primary/10 text-primary p-1 rounded-full shrink-0">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
                 </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {processSteps.length > 0 && (
-          <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-xs space-y-6 font-persian">
-            <h2 class="text-2xl font-bold text-gray-800">{processData.title || t('services.process', { fallback: 'Our Execution Process' })}</h2>
-            <div class="relative border-l border-primary/20 pl-6 space-y-8 ml-4">
-              {processSteps.map((step, idx) => (
-                <div class="relative">
-                  <div class="absolute -left-[35px] top-1 bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold font-mono">
-                    {idx + 1}
-                  </div>
-                  <div>
-                    <h3 class="font-bold text-gray-900 text-lg">{step.title}</h3>
-                    <p class="text-gray-500 text-sm mt-1 leading-relaxed">{step.desc}</p>
-                  </div>
+                <div>
+                  <h3 class="font-bold text-gray-900 text-lg">{feat.title}</h3>
+                  {feat.desc && <p class="text-gray-500 text-sm mt-1 leading-relaxed">{feat.desc}</p>}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
-        )}
-
-        <!-- Consultation CTA Callout -->
-        <div class="bg-primary text-white rounded-2xl p-8 text-center space-y-6 font-persian">
-          <h3 class="text-2xl font-bold">{serviceData.cta?.title || t('services.ctaTitle', { fallback: 'Ready to scale your business?' })}</h3>
-          <p class="opacity-90">{serviceData.cta?.description || t('services.ctaDescription', { fallback: 'Schedule a free consultation call with our experts today.' })}</p>
-          <a
-            href={`/${supportedLang}/contact`}
-            class="inline-block px-8 py-3 bg-white text-primary font-bold rounded-full hover:shadow-lg transition-all"
-          >
-            {t('common.contactUs', { fallback: 'Get Started' })}
-          </a>
         </div>
+      )}
 
-      </div>
-    </section>
-  </main>
+      {processSteps.length > 0 && (
+        <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-xs space-y-6 font-persian">
+          <h2 class="text-2xl font-bold text-gray-800">{processData.title || t('services.process', { fallback: 'Our Execution Process' })}</h2>
+          <div class="relative border-l border-primary/20 pl-6 space-y-8 ml-4">
+            {processSteps.map((step, idx) => (
+              <div class="relative">
+                <div class="absolute -left-[35px] top-1 bg-primary text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold font-mono">
+                  {idx + 1}
+                </div>
+                <div>
+                  <h3 class="font-bold text-gray-900 text-lg">{step.title}</h3>
+                  <p class="text-gray-500 text-sm mt-1 leading-relaxed">{step.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
-  <Footer lang={supportedLang} />
+      {relatedProjects.length > 0 && (
+        <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-xs space-y-6 font-persian">
+          <h2 class="text-2xl font-bold text-gray-800">{t('portfolio.caseStudies', { fallback: 'Related Case Studies' })}</h2>
+          <div class="grid gap-6">
+            {relatedProjects.map((proj) => (
+              <div class="border-b border-gray-100 pb-4 last:border-b-0 last:pb-0">
+                <a href={`/${supportedLang}/portfolio/${proj.slug}`} class="font-bold text-primary hover:underline text-lg block">
+                  {proj.title}
+                </a>
+                <p class="text-gray-500 text-sm mt-1">{proj.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Premium Consultation CTA -->
+      <CTA 
+        lang={supportedLang} 
+        title={serviceData.cta?.title || t('services.ctaTitle')} 
+        description={serviceData.cta?.description || t('services.ctaDescription')} 
+        buttonText={t('common.contactUs')} 
+      />
+
+    </div>
+  </section>
 </Layout>

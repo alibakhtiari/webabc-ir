@@ -1,0 +1,69 @@
+---
+import { getDictionary } from '../../i18n/get-dictionary';
+import { languages, type SupportedLanguage } from '../../types/language';
+
+interface Props {
+  lang: SupportedLanguage;
+  title?: string;
+  description?: string;
+  buttonText?: string;
+  buttonLink?: string;
+}
+
+const { 
+  lang, 
+  title, 
+  description, 
+  buttonText, 
+  buttonLink = '/contact' 
+} = Astro.props;
+
+const dictionary = await getDictionary(lang);
+const isRtl = languages[lang]?.direction === 'rtl';
+
+// Helper to translate strings
+const t = (key: string, options?: { fallback: string }) => {
+  const parts = key.split('.');
+  let current: any = dictionary;
+  for (const part of parts) {
+    if (current && current[part] !== undefined) {
+      current = current[part];
+    } else {
+      return options?.fallback || key;
+    }
+  }
+  return typeof current === 'string' ? current : options?.fallback || key;
+};
+
+const ctaTitle = title || t('cta.title', { fallback: 'Ready to Grow Your Business?' });
+const ctaDesc = description || t('cta.description', { fallback: 'Contact our expert team today to get a customized strategy for your business.' });
+const ctaBtnText = buttonText || t('cta.primaryButton', { fallback: 'Get Started' });
+---
+
+<div class="my-12 relative overflow-hidden rounded-3xl bg-linear-to-r from-primary/10 via-primary/5 to-transparent border border-primary/10 p-8 md:p-10 font-persian">
+  <!-- Interactive background blobs -->
+  <div class="absolute inset-0 -z-10 overflow-hidden">
+    <div class="absolute top-0 right-0 w-48 h-48 rounded-full bg-primary/5 blur-2xl"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-primary/10 blur-3xl"></div>
+  </div>
+
+  <div class="flex flex-col md:flex-row gap-6 items-center justify-between relative z-10">
+    <div class="space-y-3 text-center md:text-start max-w-2xl">
+      <h3 class="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">
+        {ctaTitle}
+      </h3>
+      <p class="text-gray-600 text-sm md:text-base leading-relaxed">
+        {ctaDesc}
+      </p>
+    </div>
+    
+    <div class="flex-shrink-0">
+      <a
+        href={`/${lang}${buttonLink}`}
+        class="inline-flex items-center justify-center px-6 py-3.5 bg-primary text-white font-bold rounded-xl shadow-md hover:bg-primary/95 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
+      >
+        <span>{ctaBtnText}</span>
+      </a>
+    </div>
+  </div>
+</div>
