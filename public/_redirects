@@ -1,7 +1,14 @@
 # /public/_redirects
-/en/tools/headline-analyzer  /en/tools/headline-analyzer  200
-/fa/tools/slug-generator      /fa/tools/slug-generator      200
-/en/tools/seo-title-checker  /en/tools/seo-title-checker  200
-/fa/tools/seo-title-checker  /fa/tools/seo-title-checker  200
-/ar/tools/seo-title-checker  /ar/tools/seo-title-checker  200
+
+# Old Next.js site used "seo-title-analyzer" as the slug; renamed on Astro migration.
+/en/tools/seo-title-analyzer  /en/tools/seo-title-checker  301
+/fa/tools/seo-title-analyzer  /fa/tools/seo-title-checker  301
+/ar/tools/seo-title-analyzer  /ar/tools/seo-title-checker  301
+
+# modern-web-development duplicated web-development's positioning (same tech stack,
+# same offer) and was merged into it to stop the two pages cannibalizing each other.
+/en/services/modern-web-development  /en/services/web-development  301
+/fa/services/modern-web-development  /fa/services/web-development  301
+/ar/services/modern-web-development  /ar/services/web-development  301
+
 /sitemap.xml                  /sitemap-index.xml            301
