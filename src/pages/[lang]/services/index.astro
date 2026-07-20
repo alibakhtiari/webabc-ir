@@ -1,8 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import Navbar from '../../../components/astro/Navbar.astro';
-import Footer from '../../../components/astro/Footer.astro';
-import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import Hero from '../../../components/astro/Hero.astro';
 import { type SupportedLanguage } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
 
@@ -54,81 +52,67 @@ const breadcrumbs = [
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="services">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(servicesSchema)} />
-  <Navbar lang={supportedLang} />
 
-  <main class="grow w-full overflow-x-hidden bg-gray-50/50 pt-0 pb-20">
-    <!-- Hero Section -->
-    <section class="bg-linear-to-b from-primary/5 to-white pt-36 pb-16 md:pb-24">
-      <div class="container mx-auto px-4">
-        <div class="max-w-3xl mx-auto text-center">
-          <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
-          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-normal font-persian">{titleText}</h1>
-          <p class="text-xl text-gray-600 font-persian">{descriptionText}</p>
+  <Hero title={titleText} description={descriptionText} breadcrumbs={breadcrumbs} lang={supportedLang}>
+    <!-- Quick navigation links slot -->
+    <div class="flex flex-wrap gap-4 justify-center mt-8 font-persian">
+      <a href={`/${supportedLang}/services/seo`} class="px-4 py-2 bg-blue-50 text-blue-700 rounded-full hover:bg-blue-100 transition-colors">
+        {t('seo.title', { fallback: 'SEO' })}
+      </a>
+      <a href={`/${supportedLang}/services/web-development`} class="px-4 py-2 bg-green-50 text-green-700 rounded-full hover:bg-green-100 transition-colors">
+        {t('services.webDevelopment', { fallback: 'Web Development' })}
+      </a>
+      <a href={`/${supportedLang}/services/wordpress-development`} class="px-4 py-2 bg-purple-50 text-purple-700 rounded-full hover:bg-purple-100 transition-colors">
+        {t('wordpress.title', { fallback: 'WordPress' })}
+      </a>
+      <a href={`/${supportedLang}/services/local-seo`} class="px-4 py-2 bg-red-50 text-red-700 rounded-full hover:bg-red-100 transition-colors">
+        {t('seo.localSeo', { fallback: 'Local SEO' })}
+      </a>
+    </div>
+  </Hero>
 
-          <!-- Quick navigation links -->
-          <div class="flex flex-wrap gap-4 justify-center mt-8 font-persian">
-            <a href={`/${supportedLang}/services/seo`} class="px-4 py-2 bg-blue-50 text-blue-700 rounded-full hover:bg-blue-100 transition-colors">
-              {t('seo.title', { fallback: 'SEO' })}
-            </a>
-            <a href={`/${supportedLang}/services/web-development`} class="px-4 py-2 bg-green-50 text-green-700 rounded-full hover:bg-green-100 transition-colors">
-              {t('services.webDevelopment', { fallback: 'Web Development' })}
-            </a>
-            <a href={`/${supportedLang}/services/wordpress-development`} class="px-4 py-2 bg-purple-50 text-purple-700 rounded-full hover:bg-purple-100 transition-colors">
-              {t('wordpress.title', { fallback: 'WordPress' })}
-            </a>
-            <a href={`/${supportedLang}/services/local-seo`} class="px-4 py-2 bg-red-50 text-red-700 rounded-full hover:bg-red-100 transition-colors">
-              {t('seo.localSeo', { fallback: 'Local SEO' })}
-            </a>
+  <!-- Services Grid -->
+  <section class="py-16 bg-white font-sans">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Card 1: SEO -->
+        <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-xs hover:shadow-lg transition-all space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
           </div>
+          <h3 class="text-xl font-bold text-gray-900 font-persian">{t('seo.title', { fallback: 'Search Engine Optimization' })}</h3>
+          <p class="text-gray-500 text-sm leading-relaxed font-persian">{t('seo.subtitle', { fallback: 'Drive traffic and visibility.' })}</p>
+          <a href={`/${supportedLang}/services/seo`} class="text-primary font-bold text-sm inline-flex items-center gap-1 font-persian">
+            {t('common.readMore', { fallback: 'Read More' })} &rarr;
+          </a>
         </div>
-      </div>
-    </section>
 
-    <!-- Services Grid -->
-    <section class="py-16 bg-white font-sans">
-      <div class="container mx-auto px-4 max-w-6xl">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
-          <!-- Card 1: SEO -->
-          <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-xs hover:shadow-lg transition-all space-y-4">
-            <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 font-persian">{t('seo.title', { fallback: 'Search Engine Optimization' })}</h3>
-            <p class="text-gray-500 text-sm leading-relaxed font-persian">{t('seo.subtitle', { fallback: 'Drive traffic and visibility.' })}</p>
-            <a href={`/${supportedLang}/services/seo`} class="text-primary font-bold text-sm inline-flex items-center gap-1 font-persian">
-              {t('common.readMore', { fallback: 'Read More' })} &rarr;
-            </a>
+        <!-- Card 2: Web Development -->
+        <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-xs hover:shadow-lg transition-all space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center text-green-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
           </div>
-
-          <!-- Card 2: Web Development -->
-          <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-xs hover:shadow-lg transition-all space-y-4">
-            <div class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center text-green-600">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 font-persian">{t('services.webDevelopment', { fallback: 'Web Development' })}</h3>
-            <p class="text-gray-500 text-sm leading-relaxed font-persian">{t('services.webDevelopmentDescription', { fallback: 'High speed responsive web applications.' })}</p>
-            <a href={`/${supportedLang}/services/web-development`} class="text-primary font-bold text-sm inline-flex items-center gap-1 font-persian">
-              {t('common.readMore', { fallback: 'Read More' })} &rarr;
-            </a>
-          </div>
-
-          <!-- Card 3: WordPress -->
-          <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-xs hover:shadow-lg transition-all space-y-4">
-            <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 font-persian">{t('wordpress.wordpressAndWoocommerce', { fallback: 'WordPress & WooCommerce' })}</h3>
-            <p class="text-gray-500 text-sm leading-relaxed font-persian">{t('wordpress.subtitle', { fallback: 'Fully customizable e-commerce setups.' })}</p>
-            <a href={`/${supportedLang}/services/wordpress-development`} class="text-primary font-bold text-sm inline-flex items-center gap-1 font-persian">
-              {t('common.readMore', { fallback: 'Read More' })} &rarr;
-            </a>
-          </div>
-
+          <h3 class="text-xl font-bold text-gray-900 font-persian">{t('services.webDevelopment', { fallback: 'Web Development' })}</h3>
+          <p class="text-gray-500 text-sm leading-relaxed font-persian">{t('services.webDevelopmentDescription', { fallback: 'High speed responsive web applications.' })}</p>
+          <a href={`/${supportedLang}/services/web-development`} class="text-primary font-bold text-sm inline-flex items-center gap-1 font-persian">
+            {t('common.readMore', { fallback: 'Read More' })} &rarr;
+          </a>
         </div>
-      </div>
-    </section>
-  </main>
 
-  <Footer lang={supportedLang} />
+        <!-- Card 3: WordPress -->
+        <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-xs hover:shadow-lg transition-all space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 font-persian">{t('wordpress.wordpressAndWoocommerce', { fallback: 'WordPress & WooCommerce' })}</h3>
+          <p class="text-gray-500 text-sm leading-relaxed font-persian">{t('wordpress.subtitle', { fallback: 'Fully customizable e-commerce setups.' })}</p>
+          <a href={`/${supportedLang}/services/wordpress-development`} class="text-primary font-bold text-sm inline-flex items-center gap-1 font-persian">
+            {t('common.readMore', { fallback: 'Read More' })} &rarr;
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
 </Layout>

@@ -1,8 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import Navbar from '../../../components/astro/Navbar.astro';
-import Footer from '../../../components/astro/Footer.astro';
-import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import Hero from '../../../components/astro/Hero.astro';
+import CTA from '../../../components/astro/CTA.astro';
 import { type SupportedLanguage, languages } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
 
@@ -56,148 +55,129 @@ const breadcrumbs = [
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug={`service-areas/${slug}`}>
-  <Navbar lang={supportedLang} />
+  <Hero title={titleText} description={descriptionText} breadcrumbs={breadcrumbs} lang={supportedLang} />
 
-  <main class="grow w-full overflow-x-hidden bg-gray-50/50 pt-0 pb-20">
-    <!-- Hero Block -->
-    <section class="bg-linear-to-b from-primary/5 to-white pt-36 pb-16 md:pb-24">
-      <div class="container mx-auto px-4 max-w-4xl text-center space-y-6">
-          <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
-
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight font-persian">{titleText}</h1>
-        <p class="text-xl text-gray-600 font-persian leading-relaxed">{descriptionText}</p>
-      </div>
-    </section>
-
-    <!-- Details and AEO Panel -->
-    <section class="py-16 bg-white font-sans font-persian">
-      <div class="container mx-auto px-4 max-w-5xl">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          
-          <!-- Main Content Pane -->
-          <div class="lg:col-span-2 space-y-12">
-            <div class="space-y-4">
-              <h2 class="text-2xl font-bold text-gray-900">{t('service-areas.whyChooseUs', { fallback: 'Why Choose WebABC?' })}</h2>
-              <p class="text-gray-600 leading-relaxed">
-                {locationInfo.longDescription}
-              </p>
-            </div>
-
-            <!-- Services List -->
-            {locationInfo.services && (
-              <div class="space-y-6">
-                <h3 class="text-xl font-bold text-gray-900">{t('service-areas.locationTitle', { fallback: 'Services Offered' })}</h3>
-                <div class="grid sm:grid-cols-2 gap-4">
-                  {locationInfo.services.map((serv: string) => (
-                    <div class="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
-                      <div class="text-primary bg-white shadow-xs p-1.5 rounded-lg">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-                      </div>
-                      <span class="font-semibold text-gray-800">{serv}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            <!-- Local Benefits -->
-            {locationInfo.benefits && (
-              <div class="space-y-6">
-                <h3 class="text-xl font-bold text-gray-900">{t('service-areas.whyChooseUs', { fallback: 'Key Regional Benefits' })}</h3>
-                <ul class="space-y-3">
-                  {locationInfo.benefits.map((benefit: string) => (
-                    <li class="flex items-start gap-2.5">
-                      <svg class="w-5 h-5 text-primary mt-1 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                      <span class="text-gray-700 leading-relaxed">{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+  <!-- Details and AEO Panel -->
+  <section class="py-16 bg-white font-sans font-persian">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-12">
+        
+        <!-- Main Content Pane -->
+        <div class="lg:col-span-2 space-y-12">
+          <div class="space-y-4">
+            <h2 class="text-2xl font-bold text-gray-900">{t('service-areas.whyChooseUs', { fallback: 'Why Choose WebABC?' })}</h2>
+            <p class="text-gray-600 leading-relaxed">
+              {locationInfo.longDescription}
+            </p>
           </div>
 
-          <!-- AEO & GEO Side Panel -->
-          <div class="space-y-8">
-            <!-- AEO Parameters Box -->
-            <div class="bg-gray-50 border border-gray-100 rounded-2xl p-6 shadow-xs space-y-6">
-              <h3 class="text-lg font-bold text-gray-900 border-b border-gray-200 pb-3">
-                📍 {locationInfo.name} Operation Parameters
-              </h3>
-              
-              <div class="space-y-4 text-sm">
-                <div>
-                  <div class="text-gray-400 font-semibold text-xs uppercase">Country Scope</div>
-                  <div class="font-bold text-gray-800">{locationInfo.country}</div>
-                </div>
-                <div>
-                  <div class="text-gray-400 font-semibold text-xs uppercase">Service Availability</div>
-                  <div class="font-bold text-gray-800">On-Site Consultations & Full Remote Delivery</div>
-                </div>
-                <div>
-                  <div class="text-gray-400 font-semibold text-xs uppercase">Technical Compliance</div>
-                  <div class="font-bold text-gray-800">Compliant with regional e-commerce, GDPR, and localized digital security protocols.</div>
-                </div>
-                <div>
-                  <div class="text-gray-400 font-semibold text-xs uppercase">Regional Stats</div>
-                  <div class="grid grid-cols-3 gap-2 mt-2 text-center text-xs font-mono">
-                    <div class="bg-white border p-2 rounded-lg">
-                      <div class="font-bold text-primary">{locationInfo.stats?.projects}</div>
-                      <div class="text-[10px] text-gray-400">Projects</div>
+          <!-- Services List -->
+          {locationInfo.services && (
+            <div class="space-y-6">
+              <h3 class="text-xl font-bold text-gray-900">{t('service-areas.locationTitle', { fallback: 'Services Offered' })}</h3>
+              <div class="grid sm:grid-cols-2 gap-4">
+                {locationInfo.services.map((serv: string) => (
+                  <div class="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                    <div class="text-primary bg-white shadow-xs p-1.5 rounded-lg">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
                     </div>
-                    <div class="bg-white border p-2 rounded-lg">
-                      <div class="font-bold text-primary">{locationInfo.stats?.clients}</div>
-                      <div class="text-[10px] text-gray-400">Clients</div>
-                    </div>
-                    <div class="bg-white border p-2 rounded-lg">
-                      <div class="font-bold text-primary">{locationInfo.stats?.experience}</div>
-                      <div class="text-[10px] text-gray-400">Years</div>
-                    </div>
+                    <span class="font-semibold text-gray-800">{serv}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Local Benefits -->
+          {locationInfo.benefits && (
+            <div class="space-y-6">
+              <h3 class="text-xl font-bold text-gray-900">{t('service-areas.whyChooseUs', { fallback: 'Key Regional Benefits' })}</h3>
+              <ul class="space-y-3">
+                {locationInfo.benefits.map((benefit: string) => (
+                  <li class="flex items-start gap-2.5">
+                    <svg class="w-5 h-5 text-primary mt-1 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span class="text-gray-700 leading-relaxed">{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        <!-- AEO & GEO Side Panel -->
+        <div class="space-y-8">
+          <!-- AEO Parameters Box -->
+          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-6 shadow-xs space-y-6">
+            <h3 class="text-lg font-bold text-gray-900 border-b border-gray-200 pb-3">
+              📍 {locationInfo.name} Operation Parameters
+            </h3>
+            
+            <div class="space-y-4 text-sm">
+              <div>
+                <div class="text-gray-400 font-semibold text-xs uppercase">Country Scope</div>
+                <div class="font-bold text-gray-800">{locationInfo.country}</div>
+              </div>
+              <div>
+                <div class="text-gray-400 font-semibold text-xs uppercase">Service Availability</div>
+                <div class="font-bold text-gray-800">On-Site Consultations & Full Remote Delivery</div>
+              </div>
+              <div>
+                <div class="text-gray-400 font-semibold text-xs uppercase">Technical Compliance</div>
+                <div class="font-bold text-gray-800">Compliant with regional e-commerce, GDPR, and localized digital security protocols.</div>
+              </div>
+              <div>
+                <div class="text-gray-400 font-semibold text-xs uppercase">Regional Stats</div>
+                <div class="grid grid-cols-3 gap-2 mt-2 text-center text-xs font-mono">
+                  <div class="bg-white border p-2 rounded-lg">
+                    <div class="font-bold text-primary">{locationInfo.stats?.projects}</div>
+                    <div class="text-[10px] text-gray-400">Projects</div>
+                  </div>
+                  <div class="bg-white border p-2 rounded-lg">
+                    <div class="font-bold text-primary">{locationInfo.stats?.clients}</div>
+                    <div class="text-[10px] text-gray-400">Clients</div>
+                  </div>
+                  <div class="bg-white border p-2 rounded-lg">
+                    <div class="font-bold text-primary">{locationInfo.stats?.experience}</div>
+                    <div class="text-[10px] text-gray-400">Years</div>
                   </div>
                 </div>
               </div>
             </div>
-
-            <!-- GEO Schematic / Map Enrichment -->
-            <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-xs space-y-4">
-              <h4 class="font-bold text-gray-900">Regional Coverage Geography</h4>
-              <div class="aspect-square bg-primary/5 rounded-xl border border-primary/10 flex items-center justify-center relative overflow-hidden p-6 text-center">
-                <!-- GEO Enrichment Schematic SVG representing local region nodes -->
-                <svg class="w-full h-full text-primary/40 opacity-70" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <circle cx="50" cy="50" r="35" stroke-dasharray="3 3" />
-                  <circle cx="50" cy="50" r="10" class="fill-primary/20 text-primary" />
-                  <circle cx="20" cy="30" r="6" class="fill-gray-100" />
-                  <circle cx="80" cy="40" r="6" class="fill-gray-100" />
-                  <circle cx="45" cy="85" r="6" class="fill-gray-100" />
-                  <line x1="50" y1="50" x2="20" y2="30" />
-                  <line x1="50" y1="50" x2="80" y2="40" />
-                  <line x1="50" y1="50" x2="45" y2="85" />
-                </svg>
-                <div class="absolute bottom-3 left-0 right-0 text-[10px] text-gray-400 px-3">
-                  Schematic local node router for {locationInfo.name} market access
-                </div>
-              </div>
-              <p class="text-xs text-gray-500 leading-relaxed">
-                Direct physical and edge deployment nodes covering {locationInfo.name} and surrounding corporate sectors, complying with low latency localized content distribution.
-              </p>
-            </div>
-
-            <!-- Local CTA -->
-            <div class="bg-primary text-white rounded-2xl p-6 text-center space-y-4">
-              <h3 class="text-xl font-bold">{t('service-areas.ctaTitle', { fallback: 'Dominate Local Search' })}</h3>
-              <p class="text-sm opacity-90">{t('service-areas.ctaDescription', { fallback: 'Get a custom optimization blueprint outline.' })}</p>
-              <a
-                href={`/${supportedLang}/contact`}
-                class="block w-full py-2.5 bg-white text-primary font-bold rounded-lg hover:shadow-lg transition-all"
-              >
-                {t('service-areas.ctaButton', { fallback: 'Get Started' })}
-              </a>
-            </div>
           </div>
 
+          <!-- GEO Schematic / Map Enrichment -->
+          <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-xs space-y-4">
+            <h4 class="font-bold text-gray-900">Regional Coverage Geography</h4>
+            <div class="aspect-square bg-primary/5 rounded-xl border border-primary/10 flex items-center justify-center relative overflow-hidden p-6 text-center">
+              <svg class="w-full h-full text-primary/40 opacity-70" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="50" cy="50" r="35" stroke-dasharray="3 3" />
+                <circle cx="50" cy="50" r="10" class="fill-primary/20 text-primary" />
+                <circle cx="20" cy="30" r="6" class="fill-gray-100" />
+                <circle cx="80" cy="40" r="6" class="fill-gray-100" />
+                <circle cx="45" cy="85" r="6" class="fill-gray-100" />
+                <line x1="50" y1="50" x2="20" y2="30" />
+                <line x1="50" y1="50" x2="80" y2="40" />
+                <line x1="50" y1="50" x2="45" y2="85" />
+              </svg>
+              <div class="absolute bottom-3 left-0 right-0 text-[10px] text-gray-400 px-3">
+                Schematic local node router for {locationInfo.name} market access
+              </div>
+            </div>
+            <p class="text-xs text-gray-500 leading-relaxed">
+              Direct physical and edge deployment nodes covering {locationInfo.name} and surrounding corporate sectors, complying with low latency localized content distribution.
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
-  </main>
 
-  <Footer lang={supportedLang} />
+      </div>
+
+      <!-- Premium Consultation CTA Callout -->
+      <CTA 
+        lang={supportedLang} 
+        title={t('service-areas.ctaTitle', { fallback: 'Dominate Local Search' })}
+        description={t('service-areas.ctaDescription', { fallback: 'Get a custom optimization blueprint outline.' })}
+        buttonText={t('service-areas.ctaButton', { fallback: 'Get Started' })}
+      />
+    </div>
+  </section>
 </Layout>
