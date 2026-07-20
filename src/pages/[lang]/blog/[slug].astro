@@ -60,7 +60,7 @@ const articleSchema = {
   "author": {
     "@type": "Person",
     "name": post.data.author || "WebABC Team",
-    "url": post.data.author === 'Ali Bakhtiari' ? 'https://alibakhtiari.ir' : `${origin}/${supportedLang}/about`,
+    "url": post.data.author === 'Ali Bakhtiari' ? 'https://aliib.ir/' : `${origin}/${supportedLang}/about`,
     ...(post.data.author === 'Ali Bakhtiari' ? {
       "sameAs": [
         "https://www.linkedin.com/in/alibakhtiarii/",
@@ -215,7 +215,7 @@ const authorRole = post.data.author === 'Ali Bakhtiari'
               <a href="https://x.com/aliib1991" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#1da1f2] transition-colors" title="Twitter (X)">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
               </a>
-              <a href="https://alibakhtiari.ir" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition-colors" title="Website">
+              <a href="https://aliib.ir/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary transition-colors" title="Website">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
               </a>
               <a href="mailto:Ali.Bakhtiarii@gmail.com" class="text-gray-400 hover:text-[#dd4b39] transition-colors" title="Email">
