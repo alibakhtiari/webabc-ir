@@ -35,7 +35,7 @@ const items = filteredProjects.map((p) => ({
 const categories = ['all', ...new Set(items.map((item) => item.category))];
 
 const titleText = t('portfolio.title', { fallback: 'Case Studies' });
-const descriptionText = t('portfolio.subtitle', { fallback: 'Showcasing our projects' });
+const descriptionText = t('portfolio.description', { fallback: 'Showcasing our projects' });
 
 const getCategoryLabel = (category: string) => {
   if (category === 'all') return t('portfolio.allProjects', { fallback: 'All Projects' });
