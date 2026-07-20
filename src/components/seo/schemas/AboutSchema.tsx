@@ -16,7 +16,7 @@ const AboutSchema = () => {
         "@context": "https://schema.org",
         "@type": "AboutPage",
         "name": language === 'en' ? 'About Us' : language === 'ar' ? 'من نحن' : 'درباره ما',
-        "description": t('about.description'),
+        "description": t('about.subtitle'),
         "mainEntity": {
             "@id": "https://webabc.ir/#organization"
         }

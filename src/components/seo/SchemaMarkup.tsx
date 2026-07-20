@@ -48,6 +48,7 @@ const SchemaMarkup = ({ schema, noIndex = false, noFollow = false }: SchemaMarku
         <script
           key={index}
           type="application/ld+json"
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaItem) }}
         />
       ))}
