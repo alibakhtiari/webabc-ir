@@ -417,7 +417,7 @@
 }
 
 @utility font-sans {
-  font-family: 'lato', system-ui, sans-serif;
+  font-family: var(--font-sans);
 }
 
 @utility text-balance {
@@ -450,11 +450,13 @@
 
   /* Global font families based on HTML lang attribute */
   html:lang(en) {
-    font-family: 'Lato', system-ui, sans-serif;
+    --font-sans: 'Lato', system-ui, sans-serif;
+    font-family: var(--font-sans);
   }
 
   html:lang(fa) {
-    font-family: 'IRANSansX', sans-serif;
+    --font-sans: 'IRANSansX', sans-serif;
+    font-family: var(--font-sans);
   }
 
   html:lang(fa) .lucide-arrow-right {
@@ -462,7 +464,8 @@
   }
 
   html:lang(ar) {
-    font-family: 'IRANSansX', sans-serif;
+    --font-sans: 'IRANSansX', sans-serif;
+    font-family: var(--font-sans);
   }
 }
 
