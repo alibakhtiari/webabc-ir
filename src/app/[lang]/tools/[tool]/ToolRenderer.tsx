@@ -21,6 +21,7 @@ const SocialMediaPreview = dynamic(() => import('../components/SocialMediaPrevie
 const GradientGenerator = dynamic(() => import('../components/GradientGenerator'), { loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-xl" /> });
 const GlassmorphismGenerator = dynamic(() => import('../components/GlassmorphismGenerator'), { loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-xl" /> });
 const SlugGenerator = dynamic(() => import('../components/SlugGenerator'), { loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-xl" /> });
+const SeoTitleChecker = dynamic(() => import('../components/SeoTitleChecker'), { loading: () => <div className="h-64 animate-pulse bg-gray-100 rounded-xl" /> });
 
 
 interface ToolRendererProps {
@@ -59,6 +60,8 @@ const ToolRenderer: React.FC<ToolRendererProps> = ({ tool }) => {
             return <GlassmorphismGenerator />;
         case 'slug-generator':
             return <SlugGenerator />;
+        case 'seo-title-analyzer':
+            return <SeoTitleChecker />;
 
         default:
             return notFound();

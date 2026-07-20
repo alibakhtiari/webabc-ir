@@ -32,7 +32,8 @@ const ToolsPage: React.FC = () => {
     privacyGenerator: <Wrench className="w-8 h-8 text-slate-600" />,
     slugGenerator: <Wrench className="w-8 h-8 text-indigo-600" />,
     socialPreview: <Share2 className="w-8 h-8 text-blue-500" />,
-    gradientGen: <Palette className="w-8 h-8 text-pink-500" />
+    gradientGen: <Palette className="w-8 h-8 text-pink-500" />,
+    seoTitleChecker: <Wrench className="w-8 h-8 text-blue-600" />
   };
 
   const getToolRoute = (toolName: string) => {
@@ -50,7 +51,8 @@ const ToolsPage: React.FC = () => {
       slugGenerator: 'slug-generator',
       socialPreview: 'social-media-preview',
       gradientGen: 'css-gradient-generator',
-      glassGen: 'glassmorphism-generator'
+      glassGen: 'glassmorphism-generator',
+      seoTitleChecker: 'seo-title-analyzer'
     };
     return routeMap[toolName] || toolName;
   };
@@ -87,7 +89,8 @@ const ToolsPage: React.FC = () => {
                 { key: 'paaScraper', route: 'paa-scraper' },
                 { key: 'utmBuilder', route: 'utm-builder' },
                 { key: 'slugGenerator', route: 'slug-generator' },
-                { key: 'socialPreview', route: 'social-media-preview' }
+                { key: 'socialPreview', route: 'social-media-preview' },
+                { key: 'seoTitleChecker', route: 'seo-title-analyzer' }
               ].map(({ key, route }) => {
                 return (
                   <div

@@ -20,7 +20,7 @@ const TOOLS = [
     'css-gradient-generator',
     'glassmorphism-generator',
     'slug-generator',
-
+    'seo-title-analyzer',
 ];
 
 export async function generateStaticParams() {
@@ -58,6 +58,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
         'css-gradient-generator': 'gradientGen',
         'glassmorphism-generator': 'glassGen',
         'slug-generator': 'slugGenerator',
+        'seo-title-analyzer': 'seoTitleChecker',
     };
 
     const key = toolKeyMap[tool] || tool;
@@ -87,7 +88,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string;
         'serp-preview': 'serpPreview',
         'utm-builder': 'utmBuilder',
         'faq-generator': 'faqGenerator',
-
+        'seo-title-analyzer': 'seoTitleChecker',
     };
 
     const key = toolKeyMap[tool] || tool;
