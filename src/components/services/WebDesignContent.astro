@@ -1,6 +1,8 @@
 ---
 import TLDR from '../astro/TLDR.astro';
+import FAQ from '../astro/FAQ.astro';
 import { type SupportedLanguage } from '../../types/language';
+import { createTranslator } from '@/i18n/translate';
 
 interface Props {
   lang: SupportedLanguage;
@@ -12,37 +14,26 @@ const { lang, dictionary } = Astro.props;
 const isRtl = lang === 'fa' || lang === 'ar';
 
 // Translate helpers
-const t = (key: string, fallback: string) => {
-  const parts = key.split('.');
-  let current = dictionary;
-  for (const part of parts) {
-    if (current && current[part] !== undefined) {
-      current = current[part];
-    } else {
-      return fallback;
-    }
-  }
-  return typeof current === 'string' ? current : fallback;
-};
+const t = createTranslator(dictionary);
 
 // Takeaways
 const takeawaysMap = {
   en: [
     "Stunning UI/UX designs focused on Conversion Rate Optimization (CRO).",
     "Flawless responsiveness across desktop, tablet, and mobile screens.",
-    "Integrated WordPress CMS structures for easy publishing.",
+    "Consistent design systems and brand identity across every page.",
     "Built-in search engine optimized design guidelines for maximum organic reach."
   ],
   fa: [
     "طراحی‌های خیره‌کننده UI/UX با تمرکز بر افزایش نرخ تبدیل کاربر به مشتری.",
     "ریسپانسیو بی‌نقص و هماهنگ در انواع ابعاد دسکتاپ، تبلت و موبایل.",
-    "طراحی قالب‌های مدیریت محتوای وردپرس برای ویرایش آسان محتوا توسط شما.",
+    "سیستم طراحی یکپارچه و هویت بصری ثابت در تمام صفحات.",
     "رعایت اصول سئوی تکنیکال در طراحی جهت کسب حداکثر رتبه ارگانیک گوگل."
   ],
   ar: [
     "واجهات وتجربة مستخدم (UI/UX) مذهلة تركز على زيادة معدلات التحويل.",
     "تصميمات متجاوبة تماماً مع الشاشات المختلفة (الهواتف، الأجهزة اللوحية، الكمبيوتر).",
-    "دعم كامل لإدارة المحتوى عبر نظام وردبرس لتسهيل تعديل النصوص والصور.",
+    "نظام تصميم متسق وهوية بصرية موحدة عبر جميع الصفحات.",
     "تصميم متوافق مع معايير محركات البحث (SEO) لضمان ظهور قوي في جوجل."
   ]
 };
@@ -54,17 +45,20 @@ const webDesignSchema = {
   "@type": "Service",
   "name": t('webDesign.title', "Creative Web Design"),
   "description": t('webDesign.description', "Professional user interface design and corporate website structures."),
-  "provider": {
-    "@type": "Organization",
-    "name": lang === 'en' ? 'WebABC' : lang === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث',
-    "url": `https://webabc.ir/${lang}`
-  },
+  "provider": { "@id": "https://webabc.ir/#organization" },
   "areaServed": {
     "@type": "Country",
     "name": "Global"
   },
   "serviceType": "Web Design"
 };
+
+const faqList = [1, 2, 3, 4]
+  .map(n => ({
+    question: t(`webDesign.faq.q${n}`, ""),
+    answer: t(`webDesign.faq.a${n}`, "")
+  }))
+  .filter(item => item.question && item.answer);
 ---
 
 <!-- Inject Schema into head slot of Layout -->
@@ -87,8 +81,6 @@ const webDesignSchema = {
         {[
           { key: 'uiux' },
           { key: 'responsive' },
-          { key: 'wordpress' },
-          { key: 'react' },
           { key: 'ecommerce' },
           { key: 'seo' }
         ].map(({ key }) => (
@@ -183,30 +175,10 @@ const webDesignSchema = {
     </div>
   </section>
 
-  <!-- Technologies Grid -->
-  <section class="bg-white">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-12 font-persian">
-        {t('webDesign.technologies.title', "Design Technologies We Use")}
-      </h2>
-
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
-        {[
-          { name: "React", icon: "⚛️" },
-          { name: "Next.js", icon: "▲" },
-          { name: "WordPress", icon: "W" },
-          { name: "Tailwind CSS", icon: "🎨" },
-          { name: "Node.js", icon: "🟢" },
-          { name: "MongoDB", icon: "🍃" },
-          { name: "TypeScript", icon: "TS" },
-          { name: "GraphQL", icon: "◢" }
-        ].map((tech) => (
-          <div class="bg-white p-6 rounded-2xl shadow-xs hover:shadow-md border border-gray-100 flex flex-col items-center justify-center aspect-square transition-all duration-300 hover:-translate-y-1">
-            <div class="text-4xl mb-3">{tech.icon}</div>
-            <div class="font-bold text-gray-800 text-sm">{tech.name}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  <!-- FAQ Section -->
+  {faqList.length > 0 && (
+    <section class="max-w-3xl mx-auto">
+      <FAQ faqList={faqList} lang={lang} />
+    </section>
+  )}
 </div>
