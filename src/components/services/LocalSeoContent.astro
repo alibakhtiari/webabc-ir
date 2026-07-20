@@ -1,5 +1,4 @@
 ---
-import TLDR from '../astro/TLDR.astro';
 import FAQ from '../astro/FAQ.astro';
 import { type SupportedLanguage } from '../../types/language';
 import { createTranslator } from '@/i18n/translate';
@@ -14,26 +13,7 @@ const { lang, dictionary } = Astro.props;
 // Translate helpers
 const t = createTranslator(dictionary);
 
-// Custom takeaways for Local SEO page
-const takeawaysMap = {
-  en: [
-    "Dominate local Google Search and Google Maps rankings.",
-    "Optimize Google Business Profile and local citation builder services.",
-    "Target 'near me' key search phrases and build authority with local backlinks."
-  ],
-  fa: [
-    "تسلط بر رتبه‌های گوگل مپ و نتایج جستجوی محلی گوگل.",
-    "بهینه‌سازی کامل پروفایل کسب‌وکار گوگل (Google Business Profile) و ثبت در نقشه‌ها.",
-    "هدف‌گیری عبارات کلیدی محلی و نزدیک من (Near Me) همراه با لینک‌سازی محلی."
-  ],
-  ar: [
-    "السيطرة على نتائج البحث المحلية في جوجل وموقع خرائط جوجل.",
-    "تحسين حساب نشاطي التجاري على جوجل وبناء الإشارات المحلية.",
-    "استهداف العبارات البحثية المحلية 'بالقرب مني' وبناء روابط محلية موثوقة."
-  ]
-};
 
-const takeaways = takeawaysMap[lang] || takeawaysMap.en;
 
 const localSeoSchema = {
   "@context": "https://schema.org",
@@ -60,11 +40,7 @@ const faqList = [1, 2, 3, 4]
 <script type="application/ld+json" slot="head" set:html={JSON.stringify(localSeoSchema)} />
 
 <div class="space-y-16 py-8">
-  <!-- Key Takeaways (TL;DR) -->
-  <div class="max-w-3xl mx-auto">
-    <TLDR takeaways={takeaways} lang={lang} />
-  </div>
-
+  
   <!-- Features Section -->
   <section class="bg-white">
     <div class="max-w-6xl mx-auto">

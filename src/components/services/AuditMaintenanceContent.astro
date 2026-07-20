@@ -1,5 +1,4 @@
 ---
-import TLDR from '../astro/TLDR.astro';
 import FAQ from '../astro/FAQ.astro';
 import { type SupportedLanguage } from '../../types/language';
 import { createTranslator } from '@/i18n/translate';
@@ -24,62 +23,7 @@ const slugNamespaceMap: Record<string, string> = {
 
 const ns = slugNamespaceMap[slug] || 'services';
 
-// Takeaways
-const takeawaysMap: Record<string, Record<string, string[]>> = {
-  'speed-optimization': {
-    en: [
-      "Improve Core Web Vitals (LCP, INP, CLS) to maximize search ranks.",
-      "Optimize images, minify assets, defer JavaScript, and set caching rules.",
-      "Get faster conversion rates and reduce user bounce rates on all devices."
-    ],
-    fa: [
-      "بهبود معیارهای هسته حیاتی وب (Core Web Vitals) برای افزایش رتبه گوگل.",
-      "بهینه‌سازی تصاویر، فشرده‌سازی کدها، بارگذاری تنبل و تنظیمات کش سرور.",
-      "افزایش سرعت تبدیل کاربر به مشتری و کاهش چشمگیر نرخ پرش سایت."
-    ],
-    ar: [
-      "تحسين مؤشرات أداء الويب الأساسية (Core Web Vitals) لزيادة ترتيب جوجل.",
-      "ضغط الصور، تصغير حجم الملفات البرمجية، وتفعيل نظام الكاش التلقائي.",
-      "زيادة سرعة التصفح لتقليل معدلات ارتداد الزوار وزيادة المبيعات."
-    ]
-  },
-  'ui-ux-audit': {
-    en: [
-      "Analyze user flows, heuristics, and accessibility targets.",
-      "Identify conversion bottlenecks and design inconsistencies.",
-      "Receive a detailed visual report with actionable optimization advice."
-    ],
-    fa: [
-      "تحلیل دقیق مسیر حرکت کاربر، روانشناسی طراحی و دسترسی‌پذیری.",
-      "شناسایی گلوگاه‌های کاهش فروش و ناهماهنگی‌های بصری رابط کاربری.",
-      "ارائه گزارش تصویری جامع با پیشنهادهای عملی برای بازطراحی."
-    ],
-    ar: [
-      "تحليل مسارات تصفح الزوار وتقييم سهولة الاستخدام والوصول للخدمات.",
-      "تحديد العقبات التي تمنع إتمام عمليات الشراء أو التسجيل.",
-      "الحصول على تقرير مرئي مفصل يحتوي على توصيات عملية قابلة للتنفيذ."
-    ]
-  },
-  'website-maintenance': {
-    en: [
-      "Regular core, theme, and plugin updates to prevent security holes.",
-      "Automated cloud backup regimes and uptime monitoring scans.",
-      "Fast troubleshooting support and page content edits as needed."
-    ],
-    fa: [
-      "بروزرسانی مداوم هسته، قالب و افزونه‌ها برای جلوگیری از رخنه‌های امنیتی.",
-      "پشتیبان‌گیری خودکار ابری به همراه پایش مستمر پایداری و در دسترس بودن سایت.",
-      "پشتیبانی فنی سریع و رفع خطاهای ناگهانی در کوتاه‌ترین زمان ممکن."
-    ],
-    ar: [
-      "تحديثات دورية للنظام والقوالب والإضافات لمنع الثغرات الأمنية.",
-      "نسخ احتياطي تلقائي وسحابي مع مراقبة استقرار وتوفر الموقع 24/7.",
-      "دعم فني سريع لحل المشاكل التقنية وتعديل محتوى الصفحات عند الطلب."
-    ]
-  }
-};
 
-const takeaways = takeawaysMap[slug]?.[lang] || takeawaysMap[slug]?.en || [];
 
 const auditMaintenanceSchema = {
   "@context": "https://schema.org",
@@ -134,12 +78,7 @@ const theme = colorThemes[slug] || colorThemes['website-maintenance'];
 
 <div class="space-y-16 py-8">
   <!-- Key Takeaways (TL;DR) -->
-  {takeaways.length > 0 && (
-    <div class="max-w-3xl mx-auto">
-      <TLDR takeaways={takeaways} lang={lang} />
-    </div>
-  )}
-
+  
   <div class="max-w-4xl mx-auto">
     <!-- Main description paragraph -->
     <div class="prose max-w-none mb-12">

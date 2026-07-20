@@ -1,5 +1,4 @@
 ---
-import TLDR from '../astro/TLDR.astro';
 import FAQ from '../astro/FAQ.astro';
 import { type SupportedLanguage } from '../../types/language';
 import { createTranslator } from '@/i18n/translate';
@@ -14,29 +13,7 @@ const { lang, dictionary } = Astro.props;
 // Translate helpers
 const t = createTranslator(dictionary);
 
-// Takeaways
-const takeawaysMap = {
-  en: [
-    "Fully customized WordPress themes coded for page speed and usability.",
-    "WooCommerce store setups with advanced payment gateways and dynamic shipping.",
-    "Custom Gutenberg blocks and WordPress plugin development.",
-    "Responsive layouts designed for flawless rendering on mobile devices."
-  ],
-  fa: [
-    "قالب‌های کاملاً اختصاصی وردپرس بهینه‌سازی‌شده برای سرعت بارگذاری و تجربه کاربری.",
-    "راه‌اندازی فروشگاه‌های ووکامرس پیشرفته همراه با درگاه‌های پرداخت و سبد خرید پویا.",
-    "توسعه افزونه‌های اختصاصی وردپرس و بلوک‌های دلخواه گوتنبرگ.",
-    "طراحی کاملاً ریسپانسیو و بهینه برای موبایل و تبلت."
-  ],
-  ar: [
-    "قوالب وردبرس مخصصة بالكامل ومصممة لتحقيق سرعة فائقة وتجربة مستخدم ممتازة.",
-    "إنشاء متاجر ووكومرس متكاملة مع بوابات دفع متقدمة وشحن ديناميكي.",
-    "برمجة وتطوير إضافات وردبرس مخصصة وحلول Gutenberg المتقدمة.",
-    "تصميم واجهات متجاوبة ومثالية للعرض على الهواتف والأجهزة اللوحية."
-  ]
-};
 
-const takeaways = takeawaysMap[lang] || takeawaysMap.en;
 
 const wordpressSchema = {
   "@context": "https://schema.org",
@@ -63,11 +40,7 @@ const faqList = [1, 2, 3, 4]
 <script type="application/ld+json" slot="head" set:html={JSON.stringify(wordpressSchema)} />
 
 <div class="space-y-16 py-8">
-  <!-- Key Takeaways (TL;DR) -->
-  <div class="max-w-3xl mx-auto">
-    <TLDR takeaways={takeaways} lang={lang} />
-  </div>
-
+  
   <!-- Features Section -->
   <section class="bg-white">
     <div class="max-w-6xl mx-auto">
