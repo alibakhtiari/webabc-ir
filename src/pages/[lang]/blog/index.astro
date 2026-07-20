@@ -100,19 +100,21 @@ const breadcrumbs = [
       <div class="container mx-auto px-4">
         <div class="flex flex-wrap gap-3 items-center justify-center">
           <span class="text-sm font-semibold text-gray-600">{t('blog.filterBy', { fallback: 'Filter By' })}:</span>
-          <button
+          <a
+            href={`/${supportedLang}/blog?category=all`}
             data-filter-btn="all"
-            class="filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-primary text-white shadow-sm"
+            class="filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-primary text-white shadow-sm cursor-pointer transition-all"
           >
             {t('blog.allCategories', { fallback: 'All Categories' })}
-          </button>
+          </a>
           {categories.map((category) => (
-            <button
+            <a
+              href={`/${supportedLang}/blog?category=${encodeURIComponent(category)}`}
               data-filter-btn={category}
-              class="filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700"
+              class="filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 cursor-pointer transition-all"
             >
               {category}
-            </button>
+            </a>
           ))}
         </div>
       </div>
@@ -174,29 +176,55 @@ const breadcrumbs = [
 </Layout>
 
 <script is:inline>
-  // Simple client-side category filtering
+  // Dynamic client-side category filtering with URL parameter tracking
   const filterBtns = document.querySelectorAll('[data-filter-btn]');
   const postCards = document.querySelectorAll('[data-post-card]');
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const selected = btn.getAttribute('data-filter-btn');
-
-      // Update active button state styling
-      filterBtns.forEach(b => {
-        b.className = "filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700";
-      });
-      btn.className = "filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-primary text-white shadow-sm";
-
-      // Toggle cards visibility
-      postCards.forEach(card => {
-        const cardCat = card.getAttribute('data-post-card');
-        if (selected === 'all' || cardCat === selected) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
+  function applyFilter(selected) {
+    // Update active button state styling
+    filterBtns.forEach(b => {
+      b.className = "filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 cursor-pointer transition-all";
     });
+    const activeBtn = document.querySelector(`[data-filter-btn="${selected}"]`) || document.querySelector('[data-filter-btn="all"]');
+    if (activeBtn) {
+      activeBtn.className = "filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-primary text-white shadow-sm cursor-pointer transition-all";
+    }
+
+    // Toggle cards visibility
+    postCards.forEach(card => {
+      const cardCat = card.getAttribute('data-post-card');
+      if (selected === 'all' || cardCat === selected) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const selected = btn.getAttribute('data-filter-btn');
+      
+      applyFilter(selected);
+
+      // Update URL query parameters without reloading
+      const url = new URL(window.location);
+      if (selected === 'all') {
+        url.searchParams.delete('category');
+      } else {
+        url.searchParams.set('category', selected);
+      }
+      window.history.pushState({}, '', url);
+    });
+  });
+
+  // Handle initial page load filter state from URL parameter
+  window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialCategory = urlParams.get('category');
+    if (initialCategory) {
+      applyFilter(decodeURIComponent(initialCategory));
+    }
   });
 </script>
