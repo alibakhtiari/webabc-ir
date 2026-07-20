@@ -11,6 +11,7 @@ function createOrganizationSchema(url: string, logo: string, contactPoints: { te
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${url}/#organization`,
     "url": url,
     "logo": `${url}${logo}`,
     "name": "WebABC",
@@ -34,9 +35,10 @@ interface Props {
   lang: SupportedLanguage;
   slug?: string;
   mainClass?: string;
+  noindex?: boolean;
 }
 
-const { title, description, lang, slug = '', mainClass = "grow w-full overflow-x-hidden bg-gray-50/50 pt-0 pb-20" } = Astro.props;
+const { title, description, lang, slug = '', mainClass = "grow w-full overflow-x-hidden bg-gray-50/50 pt-0 pb-20", noindex = false } = Astro.props;
 
 const languageMeta = languages[lang] || languages.fa;
 const isRtl = languageMeta.direction === 'rtl';
@@ -64,9 +66,12 @@ const organizationSchema = createOrganizationSchema(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
+    <link rel="preload" as="font" type="font/woff2" href={lang === 'en' ? '/fonts/ltr.woff2' : '/fonts/rtl.woff2'} crossorigin />
+
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     
     <!-- SEO / Canonical / alternates -->
     <link rel="canonical" href={canonicalUrl} />
