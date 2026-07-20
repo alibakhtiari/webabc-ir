@@ -1,7 +1,5 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import Navbar from '../../../components/astro/Navbar.astro';
-import Footer from '../../../components/astro/Footer.astro';
 import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
 import { type SupportedLanguage } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
@@ -46,10 +44,8 @@ const breadcrumbs = [
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/json-formatter">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
-  <Navbar lang={supportedLang} />
-
-  <main class="grow w-full overflow-x-hidden bg-gray-50/50 pb-20 pt-20">
-    <!-- Hero Section -->
+  
+      <!-- Hero Section -->
     <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
       <div class="container mx-auto px-4">
         <div class="max-w-3xl mx-auto text-center">
@@ -115,10 +111,8 @@ const breadcrumbs = [
 
       </div>
     </section>
-  </main>
-
-  <Footer lang={supportedLang} />
-</Layout>
+  
+  </Layout>
 
 <script is:inline data-astro-rerun>
   // JSON Formatter/Validator logic
