@@ -37,3 +37,6 @@ bun.lockb
 *.csv
 package-lock.json
 tsconfig.tsbuildinfo
+*.xlsx
+prd.md
+
