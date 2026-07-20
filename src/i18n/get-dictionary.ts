@@ -1,5 +1,4 @@
-import 'server-only';
-import { SupportedLanguage } from '@/types/language';
+import type { SupportedLanguage } from '@/types/language';
 
 // Define namespaces and their corresponding filenames
 const namespaces = {
@@ -61,7 +60,13 @@ type NamespaceKey = keyof typeof namespaces;
 const loadLocaleDictionary = async (locale: string) => {
     const entries = await Promise.all(
         Object.entries(namespaces).map(async ([key, filename]) => {
-            const module = await import(`./${locale}/${filename}.json`);
+            let module;
+            if (filename.startsWith('tools/')) {
+                const toolName = filename.replace('tools/', '');
+                module = await import(`./${locale}/tools/${toolName}.json`);
+            } else {
+                module = await import(`./${locale}/${filename}.json`);
+            }
             return [key, module.default];
         })
     );

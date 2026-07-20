@@ -1,13 +1,6 @@
 {
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "types": [
-      "@cloudflare/workers-types"
-    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -17,13 +10,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "jsx": "preserve",
     "paths": {
       "@/*": [
         "./src/*"
@@ -32,16 +19,14 @@
     "target": "ES2022"
   },
   "include": [
-    "next-env.d.ts",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "next.config.ts",
-    ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts",
-    "functions/**/*.ts"
+    "src/**/*.d.ts",
+    "src/**/*.astro",
+    ".astro/types.d.ts"
   ],
   "exclude": [
     "node_modules",
-    "api"
+    "dist"
   ]
 }

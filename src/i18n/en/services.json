@@ -9,8 +9,18 @@
   "title": "Professional SEO and Web Development Services",
   "description": "Expert SEO and web development solutions to grow your business. We build high-performance, responsive websites and implement data-driven strategies for maximum online visibility.",
   "subtitle": "Comprehensive Digital Marketing & Web Development Solutions",
+  "wordpress": {
+    "title": "WordPress Development",
+    "subtitle": "Professional WordPress design & development tailored to your business goals",
+    "wordpressAndWoocommerce": "WordPress & WooCommerce Development",
+    "themeCustomization": "Custom Theme Design",
+    "pluginDevelopment": "Custom Plugin Engineering",
+    "ecommerceSetup": "E-commerce Store Setup",
+    "maintenanceSupport": "Support & Maintenance"
+  },
   "seo": {
     "title": "SEO & Specialized Optimization",
+    "subtitle": "Comprehensive SEO solutions to elevate your search rankings",
     "description": "Professional SEO services to boost your search engine ranking. We use advanced, standard techniques to increase organic traffic, improve visibility, and grow your online presence.",
     "features": [
       "Keyword Research",
@@ -23,7 +33,13 @@
     "offPageSeo": "Off-Page SEO",
     "technicalSeo": "Technical SEO",
     "localSeo": "Local SEO",
-    "localSeoDesc": "Attract local customers by optimizing Google Maps and local search"
+    "localSeoDesc": "Attract local customers by optimizing Google Maps and local search",
+    "feature": {
+      "gmb": "Google Business Profile optimization",
+      "reviews": "Review management & online reputation",
+      "localKeywords": "Local keyword tracking",
+      "nearMe": "Near-me search optimization"
+    }
   },
   "webDesign": {
     "title": "Custom Website Design",
