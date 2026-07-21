@@ -1,0 +1,54 @@
+---
+interface RelatedTool {
+  key: string;
+  route: string;
+}
+
+interface Props {
+  lang: string;
+  t: (key: string, opts?: { fallback?: string }) => string;
+  related: RelatedTool[];
+  ctaHref: string;
+  isRtl?: boolean;
+}
+
+const { lang, t, related, ctaHref, isRtl = false } = Astro.props;
+---
+
+{related.length > 0 && (
+  <section class="py-16 bg-gray-50 border-t border-gray-100">
+    <div class="container mx-auto px-4 max-w-6xl font-sans">
+      <h2 class="text-2xl font-bold mb-8 text-center font-persian">
+        {t('tools.relatedTitle', { fallback: 'Related Free Tools' })}
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {related.map(({ key, route }) => (
+          <a
+            href={`/${lang}/tools/${route}`}
+            class="bg-white rounded-2xl p-6 border border-gray-100 shadow-xs hover:shadow-lg transition-all duration-300 block font-persian"
+          >
+            <h3 class="text-lg font-bold mb-2">{t(`${key}.title`, { fallback: key })}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{t(`${key}.description`, { fallback: '' })}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<section class="py-16 bg-white border-t border-gray-100">
+  <div class="container mx-auto px-4 max-w-3xl text-center font-persian">
+    <h2 class="text-2xl md:text-3xl font-bold mb-4">
+      {t('tools.ctaTitle', { fallback: 'Need More Advanced Tools?' })}
+    </h2>
+    <p class="text-gray-600 mb-8 leading-relaxed">
+      {t('tools.ctaDescription', { fallback: 'Contact us for custom SEO tools and advanced analytics solutions tailored to your business needs.' })}
+    </p>
+    <a
+      href={ctaHref}
+      class="inline-flex items-center gap-2 bg-primary text-white font-bold px-8 py-4 rounded-full hover:bg-primary/90 transition-colors"
+    >
+      {t('common.freeConsultation', { fallback: 'Free Consultation' })} {isRtl ? '←' : '→'}
+    </a>
+  </div>
+</section>
