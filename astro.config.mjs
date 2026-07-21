@@ -9,6 +9,10 @@ export default defineConfig({
   output: 'static',
   build: {
     format: 'directory',
+    // Inline the global stylesheet instead of a render-blocking <link> request —
+    // it's small and needed on every page, so a critical round-trip costs more than the
+    // (uncached) duplication. See PageSpeed "render-blocking requests" finding on Layout.css.
+    inlineStylesheets: 'always',
   },
   experimental: {
     svgOptimizer: svgoOptimizer()
