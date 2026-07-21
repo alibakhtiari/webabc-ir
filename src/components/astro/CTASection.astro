@@ -55,12 +55,12 @@ const linkPath = (path: string) => {
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+      <div class={`grid grid-cols-1 ${lang === 'fa' ? 'md:grid-cols-3' : 'md:grid-cols-2 max-w-2xl mx-auto'} gap-8 mt-16`}>
         {[
-          {
+          ...(lang === 'fa' ? [{
             title: t('cta.address'),
             content: t('cta.addressValue')
-          },
+          }] : []),
           {
             title: t('cta.phone'),
             content: t('cta.phoneValue')

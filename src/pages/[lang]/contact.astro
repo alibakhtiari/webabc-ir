@@ -104,13 +104,14 @@ const breadcrumbs = [
           <div class="bg-gray-50 p-6 rounded-2xl">
             <h2 class="text-2xl font-semibold text-gray-800 mb-4">{t('contact.contactInfo', { fallback: 'Contact Info' })}</h2>
             <div class="space-y-4">
-              <div>
-                <h3 class="font-medium text-gray-700">{t('contact.officeAddress', { fallback: 'Office Address' })}</h3>
-                <p class="text-gray-600 leading-relaxed">
-                  {supportedLang === 'en' ? "123 Azadi St, Keshavarz Blvd" : supportedLang === 'ar' ? "شارع آزادي، بوليفارد كشاورز، المبنى ١٢٣" : "خیابان آزادی، بلوار کشاورز، پلاک ۱۲۳"}<br />
-                  {supportedLang === 'en' ? "Tehran, Iran" : supportedLang === 'ar' ? "طهران، إيران" : "تهران، ایران"}
-                </p>
-              </div>
+              {supportedLang === 'fa' && (
+                <div>
+                  <h3 class="font-medium text-gray-700">{t('contact.officeAddress', { fallback: 'آدرس دفتر' })}</h3>
+                  <p class="text-gray-600 leading-relaxed">
+                    آدرس : قزوین.کیلومتر2 باراجین.پارک علم و فناوری قزوین
+                  </p>
+                </div>
+              )}
 
               <div>
                 <h3 class="font-medium text-gray-700">{t('contact.phoneNumber', { fallback: 'Phone Number' })}</h3>
