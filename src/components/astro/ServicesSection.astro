@@ -3,6 +3,9 @@ import { Image } from 'astro:assets';
 import { getDictionary } from '../../i18n/get-dictionary';
 import { languages, type SupportedLanguage } from '../../types/language';
 import { createTranslator } from '@/i18n/translate';
+import seoImg from '../../assets/images/services/seo.webp';
+import webDesignImg from '../../assets/images/services/web-design.webp';
+import digitalMarketingImg from '../../assets/images/blog/digital-marketing.webp';
 
 interface Props {
   lang: SupportedLanguage;
@@ -27,7 +30,7 @@ const services = [
       t('services.seo.features.3', { fallback: 'لینک‌سازی خارجی' }),
       t('services.seo.features.4', { fallback: 'گزارش‌دهی ماهانه' }),
     ],
-    image: '/images/services/seo.webp',
+    image: seoImg,
   },
   {
     id: 'web-design',
@@ -40,7 +43,7 @@ const services = [
       t('services.webDesign.features.3', { fallback: 'سازگار با سئو' }),
       t('services.webDesign.features.4', { fallback: 'امنیت بالا' }),
     ],
-    image: '/images/services/web-design.webp',
+    image: webDesignImg,
   },
   {
     id: 'content',
@@ -53,7 +56,7 @@ const services = [
       t('services.contentCreation.features.3', { fallback: 'تقویم انتشار' }),
       t('services.contentCreation.features.4', { fallback: 'گرافیک اختصاصی' }),
     ],
-    image: '/images/blog/digital-marketing.webp',
+    image: digitalMarketingImg,
   },
 ];
 ---
@@ -139,6 +142,7 @@ const services = [
                   alt={service.title}
                   width={500}
                   height={500}
+                  loading="lazy"
                   class="object-cover w-full h-full"
                 />
               </div>
