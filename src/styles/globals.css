@@ -454,6 +454,11 @@
     font-family: var(--font-sans);
   }
 
+  html:lang(en) .font-persian,
+  html:lang(en) .font-arabic {
+    font-family: 'Lato', system-ui, sans-serif;
+  }
+
   html:lang(fa) {
     --font-sans: 'IRANSansX', sans-serif;
     font-family: var(--font-sans);
