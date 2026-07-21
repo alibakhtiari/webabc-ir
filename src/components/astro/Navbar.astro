@@ -328,18 +328,30 @@ const currentPathWithoutLang = Astro.url.pathname.replace(/^\/(en|fa|ar)/, '') |
   </div>
 </dialog>
 
+<div id="navbar-sentinel" class="absolute top-[10px] left-0 w-1 h-1 pointer-events-none opacity-0" aria-hidden="true"></div>
+
 <script is:inline>
-  // Dynamic Scroll Behavior
-  const header = document.getElementById('main-header');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 10) {
-      header.classList.remove('py-5');
-      header.classList.add('py-3');
-    } else {
-      header.classList.remove('py-3');
-      header.classList.add('py-5');
+  function setupNavbarScroll() {
+    const header = document.getElementById('main-header');
+    const sentinel = document.getElementById('navbar-sentinel');
+
+    if (header && sentinel) {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) {
+          header.classList.remove('py-5');
+          header.classList.add('py-3');
+        } else {
+          header.classList.remove('py-3');
+          header.classList.add('py-5');
+        }
+      }, { rootMargin: '0px' });
+
+      observer.observe(sentinel);
     }
-  }, { passive: true });
+  }
+
+  document.addEventListener('astro:page-load', setupNavbarScroll);
+  setupNavbarScroll();
 
   // Mobile Menu Drawer Control
   const mobileBtn = document.getElementById('mobile-menu-btn');

@@ -72,28 +72,37 @@ const whatsappUrl = 'https://wa.me/989125811880';
   </a>
 </div>
 
+<div id="top-sentinel" class="absolute top-[300px] left-0 w-1 h-1 pointer-events-none opacity-0" aria-hidden="true"></div>
+
 <script is:inline>
-  const backToTopBtn = document.getElementById('back-to-top-btn');
+  function setupFloatingActions() {
+    const backToTopBtn = document.getElementById('back-to-top-btn');
+    const sentinel = document.getElementById('top-sentinel');
 
-  if (backToTopBtn) {
-    const handleScroll = () => {
-      if (window.scrollY > 300) {
-        backToTopBtn.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
-        backToTopBtn.classList.add('opacity-100', 'translate-y-0');
-      } else {
-        backToTopBtn.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
-        backToTopBtn.classList.remove('opacity-100', 'translate-y-0');
-      }
-    };
+    if (backToTopBtn && sentinel) {
+      // Reflow-free Back to Top visibility check via IntersectionObserver
+      const observer = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) {
+          backToTopBtn.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+          backToTopBtn.classList.add('opacity-100', 'translate-y-0');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+          backToTopBtn.classList.remove('opacity-100', 'translate-y-0');
+        }
+      }, { rootMargin: '0px' });
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+      observer.observe(sentinel);
 
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
+      backToTopBtn.onclick = () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      };
+    }
   }
+
+  // Setup on initial load and after View Transitions page swap
+  document.addEventListener('astro:page-load', setupFloatingActions);
+  setupFloatingActions();
 </script>
