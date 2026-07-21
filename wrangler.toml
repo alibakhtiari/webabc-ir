@@ -1,5 +1,7 @@
 name = "webabc-ir"
 compatibility_date = "2026-07-20"
+main = "worker.ts"
 
 [assets]
 directory = "./dist"
+binding = "ASSETS"
