@@ -29,11 +29,9 @@
         "nearMe": "Near Me Optimization"
     },
     "results": {
-        "title": "Our Results",
-        "trafficIncrease": "Average Traffic Increase",
-        "firstPage": "Clients on First Page",
-        "projectsCompleted": "SEO Projects Completed",
-        "conversionLift": "Average Conversion Lift"
+        "title": "Results Our Clients Have Seen",
+        "description": "Every SEO engagement starts with clear goals and ends with outcomes we can show you, not just promise. Explore real case studies from businesses we've helped grow online.",
+        "cta": "View Case Studies"
     },
     "caseStudies": {
         "title": "Featured SEO Case Studies",
