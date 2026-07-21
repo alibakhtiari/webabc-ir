@@ -16,6 +16,18 @@ import AuditMaintenanceContent from '../../../components/services/AuditMaintenan
 import EcommerceContent from '../../../components/services/EcommerceContent.astro';
 import { createTranslator } from '@/i18n/translate';
 
+// Imported (not public/ string paths) so Astro's image pipeline actually resizes/optimizes these.
+import seoImg from '../../../assets/images/services/seo.webp';
+import localSeoImg from '../../../assets/images/services/local-seo.webp';
+import webDevelopmentImg from '../../../assets/images/services/web-development.webp';
+import wordpressImg from '../../../assets/images/services/wordpress.webp';
+import webDesignImg from '../../../assets/images/services/web-design.webp';
+import contentCreationImg from '../../../assets/images/services/content-creation.webp';
+import linkBuildingImg from '../../../assets/images/services/link-building.webp';
+import speedOptimizationImg from '../../../assets/images/services/speed-optimization.webp';
+import uiUxAuditImg from '../../../assets/images/services/ui-ux-audit.webp';
+import websiteMaintenanceImg from '../../../assets/images/services/website-maintenance.webp';
+
 export async function getStaticPaths() {
   // "modern-web-development" was merged into "web-development" (duplicate positioning,
   // see public/_redirects for the 301) and is intentionally not in this list.
@@ -45,18 +57,18 @@ const isRtl = languages[supportedLang]?.direction === 'rtl';
 const t = createTranslator(dictionary);
 
 // Map slug to translation namespaces & keys
-const slugInfoMap: Record<string, { ns: string; titleKey: string; subtitleKey: string; img: string }> = {
-  'seo': { ns: 'seoService', titleKey: 'seoService.title', subtitleKey: 'seoService.subtitle', img: '/images/services/seo.webp' },
-  'local-seo': { ns: 'localSeo', titleKey: 'localSeo.localSeoTitle', subtitleKey: 'localSeo.localSeoDescription', img: '/images/services/local-seo.webp' },
-  'web-development': { ns: 'webDevelopmentServices', titleKey: 'webDevelopmentServices.webDevelopmentTitle', subtitleKey: 'webDevelopmentServices.webDevelopmentDescription', img: '/images/services/web-development.webp' },
-  'wordpress-development': { ns: 'wordpress', titleKey: 'wordpress.title', subtitleKey: 'wordpress.subtitle', img: '/images/services/wordpress.webp' },
-  'web-design': { ns: 'webDesign', titleKey: 'webDesign.title', subtitleKey: 'webDesign.description', img: '/images/services/web-design.webp' },
-  'content-creation': { ns: 'contentCreation', titleKey: 'contentCreation.title', subtitleKey: 'contentCreation.description', img: '/images/services/content-creation.webp' },
-  'link-building': { ns: 'linkBuilding', titleKey: 'linkBuilding.title', subtitleKey: 'linkBuilding.description', img: '/images/services/link-building.webp' },
-  'speed-optimization': { ns: 'speedOptimization', titleKey: 'speedOptimization.title', subtitleKey: 'speedOptimization.subtitle', img: '/images/services/speed-optimization.webp' },
-  'ui-ux-audit': { ns: 'uiUxAudit', titleKey: 'uiUxAudit.title', subtitleKey: 'uiUxAudit.subtitle', img: '/images/services/ui-ux-audit.webp' },
-  'website-maintenance': { ns: 'maintenance', titleKey: 'maintenance.title', subtitleKey: 'maintenance.subtitle', img: '/images/services/website-maintenance.webp' },
-  'ecommerce': { ns: 'ecommerce', titleKey: 'ecommerce.title', subtitleKey: 'ecommerce.subtitle', img: '/images/services/web-development.webp' },
+const slugInfoMap: Record<string, { ns: string; titleKey: string; subtitleKey: string; img: ImageMetadata }> = {
+  'seo': { ns: 'seoService', titleKey: 'seoService.title', subtitleKey: 'seoService.subtitle', img: seoImg },
+  'local-seo': { ns: 'localSeo', titleKey: 'localSeo.localSeoTitle', subtitleKey: 'localSeo.localSeoDescription', img: localSeoImg },
+  'web-development': { ns: 'webDevelopmentServices', titleKey: 'webDevelopmentServices.webDevelopmentTitle', subtitleKey: 'webDevelopmentServices.webDevelopmentDescription', img: webDevelopmentImg },
+  'wordpress-development': { ns: 'wordpress', titleKey: 'wordpress.title', subtitleKey: 'wordpress.subtitle', img: wordpressImg },
+  'web-design': { ns: 'webDesign', titleKey: 'webDesign.title', subtitleKey: 'webDesign.description', img: webDesignImg },
+  'content-creation': { ns: 'contentCreation', titleKey: 'contentCreation.title', subtitleKey: 'contentCreation.description', img: contentCreationImg },
+  'link-building': { ns: 'linkBuilding', titleKey: 'linkBuilding.title', subtitleKey: 'linkBuilding.description', img: linkBuildingImg },
+  'speed-optimization': { ns: 'speedOptimization', titleKey: 'speedOptimization.title', subtitleKey: 'speedOptimization.subtitle', img: speedOptimizationImg },
+  'ui-ux-audit': { ns: 'uiUxAudit', titleKey: 'uiUxAudit.title', subtitleKey: 'uiUxAudit.subtitle', img: uiUxAuditImg },
+  'website-maintenance': { ns: 'maintenance', titleKey: 'maintenance.title', subtitleKey: 'maintenance.subtitle', img: websiteMaintenanceImg },
+  'ecommerce': { ns: 'ecommerce', titleKey: 'ecommerce.title', subtitleKey: 'ecommerce.subtitle', img: webDevelopmentImg },
 };
 
 const info = slugInfoMap[slug];
@@ -65,7 +77,7 @@ const serviceData = dictionary[ns] || {};
 
 const pageTitle = t(info?.titleKey || '', { fallback: slug });
 const pageDesc = t(info?.subtitleKey || '', { fallback: 'Professional services to grow your digital presence.' });
-const heroImage = info ? info.img : `/images/services/${slug}.webp`;
+const heroImage = info ? info.img : seoImg;
 
 const breadcrumbs = [
   { label: t('common.home', { fallback: 'Home' }), url: `/${supportedLang}` },
