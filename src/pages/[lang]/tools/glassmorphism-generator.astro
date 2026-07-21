@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import ToolsCTA from '../../../components/astro/ToolsCTA.astro';
 import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
 import { getLanguageStaticPaths, type SupportedLanguage, languages } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
@@ -124,7 +125,9 @@ const breadcrumbs = [
       </div>
     </section>
   
-  </Layout>
+  
+  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'gradientGen', route: 'css-gradient-generator' }, { key: 'boxShadow', route: 'box-shadow-generator' }, { key: 'colorContrast', route: 'color-contrast-checker' }]} ctaHref={`/${supportedLang}/services/web-design`} isRtl={isRtl} />
+</Layout>
 
 <script is:inline data-astro-rerun>
   const blurSlider = document.getElementById('blur-slider');

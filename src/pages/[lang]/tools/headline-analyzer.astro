@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import ToolsCTA from '../../../components/astro/ToolsCTA.astro';
 import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
 import { getLanguageStaticPaths, type SupportedLanguage, languages } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
@@ -192,7 +193,9 @@ const breadcrumbs = [
       </div>
     </section>
   
-  </Layout>
+  
+  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'seoTitleChecker', route: 'seo-title-checker' }, { key: 'readabilityChecker', route: 'readability-checker' }, { key: 'tools.keywordDensity', route: 'keyword-density-analyzer' }]} ctaHref={`/${supportedLang}/services/content-creation`} isRtl={isRtl} />
+</Layout>
 
 <script is:inline data-astro-rerun>
   const input = document.getElementById('headline-input');

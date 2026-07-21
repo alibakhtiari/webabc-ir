@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import ToolsCTA from '../../../components/astro/ToolsCTA.astro';
 import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
 import { getLanguageStaticPaths, type SupportedLanguage, languages } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
@@ -137,7 +138,9 @@ const strings = {
       </div>
     </section>
   
-  </Layout>
+  
+  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'tools.robotsGenerator', route: 'robots-generator' }, { key: 'metaGenerator', route: 'meta-generator' }, { key: 'costCalculator', route: 'cost-calculator' }]} ctaHref={`/${supportedLang}/services/web-development`} isRtl={isRtl} />
+</Layout>
 
 <script type="application/json" id="pp-strings" set:html={JSON.stringify(strings)} />
 
