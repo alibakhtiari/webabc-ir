@@ -48,6 +48,17 @@ const { Content, headings } = await render(post);
 
 const origin = 'https://webabc.ir';
 
+// Strip Markdown/MDX/JSX syntax before counting so wordCount reflects actual
+// readable text, not markup tokens (code fences, JSX tags, link syntax, etc.)
+const plainTextWordCount = (post.body || '')
+  .replace(/```[\s\S]*?```/g, ' ')
+  .replace(/<[^>]+>/g, ' ')
+  .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+  .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+  .replace(/[#*_>`~]/g, ' ')
+  .split(/\s+/)
+  .filter(Boolean).length;
+
 // Schema JSON-LDs
 const articleSchema = {
   "@context": "https://schema.org",
@@ -57,6 +68,7 @@ const articleSchema = {
   "description": post.data.description,
   "image": post.data.image.startsWith('http') ? post.data.image : `${origin}${post.data.image}`,
   "datePublished": post.data.date,
+  ...(post.data.updatedDate ? { "dateModified": post.data.updatedDate } : {}),
   "author": {
     "@type": "Person",
     "name": post.data.author || "WebABC Team",
@@ -83,7 +95,7 @@ const articleSchema = {
   },
   "keywords": post.data.tags?.join(', ') || '',
   "articleSection": post.data.category,
-  "wordCount": (post.body || '').split(/\s+/).length,
+  "wordCount": plainTextWordCount,
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 

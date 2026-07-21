@@ -64,7 +64,7 @@ const projectSchema = {
 };
 ---
 
-<Layout title={`${project.data.title} | ${t('portfolio.title', { fallback: 'Portfolio' })}`} description={project.data.description} lang={supportedLang} slug={`portfolio/${slug}`}>
+<Layout title={project.data.title} description={project.data.description} lang={supportedLang} slug={`portfolio/${slug}`}>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(projectSchema)} />
   <!-- Case Study detail -->
   <div class="container mx-auto px-4 pt-32 pb-8">
