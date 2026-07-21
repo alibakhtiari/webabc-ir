@@ -22,27 +22,30 @@ const descriptionText = t('tools.description', { fallback: 'A comprehensive suit
 const seoTools = [
   { key: 'serpPreview', route: 'serp-preview' },
   { key: 'metaGenerator', route: 'meta-generator' },
+  { key: 'schemaGenerator', route: 'schema-generator' },
+  { key: 'faqGenerator', route: 'faq-generator' },
   { key: 'paaScraper', route: 'paa-scraper' },
   { key: 'utmBuilder', route: 'utm-builder' },
   { key: 'slugGenerator', route: 'slug-generator' },
   { key: 'socialPreview', route: 'social-media-preview' },
-  { key: 'seoTitleChecker', route: 'seo-title-checker' } // Map to our newly migrated one!
+  { key: 'seoTitleChecker', route: 'seo-title-checker' }
 ];
 
 const contentTools = [
   { key: 'headlineAnalyzer', route: 'headline-analyzer' },
   { key: 'readabilityChecker', route: 'readability-checker' },
+  { key: 'colorContrast', route: 'color-contrast-checker' },
+  { key: 'boxShadow', route: 'box-shadow-generator' },
+  { key: 'gradientGen', route: 'css-gradient-generator' },
+  { key: 'glassGen', route: 'glassmorphism-generator' },
   { key: 'loremGenerator', route: 'lorem-generator' },
   { key: 'qrGenerator', route: 'qr-generator' },
   { key: 'costCalculator', route: 'cost-calculator' },
-  { key: 'privacyGenerator', route: 'privacy-policy-generator' },
-  { key: 'glassGen', route: 'glassmorphism-generator' },
-  { key: 'gradientGen', route: 'css-gradient-generator' }
+  { key: 'privacyGenerator', route: 'privacy-policy-generator' }
 ];
 
-// Technical/developer tools — nested under the `tools` namespace (tools.<key>.title),
-// unlike the flat top-level namespaces used above.
 const devTools = [
+  { key: 'base64', route: 'base64-encoder' },
   { key: 'jsonFormatter', route: 'json-formatter' },
   { key: 'robotsGenerator', route: 'robots-generator' },
   { key: 'keywordDensity', route: 'keyword-density-analyzer' }

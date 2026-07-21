@@ -50,6 +50,10 @@ const namespaces = {
     socialPreview: 'tools/socialPreview',
     gradientGen: 'tools/gradientGen',
     seoTitleChecker: 'tools/seoTitleChecker',
+    schemaGenerator: 'tools/schemaGenerator',
+    colorContrast: 'tools/colorContrast',
+    boxShadow: 'tools/boxShadow',
+    base64: 'tools/base64',
 
     cookieNotice: 'cookie',
     privacyPolicy: 'privacy',
