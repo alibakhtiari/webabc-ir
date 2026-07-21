@@ -8,9 +8,9 @@
   },
   "ourServices": "E-commerce Offerings",
   "storeSetup": "Store Setup & Migration",
-  "storeSetupDesc": "New store launches on Shopify or WooCommerce, or migration from an existing platform with zero data loss.",
+  "storeSetupDesc": "New store launches on Shopify or WooCommerce, or migration from an existing platform with every product, category, and customer record mapped over with zero data loss.",
   "customStorefronts": "Custom Storefronts",
-  "customStorefrontsDesc": "Headless, fully custom storefronts for brands that need unique UX beyond template themes.",
+  "customStorefrontsDesc": "Headless, fully custom storefronts for brands that need unique UX beyond template themes, decoupling the frontend from the commerce backend for maximum design freedom and speed.",
   "feature": {
     "productPages": "SEO-Optimized Product Pages",
     "checkout": "Fast, Secure Checkout Flow",
@@ -21,7 +21,15 @@
   },
   "platforms": {
     "title": "Platforms We Build On",
-    "description": "The right platform depends on your catalog size, budget, and growth plans."
+    "description": "The right platform depends on your catalog size, budget, and growth plans — we'll recommend one rather than push a default.",
+    "shopify": "Best for fast, low-maintenance launches with predictable hosting costs.",
+    "woocommerce": "Best for stores already invested in WordPress that need deep customization.",
+    "nextHeadless": "Best for high-traffic brands that need maximum performance and unique UX.",
+    "astroHeadless": "Best for content-heavy stores that want near-instant page loads by default."
+  },
+  "rightFor": {
+    "title": "Which Platform Is Right for You?",
+    "text": "If you need to launch quickly with minimal ongoing maintenance, Shopify is usually the right call. If you're already running WordPress or need deep customization of checkout logic, WooCommerce fits better. If your catalog is large, traffic is high, or your brand needs a storefront that doesn't look like every other store on the same platform, a headless build is worth the extra development time. We'll walk through your catalog size, budget, and growth plans in a free consultation and recommend the option that actually fits, not the one that's easiest for us to sell."
   },
   "faqTitle": "Frequently Asked Questions",
   "faq": {

@@ -2,53 +2,57 @@
     "title": "Content Creation Services",
     "description": "High-quality, engaging content that drives traffic and builds brand authority.",
     "ourServices": "Our Content Services",
+    "intro": {
+        "title": "What This Service Includes",
+        "text": "Content is how search engines and real readers decide whether your business is worth trusting. Thin, generic posts don't rank and don't convert. Every piece we produce is built around a specific search intent, backed by real keyword research, and written by a human writer who understands your industry, not templated filler designed to hit a word count."
+    },
     "features": {
         "blogging": {
             "title": "Blog Writing",
-            "description": "SEO-optimized blog posts that rank high and engage your audience."
+            "description": "SEO-optimized blog posts that rank high and engage your audience, structured around real search intent and internal links to your services, not just word count for its own sake."
         },
         "copywriting": {
             "title": "Copywriting",
-            "description": "Persuasive copy for landing pages, ads, and sales materials."
+            "description": "Persuasive copy for landing pages, ads, and sales materials, written to move a specific reader toward a specific action rather than generic brand language."
         },
         "strategy": {
             "title": "Content Strategy",
-            "description": "Comprehensive content plans aligned with your business goals."
+            "description": "Comprehensive content plans aligned with your business goals, mapping out topics, publishing cadence, and internal linking before a single word gets written."
         },
         "social": {
             "title": "Social Media Content",
-            "description": "Engaging posts and captions for your social media channels."
+            "description": "Engaging posts and captions for your social media channels, adapted to each platform's format and audience instead of the same caption copy-pasted everywhere."
         },
         "email": {
             "title": "Email Marketing",
-            "description": "Newsletters and automated sequences that nurture leads."
+            "description": "Newsletters and automated sequences that nurture leads from first signup through to a booked consultation, segmented so the right message reaches the right stage."
         },
         "editing": {
             "title": "Editing & Proofreading",
-            "description": "Polishing your existing content to perfection."
+            "description": "Polishing your existing content to perfection, tightening structure, fixing SEO gaps, and fact-checking claims before anything goes live under your brand name."
         }
     },
     "process": {
         "title": "Our Content Process",
         "step1": {
             "title": "Research & Strategy",
-            "description": "We analyze your audience and competitors to find the best topics."
+            "description": "We analyze your audience, competitors, and real search demand to find topics worth writing about, not just ones that sound good."
         },
         "step2": {
             "title": "Creation & Drafting",
-            "description": "Our expert writers craft compelling and original content."
+            "description": "Our writers craft original, well-researched content structured for both readers and search engines from the first draft."
         },
         "step3": {
             "title": "Optimization (SEO)",
-            "description": "We optimize every piece for search engines and readability."
+            "description": "We optimize every piece for on-page SEO, readability, and internal linking, checking it reads naturally rather than keyword-stuffed."
         },
         "step4": {
             "title": "Review & Edits",
-            "description": "Rigorous quality checks to ensure accuracy and tone."
+            "description": "Rigorous quality checks for accuracy, tone, and brand consistency, with revisions built into the process, not an afterthought."
         },
         "step5": {
             "title": "Publishing & Promotion",
-            "description": "We help you distribute your content to reach the right people."
+            "description": "We help distribute your content through the right channels so it actually reaches an audience instead of sitting unread on your blog."
         }
     },
     "technologies": {
