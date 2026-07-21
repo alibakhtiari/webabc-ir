@@ -1,0 +1,133 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import { getLanguageStaticPaths, type SupportedLanguage, languages } from '../../../types/language';
+import { getDictionary } from '../../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
+
+export const getStaticPaths = getLanguageStaticPaths;
+
+const { lang } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+const isRtl = languages[supportedLang]?.direction === 'rtl';
+
+const t = createTranslator(dictionary);
+
+const titleText = t('qrGenerator.title', { fallback: 'QR Code Generator' });
+const descriptionText = t('qrGenerator.description', { fallback: 'Generate customizable QR codes for website URLs, phone numbers, or Wi-Fi networks.' });
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": `https://webabc.ir/${supportedLang}/tools/qr-generator/#webapp`,
+  "name": titleText,
+  "description": descriptionText,
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires HTML5 support",
+  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+};
+
+const breadcrumbs = [
+  { label: t('common.home'), url: `/${supportedLang}` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: titleText }
+];
+---
+
+<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/qr-generator">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+
+  <!-- Hero Section -->
+  <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100 font-sans">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
+        <h1 class="text-3xl md:text-5xl font-bold mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent leading-normal font-persian">
+          {titleText}
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-persian">
+          {descriptionText}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Workspace -->
+  <section class="container mx-auto px-4 mt-12 mb-20 font-sans">
+    <div class="max-w-4xl mx-auto space-y-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        
+        <!-- Controls -->
+        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian">
+          <h3 class="text-base font-bold text-gray-800 border-b border-gray-100 pb-2">QR Content & Settings</h3>
+          
+          <div>
+            <label class="block text-xs font-semibold text-gray-600 mb-1">URL or Text *</label>
+            <input type="text" id="qr-text" value="https://webabc.ir" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 mb-1">Foreground Color</label>
+              <input type="color" id="qr-fg" value="#0052CC" class="w-full h-10 rounded-lg cursor-pointer border border-gray-200 p-1" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 mb-1">Background Color</label>
+              <input type="color" id="qr-bg" value="#FFFFFF" class="w-full h-10 rounded-lg cursor-pointer border border-gray-200 p-1" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-gray-600 mb-1">Dimensions (px)</label>
+            <select id="qr-size" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none">
+              <option value="200">200 x 200</option>
+              <option value="300" selected>300 x 300</option>
+              <option value="400">400 x 400</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- QR Code Output -->
+        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-8 text-center space-y-6 font-persian">
+          <div class="flex justify-center items-center p-4 bg-gray-50 rounded-2xl border border-gray-100 min-h-[260px]">
+            <img id="qr-img" class="rounded-lg shadow-xs transition-all duration-300" alt="Generated QR Code" />
+          </div>
+
+          <a id="qr-download" download="qrcode.png" href="#" class="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-primary text-white text-sm font-bold rounded-xl hover:bg-primary/90 transition-all shadow-md">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            Download PNG Image
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</Layout>
+
+<script is:inline data-astro-rerun>
+  const qrText = document.getElementById('qr-text');
+  const qrFg = document.getElementById('qr-fg');
+  const qrBg = document.getElementById('qr-bg');
+  const qrSize = document.getElementById('qr-size');
+  const qrImg = document.getElementById('qr-img');
+  const qrDownload = document.getElementById('qr-download');
+
+  function updateQrCode() {
+    const text = encodeURIComponent(qrText.value.trim() || 'https://webabc.ir');
+    const fg = qrFg.value.replace('#', '');
+    const bg = qrBg.value.replace('#', '');
+    const size = qrSize.value;
+
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${text}&color=${fg}&bgcolor=${bg}&margin=10`;
+    qrImg.src = qrUrl;
+    qrDownload.href = qrUrl;
+  }
+
+  [qrText, qrFg, qrBg, qrSize].forEach(el => el.addEventListener('input', updateQrCode));
+  updateQrCode();
+</script>

@@ -1,0 +1,324 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import { getLanguageStaticPaths, type SupportedLanguage, languages } from '../../../types/language';
+import { getDictionary } from '../../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
+
+export const getStaticPaths = getLanguageStaticPaths;
+
+const { lang } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+const isRtl = languages[supportedLang]?.direction === 'rtl';
+
+const t = createTranslator(dictionary);
+
+const titleText = t('schemaGenerator.title', { fallback: 'Schema Markup Generator (JSON-LD)' });
+const descriptionText = t('schemaGenerator.description', { fallback: 'Generate valid JSON-LD structured data for Local Business, Articles, FAQs, Products, and Organizations.' });
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": `https://webabc.ir/${supportedLang}/tools/schema-generator/#webapp`,
+  "name": titleText,
+  "description": descriptionText,
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires HTML5 support",
+  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+};
+
+const breadcrumbs = [
+  { label: t('common.home'), url: `/${supportedLang}` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: titleText }
+];
+---
+
+<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/schema-generator">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+
+  <!-- Hero Section -->
+  <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100 font-sans">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
+        <h1 class="text-3xl md:text-5xl font-bold mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent leading-normal font-persian">
+          {titleText}
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-persian">
+          {descriptionText}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Workspace -->
+  <section class="container mx-auto px-4 mt-12 mb-20 font-sans">
+    <div class="max-w-5xl mx-auto space-y-8">
+      
+      <!-- Schema Type Tabs -->
+      <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-4 font-persian">
+        <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-3 text-start">Select Schema Type</label>
+        <div class="flex flex-wrap gap-2">
+          <button data-type="LocalBusiness" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-primary text-white transition-all">Local Business</button>
+          <button data-type="Article" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all">Article</button>
+          <button data-type="FAQPage" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all">FAQ Page</button>
+          <button data-type="Organization" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all">Organization</button>
+          <button data-type="Product" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all">Product</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <!-- Input Form Section -->
+        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian" id="schema-form-container">
+          
+          <!-- Local Business Form -->
+          <div id="form-LocalBusiness" class="schema-form space-y-4">
+            <h3 class="text-base font-bold text-gray-800 border-b border-gray-100 pb-2">Local Business Details</h3>
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 mb-1">Business Name *</label>
+              <input type="text" id="lb-name" value="WebABC Agency" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-semibold text-gray-600 mb-1">Phone Number</label>
+                <input type="text" id="lb-phone" value="+989125811880" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-gray-600 mb-1">Price Range</label>
+                <input type="text" id="lb-price" value="$$" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 mb-1">Website URL</label>
+              <input type="url" id="lb-url" value="https://webabc.ir" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 mb-1">City / Region</label>
+              <input type="text" id="lb-city" value="Qazvin, Iran" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
+            </div>
+          </div>
+
+          <!-- Article Form -->
+          <div id="form-Article" class="schema-form space-y-4 hidden">
+            <h3 class="text-base font-bold text-gray-800 border-b border-gray-100 pb-2">Article Details</h3>
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 mb-1">Headline *</label>
+              <input type="text" id="art-title" value="How to Boost Website Speed in 2025" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 mb-1">Article Image URL</label>
+              <input type="url" id="art-image" value="https://webabc.ir/images/homepage-hero.webp" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-semibold text-gray-600 mb-1">Author Name</label>
+                <input type="text" id="art-author" value="Ali Bakhtiari" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-gray-600 mb-1">Publisher Name</label>
+                <input type="text" id="art-publisher" value="WebABC" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Form -->
+          <div id="form-FAQPage" class="schema-form space-y-4 hidden">
+            <h3 class="text-base font-bold text-gray-800 border-b border-gray-100 pb-2">FAQ Question & Answer</h3>
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 mb-1">Question 1 *</label>
+              <input type="text" id="faq-q1" value="What services does WebABC offer?" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 mb-1">Answer 1 *</label>
+              <textarea id="faq-a1" rows="2" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none resize-none">WebABC offers custom web development, WordPress tuning, UI/UX design, and technical SEO optimization.</textarea>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 mb-1">Question 2</label>
+              <input type="text" id="faq-q2" value="How long does a website project take?" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 mb-1">Answer 2</label>
+              <textarea id="faq-a2" rows="2" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none resize-none">Standard web development projects typically take 2 to 4 weeks depending on requirements.</textarea>
+            </div>
+          </div>
+
+          <!-- Organization Form -->
+          <div id="form-Organization" class="schema-form space-y-4 hidden">
+            <h3 class="text-base font-bold text-gray-800 border-b border-gray-100 pb-2">Organization Details</h3>
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 mb-1">Organization Name *</label>
+              <input type="text" id="org-name" value="WebABC Digital Agency" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 mb-1">Organization URL</label>
+              <input type="url" id="org-url" value="https://webabc.ir" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 mb-1">Logo URL</label>
+              <input type="url" id="org-logo" value="https://webabc.ir/images/logo.webp" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
+            </div>
+          </div>
+
+          <!-- Product Form -->
+          <div id="form-Product" class="schema-form space-y-4 hidden">
+            <h3 class="text-base font-bold text-gray-800 border-b border-gray-100 pb-2">Product Details</h3>
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 mb-1">Product Name *</label>
+              <input type="text" id="prod-name" value="Custom E-Commerce Package" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-semibold text-gray-600 mb-1">Price ($)</label>
+                <input type="text" id="prod-price" value="999" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-gray-600 mb-1">Currency</label>
+                <input type="text" id="prod-currency" value="USD" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 mb-1">Description</label>
+              <input type="text" id="prod-desc" value="High performance custom online shop with payment gateway." class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
+            </div>
+          </div>
+
+        </div>
+
+        <!-- JSON Output Section -->
+        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian sticky top-28">
+          <div class="flex justify-between items-center border-b border-gray-100 pb-3">
+            <h3 class="text-base font-bold text-gray-800">Generated JSON-LD</h3>
+            <button id="copy-json-btn" class="px-3 py-1.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-all flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+              Copy Code
+            </button>
+          </div>
+
+          <pre id="json-output" dir="ltr" class="p-4 bg-gray-900 text-green-400 rounded-xl font-mono text-xs overflow-x-auto min-h-[300px] leading-relaxed"></pre>
+          
+          <div id="copy-status" class="text-xs text-green-600 font-semibold opacity-0 transition-opacity text-center">
+            Copied script tag to clipboard!
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script is:inline data-astro-rerun>
+  let currentType = 'LocalBusiness';
+
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const forms = document.querySelectorAll('.schema-form');
+  const jsonOutput = document.getElementById('json-output');
+  const copyBtn = document.getElementById('copy-json-btn');
+  const copyStatus = document.getElementById('copy-status');
+
+  function generateJsonLd() {
+    let schemaObj = {};
+
+    if (currentType === 'LocalBusiness') {
+      schemaObj = {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": document.getElementById('lb-name').value,
+        "telephone": document.getElementById('lb-phone').value,
+        "priceRange": document.getElementById('lb-price').value,
+        "url": document.getElementById('lb-url').value,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": document.getElementById('lb-city').value
+        }
+      };
+    } else if (currentType === 'Article') {
+      schemaObj = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": document.getElementById('art-title').value,
+        "image": [document.getElementById('art-image').value],
+        "author": {
+          "@type": "Person",
+          "name": document.getElementById('art-author').value
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": document.getElementById('art-publisher').value
+        }
+      };
+    } else if (currentType === 'FAQPage') {
+      schemaObj = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": document.getElementById('faq-q1').value,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": document.getElementById('faq-a1').value
+            }
+          },
+          {
+            "@type": "Question",
+            "name": document.getElementById('faq-q2').value,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": document.getElementById('faq-a2').value
+            }
+          }
+        ]
+      };
+    } else if (currentType === 'Organization') {
+      schemaObj = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": document.getElementById('org-name').value,
+        "url": document.getElementById('org-url').value,
+        "logo": document.getElementById('org-logo').value
+      };
+    } else if (currentType === 'Product') {
+      schemaObj = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": document.getElementById('prod-name').value,
+        "description": document.getElementById('prod-desc').value,
+        "offers": {
+          "@type": "Offer",
+          "price": document.getElementById('prod-price').value,
+          "priceCurrency": document.getElementById('prod-currency').value,
+          "availability": "https://schema.org/InStock"
+        }
+      };
+    }
+
+    const scriptTag = `<script type="application/ld+json">\n${JSON.stringify(schemaObj, null, 2)}\n<\/script>`;
+    jsonOutput.textContent = scriptTag;
+  }
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.className = 'tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all');
+      btn.className = 'tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-primary text-white transition-all';
+      
+      currentType = btn.getAttribute('data-type');
+      forms.forEach(f => f.classList.add('hidden'));
+      document.getElementById(`form-${currentType}`).classList.remove('hidden');
+
+      generateJsonLd();
+    });
+  });
+
+  document.getElementById('schema-form-container').addEventListener('input', generateJsonLd);
+  generateJsonLd();
+
+  copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(jsonOutput.textContent).then(() => {
+      copyStatus.classList.remove('opacity-0');
+      setTimeout(() => copyStatus.classList.add('opacity-0'), 2000);
+    });
+  });
+</script>
