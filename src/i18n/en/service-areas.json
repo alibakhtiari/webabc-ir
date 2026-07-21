@@ -7,6 +7,20 @@
   "ctaButton": "Get Free Consultation",
   "locationTitle": "We Serve",
   "whyChooseUs": "Why Choose WebABC?",
+  "country": "Country",
+  "serviceDelivery": "Service Delivery",
+  "serviceDeliveryValue": "Remote delivery with on-site consultations available",
+  "languages": "Languages",
+  "languagesValue": "English, Arabic, Persian",
+  "localConsiderations": "What Matters for This Market",
+  "faq": {
+    "q1": "Do you work with businesses remotely, or do you need to be on-site?",
+    "a1": "Most of our work — design, development, and SEO — is done remotely, with on-site or video consultations available for planning and reviews. Distance doesn't slow down the project.",
+    "q2": "Can you build a site that works well in both Arabic/Persian and English?",
+    "a2": "Yes — proper right-to-left (RTL) layout, not just translated text forced into a left-to-right design, is standard on every multilingual project we build.",
+    "q3": "How is pricing different for a project in this region versus elsewhere?",
+    "a3": "Pricing is based on scope (pages, features, platform), not location. Use our free cost calculator or book a consultation for an exact quote regardless of where you're based."
+  },
   "localExpertise": "Local Market Expertise",
   "localExpertiseDesc": "We understand the unique challenges and opportunities in each market we serve",
   "provenResults": "Proven Results",
@@ -20,6 +34,7 @@
       "country": "Oman",
       "description": "Providing cutting-edge web design and SEO services to businesses in Muscat. We help Omani companies establish a strong online presence and reach their target audience effectively.",
       "longDescription": "As Muscat's premier web design and SEO agency, we specialize in helping local businesses dominate the digital landscape. Our team understands the unique characteristics of the Omani market and creates tailored solutions that resonate with your target audience.",
+      "localNotes": "Oman's digital market is growing quickly but is less saturated than Dubai's, which means well-executed local SEO can win top rankings faster for businesses that move early. Bilingual Arabic/English sites are the norm here, and Google remains the dominant search and maps platform, so a solid Google Business Profile and standard local SEO practices apply cleanly without regional workarounds.",
       "services": [
         "Web Design & Development",
         "SEO Services",
@@ -34,12 +49,7 @@
         "Mobile-first responsive designs",
         "Fast loading times optimized for Oman",
         "Ongoing support and maintenance"
-      ],
-      "stats": {
-        "projects": "50+",
-        "clients": "35+",
-        "experience": "5+"
-      }
+      ]
     },
     {
       "name": "Dubai",
@@ -47,6 +57,7 @@
       "country": "UAE",
       "description": "Delivering premium digital solutions to businesses in Dubai. Our services help UAE-based companies compete in the dynamic Dubai market with innovative web solutions.",
       "longDescription": "Dubai's fast-paced business environment demands exceptional digital presence. We create stunning websites and implement powerful SEO strategies that help your business stand out in one of the world's most competitive markets.",
+      "localNotes": "Dubai is one of the most competitive digital markets in the region — a genuinely bilingual Arabic/English audience with high expectations for site speed and design quality, since visitors regularly compare local businesses against international ones. Google Maps and Google Business Profile are dominant here, so local pack visibility and consistent NAP data across directories carry real weight.",
       "services": [
         "Custom Web Development",
         "Local SEO",
@@ -61,12 +72,7 @@
         "E-commerce expertise for Dubai market",
         "Results-driven digital strategies",
         "24/7 customer support"
-      ],
-      "stats": {
-        "projects": "75+",
-        "clients": "50+",
-        "experience": "6+"
-      }
+      ]
     },
     {
       "name": "Tehran",
@@ -74,6 +80,7 @@
       "country": "Iran",
       "description": "Providing advanced web design and SEO services to businesses in Tehran. We help Iranian companies establish a strong online presence and effectively reach their target audience.",
       "longDescription": "As a leading web design and SEO agency in Tehran, we specialize in helping local businesses dominate the digital space. Our team understands the unique features of the Iranian market and creates customized solutions that resonate with your target audience.",
+      "localNotes": "Tehran's market has a technical quirk most outside agencies miss: Google Maps has limited practical use in Iran, so local map visibility depends more on apps like Neshan and Balad than on a Google Business Profile alone. Persian-first content with correct RTL layout is essential, and page speed matters more here given more variable connection quality than in Dubai or Muscat.",
       "services": [
         "Web Design & Development",
         "SEO Services",
@@ -88,12 +95,7 @@
         "Mobile-first responsive designs",
         "Optimized loading speed for Iran",
         "Ongoing support and maintenance"
-      ],
-      "stats": {
-        "projects": "80+",
-        "clients": "60+",
-        "experience": "7+"
-      }
+      ]
     },
     {
       "name": "Qazvin",
@@ -101,6 +103,7 @@
       "country": "Iran",
       "description": "Delivering professional digital solutions to businesses in Qazvin. Our services help Qazvin-based companies succeed in the competitive market with innovative web solutions.",
       "longDescription": "Qazvin's dynamic business environment demands exceptional digital presence. We create stunning websites and implement powerful SEO strategies that help your business stand out in one of the most competitive markets.",
+      "localNotes": "Qazvin is our home base, which means in-person consultations and same-timezone support are the easiest to arrange here. Local businesses in Qazvin compete less on brand recognition and more on genuine local-search visibility, since most searches are specific and city-based rather than brand-name searches — the same Neshan/Balad consideration that applies in Tehran holds true here too.",
       "services": [
         "Custom Web Development",
         "Local SEO",
@@ -115,12 +118,7 @@
         "E-commerce expertise",
         "Results-driven digital strategies",
         "24/7 support"
-      ],
-      "stats": {
-        "projects": "45+",
-        "clients": "35+",
-        "experience": "5+"
-      }
+      ]
     }
   ]
 }

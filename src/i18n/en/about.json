@@ -2,7 +2,32 @@
   "title": "About WebABC | 10+ Years of Web Design & Digital Marketing",
   "subtitle": "10+ years, 500+ projects, 98% client satisfaction. Meet the specialist team behind WebABC's results-driven digital solutions.",
   "mission": "Our Mission",
-  "missionText": "At WebABC, we guide businesses through their digital transformation journey with our expert team and up-to-date knowledge. Our main goal is to create lasting value for our clients through innovative and results-oriented solutions.",
+  "missionText": "At WebABC, we guide businesses through their digital transformation journey with our expert team and up-to-date knowledge. Our main goal is to create lasting value for our clients through innovative and results-oriented solutions. We work across web design, development, and SEO as one connected discipline, not three separate vendors, because a fast site with no search visibility and a well-ranked site that's slow to use both fail the same client for different reasons.",
+  "approach": {
+    "title": "How We Work",
+    "items": [
+      {
+        "title": "Technical Rigor",
+        "description": "Every project starts with the same technical bar: clean code, real Core Web Vitals targets, and security best practices, whether it's a landing page or a full e-commerce platform."
+      },
+      {
+        "title": "Transparent Communication",
+        "description": "You get direct access to the people doing the work, clear timelines, and reporting you can actually understand, not agency jargon dressed up as insight."
+      },
+      {
+        "title": "Data Over Opinion",
+        "description": "Design and SEO decisions are grounded in analytics, competitor research, and testing, not personal taste or industry trends that don't fit your business."
+      },
+      {
+        "title": "Built to Last",
+        "description": "We build for maintainability, not just launch day. Clean architecture and documentation mean your site doesn't become unmanageable the moment we hand it off."
+      }
+    ]
+  },
+  "whoWeServe": {
+    "title": "Who We Work With",
+    "text": "We work with small and mid-sized businesses across Iran, the UAE, and Oman that need a website and search presence that actually earns them customers, not just a site that exists. That spans local service businesses that need to rank in their city, agencies and consultants who need a credible digital presence, and online stores that need a fast, reliable storefront on Shopify, WooCommerce, or a custom build."
+  },
   "team": "Our Team",
   "ourTeam": "Our Team",
   "yearsExperience": "Years of Experience",

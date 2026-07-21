@@ -1,6 +1,10 @@
 {
     "title": "Web Design & Development",
     "description": "Professional web design and development services. We build responsive, SEO-friendly, and high-performance websites tailored to your specific business goals.",
+    "intro": {
+        "title": "What Makes Web Design Different From Web Development?",
+        "text": "Web design is the visual and structural layer, how your site looks, how content flows, and how a visitor moves from landing on a page to taking action. Web development is the engineering underneath it. We treat design as a business decision, not a purely aesthetic one: every layout choice is checked against how it affects load time, mobile usability, and conversion, not just how it looks in a mockup."
+    },
     "ourServices": "Our Web Design Services",
     "features": {
         "uiux": {

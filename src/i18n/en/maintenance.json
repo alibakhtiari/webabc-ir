@@ -2,6 +2,10 @@
     "title": "Website Maintenance & Care Plans",
     "subtitle": "Professional website maintenance and security care plans. We keep your site secure, updated, and high-performing while you focus on growing your business.",
     "description": "Don't let technical issues slow you down. Our premium care plans ensure your website remains secure, optimized, and up-to-date while you focus on growing your business.",
+    "intro": {
+        "title": "What Happens Without Ongoing Maintenance",
+        "text": "A website isn't a one-time purchase, it's software that keeps running after launch, and unmaintained software degrades. Plugins fall out of date and become the most common entry point for hacks. Uncached databases slow down as content grows. Backups that were never actually tested fail silently the one time you need them. A maintenance plan isn't an upsell, it's the difference between catching a problem in a routine check and finding out about it when your site is already down or compromised."
+    },
     "features": [
         "24/7 Security Monitoring & Cleanup",
         "Weekly Safe Updates (Core, Theme, Plugins)",

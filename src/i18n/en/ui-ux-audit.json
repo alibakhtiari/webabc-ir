@@ -2,6 +2,10 @@
     "title": "Professional UI/UX Audit",
     "subtitle": "Identify and fix hidden friction points on your website that are hurting sales. Get a comprehensive UI/UX audit to boost conversions and user satisfaction.",
     "description": "Stop guessing why visitors aren't buying. Our expert audit identifies exactly where users get stuck, frustrated, or confused, providing you with a roadmap to double your conversion rate.",
+    "intro": {
+        "title": "What a UI/UX Audit Actually Finds",
+        "text": "Most traffic loss isn't a marketing problem, it's a usability problem: a confusing checkout, a call-to-action buried below the fold, a form that fails silently on mobile. These issues rarely show up in analytics as anything more specific than a high bounce rate, which is why they go unfixed for years. An audit gives you a specific, ranked list of exactly what's costing you conversions and in what order to fix it, instead of a vague redesign recommendation."
+    },
     "features": [
         "Comprehensive Video Walkthrough Analysis",
         "Heuristic Evaluation & Usability Testing",
