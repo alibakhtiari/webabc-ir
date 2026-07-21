@@ -21,6 +21,12 @@ function createOrganizationSchema(url: string, logo: string, contactPoints: { te
       "telephone": cp.telephone,
       "contactType": cp.contactType
     })),
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Qazvin Science & Technology Park, Km 2 Barajin Road",
+      "addressLocality": "Qazvin",
+      "addressCountry": "IR"
+    },
     "sameAs": [
       "https://facebook.com/webabc",
       "https://twitter.com/webabc",
@@ -57,7 +63,7 @@ const pageDescription = description || dictionary.home?.description || 'Web Desi
 const organizationSchema = createOrganizationSchema(
   siteUrl,
   '/images/logo.webp',
-  [{ telephone: '+989123456789', contactType: 'customer service' }],
+  [{ telephone: '+989125811880', contactType: 'customer service' }],
   lang
 );
 ---

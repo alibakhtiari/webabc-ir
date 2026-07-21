@@ -15,19 +15,6 @@ const t = createTranslator(dictionary);
 
 
 
-const seoSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": t('seoService.title', "SEO & Specialized Optimization"),
-  "description": t('seoService.subtitle', "Boost your website's search engine ranking with our expert SEO services."),
-  "provider": { "@id": "https://webabc.ir/#organization" },
-  "areaServed": {
-    "@type": "Country",
-    "name": "Global"
-  },
-  "serviceType": "Search Engine Optimization"
-};
-
 const faqList = [1, 2, 3, 4]
   .map(n => ({
     question: t(`seoService.faq.q${n}`, ""),
@@ -35,9 +22,6 @@ const faqList = [1, 2, 3, 4]
   }))
   .filter(item => item.question && item.answer);
 ---
-
-<!-- Inject Schema into head slot of Layout -->
-<script type="application/ld+json" slot="head" set:html={JSON.stringify(seoSchema)} />
 
 <div class="space-y-16 py-8">
   
@@ -150,29 +134,16 @@ const faqList = [1, 2, 3, 4]
 
   <!-- Results Section -->
   <section class="py-16 bg-gray-50/50 rounded-3xl p-8 border border-gray-100">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-12 font-persian">
-        {t('seoService.results.title', "Our Results")}
+    <div class="max-w-2xl mx-auto text-center space-y-6">
+      <h2 class="text-3xl font-bold font-persian">
+        {t('seoService.results.title', "Results Our Clients Have Seen")}
       </h2>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white p-6 rounded-2xl shadow-xs hover:shadow-md transition-all text-center border border-gray-100/80">
-          <div class="text-4xl font-extrabold text-primary mb-2">250%</div>
-          <p class="text-gray-600 font-medium text-sm font-persian">{t('seoService.results.trafficIncrease', "Average Traffic Increase")}</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl shadow-xs hover:shadow-md transition-all text-center border border-gray-100/80">
-          <div class="text-4xl font-extrabold text-primary mb-2">85%</div>
-          <p class="text-gray-600 font-medium text-sm font-persian">{t('seoService.results.firstPage', "Clients on First Page")}</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl shadow-xs hover:shadow-md transition-all text-center border border-gray-100/80">
-          <div class="text-4xl font-extrabold text-primary mb-2">120+</div>
-          <p class="text-gray-600 font-medium text-sm font-persian">{t('seoService.results.projectsCompleted', "SEO Projects Completed")}</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl shadow-xs hover:shadow-md transition-all text-center border border-gray-100/80">
-          <div class="text-4xl font-extrabold text-primary mb-2">30%</div>
-          <p class="text-gray-600 font-medium text-sm font-persian">{t('seoService.results.conversionLift', "Average Conversion Lift")}</p>
-        </div>
-      </div>
+      <p class="text-gray-600 leading-relaxed font-persian">
+        {t('seoService.results.description', "Every SEO engagement starts with clear goals and ends with outcomes we can show you, not just promise. Explore real case studies from businesses we've helped grow online.")}
+      </p>
+      <a href={`/${lang}/portfolio`} class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-bold rounded-xl shadow-md hover:bg-primary/90 transition-all">
+        {t('seoService.results.cta', "View Case Studies")}
+      </a>
     </div>
   </section>
 

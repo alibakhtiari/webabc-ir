@@ -25,23 +25,6 @@ const ns = slugNamespaceMap[slug] || 'services';
 
 
 
-const auditMaintenanceSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": t(`${ns}.title`, slug),
-  "description": t(`${ns}.subtitle`, ""),
-  "provider": {
-    "@type": "Organization",
-    "name": lang === 'en' ? 'WebABC' : lang === 'ar' ? 'ويب إيه بي سي' : 'وب آ ب ث',
-    "url": `https://webabc.ir/${lang}`
-  },
-  "areaServed": {
-    "@type": "Country",
-    "name": "Global"
-  },
-  "serviceType": slug === 'speed-optimization' ? 'Website Optimization' : slug === 'ui-ux-audit' ? 'UI/UX Consulting' : 'Website Maintenance'
-};
-
 // Features checklist (0 to 4)
 const features = [0, 1, 2, 3, 4].map(idx => t(`${ns}.features.${idx}`, `Feature ${idx + 1}`));
 
@@ -72,9 +55,6 @@ const colorThemes: Record<string, { bg: string, text: string, iconColor: string,
 
 const theme = colorThemes[slug] || colorThemes['website-maintenance'];
 ---
-
-<!-- Inject Schema into head slot of Layout -->
-<script type="application/ld+json" slot="head" set:html={JSON.stringify(auditMaintenanceSchema)} />
 
 <div class="space-y-16 py-8">
   <!-- Key Takeaways (TL;DR) -->

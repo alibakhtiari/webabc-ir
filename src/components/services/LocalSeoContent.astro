@@ -15,19 +15,6 @@ const t = createTranslator(dictionary);
 
 
 
-const localSeoSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": t('localSeo.localSeoTitle', "Local SEO Optimization"),
-  "description": t('localSeo.localSeoDescription', "Get found by customers in your area. We optimize your Google Maps and local search presence."),
-  "provider": { "@id": "https://webabc.ir/#organization" },
-  "areaServed": {
-    "@type": "Country",
-    "name": "Global"
-  },
-  "serviceType": "Local SEO Optimization"
-};
-
 const faqList = [1, 2, 3, 4]
   .map(n => ({
     question: t(`localSeo.faq.q${n}`, ""),
@@ -35,9 +22,6 @@ const faqList = [1, 2, 3, 4]
   }))
   .filter(item => item.question && item.answer);
 ---
-
-<!-- Inject Schema into head slot of Layout -->
-<script type="application/ld+json" slot="head" set:html={JSON.stringify(localSeoSchema)} />
 
 <div class="space-y-16 py-8">
   

@@ -1,15 +1,17 @@
 ---
-// Redirect root / to default language (/fa)
+// public/_redirects (`/  /en/  301`) handles this server-side and is what actually
+// runs in production. This page is a client-side fallback only, for any environment
+// where that rule doesn't apply — kept consistent with the same /en default
+// (matches x-default hreflang used everywhere else on the site).
 ---
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="0;url=/fa" />
+    <meta http-equiv="refresh" content="0;url=/en" />
     <script is:inline>
-      // Client-side quick redirect based on browser or saved language
       const savedLang = typeof localStorage !== 'undefined' && localStorage.getItem('language');
       const supportedLangs = ['en', 'fa', 'ar'];
-      const targetLang = supportedLangs.includes(savedLang) ? savedLang : 'fa';
+      const targetLang = supportedLangs.includes(savedLang) ? savedLang : 'en';
       window.location.replace('/' + targetLang);
     </script>
   </head>

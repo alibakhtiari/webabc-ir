@@ -17,19 +17,6 @@ const t = createTranslator(dictionary);
 
 
 
-const webDesignSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": t('webDesign.title', "Creative Web Design"),
-  "description": t('webDesign.description', "Professional user interface design and corporate website structures."),
-  "provider": { "@id": "https://webabc.ir/#organization" },
-  "areaServed": {
-    "@type": "Country",
-    "name": "Global"
-  },
-  "serviceType": "Web Design"
-};
-
 const faqList = [1, 2, 3, 4]
   .map(n => ({
     question: t(`webDesign.faq.q${n}`, ""),
@@ -37,9 +24,6 @@ const faqList = [1, 2, 3, 4]
   }))
   .filter(item => item.question && item.answer);
 ---
-
-<!-- Inject Schema into head slot of Layout -->
-<script type="application/ld+json" slot="head" set:html={JSON.stringify(webDesignSchema)} />
 
 <div class="space-y-16 py-8">
   

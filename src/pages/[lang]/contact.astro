@@ -104,23 +104,21 @@ const breadcrumbs = [
           <div class="bg-gray-50 p-6 rounded-2xl">
             <h2 class="text-2xl font-semibold text-gray-800 mb-4">{t('contact.contactInfo', { fallback: 'Contact Info' })}</h2>
             <div class="space-y-4">
-              {supportedLang === 'fa' && (
-                <div>
-                  <h3 class="font-medium text-gray-700">{t('contact.officeAddress', { fallback: 'آدرس دفتر' })}</h3>
-                  <p class="text-gray-600 leading-relaxed">
-                    آدرس : قزوین.کیلومتر2 باراجین.پارک علم و فناوری قزوین
-                  </p>
-                </div>
-              )}
+              <div>
+                <h3 class="font-medium text-gray-700">{t('contact.officeAddress', { fallback: 'Office Address' })}</h3>
+                <p class="text-gray-600 leading-relaxed">
+                  {t('contact.addressValue', { fallback: 'Qazvin Science & Technology Park, Km 2 Barajin Road, Qazvin, Iran' })}
+                </p>
+              </div>
 
               <div>
                 <h3 class="font-medium text-gray-700">{t('contact.phoneNumber', { fallback: 'Phone Number' })}</h3>
-                <p class="text-gray-600" dir="ltr">+98 912 581 1880</p>
+                <p class="text-gray-600" dir="ltr"><a href="tel:+989125811880" class="hover:text-primary transition-colors">+98 912 581 1880</a></p>
               </div>
 
               <div>
                 <h3 class="font-medium text-gray-700">{t('contact.emailAddress', { fallback: 'Email Address' })}</h3>
-                <p class="text-gray-600">info@webabc.ir</p>
+                <p class="text-gray-600"><a href="mailto:info@webabc.ir" class="hover:text-primary transition-colors">info@webabc.ir</a></p>
               </div>
             </div>
           </div>
