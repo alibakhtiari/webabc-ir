@@ -1,4 +1,17 @@
 {
   "title": "CSS Box Shadow & Neumorphism Generator",
-  "description": "Design visual CSS box-shadows, soft glass shadows, and neumorphism effects with instant CSS code generation."
+  "description": "Design visual CSS box-shadows, soft glass shadows, and neumorphism effects with instant CSS code generation.",
+  "properties": "Shadow Properties",
+  "offsetX": "Horizontal Offset (X)",
+  "offsetY": "Vertical Offset (Y)",
+  "blur": "Blur Radius",
+  "spread": "Spread Radius",
+  "opacityLabel": "Shadow Opacity",
+  "shadowColor": "Shadow Color",
+  "boxColor": "Box Color",
+  "inset": "Inset Shadow (Inner shadow)",
+  "boxPreview": "Box Preview",
+  "generatedCss": "Generated CSS",
+  "copyCss": "Copy CSS",
+  "copiedStatus": "CSS snippet copied to clipboard!"
 }

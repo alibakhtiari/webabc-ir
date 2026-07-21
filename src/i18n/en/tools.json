@@ -32,6 +32,10 @@
   },
   "technicalTitle": "Technical SEO Utilities",
   "technicalDesc": "Crawler directives, structured data, and content formatting helpers.",
+  "base64": {
+    "title": "Base64 Image & Text Encoder/Decoder",
+    "description": "Convert images to Base64 data URLs and encode or decode UTF-8 text strings online."
+  },
   "jsonFormatter": {
     "title": "Clientside JSON Formatter & Validator",
     "description": "Safely format, validate, and structure your JSON data completely inside your browser."

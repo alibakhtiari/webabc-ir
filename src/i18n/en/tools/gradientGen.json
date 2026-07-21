@@ -5,5 +5,12 @@
     "direction": "Direction",
     "randomize": "Randomize",
     "copy": "Copy CSS",
-    "copied": "CSS copied to clipboard!"
+    "copied": "CSS copied to clipboard!",
+    "settings": "Gradient Settings",
+    "typeLabel": "Type",
+    "linear": "Linear",
+    "radial": "Radial",
+    "angleLabel": "Angle",
+    "colorStops": "Color Stops",
+    "generatedCss": "Generated CSS"
 }

@@ -10,5 +10,7 @@
     "generate": "توليد النص",
     "generatedTitle": "النص المولد",
     "copy": "نسخ إلى الحافظة",
-    "copied": "تم النسخ إلى الحافظة!"
+    "copied": "تم النسخ إلى الحافظة!",
+    "languageScript": "لغة النص",
+    "persianScript": "الفارسية"
 }

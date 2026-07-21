@@ -10,5 +10,7 @@
     "generate": "Generate Text",
     "generatedTitle": "Generated Text",
     "copy": "Copy to Clipboard",
-    "copied": "Copied to clipboard!"
+    "copied": "Copied to clipboard!",
+    "languageScript": "Language Script",
+    "persianScript": "Persian (فارسی)"
 }

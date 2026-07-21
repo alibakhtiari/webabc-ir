@@ -1,4 +1,22 @@
 {
   "title": "WCAG Color Contrast Checker",
-  "description": "Test foreground and background text color contrast ratios for WCAG 2.1 AA and AAA web accessibility compliance."
+  "description": "Test foreground and background text color contrast ratios for WCAG 2.1 AA and AAA web accessibility compliance.",
+  "colorInputs": "Color Inputs",
+  "textColor": "Text Color (Foreground)",
+  "bgColor": "Background Color",
+  "swap": "Swap Colors",
+  "livePreview": "Live Preview",
+  "sampleHeading": "The Quick Brown Fox",
+  "sampleBody": "Good contrast makes text easy to read for everyone, including people with visual impairments.",
+  "buttonSample": "Button Sample",
+  "clickMe": "Click Me",
+  "contrastRatio": "Contrast Ratio",
+  "calculating": "Calculating...",
+  "normalAA": "Normal Text (AA)",
+  "checking": "Checking...",
+  "minNormal": "Min 4.5:1 ratio required",
+  "largeAA": "Large Text (AA / AAA)",
+  "minLarge": "Min 3:1 (AA) or 4.5:1 (AAA)",
+  "enhancedAAA": "Enhanced (AAA)",
+  "minEnhanced": "Min 7:1 ratio required"
 }

@@ -10,5 +10,7 @@
     "generate": "تولید متن",
     "generatedTitle": "متن تولید شده",
     "copy": "کپی در کلیپ‌بورد",
-    "copied": "در کلیپ‌بورد کپی شد!"
+    "copied": "در کلیپ‌بورد کپی شد!",
+    "languageScript": "زبان متن",
+    "persianScript": "فارسی"
 }
