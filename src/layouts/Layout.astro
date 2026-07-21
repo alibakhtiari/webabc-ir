@@ -92,7 +92,7 @@ const organizationSchema = createOrganizationSchema(
     <!-- Inline Schema -->
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
     
-    <ClientRouter />
+    <ClientRouter fallback="animate" />
     
     <slot name="head" />
   </head>
