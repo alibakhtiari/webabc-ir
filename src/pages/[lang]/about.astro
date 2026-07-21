@@ -17,6 +17,11 @@ const t = createTranslator(dictionary);
 const titleText = t('about.title', { fallback: 'About Us' });
 const descriptionText = t('about.subtitle', { fallback: 'We build digital solutions.' });
 
+const approachItems = [0, 1, 2, 3].map(i => ({
+  title: t(`about.approach.items.${i}.title`, { fallback: '' }),
+  description: t(`about.approach.items.${i}.description`, { fallback: '' }),
+})).filter(item => item.title && item.description);
+
 const aboutPageSchema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
@@ -59,6 +64,27 @@ const breadcrumbs = [
             {t('about.missionText', { fallback: 'To empower businesses with high-performance web applications and search ranking optimization.' })}
           </p>
         </div>
+      </div>
+
+      <!-- How We Work Section -->
+      {approachItems.length > 0 && (
+        <div class="space-y-10">
+          <h2 class="text-3xl font-bold text-center text-gray-900 font-persian">{t('about.approach.title', { fallback: 'How We Work' })}</h2>
+          <div class="grid md:grid-cols-2 gap-6 font-persian">
+            {approachItems.map((item) => (
+              <div class="p-6 bg-white border border-gray-100 rounded-2xl shadow-xs">
+                <h3 class="text-lg font-bold text-gray-800 mb-2">{item.title}</h3>
+                <p class="text-gray-600 leading-relaxed text-sm">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Who We Serve Section -->
+      <div class="max-w-3xl mx-auto text-center space-y-4 font-persian">
+        <h2 class="text-2xl font-bold text-gray-900">{t('about.whoWeServe.title', { fallback: 'Who We Work With' })}</h2>
+        <p class="text-gray-600 leading-relaxed">{t('about.whoWeServe.text', { fallback: '' })}</p>
       </div>
 
       <!-- Stats Section -->
