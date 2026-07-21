@@ -4,6 +4,7 @@ import { languages, type SupportedLanguage } from '../types/language';
 import { getDictionary } from '../i18n/get-dictionary';
 import Navbar from '../components/astro/Navbar.astro';
 import Footer from '../components/astro/Footer.astro';
+import FloatingActions from '../components/astro/FloatingActions.astro';
 import '../styles/globals.css';
 
 
@@ -95,5 +96,6 @@ const organizationSchema = createOrganizationSchema(
       <slot />
     </main>
     <Footer lang={lang} />
+    <FloatingActions lang={lang} />
   </body>
 </html>
