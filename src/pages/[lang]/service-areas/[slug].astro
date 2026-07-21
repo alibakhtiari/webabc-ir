@@ -2,6 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import Hero from '../../../components/astro/Hero.astro';
 import CTA from '../../../components/astro/CTA.astro';
+import FAQ from '../../../components/astro/FAQ.astro';
 import { type SupportedLanguage, languages } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
@@ -42,6 +43,13 @@ const breadcrumbs = [
   { label: t('service-areas.title', { fallback: 'Service Areas' }), url: `/${supportedLang}/service-areas` },
   { label: locationInfo.name }
 ];
+
+const faqList = [1, 2, 3]
+  .map(n => ({
+    question: t(`service-areas.faq.q${n}`, { fallback: '' }),
+    answer: t(`service-areas.faq.a${n}`, { fallback: '' })
+  }))
+  .filter(item => item.question && item.answer);
 
 const origin = 'https://webabc.ir';
 const locationSchema = {
@@ -111,75 +119,48 @@ const locationSchema = {
           )}
         </div>
 
-        <!-- AEO & GEO Side Panel -->
+        <!-- Quick Facts Side Panel -->
         <div class="space-y-8">
-          <!-- AEO Parameters Box -->
-          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-6 shadow-xs space-y-6">
+          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-6 shadow-xs space-y-4">
             <h3 class="text-lg font-bold text-gray-900 border-b border-gray-200 pb-3">
-              📍 {locationInfo.name} Operation Parameters
+              📍 {locationInfo.name}
             </h3>
-            
             <div class="space-y-4 text-sm">
               <div>
-                <div class="text-gray-400 font-semibold text-xs uppercase">Country Scope</div>
+                <div class="text-gray-400 font-semibold text-xs uppercase">{t('service-areas.country', { fallback: 'Country' })}</div>
                 <div class="font-bold text-gray-800">{locationInfo.country}</div>
               </div>
               <div>
-                <div class="text-gray-400 font-semibold text-xs uppercase">Service Availability</div>
-                <div class="font-bold text-gray-800">On-Site Consultations & Full Remote Delivery</div>
+                <div class="text-gray-400 font-semibold text-xs uppercase">{t('service-areas.serviceDelivery', { fallback: 'Service Delivery' })}</div>
+                <div class="font-bold text-gray-800">{t('service-areas.serviceDeliveryValue', { fallback: 'Remote delivery with on-site consultations available' })}</div>
               </div>
               <div>
-                <div class="text-gray-400 font-semibold text-xs uppercase">Technical Compliance</div>
-                <div class="font-bold text-gray-800">Compliant with regional e-commerce, GDPR, and localized digital security protocols.</div>
-              </div>
-              <div>
-                <div class="text-gray-400 font-semibold text-xs uppercase">Regional Stats</div>
-                <div class="grid grid-cols-3 gap-2 mt-2 text-center text-xs font-mono">
-                  <div class="bg-white border p-2 rounded-lg">
-                    <div class="font-bold text-primary">{locationInfo.stats?.projects}</div>
-                    <div class="text-[10px] text-gray-400">Projects</div>
-                  </div>
-                  <div class="bg-white border p-2 rounded-lg">
-                    <div class="font-bold text-primary">{locationInfo.stats?.clients}</div>
-                    <div class="text-[10px] text-gray-400">Clients</div>
-                  </div>
-                  <div class="bg-white border p-2 rounded-lg">
-                    <div class="font-bold text-primary">{locationInfo.stats?.experience}</div>
-                    <div class="text-[10px] text-gray-400">Years</div>
-                  </div>
-                </div>
+                <div class="text-gray-400 font-semibold text-xs uppercase">{t('service-areas.languages', { fallback: 'Languages' })}</div>
+                <div class="font-bold text-gray-800">{t('service-areas.languagesValue', { fallback: 'English, Arabic, Persian' })}</div>
               </div>
             </div>
-          </div>
-
-          <!-- GEO Schematic / Map Enrichment -->
-          <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-xs space-y-4">
-            <h4 class="font-bold text-gray-900">Regional Coverage Geography</h4>
-            <div class="aspect-square bg-primary/5 rounded-xl border border-primary/10 flex items-center justify-center relative overflow-hidden p-6 text-center">
-              <svg class="w-full h-full text-primary/40 opacity-70" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
-                <circle cx="50" cy="50" r="35" stroke-dasharray="3 3" />
-                <circle cx="50" cy="50" r="10" class="fill-primary/20 text-primary" />
-                <circle cx="20" cy="30" r="6" class="fill-gray-100" />
-                <circle cx="80" cy="40" r="6" class="fill-gray-100" />
-                <circle cx="45" cy="85" r="6" class="fill-gray-100" />
-                <line x1="50" y1="50" x2="20" y2="30" />
-                <line x1="50" y1="50" x2="80" y2="40" />
-                <line x1="50" y1="50" x2="45" y2="85" />
-              </svg>
-              <div class="absolute bottom-3 left-0 right-0 text-[10px] text-gray-400 px-3">
-                Schematic local node router for {locationInfo.name} market access
-              </div>
-            </div>
-            <p class="text-xs text-gray-500 leading-relaxed">
-              Direct physical and edge deployment nodes covering {locationInfo.name} and surrounding corporate sectors, complying with low latency localized content distribution.
-            </p>
           </div>
         </div>
 
       </div>
 
+      <!-- Local Considerations -->
+      {locationInfo.localNotes && (
+        <div class="max-w-3xl mx-auto text-center space-y-4 mb-12">
+          <h2 class="text-2xl font-bold text-gray-900">{t('service-areas.localConsiderations', { fallback: 'What Matters for This Market' })}</h2>
+          <p class="text-gray-600 leading-relaxed">{locationInfo.localNotes}</p>
+        </div>
+      )}
+
+      <!-- FAQ Section -->
+      {faqList.length > 0 && (
+        <div class="max-w-3xl mx-auto mb-12">
+          <FAQ faqList={faqList} lang={supportedLang} />
+        </div>
+      )}
+
       <!-- Premium Consultation CTA Callout -->
-      <CTA 
+      <CTA
         lang={supportedLang} 
         title={t('service-areas.ctaTitle', { fallback: 'Dominate Local Search' })}
         description={t('service-areas.ctaDescription', { fallback: 'Get a custom optimization blueprint outline.' })}
