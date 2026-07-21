@@ -5,5 +5,12 @@
     "direction": "الاتجاه",
     "randomize": "عشوائي",
     "copy": "نسخ CSS",
-    "copied": "تم نسخ كود CSS!"
+    "copied": "تم نسخ كود CSS!",
+    "settings": "إعدادات التدرج",
+    "typeLabel": "النوع",
+    "linear": "خطي",
+    "radial": "شعاعي",
+    "angleLabel": "الزاوية",
+    "colorStops": "نقاط توقف اللون",
+    "generatedCss": "كود CSS الناتج"
 }

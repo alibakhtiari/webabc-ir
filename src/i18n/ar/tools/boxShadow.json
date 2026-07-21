@@ -1,4 +1,17 @@
 {
   "title": "مولد ظلال CSS وتأثيرات Neumorphism",
-  "description": "تصميم ظلال العناصر وتأثيرات التصميم الحديثة بلغة CSS وتوليد الأكواد بشكل فوري."
+  "description": "تصميم ظلال العناصر وتأثيرات التصميم الحديثة بلغة CSS وتوليد الأكواد بشكل فوري.",
+  "properties": "خصائص الظل",
+  "offsetX": "الإزاحة الأفقية (X)",
+  "offsetY": "الإزاحة العمودية (Y)",
+  "blur": "نصف قطر التمويه (Blur)",
+  "spread": "نصف قطر الانتشار (Spread)",
+  "opacityLabel": "شفافية الظل",
+  "shadowColor": "لون الظل",
+  "boxColor": "لون الصندوق",
+  "inset": "ظل داخلي (Inset)",
+  "boxPreview": "معاينة الصندوق",
+  "generatedCss": "كود CSS الناتج",
+  "copyCss": "نسخ CSS",
+  "copiedStatus": "تم نسخ كود CSS إلى الحافظة!"
 }

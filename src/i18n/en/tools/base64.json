@@ -1,4 +1,18 @@
 {
   "title": "Base64 Image & Text Encoder/Decoder",
-  "description": "Convert images to Base64 data URLs and encode or decode UTF-8 text strings online."
+  "description": "Convert images to Base64 data URLs and encode or decode UTF-8 text strings online.",
+  "modeImage": "Image to Base64",
+  "modeText": "Text Encode / Decode",
+  "dropHint": "Drop an Image file here or Click to Upload",
+  "dropSubtext": "Supports PNG, JPG, WebP, SVG, GIF up to 5MB",
+  "dataUrlOutput": "Data URL Output",
+  "copyBase64": "Copy Base64",
+  "inputTextLabel": "Input Text",
+  "textPlaceholder": "Enter text to encode or Base64 string to decode...",
+  "encodeBtn": "Encode to Base64",
+  "decodeBtn": "Decode from Base64",
+  "outputResult": "Output Result",
+  "copyResult": "Copy Result",
+  "resultPlaceholder": "Result will appear here...",
+  "copiedStatus": "Copied to clipboard!"
 }

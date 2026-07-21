@@ -10,7 +10,12 @@
     "keywordsPlaceholder": "keyword1, keyword2, keyword3",
     "ogImage": "Open Graph Image URL",
     "ogImagePlaceholder": "https://example.com/image.jpg",
-    "generatedTags": "Generated Meta Tags",
-    "copy": "Copy to Clipboard",
-    "copied": "Copied to clipboard!"
+    "generatedTags": "Generated Head HTML",
+    "copy": "Copy HTML",
+    "copied": "Meta tags copied to clipboard!",
+    "formHeading": "Page Metadata Details",
+    "canonicalUrlLabel": "Canonical Page URL",
+    "socialImageLabel": "Social Image URL (og:image)",
+    "authorLabel": "Author",
+    "robotsLabel": "Robots Directive"
 }

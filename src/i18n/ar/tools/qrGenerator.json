@@ -1,12 +1,14 @@
 {
     "title": "مولد رمز الاستجابة السريعة (QR)",
     "description": "منشئ رموز QR المخصصة من WebABC. أنشئ أكواد QR للروابط والنصوص والبيانات التجارية بسهولة مع إمكانية التحميل الفوري بصيغة عالية الجودة وتخصيص الألوان.",
-    "settings": "إعدادات QR",
-    "contentLabel": "المحتوى (الرابط أو النص)",
+    "settings": "محتوى وإعدادات QR",
+    "contentLabel": "الرابط أو النص",
     "placeholder": "https://example.com",
     "fgColor": "لون الأمامية",
     "bgColor": "لون الخلفية",
     "preview": "معاينة",
-    "download": "تحميل رمز QR",
-    "downloadSuccess": "تم تحميل رمز QR بنجاح!"
+    "download": "تحميل صورة PNG",
+    "downloadSuccess": "تم تحميل رمز QR بنجاح!",
+    "dimensionsLabel": "الأبعاد (بكسل)",
+    "altText": "رمز QR الناتج"
 }

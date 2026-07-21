@@ -10,7 +10,12 @@
     "keywordsPlaceholder": "كلمة1، كلمة2، كلمة3",
     "ogImage": "رابط صورة Open Graph",
     "ogImagePlaceholder": "https://example.com/image.jpg",
-    "generatedTags": "علامات الميتا المولدة",
-    "copy": "نسخ إلى الحافظة",
-    "copied": "تم النسخ إلى الحافظة!"
+    "generatedTags": "كود HTML الناتج",
+    "copy": "نسخ HTML",
+    "copied": "تم نسخ علامات الميتا إلى الحافظة!",
+    "formHeading": "تفاصيل بيانات الصفحة الوصفية",
+    "canonicalUrlLabel": "رابط الصفحة الأساسي (Canonical)",
+    "socialImageLabel": "رابط صورة التواصل الاجتماعي (og:image)",
+    "authorLabel": "الكاتب",
+    "robotsLabel": "توجيه Robots"
 }
