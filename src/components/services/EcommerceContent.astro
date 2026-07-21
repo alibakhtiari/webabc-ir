@@ -14,16 +14,6 @@ const t = createTranslator(dictionary);
 
 
 
-const ecommerceSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": t('ecommerce.title', "E-commerce Website Design & Development"),
-  "description": t('ecommerce.subtitle', "Custom e-commerce stores built to convert."),
-  "provider": { "@id": "https://webabc.ir/#organization" },
-  "areaServed": { "@type": "Country", "name": "Global" },
-  "serviceType": "E-commerce Website Development"
-};
-
 const faqList = [1, 2, 3, 4]
   .map(n => ({
     question: t(`ecommerce.faq.q${n}`, ""),
@@ -31,9 +21,6 @@ const faqList = [1, 2, 3, 4]
   }))
   .filter(item => item.question && item.answer);
 ---
-
-<!-- Inject Schema into head slot of Layout -->
-<script type="application/ld+json" slot="head" set:html={JSON.stringify(ecommerceSchema)} />
 
 <div class="space-y-16 py-8">
   

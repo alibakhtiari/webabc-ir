@@ -18,24 +18,6 @@ const t = createTranslator(dictionary);
 
 const ns = slug === 'content-creation' ? 'contentCreation' : 'linkBuilding';
 
-const schemaTypeMap: Record<string, string> = {
-  'content-creation': 'Content Strategy & Copywriting',
-  'link-building': 'Authority Link Building'
-};
-
-const marketingSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": t(`${ns}.title`, slug),
-  "description": t(`${ns}.description`, ""),
-  "provider": { "@id": "https://webabc.ir/#organization" },
-  "areaServed": {
-    "@type": "Country",
-    "name": "Global"
-  },
-  "serviceType": schemaTypeMap[slug] || "Digital Marketing"
-};
-
 const faqList = [1, 2, 3, 4]
   .map(n => ({
     question: t(`${ns}.faq.q${n}`, ""),
@@ -65,12 +47,15 @@ const linkBuildingFeatures = [
 const features = slug === 'content-creation' ? contentCreationFeatures : linkBuildingFeatures;
 ---
 
-<!-- Inject Schema into head slot of Layout -->
-<script type="application/ld+json" slot="head" set:html={JSON.stringify(marketingSchema)} />
-
 <div class="space-y-16 py-8">
-  <!-- Key Takeaways (TL;DR) -->
-  
+  <!-- Intro Section -->
+  <section class="bg-white">
+    <div class="max-w-4xl mx-auto text-center space-y-6">
+      <h2 class="text-3xl font-bold font-persian">{t(`${ns}.intro.title`, 'What This Service Includes')}</h2>
+      <p class="text-gray-600 leading-relaxed font-persian text-lg">{t(`${ns}.intro.text`, '')}</p>
+    </div>
+  </section>
+
   <!-- Services Details -->
   <section class="bg-white">
     <div class="max-w-6xl mx-auto">
