@@ -11,17 +11,21 @@
   },
   "feature": {
     "gmb": "Google Business Profile",
-    "gmbDesc": "Complete optimization of your Google Business Profile (formerly GMB) to maximize visibility in Maps and local search.",
+    "gmbDesc": "Complete optimization of your Google Business Profile (formerly GMB), including categories, service areas, photos, and posts, to maximize visibility in Maps and local search.",
     "localKeywords": "Local Keyword Targeting",
-    "localKeywordsDesc": "Researching and targeting high-intent keywords specific to your city and service area.",
+    "localKeywordsDesc": "Researching and targeting high-intent keywords specific to your city and service area, not just generic industry terms that ignore geography.",
     "nearMe": "'Near Me' Optimization",
-    "nearMeDesc": "Strategies to capture traffic from users searching for immediate solutions nearby.",
+    "nearMeDesc": "Structuring page content, headings, and schema to capture traffic from users searching for an immediate, nearby solution.",
     "localLinks": "Local Link Building",
-    "localLinksDesc": "Acquiring high-quality backlinks from reputable local directories and community websites.",
+    "localLinksDesc": "Acquiring high-quality backlinks from reputable local directories, chambers of commerce, and community websites relevant to your area.",
     "reviews": "Review Management",
-    "reviewsDesc": "Strategies to generate more positive reviews and manage your online reputation.",
+    "reviewsDesc": "Strategies to generate more positive reviews consistently and respond professionally to every review, since review signals directly affect Map Pack ranking.",
     "localReports": "Local Performance Reporting",
-    "localReportsDesc": "Detailed monthly reports tracking your local rankings, calls, and direction requests."
+    "localReportsDesc": "Detailed monthly reports tracking your local rankings, calls, direction requests, and Map Pack visibility so you can see exactly what's working."
+  },
+  "rightFor": {
+    "title": "Is Local SEO Right for Your Business?",
+    "text": "Local SEO is essential if customers find you by searching in a specific city or 'near me,' whether you have a storefront or you're a Service Area Business like a plumber, electrician, or consultant who travels to clients. It matters less if your business sells purely online with no geographic focus — in that case, our general SEO service is usually the better starting point."
   },
   "process": {
     "title": "Our Local SEO Process",
