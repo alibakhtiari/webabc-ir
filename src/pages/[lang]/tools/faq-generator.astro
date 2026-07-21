@@ -1,7 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
-import { getLanguageStaticPaths, type SupportedLanguage, languages } from '../../../types/language';
+import { getLanguageStaticPaths, type SupportedLanguage } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
 
@@ -10,7 +10,6 @@ export const getStaticPaths = getLanguageStaticPaths;
 const { lang } = Astro.params;
 const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
-const isRtl = languages[supportedLang]?.direction === 'rtl';
 
 const t = createTranslator(dictionary);
 
@@ -63,9 +62,9 @@ const breadcrumbs = [
         <!-- FAQ Questions Form -->
         <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian">
           <div class="flex justify-between items-center border-b border-gray-100 pb-3">
-            <h3 class="text-base font-bold text-gray-800">Frequently Asked Questions</h3>
+            <h3 class="text-base font-bold text-gray-800">{t('faqGenerator.faqHeading', { fallback: 'Frequently Asked Questions' })}</h3>
             <button id="add-faq-btn" class="px-3 py-1.5 bg-primary/10 text-primary text-xs font-bold rounded-lg hover:bg-primary/20 transition-all flex items-center gap-1">
-              + Add Question
+              + {t('faqGenerator.addQuestion', { fallback: 'Add Question' })}
             </button>
           </div>
 
@@ -88,8 +87,8 @@ const breadcrumbs = [
           <!-- JSON-LD Output -->
           <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-3">
             <div class="flex justify-between items-center border-b border-gray-100 pb-2">
-              <h3 class="text-sm font-bold text-gray-800">JSON-LD Schema Code</h3>
-              <button id="copy-json-btn" class="text-xs font-semibold text-primary hover:underline">Copy JSON-LD</button>
+              <h3 class="text-sm font-bold text-gray-800">{t('faqGenerator.jsonLdCode', { fallback: 'JSON-LD Schema Code' })}</h3>
+              <button id="copy-json-btn" class="text-xs font-semibold text-primary hover:underline">{t('faqGenerator.copyJson', { fallback: 'Copy JSON-LD' })}</button>
             </div>
             <pre id="json-output" dir="ltr" class="p-4 bg-gray-900 text-green-400 rounded-xl font-mono text-xs overflow-x-auto min-h-[160px]"></pre>
           </div>
@@ -97,14 +96,14 @@ const breadcrumbs = [
           <!-- HTML Accordion Output -->
           <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-3">
             <div class="flex justify-between items-center border-b border-gray-100 pb-2">
-              <h3 class="text-sm font-bold text-gray-800">HTML Accordion Markup</h3>
-              <button id="copy-html-btn" class="text-xs font-semibold text-primary hover:underline">Copy HTML</button>
+              <h3 class="text-sm font-bold text-gray-800">{t('faqGenerator.htmlAccordion', { fallback: 'HTML Accordion Markup' })}</h3>
+              <button id="copy-html-btn" class="text-xs font-semibold text-primary hover:underline">{t('faqGenerator.copyHtml', { fallback: 'Copy HTML' })}</button>
             </div>
             <pre id="html-output" dir="ltr" class="p-4 bg-gray-900 text-primary rounded-xl font-mono text-xs overflow-x-auto min-h-[160px]"></pre>
           </div>
 
           <p id="copy-status" class="text-xs text-green-600 font-semibold opacity-0 transition-opacity text-center">
-            Copied code to clipboard!
+            {t('faqGenerator.copied', { fallback: 'Copied code to clipboard!' })}
           </p>
         </div>
 

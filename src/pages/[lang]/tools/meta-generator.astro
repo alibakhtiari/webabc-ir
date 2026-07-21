@@ -1,7 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
-import { getLanguageStaticPaths, type SupportedLanguage, languages } from '../../../types/language';
+import { getLanguageStaticPaths, type SupportedLanguage } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
 
@@ -10,7 +10,6 @@ export const getStaticPaths = getLanguageStaticPaths;
 const { lang } = Astro.params;
 const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
-const isRtl = languages[supportedLang]?.direction === 'rtl';
 
 const t = createTranslator(dictionary);
 
@@ -61,35 +60,35 @@ const breadcrumbs = [
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
         <!-- Form Inputs -->
         <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian" id="meta-form">
-          <h3 class="text-base font-bold text-gray-800 border-b border-gray-100 pb-2">Page Metadata Details</h3>
-          
+          <h3 class="text-base font-bold text-gray-800 border-b border-gray-100 pb-2">{t('metaGenerator.formHeading', { fallback: 'Page Metadata Details' })}</h3>
+
           <div>
-            <label class="block text-xs font-semibold text-gray-600 mb-1">Page Title *</label>
+            <label class="block text-xs font-semibold text-gray-600 mb-1">{t('metaGenerator.pageTitle', { fallback: 'Page Title' })} *</label>
             <input type="text" id="meta-title" value="WebABC - Web Design & Technical SEO Agency" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
           </div>
 
           <div>
-            <label class="block text-xs font-semibold text-gray-600 mb-1">Meta Description *</label>
+            <label class="block text-xs font-semibold text-gray-600 mb-1">{t('metaGenerator.metaDescription', { fallback: 'Meta Description' })} *</label>
             <textarea id="meta-desc" rows="3" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none resize-none">WebABC is a digital agency specializing in modern web design, performance optimization, and search engine optimization.</textarea>
           </div>
 
           <div>
-            <label class="block text-xs font-semibold text-gray-600 mb-1">Canonical Page URL</label>
+            <label class="block text-xs font-semibold text-gray-600 mb-1">{t('metaGenerator.canonicalUrlLabel', { fallback: 'Canonical Page URL' })}</label>
             <input type="url" id="meta-url" value="https://webabc.ir/en" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
           </div>
 
           <div>
-            <label class="block text-xs font-semibold text-gray-600 mb-1">Social Image URL (og:image)</label>
+            <label class="block text-xs font-semibold text-gray-600 mb-1">{t('metaGenerator.socialImageLabel', { fallback: 'Social Image URL (og:image)' })}</label>
             <input type="url" id="meta-image" value="https://webabc.ir/images/homepage-hero.webp" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
           </div>
 
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="block text-xs font-semibold text-gray-600 mb-1">Author</label>
+              <label class="block text-xs font-semibold text-gray-600 mb-1">{t('metaGenerator.authorLabel', { fallback: 'Author' })}</label>
               <input type="text" id="meta-author" value="WebABC Team" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
             </div>
             <div>
-              <label class="block text-xs font-semibold text-gray-600 mb-1">Robots Directive</label>
+              <label class="block text-xs font-semibold text-gray-600 mb-1">{t('metaGenerator.robotsLabel', { fallback: 'Robots Directive' })}</label>
               <select id="meta-robots" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none">
                 <option value="index, follow">index, follow</option>
                 <option value="noindex, follow">noindex, follow</option>
@@ -103,16 +102,16 @@ const breadcrumbs = [
         <!-- HTML Code Output -->
         <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian sticky top-28">
           <div class="flex justify-between items-center border-b border-gray-100 pb-3">
-            <h3 class="text-sm font-bold text-gray-800">Generated Head HTML</h3>
+            <h3 class="text-sm font-bold text-gray-800">{t('metaGenerator.generatedTags', { fallback: 'Generated Head HTML' })}</h3>
             <button id="copy-meta-btn" class="px-3 py-1.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-all">
-              Copy HTML
+              {t('metaGenerator.copy', { fallback: 'Copy HTML' })}
             </button>
           </div>
 
           <pre id="meta-output" dir="ltr" class="p-4 bg-gray-900 text-green-400 rounded-xl font-mono text-xs overflow-x-auto min-h-[300px] leading-relaxed"></pre>
-          
+
           <p id="copy-status" class="text-xs text-green-600 font-semibold opacity-0 transition-opacity text-center">
-            Meta tags copied to clipboard!
+            {t('metaGenerator.copied', { fallback: 'Meta tags copied to clipboard!' })}
           </p>
         </div>
       </div>
@@ -128,13 +127,21 @@ const breadcrumbs = [
   const copyBtn = document.getElementById('copy-meta-btn');
   const copyStatus = document.getElementById('copy-status');
 
+  function escapeAttr(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
   function updateMeta() {
-    const title = document.getElementById('meta-title').value;
-    const desc = document.getElementById('meta-desc').value;
-    const url = document.getElementById('meta-url').value;
-    const image = document.getElementById('meta-image').value;
-    const author = document.getElementById('meta-author').value;
-    const robots = document.getElementById('meta-robots').value;
+    const title = escapeAttr(document.getElementById('meta-title').value);
+    const desc = escapeAttr(document.getElementById('meta-desc').value);
+    const url = escapeAttr(document.getElementById('meta-url').value);
+    const image = escapeAttr(document.getElementById('meta-image').value);
+    const author = escapeAttr(document.getElementById('meta-author').value);
+    const robots = escapeAttr(document.getElementById('meta-robots').value);
 
     const html = `<!-- Primary Meta Tags -->
 <title>${title}</title>
