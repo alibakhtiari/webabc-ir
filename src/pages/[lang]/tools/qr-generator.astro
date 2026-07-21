@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import ToolsCTA from '../../../components/astro/ToolsCTA.astro';
 import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
 import { getLanguageStaticPaths, type SupportedLanguage } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
@@ -106,6 +107,8 @@ const breadcrumbs = [
     </div>
   </section>
 
+
+  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'utmBuilder', route: 'utm-builder' }, { key: 'socialPreview', route: 'social-media-preview' }, { key: 'tools.base64', route: 'base64-encoder' }]} ctaHref={`/${supportedLang}/services/web-design`} isRtl={supportedLang !== 'en'} />
 </Layout>
 
 <script>

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import ToolsCTA from '../../../components/astro/ToolsCTA.astro';
 import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
 import { getLanguageStaticPaths, type SupportedLanguage, languages } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
@@ -94,4 +95,6 @@ const questions = [1, 2, 3, 4, 5, 6, 7, 8].map(n => t(`paaScraper.q${n}`, { fall
       </div>
     </section>
   
-  </Layout>
+  
+  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'faqGenerator', route: 'faq-generator' }, { key: 'headlineAnalyzer', route: 'headline-analyzer' }, { key: 'tools.keywordDensity', route: 'keyword-density-analyzer' }]} ctaHref={`/${supportedLang}/services/content-creation`} isRtl={isRtl} />
+</Layout>

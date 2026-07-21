@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import ToolsCTA from '../../../components/astro/ToolsCTA.astro';
 import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
 import { getLanguageStaticPaths, type SupportedLanguage, languages } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
@@ -112,7 +113,9 @@ const fillFieldsText = t('utmBuilder.fillFields', { fallback: 'Fill in the field
       </div>
     </section>
   
-  </Layout>
+  
+  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'socialPreview', route: 'social-media-preview' }, { key: 'slugGenerator', route: 'slug-generator' }, { key: 'qrGenerator', route: 'qr-generator' }]} ctaHref={`/${supportedLang}/services/seo`} isRtl={isRtl} />
+</Layout>
 
 <script type="application/json" id="utm-fill-text">{JSON.stringify(fillFieldsText)}</script>
 

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import ToolsCTA from '../../../components/astro/ToolsCTA.astro';
 import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
 import { getLanguageStaticPaths, type SupportedLanguage } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
@@ -157,6 +158,8 @@ const breadcrumbs = [
     </div>
   </section>
 
+
+  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'gradientGen', route: 'css-gradient-generator' }, { key: 'glassGen', route: 'glassmorphism-generator' }, { key: 'colorContrast', route: 'color-contrast-checker' }]} ctaHref={`/${supportedLang}/services/web-design`} isRtl={supportedLang !== 'en'} />
 </Layout>
 
 <script is:inline data-astro-rerun>

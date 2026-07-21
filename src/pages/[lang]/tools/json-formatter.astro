@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import ToolsCTA from '../../../components/astro/ToolsCTA.astro';
 import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
 import { getLanguageStaticPaths, type SupportedLanguage } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
@@ -106,7 +107,9 @@ const breadcrumbs = [
       </div>
     </section>
   
-  </Layout>
+  
+  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'tools.base64', route: 'base64-encoder' }, { key: 'tools.robotsGenerator', route: 'robots-generator' }, { key: 'schemaGenerator', route: 'schema-generator' }]} ctaHref={`/${supportedLang}/services/web-development`} isRtl={supportedLang !== 'en'} />
+</Layout>
 
 <script is:inline data-astro-rerun>
   // JSON Formatter/Validator logic
