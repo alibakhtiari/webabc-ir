@@ -31,13 +31,12 @@ const navItems = [
 const currentPathWithoutLang = Astro.url.pathname.replace(/^\/(en|fa|ar)/, '') || '/';
 ---
 
-<header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out px-4 py-5">
+<header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out px-4 py-3">
   <div class="mx-auto max-w-7xl">
     <div class="flex items-center justify-between backdrop-blur-xl bg-white/40 rounded-full px-6 py-3 shadow-lg border border-white/20">
-      
       <!-- Brand Logo -->
       <a href={linkPath('')} class="flex items-center space-x-2" aria-label={t('common.home')}>
-        <Logo class="w-[140px] xs:w-[160px] sm:w-[180px] xl:w-[260px] h-auto transition-all" />
+        <Logo class="w-[140px] xs:w-[160px] sm:w-[180px] xl:w-[260px] h-auto" />
       </a>
 
       <!-- Desktop Navigation Menu -->
@@ -328,30 +327,7 @@ const currentPathWithoutLang = Astro.url.pathname.replace(/^\/(en|fa|ar)/, '') |
   </div>
 </dialog>
 
-<div id="navbar-sentinel" class="absolute top-[10px] left-0 w-1 h-1 pointer-events-none opacity-0" aria-hidden="true"></div>
-
 <script is:inline>
-  function setupNavbarScroll() {
-    const header = document.getElementById('main-header');
-    const sentinel = document.getElementById('navbar-sentinel');
-
-    if (header && sentinel) {
-      const observer = new IntersectionObserver(([entry]) => {
-        if (!entry.isIntersecting) {
-          header.classList.remove('py-5');
-          header.classList.add('py-3');
-        } else {
-          header.classList.remove('py-3');
-          header.classList.add('py-5');
-        }
-      }, { rootMargin: '0px' });
-
-      observer.observe(sentinel);
-    }
-  }
-
-  document.addEventListener('astro:page-load', setupNavbarScroll);
-
   // Mobile Menu Drawer Control
   const mobileBtn = document.getElementById('mobile-menu-btn');
   const drawer = document.getElementById('mobile-drawer');

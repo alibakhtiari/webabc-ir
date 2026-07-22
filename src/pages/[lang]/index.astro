@@ -39,7 +39,7 @@ const websiteSchema = {
 ---
 
 <Layout title={title} description={description} lang={supportedLang} slug="" mainClass="relative overflow-x-hidden pt-0">
-  <link rel="preload" as="image" href={homepageHeroImg.src} type="image/webp" fetchpriority="high" slot="head" />
+  <link rel="preload" as="image" href={(homepageHeroImg as unknown as { src: string }).src || homepageHeroImg} type="image/webp" fetchpriority="high" slot="head" />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(websiteSchema)} />
   <HeroSection lang={supportedLang} />
   <ServicesSection lang={supportedLang} />
