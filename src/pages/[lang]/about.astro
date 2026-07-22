@@ -24,13 +24,43 @@ const approachItems = [0, 1, 2, 3].map(i => ({
 
 const aboutPageSchema = {
   "@context": "https://schema.org",
-  "@type": "AboutPage",
-  "name": titleText,
-  "description": descriptionText,
-  "mainEntity": {
-    "@id": "https://webabc.ir/#organization"
-  },
-  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": `https://webabc.ir/${supportedLang}/about/#webpage`,
+      "url": `https://webabc.ir/${supportedLang}/about/`,
+      "name": titleText,
+      "description": descriptionText,
+      "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://webabc.ir/#website",
+        "name": "WebABC",
+        "url": "https://webabc.ir/"
+      },
+      "about": {
+        "@id": "https://webabc.ir/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `https://webabc.ir/${supportedLang}/about/#breadcrumb`,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": t('common.home', { fallback: 'Home' }),
+          "item": `https://webabc.ir/${supportedLang}/`
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": titleText,
+          "item": `https://webabc.ir/${supportedLang}/about/`
+        }
+      ]
+    }
+  ]
 };
 
 const breadcrumbs = [

@@ -20,13 +20,48 @@ const descriptionText = t('contact.subtitle', { fallback: 'Get in Touch with Our
 
 const contactPageSchema = {
   "@context": "https://schema.org",
-  "@type": "ContactPage",
-  "name": titleText,
-  "description": descriptionText,
-  "mainEntity": {
-    "@id": "https://webabc.ir/#organization"
-  },
-  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+  "@graph": [
+    {
+      "@type": "ContactPage",
+      "@id": `https://webabc.ir/${supportedLang}/contact/#webpage`,
+      "url": `https://webabc.ir/${supportedLang}/contact/`,
+      "name": titleText,
+      "description": descriptionText,
+      "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
+      "mainEntity": {
+        "@type": "Organization",
+        "@id": "https://webabc.ir/#organization",
+        "name": "WebABC",
+        "url": `https://webabc.ir/${supportedLang}/`,
+        "telephone": "+989125811880",
+        "email": "info@webabc.ir",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Qazvin Science & Technology Park, Km 2 Barajin Road",
+          "addressLocality": "Qazvin",
+          "addressCountry": "IR"
+        }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `https://webabc.ir/${supportedLang}/contact/#breadcrumb`,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": t('common.home', { fallback: 'Home' }),
+          "item": `https://webabc.ir/${supportedLang}/`
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": titleText,
+          "item": `https://webabc.ir/${supportedLang}/contact/`
+        }
+      ]
+    }
+  ]
 };
 
 const breadcrumbs = [

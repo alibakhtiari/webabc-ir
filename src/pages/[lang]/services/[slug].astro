@@ -89,32 +89,7 @@ const breadcrumbs = [
 // Schema Generator Helper
 function createPageSchema(slugVal: string, langVal: string, titleVal: string, descVal: string) {
   const inLang = langVal === 'en' ? 'en-US' : langVal === 'ar' ? 'ar-SA' : 'fa-IR';
-  const canonicalUrl = `https://webabc.ir/${langVal}/services/${slugVal}`;
-
-  const baseSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": titleVal,
-    "description": descVal,
-    "url": canonicalUrl,
-    "inLanguage": inLang,
-    "provider": {
-      "@type": "Organization",
-      "@id": "https://webabc.ir/#organization",
-      "name": "WebABC",
-      "url": `https://webabc.ir/${langVal}`
-    },
-    "areaServed": [
-      {
-        "@type": "Country",
-        "name": "Iran"
-      },
-      {
-        "@type": "Country",
-        "name": "Global"
-      }
-    ]
-  };
+  const canonicalUrl = `https://webabc.ir/${langVal}/services/${slugVal}/`;
 
   const serviceTypeMap: Record<string, string> = {
     'seo': 'Search Engine Optimization',
@@ -130,11 +105,60 @@ function createPageSchema(slugVal: string, langVal: string, titleVal: string, de
     'ecommerce': 'E-commerce Website Development'
   };
 
-  if (serviceTypeMap[slugVal]) {
-    return { ...baseSchema, "serviceType": serviceTypeMap[slugVal] };
-  }
-
-  return baseSchema;
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": `${canonicalUrl}#service`,
+        "name": titleVal,
+        "description": descVal,
+        "url": canonicalUrl,
+        "inLanguage": inLang,
+        "serviceType": serviceTypeMap[slugVal] || "Digital Services",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://webabc.ir/#organization",
+          "name": "WebABC",
+          "url": `https://webabc.ir/${langVal}/`
+        },
+        "areaServed": [
+          {
+            "@type": "Country",
+            "name": "Iran"
+          },
+          {
+            "@type": "Country",
+            "name": "Global"
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${canonicalUrl}#breadcrumb`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": t('common.home', { fallback: 'Home' }),
+            "item": `https://webabc.ir/${langVal}/`
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": t('common.services', { fallback: 'Services' }),
+            "item": `https://webabc.ir/${langVal}/services/`
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": titleVal,
+            "item": canonicalUrl
+          }
+        ]
+      }
+    ]
+  };
 }
 
 const pageSchema = createPageSchema(slug, supportedLang, pageTitle, pageDesc);
