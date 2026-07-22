@@ -13,12 +13,13 @@ const dictionary = await getDictionary(lang);
 const titleText = dictionary.blog?.faq || 'سوالات متداول';
 
 // Generate FAQ Schema JSON-LD
-const pageUrl = `https://webabc.ir${Astro.url.pathname}`;
+const rawPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const pageUrl = `https://webabc.ir${rawPath}`;
 const schema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "@id": `${pageUrl}#faq`,
-  "isPartOf": { "@id": pageUrl },
+  "isPartOf": { "@id": `${pageUrl}#webpage` },
   "inLanguage": lang === 'en' ? 'en-US' : lang === 'ar' ? 'ar-SA' : 'fa-IR',
   "mainEntity": faqList.map(item => ({
     "@type": "Question",
