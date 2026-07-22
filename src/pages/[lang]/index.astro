@@ -8,6 +8,8 @@ import FAQ from '../../components/astro/FAQ.astro';
 import { getLanguageStaticPaths, type SupportedLanguage } from '../../types/language';
 import { getDictionary } from '../../i18n/get-dictionary';
 
+import homepageHeroImg from '../../assets/images/homepage-hero.webp';
+
 export const getStaticPaths = getLanguageStaticPaths;
 
 const { lang } = Astro.params;
@@ -37,6 +39,7 @@ const websiteSchema = {
 ---
 
 <Layout title={title} description={description} lang={supportedLang} slug="" mainClass="relative overflow-x-hidden pt-0">
+  <link rel="preload" as="image" href={homepageHeroImg.src} type="image/webp" fetchpriority="high" slot="head" />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(websiteSchema)} />
   <HeroSection lang={supportedLang} />
   <ServicesSection lang={supportedLang} />
