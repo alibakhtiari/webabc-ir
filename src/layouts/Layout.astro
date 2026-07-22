@@ -60,9 +60,10 @@ interface Props {
   slug?: string;
   mainClass?: string;
   noindex?: boolean;
+  ogImage?: string;
 }
 
-const { title, description, lang, slug = '', mainClass = "grow w-full overflow-x-hidden bg-gray-50/50 pt-0 pb-20", noindex = false } = Astro.props;
+const { title, description, lang, slug = '', mainClass = "grow w-full overflow-x-hidden bg-gray-50/50 pt-0 pb-20", noindex = false, ogImage } = Astro.props;
 
 const languageMeta = languages[lang] || languages.fa;
 const isRtl = languageMeta.direction === 'rtl';
@@ -97,6 +98,22 @@ const organizationSchema = createOrganizationSchema(
     <meta name="description" content={pageDescription} />
     <meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
     
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={ogImage ? (ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`) : `${siteUrl}/ali-bakhtiari.webp`} />
+    <meta property="og:site_name" content="WebABC" />
+    <meta property="og:locale" content={lang === 'en' ? 'en_US' : lang === 'ar' ? 'ar_SA' : 'fa_IR'} />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage ? (ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`) : `${siteUrl}/ali-bakhtiari.webp`} />
+
     <!-- SEO / Canonical / alternates -->
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" hreflang="en" href={`${siteUrl}/en${slug ? `/${slug}/` : '/'}`} />
