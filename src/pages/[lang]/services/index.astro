@@ -22,13 +22,85 @@ const descriptionText = t('services.description', { fallback: 'Professional Web 
 
 const servicesSchema = {
   "@context": "https://schema.org",
-  "@type": "Service",
+  "@type": "ItemList",
   "name": titleText,
   "description": descriptionText,
-  "provider": {
-    "@id": "https://webabc.ir/#organization"
-  },
-  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+  "url": `https://webabc.ir/${supportedLang}/services`,
+  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Service",
+        "name": t('seo.title', { fallback: 'SEO' }),
+        "url": `https://webabc.ir/${supportedLang}/services/seo`
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Service",
+        "name": t('services.webDevelopment', { fallback: 'Web Development' }),
+        "url": `https://webabc.ir/${supportedLang}/services/web-development`
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Service",
+        "name": t('wordpress.wordpressAndWoocommerce', { fallback: 'WordPress & WooCommerce' }),
+        "url": `https://webabc.ir/${supportedLang}/services/wordpress-development`
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Service",
+        "name": t('seo.localSeo', { fallback: 'Local SEO' }),
+        "url": `https://webabc.ir/${supportedLang}/services/local-seo`
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "Service",
+        "name": t('maintenance.title', { fallback: 'Website Care Plans' }),
+        "url": `https://webabc.ir/${supportedLang}/services/website-maintenance`
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "Service",
+        "name": t('ecommerce.title', { fallback: 'E-commerce Development' }),
+        "url": `https://webabc.ir/${supportedLang}/services/ecommerce`
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@type": "Service",
+        "name": t('speedOptimization.title', { fallback: 'Speed Optimization' }),
+        "url": `https://webabc.ir/${supportedLang}/services/speed-optimization`
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "item": {
+        "@type": "Service",
+        "name": t('uiUxAudit.title', { fallback: 'UI/UX Audits' }),
+        "url": `https://webabc.ir/${supportedLang}/services/ui-ux-audit`
+      }
+    }
+  ]
 };
 
 const breadcrumbs = [
