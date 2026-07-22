@@ -7,7 +7,10 @@ import mdx from '@astrojs/mdx';
 export default defineConfig({
   site: 'https://webabc.ir',
   output: 'static',
-  prefetch: true,
+  prefetch: {
+    prefetchAll: false,
+    defaultStrategy: 'viewport'
+  },
   build: {
     format: 'directory',
     // Inline the global stylesheet instead of a render-blocking <link> request —
