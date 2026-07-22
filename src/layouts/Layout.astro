@@ -11,11 +11,13 @@ import '../styles/globals.css';
 function createOrganizationSchema(url: string, logo: string, contactPoints: { telephone: string; contactType: string }[], lang: string) {
   return {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "ProfessionalService",
     "@id": `${url}/#organization`,
     "url": url,
     "logo": `${url}${logo}`,
     "name": "WebABC",
+    "telephone": "+989125811880",
+    "email": "info@webabc.ir",
     "contactPoint": contactPoints.map(cp => ({
       "@type": "ContactPoint",
       "telephone": cp.telephone,
@@ -27,6 +29,19 @@ function createOrganizationSchema(url: string, logo: string, contactPoints: { te
       "addressLocality": "Qazvin",
       "addressCountry": "IR"
     },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 36.3156,
+      "longitude": 50.0381
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    ],
     "sameAs": [
       "https://facebook.com/webabc",
       "https://twitter.com/webabc",

@@ -105,9 +105,45 @@ function createPageSchema(slugVal: string, langVal: string, titleVal: string, de
     'ecommerce': 'E-commerce Website Development'
   };
 
+  const offerSubServicesMap: Record<string, string[]> = {
+    'seo': ['On-Page SEO', 'Technical SEO', 'Off-Page SEO', 'Local SEO'],
+    'local-seo': ['Google Business Profile Optimization', 'Local Citations', 'Near Me Targeting', 'Review Management'],
+    'web-development': ['Frontend Web App Development', 'Backend API Integration', 'Responsive Design', 'Database Architecture'],
+    'wordpress-development': ['Custom Theme Development', 'WooCommerce Setup', 'Custom Plugin Development', 'CMS Maintenance'],
+    'web-design': ['UI/UX Prototyping', 'Responsive Design System', 'Wireframing', 'Design Audit'],
+    'content-creation': ['SEO Article Writing', 'Content Strategy', 'Copywriting', 'Keyword Optimization'],
+    'link-building': ['Guest Post Outreach', 'Authority Backlinks', 'Link Audit', 'Digital PR'],
+    'speed-optimization': ['Core Web Vitals Optimization', 'Image Optimization', 'Code Minification', 'Database Tuning'],
+    'ui-ux-audit': ['Usability Testing', 'Conversion Rate Optimization', 'Navigation Audit', 'UX Report'],
+    'website-maintenance': ['WordPress Core Updates', 'Cloud Backups', 'Uptime Monitoring', 'Security Audits'],
+    'ecommerce': ['Shopify Store Setup', 'WooCommerce Customization', 'Payment Gateway Integration', 'Product SEO']
+  };
+
+  const offers = offerSubServicesMap[slugVal] || ['Professional Consultation', 'Custom Implementation'];
+
   return {
     "@context": "https://schema.org",
     "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${canonicalUrl}#webpage`,
+        "url": canonicalUrl,
+        "name": titleVal,
+        "description": descVal,
+        "inLanguage": inLang,
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://webabc.ir/#website",
+          "name": "WebABC",
+          "url": "https://webabc.ir/"
+        },
+        "breadcrumb": {
+          "@id": `${canonicalUrl}#breadcrumb`
+        },
+        "mainEntity": {
+          "@id": `${canonicalUrl}#service`
+        }
+      },
       {
         "@type": "Service",
         "@id": `${canonicalUrl}#service`,
@@ -116,7 +152,7 @@ function createPageSchema(slugVal: string, langVal: string, titleVal: string, de
         "url": canonicalUrl,
         "serviceType": serviceTypeMap[slugVal] || "Digital Services",
         "provider": {
-          "@type": "Organization",
+          "@type": "ProfessionalService",
           "@id": "https://webabc.ir/#organization",
           "name": "WebABC",
           "url": `https://webabc.ir/${langVal}/`
@@ -130,7 +166,18 @@ function createPageSchema(slugVal: string, langVal: string, titleVal: string, de
             "@type": "Country",
             "name": "Global"
           }
-        ]
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": `${titleVal} Solutions`,
+          "itemListElement": offers.map((offerName) => ({
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": offerName
+            }
+          }))
+        }
       },
       {
         "@type": "BreadcrumbList",
