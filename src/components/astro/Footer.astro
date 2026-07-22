@@ -1,4 +1,5 @@
 ---
+import Logo from './Logo.astro';
 import { getDictionary } from '../../i18n/get-dictionary';
 import { languages, type SupportedLanguage } from '../../types/language';
 import { createTranslator } from '@/i18n/translate';
@@ -29,10 +30,8 @@ const linkPath = (path: string) => {
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
       <div class="md:col-span-1">
         <div class="flex flex-col space-y-4">
-          <a href={linkPath('')} class="flex items-center space-x-2">
-            <span class={`text-2xl font-bold tracking-tight text-primary font-${lang === 'en' ? 'sans' : 'persian'}`}>
-              WebABC
-            </span>
+          <a href={linkPath('')} class="flex items-center space-x-2" aria-label={t('common.home')}>
+            <Logo class="w-[140px] sm:w-[180px] h-auto" />
           </a>
 
           <p class={`text-foreground/70 mt-2 font-${lang === 'en' ? 'sans' : 'persian'}`}>

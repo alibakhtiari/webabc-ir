@@ -18,3 +18,35 @@
 /ar/services/modern-web-development  /ar/services/web-development/  301
 
 /sitemap.xml                  /sitemap-index.xml            301
+
+# Legacy & GSC Error Fix Redirects
+/en/local-seo-services       /en/services/seo/             301
+/en/local-seo                /en/services/seo/             301
+/fa/local-seo                /fa/services/seo/             301
+/ar/local-seo                /ar/services/seo/             301
+
+/en/seo-services             /en/services/seo/             301
+/ar/seo-services             /ar/services/seo/             301
+
+/fa/web-design               /fa/services/web-design/      301
+
+/fa/web-development-services /fa/services/web-development/ 301
+/ar/web-development-services /ar/services/web-development/ 301
+
+/en/dubai                    /en/service-areas/dubai/      301
+/ar/dubai                    /ar/service-areas/dubai/      301
+
+/en/case-studies             /en/portfolio/                301
+
+# Legacy numeric portfolio ID redirects to canonical portfolio slugs
+/en/portfolio/1              /en/portfolio/samake-alpha/   301
+/ar/portfolio/1              /ar/portfolio/samake-alpha/   301
+/en/portfolio/2              /en/portfolio/samake-bartar/  301
+/ar/portfolio/2              /ar/portfolio/samake-bartar/  301
+/ar/portfolio/4              /ar/portfolio/zeytoun-masoud/ 301
+/en/portfolio/5              /en/portfolio/ramzarz-negaran/ 301
+/ar/portfolio/5              /ar/portfolio/ramzarz-negaran/ 301
+/fa/portfolio/7              /fa/portfolio/4-seasons-carpet-clean/ 301
+/ar/portfolio/7              /ar/portfolio/4-seasons-carpet-clean/ 301
+/en/portfolio/10             /en/portfolio/samake-alpha/   301
+/ar/portfolio/10             /ar/portfolio/samake-alpha/   301
