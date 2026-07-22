@@ -35,7 +35,7 @@ if (!locationInfo.name) {
   return Astro.redirect(`/${supportedLang}/404`);
 }
 
-const titleText = `${t('service-areas.title', { fallback: 'SEO & Web Design Services in' })} ${locationInfo.name}`;
+const titleText = `${t('service-areas.titlePrefix', { fallback: 'SEO & Web Design Services in' })} ${locationInfo.name}`;
 const descriptionText = locationInfo.description || `We provide professional localized services in ${locationInfo.name} to help your organization rank organically and load rapidly.`;
 
 const breadcrumbs = [
