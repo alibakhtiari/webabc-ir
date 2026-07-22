@@ -211,7 +211,6 @@ function createPageSchema(slugVal: string, langVal: string, titleVal: string, de
           "name": `${titleVal} Solutions`,
           "itemListElement": offersList.map((offerName) => ({
             "@type": "Offer",
-            "priceRange": "$$",
             "itemOffered": {
               "@type": "Service",
               "name": offerName
