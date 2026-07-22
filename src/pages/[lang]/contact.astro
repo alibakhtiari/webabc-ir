@@ -29,18 +29,7 @@ const contactPageSchema = {
       "description": descriptionText,
       "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
       "mainEntity": {
-        "@type": "Organization",
-        "@id": "https://webabc.ir/#organization",
-        "name": "WebABC",
-        "url": `https://webabc.ir/${supportedLang}/`,
-        "telephone": "+989125811880",
-        "email": "info@webabc.ir",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Qazvin Science & Technology Park, Km 2 Barajin Road",
-          "addressLocality": "Qazvin",
-          "addressCountry": "IR"
-        }
+        "@id": "https://webabc.ir/#organization"
       }
     },
     {
