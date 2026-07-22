@@ -92,8 +92,6 @@ const organizationSchema = createOrganizationSchema(
     <!-- Inline Schema -->
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
     
-    <ClientRouter fallback="animate" />
-    
     <slot name="head" />
   </head>
   <body class={`bg-background text-foreground min-h-screen flex flex-col font-${lang === 'en' ? 'sans' : lang === 'ar' ? 'arabic' : 'persian'}`}>
@@ -103,5 +101,6 @@ const organizationSchema = createOrganizationSchema(
     </main>
     <Footer lang={lang} />
     <FloatingActions lang={lang} />
+    <ClientRouter fallback="animate" />
   </body>
 </html>
