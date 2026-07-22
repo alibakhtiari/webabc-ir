@@ -91,35 +91,80 @@ function createPageSchema(slugVal: string, langVal: string, titleVal: string, de
   const inLang = langVal === 'en' ? 'en-US' : langVal === 'ar' ? 'ar-SA' : 'fa-IR';
   const canonicalUrl = `https://webabc.ir/${langVal}/services/${slugVal}/`;
 
-  const serviceTypeMap: Record<string, string> = {
-    'seo': 'Search Engine Optimization',
-    'local-seo': 'Local SEO Optimization',
-    'web-development': 'Custom Web Development',
-    'wordpress-development': 'WordPress & WooCommerce Development',
-    'web-design': 'Web Design & Prototyping',
-    'content-creation': 'SEO Content Strategy & Creation',
-    'link-building': 'Link Building & Authority Enhancement',
-    'speed-optimization': 'Core Web Vitals & Speed Optimization',
-    'ui-ux-audit': 'UI/UX Audit & Usability Consulting',
-    'website-maintenance': 'Website Maintenance & Care Plans',
-    'ecommerce': 'E-commerce Website Development'
+  const serviceTypeMap: Record<string, Record<string, string>> = {
+    'seo': { en: 'Search Engine Optimization', fa: 'بهینه‌سازی موتورهای جستجو (سئو)', ar: 'تحسين محركات البحث' },
+    'local-seo': { en: 'Local SEO Optimization', fa: 'سئو محلی', ar: 'سيو محلي' },
+    'web-development': { en: 'Custom Web Development', fa: 'توسعه وب سفارشی', ar: 'تطوير مواقع الويب' },
+    'wordpress-development': { en: 'WordPress & WooCommerce Development', fa: 'توسعه وردپرس و ووکامرس', ar: 'تطوير ووردبريس وووكومرس' },
+    'web-design': { en: 'Web Design & Prototyping', fa: 'طراحی سایت و رابط کاربری', ar: 'تصميم مواقع الويب' },
+    'content-creation': { en: 'SEO Content Strategy & Creation', fa: 'تولید محتوای تخصصی سئو', ar: 'إنشاء المحتوى والاستراتيجية' },
+    'link-building': { en: 'Link Building & Authority Enhancement', fa: 'لینک‌سازی و افزایش اعتبار دامنه', ar: 'بناء الروابط وزيادة السلطة' },
+    'speed-optimization': { en: 'Core Web Vitals & Speed Optimization', fa: 'افزایش سرعت سایت و بهینه‌سازی', ar: 'تحسين سرعة الموقع' },
+    'ui-ux-audit': { en: 'UI/UX Audit & Usability Consulting', fa: 'ممیزی رابط کاربری و تجربه کاربری', ar: 'تدقيق واجهة وتجربة المستخدم' },
+    'website-maintenance': { en: 'Website Maintenance & Care Plans', fa: 'پشتیبانی و نگهداری وب‌سایت', ar: 'صيانة وتحديث الموقع' },
+    'ecommerce': { en: 'E-commerce Website Development', fa: 'طراحی و توسعه فروشگاه اینترنتی', ar: 'تطوير المتاجر الإلكترونية' }
   };
 
-  const offerSubServicesMap: Record<string, string[]> = {
-    'seo': ['On-Page SEO', 'Technical SEO', 'Off-Page SEO', 'Local SEO'],
-    'local-seo': ['Google Business Profile Optimization', 'Local Citations', 'Near Me Targeting', 'Review Management'],
-    'web-development': ['Frontend Web App Development', 'Backend API Integration', 'Responsive Design', 'Database Architecture'],
-    'wordpress-development': ['Custom Theme Development', 'WooCommerce Setup', 'Custom Plugin Development', 'CMS Maintenance'],
-    'web-design': ['UI/UX Prototyping', 'Responsive Design System', 'Wireframing', 'Design Audit'],
-    'content-creation': ['SEO Article Writing', 'Content Strategy', 'Copywriting', 'Keyword Optimization'],
-    'link-building': ['Guest Post Outreach', 'Authority Backlinks', 'Link Audit', 'Digital PR'],
-    'speed-optimization': ['Core Web Vitals Optimization', 'Image Optimization', 'Code Minification', 'Database Tuning'],
-    'ui-ux-audit': ['Usability Testing', 'Conversion Rate Optimization', 'Navigation Audit', 'UX Report'],
-    'website-maintenance': ['WordPress Core Updates', 'Cloud Backups', 'Uptime Monitoring', 'Security Audits'],
-    'ecommerce': ['Shopify Store Setup', 'WooCommerce Customization', 'Payment Gateway Integration', 'Product SEO']
+  const offerSubServicesMap: Record<string, Record<string, string[]>> = {
+    'seo': {
+      en: ['On-Page SEO', 'Technical SEO', 'Off-Page SEO', 'Local SEO'],
+      fa: ['سئو داخلی (On-Page)', 'سئو تکنیکال', 'سئو خارجی (Off-Page)', 'سئو محلی'],
+      ar: ['السيو الداخلي', 'السيو التقني', 'السيو الخارجي', 'السيو المحلي']
+    },
+    'local-seo': {
+      en: ['Google Business Profile Optimization', 'Local Citations', 'Near Me Targeting', 'Review Management'],
+      fa: ['بهینه‌سازی پروفایل گوگل', 'ثبت در دایرکتوری‌های محلی', 'هدف‌گذاری جستجوهای محلی', 'مدیریت نظرات کاربران'],
+      ar: ['تحسين ملف جوجل التجاري', 'التواجد في الأدلة المحلية', 'استهداف البحث المحلي', 'إدارة التقييمات']
+    },
+    'web-development': {
+      en: ['Frontend Web App Development', 'Backend API Integration', 'Responsive Design', 'Database Architecture'],
+      fa: ['توسعه فرانت‌اند با React/Next.js', 'اتصال به API و بک‌اند', 'طراحی واکنش‌گرا', 'طراحی پایگاه داده'],
+      ar: ['تطوير الواجهة الأمامية', 'ربط البرمجيات والـ API', 'التصميم المتجاوب', 'إدارة قواعد البيانات']
+    },
+    'wordpress-development': {
+      en: ['Custom Theme Development', 'WooCommerce Setup', 'Custom Plugin Development', 'CMS Maintenance'],
+      fa: ['طراحی قالب اختصاصی وردپرس', 'راه‌اندازی فروشگاه ووکامرس', 'توسعه افزونه سفارشی', 'پشتیبانی و به‌روزرسانی'],
+      ar: ['تصميم قوالب ووردبريس مخصصة', 'إعداد متجر ووكومرس', 'تطوير إضافات مخصصة', 'صيانة وتحديث وردبريس']
+    },
+    'web-design': {
+      en: ['UI/UX Prototyping', 'Responsive Design System', 'Wireframing', 'Design Audit'],
+      fa: ['طراحی پروتوتایپ UI/UX', 'دیزاین سیستم واکنش‌گرا', 'طراحی وایرفریم', 'ممیزی طراحی وب'],
+      ar: ['تصميم واجهات وتجربة المستخدم', 'أنظمة التصميم المتجاوبة', 'تخطيط الهيكل السلكي', 'تدقيق التصميم']
+    },
+    'content-creation': {
+      en: ['SEO Article Writing', 'Content Strategy', 'Copywriting', 'Keyword Optimization'],
+      fa: ['تولید مقالات تخصصی سئو', 'استراتژی و تقویم محتوایی', 'کپی‌رایتینگ و تبلیغ‌نویسی', 'بهینه‌سازی کلمات کلیدی'],
+      ar: ['كتابة مقالات متوافقة مع السيو', 'استراتيجية المحتوى', 'الكتابة الإعلانية', 'تحسين الكلمات المفتاحية']
+    },
+    'link-building': {
+      en: ['Guest Post Outreach', 'Authority Backlinks', 'Link Audit', 'Digital PR'],
+      fa: ['ریپورتاژ آگهی و پست مهمان', 'لینک‌سازی باکیفیت و معتبر', 'تحلیل و آنالیز بک‌لینک‌ها', 'روابط عمومی دیجیتال'],
+      ar: ['المنشورات الضيفة والروبورتاج', 'بناء روابط عالية الجودة', 'تحليل الروابط الخلفية', 'العلاقات العامة الرقمية']
+    },
+    'speed-optimization': {
+      en: ['Core Web Vitals Optimization', 'Image Optimization', 'Code Minification', 'Database Tuning'],
+      fa: ['بهینه‌سازی شاخص‌های Core Web Vitals', 'فشرده‌سازی و بهینه‌سازی تصاویر', 'مینify کردن کدهای JS و CSS', 'پاکسازی پایگاه داده'],
+      ar: ['تحسين مؤشرات Core Web Vitals', 'ضغط وتحسين الصور', 'تضغط الأكواد البرمجية', 'تحسين قاعدة البيانات']
+    },
+    'ui-ux-audit': {
+      en: ['Usability Testing', 'Conversion Rate Optimization', 'Navigation Audit', 'UX Report'],
+      fa: ['تست کاربردپذیری', 'بهینه‌سازی نرخ تبدیل (CRO)', 'بررسی ساختار منوها و مسیریابی', 'ارائه گزارش جامع UX'],
+      ar: ['اختبار قابلية الاستخدام', 'تحسين معدل التحويل', 'تدقيق التنقل في الموقع', 'تقرير شامل لتجربة المستخدم']
+    },
+    'website-maintenance': {
+      en: ['WordPress Core Updates', 'Cloud Backups', 'Uptime Monitoring', 'Security Audits'],
+      fa: ['به‌روزرسانی هسته و افزونه‌ها', 'پشتیبان‌گیری ابری منظم', 'مانیتورینگ پایداری و دسترس‌پذیری', 'پایش و تست‌های امنیتی'],
+      ar: ['تحديث النظام والإضافات', 'نسخ احتياطي سحابي', 'مراقبة استقرار الموقع', 'فحص الأمان والتدقيق']
+    },
+    'ecommerce': {
+      en: ['Shopify Store Setup', 'WooCommerce Customization', 'Payment Gateway Integration', 'Product SEO'],
+      fa: ['راه‌اندازی فروشگاه اینترنتی', 'سفارشی‌سازی اختصاصی فروشگاه', 'اتصال به درگاه‌های پرداخت', 'سئو و بهینه‌سازی محصولات'],
+      ar: ['إعداد وتطوير المتاجر', 'تخصيص المتاجر الإلكترونية', 'ربط بوابات الدفع الإلكتروني', 'سيو المنتجات والمتاجر']
+    }
   };
 
-  const offers = offerSubServicesMap[slugVal] || ['Professional Consultation', 'Custom Implementation'];
+  const selectedType = serviceTypeMap[slugVal]?.[langVal] || serviceTypeMap[slugVal]?.en || "Digital Services";
+  const offersList = offerSubServicesMap[slugVal]?.[langVal] || offerSubServicesMap[slugVal]?.en || ['Professional Consultation', 'Custom Implementation'];
 
   return {
     "@context": "https://schema.org",
@@ -150,7 +195,7 @@ function createPageSchema(slugVal: string, langVal: string, titleVal: string, de
         "name": titleVal,
         "description": descVal,
         "url": canonicalUrl,
-        "serviceType": serviceTypeMap[slugVal] || "Digital Services",
+        "serviceType": selectedType,
         "provider": {
           "@type": "ProfessionalService",
           "@id": "https://webabc.ir/#organization",
@@ -170,7 +215,7 @@ function createPageSchema(slugVal: string, langVal: string, titleVal: string, de
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": `${titleVal} Solutions`,
-          "itemListElement": offers.map((offerName) => ({
+          "itemListElement": offersList.map((offerName) => ({
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
