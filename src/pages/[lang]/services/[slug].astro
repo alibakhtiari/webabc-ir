@@ -87,44 +87,50 @@ const breadcrumbs = [
 
 // Schema Generator Helper
 function createPageSchema(slugVal: string, langVal: string, titleVal: string, descVal: string) {
+  const inLang = langVal === 'en' ? 'en-US' : langVal === 'ar' ? 'ar-SA' : 'fa-IR';
+  const canonicalUrl = `https://webabc.ir/${langVal}/services/${slugVal}`;
+
   const baseSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
     "name": titleVal,
     "description": descVal,
-    "provider": { "@id": "https://webabc.ir/#organization" },
-    "areaServed": {
-      "@type": "Country",
-      "name": "Global"
-    }
+    "url": canonicalUrl,
+    "inLanguage": inLang,
+    "provider": {
+      "@type": "Organization",
+      "@id": "https://webabc.ir/#organization",
+      "name": "WebABC",
+      "url": `https://webabc.ir/${langVal}`
+    },
+    "areaServed": [
+      {
+        "@type": "Country",
+        "name": "Iran"
+      },
+      {
+        "@type": "Country",
+        "name": "Global"
+      }
+    ]
   };
 
-  if (slugVal === 'seo') {
-    return { ...baseSchema, "serviceType": "Search Engine Optimization" };
-  }
-  if (slugVal === 'local-seo') {
-    return { ...baseSchema, "serviceType": "Local SEO Optimization" };
-  }
-  if (slugVal === 'web-development') {
-    return { ...baseSchema, "serviceType": "Custom Web Development" };
-  }
-  if (slugVal === 'wordpress-development') {
-    return { ...baseSchema, "serviceType": "WordPress Development" };
-  }
-  if (slugVal === 'web-design') {
-    return { ...baseSchema, "serviceType": "Web Design" };
-  }
-  if (slugVal === 'speed-optimization') {
-    return { ...baseSchema, "serviceType": "Website Optimization" };
-  }
-  if (slugVal === 'ui-ux-audit') {
-    return { ...baseSchema, "serviceType": "UI/UX Consulting" };
-  }
-  if (slugVal === 'website-maintenance') {
-    return { ...baseSchema, "serviceType": "Website Maintenance" };
-  }
-  if (slugVal === 'ecommerce') {
-    return { ...baseSchema, "serviceType": "E-commerce Website Development" };
+  const serviceTypeMap: Record<string, string> = {
+    'seo': 'Search Engine Optimization',
+    'local-seo': 'Local SEO Optimization',
+    'web-development': 'Custom Web Development',
+    'wordpress-development': 'WordPress & WooCommerce Development',
+    'web-design': 'Web Design & Prototyping',
+    'content-creation': 'SEO Content Strategy & Creation',
+    'link-building': 'Link Building & Authority Enhancement',
+    'speed-optimization': 'Core Web Vitals & Speed Optimization',
+    'ui-ux-audit': 'UI/UX Audit & Usability Consulting',
+    'website-maintenance': 'Website Maintenance & Care Plans',
+    'ecommerce': 'E-commerce Website Development'
+  };
+
+  if (serviceTypeMap[slugVal]) {
+    return { ...baseSchema, "serviceType": serviceTypeMap[slugVal] };
   }
 
   return baseSchema;
