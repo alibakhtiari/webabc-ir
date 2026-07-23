@@ -48,7 +48,7 @@ const quickLinks = [
 ];
 ---
 
-<Layout title={title} description={description} lang={supportedLang} slug="404">
+<Layout title={title} description={description} lang={supportedLang} slug="404" noindex={true}>
   <meta slot="head" name="robots" content="noindex, follow" />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageNotFoundSchema)} />
 
