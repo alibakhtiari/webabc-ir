@@ -141,8 +141,10 @@ const authorRole = post.data.author === 'Ali Bakhtiari'
         <Image
           src={post.data.image}
           alt={post.data.title}
-          width={800}
-          height={450}
+          width={1200}
+          height={630}
+          fetchpriority="high"
+          loading="eager"
           class="object-cover w-full h-full"
         />
       </div>
@@ -172,6 +174,12 @@ const authorRole = post.data.author === 'Ali Bakhtiari'
             <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
             {formatDate(post.data.date)}
           </span>
+          {post.data.updatedDate && (
+            <span class="flex items-center gap-1 text-primary">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+              {t('blog.updated', { fallback: 'Updated' })}: {formatDate(post.data.updatedDate)}
+            </span>
+          )}
           <span class="flex items-center gap-1">
             <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
             {post.data.readTime} {t('blog.minuteRead', { fallback: 'mins' })}
