@@ -90,23 +90,28 @@ export default {
       return handleContact(request, env);
     }
 
-    // 3. Root path -> geo-based locale redirect
-    if (url.pathname === '/') {
+    // 3. Root path -> geo-based locale redirect (301 permanent redirect)
+    if (url.pathname === '/' || url.pathname === '') {
       const country = ((request as { cf?: { country?: string } }).cf?.country) || 'US';
       let targetLang = 'en';
       if (PERSIAN_COUNTRIES.includes(country)) targetLang = 'fa';
       else if (ARABIC_COUNTRIES.includes(country)) targetLang = 'ar';
-      return Response.redirect(`${url.origin}/${targetLang}`, 307);
+      return Response.redirect(`${url.origin}/${targetLang}/`, 301);
     }
 
-    // 4. Everything else: serve the static build, adding noindex on non-canonical hosts
+    // 4. Everything else: serve static build, adding noindex on non-canonical hosts and 404 pages
     const response = await env.ASSETS.fetch(request);
-    if (url.hostname !== CANONICAL_HOST) {
+    const is404Page = url.pathname.endsWith('/404') || url.pathname.endsWith('/404/');
+    if (url.hostname !== CANONICAL_HOST || is404Page) {
       const headers = new Headers(response.headers);
-      headers.set('X-Robots-Tag', 'noindex, nofollow');
+      if (is404Page) {
+        headers.set('X-Robots-Tag', 'noindex, follow');
+      } else {
+        headers.set('X-Robots-Tag', 'noindex, nofollow');
+      }
       return new Response(response.body, {
-        status: response.status,
-        statusText: response.statusText,
+        status: is404Page ? 404 : response.status,
+        statusText: is404Page ? 'Not Found' : response.statusText,
         headers,
       });
     }
