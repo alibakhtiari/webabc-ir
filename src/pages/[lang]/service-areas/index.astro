@@ -41,6 +41,9 @@ const breadcrumbs = [
     <!-- Locations list -->
     <section class="py-16 bg-white font-sans">
       <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class={`text-2xl font-bold text-gray-900 mb-8 text-center font-${supportedLang === 'en' ? 'sans' : 'persian'}`}>
+          {supportedLang === 'fa' ? 'مناطق تحت پوشش خدمات وب‌اِی‌بی‌سی' : supportedLang === 'ar' ? 'المناطق الجغرافية لخدماتنا' : 'Explore Our Service Locations'}
+        </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           {locationsList.map((loc: any) => (
             <div class={`bg-white border border-gray-100 rounded-2xl p-8 shadow-xs hover:shadow-lg transition-all space-y-4 font-${supportedLang === 'en' ? 'sans' : 'persian'}`}>

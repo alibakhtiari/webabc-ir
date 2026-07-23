@@ -66,6 +66,9 @@ function t(key: string, options?: { fallback: string }) {
   <!-- Portfolio Grid Section -->
   <section class="py-16 font-sans">
     <div class="container mx-auto px-4">
+      <h2 class={`text-2xl font-bold text-gray-900 mb-8 text-center font-${supportedLang === 'en' ? 'sans' : 'persian'}`}>
+        {supportedLang === 'fa' ? 'نمونه کارهای سئو و طراحی سایت' : supportedLang === 'ar' ? 'معرض أعمالنا وحالات الدراسة' : 'Featured Client Case Studies & Projects'}
+      </h2>
 
       <!-- Category Filter -->
       <div class="flex flex-wrap gap-3 justify-center mb-12 font-persian">
