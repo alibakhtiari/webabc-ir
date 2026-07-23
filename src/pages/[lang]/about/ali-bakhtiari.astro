@@ -1,0 +1,129 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import CTA from '../../../components/astro/CTA.astro';
+import { getLanguageStaticPaths, type SupportedLanguage } from '../../../types/language';
+import { getDictionary } from '../../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
+
+export const getStaticPaths = getLanguageStaticPaths;
+
+const { lang } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+
+const t = createTranslator(dictionary);
+
+const name = "Ali Bakhtiari";
+const role = supportedLang === 'fa' ? 'توسعه‌دهنده ارشد وردپرس و متخصص سئو' : supportedLang === 'ar' ? 'مطور ووردبريس ومستشار سيو' : 'Senior WordPress Developer & SEO Specialist';
+const bio = supportedLang === 'fa'
+  ? 'علی بختیاری، بنیان‌گذار وب‌اِی‌بی‌سی، با بیش از ۱۰ سال تجربه در زمینه طراحی وب، توسعه برنامه‌های کاربردی تحت وب و بهینه‌سازی موتورهای جستجو (SEO). تخصص اصلی او ساخت وب‌سایت‌های سریع، امن و بهینه‌شده برای نتایج گوگل است.'
+  : supportedLang === 'ar'
+  ? 'علي بختياري، مؤسس WebABC، يتمتع بخبرة تزيد عن 10 سنوات في تصميم الويب وتطوير التطبيقات وتحسين محركات البحث (SEO). يتخصص في بناء مواقع سريعة وآمنة ومحسنة لمحركات البحث.'
+  : 'Ali Bakhtiari is the founder of WebABC with over 10 years of experience in web design, full-stack application development, and Search Engine Optimization (SEO). He specializes in building high-performance, secure, and Google-optimized web applications.';
+
+const titleText = `${name} – ${role} | WebABC`;
+const descriptionText = bio;
+
+const breadcrumbs = [
+  { label: t('common.home', { fallback: 'Home' }), url: `/${supportedLang}/` },
+  { label: t('common.about', { fallback: 'About' }), url: `/${supportedLang}/about/` },
+  { label: name }
+];
+
+const origin = 'https://webabc.ir';
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${origin}/${supportedLang}/about/ali-bakhtiari/#person`,
+  "name": name,
+  "jobTitle": role,
+  "worksFor": { "@id": `${origin}/#organization` },
+  "image": `${origin}/ali-bakhtiari.webp`,
+  "url": `${origin}/${supportedLang}/about/ali-bakhtiari/`,
+  "sameAs": [
+    "https://www.linkedin.com/in/alibakhtiarii/",
+    "https://github.com/alibakhtiari",
+    "https://www.instagram.com/aliibakhtiari/",
+    "https://www.facebook.com/Alii.bakhtiari",
+    "https://x.com/aliib1991",
+    "https://alibakhtiari.ir",
+    "https://aliib.ir"
+  ],
+  "knowsAbout": [
+    "Search Engine Optimization (SEO)",
+    "WordPress Development",
+    "Web Application Architecture",
+    "Core Web Vitals Optimization",
+    "Full-Stack Web Development"
+  ]
+};
+---
+
+<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="about/ali-bakhtiari">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(personSchema)} />
+
+  <div class="max-w-4xl mx-auto pt-36 pb-20 px-4 font-sans font-persian">
+    <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
+
+    <div class="bg-white border border-gray-100 rounded-3xl p-8 md:p-12 shadow-xs space-y-8 mt-6">
+      <div class="flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-start">
+        <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white ring-4 ring-primary/10 shadow-lg shrink-0">
+          <img src="/ali-bakhtiari.webp" alt="Ali Bakhtiari" width="160" height="160" class="w-full h-full object-cover" />
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <span class="inline-block px-3 py-1 bg-primary/10 text-primary font-bold text-xs rounded-full uppercase tracking-wider mb-2">
+              {supportedLang === 'fa' ? 'بنیان‌گذار و مدیر فنی' : supportedLang === 'ar' ? 'المؤسس والمدير التقني' : 'Founder & Technical Director'}
+            </span>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">{name}</h1>
+            <p class="text-base text-gray-500 font-medium mt-1">{role}</p>
+          </div>
+
+          <p class="text-gray-600 leading-relaxed text-base">
+            {bio}
+          </p>
+
+          <!-- Social Verification Badges -->
+          <div class="flex flex-wrap gap-3 pt-2 justify-center md:justify-start">
+            <a href="https://www.linkedin.com/in/alibakhtiarii/" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-gray-50 hover:bg-[#0077b5] hover:text-white text-gray-700 text-xs font-semibold rounded-lg border border-gray-200 transition-all inline-flex items-center gap-1.5">
+              LinkedIn
+            </a>
+            <a href="https://github.com/alibakhtiari" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-gray-50 hover:bg-[#24292e] hover:text-white text-gray-700 text-xs font-semibold rounded-lg border border-gray-200 transition-all inline-flex items-center gap-1.5">
+              GitHub
+            </a>
+            <a href="https://aliib.ir/" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-gray-50 hover:bg-primary hover:text-white text-gray-700 text-xs font-semibold rounded-lg border border-gray-200 transition-all inline-flex items-center gap-1.5">
+              Personal Website
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Area of Expertise -->
+      <div class="border-t border-gray-100 pt-8 space-y-4">
+        <h2 class="text-2xl font-bold text-gray-900">
+          {supportedLang === 'fa' ? 'حوزه‌های تخصص و مهارت‌ها' : supportedLang === 'ar' ? 'مجالات الخبرة والمهارات' : 'Areas of Expertise'}
+        </h2>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-1">
+            <h3 class="font-bold text-gray-800 text-base">Technical & On-Page SEO</h3>
+            <p class="text-xs text-gray-500">Core Web Vitals, Schema.org, Crawl Budget Optimization, Multilingual Hreflang</p>
+          </div>
+          <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-1">
+            <h3 class="font-bold text-gray-800 text-base">Full-Stack Development</h3>
+            <p class="text-xs text-gray-500">Astro, Next.js, React, Node.js, Python, Custom WordPress Architecture</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Consultation CTA -->
+      <CTA 
+        lang={supportedLang}
+        title={supportedLang === 'fa' ? 'نیاز به مشاوره تخصصی سئو یا طراحی سایت دارید؟' : supportedLang === 'ar' ? 'هل تحتاج إلى استشارة متخصصة في السيو أو تصميم المواقع؟' : 'Need direct technical consultation for your project?'}
+        description={supportedLang === 'fa' ? 'جهت بررسی اختصاصی پروژه با علی بختیاری در ارتباط باشید.' : supportedLang === 'ar' ? 'تواصل مباشرة مع علي بختياري لمناقشة مشروعك.' : 'Book a consultation call directly with Ali Bakhtiari to discuss your web application or SEO strategy.'}
+        buttonText={t('common.contactUs', { fallback: 'Contact Ali' })}
+      />
+    </div>
+  </div>
+</Layout>
