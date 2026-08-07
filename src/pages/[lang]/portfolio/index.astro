@@ -74,7 +74,7 @@ function t(key: string, options?: { fallback: string }) {
       <div class="flex flex-wrap gap-3 justify-center mb-12 font-persian">
         {categories.map((category, idx) => (
           <a
-            href={`/${supportedLang}/portfolio?category=${encodeURIComponent(category)}`}
+            href={`/${supportedLang}/portfolio/?category=${encodeURIComponent(category)}`}
             data-filter-btn={category}
             class={`px-5 py-2.5 text-xs font-semibold rounded-full border border-gray-200 cursor-pointer transition-all ${
               idx === 0
@@ -91,7 +91,7 @@ function t(key: string, options?: { fallback: string }) {
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {items.map((item) => (
           <div data-portfolio-card={item.category} class="group bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
-            <a href={`/${supportedLang}/portfolio/${item.slug}`} class="block">
+            <a href={`/${supportedLang}/portfolio/${item.slug}/`} class="block">
               <div class="relative aspect-video overflow-hidden">
                 <Image
                   src={item.image}

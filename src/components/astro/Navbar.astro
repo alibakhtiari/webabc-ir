@@ -15,9 +15,11 @@ const isRtl = languages[lang]?.direction === 'rtl';
 // Helper to translate strings
 const t = createTranslator(dictionary);
 
-// Generate relative paths correctly based on lang
+// Generate relative paths correctly based on lang with trailing slashes
 const linkPath = (path: string) => {
-  return `/${lang}${path}`;
+  if (!path || path === '/') return `/${lang}/`;
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return `/${lang}${cleanPath.endsWith('/') ? cleanPath : cleanPath + '/'}`;
 };
 
 const navItems = [

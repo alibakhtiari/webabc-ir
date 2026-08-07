@@ -49,7 +49,7 @@ const ctaBtnText = buttonText || t('cta.primaryButton', { fallback: 'Get Started
     
     <div class="flex-shrink-0">
       <a
-        href={`/${lang}${buttonLink}`}
+        href={`/${lang}${buttonLink.endsWith('/') ? buttonLink : buttonLink + '/'}`}
         class="inline-flex items-center justify-center px-6 py-3.5 bg-primary text-white font-bold rounded-xl shadow-md hover:bg-primary/95 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5"
       >
         <span>{ctaBtnText}</span>
