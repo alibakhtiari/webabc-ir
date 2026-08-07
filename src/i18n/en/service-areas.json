@@ -120,6 +120,48 @@
         "Results-driven digital strategies",
         "24/7 support"
       ]
+    },
+    {
+      "name": "Abu Dhabi",
+      "slug": "abu-dhabi",
+      "country": "UAE",
+      "description": "Providing specialized web design, custom software development, and SEO services to enterprises and government vendors in Abu Dhabi.",
+      "longDescription": "As the capital of the UAE, Abu Dhabi hosts high-growth enterprises and public sector vendors requiring enterprise-grade security, rapid loading speeds, and bilingual Arabic/English web design.",
+      "localNotes": "Abu Dhabi digital projects require bilingual RTL/LTR layout mastery, strict WCAG accessibility, and local search visibility across UAE business directories and Google Maps.",
+      "services": [
+        "Custom Web Development",
+        "Bilingual SEO Services",
+        "Enterprise Web Architecture",
+        "UI/UX Design Audits",
+        "E-Commerce Solutions"
+      ],
+      "image": "/images/locations/abu-dhabi.webp",
+      "benefits": [
+        "Enterprise-grade security standards",
+        "Arabic & English bilingual layout expertise",
+        "Local UAE search engine visibility",
+        "High-performance Next.js & Astro builds"
+      ]
+    },
+    {
+      "name": "Riyadh",
+      "slug": "riyadh",
+      "country": "Saudi Arabia",
+      "description": "Delivering high-performance web development and search engine optimization services to businesses in Riyadh under Vision 2030 digital expansion.",
+      "longDescription": "Saudi Arabia's Vision 2030 has catalyzed unprecedented digital growth in Riyadh. We build fast, secure, and search-optimized web applications tailored for the Saudi Arabian market.",
+      "localNotes": "The Saudi market prioritizes mobile-first speed, localized Arabic copywriting, and seamless integration with regional payment and logistics gateways.",
+      "services": [
+        "Web Design & Development",
+        "Arabic SEO Optimization",
+        "E-Commerce & Payment Gateway Setup",
+        "WordPress & Custom Development"
+      ],
+      "image": "/images/locations/riyadh.webp",
+      "benefits": [
+        "Saudi market localization expertise",
+        "Mobile-first core web vitals tuning",
+        "Bilingual Arabic/English search strategies"
+      ]
     }
   ]
 }
