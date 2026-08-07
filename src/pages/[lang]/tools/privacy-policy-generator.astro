@@ -30,9 +30,24 @@ const webAppSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'چرا وجود صفحه سیاست حریم خصوصی (Privacy Policy) برای وب‌سایت الزامی است؟' : supportedLang === 'ar' ? 'لماذا تعد صفحة سياسة الخصوصية إلزامية للمواقع؟' : 'Why is a Privacy Policy required for websites?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'صفحه حریم خصوصی نحوه جمع‌آوری، کوکی‌ها و حفاظت از اطلاعات کاربران را شفاف کرده و برای قوانین GDPR و مجوزهای تبلیغاتی و اینماد الزامی است.' : supportedLang === 'ar' ? 'توضح سياسة الخصوصية كيفية جمع بيانات المستخدمين وحمايتها واستخدام الكوكيز، وهو شرط أساسي للامتثال لـ GDPR وجوجل إعلانات.' : 'A Privacy Policy discloses how user personal data, cookies, and analytics are collected and protected, satisfying GDPR compliance and ad network standards.'
+      }
+    }
+  ]
+};
+
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
   { label: titleText }
 ];
 
@@ -64,6 +79,7 @@ const strings = {
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/privacy-policy-generator">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
       <!-- Hero Section -->
     <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
       <div class="container mx-auto px-4">

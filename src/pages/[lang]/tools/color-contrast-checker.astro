@@ -29,15 +29,31 @@ const webAppSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'نسبت کنتراست استاندارد WCAG چیست؟' : supportedLang === 'ar' ? 'ما هي نسبة التباين الموصى بها في WCAG؟' : 'What is the recommended WCAG color contrast ratio?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'بر اساس استاندارد WCAG 2.1 سطح AA، نسبت کنتراست متن عادی حداقل ۴.۵:۱ و برای متن بزرگ حداقل ۳:۱ است. سطح AAA نسبت ۷:۱ را الزام می‌کند.' : supportedLang === 'ar' ? 'تتطلب معايير WCAG 2.1 مستوى AA نسبة تباين لا تقل عن 4.5:1 للنصوص العادية و 3:1 للنصوص الكبيرة.' : 'WCAG 2.1 Level AA requires a minimum contrast ratio of 4.5:1 for normal body text and 3:1 for large text. Level AAA requires 7:1.'
+      }
+    }
+  ]
+};
+
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
   { label: titleText }
 ];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/color-contrast-checker">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero Section -->
   <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100 font-sans">

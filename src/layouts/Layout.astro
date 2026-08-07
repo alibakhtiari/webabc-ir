@@ -18,8 +18,10 @@ function createOrganizationSchema(url: string, logo: string, contactPoints: { te
     "image": `${url}${logo}`,
     "priceRange": "$$",
     "name": "WebABC",
+    "legalName": "WebABC Web Design & SEO Agency",
     "telephone": "+989125811880",
     "email": "info@webabc.ir",
+    "knowsLanguage": ["en", "fa", "ar"],
     "contactPoint": contactPoints.map(cp => ({
       "@type": "ContactPoint",
       "telephone": cp.telephone,
@@ -36,6 +38,12 @@ function createOrganizationSchema(url: string, logo: string, contactPoints: { te
       "latitude": 36.3156,
       "longitude": 50.0381
     },
+    "areaServed": [
+      { "@type": "City", "name": "Muscat", "containedInPlace": { "@type": "Country", "name": "Oman" } },
+      { "@type": "City", "name": "Dubai", "containedInPlace": { "@type": "Country", "name": "United Arab Emirates" } },
+      { "@type": "City", "name": "Tehran", "containedInPlace": { "@type": "Country", "name": "Iran" } },
+      { "@type": "City", "name": "Qazvin", "containedInPlace": { "@type": "Country", "name": "Iran" } }
+    ],
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
@@ -79,7 +87,10 @@ const pageDescription = description || dictionary.home?.description || 'Web Desi
 const organizationSchema = createOrganizationSchema(
   siteUrl,
   '/images/logo.webp',
-  [{ telephone: '+989125811880', contactType: 'customer service' }],
+  [
+    { telephone: '+989125811880', contactType: 'customer service' },
+    { telephone: '+989354767068', contactType: 'customer service' }
+  ],
   lang
 );
 ---

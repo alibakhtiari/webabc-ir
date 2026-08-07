@@ -28,6 +28,19 @@ export default defineConfig({
           item.url = `${item.url}/`;
         }
         item.lastmod = new Date().toISOString();
+        if (item.url.match(/\/(en|fa|ar)\/$/)) {
+          item.priority = 1.0;
+          item.changefreq = 'daily';
+        } else if (item.url.includes('/tools/') || item.url.includes('/services/')) {
+          item.priority = 0.9;
+          item.changefreq = 'weekly';
+        } else if (item.url.includes('/portfolio/') || item.url.includes('/service-areas/')) {
+          item.priority = 0.8;
+          item.changefreq = 'weekly';
+        } else {
+          item.priority = 0.7;
+          item.changefreq = 'monthly';
+        }
         return item;
       },
     }),

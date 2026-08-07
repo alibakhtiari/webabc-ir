@@ -29,15 +29,31 @@ const webAppSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'اسکیما مپینگ (Schema Markup) چیست و چه تاثیری بر سئو دارد؟' : supportedLang === 'ar' ? 'ما هو مخطط البيانات المنظمة (Schema Markup) وما تأثيره على السيو؟' : 'What is Schema Markup and how does it help SEO?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'کدهای اسکیما (JSON-LD) به گوگل و هوش مصنوعی کمک می‌کنند تا ساختار محتوای وب‌سایت شما مانند سازمان، محصولات، مقالات و سوالات متداول را به درستی درک کرده و نتایج غنی (Rich Results) نمایش دهند.' : supportedLang === 'ar' ? 'تساعد أكواد الشفرة المنظمة موتورات البحث والذكاء الاصطناعي على فهم هيكل المحتوى وتوليد نتائج غنية في نتائج البحث.' : 'Schema markup (JSON-LD) provides structured data to search engines and AI engines, enabling Rich Snippets, Knowledge Graph panels, and better SERP visibility.'
+      }
+    }
+  ]
+};
+
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
   { label: titleText }
 ];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/schema-generator">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero Section -->
   <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100 font-sans">

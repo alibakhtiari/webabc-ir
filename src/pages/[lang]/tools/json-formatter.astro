@@ -30,15 +30,31 @@ const webAppSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'فرمت‌کننده و اعتبارسنج JSON چیست و چگونه کار می‌کند؟' : supportedLang === 'ar' ? 'ما هي أداة تنسيق وفحص JSON وكيف تعمل؟' : 'What is a JSON Formatter & Validator?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'ابزار فرمت JSON رشته‌های متنی JSON را مرتب (Prettify)، فشرده (Minify) و خطایابی ساختاری (Syntax Validation) می‌کند تا خوانایی و اشکال‌زدایی API راحت‌تر شود.' : supportedLang === 'ar' ? 'تقوم أداة تنسيق JSON بتنظيم الشفرات المكتوبة بصيغة JSON وفحص خطأ بناء الجمل وتسهيل تصحيح أخطاء الـ API.' : 'A JSON Formatter formats raw JSON data into clean indented syntax, minifies code, and validates structural syntax errors for developer debugging.'
+      }
+    }
+  ]
+};
+
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.tools', { fallback: 'Tools' }), url: `/${supportedLang}/tools` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools', { fallback: 'Tools' }), url: `/${supportedLang}/tools/` },
   { label: titleText }
 ];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/json-formatter">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
   
       <!-- Hero Section -->
     <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">

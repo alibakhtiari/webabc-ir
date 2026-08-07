@@ -30,9 +30,24 @@ const webAppSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'پیش‌نمایش تگ‌های Open Graph و Twitter Card چیست؟' : supportedLang === 'ar' ? 'ما هي أداة معاينة بطاقات Open Graph و Twitter Cards؟' : 'What is Open Graph & Twitter Card Social Preview?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'تگ‌های Open Graph تعیین می‌کنند که هنگام اشتراک‌گذاری لینک صفحه در فیس‌بوک، تلگرام، توییتر و لینکدین، چه تصویر، عنوان و توضیحاتی قرار می‌گیرد.' : supportedLang === 'ar' ? 'تحدد علامات Open Graph كيفية ظهور الصورة والعنوان والوصف عند مشاركة رابط الموقع على شبكات التواصل.' : 'Open Graph and Twitter Card tags control how your site link, thumbnail image, title, and description render when shared across social networks.'
+      }
+    }
+  ]
+};
+
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
   { label: titleText }
 ];
 
@@ -42,6 +57,7 @@ const defaultDesc = t('socialPreview.defaultDesc', { fallback: 'Your description
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/social-media-preview">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
       <!-- Hero Section -->
     <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
       <div class="container mx-auto px-4">

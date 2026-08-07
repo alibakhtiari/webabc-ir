@@ -29,15 +29,31 @@ const webAppSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'چرا کدهای اسکیما FAQPage برای سئو اهمیت دارند؟' : supportedLang === 'ar' ? 'لماذا تعد كود مخطط FAQPage مهمة للسيو؟' : 'Why are FAQPage Schema Markups important for SEO?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'کدهای FAQPage به موتورهای جستجو و هوش مصنوعی اجازه می‌دهند سوالات و پاسخ‌های متداول را به‌طور مستقیم در نتایج گوگل و پاسخ‌های هوشمند نمایش دهند.' : supportedLang === 'ar' ? 'تسمح كود مخطط FAQPage لموتورات البحث والذكاء الاصطناعي بتوليد الإجابات المباشرة للأسئلة الشائعة في نتائج البحث.' : 'FAQPage Schema allows search engines and AI engines to display rich expandable Q&A accordions directly in search results.'
+      }
+    }
+  ]
+};
+
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
   { label: titleText }
 ];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/faq-generator">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero Section -->
   <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100 font-sans">

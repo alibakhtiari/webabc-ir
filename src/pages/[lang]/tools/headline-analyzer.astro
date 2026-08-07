@@ -31,15 +31,31 @@ const webAppSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'چگونه عنوان مقاله خود را برای سئو بهینه کنیم؟' : supportedLang === 'ar' ? 'كيف يمكنني تحسين عنوان المقال للسيو؟' : 'How do I optimize a headline for SEO and clicks?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'عناوین عالی باید بین ۶ تا ۱۲ کلمه، شامل عدد، دارای کلمات جذاب (Power Words) و کلمه کلیدی اصلی در ابتدای متن باشند.' : supportedLang === 'ar' ? 'العناوين الممتازة يجب أن تتراوح بين 6 إلى 12 كلمة وتحتوي على أرقام وكلمات محفزة للنقر.' : 'High-performing headlines should be between 6 and 12 words, include numbers or brackets, contain power words, and front-load target keywords.'
+      }
+    }
+  ]
+};
+
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
   { label: titleText }
 ];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/headline-analyzer">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
       <!-- Hero Section -->
     <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
       <div class="container mx-auto px-4">

@@ -30,15 +30,39 @@ const webAppSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'طول استاندارد عنوان سئو چقدر است؟' : supportedLang === 'ar' ? 'ما هو الطول المثالي لعنوان السيو؟' : 'What is the optimal length for an SEO title tag?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'طول بهینه عنوان سئو بین ۵۰ تا ۶۰ کاراکتر یا حداکثر ۵۸۰ پیکسل در دسکتاپ است.' : supportedLang === 'ar' ? 'الطول المثالي للعنوان هو بين 50 و 60 حرفاً أو 580 بكسل على أجهزة الكمبيوتر.' : 'The optimal title length is between 50 and 60 characters or 580 pixels on desktop viewports.'
+      }
+    },
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'چرا گوگل عنوان متا را در نتایج جستجو تغییر می‌دهد؟' : supportedLang === 'ar' ? 'لماذا يغير جوجل عنوان الصفحة في نتائج البحث؟' : 'Why does Google rewrite page title tags?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'اگر عنوان خیلی طولانی باشد، کلمات کلیدی اسپم داشته باشد یا نامرتبط با سرچ کاربر باشد، گوگل آن را جایگزین می‌کند.' : supportedLang === 'ar' ? 'إذا كان العنوان طويلاً جداً أو يحتوي تكراراً عشوائياً، يقوم جوجل باستبداله بنص أكثر ملائمة.' : 'Google rewrites title tags if they are truncated, keyword-stuffed, or poorly matched to the user search query.'
+      }
+    }
+  ]
+};
+
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.tools', { fallback: 'Tools' }), url: `/${supportedLang}/tools` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools', { fallback: 'Tools' }), url: `/${supportedLang}/tools/` },
   { label: titleText }
 ];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/seo-title-checker">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
   
       <!-- Hero Section -->
     <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">

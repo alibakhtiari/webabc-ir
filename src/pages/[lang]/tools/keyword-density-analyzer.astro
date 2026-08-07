@@ -30,15 +30,31 @@ const webAppSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'تراکم کلمه کلیدی (Keyword Density) استاندارد در سئو چقدر است؟' : supportedLang === 'ar' ? 'ما هي الكثافة المثالية للكلمات المفتاحية في السيو؟' : 'What is the recommended keyword density for SEO?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'تراکم کلمه کلیدی بهینه بین ۱٪ تا ۲.۵٪ درصد است. تراکم بالای ۳٪ ممکن است توسط گوگل به‌عنوان اسپم یا چگالی بیش از حد (Keyword Stuffing) جریمه شود.' : supportedLang === 'ar' ? 'تتراوح الكثافة الموصى بها بين 1% و 2.5%. تجاوز نسبة 3% قد يعرض الموقع لعقوبات التكرار المفرط من جوجل.' : 'Optimal keyword density is between 1% and 2.5%. Exceeding 3% risks keyword-stuffing penalties from search engine algorithms.'
+      }
+    }
+  ]
+};
+
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.tools', { fallback: 'Tools' }), url: `/${supportedLang}/tools` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools', { fallback: 'Tools' }), url: `/${supportedLang}/tools/` },
   { label: titleText }
 ];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/keyword-density-analyzer">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
   
       <!-- Hero Section -->
     <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">

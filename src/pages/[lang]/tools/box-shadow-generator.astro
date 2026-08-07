@@ -29,15 +29,31 @@ const webAppSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'خاصیت box-shadow در CSS چیست و چگونه سایه لایه‌ای بسازیم؟' : supportedLang === 'ar' ? 'ما هي خاصية box-shadow في CSS وكيف تنشئ ظلالاً متدرجة؟' : 'What is the CSS box-shadow property and how do smooth shadows work?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'خاصیت box-shadow افکت سایه دور عناصر HTML ایجاد می‌کند. ترکیب چند افست offset-x, offset-y, blur-radius, spread-radius و رنگ شفاف سایه‌های مدرن عمیق و طبیعی ایجاد می‌کند.' : supportedLang === 'ar' ? 'تضيف خاصية box-shadow ظلالاً ناعمة للمكونات من خلال تحديد الإزاحة ونصف قطر الضبابية واللون.' : 'The CSS box-shadow property applies shadow effects around an element frame using horizontal offset, vertical offset, blur radius, spread radius, and RGBA color opacity.'
+      }
+    }
+  ]
+};
+
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
   { label: titleText }
 ];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/box-shadow-generator">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero Section -->
   <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100 font-sans">
