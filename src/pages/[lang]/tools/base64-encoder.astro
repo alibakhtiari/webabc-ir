@@ -29,15 +29,31 @@ const webAppSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'کدگذاری Base64 چیست و چه کاربردی در برنامه‌نویسی وب دارد؟' : supportedLang === 'ar' ? 'ما هو ترميز Base64 وما هي استخداماته في البرمجة؟' : 'What is Base64 Encoding and how is it used in web development?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'کدگذاری Base64 داده‌های باینری مانند تصاویر یا متون را به کاراکترهای ASCII تبدیل می‌کند تا انتقال ایمن داده‌ها در پروتکل‌های وب (مانند Data URI و کدهای API) امکان‌پذیر شود.' : supportedLang === 'ar' ? 'يحول ترميز Base64 البيانات الثنائية والصور إلى نصوص ASCII لتمكين نقلها بأمان عبر بروتوكولات الويب وواجهات البرمجة.' : 'Base64 encoding converts binary data (such as images or files) into ASCII text format for safe transmission over text-based web protocols and Data URIs.'
+      }
+    }
+  ]
+};
+
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
   { label: titleText }
 ];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/base64-encoder">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero Section -->
   <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100 font-sans">
