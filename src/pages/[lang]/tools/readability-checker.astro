@@ -30,15 +30,31 @@ const webAppSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'چرا خوانایی متن در سئو اهمیت دارد؟' : supportedLang === 'ar' ? 'لماذا تؤثر سهولة القراءة على السيو؟' : 'Why is content readability important for SEO?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'متون ساده و خوانا نرخ پرش (Bounce Rate) را کاهش داده، زمان ماندگاری (Dwell Time) کاربر را افزایش می‌دهند و تعامل بیشتری در نتایج گوگل و هوش مصنوعی ایجاد می‌کنند.' : supportedLang === 'ar' ? 'النصوص السلسة وسهلة القراءة تزيد من وقت بقاء الزائر في الصفحة وتقلل معدل الارتداد.' : 'Clear, easy-to-read text improves user retention, lowers bounce rates, and increases dwell time — key engagement metrics for search engines.'
+      }
+    }
+  ]
+};
+
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
   { label: titleText }
 ];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/readability-checker">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
       <!-- Hero Section -->
     <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
       <div class="container mx-auto px-4">

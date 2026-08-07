@@ -31,15 +31,31 @@ const webAppSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'هزینه طراحی سایت در سال ۲۰۲۶ چقدر است؟' : supportedLang === 'ar' ? 'كم تبلغ تكلفة تصميم موقع إلكتروني؟' : 'How much does web development cost in 2026?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'هزینه طراحی سایت بر اساس تعداد صفحات، اختصاصی یا قالبی بودن دیزاین و امکانات تجارت الکترونیک یا سئو از ۱۰ میلیون تومان برای قالب‌های ساده تا بالای ۵۰ میلیون تومان برای سامانه‌های اختصاصی متغیر است.' : supportedLang === 'ar' ? 'تبدأ تكلفة موقع الشركة الاحترافي القائم على قالب مخصص من 1000 إلى 3000 دولار، بينما تبدأ الحلول المخصصة من 3500 دولار فأكثر.' : 'Professional business websites typically range from $1,000 to $3,500 for custom templates or $3,500 to $12,000+ for enterprise custom web applications.'
+      }
+    }
+  ]
+};
+
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
   { label: titleText }
 ];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/cost-calculator">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
       <!-- Hero Section -->
     <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
       <div class="container mx-auto px-4">

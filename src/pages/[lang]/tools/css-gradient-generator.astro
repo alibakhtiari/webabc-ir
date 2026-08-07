@@ -29,15 +29,31 @@ const webAppSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'تفاوت گرادیانت خطی (Linear) و شعاعی (Radial) در CSS چیست؟' : supportedLang === 'ar' ? 'ما الفرق بين التدرج الخطي والشعاعي في CSS؟' : 'What is the difference between Linear and Radial CSS Gradients?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'گرادیانت خطی (linear-gradient) تغییر رنگ‌ها را در طول یک خط راست با زاویه مشخص انجام می‌دهد، در حالی که گرادیانت شعاعی (radial-gradient) از یک نقطه مرکزی دایره‌ای یا بیضوی به سمت بیرون پخش می‌شود.' : supportedLang === 'ar' ? 'ينتقل التدرج الخطي بين الألوان عبر خط مستقيم بزاوية محددة، بينما ينبثق التدرج الشعاعي من نقطة مركزية نحو الخارج.' : 'A linear gradient transitions colors along a straight axis at a specified angle, whereas a radial gradient radiates outward from a central point in a circular or elliptical pattern.'
+      }
+    }
+  ]
+};
+
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
   { label: titleText }
 ];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/css-gradient-generator">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero Section -->
   <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100 font-sans">

@@ -29,15 +29,31 @@ const webAppSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'متن لورم ایپسوم (Lorem Ipsum) چیست و چه کاربردی در طراحی وب دارد؟' : supportedLang === 'ar' ? 'ما هو نص لوريم إيبسوم وما أهميته في تصميم الويب؟' : 'What is Lorem Ipsum placeholder text?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'لورم ایپسوم متن ساختگی با پراکندگی طبیعی حروف است که طراحان وب و گرافیست‌ها برای پر کردن قالب قبل از آماده شدن محتوای اصلی استفاده می‌کنند.' : supportedLang === 'ar' ? 'لوريم إيبسوم هو نص وهمي يستعمل في صناعات الطباعة والتصميم لمعاينة الشكل النهائي قبل إضافة المحتوى الفعلي.' : 'Lorem Ipsum is standardized dummy placeholder text used by web designers and developers to visualize page layouts without content distraction.'
+      }
+    }
+  ]
+};
+
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
   { label: titleText }
 ];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/lorem-generator">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero Section -->
   <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100 font-sans">

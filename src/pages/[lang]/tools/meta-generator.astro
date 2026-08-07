@@ -29,15 +29,31 @@ const webAppSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'تگ‌های متا چیست و چرا برای سئو اهمیت دارند؟' : supportedLang === 'ar' ? 'ما هي علامات الميتا ولماذا هي مهمة للسيو؟' : 'What are Meta Tags and why are they important for SEO?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'تگ‌های متا (Meta Tags) شامل اطلاعاتی در بخش head وب‌سایت هستند که به موتورهای جستجو عنوان، توضیحات، روبات‌ها و تگ‌های شبکه اجتماعی را برای نمایش بهترSERP ارائه می‌دهند.' : supportedLang === 'ar' ? 'علامات الميتا توفر لموتورات البحث وشبكات التواصل الاجتماعي المعلومات الأساسية لعرض الصفحة بشكل جذاب وصحيح.' : 'Meta tags provide essential page metadata to search engines and social media networks, defining page titles, descriptions, indexing rules, and Open Graph previews.'
+      }
+    }
+  ]
+};
+
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
   { label: titleText }
 ];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/meta-generator">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero Section -->
   <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100 font-sans">
@@ -121,7 +137,7 @@ const breadcrumbs = [
   </section>
 
 
-  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'serpPreview', route: 'serp-preview' }, { key: 'seoTitleChecker', route: 'seo-title-checker' }, { key: 'tools.robotsGenerator', route: 'robots-generator' }]} ctaHref={`/${supportedLang}/services/seo`} isRtl={supportedLang !== 'en'} />
+  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'serpPreview', route: 'serp-preview' }, { key: 'seoTitleChecker', route: 'seo-title-checker' }, { key: 'tools.robotsGenerator', route: 'robots-generator' }]} ctaHref={`/${supportedLang}/services/seo/`} isRtl={supportedLang !== 'en'} />
 </Layout>
 
 <script is:inline data-astro-rerun>

@@ -30,15 +30,31 @@ const webAppSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'افکت گلاسمورفیسم (Glassmorphism) چیست و چگونه در CSS ساخته می‌شود؟' : supportedLang === 'ar' ? 'ما هو تأثير الزجاج الضبابي (Glassmorphism) وكيف يتم إنشاؤه في CSS؟' : 'What is Glassmorphism and how is it implemented in CSS?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'گلاسمورفیسم یک افکت طراحی مدرن است که با ترکیب شفافیت پس‌زمینه (Background Transparency)، فیلتر بلر (backdrop-filter: blur) و حاشیه نازک سفید نمایی از شیشه مات ایجاد می‌کند.' : supportedLang === 'ar' ? 'تأثير Glassmorphism يمنح المكونات مظهراً زجاجياً ضبابياً باستخدام الشفافية وفلاتر backdrop-filter في CSS.' : 'Glassmorphism creates a frosted glass visual effect using translucent background colors, backdrop-filter blur properties, and subtle light borders.'
+      }
+    }
+  ]
+};
+
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
   { label: titleText }
 ];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/glassmorphism-generator">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
       <!-- Hero Section -->
     <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
       <div class="container mx-auto px-4">

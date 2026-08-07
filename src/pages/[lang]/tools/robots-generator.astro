@@ -30,15 +30,31 @@ const webAppSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'فایل robots.txt چیست و چه کاربردی در سئو دارد؟' : supportedLang === 'ar' ? 'ما هو ملف robots.txt وما هي فائدته للسيو؟' : 'What is robots.txt and how does it help SEO?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'فایل robots.txt دستورالعمل‌هایی به ربات‌ها و خزنده‌های موتورهای جستجو (مانند Googlebot) می‌دهد که کدام مسیرها را خزش کرده و از خزش چه مسیرهایی خودداری کنند.' : supportedLang === 'ar' ? 'ملف robots.txt يعطي تعليمات لروبوتات ومحركات البحث حول الصفحات التي يجب أو لا يجب فحصها.' : 'A robots.txt file instructs search engine crawlers (like Googlebot) which paths or directories on your website they are allowed or forbidden to crawl.'
+      }
+    }
+  ]
+};
+
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.tools', { fallback: 'Tools' }), url: `/${supportedLang}/tools` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools', { fallback: 'Tools' }), url: `/${supportedLang}/tools/` },
   { label: titleText }
 ];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/robots-generator">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
   
       <!-- Hero Section -->
     <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">

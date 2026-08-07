@@ -30,9 +30,24 @@ const webAppSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'پارامترهای UTM چیست و چه کمکی به تحلیل کمپین‌ها می‌کنند؟' : supportedLang === 'ar' ? 'ما هي معلمات UTM وكيف تساعد في تتبع الحملات؟' : 'What are UTM parameters and why are they used in marketing?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'پارامترهای UTM کدهای متنی هستند که به انتهای لینک‌ها اضافه می‌شوند تا منبع (utmsource)، روش (utmmedium)، و نام کمپین (utmcampaign) را در گوگل آنالیتیکس به دقت ردیابی کنند.' : supportedLang === 'ar' ? 'معلمات UTM هي تتبعات تضاف لنهاية الروابط لتتبع مصدر الزيارات والحملات في Google Analytics.' : 'UTM parameters are query strings added to URLs that allow Google Analytics to track referral sources, channels, and campaign names.'
+      }
+    }
+  ]
+};
+
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
   { label: titleText }
 ];
 
@@ -41,6 +56,7 @@ const fillFieldsText = t('utmBuilder.fillFields', { fallback: 'Fill in the field
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/utm-builder">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
       <!-- Hero Section -->
     <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
       <div class="container mx-auto px-4">
