@@ -9,6 +9,7 @@ import { Image } from 'astro:assets';
 import { type SupportedLanguage, languages } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
+import { getCategoryLabel } from '@/utils/category-translator';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -152,7 +153,7 @@ const authorRole = post.data.author === 'Ali Bakhtiari'
       <!-- Post Info Header -->
       <div class="mb-8 space-y-4">
         <div class="flex flex-wrap gap-2">
-          <span class="px-2.5 py-1 text-xs font-semibold rounded bg-primary text-white uppercase">{post.data.category}</span>
+          <span class="px-2.5 py-1 text-xs font-semibold rounded bg-primary text-white uppercase">{getCategoryLabel(post.data.category, supportedLang)}</span>
           {post.data.tags?.map(tag => (
             <a
               href={`/${supportedLang}/blog?tag=${encodeURIComponent(tag)}`}
