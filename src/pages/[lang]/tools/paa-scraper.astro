@@ -30,9 +30,24 @@ const webAppSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'بخش People Also Ask (PAA) گوگل چیست و چه کاربردی در سئو دارد؟' : supportedLang === 'ar' ? 'ما هو قسم الناس يسألون أيضاً (People Also Ask) في جوجل؟' : 'What is Google People Also Ask (PAA) and why is it useful for SEO?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'بخش PAA سوالات متداولی را نمایش می‌دهد که کاربران درباره یک موضوع جستجو کرده‌اند. استخراج این سوالات به ساخت استراتژی محتوا و AEO کمک فراوانی می‌کند.' : supportedLang === 'ar' ? 'يعرض قسم PAA الأسئلة الشائعة التي يبحث عنها المستخدمون حول موضوع معين، مما يساعد في استراتيجيات السيو والتغطية الشاملة للمحتوى.' : 'Google People Also Ask (PAA) surfaces real user questions related to a query, providing high-intent content topics for Answer Engine Optimization.'
+      }
+    }
+  ]
+};
+
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
   { label: titleText }
 ];
 
@@ -41,6 +56,7 @@ const questions = [1, 2, 3, 4, 5, 6, 7, 8].map(n => t(`paaScraper.q${n}`, { fall
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/paa-scraper">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
       <!-- Hero Section -->
     <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
       <div class="container mx-auto px-4">

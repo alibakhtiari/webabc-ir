@@ -30,15 +30,31 @@ const webAppSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'اسلاگ (Slug) در آدرس URL چیست و چه تاثیری بر سئو دارد؟' : supportedLang === 'ar' ? 'ما هو الرابط اللطيف (Slug) وكيف يؤثر على السيو؟' : 'What is a URL Slug and why is it important for SEO?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'اسلاگ بخش قابل خواندن آدرس URL است که کلمات کلیدی اصلی صفحه را توصیف می‌کند. استفاده از اسلاگ‌های انگلیسی یا فارسی استاندارد خوانایی و رتبه‌بندی گوگل را ارتقا می‌دهد.' : supportedLang === 'ar' ? 'الرابط اللطيف (Slug) هو الجزء المقروء من العنوان الذي يعبر عن محتوى الصفحة وكلماتها المفتاحية.' : 'A URL Slug is the readable part of a page URL that identifies a page using search-friendly hyphenated keywords.'
+      }
+    }
+  ]
+};
+
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.tools'), url: `/${supportedLang}/tools` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
   { label: titleText }
 ];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/slug-generator">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
       <!-- Hero Section -->
     <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
       <div class="container mx-auto px-4">
