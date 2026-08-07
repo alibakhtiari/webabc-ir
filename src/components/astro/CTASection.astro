@@ -15,7 +15,9 @@ const isRtl = languages[lang]?.direction === 'rtl';
 const t = createTranslator(dictionary);
 
 const linkPath = (path: string) => {
-  return `/${lang}${path}`;
+  if (!path || path === '/') return `/${lang}/`;
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return `/${lang}${cleanPath.endsWith('/') ? cleanPath : cleanPath + '/'}`;
 };
 ---
 
@@ -72,7 +74,7 @@ const linkPath = (path: string) => {
         ].map((item) => (
           <div class="neo-morphism p-6 rounded-xl text-center transition-all duration-300 hover:shadow-md">
             <h3 class={`text-xl font-medium mb-2 font-${lang === 'en' ? 'sans' : 'persian'}`}>{item.title}</h3>
-            <p class={`text-foreground/80 font-${lang === 'en' ? 'sans' : 'persian'}`}>{item.content}</p>
+            <p class={`text-foreground/80 font-${lang === 'en' ? 'sans' : 'persian'} whitespace-pre-line`}>{item.content}</p>
           </div>
         ))}
       </div>

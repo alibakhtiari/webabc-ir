@@ -24,7 +24,7 @@ const { lang, t, related, ctaHref, isRtl = false } = Astro.props;
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {related.map(({ key, route }) => (
           <a
-            href={`/${lang}/tools/${route}`}
+            href={`/${lang}/tools/${route.endsWith('/') ? route : route + '/'}`}
             class="bg-white rounded-2xl p-6 border border-gray-100 shadow-xs hover:shadow-lg transition-all duration-300 block font-persian"
           >
             <h3 class="text-lg font-bold mb-2">{t(`${key}.title`, { fallback: key })}</h3>

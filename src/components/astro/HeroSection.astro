@@ -17,7 +17,9 @@ const isRtl = languages[lang]?.direction === 'rtl';
 const t = createTranslator(dictionary);
 
 const linkPath = (path: string) => {
-  return `/${lang}${path}`;
+  if (!path || path === '/') return `/${lang}/`;
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return `/${lang}${cleanPath.endsWith('/') ? cleanPath : cleanPath + '/'}`;
 };
 ---
 
