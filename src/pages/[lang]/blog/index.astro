@@ -6,6 +6,7 @@ import { getDictionary } from '../../../i18n/get-dictionary';
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import { createTranslator } from '@/i18n/translate';
+import { getCategoryLabel } from '@/utils/category-translator';
 
 export const getStaticPaths = getLanguageStaticPaths;
 
@@ -98,7 +99,7 @@ const breadcrumbs = [
               data-filter-btn={category}
               class="filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 cursor-pointer transition-all"
             >
-              {category}
+              {getCategoryLabel(category, supportedLang)}
             </a>
           ))}
         </div>
@@ -129,7 +130,7 @@ const breadcrumbs = [
                   <div class="p-6 space-y-4">
                     <div class="flex items-center gap-2 flex-wrap">
                       <span class="px-2.5 py-1 text-xs font-semibold rounded bg-gray-100 text-gray-600 uppercase">
-                        {post.category}
+                        {getCategoryLabel(post.category, supportedLang)}
                       </span>
                       <span class="text-xs text-gray-400 font-mono">
                         {new Date(post.date).toLocaleDateString(supportedLang === 'ar' ? 'ar-SA' : supportedLang === 'fa' ? 'fa-IR' : 'en-US', {
