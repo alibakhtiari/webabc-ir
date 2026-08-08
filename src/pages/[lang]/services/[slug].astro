@@ -1,0 +1,308 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ServiceHero from '../../../components/astro/ServiceHero.astro';
+import CTA from '../../../components/astro/CTA.astro';
+import type { ImageMetadata } from 'astro';
+import { type SupportedLanguage, languages } from '../../../types/language';
+import { getDictionary } from '../../../i18n/get-dictionary';
+
+// Import custom service content components
+import SeoContent from '../../../components/services/SeoContent.astro';
+import LocalSeoContent from '../../../components/services/LocalSeoContent.astro';
+import WebDevContent from '../../../components/services/WebDevContent.astro';
+import WordpressContent from '../../../components/services/WordpressContent.astro';
+import WebDesignContent from '../../../components/services/WebDesignContent.astro';
+import MarketingServiceContent from '../../../components/services/MarketingServiceContent.astro';
+import AuditMaintenanceContent from '../../../components/services/AuditMaintenanceContent.astro';
+import EcommerceContent from '../../../components/services/EcommerceContent.astro';
+import { createTranslator } from '@/i18n/translate';
+
+// Imported (not public/ string paths) so Astro's image pipeline actually resizes/optimizes these.
+import seoImg from '../../../assets/images/services/seo.webp';
+import localSeoImg from '../../../assets/images/services/local-seo.webp';
+import webDevelopmentImg from '../../../assets/images/services/web-development.webp';
+import wordpressImg from '../../../assets/images/services/wordpress.webp';
+import webDesignImg from '../../../assets/images/services/web-design.webp';
+import contentCreationImg from '../../../assets/images/services/content-creation.webp';
+import linkBuildingImg from '../../../assets/images/services/link-building.webp';
+import speedOptimizationImg from '../../../assets/images/services/speed-optimization.webp';
+import uiUxAuditImg from '../../../assets/images/services/ui-ux-audit.webp';
+import websiteMaintenanceImg from '../../../assets/images/services/website-maintenance.webp';
+
+export async function getStaticPaths() {
+  // "modern-web-development" was merged into "web-development" (duplicate positioning,
+  // see public/_redirects for the 301) and is intentionally not in this list.
+  const slugs = [
+    'seo', 'web-development', 'local-seo', 'wordpress-development', 'web-design',
+    'content-creation', 'link-building', 'speed-optimization',
+    'ui-ux-audit', 'website-maintenance', 'ecommerce'
+  ];
+
+  const params = [];
+  for (const lang of Object.keys(languages)) {
+    for (const slug of slugs) {
+      params.push({
+        params: { lang, slug }
+      });
+    }
+  }
+  return params;
+}
+
+const { lang, slug } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+const isRtl = languages[supportedLang]?.direction === 'rtl';
+
+// Helper to translate strings
+const t = createTranslator(dictionary);
+
+// Map slug to translation namespaces & keys
+const slugInfoMap: Record<string, { ns: string; titleKey: string; subtitleKey: string; img: ImageMetadata }> = {
+  'seo': { ns: 'seoService', titleKey: 'seoService.title', subtitleKey: 'seoService.subtitle', img: seoImg },
+  'local-seo': { ns: 'localSeo', titleKey: 'localSeo.localSeoTitle', subtitleKey: 'localSeo.localSeoDescription', img: localSeoImg },
+  'web-development': { ns: 'webDevelopmentServices', titleKey: 'webDevelopmentServices.webDevelopmentTitle', subtitleKey: 'webDevelopmentServices.webDevelopmentDescription', img: webDevelopmentImg },
+  'wordpress-development': { ns: 'wordpress', titleKey: 'wordpress.title', subtitleKey: 'wordpress.subtitle', img: wordpressImg },
+  'web-design': { ns: 'webDesign', titleKey: 'webDesign.title', subtitleKey: 'webDesign.description', img: webDesignImg },
+  'content-creation': { ns: 'contentCreation', titleKey: 'contentCreation.title', subtitleKey: 'contentCreation.description', img: contentCreationImg },
+  'link-building': { ns: 'linkBuilding', titleKey: 'linkBuilding.title', subtitleKey: 'linkBuilding.description', img: linkBuildingImg },
+  'speed-optimization': { ns: 'speedOptimization', titleKey: 'speedOptimization.title', subtitleKey: 'speedOptimization.subtitle', img: speedOptimizationImg },
+  'ui-ux-audit': { ns: 'uiUxAudit', titleKey: 'uiUxAudit.title', subtitleKey: 'uiUxAudit.subtitle', img: uiUxAuditImg },
+  'website-maintenance': { ns: 'maintenance', titleKey: 'maintenance.title', subtitleKey: 'maintenance.subtitle', img: websiteMaintenanceImg },
+  'ecommerce': { ns: 'ecommerce', titleKey: 'ecommerce.title', subtitleKey: 'ecommerce.subtitle', img: webDevelopmentImg },
+};
+
+const info = slugInfoMap[slug];
+const ns = info ? info.ns : 'services';
+const serviceData = dictionary[ns] || {};
+
+const pageTitle = t(info?.titleKey || '', { fallback: slug });
+const pageDesc = t(info?.subtitleKey || '', { fallback: 'Professional services to grow your digital presence.' });
+const heroImage = info ? info.img : seoImg;
+
+const breadcrumbs = [
+  { label: t('common.home', { fallback: 'Home' }), url: `/${supportedLang}` },
+  { label: t('common.services', { fallback: 'Services' }), url: `/${supportedLang}/services` },
+  { label: pageTitle }
+];
+
+// Schema Generator Helper
+function createPageSchema(slugVal: string, langVal: string, titleVal: string, descVal: string) {
+  const inLang = langVal === 'en' ? 'en-US' : langVal === 'ar' ? 'ar-SA' : 'fa-IR';
+  const canonicalUrl = `https://webabc.ir/${langVal}/services/${slugVal}/`;
+
+  const serviceTypeMap: Record<string, Record<string, string>> = {
+    'seo': { en: 'Search Engine Optimization', fa: 'بهینه‌سازی موتورهای جستجو (سئو)', ar: 'تحسين محركات البحث' },
+    'local-seo': { en: 'Local SEO Optimization', fa: 'سئو محلی', ar: 'سيو محلي' },
+    'web-development': { en: 'Custom Web Development', fa: 'توسعه وب سفارشی', ar: 'تطوير مواقع الويب' },
+    'wordpress-development': { en: 'WordPress & WooCommerce Development', fa: 'توسعه وردپرس و ووکامرس', ar: 'تطوير ووردبريس وووكومرس' },
+    'web-design': { en: 'Web Design & Prototyping', fa: 'طراحی سایت و رابط کاربری', ar: 'تصميم مواقع الويب' },
+    'content-creation': { en: 'SEO Content Strategy & Creation', fa: 'تولید محتوای تخصصی سئو', ar: 'إنشاء المحتوى والاستراتيجية' },
+    'link-building': { en: 'Link Building & Authority Enhancement', fa: 'لینک‌سازی و افزایش اعتبار دامنه', ar: 'بناء الروابط وزيادة السلطة' },
+    'speed-optimization': { en: 'Core Web Vitals & Speed Optimization', fa: 'افزایش سرعت سایت و بهینه‌سازی', ar: 'تحسين سرعة الموقع' },
+    'ui-ux-audit': { en: 'UI/UX Audit & Usability Consulting', fa: 'ممیزی رابط کاربری و تجربه کاربری', ar: 'تدقيق واجهة وتجربة المستخدم' },
+    'website-maintenance': { en: 'Website Maintenance & Care Plans', fa: 'پشتیبانی و نگهداری وب‌سایت', ar: 'صيانة وتحديث الموقع' },
+    'ecommerce': { en: 'E-commerce Website Development', fa: 'طراحی و توسعه فروشگاه اینترنتی', ar: 'تطوير المتاجر الإلكترونية' }
+  };
+
+  const offerSubServicesMap: Record<string, Record<string, string[]>> = {
+    'seo': {
+      en: ['On-Page SEO', 'Technical SEO', 'Off-Page SEO', 'Local SEO'],
+      fa: ['سئو داخلی (On-Page)', 'سئو تکنیکال', 'سئو خارجی (Off-Page)', 'سئو محلی'],
+      ar: ['السيو الداخلي', 'السيو التقني', 'السيو الخارجي', 'السيو المحلي']
+    },
+    'local-seo': {
+      en: ['Google Business Profile Optimization', 'Local Citations', 'Near Me Targeting', 'Review Management'],
+      fa: ['بهینه‌سازی پروفایل گوگل', 'ثبت در دایرکتوری‌های محلی', 'هدف‌گذاری جستجوهای محلی', 'مدیریت نظرات کاربران'],
+      ar: ['تحسين ملف جوجل التجاري', 'التواجد في الأدلة المحلية', 'استهداف البحث المحلي', 'إدارة التقييمات']
+    },
+    'web-development': {
+      en: ['Frontend Web App Development', 'Backend API Integration', 'Responsive Design', 'Database Architecture'],
+      fa: ['توسعه فرانت‌اند با React/Next.js', 'اتصال به API و بک‌اند', 'طراحی واکنش‌گرا', 'طراحی پایگاه داده'],
+      ar: ['تطوير الواجهة الأمامية', 'ربط البرمجيات والـ API', 'التصميم المتجاوب', 'إدارة قواعد البيانات']
+    },
+    'wordpress-development': {
+      en: ['Custom Theme Development', 'WooCommerce Setup', 'Custom Plugin Development', 'CMS Maintenance'],
+      fa: ['طراحی قالب اختصاصی وردپرس', 'راه‌اندازی فروشگاه ووکامرس', 'توسعه افزونه سفارشی', 'پشتیبانی و به‌روزرسانی'],
+      ar: ['تصميم قوالب ووردبريس مخصصة', 'إعداد متجر ووكومرس', 'تطوير إضافات مخصصة', 'صيانة وتحديث وردبريس']
+    },
+    'web-design': {
+      en: ['UI/UX Prototyping', 'Responsive Design System', 'Wireframing', 'Design Audit'],
+      fa: ['طراحی پروتوتایپ UI/UX', 'دیزاین سیستم واکنش‌گرا', 'طراحی وایرفریم', 'ممیزی طراحی وب'],
+      ar: ['تصميم واجهات وتجربة المستخدم', 'أنظمة التصميم المتجاوبة', 'تخطيط الهيكل السلكي', 'تدقيق التصميم']
+    },
+    'content-creation': {
+      en: ['SEO Article Writing', 'Content Strategy', 'Copywriting', 'Keyword Optimization'],
+      fa: ['تولید مقالات تخصصی سئو', 'استراتژی و تقویم محتوایی', 'کپی‌رایتینگ و تبلیغ‌نویسی', 'بهینه‌سازی کلمات کلیدی'],
+      ar: ['كتابة مقالات متوافقة مع السيو', 'استراتيجية المحتوى', 'الكتابة الإعلانية', 'تحسين الكلمات المفتاحية']
+    },
+    'link-building': {
+      en: ['Guest Post Outreach', 'Authority Backlinks', 'Link Audit', 'Digital PR'],
+      fa: ['ریپورتاژ آگهی و پست مهمان', 'لینک‌سازی باکیفیت و معتبر', 'تحلیل و آنالیز بک‌لینک‌ها', 'روابط عمومی دیجیتال'],
+      ar: ['المنشورات الضيفة والروبورتاج', 'بناء روابط عالية الجودة', 'تحليل الروابط الخلفية', 'العلاقات العامة الرقمية']
+    },
+    'speed-optimization': {
+      en: ['Core Web Vitals Optimization', 'Image Optimization', 'Code Minification', 'Database Tuning'],
+      fa: ['بهینه‌سازی شاخص‌های Core Web Vitals', 'فشرده‌سازی و بهینه‌سازی تصاویر', 'مینify کردن کدهای JS و CSS', 'پاکسازی پایگاه داده'],
+      ar: ['تحسين مؤشرات Core Web Vitals', 'ضغط وتحسين الصور', 'تضغط الأكواد البرمجية', 'تحسين قاعدة البيانات']
+    },
+    'ui-ux-audit': {
+      en: ['Usability Testing', 'Conversion Rate Optimization', 'Navigation Audit', 'UX Report'],
+      fa: ['تست کاربردپذیری', 'بهینه‌سازی نرخ تبدیل (CRO)', 'بررسی ساختار منوها و مسیریابی', 'ارائه گزارش جامع UX'],
+      ar: ['اختبار قابلية الاستخدام', 'تحسين معدل التحويل', 'تدقيق التنقل في الموقع', 'تقرير شامل لتجربة المستخدم']
+    },
+    'website-maintenance': {
+      en: ['WordPress Core Updates', 'Cloud Backups', 'Uptime Monitoring', 'Security Audits'],
+      fa: ['به‌روزرسانی هسته و افزونه‌ها', 'پشتیبان‌گیری ابری منظم', 'مانیتورینگ پایداری و دسترس‌پذیری', 'پایش و تست‌های امنیتی'],
+      ar: ['تحديث النظام والإضافات', 'نسخ احتياطي سحابي', 'مراقبة استقرار الموقع', 'فحص الأمان والتدقيق']
+    },
+    'ecommerce': {
+      en: ['Shopify Store Setup', 'WooCommerce Customization', 'Payment Gateway Integration', 'Product SEO'],
+      fa: ['راه‌اندازی فروشگاه اینترنتی', 'سفارشی‌سازی اختصاصی فروشگاه', 'اتصال به درگاه‌های پرداخت', 'سئو و بهینه‌سازی محصولات'],
+      ar: ['إعداد وتطوير المتاجر', 'تخصيص المتاجر الإلكترونية', 'ربط بوابات الدفع الإلكتروني', 'سيو المنتجات والمتاجر']
+    }
+  };
+
+  const selectedType = serviceTypeMap[slugVal]?.[langVal] || serviceTypeMap[slugVal]?.en || "Digital Services";
+  const offersList = offerSubServicesMap[slugVal]?.[langVal] || offerSubServicesMap[slugVal]?.en || ['Professional Consultation', 'Custom Implementation'];
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${canonicalUrl}#webpage`,
+        "url": canonicalUrl,
+        "name": titleVal,
+        "description": descVal,
+        "inLanguage": inLang,
+        "isPartOf": {
+          "@id": "https://webabc.ir/#website"
+        },
+        "breadcrumb": {
+          "@id": `${canonicalUrl}#breadcrumb`
+        },
+        "mainEntity": {
+          "@id": `${canonicalUrl}#service`
+        }
+      },
+      {
+        "@type": "Service",
+        "@id": `${canonicalUrl}#service`,
+        "name": titleVal,
+        "description": descVal,
+        "url": canonicalUrl,
+        "serviceType": selectedType,
+        "provider": {
+          "@id": "https://webabc.ir/#organization"
+        },
+        "areaServed": [
+          {
+            "@type": "Country",
+            "name": "Iran"
+          },
+          {
+            "@type": "Country",
+            "name": "Global"
+          }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": `${titleVal} Solutions`,
+          "itemListElement": offersList.map((offerName) => ({
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": offerName
+            }
+          }))
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${canonicalUrl}#breadcrumb`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": t('common.home', { fallback: 'Home' }),
+            "item": `https://webabc.ir/${langVal}/`
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": t('common.services', { fallback: 'Services' }),
+            "item": `https://webabc.ir/${langVal}/services/`
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": titleVal,
+            "item": canonicalUrl
+          }
+        ]
+      }
+    ]
+  };
+}
+
+const pageSchema = createPageSchema(slug, supportedLang, pageTitle, pageDesc);
+---
+
+<Layout title={pageTitle} description={pageDesc} lang={supportedLang} slug={`services/${slug}`}>
+  <!-- Inject Schema into Layout Head -->
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)} />
+
+  <!-- Premium Side-Image Hero Section -->
+  <ServiceHero 
+    title={pageTitle} 
+    subtitle={pageDesc} 
+    heroImage={heroImage} 
+    breadcrumbs={breadcrumbs} 
+    lang={supportedLang}
+  >
+    <!-- Action buttons -->
+    <a href={`/${supportedLang}/contact`} class="px-6 py-3 bg-primary text-white font-bold rounded-xl shadow-md hover:bg-primary/95 transition-all duration-300 hover:-translate-y-0.5 font-persian text-sm">
+      {t('common.freeConsultation', { fallback: 'Free Consultation' })}
+    </a>
+    <a href={`/${supportedLang}/portfolio`} class="px-6 py-3 bg-white border border-gray-200 text-gray-700 font-bold rounded-xl shadow-xs hover:bg-gray-50 transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-2 font-persian text-sm">
+      {t('common.viewPortfolio', { fallback: 'View Portfolio' })}
+      {isRtl ? (
+        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+      ) : (
+        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+      )}
+    </a>
+  </ServiceHero>
+
+  <!-- Detailed Content Section -->
+  <section class="py-16 font-sans">
+    <div class="container mx-auto px-4 max-w-4xl space-y-12">
+      
+      {slug === 'seo' && <SeoContent lang={supportedLang} dictionary={dictionary} />}
+      {slug === 'local-seo' && <LocalSeoContent lang={supportedLang} dictionary={dictionary} />}
+      {slug === 'web-development' && <WebDevContent lang={supportedLang} dictionary={dictionary} />}
+      {slug === 'wordpress-development' && <WordpressContent lang={supportedLang} dictionary={dictionary} />}
+      {slug === 'web-design' && <WebDesignContent lang={supportedLang} dictionary={dictionary} />}
+      {slug === 'ecommerce' && <EcommerceContent lang={supportedLang} dictionary={dictionary} />}
+
+      {['content-creation', 'link-building'].includes(slug) && (
+        <MarketingServiceContent slug={slug} lang={supportedLang} dictionary={dictionary} />
+      )}
+      
+      {['speed-optimization', 'ui-ux-audit', 'website-maintenance'].includes(slug) && (
+        <AuditMaintenanceContent slug={slug} lang={supportedLang} dictionary={dictionary} />
+      )}
+
+      <!-- Premium Consultation CTA -->
+      <CTA 
+        lang={supportedLang} 
+        title={serviceData.cta?.title || t('services.ctaTitle', { fallback: 'Ready to Elevate Your Digital Footprint?' })} 
+        description={serviceData.cta?.description || t('services.ctaDescription', { fallback: 'Contact our team for a tailored approach.' })} 
+        buttonText={t('common.contactUs', { fallback: 'Contact Us' })} 
+      />
+
+    </div>
+  </section>
+</Layout>
+

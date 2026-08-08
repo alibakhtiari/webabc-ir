@@ -1,0 +1,163 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import CTA from '../../../components/astro/CTA.astro';
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import { type SupportedLanguage, languages } from '../../../types/language';
+import { getDictionary } from '../../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
+
+export async function getStaticPaths() {
+  const items = await getCollection('portfolio');
+  return items.map(item => {
+    const [lang, slug] = item.id.split('/');
+    return {
+      params: { lang, slug },
+      props: { project: item }
+    };
+  });
+}
+
+const { lang, slug } = Astro.params;
+const { project } = Astro.props;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+const isRtl = languages[supportedLang]?.direction === 'rtl';
+
+if (!project) {
+  return Astro.redirect(`/${supportedLang}/404/`);
+}
+
+// Helper to translate strings
+const t = createTranslator(dictionary);
+
+const { Content } = await render(project);
+
+const getCategoryLabel = (category: string) => {
+  if (category === 'Web Design') return t('portfolio.webDesign', { fallback: 'Web Design' });
+  if (category === 'SEO') return t('portfolio.seoProjects', { fallback: 'SEO Projects' });
+  if (category === 'Local SEO') return t('portfolio.localSeo', { fallback: 'Local SEO' });
+  if (category === 'E-commerce') return t('portfolio.ecommerce', { fallback: 'E-Commerce' });
+  return category;
+};
+
+const breadcrumbs = [
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.portfolio'), url: `/${supportedLang}/portfolio/` },
+  { label: project.data.title }
+];
+
+const origin = 'https://webabc.ir';
+const projectSchema = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "@id": `${origin}/${supportedLang}/portfolio/${slug}/#project`,
+  "name": project.data.title,
+  "description": project.data.description,
+  "image": project.data.image.startsWith('http') ? project.data.image : `${origin}${project.data.image}`,
+  "url": `${origin}/${supportedLang}/portfolio/${slug}/`,
+  "about": project.data.category,
+  "keywords": project.data.technologies?.join(', ') || '',
+  "creator": { "@id": `${origin}/#organization` },
+  "publisher": { "@id": `${origin}/#organization` },
+  "author": { "@id": `${origin}/${supportedLang}/about/ali-bakhtiari/#person` },
+  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+};
+---
+
+<Layout title={project.data.title} description={project.data.description} lang={supportedLang} slug={`portfolio/${slug}`}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(projectSchema)} />
+  <!-- Case Study detail -->
+  <div class="container mx-auto px-4 pt-32 pb-8">
+    <div class="max-w-5xl mx-auto space-y-8">
+      
+      <!-- Breadcrumbs Component -->
+      <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
+
+      <div class="flex flex-wrap gap-2">
+        <span class="px-2.5 py-1 text-xs font-semibold rounded bg-primary text-white uppercase">{getCategoryLabel(project.data.category)}</span>
+      </div>
+
+      <h1 class="text-4xl md:text-5xl font-bold font-persian text-gray-900 leading-tight">{project.data.title}</h1>
+      <p class="text-xl text-gray-600 font-persian leading-relaxed">{project.data.description}</p>
+
+      <!-- Dynamic Grid Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 font-persian">
+        <!-- Main post content -->
+        <div class="lg:col-span-2 space-y-12">
+          <div class="aspect-video rounded-2xl overflow-hidden shadow-sm">
+            <Image
+              src={project.data.image}
+              alt={project.data.title}
+              width={800}
+              height={450}
+              class="object-cover w-full h-full"
+            />
+          </div>
+
+          <div class="space-y-4">
+            <h2 class="text-2xl font-bold text-gray-900">{t('portfolio.projectOverview', { fallback: 'Project Overview' })}</h2>
+            <article class="prose prose-lg max-w-none text-gray-600 leading-relaxed">
+              <Content />
+            </article>
+          </div>
+
+          <!-- Key metrics results -->
+          <div class="space-y-6">
+            <h2 class="text-2xl font-bold text-gray-900">{t('portfolio.keyResults', { fallback: 'Key Results' })}</h2>
+            <div class="grid sm:grid-cols-2 gap-6">
+              {project.data.results?.map((result) => (
+                <div class="bg-white border-s-4 border-s-primary border border-gray-100 p-6 rounded-e-xl shadow-xs">
+                  <div class="text-3xl font-bold text-primary mb-2 font-mono">{result.value}</div>
+                  <div class="text-gray-500 font-medium text-sm">{result.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar details -->
+        <div class="space-y-8">
+          <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm space-y-6">
+            <h3 class="text-xl font-bold border-b border-gray-100 pb-4">{t('portfolio.projectDetails', { fallback: 'Project Details' })}</h3>
+            
+            <div class="space-y-4">
+              <div>
+                <div class="text-xs text-gray-400 font-semibold uppercase">{t('portfolio.client', { fallback: 'Client' })}</div>
+                <div class="font-bold text-gray-800">{project.data.client}</div>
+              </div>
+
+              <div>
+                <div class="text-xs text-gray-400 font-semibold uppercase">{t('portfolio.technologies', { fallback: 'Technologies' })}</div>
+                <div class="flex flex-wrap gap-1.5 mt-2">
+                  {project.data.technologies?.map(tech => (
+                    <span class="px-2.5 py-1 text-xs rounded border border-gray-200 text-gray-600 bg-gray-50 font-mono">{tech}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <a
+              href={project.data.projectUrl}
+              target="_blank"
+              rel="noopener noreferrer nofollow external"
+              class="w-full h-11 bg-primary text-white font-bold rounded-lg shadow-sm hover:bg-primary/95 transition-all flex items-center justify-center gap-2"
+            >
+              {t('common.viewWebsite', { fallback: 'Visit Project Website' })}
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Premium Consultation CTA -->
+      <CTA 
+        lang={supportedLang} 
+        title={t('portfolio.needSimilarProject', { fallback: 'Need a similar project?' })}
+        description={t('portfolio.ctaDescription', { fallback: 'Contact our agency to analyze your requirements and get a free blueprint outline.' })}
+        buttonText={t('common.freeConsultation', { fallback: 'Request Consultation' })}
+      />
+    </div>
+  </div>
+</Layout>

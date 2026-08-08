@@ -1,0 +1,130 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/astro/Hero.astro';
+import ServicesSection from '../../components/astro/ServicesSection.astro';
+import CTA from '../../components/astro/CTA.astro';
+import { getLanguageStaticPaths, languages, type SupportedLanguage } from '../../types/language';
+import { getDictionary } from '../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
+
+export const getStaticPaths = getLanguageStaticPaths;
+
+const { lang } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+
+const t = createTranslator(dictionary);
+const isRtl = languages[supportedLang]?.direction === 'rtl';
+
+const title = `${t('common.notFound.title', { fallback: '404 - Page Not Found' })} | WebABC`;
+const description = t('common.notFound.subtitle', { fallback: 'The page you requested could not be found. Explore our services or return to the homepage.' });
+
+const breadcrumbs = [
+  { label: t('common.home'), url: `/${supportedLang}` },
+  { label: '404' }
+];
+
+const origin = 'https://webabc.ir';
+
+// Schema.org for AI search engines & crawlers (GEO / AEO optimized)
+const pageNotFoundSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${origin}/${supportedLang}/404#webpage`,
+  "url": `${origin}/${supportedLang}/404`,
+  "name": title,
+  "description": description,
+  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
+  "isPartOf": { "@id": `${origin}/${supportedLang}#website` },
+  "publisher": { "@id": `${origin}/#organization` }
+};
+
+const quickLinks = [
+  { label: t('common.home'), url: `/${supportedLang}` },
+  { label: t('common.services'), url: `/${supportedLang}/services` },
+  { label: t('common.portfolio'), url: `/${supportedLang}/portfolio` },
+  { label: t('common.about'), url: `/${supportedLang}/about` },
+  { label: t('common.contact'), url: `/${supportedLang}/contact` }
+];
+---
+
+<Layout title={title} description={description} lang={supportedLang} slug="404" noindex={true}>
+  <meta slot="head" name="robots" content="noindex, follow" />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageNotFoundSchema)} />
+
+  <Hero title={t('common.notFound.title', { fallback: 'Page Not Found' })} description={t('common.notFound.subtitle', { fallback: 'The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.' })} breadcrumbs={breadcrumbs} lang={supportedLang} />
+
+  <section class="py-16 bg-white font-sans font-persian">
+    <div class="container mx-auto px-4 max-w-4xl text-center space-y-12">
+      
+      <!-- Interactive 404 Hero Card -->
+      <div class="bg-gray-50 border border-gray-100 rounded-3xl p-8 md:p-12 shadow-xs space-y-6">
+        <span class="inline-block px-4 py-1.5 bg-primary/10 text-primary font-black rounded-full text-sm font-mono uppercase tracking-wider">
+          Error 404
+        </span>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+          {supportedLang === 'fa' ? 'صفحه مورد نظر شما پیدا نشد' : supportedLang === 'ar' ? 'الصفحة المطلوبة غير موجودة' : 'Looking for Web Design or SEO Services?'}
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          {supportedLang === 'fa' 
+            ? 'ممکن است آدرس صفحه تغییر کرده یا حذف شده باشد. از لینک‌های سریع زیر برای دسترسی به بخش‌های اصلی سایت استفاده کنید.'
+            : supportedLang === 'ar'
+            ? 'قد تكون الصفحة قد تم نقلها أو حذفها. يمكنك استخدام الروابط السريعة أدناه للوصول إلى أقسام الموقع الرئيسية.'
+            : 'The link you followed may be broken or the page has moved. Browse our core agency solutions below or head straight to our home page.'}
+        </p>
+
+        <!-- Navigation Buttons -->
+        <div class="flex flex-wrap gap-4 justify-center pt-2">
+          <a
+            href={`/${supportedLang}`}
+            class="px-8 py-3.5 bg-primary text-white font-bold rounded-xl shadow-md hover:bg-primary/95 transition-all flex items-center gap-2"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 00-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+            {t('common.notFound.backHome', { fallback: 'Return to Homepage' })}
+          </a>
+          <a
+            href={`/${supportedLang}/contact`}
+            class="px-8 py-3.5 border border-gray-200 text-gray-700 font-bold rounded-xl hover:bg-gray-100 transition-all"
+          >
+            {t('common.contactUs', { fallback: 'Contact Support' })}
+          </a>
+        </div>
+
+        <!-- Quick Links Pill Cloud -->
+        <div class="pt-6 border-t border-gray-200/60">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+            {supportedLang === 'fa' ? 'دسترسی سریع' : supportedLang === 'ar' ? 'روابط سريعة' : 'Quick Site Navigation'}
+          </p>
+          <div class="flex flex-wrap gap-2 justify-center">
+            {quickLinks.map(link => (
+              <a
+                href={link.url}
+                class="px-3.5 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-700 hover:text-primary hover:border-primary/40 transition-colors shadow-xs"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Services Section for AEO / Link Equity Retention -->
+      <div class="text-start space-y-6">
+        <h3 class="text-2xl font-bold text-gray-900 text-center">
+          {supportedLang === 'fa' ? 'خدمات محبوب وب‌اِی‌بی‌سی' : supportedLang === 'ar' ? 'خدماتنا المميزة' : 'Popular Digital Services'}
+        </h3>
+        <ServicesSection lang={supportedLang} />
+      </div>
+
+      <!-- Conversion CTA Callout -->
+      <CTA
+        lang={supportedLang}
+        title={t('common.freeConsultation', { fallback: 'Need help with Web Design or SEO?' })}
+        description={supportedLang === 'fa' ? 'تیم متخصصین وب‌اِی‌بی‌سی آماده ارائه مشاوره رایگان سئو و طراحی سایت به شماست.' : supportedLang === 'ar' ? 'فريق خبراء WebABC مستعد لتقديم استشارة مجانية حول التصميم وتحسين محركات البحث.' : 'Speak with our technical team today to audit your web application or digital marketing strategy.'}
+        buttonText={t('common.contactUs', { fallback: 'Get in Touch' })}
+      />
+    </div>
+  </section>
+</Layout>

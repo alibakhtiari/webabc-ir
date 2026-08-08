@@ -5,11 +5,15 @@
     "questionLabel": "سوال",
     "answerLabel": "پاسخ",
     "generateSchema": "تولید اسکیما",
-    "copyJson": "کپی کد",
+    "copyJson": "کپی JSON-LD",
     "delete": "حذف",
     "preview": "پیش‌نمایش",
     "schemaResult": "نتیجه اسکیما",
-    "copied": "کپی شد!",
+    "copied": "کد در کلیپ‌بورد کپی شد!",
     "noQuestions": "برای تولید اسکیما حداقل یک سوال اضافه کنید.",
-    "placeholder": "// کد اسکیمای JSON-LD اینجا نمایش داده می‌شود..."
+    "placeholder": "// کد اسکیمای JSON-LD اینجا نمایش داده می‌شود...",
+    "faqHeading": "سوالات متداول",
+    "jsonLdCode": "کد اسکیمای JSON-LD",
+    "htmlAccordion": "کد HTML آکاردئون",
+    "copyHtml": "کپی HTML"
 }

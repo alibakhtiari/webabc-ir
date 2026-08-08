@@ -1,0 +1,159 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ToolsCTA from '../../../components/astro/ToolsCTA.astro';
+import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import { getLanguageStaticPaths, type SupportedLanguage, languages } from '../../../types/language';
+import { getDictionary } from '../../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
+
+export const getStaticPaths = getLanguageStaticPaths;
+
+const { lang } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+const isRtl = languages[supportedLang]?.direction === 'rtl';
+
+const t = createTranslator(dictionary);
+
+const titleText = t('serpPreview.title', { fallback: 'SERP Snippet Preview Tool' });
+const descriptionText = t('serpPreview.description', { fallback: 'Preview how your website appears in Google search results.' });
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": `https://webabc.ir/${supportedLang}/tools/serp-preview/#webapp`,
+  "name": titleText,
+  "description": descriptionText,
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires HTML5 support",
+  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'پیش‌نمایش SERP گوگل چیست و چرا استفاده می‌شود؟' : supportedLang === 'ar' ? 'ما هي أداة معاينة نتائج بحث جوجل (SERP Preview)؟' : 'What is a Google SERP Preview tool?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'ابزار پیش‌نمایش SERP به شما اجازه می‌دهد عنوان متا و توضیحات صفحه را قبل از انتشار مشاهده کرده و از قطع شدن کاراکترها (Truncation) در دسکتاپ و موبایل جلوگیری کنید.' : supportedLang === 'ar' ? 'تتيح لك أداة معاينة SERP رؤية كيف سيبدو عنوان المقال والوصف في نتائج بحث جوجل على الهواتف والأجهزة المكتبي.' : 'A SERP preview tool simulates how your title tag and meta description will render on Google search result pages across mobile and desktop viewports.'
+      }
+    }
+  ]
+};
+
+const breadcrumbs = [
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
+  { label: titleText }
+];
+---
+
+<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/serp-preview">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
+      <!-- Hero Section -->
+    <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+          <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
+          <h1 class="text-3xl md:text-5xl font-bold mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent leading-normal font-persian">
+            {titleText}
+          </h1>
+          <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-persian">
+            {descriptionText}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Workspace -->
+    <section class="container mx-auto px-4 mt-12 font-sans">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+
+        <!-- Inputs Panel -->
+        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-5 font-persian">
+          <h3 class="text-sm font-bold text-gray-800">{t('serpPreview.enterDetails', { fallback: 'Enter Your Details' })}</h3>
+
+          <div class="space-y-1.5">
+            <label for="sp-title" class="text-sm font-medium text-gray-700">{t('serpPreview.titleTag', { fallback: 'Title Tag' })}</label>
+            <input id="sp-title" type="text" dir={isRtl ? 'rtl' : 'ltr'} maxlength="70" placeholder={t('serpPreview.placeholderTitle', { fallback: 'Your page title' })} class="w-full border border-gray-200 rounded-lg px-4 h-11 focus:outline-none focus:border-primary" />
+            <p id="sp-title-count" class="text-xs text-gray-400">0/60 {t('serpPreview.charsMax', { fallback: 'characters (max' })} 70)</p>
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="sp-url" class="text-sm font-medium text-gray-700">{t('serpPreview.url', { fallback: 'URL' })}</label>
+            <input id="sp-url" type="text" dir="ltr" placeholder={t('serpPreview.placeholderUrl', { fallback: 'https://example.com/page' })} class="w-full border border-gray-200 rounded-lg px-4 h-11 focus:outline-none focus:border-primary" />
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="sp-desc" class="text-sm font-medium text-gray-700">{t('serpPreview.metaDescription', { fallback: 'Meta Description' })}</label>
+            <textarea id="sp-desc" rows="4" dir={isRtl ? 'rtl' : 'ltr'} maxlength="170" placeholder={t('serpPreview.placeholderDesc', { fallback: 'Your meta description' })} class="w-full border border-gray-200 rounded-lg p-4 focus:outline-none focus:border-primary resize-none"></textarea>
+            <p id="sp-desc-count" class="text-xs text-gray-400">0/160 {t('serpPreview.charsMax', { fallback: 'characters (max' })} 170)</p>
+          </div>
+        </div>
+
+        <!-- Preview Panel -->
+        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden h-fit">
+          <div class="bg-gray-50 border-b border-gray-100 px-6 py-4">
+            <span class="font-semibold text-gray-800 font-persian">{t('serpPreview.googlePreview', { fallback: 'Google Search Preview' })}</span>
+          </div>
+          <div class="p-6 bg-white" dir="ltr">
+            <div id="sp-url-preview" class="text-sm text-green-700 mb-1 break-all font-sans">
+              {t('serpPreview.placeholderUrl', { fallback: 'https://example.com/page' })}
+            </div>
+            <div id="sp-title-preview" class="text-xl text-[#1a0dab] mb-2 hover:underline cursor-pointer font-sans">
+              {t('serpPreview.previewTitleDefault', { fallback: 'Your Page Title Will Appear Here' })}
+            </div>
+            <div id="sp-desc-preview" class="text-sm text-[#4d5156] font-sans leading-relaxed">
+              {t('serpPreview.previewDescDefault', { fallback: 'Your meta description will appear here.' })}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  
+  
+  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'seoTitleChecker', route: 'seo-title-checker' }, { key: 'metaGenerator', route: 'meta-generator' }, { key: 'schemaGenerator', route: 'schema-generator' }]} ctaHref={`/${supportedLang}/services/seo`} isRtl={isRtl} />
+</Layout>
+
+<script is:inline data-astro-rerun>
+  const titleInput = document.getElementById('sp-title');
+  const urlInput = document.getElementById('sp-url');
+  const descInput = document.getElementById('sp-desc');
+
+  const titleCount = document.getElementById('sp-title-count');
+  const descCount = document.getElementById('sp-desc-count');
+
+  const urlPreview = document.getElementById('sp-url-preview');
+  const titlePreview = document.getElementById('sp-title-preview');
+  const descPreview = document.getElementById('sp-desc-preview');
+
+  const defaultUrl = urlPreview.textContent.trim();
+  const defaultTitle = titlePreview.textContent.trim();
+  const defaultDesc = descPreview.textContent.trim();
+
+  function update() {
+    const title = titleInput.value;
+    const url = urlInput.value;
+    const desc = descInput.value;
+
+    titleCount.textContent = `${title.length}/60`;
+    titleCount.classList.toggle('text-red-500', title.length > 60);
+    titleCount.classList.toggle('text-gray-400', title.length <= 60);
+
+    descCount.textContent = `${desc.length}/160`;
+    descCount.classList.toggle('text-red-500', desc.length > 160);
+    descCount.classList.toggle('text-gray-400', desc.length <= 160);
+
+    urlPreview.textContent = url || defaultUrl;
+    titlePreview.textContent = title || defaultTitle;
+    descPreview.textContent = desc || defaultDesc;
+  }
+
+  [titleInput, urlInput, descInput].forEach(el => el.addEventListener('input', update));
+</script>

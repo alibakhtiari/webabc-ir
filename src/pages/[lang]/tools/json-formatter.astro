@@ -1,0 +1,202 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ToolsCTA from '../../../components/astro/ToolsCTA.astro';
+import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import { getLanguageStaticPaths, type SupportedLanguage } from '../../../types/language';
+import { getDictionary } from '../../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
+
+export const getStaticPaths = getLanguageStaticPaths;
+
+const { lang } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+
+// Helper to translate strings
+const t = createTranslator(dictionary);
+
+const titleText = t('tools.jsonFormatter.title', { fallback: 'Clientside JSON Formatter & Validator' });
+const descriptionText = t('tools.jsonFormatter.description', { fallback: 'Safely format, validate, and structure your JSON data completely inside your browser.' });
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": `https://webabc.ir/${supportedLang}/tools/json-formatter/#webapp`,
+  "name": titleText,
+  "description": descriptionText,
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires HTML5 support",
+  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'فرمت‌کننده و اعتبارسنج JSON چیست و چگونه کار می‌کند؟' : supportedLang === 'ar' ? 'ما هي أداة تنسيق وفحص JSON وكيف تعمل؟' : 'What is a JSON Formatter & Validator?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'ابزار فرمت JSON رشته‌های متنی JSON را مرتب (Prettify)، فشرده (Minify) و خطایابی ساختاری (Syntax Validation) می‌کند تا خوانایی و اشکال‌زدایی API راحت‌تر شود.' : supportedLang === 'ar' ? 'تقوم أداة تنسيق JSON بتنظيم الشفرات المكتوبة بصيغة JSON وفحص خطأ بناء الجمل وتسهيل تصحيح أخطاء الـ API.' : 'A JSON Formatter formats raw JSON data into clean indented syntax, minifies code, and validates structural syntax errors for developer debugging.'
+      }
+    }
+  ]
+};
+
+const breadcrumbs = [
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools', { fallback: 'Tools' }), url: `/${supportedLang}/tools/` },
+  { label: titleText }
+];
+---
+
+<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/json-formatter">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
+  
+      <!-- Hero Section -->
+    <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+          <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
+          <h1 class="text-3xl md:text-5xl font-bold mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent leading-normal font-persian">
+            {titleText}
+          </h1>
+          <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-persian">
+            {descriptionText}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Workspace -->
+    <section class="container mx-auto px-4 mt-12 font-sans">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto">
+        
+        <!-- Input Panel -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4">
+            <div class="flex justify-between items-center">
+              <label for="json-textarea" class="block text-sm font-semibold text-gray-700">Raw JSON</label>
+              <div class="flex gap-2">
+                <button id="format-btn" class="px-3 py-1 bg-primary text-white text-xs font-semibold rounded-md">Format</button>
+                <button id="minify-btn" class="px-3 py-1 border border-gray-200 text-gray-600 text-xs font-semibold rounded-md">Minify</button>
+              </div>
+            </div>
+            
+            <textarea
+              id="json-textarea"
+              rows="15"
+              placeholder="Paste raw JSON here..."
+              class="w-full border border-gray-200 rounded-xl p-4 focus:outline-none focus:border-primary font-mono text-sm h-[450px] resize-none"
+            ></textarea>
+            
+            <div class="flex justify-between items-center">
+              <span id="validation-status" class="text-xs font-semibold px-2.5 py-1 rounded bg-gray-100 text-gray-600">
+                Awaiting Input
+              </span>
+              <button id="clear-btn" class="px-4 py-1.5 border border-gray-200 text-gray-700 text-xs font-medium rounded-lg">
+                Clear
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Output Panel -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 flex flex-col h-[560px]">
+            <div class="flex justify-between items-center">
+              <span class="block text-sm font-semibold text-gray-700">Formatted Output</span>
+              <button id="copy-btn" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-semibold rounded-md flex items-center gap-1">
+                Copy
+              </button>
+            </div>
+            
+            <div class="border border-gray-100 rounded-xl p-4 bg-gray-50/50 font-mono text-sm overflow-auto grow">
+              <pre id="json-output" class="text-gray-800 break-all whitespace-pre-wrap">Formatted JSON will appear here...</pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  
+  
+  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'tools.base64', route: 'base64-encoder' }, { key: 'tools.robotsGenerator', route: 'robots-generator' }, { key: 'schemaGenerator', route: 'schema-generator' }]} ctaHref={`/${supportedLang}/services/web-development`} isRtl={supportedLang !== 'en'} />
+</Layout>
+
+<script is:inline data-astro-rerun>
+  // JSON Formatter/Validator logic
+  const textarea = document.getElementById('json-textarea');
+  const output = document.getElementById('json-output');
+  const formatBtn = document.getElementById('format-btn');
+  const minifyBtn = document.getElementById('minify-btn');
+  const clearBtn = document.getElementById('clear-btn');
+  const copyBtn = document.getElementById('copy-btn');
+  const statusSpan = document.getElementById('validation-status');
+
+  formatBtn.addEventListener('click', () => parseAndRender(2));
+  minifyBtn.addEventListener('click', () => parseAndRender(0));
+  
+  clearBtn.addEventListener('click', () => {
+    textarea.value = '';
+    output.textContent = 'Formatted JSON will appear here...';
+    statusSpan.textContent = 'Awaiting Input';
+    statusSpan.className = "text-xs font-semibold px-2.5 py-1 rounded bg-gray-100 text-gray-600";
+  });
+
+  copyBtn.addEventListener('click', () => {
+    const textToCopy = output.textContent;
+    if (textToCopy && textToCopy !== 'Formatted JSON will appear here...' && !textToCopy.startsWith('Error:')) {
+      navigator.clipboard.writeText(textToCopy);
+      copyBtn.textContent = 'Copied!';
+      setTimeout(() => {
+        copyBtn.textContent = 'Copy';
+      }, 1500);
+    }
+  });
+
+  function parseAndRender(spaces) {
+    const rawVal = textarea.value.trim();
+    if (!rawVal) {
+      statusSpan.textContent = 'Empty payload';
+      statusSpan.className = "text-xs font-semibold px-2.5 py-1 rounded bg-yellow-50 text-yellow-600";
+      return;
+    }
+
+    try {
+      const parsed = JSON.parse(rawVal);
+      const formatted = JSON.stringify(parsed, null, spaces);
+      output.textContent = formatted;
+      statusSpan.textContent = '✓ Valid JSON';
+      statusSpan.className = "text-xs font-semibold px-2.5 py-1 rounded bg-green-50 text-green-600";
+    } catch (e) {
+      output.textContent = `Error: ${e.message}`;
+      statusSpan.textContent = '✗ Invalid JSON';
+      statusSpan.className = "text-xs font-semibold px-2.5 py-1 rounded bg-red-50 text-red-600";
+    }
+  }
+
+  // Bind keyup validation
+  textarea.addEventListener('input', () => {
+    if (!textarea.value.trim()) {
+      statusSpan.textContent = 'Awaiting Input';
+      statusSpan.className = "text-xs font-semibold px-2.5 py-1 rounded bg-gray-100 text-gray-600";
+      return;
+    }
+    try {
+      JSON.parse(textarea.value);
+      statusSpan.textContent = '✓ Valid JSON';
+      statusSpan.className = "text-xs font-semibold px-2.5 py-1 rounded bg-green-50 text-green-600";
+    } catch (e) {
+      statusSpan.textContent = '✗ Invalid JSON';
+      statusSpan.className = "text-xs font-semibold px-2.5 py-1 rounded bg-red-50 text-red-600";
+    }
+  });
+
+  // Pre-load default values
+  textarea.value = `{"site": "WebABC", "optimization": ["SEO", "AEO", "GEO"], "pages": {"home": "/fa", "tool": "/en/tools/seo-title-checker"}, "active": true}`;
+  parseAndRender(2);
+</script>

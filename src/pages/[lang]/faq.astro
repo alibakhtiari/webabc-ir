@@ -1,0 +1,83 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/astro/Hero.astro';
+import { getLanguageStaticPaths, type SupportedLanguage } from '../../types/language';
+import { getDictionary } from '../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
+
+export const getStaticPaths = getLanguageStaticPaths;
+
+const { lang } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+
+// Helper to translate strings
+const t = createTranslator(dictionary);
+
+const titleText = t('faq.title', { fallback: 'Frequently Asked Questions' });
+const descriptionText = t('faq.subtitle', { fallback: 'Find answers to common questions about our services.' });
+
+const faqKeys = [
+  { q: 'faq.q1', a: 'faq.a1' },
+  { q: 'faq.q2', a: 'faq.a2' },
+  { q: 'faq.q3', a: 'faq.a3' },
+  { q: 'faq.q4', a: 'faq.a4' },
+  { q: 'faq.q5', a: 'faq.a5' },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
+  "mainEntity": faqKeys.map(item => ({
+    "@type": "Question",
+    "name": t(item.q),
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": t(item.a)
+    }
+  }))
+};
+
+const breadcrumbs = [
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: titleText }
+];
+---
+
+<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="faq">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
+
+  <Hero title={titleText} description={descriptionText} breadcrumbs={breadcrumbs} lang={supportedLang} />
+
+  <div class="py-16">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8 space-y-4">
+        {faqKeys.map((item) => (
+          <details class="group border border-gray-100 rounded-xl px-6 py-4 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex justify-between items-center text-lg font-medium text-gray-900 cursor-pointer list-none hover:text-primary transition-colors focus:outline-none font-persian">
+              <span>{t(item.q)}</span>
+              <span class="transition-transform duration-300 group-open:-rotate-180">
+                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+              </span>
+            </summary>
+            <div class="mt-4 text-gray-600 leading-relaxed text-sm font-persian">
+              {t(item.a)}
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <div class="mt-12 text-center bg-blue-50/50 border border-blue-100 rounded-2xl p-8 font-persian">
+        <h2 class="text-2xl font-bold mb-4 text-gray-900">{t('faq.stillHaveQuestions', { fallback: 'Still have questions?' })}</h2>
+        <p class="text-gray-600 mb-6">{t('faq.contactText', { fallback: 'If you cannot find answer to your question, please get in touch with our team.' })}</p>
+        <a
+          href={`/${supportedLang}/contact`}
+          class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-bold rounded-lg text-white bg-primary hover:bg-primary/95 transition-all shadow-xs"
+        >
+          {t('common.contactUs', { fallback: 'Contact Us' })}
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

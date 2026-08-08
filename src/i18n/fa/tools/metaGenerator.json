@@ -10,7 +10,12 @@
     "keywordsPlaceholder": "کلمه1، کلمه2، کلمه3",
     "ogImage": "آدرس تصویر Open Graph",
     "ogImagePlaceholder": "https://example.com/image.jpg",
-    "generatedTags": "متا تگ‌های تولید شده",
-    "copy": "کپی در کلیپ‌بورد",
-    "copied": "در کلیپ‌بورد کپی شد!"
+    "generatedTags": "کد HTML تولید شده",
+    "copy": "کپی HTML",
+    "copied": "متاتگ‌ها در کلیپ‌بورد کپی شد!",
+    "formHeading": "جزئیات متادیتای صفحه",
+    "canonicalUrlLabel": "آدرس Canonical صفحه",
+    "socialImageLabel": "آدرس تصویر شبکه‌های اجتماعی (og:image)",
+    "authorLabel": "نویسنده",
+    "robotsLabel": "دستور Robots"
 }

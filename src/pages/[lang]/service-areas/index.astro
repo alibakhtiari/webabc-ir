@@ -1,0 +1,68 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import { getLanguageStaticPaths, type SupportedLanguage } from '../../../types/language';
+import { getDictionary } from '../../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
+
+export const getStaticPaths = getLanguageStaticPaths;
+
+const { lang } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+const isRtl = supportedLang === 'fa' || supportedLang === 'ar';
+
+// Helper to translate strings
+const t = createTranslator(dictionary);
+
+const titleText = t('service-areas.title', { fallback: 'Our Service Areas' });
+const descriptionText = t('service-areas.description', { fallback: 'We serve clients across multiple cities in the Middle East.' });
+
+const serviceAreasData = dictionary['service-areas'] || {};
+const locationsList = Array.isArray(serviceAreasData.locations) ? serviceAreasData.locations : [];
+
+const breadcrumbs = [
+  { label: t('common.home'), url: `/${supportedLang}` },
+  { label: t('common.serviceAreas') }
+];
+---
+
+<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="service-areas">
+  <main class="grow w-full overflow-x-hidden bg-gray-50/50 pt-0 pb-20">
+    <!-- Hero Section -->
+    <section class="bg-linear-to-b from-primary/5 to-white pt-36 pb-16 md:pb-24">
+      <div class="container mx-auto px-4 max-w-4xl text-center">
+        <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
+        <h1 class={`text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-normal font-${supportedLang === 'en' ? 'sans' : 'persian'}`}>{titleText}</h1>
+        <p class={`text-xl text-gray-600 leading-relaxed font-${supportedLang === 'en' ? 'sans' : 'persian'}`}>{descriptionText}</p>
+      </div>
+    </section>
+
+    <!-- Locations list -->
+    <section class="py-16 bg-white font-sans">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class={`text-2xl font-bold text-gray-900 mb-8 text-center font-${supportedLang === 'en' ? 'sans' : 'persian'}`}>
+          {supportedLang === 'fa' ? 'مناطق تحت پوشش خدمات وب‌اِی‌بی‌سی' : supportedLang === 'ar' ? 'المناطق الجغرافية لخدماتنا' : 'Explore Our Service Locations'}
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {locationsList.map((loc: any) => (
+            <div class={`bg-white border border-gray-100 rounded-2xl p-8 shadow-xs hover:shadow-lg transition-all space-y-4 font-${supportedLang === 'en' ? 'sans' : 'persian'}`}>
+              <div class="flex items-center justify-between">
+                <h3 class="text-2xl font-bold text-gray-900">{loc.name}</h3>
+                {loc.country && (
+                  <span class="text-xs font-semibold px-2.5 py-1 bg-primary/10 text-primary rounded-full">{loc.country}</span>
+                )}
+              </div>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                {loc.description}
+              </p>
+              <a href={`/${supportedLang}/service-areas/${loc.slug}`} class="text-primary font-bold text-sm inline-flex items-center gap-1 hover:underline">
+                {t('common.viewDetails', { fallback: 'View Details' })} {isRtl ? '←' : '→'}
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

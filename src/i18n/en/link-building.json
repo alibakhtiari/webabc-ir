@@ -2,53 +2,57 @@
     "title": "Link Building Services",
     "description": "Boost your domain authority and search rankings with high-quality backlinks.",
     "ourServices": "Our Link Building Strategies",
+    "intro": {
+        "title": "What This Service Includes",
+        "text": "Backlinks remain one of Google's strongest ranking signals, but not all links are created equal. A handful of relevant, high-authority links from real sites in your industry will move your rankings further than hundreds of low-quality directory submissions ever could. Our link building service focuses entirely on the former: manual outreach, genuine relationships with site owners, and content worth linking to, never PBNs, link farms, or paid schemes that put your site at risk of a Google penalty."
+    },
     "features": {
         "guestPosting": {
             "title": "Guest Posting",
-            "description": "Securing placements on authoritative blogs in your industry."
+            "description": "Securing placements on authoritative blogs in your industry, with content written to genuinely fit their audience, not thinly-veiled advertising that gets rejected or de-indexed."
         },
         "brokenLink": {
             "title": "Broken Link Building",
-            "description": "Replacing broken links on other sites with your relevant content."
+            "description": "Replacing broken links on other sites with your relevant content, a win-win that fixes the target site's user experience while earning you a natural, editorially-placed backlink."
         },
         "outreach": {
             "title": "Manual Outreach",
-            "description": "Directly contacting webmasters to promote your best content."
+            "description": "Directly contacting webmasters and editors to promote your best content, with personalized pitches instead of mass templated emails that get ignored or flagged as spam."
         },
         "unlinkedMentions": {
             "title": "Unlinked Mentions",
-            "description": "Turning brand mentions into clickable backlinks."
+            "description": "Turning existing brand mentions that don't yet link to you into clickable backlinks, capturing authority you've already earned but aren't getting credit for."
         },
         "authority": {
             "title": "Authority Building",
-            "description": "Establishing your site as a thought leader to earn natural links."
+            "description": "Establishing your site as a thought leader in your niche through digital PR and content placement, so links start coming to you organically over time."
         },
         "audit": {
             "title": "Backlink Audit",
-            "description": "Analyzing and disavowing toxic links to protect your SEO."
+            "description": "Analyzing your full backlink profile and disavowing toxic or spammy links before they can trigger a manual action or algorithmic penalty against your site."
         }
     },
     "process": {
         "title": "Our Link Building Process",
         "step1": {
             "title": "Analysis & Strategy",
-            "description": "We evaluate your current backlink profile and identify opportunities."
+            "description": "We evaluate your current backlink profile against competitors, identify gaps and toxic links, and set a realistic target for link velocity and anchor text distribution."
         },
         "step2": {
             "title": "Prospecting",
-            "description": "finding high-quality, relevant websites to target."
+            "description": "We build a vetted list of high-quality, topically relevant sites to target, checking real organic traffic and domain authority before anyone gets contacted."
         },
         "step3": {
             "title": "Content Creation",
-            "description": "Creating link-worthy assets like infographics or guest posts."
+            "description": "We create genuinely link-worthy assets such as original data, infographics, or expert guest posts, tailored to what each target publication's audience actually wants."
         },
         "step4": {
             "title": "Outreach",
-            "description": "Personalized communication to secure link placements."
+            "description": "We run personalized outreach to secure placements, tracking every conversation so nothing falls through the cracks and no site gets contacted twice."
         },
         "step5": {
             "title": "Reporting",
-            "description": "Transparent reporting on acquired links and SEO impact."
+            "description": "You get transparent monthly reporting on every link acquired, its authority metrics, and how your rankings and organic traffic are trending as a result."
         }
     },
     "technologies": {
@@ -57,5 +61,15 @@
     "cta": {
         "title": "Boost Your Authority Today",
         "description": "Get high-quality backlinks that drive real results. Let's discuss your strategy."
+    },
+    "faq": {
+        "q1": "Is this white-hat, Google-safe link building?",
+        "a1": "Yes — manual outreach, guest posting, and broken-link replacement only. No PBNs, link farms, or paid link schemes that risk a Google penalty.",
+        "q2": "How many backlinks will I get per month?",
+        "a2": "Quality over quantity — typically 4-10 high-authority links per month depending on your niche and plan, rather than a high-volume, low-quality count.",
+        "q3": "How do you choose which sites to get links from?",
+        "a3": "We vet every prospective site for topical relevance, real organic traffic, and domain authority, and run a spam-score check before outreach.",
+        "q4": "How long until link building affects my rankings?",
+        "a4": "Backlinks typically take 2-4 months to fully influence rankings as Google recrawls and indexes them, then re-evaluates trust and authority signals."
     }
 }

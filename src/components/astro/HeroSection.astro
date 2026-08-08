@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets';
+import { getDictionary } from '../../i18n/get-dictionary';
+import { languages, type SupportedLanguage } from '../../types/language';
+import { createTranslator } from '@/i18n/translate';
+import homepageHeroImg from '../../assets/images/homepage-hero.webp';
+
+interface Props {
+  lang: SupportedLanguage;
+}
+
+const { lang } = Astro.props;
+const dictionary = await getDictionary(lang);
+const isRtl = languages[lang]?.direction === 'rtl';
+
+// Helper to translate strings
+const t = createTranslator(dictionary);
+
+const linkPath = (path: string) => {
+  if (!path || path === '/') return `/${lang}/`;
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return `/${lang}${cleanPath.endsWith('/') ? cleanPath : cleanPath + '/'}`;
+};
+---
+
+<section class="pt-32 pb-20 md:pt-40 md:pb-32 bg-linear-to-b from-primary/5 to-white font-sans overflow-hidden">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="col-span-1 lg:col-span-6 text-center lg:text-start">
+        <h1 class={`text-4xl md:text-6xl font-bold mb-6 leading-normal font-${lang === 'en' ? 'sans' : 'persian'}`}>
+          {t('home.hero.title', { fallback: 'Elevate Your Digital Presence with Expert Web Solutions' })}
+        </h1>
+        <p class={`text-xl text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0 font-${lang === 'en' ? 'sans' : 'persian'}`}>
+          {t('home.hero.description', { fallback: 'We help businesses grow online with professional web development and SEO strategies that deliver real results.' })}
+        </p>
+        <div class={`flex flex-col sm:flex-row gap-4 justify-center lg:justify-start font-${lang === 'en' ? 'sans' : 'persian'}`}>
+          <a href={linkPath('/services')} class="px-8 py-4 bg-primary text-white font-bold rounded-lg shadow-md hover:bg-primary/95 transition-all text-center">
+            {t('home.hero.primaryCta', { fallback: 'Explore Services' })}
+          </a>
+          <a href={linkPath('/portfolio')} class="px-8 py-4 border border-gray-200 text-gray-700 hover:bg-gray-50 rounded-lg transition-all flex items-center justify-center gap-2">
+            {t('home.hero.secondaryCta', { fallback: 'View Portfolio' })}
+            {isRtl ? (
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            ) : (
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            )}
+          </a>
+        </div>
+      </div>
+      <div class="col-span-1 lg:col-span-6">
+        <div class="relative">
+          <div class="absolute -z-10 inset-0 bg-linear-to-tr from-primary/20 to-secondary/20 blur-3xl rounded-full transform scale-110"></div>
+          <Image
+            src={homepageHeroImg}
+            alt={t('home.hero.imageAlt', { fallback: 'Digital marketing and web development illustration' })}
+            width={600}
+            height={400}
+            class="w-full h-auto object-cover rounded-lg shadow-2xl"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

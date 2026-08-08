@@ -1,0 +1,115 @@
+---
+import FAQ from '../astro/FAQ.astro';
+import { type SupportedLanguage } from '../../types/language';
+import { createTranslator } from '@/i18n/translate';
+
+interface Props {
+  lang: SupportedLanguage;
+  dictionary: any;
+}
+
+const { lang, dictionary } = Astro.props;
+
+const t = createTranslator(dictionary);
+
+
+
+const faqList = [1, 2, 3, 4]
+  .map(n => ({
+    question: t(`ecommerce.faq.q${n}`, ""),
+    answer: t(`ecommerce.faq.a${n}`, "")
+  }))
+  .filter(item => item.question && item.answer);
+---
+
+<div class="space-y-16 py-8">
+  
+  <!-- What is E-commerce Web Design? -->
+  <section class="bg-white">
+    <div class="max-w-4xl mx-auto text-center space-y-6">
+      <h2 class="text-3xl font-bold text-gray-900 font-persian">{t('ecommerce.whatIs.title', "What Is E-commerce Web Design?")}</h2>
+      <div class="text-gray-600 leading-relaxed font-persian space-y-4">
+        <p class="text-lg">{t('ecommerce.whatIs.p1', "")}</p>
+        <p>{t('ecommerce.whatIs.p2', "")}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-12 bg-gray-50/50 rounded-3xl p-8 border border-gray-100">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-12 text-center font-persian">{t('ecommerce.ourServices', "E-commerce Offerings")}</h2>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white p-8 rounded-2xl shadow-xs border border-gray-100/80 hover:shadow-md transition-shadow">
+          <div class="mb-6 text-primary">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 font-persian">{t('ecommerce.storeSetup', "Store Setup & Migration")}</h3>
+          <p class="text-gray-600 mb-6 font-persian">{t('ecommerce.storeSetupDesc', "")}</p>
+          <div class="grid grid-cols-1 gap-3 font-persian text-sm">
+            {['productPages', 'payments', 'inventory'].map((feature) => (
+              <div class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></div>
+                <span class="text-gray-700">{t(`ecommerce.feature.${feature}`, feature)}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl shadow-xs border border-gray-100/80 hover:shadow-md transition-shadow">
+          <div class="mb-6 text-primary">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 font-persian">{t('ecommerce.customStorefronts', "Custom Storefronts")}</h3>
+          <p class="text-gray-600 mb-6 font-persian">{t('ecommerce.customStorefrontsDesc', "")}</p>
+          <div class="grid grid-cols-1 gap-3 font-persian text-sm">
+            {['checkout', 'mobile', 'schema'].map((feature) => (
+              <div class="flex items-center gap-2">
+                <div class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></div>
+                <span class="text-gray-700">{t(`ecommerce.feature.${feature}`, feature)}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platforms -->
+  <section class="bg-white">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-4 font-persian">{t('ecommerce.platforms.title', "Platforms We Build On")}</h2>
+      <p class="text-gray-600 mb-12 max-w-2xl mx-auto font-persian">{t('ecommerce.platforms.description', "")}</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        {[
+          { name: 'Shopify', key: 'shopify' },
+          { name: 'WooCommerce', key: 'woocommerce' },
+          { name: 'Next.js Headless', key: 'nextHeadless' },
+          { name: 'Astro Headless', key: 'astroHeadless' },
+        ].map(({ name, key }) => (
+          <div class="bg-gray-50/50 p-6 rounded-2xl border border-gray-100 text-center space-y-2">
+            <div class="font-bold text-gray-800">{name}</div>
+            <p class="text-xs text-gray-500 leading-relaxed font-persian">{t(`ecommerce.platforms.${key}`, '')}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Which Platform Is Right For You -->
+  <section class="bg-gray-50/50 py-16 rounded-3xl border border-gray-100">
+    <div class="max-w-3xl mx-auto text-center space-y-4 px-4">
+      <h2 class="text-2xl font-bold font-persian">{t('ecommerce.rightFor.title', 'Which Platform Is Right for You?')}</h2>
+      <p class="text-gray-600 leading-relaxed font-persian">{t('ecommerce.rightFor.text', '')}</p>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  {faqList.length > 0 && (
+    <section class="max-w-3xl mx-auto">
+      <FAQ faqList={faqList} lang={lang} />
+    </section>
+  )}
+</div>

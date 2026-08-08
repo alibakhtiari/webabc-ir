@@ -1,0 +1,208 @@
+---
+import { Image } from 'astro:assets';
+import { getDictionary } from '../../i18n/get-dictionary';
+import { languages, type SupportedLanguage } from '../../types/language';
+import { createTranslator } from '@/i18n/translate';
+import seoImg from '../../assets/images/services/seo.webp';
+import webDesignImg from '../../assets/images/services/web-design.webp';
+import digitalMarketingImg from '../../assets/images/blog/digital-marketing.webp';
+
+interface Props {
+  lang: SupportedLanguage;
+}
+
+const { lang } = Astro.props;
+const dictionary = await getDictionary(lang);
+const isRtl = languages[lang]?.direction === 'rtl';
+
+// Helper to translate strings
+const t = createTranslator(dictionary);
+
+const services = [
+  {
+    id: 'seo',
+    title: t('services.seo.title', { fallback: 'سئو تخصصی و بهینه‌سازی' }),
+    description: t('services.seo.description', { fallback: 'افزایش رتبه وب‌سایت شما در موتورهای جستجو با استفاده از تکنیک‌های استاندارد سئو.' }),
+    features: [
+      t('services.seo.features.0', { fallback: 'تحقیق کلمات کلیدی' }),
+      t('services.seo.features.1', { fallback: 'بهینه‌سازی محتوا' }),
+      t('services.seo.features.2', { fallback: 'سئو فنی' }),
+      t('services.seo.features.3', { fallback: 'لینک‌سازی خارجی' }),
+      t('services.seo.features.4', { fallback: 'گزارش‌دهی ماهانه' }),
+    ],
+    image: seoImg,
+  },
+  {
+    id: 'web-design',
+    title: t('services.webDesign.title', { fallback: 'طراحی سایت اختصاصی' }),
+    description: t('services.webDesign.description', { fallback: 'طراحی و توسعه وب‌سایت با رابط کاربری جذاب، کدنویسی تمیز و سازگار با موبایل.' }),
+    features: [
+      t('services.webDesign.features.0', { fallback: 'طراحی ریسپانسیو' }),
+      t('services.webDesign.features.1', { fallback: 'رابط کاربری مدرن' }),
+      t('services.webDesign.features.2', { fallback: 'سرعت بارگذاری بالا' }),
+      t('services.webDesign.features.3', { fallback: 'سازگار با سئو' }),
+      t('services.webDesign.features.4', { fallback: 'امنیت بالا' }),
+    ],
+    image: webDesignImg,
+  },
+  {
+    id: 'content',
+    title: t('services.contentCreation.title', { fallback: 'تولید محتوای تخصصی' }),
+    description: t('services.contentCreation.description', { fallback: 'تولید محتوا با کیفیت، اصولی و بهینه شده برای کلمات کلیدی مرتبط با کسب و کار شما.' }),
+    features: [
+      t('services.contentCreation.features.0', { fallback: 'محتوای تخصصی' }),
+      t('services.contentCreation.features.1', { fallback: 'بهینه‌شده برای سئو' }),
+      t('services.contentCreation.features.2', { fallback: 'استراتژی محتوا' }),
+      t('services.contentCreation.features.3', { fallback: 'تقویم انتشار' }),
+      t('services.contentCreation.features.4', { fallback: 'گرافیک اختصاصی' }),
+    ],
+    image: digitalMarketingImg,
+  },
+];
+---
+
+<section id="services" class="py-24 bg-linear-to-b from-white to-gray-50 relative overflow-hidden font-sans">
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-primary/5 blur-3xl"></div>
+  </div>
+
+  <div class="container mx-auto px-4 md:px-6 relative z-10">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class={`inline-block mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium font-${lang === 'en' ? 'sans' : 'persian'}`}>
+        {t('services.sectionTag', { fallback: 'خدمات ما' })}
+      </span>
+
+      <h2 class={`text-3xl md:text-4xl font-bold tracking-tight mb-6 text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}>
+        {t('services.sectionTitle.prefix', { fallback: 'راهکارهای ' })}
+        <span class="text-primary">{t('services.sectionTitle.highlight', { fallback: 'دیجیتال مارکتینگ' })}</span>
+        {t('services.sectionTitle.suffix', { fallback: ' برای کسب و کار شما' })}
+      </h2>
+
+      <p class={`text-foreground/80 leading-relaxed text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}>
+        {t('services.sectionDescription', { fallback: 'ما خدمات جامع سئو و توسعه وب را ارائه می‌دهیم تا کسب و کار شما در فضای آنلاین موفق شود. تمامی خدمات ما با استانداردهای روز دنیا و متناسب با نیازهای بازار ایران طراحی شده‌اند.' })}
+      </p>
+    </div>
+
+    <!-- Tabs header -->
+    <div class="flex overflow-x-auto -mx-4 px-4 pb-4 mb-8 snap-x">
+      <div class="flex gap-2 mx-auto">
+        {services.map((service, idx) => (
+          <button
+            data-tab-btn={service.id}
+            class={`tab-btn transition-all duration-300 px-6 py-3 rounded-full whitespace-nowrap focus:outline-none snap-start font-${lang === 'en' ? 'sans' : 'persian'} ${
+              idx === 0
+                ? "bg-primary text-white shadow-md active-tab"
+                : "bg-white text-foreground/80 border border-gray-200 hover:bg-gray-50"
+            }`}
+          >
+            {service.title}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Tabs Content -->
+    <div>
+      {services.map((service, idx) => (
+        <div
+          data-tab-content={service.id}
+          class={`tab-pane glass-morphism rounded-2xl p-8 transition-all duration-500 ${
+            idx === 0 ? "" : "hidden"
+          }`}
+          style="min-height: 400px;"
+        >
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+            <div class="md:col-span-3 space-y-6">
+              <h3 class={`text-2xl font-bold text-foreground font-${lang === 'en' ? 'sans' : 'persian'}`}>
+                {service.title}
+              </h3>
+
+              <p class={`text-foreground/80 leading-relaxed font-${lang === 'en' ? 'sans' : 'persian'}`}>
+                {service.description}
+              </p>
+
+              <ul class="space-y-3 mt-6">
+                {service.features.map((feature) => (
+                  <li class={`flex items-center font-${lang === 'en' ? 'sans' : 'persian'}`}>
+                    <svg class="text-primary h-5 w-5 me-2 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <button class={`mt-8 px-6 py-3 rounded-full bg-primary text-white transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 font-${lang === 'en' ? 'sans' : 'persian'}`}>
+                {t('services.consultButton', { fallback: 'مشاوره در مورد' })} {service.title}
+              </button>
+            </div>
+
+            <div class="md:col-span-2">
+              <div class="aspect-square w-full rounded-xl overflow-hidden shadow-xl relative">
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  width={500}
+                  height={500}
+                  loading="lazy"
+                  class="object-cover w-full h-full"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Extra features cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+      {[
+        {
+          title: t('services.keyFeatures.0.title', { fallback: 'تحقیق کلمات کلیدی' }),
+          desc: t('services.keyFeatures.0.desc', { fallback: 'شناسایی بهترین کلمات کلیدی برای کسب و کار شما' })
+        },
+        {
+          title: t('services.keyFeatures.1.title', { fallback: 'بهینه‌سازی محتوا' }),
+          desc: t('services.keyFeatures.1.desc', { fallback: 'محتوای با کیفیت و بهینه شده برای موتورهای جستجو' })
+        },
+        {
+          title: t('services.keyFeatures.2.title', { fallback: 'لینک‌سازی خارجی' }),
+          desc: t('services.keyFeatures.2.desc', { fallback: 'استراتژی حرفه‌ای لینک‌سازی برای افزایش اعتبار سایت' })
+        },
+      ].map((item, idx) => (
+        <div class="neo-morphism p-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
+          <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+            <span class="text-xl font-bold">{idx + 1}</span>
+          </div>
+          <h3 class={`text-xl font-medium mb-2 font-${lang === 'en' ? 'sans' : 'persian'}`}>{item.title}</h3>
+          <p class={`text-foreground/70 font-${lang === 'en' ? 'sans' : 'persian'}`}>{item.desc}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<script is:inline>
+  // Tabs switching client script
+  const tabBtns = document.querySelectorAll('[data-tab-btn]');
+  const tabPanes = document.querySelectorAll('[data-tab-content]');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove active classes
+      tabBtns.forEach(b => {
+        b.classList.remove('bg-primary', 'text-white', 'shadow-md', 'active-tab');
+        b.classList.add('bg-white', 'text-foreground/80', 'border', 'border-gray-200', 'hover:bg-gray-50');
+      });
+      tabPanes.forEach(pane => pane.classList.add('hidden'));
+
+      // Add active class to clicked button
+      btn.classList.add('bg-primary', 'text-white', 'shadow-md', 'active-tab');
+      btn.classList.remove('bg-white', 'text-foreground/80', 'border', 'border-gray-200', 'hover:bg-gray-50');
+
+      // Show content
+      const targetId = btn.getAttribute('data-tab-btn');
+      const targetPane = document.querySelector(`[data-tab-content="${targetId}"]`);
+      if (targetPane) targetPane.classList.remove('hidden');
+    });
+  });
+</script>

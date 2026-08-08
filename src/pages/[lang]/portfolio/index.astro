@@ -1,0 +1,189 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Hero from '../../../components/astro/Hero.astro';
+import { getLanguageStaticPaths, type SupportedLanguage, languages } from '../../../types/language';
+import { getDictionary } from '../../../i18n/get-dictionary';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+
+export const getStaticPaths = getLanguageStaticPaths;
+
+const { lang } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+const isRtl = languages[supportedLang]?.direction === 'rtl';
+
+// Fetch projects
+const allProjects = await getCollection('portfolio');
+const filteredProjects = allProjects.filter((proj) => proj.id.startsWith(`${supportedLang}/`));
+
+const items = filteredProjects.map((p) => ({
+  slug: p.id.replace(`${supportedLang}/`, '').replace(/\.mdx?$/, ''),
+  title: p.data.title,
+  description: p.data.description,
+  category: p.data.category,
+  image: p.data.image,
+  tags: p.data.tags || [],
+}));
+
+const categories = ['all', ...new Set(items.map((item) => item.category))];
+
+const titleText = t('portfolio.title', { fallback: 'Case Studies' });
+const descriptionText = t('portfolio.description', { fallback: 'Showcasing our projects' });
+
+const getCategoryLabel = (category: string) => {
+  if (category === 'all') return t('portfolio.allProjects', { fallback: 'All Projects' });
+  if (category === 'Web Design') return t('portfolio.webDesign', { fallback: 'Web Design' });
+  if (category === 'SEO') return t('portfolio.seoProjects', { fallback: 'SEO Projects' });
+  if (category === 'Local SEO') return t('portfolio.localSeo', { fallback: 'Local SEO' });
+  if (category === 'E-commerce') return t('portfolio.ecommerce', { fallback: 'E-Commerce' });
+  return category;
+};
+
+const breadcrumbs = [
+  { label: t('common.home'), url: `/${supportedLang}` },
+  { label: t('common.portfolio') }
+];
+
+// Helper to translate strings
+function t(key: string, options?: { fallback: string }) {
+  const parts = key.split('.');
+  let current: any = dictionary;
+  for (const part of parts) {
+    if (current && current[part] !== undefined) {
+      current = current[part];
+    } else {
+      return options?.fallback || key;
+    }
+  }
+  return typeof current === 'string' ? current : options?.fallback || key;
+}
+---
+
+<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="portfolio">
+  <Hero title={titleText} description={descriptionText} breadcrumbs={breadcrumbs} lang={supportedLang} />
+
+  <!-- Portfolio Grid Section -->
+  <section class="py-16 font-sans">
+    <div class="container mx-auto px-4">
+      <h2 class={`text-2xl font-bold text-gray-900 mb-8 text-center font-${supportedLang === 'en' ? 'sans' : 'persian'}`}>
+        {supportedLang === 'fa' ? 'نمونه کارهای سئو و طراحی سایت' : supportedLang === 'ar' ? 'معرض أعمالنا وحالات الدراسة' : 'Featured Client Case Studies & Projects'}
+      </h2>
+
+      <!-- Category Filter -->
+      <div class="flex flex-wrap gap-3 justify-center mb-12 font-persian">
+        {categories.map((category, idx) => (
+          <a
+            href={`/${supportedLang}/portfolio/?category=${encodeURIComponent(category)}`}
+            data-filter-btn={category}
+            class={`px-5 py-2.5 text-xs font-semibold rounded-full border border-gray-200 cursor-pointer transition-all ${
+              idx === 0
+                ? "bg-primary text-white shadow-sm"
+                : "bg-white text-gray-700 hover:bg-gray-50"
+            }`}
+          >
+            {getCategoryLabel(category)}
+          </a>
+        ))}
+      </div>
+
+      <!-- Portfolio Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {items.map((item) => (
+          <div data-portfolio-card={item.category} class="group bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+            <a href={`/${supportedLang}/portfolio/${item.slug}/`} class="block">
+              <div class="relative aspect-video overflow-hidden">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={400}
+                  height={225}
+                  class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                />
+                <div class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div class="absolute bottom-4 left-4">
+                    <span class="px-2.5 py-1 text-xs font-semibold rounded bg-primary text-white">
+                      {getCategoryLabel(item.category)}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6 space-y-4">
+                <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors line-clamp-1 font-persian">
+                  {item.title}
+                </h3>
+                <p class="text-gray-500 line-clamp-2 mb-4 font-persian text-sm leading-relaxed">
+                  {item.description}
+                </p>
+                
+                <div class="flex items-center text-primary font-semibold text-sm gap-1 group-hover:gap-2 transition-all font-persian">
+                  {t('common.viewDetails', { fallback: 'View Details' })}
+                  {isRtl ? (
+                    <svg class="h-4 w-4 transform rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                  ) : (
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                  )}
+                </div>
+              </div>
+            </a>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<script is:inline>
+  // Dynamic client-side portfolio filtering with URL parameter tracking
+  const filterBtns = document.querySelectorAll('[data-filter-btn]');
+  const portfolioCards = document.querySelectorAll('[data-portfolio-card]');
+
+  function applyFilter(selected) {
+    // Update active button state styling
+    filterBtns.forEach(b => {
+      b.className = "px-5 py-2.5 text-xs font-semibold rounded-full border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 cursor-pointer transition-all";
+    });
+    const activeBtn = document.querySelector(`[data-filter-btn="${selected}"]`) || document.querySelector('[data-filter-btn="all"]');
+    if (activeBtn) {
+      activeBtn.className = "px-5 py-2.5 text-xs font-semibold rounded-full border border-gray-200 bg-primary text-white shadow-sm cursor-pointer transition-all";
+    }
+
+    // Toggle cards visibility
+    portfolioCards.forEach(card => {
+      const cardCat = card.getAttribute('data-portfolio-card');
+      if (selected === 'all' || cardCat === selected) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const selected = btn.getAttribute('data-filter-btn');
+      
+      applyFilter(selected);
+
+      // Update URL query parameters without reloading
+      const url = new URL(window.location);
+      if (selected === 'all') {
+        url.searchParams.delete('category');
+      } else {
+        url.searchParams.set('category', selected);
+      }
+      window.history.pushState({}, '', url);
+    });
+  });
+
+  // Handle initial page load filter state from URL parameter
+  window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialCategory = urlParams.get('category');
+    if (initialCategory) {
+      applyFilter(decodeURIComponent(initialCategory));
+    }
+  });
+</script>

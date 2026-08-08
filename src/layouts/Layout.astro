@@ -1,0 +1,149 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import { languages, type SupportedLanguage } from '../types/language';
+import { getDictionary } from '../i18n/get-dictionary';
+import Navbar from '../components/astro/Navbar.astro';
+import Footer from '../components/astro/Footer.astro';
+import FloatingActions from '../components/astro/FloatingActions.astro';
+import '../styles/globals.css';
+
+
+function createOrganizationSchema(url: string, logo: string, contactPoints: { telephone: string; contactType: string }[], lang: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": `${url}/#organization`,
+    "url": url,
+    "logo": `${url}${logo}`,
+    "image": `${url}${logo}`,
+    "priceRange": "$$",
+    "name": "WebABC",
+    "legalName": "WebABC Web Design & SEO Agency",
+    "telephone": "+989125811880",
+    "email": "info@webabc.ir",
+    "knowsLanguage": ["en", "fa", "ar"],
+    "contactPoint": contactPoints.map(cp => ({
+      "@type": "ContactPoint",
+      "telephone": cp.telephone,
+      "contactType": cp.contactType
+    })),
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Qazvin Science & Technology Park, Km 2 Barajin Road",
+      "addressLocality": "Qazvin",
+      "addressCountry": "IR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 36.3156,
+      "longitude": 50.0381
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Muscat", "containedInPlace": { "@type": "Country", "name": "Oman" } },
+      { "@type": "City", "name": "Dubai", "containedInPlace": { "@type": "Country", "name": "United Arab Emirates" } },
+      { "@type": "City", "name": "Tehran", "containedInPlace": { "@type": "Country", "name": "Iran" } },
+      { "@type": "City", "name": "Qazvin", "containedInPlace": { "@type": "Country", "name": "Iran" } }
+    ],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    ],
+    "sameAs": [
+      "https://github.com/alibakhtiari",
+      "https://www.linkedin.com/in/alibakhtiarii/"
+    ]
+  };
+}
+
+interface Props {
+  title?: string;
+  description?: string;
+  lang: SupportedLanguage;
+  slug?: string;
+  mainClass?: string;
+  noindex?: boolean;
+  ogImage?: string;
+}
+
+const { title, description, lang, slug = '', mainClass = "grow w-full overflow-x-hidden bg-gray-50/50 pt-0 pb-20", noindex = false, ogImage } = Astro.props;
+
+const languageMeta = languages[lang] || languages.fa;
+const isRtl = languageMeta.direction === 'rtl';
+const dictionary = await getDictionary(lang);
+
+const siteUrl = 'https://webabc.ir';
+const canonicalPath = slug ? `/${lang}/${slug}/` : `/${lang}/`;
+const canonicalUrl = `${siteUrl}${canonicalPath}`;
+
+// Get default meta titles/descriptions from dictionary
+const pageTitle = title || dictionary.home?.title || 'WebABC';
+const pageDescription = description || dictionary.home?.description || 'Web Design and Development Services';
+
+// Schema Organisation
+const organizationSchema = createOrganizationSchema(
+  siteUrl,
+  '/images/logo.webp',
+  [
+    { telephone: '+989125811880', contactType: 'customer service' },
+    { telephone: '+989354767068', contactType: 'customer service' }
+  ],
+  lang
+);
+---
+
+<!doctype html>
+<html lang={lang} dir={languageMeta.direction} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" as="font" type="font/woff2" href={lang === 'en' ? '/fonts/ltr.woff2' : '/fonts/rtl.woff2'} crossorigin />
+
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={ogImage ? (ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`) : `${siteUrl}/ali-bakhtiari.webp`} />
+    <meta property="og:site_name" content="WebABC" />
+    <meta property="og:locale" content={lang === 'en' ? 'en_US' : lang === 'ar' ? 'ar_SA' : 'fa_IR'} />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage ? (ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`) : `${siteUrl}/ali-bakhtiari.webp`} />
+
+    <!-- SEO / Canonical / alternates -->
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="en" href={`${siteUrl}/en${slug ? `/${slug}/` : '/'}`} />
+    <link rel="alternate" hreflang="fa" href={`${siteUrl}/fa${slug ? `/${slug}/` : '/'}`} />
+    <link rel="alternate" hreflang="ar" href={`${siteUrl}/ar${slug ? `/${slug}/` : '/'}`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}/en${slug ? `/${slug}/` : '/'}`} />
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <!-- Inline Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    
+    <slot name="head" />
+  </head>
+  <body class={`bg-background text-foreground min-h-screen flex flex-col font-${lang === 'en' ? 'sans' : lang === 'ar' ? 'arabic' : 'persian'}`}>
+    <Navbar lang={lang} />
+    <main class={mainClass}>
+      <slot />
+    </main>
+    <Footer lang={lang} />
+    <FloatingActions lang={lang} />
+    <ClientRouter fallback="swap" />
+  </body>
+</html>

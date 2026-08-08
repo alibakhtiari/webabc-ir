@@ -5,11 +5,15 @@
     "questionLabel": "Question",
     "answerLabel": "Answer",
     "generateSchema": "Generate Schema",
-    "copyJson": "Copy JSON",
+    "copyJson": "Copy JSON-LD",
     "delete": "Delete",
     "preview": "Preview",
     "schemaResult": "FAQ Schema Result",
-    "copied": "Copied to clipboard!",
+    "copied": "Copied code to clipboard!",
     "noQuestions": "Add at least one question to generate schema.",
-    "placeholder": "// JSON-LD Schema will appear here..."
+    "placeholder": "// JSON-LD Schema will appear here...",
+    "faqHeading": "Frequently Asked Questions",
+    "jsonLdCode": "JSON-LD Schema Code",
+    "htmlAccordion": "HTML Accordion Markup",
+    "copyHtml": "Copy HTML"
 }

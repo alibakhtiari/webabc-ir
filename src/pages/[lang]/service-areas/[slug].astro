@@ -1,0 +1,198 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Hero from '../../../components/astro/Hero.astro';
+import CTA from '../../../components/astro/CTA.astro';
+import FAQ from '../../../components/astro/FAQ.astro';
+import { type SupportedLanguage, languages } from '../../../types/language';
+import { getDictionary } from '../../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
+
+export async function getStaticPaths() {
+  const locations = ['dubai', 'tehran', 'muscat', 'qazvin', 'abu-dhabi', 'riyadh'];
+  const params = [];
+  for (const lang of Object.keys(languages)) {
+    for (const slug of locations) {
+      params.push({
+        params: { lang, slug }
+      });
+    }
+  }
+  return params;
+}
+
+const { lang, slug } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+
+// Helper to translate strings
+const t = createTranslator(dictionary);
+
+const serviceAreasData = dictionary['service-areas'] || {};
+const locationsList = serviceAreasData.locations || [];
+const locationInfo = locationsList.find((loc: any) => loc.slug === slug) || {};
+
+if (!locationInfo.name) {
+  return Astro.redirect(`/${supportedLang}/404`);
+}
+
+const titleText = `${t('service-areas.titlePrefix', { fallback: 'SEO & Web Design Services in' })} ${locationInfo.name}`;
+const descriptionText = locationInfo.description || `We provide professional localized services in ${locationInfo.name} to help your organization rank organically and load rapidly.`;
+
+const breadcrumbs = [
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('service-areas.title', { fallback: 'Service Areas' }), url: `/${supportedLang}/service-areas/` },
+  { label: locationInfo.name }
+];
+
+const faqList = [1, 2, 3]
+  .map(n => ({
+    question: t(`service-areas.faq.q${n}`, { fallback: '' }),
+    answer: t(`service-areas.faq.a${n}`, { fallback: '' })
+  }))
+  .filter(item => item.question && item.answer);
+
+const origin = 'https://webabc.ir';
+const locationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${origin}/${supportedLang}/service-areas/${slug}/#service`,
+  "name": titleText,
+  "description": descriptionText,
+  "url": `${origin}/${supportedLang}/service-areas/${slug}/`,
+  "provider": { "@id": `${origin}/#organization` },
+  "areaServed": {
+    "@type": "City",
+    "name": locationInfo.name,
+    "containedInPlace": locationInfo.country ? { "@type": "Country", "name": locationInfo.country } : undefined
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": `Web & SEO Services in ${locationInfo.name}`,
+    "itemListElement": (locationInfo.services || []).map((srv: string, idx: number) => ({
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": srv
+      },
+      "position": idx + 1
+    }))
+  },
+  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+};
+
+const faqSchema = faqList.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqList.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+} : null;
+---
+
+<Layout title={titleText} description={descriptionText} lang={supportedLang} slug={`service-areas/${slug}`}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(locationSchema)} />
+  {faqSchema && <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />}
+  <Hero title={titleText} description={descriptionText} breadcrumbs={breadcrumbs} lang={supportedLang} />
+
+  <!-- Details and AEO Panel -->
+  <section class="py-16 bg-white font-sans font-persian">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-12">
+        
+        <!-- Main Content Pane -->
+        <div class="lg:col-span-2 space-y-12">
+          <div class="space-y-4">
+            <h2 class="text-2xl font-bold text-gray-900">{t('service-areas.whyChooseUs', { fallback: 'Why Choose WebABC?' })}</h2>
+            <p class="text-gray-600 leading-relaxed">
+              {locationInfo.longDescription}
+            </p>
+          </div>
+
+          <!-- Services List -->
+          {locationInfo.services && (
+            <div class="space-y-6">
+              <h3 class="text-xl font-bold text-gray-900">{t('service-areas.locationTitle', { fallback: 'Services Offered' })}</h3>
+              <div class="grid sm:grid-cols-2 gap-4">
+                {locationInfo.services.map((serv: string) => (
+                  <div class="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                    <div class="text-primary bg-white shadow-xs p-1.5 rounded-lg">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <span class="font-semibold text-gray-800">{serv}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Local Benefits -->
+          {locationInfo.benefits && (
+            <div class="space-y-6">
+              <h3 class="text-xl font-bold text-gray-900">{t('service-areas.whyChooseUs', { fallback: 'Key Regional Benefits' })}</h3>
+              <ul class="space-y-3">
+                {locationInfo.benefits.map((benefit: string) => (
+                  <li class="flex items-start gap-2.5">
+                    <svg class="w-5 h-5 text-primary mt-1 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span class="text-gray-700 leading-relaxed">{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        <!-- Quick Facts Side Panel -->
+        <div class="space-y-8">
+          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-6 shadow-xs space-y-4">
+            <h3 class="text-lg font-bold text-gray-900 border-b border-gray-200 pb-3">
+              📍 {locationInfo.name}
+            </h3>
+            <div class="space-y-4 text-sm">
+              <div>
+                <div class="text-gray-400 font-semibold text-xs uppercase">{t('service-areas.country', { fallback: 'Country' })}</div>
+                <div class="font-bold text-gray-800">{locationInfo.country}</div>
+              </div>
+              <div>
+                <div class="text-gray-400 font-semibold text-xs uppercase">{t('service-areas.serviceDelivery', { fallback: 'Service Delivery' })}</div>
+                <div class="font-bold text-gray-800">{t('service-areas.serviceDeliveryValue', { fallback: 'Remote delivery with on-site consultations available' })}</div>
+              </div>
+              <div>
+                <div class="text-gray-400 font-semibold text-xs uppercase">{t('service-areas.languages', { fallback: 'Languages' })}</div>
+                <div class="font-bold text-gray-800">{t('service-areas.languagesValue', { fallback: 'English, Arabic, Persian' })}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Local Considerations -->
+      {locationInfo.localNotes && (
+        <div class="max-w-3xl mx-auto text-center space-y-4 mb-12">
+          <h2 class="text-2xl font-bold text-gray-900">{t('service-areas.localConsiderations', { fallback: 'What Matters for This Market' })}</h2>
+          <p class="text-gray-600 leading-relaxed">{locationInfo.localNotes}</p>
+        </div>
+      )}
+
+      <!-- FAQ Section -->
+      {faqList.length > 0 && (
+        <div class="max-w-3xl mx-auto mb-12">
+          <FAQ faqList={faqList} lang={supportedLang} />
+        </div>
+      )}
+
+      <!-- Premium Consultation CTA Callout -->
+      <CTA
+        lang={supportedLang} 
+        title={t('service-areas.ctaTitle', { fallback: 'Dominate Local Search' })}
+        description={t('service-areas.ctaDescription', { fallback: 'Get a custom optimization blueprint outline.' })}
+        buttonText={t('service-areas.ctaButton', { fallback: 'Get Started' })}
+      />
+    </div>
+  </section>
+</Layout>

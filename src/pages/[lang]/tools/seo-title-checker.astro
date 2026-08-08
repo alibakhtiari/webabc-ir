@@ -1,0 +1,498 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ToolsCTA from '../../../components/astro/ToolsCTA.astro';
+import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import { getLanguageStaticPaths, type SupportedLanguage } from '../../../types/language';
+import { getDictionary } from '../../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
+
+export const getStaticPaths = getLanguageStaticPaths;
+
+const { lang } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+
+// Helper to translate strings
+const t = createTranslator(dictionary);
+
+const titleText = t('seoTitleChecker.title', { fallback: 'SEO Title & Meta Checker' });
+const descriptionText = t('seoTitleChecker.description', { fallback: 'Analyze and preview your meta titles and descriptions for Google search results.' });
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": `https://webabc.ir/${supportedLang}/tools/seo-title-checker/#webapp`,
+  "name": titleText,
+  "description": descriptionText,
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires HTML5 support",
+  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'طول استاندارد عنوان سئو چقدر است؟' : supportedLang === 'ar' ? 'ما هو الطول المثالي لعنوان السيو؟' : 'What is the optimal length for an SEO title tag?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'طول بهینه عنوان سئو بین ۵۰ تا ۶۰ کاراکتر یا حداکثر ۵۸۰ پیکسل در دسکتاپ است.' : supportedLang === 'ar' ? 'الطول المثالي للعنوان هو بين 50 و 60 حرفاً أو 580 بكسل على أجهزة الكمبيوتر.' : 'The optimal title length is between 50 and 60 characters or 580 pixels on desktop viewports.'
+      }
+    },
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'چرا گوگل عنوان متا را در نتایج جستجو تغییر می‌دهد؟' : supportedLang === 'ar' ? 'لماذا يغير جوجل عنوان الصفحة في نتائج البحث؟' : 'Why does Google rewrite page title tags?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'اگر عنوان خیلی طولانی باشد، کلمات کلیدی اسپم داشته باشد یا نامرتبط با سرچ کاربر باشد، گوگل آن را جایگزین می‌کند.' : supportedLang === 'ar' ? 'إذا كان العنوان طويلاً جداً أو يحتوي تكراراً عشوائياً، يقوم جوجل باستبداله بنص أكثر ملائمة.' : 'Google rewrites title tags if they are truncated, keyword-stuffed, or poorly matched to the user search query.'
+      }
+    }
+  ]
+};
+
+const breadcrumbs = [
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools', { fallback: 'Tools' }), url: `/${supportedLang}/tools/` },
+  { label: titleText }
+];
+---
+
+<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/seo-title-checker">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
+  
+      <!-- Hero Section -->
+    <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+          <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
+          <h1 class="text-3xl md:text-5xl font-bold mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent leading-normal font-persian">
+            {titleText}
+          </h1>
+          <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-persian">
+            {descriptionText}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Workspace -->
+    <section class="container mx-auto px-4 mt-12 font-sans">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto">
+        
+        <!-- Inputs Panel -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-6">
+            
+            <!-- Keyword Input -->
+            <div class="space-y-2">
+              <label for="keyword-input" class="block text-sm font-semibold text-gray-700">
+                {t('seoTitleChecker.labels.keywordInput', { fallback: 'Focus Keyword' })}
+              </label>
+              <input
+                id="keyword-input"
+                type="text"
+                placeholder={t('seoTitleChecker.placeholders.keyword', { fallback: 'e.g. web design' })}
+                class="w-full h-11 border border-gray-200 rounded-lg px-4 focus:outline-none focus:border-primary"
+              />
+            </div>
+
+            <!-- Title Input -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center">
+                <label for="title-input" class="block text-sm font-semibold text-gray-700">
+                  {t('seoTitleChecker.labels.titleInput', { fallback: 'Meta Title' })}
+                </label>
+                <span id="title-counter" class="text-xs font-mono px-2 py-0.5 rounded-sm bg-yellow-50 text-yellow-600">
+                  0 / 60 chars (0px)
+                </span>
+              </div>
+              <input
+                id="title-input"
+                type="text"
+                placeholder={t('seoTitleChecker.placeholders.title', { fallback: 'Write your page title...' })}
+                class="w-full h-11 border border-gray-200 rounded-lg px-4 focus:outline-none focus:border-primary"
+              />
+            </div>
+
+            <!-- Description Input -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center">
+                <label for="desc-input" class="block text-sm font-semibold text-gray-700">
+                  {t('seoTitleChecker.labels.descriptionInput', { fallback: 'Meta Description' })}
+                </label>
+                <span id="desc-counter" class="text-xs font-mono px-2 py-0.5 rounded-sm bg-yellow-50 text-yellow-600">
+                  0 / 160 chars (0px)
+                </span>
+              </div>
+              <textarea
+                id="desc-input"
+                rows="4"
+                placeholder={t('seoTitleChecker.placeholders.description', { fallback: 'Write your page description here...' })}
+                class="w-full border border-gray-200 rounded-lg p-4 focus:outline-none focus:border-primary resize-none"
+              ></textarea>
+            </div>
+
+            <div class="flex justify-end gap-3 pt-2">
+              <button id="reset-btn" class="px-5 py-2.5 border border-gray-200 text-gray-700 hover:bg-gray-50 text-sm font-medium rounded-lg flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H18.2"></path></svg>
+                {t('common.clear', { fallback: 'Clear' })}
+              </button>
+            </div>
+          </div>
+
+          <!-- Google SERP Preview Box -->
+          <div class="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
+            <div class="bg-gray-50 border-b border-gray-100 px-6 py-4 flex justify-between items-center">
+              <span class="font-semibold text-gray-800 flex items-center gap-2">
+                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                {t('seoTitleChecker.labels.serpPreview', { fallback: 'Google Search Preview' })}
+              </span>
+              <div class="flex bg-white rounded-md p-0.5 border border-gray-200">
+                <button id="device-desktop" class="device-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-white font-medium">
+                  {t('seoTitleChecker.labels.desktop', { fallback: 'Desktop' })}
+                </button>
+                <button id="device-mobile" class="device-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900">
+                  {t('seoTitleChecker.labels.mobile', { fallback: 'Mobile' })}
+                </button>
+              </div>
+            </div>
+            <div class="p-6 bg-white">
+              <div id="serp-container" class="border border-gray-200 rounded-lg p-5 mx-auto bg-white transition-all shadow-xs max-w-full">
+                <!-- URL Snippet -->
+                <div class="flex items-center gap-2 mb-1.5">
+                  <div class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 shrink-0">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                  </div>
+                  <div class="overflow-hidden">
+                    <div class="text-xs text-gray-600 flex items-center gap-1 font-mono truncate">
+                      <span>webabc.ir</span>
+                      <span>›</span>
+                      <span class="text-gray-400 truncate">{supportedLang}/tools/seo-title-checker</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Live Title -->
+                <h3 id="preview-title" class="text-xl hover:underline font-medium mb-1 break-words cursor-pointer text-[#1a0dab]">
+                  Google Search Snippet Preview
+                </h3>
+
+                <!-- Live Description -->
+                <p id="preview-desc" class="text-sm text-[#4d5156] leading-relaxed break-words font-sans">
+                  Write your page title and meta description tag inside the fields above to see how they will look when rendered inside Google Search results.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scores & Tips Panel -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-8 text-center">
+            <h3 class="text-lg font-bold text-gray-700 mb-6">
+              {t('seoTitleChecker.labels.overallScore', { fallback: 'SEO Score' })}
+            </h3>
+            <div class="relative inline-flex items-center justify-center mb-6">
+              <svg class="w-36 h-36 transform -rotate-90">
+                <circle cx="72" cy="72" r="64" class="stroke-gray-100" stroke-width="10" fill="transparent" />
+                <circle id="score-circle" cx="72" cy="72" r="64" class="stroke-red-500 transition-all duration-500 ease-out" stroke-width="10" stroke-dasharray="402.12" stroke-dashoffset="402.12" stroke-linecap="round" fill="transparent" />
+              </svg>
+              <span id="score-text" class="absolute text-3xl font-bold font-mono">0/100</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 border-t border-gray-100 pt-6">
+              <div>
+                <div class="text-xs text-gray-500 mb-1">{t('seoTitleChecker.labels.titleScore', { fallback: 'Title' })}</div>
+                <div id="title-score-text" class="text-lg font-bold font-mono text-red-500">0%</div>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 mb-1">{t('seoTitleChecker.labels.descScore', { fallback: 'Description' })}</div>
+                <div id="desc-score-text" class="text-lg font-bold font-mono text-red-500">0%</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recommendations & Tips -->
+          <div class="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
+            <div class="bg-gray-50 border-b border-gray-100 px-6 py-4">
+              <span class="font-semibold text-gray-800">
+                {t('seoTitleChecker.labels.tips', { fallback: 'Suggestions' })}
+              </span>
+            </div>
+            <div class="p-6">
+              <ul id="tips-list" class="space-y-4">
+                <!-- Suggestions will be injected dynamically -->
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEO Guide Content -->
+    <section class="container mx-auto px-4 mt-16 font-sans">
+      <div class="max-w-4xl mx-auto space-y-8">
+        <div class="space-y-3">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Why Title Tags &amp; Meta Descriptions Matter</h2>
+          <p class="text-gray-600 leading-relaxed">
+            This SEO title checker previews exactly how your &lt;title&gt; and meta description will render in
+            Google search results, in both pixel width and character count — the two limits Google actually
+            truncates on. Getting this right improves click-through rate even when your ranking position doesn't
+            change, since a compelling snippet earns more clicks than a plain one at the same position.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-4">
+          <div class="bg-white border border-gray-100 rounded-xl p-5">
+            <h3 class="text-sm font-bold text-gray-800 mb-2">Title Tag vs. Headline (H1)</h3>
+            <p class="text-xs text-gray-500 leading-relaxed">
+              Your title tag doesn't have to match your on-page H1 word-for-word. Check your blog post or article
+              headline separately with our
+              <a href={`/${supportedLang}/tools/headline-analyzer`} class="text-primary font-semibold hover:underline">SEO Headline Analyzer</a>.
+            </p>
+          </div>
+          <div class="bg-white border border-gray-100 rounded-xl p-5">
+            <h3 class="text-sm font-bold text-gray-800 mb-2">Ideal Title Width</h3>
+            <p class="text-xs text-gray-500 leading-relaxed">
+              Keep titles under ~580px (roughly 50–60 characters). Google truncates by pixel width, not a fixed
+              character count, so wide characters like "W" or capitals cut off sooner than you'd expect.
+            </p>
+          </div>
+          <div class="bg-white border border-gray-100 rounded-xl p-5">
+            <h3 class="text-sm font-bold text-gray-800 mb-2">Meta Description Length</h3>
+            <p class="text-xs text-gray-500 leading-relaxed">
+              Aim for 110–160 characters (~990px). Front-load your focus keyword and end with a clear reason to
+              click, since Google may rewrite descriptions that don't match the query intent.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+  
+  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'headlineAnalyzer', route: 'headline-analyzer' }, { key: 'metaGenerator', route: 'meta-generator' }, { key: 'serpPreview', route: 'serp-preview' }]} ctaHref={`/${supportedLang}/services/seo`} isRtl={supportedLang !== 'en'} />
+</Layout>
+
+<script is:inline data-astro-rerun>
+  // SEO calculations logic in pure Vanilla JS
+  const POWER_WORDS = [
+    'best', 'free', 'top', 'guide', 'checklist', 'how', 'why', 'easy', 'simple',
+    'fast', 'ultimate', 'secrets', 'strategy', 'tips', 'new', 'latest', 'complete',
+    'بهترین', 'رایگان', 'راهنما', 'آموزش', 'چگونه', 'چرا', 'سریع', 'جامع', 'جدید', 'فرمول'
+  ];
+
+  // DOM Elements
+  const keywordInput = document.getElementById('keyword-input');
+  const titleInput = document.getElementById('title-input');
+  const descInput = document.getElementById('desc-input');
+  
+  const titleCounter = document.getElementById('title-counter');
+  const descCounter = document.getElementById('desc-counter');
+  
+  const previewTitle = document.getElementById('preview-title');
+  const previewDesc = document.getElementById('preview-desc');
+  
+  const serpContainer = document.getElementById('serp-container');
+  const deviceDesktopBtn = document.getElementById('device-desktop');
+  const deviceMobileBtn = document.getElementById('device-mobile');
+  
+  const scoreCircle = document.getElementById('score-circle');
+  const scoreText = document.getElementById('score-text');
+  const titleScoreText = document.getElementById('title-score-text');
+  const descScoreText = document.getElementById('desc-score-text');
+  const tipsList = document.getElementById('tips-list');
+  const resetBtn = document.getElementById('reset-btn');
+
+  // Device Toggle
+  deviceDesktopBtn.addEventListener('click', () => {
+    deviceDesktopBtn.className = "device-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-white font-medium";
+    deviceMobileBtn.className = "device-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900";
+    serpContainer.classList.remove('max-w-[375px]');
+    serpContainer.classList.add('max-w-full');
+    previewTitle.className = "text-xl hover:underline font-medium mb-1 break-words cursor-pointer text-[#1a0dab]";
+    updatePreviews();
+  });
+
+  deviceMobileBtn.addEventListener('click', () => {
+    deviceMobileBtn.className = "device-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-white font-medium";
+    deviceDesktopBtn.className = "device-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900";
+    serpContainer.classList.remove('max-w-full');
+    serpContainer.classList.add('max-w-[375px]');
+    previewTitle.className = "text-xl hover:underline font-medium mb-1 break-words cursor-pointer text-[#15c]";
+    updatePreviews();
+  });
+
+  // Calculate width helper
+  function getPixelWidth(text, isDesc = false) {
+    let width = 0;
+    const isArabicPersian = /[\u0600-\u06FF]/.test(text);
+    const scaleFactor = isArabicPersian ? (isDesc ? 7.6 : 9.2) : (isDesc ? 6.8 : 8.4);
+    for (let i = 0; i < text.length; i++) {
+      const char = text[i];
+      if (/[A-Z]/.test(char)) width += (isDesc ? 8.5 : 10.5);
+      else if (/[iI' l]/.test(char)) width += (isDesc ? 2.8 : 3.5);
+      else if (/[wW]/.test(char)) width += (isDesc ? 10.0 : 12.5);
+      else width += scaleFactor;
+    }
+    return Math.round(width);
+  }
+
+  function truncateText(text, maxWidth, isDesc = false) {
+    const width = getPixelWidth(text, isDesc);
+    if (width <= maxWidth) return text;
+    let currentWidth = 0;
+    let cutIdx = 0;
+    const isArabicPersian = /[\u0600-\u06FF]/.test(text);
+    const scaleFactor = isArabicPersian ? (isDesc ? 7.6 : 9.2) : (isDesc ? 6.8 : 8.4);
+    for (let i = 0; i < text.length; i++) {
+      const char = text[i];
+      if (/[A-Z]/.test(char)) currentWidth += (isDesc ? 8.5 : 10.5);
+      else if (/[iI' l]/.test(char)) currentWidth += (isDesc ? 2.8 : 3.5);
+      else if (/[wW]/.test(char)) currentWidth += (isDesc ? 10.0 : 12.5);
+      else currentWidth += scaleFactor;
+
+      if (currentWidth > maxWidth - 30) {
+        cutIdx = i;
+        break;
+      }
+    }
+    return text.slice(0, cutIdx) + '...';
+  }
+
+  function updatePreviews() {
+    const title = titleInput.value || '';
+    const desc = descInput.value || '';
+    const keyword = keywordInput.value || '';
+
+    const titleWidth = getPixelWidth(title);
+    const descWidth = getPixelWidth(desc, true);
+
+    // Update Counters
+    titleCounter.textContent = `${title.length} / 60 chars (${titleWidth}px)`;
+    descCounter.textContent = `${desc.length} / 160 chars (${descWidth}px)`;
+
+    // Update Preview Text
+    const isMobile = serpContainer.classList.contains('max-w-[375px]');
+    const maxTitleW = isMobile ? 550 : 580;
+    const maxDescW = isMobile ? 900 : 990;
+
+    previewTitle.textContent = title ? truncateText(title, maxTitleW, false) : 'Google Search Snippet Preview';
+    previewDesc.textContent = desc ? truncateText(desc, maxDescW, true) : 'Write your page title and meta description tag inside the fields above to see how they will look when rendered inside Google Search results.';
+
+    // Metrics Scoring
+    let titleStatus = 'tooShort';
+    if (title.length > 60 || titleWidth > 580) titleStatus = 'tooLong';
+    else if (title.length >= 40 && titleWidth >= 350) titleStatus = 'perfect';
+
+    let descStatus = 'tooShort';
+    if (desc.length > 160 || descWidth > 990) descStatus = 'tooLong';
+    else if (desc.length >= 110 && descWidth >= 680) descStatus = 'perfect';
+
+    // Highlight Counters
+    titleCounter.className = `text-xs font-mono px-2 py-0.5 rounded-sm ${titleStatus === 'perfect' ? 'bg-green-50 text-green-600' : titleStatus === 'tooLong' ? 'bg-red-50 text-red-600' : 'bg-yellow-50 text-yellow-600'}`;
+    descCounter.className = `text-xs font-mono px-2 py-0.5 rounded-sm ${descStatus === 'perfect' ? 'bg-green-50 text-green-600' : descStatus === 'tooLong' ? 'bg-red-50 text-red-600' : 'bg-yellow-50 text-yellow-600'}`;
+
+    // Scoring
+    let titleScore = 0;
+    if (titleStatus === 'perfect') titleScore = 40;
+    else if (title.length > 0 && title.length <= 70) titleScore = 25;
+    else if (title.length > 0) titleScore = 15;
+
+    let descScore = 0;
+    if (descStatus === 'perfect') descScore = 45;
+    else if (desc.length > 0 && desc.length <= 200) descScore = 30;
+    else if (desc.length > 0) descScore = 15;
+
+    let bonusScore = 0;
+    const cleanTitle = title.toLowerCase();
+    const cleanKeyword = keyword.toLowerCase().trim();
+    
+    const kwFound = cleanKeyword ? cleanTitle.includes(cleanKeyword) : false;
+    const kwStart = kwFound ? cleanTitle.indexOf(cleanKeyword) <= 15 : false;
+
+    if (cleanKeyword) {
+      if (kwFound) bonusScore += 5;
+      if (kwStart) bonusScore += 5;
+    } else {
+      bonusScore += 5;
+    }
+
+    const titleHasNumber = /\d+/.test(title);
+    const titleHasPowerWord = POWER_WORDS.some(word => cleanTitle.includes(word));
+
+    if (titleHasNumber) bonusScore += 3;
+    if (titleHasPowerWord) bonusScore += 2;
+
+    const overall = Math.min(titleScore + descScore + bonusScore, 100);
+
+    // Update Circle Progress (Dasharray max 402.12)
+    const circleOffset = 402.12 * (1 - overall / 100);
+    scoreCircle.setAttribute('stroke-dashoffset', circleOffset);
+    
+    scoreCircle.className.baseVal = `transition-all duration-500 ease-out ${overall >= 80 ? 'stroke-green-500' : overall >= 50 ? 'stroke-yellow-500' : 'stroke-red-500'}`;
+    scoreText.textContent = `${overall}/100`;
+    
+    const titlePerc = Math.round((titleScore / 40) * 100);
+    titleScoreText.textContent = `${titlePerc}%`;
+    titleScoreText.className = `text-lg font-bold font-mono ${titlePerc >= 80 ? 'text-green-500' : titlePerc >= 50 ? 'text-yellow-500' : 'text-red-500'}`;
+
+    const descPerc = Math.round((descScore / 45) * 100);
+    descScoreText.textContent = `${descPerc}%`;
+    descScoreText.className = `text-lg font-bold font-mono ${descPerc >= 80 ? 'text-green-500' : descPerc >= 50 ? 'text-yellow-500' : 'text-red-500'}`;
+
+    // Suggestions Generator
+    tipsList.innerHTML = '';
+    const addTip = (type, text) => {
+      const li = document.createElement('li');
+      li.className = "flex gap-3 items-start text-sm";
+      const iconColor = type === 'success' ? 'text-green-500' : type === 'error' ? 'text-red-500' : 'text-yellow-500';
+      const textColor = type === 'success' ? 'text-gray-700' : type === 'error' ? 'text-red-700 font-medium' : 'text-yellow-700';
+      
+      li.innerHTML = `
+        <span class="${iconColor} shrink-0 mt-0.5 font-bold">${type === 'success' ? '✓' : '⚠'}</span>
+        <span class="${textColor}">${text}</span>
+      `;
+      tipsList.appendChild(li);
+    };
+
+    // Populate Tips
+    if (titleStatus === 'perfect') addTip('success', 'Title length is perfect.');
+    else if (titleStatus === 'tooLong') addTip('error', 'Title is too long (over 60 chars or 580px). It will get truncated.');
+    else addTip('warning', 'Title is too short (under 40 chars). Add more descriptive keywords.');
+
+    if (descStatus === 'perfect') addTip('success', 'Description length is perfect.');
+    else if (descStatus === 'tooLong') addTip('error', 'Description is too long. Keep it under 160 characters.');
+    else addTip('warning', 'Description is too short. Describe your page in 110-160 characters.');
+
+    if (keyword.trim()) {
+      if (kwFound) addTip('success', 'Keyword found in title.');
+      else addTip('error', 'Keyword not found in title. Try inserting it naturally.');
+    }
+    if (titleHasNumber) addTip('success', 'Title contains a number (improves CTR).');
+    if (titleHasPowerWord) addTip('success', 'Title contains a CTR power word.');
+    else addTip('warning', 'Consider adding power words (e.g. "free", "best", "guide") to boost clicks.');
+  }
+
+  // Bind Listeners
+  titleInput.addEventListener('input', updatePreviews);
+  descInput.addEventListener('input', updatePreviews);
+  keywordInput.addEventListener('input', updatePreviews);
+
+  resetBtn.addEventListener('click', () => {
+    titleInput.value = '';
+    descInput.value = '';
+    keywordInput.value = '';
+    updatePreviews();
+  });
+
+  // Initial Load values
+  titleInput.value = 'Web Design and SEO Services - WebABC';
+  descInput.value = 'We design highly optimized, modern websites and provide expert SEO consultation to help your business achieve digital excellence.';
+  keywordInput.value = 'web design';
+  updatePreviews();
+</script>

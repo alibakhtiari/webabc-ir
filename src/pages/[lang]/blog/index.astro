@@ -1,0 +1,216 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import { getLanguageStaticPaths, type SupportedLanguage, languages } from '../../../types/language';
+import { getDictionary } from '../../../i18n/get-dictionary';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import { createTranslator } from '@/i18n/translate';
+import { getCategoryLabel } from '@/utils/category-translator';
+
+export const getStaticPaths = getLanguageStaticPaths;
+
+const { lang } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+const isRtl = supportedLang === 'fa' || supportedLang === 'ar';
+
+// Helper to translate strings
+const t = createTranslator(dictionary);
+
+// Fetch items
+const allBlogEntries = await getCollection('blog');
+const posts = allBlogEntries
+  .filter(entry => entry.id.startsWith(`${supportedLang}/`))
+  .map(entry => ({
+    ...entry.data,
+    slug: entry.id.replace(`${supportedLang}/`, '')
+  }));
+const sortedPosts = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+const categories = [...new Set(sortedPosts.map(p => p.category))];
+
+const titleText = t('blog.title', { fallback: 'Blog' });
+const descriptionText = t('blog.blogDescription', { fallback: 'Latest Articles and Industry Insights' });
+
+// Schema definitions
+const origin = 'https://webabc.ir';
+const currentUrl = `${origin}/${supportedLang}/blog`;
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": titleText,
+  "description": descriptionText,
+  "url": currentUrl,
+  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
+  "blogPost": sortedPosts.slice(0, 10).map(post => ({
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.description,
+    "image": post.image.startsWith('http') ? post.image : `${origin}${post.image}`,
+    "datePublished": post.date,
+    "author": {
+      "@type": "Person",
+      "name": post.author || "WebABC Team"
+    },
+    "url": `${origin}/${supportedLang}/blog/${post.slug}`
+  }))
+};
+
+const breadcrumbs = [
+  { label: t('common.home'), url: `/${supportedLang}` },
+  { label: t('common.blog') }
+];
+---
+
+<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="blog">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(blogSchema)} />
+
+  <main class="grow w-full overflow-x-hidden bg-gray-50/50 pt-0 pb-20">
+    <!-- Hero Section -->
+    <section class="pt-36 pb-20 bg-linear-to-br from-primary/10 via-primary/5 to-background relative overflow-hidden">
+      <div class="container mx-auto px-4 relative">
+        <div class="max-w-3xl mx-auto text-center">
+          <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
+          <h1 class="text-5xl md:text-6xl font-bold mb-6 text-primary font-persian">
+            {titleText}
+          </h1>
+          <p class="text-xl md:text-2xl text-muted-foreground leading-relaxed font-persian">
+            {descriptionText}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="py-6 bg-white border-y border-gray-100 sticky top-20 z-10 shadow-xs font-persian">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-wrap gap-3 items-center justify-center">
+          <span class="text-sm font-semibold text-gray-600">{t('blog.filterBy', { fallback: 'Filter By' })}:</span>
+          <a
+            href={`/${supportedLang}/blog?category=all`}
+            data-filter-btn="all"
+            class="filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-primary text-white shadow-sm cursor-pointer transition-all"
+          >
+            {t('blog.allCategories', { fallback: 'All Categories' })}
+          </a>
+          {categories.map((category) => (
+            <a
+              href={`/${supportedLang}/blog?category=${encodeURIComponent(category)}`}
+              data-filter-btn={category}
+              class="filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 cursor-pointer transition-all"
+            >
+              {getCategoryLabel(category, supportedLang)}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Posts Grid -->
+    <section class="py-16 font-sans">
+      <div class="container mx-auto px-4">
+        {sortedPosts.length === 0 ? (
+          <div class="text-center py-16 font-persian">
+            <p class="text-xl text-gray-500">{t('common.noResults', { fallback: 'No results found.' })}</p>
+          </div>
+        ) : (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {sortedPosts.map((post) => (
+              <div data-post-card={post.category} class="group block bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+                <a href={`/${supportedLang}/blog/${post.slug}`} class="block">
+                  <div class="aspect-video overflow-hidden relative">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      width={400}
+                      height={225}
+                      class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div class="p-6 space-y-4">
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <span class="px-2.5 py-1 text-xs font-semibold rounded bg-gray-100 text-gray-600 uppercase">
+                        {getCategoryLabel(post.category, supportedLang)}
+                      </span>
+                      <span class="text-xs text-gray-400 font-mono">
+                        {new Date(post.date).toLocaleDateString(supportedLang === 'ar' ? 'ar-SA' : supportedLang === 'fa' ? 'fa-IR' : 'en-US', {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                        })}
+                      </span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors leading-snug font-persian">
+                      {post.title}
+                    </h3>
+                    <p class="text-sm text-gray-500 line-clamp-3 leading-relaxed font-persian">
+                      {post.description}
+                    </p>
+                    
+                    <div class="flex items-center text-primary font-semibold text-sm gap-1 group-hover:gap-2 transition-all font-persian">
+                      {t('blog.readMore', { fallback: 'Read More' })} {isRtl ? '←' : '→'}
+                    </div>
+                  </div>
+                </a>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script is:inline>
+  // Dynamic client-side category filtering with URL parameter tracking
+  const filterBtns = document.querySelectorAll('[data-filter-btn]');
+  const postCards = document.querySelectorAll('[data-post-card]');
+
+  function applyFilter(selected) {
+    // Update active button state styling
+    filterBtns.forEach(b => {
+      b.className = "filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 cursor-pointer transition-all";
+    });
+    const activeBtn = document.querySelector(`[data-filter-btn="${selected}"]`) || document.querySelector('[data-filter-btn="all"]');
+    if (activeBtn) {
+      activeBtn.className = "filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-primary text-white shadow-sm cursor-pointer transition-all";
+    }
+
+    // Toggle cards visibility
+    postCards.forEach(card => {
+      const cardCat = card.getAttribute('data-post-card');
+      if (selected === 'all' || cardCat === selected) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const selected = btn.getAttribute('data-filter-btn');
+      
+      applyFilter(selected);
+
+      // Update URL query parameters without reloading
+      const url = new URL(window.location);
+      if (selected === 'all') {
+        url.searchParams.delete('category');
+      } else {
+        url.searchParams.set('category', selected);
+      }
+      window.history.pushState({}, '', url);
+    });
+  });
+
+  // Handle initial page load filter state from URL parameter
+  window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialCategory = urlParams.get('category');
+    if (initialCategory) {
+      applyFilter(decodeURIComponent(initialCategory));
+    }
+  });
+</script>

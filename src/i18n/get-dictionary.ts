@@ -1,5 +1,4 @@
-import 'server-only';
-import { SupportedLanguage } from '@/types/language';
+import type { SupportedLanguage } from '@/types/language';
 
 // Define namespaces and their corresponding filenames
 const namespaces = {
@@ -18,6 +17,7 @@ const namespaces = {
     webDevelopmentServices: 'web-development-services',
     'service-areas': 'service-areas',
     seoService: 'seo-service',
+    ecommerce: 'ecommerce',
     tools: 'tools',
     faq: 'faq',
 
@@ -50,6 +50,10 @@ const namespaces = {
     socialPreview: 'tools/socialPreview',
     gradientGen: 'tools/gradientGen',
     seoTitleChecker: 'tools/seoTitleChecker',
+    schemaGenerator: 'tools/schemaGenerator',
+    colorContrast: 'tools/colorContrast',
+    boxShadow: 'tools/boxShadow',
+    base64: 'tools/base64',
 
     cookieNotice: 'cookie',
     privacyPolicy: 'privacy',
@@ -61,7 +65,13 @@ type NamespaceKey = keyof typeof namespaces;
 const loadLocaleDictionary = async (locale: string) => {
     const entries = await Promise.all(
         Object.entries(namespaces).map(async ([key, filename]) => {
-            const module = await import(`./${locale}/${filename}.json`);
+            let module;
+            if (filename.startsWith('tools/')) {
+                const toolName = filename.replace('tools/', '');
+                module = await import(`./${locale}/tools/${toolName}.json`);
+            } else {
+                module = await import(`./${locale}/${filename}.json`);
+            }
             return [key, module.default];
         })
     );

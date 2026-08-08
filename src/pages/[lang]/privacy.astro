@@ -1,0 +1,97 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/astro/Breadcrumbs.astro';
+import { getLanguageStaticPaths, type SupportedLanguage } from '../../types/language';
+import { getDictionary } from '../../i18n/get-dictionary';
+
+export const getStaticPaths = getLanguageStaticPaths;
+
+const { lang } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+
+const privacy = dictionary.privacyPolicy || {
+  title: 'Privacy Policy',
+  introduction: 'This privacy policy governs your use of this application.',
+  lastUpdated: 'Last Updated:',
+  dataCollection: { title: 'Information We Collect', content: 'We collect relevant details to optimize user interface speeds.' },
+  dataUsage: { title: 'How We Use Information', content: 'Details are processed purely client side.' },
+  thirdPartySharing: { title: 'Third Party Sharing', content: 'We do not sell user data.' },
+  dataRetentionAndDeletion: { title: 'Retention and Deletion', content: 'All logs are processed client side.' },
+  cookieUsage: { title: 'Cookie Usage', content: 'We employ cookies for analytics.' },
+  contactInformation: { title: 'Contact Details', content: 'Get in touch with the team.' }
+};
+
+const renderContent = (content: string) => {
+  return content.split('\n').map((line) => {
+    const parts = line.split(/(\*\*.*?\*\*)/g);
+    return parts.map((part) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return `<strong>${part.slice(2, -2)}</strong>`;
+      }
+      return part;
+    }).join('');
+  });
+};
+
+const breadcrumbs = [
+  { label: dictionary.common?.home || 'Home', url: `/${supportedLang}/` },
+  { label: privacy.title }
+];
+---
+
+<Layout title={privacy.title} description={privacy.introduction.substring(0, 160)} lang={supportedLang} slug="privacy">
+  <main class="grow w-full overflow-x-hidden bg-gray-50/50 pt-0 pb-20">
+    <div class="container mx-auto px-4 py-16 max-w-3xl pt-36 font-sans font-persian">
+      <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
+      <h1 class="text-4xl font-bold mb-4 text-gray-900 leading-normal">{privacy.title}</h1>
+      <p class="text-gray-400 mb-12 text-sm font-mono">{privacy.lastUpdated} {new Date().toLocaleDateString(supportedLang)}</p>
+
+      <div class="prose prose-lg max-w-none text-gray-700 space-y-10 leading-relaxed">
+        <p class="text-lg leading-relaxed">{privacy.introduction}</p>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl font-bold text-gray-900">{privacy.dataCollection.title}</h2>
+          {renderContent(privacy.dataCollection.content).map(paragraph => (
+            <p set:html={paragraph}></p>
+          ))}
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl font-bold text-gray-900">{privacy.dataUsage.title}</h2>
+          {renderContent(privacy.dataUsage.content).map(paragraph => (
+            <p set:html={paragraph}></p>
+          ))}
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl font-bold text-gray-900">{privacy.thirdPartySharing.title}</h2>
+          {renderContent(privacy.thirdPartySharing.content).map(paragraph => (
+            <p set:html={paragraph}></p>
+          ))}
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl font-bold text-gray-900">{privacy.dataRetentionAndDeletion.title}</h2>
+          {renderContent(privacy.dataRetentionAndDeletion.content).map(paragraph => (
+            <p set:html={paragraph}></p>
+          ))}
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl font-bold text-gray-900">{privacy.cookieUsage.title}</h2>
+          {renderContent(privacy.cookieUsage.content).map(paragraph => (
+            <p set:html={paragraph}></p>
+          ))}
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="text-2xl font-bold text-gray-900">{privacy.contactInformation.title}</h2>
+          {renderContent(privacy.contactInformation.content).map(paragraph => (
+            <p set:html={paragraph}></p>
+          ))}
+        </section>
+      </div>
+    </div>
+  </main>
+</Layout>

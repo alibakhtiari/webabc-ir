@@ -5,11 +5,15 @@
     "questionLabel": "السؤال",
     "answerLabel": "الجواب",
     "generateSchema": "توليد المخطط",
-    "copyJson": "نسخ الكود",
+    "copyJson": "نسخ JSON-LD",
     "delete": "حذف",
     "preview": "معاينة",
     "schemaResult": "نتيجة المخطط",
-    "copied": "تم النسخ!",
+    "copied": "تم نسخ الكود إلى الحافظة!",
     "noQuestions": "أضف سؤالاً واحداً على الأقل لتوليد المخطط.",
-    "placeholder": "// سيظهر مخطط JSON-LD هنا..."
+    "placeholder": "// سيظهر مخطط JSON-LD هنا...",
+    "faqHeading": "الأسئلة الشائعة",
+    "jsonLdCode": "كود مخطط JSON-LD",
+    "htmlAccordion": "كود HTML للأكورديون",
+    "copyHtml": "نسخ HTML"
 }

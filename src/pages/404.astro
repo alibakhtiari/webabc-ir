@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getDictionary } from '../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
+import type { SupportedLanguage } from '../types/language';
+
+// Inspect requested URL pathname during SSR/prerender to determine requested language
+const pathname = Astro.url.pathname;
+let detectedLang: SupportedLanguage = 'en';
+
+if (pathname.startsWith('/fa')) {
+  detectedLang = 'fa';
+} else if (pathname.startsWith('/ar')) {
+  detectedLang = 'ar';
+}
+
+const lang = detectedLang;
+const dictionary = await getDictionary(lang);
+const t = createTranslator(dictionary);
+
+const title = `${t('common.notFound.title', { fallback: '404 - Page Not Found' })} | WebABC`;
+const description = t('common.notFound.subtitle', { fallback: 'The page you requested could not be found.' });
+
+const quickLinks = [
+  { label: t('common.home'), url: `/${lang}` },
+  { label: t('common.services'), url: `/${lang}/services` },
+  { label: t('common.portfolio'), url: `/${lang}/portfolio` },
+  { label: t('common.about'), url: `/${lang}/about` },
+  { label: t('common.contact'), url: `/${lang}/contact` }
+];
+---
+
+<Layout title={title} description={description} lang={lang} noindex={true}>
+  <!-- Client-side URL fallback for purely static routing -->
+  <Fragment slot="head">
+    <script is:inline>
+      (function() {
+        var path = window.location.pathname;
+        if (path.startsWith('/fa') && document.documentElement.lang !== 'fa') {
+          window.location.reload();
+        } else if (path.startsWith('/ar') && document.documentElement.lang !== 'ar') {
+          window.location.reload();
+        }
+      })();
+    </script>
+  </Fragment>
+
+  <div class="min-h-[70vh] flex items-center justify-center py-16 px-4 bg-linear-to-b from-gray-50 via-white to-gray-50/50">
+    <div class="max-w-2xl w-full text-center space-y-8">
+      
+      <!-- 404 Card Header -->
+      <div class="bg-white border border-gray-100 shadow-xl rounded-3xl p-8 sm:p-12 space-y-6">
+        <div class="flex justify-center">
+          <span class="px-5 py-2 bg-primary/10 text-primary font-black rounded-full text-sm font-mono tracking-widest uppercase shadow-xs">
+            404
+          </span>
+        </div>
+
+        <div class="space-y-4">
+          <h1 class="text-3xl sm:text-5xl font-black text-gray-900 tracking-tight leading-tight">
+            {t('common.notFound.title', { fallback: lang === 'fa' ? 'صفحه مورد نظر پیدا نشد' : lang === 'ar' ? 'الصفحة المطلوبة غير موجودة' : 'Page Not Found' })}
+          </h1>
+          <p class="text-lg text-gray-600 max-w-xl mx-auto leading-relaxed">
+            {t('common.notFound.subtitle', { fallback: lang === 'fa' ? 'صفحه‌ای که به دنبال آن هستید تغییر آدرس داده یا وجود ندارد. می‌توانید از بخش‌های اصلی سایت دیدن کنید یا با ما در ارتباط باشید.' : lang === 'ar' ? 'قد تكون الصفحة التي تبحث عنها قد تم نقلها أو التغيير في عنوانها. يمكنك استكشاف الخدمات أو زيارة الروابط السريعة أدناه.' : 'The page you are looking for has been moved or doesn\'t exist.' })}
+          </p>
+        </div>
+
+        <!-- Quick Navigation Links -->
+        <div class="pt-6 border-t border-gray-100">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">
+            {lang === 'fa' ? 'دسترسی سریع به بخش‌های اصلی' : lang === 'ar' ? 'روابط سريعة' : 'Quick Navigation'}
+          </p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {quickLinks.slice(0, 4).map(link => (
+              <a href={link.url} class="p-3 bg-gray-50 hover:bg-primary hover:text-white rounded-xl border border-gray-100 font-bold text-sm text-gray-700 transition-all shadow-xs">
+                {link.label} {lang === 'en' ? '→' : '←'}
+              </a>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</Layout>

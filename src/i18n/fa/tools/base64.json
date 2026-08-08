@@ -1,0 +1,18 @@
+{
+  "title": "تبدیل عکس به Base64 و انکودر متون",
+  "description": "تبدیل آنلاین تصاویر به کدهای Data URL Base64 و رمزنگاری/رمزگشایی رشته‌های متنی.",
+  "modeImage": "تصویر به Base64",
+  "modeText": "رمزنگاری/رمزگشایی متن",
+  "dropHint": "تصویر را اینجا رها کنید یا کلیک کنید تا آپلود شود",
+  "dropSubtext": "پشتیبانی از PNG، JPG، WebP، SVG، GIF تا حجم ۵ مگابایت",
+  "dataUrlOutput": "خروجی Data URL",
+  "copyBase64": "کپی Base64",
+  "inputTextLabel": "متن ورودی",
+  "textPlaceholder": "متن برای رمزنگاری یا رشته Base64 برای رمزگشایی را وارد کنید...",
+  "encodeBtn": "رمزنگاری به Base64",
+  "decodeBtn": "رمزگشایی از Base64",
+  "outputResult": "نتیجه خروجی",
+  "copyResult": "کپی نتیجه",
+  "resultPlaceholder": "نتیجه اینجا نمایش داده می‌شود...",
+  "copiedStatus": "در کلیپ‌بورد کپی شد!"
+}

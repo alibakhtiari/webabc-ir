@@ -1,0 +1,58 @@
+---
+import { getDictionary } from '../../i18n/get-dictionary';
+import { type SupportedLanguage } from '../../types/language';
+
+interface Props {
+  headings: { depth: number; slug: string; text: string }[];
+  lang: SupportedLanguage;
+}
+
+const { headings, lang } = Astro.props;
+const dictionary = await getDictionary(lang);
+
+const titleText = dictionary.blog?.tableOfContents || 'فهرست مطالب';
+
+// Filter for h2 and h3
+const filteredHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
+
+if (filteredHeadings.length === 0) return null;
+---
+
+<div class="mb-8 border border-primary/10 bg-linear-to-br from-primary/5 to-white shadow-xs rounded-2xl overflow-hidden font-persian">
+  <button id="toc-toggle" class="w-full flex items-center justify-between p-5 hover:bg-primary/5 transition-all focus:outline-none">
+    <span class="font-bold text-lg text-gray-900 flex items-center gap-2">
+      <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7"></path></svg>
+      {titleText}
+    </span>
+    <svg id="toc-arrow" class="w-5 h-5 transition-transform duration-300 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+  </button>
+  <nav id="toc-content" class="hidden px-6 pb-6 border-t border-gray-100/55 pt-4">
+    <ul class="space-y-1.5">
+      {filteredHeadings.map((item) => (
+        <li class={item.depth === 3 ? "pl-4 opacity-90" : ""}>
+          <a
+            href={`#${item.slug}`}
+            class={`text-sm hover:text-primary transition-all block py-1.5 px-3 rounded-md hover:bg-primary/5 border-s-2 border-transparent hover:border-primary ${
+              item.depth === 3 ? "text-gray-500 font-normal" : "text-gray-700 font-semibold"
+            }`}
+          >
+            {item.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</div>
+
+<script is:inline>
+  const tocToggle = document.getElementById('toc-toggle');
+  const tocContent = document.getElementById('toc-content');
+  const tocArrow = document.getElementById('toc-arrow');
+
+  if (tocToggle && tocContent && tocArrow) {
+    tocToggle.addEventListener('click', () => {
+      const isHidden = tocContent.classList.toggle('hidden');
+      tocArrow.classList.toggle('rotate-180', !isHidden);
+    });
+  }
+</script>

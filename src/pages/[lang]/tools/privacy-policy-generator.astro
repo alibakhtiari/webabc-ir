@@ -1,0 +1,204 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ToolsCTA from '../../../components/astro/ToolsCTA.astro';
+import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import { getLanguageStaticPaths, type SupportedLanguage, languages } from '../../../types/language';
+import { getDictionary } from '../../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
+
+export const getStaticPaths = getLanguageStaticPaths;
+
+const { lang } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+const isRtl = languages[supportedLang]?.direction === 'rtl';
+
+const t = createTranslator(dictionary);
+
+const titleText = t('privacyGenerator.title', { fallback: 'Privacy Policy Generator' });
+const descriptionText = t('privacyGenerator.description', { fallback: 'Create professional, GDPR and CCPA compliant privacy policies for your website.' });
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": `https://webabc.ir/${supportedLang}/tools/privacy-policy-generator/#webapp`,
+  "name": titleText,
+  "description": descriptionText,
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires HTML5 support",
+  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'چرا وجود صفحه سیاست حریم خصوصی (Privacy Policy) برای وب‌سایت الزامی است؟' : supportedLang === 'ar' ? 'لماذا تعد صفحة سياسة الخصوصية إلزامية للمواقع؟' : 'Why is a Privacy Policy required for websites?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'صفحه حریم خصوصی نحوه جمع‌آوری، کوکی‌ها و حفاظت از اطلاعات کاربران را شفاف کرده و برای قوانین GDPR و مجوزهای تبلیغاتی و اینماد الزامی است.' : supportedLang === 'ar' ? 'توضح سياسة الخصوصية كيفية جمع بيانات المستخدمين وحمايتها واستخدام الكوكيز، وهو شرط أساسي للامتثال لـ GDPR وجوجل إعلانات.' : 'A Privacy Policy discloses how user personal data, cookies, and analytics are collected and protected, satisfying GDPR compliance and ad network standards.'
+      }
+    }
+  ]
+};
+
+const breadcrumbs = [
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
+  { label: titleText }
+];
+
+// Text used by the client script — pulled server-side from the dictionary so it stays translated.
+const strings = {
+  policyTitle: t('privacyGenerator.policyTitle', { fallback: 'PRIVACY POLICY' }),
+  lastUpdated: t('privacyGenerator.lastUpdated', { fallback: 'Last updated' }),
+  introTitle: t('privacyGenerator.introTitle', { fallback: '1. INTRODUCTION' }),
+  introText: t('privacyGenerator.introText', { fallback: 'Welcome to {companyName}.' }),
+  contactTitle: t('privacyGenerator.contactTitle', { fallback: '2. CONTACT DETAILS' }),
+  contactText: t('privacyGenerator.contactText', { fallback: 'If you have any questions, contact us at:' }),
+  emailLabel: t('privacyGenerator.emailLabel', { fallback: 'Email:' }),
+  addressLabel: t('privacyGenerator.addressLabel', { fallback: 'Address:' }),
+  dataTitle: t('privacyGenerator.dataTitle', { fallback: '3. DATA WE COLLECT' }),
+  dataIntro: t('privacyGenerator.dataIntro', { fallback: 'We may collect the following data:' }),
+  dataIdentity: t('privacyGenerator.dataIdentity', { fallback: '- Identity Data' }),
+  dataContact: t('privacyGenerator.dataContact', { fallback: '- Contact Data' }),
+  dataTechnical: t('privacyGenerator.dataTechnical', { fallback: '- Technical Data' }),
+  cookiesTitle: t('privacyGenerator.cookiesTitle', { fallback: '4. COOKIES' }),
+  cookiesText: t('privacyGenerator.cookiesText', { fallback: 'We use cookies to track activity.' }),
+  adsTitle: t('privacyGenerator.adsTitle', { fallback: '5. ADVERTISING PARTNERS' }),
+  adsText: t('privacyGenerator.adsText', { fallback: 'We may use third-party ad providers.' }),
+  securityTitle: t('privacyGenerator.securityTitle', { fallback: '6. DATA SECURITY' }),
+  securityText: t('privacyGenerator.securityText', { fallback: 'We have appropriate security measures in place.' }),
+  rightsTitle: t('privacyGenerator.rightsTitle', { fallback: '7. YOUR LEGAL RIGHTS' }),
+  rightsText: t('privacyGenerator.rightsText', { fallback: 'You have rights under data protection laws.' }),
+};
+---
+
+<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/privacy-policy-generator">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
+      <!-- Hero Section -->
+    <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+          <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
+          <h1 class="text-3xl md:text-5xl font-bold mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent leading-normal font-persian">
+            {titleText}
+          </h1>
+          <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-persian">
+            {descriptionText}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Workspace -->
+    <section class="container mx-auto px-4 mt-12 font-sans">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+
+        <!-- Form Panel -->
+        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian">
+          <h3 class="text-sm font-bold text-gray-800">{t('privacyGenerator.companyInfo', { fallback: 'Business Information' })}</h3>
+
+          <div class="space-y-1.5">
+            <label for="pp-company" class="text-sm font-medium text-gray-700">{t('privacyGenerator.companyName', { fallback: 'Company Name' })}</label>
+            <input id="pp-company" type="text" placeholder="e.g. Acme Corp" class="w-full border border-gray-200 rounded-lg px-4 h-11 focus:outline-none focus:border-primary" />
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="pp-url" class="text-sm font-medium text-gray-700">{t('privacyGenerator.websiteUrl', { fallback: 'Website URL' })}</label>
+            <input id="pp-url" type="text" dir="ltr" placeholder="https://example.com" class="w-full border border-gray-200 rounded-lg px-4 h-11 focus:outline-none focus:border-primary" />
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="pp-email" class="text-sm font-medium text-gray-700">{t('privacyGenerator.email', { fallback: 'Contact Email' })}</label>
+            <input id="pp-email" type="text" dir="ltr" placeholder="support@example.com" class="w-full border border-gray-200 rounded-lg px-4 h-11 focus:outline-none focus:border-primary" />
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="pp-address" class="text-sm font-medium text-gray-700">{t('privacyGenerator.address', { fallback: 'Business Address' })}</label>
+            <input id="pp-address" type="text" placeholder="City, Country" class="w-full border border-gray-200 rounded-lg px-4 h-11 focus:outline-none focus:border-primary" />
+          </div>
+
+          <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+            <label for="pp-cookies" class="text-sm font-medium text-gray-700">{t('privacyGenerator.useCookies', { fallback: 'Do you use cookies?' })}</label>
+            <input id="pp-cookies" type="checkbox" checked class="w-5 h-5 rounded text-primary accent-primary" />
+          </div>
+          <div class="flex items-center justify-between">
+            <label for="pp-ads" class="text-sm font-medium text-gray-700">{t('privacyGenerator.showAds', { fallback: 'Do you show ads (AdSense)?' })}</label>
+            <input id="pp-ads" type="checkbox" class="w-5 h-5 rounded text-primary accent-primary" />
+          </div>
+
+          <button id="pp-generate" class="w-full py-3 bg-primary text-white font-bold rounded-xl shadow-sm hover:bg-primary/95 transition-all text-sm mt-2">
+            {t('privacyGenerator.generate', { fallback: 'Generate Policy' })}
+          </button>
+        </div>
+
+        <!-- Result Panel -->
+        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 flex flex-col">
+          <div class="flex justify-between items-center">
+            <h3 class="text-sm font-bold text-gray-800 font-persian">{t('privacyGenerator.result', { fallback: 'Your Privacy Policy' })}</h3>
+            <button id="pp-copy" disabled class="text-xs font-semibold text-primary hover:underline font-persian disabled:opacity-40 disabled:cursor-not-allowed">
+              {t('privacyGenerator.copy', { fallback: 'Copy to Clipboard' })}
+            </button>
+          </div>
+          <pre id="pp-output" dir="ltr" class="grow min-h-[420px] max-h-[420px] overflow-y-auto whitespace-pre-wrap text-xs leading-relaxed bg-gray-50/50 border border-gray-100 rounded-xl p-4 font-mono text-gray-700">{t('privacyGenerator.placeholder', { fallback: 'Fill out the form to generate your policy...' })}</pre>
+          <p id="pp-copy-feedback" class="text-xs text-green-600 font-semibold font-persian opacity-0 transition-opacity">
+            {t('privacyGenerator.copied', { fallback: 'Policy copied to clipboard!' })}
+          </p>
+        </div>
+
+      </div>
+    </section>
+  
+  
+  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'tools.robotsGenerator', route: 'robots-generator' }, { key: 'metaGenerator', route: 'meta-generator' }, { key: 'costCalculator', route: 'cost-calculator' }]} ctaHref={`/${supportedLang}/services/web-development`} isRtl={isRtl} />
+</Layout>
+
+<script type="application/json" id="pp-strings" set:html={JSON.stringify(strings)} />
+
+<script is:inline data-astro-rerun>
+  const S = JSON.parse(document.getElementById('pp-strings').textContent);
+
+  const companyInput = document.getElementById('pp-company');
+  const urlInput = document.getElementById('pp-url');
+  const emailInput = document.getElementById('pp-email');
+  const addressInput = document.getElementById('pp-address');
+  const cookiesCheck = document.getElementById('pp-cookies');
+  const adsCheck = document.getElementById('pp-ads');
+  const generateBtn = document.getElementById('pp-generate');
+  const copyBtn = document.getElementById('pp-copy');
+  const copyFeedback = document.getElementById('pp-copy-feedback');
+  const output = document.getElementById('pp-output');
+
+  generateBtn.addEventListener('click', () => {
+    const companyName = companyInput.value || '[Company Name]';
+    const websiteUrl = urlInput.value || '[Website URL]';
+    const email = emailInput.value || '[Email Address]';
+    const address = addressInput.value || '[Physical Address]';
+
+    const introText = S.introText.replace('{companyName}', companyName).replace('{websiteUrl}', websiteUrl);
+
+    let policy = `${S.policyTitle}\n${S.lastUpdated}: ${new Date().toLocaleDateString()}\n\n`;
+    policy += `${S.introTitle}\n${introText}\n\n`;
+    policy += `${S.contactTitle}\n${S.contactText}\n${S.emailLabel} ${email}\n${S.addressLabel} ${address}\n\n`;
+    policy += `${S.dataTitle}\n${S.dataIntro}\n${S.dataIdentity}\n${S.dataContact}\n${S.dataTechnical}\n\n`;
+    if (cookiesCheck.checked) policy += `${S.cookiesTitle}\n${S.cookiesText}\n\n`;
+    if (adsCheck.checked) policy += `${S.adsTitle}\n${S.adsText}\n\n`;
+    policy += `${S.securityTitle}\n${S.securityText}\n\n`;
+    policy += `${S.rightsTitle}\n${S.rightsText}`;
+
+    output.textContent = policy.trim();
+    copyBtn.disabled = false;
+  });
+
+  copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(output.textContent).then(() => {
+      copyFeedback.classList.remove('opacity-0');
+      setTimeout(() => copyFeedback.classList.add('opacity-0'), 1800);
+    });
+  });
+</script>

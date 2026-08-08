@@ -15,14 +15,15 @@ dist
 dist-ssr
 .wrangler
 .next
+.astro
 .open-next
-.wrangler
-*.local
 out/
+*.local
 
 # Lock files (optional - remove this line if you want to commit lock files)
 bun.lock
 bun.lockb
+package-lock.json
 
 # Editor directories and files
 .vscode/*
@@ -35,5 +36,7 @@ bun.lockb
 *.sln
 *.sw?
 *.csv
-package-lock.json
 tsconfig.tsbuildinfo
+*.xlsx
+prd.md
+/webabc-old

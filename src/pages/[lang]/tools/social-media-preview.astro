@@ -1,0 +1,227 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ToolsCTA from '../../../components/astro/ToolsCTA.astro';
+import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import { getLanguageStaticPaths, type SupportedLanguage, languages } from '../../../types/language';
+import { getDictionary } from '../../../i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
+
+export const getStaticPaths = getLanguageStaticPaths;
+
+const { lang } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+const isRtl = languages[supportedLang]?.direction === 'rtl';
+
+const t = createTranslator(dictionary);
+
+const titleText = t('socialPreview.title', { fallback: 'Social Media Preview' });
+const descriptionText = t('socialPreview.description', { fallback: 'Visualize how your website content will look on Facebook, Twitter, and LinkedIn.' });
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "@id": `https://webabc.ir/${supportedLang}/tools/social-media-preview/#webapp`,
+  "name": titleText,
+  "description": descriptionText,
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires HTML5 support",
+  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": supportedLang === 'fa' ? 'پیش‌نمایش تگ‌های Open Graph و Twitter Card چیست؟' : supportedLang === 'ar' ? 'ما هي أداة معاينة بطاقات Open Graph و Twitter Cards؟' : 'What is Open Graph & Twitter Card Social Preview?',
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": supportedLang === 'fa' ? 'تگ‌های Open Graph تعیین می‌کنند که هنگام اشتراک‌گذاری لینک صفحه در فیس‌بوک، تلگرام، توییتر و لینکدین، چه تصویر، عنوان و توضیحاتی قرار می‌گیرد.' : supportedLang === 'ar' ? 'تحدد علامات Open Graph كيفية ظهور الصورة والعنوان والوصف عند مشاركة رابط الموقع على شبكات التواصل.' : 'Open Graph and Twitter Card tags control how your site link, thumbnail image, title, and description render when shared across social networks.'
+      }
+    }
+  ]
+};
+
+const breadcrumbs = [
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
+  { label: titleText }
+];
+
+const defaultTitle = t('socialPreview.defaultTitle', { fallback: 'Your Title Here' });
+const defaultDesc = t('socialPreview.defaultDesc', { fallback: 'Your description will appear here...' });
+---
+
+<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/social-media-preview">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
+      <!-- Hero Section -->
+    <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+          <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
+          <h1 class="text-3xl md:text-5xl font-bold mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent leading-normal font-persian">
+            {titleText}
+          </h1>
+          <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-persian">
+            {descriptionText}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Workspace -->
+    <section class="container mx-auto px-4 mt-12 font-sans">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+
+        <!-- Inputs Panel -->
+        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-5 font-persian">
+          <div class="space-y-1.5">
+            <label for="smp-image" class="text-sm font-medium text-gray-700">{t('socialPreview.imageLabel', { fallback: 'Image URL or Upload' })}</label>
+            <div class="flex items-center gap-3">
+              <input id="smp-image" type="text" dir="ltr" placeholder="https://example.com/image.jpg" class="flex-1 border border-gray-200 rounded-lg px-4 h-11 focus:outline-none focus:border-primary" />
+              <label class="cursor-pointer bg-white px-3 h-11 flex items-center rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors shrink-0">
+                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                <input type="file" id="smp-upload" accept="image/*" class="hidden" />
+              </label>
+            </div>
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="smp-title" class="text-sm font-medium text-gray-700">{t('socialPreview.titleLabel', { fallback: 'Title' })}</label>
+            <input id="smp-title" type="text" placeholder={t('socialPreview.titlePlaceholder', { fallback: 'Your Post Title' })} class="w-full border border-gray-200 rounded-lg px-4 h-11 focus:outline-none focus:border-primary" />
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="smp-desc" class="text-sm font-medium text-gray-700">{t('socialPreview.descriptionLabel', { fallback: 'Description' })}</label>
+            <textarea id="smp-desc" rows="4" placeholder={t('socialPreview.descriptionPlaceholder', { fallback: 'A brief description of your content...' })} class="w-full border border-gray-200 rounded-lg p-4 focus:outline-none focus:border-primary resize-none"></textarea>
+          </div>
+        </div>
+
+        <!-- Preview Panel -->
+        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-6">
+          <div class="flex gap-2 bg-gray-50 p-1 rounded-xl w-fit mx-auto">
+            <button data-platform="facebook" class="smp-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-primary text-white">Facebook</button>
+            <button data-platform="twitter" class="smp-tab px-4 py-2 rounded-lg text-sm font-medium transition-all text-gray-600 hover:bg-gray-100">Twitter</button>
+            <button data-platform="linkedin" class="smp-tab px-4 py-2 rounded-lg text-sm font-medium transition-all text-gray-600 hover:bg-gray-100">LinkedIn</button>
+          </div>
+
+          <div class="max-w-sm mx-auto w-full">
+            <!-- Facebook -->
+            <div id="smp-facebook" class="smp-card bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm">
+              <div class="aspect-[1.91/1] bg-gray-100 relative flex items-center justify-center text-gray-300">
+                <img id="smp-img-fb" width="600" height="314" class="w-full h-full object-cover hidden" alt="Facebook Social Preview" />
+                <svg id="smp-icon-fb" class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M14 8h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+              </div>
+              <div class="p-4 bg-[#f0f2f5] border-t border-gray-200">
+                <p class="text-xs text-gray-500 uppercase font-medium mb-1 truncate">example.com</p>
+                <h3 id="smp-title-fb" class="text-base font-bold text-gray-900 leading-tight mb-1 line-clamp-2">{defaultTitle}</h3>
+                <p id="smp-desc-fb" class="text-sm text-gray-600 line-clamp-1">{defaultDesc}</p>
+              </div>
+            </div>
+
+            <!-- Twitter -->
+            <div id="smp-twitter" class="smp-card hidden bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+              <div class="aspect-2/1 bg-gray-100 relative flex items-center justify-center text-gray-300">
+                <img id="smp-img-tw" width="600" height="300" class="w-full h-full object-cover hidden" alt="Twitter Social Preview" />
+                <svg id="smp-icon-tw" class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M14 8h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+              </div>
+              <div class="p-4">
+                <h3 id="smp-title-tw" class="text-base font-bold text-gray-900 mb-1">{defaultTitle}</h3>
+                <p id="smp-desc-tw" class="text-sm text-gray-600 mb-2 line-clamp-2">{defaultDesc}</p>
+                <p class="text-sm text-gray-500">example.com</p>
+              </div>
+            </div>
+
+            <!-- LinkedIn -->
+            <div id="smp-linkedin" class="smp-card hidden bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm">
+              <div class="aspect-[1.91/1] bg-gray-100 relative flex items-center justify-center text-gray-300">
+                <img id="smp-img-li" width="600" height="314" class="w-full h-full object-cover hidden" alt="LinkedIn Social Preview" />
+                <svg id="smp-icon-li" class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M14 8h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+              </div>
+              <div class="p-4 bg-white border-t border-gray-200">
+                <h3 id="smp-title-li" class="text-base font-semibold text-gray-900 mb-1 line-clamp-2">{defaultTitle}</h3>
+                <p class="text-xs text-gray-500">example.com</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-center text-sm text-gray-500 font-persian">
+            {t('socialPreview.previewNote', { fallback: 'This is a simulation. Actual appearance may vary slightly by platform.' })}
+          </p>
+        </div>
+
+      </div>
+    </section>
+  
+  
+  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'utmBuilder', route: 'utm-builder' }, { key: 'qrGenerator', route: 'qr-generator' }, { key: 'seoTitleChecker', route: 'seo-title-checker' }]} ctaHref={`/${supportedLang}/services/content-creation`} isRtl={isRtl} />
+</Layout>
+
+<script is:inline data-astro-rerun>
+  const imageInput = document.getElementById('smp-image');
+  const uploadInput = document.getElementById('smp-upload');
+  const titleInput = document.getElementById('smp-title');
+  const descInput = document.getElementById('smp-desc');
+
+  const defaultTitle = document.getElementById('smp-title-fb').textContent;
+  const defaultDesc = document.getElementById('smp-desc-fb').textContent;
+
+  const tabs = document.querySelectorAll('.smp-tab');
+  const cards = document.querySelectorAll('.smp-card');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const platform = tab.dataset.platform;
+      tabs.forEach(tb => tb.className = 'smp-tab px-4 py-2 rounded-lg text-sm font-medium transition-all text-gray-600 hover:bg-gray-100');
+      tab.className = 'smp-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-primary text-white';
+      cards.forEach(c => c.classList.add('hidden'));
+      document.getElementById(`smp-${platform}`).classList.remove('hidden');
+    });
+  });
+
+  function updateImage(src) {
+    ['fb', 'tw', 'li'].forEach(suffix => {
+      const img = document.getElementById(`smp-img-${suffix}`);
+      const icon = document.getElementById(`smp-icon-${suffix}`);
+      if (src) {
+        img.src = src;
+        img.classList.remove('hidden');
+        icon.classList.add('hidden');
+      } else {
+        img.classList.add('hidden');
+        icon.classList.remove('hidden');
+      }
+    });
+  }
+
+  function update() {
+    const title = titleInput.value || defaultTitle;
+    const desc = descInput.value || defaultDesc;
+    ['fb', 'tw', 'li'].forEach(suffix => {
+      const titleEl = document.getElementById(`smp-title-${suffix}`);
+      if (titleEl) titleEl.textContent = title;
+      const descEl = document.getElementById(`smp-desc-${suffix}`);
+      if (descEl) descEl.textContent = desc;
+    });
+    updateImage(imageInput.value.trim());
+  }
+
+  imageInput.addEventListener('input', update);
+  titleInput.addEventListener('input', update);
+  descInput.addEventListener('input', update);
+
+  uploadInput.addEventListener('change', (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      imageInput.value = reader.result;
+      update();
+    };
+    reader.readAsDataURL(file);
+  });
+</script>

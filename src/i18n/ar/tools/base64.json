@@ -1,0 +1,18 @@
+{
+  "title": "محول الصور والنصوص إلى Base64",
+  "description": "تحويل الصور إلى أكواد Data URL والتشفير وفك التشفير للنصوص عبر الإنترنت.",
+  "modeImage": "تحويل الصورة إلى Base64",
+  "modeText": "تشفير / فك تشفير النص",
+  "dropHint": "أفلت صورة هنا أو انقر للتحميل",
+  "dropSubtext": "يدعم PNG وJPG وWebP وSVG وGIF حتى 5 ميغابايت",
+  "dataUrlOutput": "مخرجات Data URL",
+  "copyBase64": "نسخ Base64",
+  "inputTextLabel": "النص المُدخل",
+  "textPlaceholder": "أدخل نصًا للتشفير أو سلسلة Base64 لفك التشفير...",
+  "encodeBtn": "تشفير إلى Base64",
+  "decodeBtn": "فك التشفير من Base64",
+  "outputResult": "نتيجة الإخراج",
+  "copyResult": "نسخ النتيجة",
+  "resultPlaceholder": "ستظهر النتيجة هنا...",
+  "copiedStatus": "تم النسخ إلى الحافظة!"
+}

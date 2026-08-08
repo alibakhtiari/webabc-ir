@@ -1,0 +1,107 @@
+---
+import { languages, type SupportedLanguage } from '../../types/language';
+
+interface Props {
+  lang: SupportedLanguage;
+}
+
+const { lang } = Astro.props;
+const isRtl = languages[lang]?.direction === 'rtl';
+
+const labels = {
+  callNow: lang === 'fa' ? 'تماس تلفنی' : lang === 'ar' ? 'اتصل الآن' : 'Call Now',
+  whatsapp: lang === 'fa' ? 'چت در واتس‌اپ' : lang === 'ar' ? 'محادثة واتساب' : 'Chat on WhatsApp',
+  backToTop: lang === 'fa' ? 'بازگشت به بالا' : lang === 'ar' ? 'العودة إلى الأعلى' : 'Back to Top',
+};
+
+const phoneNumber = '+989125811880';
+const whatsappUrl = 'https://wa.me/989125811880';
+---
+
+<div
+  class={`fixed bottom-6 ${isRtl ? 'left-6' : 'right-6'} z-50 flex flex-col gap-3 items-end pointer-events-none`}
+  id="floating-actions-container"
+>
+  <!-- Back to Top Button -->
+  <button
+    id="back-to-top-btn"
+    type="button"
+    aria-label={labels.backToTop}
+    title={labels.backToTop}
+    class="group pointer-events-auto relative flex items-center justify-center w-12 h-12 rounded-full bg-white/95 backdrop-blur-md text-gray-700 hover:text-primary border border-gray-200/80 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 opacity-0 translate-y-4 pointer-events-none shrink-0"
+  >
+    <svg class="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
+    </svg>
+    <span class={`absolute ${isRtl ? 'left-14' : 'right-14'} opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-900 text-white text-xs font-semibold py-1 px-2.5 rounded-md shadow-md whitespace-nowrap pointer-events-none font-${lang === 'en' ? 'sans' : 'persian'} z-20`}>
+      {labels.backToTop}
+    </span>
+  </button>
+
+  <!-- Call Now Button -->
+  <a
+    href={`tel:${phoneNumber}`}
+    aria-label={labels.callNow}
+    title={labels.callNow}
+    class="group pointer-events-auto relative flex items-center justify-center w-12 h-12 rounded-full bg-primary text-white shadow-lg hover:shadow-primary/30 hover:shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 shrink-0"
+  >
+    <span class="absolute -inset-1 rounded-full bg-primary/30 animate-ping opacity-75 pointer-events-none"></span>
+    <svg class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+    </svg>
+    <span class={`absolute ${isRtl ? 'left-14' : 'right-14'} opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-900 text-white text-xs font-bold py-1 px-2.5 rounded-md shadow-md whitespace-nowrap pointer-events-none font-${lang === 'en' ? 'sans' : 'persian'} z-20`}>
+      {labels.callNow}
+    </span>
+  </a>
+
+  <!-- WhatsApp Button -->
+  <a
+    href={whatsappUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={labels.whatsapp}
+    title={labels.whatsapp}
+    class="group pointer-events-auto relative flex items-center justify-center w-12 h-12 rounded-full bg-[#25D366] text-white shadow-lg hover:shadow-[#25D366]/30 hover:shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 shrink-0"
+  >
+    <svg class="w-5 h-5 fill-current relative z-10" viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.002 3.66 3.745-.993zm11.233-6.793c-.274-.137-1.625-.802-1.876-.893-.252-.092-.435-.137-.618.137-.183.274-.709.893-.869 1.076-.16.183-.32.206-.594.069-.274-.137-1.157-.426-2.204-1.36-.816-.728-1.367-1.628-1.527-1.902-.16-.274-.017-.422.12-.558.123-.122.274-.32.411-.48.137-.16.183-.274.274-.457.091-.183.046-.343-.023-.48-.069-.137-.618-1.486-.847-2.036-.223-.536-.45-.463-.618-.472-.16-.008-.343-.01-.526-.01-.183 0-.48.069-.731.343-.251.274-.96.938-.96 2.288 0 1.35.983 2.653 1.12 2.836.137.184 1.935 2.955 4.689 4.144.655.283 1.166.452 1.564.578.658.209 1.258.179 1.732.108.529-.079 1.625-.664 1.854-1.303.229-.639.229-1.187.16-1.303-.069-.115-.252-.183-.526-.32z"/>
+    </svg>
+    <span class={`absolute ${isRtl ? 'left-14' : 'right-14'} opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-900 text-white text-xs font-bold py-1 px-2.5 rounded-md shadow-md whitespace-nowrap pointer-events-none font-${lang === 'en' ? 'sans' : 'persian'} z-20`}>
+      {labels.whatsapp}
+    </span>
+  </a>
+</div>
+
+<div id="top-sentinel" class="absolute top-[300px] left-0 w-1 h-1 pointer-events-none opacity-0" aria-hidden="true"></div>
+
+<script is:inline>
+  function setupFloatingActions() {
+    const backToTopBtn = document.getElementById('back-to-top-btn');
+    const sentinel = document.getElementById('top-sentinel');
+
+    if (backToTopBtn && sentinel) {
+      // Reflow-free Back to Top visibility check via IntersectionObserver
+      const observer = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) {
+          backToTopBtn.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+          backToTopBtn.classList.add('opacity-100', 'translate-y-0');
+        } else {
+          backToTopBtn.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+          backToTopBtn.classList.remove('opacity-100', 'translate-y-0');
+        }
+      }, { rootMargin: '0px' });
+
+      observer.observe(sentinel);
+
+      backToTopBtn.onclick = () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      };
+    }
+  }
+
+  // Setup on initial load and after View Transitions page swap
+  document.addEventListener('astro:page-load', setupFloatingActions);
+</script>
