@@ -90,13 +90,16 @@ export default {
       return handleContact(request, env);
     }
 
-    // 3. Root path -> geo-based locale redirect (301 permanent redirect)
+    // 3. Root path -> geo-based locale redirect. This MUST be a 302 (temporary),
+    // not 301: a permanent redirect that varies by geolocation would (a) poison
+    // browser/edge caches for visitors who change regions, and (b) is what Google
+    // recommends against for locale routing — the target selection varies by IP.
     if (url.pathname === '/' || url.pathname === '') {
       const country = ((request as { cf?: { country?: string } }).cf?.country) || 'US';
       let targetLang = 'en';
       if (PERSIAN_COUNTRIES.includes(country)) targetLang = 'fa';
       else if (ARABIC_COUNTRIES.includes(country)) targetLang = 'ar';
-      return Response.redirect(`${url.origin}/${targetLang}/`, 301);
+      return Response.redirect(`${url.origin}/${targetLang}/`, 302);
     }
 
     // 4. Everything else: serve static build, adding noindex on non-canonical hosts and 404 pages

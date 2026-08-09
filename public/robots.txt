@@ -2,4 +2,31 @@ User-agent: *
 Allow: /
 Disallow: /private/
 Disallow: /api/
+
+# AI crawlers — explicitly allowed (GEO: this site wants to be cited by LLMs).
+# Grouped separately from the wildcard rule so intent is unambiguous.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://webabc.ir/sitemap-index.xml

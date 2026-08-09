@@ -2,10 +2,45 @@ import { defineConfig, svgoOptimizer } from 'astro/config';
 import tailwind from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
+import sitemapLastmod from './src/generated/sitemap-lastmod.json' with { type: 'json' };
+
+const SITE = 'https://webabc.ir';
+const LANGS = ['en', 'fa', 'ar'];
+const LANG_HREF = { en: 'en-US', fa: 'fa-IR', ar: 'ar-SA' };
+const LASTMOD_FALLBACK = sitemapLastmod._fallback;
+
+// Map slug to its representative image for sitemap image entries
+export const getImageForPage = (pageKey) => {
+  // Blog posts: cover image is /images/blog/<slug>.webp (exists for all blog posts)
+  if (pageKey.match(/^(en|fa|ar)\/blog\/(.+)$/)) {
+    const slug = pageKey.replace(/^(en|fa|ar)\/blog\//, '');
+    return `/images/blog/${slug}.webp`;
+  }
+  // Services: hero image from assets, og crop at /images/og/services/<slug>.webp
+  if (pageKey.match(/^(en|fa|ar)\/services\/(.+)$/)) {
+    const slug = pageKey.replace(/^(en|fa|ar)\/services\//, '');
+    return `/images/og/services/${slug}.webp`;
+  }
+  // Service areas: location image og crop at /images/og/service-areas/<slug>.webp
+  if (pageKey.match(/^(en|fa|ar)\/service-areas\/(.+)$/)) {
+    const slug = pageKey.replace(/^(en|fa|ar)\/service-areas\//, '');
+    return `/images/og/service-areas/${slug}.webp`;
+  }
+  // Portfolio: og crop at /images/og/portfolio/<slug>.webp
+  if (pageKey.match(/^(en|fa|ar)\/portfolio\/(.+)$/)) {
+    const slug = pageKey.replace(/^(en|fa|ar)\/portfolio\//, '');
+    return `/images/og/portfolio/${slug}.webp`;
+  }
+  // Tools index and individual tools: some have hero images
+  if (pageKey.match(/^(en|fa|ar)\/tools\/$/)) {
+    return '/images/og/tools/headline-analyzer.webp'; // fallback representative
+  }
+  return undefined;
+}; // site-launch date — never a build timestamp
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://webabc.ir',
+  site: SITE,
   output: 'static',
   prefetch: false,
   build: {
@@ -22,12 +57,28 @@ export default defineConfig({
   integrations: [
     sitemap({
       // Root `/` and 404 pages are excluded from index
-      filter: (page) => page !== 'https://webabc.ir/' && !page.includes('/404'),
+      filter: (page) => page !== `${SITE}/` && !page.includes('/404'),
       serialize: (item) => {
-        if (item.url !== 'https://webabc.ir/' && !item.url.endsWith('/')) {
+        if (item.url !== `${SITE}/` && !item.url.endsWith('/')) {
           item.url = `${item.url}/`;
         }
-        item.lastmod = new Date().toISOString();
+
+        // Content-accurate lastmod: frontmatter dates for blog, git-authorship dates for
+        // everything else (resolved by scripts/resolve-sitemap-lastmod.mjs at build time).
+        const pageKey = item.url.replace(`${SITE}/`, '');
+        item.lastmod = sitemapLastmod[pageKey] || LASTMOD_FALLBACK;
+
+        // Cross-language hreflang alternates via the sitemap stream's `links` field,
+        // which renders <xhtml:link rel="alternate" hreflang="..." href="..."/> entries.
+        if (LANGS.some((l) => pageKey === `${l}/` || pageKey.startsWith(`${l}/`))) {
+          const slug = pageKey.replace(/^(en|fa|ar)\//, '');
+          const altHref = (lang) => `${SITE}/${lang}/${slug}`;
+          item.links = [
+            ...LANGS.map((l) => ({ lang: LANG_HREF[l], url: altHref(l) })),
+            { lang: 'x-default', url: altHref('en') },
+          ];
+        }
+
         if (item.url.match(/\/(en|fa|ar)\/$/)) {
           item.priority = 1.0;
           item.changefreq = 'daily';
@@ -41,6 +92,13 @@ export default defineConfig({
           item.priority = 0.7;
           item.changefreq = 'monthly';
         }
+
+        // Add image entry for sitemap image index
+        const img = getImageForPage(pageKey);
+        if (img) {
+          item.images = [{ loc: `${SITE}${img}` }];
+        }
+
         return item;
       },
     }),

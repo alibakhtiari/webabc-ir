@@ -1,9 +1,8 @@
-
 {
   "name": "WebABC - Professional Web Design and Development Agency",
   "short_name": "WebABC",
   "description": "Professional SEO and web development services",
-  "start_url": "/",
+  "start_url": "/en/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#4361ee",
@@ -11,30 +10,28 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "/logo-192.png",
+      "src": "/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "/logo-512.png",
-      "sizes": "512x512",
+      "src": "/android-chrome-256x256.png",
+      "sizes": "256x256",
       "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "/images/app-screenshot-1.jpg",
-      "sizes": "1280x720",
-      "type": "image/jpeg",
-      "form_factor": "wide"
+      "purpose": "any"
     },
     {
-      "src": "/images/app-screenshot-2.jpg",
-      "sizes": "720x1280",
-      "type": "image/jpeg",
-      "form_factor": "narrow"
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/android-chrome-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "shortcuts": [
@@ -42,44 +39,28 @@
       "name": "Contact Us",
       "short_name": "Contact",
       "description": "Contact our team",
-      "url": "/contact",
-      "icons": [{ "src": "/contact-icon.png", "sizes": "96x96" }]
+      "url": "/en/contact/",
+      "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
     },
     {
       "name": "Portfolio",
       "short_name": "Portfolio",
       "description": "View our work",
-      "url": "/portfolio",
-      "icons": [{ "src": "/portfolio-icon.png", "sizes": "96x96" }]
+      "url": "/en/portfolio/",
+      "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
     },
     {
       "name": "Services",
       "short_name": "Services",
       "description": "See our services",
-      "url": "/services",
-      "icons": [{ "src": "/services-icon.png", "sizes": "96x96" }]
+      "url": "/en/services/",
+      "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
     }
   ],
-  "categories": [
-    "business",
-    "productivity",
-    "web design",
-    "digital marketing"
-  ],
+  "categories": ["business", "productivity"],
   "lang": "en",
   "dir": "ltr",
-  "related_applications": [],
-  "iarc_rating_id": "",
-  "share_target": {
-    "action": "/share",
-    "method": "GET",
-    "params": {
-      "title": "title",
-      "text": "text",
-      "url": "url"
-    }
-  },
   "scope": "/",
-  "id": "WebABC-2025",
+  "id": "webabc-ir",
   "version": "1.0.0"
 }
