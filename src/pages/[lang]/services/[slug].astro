@@ -81,8 +81,8 @@ const pageDesc = t(info?.subtitleKey || '', { fallback: 'Professional services t
 const heroImage = info ? info.img : seoImg;
 
 const breadcrumbs = [
-  { label: t('common.home', { fallback: 'Home' }), url: `/${supportedLang}` },
-  { label: t('common.services', { fallback: 'Services' }), url: `/${supportedLang}/services` },
+  { label: t('common.home', { fallback: 'Home' }), url: `/${supportedLang}/` },
+  { label: t('common.services', { fallback: 'Services' }), url: `/${supportedLang}/services/` },
   { label: pageTitle }
 ];
 
@@ -166,6 +166,20 @@ function createPageSchema(slugVal: string, langVal: string, titleVal: string, de
   const selectedType = serviceTypeMap[slugVal]?.[langVal] || serviceTypeMap[slugVal]?.en || "Digital Services";
   const offersList = offerSubServicesMap[slugVal]?.[langVal] || offerSubServicesMap[slugVal]?.en || ['Professional Consultation', 'Custom Implementation'];
 
+  const ogImageMap: Record<string, string> = {
+    'seo': '/images/og/services/seo.webp',
+    'local-seo': '/images/og/services/local-seo.webp',
+    'web-development': '/images/og/services/web-development.webp',
+    'wordpress-development': '/images/og/services/wordpress.webp',
+    'web-design': '/images/og/services/web-design.webp',
+    'content-creation': '/images/og/services/content-creation.webp',
+    'link-building': '/images/og/services/link-building.webp',
+    'speed-optimization': '/images/og/services/speed-optimization.webp',
+    'ui-ux-audit': '/images/og/services/ui-ux-audit.webp',
+    'website-maintenance': '/images/og/services/website-maintenance.webp',
+    'ecommerce': '/images/og/services/web-development.webp'
+  };
+
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -192,7 +206,14 @@ function createPageSchema(slugVal: string, langVal: string, titleVal: string, de
         "name": titleVal,
         "description": descVal,
         "url": canonicalUrl,
+        "image": `https://webabc.ir${ogImageMap[slugVal] || '/images/og/services/web-development.webp'}`,
         "serviceType": selectedType,
+        "category": serviceTypeMap[slugVal]?.en || "Digital Services",
+        "keywords": offersList.join(", "),
+        "audience": {
+          "@type": "BusinessAudience",
+          "audienceType": "Small to medium-sized businesses and startups"
+        },
         "provider": {
           "@id": "https://webabc.ir/#organization"
         },
@@ -206,6 +227,13 @@ function createPageSchema(slugVal: string, langVal: string, titleVal: string, de
             "name": "Global"
           }
         ],
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": canonicalUrl
+        },
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": `${titleVal} Solutions`,
@@ -262,10 +290,10 @@ const pageSchema = createPageSchema(slug, supportedLang, pageTitle, pageDesc);
     lang={supportedLang}
   >
     <!-- Action buttons -->
-    <a href={`/${supportedLang}/contact`} class="px-6 py-3 bg-primary text-white font-bold rounded-xl shadow-md hover:bg-primary/95 transition-all duration-300 hover:-translate-y-0.5 font-persian text-sm">
+    <a href={`/${supportedLang}/contact/`} class="px-6 py-3 bg-primary text-white font-bold rounded-xl shadow-md hover:bg-primary/95 transition-all duration-300 hover:-translate-y-0.5 font-persian text-sm">
       {t('common.freeConsultation', { fallback: 'Free Consultation' })}
     </a>
-    <a href={`/${supportedLang}/portfolio`} class="px-6 py-3 bg-white border border-gray-200 text-gray-700 font-bold rounded-xl shadow-xs hover:bg-gray-50 transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-2 font-persian text-sm">
+    <a href={`/${supportedLang}/portfolio/`} class="px-6 py-3 bg-white border border-gray-200 text-gray-700 font-bold rounded-xl shadow-xs hover:bg-gray-50 transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-2 font-persian text-sm">
       {t('common.viewPortfolio', { fallback: 'View Portfolio' })}
       {isRtl ? (
         <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>

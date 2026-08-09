@@ -4,8 +4,8 @@ import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
 import TableOfContents from '../../../components/astro/TableOfContents.astro';
 import TLDR from '../../../components/astro/TLDR.astro';
 import FAQ from '../../../components/astro/FAQ.astro';
+import OptimizedImage from '../../../components/astro/OptimizedImage.astro';
 import { getCollection, render } from 'astro:content';
-import { Image } from 'astro:assets';
 import { type SupportedLanguage, languages } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
@@ -49,6 +49,11 @@ const { Content, headings } = await render(post);
 
 const origin = 'https://webabc.ir';
 
+// Author identity is language-agnostic: the same person appears as
+// "Ali Bakhtiari" (en), "علی بختیاری" (fa) and "علي بختياري" (ar) in frontmatter.
+const ALI_BAKHTIARI_ALIASES = ['Ali Bakhtiari', 'علی بختیاری', 'علي بختياري'];
+const isAliBakhtiari = ALI_BAKHTIARI_ALIASES.includes(post.data.author?.trim() ?? '');
+
 // Strip Markdown/MDX/JSX syntax before counting so wordCount reflects actual
 // readable text, not markup tokens (code fences, JSX tags, link syntax, etc.)
 const plainTextWordCount = (post.body || '')
@@ -72,9 +77,9 @@ const articleSchema = {
   ...(post.data.updatedDate ? { "dateModified": post.data.updatedDate } : {}),
   "author": {
     "@type": "Person",
-    "name": post.data.author || "WebABC Team",
-    "url": post.data.author === 'Ali Bakhtiari' ? 'https://aliib.ir/' : `${origin}/${supportedLang}/about/`,
-    ...(post.data.author === 'Ali Bakhtiari' ? {
+    "name": isAliBakhtiari ? 'Ali Bakhtiari' : (post.data.author || "WebABC Team"),
+    "url": isAliBakhtiari ? 'https://aliib.ir/' : `${origin}/${supportedLang}/about/`,
+    ...(isAliBakhtiari ? {
       "image": `${origin}/ali-bakhtiari.webp`,
       "sameAs": [
         "https://www.linkedin.com/in/alibakhtiarii/",
@@ -87,6 +92,7 @@ const articleSchema = {
       ]
     } : {})
   },
+
   "publisher": {
     "@id": "https://webabc.ir/#organization"
   },
@@ -108,9 +114,11 @@ const breadcrumbs = [
 
 const translatedAuthor = (post.data.author || '').includes('Team') || (post.data.author || '').includes('تیم') || (post.data.author || '').includes('فريق')
   ? (supportedLang === 'fa' ? 'تیم وب اِی‌بی‌سی' : supportedLang === 'ar' ? 'فريق وب إي بي سي' : 'WebABC Team')
+  : isAliBakhtiari
+  ? (supportedLang === 'fa' ? 'علی بختیاری' : supportedLang === 'ar' ? 'علي بختياري' : 'Ali Bakhtiari')
   : post.data.author;
 
-const authorBio = post.data.author === 'Ali Bakhtiari'
+const authorBio = isAliBakhtiari
   ? (supportedLang === 'fa'
     ? 'من علی بختیاری هستم، توسعه‌دهنده ۳۵ ساله وردپرس و متخصص سئو با اشتیاق فراوان برای خلق تجربه‌های دیجیتال استثنایی. با سال‌ها تجربه، تخصص من در طراحی و ساخت وب‌سایت‌هایی است که علاوه بر جذابیت بصری، برای موتورهای جستجو نیز بهینه‌سازی شده‌اند.'
     : supportedLang === 'ar'
@@ -122,14 +130,19 @@ const authorBio = post.data.author === 'Ali Bakhtiari'
     ? 'فريق خبراء وب إي بي سي يضم نخبة من مستشاري السيو ومطوري الويب ذوي الخبرة الطويلة في تحسين محركات البحث وتطوير التطبيقات.'
     : 'The WebABC editorial team consists of senior SEO strategists and web developers with over a decade of experience in building high-performance applications.');
   
-const authorRole = post.data.author === 'Ali Bakhtiari'
+const authorRole = isAliBakhtiari
   ? (supportedLang === 'fa' ? 'توسعه‌دهنده وردپرس و متخصص سئو' : supportedLang === 'ar' ? 'مطور ووردبريس وأخصائي سيو' : 'WordPress Developer & SEO Specialist')
   : '';
 
 ---
 
-<Layout title={post.data.title} description={post.data.description} lang={supportedLang} slug={`blog/${slug}`}>
+<Layout title={post.data.title} description={post.data.description} lang={supportedLang} slug={`blog/${slug}`} ogImage={post.data.image} ogType="article">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(articleSchema)} />
+  <link slot="head" rel="image_src" href={post.data.image.startsWith('http') ? post.data.image : `${origin}${post.data.image}`} />
+  <meta slot="head" property="article:published_time" content={new Date(post.data.date).toISOString()} />
+  {post.data.updatedDate && <meta slot="head" property="article:modified_time" content={new Date(post.data.updatedDate).toISOString()} />}
+  <meta slot="head" property="article:author" content={isAliBakhtiari ? 'https://aliib.ir/' : `${origin}/${supportedLang}/about/`} />
+  <meta slot="head" property="article:section" content={post.data.category} />
 
   <!-- Post Wrapper -->
   <div class="container mx-auto px-4 pt-32 pb-8">
@@ -139,7 +152,7 @@ const authorRole = post.data.author === 'Ali Bakhtiari'
       <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
 
       <div class="aspect-video rounded-2xl overflow-hidden mb-8 shadow-xs">
-        <Image
+        <OptimizedImage
           src={post.data.image}
           alt={post.data.title}
           width={1200}
@@ -198,29 +211,30 @@ const authorRole = post.data.author === 'Ali Bakhtiari'
 
       <!-- Content Body -->
       <article class="prose prose-lg max-w-none mb-12 font-persian">
-        <Content />
+        <Content components={{ img: OptimizedImage }} />
       </article>
 
       <!-- EEAT Author Box Component -->
       <div class="my-12 p-6 md:p-8 bg-white border border-gray-100 rounded-2xl shadow-xs flex flex-col md:flex-row gap-6 items-center md:items-start font-persian">
-        {post.data.author === 'Ali Bakhtiari' ? (
+        <h2 class="sr-only">About the Author</h2>
+        {isAliBakhtiari ? (
           <div class="w-16 h-16 rounded-full overflow-hidden bg-gray-50 flex-shrink-0 flex items-center justify-center border-2 border-white ring-4 ring-primary/10 shadow-md">
-            <Image src="/ali-bakhtiari.webp" alt={`${translatedAuthor} - WebABC`} class="w-full h-full object-cover" width={64} height={64} />
+            <OptimizedImage src="/ali-bakhtiari.webp" alt={`${translatedAuthor} - WebABC`} class="w-full h-full object-cover" width={64} height={64} />
           </div>
         ) : (
           <div class="w-16 h-16 rounded-full overflow-hidden bg-gray-50 flex-shrink-0 flex items-center justify-center border border-gray-100">
-            <Image src="/images/logo.webp" alt="WebABC Agency Logo" class="w-12 h-auto" width={48} height={48} />
+            <OptimizedImage src="/images/logo.webp" alt="WebABC Agency Logo" class="w-12 h-auto" width={48} height={48} loading="lazy" />
           </div>
         )}
         <div class="space-y-3 text-center md:text-start grow">
           <div class="space-y-0.5">
-            <h4 class="text-xs font-bold text-primary uppercase tracking-wider">{t('blog.author', { fallback: 'Author' })}</h4>
-            <h3 class="text-lg font-bold text-gray-900">{translatedAuthor}</h3>
+            <p class="text-xs font-bold text-primary uppercase tracking-wider">{t('blog.author', { fallback: 'Author' })}</p>
+            <p class="text-lg font-bold text-gray-900">{translatedAuthor}</p>
             {authorRole && <p class="text-xs text-gray-400 font-medium">{authorRole}</p>}
           </div>
           <p class="text-sm text-gray-600 leading-relaxed max-w-2xl">{authorBio}</p>
           
-          {post.data.author === 'Ali Bakhtiari' && (
+          {isAliBakhtiari && (
             <div class="flex flex-wrap gap-4 pt-2 justify-center md:justify-start">
               <a href="https://www.linkedin.com/in/alibakhtiarii/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#0077b5] transition-colors" title="LinkedIn">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>

@@ -1,9 +1,8 @@
 ---
-import { Image } from 'astro:assets';
 import { getDictionary } from '../../i18n/get-dictionary';
 import { languages, type SupportedLanguage } from '../../types/language';
 import { createTranslator } from '@/i18n/translate';
-import homepageHeroImg from '../../assets/images/homepage-hero.webp';
+import OptimizedImage from './OptimizedImage.astro';
 
 interface Props {
   lang: SupportedLanguage;
@@ -50,8 +49,8 @@ const linkPath = (path: string) => {
       <div class="col-span-1 lg:col-span-6">
         <div class="relative">
           <div class="absolute -z-10 inset-0 bg-linear-to-tr from-primary/20 to-secondary/20 blur-3xl rounded-full transform scale-110"></div>
-          <Image
-            src={homepageHeroImg}
+          <OptimizedImage
+            src="/images/homepage-hero.webp"
             alt={t('home.hero.imageAlt', { fallback: 'Digital marketing and web development illustration' })}
             width={600}
             height={400}

@@ -25,7 +25,7 @@ const servicesSchema = {
   "@type": "ItemList",
   "name": titleText,
   "description": descriptionText,
-  "url": `https://webabc.ir/${supportedLang}/services`,
+  "url": `https://webabc.ir/${supportedLang}/services/`,
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
   "itemListElement": [
     {
@@ -104,7 +104,7 @@ const servicesSchema = {
 };
 
 const breadcrumbs = [
-  { label: t('common.home', { fallback: 'Home' }), url: `/${supportedLang}` },
+  { label: t('common.home', { fallback: 'Home' }), url: `/${supportedLang}/` },
   { label: t('common.services', { fallback: 'Services' }) }
 ];
 
@@ -281,8 +281,8 @@ const faqList = [
             </div>
 
             <!-- Learn More Link -->
-            <a href={`/${supportedLang}/services/${service.slug}`} class={`text-primary font-bold text-sm inline-flex items-center gap-1 font-persian self-start mt-4 ${isRtl ? 'group-hover:-translate-x-0.5' : 'group-hover:translate-x-0.5'} transition-transform`}>
-              {t('common.readMore', { fallback: 'Read More' })} {isRtl ? '←' : '→'}
+            <a href={`/${supportedLang}/services/${service.slug}/`} class={`text-primary font-bold text-sm inline-flex items-center gap-1 font-persian self-start mt-4 ${isRtl ? 'group-hover:-translate-x-0.5' : 'group-hover:translate-x-0.5'} transition-transform`}>
+              {service.title} {isRtl ? '←' : '→'}
             </a>
           </div>
         ))}

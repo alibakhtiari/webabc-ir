@@ -1,10 +1,10 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
+import OptimizedImage from '../../../components/astro/OptimizedImage.astro';
 import { getLanguageStaticPaths, type SupportedLanguage, languages } from '../../../types/language';
 import { getDictionary } from '../../../i18n/get-dictionary';
 import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
 import { createTranslator } from '@/i18n/translate';
 import { getCategoryLabel } from '@/utils/category-translator';
 
@@ -34,7 +34,7 @@ const descriptionText = t('blog.blogDescription', { fallback: 'Latest Articles a
 
 // Schema definitions
 const origin = 'https://webabc.ir';
-const currentUrl = `${origin}/${supportedLang}/blog`;
+const currentUrl = `${origin}/${supportedLang}/blog/`;
 const blogSchema = {
   "@context": "https://schema.org",
   "@type": "Blog",
@@ -57,7 +57,7 @@ const blogSchema = {
 };
 
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
   { label: t('common.blog') }
 ];
 ---
@@ -119,11 +119,12 @@ const breadcrumbs = [
               <div data-post-card={post.category} class="group block bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
                 <a href={`/${supportedLang}/blog/${post.slug}`} class="block">
                   <div class="aspect-video overflow-hidden relative">
-                    <Image
+                    <OptimizedImage
                       src={post.image}
                       alt={post.title}
                       width={400}
                       height={225}
+                      loading="lazy"
                       class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>

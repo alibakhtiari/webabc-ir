@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import { getDictionary } from '../../i18n/get-dictionary';
 import { languages, type SupportedLanguage } from '../../types/language';
 import { createTranslator } from '@/i18n/translate';
@@ -121,11 +121,13 @@ const benefits = [
         </div>
 
         <div class="relative aspect-video lg:aspect-auto bg-gray-50 flex items-center justify-center min-h-[400px]">
-          <Image
+          <Picture
             src={seoResultsImg}
+            formats={['avif', 'webp']}
             alt={t('benefits.imageAlt', { fallback: 'تصویر نتایج سئو' })}
             width={600}
             height={400}
+            loading="lazy"
             class="object-cover w-full h-full"
           />
         </div>

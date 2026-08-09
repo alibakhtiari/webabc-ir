@@ -54,12 +54,17 @@ const faqList = [1, 2, 3]
 const origin = 'https://webabc.ir';
 const locationSchema = {
   "@context": "https://schema.org",
-  "@type": "Service",
+  "@type": ["Service", "ProfessionalService"],
   "@id": `${origin}/${supportedLang}/service-areas/${slug}/#service`,
   "name": titleText,
   "description": descriptionText,
   "url": `${origin}/${supportedLang}/service-areas/${slug}/`,
-  "provider": { "@id": `${origin}/#organization` },
+  "provider": {
+    "@type": "Organization",
+    "@id": `${origin}/#organization`,
+    "name": "WebABC",
+    "url": origin
+  },
   "areaServed": {
     "@type": "City",
     "name": locationInfo.name,
@@ -80,23 +85,13 @@ const locationSchema = {
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
 };
 
-const faqSchema = faqList.length > 0 ? {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqList.map(item => ({
-    "@type": "Question",
-    "name": item.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": item.answer
-    }
-  }))
-} : null;
+// The FAQPage JSON-LD for this list is emitted by the <FAQ> component itself
+// (it builds its own schema from faqList), so we intentionally do NOT emit a
+// second FAQPage script here — two FAQPage blocks on one URL is duplicative.
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug={`service-areas/${slug}`}>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(locationSchema)} />
-  {faqSchema && <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />}
   <Hero title={titleText} description={descriptionText} breadcrumbs={breadcrumbs} lang={supportedLang} />
 
   <!-- Details and AEO Panel -->

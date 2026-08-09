@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import { getDictionary } from '../../i18n/get-dictionary';
 import { languages, type SupportedLanguage } from '../../types/language';
 import { createTranslator } from '@/i18n/translate';
@@ -137,8 +137,9 @@ const services = [
 
             <div class="md:col-span-2">
               <div class="aspect-square w-full rounded-xl overflow-hidden shadow-xl relative">
-                <Image
+                <Picture
                   src={service.image}
+                  formats={['avif', 'webp']}
                   alt={service.title}
                   width={500}
                   height={500}

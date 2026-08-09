@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import Breadcrumbs from './Breadcrumbs.astro';
 
 interface Props {
@@ -52,8 +52,9 @@ const {
       {heroImage && (
         <div class="lg:w-1/2 w-full mt-8 lg:mt-0">
           <div class="rounded-2xl overflow-hidden shadow-2xl relative h-[300px] lg:h-[400px] w-full">
-            <Image
+            <Picture
               src={heroImage}
+              formats={['avif', 'webp']}
               alt={title}
               width={600}
               height={400}

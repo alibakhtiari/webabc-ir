@@ -20,7 +20,7 @@ const title = `${t('common.notFound.title', { fallback: '404 - Page Not Found' }
 const description = t('common.notFound.subtitle', { fallback: 'The page you requested could not be found. Explore our services or return to the homepage.' });
 
 const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}` },
+  { label: t('common.home'), url: `/${supportedLang}/` },
   { label: '404' }
 ];
 
@@ -40,16 +40,15 @@ const pageNotFoundSchema = {
 };
 
 const quickLinks = [
-  { label: t('common.home'), url: `/${supportedLang}` },
-  { label: t('common.services'), url: `/${supportedLang}/services` },
-  { label: t('common.portfolio'), url: `/${supportedLang}/portfolio` },
-  { label: t('common.about'), url: `/${supportedLang}/about` },
-  { label: t('common.contact'), url: `/${supportedLang}/contact` }
+  { label: t('common.home'), url: `/${supportedLang}/` },
+  { label: t('common.services'), url: `/${supportedLang}/services/` },
+  { label: t('common.portfolio'), url: `/${supportedLang}/portfolio/` },
+  { label: t('common.about'), url: `/${supportedLang}/about/` },
+  { label: t('common.contact'), url: `/${supportedLang}/contact/` }
 ];
 ---
 
 <Layout title={title} description={description} lang={supportedLang} slug="404" noindex={true}>
-  <meta slot="head" name="robots" content="noindex, follow" />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageNotFoundSchema)} />
 
   <Hero title={t('common.notFound.title', { fallback: 'Page Not Found' })} description={t('common.notFound.subtitle', { fallback: 'The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.' })} breadcrumbs={breadcrumbs} lang={supportedLang} />
@@ -76,7 +75,7 @@ const quickLinks = [
         <!-- Navigation Buttons -->
         <div class="flex flex-wrap gap-4 justify-center pt-2">
           <a
-            href={`/${supportedLang}`}
+            href={`/${supportedLang}/`}
             class="px-8 py-3.5 bg-primary text-white font-bold rounded-xl shadow-md hover:bg-primary/95 transition-all flex items-center gap-2"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -85,7 +84,7 @@ const quickLinks = [
             {t('common.notFound.backHome', { fallback: 'Return to Homepage' })}
           </a>
           <a
-            href={`/${supportedLang}/contact`}
+            href={`/${supportedLang}/contact/`}
             class="px-8 py-3.5 border border-gray-200 text-gray-700 font-bold rounded-xl hover:bg-gray-100 transition-all"
           >
             {t('common.contactUs', { fallback: 'Contact Support' })}
