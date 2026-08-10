@@ -413,7 +413,7 @@
 }
 
 @utility font-arabic {
-  font-family: 'IRANSansX', sans-serif;
+  font-family: 'IRANSansX', 'Vazirmatn', sans-serif;
 }
 
 @utility font-sans {
@@ -471,6 +471,10 @@
   html:lang(ar) {
     --font-sans: 'IRANSansX', sans-serif;
     font-family: var(--font-sans);
+  }
+
+  html:lang(ar) .font-persian {
+    font-family: 'IRANSansX', 'Vazirmatn', sans-serif;
   }
 }
 

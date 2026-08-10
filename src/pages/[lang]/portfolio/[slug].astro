@@ -51,7 +51,7 @@ const breadcrumbs = [
 const origin = 'https://webabc.ir';
 const projectSchema = {
   "@context": "https://schema.org",
-  "@type": "CreativeWork",
+  "@type": ["CreativeWork", "CaseStudy"],
   "@id": `${origin}/${supportedLang}/portfolio/${slug}/#project`,
   "name": project.data.title,
   "description": project.data.description,
