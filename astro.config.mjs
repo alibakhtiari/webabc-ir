@@ -13,22 +13,22 @@ const LASTMOD_FALLBACK = sitemapLastmod._fallback;
 export const getImageForPage = (pageKey) => {
   // Blog posts: cover image is /images/blog/<slug>.webp (exists for all blog posts)
   if (pageKey.match(/^(en|fa|ar)\/blog\/(.+)$/)) {
-    const slug = pageKey.replace(/^(en|fa|ar)\/blog\//, '');
+    const slug = pageKey.replace(/^(en|fa|ar)\/blog\//, '').replace(/\/$/, '');
     return `/images/blog/${slug}.webp`;
   }
   // Services: hero image from assets, og crop at /images/og/services/<slug>.webp
   if (pageKey.match(/^(en|fa|ar)\/services\/(.+)$/)) {
-    const slug = pageKey.replace(/^(en|fa|ar)\/services\//, '');
+    const slug = pageKey.replace(/^(en|fa|ar)\/services\//, '').replace(/\/$/, '');
     return `/images/og/services/${slug}.webp`;
   }
   // Service areas: location image og crop at /images/og/service-areas/<slug>.webp
   if (pageKey.match(/^(en|fa|ar)\/service-areas\/(.+)$/)) {
-    const slug = pageKey.replace(/^(en|fa|ar)\/service-areas\//, '');
+    const slug = pageKey.replace(/^(en|fa|ar)\/service-areas\//, '').replace(/\/$/, '');
     return `/images/og/service-areas/${slug}.webp`;
   }
   // Portfolio: og crop at /images/og/portfolio/<slug>.webp
   if (pageKey.match(/^(en|fa|ar)\/portfolio\/(.+)$/)) {
-    const slug = pageKey.replace(/^(en|fa|ar)\/portfolio\//, '');
+    const slug = pageKey.replace(/^(en|fa|ar)\/portfolio\//, '').replace(/\/$/, '');
     return `/images/og/portfolio/${slug}.webp`;
   }
   // Tools index and individual tools: some have hero images
@@ -93,10 +93,10 @@ export default defineConfig({
           item.changefreq = 'monthly';
         }
 
-        // Add image entry for sitemap image index
+        // Add image entry for sitemap image index (node sitemap library expects item.img = [{ url: ... }])
         const img = getImageForPage(pageKey);
         if (img) {
-          item.images = [{ loc: `${SITE}${img}` }];
+          item.img = [{ url: `${SITE}${img}` }];
         }
 
         return item;
