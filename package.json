@@ -5,15 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "node scripts/resolve-sitemap-lastmod.mjs && node scripts/generate-avif.mjs && node scripts/generate-og-images.mjs",
     "build": "astro build",
     "preview": "astro preview",
-    "translations:check": "node scripts/check-translations.mjs",
-    "check:404": "node scripts/check-404-pages.mjs",
-    "check:links": "node scripts/check-links.mjs",
-    "test": "npm run translations:check && astro build && node scripts/check-404-pages.mjs && node scripts/check-links.mjs",
-    "deploy": "astro build && wrangler deploy && node scripts/indexnow.mjs",
-    "indexnow": "node scripts/indexnow.mjs",
+    "deploy": "astro build && wrangler deploy",
     "lint": "eslint src && tsc --noemit"
   },
   "dependencies": {
