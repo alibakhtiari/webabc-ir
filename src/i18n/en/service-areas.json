@@ -33,15 +33,16 @@
       "name": "Muscat",
       "slug": "muscat",
       "country": "Oman",
-      "description": "Providing cutting-edge web design and SEO services to businesses in Muscat. We help Omani companies establish a strong online presence.",
+      "title": "Web Design & SEO Services in Muscat, Oman | WebABC",
+      "description": "Providing cutting-edge web design and SEO services to businesses in Muscat. We help Omani companies establish a strong online presence and rank #1 on Google.",
       "longDescription": "As Muscat's premier web design and SEO agency, we specialize in helping local businesses dominate the digital landscape. Our team understands the unique characteristics of the Omani market and creates tailored solutions that resonate with your target audience.",
       "localNotes": "Oman's digital market is growing quickly but is less saturated than Dubai's, which means well-executed local SEO can win top rankings faster for businesses that move early. Bilingual Arabic/English sites are the norm here, and Google remains the dominant search and maps platform, so a solid Google Business Profile and standard local SEO practices apply cleanly without regional workarounds.",
       "services": [
-        "Web Design & Development",
-        "SEO Services",
+        "Web Design & Development in Oman",
+        "Local SEO in Muscat",
         "E-commerce Solutions",
         "Digital Marketing",
-        "WordPress Development"
+        "WordPress & Custom Development"
       ],
       "image": "/images/locations/muscat.webp",
       "benefits": [
@@ -56,15 +57,16 @@
       "name": "Dubai",
       "slug": "dubai",
       "country": "UAE",
-      "description": "Delivering premium digital solutions to businesses in Dubai. Helping UAE-based companies compete in the dynamic Dubai market.",
+      "title": "Web Design & SEO Services in Dubai, UAE | WebABC",
+      "description": "Delivering premium digital solutions to businesses in Dubai. Helping UAE-based companies compete in the dynamic Dubai market with luxury UX and high-ranking SEO.",
       "longDescription": "Dubai's fast-paced business environment demands exceptional digital presence. We create stunning websites and implement powerful SEO strategies that help your business stand out in one of the world's most competitive markets.",
       "localNotes": "Dubai is one of the most competitive digital markets in the region — a genuinely bilingual Arabic/English audience with high expectations for site speed and design quality, since visitors regularly compare local businesses against international ones. Google Maps and Google Business Profile are dominant here, so local pack visibility and consistent NAP data across directories carry real weight.",
       "services": [
-        "Custom Web Development",
-        "Local SEO",
-        "Mobile App Development",
-        "Brand Strategy",
-        "Content Marketing"
+        "Custom Web Development in Dubai",
+        "Local SEO & Google Maps in UAE",
+        "Luxury UI/UX Design",
+        "GCC Payment Gateways Integration",
+        "Content Marketing & Digital PR"
       ],
       "image": "/images/locations/dubai.webp",
       "benefits": [
@@ -79,15 +81,16 @@
       "name": "Tehran",
       "slug": "tehran",
       "country": "Iran",
-      "description": "Advanced web design and SEO services for businesses in Tehran. Helping Iranian companies establish a strong online presence and reach their audience.",
+      "title": "Web Design & SEO Agency in Tehran, Iran | WebABC",
+      "description": "Advanced web design and SEO services for businesses in Tehran. Helping Iranian companies establish a dominant online presence and rank #1 on Google search.",
       "longDescription": "As a leading web design and SEO agency in Tehran, we specialize in helping local businesses dominate the digital space. Our team understands the unique features of the Iranian market and creates customized solutions that resonate with your target audience.",
       "localNotes": "Tehran's market has a technical quirk most outside agencies miss: Google Maps has limited practical use in Iran, so local map visibility depends more on apps like Neshan and Balad than on a Google Business Profile alone. Persian-first content with correct RTL layout is essential, and page speed matters more here given more variable connection quality than in Dubai or Muscat.",
       "services": [
-        "Web Design & Development",
-        "SEO Services",
+        "Web Design & Development in Tehran",
+        "Professional SEO Services",
         "E-commerce Solutions",
-        "Digital Marketing",
-        "WordPress Development"
+        "Local SEO (Neshan & Balad)",
+        "Custom Web Application Development"
       ],
       "image": "/images/locations/tehran.webp",
       "benefits": [
@@ -102,30 +105,32 @@
       "name": "Qazvin",
       "slug": "qazvin",
       "country": "Iran",
-      "description": "Delivering professional digital solutions to businesses in Qazvin. Our services help Qazvin-based companies succeed in the competitive market.",
-      "longDescription": "Qazvin's dynamic business environment demands exceptional digital presence. We create stunning websites and implement powerful SEO strategies that help your business stand out in one of the most competitive markets.",
+      "title": "Web Design & Local SEO in Qazvin, Iran | WebABC",
+      "description": "Delivering professional digital solutions and local SEO to businesses in Qazvin. Headquarters support for industrial and commercial websites in Qazvin.",
+      "longDescription": "Qazvin is our home base; we provide industrial and commercial enterprises across Qazvin province with cutting-edge web design, rapid Core Web Vitals optimization, and guaranteed local SEO rankings. In-person consultations and localized support are readily available.",
       "localNotes": "Qazvin is our home base, which means in-person consultations and same-timezone support are the easiest to arrange here. Local businesses in Qazvin compete less on brand recognition and more on genuine local-search visibility, since most searches are specific and city-based rather than brand-name searches — the same Neshan/Balad consideration that applies in Tehran holds true here too.",
       "services": [
-        "Custom Web Development",
-        "Local SEO",
-        "Mobile App Development",
-        "Brand Strategy",
-        "Content Marketing"
+        "Custom Web Development in Qazvin",
+        "Local SEO & Maps Optimization",
+        "Industrial & Corporate Websites",
+        "E-commerce Solutions",
+        "In-Person Support & Maintenance"
       ],
       "image": "/images/locations/qazvin.webp",
       "benefits": [
-        "Understanding of Qazvin business culture",
-        "Multilingual website solutions",
-        "E-commerce expertise",
-        "Results-driven digital strategies",
-        "24/7 support"
+        "Headquarters and on-site support in Qazvin",
+        "Deep understanding of Qazvin commercial ecosystem",
+        "High-performance modern Astro architecture",
+        "Results-driven digital growth strategies",
+        "24/7 dedicated support"
       ]
     },
     {
       "name": "Abu Dhabi",
       "slug": "abu-dhabi",
       "country": "UAE",
-      "description": "Providing specialized web design, custom software development, and SEO services to enterprises and government vendors in Abu Dhabi.",
+      "title": "Web Design & SEO Services in Abu Dhabi, UAE | WebABC",
+      "description": "Providing specialized web design, custom software development, and SEO services to enterprises and organizations in Abu Dhabi.",
       "longDescription": "As the capital of the UAE, Abu Dhabi hosts high-growth enterprises and public sector vendors requiring enterprise-grade security, rapid loading speeds, and bilingual Arabic/English web design.",
       "localNotes": "Abu Dhabi digital projects require bilingual RTL/LTR layout mastery, strict WCAG accessibility, and local search visibility across UAE business directories and Google Maps.",
       "services": [
@@ -147,6 +152,7 @@
       "name": "Riyadh",
       "slug": "riyadh",
       "country": "Saudi Arabia",
+      "title": "Web Design & SEO Services in Riyadh, Saudi Arabia | WebABC",
       "description": "Delivering high-performance web development and search engine optimization services to businesses in Riyadh under Vision 2030 digital expansion.",
       "longDescription": "Saudi Arabia's Vision 2030 has catalyzed unprecedented digital growth in Riyadh. We build fast, secure, and search-optimized web applications tailored for the Saudi Arabian market.",
       "localNotes": "The Saudi market prioritizes mobile-first speed, localized Arabic copywriting, and seamless integration with regional payment and logistics gateways.",
