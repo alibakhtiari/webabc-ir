@@ -39,14 +39,14 @@
 ## Interactive Tools (Free Developer & SEO Utilities)
 
 - [All Developer & SEO Tools](https://webabc.ir/en/tools): Interactive client-side web utilities for developers, marketers, and content creators.
-- [SEO Headline Analyzer](https://webabc.ir/en/tools/headline-analyzer): Score headlines for emotional impact, character length, and CTR.
-- [SEO Title & Meta Preview](https://webabc.ir/en/tools/seo-title-checker): Real-time Google SERP title tag and meta description snippet simulator.
-- [Website Cost Calculator](https://webabc.ir/en/tools/cost-calculator): Instant interactive budget estimation for web design and development.
+- [SEO Headline Analyzer & Title Checker](https://webabc.ir/en/tools/headline-analyzer): Score headlines for emotional impact, power words, character length, and Google CTR.
+- [SEO Title & Meta Tag Checker](https://webabc.ir/en/tools/seo-title-checker): Pixel dimensions, character limits, and keyword positioning analyzer.
+- [Website Cost Calculator & Price Estimator](https://webabc.ir/en/tools/cost-calculator): Instant interactive budget estimation for web design and development projects.
+- [Google SERP Snippet Simulator](https://webabc.ir/en/tools/serp-preview): Desktop and mobile search result preview simulator with rich snippets.
 - [Content Readability Checker](https://webabc.ir/en/tools/readability-checker): Flesch-Kincaid grade level and reading ease analyzer.
 - [Keyword Density Analyzer](https://webabc.ir/en/tools/keyword-density-analyzer): Detect keyword frequency and prevent over-optimization penalties.
 - [URL Slug Generator](https://webabc.ir/en/tools/slug-generator): Clean, special-character-free SEO URL slug formatter.
 - [UTM Link Builder](https://webabc.ir/en/tools/utm-builder): Campaign URL generator with analytics parameter tracking.
-- [SERP Snippet Preview](https://webabc.ir/en/tools/serp-preview): Desktop and mobile search result preview simulator.
 - [Social Media Card Preview](https://webabc.ir/en/tools/social-media-preview): Open Graph and Twitter Card validator.
 - [Privacy Policy Generator](https://webabc.ir/en/tools/privacy-policy-generator): Instant custom GDPR/CCPA privacy policy document maker.
 - [CSS Glassmorphism Generator](https://webabc.ir/en/tools/glassmorphism-generator): Interactive CSS backdrop-filter and UI code generator.
@@ -66,15 +66,23 @@
 ## Case Studies & Portfolio
 
 - [Portfolio Directory](https://webabc.ir/en/portfolio): Case studies highlighting client growth, technology stack implementation, and ROI.
+- [Ramzarz Negaran Case Study](https://webabc.ir/fa/portfolio/ramzarz-negaran): E-commerce and mining profitability calculator platform ranking #1 on Google.
+- [Zeytoun Masoud Case Study](https://webabc.ir/fa/portfolio/zeytoun-masoud): Organic food B2B ordering portal and national e-commerce logistics platform.
+- [Remido Case Study](https://webabc.ir/en/portfolio/remido): Digital agency platform with high-converting landing architectures.
 
 ## Research, Guides & Insights (Blog)
 
 - [Insights & Blog](https://webabc.ir/en/blog): In-depth articles on SEO, modern Astro web development, and digital marketing strategies.
-- [Trilingual Website Maintenance and Security Guide 2026](https://webabc.ir/en/blog/website-maintenance-security-guide-2026): Comprehensive technical guide on web security, automated backups, and 2026 Core Web Vitals.
-- [Best SEO Tools Guide](https://webabc.ir/en/blog/best-seo-tools-2025): Essential tools for technical audits, rank tracking, and semantic search.
-- [WordPress vs Custom Code](https://webabc.ir/en/blog/wordpress-vs-custom-development): Detailed architectural breakdown comparing CMS vs custom Astro/React builds.
+- [SEO Checklist 2026: Complete Step-by-Step Audit Guide](https://webabc.ir/en/blog/seo-checklist-2026): 4-phase actionable framework covering technical infrastructure, on-page optimization, Core Web Vitals, and Answer Engine Optimization (AEO).
+- [Best Free SEO & Developer Tools in 2026](https://webabc.ir/en/blog/free-seo-developer-tools-guide-2026): Practical workflows for 23 zero-install client-side web and SEO utilities.
+- [Dubai & UAE Web Design and SEO Guide 2026](https://webabc.ir/en/blog/dubai-uae-web-design-seo-guide-2026): Market playbook covering bilingual UX, luxury aesthetics, GCC payment gateways, and local SEO.
+- [Oman & Muscat Web Design and SEO Guide 2026](https://webabc.ir/en/blog/oman-web-design-seo-guide-2026): Blueprint for entering the Omani market with localized Arabic/English web design and Google Maps optimization.
+- [Website Development Cost Calculator & Pricing Guide 2026](https://webabc.ir/en/blog/website-development-cost-calculator-guide-2026): Transparent pricing breakdown for custom Astro platforms, WordPress, and e-commerce stores.
+- [WordPress vs. Custom Web Development 2026](https://webabc.ir/en/blog/wordpress-vs-custom-development-guide-2026): Architectural comparison evaluating performance, security, maintenance, and 3-year TCO.
+- [Website Speed Optimization Pricing & Core Web Vitals ROI Guide 2026](https://webabc.ir/en/blog/website-speed-optimization-pricing-guide-2026): Guide to audit deliverables, speed pricing, and conversion rate ROI.
+- [Trilingual Website Maintenance and Security Guide 2026](https://webabc.ir/en/blog/website-maintenance-security-guide-2026): Technical guide on web security, automated backups, and 2026 Core Web Vitals.
+- [SEO Best Practices for 2026: The Definitive Search Guide](https://webabc.ir/en/blog/seo-best-practices-2025): Latest ranking signals for INP, AI Overviews, E-E-A-T, and structured data.
 - [Clickable Headlines Guide](https://webabc.ir/en/blog/how-to-write-clickable-headlines): CTR engineering techniques for search titles and article headlines.
-- [Website Development Cost Guide](https://webabc.ir/en/blog/website-development-costs): Transparent breakdown of modern website design and engineering pricing models.
 - [Local SEO Strategies for Middle East](https://webabc.ir/en/blog/local-seo-middle-east): Market penetration strategies for UAE, KSA, Oman, and Iran.
 
 ## Direct Contact & Support
