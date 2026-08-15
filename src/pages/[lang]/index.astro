@@ -29,11 +29,20 @@ const homeFaqList = [1, 2, 3, 4]
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": `${siteUrl}/${supportedLang}#website`,
+  "@id": `${siteUrl}/${supportedLang}/#website`,
   "url": homeUrl,
   "name": "WebABC",
+  "alternateName": supportedLang === 'fa' ? "وب اِی‌بی‌سی" : supportedLang === 'ar' ? "ويب إيه بي سي" : "WebABC Web & SEO Agency",
   "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
-  "publisher": { "@id": `${siteUrl}/#organization` }
+  "publisher": { "@id": `${siteUrl}/#organization` },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": `${siteUrl}/${supportedLang}/blog?tag={search_term_string}`
+    },
+    "query-input": "required name=search_term_string"
+  }
 };
 ---
 
