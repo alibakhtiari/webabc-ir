@@ -202,8 +202,23 @@ const breadcrumbs = [
             <h3 class="text-sm font-bold text-gray-800 mb-2">Power Words That Work</h3>
             <p class="text-xs text-gray-500 leading-relaxed">
               Words like "proven", "free", "ultimate", or "essential" paired with a digit (e.g. "7 Tips") are the
-              highest-performing combination for blog and article headlines.
+              highest-performing combination for blog, YouTube, and article headlines.
             </p>
+          </div>
+        </div>
+
+        <!-- On-Page FAQ / AEO Question Block -->
+        <div class="bg-white border border-gray-100 rounded-2xl p-6 sm:p-8 space-y-6">
+          <h2 class="text-xl md:text-2xl font-bold text-gray-900 border-b border-gray-100 pb-4">
+            {supportedLang === 'fa' ? 'سوالات متداول آنالیزور عنوان سئو (FAQ)' : supportedLang === 'ar' ? 'الأسئلة الشائعة حول محلل العناوين (FAQ)' : 'Frequently Asked Questions (Headline SEO FAQ)'}
+          </h2>
+          <div class="space-y-4">
+            {faqSchema.mainEntity.map((item: any) => (
+              <div class="border border-gray-100 rounded-xl p-4 bg-gray-50/50 space-y-2">
+                <h3 class="text-sm sm:text-base font-bold text-gray-900">{item.name}</h3>
+                <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">{item.acceptedAnswer.text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
