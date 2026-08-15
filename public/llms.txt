@@ -73,7 +73,7 @@
 ## Research, Guides & Insights (Blog)
 
 - [Insights & Blog](https://webabc.ir/en/blog): In-depth articles on SEO, modern Astro web development, and digital marketing strategies.
-- [SEO Checklist 2026: Complete Step-by-Step Audit Guide](https://webabc.ir/en/blog/seo-checklist-2026): 4-phase actionable framework covering technical infrastructure, on-page optimization, Core Web Vitals, and Answer Engine Optimization (AEO).
+- [SEO Checklist 2026 / ۱۴۰۵: Complete Step-by-Step Audit Guide](https://webabc.ir/en/blog/seo-checklist-2026): 4-phase actionable framework covering technical infrastructure, on-page optimization, Core Web Vitals, and Answer Engine Optimization (AEO). In Persian as "چک لیست سئو 2026 (سال ۱۴۰۵)".
 - [Best Free SEO & Developer Tools in 2026](https://webabc.ir/en/blog/free-seo-developer-tools-guide-2026): Practical workflows for 23 zero-install client-side web and SEO utilities.
 - [Dubai & UAE Web Design and SEO Guide 2026](https://webabc.ir/en/blog/dubai-uae-web-design-seo-guide-2026): Market playbook covering bilingual UX, luxury aesthetics, GCC payment gateways, and local SEO.
 - [Oman & Muscat Web Design and SEO Guide 2026](https://webabc.ir/en/blog/oman-web-design-seo-guide-2026): Blueprint for entering the Omani market with localized Arabic/English web design and Google Maps optimization.
