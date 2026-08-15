@@ -216,9 +216,17 @@ const breadcrumbs = [
             </p>
           </div>
           <div class="bg-white border border-gray-100 rounded-xl p-5">
-            <h3 class="text-sm font-bold text-gray-800 mb-2">Pricing Guide & Exact Quote</h3>
+            <h3 class="text-sm font-bold text-gray-800 mb-2">
+              {supportedLang === 'fa' ? 'راهنمای قیمت‌گذاری و استعلام' : supportedLang === 'ar' ? 'دليل الأسعار وعرض السعر' : 'Pricing Guide & Exact Quote'}
+            </h3>
             <p class="text-xs text-gray-500 leading-relaxed">
-              For full cost benchmarks, read our comprehensive <a href={`/${supportedLang}/blog/website-development-cost-calculator-guide-2026`} class="text-primary font-semibold hover:underline">2026 Web Development Cost Guide</a>, or <a href={`/${supportedLang}/contact/`} class="text-primary font-semibold hover:underline">book a free consultation</a> for an exact proposal.
+              {supportedLang === 'fa' ? (
+                <span>برای مشاهده جدول کامل تعرفه‌ها، <a href={`/${supportedLang}/blog/website-development-cost-calculator-guide-2026`} class="text-primary font-semibold hover:underline">راهنمای محاسبه هزینه طراحی سایت ۲۰۲۶</a> را مطالعه کنید، یا برای دریافت پیش‌فاکتور دقیق <a href={`/${supportedLang}/contact/`} class="text-primary font-semibold hover:underline">مشاوره رایگان رزرو کنید</a>.</span>
+              ) : supportedLang === 'ar' ? (
+                <span>للاطلاع على التكاليف التفصيلية، اقرأ <a href={`/${supportedLang}/blog/website-development-cost-calculator-guide-2026`} class="text-primary font-semibold hover:underline">دليل حاسبة وتكلفة تصميم المواقع 2026</a>، أو <a href={`/${supportedLang}/contact/`} class="text-primary font-semibold hover:underline">احجز استشارة مجانية</a> للحصول على عرض سعر مفصل.</span>
+              ) : (
+                <span>For full cost benchmarks, read our comprehensive <a href={`/${supportedLang}/blog/website-development-cost-calculator-guide-2026`} class="text-primary font-semibold hover:underline">2026 Web Development Cost Guide</a>, or <a href={`/${supportedLang}/contact/`} class="text-primary font-semibold hover:underline">book a free consultation</a> for an exact proposal.</span>
+              )}
             </p>
           </div>
         </div>
