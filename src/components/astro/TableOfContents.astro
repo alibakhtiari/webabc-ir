@@ -19,7 +19,7 @@ if (filteredHeadings.length === 0) return null;
 ---
 
 <div class="mb-8 border border-primary/10 bg-linear-to-br from-primary/5 to-white shadow-xs rounded-2xl overflow-hidden font-persian">
-  <button type="button" id="toc-toggle" class="w-full flex items-center justify-between p-5 hover:bg-primary/5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md">
+  <button type="button" id="toc-toggle" class="w-full flex items-center justify-between p-5 hover:bg-primary/5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md" aria-expanded="false" aria-controls="toc-content">
     <span class="font-bold text-lg text-gray-900 flex items-center gap-2">
       <svg aria-hidden="true" class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7"></path></svg>
       {titleText}
@@ -53,6 +53,7 @@ if (filteredHeadings.length === 0) return null;
     tocToggle.addEventListener('click', () => {
       const isHidden = tocContent.classList.toggle('hidden');
       tocArrow.classList.toggle('rotate-180', !isHidden);
+      tocToggle.setAttribute('aria-expanded', String(!isHidden));
     });
   }
 </script>

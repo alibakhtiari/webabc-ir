@@ -109,8 +109,8 @@ const breadcrumbs = [
                 Keyword Density
               </span>
               <div class="flex bg-white rounded-md p-0.5 border border-gray-200">
-                <button type="button" id="phrase-1" class="phrase-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-primary-foreground font-medium focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">1-Gram</button>
-                <button type="button" id="phrase-2" class="phrase-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">2-Gram</button>
+                <button type="button" id="phrase-1" aria-pressed="true" class="phrase-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-primary-foreground font-medium focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">1-Gram</button>
+                <button type="button" id="phrase-2" aria-pressed="false" class="phrase-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">2-Gram</button>
               </div>
             </div>
             
@@ -169,6 +169,8 @@ const breadcrumbs = [
     activeGram = 1;
     phrase1Btn.className = "phrase-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-primary-foreground font-medium";
     phrase2Btn.className = "phrase-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900";
+    phrase1Btn.setAttribute('aria-pressed', 'true');
+    phrase2Btn.setAttribute('aria-pressed', 'false');
     analyze();
   });
 
@@ -176,6 +178,8 @@ const breadcrumbs = [
     activeGram = 2;
     phrase2Btn.className = "phrase-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-primary-foreground font-medium";
     phrase1Btn.className = "phrase-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900";
+    phrase2Btn.setAttribute('aria-pressed', 'true');
+    phrase1Btn.setAttribute('aria-pressed', 'false');
     analyze();
   });
 

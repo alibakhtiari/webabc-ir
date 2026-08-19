@@ -76,6 +76,7 @@ function t(key: string, options?: { fallback: string }) {
           <a
             href={`/${supportedLang}/portfolio/?category=${encodeURIComponent(category)}`}
             data-filter-btn={category}
+            aria-current={idx === 0 ? 'true' : 'false'}
             class={`px-5 py-2.5 text-xs font-semibold rounded-full border border-gray-200 cursor-pointer transition-all ${
               idx === 0
                 ? "bg-primary text-primary-foreground shadow-sm"
@@ -144,10 +145,12 @@ function t(key: string, options?: { fallback: string }) {
     // Update active button state styling
     filterBtns.forEach(b => {
       b.className = "px-5 py-2.5 text-xs font-semibold rounded-full border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 cursor-pointer transition-all";
+      b.removeAttribute('aria-current');
     });
     const activeBtn = document.querySelector(`[data-filter-btn="${selected}"]`) || document.querySelector('[data-filter-btn="all"]');
     if (activeBtn) {
       activeBtn.className = "px-5 py-2.5 text-xs font-semibold rounded-full border border-gray-200 bg-primary text-primary-foreground shadow-sm cursor-pointer transition-all";
+      activeBtn.setAttribute('aria-current', 'true');
     }
 
     // Toggle cards visibility

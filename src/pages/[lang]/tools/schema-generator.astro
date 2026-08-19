@@ -78,11 +78,11 @@ const breadcrumbs = [
       <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-4 font-persian">
         <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-3 text-start">{t('schemaGenerator.selectType', { fallback: 'Select Schema Type' })}</label>
         <div class="flex flex-wrap gap-2">
-          <button data-type="LocalBusiness" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-primary text-primary-foreground transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('schemaGenerator.typeLocalBusiness', { fallback: 'Local Business' })}</button>
-          <button data-type="Article" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('schemaGenerator.typeArticle', { fallback: 'Article' })}</button>
-          <button data-type="FAQPage" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('schemaGenerator.typeFaqPage', { fallback: 'FAQ Page' })}</button>
-          <button data-type="Organization" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('schemaGenerator.typeOrganization', { fallback: 'Organization' })}</button>
-          <button data-type="Product" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('schemaGenerator.typeProduct', { fallback: 'Product' })}</button>
+          <button data-type="LocalBusiness" aria-pressed="true" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-primary text-primary-foreground transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('schemaGenerator.typeLocalBusiness', { fallback: 'Local Business' })}</button>
+          <button data-type="Article" aria-pressed="false" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('schemaGenerator.typeArticle', { fallback: 'Article' })}</button>
+          <button data-type="FAQPage" aria-pressed="false" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('schemaGenerator.typeFaqPage', { fallback: 'FAQ Page' })}</button>
+          <button data-type="Organization" aria-pressed="false" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('schemaGenerator.typeOrganization', { fallback: 'Organization' })}</button>
+          <button data-type="Product" aria-pressed="false" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('schemaGenerator.typeProduct', { fallback: 'Product' })}</button>
         </div>
       </div>
 
@@ -319,8 +319,9 @@ const breadcrumbs = [
 
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      tabBtns.forEach(b => b.className = 'tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all');
+      tabBtns.forEach(b => { b.className = 'tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all'; b.setAttribute('aria-pressed', 'false'); });
       btn.className = 'tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-primary text-white transition-all';
+      btn.setAttribute('aria-pressed', 'true');
       
       currentType = btn.getAttribute('data-type');
       forms.forEach(f => f.classList.add('hidden'));

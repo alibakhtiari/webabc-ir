@@ -89,6 +89,7 @@ const services = [
         {services.map((service, idx) => (
           <button type="button"
             data-tab-btn={service.id}
+            aria-pressed={idx === 0 ? 'true' : 'false'}
             class={`tab-btn transition-all duration-300 px-6 py-3 rounded-full whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 snap-start font-${lang === 'en' ? 'sans' : 'persian'} ${
               idx === 0
                 ? "bg-primary text-primary-foreground shadow-md active-tab"
@@ -193,12 +194,14 @@ const services = [
       tabBtns.forEach(b => {
         b.classList.remove('bg-primary', 'text-white', 'shadow-md', 'active-tab');
         b.classList.add('bg-white', 'text-foreground/80', 'border', 'border-gray-200', 'hover:bg-gray-50');
+        b.setAttribute('aria-pressed', 'false');
       });
       tabPanes.forEach(pane => pane.classList.add('hidden'));
 
       // Add active class to clicked button
       btn.classList.add('bg-primary', 'text-white', 'shadow-md', 'active-tab');
       btn.classList.remove('bg-white', 'text-foreground/80', 'border', 'border-gray-200', 'hover:bg-gray-50');
+      btn.setAttribute('aria-pressed', 'true');
 
       // Show content
       const targetId = btn.getAttribute('data-tab-btn');

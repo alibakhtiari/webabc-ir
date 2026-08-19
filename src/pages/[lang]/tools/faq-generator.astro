@@ -173,7 +173,7 @@ const breadcrumbs = [
     // Generate HTML
     let htmlSnippet = `<div class="faq-accordion space-y-3">\n`;
     qaPairs.forEach(pair => {
-      htmlSnippet += `  <details class="border border-gray-200 rounded-lg p-4">\n    <summary class="font-bold cursor-pointer">${pair.q}</summary>\n    <p class="mt-2 text-sm text-gray-600">${pair.a}</p>\n  </details>\n`;
+      htmlSnippet += `  <details class="border border-gray-200 rounded-lg p-4">\n    <summary class="font-bold cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-lg">${pair.q}</summary>\n    <p class="mt-2 text-sm text-gray-600">${pair.a}</p>\n  </details>\n`;
     });
     htmlSnippet += `</div>`;
 

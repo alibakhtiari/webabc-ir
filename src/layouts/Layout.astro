@@ -162,6 +162,20 @@ const organizationSchema = createOrganizationSchema(
     <meta name="theme-color" content="#4361ee" />
     <meta name="twitter:site" content="@aliib1991" />
     <meta name="twitter:creator" content="@aliib1991" />
+    <script is:inline>
+      (function () {
+        try {
+          const saved = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const dark = saved === 'dark' || (saved !== 'light' && prefersDark);
+          const root = document.documentElement;
+          root.classList.toggle('dark', dark);
+          root.style.colorScheme = dark ? 'dark' : 'light';
+          const meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute('content', dark ? '#0f172a' : '#4361ee');
+        } catch (e) {}
+      })();
+    </script>
     
     <!-- Inline Schema -->
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />

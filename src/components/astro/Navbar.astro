@@ -186,10 +186,15 @@ const isActive = (href: string) =>
           </button>
           <div class="absolute top-full right-0 mt-2 w-28 rounded-md shadow-lg bg-white border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-1">
             {Object.keys(languages).map((l) => (
-              <a href={`/${l}${currentPathWithoutLang}`} class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 text-center uppercase focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{l}</a>
+              <a href={`/${l}${currentPathWithoutLang}`} aria-current={lang === l ? 'true' : undefined} class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 text-center uppercase focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{l}</a>
             ))}
           </div>
         </div>
+
+        <button type="button" id="theme-toggle" data-label-dark={t('common.switchToDark', { fallback: 'Switch to dark mode' })} data-label-light={t('common.switchToLight', { fallback: 'Switch to light mode' })} class="w-10 h-10 rounded-full flex items-center justify-center text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" aria-label={t('common.switchToDark', { fallback: 'Switch to dark mode' })}>
+          <svg data-icon="sun" aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path stroke-linecap="round" stroke-linejoin="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+          <svg data-icon="moon" aria-hidden="true" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+        </button>
 
         <button type="button" id="open-consultation-btn" class="px-4 py-2 bg-primary text-primary-foreground text-sm font-medium rounded-md hover:bg-primary/95 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
           {t('common.freeConsultation')}
@@ -206,7 +211,7 @@ const isActive = (href: string) =>
           </button>
           <div id="mobile-lang-dropdown" class="hidden absolute top-full right-0 mt-2 w-32 rounded-xl shadow-xl bg-white border border-gray-100 z-50 py-1">
             {Object.entries(languages).map(([code, meta]) => (
-              <a href={`/${code}${currentPathWithoutLang}`} class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 text-center font-medium focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+              <a href={`/${code}${currentPathWithoutLang}`} aria-current={lang === code ? 'true' : undefined} class="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 text-center font-medium focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 {meta.nativeName}
               </a>
             ))}
@@ -283,6 +288,7 @@ const isActive = (href: string) =>
             {Object.entries(languages).map(([code, meta]) => (
               <a
                 href={`/${code}${currentPathWithoutLang}`}
+                aria-current={lang === code ? 'true' : undefined}
                 class={`px-4 py-2 text-xs font-bold rounded-lg border transition-all ${lang === code ? 'bg-primary text-primary-foreground border-primary' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'}`}
               >
                 {meta.nativeName}
@@ -293,6 +299,11 @@ const isActive = (href: string) =>
           <!-- Button -->
           <button type="button" id="open-consultation-btn-mobile" class="w-full py-3 bg-primary text-primary-foreground rounded-xl shadow-md text-center font-bold focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
             {t('common.freeConsultation')}
+          </button>
+
+          <!-- Theme Toggle -->
+          <button type="button" id="theme-toggle-mobile" data-label-dark={t('common.switchToDark', { fallback: 'Switch to dark mode' })} data-label-light={t('common.switchToLight', { fallback: 'Switch to light mode' })} class="w-full py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl shadow-md text-center font-bold transition-colors focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" aria-label={t('common.switchToDark', { fallback: 'Switch to dark mode' })}>
+            {t('common.switchToDark', { fallback: 'Switch to dark mode' })}
           </button>
         </div>
 
@@ -365,6 +376,44 @@ const isActive = (href: string) =>
       }
     });
   }
+
+  // Theme Toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+  const syncThemeUI = () => {
+    const dark = document.documentElement.classList.contains('dark');
+    const label = dark
+      ? (themeToggle && themeToggle.dataset.labelLight) || 'Switch to light mode'
+      : (themeToggle && themeToggle.dataset.labelDark) || 'Switch to dark mode';
+    document.querySelectorAll('[data-icon="sun"]').forEach((el) => el.classList.toggle('hidden', dark));
+    document.querySelectorAll('[data-icon="moon"]').forEach((el) => el.classList.toggle('hidden', !dark));
+    if (themeToggle) themeToggle.setAttribute('aria-label', label);
+    if (themeToggleMobile) {
+      themeToggleMobile.textContent = label;
+      themeToggleMobile.setAttribute('aria-label', label);
+    }
+  };
+  const setTheme = (dark) => {
+    const root = document.documentElement;
+    root.classList.toggle('dark', dark);
+    root.style.colorScheme = dark ? 'dark' : 'light';
+    try {
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+    } catch (e) {}
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', dark ? '#0f172a' : '#4361ee');
+    syncThemeUI();
+  };
+  const bindTheme = (btn) => {
+    if (!btn || btn.dataset.themeBound) return;
+    btn.dataset.themeBound = 'true';
+    btn.addEventListener('click', () => {
+      setTheme(!document.documentElement.classList.contains('dark'));
+    });
+  };
+  bindTheme(themeToggle);
+  bindTheme(themeToggleMobile);
+  syncThemeUI();
 
   // Dialog Controls
   const dialog = document.getElementById('consultation-modal');

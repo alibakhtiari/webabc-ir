@@ -104,9 +104,9 @@ const defaultDesc = t('socialPreview.defaultDesc', { fallback: 'Your description
         <!-- Preview Panel -->
         <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-6">
           <div class="flex gap-2 bg-gray-50 p-1 rounded-xl w-fit mx-auto">
-            <button type="button" data-platform="facebook" class="smp-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-primary text-primary-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Facebook</button>
-            <button type="button" data-platform="twitter" class="smp-tab px-4 py-2 rounded-lg text-sm font-medium transition-all text-gray-600 hover:bg-gray-100 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Twitter</button>
-            <button type="button" data-platform="linkedin" class="smp-tab px-4 py-2 rounded-lg text-sm font-medium transition-all text-gray-600 hover:bg-gray-100 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">LinkedIn</button>
+            <button type="button" data-platform="facebook" aria-pressed="true" class="smp-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-primary text-primary-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Facebook</button>
+            <button type="button" data-platform="twitter" aria-pressed="false" class="smp-tab px-4 py-2 rounded-lg text-sm font-medium transition-all text-gray-600 hover:bg-gray-100 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Twitter</button>
+            <button type="button" data-platform="linkedin" aria-pressed="false" class="smp-tab px-4 py-2 rounded-lg text-sm font-medium transition-all text-gray-600 hover:bg-gray-100 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">LinkedIn</button>
           </div>
 
           <div class="max-w-sm mx-auto w-full">
@@ -176,8 +176,9 @@ const defaultDesc = t('socialPreview.defaultDesc', { fallback: 'Your description
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       const platform = tab.dataset.platform;
-      tabs.forEach(tb => tb.className = 'smp-tab px-4 py-2 rounded-lg text-sm font-medium transition-all text-gray-600 hover:bg-gray-100');
+      tabs.forEach(tb => { tb.className = 'smp-tab px-4 py-2 rounded-lg text-sm font-medium transition-all text-gray-600 hover:bg-gray-100'; tb.setAttribute('aria-pressed', 'false'); });
       tab.className = 'smp-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-primary text-white';
+      tab.setAttribute('aria-pressed', 'true');
       cards.forEach(c => c.classList.add('hidden'));
       document.getElementById(`smp-${platform}`).classList.remove('hidden');
     });

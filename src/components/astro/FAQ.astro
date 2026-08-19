@@ -45,6 +45,8 @@ const schema = {
         <button type="button"
           class="faq-btn w-full flex items-center justify-between py-2 text-start font-bold text-gray-800 hover:text-primary transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md"
           data-faq-target={`faq-answer-${idx}`}
+          aria-expanded="false"
+          aria-controls={`faq-answer-${idx}`}
         >
           <span>{item.question}</span>
           <svg aria-hidden="true" class="faq-icon w-5 h-5 transition-transform duration-300 text-gray-400 shrink-0 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -70,6 +72,7 @@ const schema = {
       if (targetAnswer && icon) {
         const isHidden = targetAnswer.classList.toggle('hidden');
         icon.classList.toggle('rotate-180', !isHidden);
+        btn.setAttribute('aria-expanded', String(!isHidden));
       }
     });
   });

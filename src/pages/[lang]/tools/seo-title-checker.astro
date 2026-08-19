@@ -152,10 +152,10 @@ const breadcrumbs = [
                 {t('seoTitleChecker.labels.serpPreview', { fallback: 'Google Search Preview' })}
               </span>
               <div class="flex bg-white rounded-md p-0.5 border border-gray-200">
-                <button type="button" id="device-desktop" class="device-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-primary-foreground font-medium focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                <button type="button" id="device-desktop" aria-pressed="true" class="device-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-primary-foreground font-medium focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                   {t('seoTitleChecker.labels.desktop', { fallback: 'Desktop' })}
                 </button>
-                <button type="button" id="device-mobile" class="device-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                <button type="button" id="device-mobile" aria-pressed="false" class="device-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                   {t('seoTitleChecker.labels.mobile', { fallback: 'Mobile' })}
                 </button>
               </div>
@@ -327,6 +327,8 @@ const breadcrumbs = [
   deviceDesktopBtn.addEventListener('click', () => {
     deviceDesktopBtn.className = "device-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-primary-foreground font-medium";
     deviceMobileBtn.className = "device-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900";
+    deviceDesktopBtn.setAttribute('aria-pressed', 'true');
+    deviceMobileBtn.setAttribute('aria-pressed', 'false');
     serpContainer.classList.remove('max-w-[375px]');
     serpContainer.classList.add('max-w-full');
     previewTitle.className = "text-xl hover:underline font-medium mb-1 break-words cursor-pointer text-[#1a0dab]";
@@ -336,6 +338,8 @@ const breadcrumbs = [
   deviceMobileBtn.addEventListener('click', () => {
     deviceMobileBtn.className = "device-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-primary-foreground font-medium";
     deviceDesktopBtn.className = "device-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900";
+    deviceMobileBtn.setAttribute('aria-pressed', 'true');
+    deviceDesktopBtn.setAttribute('aria-pressed', 'false');
     serpContainer.classList.remove('max-w-full');
     serpContainer.classList.add('max-w-[375px]');
     previewTitle.className = "text-xl hover:underline font-medium mb-1 break-words cursor-pointer text-[#15c]";

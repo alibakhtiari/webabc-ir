@@ -66,5 +66,7 @@
   "termsOfService": "شروط الخدمة",
   "cookiePolicy": "سياسة الكوكيز",
   "whyChooseUs": "لماذا تختارنا",
-  "howItWorks": "كيف نعمل"
+  "howItWorks": "كيف نعمل",
+  "switchToDark": "الوضع الداكن",
+  "switchToLight": "الوضع الفاتح"
 }

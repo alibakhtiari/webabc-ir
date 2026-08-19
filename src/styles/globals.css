@@ -378,6 +378,7 @@
   }
 
   .dark {
+    color-scheme: dark;
     --background: 222 47.4% 11.2%;
     --foreground: 210 40% 98%;
 
@@ -447,6 +448,14 @@
 }
 
 @layer utilities {
+
+  html {
+    scroll-padding-top: 6rem;
+  }
+
+  html:lang(en) {
+    text-rendering: optimizeLegibility;
+  }
 
   /* Global font families based on HTML lang attribute */
   html:lang(en) {

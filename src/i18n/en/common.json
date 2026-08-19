@@ -66,5 +66,7 @@
   "termsOfService": "Terms of Service",
   "cookiePolicy": "Cookie Policy",
   "whyChooseUs": "Why Choose Us",
-  "howItWorks": "How It Works"
+  "howItWorks": "How It Works",
+  "switchToDark": "Switch to dark mode",
+  "switchToLight": "Switch to light mode"
 }
