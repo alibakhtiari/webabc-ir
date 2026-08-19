@@ -119,7 +119,7 @@ const fillFieldsText = t('utmBuilder.fillFields', { fallback: 'Fill in the field
           <div id="utm-output" dir="ltr" class="w-full min-h-[3rem] border border-gray-200 rounded-xl p-4 bg-gray-50/50 text-gray-500 font-mono text-sm break-all">
             {fillFieldsText}
           </div>
-          <button id="utm-copy" disabled class="w-full py-3 bg-primary text-white font-bold rounded-xl shadow-sm hover:bg-primary/95 transition-all text-sm disabled:opacity-40 disabled:cursor-not-allowed">
+          <button type="button" id="utm-copy" disabled class="w-full py-3 bg-primary text-primary-foreground font-bold rounded-xl shadow-sm hover:bg-primary/95 transition-all text-sm disabled:opacity-40 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
             {t('utmBuilder.copyUrl', { fallback: 'Copy URL' })}
           </button>
           <p id="utm-copy-feedback" class="text-xs text-green-600 font-semibold font-persian opacity-0 transition-opacity">

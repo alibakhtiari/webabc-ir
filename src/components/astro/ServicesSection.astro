@@ -87,11 +87,11 @@ const services = [
     <div class="flex overflow-x-auto -mx-4 px-4 pb-4 mb-8 snap-x">
       <div class="flex gap-2 mx-auto">
         {services.map((service, idx) => (
-          <button
+          <button type="button"
             data-tab-btn={service.id}
-            class={`tab-btn transition-all duration-300 px-6 py-3 rounded-full whitespace-nowrap focus:outline-none snap-start font-${lang === 'en' ? 'sans' : 'persian'} ${
+            class={`tab-btn transition-all duration-300 px-6 py-3 rounded-full whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 snap-start font-${lang === 'en' ? 'sans' : 'persian'} ${
               idx === 0
-                ? "bg-primary text-white shadow-md active-tab"
+                ? "bg-primary text-primary-foreground shadow-md active-tab"
                 : "bg-white text-foreground/80 border border-gray-200 hover:bg-gray-50"
             }`}
           >
@@ -124,13 +124,13 @@ const services = [
               <ul class="space-y-3 mt-6">
                 {service.features.map((feature) => (
                   <li class={`flex items-center font-${lang === 'en' ? 'sans' : 'persian'}`}>
-                    <svg class="text-primary h-5 w-5 me-2 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg aria-hidden="true" class="text-primary h-5 w-5 me-2 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     <span>{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              <button class={`mt-8 px-6 py-3 rounded-full bg-primary text-white transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 font-${lang === 'en' ? 'sans' : 'persian'}`}>
+              <button type="button" class={`mt-8 px-6 py-3 rounded-full bg-primary text-primary-foreground transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 font-${lang === 'en' ? 'sans' : 'persian'}`}>
                 {t('services.consultButton', { fallback: 'مشاوره در مورد' })} {service.title}
               </button>
             </div>

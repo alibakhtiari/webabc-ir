@@ -290,15 +290,15 @@ const pageSchema = createPageSchema(slug, supportedLang, pageTitle, pageDesc);
     lang={supportedLang}
   >
     <!-- Action buttons -->
-    <a href={`/${supportedLang}/contact/`} class="px-6 py-3 bg-primary text-white font-bold rounded-xl shadow-md hover:bg-primary/95 transition-all duration-300 hover:-translate-y-0.5 font-persian text-sm">
+    <a href={`/${supportedLang}/contact/`} class="px-6 py-3 bg-primary text-primary-foreground font-bold rounded-xl shadow-md hover:bg-primary/95 transition-all duration-300 hover:-translate-y-0.5 font-persian text-sm focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
       {t('common.freeConsultation', { fallback: 'Free Consultation' })}
     </a>
-    <a href={`/${supportedLang}/portfolio/`} class="px-6 py-3 bg-white border border-gray-200 text-gray-700 font-bold rounded-xl shadow-xs hover:bg-gray-50 transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-2 font-persian text-sm">
+    <a href={`/${supportedLang}/portfolio/`} class="px-6 py-3 bg-white border border-gray-200 text-gray-700 font-bold rounded-xl shadow-xs hover:bg-gray-50 transition-all duration-300 hover:-translate-y-0.5 inline-flex items-center gap-2 font-persian text-sm focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
       {t('common.viewPortfolio', { fallback: 'View Portfolio' })}
       {isRtl ? (
-        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        <svg aria-hidden="true" class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
       ) : (
-        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        <svg aria-hidden="true" class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
       )}
     </a>
   </ServiceHero>

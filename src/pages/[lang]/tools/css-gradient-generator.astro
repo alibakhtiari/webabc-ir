@@ -84,7 +84,7 @@ const breadcrumbs = [
           <div class="grid grid-cols-2 gap-4">
             <div>
               <label class="block text-xs font-semibold text-gray-600 mb-1">{t('gradientGen.typeLabel', { fallback: 'Type' })}</label>
-              <select id="grad-type" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none">
+              <select id="grad-type" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 <option value="linear">{t('gradientGen.linear', { fallback: 'Linear' })}</option>
                 <option value="radial">{t('gradientGen.radial', { fallback: 'Radial' })}</option>
               </select>
@@ -125,7 +125,7 @@ const breadcrumbs = [
           <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-3 font-persian">
             <div class="flex justify-between items-center border-b border-gray-100 pb-2">
               <h3 class="text-sm font-bold text-gray-800">{t('gradientGen.generatedCss', { fallback: 'Generated CSS' })}</h3>
-              <button id="copy-grad-btn" class="px-3 py-1.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-all">{t('gradientGen.copy', { fallback: 'Copy CSS' })}</button>
+              <button type="button" id="copy-grad-btn" class="px-3 py-1.5 bg-primary text-primary-foreground text-xs font-bold rounded-lg hover:bg-primary/90 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('gradientGen.copy', { fallback: 'Copy CSS' })}</button>
             </div>
             <pre id="grad-output" dir="ltr" class="p-4 bg-gray-900 text-primary rounded-xl font-mono text-xs overflow-x-auto">background: linear-gradient(135deg, #0052CC 0%, #6554C0 100%);</pre>
             <p id="copy-status" class="text-xs text-green-600 font-semibold opacity-0 transition-opacity text-center">{t('gradientGen.copied', { fallback: 'Copied to clipboard!' })}</p>

@@ -79,7 +79,7 @@ const breadcrumbs = [
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <label class="block text-xs font-semibold text-gray-600 mb-1">{t('loremGenerator.languageScript', { fallback: 'Language Script' })}</label>
-            <select id="lorem-lang" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none">
+            <select id="lorem-lang" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
               <option value="latin">{t('loremGenerator.themeClassic', { fallback: 'Classic Lorem Ipsum' })}</option>
               <option value="persian">{t('loremGenerator.persianScript', { fallback: 'Persian (فارسی)' })}</option>
             </select>
@@ -89,7 +89,7 @@ const breadcrumbs = [
             <input type="number" id="lorem-count" min="1" max="20" value="3" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
           </div>
           <div class="flex items-end">
-            <button id="generate-lorem-btn" class="w-full py-2 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary/90 transition-all">{t('loremGenerator.generate', { fallback: 'Generate Text' })}</button>
+            <button type="button" id="generate-lorem-btn" class="w-full py-2 bg-primary text-primary-foreground text-sm font-bold rounded-lg hover:bg-primary/90 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('loremGenerator.generate', { fallback: 'Generate Text' })}</button>
           </div>
         </div>
       </div>
@@ -98,7 +98,7 @@ const breadcrumbs = [
       <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian">
         <div class="flex justify-between items-center border-b border-gray-100 pb-3">
           <h3 class="text-sm font-bold text-gray-800">{t('loremGenerator.generatedTitle', { fallback: 'Generated Dummy Text' })}</h3>
-          <button id="copy-lorem-btn" class="px-3 py-1.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-all">{t('loremGenerator.copy', { fallback: 'Copy Text' })}</button>
+          <button type="button" id="copy-lorem-btn" class="px-3 py-1.5 bg-primary text-primary-foreground text-xs font-bold rounded-lg hover:bg-primary/90 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('loremGenerator.copy', { fallback: 'Copy Text' })}</button>
         </div>
 
         <div id="lorem-output" class="p-6 bg-gray-50 rounded-xl text-gray-800 text-sm leading-relaxed space-y-4 min-h-[180px]"></div>

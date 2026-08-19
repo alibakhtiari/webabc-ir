@@ -72,7 +72,7 @@ const quickLinks = [
           </p>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {quickLinks.slice(0, 4).map(link => (
-              <a href={link.url} class="p-3 bg-gray-50 hover:bg-primary hover:text-white rounded-xl border border-gray-100 font-bold text-sm text-gray-700 transition-all shadow-xs">
+              <a href={link.url} class="p-3 bg-gray-50 hover:bg-primary hover:text-primary-foreground rounded-xl border border-gray-100 font-bold text-sm text-gray-700 transition-all shadow-xs focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 {link.label} {lang === 'en' ? '→' : '←'}
               </a>
             ))}

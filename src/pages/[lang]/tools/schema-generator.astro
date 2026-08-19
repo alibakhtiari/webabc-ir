@@ -78,11 +78,11 @@ const breadcrumbs = [
       <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-4 font-persian">
         <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-3 text-start">{t('schemaGenerator.selectType', { fallback: 'Select Schema Type' })}</label>
         <div class="flex flex-wrap gap-2">
-          <button data-type="LocalBusiness" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-primary text-white transition-all">{t('schemaGenerator.typeLocalBusiness', { fallback: 'Local Business' })}</button>
-          <button data-type="Article" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all">{t('schemaGenerator.typeArticle', { fallback: 'Article' })}</button>
-          <button data-type="FAQPage" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all">{t('schemaGenerator.typeFaqPage', { fallback: 'FAQ Page' })}</button>
-          <button data-type="Organization" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all">{t('schemaGenerator.typeOrganization', { fallback: 'Organization' })}</button>
-          <button data-type="Product" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all">{t('schemaGenerator.typeProduct', { fallback: 'Product' })}</button>
+          <button data-type="LocalBusiness" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-primary text-primary-foreground transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('schemaGenerator.typeLocalBusiness', { fallback: 'Local Business' })}</button>
+          <button data-type="Article" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('schemaGenerator.typeArticle', { fallback: 'Article' })}</button>
+          <button data-type="FAQPage" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('schemaGenerator.typeFaqPage', { fallback: 'FAQ Page' })}</button>
+          <button data-type="Organization" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('schemaGenerator.typeOrganization', { fallback: 'Organization' })}</button>
+          <button data-type="Product" class="tab-btn px-4 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('schemaGenerator.typeProduct', { fallback: 'Product' })}</button>
         </div>
       </div>
 
@@ -149,7 +149,7 @@ const breadcrumbs = [
             </div>
             <div>
               <label class="block text-xs font-semibold text-gray-600 mb-1">{t('schemaGenerator.a1', { fallback: 'Answer 1' })} *</label>
-              <textarea id="faq-a1" rows="2" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none resize-none">WebABC offers custom web development, WordPress tuning, UI/UX design, and technical SEO optimization.</textarea>
+              <textarea id="faq-a1" rows="2" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none resize-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">WebABC offers custom web development, WordPress tuning, UI/UX design, and technical SEO optimization.</textarea>
             </div>
             <div>
               <label class="block text-xs font-semibold text-gray-600 mb-1">{t('schemaGenerator.q2', { fallback: 'Question 2' })}</label>
@@ -157,7 +157,7 @@ const breadcrumbs = [
             </div>
             <div>
               <label class="block text-xs font-semibold text-gray-600 mb-1">{t('schemaGenerator.a2', { fallback: 'Answer 2' })}</label>
-              <textarea id="faq-a2" rows="2" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none resize-none">Standard web development projects typically take 2 to 4 weeks depending on requirements.</textarea>
+              <textarea id="faq-a2" rows="2" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none resize-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Standard web development projects typically take 2 to 4 weeks depending on requirements.</textarea>
             </div>
           </div>
 
@@ -207,8 +207,8 @@ const breadcrumbs = [
         <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian sticky top-28">
           <div class="flex justify-between items-center border-b border-gray-100 pb-3">
             <h3 class="text-base font-bold text-gray-800">{t('schemaGenerator.outputHeading', { fallback: 'Generated JSON-LD' })}</h3>
-            <button id="copy-json-btn" class="px-3 py-1.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-all flex items-center gap-1">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+            <button type="button" id="copy-json-btn" class="px-3 py-1.5 bg-primary text-primary-foreground text-xs font-bold rounded-lg hover:bg-primary/90 transition-all flex items-center gap-1 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+              <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
               {t('schemaGenerator.copyBtn', { fallback: 'Copy Code' })}
             </button>
           </div>

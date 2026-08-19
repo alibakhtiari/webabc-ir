@@ -25,7 +25,7 @@ const { lang, t, related, ctaHref, isRtl = false } = Astro.props;
         {related.map(({ key, route }) => (
           <a
             href={`/${lang}/tools/${route.endsWith('/') ? route : route + '/'}`}
-            class="bg-white rounded-2xl p-6 border border-gray-100 shadow-xs hover:shadow-lg transition-all duration-300 block font-persian"
+            class="bg-white rounded-2xl p-6 border border-gray-100 shadow-xs hover:shadow-lg transition-all duration-300 block font-persian focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
             <h3 class="text-lg font-bold mb-2">{t(`${key}.title`, { fallback: key })}</h3>
             <p class="text-gray-500 text-sm leading-relaxed">{t(`${key}.description`, { fallback: '' })}</p>
@@ -46,7 +46,7 @@ const { lang, t, related, ctaHref, isRtl = false } = Astro.props;
     </p>
     <a
       href={ctaHref}
-      class="inline-flex items-center gap-2 bg-primary text-white font-bold px-8 py-4 rounded-full hover:bg-primary/90 transition-colors"
+      class="inline-flex items-center gap-2 bg-primary text-primary-foreground font-bold px-8 py-4 rounded-full hover:bg-primary/90 transition-colors focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
     >
       {t('common.freeConsultation', { fallback: 'Free Consultation' })} {isRtl ? '←' : '→'}
     </a>

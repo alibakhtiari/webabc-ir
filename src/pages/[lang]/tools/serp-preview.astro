@@ -91,7 +91,7 @@ const breadcrumbs = [
 
           <div class="space-y-1.5">
             <label for="sp-desc" class="text-sm font-medium text-gray-700">{t('serpPreview.metaDescription', { fallback: 'Meta Description' })}</label>
-            <textarea id="sp-desc" rows="4" dir={isRtl ? 'rtl' : 'ltr'} maxlength="170" placeholder={t('serpPreview.placeholderDesc', { fallback: 'Your meta description' })} class="w-full border border-gray-200 rounded-lg p-4 focus:outline-none focus:border-primary resize-none"></textarea>
+            <textarea id="sp-desc" rows="4" dir={isRtl ? 'rtl' : 'ltr'} maxlength="170" placeholder={t('serpPreview.placeholderDesc', { fallback: 'Your meta description' })} class="w-full border border-gray-200 rounded-lg p-4 focus:outline-none focus:border-primary resize-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"></textarea>
             <p id="sp-desc-count" class="text-xs text-gray-400">0/160 {t('serpPreview.charsMax', { fallback: 'characters (max' })} 170)</p>
           </div>
         </div>

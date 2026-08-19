@@ -84,7 +84,7 @@ const defaultDesc = t('socialPreview.defaultDesc', { fallback: 'Your description
             <div class="flex items-center gap-3">
               <input id="smp-image" type="text" dir="ltr" placeholder="https://example.com/image.jpg" class="flex-1 border border-gray-200 rounded-lg px-4 h-11 focus:outline-none focus:border-primary" />
               <label class="cursor-pointer bg-white px-3 h-11 flex items-center rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors shrink-0">
-                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
                 <input type="file" id="smp-upload" accept="image/*" class="hidden" />
               </label>
             </div>
@@ -97,16 +97,16 @@ const defaultDesc = t('socialPreview.defaultDesc', { fallback: 'Your description
 
           <div class="space-y-1.5">
             <label for="smp-desc" class="text-sm font-medium text-gray-700">{t('socialPreview.descriptionLabel', { fallback: 'Description' })}</label>
-            <textarea id="smp-desc" rows="4" placeholder={t('socialPreview.descriptionPlaceholder', { fallback: 'A brief description of your content...' })} class="w-full border border-gray-200 rounded-lg p-4 focus:outline-none focus:border-primary resize-none"></textarea>
+            <textarea id="smp-desc" rows="4" placeholder={t('socialPreview.descriptionPlaceholder', { fallback: 'A brief description of your content...' })} class="w-full border border-gray-200 rounded-lg p-4 focus:outline-none focus:border-primary resize-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"></textarea>
           </div>
         </div>
 
         <!-- Preview Panel -->
         <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-6">
           <div class="flex gap-2 bg-gray-50 p-1 rounded-xl w-fit mx-auto">
-            <button data-platform="facebook" class="smp-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-primary text-white">Facebook</button>
-            <button data-platform="twitter" class="smp-tab px-4 py-2 rounded-lg text-sm font-medium transition-all text-gray-600 hover:bg-gray-100">Twitter</button>
-            <button data-platform="linkedin" class="smp-tab px-4 py-2 rounded-lg text-sm font-medium transition-all text-gray-600 hover:bg-gray-100">LinkedIn</button>
+            <button type="button" data-platform="facebook" class="smp-tab px-4 py-2 rounded-lg text-sm font-medium transition-all bg-primary text-primary-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Facebook</button>
+            <button type="button" data-platform="twitter" class="smp-tab px-4 py-2 rounded-lg text-sm font-medium transition-all text-gray-600 hover:bg-gray-100 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Twitter</button>
+            <button type="button" data-platform="linkedin" class="smp-tab px-4 py-2 rounded-lg text-sm font-medium transition-all text-gray-600 hover:bg-gray-100 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">LinkedIn</button>
           </div>
 
           <div class="max-w-sm mx-auto w-full">
@@ -114,7 +114,7 @@ const defaultDesc = t('socialPreview.defaultDesc', { fallback: 'Your description
             <div id="smp-facebook" class="smp-card bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm">
               <div class="aspect-[1.91/1] bg-gray-100 relative flex items-center justify-center text-gray-300">
                 <img id="smp-img-fb" width="600" height="314" class="w-full h-full object-cover hidden" alt="Facebook Social Preview" />
-                <svg id="smp-icon-fb" class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M14 8h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                <svg aria-hidden="true" id="smp-icon-fb" class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M14 8h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
               </div>
               <div class="p-4 bg-[#f0f2f5] border-t border-gray-200">
                 <p class="text-xs text-gray-500 uppercase font-medium mb-1 truncate">example.com</p>
@@ -127,7 +127,7 @@ const defaultDesc = t('socialPreview.defaultDesc', { fallback: 'Your description
             <div id="smp-twitter" class="smp-card hidden bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
               <div class="aspect-2/1 bg-gray-100 relative flex items-center justify-center text-gray-300">
                 <img id="smp-img-tw" width="600" height="300" class="w-full h-full object-cover hidden" alt="Twitter Social Preview" />
-                <svg id="smp-icon-tw" class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M14 8h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                <svg aria-hidden="true" id="smp-icon-tw" class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M14 8h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
               </div>
               <div class="p-4">
                 <h3 id="smp-title-tw" class="text-base font-bold text-gray-900 mb-1">{defaultTitle}</h3>
@@ -140,7 +140,7 @@ const defaultDesc = t('socialPreview.defaultDesc', { fallback: 'Your description
             <div id="smp-linkedin" class="smp-card hidden bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm">
               <div class="aspect-[1.91/1] bg-gray-100 relative flex items-center justify-center text-gray-300">
                 <img id="smp-img-li" width="600" height="314" class="w-full h-full object-cover hidden" alt="LinkedIn Social Preview" />
-                <svg id="smp-icon-li" class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M14 8h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                <svg aria-hidden="true" id="smp-icon-li" class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M14 8h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
               </div>
               <div class="p-4 bg-white border-t border-gray-200">
                 <h3 id="smp-title-li" class="text-base font-semibold text-gray-900 mb-1 line-clamp-2">{defaultTitle}</h3>

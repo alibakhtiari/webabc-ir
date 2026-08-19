@@ -81,8 +81,8 @@ const breadcrumbs = [
             <div class="flex justify-between items-center">
               <label for="json-textarea" class="block text-sm font-semibold text-gray-700">Raw JSON</label>
               <div class="flex gap-2">
-                <button id="format-btn" class="px-3 py-1 bg-primary text-white text-xs font-semibold rounded-md">Format</button>
-                <button id="minify-btn" class="px-3 py-1 border border-gray-200 text-gray-600 text-xs font-semibold rounded-md">Minify</button>
+                <button type="button" id="format-btn" class="px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-md focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Format</button>
+                <button type="button" id="minify-btn" class="px-3 py-1 border border-gray-200 text-gray-600 text-xs font-semibold rounded-md focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Minify</button>
               </div>
             </div>
             
@@ -90,14 +90,14 @@ const breadcrumbs = [
               id="json-textarea"
               rows="15"
               placeholder="Paste raw JSON here..."
-              class="w-full border border-gray-200 rounded-xl p-4 focus:outline-none focus:border-primary font-mono text-sm h-[450px] resize-none"
+              class="w-full border border-gray-200 rounded-xl p-4 focus:outline-none focus:border-primary font-mono text-sm h-[450px] resize-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             ></textarea>
             
             <div class="flex justify-between items-center">
               <span id="validation-status" class="text-xs font-semibold px-2.5 py-1 rounded bg-gray-100 text-gray-600">
                 Awaiting Input
               </span>
-              <button id="clear-btn" class="px-4 py-1.5 border border-gray-200 text-gray-700 text-xs font-medium rounded-lg">
+              <button type="button" id="clear-btn" class="px-4 py-1.5 border border-gray-200 text-gray-700 text-xs font-medium rounded-lg focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 Clear
               </button>
             </div>
@@ -109,7 +109,7 @@ const breadcrumbs = [
           <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 flex flex-col h-[560px]">
             <div class="flex justify-between items-center">
               <span class="block text-sm font-semibold text-gray-700">Formatted Output</span>
-              <button id="copy-btn" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-semibold rounded-md flex items-center gap-1">
+              <button type="button" id="copy-btn" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-semibold rounded-md flex items-center gap-1 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 Copy
               </button>
             </div>

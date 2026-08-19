@@ -86,11 +86,11 @@ const questions = [1, 2, 3, 4, 5, 6, 7, 8].map(n => t(`paaScraper.q${n}`, { fall
           </div>
 
           <div class="flex gap-3 items-start bg-yellow-50 border border-yellow-100 rounded-xl p-4 text-xs text-yellow-800">
-            <svg class="w-4 h-4 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+            <svg aria-hidden="true" class="w-4 h-4 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
               <span>{t('paaScraper.demoAlert', { fallback: 'This tool demonstrates the interface. To scrape live data you would need to integrate a third-party API.' })}</span>
           </div>
 
-          <button disabled class="w-full py-3 bg-gray-200 text-gray-500 font-bold rounded-xl text-sm cursor-not-allowed">
+          <button type="button" disabled class="w-full py-3 bg-gray-200 text-gray-500 font-bold rounded-xl text-sm cursor-not-allowed focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
             {t('paaScraper.searchButton', { fallback: 'Search Questions (Demo Mode)' })}
           </button>
         </div>

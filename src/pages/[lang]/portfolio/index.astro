@@ -78,7 +78,7 @@ function t(key: string, options?: { fallback: string }) {
             data-filter-btn={category}
             class={`px-5 py-2.5 text-xs font-semibold rounded-full border border-gray-200 cursor-pointer transition-all ${
               idx === 0
-                ? "bg-primary text-white shadow-sm"
+                ? "bg-primary text-primary-foreground shadow-sm"
                 : "bg-white text-gray-700 hover:bg-gray-50"
             }`}
           >
@@ -103,7 +103,7 @@ function t(key: string, options?: { fallback: string }) {
                 />
                 <div class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div class="absolute bottom-4 left-4">
-                    <span class="px-2.5 py-1 text-xs font-semibold rounded bg-primary text-white">
+                    <span class="px-2.5 py-1 text-xs font-semibold rounded bg-primary text-primary-foreground">
                       {getCategoryLabel(item.category)}
                     </span>
                   </div>
@@ -120,9 +120,9 @@ function t(key: string, options?: { fallback: string }) {
                 <div class="flex items-center text-primary font-semibold text-sm gap-1 group-hover:gap-2 transition-all font-persian">
                   {t('common.viewDetails', { fallback: 'View Details' })}
                   {isRtl ? (
-                    <svg class="h-4 w-4 transform rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    <svg aria-hidden="true" class="h-4 w-4 transform rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                   ) : (
-                    <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    <svg aria-hidden="true" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                   )}
                 </div>
               </div>
@@ -147,7 +147,7 @@ function t(key: string, options?: { fallback: string }) {
     });
     const activeBtn = document.querySelector(`[data-filter-btn="${selected}"]`) || document.querySelector('[data-filter-btn="all"]');
     if (activeBtn) {
-      activeBtn.className = "px-5 py-2.5 text-xs font-semibold rounded-full border border-gray-200 bg-primary text-white shadow-sm cursor-pointer transition-all";
+      activeBtn.className = "px-5 py-2.5 text-xs font-semibold rounded-full border border-gray-200 bg-primary text-primary-foreground shadow-sm cursor-pointer transition-all";
     }
 
     // Toggle cards visibility

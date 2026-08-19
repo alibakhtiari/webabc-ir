@@ -102,7 +102,7 @@ const breadcrumbs = [
                 rows="5"
                 required
                 placeholder={t('contact.yourMessage', { fallback: 'Write your message...' })}
-                class="w-full border border-gray-200 rounded-lg p-4 focus:outline-none focus:border-primary resize-none"
+                class="w-full border border-gray-200 rounded-lg p-4 focus:outline-none focus:border-primary resize-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               ></textarea>
             </div>
 
@@ -114,7 +114,7 @@ const breadcrumbs = [
             <button
               type="submit"
               id="submit-btn"
-              class="w-full h-11 bg-primary hover:bg-primary/95 text-white font-bold rounded-lg shadow-md transition-all flex items-center justify-center"
+              class="w-full h-11 bg-primary hover:bg-primary/95 text-primary-foreground font-bold rounded-lg shadow-md transition-all flex items-center justify-center focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
               {t('contact.submitMessage', { fallback: 'Send Message' })}
             </button>

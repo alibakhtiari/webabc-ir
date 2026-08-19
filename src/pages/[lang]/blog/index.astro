@@ -89,7 +89,7 @@ const breadcrumbs = [
           <a
             href={`/${supportedLang}/blog?category=all`}
             data-filter-btn="all"
-            class="filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-primary text-white shadow-sm cursor-pointer transition-all"
+            class="filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-primary text-primary-foreground shadow-sm cursor-pointer transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
             {t('blog.allCategories', { fallback: 'All Categories' })}
           </a>
@@ -97,7 +97,7 @@ const breadcrumbs = [
             <a
               href={`/${supportedLang}/blog?category=${encodeURIComponent(category)}`}
               data-filter-btn={category}
-              class="filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 cursor-pointer transition-all"
+              class="filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 cursor-pointer transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
               {getCategoryLabel(category, supportedLang)}
             </a>
@@ -174,7 +174,7 @@ const breadcrumbs = [
     });
     const activeBtn = document.querySelector(`[data-filter-btn="${selected}"]`) || document.querySelector('[data-filter-btn="all"]');
     if (activeBtn) {
-      activeBtn.className = "filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-primary text-white shadow-sm cursor-pointer transition-all";
+      activeBtn.className = "filter-btn px-4 py-2 text-xs font-semibold rounded-full bg-primary text-primary-foreground shadow-sm cursor-pointer transition-all";
     }
 
     // Toggle cards visibility

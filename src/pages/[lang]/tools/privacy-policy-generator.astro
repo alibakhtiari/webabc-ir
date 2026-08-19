@@ -132,7 +132,7 @@ const strings = {
             <input id="pp-ads" type="checkbox" class="w-5 h-5 rounded text-primary accent-primary" />
           </div>
 
-          <button id="pp-generate" class="w-full py-3 bg-primary text-white font-bold rounded-xl shadow-sm hover:bg-primary/95 transition-all text-sm mt-2">
+          <button type="button" id="pp-generate" class="w-full py-3 bg-primary text-primary-foreground font-bold rounded-xl shadow-sm hover:bg-primary/95 transition-all text-sm mt-2 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
             {t('privacyGenerator.generate', { fallback: 'Generate Policy' })}
           </button>
         </div>
@@ -141,7 +141,7 @@ const strings = {
         <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 flex flex-col">
           <div class="flex justify-between items-center">
             <h3 class="text-sm font-bold text-gray-800 font-persian">{t('privacyGenerator.result', { fallback: 'Your Privacy Policy' })}</h3>
-            <button id="pp-copy" disabled class="text-xs font-semibold text-primary hover:underline font-persian disabled:opacity-40 disabled:cursor-not-allowed">
+            <button type="button" id="pp-copy" disabled class="text-xs font-semibold text-primary hover:underline font-persian disabled:opacity-40 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
               {t('privacyGenerator.copy', { fallback: 'Copy to Clipboard' })}
             </button>
           </div>

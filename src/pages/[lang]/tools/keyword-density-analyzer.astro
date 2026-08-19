@@ -85,7 +85,7 @@ const breadcrumbs = [
               id="analyzer-textarea"
               rows="12"
               placeholder={t('tools.keywordDensity.textareaPlaceholder', { fallback: 'Pasted articles, blogs or web copy here...' })}
-              class="w-full border border-gray-200 rounded-xl p-4 focus:outline-none focus:border-primary resize-none h-96"
+              class="w-full border border-gray-200 rounded-xl p-4 focus:outline-none focus:border-primary resize-none h-96 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             ></textarea>
             
             <div class="flex justify-between items-center pt-2">
@@ -93,7 +93,7 @@ const breadcrumbs = [
                 <span>Words: <strong id="word-count">0</strong></span>
                 <span>Characters: <strong id="char-count">0</strong></span>
               </div>
-              <button id="clear-btn" class="px-5 py-2 border border-gray-200 text-gray-700 hover:bg-gray-50 text-sm font-medium rounded-lg flex items-center gap-2">
+              <button type="button" id="clear-btn" class="px-5 py-2 border border-gray-200 text-gray-700 hover:bg-gray-50 text-sm font-medium rounded-lg flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 Clear
               </button>
             </div>
@@ -109,8 +109,8 @@ const breadcrumbs = [
                 Keyword Density
               </span>
               <div class="flex bg-white rounded-md p-0.5 border border-gray-200">
-                <button id="phrase-1" class="phrase-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-white font-medium">1-Gram</button>
-                <button id="phrase-2" class="phrase-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900">2-Gram</button>
+                <button type="button" id="phrase-1" class="phrase-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-primary-foreground font-medium focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">1-Gram</button>
+                <button type="button" id="phrase-2" class="phrase-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">2-Gram</button>
               </div>
             </div>
             
@@ -167,14 +167,14 @@ const breadcrumbs = [
 
   phrase1Btn.addEventListener('click', () => {
     activeGram = 1;
-    phrase1Btn.className = "phrase-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-white font-medium";
+    phrase1Btn.className = "phrase-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-primary-foreground font-medium";
     phrase2Btn.className = "phrase-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900";
     analyze();
   });
 
   phrase2Btn.addEventListener('click', () => {
     activeGram = 2;
-    phrase2Btn.className = "phrase-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-white font-medium";
+    phrase2Btn.className = "phrase-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-primary-foreground font-medium";
     phrase1Btn.className = "phrase-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900";
     analyze();
   });

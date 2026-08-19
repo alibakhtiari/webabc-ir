@@ -90,7 +90,7 @@ const breadcrumbs = [
             
             <div class="flex justify-between items-center">
               <span id="char-count" class="text-xs text-gray-500 font-persian">0 / 60 characters</span>
-              <button id="analyze-btn" class="px-5 py-2.5 bg-primary text-white text-xs font-semibold rounded-lg hover:bg-primary/95 shadow-sm transition-all font-persian">
+              <button type="button" id="analyze-btn" class="px-5 py-2.5 bg-primary text-primary-foreground text-xs font-semibold rounded-lg hover:bg-primary/95 shadow-sm transition-all font-persian focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 {t('headlineAnalyzer.button', { fallback: 'Analyze' })}
               </button>
             </div>

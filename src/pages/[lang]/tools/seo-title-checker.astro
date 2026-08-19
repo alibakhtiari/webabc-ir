@@ -132,13 +132,13 @@ const breadcrumbs = [
                 id="desc-input"
                 rows="4"
                 placeholder={t('seoTitleChecker.placeholders.description', { fallback: 'Write your page description here...' })}
-                class="w-full border border-gray-200 rounded-lg p-4 focus:outline-none focus:border-primary resize-none"
+                class="w-full border border-gray-200 rounded-lg p-4 focus:outline-none focus:border-primary resize-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               ></textarea>
             </div>
 
             <div class="flex justify-end gap-3 pt-2">
-              <button id="reset-btn" class="px-5 py-2.5 border border-gray-200 text-gray-700 hover:bg-gray-50 text-sm font-medium rounded-lg flex items-center gap-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H18.2"></path></svg>
+              <button type="button" id="reset-btn" class="px-5 py-2.5 border border-gray-200 text-gray-700 hover:bg-gray-50 text-sm font-medium rounded-lg flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+                <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H18.2"></path></svg>
                 {t('common.clear', { fallback: 'Clear' })}
               </button>
             </div>
@@ -148,14 +148,14 @@ const breadcrumbs = [
           <div class="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
             <div class="bg-gray-50 border-b border-gray-100 px-6 py-4 flex justify-between items-center">
               <span class="font-semibold text-gray-800 flex items-center gap-2">
-                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                <svg aria-hidden="true" class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                 {t('seoTitleChecker.labels.serpPreview', { fallback: 'Google Search Preview' })}
               </span>
               <div class="flex bg-white rounded-md p-0.5 border border-gray-200">
-                <button id="device-desktop" class="device-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-white font-medium">
+                <button type="button" id="device-desktop" class="device-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-primary-foreground font-medium focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                   {t('seoTitleChecker.labels.desktop', { fallback: 'Desktop' })}
                 </button>
-                <button id="device-mobile" class="device-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900">
+                <button type="button" id="device-mobile" class="device-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                   {t('seoTitleChecker.labels.mobile', { fallback: 'Mobile' })}
                 </button>
               </div>
@@ -165,7 +165,7 @@ const breadcrumbs = [
                 <!-- URL Snippet -->
                 <div class="flex items-center gap-2 mb-1.5">
                   <div class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 shrink-0">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                    <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
                   </div>
                   <div class="overflow-hidden">
                     <div class="text-xs text-gray-600 flex items-center gap-1 font-mono truncate">
@@ -197,7 +197,7 @@ const breadcrumbs = [
               {t('seoTitleChecker.labels.overallScore', { fallback: 'SEO Score' })}
             </h3>
             <div class="relative inline-flex items-center justify-center mb-6">
-              <svg class="w-36 h-36 transform -rotate-90">
+              <svg aria-hidden="true" class="w-36 h-36 transform -rotate-90">
                 <circle cx="72" cy="72" r="64" class="stroke-gray-100" stroke-width="10" fill="transparent" />
                 <circle id="score-circle" cx="72" cy="72" r="64" class="stroke-red-500 transition-all duration-500 ease-out" stroke-width="10" stroke-dasharray="402.12" stroke-dashoffset="402.12" stroke-linecap="round" fill="transparent" />
               </svg>
@@ -325,7 +325,7 @@ const breadcrumbs = [
 
   // Device Toggle
   deviceDesktopBtn.addEventListener('click', () => {
-    deviceDesktopBtn.className = "device-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-white font-medium";
+    deviceDesktopBtn.className = "device-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-primary-foreground font-medium";
     deviceMobileBtn.className = "device-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900";
     serpContainer.classList.remove('max-w-[375px]');
     serpContainer.classList.add('max-w-full');
@@ -334,7 +334,7 @@ const breadcrumbs = [
   });
 
   deviceMobileBtn.addEventListener('click', () => {
-    deviceMobileBtn.className = "device-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-white font-medium";
+    deviceMobileBtn.className = "device-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-primary-foreground font-medium";
     deviceDesktopBtn.className = "device-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900";
     serpContainer.classList.remove('max-w-full');
     serpContainer.classList.add('max-w-[375px]');

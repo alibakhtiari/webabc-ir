@@ -76,16 +76,16 @@ const quickLinks = [
         <div class="flex flex-wrap gap-4 justify-center pt-2">
           <a
             href={`/${supportedLang}/`}
-            class="px-8 py-3.5 bg-primary text-white font-bold rounded-xl shadow-md hover:bg-primary/95 transition-all flex items-center gap-2"
+            class="px-8 py-3.5 bg-primary text-primary-foreground font-bold rounded-xl shadow-md hover:bg-primary/95 transition-all flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 00-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
             </svg>
             {t('common.notFound.backHome', { fallback: 'Return to Homepage' })}
           </a>
           <a
             href={`/${supportedLang}/contact/`}
-            class="px-8 py-3.5 border border-gray-200 text-gray-700 font-bold rounded-xl hover:bg-gray-100 transition-all"
+            class="px-8 py-3.5 border border-gray-200 text-gray-700 font-bold rounded-xl hover:bg-gray-100 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
             {t('common.contactUs', { fallback: 'Contact Support' })}
           </a>
@@ -100,7 +100,7 @@ const quickLinks = [
             {quickLinks.map(link => (
               <a
                 href={link.url}
-                class="px-3.5 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-700 hover:text-primary hover:border-primary/40 transition-colors shadow-xs"
+                class="px-3.5 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-700 hover:text-primary hover:border-primary/40 transition-colors shadow-xs focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
               >
                 {link.label}
               </a>

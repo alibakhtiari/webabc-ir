@@ -83,7 +83,7 @@ const breadcrumbs = [
             <!-- Default User-Agent directive -->
             <div class="space-y-2">
               <label for="ua-select" class="block text-sm font-semibold text-gray-700">Crawler User-Agent</label>
-              <select id="ua-select" class="w-full h-11 border border-gray-200 rounded-lg px-4 focus:outline-none focus:border-primary">
+              <select id="ua-select" class="w-full h-11 border border-gray-200 rounded-lg px-4 focus:outline-none focus:border-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 <option value="*">All Bots (*)</option>
                 <option value="Googlebot">Googlebot</option>
                 <option value="Bingbot">Bingbot</option>
@@ -95,7 +95,7 @@ const breadcrumbs = [
             <!-- Crawl delay select -->
             <div class="space-y-2">
               <label for="delay-select" class="block text-sm font-semibold text-gray-700">Crawl Delay (Seconds)</label>
-              <select id="delay-select" class="w-full h-11 border border-gray-200 rounded-lg px-4 focus:outline-none focus:border-primary">
+              <select id="delay-select" class="w-full h-11 border border-gray-200 rounded-lg px-4 focus:outline-none focus:border-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 <option value="">No Delay</option>
                 <option value="5">5 Seconds</option>
                 <option value="10">10 Seconds</option>
@@ -125,7 +125,7 @@ const breadcrumbs = [
                   placeholder="e.g. /admin"
                   class="grow h-11 border border-gray-200 rounded-lg px-4 focus:outline-none focus:border-primary"
                 />
-                <button id="add-disallow-btn" class="px-4 bg-primary text-white font-semibold rounded-lg">Add</button>
+                <button type="button" id="add-disallow-btn" class="px-4 bg-primary text-primary-foreground font-semibold rounded-lg focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">Add</button>
               </div>
               <ul id="paths-list" class="mt-3 space-y-1 text-sm text-gray-600">
                 <!-- Injected disallow rules will show here -->
@@ -140,7 +140,7 @@ const breadcrumbs = [
           <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 flex flex-col h-[520px]">
             <div class="flex justify-between items-center">
               <span class="block text-sm font-semibold text-gray-700">Generated Robots.txt</span>
-              <button id="download-btn" class="px-4 py-1.5 bg-primary text-white text-xs font-semibold rounded-md flex items-center gap-1 shadow-sm">
+              <button type="button" id="download-btn" class="px-4 py-1.5 bg-primary text-primary-foreground text-xs font-semibold rounded-md flex items-center gap-1 shadow-sm focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 Download .txt
               </button>
             </div>
@@ -178,7 +178,7 @@ const breadcrumbs = [
       li.className = "flex justify-between items-center bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-100";
       li.innerHTML = `
         <span>${path}</span>
-        <button data-remove-idx="${idx}" class="text-red-500 hover:text-red-700 font-bold">×</button>
+        <button type="button" data-remove-idx="${idx}" class="text-red-500 hover:text-red-700 font-bold focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">×</button>
       `;
       pathsList.appendChild(li);
     });

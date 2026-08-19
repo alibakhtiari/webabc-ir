@@ -99,8 +99,8 @@ const breadcrumbs = [
             </div>
           </div>
 
-          <button id="swap-btn" class="w-full py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-xs font-bold text-gray-700 hover:bg-gray-100 transition-all flex items-center justify-center gap-2">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path></svg>
+          <button type="button" id="swap-btn" class="w-full py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-xs font-bold text-gray-700 hover:bg-gray-100 transition-all flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+            <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path></svg>
             {t('colorContrast.swap', { fallback: 'Swap Colors' })}
           </button>
         </div>
@@ -116,7 +116,7 @@ const breadcrumbs = [
           </div>
           <div class="pt-6 border-t border-current/20 flex justify-between items-center text-xs font-mono">
             <span>{t('colorContrast.buttonSample', { fallback: 'Button Sample' })}</span>
-            <button class="px-4 py-2 rounded-lg border border-current font-bold uppercase tracking-wider">{t('colorContrast.clickMe', { fallback: 'Click Me' })}</button>
+            <button type="button" class="px-4 py-2 rounded-lg border border-current font-bold uppercase tracking-wider focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('colorContrast.clickMe', { fallback: 'Click Me' })}</button>
           </div>
         </div>
 

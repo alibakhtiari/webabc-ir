@@ -116,7 +116,7 @@ const locationSchema = {
                 {locationInfo.services.map((serv: string) => (
                   <div class="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
                     <div class="text-primary bg-white shadow-xs p-1.5 rounded-lg">
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                      <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
                     </div>
                     <span class="font-semibold text-gray-800">{serv}</span>
                   </div>
@@ -132,7 +132,7 @@ const locationSchema = {
               <ul class="space-y-3">
                 {locationInfo.benefits.map((benefit: string) => (
                   <li class="flex items-start gap-2.5">
-                    <svg class="w-5 h-5 text-primary mt-1 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg aria-hidden="true" class="w-5 h-5 text-primary mt-1 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     <span class="text-gray-700 leading-relaxed">{benefit}</span>
                   </li>
                 ))}

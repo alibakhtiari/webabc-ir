@@ -156,7 +156,7 @@ const breadcrumbs = [
           <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian">
             <div class="flex justify-between items-center border-b border-gray-100 pb-3">
               <h3 class="text-sm font-bold text-gray-800">{t('boxShadow.generatedCss', { fallback: 'Generated CSS' })}</h3>
-              <button id="copy-css-btn" class="px-3 py-1.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-all">
+              <button type="button" id="copy-css-btn" class="px-3 py-1.5 bg-primary text-primary-foreground text-xs font-bold rounded-lg hover:bg-primary/90 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 {t('boxShadow.copyCss', { fallback: 'Copy CSS' })}
               </button>
             </div>

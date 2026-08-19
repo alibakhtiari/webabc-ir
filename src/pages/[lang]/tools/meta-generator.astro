@@ -86,7 +86,7 @@ const breadcrumbs = [
 
           <div>
             <label class="block text-xs font-semibold text-gray-600 mb-1">{t('metaGenerator.metaDescription', { fallback: 'Meta Description' })} *</label>
-            <textarea id="meta-desc" rows="3" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none resize-none">WebABC is a digital agency specializing in modern web design, performance optimization, and search engine optimization.</textarea>
+            <textarea id="meta-desc" rows="3" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none resize-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">WebABC is a digital agency specializing in modern web design, performance optimization, and search engine optimization.</textarea>
           </div>
 
           <div>
@@ -106,7 +106,7 @@ const breadcrumbs = [
             </div>
             <div>
               <label class="block text-xs font-semibold text-gray-600 mb-1">{t('metaGenerator.robotsLabel', { fallback: 'Robots Directive' })}</label>
-              <select id="meta-robots" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none">
+              <select id="meta-robots" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
                 <option value="index, follow">index, follow</option>
                 <option value="noindex, follow">noindex, follow</option>
                 <option value="index, nofollow">index, nofollow</option>
@@ -120,7 +120,7 @@ const breadcrumbs = [
         <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian sticky top-28">
           <div class="flex justify-between items-center border-b border-gray-100 pb-3">
             <h3 class="text-sm font-bold text-gray-800">{t('metaGenerator.generatedTags', { fallback: 'Generated Head HTML' })}</h3>
-            <button id="copy-meta-btn" class="px-3 py-1.5 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary/90 transition-all">
+            <button type="button" id="copy-meta-btn" class="px-3 py-1.5 bg-primary text-primary-foreground text-xs font-bold rounded-lg hover:bg-primary/90 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
               {t('metaGenerator.copy', { fallback: 'Copy HTML' })}
             </button>
           </div>

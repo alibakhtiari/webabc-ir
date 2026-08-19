@@ -64,7 +64,7 @@ const benefits = [
         <div class="glass-morphism p-6 rounded-xl transition-all duration-300 hover:shadow-md">
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
-              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+              <svg aria-hidden="true" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
             </div>
             <div class="space-y-2">
               <h3 class={`text-xl font-medium font-${lang === 'en' ? 'sans' : 'persian'}`}>{benefit.title}</h3>
@@ -101,7 +101,7 @@ const benefits = [
             ].map((item) => (
               <li class={`flex items-center font-${lang === 'en' ? 'sans' : 'persian'}`}>
                 <div class="w-6 h-6 flex items-center justify-center rounded-full bg-primary/10 text-primary me-3 shrink-0">
-                  <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                  <svg aria-hidden="true" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
                 </div>
                 <span>{item}</span>
               </li>
@@ -109,12 +109,12 @@ const benefits = [
           </ul>
 
           <div class="flex items-center">
-            <button class={`px-6 py-3 rounded-full bg-primary text-white font-medium transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2 font-${lang === 'en' ? 'sans' : 'persian'}`}>
+            <button type="button" class={`px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2 font-${lang === 'en' ? 'sans' : 'persian'}`}>
               <span>{t('benefits.ctaButton', { fallback: 'دریافت مشاوره رایگان' })}</span>
               {isRtl ? (
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                <svg aria-hidden="true" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
               ) : (
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                <svg aria-hidden="true" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
               )}
             </button>
           </div>
