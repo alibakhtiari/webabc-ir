@@ -1,8 +1,8 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Hero from '../../components/astro/Hero.astro';
-import { getLanguageStaticPaths, type SupportedLanguage } from '../../types/language';
-import { getDictionary } from '../../i18n/get-dictionary';
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/astro/Hero.astro';
+import { getLanguageStaticPaths, type SupportedLanguage } from '@/types/language';
+import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
 
 export const getStaticPaths = getLanguageStaticPaths;

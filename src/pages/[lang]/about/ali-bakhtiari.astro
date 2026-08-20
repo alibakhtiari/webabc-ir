@@ -1,12 +1,12 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
-import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
-import CTA from '../../../components/astro/CTA.astro';
-import { getLanguageStaticPaths, type SupportedLanguage } from '../../../types/language';
-import { getDictionary } from '../../../i18n/get-dictionary';
+import Layout from '@/layouts/Layout.astro';
+import Breadcrumbs from '@/components/astro/Breadcrumbs.astro';
+import CTA from '@/components/astro/CTA.astro';
+import { getLanguageStaticPaths, type SupportedLanguage } from '@/types/language';
+import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
 
-import OptimizedImage from '../../../components/astro/OptimizedImage.astro';
+import OptimizedImage from '@/components/astro/OptimizedImage.astro';
 
 export const getStaticPaths = getLanguageStaticPaths;
 

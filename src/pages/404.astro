@@ -1,8 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { getDictionary } from '../i18n/get-dictionary';
+import Layout from '@/layouts/Layout.astro';
+import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
-import type { SupportedLanguage } from '../types/language';
+import type { SupportedLanguage } from '@/types/language';
 
 // Inspect requested URL pathname during SSR/prerender to determine requested language
 const pathname = Astro.url.pathname;

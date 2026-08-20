@@ -1,12 +1,12 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import HeroSection from '../../components/astro/HeroSection.astro';
-import ServicesSection from '../../components/astro/ServicesSection.astro';
-import BenefitsSection from '../../components/astro/BenefitsSection.astro';
-import CTASection from '../../components/astro/CTASection.astro';
-import FAQ from '../../components/astro/FAQ.astro';
-import { getLanguageStaticPaths, type SupportedLanguage } from '../../types/language';
-import { getDictionary } from '../../i18n/get-dictionary';
+import Layout from '@/layouts/Layout.astro';
+import HeroSection from '@/components/astro/HeroSection.astro';
+import ServicesSection from '@/components/astro/ServicesSection.astro';
+import BenefitsSection from '@/components/astro/BenefitsSection.astro';
+import CTASection from '@/components/astro/CTASection.astro';
+import FAQ from '@/components/astro/FAQ.astro';
+import { getLanguageStaticPaths, type SupportedLanguage } from '@/types/language';
+import { getDictionary } from '@/i18n/get-dictionary';
 
 export const getStaticPaths = getLanguageStaticPaths;
 

@@ -1,7 +1,7 @@
 ---
 import Logo from './Logo.astro';
-import { getDictionary } from '../../i18n/get-dictionary';
-import { languages, type SupportedLanguage } from '../../types/language';
+import { getDictionary } from '@/i18n/get-dictionary';
+import { languages, type SupportedLanguage } from '@/types/language';
 import { createTranslator } from '@/i18n/translate';
 
 interface Props {
@@ -59,6 +59,7 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
             id="desktop-services-btn"
             aria-expanded="false"
             aria-haspopup="true"
+            aria-controls="desktop-services-panel"
             class={`flex items-center gap-1 text-sm font-medium text-foreground/80 hover:text-primary transition-colors ${fontClass}`}
           >
             {t('common.services')}
@@ -410,6 +411,7 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
             id="desktop-lang-btn"
             aria-expanded="false"
             aria-haspopup="true"
+            aria-controls="desktop-lang-panel"
             class="flex items-center gap-1 text-sm font-medium text-foreground/80 transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
             <svg
@@ -871,7 +873,13 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
       >
         {t('consultation.sendRequest', { fallback: 'Send Request' })}
       </button>
-      <p id="consultation-response-msg" class="hidden text-center text-sm font-medium"></p>
+      <p
+        id="consultation-response-msg"
+        role="status"
+        aria-live="polite"
+        class="hidden text-center text-sm font-medium"
+      >
+      </p>
     </form>
   </div>
 </dialog>
@@ -887,15 +895,36 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
       function openDrawer() {
         if (!drawer) return;
         drawer.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
         if (mobileBtn) mobileBtn.setAttribute('aria-expanded', 'true');
+        if (drawerCloseBtn) drawerCloseBtn.focus();
       }
 
       function closeDrawer() {
         if (!drawer) return;
         drawer.classList.add('hidden');
+        document.body.style.overflow = '';
         if (mobileBtn) {
           mobileBtn.setAttribute('aria-expanded', 'false');
           mobileBtn.focus();
+        }
+      }
+
+      function trapDrawerFocus(e) {
+        if (!drawer || drawer.classList.contains('hidden')) return;
+        if (e.key !== 'Tab') return;
+        const focusables = drawer.querySelectorAll(
+          'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+        );
+        if (!focusables.length) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          if (last && typeof last.focus === 'function') last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          if (first && typeof first.focus === 'function') first.focus();
         }
       }
 
@@ -907,7 +936,21 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
         drawer.onclick = (e) => {
           if (e.target === drawer) closeDrawer();
         };
+        drawer.addEventListener('keydown', trapDrawerFocus);
       }
+
+      // Desktop hover/focus dropdowns: keep aria-expanded in sync with CSS state
+      document.querySelectorAll('#desktop-services-btn, #desktop-lang-btn').forEach((btn) => {
+        const group = btn.closest('.group');
+        if (!group) return;
+        const sync = () =>
+          btn.setAttribute('aria-expanded', String(group.matches(':hover, :focus-within')));
+        group.addEventListener('mouseenter', sync);
+        group.addEventListener('mouseleave', sync);
+        group.addEventListener('focusin', sync);
+        group.addEventListener('focusout', sync);
+        sync();
+      });
 
       // Mobile Language Dropdown Toggle
       const mobileLangBtn = document.getElementById('mobile-lang-btn');

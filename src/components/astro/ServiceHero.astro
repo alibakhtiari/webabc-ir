@@ -1,6 +1,6 @@
 ---
-import { Picture } from 'astro:assets';
-import Breadcrumbs from './Breadcrumbs.astro';
+import type { ImageMetadata } from 'astro';
+import Hero from './Hero.astro';
 
 interface Props {
   title: string;
@@ -12,67 +12,8 @@ interface Props {
   gradient?: string;
   className?: string;
 }
-
-const {
-  title,
-  subtitle,
-  description,
-  heroImage,
-  breadcrumbs,
-  lang,
-  gradient = 'bg-linear-to-b from-primary/10 via-background to-background',
-  className = '',
-} = Astro.props;
 ---
 
-<section class={`pt-28 pb-16 md:pt-32 md:pb-24 relative overflow-hidden ${gradient} ${className}`}>
-  <div class="container mx-auto max-w-6xl px-4">
-    <Breadcrumbs items={breadcrumbs} lang={lang} centered={!heroImage} />
-
-    <div
-      class={`mt-8 ${heroImage ? 'flex flex-col lg:flex-row items-center gap-12' : 'text-center max-w-3xl mx-auto'}`}
-    >
-      <!-- Text Content -->
-      <div class={`${heroImage ? 'lg:w-1/2 w-full' : 'w-full'}`}>
-        <h1
-          class="mb-6 font-persian text-4xl leading-tight font-bold text-gray-900 md:text-5xl dark:text-white"
-        >
-          {title}
-        </h1>
-        <p class="mb-6 font-persian text-xl leading-relaxed font-medium text-primary">
-          {subtitle}
-        </p>
-        {
-          description && (
-            <p class="mb-8 font-persian text-lg leading-relaxed text-gray-600 dark:text-gray-300">
-              {description}
-            </p>
-          )
-        }
-        <div class={`flex flex-wrap gap-4 ${!heroImage ? 'justify-center' : ''}`}>
-          <slot />
-        </div>
-      </div>
-
-      <!-- Optional Hero Image -->
-      {
-        heroImage && (
-          <div class="mt-8 w-full lg:mt-0 lg:w-1/2">
-            <div class="relative h-75 w-full overflow-hidden rounded-2xl shadow-2xl lg:h-100">
-              <Picture
-                src={heroImage}
-                formats={['avif', 'webp']}
-                alt={title}
-                width={600}
-                height={400}
-                class="h-full w-full object-cover"
-                loading="eager"
-                fetchpriority="high"
-              />
-            </div>
-          </div>
-        )
-      }
-    </div>
-  </div>
-</section>
+<Hero {...Astro.props}>
+  <slot />
+</Hero>

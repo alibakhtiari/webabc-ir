@@ -1,9 +1,7 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
-import ToolsCTA from '../../../components/astro/ToolsCTA.astro';
-import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
-import { getLanguageStaticPaths, type SupportedLanguage } from '../../../types/language';
-import { getDictionary } from '../../../i18n/get-dictionary';
+import ToolLayout from '@/layouts/ToolLayout.astro';
+import { getLanguageStaticPaths, type SupportedLanguage } from '@/types/language';
+import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
 
 export const getStaticPaths = getLanguageStaticPaths;
@@ -19,18 +17,6 @@ const descriptionText = t('colorContrast.description', {
   fallback:
     'Test text and background color contrast ratios for WCAG 2.1 AA and AAA accessibility compliance.',
 });
-
-const webAppSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebApplication',
-  '@id': `https://webabc.ir/${supportedLang}/tools/color-contrast-checker/#webapp`,
-  name: titleText,
-  description: descriptionText,
-  applicationCategory: 'DesignApplication',
-  operatingSystem: 'All',
-  browserRequirements: 'Requires HTML5 support',
-  inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
-};
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -56,42 +42,16 @@ const faqSchema = {
     },
   ],
 };
-
-const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}/` },
-  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
-  { label: titleText },
-];
 ---
 
-<Layout
+<ToolLayout
   title={titleText}
   description={descriptionText}
   lang={supportedLang}
-  slug="tools/color-contrast-checker"
+  slug="color-contrast-checker"
+  dictionary={dictionary}
+  faqSchema={faqSchema}
 >
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
-
-  <!-- Hero Section -->
-  <section
-    class="border-b border-gray-100 bg-linear-to-b from-primary/10 via-background to-background pt-24 pb-12 font-sans md:pt-40 md:pb-24 dark:border-slate-800"
-  >
-    <div class="container mx-auto px-4">
-      <div class="mx-auto max-w-3xl text-center">
-        <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
-        <h1
-          class="mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text font-persian text-3xl leading-normal font-bold text-transparent md:text-5xl"
-        >
-          {titleText}
-        </h1>
-        <p class="font-persian text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-300">
-          {descriptionText}
-        </p>
-      </div>
-    </div>
-  </section>
-
   <!-- Main Workspace -->
   <section class="container mx-auto mt-12 mb-20 px-4 font-sans">
     <div class="mx-auto max-w-4xl space-y-8">
@@ -218,7 +178,12 @@ const breadcrumbs = [
           >
             -- : 1
           </div>
-          <p id="ratio-verdict" class="text-sm font-semibold text-gray-600 dark:text-gray-300">
+          <p
+            role="status"
+            aria-live="polite"
+            id="ratio-verdict"
+            class="text-sm font-semibold text-gray-600 dark:text-gray-300"
+          >
             {t('colorContrast.calculating', { fallback: 'Calculating...' })}
           </p>
         </div>
@@ -280,19 +245,7 @@ const breadcrumbs = [
       </div>
     </div>
   </section>
-
-  <ToolsCTA
-    lang={supportedLang}
-    t={t}
-    related={[
-      { key: 'boxShadow', route: 'box-shadow-generator' },
-      { key: 'gradientGen', route: 'css-gradient-generator' },
-      { key: 'glassGen', route: 'glassmorphism-generator' },
-    ]}
-    ctaHref={`/${supportedLang}/services/ui-ux-audit`}
-    isRtl={supportedLang !== 'en'}
-  />
-</Layout>
+</ToolLayout>
 
 <script is:inline data-astro-rerun>
   (() => {

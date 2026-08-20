@@ -76,12 +76,21 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
     }
 
     const resend = new Resend(env.RESEND_API_KEY);
+    const esc = (v: unknown) =>
+      String(v ?? '').replace(
+        /[&<>"']/g,
+        (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!
+      );
+    const safeName = esc(name) || 'Website Visitor';
+    const safePhone = esc(phone);
+    const safeEmail = esc(email);
+    const safeMessage = esc(message);
     const data = await resend.emails.send({
       from: 'onboarding@resend.dev', // Update this if you have a verified domain
       to: 'alibakhtiari.dev@gmail.com',
       replyTo: email,
-      subject: `New Inquiry from ${name || 'Website Visitor'}${phone ? ` (${phone})` : ''}`,
-      html: `<p><strong>Name:</strong> ${name || 'N/A'}</p>${phone ? `<p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>` : ''}<p><strong>Email:</strong> ${email ? `<a href="mailto:${email}">${email}</a>` : 'Not provided'}</p><p><strong>Message:</strong><br/>${message || 'N/A'}</p>`,
+      subject: `New Inquiry from ${safeName}${safePhone ? ` (${safePhone})` : ''}`,
+      html: `<p><strong>Name:</strong> ${safeName}</p>${safePhone ? `<p><strong>Phone:</strong> <a href="tel:${safePhone}">${safePhone}</a></p>` : ''}<p><strong>Email:</strong> ${safeEmail ? `<a href="mailto:${safeEmail}">${safeEmail}</a>` : 'Not provided'}</p><p><strong>Message:</strong><br/>${safeMessage || 'N/A'}</p>`,
     });
 
     return new Response(JSON.stringify({ success: true, data }), {

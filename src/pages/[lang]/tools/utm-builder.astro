@@ -1,9 +1,7 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
-import ToolsCTA from '../../../components/astro/ToolsCTA.astro';
-import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
-import { getLanguageStaticPaths, type SupportedLanguage, languages } from '../../../types/language';
-import { getDictionary } from '../../../i18n/get-dictionary';
+import ToolLayout from '@/layouts/ToolLayout.astro';
+import { getLanguageStaticPaths, type SupportedLanguage } from '@/types/language';
+import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
 
 export const getStaticPaths = getLanguageStaticPaths;
@@ -11,7 +9,6 @@ export const getStaticPaths = getLanguageStaticPaths;
 const { lang } = Astro.params;
 const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
-const isRtl = languages[supportedLang]?.direction === 'rtl';
 
 const t = createTranslator(dictionary);
 
@@ -19,18 +16,6 @@ const titleText = t('utmBuilder.title', { fallback: 'UTM Link Builder' });
 const descriptionText = t('utmBuilder.description', {
   fallback: 'Create trackable URLs with UTM parameters for Google Analytics.',
 });
-
-const webAppSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebApplication',
-  '@id': `https://webabc.ir/${supportedLang}/tools/utm-builder/#webapp`,
-  name: titleText,
-  description: descriptionText,
-  applicationCategory: 'BusinessApplication',
-  operatingSystem: 'All',
-  browserRequirements: 'Requires HTML5 support',
-  inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
-};
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -57,44 +42,19 @@ const faqSchema = {
   ],
 };
 
-const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}/` },
-  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
-  { label: titleText },
-];
-
 const fillFieldsText = t('utmBuilder.fillFields', {
   fallback: 'Fill in the fields above to generate your UTM URL',
 });
 ---
 
-<Layout
+<ToolLayout
   title={titleText}
   description={descriptionText}
   lang={supportedLang}
-  slug="tools/utm-builder"
+  slug="utm-builder"
+  dictionary={dictionary}
+  faqSchema={faqSchema}
 >
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
-  <!-- Hero Section -->
-  <section
-    class="border-b border-gray-100 bg-linear-to-b from-primary/10 via-background to-background pt-24 pb-12 md:pt-40 md:pb-24 dark:border-slate-800"
-  >
-    <div class="container mx-auto px-4">
-      <div class="mx-auto max-w-3xl text-center">
-        <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
-        <h1
-          class="mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text font-persian text-3xl leading-normal font-bold text-transparent md:text-5xl"
-        >
-          {titleText}
-        </h1>
-        <p class="font-persian text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-300">
-          {descriptionText}
-        </p>
-      </div>
-    </div>
-  </section>
-
   <!-- Main Workspace -->
   <section class="container mx-auto mt-12 px-4 font-sans">
     <div class="mx-auto max-w-3xl space-y-6">
@@ -229,6 +189,8 @@ const fillFieldsText = t('utmBuilder.fillFields', {
           {t('utmBuilder.copyUrl', { fallback: 'Copy URL' })}
         </button>
         <p
+          role="status"
+          aria-live="polite"
           id="utm-copy-feedback"
           class="font-persian text-xs font-semibold text-green-600 opacity-0 transition-opacity"
         >
@@ -237,19 +199,7 @@ const fillFieldsText = t('utmBuilder.fillFields', {
       </div>
     </div>
   </section>
-
-  <ToolsCTA
-    lang={supportedLang}
-    t={t}
-    related={[
-      { key: 'socialPreview', route: 'social-media-preview' },
-      { key: 'slugGenerator', route: 'slug-generator' },
-      { key: 'qrGenerator', route: 'qr-generator' },
-    ]}
-    ctaHref={`/${supportedLang}/services/seo`}
-    isRtl={isRtl}
-  />
-</Layout>
+</ToolLayout>
 
 <script type="application/json" id="utm-fill-text" set:html={JSON.stringify(fillFieldsText)} />
 

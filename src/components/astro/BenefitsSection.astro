@@ -1,9 +1,9 @@
 ---
 import { Picture } from 'astro:assets';
-import { getDictionary } from '../../i18n/get-dictionary';
-import { languages, type SupportedLanguage } from '../../types/language';
+import { getDictionary } from '@/i18n/get-dictionary';
+import { languages, type SupportedLanguage } from '@/types/language';
 import { createTranslator } from '@/i18n/translate';
-import seoResultsImg from '../../assets/images/seo-results.webp';
+import seoResultsImg from '@/assets/images/seo-results.webp';
 
 interface Props {
   lang: SupportedLanguage;

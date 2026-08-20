@@ -1,9 +1,9 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
-import Hero from '../../../components/astro/Hero.astro';
-import OptimizedImage from '../../../components/astro/OptimizedImage.astro';
-import { getLanguageStaticPaths, type SupportedLanguage, languages } from '../../../types/language';
-import { getDictionary } from '../../../i18n/get-dictionary';
+import Layout from '@/layouts/Layout.astro';
+import Hero from '@/components/astro/Hero.astro';
+import OptimizedImage from '@/components/astro/OptimizedImage.astro';
+import { getLanguageStaticPaths, type SupportedLanguage, languages } from '@/types/language';
+import { getDictionary } from '@/i18n/get-dictionary';
 import { getCollection } from 'astro:content';
 
 export const getStaticPaths = getLanguageStaticPaths;

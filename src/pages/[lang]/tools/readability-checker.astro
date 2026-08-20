@@ -1,9 +1,7 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
-import ToolsCTA from '../../../components/astro/ToolsCTA.astro';
-import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
-import { getLanguageStaticPaths, type SupportedLanguage, languages } from '../../../types/language';
-import { getDictionary } from '../../../i18n/get-dictionary';
+import ToolLayout from '@/layouts/ToolLayout.astro';
+import { getLanguageStaticPaths, type SupportedLanguage, languages } from '@/types/language';
+import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
 
 export const getStaticPaths = getLanguageStaticPaths;
@@ -19,18 +17,6 @@ const titleText = t('readabilityChecker.title', { fallback: 'Readability Checker
 const descriptionText = t('readabilityChecker.description', {
   fallback: "Analyze your content's readability with our online checker.",
 });
-
-const webAppSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebApplication',
-  '@id': `https://webabc.ir/${supportedLang}/tools/readability-checker/#webapp`,
-  name: titleText,
-  description: descriptionText,
-  applicationCategory: 'BusinessApplication',
-  operatingSystem: 'All',
-  browserRequirements: 'Requires HTML5 support',
-  inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
-};
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -56,41 +42,16 @@ const faqSchema = {
     },
   ],
 };
-
-const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}/` },
-  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
-  { label: titleText },
-];
 ---
 
-<Layout
+<ToolLayout
   title={titleText}
   description={descriptionText}
   lang={supportedLang}
-  slug="tools/readability-checker"
+  slug="readability-checker"
+  dictionary={dictionary}
+  faqSchema={faqSchema}
 >
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
-  <!-- Hero Section -->
-  <section
-    class="border-b border-gray-100 bg-linear-to-b from-primary/10 via-background to-background pt-24 pb-12 md:pt-40 md:pb-24 dark:border-slate-800"
-  >
-    <div class="container mx-auto px-4">
-      <div class="mx-auto max-w-3xl text-center">
-        <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
-        <h1
-          class="mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text font-persian text-3xl leading-normal font-bold text-transparent md:text-5xl"
-        >
-          {titleText}
-        </h1>
-        <p class="font-persian text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-300">
-          {descriptionText}
-        </p>
-      </div>
-    </div>
-  </section>
-
   <!-- Main Workspace -->
   <section class="container mx-auto mt-12 px-4 font-sans">
     <div class="mx-auto grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-12">
@@ -137,7 +98,12 @@ const breadcrumbs = [
               <div class="text-xs text-gray-500 dark:text-gray-400">
                 {t('readabilityChecker.fleschScore', { fallback: 'Flesch Reading Ease' })}
               </div>
-              <div class="text-sm font-bold text-gray-800 dark:text-gray-100" id="level-text">
+              <div
+                class="text-sm font-bold text-gray-800 dark:text-gray-100"
+                role="status"
+                aria-live="polite"
+                id="level-text"
+              >
                 {t('readabilityChecker.level', { fallback: 'Level:' })} —
               </div>
             </div>
@@ -194,19 +160,7 @@ const breadcrumbs = [
       </div>
     </div>
   </section>
-
-  <ToolsCTA
-    lang={supportedLang}
-    t={t}
-    related={[
-      { key: 'headlineAnalyzer', route: 'headline-analyzer' },
-      { key: 'tools.keywordDensity', route: 'keyword-density-analyzer' },
-      { key: 'faqGenerator', route: 'faq-generator' },
-    ]}
-    ctaHref={`/${supportedLang}/services/content-creation`}
-    isRtl={isRtl}
-  />
-</Layout>
+</ToolLayout>
 
 <script is:inline data-astro-rerun>
   (() => {

@@ -1,13 +1,13 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
-import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
-import TableOfContents from '../../../components/astro/TableOfContents.astro';
-import TLDR from '../../../components/astro/TLDR.astro';
-import FAQ from '../../../components/astro/FAQ.astro';
-import OptimizedImage from '../../../components/astro/OptimizedImage.astro';
+import Layout from '@/layouts/Layout.astro';
+import Breadcrumbs from '@/components/astro/Breadcrumbs.astro';
+import TableOfContents from '@/components/astro/TableOfContents.astro';
+import TLDR from '@/components/astro/TLDR.astro';
+import FAQ from '@/components/astro/FAQ.astro';
+import OptimizedImage from '@/components/astro/OptimizedImage.astro';
 import { getCollection, render } from 'astro:content';
-import { type SupportedLanguage, languages } from '../../../types/language';
-import { getDictionary } from '../../../i18n/get-dictionary';
+import { type SupportedLanguage, languages } from '@/types/language';
+import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
 import { getCategoryLabel } from '@/utils/category-translator';
 

@@ -1,9 +1,7 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
-import ToolsCTA from '../../../components/astro/ToolsCTA.astro';
-import Breadcrumbs from '../../../components/astro/Breadcrumbs.astro';
-import { getLanguageStaticPaths, type SupportedLanguage, languages } from '../../../types/language';
-import { getDictionary } from '../../../i18n/get-dictionary';
+import ToolLayout from '@/layouts/ToolLayout.astro';
+import { getLanguageStaticPaths, type SupportedLanguage } from '@/types/language';
+import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
 
 export const getStaticPaths = getLanguageStaticPaths;
@@ -11,7 +9,6 @@ export const getStaticPaths = getLanguageStaticPaths;
 const { lang } = Astro.params;
 const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
-const isRtl = languages[supportedLang]?.direction === 'rtl';
 
 // Helper to translate strings
 const t = createTranslator(dictionary);
@@ -21,18 +18,6 @@ const descriptionText = t('headlineAnalyzer.description', {
   fallback:
     'Analyze your headlines for CTR, sentiment, readability and character length to optimize for SEO rankings.',
 });
-
-const webAppSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebApplication',
-  '@id': `https://webabc.ir/${supportedLang}/tools/headline-analyzer/#webapp`,
-  name: titleText,
-  description: descriptionText,
-  applicationCategory: 'BusinessApplication',
-  operatingSystem: 'All',
-  browserRequirements: 'Requires HTML5 support',
-  inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
-};
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -58,41 +43,16 @@ const faqSchema = {
     },
   ],
 };
-
-const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}/` },
-  { label: t('common.tools'), url: `/${supportedLang}/tools/` },
-  { label: titleText },
-];
 ---
 
-<Layout
+<ToolLayout
   title={titleText}
   description={descriptionText}
   lang={supportedLang}
-  slug="tools/headline-analyzer"
+  slug="headline-analyzer"
+  dictionary={dictionary}
+  faqSchema={faqSchema}
 >
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
-  <!-- Hero Section -->
-  <section
-    class="border-b border-gray-100 bg-linear-to-b from-primary/10 via-background to-background pt-24 pb-12 md:pt-40 md:pb-24 dark:border-slate-800"
-  >
-    <div class="container mx-auto px-4">
-      <div class="mx-auto max-w-3xl text-center">
-        <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
-        <h1
-          class="mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text font-persian text-3xl leading-normal font-bold text-transparent md:text-5xl"
-        >
-          {titleText}
-        </h1>
-        <p class="font-persian text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-300">
-          {descriptionText}
-        </p>
-      </div>
-    </div>
-  </section>
-
   <!-- Main Workspace -->
   <section class="container mx-auto mt-12 px-4 font-sans">
     <div class="mx-auto grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-12">
@@ -185,54 +145,60 @@ const breadcrumbs = [
                 >
                 <span
                   class="font-persian font-semibold text-gray-600 dark:text-gray-300"
+                  role="status"
+                  aria-live="polite"
                   id="length-status">-</span
                 >
-              </div>
-              <div class="h-2 w-full overflow-hidden rounded-full bg-gray-100 dark:bg-slate-800">
-                <div
-                  class="h-full w-0 bg-gray-300 transition-all duration-300 dark:bg-slate-700"
-                  id="length-bar"
-                >
+                <div class="h-2 w-full overflow-hidden rounded-full bg-gray-100 dark:bg-slate-800">
+                  <div
+                    class="h-full w-0 bg-gray-300 transition-all duration-300 dark:bg-slate-700"
+                    id="length-bar"
+                  >
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Keyword Presence -->
-            <div class="space-y-1.5">
-              <div class="flex justify-between text-xs">
-                <span class="font-persian font-medium text-gray-700 dark:text-gray-200"
-                  >Sentiment Balance</span
-                >
-                <span
-                  class="font-persian font-semibold text-gray-600 dark:text-gray-300"
-                  id="sentiment-status">-</span
-                >
-              </div>
-              <div class="h-2 w-full overflow-hidden rounded-full bg-gray-100 dark:bg-slate-800">
-                <div
-                  class="h-full w-0 bg-gray-300 transition-all duration-300 dark:bg-slate-700"
-                  id="sentiment-bar"
-                >
+              <!-- Keyword Presence -->
+              <div class="space-y-1.5">
+                <div class="flex justify-between text-xs">
+                  <span class="font-persian font-medium text-gray-700 dark:text-gray-200"
+                    >Sentiment Balance</span
+                  >
+                  <span
+                    class="font-persian font-semibold text-gray-600 dark:text-gray-300"
+                    role="status"
+                    aria-live="polite"
+                    id="sentiment-status">-</span
+                  >
+                </div>
+                <div class="h-2 w-full overflow-hidden rounded-full bg-gray-100 dark:bg-slate-800">
+                  <div
+                    class="h-full w-0 bg-gray-300 transition-all duration-300 dark:bg-slate-700"
+                    id="sentiment-bar"
+                  >
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <!-- Power Words Presence -->
-            <div class="space-y-1.5">
-              <div class="flex justify-between text-xs">
-                <span class="font-persian font-medium text-gray-700 dark:text-gray-200"
-                  >Power Words & Numbers</span
-                >
-                <span
-                  class="font-persian font-semibold text-gray-600 dark:text-gray-300"
-                  id="power-status">-</span
-                >
-              </div>
-              <div class="h-2 w-full overflow-hidden rounded-full bg-gray-100 dark:bg-slate-800">
-                <div
-                  class="h-full w-0 bg-gray-300 transition-all duration-300 dark:bg-slate-700"
-                  id="power-bar"
-                >
+              <!-- Power Words Presence -->
+              <div class="space-y-1.5">
+                <div class="flex justify-between text-xs">
+                  <span class="font-persian font-medium text-gray-700 dark:text-gray-200"
+                    >Power Words & Numbers</span
+                  >
+                  <span
+                    class="font-persian font-semibold text-gray-600 dark:text-gray-300"
+                    role="status"
+                    aria-live="polite"
+                    id="power-status">-</span
+                  >
+                </div>
+                <div class="h-2 w-full overflow-hidden rounded-full bg-gray-100 dark:bg-slate-800">
+                  <div
+                    class="h-full w-0 bg-gray-300 transition-all duration-300 dark:bg-slate-700"
+                    id="power-bar"
+                  >
+                  </div>
                 </div>
               </div>
             </div>
@@ -240,312 +206,301 @@ const breadcrumbs = [
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- SEO Guide Content -->
-  <section class="container mx-auto mt-16 px-4 font-sans">
-    <div class="mx-auto max-w-4xl space-y-8">
-      <div class="space-y-3">
-        <h2 class="text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">
-          How This Headline Checker Scores Your Title
-        </h2>
-        <p class="leading-relaxed text-gray-600 dark:text-gray-300">
-          This free SEO headline checker and blog title analyzer scores your headline across three
-          factors that correlate with organic click-through rate: <strong>length</strong> (titles between
-          50–60 characters avoid truncation in Google search snippets), <strong
-            >power words &amp; numbers</strong
-          > (headlines with a number and an emotional trigger word see measurably higher CTR), and <strong
-            >sentiment balance</strong
+    <!-- SEO Guide Content -->
+    <section class="container mx-auto mt-16 px-4 font-sans">
+      <div class="mx-auto max-w-4xl space-y-8">
+        <div class="space-y-3">
+          <h2 class="text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">
+            How This Headline Checker Scores Your Title
+          </h2>
+          <p class="leading-relaxed text-gray-600 dark:text-gray-300">
+            This free SEO headline checker and blog title analyzer scores your headline across three
+            factors that correlate with organic click-through rate: <strong>length</strong> (titles between
+            50–60 characters avoid truncation in Google search snippets), <strong
+              >power words &amp; numbers</strong
+            > (headlines with a number and an emotional trigger word see measurably higher CTR), and <strong
+              >sentiment balance</strong
+            >
+            (questions and exclamations tend to drive more curiosity clicks than flat statements).
+          </p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-3">
+          <div
+            class="rounded-xl border border-gray-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
           >
-          (questions and exclamations tend to drive more curiosity clicks than flat statements).
-        </p>
-      </div>
+            <h3 class="mb-2 text-sm font-bold text-gray-800 dark:text-gray-100">
+              Headline vs. Title Tag
+            </h3>
+            <p class="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
+              Your on-page headline (H1) and your search-result title tag can be different. Analyze
+              your H1 here, then check the exact &lt;title&gt; and meta description Google will show
+              with our
+              <a
+                href={`/${supportedLang}/tools/seo-title-checker/`}
+                class="font-semibold text-primary hover:underline">SEO Title Checker</a
+              >.
+            </p>
+          </div>
+          <div
+            class="rounded-xl border border-gray-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
+          >
+            <h3 class="mb-2 text-sm font-bold text-gray-800 dark:text-gray-100">
+              Ideal Headline Length
+            </h3>
+            <p class="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
+              Aim for 50–60 characters. Shorter headlines lack context and keyword coverage; longer
+              ones risk truncation on both desktop and mobile SERPs.
+            </p>
+          </div>
+          <div
+            class="rounded-xl border border-gray-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
+          >
+            <h3 class="mb-2 text-sm font-bold text-gray-800 dark:text-gray-100">
+              Power Words That Work
+            </h3>
+            <p class="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
+              Words like "proven", "free", "ultimate", or "essential" paired with a digit (e.g. "7
+              Tips") are the highest-performing combination for blog, YouTube, and article
+              headlines.
+            </p>
+          </div>
+        </div>
 
-      <div class="grid gap-4 sm:grid-cols-3">
+        <!-- On-Page FAQ / AEO Question Block -->
         <div
-          class="rounded-xl border border-gray-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
+          class="space-y-6 rounded-2xl border border-gray-100 bg-white p-6 sm:p-8 dark:border-slate-800 dark:bg-slate-900"
         >
-          <h3 class="mb-2 text-sm font-bold text-gray-800 dark:text-gray-100">
-            Headline vs. Title Tag
-          </h3>
-          <p class="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
-            Your on-page headline (H1) and your search-result title tag can be different. Analyze
-            your H1 here, then check the exact &lt;title&gt; and meta description Google will show
-            with our
-            <a
-              href={`/${supportedLang}/tools/seo-title-checker/`}
-              class="font-semibold text-primary hover:underline">SEO Title Checker</a
-            >.
-          </p>
-        </div>
-        <div
-          class="rounded-xl border border-gray-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
-        >
-          <h3 class="mb-2 text-sm font-bold text-gray-800 dark:text-gray-100">
-            Ideal Headline Length
-          </h3>
-          <p class="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
-            Aim for 50–60 characters. Shorter headlines lack context and keyword coverage; longer
-            ones risk truncation on both desktop and mobile SERPs.
-          </p>
-        </div>
-        <div
-          class="rounded-xl border border-gray-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
-        >
-          <h3 class="mb-2 text-sm font-bold text-gray-800 dark:text-gray-100">
-            Power Words That Work
-          </h3>
-          <p class="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
-            Words like "proven", "free", "ultimate", or "essential" paired with a digit (e.g. "7
-            Tips") are the highest-performing combination for blog, YouTube, and article headlines.
-          </p>
+          <h2
+            class="border-b border-gray-100 pb-4 text-xl font-bold text-gray-900 md:text-2xl dark:border-slate-800 dark:text-white"
+          >
+            {
+              supportedLang === 'fa'
+                ? 'سوالات متداول آنالیزور عنوان سئو (FAQ)'
+                : supportedLang === 'ar'
+                  ? 'الأسئلة الشائعة حول محلل العناوين (FAQ)'
+                  : 'Frequently Asked Questions (Headline SEO FAQ)'
+            }
+          </h2>
+          <div class="space-y-4">
+            {
+              faqSchema.mainEntity.map((item: any) => (
+                <div class="space-y-2 rounded-xl border border-gray-100 bg-gray-50/50 p-4 dark:border-slate-800 dark:bg-slate-800/50">
+                  <h3 class="text-sm font-bold text-gray-900 sm:text-base dark:text-white">
+                    {item.name}
+                  </h3>
+                  <p class="text-xs leading-relaxed text-gray-600 sm:text-sm dark:text-gray-300">
+                    {item.acceptedAnswer.text}
+                  </p>
+                </div>
+              ))
+            }
+          </div>
         </div>
       </div>
-
-      <!-- On-Page FAQ / AEO Question Block -->
-      <div
-        class="space-y-6 rounded-2xl border border-gray-100 bg-white p-6 sm:p-8 dark:border-slate-800 dark:bg-slate-900"
-      >
-        <h2
-          class="border-b border-gray-100 pb-4 text-xl font-bold text-gray-900 md:text-2xl dark:border-slate-800 dark:text-white"
-        >
-          {
-            supportedLang === 'fa'
-              ? 'سوالات متداول آنالیزور عنوان سئو (FAQ)'
-              : supportedLang === 'ar'
-                ? 'الأسئلة الشائعة حول محلل العناوين (FAQ)'
-                : 'Frequently Asked Questions (Headline SEO FAQ)'
-          }
-        </h2>
-        <div class="space-y-4">
-          {
-            faqSchema.mainEntity.map((item: any) => (
-              <div class="space-y-2 rounded-xl border border-gray-100 bg-gray-50/50 p-4 dark:border-slate-800 dark:bg-slate-800/50">
-                <h3 class="text-sm font-bold text-gray-900 sm:text-base dark:text-white">
-                  {item.name}
-                </h3>
-                <p class="text-xs leading-relaxed text-gray-600 sm:text-sm dark:text-gray-300">
-                  {item.acceptedAnswer.text}
-                </p>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </div>
+    </section>
   </section>
 
-  <ToolsCTA
-    lang={supportedLang}
-    t={t}
-    related={[
-      { key: 'seoTitleChecker', route: 'seo-title-checker' },
-      { key: 'readabilityChecker', route: 'readability-checker' },
-      { key: 'tools.keywordDensity', route: 'keyword-density-analyzer' },
-    ]}
-    ctaHref={`/${supportedLang}/services/content-creation`}
-    isRtl={isRtl}
-  />
-</Layout>
+  <script is:inline data-astro-rerun>
+    (() => {
+      const input = document.getElementById('headline-input');
+      const analyzeBtn = document.getElementById('analyze-btn');
+      const charCount = document.getElementById('char-count');
 
-<script is:inline data-astro-rerun>
-  (() => {
-    const input = document.getElementById('headline-input');
-    const analyzeBtn = document.getElementById('analyze-btn');
-    const charCount = document.getElementById('char-count');
+      const scoreVal = document.getElementById('score-val');
+      const scoreCircle = document.getElementById('score-circle');
+      const gradeText = document.getElementById('grade-text');
+      const gradeDesc = document.getElementById('grade-desc');
 
-    const scoreVal = document.getElementById('score-val');
-    const scoreCircle = document.getElementById('score-circle');
-    const gradeText = document.getElementById('grade-text');
-    const gradeDesc = document.getElementById('grade-desc');
+      const lengthStatus = document.getElementById('length-status');
+      const lengthBar = document.getElementById('length-bar');
 
-    const lengthStatus = document.getElementById('length-status');
-    const lengthBar = document.getElementById('length-bar');
+      const sentimentStatus = document.getElementById('sentiment-status');
+      const sentimentBar = document.getElementById('sentiment-bar');
 
-    const sentimentStatus = document.getElementById('sentiment-status');
-    const sentimentBar = document.getElementById('sentiment-bar');
+      const powerStatus = document.getElementById('power-status');
+      const powerBar = document.getElementById('power-bar');
 
-    const powerStatus = document.getElementById('power-status');
-    const powerBar = document.getElementById('power-bar');
+      // List of common Power/Emotional Words
+      const powerWords = [
+        'proven',
+        'boost',
+        'free',
+        'easy',
+        'quick',
+        'boost',
+        'secret',
+        'guide',
+        'best',
+        'top',
+        'amazing',
+        'essential',
+        'insane',
+        'incredible',
+        'ultimate',
+        'how to',
+        'why',
+        'بهترین',
+        'سریع',
+        'رایگان',
+        'راز',
+        'آموزش',
+        'افزایش',
+        'چگونه',
+        'چرا',
+        'فرمول',
+        'ساده',
+        'أفضل',
+        'مجاني',
+        'سر',
+        'كيفية',
+        'زيادة',
+        'طريقة',
+        'سهل',
+        'دليل',
+      ];
 
-    // List of common Power/Emotional Words
-    const powerWords = [
-      'proven',
-      'boost',
-      'free',
-      'easy',
-      'quick',
-      'boost',
-      'secret',
-      'guide',
-      'best',
-      'top',
-      'amazing',
-      'essential',
-      'insane',
-      'incredible',
-      'ultimate',
-      'how to',
-      'why',
-      'بهترین',
-      'سریع',
-      'رایگان',
-      'راز',
-      'آموزش',
-      'افزایش',
-      'چگونه',
-      'چرا',
-      'فرمول',
-      'ساده',
-      'أفضل',
-      'مجاني',
-      'سر',
-      'كيفية',
-      'زيادة',
-      'طريقة',
-      'سهل',
-      'دليل',
-    ];
+      function analyzeHeadline() {
+        const text = input.value.trim();
+        if (!text) return;
 
-    function analyzeHeadline() {
-      const text = input.value.trim();
-      if (!text) return;
+        let score = 30; // base score
 
-      let score = 30; // base score
+        // 1. Length check (ideal is between 50-60 characters)
+        const len = text.length;
+        let lenScore = 0;
+        let lenText = 'Too Short';
+        let lenColorClass = 'bg-red-500';
 
-      // 1. Length check (ideal is between 50-60 characters)
-      const len = text.length;
-      let lenScore = 0;
-      let lenText = 'Too Short';
-      let lenColorClass = 'bg-red-500';
+        if (len >= 50 && len <= 60) {
+          lenScore = 100;
+          lenText = 'Perfect (50-60 chars)';
+          lenColorClass = 'bg-green-500';
+          score += 35;
+        } else if (len >= 40 && len < 50) {
+          lenScore = 75;
+          lenText = 'Good Length';
+          lenColorClass = 'bg-yellow-500';
+          score += 25;
+        } else if (len > 60 && len <= 75) {
+          lenScore = 75;
+          lenText = 'Slightly Long';
+          lenColorClass = 'bg-yellow-500';
+          score += 20;
+        } else if (len > 75) {
+          lenScore = 40;
+          lenText = 'Too Long (Will truncate)';
+          lenColorClass = 'bg-red-500';
+          score += 5;
+        } else {
+          lenScore = 30;
+          lenText = 'Too Short';
+          lenColorClass = 'bg-red-500';
+          score += 10;
+        }
 
-      if (len >= 50 && len <= 60) {
-        lenScore = 100;
-        lenText = 'Perfect (50-60 chars)';
-        lenColorClass = 'bg-green-500';
-        score += 35;
-      } else if (len >= 40 && len < 50) {
-        lenScore = 75;
-        lenText = 'Good Length';
-        lenColorClass = 'bg-yellow-500';
-        score += 25;
-      } else if (len > 60 && len <= 75) {
-        lenScore = 75;
-        lenText = 'Slightly Long';
-        lenColorClass = 'bg-yellow-500';
-        score += 20;
-      } else if (len > 75) {
-        lenScore = 40;
-        lenText = 'Too Long (Will truncate)';
-        lenColorClass = 'bg-red-500';
-        score += 5;
-      } else {
-        lenScore = 30;
-        lenText = 'Too Short';
-        lenColorClass = 'bg-red-500';
-        score += 10;
+        lengthStatus.innerText = lenText;
+        lengthBar.style.width = `${lenScore}%`;
+        lengthBar.className = `h-full transition-all duration-300 ${lenColorClass}`;
+
+        // 2. Power words and numbers check
+        const words = text.toLowerCase().split(/\s+/);
+        const hasNumber = /\d+/.test(text);
+        let powerCount = 0;
+
+        words.forEach((w) => {
+          if (powerWords.some((pw) => w.includes(pw))) {
+            powerCount++;
+          }
+        });
+
+        let powerScore = 0;
+        let powerText = 'No triggers';
+        let powerColorClass = 'bg-red-500';
+
+        if (powerCount > 0 && hasNumber) {
+          powerScore = 100;
+          powerText = 'Numbers & Triggers Present';
+          powerColorClass = 'bg-green-500';
+          score += 35;
+        } else if (powerCount > 0 || hasNumber) {
+          powerScore = 70;
+          powerText = 'Good Trigger Usage';
+          powerColorClass = 'bg-yellow-500';
+          score += 20;
+        } else {
+          powerScore = 20;
+          powerText = 'Add numbers or power words';
+          powerColorClass = 'bg-red-500';
+        }
+
+        powerStatus.innerText = powerText;
+        powerBar.style.width = `${powerScore}%`;
+        powerBar.className = `h-full transition-all duration-300 ${powerColorClass}`;
+
+        // 3. Sentiment Balance
+        // Simple sentiment analyzer based on question marks, exclamation marks, and strong positive verbs
+        const hasExclamation = text.includes('!');
+        const hasQuestion = text.includes('?');
+        let sentimentScore = 50;
+        let sentimentText = 'Neutral / Balanced';
+        let sentimentColorClass = 'bg-gray-400';
+
+        if (hasExclamation) {
+          sentimentScore = 90;
+          sentimentText = 'Highly Engaging!';
+          sentimentColorClass = 'bg-green-500';
+          score += 10;
+        } else if (hasQuestion) {
+          sentimentScore = 85;
+          sentimentText = 'Curiosity Inducing';
+          sentimentColorClass = 'bg-blue-500';
+          score += 10;
+        } else {
+          score += 5;
+        }
+
+        sentimentStatus.innerText = sentimentText;
+        sentimentBar.style.width = `${sentimentScore}%`;
+        sentimentBar.className = `h-full transition-all duration-300 ${sentimentColorClass}`;
+
+        // Cap score at 100
+        score = Math.min(100, score);
+
+        // Update Score Circle & Grade
+        scoreVal.innerText = score;
+
+        let grade = 'Needs Work';
+        let desc = 'Try adding emotional numbers, action verbs, or optimizing length.';
+        let circleColor = 'border-red-500 text-red-500 bg-red-50/50 dark:bg-red-950/30';
+
+        if (score >= 80) {
+          grade = 'Excellent Headline!';
+          desc =
+            'Your title is perfectly optimized for search performance and user click-through rates.';
+          circleColor = 'border-green-500 text-green-500 bg-green-50/50 dark:bg-green-950/30';
+        } else if (score >= 60) {
+          grade = 'Decent Headline';
+          desc =
+            'A few minor tweaks (like length or power words) could significantly boost your CTR.';
+          circleColor = 'border-yellow-500 text-yellow-500 bg-yellow-50/50 dark:bg-yellow-950/30';
+        }
+
+        gradeText.innerText = grade;
+        gradeDesc.innerText = desc;
+        scoreCircle.className = `relative w-24 h-24 flex items-center justify-center rounded-full border-4 transition-all duration-300 ${circleColor}`;
       }
 
-      lengthStatus.innerText = lenText;
-      lengthBar.style.width = `${lenScore}%`;
-      lengthBar.className = `h-full transition-all duration-300 ${lenColorClass}`;
-
-      // 2. Power words and numbers check
-      const words = text.toLowerCase().split(/\s+/);
-      const hasNumber = /\d+/.test(text);
-      let powerCount = 0;
-
-      words.forEach((w) => {
-        if (powerWords.some((pw) => w.includes(pw))) {
-          powerCount++;
+      input.addEventListener('input', () => {
+        const len = input.value.trim().length;
+        charCount.innerText = `${len} / 60 characters`;
+        if (len > 0) {
+          analyzeHeadline();
         }
       });
 
-      let powerScore = 0;
-      let powerText = 'No triggers';
-      let powerColorClass = 'bg-red-500';
-
-      if (powerCount > 0 && hasNumber) {
-        powerScore = 100;
-        powerText = 'Numbers & Triggers Present';
-        powerColorClass = 'bg-green-500';
-        score += 35;
-      } else if (powerCount > 0 || hasNumber) {
-        powerScore = 70;
-        powerText = 'Good Trigger Usage';
-        powerColorClass = 'bg-yellow-500';
-        score += 20;
-      } else {
-        powerScore = 20;
-        powerText = 'Add numbers or power words';
-        powerColorClass = 'bg-red-500';
-      }
-
-      powerStatus.innerText = powerText;
-      powerBar.style.width = `${powerScore}%`;
-      powerBar.className = `h-full transition-all duration-300 ${powerColorClass}`;
-
-      // 3. Sentiment Balance
-      // Simple sentiment analyzer based on question marks, exclamation marks, and strong positive verbs
-      const hasExclamation = text.includes('!');
-      const hasQuestion = text.includes('?');
-      let sentimentScore = 50;
-      let sentimentText = 'Neutral / Balanced';
-      let sentimentColorClass = 'bg-gray-400';
-
-      if (hasExclamation) {
-        sentimentScore = 90;
-        sentimentText = 'Highly Engaging!';
-        sentimentColorClass = 'bg-green-500';
-        score += 10;
-      } else if (hasQuestion) {
-        sentimentScore = 85;
-        sentimentText = 'Curiosity Inducing';
-        sentimentColorClass = 'bg-blue-500';
-        score += 10;
-      } else {
-        score += 5;
-      }
-
-      sentimentStatus.innerText = sentimentText;
-      sentimentBar.style.width = `${sentimentScore}%`;
-      sentimentBar.className = `h-full transition-all duration-300 ${sentimentColorClass}`;
-
-      // Cap score at 100
-      score = Math.min(100, score);
-
-      // Update Score Circle & Grade
-      scoreVal.innerText = score;
-
-      let grade = 'Needs Work';
-      let desc = 'Try adding emotional numbers, action verbs, or optimizing length.';
-      let circleColor = 'border-red-500 text-red-500 bg-red-50/50 dark:bg-red-950/30';
-
-      if (score >= 80) {
-        grade = 'Excellent Headline!';
-        desc =
-          'Your title is perfectly optimized for search performance and user click-through rates.';
-        circleColor = 'border-green-500 text-green-500 bg-green-50/50 dark:bg-green-950/30';
-      } else if (score >= 60) {
-        grade = 'Decent Headline';
-        desc =
-          'A few minor tweaks (like length or power words) could significantly boost your CTR.';
-        circleColor = 'border-yellow-500 text-yellow-500 bg-yellow-50/50 dark:bg-yellow-950/30';
-      }
-
-      gradeText.innerText = grade;
-      gradeDesc.innerText = desc;
-      scoreCircle.className = `relative w-24 h-24 flex items-center justify-center rounded-full border-4 transition-all duration-300 ${circleColor}`;
-    }
-
-    input.addEventListener('input', () => {
-      const len = input.value.trim().length;
-      charCount.innerText = `${len} / 60 characters`;
-      if (len > 0) {
-        analyzeHeadline();
-      }
-    });
-
-    analyzeBtn.addEventListener('click', analyzeHeadline);
-  })();
-</script>
+      analyzeBtn.addEventListener('click', analyzeHeadline);
+    })();
+  </script>
+</ToolLayout>

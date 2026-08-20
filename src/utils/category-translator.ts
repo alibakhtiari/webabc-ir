@@ -1,4 +1,4 @@
-import type { SupportedLanguage } from '../types/language';
+import type { SupportedLanguage } from '@/types/language';
 
 export const categoryTranslations: Record<string, Record<SupportedLanguage, string>> = {
   SEO: {

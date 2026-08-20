@@ -1,0 +1,148 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import ToolsCTA from '@/components/astro/ToolsCTA.astro';
+import Breadcrumbs from '@/components/astro/Breadcrumbs.astro';
+import { type SupportedLanguage, languages } from '@/types/language';
+import { createTranslator } from '@/i18n/translate';
+import { toolConfigMap, type RelatedTool } from '@/config/tools';
+
+interface Props {
+  title: string;
+  description: string;
+  lang: SupportedLanguage;
+  slug: string;
+  dictionary: Record<string, any>;
+  applicationCategory?: string;
+  faqSchema?: Record<string, any>;
+  breadcrumbs?: Array<{ label: string; url?: string }>;
+  relatedTools?: RelatedTool[];
+  ctaHref?: string;
+}
+
+const {
+  title,
+  description,
+  lang,
+  slug,
+  dictionary,
+  applicationCategory,
+  faqSchema,
+  breadcrumbs,
+  relatedTools,
+  ctaHref,
+} = Astro.props;
+
+const isRtl = languages[lang]?.direction === 'rtl';
+const t = createTranslator(dictionary);
+const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 'font-persian';
+
+const cleanSlug = slug.replace(/^tools\//, '').replace(/\/$/, '');
+const toolCfg = toolConfigMap[cleanSlug];
+
+const finalCategory = applicationCategory || toolCfg?.category || 'DeveloperApplication';
+const finalRelated =
+  relatedTools && relatedTools.length > 0 ? relatedTools : toolCfg?.related || [];
+const finalCtaHref =
+  ctaHref ||
+  (toolCfg?.serviceSlug
+    ? `/${lang}/services/${toolCfg.serviceSlug}/`
+    : `/${lang}/services/web-development/`);
+
+const webAppSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `https://webabc.ir/${lang}/tools/${cleanSlug}/#webapp`,
+  name: title,
+  description: description,
+  applicationCategory: finalCategory,
+  operatingSystem: 'All',
+  browserRequirements: 'Requires HTML5 support',
+  inLanguage: lang === 'en' ? 'en-US' : lang === 'ar' ? 'ar-SA' : 'fa-IR',
+};
+
+const defaultBreadcrumbs = breadcrumbs || [
+  { label: t('common.home', { fallback: 'Home' }), url: `/${lang}/` },
+  { label: t('common.tools', { fallback: 'Tools' }), url: `/${lang}/tools/` },
+  { label: title },
+];
+---
+
+<Layout title={title} description={description} lang={lang} slug={`tools/${cleanSlug}`}>
+  <script
+    is:inline
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify(webAppSchema)}
+  />
+  {
+    faqSchema && (
+      <script
+        is:inline
+        type="application/ld+json"
+        slot="head"
+        set:html={JSON.stringify(faqSchema)}
+      />
+    )
+  }
+
+  <!-- Standard Hero Section for Tool Pages -->
+  <section
+    class="border-b border-gray-100 bg-linear-to-b from-primary/10 via-background to-background pt-24 pb-12 font-sans md:pt-40 md:pb-24 dark:border-slate-800"
+  >
+    <div class="container mx-auto px-4">
+      <div class="mx-auto max-w-3xl text-center">
+        <Breadcrumbs items={defaultBreadcrumbs} lang={lang} centered={true} />
+        <h1
+          class={`mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-3xl leading-normal font-bold text-transparent md:text-5xl ${fontClass}`}
+        >
+          {title}
+        </h1>
+        <p
+          class={`text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-300 ${fontClass}`}
+        >
+          {description}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tool Workspace / Content -->
+  <slot />
+
+  <!-- Related Tools & Consultation CTA -->
+  <ToolsCTA lang={lang} t={t} related={finalRelated} ctaHref={finalCtaHref} isRtl={isRtl} />
+</Layout>
+
+<script is:inline>
+  window.copyToClipboard = async function (text, feedbackEl, duration = 1800) {
+    if (!text) return false;
+    let ok = false;
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        ok = true;
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.left = '-999999px';
+        ta.style.top = '-999999px';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        ok = document.execCommand('copy');
+        ta.remove();
+      }
+    } catch (e) {
+      console.error('Clipboard error:', e);
+      ok = false;
+    }
+    if (ok && feedbackEl) {
+      feedbackEl.classList.remove('opacity-0', 'hidden');
+      setTimeout(() => {
+        feedbackEl.classList.add('opacity-0');
+      }, duration);
+    }
+    return ok;
+  };
+</script>
