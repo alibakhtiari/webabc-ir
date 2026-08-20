@@ -6,7 +6,7 @@ import sitemapLastmod from './src/generated/sitemap-lastmod.json' with { type: '
 
 const SITE = 'https://webabc.ir';
 const LANGS = ['en', 'fa', 'ar'];
-const LANG_HREF = { en: 'en-US', fa: 'fa-IR', ar: 'ar-SA' };
+const LANG_HREF = { en: 'en', fa: 'fa', ar: 'ar' };
 const LASTMOD_FALLBACK = sitemapLastmod._fallback;
 
 // Map slug to its representative image for sitemap image entries

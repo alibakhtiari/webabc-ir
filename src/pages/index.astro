@@ -23,7 +23,9 @@
     <link rel="alternate" hreflang="fa" href="https://webabc.ir/fa/" />
     <link rel="alternate" hreflang="ar" href="https://webabc.ir/ar/" />
     <link rel="alternate" hreflang="x-default" href="https://webabc.ir/en/" />
-    <meta http-equiv="refresh" content="0;url=/en/" />
+    <noscript>
+      <meta http-equiv="refresh" content="0;url=/en/" />
+    </noscript>
     <script is:inline>
       (() => {
         const savedLang = typeof localStorage !== 'undefined' && localStorage.getItem('language');
@@ -33,5 +35,9 @@
       })();
     </script>
   </head>
-  <body> </body>
+  <body class="flex min-h-screen items-center justify-center bg-slate-950 font-sans text-white">
+    <noscript>
+      <p>Redirecting to <a href="/en/" class="text-primary underline">WebABC English</a>...</p>
+    </noscript>
+  </body>
 </html>

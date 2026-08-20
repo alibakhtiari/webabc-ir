@@ -211,7 +211,9 @@
 
   --font-sans: 'Lato', system-ui, sans-serif;
   --font-persian: 'IRANSansX', sans-serif;
-  --font-arabic: 'IRANSansX', sans-serif;
+  --font-arabic:
+    'IBM Plex Sans Arabic', 'Cairo', 'Tajawal', 'Noto Kufi Arabic', system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   @keyframes accordion-down {
     from {
@@ -446,7 +448,7 @@
 }
 
 @utility font-arabic {
-  font-family: 'IRANSansX', 'Vazirmatn', sans-serif;
+  font-family: var(--font-arabic);
 }
 
 @utility font-sans {
@@ -513,12 +515,17 @@
   }
 
   html:lang(ar) {
-    --font-sans: 'IRANSansX', sans-serif;
+    --font-sans: var(--font-arabic);
     font-family: var(--font-sans);
   }
 
-  html:lang(ar) .font-persian {
-    font-family: 'IRANSansX', 'Vazirmatn', sans-serif;
+  html:lang(ar) .lucide-arrow-right {
+    transform: rotate(180deg);
+  }
+
+  html:lang(ar) .font-persian,
+  html:lang(ar) .font-arabic {
+    font-family: var(--font-arabic);
   }
 }
 

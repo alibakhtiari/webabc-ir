@@ -42,9 +42,10 @@ const CANONICAL_HOST = 'webabc.ir';
 
 async function handleContact(request: Request, env: Env): Promise<Response> {
   try {
-    const { name, email, message, token } = (await request.json()) as {
+    const { name, email, phone, message, token } = (await request.json()) as {
       name?: string;
       email?: string;
+      phone?: string;
       message?: string;
       token?: string;
     };
@@ -79,8 +80,8 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
       from: 'onboarding@resend.dev', // Update this if you have a verified domain
       to: 'alibakhtiari.dev@gmail.com',
       replyTo: email,
-      subject: `New Contact from ${name}`,
-      html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong><br/>${message}</p>`,
+      subject: `New Inquiry from ${name || 'Website Visitor'}${phone ? ` (${phone})` : ''}`,
+      html: `<p><strong>Name:</strong> ${name || 'N/A'}</p>${phone ? `<p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>` : ''}<p><strong>Email:</strong> ${email ? `<a href="mailto:${email}">${email}</a>` : 'Not provided'}</p><p><strong>Message:</strong><br/>${message || 'N/A'}</p>`,
     });
 
     return new Response(JSON.stringify({ success: true, data }), {

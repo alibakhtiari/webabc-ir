@@ -33,6 +33,8 @@ const navItems = [
 const currentPathWithoutLang = Astro.url.pathname.replace(/^\/(en|fa|ar)/, '') || '/';
 const isActive = (href: string) =>
   currentPathWithoutLang === href || currentPathWithoutLang.startsWith(`${href}/`);
+
+const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 'font-persian';
 ---
 
 <header
@@ -54,12 +56,15 @@ const isActive = (href: string) =>
         <div class="group relative">
           <button
             type="button"
-            class={`flex items-center gap-1 text-sm font-medium text-foreground/80 hover:text-primary transition-colors font-${lang === 'en' ? 'sans' : 'persian'}`}
+            id="desktop-services-btn"
+            aria-expanded="false"
+            aria-haspopup="true"
+            class={`flex items-center gap-1 text-sm font-medium text-foreground/80 hover:text-primary transition-colors ${fontClass}`}
           >
             {t('common.services')}
             <svg
               aria-hidden="true"
-              class="h-4 w-4 transition-transform duration-200 group-hover:rotate-180"
+              class="h-4 w-4 transition-transform duration-200 group-focus-within:rotate-180 group-hover:rotate-180"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -73,7 +78,8 @@ const isActive = (href: string) =>
 
           <!-- Mega Menu dropdown content -->
           <div
-            class={`absolute top-full ${isRtl ? '-right-25' : '-left-25'} mt-2 w-180 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50`}
+            id="desktop-services-panel"
+            class={`absolute top-full ${isRtl ? '-right-25' : '-left-25'} mt-2 w-180 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 group-focus-within:translate-y-0 z-50`}
           >
             <div
               class="rounded-2xl border border-gray-100 bg-white p-6 shadow-2xl dark:border-slate-800 dark:bg-slate-900"
@@ -387,7 +393,7 @@ const isActive = (href: string) =>
             <a
               href={linkPath(item.href)}
               aria-current={isActive(item.href) ? 'page' : undefined}
-              class={`rounded-md px-1 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 font-${lang === 'en' ? 'sans' : 'persian'} ${isActive(item.href) ? 'font-semibold text-primary' : 'text-foreground/80 hover:text-primary'}`}
+              class={`rounded-md px-1 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${fontClass} ${isActive(item.href) ? 'font-semibold text-primary' : 'text-foreground/80 hover:text-primary'}`}
             >
               {t(item.label)}
             </a>
@@ -401,6 +407,9 @@ const isActive = (href: string) =>
         <div class="group relative">
           <button
             type="button"
+            id="desktop-lang-btn"
+            aria-expanded="false"
+            aria-haspopup="true"
             class="flex items-center gap-1 text-sm font-medium text-foreground/80 transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
             <svg
@@ -419,7 +428,8 @@ const isActive = (href: string) =>
             <span class="uppercase">{lang}</span>
           </button>
           <div
-            class="invisible absolute top-full right-0 z-50 mt-2 w-28 rounded-md border border-gray-100 bg-white py-1 opacity-0 shadow-lg transition-all duration-200 group-hover:visible group-hover:opacity-100 dark:border-slate-800 dark:bg-slate-900"
+            id="desktop-lang-panel"
+            class="invisible absolute top-full right-0 z-50 mt-2 w-28 rounded-md border border-gray-100 bg-white py-1 opacity-0 shadow-lg transition-all duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100 dark:border-slate-800 dark:bg-slate-900"
           >
             {
               Object.keys(languages).map((l) => (
@@ -528,6 +538,8 @@ const isActive = (href: string) =>
           id="mobile-menu-btn"
           class="rounded-lg p-2 text-foreground/80 hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           aria-label="Toggle Menu"
+          aria-expanded="false"
+          aria-controls="mobile-drawer"
         >
           <svg
             aria-hidden="true"
@@ -549,14 +561,15 @@ const isActive = (href: string) =>
   <!-- Mobile Dropdown drawer Menu -->
   <div
     id="mobile-drawer"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Mobile Navigation"
     class="fixed inset-0 z-40 hidden bg-black/60 backdrop-blur-xs transition-opacity duration-300"
   >
     <div
       class={`fixed top-0 bottom-0 ${isRtl ? 'left-0' : 'right-0'} w-[85%] max-w-sm bg-white dark:bg-slate-900 text-foreground shadow-2xl p-6 flex flex-col h-full overflow-y-auto z-50 border-s border-transparent dark:border-slate-800`}
     >
-      <div
-        class={`flex flex-col space-y-6 font-${lang === 'en' ? 'sans' : 'persian'} h-full justify-between`}
-      >
+      <div class={`flex flex-col space-y-6 ${fontClass} h-full justify-between`}>
         <div class="space-y-6">
           <!-- Header -->
           <div
@@ -776,7 +789,7 @@ const isActive = (href: string) =>
 <!-- Native HTML5 Dialog for Consultation Form -->
 <dialog
   id="consultation-modal"
-  class="fixed inset-0 m-auto max-h-[90vh] w-[calc(100%-2rem)] max-w-lg overflow-y-auto rounded-3xl border border-gray-100 bg-white p-0 font-persian shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-xs dark:border-slate-800 dark:bg-slate-900"
+  class={`fixed inset-0 m-auto max-h-[90vh] w-[calc(100%-2rem)] max-w-lg overflow-y-auto rounded-3xl border border-gray-100 bg-white p-0 ${fontClass} shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-xs dark:border-slate-800 dark:bg-slate-900`}
 >
   <div class="relative p-6 text-foreground sm:p-8">
     <button
@@ -805,13 +818,14 @@ const isActive = (href: string) =>
         }
       </p>
     </div>
-    <form class="space-y-4">
+    <form id="consultation-form" class="space-y-4">
       <div>
         <label class="mb-1.5 block text-sm font-semibold text-gray-700 dark:text-gray-300">
           {t('consultation.fullName', { fallback: 'Full Name' })}
         </label>
         <input
           type="text"
+          name="name"
           required
           class="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white"
         />
@@ -822,6 +836,7 @@ const isActive = (href: string) =>
         </label>
         <input
           type="tel"
+          name="phone"
           required
           class="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white"
           dir="ltr"
@@ -833,6 +848,7 @@ const isActive = (href: string) =>
         </label>
         <input
           type="email"
+          name="email"
           class="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white"
           dir="ltr"
         />
@@ -842,6 +858,7 @@ const isActive = (href: string) =>
           {t('consultation.message', { fallback: 'Message' })}
         </label>
         <textarea
+          name="message"
           rows="3"
           required
           class="w-full resize-none rounded-xl border border-gray-200 bg-white p-3 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white"
@@ -849,10 +866,12 @@ const isActive = (href: string) =>
       </div>
       <button
         type="submit"
-        class="h-11 w-full cursor-pointer rounded-xl bg-primary font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+        id="consultation-submit-btn"
+        class="h-11 w-full cursor-pointer rounded-xl bg-primary font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-60"
       >
         {t('consultation.sendRequest', { fallback: 'Send Request' })}
       </button>
+      <p id="consultation-response-msg" class="hidden text-center text-sm font-medium"></p>
     </form>
   </div>
 </dialog>
@@ -865,13 +884,28 @@ const isActive = (href: string) =>
       const drawer = document.getElementById('mobile-drawer');
       const drawerCloseBtn = document.getElementById('mobile-drawer-close');
 
+      function openDrawer() {
+        if (!drawer) return;
+        drawer.classList.remove('hidden');
+        if (mobileBtn) mobileBtn.setAttribute('aria-expanded', 'true');
+      }
+
+      function closeDrawer() {
+        if (!drawer) return;
+        drawer.classList.add('hidden');
+        if (mobileBtn) {
+          mobileBtn.setAttribute('aria-expanded', 'false');
+          mobileBtn.focus();
+        }
+      }
+
       if (mobileBtn && drawer) {
-        mobileBtn.onclick = () => drawer.classList.remove('hidden');
+        mobileBtn.onclick = openDrawer;
         if (drawerCloseBtn) {
-          drawerCloseBtn.onclick = () => drawer.classList.add('hidden');
+          drawerCloseBtn.onclick = closeDrawer;
         }
         drawer.onclick = (e) => {
-          if (e.target === drawer) drawer.classList.add('hidden');
+          if (e.target === drawer) closeDrawer();
         };
       }
 
@@ -901,8 +935,6 @@ const isActive = (href: string) =>
           (themeToggle && themeToggle.dataset.labelLight) || 'Switch to light mode';
         const activeLabel = isDark ? labelLight : labelDark;
 
-        // In dark mode: show Sun icon (to switch to light), hide Moon icon
-        // In light mode: show Moon icon (to switch to dark), hide Sun icon
         document
           .querySelectorAll(
             '#theme-toggle [data-icon="sun"], #theme-toggle-mobile [data-icon="sun"]'
@@ -949,11 +981,14 @@ const isActive = (href: string) =>
       const openBtn = document.getElementById('open-consultation-btn');
       const openMobileBtn = document.getElementById('open-consultation-btn-mobile');
       const closeBtn = document.getElementById('close-modal-btn');
+      const consultForm = document.getElementById('consultation-form');
+      const consultSubmitBtn = document.getElementById('consultation-submit-btn');
+      const consultResponseMsg = document.getElementById('consultation-response-msg');
 
       if (openBtn && dialog) openBtn.onclick = () => dialog.showModal();
       if (openMobileBtn && dialog) {
         openMobileBtn.onclick = () => {
-          if (drawer) drawer.classList.add('hidden');
+          closeDrawer();
           dialog.showModal();
         };
       }
@@ -963,6 +998,69 @@ const isActive = (href: string) =>
           if (e.target === dialog) dialog.close();
         };
       }
+
+      // Consultation Form AJAX Submission
+      if (consultForm && consultSubmitBtn && consultResponseMsg) {
+        consultForm.onsubmit = async (e) => {
+          e.preventDefault();
+          const origText = consultSubmitBtn.textContent;
+          consultSubmitBtn.disabled = true;
+          consultSubmitBtn.textContent = '...';
+          consultResponseMsg.classList.add('hidden');
+
+          const fd = new FormData(consultForm);
+          const payload = {
+            name: fd.get('name'),
+            phone: fd.get('phone'),
+            email: fd.get('email'),
+            message: fd.get('message'),
+          };
+
+          try {
+            const res = await fetch('/api/contact', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload),
+            });
+
+            if (res.ok) {
+              consultResponseMsg.textContent = 'Request submitted successfully!';
+              consultResponseMsg.className =
+                'text-center text-sm text-green-600 dark:text-green-400 block';
+              consultForm.reset();
+              setTimeout(() => {
+                if (dialog && dialog.open) dialog.close();
+                consultResponseMsg.classList.add('hidden');
+                consultSubmitBtn.disabled = false;
+                consultSubmitBtn.textContent = origText;
+              }, 2000);
+            } else {
+              const data = await res.json().catch(() => ({}));
+              consultResponseMsg.textContent =
+                data.error || 'Failed to send request. Please try again.';
+              consultResponseMsg.className =
+                'text-center text-sm text-red-600 dark:text-red-400 block';
+              consultSubmitBtn.disabled = false;
+              consultSubmitBtn.textContent = origText;
+            }
+          } catch (err) {
+            consultResponseMsg.textContent = 'Network error. Please try again.';
+            consultResponseMsg.className =
+              'text-center text-sm text-red-600 dark:text-red-400 block';
+            consultSubmitBtn.disabled = false;
+            consultSubmitBtn.textContent = origText;
+          }
+        };
+      }
+
+      // Global Escape Key Listener for Dialogs and Drawers
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          if (drawer && !drawer.classList.contains('hidden')) {
+            closeDrawer();
+          }
+        }
+      });
     }
 
     document.addEventListener('astro:page-load', setupNavbar);
