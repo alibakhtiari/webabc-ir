@@ -3,6 +3,7 @@ import ToolLayout from '@/layouts/ToolLayout.astro';
 import { getLanguageStaticPaths, type SupportedLanguage } from '@/types/language';
 import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
+import { buildFaqSchema } from '@/utils/faqSchema';
 
 export const getStaticPaths = getLanguageStaticPaths;
 
@@ -19,30 +20,8 @@ const descriptionText = t('headlineAnalyzer.description', {
     'Analyze your headlines for CTR, sentiment, readability and character length to optimize for SEO rankings.',
 });
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name:
-        supportedLang === 'fa'
-          ? 'چگونه عنوان مقاله خود را برای سئو بهینه کنیم؟'
-          : supportedLang === 'ar'
-            ? 'كيف يمكنني تحسين عنوان المقال للسيو؟'
-            : 'How do I optimize a headline for SEO and clicks?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text:
-          supportedLang === 'fa'
-            ? 'عناوین عالی باید بین ۶ تا ۱۲ کلمه، شامل عدد، دارای کلمات جذاب (Power Words) و کلمه کلیدی اصلی در ابتدای متن باشند.'
-            : supportedLang === 'ar'
-              ? 'العناوين الممتازة يجب أن تتراوح بين 6 إلى 12 كلمة وتحتوي على أرقام وكلمات محفزة للنقر.'
-              : 'High-performing headlines should be between 6 and 12 words, include numbers or brackets, contain power words, and front-load target keywords.',
-      },
-    },
-  ],
-};
+const faqs = dictionary.headlineAnalyzer?.faqs || [];
+const faqSchema = buildFaqSchema(faqs);
 ---
 
 <ToolLayout
@@ -269,37 +248,6 @@ const faqSchema = {
               Tips") are the highest-performing combination for blog, YouTube, and article
               headlines.
             </p>
-          </div>
-        </div>
-
-        <!-- On-Page FAQ / AEO Question Block -->
-        <div
-          class="space-y-6 rounded-2xl border border-gray-100 bg-white p-6 sm:p-8 dark:border-slate-800 dark:bg-slate-900"
-        >
-          <h2
-            class="border-b border-gray-100 pb-4 text-xl font-bold text-gray-900 md:text-2xl dark:border-slate-800 dark:text-white"
-          >
-            {
-              supportedLang === 'fa'
-                ? 'سوالات متداول آنالیزور عنوان سئو (FAQ)'
-                : supportedLang === 'ar'
-                  ? 'الأسئلة الشائعة حول محلل العناوين (FAQ)'
-                  : 'Frequently Asked Questions (Headline SEO FAQ)'
-            }
-          </h2>
-          <div class="space-y-4">
-            {
-              faqSchema.mainEntity.map((item: any) => (
-                <div class="space-y-2 rounded-xl border border-gray-100 bg-gray-50/50 p-4 dark:border-slate-800 dark:bg-slate-800/50">
-                  <h3 class="text-sm font-bold text-gray-900 sm:text-base dark:text-white">
-                    {item.name}
-                  </h3>
-                  <p class="text-xs leading-relaxed text-gray-600 sm:text-sm dark:text-gray-300">
-                    {item.acceptedAnswer.text}
-                  </p>
-                </div>
-              ))
-            }
           </div>
         </div>
       </div>

@@ -38,5 +38,15 @@
     "hasNumber": "Your title contains numbers. Titles with numbers generally have a 36% higher CTR.",
     "hasPowerWord": "Your title contains a power word (like Best, Free, Top). This boosts user curiosity.",
     "missingPowerWord": "Consider adding a power word (e.g., 'Best', 'Free', 'Guide') to increase CTR."
-  }
+  },
+  "faqs": [
+    {
+      "question": "What is the optimal length for an SEO title tag?",
+      "answer": "The optimal title length is between 50 and 60 characters or 580 pixels on desktop viewports."
+    },
+    {
+      "question": "Why does Google rewrite page title tags?",
+      "answer": "Google rewrites title tags if they are truncated, keyword-stuffed, or poorly matched to the user search query."
+    }
+  ]
 }

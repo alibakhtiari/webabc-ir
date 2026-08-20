@@ -14,5 +14,11 @@
   "containsQuestion": "Contains Question",
   "emotionalWords": "Emotional Words",
   "yes": "✓ Yes",
-  "no": "✗ No"
+  "no": "✗ No",
+  "faqs": [
+    {
+      "question": "How do I optimize a headline for SEO and clicks?",
+      "answer": "High-performing headlines should be between 6 and 12 words, include numbers or brackets, contain power words, and front-load target keywords."
+    }
+  ]
 }
