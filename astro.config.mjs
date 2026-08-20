@@ -1,12 +1,8 @@
-import fs from 'node:fs';
 import { defineConfig, svgoOptimizer } from 'astro/config';
 import tailwind from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
-
-const sitemapLastmod = JSON.parse(
-  fs.readFileSync(new URL('./src/generated/sitemap-lastmod.json', import.meta.url), 'utf-8')
-);
+import sitemapLastmod from './src/generated/sitemap-lastmod.json' with { type: 'json' };
 
 const SITE = 'https://webabc.ir';
 const LANGS = ['en', 'fa', 'ar'];

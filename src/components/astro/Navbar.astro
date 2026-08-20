@@ -1,7 +1,7 @@
 ---
 import Logo from './Logo.astro';
-import { getDictionary } from '@/i18n/get-dictionary';
-import { languages, type SupportedLanguage } from '@/types/language';
+import { getDictionary } from '../../i18n/get-dictionary';
+import { languages, type SupportedLanguage } from '../../types/language';
 import { createTranslator } from '@/i18n/translate';
 
 interface Props {
@@ -59,7 +59,6 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
             id="desktop-services-btn"
             aria-expanded="false"
             aria-haspopup="true"
-            aria-controls="desktop-services-panel"
             class={`flex items-center gap-1 text-sm font-medium text-foreground/80 hover:text-primary transition-colors ${fontClass}`}
           >
             {t('common.services')}
@@ -117,7 +116,7 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
                         <span class="block font-semibold"
                           >{t('services.seoTitle', { fallback: 'SEO Optimization' })}</span
                         >
-                        <span class="line-clamp-1 text-[11px] text-gray-400 dark:text-gray-500"
+                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
                           >{
                             t('services.seoDescription', { fallback: 'Search ranking growth' })
                           }</span
@@ -132,7 +131,7 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
                         <span class="block font-semibold"
                           >{t('services.localSeoTitle', { fallback: 'Local SEO' })}</span
                         >
-                        <span class="line-clamp-1 text-[11px] text-gray-400 dark:text-gray-500"
+                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
                           >{
                             t('services.localSeoDescription', { fallback: 'Google Maps marketing' })
                           }</span
@@ -147,7 +146,7 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
                         <span class="block font-semibold"
                           >{t('services.linkBuildingTitle', { fallback: 'Link Building' })}</span
                         >
-                        <span class="line-clamp-1 text-[11px] text-gray-400 dark:text-gray-500"
+                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
                           >{
                             t('services.linkBuildingDescription', {
                               fallback: 'Authority enhancement',
@@ -166,7 +165,7 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
                             t('services.contentCreationTitle', { fallback: 'Content Strategy' })
                           }</span
                         >
-                        <span class="line-clamp-1 text-[11px] text-gray-400 dark:text-gray-500"
+                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
                           >{
                             t('services.contentCreationDescription', {
                               fallback: 'SEO articles writing',
@@ -208,7 +207,7 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
                         <span class="block font-semibold"
                           >{t('services.webDevTitle', { fallback: 'Web Development' })}</span
                         >
-                        <span class="line-clamp-1 text-[11px] text-gray-400 dark:text-gray-500"
+                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
                           >{
                             t('services.webDevDescription', {
                               fallback: 'Custom web projects coding',
@@ -227,7 +226,7 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
                             t('wordpress.wordpressAndWoocommerce', { fallback: 'WordPress & Shop' })
                           }</span
                         >
-                        <span class="line-clamp-1 text-[11px] text-gray-400 dark:text-gray-500"
+                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
                           >{t('wordpress.subtitle', { fallback: 'CMS sites development' })}</span
                         >
                       </a>
@@ -240,7 +239,7 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
                         <span class="block font-semibold"
                           >{t('common.webDesignAndDevelopment', { fallback: 'Web Design' })}</span
                         >
-                        <span class="line-clamp-1 text-[11px] text-gray-400 dark:text-gray-500"
+                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
                           >{
                             t('services.webDevDescription', {
                               fallback: 'Premium layouts & prototypes',
@@ -257,7 +256,7 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
                         <span class="block font-semibold"
                           >{t('ecommerce.title', { fallback: 'E-commerce' })}</span
                         >
-                        <span class="line-clamp-1 text-[11px] text-gray-400 dark:text-gray-500"
+                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
                           >{
                             t('ecommerce.storeSetup', { fallback: 'Shopify & WooCommerce stores' })
                           }</span
@@ -298,7 +297,7 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
                         <span class="block font-semibold"
                           >{t('maintenance.title', { fallback: 'Maintenance' })}</span
                         >
-                        <span class="line-clamp-1 text-[11px] text-gray-400 dark:text-gray-500"
+                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
                           >{
                             t('maintenance.subtitle', {
                               fallback: 'Backup, updates & uptime monitoring',
@@ -315,7 +314,7 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
                         <span class="block font-semibold"
                           >{t('speedOptimization.title', { fallback: 'Speed Optimization' })}</span
                         >
-                        <span class="line-clamp-1 text-[11px] text-gray-400 dark:text-gray-500"
+                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
                           >{
                             t('speedOptimization.subtitle', { fallback: 'Core Web Vitals tuning' })
                           }</span
@@ -330,7 +329,7 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
                         <span class="block font-semibold"
                           >{t('uiUxAudit.title', { fallback: 'UI/UX Audit' })}</span
                         >
-                        <span class="line-clamp-1 text-[11px] text-gray-400 dark:text-gray-500"
+                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
                           >{
                             t('uiUxAudit.subtitle', { fallback: 'Usability, flows & audit report' })
                           }</span
@@ -411,7 +410,6 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
             id="desktop-lang-btn"
             aria-expanded="false"
             aria-haspopup="true"
-            aria-controls="desktop-lang-panel"
             class="flex items-center gap-1 text-sm font-medium text-foreground/80 transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
             <svg
@@ -500,8 +498,6 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
           <button
             type="button"
             id="mobile-lang-btn"
-            aria-expanded="false"
-            aria-controls="mobile-lang-dropdown"
             class="flex items-center gap-1.5 rounded-full border border-gray-100 bg-white/80 px-3 py-1.5 text-sm font-semibold text-gray-700 shadow-xs transition-all hover:bg-gray-100 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800/80 dark:text-gray-200 dark:hover:bg-slate-700"
           >
             <svg
@@ -585,7 +581,7 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
             <button
               type="button"
               id="mobile-drawer-close"
-              class="cursor-pointer text-gray-400 hover:text-gray-600 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:hover:text-gray-200"
+              class="cursor-pointer text-gray-500 hover:text-gray-700 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-200"
             >
               <svg
                 aria-hidden="true"
@@ -793,13 +789,13 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
 <!-- Native HTML5 Dialog for Consultation Form -->
 <dialog
   id="consultation-modal"
-  class={`fixed inset-0 m-auto max-h-[90vh] w-[calc(100%-2rem)] max-w-lg overflow-y-auto rounded-3xl border border-gray-100 bg-white p-0 ${fontClass} shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-xs dark:border-slate-800 dark:bg-slate-900`}
+  class="fixed inset-0 m-auto max-h-[90vh] w-[calc(100%-2rem)] max-w-lg overflow-y-auto rounded-3xl border border-gray-100 bg-white p-0 font-persian shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-xs dark:border-slate-800 dark:bg-slate-900"
 >
   <div class="relative p-6 text-foreground sm:p-8">
     <button
       type="button"
       id="close-modal-btn"
-      class="absolute top-4 right-4 cursor-pointer rounded-full p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:hover:bg-slate-800 dark:hover:text-gray-200"
+      class="absolute top-4 right-4 cursor-pointer rounded-full p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-gray-400 dark:hover:bg-slate-800 dark:hover:text-gray-200"
       aria-label={t('consultation.cancel', { fallback: 'Close' })}
     >
       <svg aria-hidden="true" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -822,14 +818,13 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
         }
       </p>
     </div>
-    <form id="consultation-form" class="space-y-4">
+    <form class="space-y-4">
       <div>
         <label class="mb-1.5 block text-sm font-semibold text-gray-700 dark:text-gray-300">
           {t('consultation.fullName', { fallback: 'Full Name' })}
         </label>
         <input
           type="text"
-          name="name"
           required
           class="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white"
         />
@@ -840,7 +835,6 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
         </label>
         <input
           type="tel"
-          name="phone"
           required
           class="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white"
           dir="ltr"
@@ -852,7 +846,6 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
         </label>
         <input
           type="email"
-          name="email"
           class="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white"
           dir="ltr"
         />
@@ -862,7 +855,6 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
           {t('consultation.message', { fallback: 'Message' })}
         </label>
         <textarea
-          name="message"
           rows="3"
           required
           class="w-full resize-none rounded-xl border border-gray-200 bg-white p-3 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white"
@@ -870,18 +862,10 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
       </div>
       <button
         type="submit"
-        id="consultation-submit-btn"
-        class="h-11 w-full cursor-pointer rounded-xl bg-primary font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-60"
+        class="h-11 w-full cursor-pointer rounded-xl bg-primary font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
       >
         {t('consultation.sendRequest', { fallback: 'Send Request' })}
       </button>
-      <p
-        id="consultation-response-msg"
-        role="status"
-        aria-live="polite"
-        class="hidden text-center text-sm font-medium"
-      >
-      </p>
     </form>
   </div>
 </dialog>
@@ -894,65 +878,15 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
       const drawer = document.getElementById('mobile-drawer');
       const drawerCloseBtn = document.getElementById('mobile-drawer-close');
 
-      function openDrawer() {
-        if (!drawer) return;
-        drawer.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-        if (mobileBtn) mobileBtn.setAttribute('aria-expanded', 'true');
-        if (drawerCloseBtn) drawerCloseBtn.focus();
-      }
-
-      function closeDrawer() {
-        if (!drawer) return;
-        drawer.classList.add('hidden');
-        document.body.style.overflow = '';
-        if (mobileBtn) {
-          mobileBtn.setAttribute('aria-expanded', 'false');
-          mobileBtn.focus();
-        }
-      }
-
-      function trapDrawerFocus(e) {
-        if (!drawer || drawer.classList.contains('hidden')) return;
-        if (e.key !== 'Tab') return;
-        const focusables = drawer.querySelectorAll(
-          'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
-        );
-        if (!focusables.length) return;
-        const first = focusables[0];
-        const last = focusables[focusables.length - 1];
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault();
-          if (last && typeof last.focus === 'function') last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          if (first && typeof first.focus === 'function') first.focus();
-        }
-      }
-
       if (mobileBtn && drawer) {
-        mobileBtn.onclick = openDrawer;
+        mobileBtn.onclick = () => drawer.classList.remove('hidden');
         if (drawerCloseBtn) {
-          drawerCloseBtn.onclick = closeDrawer;
+          drawerCloseBtn.onclick = () => drawer.classList.add('hidden');
         }
         drawer.onclick = (e) => {
-          if (e.target === drawer) closeDrawer();
+          if (e.target === drawer) drawer.classList.add('hidden');
         };
-        drawer.addEventListener('keydown', trapDrawerFocus);
       }
-
-      // Desktop hover/focus dropdowns: keep aria-expanded in sync with CSS state
-      document.querySelectorAll('#desktop-services-btn, #desktop-lang-btn').forEach((btn) => {
-        const group = btn.closest('.group');
-        if (!group) return;
-        const sync = () =>
-          btn.setAttribute('aria-expanded', String(group.matches(':hover, :focus-within')));
-        group.addEventListener('mouseenter', sync);
-        group.addEventListener('mouseleave', sync);
-        group.addEventListener('focusin', sync);
-        group.addEventListener('focusout', sync);
-        sync();
-      });
 
       // Mobile Language Dropdown Toggle
       const mobileLangBtn = document.getElementById('mobile-lang-btn');
@@ -960,13 +894,11 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
       if (mobileLangBtn && mobileLangDropdown) {
         mobileLangBtn.onclick = (e) => {
           e.stopPropagation();
-          const isOpen = mobileLangDropdown.classList.toggle('hidden');
-          mobileLangBtn.setAttribute('aria-expanded', String(!isOpen));
+          mobileLangDropdown.classList.toggle('hidden');
         };
         document.addEventListener('click', (e) => {
           if (!mobileLangBtn.contains(e.target)) {
             mobileLangDropdown.classList.add('hidden');
-            mobileLangBtn.setAttribute('aria-expanded', 'false');
           }
         });
       }
@@ -982,6 +914,8 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
           (themeToggle && themeToggle.dataset.labelLight) || 'Switch to light mode';
         const activeLabel = isDark ? labelLight : labelDark;
 
+        // In dark mode: show Sun icon (to switch to light), hide Moon icon
+        // In light mode: show Moon icon (to switch to dark), hide Sun icon
         document
           .querySelectorAll(
             '#theme-toggle [data-icon="sun"], #theme-toggle-mobile [data-icon="sun"]'
@@ -1028,14 +962,11 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
       const openBtn = document.getElementById('open-consultation-btn');
       const openMobileBtn = document.getElementById('open-consultation-btn-mobile');
       const closeBtn = document.getElementById('close-modal-btn');
-      const consultForm = document.getElementById('consultation-form');
-      const consultSubmitBtn = document.getElementById('consultation-submit-btn');
-      const consultResponseMsg = document.getElementById('consultation-response-msg');
 
       if (openBtn && dialog) openBtn.onclick = () => dialog.showModal();
       if (openMobileBtn && dialog) {
         openMobileBtn.onclick = () => {
-          closeDrawer();
+          if (drawer) drawer.classList.add('hidden');
           dialog.showModal();
         };
       }
@@ -1045,69 +976,6 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
           if (e.target === dialog) dialog.close();
         };
       }
-
-      // Consultation Form AJAX Submission
-      if (consultForm && consultSubmitBtn && consultResponseMsg) {
-        consultForm.onsubmit = async (e) => {
-          e.preventDefault();
-          const origText = consultSubmitBtn.textContent;
-          consultSubmitBtn.disabled = true;
-          consultSubmitBtn.textContent = '...';
-          consultResponseMsg.classList.add('hidden');
-
-          const fd = new FormData(consultForm);
-          const payload = {
-            name: fd.get('name'),
-            phone: fd.get('phone'),
-            email: fd.get('email'),
-            message: fd.get('message'),
-          };
-
-          try {
-            const res = await fetch('/api/contact', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload),
-            });
-
-            if (res.ok) {
-              consultResponseMsg.textContent = 'Request submitted successfully!';
-              consultResponseMsg.className =
-                'text-center text-sm text-green-600 dark:text-green-400 block';
-              consultForm.reset();
-              setTimeout(() => {
-                if (dialog && dialog.open) dialog.close();
-                consultResponseMsg.classList.add('hidden');
-                consultSubmitBtn.disabled = false;
-                consultSubmitBtn.textContent = origText;
-              }, 2000);
-            } else {
-              const data = await res.json().catch(() => ({}));
-              consultResponseMsg.textContent =
-                data.error || 'Failed to send request. Please try again.';
-              consultResponseMsg.className =
-                'text-center text-sm text-red-600 dark:text-red-400 block';
-              consultSubmitBtn.disabled = false;
-              consultSubmitBtn.textContent = origText;
-            }
-          } catch (err) {
-            consultResponseMsg.textContent = 'Network error. Please try again.';
-            consultResponseMsg.className =
-              'text-center text-sm text-red-600 dark:text-red-400 block';
-            consultSubmitBtn.disabled = false;
-            consultSubmitBtn.textContent = origText;
-          }
-        };
-      }
-
-      // Global Escape Key Listener for Dialogs and Drawers
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          if (drawer && !drawer.classList.contains('hidden')) {
-            closeDrawer();
-          }
-        }
-      });
     }
 
     document.addEventListener('astro:page-load', setupNavbar);
