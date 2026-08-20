@@ -54,9 +54,7 @@ const blogSchema = {
     image: post.image.startsWith('http') ? post.image : `${origin}${post.image}`,
     datePublished: post.date,
     author: {
-      '@type': ['Ali Bakhtiari', 'علی بختیاری', 'علي بختياري'].includes(
-        post.author?.trim() ?? ''
-      )
+      '@type': ['Ali Bakhtiari', 'علی بختیاری', 'علي بختياري'].includes(post.author?.trim() ?? '')
         ? 'Person'
         : 'Organization',
       name:
