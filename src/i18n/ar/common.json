@@ -61,12 +61,13 @@
   "company": "الشركة",
   "companyName": "ويب إيه بي سي",
   "resources": "الموارد",
-  "copyright": "© {year} وب أي بي سي. جميع الحقوق محفوظة.",
+  "copyright": "© {year} ويب إيه بي سي. جميع الحقوق محفوظة.",
   "privacyPolicy": "سياسة الخصوصية",
   "termsOfService": "شروط الخدمة",
   "cookiePolicy": "سياسة الكوكيز",
   "whyChooseUs": "لماذا تختارنا",
   "howItWorks": "كيف نعمل",
   "switchToDark": "الوضع الداكن",
-  "switchToLight": "الوضع الفاتح"
+  "switchToLight": "الوضع الفاتح",
+  "skipToContent": "تجاوز إلى المحتوى الرئيسي"
 }

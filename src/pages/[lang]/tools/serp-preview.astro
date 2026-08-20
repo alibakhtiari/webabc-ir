@@ -75,7 +75,7 @@ const faqSchema = {
             placeholder={t('serpPreview.placeholderTitle', { fallback: 'Your page title' })}
             class="h-11 w-full rounded-lg border border-gray-200 bg-white px-4 text-gray-900 focus:border-primary focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
           />
-          <p id="sp-title-count" class="text-xs text-gray-400">
+          <p id="sp-title-count" class="text-xs text-gray-500 dark:text-gray-400">
             0/60 {t('serpPreview.charsMax', { fallback: 'characters (max' })} 70)
           </p>
         </div>
@@ -105,7 +105,7 @@ const faqSchema = {
             placeholder={t('serpPreview.placeholderDesc', { fallback: 'Your meta description' })}
             class="w-full resize-none rounded-lg border border-gray-200 bg-white p-4 text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
           ></textarea>
-          <p id="sp-desc-count" class="text-xs text-gray-400">
+          <p id="sp-desc-count" class="text-xs text-gray-500 dark:text-gray-400">
             0/160 {t('serpPreview.charsMax', { fallback: 'characters (max' })} 170)
           </p>
         </div>
@@ -173,11 +173,11 @@ const faqSchema = {
 
       titleCount.textContent = `${title.length}/60`;
       titleCount.classList.toggle('text-red-500', title.length > 60);
-      titleCount.classList.toggle('text-gray-400', title.length <= 60);
+      titleCount.classList.toggle('text-gray-500 dark:text-gray-400', title.length <= 60);
 
       descCount.textContent = `${desc.length}/160`;
       descCount.classList.toggle('text-red-500', desc.length > 160);
-      descCount.classList.toggle('text-gray-400', desc.length <= 160);
+      descCount.classList.toggle('text-gray-500 dark:text-gray-400', desc.length <= 160);
 
       urlPreview.textContent = url || defaultUrl;
       titlePreview.textContent = title || defaultTitle;

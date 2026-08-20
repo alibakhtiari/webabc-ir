@@ -138,7 +138,7 @@ const faqSchema = {
                 </thead>
                 <tbody id="density-tbody" class="divide-y divide-gray-50">
                   <tr>
-                    <td colspan="3" class="py-8 text-center text-gray-400"
+                    <td colspan="3" class="py-8 text-center text-gray-500 dark:text-gray-400"
                       >Enter text to view keywords density</td
                     >
                   </tr>
@@ -370,7 +370,7 @@ const faqSchema = {
       wordCountSpan.textContent = words.length;
 
       if (words.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="3" class="py-8 text-center text-gray-400">Enter text to view keywords density</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="3" class="py-8 text-center text-gray-500 dark:text-gray-400">Enter text to view keywords density</td></tr>`;
         return;
       }
 
@@ -400,7 +400,7 @@ const faqSchema = {
         .slice(0, 15); // Show top 15 results
 
       if (sorted.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="3" class="py-8 text-center text-gray-400">No content keywords detected</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="3" class="py-8 text-center text-gray-500 dark:text-gray-400">No content keywords detected</td></tr>`;
         return;
       }
 

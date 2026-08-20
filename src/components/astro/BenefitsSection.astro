@@ -12,6 +12,7 @@ interface Props {
 const { lang } = Astro.props;
 const dictionary = await getDictionary(lang);
 const isRtl = languages[lang]?.direction === 'rtl';
+const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 'font-persian';
 
 // Helper to translate strings
 const t = createTranslator(dictionary);
@@ -44,33 +45,30 @@ const benefits = [
 ];
 ---
 
-<section id="benefits" class="relative overflow-hidden py-24 font-sans">
-  <div class="absolute inset-0 overflow-hidden">
-    <div class="absolute top-40 left-20 h-80 w-80 rounded-full bg-primary/5 blur-3xl"></div>
+<section class="relative overflow-hidden bg-background py-20 font-sans md:py-32">
+  <!-- Background Decorations -->
+  <div class="pointer-events-none absolute inset-0 overflow-hidden">
+    <div class="absolute top-40 left-10 h-72 w-72 rounded-full bg-primary/5 blur-3xl"></div>
     <div class="absolute right-20 bottom-40 h-64 w-64 rounded-full bg-primary/10 blur-3xl"></div>
   </div>
 
   <div class="relative z-10 container mx-auto px-4 md:px-6">
     <div class="mx-auto mb-16 max-w-3xl text-center">
       <span
-        class={`inline-block mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium font-${lang === 'en' ? 'sans' : 'persian'}`}
+        class={`inline-block mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium ${fontClass}`}
       >
         {t('benefits.sectionTag', { fallback: 'مزایای همکاری با ما' })}
       </span>
 
-      <h2
-        class={`text-3xl md:text-4xl font-bold tracking-tight mb-6 text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}
-      >
+      <h2 class={`text-3xl md:text-4xl font-bold tracking-tight mb-6 text-balance ${fontClass}`}>
         {t('benefits.sectionTitle.prefix', { fallback: 'چرا ' })}
         <span class="text-primary"
-          >{t('benefits.sectionTitle.highlight', { fallback: 'وب آ ب ث' })}</span
+          >{t('benefits.sectionTitle.highlight', { fallback: 'WebABC' })}</span
         >
         {t('benefits.sectionTitle.suffix', { fallback: ' را انتخاب کنید؟' })}
       </h2>
 
-      <p
-        class={`text-foreground/80 leading-relaxed text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}
-      >
+      <p class={`text-foreground/80 leading-relaxed text-balance ${fontClass}`}>
         {
           t('benefits.sectionDescription', {
             fallback:
@@ -98,12 +96,8 @@ const benefits = [
                 </svg>
               </div>
               <div class="space-y-2">
-                <h3 class={`text-xl font-medium font-${lang === 'en' ? 'sans' : 'persian'}`}>
-                  {benefit.title}
-                </h3>
-                <p class={`text-foreground/70 font-${lang === 'en' ? 'sans' : 'persian'}`}>
-                  {benefit.description}
-                </p>
+                <h3 class={`text-xl font-medium ${fontClass}`}>{benefit.title}</h3>
+                <p class={`text-foreground/70 ${fontClass}`}>{benefit.description}</p>
               </div>
             </div>
           </div>
@@ -121,18 +115,14 @@ const benefits = [
             <span>{t('benefits.guaranteeTag', { fallback: 'تضمین نتیجه' })}</span>
           </div>
 
-          <h3
-            class={`text-2xl md:text-3xl font-bold mb-6 text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}
-          >
+          <h3 class={`text-2xl md:text-3xl font-bold mb-6 text-balance ${fontClass}`}>
             {t('benefits.guaranteeTitle.prefix', { fallback: 'نتایج ملموس با روش‌های ' })}
             <span class="text-primary"
               >{t('benefits.guaranteeTitle.highlight', { fallback: 'اثبات شده' })}</span
             >
           </h3>
 
-          <p
-            class={`text-foreground/80 leading-relaxed mb-8 text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}
-          >
+          <p class={`text-foreground/80 leading-relaxed mb-8 text-balance ${fontClass}`}>
             {
               t('benefits.guaranteeDescription', {
                 fallback:
@@ -155,7 +145,7 @@ const benefits = [
                   fallback: 'قراردادهای منعطف و بدون تعهد بلندمدت',
                 }),
               ].map((item) => (
-                <li class={`flex items-center font-${lang === 'en' ? 'sans' : 'persian'}`}>
+                <li class={`flex items-center ${fontClass}`}>
                   <div class="me-3 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
                     <svg
                       aria-hidden="true"
@@ -177,7 +167,7 @@ const benefits = [
           <div class="flex items-center">
             <button
               type="button"
-              class={`px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2 font-${lang === 'en' ? 'sans' : 'persian'}`}
+              class={`px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2 ${fontClass}`}
             >
               <span>{t('benefits.ctaButton', { fallback: 'دریافت مشاوره رایگان' })}</span>
               {

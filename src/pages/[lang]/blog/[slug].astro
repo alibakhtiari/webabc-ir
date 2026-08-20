@@ -33,6 +33,10 @@ if (!post) {
 
 // Helper to translate strings
 const t = createTranslator(dictionary);
+const isRtl = languages[supportedLang]?.direction === 'rtl';
+const fontClass =
+  supportedLang === 'en' ? 'font-sans' : supportedLang === 'ar' ? 'font-arabic' : 'font-persian';
+const metaFontClass = isRtl ? fontClass : 'font-mono';
 
 // Formatter date
 const formatDate = (dateString: string | Date) => {
@@ -77,7 +81,7 @@ const articleSchema = {
   description: post.data.description,
   image: post.data.image.startsWith('http') ? post.data.image : `${origin}${post.data.image}`,
   datePublished: post.data.date,
-  ...(post.data.updatedDate ? { dateModified: post.data.updatedDate } : {}),
+  dateModified: post.data.updatedDate || post.data.date,
   author: {
     '@type': 'Person',
     name: isAliBakhtiari ? 'Ali Bakhtiari' : post.data.author || 'WebABC Team',
@@ -124,7 +128,7 @@ const translatedAuthor =
     ? supportedLang === 'fa'
       ? 'تیم وب اِی‌بی‌سی'
       : supportedLang === 'ar'
-        ? 'فريق وب إي بي سي'
+        ? 'فريق ويب إيه بي سي'
         : 'WebABC Team'
     : isAliBakhtiari
       ? supportedLang === 'fa'
@@ -143,7 +147,7 @@ const authorBio = isAliBakhtiari
   : supportedLang === 'fa'
     ? 'تیم تخصصی وب اِی‌بی‌سی متشکل از کارشناسان ارشد سئو و طراحان وب با بیش از یک دهه تجربه در توسعه سیستم‌های تحت وب و بهینه‌سازی موتورهای جستجو.'
     : supportedLang === 'ar'
-      ? 'فريق خبراء وب إي بي سي يضم نخبة من مستشاري السيو ومطوري الويب ذوي الخبرة الطويلة في تحسين محركات البحث وتطوير التطبيقات.'
+      ? 'فريق خبراء ويب إيه بي سي يضم نخبة من مستشاري السيو ومطوري الويب ذوي الخبرة الطويلة في تحسين محركات البحث وتطوير التطبيقات.'
       : 'The WebABC editorial team consists of senior SEO strategists and web developers with over a decade of experience in building high-performance applications.';
 
 const authorRole = isAliBakhtiari
@@ -228,18 +232,18 @@ const authorRole = isAliBakhtiari
         </div>
 
         <h1
-          class="mb-6 font-persian text-4xl leading-tight font-bold text-gray-900 md:text-5xl dark:text-white"
+          class={`mb-6 text-4xl leading-tight font-bold text-gray-900 md:text-5xl dark:text-white ${fontClass}`}
         >
           {post.data.title}
         </h1>
 
         <div
-          class="flex flex-wrap items-center gap-4 font-mono text-sm text-gray-500 dark:text-gray-400"
+          class={`flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-400 ${metaFontClass}`}
         >
           <span class="flex items-center gap-1">
             <svg
               aria-hidden="true"
-              class="h-4 w-4 text-gray-400"
+              class="h-4 w-4 text-gray-500 dark:text-gray-400"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
@@ -254,7 +258,7 @@ const authorRole = isAliBakhtiari
           <span class="flex items-center gap-1">
             <svg
               aria-hidden="true"
-              class="h-4 w-4 text-gray-400"
+              class="h-4 w-4 text-gray-500 dark:text-gray-400"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
@@ -291,7 +295,7 @@ const authorRole = isAliBakhtiari
           <span class="flex items-center gap-1">
             <svg
               aria-hidden="true"
-              class="h-4 w-4 text-gray-400"
+              class="h-4 w-4 text-gray-500 dark:text-gray-400"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
@@ -357,7 +361,11 @@ const authorRole = isAliBakhtiari
               {t('blog.author', { fallback: 'Author' })}
             </p>
             <p class="text-lg font-bold text-gray-900 dark:text-white">{translatedAuthor}</p>
-            {authorRole && <p class="text-xs font-medium text-gray-400">{authorRole}</p>}
+            {
+              authorRole && (
+                <p class="text-xs font-medium text-gray-500 dark:text-gray-400">{authorRole}</p>
+              )
+            }
           </div>
           <p class="max-w-2xl text-sm leading-relaxed text-gray-600 dark:text-gray-300">
             {authorBio}
@@ -370,7 +378,7 @@ const authorRole = isAliBakhtiari
                   href="https://www.linkedin.com/in/alibakhtiarii/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-gray-400 transition-colors hover:text-[#0077b5]"
+                  class="text-gray-500 transition-colors hover:text-[#0077b5] dark:text-gray-400"
                   title="LinkedIn"
                 >
                   <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -381,7 +389,7 @@ const authorRole = isAliBakhtiari
                   href="https://github.com/alibakhtiari"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-gray-400 transition-colors hover:text-[#24292e]"
+                  class="text-gray-500 transition-colors hover:text-[#24292e] dark:text-gray-400"
                   title="GitHub"
                 >
                   <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -396,7 +404,7 @@ const authorRole = isAliBakhtiari
                   href="https://www.instagram.com/aliibakhtiari/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-gray-400 transition-colors hover:text-[#e1306c]"
+                  class="text-gray-500 transition-colors hover:text-[#e1306c] dark:text-gray-400"
                   title="Instagram"
                 >
                   <svg
@@ -420,7 +428,7 @@ const authorRole = isAliBakhtiari
                   href="https://www.facebook.com/Alii.bakhtiari"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-gray-400 transition-colors hover:text-[#1877f2]"
+                  class="text-gray-500 transition-colors hover:text-[#1877f2] dark:text-gray-400"
                   title="Facebook"
                 >
                   <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -431,7 +439,7 @@ const authorRole = isAliBakhtiari
                   href="https://x.com/aliib1991"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-gray-400 transition-colors hover:text-[#1da1f2]"
+                  class="text-gray-500 transition-colors hover:text-[#1da1f2] dark:text-gray-400"
                   title="Twitter (X)"
                 >
                   <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -442,7 +450,7 @@ const authorRole = isAliBakhtiari
                   href="https://aliib.ir/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-gray-400 transition-colors hover:text-primary"
+                  class="text-gray-500 transition-colors hover:text-primary dark:text-gray-400"
                   title="Website"
                 >
                   <svg
@@ -462,7 +470,7 @@ const authorRole = isAliBakhtiari
                 </a>
                 <a
                   href="mailto:Ali.Bakhtiarii@gmail.com"
-                  class="text-gray-400 transition-colors hover:text-[#dd4b39]"
+                  class="text-gray-500 transition-colors hover:text-[#dd4b39] dark:text-gray-400"
                   title="Email"
                 >
                   <svg

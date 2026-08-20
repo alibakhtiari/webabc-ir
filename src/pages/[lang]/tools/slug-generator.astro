@@ -197,13 +197,13 @@ const faqSchema = {
       const text = input.value;
       if (!text.trim()) {
         output.textContent = 'your-slug-will-appear-here';
-        output.classList.add('text-gray-400');
+        output.classList.add('text-gray-500 dark:text-gray-400');
         output.classList.remove('text-primary');
         return;
       }
       const slug = slugify(text);
       output.textContent = slug || '-';
-      output.classList.remove('text-gray-400');
+      output.classList.remove('text-gray-500 dark:text-gray-400');
       output.classList.add('text-primary');
     }
 
