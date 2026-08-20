@@ -14,9 +14,25 @@ interface Env {
 
 const PERSIAN_COUNTRIES = ['IR', 'AF', 'TJ'];
 const ARABIC_COUNTRIES = [
-  'SA', 'AE', 'QA', 'KW', 'BH', 'OM',
-  'IQ', 'EG', 'LB', 'JO', 'SY', 'YE',
-  'PS', 'SD', 'LY', 'MA', 'DZ', 'TN', 'MR',
+  'SA',
+  'AE',
+  'QA',
+  'KW',
+  'BH',
+  'OM',
+  'IQ',
+  'EG',
+  'LB',
+  'JO',
+  'SY',
+  'YE',
+  'PS',
+  'SD',
+  'LY',
+  'MA',
+  'DZ',
+  'TN',
+  'MR',
 ];
 
 // Only the real production domain should be indexable. Any other hostname this
@@ -41,11 +57,14 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
     }
 
     if (token && env.TURNSTILE_SECRET_KEY) {
-      const turnstileResult = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ secret: env.TURNSTILE_SECRET_KEY, response: token }),
-      });
+      const turnstileResult = await fetch(
+        'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ secret: env.TURNSTILE_SECRET_KEY, response: token }),
+        }
+      );
       const outcome = (await turnstileResult.json()) as { success?: boolean };
       if (!outcome.success) {
         return new Response(JSON.stringify({ error: 'Invalid Captcha' }), {
@@ -95,7 +114,7 @@ export default {
     // browser/edge caches for visitors who change regions, and (b) is what Google
     // recommends against for locale routing — the target selection varies by IP.
     if (url.pathname === '/' || url.pathname === '') {
-      const country = ((request as { cf?: { country?: string } }).cf?.country) || 'US';
+      const country = (request as { cf?: { country?: string } }).cf?.country || 'US';
       let targetLang = 'en';
       if (PERSIAN_COUNTRIES.includes(country)) targetLang = 'fa';
       else if (ARABIC_COUNTRIES.includes(country)) targetLang = 'ar';

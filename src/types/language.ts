@@ -1,4 +1,3 @@
-
 /**
  * Language types and interfaces for the application
  */
@@ -52,9 +51,5 @@ export interface LanguageContextType {
  * Returns static paths boilerplate for pages that only parameterize on lang
  */
 export function getLanguageStaticPaths() {
-  return [
-    { params: { lang: 'en' } },
-    { params: { lang: 'fa' } },
-    { params: { lang: 'ar' } },
-  ];
+  return [{ params: { lang: 'en' } }, { params: { lang: 'fa' } }, { params: { lang: 'ar' } }];
 }
