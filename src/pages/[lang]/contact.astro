@@ -19,145 +19,179 @@ const titleText = t('contact.title', { fallback: 'Contact Us' });
 const descriptionText = t('contact.subtitle', { fallback: 'Get in Touch with Our Team' });
 
 const contactPageSchema = {
-  "@context": "https://schema.org",
-  "@graph": [
+  '@context': 'https://schema.org',
+  '@graph': [
     {
-      "@type": "ContactPage",
-      "@id": `https://webabc.ir/${supportedLang}/contact/#webpage`,
-      "url": `https://webabc.ir/${supportedLang}/contact/`,
-      "name": titleText,
-      "description": descriptionText,
-      "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
-      "mainEntity": {
-        "@id": "https://webabc.ir/#organization"
-      }
+      '@type': 'ContactPage',
+      '@id': `https://webabc.ir/${supportedLang}/contact/#webpage`,
+      url: `https://webabc.ir/${supportedLang}/contact/`,
+      name: titleText,
+      description: descriptionText,
+      inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
+      mainEntity: {
+        '@id': 'https://webabc.ir/#organization',
+      },
     },
     {
-      "@type": "BreadcrumbList",
-      "@id": `https://webabc.ir/${supportedLang}/contact/#breadcrumb`,
-      "itemListElement": [
+      '@type': 'BreadcrumbList',
+      '@id': `https://webabc.ir/${supportedLang}/contact/#breadcrumb`,
+      itemListElement: [
         {
-          "@type": "ListItem",
-          "position": 1,
-          "name": t('common.home', { fallback: 'Home' }),
-          "item": `https://webabc.ir/${supportedLang}/`
+          '@type': 'ListItem',
+          position: 1,
+          name: t('common.home', { fallback: 'Home' }),
+          item: `https://webabc.ir/${supportedLang}/`,
         },
         {
-          "@type": "ListItem",
-          "position": 2,
-          "name": titleText,
-          "item": `https://webabc.ir/${supportedLang}/contact/`
-        }
-      ]
-    }
-  ]
+          '@type': 'ListItem',
+          position: 2,
+          name: titleText,
+          item: `https://webabc.ir/${supportedLang}/contact/`,
+        },
+      ],
+    },
+  ],
 };
 
-const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}/` },
-  { label: titleText }
-];
+const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { label: titleText }];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="contact">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(contactPageSchema)} />
 
-  <div class="max-w-4xl mx-auto pt-36 pb-12 px-4 sm:px-6 lg:px-8 w-full">
+  <div class="mx-auto w-full max-w-4xl px-4 pt-36 pb-12 sm:px-6 lg:px-8">
     <div class="space-y-12">
       <div class="text-center">
         <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-normal">{t('contact.getInTouch', { fallback: 'Get In Touch' })}</h1>
+        <h1
+          class="mb-4 font-persian text-4xl leading-normal font-bold text-gray-900 md:text-5xl dark:text-white"
+        >
+          {t('contact.getInTouch', { fallback: 'Get In Touch' })}
+        </h1>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+      <div class="grid gap-8 md:grid-cols-2 md:gap-12">
         <!-- Contact Form -->
-        <div class="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
+        <div
+          class="rounded-2xl border border-gray-100 bg-white p-8 font-persian shadow-xl dark:border-slate-800 dark:bg-slate-900"
+        >
           <form id="contact-form" class="space-y-6">
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2 text-start">{t('contact.consultation.fullName', { fallback: 'Full Name' })}</label>
+              <label
+                class="mb-2 block text-start text-sm font-medium text-gray-700 dark:text-gray-300"
+                >{t('contact.consultation.fullName', { fallback: 'Full Name' })}</label
+              >
               <input
                 name="name"
                 type="text"
                 required
                 placeholder={t('contact.consultation.fullName', { fallback: 'Full Name' })}
-                class="w-full h-11 border border-gray-200 rounded-lg px-4 focus:outline-none focus:border-primary"
+                class="h-11 w-full rounded-lg border border-gray-200 bg-white px-4 text-gray-900 focus:border-primary focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
               />
             </div>
 
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2 text-start">{t('contact.consultation.email', { fallback: 'Email' })}</label>
+              <label
+                class="mb-2 block text-start text-sm font-medium text-gray-700 dark:text-gray-300"
+                >{t('contact.consultation.email', { fallback: 'Email' })}</label
+              >
               <input
                 name="email"
                 type="email"
                 required
                 placeholder="example@domain.com"
-                class="w-full h-11 border border-gray-200 rounded-lg px-4 focus:outline-none focus:border-primary"
+                class="h-11 w-full rounded-lg border border-gray-200 bg-white px-4 text-gray-900 focus:border-primary focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
               />
             </div>
 
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2 text-start">{t('contact.consultation.message', { fallback: 'Message' })}</label>
+              <label
+                class="mb-2 block text-start text-sm font-medium text-gray-700 dark:text-gray-300"
+                >{t('contact.consultation.message', { fallback: 'Message' })}</label
+              >
               <textarea
                 name="message"
                 rows="5"
                 required
                 placeholder={t('contact.yourMessage', { fallback: 'Write your message...' })}
-                class="w-full border border-gray-200 rounded-lg p-4 focus:outline-none focus:border-primary resize-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                class="w-full resize-none rounded-lg border border-gray-200 bg-white p-4 text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
               ></textarea>
             </div>
 
             <!-- Captcha container -->
-            <div id="captcha-container" class="flex justify-center my-4 min-h-[72px]">
-              <div class="cf-turnstile" data-sitekey="0x4AAAAAAD7BmzK13TeKwviJ" data-callback="onTurnstileVerify"></div>
+            <div id="captcha-container" class="my-4 flex min-h-18 justify-center">
+              <div
+                class="cf-turnstile"
+                data-sitekey="0x4AAAAAAD7BmzK13TeKwviJ"
+                data-callback="onTurnstileVerify"
+              >
+              </div>
             </div>
 
             <button
               type="submit"
               id="submit-btn"
-              class="w-full h-11 bg-primary hover:bg-primary/95 text-primary-foreground font-bold rounded-lg shadow-md transition-all flex items-center justify-center focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              class="flex h-11 w-full cursor-pointer items-center justify-center rounded-lg bg-primary font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
               {t('contact.submitMessage', { fallback: 'Send Message' })}
             </button>
 
-            <p id="response-msg" class="text-center text-sm hidden"></p>
+            <p id="response-msg" class="hidden text-center text-sm"></p>
           </form>
         </div>
 
         <!-- Contact Info -->
-        <div class="space-y-8">
-          <div class="bg-gray-50 p-6 rounded-2xl">
-            <h2 class="text-2xl font-semibold text-gray-800 mb-4">{t('contact.contactInfo', { fallback: 'Contact Info' })}</h2>
+        <div class="space-y-8 font-persian">
+          <div
+            class="rounded-2xl border border-gray-100 bg-gray-50 p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900"
+          >
+            <h2 class="mb-4 text-2xl font-semibold text-gray-800 dark:text-white">
+              {t('contact.contactInfo', { fallback: 'Contact Info' })}
+            </h2>
             <div class="space-y-4">
               <div>
-                <h3 class="font-medium text-gray-700">{t('contact.officeAddress', { fallback: 'Office Address' })}</h3>
-                <p class="text-gray-600 leading-relaxed">
-                  {t('contact.addressValue', { fallback: 'Qazvin Science & Technology Park, Km 2 Barajin Road, Qazvin, Iran' })}
+                <h3 class="font-medium text-gray-700 dark:text-gray-200">
+                  {t('contact.officeAddress', { fallback: 'Office Address' })}
+                </h3>
+                <p class="leading-relaxed text-gray-600 dark:text-gray-300">
+                  {
+                    t('contact.addressValue', {
+                      fallback: 'Qazvin Science & Technology Park, Km 2 Barajin Road, Qazvin, Iran',
+                    })
+                  }
                 </p>
               </div>
 
               <div>
-                <h3 class="font-medium text-gray-700">{t('contact.phoneNumber', { fallback: 'Phone Number' })}</h3>
-                <p class="text-gray-600" dir="ltr">
-                  <a href="tel:+989125811880" class="hover:text-primary transition-colors">
+                <h3 class="font-medium text-gray-700 dark:text-gray-200">
+                  {t('contact.phoneNumber', { fallback: 'Phone Number' })}
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300" dir="ltr">
+                  <a href="tel:+989125811880" class="transition-colors hover:text-primary">
                     {t('contact.phoneValue', { fallback: '+98 912 581 1880' })}
                   </a>
                 </p>
-                <p class="text-gray-600" dir="ltr">
-                  <a href="tel:+989354767068" class="hover:text-primary transition-colors">
+                <p class="text-gray-600 dark:text-gray-300" dir="ltr">
+                  <a href="tel:+989354767068" class="transition-colors hover:text-primary">
                     {t('contact.phoneValue2', { fallback: '+98 935 476 7068' })}
                   </a>
                 </p>
               </div>
 
               <div>
-                <h3 class="font-medium text-gray-700">{t('contact.emailAddress', { fallback: 'Email Address' })}</h3>
-                <p class="text-gray-600"><a href="mailto:info@webabc.ir" class="hover:text-primary transition-colors">info@webabc.ir</a></p>
+                <h3 class="font-medium text-gray-700 dark:text-gray-200">
+                  {t('contact.emailAddress', { fallback: 'Email Address' })}
+                </h3>
+                <p class="text-gray-600 dark:text-gray-300">
+                  <a href="mailto:info@webabc.ir" class="transition-colors hover:text-primary"
+                    >info@webabc.ir</a
+                  >
+                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </Layout>
@@ -166,65 +200,74 @@ const breadcrumbs = [
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 <script is:inline>
-  let verifiedToken = null;
+  (() => {
+    let verifiedToken = null;
 
-  // Callback target for Turnstile widget
-  window.onTurnstileVerify = function(token) {
-    verifiedToken = token;
-  };
+    // Callback target for Turnstile widget
+    window.onTurnstileVerify = function (token) {
+      verifiedToken = token;
+    };
 
-  const form = document.getElementById('contact-form');
-  const submitBtn = document.getElementById('submit-btn');
-  const responseMsg = document.getElementById('response-msg');
+    function initContactForm() {
+      const form = document.getElementById('contact-form');
+      const submitBtn = document.getElementById('submit-btn');
+      const responseMsg = document.getElementById('response-msg');
 
-  if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+      if (!form) return;
 
-      if (!verifiedToken) {
-        responseMsg.textContent = 'Please complete the verification captcha.';
-        responseMsg.className = "text-center text-sm text-red-600 block";
-        return;
-      }
+      form.onsubmit = async (e) => {
+        e.preventDefault();
 
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending...';
-      responseMsg.classList.add('hidden');
-
-      const formData = new FormData(form);
-      const payload = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        message: formData.get('message'),
-        token: verifiedToken
-      };
-
-      try {
-        const res = await fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        const result = await res.json();
-
-        if (res.ok) {
-          responseMsg.textContent = result.message || 'Message sent successfully!';
-          responseMsg.className = "text-center text-sm text-green-600 block";
-          form.reset();
-          if (window.turnstile) window.turnstile.reset();
-          verifiedToken = null;
-        } else {
-          responseMsg.textContent = result.error || 'Failed to send message.';
-          responseMsg.className = "text-center text-sm text-red-600 block";
+        if (!verifiedToken) {
+          responseMsg.textContent = 'Please complete the verification captcha.';
+          responseMsg.className = 'text-center text-sm text-red-600 block';
+          return;
         }
-      } catch (error) {
-        responseMsg.textContent = 'An error occurred. Please try again.';
-        responseMsg.className = "text-center text-sm text-red-600 block";
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Send Message';
-      }
-    });
-  }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        responseMsg.classList.add('hidden');
+
+        const formData = new FormData(form);
+        const payload = {
+          name: formData.get('name'),
+          email: formData.get('email'),
+          message: formData.get('message'),
+          token: verifiedToken,
+        };
+
+        try {
+          const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+
+          const result = await res.json();
+
+          if (res.ok) {
+            responseMsg.textContent = result.message || 'Message sent successfully!';
+            responseMsg.className = 'text-center text-sm text-green-600 block';
+            form.reset();
+            if (window.turnstile) window.turnstile.reset();
+            verifiedToken = null;
+          } else {
+            responseMsg.textContent = result.error || 'Failed to send message.';
+            responseMsg.className = 'text-center text-sm text-red-600 block';
+          }
+        } catch (error) {
+          responseMsg.textContent = 'An error occurred. Please try again.';
+          responseMsg.className = 'text-center text-sm text-red-600 block';
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+        }
+      };
+    }
+
+    document.addEventListener('astro:page-load', initContactForm);
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      initContactForm();
+    }
+  })();
 </script>

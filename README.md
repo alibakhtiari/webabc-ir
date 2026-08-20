@@ -73,5 +73,3 @@ Visit `http://localhost:4321` to view the site locally.
 ---
 
 Built with ❤️ by [Ali Bakhtiari](https://aliib.ir/) & WebABC Team
-
-

@@ -16,96 +16,148 @@ const dictionary = await getDictionary(supportedLang);
 
 const t = createTranslator(dictionary);
 
-const name = "Ali Bakhtiari";
-const role = supportedLang === 'fa' ? 'توسعه‌دهنده ارشد وردپرس و متخصص سئو' : supportedLang === 'ar' ? 'مطور ووردبريس ومستشار سيو' : 'Senior WordPress Developer & SEO Specialist';
-const bio = supportedLang === 'fa'
-  ? 'علی بختیاری، بنیان‌گذار وب‌اِی‌بی‌سی، با بیش از ۱۰ سال تجربه در زمینه طراحی وب، توسعه برنامه‌های کاربردی تحت وب و بهینه‌سازی موتورهای جستجو (SEO). تخصص اصلی او ساخت وب‌سایت‌های سریع، امن و بهینه‌شده برای نتایج گوگل است.'
-  : supportedLang === 'ar'
-  ? 'علي بختياري، مؤسس WebABC، يتمتع بخبرة تزيد عن 10 سنوات في تصميم الويب وتطوير التطبيقات وتحسين محركات البحث (SEO). يتخصص في بناء مواقع سريعة وآمنة ومحسنة لمحركات البحث.'
-  : 'Ali Bakhtiari is the founder of WebABC with over 10 years of experience in web design, full-stack application development, and Search Engine Optimization (SEO). He specializes in building high-performance, secure, and Google-optimized web applications.';
+const name = 'Ali Bakhtiari';
+const role =
+  supportedLang === 'fa'
+    ? 'توسعه‌دهنده ارشد وردپرس و متخصص سئو'
+    : supportedLang === 'ar'
+      ? 'مطور ووردبريس ومستشار سيو'
+      : 'Senior WordPress Developer & SEO Specialist';
+const bio =
+  supportedLang === 'fa'
+    ? 'علی بختیاری، بنیان‌گذار وب‌اِی‌بی‌سی، با بیش از ۱۰ سال تجربه در زمینه طراحی وب، توسعه برنامه‌های کاربردی تحت وب و بهینه‌سازی موتورهای جستجو (SEO). تخصص اصلی او ساخت وب‌سایت‌های سریع، امن و بهینه‌شده برای نتایج گوگل است.'
+    : supportedLang === 'ar'
+      ? 'علي بختياري، مؤسس WebABC، يتمتع بخبرة تزيد عن 10 سنوات في تصميم الويب وتطوير التطبيقات وتحسين محركات البحث (SEO). يتخصص في بناء مواقع سريعة وآمنة ومحسنة لمحركات البحث.'
+      : 'Ali Bakhtiari is the founder of WebABC with over 10 years of experience in web design, full-stack application development, and Search Engine Optimization (SEO). He specializes in building high-performance, secure, and Google-optimized web applications.';
 
 const titleText = `${name} – ${role} | WebABC`;
-const descriptionText = supportedLang === 'fa'
-  ? 'علی بختیاری، بنیان‌گذار WebABC. بیش از ۱۰ سال تجربه در طراحی وب، توسعه فول‌استک و سئو فنی. تخصص او وردپرس، Core Web Vitals و بهینه‌سازی سرعت است.'
-  : supportedLang === 'ar'
-  ? 'Ali Bakhtiari مؤسس WebABC. أكثر من 10 سنوات خبرة في تصميم الويب وتطوير التطبيقات والسيو. يتخصص في WordPress وأداء الويب.'
-  : 'Ali Bakhtiari, founder of WebABC. Over 10 years experience in web design, full-stack development, and technical SEO audits.';
+const descriptionText =
+  supportedLang === 'fa'
+    ? 'علی بختیاری، بنیان‌گذار WebABC. بیش از ۱۰ سال تجربه در طراحی وب، توسعه فول‌استک و سئو فنی. تخصص او وردپرس، Core Web Vitals و بهینه‌سازی سرعت است.'
+    : supportedLang === 'ar'
+      ? 'Ali Bakhtiari مؤسس WebABC. أكثر من 10 سنوات خبرة في تصميم الويب وتطوير التطبيقات والسيو. يتخصص في WordPress وأداء الويب.'
+      : 'Ali Bakhtiari, founder of WebABC. Over 10 years experience in web design, full-stack development, and technical SEO audits.';
 
 const breadcrumbs = [
   { label: t('common.home', { fallback: 'Home' }), url: `/${supportedLang}/` },
   { label: t('common.about', { fallback: 'About' }), url: `/${supportedLang}/about/` },
-  { label: name }
+  { label: name },
 ];
 
 const origin = 'https://webabc.ir';
 const personSchema = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "@id": `${origin}/${supportedLang}/about/ali-bakhtiari/#person`,
-  "name": name,
-  "jobTitle": role,
-  "description": bio,
-  "worksFor": { "@id": `${origin}/#organization` },
-  "image": `${origin}/ali-bakhtiari.webp`,
-  "url": `${origin}/${supportedLang}/about/ali-bakhtiari/`,
-  "sameAs": [
-    "https://www.linkedin.com/in/alibakhtiarii/",
-    "https://github.com/alibakhtiari",
-    "https://www.instagram.com/aliibakhtiari/",
-    "https://www.facebook.com/Alii.bakhtiari",
-    "https://x.com/aliib1991",
-    "https://alibakhtiari.ir",
-    "https://aliib.ir"
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${origin}/${supportedLang}/about/ali-bakhtiari/#person`,
+  name: name,
+  jobTitle: role,
+  description: bio,
+  worksFor: { '@id': `${origin}/#organization` },
+  image: `${origin}/ali-bakhtiari.webp`,
+  url: `${origin}/${supportedLang}/about/ali-bakhtiari/`,
+  sameAs: [
+    'https://www.linkedin.com/in/alibakhtiarii/',
+    'https://github.com/alibakhtiari',
+    'https://www.instagram.com/aliibakhtiari/',
+    'https://www.facebook.com/Alii.bakhtiari',
+    'https://x.com/aliib1991',
+    'https://alibakhtiari.ir',
+    'https://aliib.ir',
   ],
-  "alumniOf": {
-    "@type": "EducationalOrganization",
-    "name": "Imam Khomeini International University"
+  alumniOf: {
+    '@type': 'EducationalOrganization',
+    name: 'Imam Khomeini International University',
   },
-  "knowsAbout": [
-    "Search Engine Optimization (SEO)",
-    "WordPress Development",
-    "Web Application Architecture",
-    "Core Web Vitals Optimization",
-    "Full-Stack Web Development",
-    "Programmatic SEO"
-  ]
+  knowsAbout: [
+    'Search Engine Optimization (SEO)',
+    'WordPress Development',
+    'Web Application Architecture',
+    'Core Web Vitals Optimization',
+    'Full-Stack Web Development',
+    'Programmatic SEO',
+  ],
 };
 ---
 
-<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="about/ali-bakhtiari">
+<Layout
+  title={titleText}
+  description={descriptionText}
+  lang={supportedLang}
+  slug="about/ali-bakhtiari"
+>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(personSchema)} />
 
-  <div class="max-w-4xl mx-auto pt-36 pb-20 px-4 font-sans font-persian">
+  <div class="mx-auto max-w-4xl px-4 pt-36 pb-20 font-persian font-sans">
     <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
 
-    <div class="bg-white border border-gray-100 rounded-3xl p-8 md:p-12 shadow-xs space-y-8 mt-6">
-      <div class="flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-start">
-        <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white ring-4 ring-primary/10 shadow-lg shrink-0">
-          <OptimizedImage src="/ali-bakhtiari.webp" alt="Ali Bakhtiari - Founder & Technical Director at WebABC" width={160} height={160} loading="lazy" class="w-full h-full object-cover" />
+    <div
+      class="mt-6 space-y-8 rounded-3xl border border-gray-100 bg-white p-8 shadow-xs md:p-12 dark:border-slate-800 dark:bg-slate-900"
+    >
+      <div
+        class="flex flex-col items-center gap-8 text-center md:flex-row md:items-start md:text-start"
+      >
+        <div
+          class="h-32 w-32 shrink-0 overflow-hidden rounded-full border-4 border-white shadow-lg ring-4 ring-primary/20 md:h-40 md:w-40 dark:border-slate-800"
+        >
+          <OptimizedImage
+            src="/ali-bakhtiari.webp"
+            alt="Ali Bakhtiari - Founder & Technical Director at WebABC"
+            width={160}
+            height={160}
+            loading="lazy"
+            class="h-full w-full object-cover"
+          />
         </div>
 
         <div class="space-y-4">
           <div>
-            <span class="inline-block px-3 py-1 bg-primary/10 text-primary font-bold text-xs rounded-full uppercase tracking-wider mb-2">
-              {supportedLang === 'fa' ? 'بنیان‌گذار و مدیر فنی' : supportedLang === 'ar' ? 'المؤسس والمدير التقني' : 'Founder & Technical Director'}
+            <span
+              class="mb-2 inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-bold tracking-wider text-primary uppercase"
+            >
+              {
+                supportedLang === 'fa'
+                  ? 'بنیان‌گذار و مدیر فنی'
+                  : supportedLang === 'ar'
+                    ? 'المؤسس والمدير التقني'
+                    : 'Founder & Technical Director'
+              }
             </span>
-            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">{name}</h1>
-            <p class="text-base text-gray-500 font-medium mt-1">{role}</p>
+            <h1
+              class="text-3xl leading-tight font-extrabold text-gray-900 md:text-4xl dark:text-white"
+            >
+              {name}
+            </h1>
+            <p class="mt-1 text-base font-medium text-gray-500 dark:text-gray-400">{role}</p>
           </div>
 
-          <p class="text-gray-600 leading-relaxed text-base">
+          <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300">
             {bio}
           </p>
 
           <!-- Social Verification Badges -->
-          <div class="flex flex-wrap gap-3 pt-2 justify-center md:justify-start">
-            <a href="https://www.linkedin.com/in/alibakhtiarii/" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-gray-50 hover:bg-[#0077b5] hover:text-white text-gray-700 text-xs font-semibold rounded-lg border border-gray-200 transition-all inline-flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+          <div class="flex flex-wrap justify-center gap-3 pt-2 md:justify-start">
+            <a
+              href="https://www.linkedin.com/in/alibakhtiarii/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-gray-50 px-3.5 py-1.5 text-xs font-semibold text-gray-700 transition-all hover:bg-[#0077b5] hover:text-white focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-200"
+            >
               LinkedIn
             </a>
-            <a href="https://github.com/alibakhtiari" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-gray-50 hover:bg-[#24292e] hover:text-white text-gray-700 text-xs font-semibold rounded-lg border border-gray-200 transition-all inline-flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+            <a
+              href="https://github.com/alibakhtiari"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-gray-50 px-3.5 py-1.5 text-xs font-semibold text-gray-700 transition-all hover:bg-[#24292e] hover:text-white focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-200"
+            >
               GitHub
             </a>
-            <a href="https://aliib.ir/" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-gray-50 hover:bg-primary hover:text-primary-foreground text-gray-700 text-xs font-semibold rounded-lg border border-gray-200 transition-all inline-flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+            <a
+              href="https://aliib.ir/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-gray-50 px-3.5 py-1.5 text-xs font-semibold text-gray-700 transition-all hover:bg-primary hover:text-primary-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-200"
+            >
               Personal Website
             </a>
           </div>
@@ -113,27 +165,53 @@ const personSchema = {
       </div>
 
       <!-- Area of Expertise -->
-      <div class="border-t border-gray-100 pt-8 space-y-4">
-        <h2 class="text-2xl font-bold text-gray-900">
-          {supportedLang === 'fa' ? 'حوزه‌های تخصص و مهارت‌ها' : supportedLang === 'ar' ? 'مجالات الخبرة والمهارات' : 'Areas of Expertise'}
+      <div class="space-y-4 border-t border-gray-100 pt-8 dark:border-slate-800">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+          {
+            supportedLang === 'fa'
+              ? 'حوزه‌های تخصص و مهارت‌ها'
+              : supportedLang === 'ar'
+                ? 'مجالات الخبرة والمهارات'
+                : 'Areas of Expertise'
+          }
         </h2>
-        <div class="grid sm:grid-cols-2 gap-4">
-          <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-1">
-            <h3 class="font-bold text-gray-800 text-base">Technical & On-Page SEO</h3>
-            <p class="text-xs text-gray-500">Core Web Vitals, Schema.org, Crawl Budget Optimization, Multilingual Hreflang</p>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div
+            class="space-y-1 rounded-xl border border-gray-100 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-800/60"
+          >
+            <h3 class="text-base font-bold text-gray-800 dark:text-white">
+              Technical & On-Page SEO
+            </h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400">
+              Core Web Vitals, Schema.org, Crawl Budget Optimization, Multilingual Hreflang
+            </p>
           </div>
-          <div class="p-4 bg-gray-50 rounded-xl border border-gray-100 space-y-1">
-            <h3 class="font-bold text-gray-800 text-base">Full-Stack Development</h3>
-            <p class="text-xs text-gray-500">Astro, Next.js, React, Node.js, Python, Custom WordPress Architecture</p>
+          <div
+            class="space-y-1 rounded-xl border border-gray-100 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-800/60"
+          >
+            <h3 class="text-base font-bold text-gray-800 dark:text-white">
+              Full-Stack Development
+            </h3>
+            <p class="text-xs text-gray-500 dark:text-gray-400">
+              Astro, Next.js, React, Node.js, Python, Custom WordPress Architecture
+            </p>
           </div>
         </div>
       </div>
 
       <!-- Consultation CTA -->
-      <CTA 
+      <CTA
         lang={supportedLang}
-        title={supportedLang === 'fa' ? 'نیاز به مشاوره تخصصی سئو یا طراحی سایت دارید؟' : supportedLang === 'ar' ? 'هل تحتاج إلى استشارة متخصصة في السيو أو تصميم المواقع؟' : 'Need direct technical consultation for your project?'}
-        description={supportedLang === 'fa' ? 'جهت بررسی اختصاصی پروژه با علی بختیاری در ارتباط باشید.' : supportedLang === 'ar' ? 'تواصل مباشرة مع علي بختياري لمناقشة مشروعك.' : 'Book a consultation call directly with Ali Bakhtiari to discuss your web application or SEO strategy.'}
+        title={supportedLang === 'fa'
+          ? 'نیاز به مشاوره تخصصی سئو یا طراحی سایت دارید؟'
+          : supportedLang === 'ar'
+            ? 'هل تحتاج إلى استشارة متخصصة في السيو أو تصميم المواقع؟'
+            : 'Need direct technical consultation for your project?'}
+        description={supportedLang === 'fa'
+          ? 'جهت بررسی اختصاصی پروژه با علی بختیاری در ارتباط باشید.'
+          : supportedLang === 'ar'
+            ? 'تواصل مباشرة مع علي بختياري لمناقشة مشروعك.'
+            : 'Book a consultation call directly with Ali Bakhtiari to discuss your web application or SEO strategy.'}
         buttonText={t('common.contactUs', { fallback: 'Contact Ali' })}
       />
     </div>

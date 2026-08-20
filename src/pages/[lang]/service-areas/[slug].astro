@@ -13,7 +13,7 @@ export async function getStaticPaths() {
   for (const lang of Object.keys(languages)) {
     for (const slug of locations) {
       params.push({
-        params: { lang, slug }
+        params: { lang, slug },
       });
     }
   }
@@ -35,54 +35,63 @@ if (!locationInfo.name) {
   return Astro.redirect(`/${supportedLang}/404`);
 }
 
-const titleText = locationInfo.title || `${t('service-areas.titlePrefix', { fallback: 'SEO & Web Design Services in' })} ${locationInfo.name}`;
-const descriptionText = locationInfo.description || `We provide professional localized services in ${locationInfo.name} to help your organization rank organically and load rapidly.`;
+const titleText =
+  locationInfo.title ||
+  `${t('service-areas.titlePrefix', { fallback: 'SEO & Web Design Services in' })} ${locationInfo.name}`;
+const descriptionText =
+  locationInfo.description ||
+  `We provide professional localized services in ${locationInfo.name} to help your organization rank organically and load rapidly.`;
 
 const breadcrumbs = [
   { label: t('common.home'), url: `/${supportedLang}/` },
-  { label: t('service-areas.title', { fallback: 'Service Areas' }), url: `/${supportedLang}/service-areas/` },
-  { label: locationInfo.name }
+  {
+    label: t('service-areas.title', { fallback: 'Service Areas' }),
+    url: `/${supportedLang}/service-areas/`,
+  },
+  { label: locationInfo.name },
 ];
 
 const faqList = [1, 2, 3]
-  .map(n => ({
+  .map((n) => ({
     question: t(`service-areas.faq.q${n}`, { fallback: '' }),
-    answer: t(`service-areas.faq.a${n}`, { fallback: '' })
+    answer: t(`service-areas.faq.a${n}`, { fallback: '' }),
   }))
-  .filter(item => item.question && item.answer);
+  .filter((item) => item.question && item.answer);
 
 const origin = 'https://webabc.ir';
 const locationSchema = {
-  "@context": "https://schema.org",
-  "@type": ["Service", "ProfessionalService"],
-  "@id": `${origin}/${supportedLang}/service-areas/${slug}/#service`,
-  "name": titleText,
-  "description": descriptionText,
-  "url": `${origin}/${supportedLang}/service-areas/${slug}/`,
-  "provider": {
-    "@type": "Organization",
-    "@id": `${origin}/#organization`,
-    "name": "WebABC",
-    "url": origin
+  '@context': 'https://schema.org',
+  '@type': ['Service', 'ProfessionalService'],
+  '@id': `${origin}/${supportedLang}/service-areas/${slug}/#service`,
+  name: titleText,
+  description: descriptionText,
+  url: `${origin}/${supportedLang}/service-areas/${slug}/`,
+  provider: {
+    '@type': 'Organization',
+    '@id': `${origin}/#organization`,
+    name: 'WebABC',
+    url: origin,
   },
-  "areaServed": {
-    "@type": "City",
-    "name": locationInfo.name,
-    "containedInPlace": locationInfo.country ? { "@type": "Country", "name": locationInfo.country } : undefined
+  areaServed: {
+    '@type': 'City',
+    name: locationInfo.name,
+    containedInPlace: locationInfo.country
+      ? { '@type': 'Country', name: locationInfo.country }
+      : undefined,
   },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": `Web & SEO Services in ${locationInfo.name}`,
-    "itemListElement": (locationInfo.services || []).map((srv: string, idx: number) => ({
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": srv
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: `Web & SEO Services in ${locationInfo.name}`,
+    itemListElement: (locationInfo.services || []).map((srv: string, idx: number) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: srv,
       },
-      "position": idx + 1
-    }))
+      position: idx + 1,
+    })),
   },
-  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+  inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
 };
 
 // The FAQPage JSON-LD for this list is emitted by the <FAQ> component itself
@@ -90,102 +99,172 @@ const locationSchema = {
 // second FAQPage script here — two FAQPage blocks on one URL is duplicative.
 ---
 
-<Layout title={titleText} description={descriptionText} lang={supportedLang} slug={`service-areas/${slug}`}>
+<Layout
+  title={titleText}
+  description={descriptionText}
+  lang={supportedLang}
+  slug={`service-areas/${slug}`}
+>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(locationSchema)} />
-  <Hero title={titleText} description={descriptionText} breadcrumbs={breadcrumbs} lang={supportedLang} />
+  <Hero
+    title={titleText}
+    description={descriptionText}
+    breadcrumbs={breadcrumbs}
+    lang={supportedLang}
+  />
 
   <!-- Details and AEO Panel -->
-  <section class="py-16 bg-white font-sans font-persian">
-    <div class="container mx-auto px-4 max-w-5xl">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-12">
-        
+  <section class="bg-white py-16 font-persian font-sans dark:bg-slate-950">
+    <div class="container mx-auto max-w-5xl px-4">
+      <div class="mb-12 grid grid-cols-1 gap-12 lg:grid-cols-3">
         <!-- Main Content Pane -->
-        <div class="lg:col-span-2 space-y-12">
+        <div class="space-y-12 lg:col-span-2">
           <div class="space-y-4">
-            <h2 class="text-2xl font-bold text-gray-900">{t('service-areas.whyChooseUs', { fallback: 'Why Choose WebABC?' })}</h2>
-            <p class="text-gray-600 leading-relaxed">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+              {t('service-areas.whyChooseUs', { fallback: 'Why Choose WebABC?' })}
+            </h2>
+            <p class="leading-relaxed text-gray-600 dark:text-gray-300">
               {locationInfo.longDescription}
             </p>
           </div>
 
           <!-- Services List -->
-          {locationInfo.services && (
-            <div class="space-y-6">
-              <h3 class="text-xl font-bold text-gray-900">{t('service-areas.locationTitle', { fallback: 'Services Offered' })}</h3>
-              <div class="grid sm:grid-cols-2 gap-4">
-                {locationInfo.services.map((serv: string) => (
-                  <div class="flex items-center gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
-                    <div class="text-primary bg-white shadow-xs p-1.5 rounded-lg">
-                      <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+          {
+            locationInfo.services && (
+              <div class="space-y-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+                  {t('service-areas.locationTitle', { fallback: 'Services Offered' })}
+                </h3>
+                <div class="grid gap-4 sm:grid-cols-2">
+                  {locationInfo.services.map((serv: string) => (
+                    <div class="flex items-center gap-3 rounded-xl border border-gray-100 bg-gray-50 p-4 dark:border-slate-800 dark:bg-slate-900">
+                      <div class="rounded-lg bg-white p-1.5 text-primary shadow-xs dark:bg-slate-800">
+                        <svg
+                          aria-hidden="true"
+                          class="h-4 w-4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.5"
+                          viewBox="0 0 24 24"
+                        >
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <span class="font-semibold text-gray-800 dark:text-gray-200">{serv}</span>
                     </div>
-                    <span class="font-semibold text-gray-800">{serv}</span>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            )
+          }
 
           <!-- Local Benefits -->
-          {locationInfo.benefits && (
-            <div class="space-y-6">
-              <h3 class="text-xl font-bold text-gray-900">{t('service-areas.whyChooseUs', { fallback: 'Key Regional Benefits' })}</h3>
-              <ul class="space-y-3">
-                {locationInfo.benefits.map((benefit: string) => (
-                  <li class="flex items-start gap-2.5">
-                    <svg aria-hidden="true" class="w-5 h-5 text-primary mt-1 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <span class="text-gray-700 leading-relaxed">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          {
+            locationInfo.benefits && (
+              <div class="space-y-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+                  {t('service-areas.whyChooseUs', { fallback: 'Key Regional Benefits' })}
+                </h3>
+                <ul class="space-y-3">
+                  {locationInfo.benefits.map((benefit: string) => (
+                    <li class="flex items-start gap-2.5">
+                      <svg
+                        aria-hidden="true"
+                        class="mt-1 h-5 w-5 shrink-0 text-primary"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                      <span class="leading-relaxed text-gray-700 dark:text-gray-300">
+                        {benefit}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          }
         </div>
 
         <!-- Quick Facts Side Panel -->
         <div class="space-y-8">
-          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-6 shadow-xs space-y-4">
-            <h3 class="text-lg font-bold text-gray-900 border-b border-gray-200 pb-3">
+          <div
+            class="space-y-4 rounded-2xl border border-gray-100 bg-gray-50 p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900"
+          >
+            <h3
+              class="border-b border-gray-200 pb-3 text-lg font-bold text-gray-900 dark:border-slate-800 dark:text-white"
+            >
               📍 {locationInfo.name}
             </h3>
             <div class="space-y-4 text-sm">
               <div>
-                <div class="text-gray-400 font-semibold text-xs uppercase">{t('service-areas.country', { fallback: 'Country' })}</div>
-                <div class="font-bold text-gray-800">{locationInfo.country}</div>
+                <div class="text-xs font-semibold text-gray-400 uppercase dark:text-gray-500">
+                  {t('service-areas.country', { fallback: 'Country' })}
+                </div>
+                <div class="font-bold text-gray-800 dark:text-gray-200">{locationInfo.country}</div>
               </div>
               <div>
-                <div class="text-gray-400 font-semibold text-xs uppercase">{t('service-areas.serviceDelivery', { fallback: 'Service Delivery' })}</div>
-                <div class="font-bold text-gray-800">{t('service-areas.serviceDeliveryValue', { fallback: 'Remote delivery with on-site consultations available' })}</div>
+                <div class="text-xs font-semibold text-gray-400 uppercase dark:text-gray-500">
+                  {t('service-areas.serviceDelivery', { fallback: 'Service Delivery' })}
+                </div>
+                <div class="font-bold text-gray-800 dark:text-gray-200">
+                  {
+                    t('service-areas.serviceDeliveryValue', {
+                      fallback: 'Remote delivery with on-site consultations available',
+                    })
+                  }
+                </div>
               </div>
               <div>
-                <div class="text-gray-400 font-semibold text-xs uppercase">{t('service-areas.languages', { fallback: 'Languages' })}</div>
-                <div class="font-bold text-gray-800">{t('service-areas.languagesValue', { fallback: 'English, Arabic, Persian' })}</div>
+                <div class="text-xs font-semibold text-gray-400 uppercase dark:text-gray-500">
+                  {t('service-areas.languages', { fallback: 'Languages' })}
+                </div>
+                <div class="font-bold text-gray-800 dark:text-gray-200">
+                  {t('service-areas.languagesValue', { fallback: 'English, Arabic, Persian' })}
+                </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
 
       <!-- Local Considerations -->
-      {locationInfo.localNotes && (
-        <div class="max-w-3xl mx-auto text-center space-y-4 mb-12">
-          <h2 class="text-2xl font-bold text-gray-900">{t('service-areas.localConsiderations', { fallback: 'What Matters for This Market' })}</h2>
-          <p class="text-gray-600 leading-relaxed">{locationInfo.localNotes}</p>
-        </div>
-      )}
+      {
+        locationInfo.localNotes && (
+          <div class="mx-auto mb-12 max-w-3xl space-y-4 text-center">
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+              {t('service-areas.localConsiderations', { fallback: 'What Matters for This Market' })}
+            </h2>
+            <p class="leading-relaxed text-gray-600 dark:text-gray-300">
+              {locationInfo.localNotes}
+            </p>
+          </div>
+        )
+      }
 
       <!-- FAQ Section -->
-      {faqList.length > 0 && (
-        <div class="max-w-3xl mx-auto mb-12">
-          <FAQ faqList={faqList} lang={supportedLang} />
-        </div>
-      )}
+      {
+        faqList.length > 0 && (
+          <div class="mx-auto mb-12 max-w-3xl">
+            <FAQ faqList={faqList} lang={supportedLang} />
+          </div>
+        )
+      }
 
       <!-- Premium Consultation CTA Callout -->
       <CTA
-        lang={supportedLang} 
+        lang={supportedLang}
         title={t('service-areas.ctaTitle', { fallback: 'Dominate Local Search' })}
-        description={t('service-areas.ctaDescription', { fallback: 'Get a custom optimization blueprint outline.' })}
+        description={t('service-areas.ctaDescription', {
+          fallback: 'Get a custom optimization blueprint outline.',
+        })}
         buttonText={t('service-areas.ctaButton', { fallback: 'Get Started' })}
       />
     </div>

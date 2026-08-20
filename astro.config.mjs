@@ -52,7 +52,7 @@ export default defineConfig({
   },
   trailingSlash: 'always',
   experimental: {
-    svgOptimizer: svgoOptimizer()
+    svgOptimizer: svgoOptimizer(),
   },
   integrations: [
     sitemap({

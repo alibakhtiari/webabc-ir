@@ -2,13 +2,17 @@
 // Production worker handles 301 server-side redirect to /en/.
 // This template serves as a fallback for static output, with full canonical and hreflang metadata.
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WebABC – Web Design & SEO Agency</title>
-    <meta name="description" content="WebABC provides high-performance web development and SEO services." />
+    <meta
+      name="description"
+      content="WebABC provides high-performance web development and SEO services."
+    />
     <meta name="robots" content="noindex, follow" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://webabc.ir/en/" />
@@ -21,12 +25,13 @@
     <link rel="alternate" hreflang="x-default" href="https://webabc.ir/en/" />
     <meta http-equiv="refresh" content="0;url=/en/" />
     <script is:inline>
-      const savedLang = typeof localStorage !== 'undefined' && localStorage.getItem('language');
-      const supportedLangs = ['en', 'fa', 'ar'];
-      const targetLang = supportedLangs.includes(savedLang) ? savedLang : 'en';
-      window.location.replace('/' + targetLang + '/');
+      (() => {
+        const savedLang = typeof localStorage !== 'undefined' && localStorage.getItem('language');
+        const supportedLangs = ['en', 'fa', 'ar'];
+        const targetLang = supportedLangs.includes(savedLang) ? savedLang : 'en';
+        window.location.replace('/' + targetLang + '/');
+      })();
     </script>
   </head>
-  <body>
-  </body>
+  <body> </body>
 </html>

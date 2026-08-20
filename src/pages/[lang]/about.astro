@@ -17,122 +17,158 @@ const t = createTranslator(dictionary);
 const titleText = t('about.title', { fallback: 'About Us' });
 const descriptionText = t('about.subtitle', { fallback: 'We build digital solutions.' });
 
-const approachItems = [0, 1, 2, 3].map(i => ({
-  title: t(`about.approach.items.${i}.title`, { fallback: '' }),
-  description: t(`about.approach.items.${i}.description`, { fallback: '' }),
-})).filter(item => item.title && item.description);
+const approachItems = [0, 1, 2, 3]
+  .map((i) => ({
+    title: t(`about.approach.items.${i}.title`, { fallback: '' }),
+    description: t(`about.approach.items.${i}.description`, { fallback: '' }),
+  }))
+  .filter((item) => item.title && item.description);
 
 const aboutPageSchema = {
-  "@context": "https://schema.org",
-  "@graph": [
+  '@context': 'https://schema.org',
+  '@graph': [
     {
-      "@type": "AboutPage",
-      "@id": `https://webabc.ir/${supportedLang}/about/#webpage`,
-      "url": `https://webabc.ir/${supportedLang}/about/`,
-      "name": titleText,
-      "description": descriptionText,
-      "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
-      "isPartOf": {
-        "@type": "WebSite",
-        "@id": "https://webabc.ir/#website",
-        "name": "WebABC",
-        "url": "https://webabc.ir/"
+      '@type': 'AboutPage',
+      '@id': `https://webabc.ir/${supportedLang}/about/#webpage`,
+      url: `https://webabc.ir/${supportedLang}/about/`,
+      name: titleText,
+      description: descriptionText,
+      inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
+      isPartOf: {
+        '@type': 'WebSite',
+        '@id': 'https://webabc.ir/#website',
+        name: 'WebABC',
+        url: 'https://webabc.ir/',
       },
-      "about": {
-        "@id": "https://webabc.ir/#organization"
-      }
+      about: {
+        '@id': 'https://webabc.ir/#organization',
+      },
     },
     {
-      "@type": "BreadcrumbList",
-      "@id": `https://webabc.ir/${supportedLang}/about/#breadcrumb`,
-      "itemListElement": [
+      '@type': 'BreadcrumbList',
+      '@id': `https://webabc.ir/${supportedLang}/about/#breadcrumb`,
+      itemListElement: [
         {
-          "@type": "ListItem",
-          "position": 1,
-          "name": t('common.home', { fallback: 'Home' }),
-          "item": `https://webabc.ir/${supportedLang}/`
+          '@type': 'ListItem',
+          position: 1,
+          name: t('common.home', { fallback: 'Home' }),
+          item: `https://webabc.ir/${supportedLang}/`,
         },
         {
-          "@type": "ListItem",
-          "position": 2,
-          "name": titleText,
-          "item": `https://webabc.ir/${supportedLang}/about/`
-        }
-      ]
-    }
-  ]
+          '@type': 'ListItem',
+          position: 2,
+          name: titleText,
+          item: `https://webabc.ir/${supportedLang}/about/`,
+        },
+      ],
+    },
+  ],
 };
 
-const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}/` },
-  { label: titleText }
-];
+const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { label: titleText }];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="about">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(aboutPageSchema)} />
 
-  <div class="max-w-6xl mx-auto pt-36 pb-12 px-4 sm:px-6 lg:px-8 w-full font-sans">
+  <div class="mx-auto w-full max-w-6xl px-4 pt-36 pb-12 font-sans sm:px-6 lg:px-8">
     <div class="space-y-16">
-      
       <!-- Hero Section -->
       <div class="text-center">
         <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-normal font-persian">
+        <h1
+          class="mb-4 font-persian text-4xl leading-normal font-bold text-gray-900 md:text-5xl dark:text-white"
+        >
           {titleText}
         </h1>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto font-persian">
+        <p class="mx-auto max-w-2xl font-persian text-xl text-gray-600 dark:text-gray-300">
           {descriptionText}
         </p>
       </div>
 
       <!-- Mission Section -->
-      <div class="p-8 bg-linear-to-br from-blue-50 to-purple-50 rounded-2xl border-0">
-        <div class="max-w-3xl mx-auto text-center space-y-4">
-          <h2 class="text-2xl font-semibold text-gray-800 font-persian">{t('about.mission', { fallback: 'Our Mission' })}</h2>
-          <p class="text-gray-600 leading-relaxed font-persian">
-            {t('about.missionText', { fallback: 'To empower businesses with high-performance web applications and search ranking optimization.' })}
+      <div
+        class="rounded-2xl border border-transparent bg-linear-to-br from-blue-50 to-purple-50 p-8 dark:border-slate-800 dark:from-slate-900 dark:to-slate-800/80"
+      >
+        <div class="mx-auto max-w-3xl space-y-4 text-center">
+          <h2 class="font-persian text-2xl font-semibold text-gray-800 dark:text-white">
+            {t('about.mission', { fallback: 'Our Mission' })}
+          </h2>
+          <p class="font-persian leading-relaxed text-gray-600 dark:text-gray-300">
+            {
+              t('about.missionText', {
+                fallback:
+                  'To empower businesses with high-performance web applications and search ranking optimization.',
+              })
+            }
           </p>
         </div>
       </div>
 
       <!-- How We Work Section -->
-      {approachItems.length > 0 && (
-        <div class="space-y-10">
-          <h2 class="text-3xl font-bold text-center text-gray-900 font-persian">{t('about.approach.title', { fallback: 'How We Work' })}</h2>
-          <div class="grid md:grid-cols-2 gap-6 font-persian">
-            {approachItems.map((item) => (
-              <div class="p-6 bg-white border border-gray-100 rounded-2xl shadow-xs">
-                <h3 class="text-lg font-bold text-gray-800 mb-2">{item.title}</h3>
-                <p class="text-gray-600 leading-relaxed text-sm">{item.description}</p>
-              </div>
-            ))}
+      {
+        approachItems.length > 0 && (
+          <div class="space-y-10">
+            <h2 class="text-center font-persian text-3xl font-bold text-gray-900 dark:text-white">
+              {t('about.approach.title', { fallback: 'How We Work' })}
+            </h2>
+            <div class="grid gap-6 font-persian md:grid-cols-2">
+              {approachItems.map((item) => (
+                <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900">
+                  <h3 class="mb-2 text-lg font-bold text-gray-800 dark:text-white">{item.title}</h3>
+                  <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
+        )
+      }
 
       <!-- Who We Serve Section -->
-      <div class="max-w-3xl mx-auto text-center space-y-4 font-persian">
-        <h2 class="text-2xl font-bold text-gray-900">{t('about.whoWeServe.title', { fallback: 'Who We Work With' })}</h2>
-        <p class="text-gray-600 leading-relaxed">{t('about.whoWeServe.text', { fallback: '' })}</p>
+      <div class="mx-auto max-w-3xl space-y-4 text-center font-persian">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+          {t('about.whoWeServe.title', { fallback: 'Who We Work With' })}
+        </h2>
+        <p class="leading-relaxed text-gray-600 dark:text-gray-300">
+          {t('about.whoWeServe.text', { fallback: '' })}
+        </p>
       </div>
 
       <!-- Stats Section -->
-      <div class="grid md:grid-cols-3 gap-8 text-center font-persian">
-        <div class="py-8 border-0 bg-blue-50/80 rounded-2xl shadow-sm">
-          <div class="text-3xl font-bold text-blue-600 mb-2">{t('about.stats.years.value', { fallback: '5+' })}</div>
-          <div class="text-gray-700">{t('about.yearsExperience', { fallback: 'Years Experience' })}</div>
+      <div class="grid gap-8 text-center font-persian md:grid-cols-3">
+        <div
+          class="rounded-2xl border border-transparent bg-blue-50/80 py-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+        >
+          <div class="mb-2 text-3xl font-bold text-blue-600 dark:text-blue-400">
+            {t('about.stats.years.value', { fallback: '5+' })}
+          </div>
+          <div class="text-gray-700 dark:text-gray-300">
+            {t('about.yearsExperience', { fallback: 'Years Experience' })}
+          </div>
         </div>
-        <div class="py-8 border-0 bg-purple-50/80 rounded-2xl shadow-sm">
-          <div class="text-3xl font-bold text-purple-600 mb-2">{t('about.stats.projects.value', { fallback: '100+' })}</div>
-          <div class="text-gray-700">{t('about.successfulProjects', { fallback: 'Successful Projects' })}</div>
+        <div
+          class="rounded-2xl border border-transparent bg-purple-50/80 py-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+        >
+          <div class="mb-2 text-3xl font-bold text-purple-600 dark:text-purple-400">
+            {t('about.stats.projects.value', { fallback: '100+' })}
+          </div>
+          <div class="text-gray-700 dark:text-gray-300">
+            {t('about.successfulProjects', { fallback: 'Successful Projects' })}
+          </div>
         </div>
-        <div class="py-8 border-0 bg-green-50/80 rounded-2xl shadow-sm">
-          <div class="text-3xl font-bold text-green-600 mb-2">{t('about.stats.satisfaction.value', { fallback: '100%' })}</div>
-          <div class="text-gray-700">{t('about.clientSatisfaction', { fallback: 'Client Satisfaction' })}</div>
+        <div
+          class="rounded-2xl border border-transparent bg-green-50/80 py-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+        >
+          <div class="mb-2 text-3xl font-bold text-green-600 dark:text-green-400">
+            {t('about.stats.satisfaction.value', { fallback: '100%' })}
+          </div>
+          <div class="text-gray-700 dark:text-gray-300">
+            {t('about.clientSatisfaction', { fallback: 'Client Satisfaction' })}
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 </Layout>

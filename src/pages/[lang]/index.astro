@@ -20,45 +20,72 @@ const siteUrl = 'https://webabc.ir';
 const homeUrl = `${siteUrl}/${supportedLang}/`;
 
 const homeFaqList = [1, 2, 3, 4]
-  .map(n => ({
+  .map((n) => ({
     question: dictionary.home?.faq?.[`q${n}`] || '',
-    answer: dictionary.home?.faq?.[`a${n}`] || ''
+    answer: dictionary.home?.faq?.[`a${n}`] || '',
   }))
-  .filter(item => item.question && item.answer);
+  .filter((item) => item.question && item.answer);
 
 const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": `${siteUrl}/${supportedLang}/#website`,
-  "url": homeUrl,
-  "name": "WebABC",
-  "alternateName": supportedLang === 'fa' ? "وب اِی‌بی‌سی" : supportedLang === 'ar' ? "ويب إيه بي سي" : "WebABC Web & SEO Agency",
-  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
-  "publisher": { "@id": `${siteUrl}/#organization` },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": `${siteUrl}/${supportedLang}/blog?tag={search_term_string}`
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${siteUrl}/${supportedLang}/#website`,
+  url: homeUrl,
+  name: 'WebABC',
+  alternateName:
+    supportedLang === 'fa'
+      ? 'وب اِی‌بی‌سی'
+      : supportedLang === 'ar'
+        ? 'ويب إيه بي سي'
+        : 'WebABC Web & SEO Agency',
+  inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
+  publisher: { '@id': `${siteUrl}/#organization` },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${siteUrl}/${supportedLang}/blog?tag={search_term_string}`,
     },
-    "query-input": "required name=search_term_string"
-  }
+    'query-input': 'required name=search_term_string',
+  },
 };
 ---
 
-<Layout title={title} description={description} lang={supportedLang} slug="" mainClass="relative overflow-x-hidden pt-0">
-  <link rel="preload" as="image" href="/images/homepage-hero.avif" type="image/avif" fetchpriority="high" slot="head" />
-  <link rel="preload" as="image" href="/images/homepage-hero.webp" type="image/webp" fetchpriority="high" slot="head" />
+<Layout
+  title={title}
+  description={description}
+  lang={supportedLang}
+  slug=""
+  mainClass="relative overflow-x-hidden pt-0"
+>
+  <link
+    rel="preload"
+    as="image"
+    href="/images/homepage-hero.avif"
+    type="image/avif"
+    fetchpriority="high"
+    slot="head"
+  />
+  <link
+    rel="preload"
+    as="image"
+    href="/images/homepage-hero.webp"
+    type="image/webp"
+    fetchpriority="high"
+    slot="head"
+  />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(websiteSchema)} />
   <HeroSection lang={supportedLang} />
   <ServicesSection lang={supportedLang} />
   <BenefitsSection lang={supportedLang} />
-  {homeFaqList.length > 0 && (
-    <section class="py-16 bg-gray-50/50 border-y border-gray-100">
-      <div class="container mx-auto px-4 max-w-3xl">
-        <FAQ faqList={homeFaqList} lang={supportedLang} />
-      </div>
-    </section>
-  )}
+  {
+    homeFaqList.length > 0 && (
+      <section class="border-y border-gray-100 bg-gray-50/50 py-16 dark:border-slate-800 dark:bg-slate-950">
+        <div class="container mx-auto max-w-3xl px-4">
+          <FAQ faqList={homeFaqList} lang={supportedLang} />
+        </div>
+      </section>
+    )
+  }
   <CTASection lang={supportedLang} />
 </Layout>
