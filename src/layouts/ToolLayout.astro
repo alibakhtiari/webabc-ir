@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import ToolsCTA from '@/components/astro/ToolsCTA.astro';
+import ToolFAQ from '@/components/astro/ToolFAQ.astro';
 import Breadcrumbs from '@/components/astro/Breadcrumbs.astro';
 import { type SupportedLanguage, languages } from '@/types/language';
 import { createTranslator } from '@/i18n/translate';
@@ -108,6 +109,9 @@ const defaultBreadcrumbs = breadcrumbs || [
 
   <!-- Tool Workspace / Content -->
   <slot />
+
+  <!-- On-Page FAQ / AEO Question Block -->
+  <ToolFAQ lang={lang} faqSchema={faqSchema} />
 
   <!-- Related Tools & Consultation CTA -->
   <ToolsCTA lang={lang} t={t} related={finalRelated} ctaHref={finalCtaHref} isRtl={isRtl} />
