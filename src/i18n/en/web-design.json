@@ -1,75 +1,75 @@
 {
-    "title": "Web Design & Development",
-    "description": "Professional web design and development services. We build responsive, SEO-friendly, and high-performance websites tailored to your specific business goals.",
-    "intro": {
-        "title": "What Makes Web Design Different From Web Development?",
-        "text": "Web design is the visual and structural layer, how your site looks, how content flows, and how a visitor moves from landing on a page to taking action. Web development is the engineering underneath it. We treat design as a business decision, not a purely aesthetic one: every layout choice is checked against how it affects load time, mobile usability, and conversion, not just how it looks in a mockup."
+  "title": "Web Design & Development",
+  "description": "Professional web design and development services. We build responsive, SEO-friendly, and high-performance websites tailored to your specific business goals.",
+  "intro": {
+    "title": "What Makes Web Design Different From Web Development?",
+    "text": "Web design is the visual and structural layer, how your site looks, how content flows, and how a visitor moves from landing on a page to taking action. Web development is the engineering underneath it. We treat design as a business decision, not a purely aesthetic one: every layout choice is checked against how it affects load time, mobile usability, and conversion, not just how it looks in a mockup."
+  },
+  "ourServices": "Our Web Design Services",
+  "features": {
+    "uiux": {
+      "title": "UI/UX Design",
+      "description": "Professional UI/UX design that ensures your website is not only beautiful but also user-friendly and effective."
     },
-    "ourServices": "Our Web Design Services",
-    "features": {
-        "uiux": {
-            "title": "UI/UX Design",
-            "description": "Professional UI/UX design that ensures your website is not only beautiful but also user-friendly and effective."
-        },
-        "responsive": {
-            "title": "Responsive Design",
-            "description": "Fully responsive websites that look and function perfectly on all devices and screen sizes."
-        },
-        "wordpress": {
-            "title": "WordPress Customization",
-            "description": "Custom WordPress themes and plugins tailored to your specific business requirements."
-        },
-        "react": {
-            "title": "React & Next.js",
-            "description": "Modern web applications built with React.js and Next.js for superior performance and user experience."
-        },
-        "ecommerce": {
-            "title": "E-commerce Solutions",
-            "description": "E-commerce solutions with WooCommerce, Shopify, or custom platforms to sell your products or services online."
-        },
-        "seo": {
-            "title": "SEO Optimization",
-            "description": "SEO-friendly website architecture and optimization for better search engine visibility and ranking."
-        }
+    "responsive": {
+      "title": "Responsive Design",
+      "description": "Fully responsive websites that look and function perfectly on all devices and screen sizes."
     },
-    "process": {
-        "title": "Our Web Design Process",
-        "step1": {
-            "title": "Discovery & Planning",
-            "description": "We analyze your requirements, target audience, and business goals to create a comprehensive project plan."
-        },
-        "step2": {
-            "title": "Wireframing & Prototyping",
-            "description": "We create wireframes and interactive prototypes to visualize the user interface and experience."
-        },
-        "step3": {
-            "title": "Design & Development",
-            "description": "Our designers and developers work together to create a visually stunning and technically robust website."
-        },
-        "step4": {
-            "title": "Testing & Quality Assurance",
-            "description": "We rigorously test the website for functionality, compatibility, and performance across all devices."
-        },
-        "step5": {
-            "title": "Launch & Support",
-            "description": "We deploy your website and provide ongoing support and maintenance to keep it running smoothly."
-        }
+    "wordpress": {
+      "title": "WordPress Customization",
+      "description": "Custom WordPress themes and plugins tailored to your specific business requirements."
     },
-    "technologies": {
-        "title": "Technologies We Use"
+    "react": {
+      "title": "React & Next.js",
+      "description": "Modern web applications built with React.js and Next.js for superior performance and user experience."
     },
-    "cta": {
-        "title": "Ready to Transform Your Online Presence?",
-        "description": "Contact us today to discuss your web design project and let us help you build a website that drives results."
+    "ecommerce": {
+      "title": "E-commerce Solutions",
+      "description": "E-commerce solutions with WooCommerce, Shopify, or custom platforms to sell your products or services online."
     },
-    "faq": {
-        "q1": "What's the difference between web design and web development?",
-        "a1": "Web design covers the visual layout, UX, and brand identity of your site. Web development is the code that builds it. We handle both, or just design if you already have a development team to implement it.",
-        "q2": "Do you provide the Figma/design files, or just the finished website?",
-        "a2": "You get both — full editable design files plus the finished, responsive, live website. Nothing is locked away.",
-        "q3": "How many design revisions are included?",
-        "a3": "Our standard process includes two full revision rounds after the initial concept, with additional rounds available if your project scope changes.",
-        "q4": "Will the design work with WordPress or a custom build?",
-        "a4": "Yes — we design platform-agnostic, then hand off to our WordPress or custom development team (or yours) for implementation."
+    "seo": {
+      "title": "SEO Optimization",
+      "description": "SEO-friendly website architecture and optimization for better search engine visibility and ranking."
     }
+  },
+  "process": {
+    "title": "Our Web Design Process",
+    "step1": {
+      "title": "Discovery & Planning",
+      "description": "We analyze your requirements, target audience, and business goals to create a comprehensive project plan."
+    },
+    "step2": {
+      "title": "Wireframing & Prototyping",
+      "description": "We create wireframes and interactive prototypes to visualize the user interface and experience."
+    },
+    "step3": {
+      "title": "Design & Development",
+      "description": "Our designers and developers work together to create a visually stunning and technically robust website."
+    },
+    "step4": {
+      "title": "Testing & Quality Assurance",
+      "description": "We rigorously test the website for functionality, compatibility, and performance across all devices."
+    },
+    "step5": {
+      "title": "Launch & Support",
+      "description": "We deploy your website and provide ongoing support and maintenance to keep it running smoothly."
+    }
+  },
+  "technologies": {
+    "title": "Technologies We Use"
+  },
+  "cta": {
+    "title": "Ready to Transform Your Online Presence?",
+    "description": "Contact us today to discuss your web design project and let us help you build a website that drives results."
+  },
+  "faq": {
+    "q1": "What's the difference between web design and web development?",
+    "a1": "Web design covers the visual layout, UX, and brand identity of your site. Web development is the code that builds it. We handle both, or just design if you already have a development team to implement it.",
+    "q2": "Do you provide the Figma/design files, or just the finished website?",
+    "a2": "You get both — full editable design files plus the finished, responsive, live website. Nothing is locked away.",
+    "q3": "How many design revisions are included?",
+    "a3": "Our standard process includes two full revision rounds after the initial concept, with additional rounds available if your project scope changes.",
+    "q4": "Will the design work with WordPress or a custom build?",
+    "a4": "Yes — we design platform-agnostic, then hand off to our WordPress or custom development team (or yours) for implementation."
+  }
 }

@@ -1,29 +1,29 @@
 {
-    "title": "Privacy Policy",
-    "lastUpdated": "Last updated: ",
-    "introduction": "Welcome to our Privacy Policy. This document explains how we collect, use, and protect your information when you use our website and services. This policy is designed to comply with the requirements of Google, Facebook, and Pinterest integrations.",
-    "dataCollection": {
-        "title": "1. Data Collection",
-        "content": "We collect information you provide directly to us or through third-party services. This includes:\n- **Account Information:** Name, email address, and profile picture (when authenticating via OAuth services like Google, Facebook, or Pinterest).\n- **Usage Data:** Analytics data gathered through Google Analytics, including IP address, browser type, pages visited, and time spent on our site."
-    },
-    "dataUsage": {
-        "title": "2. Data Usage",
-        "content": "The data we collect is used to:\n- Authenticate users securely.\n- Provide and maintain our services.\n- Analyze site traffic and user behavior to improve site performance and user experience.\n- Communicate with you regarding updates, support, or inquiries."
-    },
-    "thirdPartySharing": {
-        "title": "3. Third-Party Sharing and Integrations",
-        "content": "We do not sell your personal data. However, we use third-party tools to improve our service:\n- **Google APIs & Google Analytics:** We use Google services to log in users and analyze traffic. Google may collect your data based on their privacy policies.\n- **Facebook & Pinterest:** We integrate with Facebook and Pinterest for seamless social login and content sharing. These platforms may collect data in accordance with their respective privacy policies."
-    },
-    "dataRetentionAndDeletion": {
-        "title": "4. Data Retention & Deletion",
-        "content": "We retain your data only for as long as it is necessary to fulfill the purposes outlined in this policy. \n\n**How to request data deletion:**\nIf you have signed in using Facebook, Google, or Pinterest, or simply want your data removed from our systems, you have the right to request full data deletion. \nTo request the complete deletion of your account and all associated personal data, please contact us at **privacy@webabc.ir** with the subject line \"Data Deletion Request\". We will process your request within 30 days."
-    },
-    "cookieUsage": {
-        "title": "5. Cookie Usage",
-        "content": "We use cookies to ensure basic functionality and to analyze site usage. Specifically, we use Google Analytics cookies to understand how visitors interact with our website. You can control cookie preferences using our Cookie Consent Banner upon your first visit."
-    },
-    "contactInformation": {
-        "title": "6. Contact Information",
-        "content": "If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at:\nEmail: privacy@webabc.ir"
-    }
+  "title": "Privacy Policy",
+  "lastUpdated": "Last updated: ",
+  "introduction": "Welcome to our Privacy Policy. This document explains how we collect, use, and protect your information when you use our website and services. This policy is designed to comply with the requirements of Google, Facebook, and Pinterest integrations.",
+  "dataCollection": {
+    "title": "1. Data Collection",
+    "content": "We collect information you provide directly to us or through third-party services. This includes:\n- **Account Information:** Name, email address, and profile picture (when authenticating via OAuth services like Google, Facebook, or Pinterest).\n- **Usage Data:** Analytics data gathered through Google Analytics, including IP address, browser type, pages visited, and time spent on our site."
+  },
+  "dataUsage": {
+    "title": "2. Data Usage",
+    "content": "The data we collect is used to:\n- Authenticate users securely.\n- Provide and maintain our services.\n- Analyze site traffic and user behavior to improve site performance and user experience.\n- Communicate with you regarding updates, support, or inquiries."
+  },
+  "thirdPartySharing": {
+    "title": "3. Third-Party Sharing and Integrations",
+    "content": "We do not sell your personal data. However, we use third-party tools to improve our service:\n- **Google APIs & Google Analytics:** We use Google services to log in users and analyze traffic. Google may collect your data based on their privacy policies.\n- **Facebook & Pinterest:** We integrate with Facebook and Pinterest for seamless social login and content sharing. These platforms may collect data in accordance with their respective privacy policies."
+  },
+  "dataRetentionAndDeletion": {
+    "title": "4. Data Retention & Deletion",
+    "content": "We retain your data only for as long as it is necessary to fulfill the purposes outlined in this policy. \n\n**How to request data deletion:**\nIf you have signed in using Facebook, Google, or Pinterest, or simply want your data removed from our systems, you have the right to request full data deletion. \nTo request the complete deletion of your account and all associated personal data, please contact us at **privacy@webabc.ir** with the subject line \"Data Deletion Request\". We will process your request within 30 days."
+  },
+  "cookieUsage": {
+    "title": "5. Cookie Usage",
+    "content": "We use cookies to ensure basic functionality and to analyze site usage. Specifically, we use Google Analytics cookies to understand how visitors interact with our website. You can control cookie preferences using our Cookie Consent Banner upon your first visit."
+  },
+  "contactInformation": {
+    "title": "6. Contact Information",
+    "content": "If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at:\nEmail: privacy@webabc.ir"
+  }
 }

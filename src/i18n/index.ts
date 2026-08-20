@@ -4,7 +4,6 @@ import type { SupportedLanguage } from '@/types/language';
 // We keep this interface for type safety in components
 export interface TranslationsType {
   [language: string]: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     [category: string]: any;
   };
 }
@@ -15,13 +14,12 @@ export interface TranslationsType {
 export const translations: TranslationsType = {
   en: {},
   fa: {},
-  ar: {}
+  ar: {},
 };
 
 /**
  * @deprecated Use server-side dictionary or client-side context instead.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getTranslation = (lang: SupportedLanguage, key: string): any => {
   console.warn('getTranslation is deprecated. Use dictionary pattern.');
   return key;

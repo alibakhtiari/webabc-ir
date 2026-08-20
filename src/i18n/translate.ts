@@ -4,7 +4,8 @@
  */
 export function createTranslator(dictionary: Record<string, unknown>) {
   return (key: string, fallbackOrOptions?: string | { fallback: string }): string => {
-    const fallback = typeof fallbackOrOptions === 'string' ? fallbackOrOptions : fallbackOrOptions?.fallback;
+    const fallback =
+      typeof fallbackOrOptions === 'string' ? fallbackOrOptions : fallbackOrOptions?.fallback;
     const parts = key.split('.');
     let current: unknown = dictionary;
     for (const part of parts) {
@@ -14,6 +15,6 @@ export function createTranslator(dictionary: Record<string, unknown>) {
         return fallback ?? key;
       }
     }
-    return typeof current === 'string' ? current : fallback ?? key;
+    return typeof current === 'string' ? current : (fallback ?? key);
   };
 }

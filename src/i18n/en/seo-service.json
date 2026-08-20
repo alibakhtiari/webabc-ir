@@ -1,87 +1,87 @@
 {
-    "title": "SEO & Specialized Optimization",
-    "subtitle": "Boost your search ranking with expert SEO services. Data-driven techniques that increase organic traffic and grow your online presence.",
-    "intro": {
-        "title": "What Does Our SEO Service Actually Cover?",
-        "text": "SEO isn't one task, it's four working together: what's on your pages, how your site is built, who links to you, and how visible you are for local search. Sell all four separately and something always gets neglected. We run them as one connected engagement, so a technical fix doesn't sit disconnected from the content strategy, and link building targets pages we've already optimized to convert, not just to rank."
+  "title": "SEO & Specialized Optimization",
+  "subtitle": "Boost your search ranking with expert SEO services. Data-driven techniques that increase organic traffic and grow your online presence.",
+  "intro": {
+    "title": "What Does Our SEO Service Actually Cover?",
+    "text": "SEO isn't one task, it's four working together: what's on your pages, how your site is built, who links to you, and how visible you are for local search. Sell all four separately and something always gets neglected. We run them as one connected engagement, so a technical fix doesn't sit disconnected from the content strategy, and link building targets pages we've already optimized to convert, not just to rank."
+  },
+  "servicesTitle": "Our SEO Services",
+  "onPageSeo": "On-Page SEO",
+  "contentStrategyDesc": "Comprehensive content strategy and optimization",
+  "technicalSeo": "Technical SEO",
+  "technicalSeoDesc": "Optimizing site structure and performance",
+  "offPageSeo": "Off-Page SEO",
+  "offPageSeoDesc": "Building authority and backlinks",
+  "localSeo": "Local SEO",
+  "localSeoDesc": "Dominating local search results",
+  "feature": {
+    "keywordResearch": "Keyword Research",
+    "qualityContent": "Quality Content Production",
+    "titleOptimization": "Title & Meta Optimization",
+    "headings": "Heading Structure",
+    "pageSpeed": "Page Speed Optimization",
+    "technicalErrors": "Fixing Technical Errors",
+    "urlStructure": "URL Structure Optimization",
+    "schema": "Schema Markup Implementation",
+    "linkProfile": "Link Profile Analysis",
+    "linkOpportunities": "Link Building Opportunities",
+    "linkableContent": "Creating Linkable Content",
+    "authorityLinks": "High Authority Backlinks",
+    "gmb": "Google Business Profile",
+    "reviews": "Review Management",
+    "localKeywords": "Local Keyword Targeting",
+    "nearMe": "Near Me Optimization"
+  },
+  "results": {
+    "title": "Results Our Clients Have Seen",
+    "description": "Every SEO engagement starts with clear goals and ends with outcomes we can show you, not just promise. Explore real case studies from businesses we've helped grow online.",
+    "cta": "View Case Studies"
+  },
+  "caseStudies": {
+    "title": "Featured SEO Case Studies",
+    "ecommerce": {
+      "title": "E-commerce Traffic Growth",
+      "category": "E-commerce SEO",
+      "result": "+250% Organic Traffic"
     },
-    "servicesTitle": "Our SEO Services",
-    "onPageSeo": "On-Page SEO",
-    "contentStrategyDesc": "Comprehensive content strategy and optimization",
-    "technicalSeo": "Technical SEO",
-    "technicalSeoDesc": "Optimizing site structure and performance",
-    "offPageSeo": "Off-Page SEO",
-    "offPageSeoDesc": "Building authority and backlinks",
-    "localSeo": "Local SEO",
-    "localSeoDesc": "Dominating local search results",
-    "feature": {
-        "keywordResearch": "Keyword Research",
-        "qualityContent": "Quality Content Production",
-        "titleOptimization": "Title & Meta Optimization",
-        "headings": "Heading Structure",
-        "pageSpeed": "Page Speed Optimization",
-        "technicalErrors": "Fixing Technical Errors",
-        "urlStructure": "URL Structure Optimization",
-        "schema": "Schema Markup Implementation",
-        "linkProfile": "Link Profile Analysis",
-        "linkOpportunities": "Link Building Opportunities",
-        "linkableContent": "Creating Linkable Content",
-        "authorityLinks": "High Authority Backlinks",
-        "gmb": "Google Business Profile",
-        "reviews": "Review Management",
-        "localKeywords": "Local Keyword Targeting",
-        "nearMe": "Near Me Optimization"
+    "local": {
+      "title": "Local Business Domination",
+      "category": "Local SEO",
+      "result": "Top 3 Rankings for Key Terms"
     },
-    "results": {
-        "title": "Results Our Clients Have Seen",
-        "description": "Every SEO engagement starts with clear goals and ends with outcomes we can show you, not just promise. Explore real case studies from businesses we've helped grow online.",
-        "cta": "View Case Studies"
-    },
-    "caseStudies": {
-        "title": "Featured SEO Case Studies",
-        "ecommerce": {
-            "title": "E-commerce Traffic Growth",
-            "category": "E-commerce SEO",
-            "result": "+250% Organic Traffic"
-        },
-        "local": {
-            "title": "Local Business Domination",
-            "category": "Local SEO",
-            "result": "Top 3 Rankings for Key Terms"
-        },
-        "b2b": {
-            "title": "B2B Lead Generation",
-            "category": "SEO & Content Strategy",
-            "result": "+180% Inbound Leads"
-        }
-    },
-    "process": {
-        "title": "Our SEO Process",
-        "step1": {
-            "title": "Research & Analysis",
-            "description": "We analyze your website, competitors, and target keywords to create a comprehensive SEO strategy."
-        },
-        "step2": {
-            "title": "Implementation",
-            "description": "Our team implements on-page and technical SEO optimizations based on our research findings."
-        },
-        "step3": {
-            "title": "Monitor & Optimize",
-            "description": "We continuously monitor rankings and traffic, making data-driven adjustments to improve results."
-        }
-    },
-    "cta": {
-        "title": "Ready to Improve Your Search Rankings?",
-        "description": "Contact us today for a free website audit and SEO consultation. We'll show you exactly how we can improve your search visibility."
-    },
-    "faq": {
-        "q1": "How long does SEO take to show results?",
-        "a1": "Most sites see initial movement in 3-4 months, with significant ranking gains in 6-12 months. Timeline depends on your site's current authority, competition, and how technically clean the starting point is.",
-        "q2": "Do you guarantee a #1 Google ranking?",
-        "a2": "No reputable agency can guarantee a specific position — Google's algorithm is outside anyone's direct control. We guarantee a documented, data-driven process and transparent monthly reporting on rankings, traffic, and conversions.",
-        "q3": "What's included in a monthly SEO report?",
-        "a3": "Keyword ranking changes, organic traffic and conversion trends, technical issues fixed, and content/link building completed that month, benchmarked against the previous period.",
-        "q4": "Do I need separate technical, on-page, and local SEO, or is it one service?",
-        "a4": "For most businesses it's one integrated strategy — we tailor the mix of technical fixes, content optimization, and local signals based on your specific ranking gaps rather than selling them as separate add-ons."
+    "b2b": {
+      "title": "B2B Lead Generation",
+      "category": "SEO & Content Strategy",
+      "result": "+180% Inbound Leads"
     }
+  },
+  "process": {
+    "title": "Our SEO Process",
+    "step1": {
+      "title": "Research & Analysis",
+      "description": "We analyze your website, competitors, and target keywords to create a comprehensive SEO strategy."
+    },
+    "step2": {
+      "title": "Implementation",
+      "description": "Our team implements on-page and technical SEO optimizations based on our research findings."
+    },
+    "step3": {
+      "title": "Monitor & Optimize",
+      "description": "We continuously monitor rankings and traffic, making data-driven adjustments to improve results."
+    }
+  },
+  "cta": {
+    "title": "Ready to Improve Your Search Rankings?",
+    "description": "Contact us today for a free website audit and SEO consultation. We'll show you exactly how we can improve your search visibility."
+  },
+  "faq": {
+    "q1": "How long does SEO take to show results?",
+    "a1": "Most sites see initial movement in 3-4 months, with significant ranking gains in 6-12 months. Timeline depends on your site's current authority, competition, and how technically clean the starting point is.",
+    "q2": "Do you guarantee a #1 Google ranking?",
+    "a2": "No reputable agency can guarantee a specific position — Google's algorithm is outside anyone's direct control. We guarantee a documented, data-driven process and transparent monthly reporting on rankings, traffic, and conversions.",
+    "q3": "What's included in a monthly SEO report?",
+    "a3": "Keyword ranking changes, organic traffic and conversion trends, technical issues fixed, and content/link building completed that month, benchmarked against the previous period.",
+    "q4": "Do I need separate technical, on-page, and local SEO, or is it one service?",
+    "a4": "For most businesses it's one integrated strategy — we tailor the mix of technical fixes, content optimization, and local signals based on your specific ranking gaps rather than selling them as separate add-ons."
+  }
 }
