@@ -46,7 +46,7 @@ const linkPath = (path: string) => {
 
           <!-- Direct Contact Information (Inline) -->
           <div
-            class={`space-y-2.5 pt-1 font-${lang === 'en' ? 'sans' : 'persian'} text-sm text-foreground/80`}
+            class={`space-y-2 pt-1 font-${lang === 'en' ? 'sans' : 'persian'} text-sm text-foreground/80`}
           >
             <div class="flex items-center gap-2">
               <svg
@@ -63,24 +63,37 @@ const linkPath = (path: string) => {
                   d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                 ></path>
               </svg>
-              <div
-                class="flex flex-wrap items-center gap-x-2 gap-y-0.5 font-mono text-xs sm:text-sm"
+              <a
+                href="tel:+989125811880"
+                class="text-xs transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:text-sm"
                 dir="ltr"
               >
-                <a
-                  href="tel:+989125811880"
-                  class="transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                >
-                  +98 912 581 1880
-                </a>
-                <span class="text-gray-300 dark:text-gray-700">|</span>
-                <a
-                  href="tel:+989354767068"
-                  class="transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                >
-                  +98 935 476 7068
-                </a>
-              </div>
+                {t('contact.phoneValue', { fallback: '+98 912 581 1880 (A. Bakhtiari)' })}
+              </a>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <svg
+                aria-hidden="true"
+                class="h-4 w-4 shrink-0 text-primary"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                ></path>
+              </svg>
+              <a
+                href="tel:+989354767068"
+                class="text-xs transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:text-sm"
+                dir="ltr"
+              >
+                {t('contact.phoneValue2', { fallback: '+98 935 476 7068 (F. SabadBafan)' })}
+              </a>
             </div>
 
             <div class="flex items-center gap-2">
