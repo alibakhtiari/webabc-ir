@@ -257,7 +257,7 @@ const organizationSchema = createOrganizationSchema(
       href="#main-content"
       class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-100 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-primary-foreground focus:shadow-lg"
     >
-      {dictionary.skipToContent || 'Skip to main content'}
+      {dictionary.common?.skipToContent || 'Skip to main content'}
     </a>
     <Navbar lang={lang} />
     <main id="main-content" class={mainClass}>

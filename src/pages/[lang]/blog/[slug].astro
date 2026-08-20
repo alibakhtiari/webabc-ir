@@ -72,6 +72,23 @@ const plainTextWordCount = (post.body || '')
   .split(/\s+/)
   .filter(Boolean).length;
 
+const translatedAuthor =
+  (post.data.author || '').includes('Team') ||
+  (post.data.author || '').includes('تیم') ||
+  (post.data.author || '').includes('فريق')
+    ? supportedLang === 'fa'
+      ? 'تیم وب اِی‌بی‌سی'
+      : supportedLang === 'ar'
+        ? 'فريق ويب إيه بي سي'
+        : 'WebABC Team'
+    : isAliBakhtiari
+      ? supportedLang === 'fa'
+        ? 'علی بختیاری'
+        : supportedLang === 'ar'
+          ? 'علي بختياري'
+          : 'Ali Bakhtiari'
+      : post.data.author;
+
 // Schema JSON-LDs
 const articleSchema = {
   '@context': 'https://schema.org',
@@ -82,25 +99,33 @@ const articleSchema = {
   image: post.data.image.startsWith('http') ? post.data.image : `${origin}${post.data.image}`,
   datePublished: post.data.date,
   dateModified: post.data.updatedDate || post.data.date,
-  author: {
-    '@type': 'Person',
-    name: isAliBakhtiari ? 'Ali Bakhtiari' : post.data.author || 'WebABC Team',
-    url: isAliBakhtiari ? 'https://aliib.ir/' : `${origin}/${supportedLang}/about/`,
-    ...(isAliBakhtiari
-      ? {
-          image: `${origin}/ali-bakhtiari.webp`,
-          sameAs: [
-            'https://www.linkedin.com/in/alibakhtiarii/',
-            'https://github.com/alibakhtiari',
-            'https://www.instagram.com/aliibakhtiari/',
-            'https://www.facebook.com/Alii.bakhtiari',
-            'https://x.com/aliib1991',
-            'https://alibakhtiari.ir',
-            'https://aliib.ir',
-          ],
-        }
-      : {}),
-  },
+  author: isAliBakhtiari
+    ? {
+        '@type': 'Person',
+        name:
+          supportedLang === 'fa'
+            ? 'علی بختیاری'
+            : supportedLang === 'ar'
+              ? 'علي بختياري'
+              : 'Ali Bakhtiari',
+        url: `${origin}/${supportedLang}/about/ali-bakhtiari/`,
+        image: `${origin}/ali-bakhtiari.webp`,
+        sameAs: [
+          'https://www.linkedin.com/in/alibakhtiarii/',
+          'https://github.com/alibakhtiari',
+          'https://www.instagram.com/aliibakhtiari/',
+          'https://www.facebook.com/Alii.bakhtiari',
+          'https://x.com/aliib1991',
+          'https://alibakhtiari.ir',
+          'https://aliib.ir',
+        ],
+      }
+    : {
+        '@type': 'Organization',
+        name: translatedAuthor,
+        url: `${origin}/${supportedLang}/about/`,
+        logo: `${origin}/webabc.webp`,
+      },
 
   publisher: {
     '@id': 'https://webabc.ir/#organization',
@@ -120,23 +145,6 @@ const breadcrumbs = [
   { label: t('common.blog'), url: `/${supportedLang}/blog/` },
   { label: post.data.title },
 ];
-
-const translatedAuthor =
-  (post.data.author || '').includes('Team') ||
-  (post.data.author || '').includes('تیم') ||
-  (post.data.author || '').includes('فريق')
-    ? supportedLang === 'fa'
-      ? 'تیم وب اِی‌بی‌سی'
-      : supportedLang === 'ar'
-        ? 'فريق ويب إيه بي سي'
-        : 'WebABC Team'
-    : isAliBakhtiari
-      ? supportedLang === 'fa'
-        ? 'علی بختیاری'
-        : supportedLang === 'ar'
-          ? 'علي بختياري'
-          : 'Ali Bakhtiari'
-      : post.data.author;
 
 const authorBio = isAliBakhtiari
   ? supportedLang === 'fa'

@@ -81,11 +81,11 @@ const faqSchema = {
             >
               <input
                 type="text"
-                class="faq-q w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:border-primary focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                class="faq-q w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:border-primary focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white" aria-label={t('faqGenerator.questionLabel', { fallback: 'Question' })}
                 value="What is FAQ Schema Markup?"
               />
               <textarea
-                class="faq-a w-full resize-none rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                class="faq-a w-full resize-none rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-white" aria-label={t('faqGenerator.answerLabel', { fallback: 'Answer' })}
                 rows="2"
                 >FAQ Schema is structured data code added to a website to help search engines
                 display interactive rich snippets directly in Google search results.</textarea
@@ -97,11 +97,11 @@ const faqSchema = {
             >
               <input
                 type="text"
-                class="faq-q w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:border-primary focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                class="faq-q w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:border-primary focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white" aria-label={t('faqGenerator.questionLabel', { fallback: 'Question' })}
                 value="Does FAQ Schema improve SEO?"
               />
               <textarea
-                class="faq-a w-full resize-none rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                class="faq-a w-full resize-none rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-white" aria-label={t('faqGenerator.answerLabel', { fallback: 'Answer' })}
                 >Yes, FAQ schema enhances search visibility, expands your search snippet footprint,
                 and increases click-through rates (CTR).</textarea
               >
@@ -226,8 +226,8 @@ const faqSchema = {
       div.className =
         'faq-item p-4 bg-gray-50 dark:bg-slate-800/80 border border-gray-100 dark:border-slate-700 rounded-xl space-y-2';
       div.innerHTML = `
-      <input type="text" class="faq-q w-full border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-white rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" placeholder="Enter question..." />
-      <textarea class="faq-a w-full border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-white rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none resize-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" rows="2" placeholder="Enter answer..."></textarea>
+      <input type="text" class="faq-q w-full border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-white rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" placeholder="Enter question..." aria-label="Question" />
+      <textarea class="faq-a w-full border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-white rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none resize-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" rows="2" placeholder="Enter answer..." aria-label="Answer"></textarea>
     `;
       faqList.appendChild(div);
       updateOutputs();

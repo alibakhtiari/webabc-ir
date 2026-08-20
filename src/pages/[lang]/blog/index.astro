@@ -54,8 +54,18 @@ const blogSchema = {
     image: post.image.startsWith('http') ? post.image : `${origin}${post.image}`,
     datePublished: post.date,
     author: {
-      '@type': 'Person',
-      name: post.author || 'WebABC Team',
+      '@type': ['Ali Bakhtiari', 'علی بختیاری', 'علي بختياري'].includes(
+        post.author?.trim() ?? ''
+      )
+        ? 'Person'
+        : 'Organization',
+      name:
+        post.author ||
+        (supportedLang === 'fa'
+          ? 'تیم وب اِی‌بی‌سی'
+          : supportedLang === 'ar'
+            ? 'فريق ويب إيه بي سي'
+            : 'WebABC Team'),
     },
     url: `${origin}/${supportedLang}/blog/${post.slug}`,
   })),
