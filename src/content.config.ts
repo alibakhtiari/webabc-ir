@@ -5,7 +5,7 @@ const blog = defineCollection({
   loader: glob({
     pattern: '**/*.{md,mdx}',
     base: './src/content/blog',
-    generateId: ({ entry }) => entry.replace(/\.(md|mdx)$/, '')
+    generateId: ({ entry }) => entry.replace(/\.(md|mdx)$/, ''),
   }),
   schema: z.object({
     title: z.string(),
@@ -18,18 +18,22 @@ const blog = defineCollection({
     image: z.string(),
     readTime: z.number().optional(),
     keyTakeaways: z.array(z.string()).optional(),
-    faq: z.array(z.object({
-      question: z.string(),
-      answer: z.string()
-    })).optional()
-  })
+    faq: z
+      .array(
+        z.object({
+          question: z.string(),
+          answer: z.string(),
+        })
+      )
+      .optional(),
+  }),
 });
 
 const portfolio = defineCollection({
   loader: glob({
     pattern: '**/*.{md,mdx}',
     base: './src/content/portfolio',
-    generateId: ({ entry }) => entry.replace(/\.(md|mdx)$/, '')
+    generateId: ({ entry }) => entry.replace(/\.(md|mdx)$/, ''),
   }),
   schema: z.object({
     title: z.string(),
@@ -39,11 +43,13 @@ const portfolio = defineCollection({
     client: z.string(),
     technologies: z.array(z.string()),
     projectUrl: z.string(),
-    results: z.array(z.object({
-      value: z.string(),
-      label: z.string()
-    }))
-  })
+    results: z.array(
+      z.object({
+        value: z.string(),
+        label: z.string(),
+      })
+    ),
+  }),
 });
 
 export const collections = { blog, portfolio };

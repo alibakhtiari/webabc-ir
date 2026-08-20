@@ -11,13 +11,7 @@ interface Props {
   buttonLink?: string;
 }
 
-const { 
-  lang, 
-  title, 
-  description, 
-  buttonText, 
-  buttonLink = '/contact' 
-} = Astro.props;
+const { lang, title, description, buttonText, buttonLink = '/contact' } = Astro.props;
 
 const dictionary = await getDictionary(lang);
 const isRtl = languages[lang]?.direction === 'rtl';
@@ -26,31 +20,37 @@ const isRtl = languages[lang]?.direction === 'rtl';
 const t = createTranslator(dictionary);
 
 const ctaTitle = title || t('cta.title', { fallback: 'Ready to Grow Your Business?' });
-const ctaDesc = description || t('cta.description', { fallback: 'Contact our expert team today to get a customized strategy for your business.' });
+const ctaDesc =
+  description ||
+  t('cta.description', {
+    fallback: 'Contact our expert team today to get a customized strategy for your business.',
+  });
 const ctaBtnText = buttonText || t('cta.primaryButton', { fallback: 'Get Started' });
 ---
 
-<div class="my-12 relative overflow-hidden rounded-3xl bg-linear-to-r from-primary/10 via-primary/5 to-transparent border border-primary/10 p-8 md:p-10 font-persian">
+<div
+  class="relative my-12 overflow-hidden rounded-3xl border border-primary/15 bg-linear-to-r from-primary/10 via-primary/5 to-transparent p-8 font-persian md:p-10 dark:border-slate-800 dark:from-primary/15 dark:via-primary/5 dark:to-slate-900/30"
+>
   <!-- Interactive background blobs -->
   <div class="absolute inset-0 -z-10 overflow-hidden">
-    <div class="absolute top-0 right-0 w-48 h-48 rounded-full bg-primary/5 blur-2xl"></div>
-    <div class="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-primary/10 blur-3xl"></div>
+    <div class="absolute top-0 right-0 h-48 w-48 rounded-full bg-primary/5 blur-2xl"></div>
+    <div class="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-primary/10 blur-3xl"></div>
   </div>
 
-  <div class="flex flex-col md:flex-row gap-6 items-center justify-between relative z-10">
-    <div class="space-y-3 text-center md:text-start max-w-2xl">
-      <h3 class="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">
+  <div class="relative z-10 flex flex-col items-center justify-between gap-6 md:flex-row">
+    <div class="max-w-2xl space-y-3 text-center md:text-start">
+      <h3 class="text-2xl leading-tight font-bold text-gray-900 md:text-3xl dark:text-white">
         {ctaTitle}
       </h3>
-      <p class="text-gray-600 text-sm md:text-base leading-relaxed">
+      <p class="text-sm leading-relaxed text-gray-600 md:text-base dark:text-gray-300">
         {ctaDesc}
       </p>
     </div>
-    
-    <div class="flex-shrink-0">
+
+    <div class="shrink-0">
       <a
         href={`/${lang}${buttonLink.endsWith('/') ? buttonLink : buttonLink + '/'}`}
-        class="inline-flex items-center justify-center px-6 py-3.5 bg-primary text-primary-foreground font-bold rounded-xl shadow-md hover:bg-primary/95 hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+        class="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3.5 font-bold text-primary-foreground shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/95 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
       >
         <span>{ctaBtnText}</span>
       </a>

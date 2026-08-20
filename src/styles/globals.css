@@ -1,8 +1,7 @@
 @import 'tailwindcss';
-@plugin "@tailwindcss/typography";
+@plugin '@tailwindcss/typography';
 
-
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* TailwindCSS Animate Utilities */
 @utility animate-in {
@@ -315,14 +314,18 @@
   @keyframes enter {
     from {
       opacity: var(--tw-enter-opacity, 1);
-      transform: translate3d(var(--tw-enter-translate-x, 0), var(--tw-enter-translate-y, 0), 0) scale3d(var(--tw-enter-scale, 1), var(--tw-enter-scale, 1), 1) rotate(var(--tw-enter-rotate, 0));
+      transform: translate3d(var(--tw-enter-translate-x, 0), var(--tw-enter-translate-y, 0), 0)
+        scale3d(var(--tw-enter-scale, 1), var(--tw-enter-scale, 1), 1)
+        rotate(var(--tw-enter-rotate, 0));
     }
   }
 
   @keyframes exit {
     to {
       opacity: var(--tw-exit-opacity, 1);
-      transform: translate3d(var(--tw-exit-translate-x, 0), var(--tw-exit-translate-y, 0), 0) scale3d(var(--tw-exit-scale, 1), var(--tw-exit-scale, 1), 1) rotate(var(--tw-exit-rotate, 0));
+      transform: translate3d(var(--tw-exit-translate-x, 0), var(--tw-exit-translate-y, 0), 0)
+        scale3d(var(--tw-exit-scale, 1), var(--tw-exit-scale, 1), 1)
+        rotate(var(--tw-exit-rotate, 0));
     }
   }
 }
@@ -336,13 +339,20 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
+  }
+
+  .dark *,
+  .dark ::after,
+  .dark ::before,
+  .dark ::backdrop,
+  .dark ::file-selector-button {
+    border-color: hsl(var(--border));
   }
 
   :root {
@@ -379,33 +389,55 @@
 
   .dark {
     color-scheme: dark;
-    --background: 222 47.4% 11.2%;
+    --background: 224 71% 4%;
     --foreground: 210 40% 98%;
 
-    --card: 222 47.4% 11.2%;
+    --card: 222 47% 9%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222 47.4% 11.2%;
+    --popover: 222 47% 9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 100% 50%;
+    --primary: 217 91% 60%;
     --primary-foreground: 222 47.4% 11.2%;
 
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 217.2 32.6% 15%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 217.2 32.6% 15%;
+    --muted-foreground: 215 20.2% 70%;
 
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 217.2 32.6% 15%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 217.2 32.6% 18%;
+    --input: 217.2 32.6% 18%;
+    --ring: 217 91% 60%;
+  }
+
+  .dark html,
+  .dark body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+
+  .dark
+    input:not([type='submit']):not([type='button']):not([type='checkbox']):not([type='radio']):not(
+      [type='color']
+    ),
+  .dark textarea,
+  .dark select {
+    background-color: hsl(var(--card));
+    color: hsl(var(--foreground));
+    border-color: hsl(var(--border));
+  }
+
+  .dark input::placeholder,
+  .dark textarea::placeholder {
+    color: hsl(var(--muted-foreground));
   }
 }
 
@@ -426,12 +458,16 @@
 }
 
 @utility glass-morphism {
-  @apply bg-white/80 backdrop-blur-md border border-white/20 rounded-xl shadow-lg;
+  @apply rounded-xl border border-white/20 bg-white/80 shadow-lg backdrop-blur-md dark:border-slate-800/80 dark:bg-slate-900/80 dark:shadow-black/40;
 }
 
 @utility neo-morphism {
-  @apply bg-white;
+  @apply border border-gray-100/80 bg-white dark:border-slate-800/80 dark:bg-slate-900;
   box-shadow: 0 8px 30px rgb(0 0 0 / 0.06);
+}
+
+.dark .neo-morphism {
+  box-shadow: 0 8px 30px rgb(0 0 0 / 0.35);
 }
 
 @utility content-transition {
@@ -448,7 +484,6 @@
 }
 
 @layer utilities {
-
   html {
     scroll-padding-top: 6rem;
   }

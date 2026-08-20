@@ -15,125 +15,166 @@ const isRtl = lang === 'fa' || lang === 'ar';
 // Translate helpers
 const t = createTranslator(dictionary);
 
-
-
 const faqList = [1, 2, 3, 4]
-  .map(n => ({
-    question: t(`webDesign.faq.q${n}`, ""),
-    answer: t(`webDesign.faq.a${n}`, "")
+  .map((n) => ({
+    question: t(`webDesign.faq.q${n}`, ''),
+    answer: t(`webDesign.faq.a${n}`, ''),
   }))
-  .filter(item => item.question && item.answer);
+  .filter((item) => item.question && item.answer);
 ---
 
 <div class="space-y-16 py-8">
-
   <!-- Intro Section -->
-  <section class="bg-white">
-    <div class="max-w-4xl mx-auto text-center space-y-6">
-      <h2 class="text-3xl font-bold font-persian">{t('webDesign.intro.title', 'What Makes Web Design Different From Web Development?')}</h2>
-      <p class="text-gray-600 leading-relaxed font-persian text-lg">{t('webDesign.intro.text', '')}</p>
+  <section class="bg-white dark:bg-slate-950">
+    <div class="mx-auto max-w-4xl space-y-6 text-center">
+      <h2 class="font-persian text-3xl font-bold">
+        {t('webDesign.intro.title', 'What Makes Web Design Different From Web Development?')}
+      </h2>
+      <p class="font-persian text-lg leading-relaxed text-gray-600 dark:text-gray-300">
+        {t('webDesign.intro.text', '')}
+      </p>
     </div>
   </section>
 
   <!-- Services Details -->
-  <section class="bg-white">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-12 font-persian">
-        {t('webDesign.ourServices', "Web Design Offerings")}
+  <section class="bg-white dark:bg-slate-950">
+    <div class="mx-auto max-w-6xl">
+      <h2 class="mb-12 text-center font-persian text-3xl font-bold">
+        {t('webDesign.ourServices', 'Web Design Offerings')}
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {[
-          { key: 'uiux' },
-          { key: 'responsive' },
-          { key: 'ecommerce' },
-          { key: 'seo' }
-        ].map(({ key }) => (
-          <div class="bg-white p-6 rounded-2xl shadow-xs hover:shadow-lg transition-all duration-300 border border-gray-100 flex flex-col">
-            <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-4 text-primary text-2xl font-bold">
-              ✦
-            </div>
-            <h3 class="text-xl font-bold mb-3 font-persian">{t(`webDesign.features.${key}.title`, key)}</h3>
-            <p class="text-gray-600 text-sm leading-relaxed font-persian flex-grow">
-              {t(`webDesign.features.${key}.description`, "")}
-            </p>
-          </div>
-        ))}
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {
+          [{ key: 'uiux' }, { key: 'responsive' }, { key: 'ecommerce' }, { key: 'seo' }].map(
+            ({ key }) => (
+              <div class="flex flex-col rounded-2xl border border-gray-100 bg-white p-6 shadow-xs transition-all duration-300 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
+                <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-2xl font-bold text-primary">
+                  ✦
+                </div>
+                <h3 class="mb-3 font-persian text-xl font-bold text-gray-900 dark:text-white">
+                  {t(`webDesign.features.${key}.title`, key)}
+                </h3>
+                <p class="grow font-persian text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                  {t(`webDesign.features.${key}.description`, '')}
+                </p>
+              </div>
+            )
+          )
+        }
       </div>
     </div>
   </section>
 
   <!-- Process Timeline -->
-  <section class="py-16 bg-gray-50/50 rounded-3xl p-8 border border-gray-100">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-16 font-persian">
-        {t('webDesign.process.title', "Our Design & Prototyping Process")}
+  <section
+    class="rounded-3xl border border-gray-100 bg-gray-50/50 p-8 py-16 dark:border-slate-800 dark:bg-slate-900"
+  >
+    <div class="mx-auto max-w-6xl">
+      <h2 class="mb-16 text-center font-persian text-3xl font-bold">
+        {t('webDesign.process.title', 'Our Design & Prototyping Process')}
       </h2>
 
-      <div class="relative max-w-4xl mx-auto">
+      <div class="relative mx-auto max-w-4xl">
         <!-- Timeline Center Line -->
-        <div class="absolute left-4 lg:left-1/2 transform lg:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-primary/20"></div>
+        <div
+          class="absolute top-0 bottom-0 left-4 w-0.5 transform bg-primary/20 lg:left-1/2 lg:-translate-x-1/2"
+        >
+        </div>
 
         <!-- Alternating steps -->
         <div class="space-y-12">
-          {[1, 2, 3, 4, 5].map((step) => {
-            const isLeft = step % 2 !== 0;
-            return (
-              <div class="relative flex flex-col lg:flex-row items-start">
-                <div class={`lg:w-1/2 w-full ${isLeft ? 'lg:pe-12 lg:text-end' : 'lg:ps-12 lg:order-last'}`}>
-                  <div class="bg-white p-6 rounded-2xl shadow-xs border border-gray-100/50 hover:shadow-md transition-shadow">
-                    <h3 class="text-xl font-bold mb-2 font-persian">{t(`webDesign.process.step${step}.title`, `Step ${step}`)}</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed font-persian">{t(`webDesign.process.step${step}.description`, "")}</p>
+          {
+            [1, 2, 3, 4, 5].map((step) => {
+              const isLeft = step % 2 !== 0;
+              return (
+                <div class="relative flex flex-col items-start lg:flex-row">
+                  <div
+                    class={`w-full lg:w-1/2 ${isLeft ? 'lg:pe-12 lg:text-end' : 'lg:order-last lg:ps-12'}`}
+                  >
+                    <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-xs transition-shadow hover:shadow-md dark:border-slate-800/50 dark:bg-slate-900">
+                      <h3 class="mb-2 font-persian text-xl font-bold">
+                        {t(`webDesign.process.step${step}.title`, `Step ${step}`)}
+                      </h3>
+                      <p class="font-persian text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                        {t(`webDesign.process.step${step}.description`, '')}
+                      </p>
+                    </div>
                   </div>
+                  <div class="absolute top-4 left-4 z-10 flex h-8 w-8 -translate-x-1/2 transform items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground shadow-md lg:left-1/2">
+                    {step}
+                  </div>
+                  <div class="hidden lg:block lg:w-1/2" />
                 </div>
-                <div class="absolute left-4 lg:left-1/2 top-4 transform -translate-x-1/2 flex items-center justify-center w-8 h-8 bg-primary text-primary-foreground rounded-full text-sm font-bold shadow-md z-10">
-                  {step}
-                </div>
-                <div class="lg:w-1/2 hidden lg:block"></div>
-              </div>
-            );
-          })}
+              );
+            })
+          }
         </div>
       </div>
     </div>
   </section>
 
   <!-- Complementary Services -->
-  <section class="py-12 bg-gray-50/50 rounded-3xl p-8 border border-gray-100">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-12 font-persian">
-        {t('common.complementaryServices', "Complementary Services")}
+  <section
+    class="rounded-3xl border border-gray-100 bg-gray-50/50 p-8 py-12 dark:border-slate-800 dark:bg-slate-900"
+  >
+    <div class="mx-auto max-w-4xl">
+      <h2 class="mb-12 text-center font-persian text-3xl font-bold">
+        {t('common.complementaryServices', 'Complementary Services')}
       </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
         <!-- Content Creation Card -->
-        <a href={`/${lang}/services/content-creation/`} class="group bg-white p-8 rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 border border-gray-100 flex flex-col justify-between focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+        <a
+          href={`/${lang}/services/content-creation/`}
+          class="group flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-8 shadow-xs transition-all duration-300 hover:shadow-md focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-800 dark:bg-slate-900"
+        >
           <div class="space-y-4">
             <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 group-hover:scale-105 transition-transform">
+              <div
+                class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-transform group-hover:scale-105 dark:bg-slate-800"
+              >
                 ✍️
               </div>
-              <h3 class="text-xl font-bold font-persian">{t('services.contentCreationTitle', "Content Creation")}</h3>
+              <h3 class="font-persian text-xl font-bold text-gray-900 dark:text-white">
+                {t('services.contentCreationTitle', 'Content Creation')}
+              </h3>
             </div>
-            <p class="text-gray-600 text-sm leading-relaxed font-persian">{t('services.contentCreationDescription', "")}</p>
+            <p class="font-persian text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+              {t('services.contentCreationDescription', '')}
+            </p>
           </div>
-          <div class="flex items-center text-blue-600 font-bold text-sm mt-6 group-hover:translate-x-1 transition-transform font-persian">
-            {t('common.learnMore', "Learn More")} {isRtl ? '←' : '→'}
+          <div
+            class="mt-6 flex items-center font-persian text-sm font-bold text-blue-600 transition-transform group-hover:translate-x-1"
+          >
+            {t('common.learnMore', 'Learn More')}
+            {isRtl ? '←' : '→'}
           </div>
         </a>
 
         <!-- Link Building Card -->
-        <a href={`/${lang}/services/link-building/`} class="group bg-white p-8 rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 border border-gray-100 flex flex-col justify-between focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+        <a
+          href={`/${lang}/services/link-building/`}
+          class="group flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-8 shadow-xs transition-all duration-300 hover:shadow-md focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-800 dark:bg-slate-900"
+        >
           <div class="space-y-4">
             <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600 group-hover:scale-105 transition-transform">
+              <div
+                class="flex h-12 w-12 items-center justify-center rounded-xl bg-purple-50 text-purple-600 transition-transform group-hover:scale-105 dark:bg-slate-800"
+              >
                 🔗
               </div>
-              <h3 class="text-xl font-bold font-persian">{t('services.linkBuildingTitle', "Link Building")}</h3>
+              <h3 class="font-persian text-xl font-bold text-gray-900 dark:text-white">
+                {t('services.linkBuildingTitle', 'Link Building')}
+              </h3>
             </div>
-            <p class="text-gray-600 text-sm leading-relaxed font-persian">{t('services.linkBuildingDescription', "")}</p>
+            <p class="font-persian text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+              {t('services.linkBuildingDescription', '')}
+            </p>
           </div>
-          <div class="flex items-center text-purple-600 font-bold text-sm mt-6 group-hover:translate-x-1 transition-transform font-persian">
-            {t('common.learnMore', "Learn More")} {isRtl ? '←' : '→'}
+          <div
+            class="mt-6 flex items-center font-persian text-sm font-bold text-purple-600 transition-transform group-hover:translate-x-1"
+          >
+            {t('common.learnMore', 'Learn More')}
+            {isRtl ? '←' : '→'}
           </div>
         </a>
       </div>
@@ -141,9 +182,11 @@ const faqList = [1, 2, 3, 4]
   </section>
 
   <!-- FAQ Section -->
-  {faqList.length > 0 && (
-    <section class="max-w-3xl mx-auto">
-      <FAQ faqList={faqList} lang={lang} />
-    </section>
-  )}
+  {
+    faqList.length > 0 && (
+      <section class="mx-auto max-w-3xl">
+        <FAQ faqList={faqList} lang={lang} />
+      </section>
+    )
+  }
 </div>

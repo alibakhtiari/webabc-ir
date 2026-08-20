@@ -16,64 +16,88 @@ const titleText = dictionary.blog?.faq || 'سوالات متداول';
 const rawPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const pageUrl = `https://webabc.ir${rawPath}`;
 const schema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "@id": `${pageUrl}#faq`,
-  "isPartOf": { "@id": `${pageUrl}#webpage` },
-  "inLanguage": lang === 'en' ? 'en-US' : lang === 'ar' ? 'ar-SA' : 'fa-IR',
-  "mainEntity": faqList.map(item => ({
-    "@type": "Question",
-    "name": item.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": item.answer
-    }
-  }))
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${pageUrl}#faq`,
+  isPartOf: { '@id': `${pageUrl}#webpage` },
+  inLanguage: lang === 'en' ? 'en-US' : lang === 'ar' ? 'ar-SA' : 'fa-IR',
+  mainEntity: faqList.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
 };
 ---
 
 <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
-<div class="mb-8 border border-gray-100 rounded-2xl p-6 bg-white shadow-xs font-persian">
-  <h2 class="text-2xl font-bold mb-6 text-gray-900 flex items-center gap-2">
+<div
+  class="mb-8 rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-xs dark:border-slate-800 dark:bg-slate-900"
+>
+  <h2 class="mb-6 flex items-center gap-2 text-2xl font-bold text-gray-900 dark:text-white">
     {titleText}
   </h2>
-  
+
   <div class="space-y-4">
-    {faqList.map((item, idx) => (
-      <div class="border-b border-gray-100 last:border-0 pb-4 last:pb-0">
-        <button type="button"
-          class="faq-btn w-full flex items-center justify-between py-2 text-start font-bold text-gray-800 hover:text-primary transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md"
-          data-faq-target={`faq-answer-${idx}`}
-          aria-expanded="false"
-          aria-controls={`faq-answer-${idx}`}
-        >
-          <span>{item.question}</span>
-          <svg aria-hidden="true" class="faq-icon w-5 h-5 transition-transform duration-300 text-gray-400 shrink-0 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-          </svg>
-        </button>
-        <div id={`faq-answer-${idx}`} class="faq-answer hidden mt-2 text-gray-600 text-sm leading-relaxed pr-2">
-          {item.answer}
+    {
+      faqList.map((item, idx) => (
+        <div class="border-b border-gray-100 pb-4 last:border-0 last:pb-0 dark:border-slate-800">
+          <button
+            type="button"
+            class="faq-btn flex w-full cursor-pointer items-center justify-between rounded-md py-2 text-start font-bold text-gray-800 transition-all hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-gray-200 dark:hover:text-primary"
+            data-faq-target={`faq-answer-${idx}`}
+            aria-expanded="false"
+            aria-controls={`faq-answer-${idx}`}
+          >
+            <span>{item.question}</span>
+            <svg
+              aria-hidden="true"
+              class="faq-icon ml-2 h-5 w-5 shrink-0 text-gray-400 transition-transform duration-300 dark:text-gray-500"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div
+            id={`faq-answer-${idx}`}
+            class="faq-answer mt-2 hidden pr-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300"
+          >
+            {item.answer}
+          </div>
         </div>
-      </div>
-    ))}
+      ))
+    }
   </div>
 </div>
 
 <script is:inline>
-  const faqButtons = document.querySelectorAll('.faq-btn');
-  faqButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const targetId = btn.getAttribute('data-faq-target');
-      const targetAnswer = document.getElementById(targetId);
-      const icon = btn.querySelector('.faq-icon');
-      
-      if (targetAnswer && icon) {
-        const isHidden = targetAnswer.classList.toggle('hidden');
-        icon.classList.toggle('rotate-180', !isHidden);
-        btn.setAttribute('aria-expanded', String(!isHidden));
-      }
-    });
-  });
+  (() => {
+    function initFaq() {
+      const faqButtons = document.querySelectorAll('.faq-btn');
+      faqButtons.forEach((btn) => {
+        btn.onclick = () => {
+          const targetId = btn.getAttribute('data-faq-target');
+          const targetAnswer = document.getElementById(targetId);
+          const icon = btn.querySelector('.faq-icon');
+
+          if (targetAnswer && icon) {
+            const isHidden = targetAnswer.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180', !isHidden);
+            btn.setAttribute('aria-expanded', String(!isHidden));
+          }
+        };
+      });
+    }
+
+    document.addEventListener('astro:page-load', initFaq);
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      initFaq();
+    }
+  })();
 </script>

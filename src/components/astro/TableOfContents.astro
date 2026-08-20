@@ -13,47 +13,89 @@ const dictionary = await getDictionary(lang);
 const titleText = dictionary.blog?.tableOfContents || 'فهرست مطالب';
 
 // Filter for h2 and h3
-const filteredHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
+const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
 
 if (filteredHeadings.length === 0) return null;
 ---
 
-<div class="mb-8 border border-primary/10 bg-linear-to-br from-primary/5 to-white shadow-xs rounded-2xl overflow-hidden font-persian">
-  <button type="button" id="toc-toggle" class="w-full flex items-center justify-between p-5 hover:bg-primary/5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md" aria-expanded="false" aria-controls="toc-content">
-    <span class="font-bold text-lg text-gray-900 flex items-center gap-2">
-      <svg aria-hidden="true" class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7"></path></svg>
+<div
+  class="mb-8 overflow-hidden rounded-2xl border border-primary/15 bg-linear-to-br from-primary/5 to-white font-persian shadow-xs dark:border-slate-800 dark:to-slate-900"
+>
+  <button
+    type="button"
+    id="toc-toggle"
+    class="flex w-full cursor-pointer items-center justify-between rounded-md p-5 transition-all hover:bg-primary/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+    aria-expanded="false"
+    aria-controls="toc-content"
+  >
+    <span class="flex items-center gap-2 text-lg font-bold text-gray-900 dark:text-white">
+      <svg
+        aria-hidden="true"
+        class="h-5 w-5 text-primary"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        ><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7"
+        ></path></svg
+      >
       {titleText}
     </span>
-    <svg aria-hidden="true" id="toc-arrow" class="w-5 h-5 transition-transform duration-300 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+    <svg
+      aria-hidden="true"
+      id="toc-arrow"
+      class="h-5 w-5 text-gray-500 transition-transform duration-300 dark:text-gray-400"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      ><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg
+    >
   </button>
-  <nav id="toc-content" class="hidden px-6 pb-6 border-t border-gray-100/55 pt-4">
+  <nav
+    id="toc-content"
+    class="hidden border-t border-gray-100/55 px-6 pt-4 pb-6 dark:border-slate-800"
+  >
     <ul class="space-y-1.5">
-      {filteredHeadings.map((item) => (
-        <li class={item.depth === 3 ? "pl-4 opacity-90" : ""}>
-          <a
-            href={`#${item.slug}`}
-            class={`text-sm hover:text-primary transition-all block py-1.5 px-3 rounded-md hover:bg-primary/5 border-s-2 border-transparent hover:border-primary ${
-              item.depth === 3 ? "text-gray-500 font-normal" : "text-gray-700 font-semibold"
-            }`}
-          >
-            {item.text}
-          </a>
-        </li>
-      ))}
+      {
+        filteredHeadings.map((item) => (
+          <li class={item.depth === 3 ? 'pl-4 opacity-90' : ''}>
+            <a
+              href={`#${item.slug}`}
+              class={`block rounded-md border-s-2 border-transparent px-3 py-1.5 text-sm transition-all hover:border-primary hover:bg-primary/5 hover:text-primary ${
+                item.depth === 3
+                  ? 'font-normal text-gray-500 dark:text-gray-400'
+                  : 'font-semibold text-gray-700 dark:text-gray-200'
+              }`}
+            >
+              {item.text}
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </nav>
 </div>
 
 <script is:inline>
-  const tocToggle = document.getElementById('toc-toggle');
-  const tocContent = document.getElementById('toc-content');
-  const tocArrow = document.getElementById('toc-arrow');
+  (() => {
+    function initToc() {
+      const tocToggle = document.getElementById('toc-toggle');
+      const tocContent = document.getElementById('toc-content');
+      const tocArrow = document.getElementById('toc-arrow');
 
-  if (tocToggle && tocContent && tocArrow) {
-    tocToggle.addEventListener('click', () => {
-      const isHidden = tocContent.classList.toggle('hidden');
-      tocArrow.classList.toggle('rotate-180', !isHidden);
-      tocToggle.setAttribute('aria-expanded', String(!isHidden));
-    });
-  }
+      if (tocToggle && tocContent && tocArrow) {
+        tocToggle.onclick = () => {
+          const isHidden = tocContent.classList.toggle('hidden');
+          tocArrow.classList.toggle('rotate-180', !isHidden);
+          tocToggle.setAttribute('aria-expanded', String(!isHidden));
+        };
+      }
+    }
+
+    document.addEventListener('astro:page-load', initToc);
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      initToc();
+    }
+  })();
 </script>

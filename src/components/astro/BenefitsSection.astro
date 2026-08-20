@@ -19,108 +19,207 @@ const t = createTranslator(dictionary);
 const benefits = [
   {
     title: t('benefits.brandCredibility.title', { fallback: 'افزایش اعتبار برند' }),
-    description: t('benefits.brandCredibility.description', { fallback: 'با حضور قدرتمند در نتایج جستجو، اعتبار برند خود را افزایش دهید.' }),
+    description: t('benefits.brandCredibility.description', {
+      fallback: 'با حضور قدرتمند در نتایج جستجو، اعتبار برند خود را افزایش دهید.',
+    }),
   },
   {
     title: t('benefits.increaseSales.title', { fallback: 'افزایش فروش و درآمد' }),
-    description: t('benefits.increaseSales.description', { fallback: 'با جذب ترافیک هدفمند، نرخ تبدیل و فروش خود را افزایش دهید.' }),
+    description: t('benefits.increaseSales.description', {
+      fallback: 'با جذب ترافیک هدفمند، نرخ تبدیل و فروش خود را افزایش دهید.',
+    }),
   },
   {
     title: t('benefits.reduceCosts.title', { fallback: 'کاهش هزینه‌های تبلیغاتی' }),
-    description: t('benefits.reduceCosts.description', { fallback: 'با بهبود رتبه‌های ارگانیک، هزینه‌های تبلیغات کلیکی را کاهش دهید.' }),
+    description: t('benefits.reduceCosts.description', {
+      fallback: 'با بهبود رتبه‌های ارگانیک، هزینه‌های تبلیغات کلیکی را کاهش دهید.',
+    }),
   },
   {
     title: t('benefits.competitiveAdvantage.title', { fallback: 'برتری نسبت به رقبا' }),
-    description: t('benefits.competitiveAdvantage.description', { fallback: 'با استراتژی‌های سئوی پیشرفته، از رقبای خود پیشی بگیرید.' }),
+    description: t('benefits.competitiveAdvantage.description', {
+      fallback: 'با استراتژی‌های سئوی پیشرفته، از رقبای خود پیشی بگیرید.',
+    }),
   },
 ];
 ---
 
-<section id="benefits" class="py-24 relative overflow-hidden font-sans">
+<section id="benefits" class="relative overflow-hidden py-24 font-sans">
   <div class="absolute inset-0 overflow-hidden">
-    <div class="absolute top-40 left-20 w-80 h-80 rounded-full bg-primary/5 blur-3xl"></div>
-    <div class="absolute bottom-40 right-20 w-64 h-64 rounded-full bg-primary/10 blur-3xl"></div>
+    <div class="absolute top-40 left-20 h-80 w-80 rounded-full bg-primary/5 blur-3xl"></div>
+    <div class="absolute right-20 bottom-40 h-64 w-64 rounded-full bg-primary/10 blur-3xl"></div>
   </div>
 
-  <div class="container mx-auto px-4 md:px-6 relative z-10">
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <span class={`inline-block mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium font-${lang === 'en' ? 'sans' : 'persian'}`}>
+  <div class="relative z-10 container mx-auto px-4 md:px-6">
+    <div class="mx-auto mb-16 max-w-3xl text-center">
+      <span
+        class={`inline-block mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium font-${lang === 'en' ? 'sans' : 'persian'}`}
+      >
         {t('benefits.sectionTag', { fallback: 'مزایای همکاری با ما' })}
       </span>
 
-      <h2 class={`text-3xl md:text-4xl font-bold tracking-tight mb-6 text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}>
+      <h2
+        class={`text-3xl md:text-4xl font-bold tracking-tight mb-6 text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}
+      >
         {t('benefits.sectionTitle.prefix', { fallback: 'چرا ' })}
-        <span class="text-primary">{t('benefits.sectionTitle.highlight', { fallback: 'وب آ ب ث' })}</span>
+        <span class="text-primary"
+          >{t('benefits.sectionTitle.highlight', { fallback: 'وب آ ب ث' })}</span
+        >
         {t('benefits.sectionTitle.suffix', { fallback: ' را انتخاب کنید؟' })}
       </h2>
 
-      <p class={`text-foreground/80 leading-relaxed text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}>
-        {t('benefits.sectionDescription', { fallback: 'ما با تمرکز بر نتایج ملموس و استراتژی‌های اثبات شده، به کسب و کار شما کمک می‌کنیم تا در دنیای دیجیتال امروزی رشد کند.' })}
+      <p
+        class={`text-foreground/80 leading-relaxed text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}
+      >
+        {
+          t('benefits.sectionDescription', {
+            fallback:
+              'ما با تمرکز بر نتایج ملموس و استراتژی‌های اثبات شده، به کسب و کار شما کمک می‌کنیم تا در دنیای دیجیتال امروزی رشد کند.',
+          })
+        }
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-      {benefits.map((benefit) => (
-        <div class="glass-morphism p-6 rounded-xl transition-all duration-300 hover:shadow-md">
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
-              <svg aria-hidden="true" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-            </div>
-            <div class="space-y-2">
-              <h3 class={`text-xl font-medium font-${lang === 'en' ? 'sans' : 'persian'}`}>{benefit.title}</h3>
-              <p class={`text-foreground/70 font-${lang === 'en' ? 'sans' : 'persian'}`}>{benefit.description}</p>
+    <div class="mb-16 grid grid-cols-1 gap-8 md:grid-cols-2">
+      {
+        benefits.map((benefit) => (
+          <div class="glass-morphism rounded-xl p-6 transition-all duration-300 hover:shadow-md">
+            <div class="flex items-start gap-4">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                <svg
+                  aria-hidden="true"
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <div class="space-y-2">
+                <h3 class={`text-xl font-medium font-${lang === 'en' ? 'sans' : 'persian'}`}>
+                  {benefit.title}
+                </h3>
+                <p class={`text-foreground/70 font-${lang === 'en' ? 'sans' : 'persian'}`}>
+                  {benefit.description}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
 
     <!-- Guarantee Block -->
-    <div class="neo-morphism rounded-2xl overflow-hidden">
+    <div class="overflow-hidden rounded-2xl neo-morphism">
       <div class="grid grid-cols-1 lg:grid-cols-2">
-        <div class="p-8 md:p-12 flex flex-col justify-center">
-          <div class="flex max-w-max mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs">
+        <div class="flex flex-col justify-center p-8 md:p-12">
+          <div
+            class="mb-2 flex max-w-max rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs text-primary"
+          >
             <span>{t('benefits.guaranteeTag', { fallback: 'تضمین نتیجه' })}</span>
           </div>
 
-          <h3 class={`text-2xl md:text-3xl font-bold mb-6 text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}>
+          <h3
+            class={`text-2xl md:text-3xl font-bold mb-6 text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}
+          >
             {t('benefits.guaranteeTitle.prefix', { fallback: 'نتایج ملموس با روش‌های ' })}
-            <span class="text-primary">{t('benefits.guaranteeTitle.highlight', { fallback: 'اثبات شده' })}</span>
+            <span class="text-primary"
+              >{t('benefits.guaranteeTitle.highlight', { fallback: 'اثبات شده' })}</span
+            >
           </h3>
 
-          <p class={`text-foreground/80 leading-relaxed mb-8 text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}>
-            {t('benefits.guaranteeDescription', { fallback: 'ما معتقدیم که سئو یک فرآیند مستمر است و با برنامه‌ریزی دقیق و استراتژی‌های اصولی، نتایج درازمدت و پایداری را برای کسب و کار شما به ارمغان می‌آوریم.' })}
+          <p
+            class={`text-foreground/80 leading-relaxed mb-8 text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}
+          >
+            {
+              t('benefits.guaranteeDescription', {
+                fallback:
+                  'ما معتقدیم که سئو یک فرآیند مستمر است و با برنامه‌ریزی دقیق و استراتژی‌های اصولی، نتایج درازمدت و پایداری را برای کسب و کار شما به ارمغان می‌آوریم.',
+              })
+            }
           </p>
 
-          <ul class="space-y-4 mb-8">
-            {[
-              t('benefits.guaranteeFeatures.0', { fallback: 'گزارش‌های ماهانه با متریک‌های دقیق' }),
-              t('benefits.guaranteeFeatures.1', { fallback: 'شفافیت کامل در تمام مراحل همکاری' }),
-              t('benefits.guaranteeFeatures.2', { fallback: 'تضمین بهبود رتبه در کلمات کلیدی هدف' }),
-              t('benefits.guaranteeFeatures.3', { fallback: 'قراردادهای منعطف و بدون تعهد بلندمدت' })
-            ].map((item) => (
-              <li class={`flex items-center font-${lang === 'en' ? 'sans' : 'persian'}`}>
-                <div class="w-6 h-6 flex items-center justify-center rounded-full bg-primary/10 text-primary me-3 shrink-0">
-                  <svg aria-hidden="true" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-                </div>
-                <span>{item}</span>
-              </li>
-            ))}
+          <ul class="mb-8 space-y-4">
+            {
+              [
+                t('benefits.guaranteeFeatures.0', {
+                  fallback: 'گزارش‌های ماهانه با متریک‌های دقیق',
+                }),
+                t('benefits.guaranteeFeatures.1', { fallback: 'شفافیت کامل در تمام مراحل همکاری' }),
+                t('benefits.guaranteeFeatures.2', {
+                  fallback: 'تضمین بهبود رتبه در کلمات کلیدی هدف',
+                }),
+                t('benefits.guaranteeFeatures.3', {
+                  fallback: 'قراردادهای منعطف و بدون تعهد بلندمدت',
+                }),
+              ].map((item) => (
+                <li class={`flex items-center font-${lang === 'en' ? 'sans' : 'persian'}`}>
+                  <div class="me-3 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <svg
+                      aria-hidden="true"
+                      class="h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span>{item}</span>
+                </li>
+              ))
+            }
           </ul>
 
           <div class="flex items-center">
-            <button type="button" class={`px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2 font-${lang === 'en' ? 'sans' : 'persian'}`}>
+            <button
+              type="button"
+              class={`px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2 font-${lang === 'en' ? 'sans' : 'persian'}`}
+            >
               <span>{t('benefits.ctaButton', { fallback: 'دریافت مشاوره رایگان' })}</span>
-              {isRtl ? (
-                <svg aria-hidden="true" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-              ) : (
-                <svg aria-hidden="true" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-              )}
+              {
+                isRtl ? (
+                  <svg
+                    aria-hidden="true"
+                    class="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    aria-hidden="true"
+                    class="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                )
+              }
             </button>
           </div>
         </div>
 
-        <div class="relative aspect-video lg:aspect-auto bg-gray-50 flex items-center justify-center min-h-[400px]">
+        <div
+          class="relative flex aspect-video min-h-100 items-center justify-center bg-gray-50 lg:aspect-auto dark:bg-slate-900"
+        >
           <Picture
             src={seoResultsImg}
             formats={['avif', 'webp']}
@@ -128,11 +227,10 @@ const benefits = [
             width={600}
             height={400}
             loading="lazy"
-            class="object-cover w-full h-full"
+            class="h-full w-full object-cover"
           />
         </div>
       </div>
     </div>
-
   </div>
 </section>

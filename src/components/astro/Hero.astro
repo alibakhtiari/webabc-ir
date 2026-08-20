@@ -15,26 +15,30 @@ const {
   description,
   breadcrumbs,
   lang,
-  gradient = "bg-linear-to-br from-primary/10 via-background to-primary/5",
-  className = ""
+  gradient = 'bg-linear-to-br from-primary/10 via-background to-primary/5',
+  className = '',
 } = Astro.props;
 ---
 
 <section class={`pt-36 pb-20 relative overflow-hidden ${gradient} ${className}`}>
-  <div class="container mx-auto px-4 relative z-10">
-    <div class="max-w-4xl mx-auto text-center space-y-6">
+  <div class="relative z-10 container mx-auto px-4">
+    <div class="mx-auto max-w-4xl space-y-6 text-center">
       <Breadcrumbs items={breadcrumbs} lang={lang} centered={true} />
-      
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight font-persian">
+
+      <h1
+        class="font-persian text-4xl leading-tight font-bold text-gray-900 md:text-5xl dark:text-white"
+      >
         {title}
       </h1>
-      
-      {description && (
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto font-persian leading-relaxed">
-          {description}
-        </p>
-      )}
-      
+
+      {
+        description && (
+          <p class="mx-auto max-w-3xl font-persian text-xl leading-relaxed text-gray-600 dark:text-gray-300">
+            {description}
+          </p>
+        )
+      }
+
       <slot />
     </div>
   </div>

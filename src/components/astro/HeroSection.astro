@@ -22,39 +22,95 @@ const linkPath = (path: string) => {
 };
 ---
 
-<section class="pt-32 pb-20 md:pt-40 md:pb-32 bg-linear-to-b from-primary/5 to-white font-sans overflow-hidden">
+<section
+  class="overflow-hidden bg-linear-to-b from-primary/10 via-background to-background pt-32 pb-20 font-sans md:pt-40 md:pb-32"
+>
   <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-      <div class="col-span-1 lg:col-span-6 text-center lg:text-start">
-        <h1 class={`text-4xl md:text-6xl font-bold mb-6 leading-normal font-${lang === 'en' ? 'sans' : 'persian'}`}>
-          {t('home.hero.title', { fallback: 'Elevate Your Digital Presence with Expert Web Solutions' })}
+    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+      <div class="col-span-1 text-center lg:col-span-6 lg:text-start">
+        <h1
+          class={`text-4xl md:text-6xl font-bold mb-6 leading-normal text-gray-900 dark:text-white font-${lang === 'en' ? 'sans' : 'persian'}`}
+        >
+          {
+            t('home.hero.title', {
+              fallback: 'Elevate Your Digital Presence with Expert Web Solutions',
+            })
+          }
         </h1>
-        <p class={`text-xl text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0 font-${lang === 'en' ? 'sans' : 'persian'}`}>
-          {t('home.hero.description', { fallback: 'We help businesses grow online with professional web development and SEO strategies that deliver real results.' })}
+        <p
+          class={`text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 font-${lang === 'en' ? 'sans' : 'persian'}`}
+        >
+          {
+            t('home.hero.description', {
+              fallback:
+                'We help businesses grow online with professional web development and SEO strategies that deliver real results.',
+            })
+          }
         </p>
-        <div class={`flex flex-col sm:flex-row gap-4 justify-center lg:justify-start font-${lang === 'en' ? 'sans' : 'persian'}`}>
-          <a href={linkPath('/services')} class="px-8 py-4 bg-primary text-primary-foreground font-bold rounded-lg shadow-md hover:bg-primary/95 transition-all text-center focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+        <div
+          class={`flex flex-col sm:flex-row gap-4 justify-center lg:justify-start font-${lang === 'en' ? 'sans' : 'persian'}`}
+        >
+          <a
+            href={linkPath('/services')}
+            class="rounded-lg bg-primary px-8 py-4 text-center font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          >
             {t('home.hero.primaryCta', { fallback: 'Explore Services' })}
           </a>
-          <a href={linkPath('/portfolio')} class="px-8 py-4 border border-gray-200 text-gray-700 hover:bg-gray-50 rounded-lg transition-all flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+          <a
+            href={linkPath('/portfolio')}
+            class="flex items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-8 py-4 text-gray-700 transition-all hover:bg-gray-50 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700"
+          >
             {t('home.hero.secondaryCta', { fallback: 'View Portfolio' })}
-            {isRtl ? (
-              <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-            ) : (
-              <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            )}
+            {
+              isRtl ? (
+                <svg
+                  aria-hidden="true"
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  aria-hidden="true"
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              )
+            }
           </a>
         </div>
       </div>
       <div class="col-span-1 lg:col-span-6">
         <div class="relative">
-          <div class="absolute -z-10 inset-0 bg-linear-to-tr from-primary/20 to-secondary/20 blur-3xl rounded-full transform scale-110"></div>
+          <div
+            class="absolute inset-0 -z-10 scale-110 transform rounded-full bg-linear-to-tr from-primary/20 to-secondary/20 blur-3xl"
+          >
+          </div>
           <OptimizedImage
             src="/images/homepage-hero.webp"
-            alt={t('home.hero.imageAlt', { fallback: 'Digital marketing and web development illustration' })}
+            alt={t('home.hero.imageAlt', {
+              fallback: 'Digital marketing and web development illustration',
+            })}
             width={600}
             height={400}
-            class="w-full h-auto object-cover rounded-lg shadow-2xl"
+            class="h-auto w-full rounded-lg object-cover shadow-2xl"
             loading="eager"
             fetchpriority="high"
           />
