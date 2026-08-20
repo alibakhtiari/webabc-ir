@@ -21,27 +21,34 @@ const linkPath = (path: string) => {
 };
 ---
 
-<section id="contact" class="py-24 relative overflow-hidden font-sans">
-  <div class="container mx-auto px-4 md:px-6 relative z-10">
-    <div class="max-w-5xl mx-auto">
-      <div class="bg-primary rounded-3xl p-8 md:p-12 relative overflow-hidden">
+<section id="contact" class="relative overflow-hidden py-24 font-sans">
+  <div class="relative z-10 container mx-auto px-4 md:px-6">
+    <div class="mx-auto max-w-5xl">
+      <div class="relative overflow-hidden rounded-3xl bg-primary p-8 md:p-12">
         <!-- Background elements -->
         <div class="absolute inset-0 overflow-hidden">
-          <div class="absolute top-0 right-0 w-64 h-64 rounded-full bg-white/10 blur-3xl"></div>
-          <div class="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-white/5 blur-3xl"></div>
+          <div class="absolute top-0 right-0 h-64 w-64 rounded-full bg-white/10 blur-3xl"></div>
+          <div class="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-white/5 blur-3xl"></div>
         </div>
 
         <div class="relative z-10 text-center">
-          <h2 class={`text-3xl md:text-4xl font-bold text-white mb-6 text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}>
+          <h2
+            class={`text-3xl md:text-4xl font-bold text-white mb-6 text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}
+          >
             {t('cta.title')}
           </h2>
 
-          <p class={`text-white/90 text-lg mb-8 max-w-3xl mx-auto text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}>
+          <p
+            class={`text-white/90 text-lg mb-8 max-w-3xl mx-auto text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}
+          >
             {t('cta.description')}
           </p>
 
-          <div class={`flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 font-${lang === 'en' ? 'sans' : 'persian'}`}>
-            <button type="button"
+          <div
+            class={`flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 font-${lang === 'en' ? 'sans' : 'persian'}`}
+          >
+            <button
+              type="button"
               id="cta-consultation-btn"
               class={`px-6 py-3 rounded-full bg-white text-primary font-medium transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2 ${isRtl ? 'flex-row-reverse' : ''}`}
             >
@@ -49,7 +56,7 @@ const linkPath = (path: string) => {
             </button>
             <a
               href={linkPath('/contact')}
-              class="px-6 py-3 rounded-full bg-transparent text-white border border-white/30 transition-all duration-300 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              class="rounded-full border border-white/30 bg-transparent px-6 py-3 text-white transition-all duration-300 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
               <span>{t('cta.secondaryButton')}</span>
             </a>
@@ -57,38 +64,97 @@ const linkPath = (path: string) => {
         </div>
       </div>
 
-      <div class={`grid grid-cols-1 ${lang === 'fa' ? 'md:grid-cols-3' : 'md:grid-cols-2 max-w-2xl mx-auto'} gap-8 mt-16`}>
-        {[
-          ...(lang === 'fa' ? [{
-            title: t('cta.address'),
-            content: t('cta.addressValue')
-          }] : []),
-          {
-            title: t('cta.phone'),
-            content: t('cta.phoneValue')
-          },
-          {
-            title: t('cta.email'),
-            content: t('cta.emailValue')
-          }
-        ].map((item) => (
-          <div class="neo-morphism p-6 rounded-xl text-center transition-all duration-300 hover:shadow-md">
-            <h3 class={`text-xl font-medium mb-2 font-${lang === 'en' ? 'sans' : 'persian'}`}>{item.title}</h3>
-            <p class={`text-foreground/80 font-${lang === 'en' ? 'sans' : 'persian'} whitespace-pre-line`}>{item.content}</p>
-          </div>
-        ))}
+      <div
+        class={`grid grid-cols-1 ${lang === 'fa' ? 'md:grid-cols-3' : 'md:grid-cols-2 max-w-2xl mx-auto'} gap-8 mt-16`}
+      >
+        {
+          [
+            ...(lang === 'fa'
+              ? [
+                  {
+                    title: t('cta.address'),
+                    type: 'address' as const,
+                    content: t('cta.addressValue'),
+                  },
+                ]
+              : []),
+            {
+              title: t('cta.phone'),
+              type: 'phone' as const,
+              phones: [
+                {
+                  tel: '+989125811880',
+                  label: t('contact.phoneValue', { fallback: '+98 912 581 1880' }),
+                },
+                {
+                  tel: '+989354767068',
+                  label: t('contact.phoneValue2', { fallback: '+98 935 476 7068' }),
+                },
+              ],
+            },
+            {
+              title: t('cta.email'),
+              type: 'email' as const,
+              email: t('cta.emailValue', { fallback: 'info@webabc.ir' }),
+            },
+          ].map((item) => (
+            <div class="rounded-xl neo-morphism p-6 text-center transition-all duration-300 hover:shadow-md">
+              <h3 class={`mb-2 text-xl font-medium font-${lang === 'en' ? 'sans' : 'persian'}`}>
+                {item.title}
+              </h3>
+              {item.type === 'phone' ? (
+                <div class="space-y-1.5">
+                  {item.phones?.map((p) => (
+                    <div>
+                      <a
+                        href={`tel:${p.tel}`}
+                        class={`inline-block text-foreground/80 transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 font-${lang === 'en' ? 'sans' : 'persian'}`}
+                        dir="ltr"
+                      >
+                        {p.label}
+                      </a>
+                    </div>
+                  ))}
+                </div>
+              ) : item.type === 'email' ? (
+                <p>
+                  <a
+                    href={`mailto:${item.email}`}
+                    class={`inline-block text-foreground/80 transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 font-${lang === 'en' ? 'sans' : 'persian'}`}
+                  >
+                    {item.email}
+                  </a>
+                </p>
+              ) : (
+                <p
+                  class={`text-foreground/80 font-${lang === 'en' ? 'sans' : 'persian'} whitespace-pre-line`}
+                >
+                  {item.content}
+                </p>
+              )}
+            </div>
+          ))
+        }
       </div>
     </div>
   </div>
 </section>
 
 <script is:inline>
-  // Connect CTA button to consultation modal trigger
-  const ctaBtn = document.getElementById('cta-consultation-btn');
-  const consultationModal = document.getElementById('consultation-modal');
-  if (ctaBtn && consultationModal) {
-    ctaBtn.addEventListener('click', () => {
-      consultationModal.showModal();
-    });
-  }
+  (() => {
+    function initCta() {
+      const ctaBtn = document.getElementById('cta-consultation-btn');
+      const consultationModal = document.getElementById('consultation-modal');
+      if (ctaBtn && consultationModal) {
+        ctaBtn.onclick = () => {
+          consultationModal.showModal();
+        };
+      }
+    }
+
+    document.addEventListener('astro:page-load', initCta);
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      initCta();
+    }
+  })();
 </script>
