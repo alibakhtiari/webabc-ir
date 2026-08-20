@@ -15,55 +15,76 @@ const dictionary = await getDictionary(supportedLang);
 const t = createTranslator(dictionary);
 
 const titleText = t('boxShadow.title', { fallback: 'CSS Box Shadow & Neumorphism Generator' });
-const descriptionText = t('boxShadow.description', { fallback: 'Create custom CSS box-shadows, soft glass shadows, and neumorphism effects visually.' });
+const descriptionText = t('boxShadow.description', {
+  fallback: 'Create custom CSS box-shadows, soft glass shadows, and neumorphism effects visually.',
+});
 
 const webAppSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "@id": `https://webabc.ir/${supportedLang}/tools/box-shadow-generator/#webapp`,
-  "name": titleText,
-  "description": descriptionText,
-  "applicationCategory": "DesignApplication",
-  "operatingSystem": "All",
-  "browserRequirements": "Requires HTML5 support",
-  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `https://webabc.ir/${supportedLang}/tools/box-shadow-generator/#webapp`,
+  name: titleText,
+  description: descriptionText,
+  applicationCategory: 'DesignApplication',
+  operatingSystem: 'All',
+  browserRequirements: 'Requires HTML5 support',
+  inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
 };
 
 const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
     {
-      "@type": "Question",
-      "name": supportedLang === 'fa' ? 'خاصیت box-shadow در CSS چیست و چگونه سایه لایه‌ای بسازیم؟' : supportedLang === 'ar' ? 'ما هي خاصية box-shadow في CSS وكيف تنشئ ظلالاً متدرجة؟' : 'What is the CSS box-shadow property and how do smooth shadows work?',
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": supportedLang === 'fa' ? 'خاصیت box-shadow افکت سایه دور عناصر HTML ایجاد می‌کند. ترکیب چند افست offset-x, offset-y, blur-radius, spread-radius و رنگ شفاف سایه‌های مدرن عمیق و طبیعی ایجاد می‌کند.' : supportedLang === 'ar' ? 'تضيف خاصية box-shadow ظلالاً ناعمة للمكونات من خلال تحديد الإزاحة ونصف قطر الضبابية واللون.' : 'The CSS box-shadow property applies shadow effects around an element frame using horizontal offset, vertical offset, blur radius, spread radius, and RGBA color opacity.'
-      }
-    }
-  ]
+      '@type': 'Question',
+      name:
+        supportedLang === 'fa'
+          ? 'خاصیت box-shadow در CSS چیست و چگونه سایه لایه‌ای بسازیم؟'
+          : supportedLang === 'ar'
+            ? 'ما هي خاصية box-shadow في CSS وكيف تنشئ ظلالاً متدرجة؟'
+            : 'What is the CSS box-shadow property and how do smooth shadows work?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text:
+          supportedLang === 'fa'
+            ? 'خاصیت box-shadow افکت سایه دور عناصر HTML ایجاد می‌کند. ترکیب چند افست offset-x, offset-y, blur-radius, spread-radius و رنگ شفاف سایه‌های مدرن عمیق و طبیعی ایجاد می‌کند.'
+            : supportedLang === 'ar'
+              ? 'تضيف خاصية box-shadow ظلالاً ناعمة للمكونات من خلال تحديد الإزاحة ونصف قطر الضبابية واللون.'
+              : 'The CSS box-shadow property applies shadow effects around an element frame using horizontal offset, vertical offset, blur radius, spread radius, and RGBA color opacity.',
+      },
+    },
+  ],
 };
 
 const breadcrumbs = [
   { label: t('common.home'), url: `/${supportedLang}/` },
   { label: t('common.tools'), url: `/${supportedLang}/tools/` },
-  { label: titleText }
+  { label: titleText },
 ];
 ---
 
-<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/box-shadow-generator">
+<Layout
+  title={titleText}
+  description={descriptionText}
+  lang={supportedLang}
+  slug="tools/box-shadow-generator"
+>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero Section -->
-  <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100 font-sans">
+  <section
+    class="border-b border-gray-100 bg-linear-to-b from-primary/10 via-background to-background pt-24 pb-12 font-sans md:pt-40 md:pb-24 dark:border-slate-800"
+  >
     <div class="container mx-auto px-4">
-      <div class="max-w-3xl mx-auto text-center">
+      <div class="mx-auto max-w-3xl text-center">
         <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
-        <h1 class="text-3xl md:text-5xl font-bold mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent leading-normal font-persian">
+        <h1
+          class="mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text font-persian text-3xl leading-normal font-bold text-transparent md:text-5xl"
+        >
           {titleText}
         </h1>
-        <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-persian">
+        <p class="font-persian text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-300">
           {descriptionText}
         </p>
       </div>
@@ -71,178 +92,286 @@ const breadcrumbs = [
   </section>
 
   <!-- Main Workspace -->
-  <section class="container mx-auto px-4 mt-12 mb-20 font-sans">
-    <div class="max-w-5xl mx-auto space-y-8">
-      
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-        
+  <section class="container mx-auto mt-12 mb-20 px-4 font-sans">
+    <div class="mx-auto max-w-5xl space-y-8">
+      <div class="grid grid-cols-1 items-start gap-8 lg:grid-cols-2">
         <!-- Controls -->
-        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-5 font-persian">
-          <h3 class="text-base font-bold text-gray-800 border-b border-gray-100 pb-2">{t('boxShadow.properties', { fallback: 'Shadow Properties' })}</h3>
+        <div
+          class="space-y-5 rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-sm dark:border-slate-800 dark:bg-slate-900"
+        >
+          <h3
+            class="border-b border-gray-100 pb-2 text-base font-bold text-gray-800 dark:border-slate-800 dark:text-gray-100"
+          >
+            {t('boxShadow.properties', { fallback: 'Shadow Properties' })}
+          </h3>
 
           <!-- Horizontal Offset -->
           <div>
-            <div class="flex justify-between text-xs font-semibold text-gray-600 mb-1">
+            <div
+              class="mb-1 flex justify-between text-xs font-semibold text-gray-600 dark:text-gray-300"
+            >
               <span>{t('boxShadow.offsetX', { fallback: 'Horizontal Offset (X)' })}</span>
               <span id="val-x" class="font-mono text-primary">0px</span>
             </div>
-            <input type="range" id="range-x" min="-50" max="50" value="10" class="w-full accent-primary" />
+            <input
+              type="range"
+              id="range-x"
+              min="-50"
+              max="50"
+              value="10"
+              class="w-full accent-primary"
+            />
           </div>
 
           <!-- Vertical Offset -->
           <div>
-            <div class="flex justify-between text-xs font-semibold text-gray-600 mb-1">
+            <div
+              class="mb-1 flex justify-between text-xs font-semibold text-gray-600 dark:text-gray-300"
+            >
               <span>{t('boxShadow.offsetY', { fallback: 'Vertical Offset (Y)' })}</span>
               <span id="val-y" class="font-mono text-primary">15px</span>
             </div>
-            <input type="range" id="range-y" min="-50" max="50" value="15" class="w-full accent-primary" />
+            <input
+              type="range"
+              id="range-y"
+              min="-50"
+              max="50"
+              value="15"
+              class="w-full accent-primary"
+            />
           </div>
 
           <!-- Blur Radius -->
           <div>
-            <div class="flex justify-between text-xs font-semibold text-gray-600 mb-1">
+            <div
+              class="mb-1 flex justify-between text-xs font-semibold text-gray-600 dark:text-gray-300"
+            >
               <span>{t('boxShadow.blur', { fallback: 'Blur Radius' })}</span>
               <span id="val-blur" class="font-mono text-primary">30px</span>
             </div>
-            <input type="range" id="range-blur" min="0" max="100" value="30" class="w-full accent-primary" />
+            <input
+              type="range"
+              id="range-blur"
+              min="0"
+              max="100"
+              value="30"
+              class="w-full accent-primary"
+            />
           </div>
 
           <!-- Spread Radius -->
           <div>
-            <div class="flex justify-between text-xs font-semibold text-gray-600 mb-1">
+            <div
+              class="mb-1 flex justify-between text-xs font-semibold text-gray-600 dark:text-gray-300"
+            >
               <span>{t('boxShadow.spread', { fallback: 'Spread Radius' })}</span>
               <span id="val-spread" class="font-mono text-primary">-5px</span>
             </div>
-            <input type="range" id="range-spread" min="-30" max="50" value="-5" class="w-full accent-primary" />
+            <input
+              type="range"
+              id="range-spread"
+              min="-30"
+              max="50"
+              value="-5"
+              class="w-full accent-primary"
+            />
           </div>
 
           <!-- Opacity -->
           <div>
-            <div class="flex justify-between text-xs font-semibold text-gray-600 mb-1">
+            <div
+              class="mb-1 flex justify-between text-xs font-semibold text-gray-600 dark:text-gray-300"
+            >
               <span>{t('boxShadow.opacityLabel', { fallback: 'Shadow Opacity' })}</span>
               <span id="val-opacity" class="font-mono text-primary">0.15</span>
             </div>
-            <input type="range" id="range-opacity" min="0" max="1" step="0.01" value="0.15" class="w-full accent-primary" />
+            <input
+              type="range"
+              id="range-opacity"
+              min="0"
+              max="1"
+              step="0.01"
+              value="0.15"
+              class="w-full accent-primary"
+            />
           </div>
 
           <!-- Colors & Inset -->
           <div class="grid grid-cols-2 gap-4 pt-2">
             <div>
-              <label class="block text-xs font-semibold text-gray-600 mb-1">{t('boxShadow.shadowColor', { fallback: 'Shadow Color' })}</label>
-              <input type="color" id="color-shadow" value="#000000" class="w-full h-10 rounded-lg cursor-pointer border border-gray-200 p-1" />
+              <label class="mb-1 block text-xs font-semibold text-gray-600 dark:text-gray-300"
+                >{t('boxShadow.shadowColor', { fallback: 'Shadow Color' })}</label
+              >
+              <input
+                type="color"
+                id="color-shadow"
+                value="#000000"
+                class="h-10 w-full cursor-pointer rounded-lg border border-gray-200 bg-white p-1 text-gray-900 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              />
             </div>
             <div>
-              <label class="block text-xs font-semibold text-gray-600 mb-1">{t('boxShadow.boxColor', { fallback: 'Box Color' })}</label>
-              <input type="color" id="color-box" value="#FFFFFF" class="w-full h-10 rounded-lg cursor-pointer border border-gray-200 p-1" />
+              <label class="mb-1 block text-xs font-semibold text-gray-600 dark:text-gray-300"
+                >{t('boxShadow.boxColor', { fallback: 'Box Color' })}</label
+              >
+              <input
+                type="color"
+                id="color-box"
+                value="#FFFFFF"
+                class="h-10 w-full cursor-pointer rounded-lg border border-gray-200 bg-white p-1 text-gray-900 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              />
             </div>
           </div>
 
           <div class="flex items-center gap-2 pt-2">
-            <input type="checkbox" id="chk-inset" class="w-4 h-4 text-primary rounded border-gray-300 focus:ring-primary" />
-            <label for="chk-inset" class="text-xs font-bold text-gray-700 cursor-pointer">{t('boxShadow.inset', { fallback: 'Inset Shadow (Inner shadow)' })}</label>
+            <input
+              type="checkbox"
+              id="chk-inset"
+              class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+            />
+            <label
+              for="chk-inset"
+              class="cursor-pointer text-xs font-bold text-gray-700 dark:text-gray-200"
+              >{t('boxShadow.inset', { fallback: 'Inset Shadow (Inner shadow)' })}</label
+            >
           </div>
         </div>
 
         <!-- Preview & CSS Code Output -->
         <div class="space-y-6">
           <!-- Live Preview -->
-          <div class="bg-gray-50 border border-gray-100 rounded-2xl p-12 flex items-center justify-center min-h-[300px]">
-            <div id="preview-box" class="w-48 h-48 rounded-2xl transition-all duration-200 flex items-center justify-center text-xs font-bold text-gray-400 font-persian">
+          <div
+            class="flex min-h-75 items-center justify-center rounded-2xl border border-gray-100 bg-gray-50 p-12 dark:border-slate-700 dark:bg-slate-800/80"
+          >
+            <div
+              id="preview-box"
+              class="flex h-48 w-48 items-center justify-center rounded-2xl font-persian text-xs font-bold text-gray-400 transition-all duration-200"
+            >
               {t('boxShadow.boxPreview', { fallback: 'Box Preview' })}
             </div>
           </div>
 
           <!-- CSS Output Code Block -->
-          <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian">
-            <div class="flex justify-between items-center border-b border-gray-100 pb-3">
-              <h3 class="text-sm font-bold text-gray-800">{t('boxShadow.generatedCss', { fallback: 'Generated CSS' })}</h3>
-              <button type="button" id="copy-css-btn" class="px-3 py-1.5 bg-primary text-primary-foreground text-xs font-bold rounded-lg hover:bg-primary/90 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
+          <div
+            class="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-sm dark:border-slate-800 dark:bg-slate-900"
+          >
+            <div
+              class="flex items-center justify-between border-b border-gray-100 pb-3 dark:border-slate-800"
+            >
+              <h3 class="text-sm font-bold text-gray-800 dark:text-gray-100">
+                {t('boxShadow.generatedCss', { fallback: 'Generated CSS' })}
+              </h3>
+              <button
+                type="button"
+                id="copy-css-btn"
+                class="rounded-lg bg-primary px-3 py-1.5 text-xs font-bold text-primary-foreground transition-all hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              >
                 {t('boxShadow.copyCss', { fallback: 'Copy CSS' })}
               </button>
             </div>
 
-            <pre id="css-output" dir="ltr" class="p-4 bg-gray-900 text-primary rounded-xl font-mono text-xs overflow-x-auto leading-relaxed">box-shadow: 10px 15px 30px -5px rgba(0, 0, 0, 0.15);</pre>
+            <pre
+              id="css-output"
+              dir="ltr"
+              class="overflow-x-auto rounded-xl bg-gray-900 p-4 font-mono text-xs leading-relaxed text-primary">box-shadow: 10px 15px 30px -5px rgba(0, 0, 0, 0.15);</pre>
 
-            <p id="copy-status" class="text-xs text-green-600 font-semibold opacity-0 transition-opacity text-center">
+            <p
+              id="copy-status"
+              class="text-center text-xs font-semibold text-green-600 opacity-0 transition-opacity"
+            >
               {t('boxShadow.copiedStatus', { fallback: 'CSS snippet copied to clipboard!' })}
             </p>
           </div>
         </div>
-
       </div>
-
     </div>
   </section>
 
-
-  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'gradientGen', route: 'css-gradient-generator' }, { key: 'glassGen', route: 'glassmorphism-generator' }, { key: 'colorContrast', route: 'color-contrast-checker' }]} ctaHref={`/${supportedLang}/services/web-design`} isRtl={supportedLang !== 'en'} />
+  <ToolsCTA
+    lang={supportedLang}
+    t={t}
+    related={[
+      { key: 'gradientGen', route: 'css-gradient-generator' },
+      { key: 'glassGen', route: 'glassmorphism-generator' },
+      { key: 'colorContrast', route: 'color-contrast-checker' },
+    ]}
+    ctaHref={`/${supportedLang}/services/web-design`}
+    isRtl={supportedLang !== 'en'}
+  />
 </Layout>
 
 <script is:inline data-astro-rerun>
-  const rangeX = document.getElementById('range-x');
-  const rangeY = document.getElementById('range-y');
-  const rangeBlur = document.getElementById('range-blur');
-  const rangeSpread = document.getElementById('range-spread');
-  const rangeOpacity = document.getElementById('range-opacity');
-  const colorShadow = document.getElementById('color-shadow');
-  const colorBox = document.getElementById('color-box');
-  const chkInset = document.getElementById('chk-inset');
+  (() => {
+    const rangeX = document.getElementById('range-x');
+    const rangeY = document.getElementById('range-y');
+    const rangeBlur = document.getElementById('range-blur');
+    const rangeSpread = document.getElementById('range-spread');
+    const rangeOpacity = document.getElementById('range-opacity');
+    const colorShadow = document.getElementById('color-shadow');
+    const colorBox = document.getElementById('color-box');
+    const chkInset = document.getElementById('chk-inset');
 
-  const valX = document.getElementById('val-x');
-  const valY = document.getElementById('val-y');
-  const valBlur = document.getElementById('val-blur');
-  const valSpread = document.getElementById('val-spread');
-  const valOpacity = document.getElementById('val-opacity');
+    const valX = document.getElementById('val-x');
+    const valY = document.getElementById('val-y');
+    const valBlur = document.getElementById('val-blur');
+    const valSpread = document.getElementById('val-spread');
+    const valOpacity = document.getElementById('val-opacity');
 
-  const previewBox = document.getElementById('preview-box');
-  const cssOutput = document.getElementById('css-output');
-  const copyBtn = document.getElementById('copy-css-btn');
-  const copyStatus = document.getElementById('copy-status');
+    const previewBox = document.getElementById('preview-box');
+    const cssOutput = document.getElementById('css-output');
+    const copyBtn = document.getElementById('copy-css-btn');
+    const copyStatus = document.getElementById('copy-status');
 
-  function hexToRgba(hex, opacity) {
-    let c = hex.replace('#', '');
-    if (c.length === 3) c = c.split('').map(x => x + x).join('');
-    const num = parseInt(c, 16);
-    const r = (num >> 16) & 255;
-    const g = (num >> 8) & 255;
-    const b = num & 255;
-    return `rgba(${r}, ${g}, ${b}, ${opacity})`;
-  }
+    function hexToRgba(hex, opacity) {
+      let c = hex.replace('#', '');
+      if (c.length === 3)
+        c = c
+          .split('')
+          .map((x) => x + x)
+          .join('');
+      const num = parseInt(c, 16);
+      const r = (num >> 16) & 255;
+      const g = (num >> 8) & 255;
+      const b = num & 255;
+      return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+    }
 
-  function updateShadow() {
-    const x = rangeX.value;
-    const y = rangeY.value;
-    const blur = rangeBlur.value;
-    const spread = rangeSpread.value;
-    const opacity = rangeOpacity.value;
-    const inset = chkInset.checked ? 'inset ' : '';
+    function updateShadow() {
+      const x = rangeX.value;
+      const y = rangeY.value;
+      const blur = rangeBlur.value;
+      const spread = rangeSpread.value;
+      const opacity = rangeOpacity.value;
+      const inset = chkInset.checked ? 'inset ' : '';
 
-    valX.textContent = `${x}px`;
-    valY.textContent = `${y}px`;
-    valBlur.textContent = `${blur}px`;
-    valSpread.textContent = `${spread}px`;
-    valOpacity.textContent = opacity;
+      valX.textContent = `${x}px`;
+      valY.textContent = `${y}px`;
+      valBlur.textContent = `${blur}px`;
+      valSpread.textContent = `${spread}px`;
+      valOpacity.textContent = opacity;
 
-    const rgba = hexToRgba(colorShadow.value, opacity);
-    const shadowStyle = `${inset}${x}px ${y}px ${blur}px ${spread}px ${rgba}`;
+      const rgba = hexToRgba(colorShadow.value, opacity);
+      const shadowStyle = `${inset}${x}px ${y}px ${blur}px ${spread}px ${rgba}`;
 
-    previewBox.style.boxShadow = shadowStyle;
-    previewBox.style.backgroundColor = colorBox.value;
+      previewBox.style.boxShadow = shadowStyle;
+      previewBox.style.backgroundColor = colorBox.value;
 
-    const cssText = `box-shadow: ${shadowStyle};\n-webkit-box-shadow: ${shadowStyle};`;
-    cssOutput.textContent = cssText;
-  }
+      const cssText = `box-shadow: ${shadowStyle};\n-webkit-box-shadow: ${shadowStyle};`;
+      cssOutput.textContent = cssText;
+    }
 
-  [rangeX, rangeY, rangeBlur, rangeSpread, rangeOpacity, colorShadow, colorBox, chkInset].forEach(el => {
-    el.addEventListener('input', updateShadow);
-  });
+    [rangeX, rangeY, rangeBlur, rangeSpread, rangeOpacity, colorShadow, colorBox, chkInset].forEach(
+      (el) => {
+        el.addEventListener('input', updateShadow);
+      }
+    );
 
-  updateShadow();
+    updateShadow();
 
-  copyBtn.addEventListener('click', () => {
-    navigator.clipboard.writeText(cssOutput.textContent).then(() => {
-      copyStatus.classList.remove('opacity-0');
-      setTimeout(() => copyStatus.classList.add('opacity-0'), 2000);
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(cssOutput.textContent).then(() => {
+        copyStatus.classList.remove('opacity-0');
+        setTimeout(() => copyStatus.classList.add('opacity-0'), 2000);
+      });
     });
-  });
+  })();
 </script>

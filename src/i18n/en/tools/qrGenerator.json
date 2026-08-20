@@ -1,14 +1,14 @@
 {
-    "title": "QR Code Generator",
-    "description": "Create custom QR codes for your URLs, text, or business contact information instantly. Download high-quality QR codes for your marketing materials today.",
-    "settings": "QR Content & Settings",
-    "contentLabel": "URL or Text",
-    "placeholder": "https://example.com",
-    "fgColor": "Foreground Color",
-    "bgColor": "Background Color",
-    "preview": "Preview",
-    "download": "Download PNG Image",
-    "downloadSuccess": "QR Code downloaded successfully!",
-    "dimensionsLabel": "Dimensions (px)",
-    "altText": "Generated QR Code"
+  "title": "QR Code Generator",
+  "description": "Create custom QR codes for your URLs, text, or business contact information instantly. Download high-quality QR codes for your marketing materials today.",
+  "settings": "QR Content & Settings",
+  "contentLabel": "URL or Text",
+  "placeholder": "https://example.com",
+  "fgColor": "Foreground Color",
+  "bgColor": "Background Color",
+  "preview": "Preview",
+  "download": "Download PNG Image",
+  "downloadSuccess": "QR Code downloaded successfully!",
+  "dimensionsLabel": "Dimensions (px)",
+  "altText": "Generated QR Code"
 }

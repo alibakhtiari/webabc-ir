@@ -17,288 +17,474 @@ const isRtl = languages[supportedLang]?.direction === 'rtl';
 const t = createTranslator(dictionary);
 
 const titleText = t('costCalculator.title', { fallback: 'Website Cost Estimator' });
-const descriptionText = t('costCalculator.description', { fallback: 'Estimate the cost of your web development or SEO campaign in seconds with our interactive calculator.' });
+const descriptionText = t('costCalculator.description', {
+  fallback:
+    'Estimate the cost of your web development or SEO campaign in seconds with our interactive calculator.',
+});
 
 const webAppSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "@id": `https://webabc.ir/${supportedLang}/tools/cost-calculator/#webapp`,
-  "name": titleText,
-  "description": descriptionText,
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "All",
-  "browserRequirements": "Requires HTML5 support",
-  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `https://webabc.ir/${supportedLang}/tools/cost-calculator/#webapp`,
+  name: titleText,
+  description: descriptionText,
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'All',
+  browserRequirements: 'Requires HTML5 support',
+  inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
 };
 
 const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
     {
-      "@type": "Question",
-      "name": supportedLang === 'fa' ? 'هزینه طراحی سایت در سال ۲۰۲۶ چقدر است؟' : supportedLang === 'ar' ? 'كم تبلغ تكلفة تصميم موقع إلكتروني؟' : 'How much does web development cost in 2026?',
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": supportedLang === 'fa' ? 'هزینه طراحی سایت بر اساس تعداد صفحات، اختصاصی یا قالبی بودن دیزاین و امکانات تجارت الکترونیک یا سئو از ۱۰ میلیون تومان برای قالب‌های ساده تا بالای ۵۰ میلیون تومان برای سامانه‌های اختصاصی متغیر است.' : supportedLang === 'ar' ? 'تبدأ تكلفة موقع الشركة الاحترافي القائم على قالب مخصص من 1000 إلى 3000 دولار، بينما تبدأ الحلول المخصصة من 3500 دولار فأكثر.' : 'Professional business websites typically range from $1,000 to $3,500 for custom templates or $3,500 to $12,000+ for enterprise custom web applications.'
-      }
-    }
-  ]
+      '@type': 'Question',
+      name:
+        supportedLang === 'fa'
+          ? 'هزینه طراحی سایت در سال ۲۰۲۶ چقدر است؟'
+          : supportedLang === 'ar'
+            ? 'كم تبلغ تكلفة تصميم موقع إلكتروني؟'
+            : 'How much does web development cost in 2026?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text:
+          supportedLang === 'fa'
+            ? 'هزینه طراحی سایت بر اساس تعداد صفحات، اختصاصی یا قالبی بودن دیزاین و امکانات تجارت الکترونیک یا سئو از ۱۰ میلیون تومان برای قالب‌های ساده تا بالای ۵۰ میلیون تومان برای سامانه‌های اختصاصی متغیر است.'
+            : supportedLang === 'ar'
+              ? 'تبدأ تكلفة موقع الشركة الاحترافي القائم على قالب مخصص من 1000 إلى 3000 دولار، بينما تبدأ الحلول المخصصة من 3500 دولار فأكثر.'
+              : 'Professional business websites typically range from $1,000 to $3,500 for custom templates or $3,500 to $12,000+ for enterprise custom web applications.',
+      },
+    },
+  ],
 };
 
 const breadcrumbs = [
   { label: t('common.home'), url: `/${supportedLang}/` },
   { label: t('common.tools'), url: `/${supportedLang}/tools/` },
-  { label: titleText }
+  { label: titleText },
 ];
 ---
 
-<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/cost-calculator">
+<Layout
+  title={titleText}
+  description={descriptionText}
+  lang={supportedLang}
+  slug="tools/cost-calculator"
+>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
-      <!-- Hero Section -->
-    <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
-      <div class="container mx-auto px-4">
-        <div class="max-w-3xl mx-auto text-center">
-          <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
-          <h1 class="text-3xl md:text-5xl font-bold mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent leading-normal font-persian">
-            {titleText}
-          </h1>
-          <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-persian">
-            {descriptionText}
-          </p>
+  <!-- Hero Section -->
+  <section
+    class="border-b border-gray-100 bg-linear-to-b from-primary/10 via-background to-background pt-24 pb-12 md:pt-40 md:pb-24 dark:border-slate-800"
+  >
+    <div class="container mx-auto px-4">
+      <div class="mx-auto max-w-3xl text-center">
+        <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
+        <h1
+          class="mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text font-persian text-3xl leading-normal font-bold text-transparent md:text-5xl"
+        >
+          {titleText}
+        </h1>
+        <p class="font-persian text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-300">
+          {descriptionText}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Calculator Workspace -->
+  <section class="container mx-auto mt-12 px-4 font-sans">
+    <div class="mx-auto grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-12">
+      <!-- Interactive Controls -->
+      <div class="space-y-6 lg:col-span-8">
+        <!-- Step 1: Website Type -->
+        <div
+          class="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-sm dark:border-slate-800 dark:bg-slate-900"
+        >
+          <h3 class="text-base font-bold text-gray-800 dark:text-gray-100">1. Project Type</h3>
+          <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+            <label
+              class="relative flex cursor-pointer flex-col items-center space-y-2 rounded-xl border border-gray-200 bg-white p-4 text-center text-gray-900 transition-all hover:border-primary dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+            >
+              <input
+                type="radio"
+                name="site-type"
+                value="wordpress"
+                class="absolute top-4 right-4"
+                checked
+              />
+              <span class="text-xl">WordPress</span>
+              <span class="text-xs text-gray-500 dark:text-gray-400">Flexible CMS & Blog</span>
+            </label>
+            <label
+              class="relative flex cursor-pointer flex-col items-center space-y-2 rounded-xl border border-gray-200 bg-white p-4 text-center text-gray-900 transition-all hover:border-primary dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+            >
+              <input type="radio" name="site-type" value="custom" class="absolute top-4 right-4" />
+              <span class="text-xl">Custom Coding</span>
+              <span class="text-xs text-gray-500 dark:text-gray-400">Next.js / Astro Webapp</span>
+            </label>
+            <label
+              class="relative flex cursor-pointer flex-col items-center space-y-2 rounded-xl border border-gray-200 bg-white p-4 text-center text-gray-900 transition-all hover:border-primary dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+            >
+              <input
+                type="radio"
+                name="site-type"
+                value="ecommerce"
+                class="absolute top-4 right-4"
+              />
+              <span class="text-xl">E-commerce</span>
+              <span class="text-xs text-gray-500 dark:text-gray-400"
+                >Shopify / WooCommerce Store</span
+              >
+            </label>
+          </div>
+        </div>
+
+        <!-- Step 2: Page count slider -->
+        <div
+          class="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-sm dark:border-slate-800 dark:bg-slate-900"
+        >
+          <div class="flex items-center justify-between">
+            <h3 class="text-base font-bold text-gray-800 dark:text-gray-100">2. Number of Pages</h3>
+            <span id="page-count-val" class="font-bold text-primary">5 Pages</span>
+          </div>
+          <input
+            type="range"
+            id="page-count-slider"
+            min="1"
+            max="50"
+            value="5"
+            class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-100 accent-primary dark:bg-slate-800"
+          />
+        </div>
+
+        <!-- Step 3: Additional Features -->
+        <div
+          class="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-sm dark:border-slate-800 dark:bg-slate-900"
+        >
+          <h3 class="text-base font-bold text-gray-800 dark:text-gray-100">3. Features & Addons</h3>
+          <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <label
+              class="flex cursor-pointer items-center gap-3 rounded-xl border border-gray-100 p-3 transition-all hover:bg-gray-50/50 dark:border-slate-800 dark:hover:bg-slate-800/50"
+            >
+              <input
+                type="checkbox"
+                id="feature-multilingual"
+                value="500"
+                class="h-4 w-4 rounded text-primary"
+              />
+              <div class="flex flex-col">
+                <span class="text-sm font-semibold text-gray-800 dark:text-gray-100"
+                  >Multilingual (RTL/LTR)</span
+                >
+                <span class="text-xs text-gray-500 dark:text-gray-400"
+                  >Arabic, Farsi, and English support</span
+                >
+              </div>
+            </label>
+            <label
+              class="flex cursor-pointer items-center gap-3 rounded-xl border border-gray-100 p-3 transition-all hover:bg-gray-50/50 dark:border-slate-800 dark:hover:bg-slate-800/50"
+            >
+              <input
+                type="checkbox"
+                id="feature-seo"
+                value="400"
+                class="h-4 w-4 rounded text-primary"
+              />
+              <div class="flex flex-col">
+                <span class="text-sm font-semibold text-gray-800 dark:text-gray-100"
+                  >Advanced SEO Setup</span
+                >
+                <span class="text-xs text-gray-500 dark:text-gray-400"
+                  >Optimized schemas and structures</span
+                >
+              </div>
+            </label>
+            <label
+              class="flex cursor-pointer items-center gap-3 rounded-xl border border-gray-100 p-3 transition-all hover:bg-gray-50/50 dark:border-slate-800 dark:hover:bg-slate-800/50"
+            >
+              <input
+                type="checkbox"
+                id="feature-speed"
+                value="300"
+                class="h-4 w-4 rounded text-primary"
+              />
+              <div class="flex flex-col">
+                <span class="text-sm font-semibold text-gray-800 dark:text-gray-100"
+                  >Speed Optimization</span
+                >
+                <span class="text-xs text-gray-500 dark:text-gray-400"
+                  >Core Web Vitals max performance</span
+                >
+              </div>
+            </label>
+            <label
+              class="flex cursor-pointer items-center gap-3 rounded-xl border border-gray-100 p-3 transition-all hover:bg-gray-50/50 dark:border-slate-800 dark:hover:bg-slate-800/50"
+            >
+              <input
+                type="checkbox"
+                id="feature-security"
+                value="250"
+                class="h-4 w-4 rounded text-primary"
+              />
+              <div class="flex flex-col">
+                <span class="text-sm font-semibold text-gray-800 dark:text-gray-100"
+                  >WAF & Security Shield</span
+                >
+                <span class="text-xs text-gray-500 dark:text-gray-400"
+                  >Anti-DDoS, SSL & firewall hardening</span
+                >
+              </div>
+            </label>
+          </div>
         </div>
       </div>
-    </section>
 
-    <!-- Main Calculator Workspace -->
-    <section class="container mx-auto px-4 mt-12 font-sans">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto">
-        
-        <!-- Interactive Controls -->
-        <div class="lg:col-span-8 space-y-6">
-          
-          <!-- Step 1: Website Type -->
-          <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian">
-            <h3 class="text-base font-bold text-gray-800">1. Project Type</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <label class="border border-gray-200 hover:border-primary rounded-xl p-4 cursor-pointer flex flex-col items-center text-center space-y-2 transition-all relative">
-                <input type="radio" name="site-type" value="wordpress" class="absolute top-4 right-4" checked />
-                <span class="text-xl">WordPress</span>
-                <span class="text-xs text-gray-500">Flexible CMS & Blog</span>
-              </label>
-              <label class="border border-gray-200 hover:border-primary rounded-xl p-4 cursor-pointer flex flex-col items-center text-center space-y-2 transition-all relative">
-                <input type="radio" name="site-type" value="custom" class="absolute top-4 right-4" />
-                <span class="text-xl">Custom Coding</span>
-                <span class="text-xs text-gray-500">Next.js / Astro Webapp</span>
-              </label>
-              <label class="border border-gray-200 hover:border-primary rounded-xl p-4 cursor-pointer flex flex-col items-center text-center space-y-2 transition-all relative">
-                <input type="radio" name="site-type" value="ecommerce" class="absolute top-4 right-4" />
-                <span class="text-xl">E-commerce</span>
-                <span class="text-xs text-gray-500">Shopify / WooCommerce Store</span>
-              </label>
+      <!-- Sticky Pricing Summary Widget -->
+      <div class="lg:col-span-4">
+        <div
+          class="sticky top-28 space-y-6 rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-lg dark:border-slate-800 dark:bg-slate-900"
+        >
+          <h3
+            class="border-b border-gray-50 pb-4 text-lg font-bold text-gray-800 dark:text-gray-100"
+          >
+            Estimate Breakdown
+          </h3>
+
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between">
+              <span class="text-gray-500 dark:text-gray-400">Base Type Cost:</span>
+              <span class="font-semibold text-gray-700 dark:text-gray-200" id="base-cost-text"
+                >$800</span
+              >
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500 dark:text-gray-400">Pages Cost:</span>
+              <span class="font-semibold text-gray-700 dark:text-gray-200" id="pages-cost-text"
+                >$250</span
+              >
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500 dark:text-gray-400">Addons & Features:</span>
+              <span class="font-semibold text-gray-700 dark:text-gray-200" id="addons-cost-text"
+                >$0</span
+              >
             </div>
           </div>
 
-          <!-- Step 2: Page count slider -->
-          <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian">
-            <div class="flex justify-between items-center">
-              <h3 class="text-base font-bold text-gray-800">2. Number of Pages</h3>
-              <span id="page-count-val" class="font-bold text-primary">5 Pages</span>
-            </div>
-            <input
-              type="range"
-              id="page-count-slider"
-              min="1"
-              max="50"
-              value="5"
-              class="w-full h-2 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-primary"
-            />
+          <div
+            class="flex flex-col items-center justify-center space-y-2 border-t border-gray-100 pt-6"
+          >
+            <span class="text-xs font-medium text-gray-400">Estimated Budget</span>
+            <span class="text-4xl font-extrabold text-primary" id="total-price-text">$1,050</span>
           </div>
 
-          <!-- Step 3: Additional Features -->
-          <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian">
-            <h3 class="text-base font-bold text-gray-800">3. Features & Addons</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <label class="flex items-center gap-3 border border-gray-100 hover:bg-gray-50/50 rounded-xl p-3 cursor-pointer transition-all">
-                <input type="checkbox" id="feature-multilingual" value="500" class="w-4 h-4 rounded text-primary" />
-                <div class="flex flex-col">
-                  <span class="text-sm font-semibold text-gray-800">Multilingual (RTL/LTR)</span>
-                  <span class="text-xs text-gray-500">Arabic, Farsi, and English support</span>
-                </div>
-              </label>
-              <label class="flex items-center gap-3 border border-gray-100 hover:bg-gray-50/50 rounded-xl p-3 cursor-pointer transition-all">
-                <input type="checkbox" id="feature-seo" value="400" class="w-4 h-4 rounded text-primary" />
-                <div class="flex flex-col">
-                  <span class="text-sm font-semibold text-gray-800">Advanced SEO Setup</span>
-                  <span class="text-xs text-gray-500">Optimized schemas and structures</span>
-                </div>
-              </label>
-              <label class="flex items-center gap-3 border border-gray-100 hover:bg-gray-50/50 rounded-xl p-3 cursor-pointer transition-all">
-                <input type="checkbox" id="feature-speed" value="300" class="w-4 h-4 rounded text-primary" />
-                <div class="flex flex-col">
-                  <span class="text-sm font-semibold text-gray-800">Speed Optimization</span>
-                  <span class="text-xs text-gray-500">Core Web Vitals max performance</span>
-                </div>
-              </label>
-              <label class="flex items-center gap-3 border border-gray-100 hover:bg-gray-50/50 rounded-xl p-3 cursor-pointer transition-all">
-                <input type="checkbox" id="feature-security" value="250" class="w-4 h-4 rounded text-primary" />
-                <div class="flex flex-col">
-                  <span class="text-sm font-semibold text-gray-800">WAF & Security Shield</span>
-                  <span class="text-xs text-gray-500">Anti-DDoS, SSL & firewall hardening</span>
-                </div>
-              </label>
-            </div>
-          </div>
-
+          <button
+            type="button"
+            class="w-full rounded-xl bg-primary py-3 text-sm font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          >
+            Book Consultation
+          </button>
         </div>
-
-        <!-- Sticky Pricing Summary Widget -->
-        <div class="lg:col-span-4">
-          <div class="bg-white border border-gray-100 rounded-2xl shadow-lg p-6 space-y-6 sticky top-28 font-persian">
-            <h3 class="text-lg font-bold text-gray-800 border-b border-gray-50 pb-4">Estimate Breakdown</h3>
-            
-            <div class="space-y-3 text-sm">
-              <div class="flex justify-between">
-                <span class="text-gray-500">Base Type Cost:</span>
-                <span class="font-semibold text-gray-700" id="base-cost-text">$800</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-500">Pages Cost:</span>
-                <span class="font-semibold text-gray-700" id="pages-cost-text">$250</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-gray-500">Addons & Features:</span>
-                <span class="font-semibold text-gray-700" id="addons-cost-text">$0</span>
-              </div>
-            </div>
-
-            <div class="border-t border-gray-100 pt-6 flex flex-col justify-center items-center space-y-2">
-              <span class="text-xs text-gray-400 font-medium">Estimated Budget</span>
-              <span class="text-4xl font-extrabold text-primary" id="total-price-text">$1,050</span>
-            </div>
-
-            <button type="button" class="w-full py-3 bg-primary text-primary-foreground font-bold rounded-xl shadow-md hover:bg-primary/95 transition-all text-sm focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
-              Book Consultation
-            </button>
-          </div>
-        </div>
-
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- SEO Guide Content -->
-    <section class="container mx-auto px-4 mt-16 font-sans">
-      <div class="max-w-4xl mx-auto space-y-8">
-        <div class="space-y-3">
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-900">How Much Does a Website Really Cost?</h2>
-          <p class="text-gray-600 leading-relaxed">
-            This free website cost calculator gives you an instant price estimate based on the same variables
-            agencies use in a real quote: platform (WordPress, custom code, or e-commerce), page count, and
-            add-on features like multilingual support, advanced SEO setup, speed optimization, and security
-            hardening. Adjust any option to see the estimated budget update in real time.
+  <!-- SEO Guide Content -->
+  <section class="container mx-auto mt-16 px-4 font-sans">
+    <div class="mx-auto max-w-4xl space-y-8">
+      <div class="space-y-3">
+        <h2 class="text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">
+          How Much Does a Website Really Cost?
+        </h2>
+        <p class="leading-relaxed text-gray-600 dark:text-gray-300">
+          This free website cost calculator gives you an instant price estimate based on the same
+          variables agencies use in a real quote: platform (WordPress, custom code, or e-commerce),
+          page count, and add-on features like multilingual support, advanced SEO setup, speed
+          optimization, and security hardening. Adjust any option to see the estimated budget update
+          in real time.
+        </p>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-3">
+        <div
+          class="rounded-xl border border-gray-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
+        >
+          <h3 class="mb-2 text-sm font-bold text-gray-800 dark:text-gray-100">
+            WordPress vs. Custom Coding
+          </h3>
+          <p class="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
+            WordPress is faster and cheaper to launch with a flexible CMS and blog. Custom-coded
+            sites (Next.js, Astro) cost more upfront but load faster and scale better for complex,
+            high-traffic projects.
           </p>
         </div>
-
-        <div class="grid sm:grid-cols-3 gap-4">
-          <div class="bg-white border border-gray-100 rounded-xl p-5">
-            <h3 class="text-sm font-bold text-gray-800 mb-2">WordPress vs. Custom Coding</h3>
-            <p class="text-xs text-gray-500 leading-relaxed">
-              WordPress is faster and cheaper to launch with a flexible CMS and blog. Custom-coded sites (Next.js,
-              Astro) cost more upfront but load faster and scale better for complex, high-traffic projects.
-            </p>
-          </div>
-          <div class="bg-white border border-gray-100 rounded-xl p-5">
-            <h3 class="text-sm font-bold text-gray-800 mb-2">What Drives the Price Up</h3>
-            <p class="text-xs text-gray-500 leading-relaxed">
-              Page count, e-commerce functionality, multilingual (RTL/LTR) support, and advanced SEO setup are the
-              biggest cost multipliers. Speed and security hardening add a smaller, fixed premium.
-            </p>
-          </div>
-          <div class="bg-white border border-gray-100 rounded-xl p-5">
-            <h3 class="text-sm font-bold text-gray-800 mb-2">
-              {supportedLang === 'fa' ? 'راهنمای قیمت‌گذاری و استعلام' : supportedLang === 'ar' ? 'دليل الأسعار وعرض السعر' : 'Pricing Guide & Exact Quote'}
-            </h3>
-            <p class="text-xs text-gray-500 leading-relaxed">
-              {supportedLang === 'fa' ? (
-                <span>برای مشاهده جدول کامل تعرفه‌ها، <a href={`/${supportedLang}/blog/website-development-cost-calculator-guide-2026`} class="text-primary font-semibold hover:underline">راهنمای محاسبه هزینه طراحی سایت ۲۰۲۶</a> را مطالعه کنید، یا برای دریافت پیش‌فاکتور دقیق <a href={`/${supportedLang}/contact/`} class="text-primary font-semibold hover:underline">مشاوره رایگان رزرو کنید</a>.</span>
+        <div
+          class="rounded-xl border border-gray-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
+        >
+          <h3 class="mb-2 text-sm font-bold text-gray-800 dark:text-gray-100">
+            What Drives the Price Up
+          </h3>
+          <p class="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
+            Page count, e-commerce functionality, multilingual (RTL/LTR) support, and advanced SEO
+            setup are the biggest cost multipliers. Speed and security hardening add a smaller,
+            fixed premium.
+          </p>
+        </div>
+        <div
+          class="rounded-xl border border-gray-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
+        >
+          <h3 class="mb-2 text-sm font-bold text-gray-800 dark:text-gray-100">
+            {
+              supportedLang === 'fa'
+                ? 'راهنمای قیمت‌گذاری و استعلام'
+                : supportedLang === 'ar'
+                  ? 'دليل الأسعار وعرض السعر'
+                  : 'Pricing Guide & Exact Quote'
+            }
+          </h3>
+          <p class="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
+            {
+              supportedLang === 'fa' ? (
+                <span>
+                  برای مشاهده جدول کامل تعرفه‌ها،{' '}
+                  <a
+                    href={`/${supportedLang}/blog/website-development-cost-calculator-guide-2026/`}
+                    class="font-semibold text-primary hover:underline"
+                  >
+                    راهنمای محاسبه هزینه طراحی سایت ۲۰۲۶
+                  </a>{' '}
+                  را مطالعه کنید، یا برای دریافت پیش‌فاکتور دقیق{' '}
+                  <a
+                    href={`/${supportedLang}/contact/`}
+                    class="font-semibold text-primary hover:underline"
+                  >
+                    مشاوره رایگان رزرو کنید
+                  </a>
+                  .
+                </span>
               ) : supportedLang === 'ar' ? (
-                <span>للاطلاع على التكاليف التفصيلية، اقرأ <a href={`/${supportedLang}/blog/website-development-cost-calculator-guide-2026`} class="text-primary font-semibold hover:underline">دليل حاسبة وتكلفة تصميم المواقع 2026</a>، أو <a href={`/${supportedLang}/contact/`} class="text-primary font-semibold hover:underline">احجز استشارة مجانية</a> للحصول على عرض سعر مفصل.</span>
+                <span>
+                  للاطلاع على التكاليف التفصيلية، اقرأ{' '}
+                  <a
+                    href={`/${supportedLang}/blog/website-development-cost-calculator-guide-2026/`}
+                    class="font-semibold text-primary hover:underline"
+                  >
+                    دليل حاسبة وتكلفة تصميم المواقع 2026
+                  </a>
+                  ، أو{' '}
+                  <a
+                    href={`/${supportedLang}/contact/`}
+                    class="font-semibold text-primary hover:underline"
+                  >
+                    احجز استشارة مجانية
+                  </a>{' '}
+                  للحصول على عرض سعر مفصل.
+                </span>
               ) : (
-                <span>For full cost benchmarks, read our comprehensive <a href={`/${supportedLang}/blog/website-development-cost-calculator-guide-2026`} class="text-primary font-semibold hover:underline">2026 Web Development Cost Guide</a>, or <a href={`/${supportedLang}/contact/`} class="text-primary font-semibold hover:underline">book a free consultation</a> for an exact proposal.</span>
-              )}
-            </p>
-          </div>
+                <span>
+                  For full cost benchmarks, read our comprehensive{' '}
+                  <a
+                    href={`/${supportedLang}/blog/website-development-cost-calculator-guide-2026/`}
+                    class="font-semibold text-primary hover:underline"
+                  >
+                    2026 Web Development Cost Guide
+                  </a>
+                  , or{' '}
+                  <a
+                    href={`/${supportedLang}/contact/`}
+                    class="font-semibold text-primary hover:underline"
+                  >
+                    book a free consultation
+                  </a>{' '}
+                  for an exact proposal.
+                </span>
+              )
+            }
+          </p>
         </div>
       </div>
-    </section>
-  
-  
-  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'seoTitleChecker', route: 'seo-title-checker' }, { key: 'metaGenerator', route: 'meta-generator' }, { key: 'faqGenerator', route: 'faq-generator' }]} ctaHref={`/${supportedLang}/services/web-development`} isRtl={isRtl} />
+    </div>
+  </section>
+
+  <ToolsCTA
+    lang={supportedLang}
+    t={t}
+    related={[
+      { key: 'seoTitleChecker', route: 'seo-title-checker' },
+      { key: 'metaGenerator', route: 'meta-generator' },
+      { key: 'faqGenerator', route: 'faq-generator' },
+    ]}
+    ctaHref={`/${supportedLang}/services/web-development`}
+    isRtl={isRtl}
+  />
 </Layout>
 
 <script is:inline data-astro-rerun>
-  const siteTypeRadios = document.querySelectorAll('input[name="site-type"]');
-  const slider = document.getElementById('page-count-slider');
-  const pageValText = document.getElementById('page-count-val');
-  
-  const featureMultilingual = document.getElementById('feature-multilingual');
-  const featureSEO = document.getElementById('feature-seo');
-  const featureSpeed = document.getElementById('feature-speed');
-  const featureSecurity = document.getElementById('feature-security');
+  (() => {
+    const siteTypeRadios = document.querySelectorAll('input[name="site-type"]');
+    const slider = document.getElementById('page-count-slider');
+    const pageValText = document.getElementById('page-count-val');
 
-  const baseCostText = document.getElementById('base-cost-text');
-  const pagesCostText = document.getElementById('pages-cost-text');
-  const addonsCostText = document.getElementById('addons-cost-text');
-  const totalPriceText = document.getElementById('total-price-text');
+    const featureMultilingual = document.getElementById('feature-multilingual');
+    const featureSEO = document.getElementById('feature-seo');
+    const featureSpeed = document.getElementById('feature-speed');
+    const featureSecurity = document.getElementById('feature-security');
 
-  function calculatePrice() {
-    // 1. Get radio site-type value
-    let basePrice = 800;
-    let selectedType = 'wordpress';
-    siteTypeRadios.forEach(radio => {
-      if (radio.checked) {
-        selectedType = radio.value;
+    const baseCostText = document.getElementById('base-cost-text');
+    const pagesCostText = document.getElementById('pages-cost-text');
+    const addonsCostText = document.getElementById('addons-cost-text');
+    const totalPriceText = document.getElementById('total-price-text');
+
+    function calculatePrice() {
+      // 1. Get radio site-type value
+      let basePrice = 800;
+      let selectedType = 'wordpress';
+      siteTypeRadios.forEach((radio) => {
+        if (radio.checked) {
+          selectedType = radio.value;
+        }
+      });
+
+      if (selectedType === 'wordpress') {
+        basePrice = 800;
+      } else if (selectedType === 'custom') {
+        basePrice = 1500;
+      } else if (selectedType === 'ecommerce') {
+        basePrice = 1800;
       }
-    });
 
-    if (selectedType === 'wordpress') {
-      basePrice = 800;
-    } else if (selectedType === 'custom') {
-      basePrice = 1500;
-    } else if (selectedType === 'ecommerce') {
-      basePrice = 1800;
+      // 2. Page multiplier
+      const pageCount = parseInt(slider.value);
+      pageValText.innerText = `${pageCount} Page${pageCount > 1 ? 's' : ''}`;
+      const pagesCost = pageCount * 50;
+
+      // 3. Checkbox additions
+      let addonsCost = 0;
+      if (featureMultilingual.checked) addonsCost += parseFloat(featureMultilingual.value);
+      if (featureSEO.checked) addonsCost += parseFloat(featureSEO.value);
+      if (featureSpeed.checked) addonsCost += parseFloat(featureSpeed.value);
+      if (featureSecurity.checked) addonsCost += parseFloat(featureSecurity.value);
+
+      // Sum total
+      const total = basePrice + pagesCost + addonsCost;
+
+      // Update markup
+      baseCostText.innerText = `$${basePrice.toLocaleString()}`;
+      pagesCostText.innerText = `$${pagesCost.toLocaleString()}`;
+      addonsCostText.innerText = `$${addonsCost.toLocaleString()}`;
+      totalPriceText.innerText = `$${total.toLocaleString()}`;
     }
 
-    // 2. Page multiplier
-    const pageCount = parseInt(slider.value);
-    pageValText.innerText = `${pageCount} Page${pageCount > 1 ? 's' : ''}`;
-    const pagesCost = pageCount * 50;
+    // Bind change listeners
+    siteTypeRadios.forEach((radio) => radio.addEventListener('change', calculatePrice));
+    slider.addEventListener('input', calculatePrice);
+    [featureMultilingual, featureSEO, featureSpeed, featureSecurity].forEach((chk) => {
+      chk.addEventListener('change', calculatePrice);
+    });
 
-    // 3. Checkbox additions
-    let addonsCost = 0;
-    if (featureMultilingual.checked) addonsCost += parseFloat(featureMultilingual.value);
-    if (featureSEO.checked) addonsCost += parseFloat(featureSEO.value);
-    if (featureSpeed.checked) addonsCost += parseFloat(featureSpeed.value);
-    if (featureSecurity.checked) addonsCost += parseFloat(featureSecurity.value);
-
-    // Sum total
-    const total = basePrice + pagesCost + addonsCost;
-
-    // Update markup
-    baseCostText.innerText = `$${basePrice.toLocaleString()}`;
-    pagesCostText.innerText = `$${pagesCost.toLocaleString()}`;
-    addonsCostText.innerText = `$${addonsCost.toLocaleString()}`;
-    totalPriceText.innerText = `$${total.toLocaleString()}`;
-  }
-
-  // Bind change listeners
-  siteTypeRadios.forEach(radio => radio.addEventListener('change', calculatePrice));
-  slider.addEventListener('input', calculatePrice);
-  [featureMultilingual, featureSEO, featureSpeed, featureSecurity].forEach(chk => {
-    chk.addEventListener('change', calculatePrice);
-  });
-
-  // Run initial calculation
-  calculatePrice();
+    // Run initial calculation
+    calculatePrice();
+  })();
 </script>

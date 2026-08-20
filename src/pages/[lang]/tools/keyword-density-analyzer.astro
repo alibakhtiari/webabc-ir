@@ -15,247 +15,463 @@ const dictionary = await getDictionary(supportedLang);
 // Helper to translate strings
 const t = createTranslator(dictionary);
 
-const titleText = t('tools.keywordDensity.title', { fallback: 'Semantic Keyword Density Analyzer' });
-const descriptionText = t('tools.keywordDensity.description', { fallback: 'Analyze text structures to identify keyword frequency and avoid over-optimization before publishing.' });
+const titleText = t('tools.keywordDensity.title', {
+  fallback: 'Semantic Keyword Density Analyzer',
+});
+const descriptionText = t('tools.keywordDensity.description', {
+  fallback:
+    'Analyze text structures to identify keyword frequency and avoid over-optimization before publishing.',
+});
 
 const webAppSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "@id": `https://webabc.ir/${supportedLang}/tools/keyword-density-analyzer/#webapp`,
-  "name": titleText,
-  "description": descriptionText,
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "All",
-  "browserRequirements": "Requires HTML5 support",
-  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `https://webabc.ir/${supportedLang}/tools/keyword-density-analyzer/#webapp`,
+  name: titleText,
+  description: descriptionText,
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'All',
+  browserRequirements: 'Requires HTML5 support',
+  inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
 };
 
 const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
     {
-      "@type": "Question",
-      "name": supportedLang === 'fa' ? 'تراکم کلمه کلیدی (Keyword Density) استاندارد در سئو چقدر است؟' : supportedLang === 'ar' ? 'ما هي الكثافة المثالية للكلمات المفتاحية في السيو؟' : 'What is the recommended keyword density for SEO?',
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": supportedLang === 'fa' ? 'تراکم کلمه کلیدی بهینه بین ۱٪ تا ۲.۵٪ درصد است. تراکم بالای ۳٪ ممکن است توسط گوگل به‌عنوان اسپم یا چگالی بیش از حد (Keyword Stuffing) جریمه شود.' : supportedLang === 'ar' ? 'تتراوح الكثافة الموصى بها بين 1% و 2.5%. تجاوز نسبة 3% قد يعرض الموقع لعقوبات التكرار المفرط من جوجل.' : 'Optimal keyword density is between 1% and 2.5%. Exceeding 3% risks keyword-stuffing penalties from search engine algorithms.'
-      }
-    }
-  ]
+      '@type': 'Question',
+      name:
+        supportedLang === 'fa'
+          ? 'تراکم کلمه کلیدی (Keyword Density) استاندارد در سئو چقدر است؟'
+          : supportedLang === 'ar'
+            ? 'ما هي الكثافة المثالية للكلمات المفتاحية في السيو؟'
+            : 'What is the recommended keyword density for SEO?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text:
+          supportedLang === 'fa'
+            ? 'تراکم کلمه کلیدی بهینه بین ۱٪ تا ۲.۵٪ درصد است. تراکم بالای ۳٪ ممکن است توسط گوگل به‌عنوان اسپم یا چگالی بیش از حد (Keyword Stuffing) جریمه شود.'
+            : supportedLang === 'ar'
+              ? 'تتراوح الكثافة الموصى بها بين 1% و 2.5%. تجاوز نسبة 3% قد يعرض الموقع لعقوبات التكرار المفرط من جوجل.'
+              : 'Optimal keyword density is between 1% and 2.5%. Exceeding 3% risks keyword-stuffing penalties from search engine algorithms.',
+      },
+    },
+  ],
 };
 
 const breadcrumbs = [
   { label: t('common.home'), url: `/${supportedLang}/` },
   { label: t('common.tools', { fallback: 'Tools' }), url: `/${supportedLang}/tools/` },
-  { label: titleText }
+  { label: titleText },
 ];
 ---
 
-<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/keyword-density-analyzer">
+<Layout
+  title={titleText}
+  description={descriptionText}
+  lang={supportedLang}
+  slug="tools/keyword-density-analyzer"
+>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
-  
-      <!-- Hero Section -->
-    <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
-      <div class="container mx-auto px-4">
-        <div class="max-w-3xl mx-auto text-center">
-          <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
-          <h1 class="text-3xl md:text-5xl font-bold mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent leading-normal font-persian">
-            {titleText}
-          </h1>
-          <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-persian">
-            {descriptionText}
-          </p>
+
+  <!-- Hero Section -->
+  <section
+    class="border-b border-gray-100 bg-linear-to-b from-primary/10 via-background to-background pt-24 pb-12 md:pt-40 md:pb-24 dark:border-slate-800"
+  >
+    <div class="container mx-auto px-4">
+      <div class="mx-auto max-w-3xl text-center">
+        <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
+        <h1
+          class="mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text font-persian text-3xl leading-normal font-bold text-transparent md:text-5xl"
+        >
+          {titleText}
+        </h1>
+        <p class="font-persian text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-300">
+          {descriptionText}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Workspace -->
+  <section class="container mx-auto mt-12 px-4 font-sans">
+    <div class="mx-auto grid max-w-6xl grid-cols-1 gap-8 lg:grid-cols-12">
+      <!-- Input area -->
+      <div class="space-y-6 lg:col-span-8">
+        <div
+          class="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+        >
+          <label
+            for="analyzer-textarea"
+            class="block text-sm font-semibold text-gray-700 dark:text-gray-200"
+          >
+            {t('tools.keywordDensity.textareaLabel', { fallback: 'Paste your copy/content below' })}
+          </label>
+          <textarea
+            id="analyzer-textarea"
+            rows="12"
+            placeholder={t('tools.keywordDensity.textareaPlaceholder', {
+              fallback: 'Pasted articles, blogs or web copy here...',
+            })}
+            class="h-96 w-full resize-none rounded-xl border border-gray-200 bg-white p-4 text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+          ></textarea>
+
+          <div class="flex items-center justify-between pt-2">
+            <div class="flex gap-4 text-sm text-gray-500 dark:text-gray-400">
+              <span>Words: <strong id="word-count">0</strong></span>
+              <span>Characters: <strong id="char-count">0</strong></span>
+            </div>
+            <button
+              type="button"
+              id="clear-btn"
+              class="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-5 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-gray-200"
+            >
+              Clear
+            </button>
+          </div>
         </div>
       </div>
-    </section>
 
-    <!-- Main Workspace -->
-    <section class="container mx-auto px-4 mt-12 font-sans">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto">
-        
-        <!-- Input area -->
-        <div class="lg:col-span-8 space-y-6">
-          <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4">
-            <label for="analyzer-textarea" class="block text-sm font-semibold text-gray-700">
-              {t('tools.keywordDensity.textareaLabel', { fallback: 'Paste your copy/content below' })}
-            </label>
-            <textarea
-              id="analyzer-textarea"
-              rows="12"
-              placeholder={t('tools.keywordDensity.textareaPlaceholder', { fallback: 'Pasted articles, blogs or web copy here...' })}
-              class="w-full border border-gray-200 rounded-xl p-4 focus:outline-none focus:border-primary resize-none h-96 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-            ></textarea>
-            
-            <div class="flex justify-between items-center pt-2">
-              <div class="flex gap-4 text-sm text-gray-500">
-                <span>Words: <strong id="word-count">0</strong></span>
-                <span>Characters: <strong id="char-count">0</strong></span>
-              </div>
-              <button type="button" id="clear-btn" class="px-5 py-2 border border-gray-200 text-gray-700 hover:bg-gray-50 text-sm font-medium rounded-lg flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
-                Clear
-              </button>
+      <!-- Analyzer Results -->
+      <div class="space-y-6 lg:col-span-4">
+        <!-- Density table card -->
+        <div
+          class="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900"
+        >
+          <div
+            class="flex items-center justify-between border-b border-gray-100 bg-gray-50 px-6 py-4 dark:border-slate-800"
+          >
+            <span class="font-semibold text-gray-800 dark:text-gray-100"> Keyword Density </span>
+            <div
+              class="flex rounded-md border border-gray-200 bg-white p-0.5 text-gray-900 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+            >
+              <button
+                type="button"
+                id="phrase-1"
+                aria-pressed="true"
+                class="phrase-tab rounded-sm bg-primary px-3 py-1 text-xs font-medium text-primary-foreground transition-colors focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                >1-Gram</button
+              >
+              <button
+                type="button"
+                id="phrase-2"
+                aria-pressed="false"
+                class="phrase-tab rounded-sm px-3 py-1 text-xs text-gray-600 transition-colors hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-gray-300 dark:hover:text-white"
+                >2-Gram</button
+              >
+            </div>
+          </div>
+
+          <div class="p-6">
+            <div class="max-h-96 overflow-x-auto">
+              <table class="w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr
+                    class="border-b border-gray-100 font-medium text-gray-400 dark:border-slate-800"
+                  >
+                    <th class="pb-3 text-start">Keyword</th>
+                    <th class="w-16 pb-3 text-center">Count</th>
+                    <th class="w-20 pb-3 text-end">Density</th>
+                  </tr>
+                </thead>
+                <tbody id="density-tbody" class="divide-y divide-gray-50">
+                  <tr>
+                    <td colspan="3" class="py-8 text-center text-gray-400"
+                      >Enter text to view keywords density</td
+                    >
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
-
-        <!-- Analyzer Results -->
-        <div class="lg:col-span-4 space-y-6">
-          <!-- Density table card -->
-          <div class="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
-            <div class="bg-gray-50 border-b border-gray-100 px-6 py-4 flex justify-between items-center">
-              <span class="font-semibold text-gray-800">
-                Keyword Density
-              </span>
-              <div class="flex bg-white rounded-md p-0.5 border border-gray-200">
-                <button type="button" id="phrase-1" aria-pressed="true" class="phrase-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-primary-foreground font-medium focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">1-Gram</button>
-                <button type="button" id="phrase-2" aria-pressed="false" class="phrase-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">2-Gram</button>
-              </div>
-            </div>
-            
-            <div class="p-6">
-              <div class="overflow-x-auto max-h-96">
-                <table class="w-full text-left border-collapse text-sm">
-                  <thead>
-                    <tr class="border-b border-gray-100 text-gray-400 font-medium">
-                      <th class="pb-3 text-start">Keyword</th>
-                      <th class="pb-3 text-center w-16">Count</th>
-                      <th class="pb-3 text-end w-20">Density</th>
-                    </tr>
-                  </thead>
-                  <tbody id="density-tbody" class="divide-y divide-gray-50">
-                    <tr>
-                      <td colspan="3" class="py-8 text-center text-gray-400">Enter text to view keywords density</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
-    </section>
-  
-  
-  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'headlineAnalyzer', route: 'headline-analyzer' }, { key: 'readabilityChecker', route: 'readability-checker' }, { key: 'seoTitleChecker', route: 'seo-title-checker' }]} ctaHref={`/${supportedLang}/services/content-creation`} isRtl={supportedLang !== 'en'} />
+    </div>
+  </section>
+
+  <ToolsCTA
+    lang={supportedLang}
+    t={t}
+    related={[
+      { key: 'headlineAnalyzer', route: 'headline-analyzer' },
+      { key: 'readabilityChecker', route: 'readability-checker' },
+      { key: 'seoTitleChecker', route: 'seo-title-checker' },
+    ]}
+    ctaHref={`/${supportedLang}/services/content-creation`}
+    isRtl={supportedLang !== 'en'}
+  />
 </Layout>
 
 <script is:inline data-astro-rerun>
-  // Keyword density analyzer client logic
-  const textarea = document.getElementById('analyzer-textarea');
-  const wordCountSpan = document.getElementById('word-count');
-  const charCountSpan = document.getElementById('char-count');
-  const clearBtn = document.getElementById('clear-btn');
-  
-  const phrase1Btn = document.getElementById('phrase-1');
-  const phrase2Btn = document.getElementById('phrase-2');
-  const tbody = document.getElementById('density-tbody');
+  (() => {
+    // Keyword density analyzer client logic
+    const textarea = document.getElementById('analyzer-textarea');
+    const wordCountSpan = document.getElementById('word-count');
+    const charCountSpan = document.getElementById('char-count');
+    const clearBtn = document.getElementById('clear-btn');
 
-  let activeGram = 1; // 1 or 2 word phrases
+    const phrase1Btn = document.getElementById('phrase-1');
+    const phrase2Btn = document.getElementById('phrase-2');
+    const tbody = document.getElementById('density-tbody');
 
-  // Stop words definition
-  const STOP_WORDS = new Set([
-    // English
-    'the', 'a', 'an', 'and', 'or', 'but', 'is', 'are', 'was', 'were', 'be', 'been', 'to', 'of', 'in', 'on', 'at', 'by', 'for', 'with', 'about', 'against', 'between', 'into', 'through', 'during', 'before', 'after', 'above', 'below', 'from', 'up', 'down', 'out', 'this', 'that', 'these', 'those', 'am', 'has', 'have', 'had', 'do', 'does', 'did', 'if', 'then', 'else', 'as', 'until', 'while', 'under', 'again', 'further', 'once', 'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 'can', 'will', 'just', 'should', 'now',
-    // Persian
-    'در', 'به', 'از', 'که', 'و', 'با', 'تا', 'را', 'این', 'آن', 'است', 'بود', 'شد', 'یک', 'برای', 'بر', 'هم', 'اما', 'چون', 'اگر', 'هر', 'روی', 'زیر', 'پس', 'سپس', 'درباره', 'مورد', 'باید', 'نزد', 'بدون', 'چند', 'همین', 'همان',
-    // Arabic
-    'من', 'إلى', 'عن', 'على', 'في', 'رب', 'الباء', 'اللام', 'الكاف', 'الواو', 'حتى', 'مذ', 'منذ', 'خلا', 'عدا', 'حاشا', 'أن', 'أنّ', 'إنّ', 'لكن', 'ليت', 'لعل', 'لا', 'ما', 'هذا', 'هذه', 'ذلك', 'هو', 'هي', 'هم', 'نحن', 'أنا'
-  ]);
+    let activeGram = 1; // 1 or 2 word phrases
 
-  phrase1Btn.addEventListener('click', () => {
-    activeGram = 1;
-    phrase1Btn.className = "phrase-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-primary-foreground font-medium";
-    phrase2Btn.className = "phrase-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900";
-    phrase1Btn.setAttribute('aria-pressed', 'true');
-    phrase2Btn.setAttribute('aria-pressed', 'false');
-    analyze();
-  });
+    // Stop words definition
+    const STOP_WORDS = new Set([
+      // English
+      'the',
+      'a',
+      'an',
+      'and',
+      'or',
+      'but',
+      'is',
+      'are',
+      'was',
+      'were',
+      'be',
+      'been',
+      'to',
+      'of',
+      'in',
+      'on',
+      'at',
+      'by',
+      'for',
+      'with',
+      'about',
+      'against',
+      'between',
+      'into',
+      'through',
+      'during',
+      'before',
+      'after',
+      'above',
+      'below',
+      'from',
+      'up',
+      'down',
+      'out',
+      'this',
+      'that',
+      'these',
+      'those',
+      'am',
+      'has',
+      'have',
+      'had',
+      'do',
+      'does',
+      'did',
+      'if',
+      'then',
+      'else',
+      'as',
+      'until',
+      'while',
+      'under',
+      'again',
+      'further',
+      'once',
+      'here',
+      'there',
+      'when',
+      'where',
+      'why',
+      'how',
+      'all',
+      'any',
+      'both',
+      'each',
+      'few',
+      'more',
+      'most',
+      'other',
+      'some',
+      'such',
+      'no',
+      'nor',
+      'not',
+      'only',
+      'own',
+      'same',
+      'so',
+      'than',
+      'too',
+      'very',
+      'can',
+      'will',
+      'just',
+      'should',
+      'now',
+      // Persian
+      'در',
+      'به',
+      'از',
+      'که',
+      'و',
+      'با',
+      'تا',
+      'را',
+      'این',
+      'آن',
+      'است',
+      'بود',
+      'شد',
+      'یک',
+      'برای',
+      'بر',
+      'هم',
+      'اما',
+      'چون',
+      'اگر',
+      'هر',
+      'روی',
+      'زیر',
+      'پس',
+      'سپس',
+      'درباره',
+      'مورد',
+      'باید',
+      'نزد',
+      'بدون',
+      'چند',
+      'همین',
+      'همان',
+      // Arabic
+      'من',
+      'إلى',
+      'عن',
+      'على',
+      'في',
+      'رب',
+      'الباء',
+      'اللام',
+      'الكاف',
+      'الواو',
+      'حتى',
+      'مذ',
+      'منذ',
+      'خلا',
+      'عدا',
+      'حاشا',
+      'أن',
+      'أنّ',
+      'إنّ',
+      'لكن',
+      'ليت',
+      'لعل',
+      'لا',
+      'ما',
+      'هذا',
+      'هذه',
+      'ذلك',
+      'هو',
+      'هي',
+      'هم',
+      'نحن',
+      'أنا',
+    ]);
 
-  phrase2Btn.addEventListener('click', () => {
-    activeGram = 2;
-    phrase2Btn.className = "phrase-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-primary-foreground font-medium";
-    phrase1Btn.className = "phrase-tab px-3 py-1 text-xs rounded-sm transition-colors text-gray-600 hover:text-gray-900";
-    phrase2Btn.setAttribute('aria-pressed', 'true');
-    phrase1Btn.setAttribute('aria-pressed', 'false');
-    analyze();
-  });
+    phrase1Btn.addEventListener('click', () => {
+      activeGram = 1;
+      phrase1Btn.className =
+        'phrase-tab px-3 py-1 text-xs rounded-sm transition-colors bg-primary text-primary-foreground font-medium';
+      phrase2Btn.className =
+        'phrase-tab rounded-sm px-3 py-1 text-xs text-gray-600 transition-colors hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-gray-300 dark:hover:text-white';
+      phrase1Btn.setAttribute('aria-pressed', 'true');
+      phrase2Btn.setAttribute('aria-pressed', 'false');
+      analyze();
+    });
 
-  clearBtn.addEventListener('click', () => {
-    textarea.value = '';
-    analyze();
-  });
+    phrase2Btn.addEventListener('click', () => {
+      activeGram = 2;
+      phrase2Btn.className =
+        'phrase-tab rounded-sm bg-primary px-3 py-1 text-xs font-medium text-primary-foreground transition-colors focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2';
+      phrase1Btn.className =
+        'phrase-tab rounded-sm px-3 py-1 text-xs text-gray-600 transition-colors hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-gray-300 dark:hover:text-white';
+      phrase2Btn.setAttribute('aria-pressed', 'true');
+      phrase1Btn.setAttribute('aria-pressed', 'false');
+      analyze();
+    });
 
-  textarea.addEventListener('input', analyze);
+    clearBtn.addEventListener('click', () => {
+      textarea.value = '';
+      analyze();
+    });
 
-  function analyze() {
-    const text = textarea.value || '';
-    
-    // Counters
-    charCountSpan.textContent = text.length;
-    
-    // Normalize and tokenize words
-    const words = text
-      .toLowerCase()
-      .replace(/[\u2000-\u200F\u202A-\u202F]/g, ' ') // Strip non-breaking spaces
-      .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?"'<>]/g, ' ') // Strip punctuation
-      .split(/\s+/)
-      .filter(w => w.trim().length > 1);
+    textarea.addEventListener('input', analyze);
 
-    wordCountSpan.textContent = words.length;
+    function analyze() {
+      const text = textarea.value || '';
 
-    if (words.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="3" class="py-8 text-center text-gray-400">Enter text to view keywords density</td></tr>`;
-      return;
-    }
+      // Counters
+      charCountSpan.textContent = text.length;
 
-    // Filter out stopwords
-    const filteredWords = words.filter(w => !STOP_WORDS.has(w));
-    
-    let frequencyMap = {};
-    let totalTokens = 0;
+      // Normalize and tokenize words
+      const words = text
+        .toLowerCase()
+        .replace(/[\u2000-\u200F\u202A-\u202F]/g, ' ') // Strip non-breaking spaces
+        .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()?"'<>]/g, ' ') // Strip punctuation
+        .split(/\s+/)
+        .filter((w) => w.trim().length > 1);
 
-    if (activeGram === 1) {
-      filteredWords.forEach(w => {
-        frequencyMap[w] = (frequencyMap[w] || 0) + 1;
-      });
-      totalTokens = words.length; // Density is relative to total word count
-    } else {
-      // 2-Gram
-      for (let i = 0; i < filteredWords.length - 1; i++) {
-        const phrase = `${filteredWords[i]} ${filteredWords[i+1]}`;
-        frequencyMap[phrase] = (frequencyMap[phrase] || 0) + 1;
+      wordCountSpan.textContent = words.length;
+
+      if (words.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="3" class="py-8 text-center text-gray-400">Enter text to view keywords density</td></tr>`;
+        return;
       }
-      totalTokens = words.length - 1;
-    }
 
-    // Sort frequency
-    const sorted = Object.entries(frequencyMap)
-      .sort((a, b) => b[1] - a[1])
-      .slice(0, 15); // Show top 15 results
+      // Filter out stopwords
+      const filteredWords = words.filter((w) => !STOP_WORDS.has(w));
 
-    if (sorted.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="3" class="py-8 text-center text-gray-400">No content keywords detected</td></tr>`;
-      return;
-    }
+      let frequencyMap = {};
+      let totalTokens = 0;
 
-    tbody.innerHTML = '';
-    sorted.forEach(([phrase, count]) => {
-      const density = ((count / totalTokens) * 100).toFixed(2);
-      const row = document.createElement('tr');
-      row.className = "hover:bg-gray-50/50";
-      row.innerHTML = `
-        <td class="py-3 text-gray-700 font-medium">${phrase}</td>
-        <td class="py-3 text-center text-gray-600 font-mono">${count}</td>
+      if (activeGram === 1) {
+        filteredWords.forEach((w) => {
+          frequencyMap[w] = (frequencyMap[w] || 0) + 1;
+        });
+        totalTokens = words.length; // Density is relative to total word count
+      } else {
+        // 2-Gram
+        for (let i = 0; i < filteredWords.length - 1; i++) {
+          const phrase = `${filteredWords[i]} ${filteredWords[i + 1]}`;
+          frequencyMap[phrase] = (frequencyMap[phrase] || 0) + 1;
+        }
+        totalTokens = words.length - 1;
+      }
+
+      // Sort frequency
+      const sorted = Object.entries(frequencyMap)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 15); // Show top 15 results
+
+      if (sorted.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="3" class="py-8 text-center text-gray-400">No content keywords detected</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = '';
+      sorted.forEach(([phrase, count]) => {
+        const density = ((count / totalTokens) * 100).toFixed(2);
+        const row = document.createElement('tr');
+        row.className = 'hover:bg-gray-50/50 dark:hover:bg-slate-800/50';
+        row.innerHTML = `
+        <td class="py-3 text-gray-700 dark:text-gray-200 font-medium">${phrase}</td>
+        <td class="py-3 text-center text-gray-600 dark:text-gray-300 font-mono">${count}</td>
         <td class="py-3 text-end font-bold text-primary font-mono">${density}%</td>
       `;
-      tbody.appendChild(row);
-    });
-  }
+        tbody.appendChild(row);
+      });
+    }
 
-  // Pre-load default values
-  textarea.value = `Web design is the process of creating websites. It encompasses several different aspects, including webpage layout, content production, and graphic design. Although the terms web design and web development are often used interchangeably, web design is technically a subset of the broader category of web development. Web design is critical for SEO because optimized design improves user experience and page speed.`;
-  analyze();
+    // Pre-load default values
+    textarea.value = `Web design is the process of creating websites. It encompasses several different aspects, including webpage layout, content production, and graphic design. Although the terms web design and web development are often used interchangeably, web design is technically a subset of the broader category of web development. Web design is critical for SEO because optimized design improves user experience and page speed.`;
+    analyze();
+  })();
 </script>

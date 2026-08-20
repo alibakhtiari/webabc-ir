@@ -16,101 +16,187 @@ const isRtl = languages[supportedLang]?.direction === 'rtl';
 const t = createTranslator(dictionary);
 
 const titleText = t('paaScraper.title', { fallback: '"People Also Ask" Scraper' });
-const descriptionText = t('paaScraper.description', { fallback: "Scrape Google's 'People Also Ask' questions for any keyword." });
+const descriptionText = t('paaScraper.description', {
+  fallback: "Scrape Google's 'People Also Ask' questions for any keyword.",
+});
 
 const webAppSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "@id": `https://webabc.ir/${supportedLang}/tools/paa-scraper/#webapp`,
-  "name": titleText,
-  "description": descriptionText,
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "All",
-  "browserRequirements": "Requires HTML5 support",
-  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `https://webabc.ir/${supportedLang}/tools/paa-scraper/#webapp`,
+  name: titleText,
+  description: descriptionText,
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'All',
+  browserRequirements: 'Requires HTML5 support',
+  inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
 };
 
 const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
     {
-      "@type": "Question",
-      "name": supportedLang === 'fa' ? 'بخش People Also Ask (PAA) گوگل چیست و چه کاربردی در سئو دارد؟' : supportedLang === 'ar' ? 'ما هو قسم الناس يسألون أيضاً (People Also Ask) في جوجل؟' : 'What is Google People Also Ask (PAA) and why is it useful for SEO?',
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": supportedLang === 'fa' ? 'بخش PAA سوالات متداولی را نمایش می‌دهد که کاربران درباره یک موضوع جستجو کرده‌اند. استخراج این سوالات به ساخت استراتژی محتوا و AEO کمک فراوانی می‌کند.' : supportedLang === 'ar' ? 'يعرض قسم PAA الأسئلة الشائعة التي يبحث عنها المستخدمون حول موضوع معين، مما يساعد في استراتيجيات السيو والتغطية الشاملة للمحتوى.' : 'Google People Also Ask (PAA) surfaces real user questions related to a query, providing high-intent content topics for Answer Engine Optimization.'
-      }
-    }
-  ]
+      '@type': 'Question',
+      name:
+        supportedLang === 'fa'
+          ? 'بخش People Also Ask (PAA) گوگل چیست و چه کاربردی در سئو دارد؟'
+          : supportedLang === 'ar'
+            ? 'ما هو قسم الناس يسألون أيضاً (People Also Ask) في جوجل؟'
+            : 'What is Google People Also Ask (PAA) and why is it useful for SEO?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text:
+          supportedLang === 'fa'
+            ? 'بخش PAA سوالات متداولی را نمایش می‌دهد که کاربران درباره یک موضوع جستجو کرده‌اند. استخراج این سوالات به ساخت استراتژی محتوا و AEO کمک فراوانی می‌کند.'
+            : supportedLang === 'ar'
+              ? 'يعرض قسم PAA الأسئلة الشائعة التي يبحث عنها المستخدمون حول موضوع معين، مما يساعد في استراتيجيات السيو والتغطية الشاملة للمحتوى.'
+              : 'Google People Also Ask (PAA) surfaces real user questions related to a query, providing high-intent content topics for Answer Engine Optimization.',
+      },
+    },
+  ],
 };
 
 const breadcrumbs = [
   { label: t('common.home'), url: `/${supportedLang}/` },
   { label: t('common.tools'), url: `/${supportedLang}/tools/` },
-  { label: titleText }
+  { label: titleText },
 ];
 
-const questions = [1, 2, 3, 4, 5, 6, 7, 8].map(n => t(`paaScraper.q${n}`, { fallback: `Example question ${n}` }));
+const questions = [1, 2, 3, 4, 5, 6, 7, 8].map((n) =>
+  t(`paaScraper.q${n}`, { fallback: `Example question ${n}` })
+);
 ---
 
-<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/paa-scraper">
+<Layout
+  title={titleText}
+  description={descriptionText}
+  lang={supportedLang}
+  slug="tools/paa-scraper"
+>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
-      <!-- Hero Section -->
-    <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
-      <div class="container mx-auto px-4">
-        <div class="max-w-3xl mx-auto text-center">
-          <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
-          <h1 class="text-3xl md:text-5xl font-bold mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent leading-normal font-persian">
-            {titleText}
-          </h1>
-          <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-persian">
-            {descriptionText}
-          </p>
-        </div>
+  <!-- Hero Section -->
+  <section
+    class="border-b border-gray-100 bg-linear-to-b from-primary/10 via-background to-background pt-24 pb-12 md:pt-40 md:pb-24 dark:border-slate-800"
+  >
+    <div class="container mx-auto px-4">
+      <div class="mx-auto max-w-3xl text-center">
+        <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
+        <h1
+          class="mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text font-persian text-3xl leading-normal font-bold text-transparent md:text-5xl"
+        >
+          {titleText}
+        </h1>
+        <p class="font-persian text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-300">
+          {descriptionText}
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Main Workspace -->
-    <section class="container mx-auto px-4 mt-12 font-sans">
-      <div class="max-w-3xl mx-auto space-y-6">
+  <!-- Main Workspace -->
+  <section class="container mx-auto mt-12 px-4 font-sans">
+    <div class="mx-auto max-w-3xl space-y-6">
+      <div
+        class="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-sm dark:border-slate-800 dark:bg-slate-900"
+      >
+        <h3 class="text-sm font-bold text-gray-800 dark:text-gray-100">
+          {t('paaScraper.enterKeyword', { fallback: 'Enter Keyword' })}
+        </h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">
+          {
+            t('paaScraper.enterKeywordDesc', {
+              fallback: 'Find questions people are asking about your topic',
+            })
+          }
+        </p>
 
-        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian">
-          <h3 class="text-sm font-bold text-gray-800">{t('paaScraper.enterKeyword', { fallback: 'Enter Keyword' })}</h3>
-          <p class="text-xs text-gray-500">{t('paaScraper.enterKeywordDesc', { fallback: 'Find questions people are asking about your topic' })}</p>
-
-          <div class="space-y-1.5">
-            <label for="paa-keyword" class="text-sm font-medium text-gray-700">{t('paaScraper.keywordLabel', { fallback: 'Keyword or Topic' })}</label>
-            <input id="paa-keyword" type="text" placeholder={t('paaScraper.placeholder', { fallback: 'e.g., web design, SEO, digital marketing' })} class="w-full border border-gray-200 rounded-lg px-4 h-11 focus:outline-none focus:border-primary" />
-          </div>
-
-          <div class="flex gap-3 items-start bg-yellow-50 border border-yellow-100 rounded-xl p-4 text-xs text-yellow-800">
-            <svg aria-hidden="true" class="w-4 h-4 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-              <span>{t('paaScraper.demoAlert', { fallback: 'This tool demonstrates the interface. To scrape live data you would need to integrate a third-party API.' })}</span>
-          </div>
-
-          <button type="button" disabled class="w-full py-3 bg-gray-200 text-gray-500 font-bold rounded-xl text-sm cursor-not-allowed focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
-            {t('paaScraper.searchButton', { fallback: 'Search Questions (Demo Mode)' })}
-          </button>
+        <div class="space-y-1.5">
+          <label for="paa-keyword" class="text-sm font-medium text-gray-700 dark:text-gray-200"
+            >{t('paaScraper.keywordLabel', { fallback: 'Keyword or Topic' })}</label
+          >
+          <input
+            id="paa-keyword"
+            type="text"
+            placeholder={t('paaScraper.placeholder', {
+              fallback: 'e.g., web design, SEO, digital marketing',
+            })}
+            class="h-11 w-full rounded-lg border border-gray-200 bg-white px-4 text-gray-900 focus:border-primary focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+          />
         </div>
 
-        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian">
-          <h3 class="text-sm font-bold text-gray-800">{t('paaScraper.exampleQuestions', { fallback: 'Example Questions' })}</h3>
-          <p class="text-xs text-gray-500">{t('paaScraper.exampleDesc', { fallback: 'Common "People Also Ask" questions for: Web Design' })}</p>
-          <ul class="space-y-3">
-            {questions.map((q, i) => (
-              <li class="p-3 bg-gray-50/50 border border-gray-100 rounded-lg flex items-start gap-2 text-sm text-gray-700">
-                <span class="text-primary font-semibold shrink-0">{i + 1}.</span>
+        <div
+          class="flex items-start gap-3 rounded-xl border border-yellow-100 bg-yellow-50 p-4 text-xs text-yellow-800"
+        >
+          <svg
+            aria-hidden="true"
+            class="mt-0.5 h-4 w-4 shrink-0"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+            ></path></svg
+          >
+          <span
+            >{
+              t('paaScraper.demoAlert', {
+                fallback:
+                  'This tool demonstrates the interface. To scrape live data you would need to integrate a third-party API.',
+              })
+            }</span
+          >
+        </div>
+
+        <button
+          type="button"
+          disabled
+          class="w-full cursor-not-allowed rounded-xl bg-gray-200 py-3 text-sm font-bold text-gray-500 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:bg-slate-800 dark:text-gray-400"
+        >
+          {t('paaScraper.searchButton', { fallback: 'Search Questions (Demo Mode)' })}
+        </button>
+      </div>
+
+      <div
+        class="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-sm dark:border-slate-800 dark:bg-slate-900"
+      >
+        <h3 class="text-sm font-bold text-gray-800 dark:text-gray-100">
+          {t('paaScraper.exampleQuestions', { fallback: 'Example Questions' })}
+        </h3>
+        <p class="text-xs text-gray-500 dark:text-gray-400">
+          {
+            t('paaScraper.exampleDesc', {
+              fallback: 'Common "People Also Ask" questions for: Web Design',
+            })
+          }
+        </p>
+        <ul class="space-y-3">
+          {
+            questions.map((q, i) => (
+              <li class="flex items-start gap-2 rounded-lg border border-gray-100 bg-gray-50/50 p-3 text-sm text-gray-700 dark:border-slate-700 dark:bg-slate-800/60 dark:text-gray-200">
+                <span class="shrink-0 font-semibold text-primary">{i + 1}.</span>
                 <span>{q}</span>
               </li>
-            ))}
-          </ul>
-        </div>
-
+            ))
+          }
+        </ul>
       </div>
-    </section>
-  
-  
-  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'faqGenerator', route: 'faq-generator' }, { key: 'headlineAnalyzer', route: 'headline-analyzer' }, { key: 'tools.keywordDensity', route: 'keyword-density-analyzer' }]} ctaHref={`/${supportedLang}/services/content-creation`} isRtl={isRtl} />
+    </div>
+  </section>
+
+  <ToolsCTA
+    lang={supportedLang}
+    t={t}
+    related={[
+      { key: 'faqGenerator', route: 'faq-generator' },
+      { key: 'headlineAnalyzer', route: 'headline-analyzer' },
+      { key: 'tools.keywordDensity', route: 'keyword-density-analyzer' },
+    ]}
+    ctaHref={`/${supportedLang}/services/content-creation`}
+    isRtl={isRtl}
+  />
 </Layout>

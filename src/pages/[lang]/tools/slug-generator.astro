@@ -16,161 +16,255 @@ const isRtl = languages[supportedLang]?.direction === 'rtl';
 const t = createTranslator(dictionary);
 
 const titleText = t('slugGenerator.title', { fallback: 'URL Slug Generator' });
-const descriptionText = t('slugGenerator.description', { fallback: 'Generate clean, SEO-friendly URL slugs from any text.' });
+const descriptionText = t('slugGenerator.description', {
+  fallback: 'Generate clean, SEO-friendly URL slugs from any text.',
+});
 
 const webAppSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "@id": `https://webabc.ir/${supportedLang}/tools/slug-generator/#webapp`,
-  "name": titleText,
-  "description": descriptionText,
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "All",
-  "browserRequirements": "Requires HTML5 support",
-  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `https://webabc.ir/${supportedLang}/tools/slug-generator/#webapp`,
+  name: titleText,
+  description: descriptionText,
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'All',
+  browserRequirements: 'Requires HTML5 support',
+  inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
 };
 
 const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
     {
-      "@type": "Question",
-      "name": supportedLang === 'fa' ? 'اسلاگ (Slug) در آدرس URL چیست و چه تاثیری بر سئو دارد؟' : supportedLang === 'ar' ? 'ما هو الرابط اللطيف (Slug) وكيف يؤثر على السيو؟' : 'What is a URL Slug and why is it important for SEO?',
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": supportedLang === 'fa' ? 'اسلاگ بخش قابل خواندن آدرس URL است که کلمات کلیدی اصلی صفحه را توصیف می‌کند. استفاده از اسلاگ‌های انگلیسی یا فارسی استاندارد خوانایی و رتبه‌بندی گوگل را ارتقا می‌دهد.' : supportedLang === 'ar' ? 'الرابط اللطيف (Slug) هو الجزء المقروء من العنوان الذي يعبر عن محتوى الصفحة وكلماتها المفتاحية.' : 'A URL Slug is the readable part of a page URL that identifies a page using search-friendly hyphenated keywords.'
-      }
-    }
-  ]
+      '@type': 'Question',
+      name:
+        supportedLang === 'fa'
+          ? 'اسلاگ (Slug) در آدرس URL چیست و چه تاثیری بر سئو دارد؟'
+          : supportedLang === 'ar'
+            ? 'ما هو الرابط اللطيف (Slug) وكيف يؤثر على السيو؟'
+            : 'What is a URL Slug and why is it important for SEO?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text:
+          supportedLang === 'fa'
+            ? 'اسلاگ بخش قابل خواندن آدرس URL است که کلمات کلیدی اصلی صفحه را توصیف می‌کند. استفاده از اسلاگ‌های انگلیسی یا فارسی استاندارد خوانایی و رتبه‌بندی گوگل را ارتقا می‌دهد.'
+            : supportedLang === 'ar'
+              ? 'الرابط اللطيف (Slug) هو الجزء المقروء من العنوان الذي يعبر عن محتوى الصفحة وكلماتها المفتاحية.'
+              : 'A URL Slug is the readable part of a page URL that identifies a page using search-friendly hyphenated keywords.',
+      },
+    },
+  ],
 };
 
 const breadcrumbs = [
   { label: t('common.home'), url: `/${supportedLang}/` },
   { label: t('common.tools'), url: `/${supportedLang}/tools/` },
-  { label: titleText }
+  { label: titleText },
 ];
 ---
 
-<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/slug-generator">
+<Layout
+  title={titleText}
+  description={descriptionText}
+  lang={supportedLang}
+  slug="tools/slug-generator"
+>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
-      <!-- Hero Section -->
-    <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100">
-      <div class="container mx-auto px-4">
-        <div class="max-w-3xl mx-auto text-center">
-          <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
-          <h1 class="text-3xl md:text-5xl font-bold mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent leading-normal font-persian">
-            {titleText}
-          </h1>
-          <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-persian">
-            {descriptionText}
-          </p>
-        </div>
+  <!-- Hero Section -->
+  <section
+    class="border-b border-gray-100 bg-linear-to-b from-primary/10 via-background to-background pt-24 pb-12 md:pt-40 md:pb-24 dark:border-slate-800"
+  >
+    <div class="container mx-auto px-4">
+      <div class="mx-auto max-w-3xl text-center">
+        <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
+        <h1
+          class="mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text font-persian text-3xl leading-normal font-bold text-transparent md:text-5xl"
+        >
+          {titleText}
+        </h1>
+        <p class="font-persian text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-300">
+          {descriptionText}
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Main Workspace -->
-    <section class="container mx-auto px-4 mt-12 font-sans">
-      <div class="max-w-3xl mx-auto space-y-6">
-        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian">
-          <label for="slug-input" class="block text-sm font-semibold text-gray-700">
-            {t('slugGenerator.inputLabel', { fallback: 'Enter Text' })}
+  <!-- Main Workspace -->
+  <section class="container mx-auto mt-12 px-4 font-sans">
+    <div class="mx-auto max-w-3xl space-y-6">
+      <div
+        class="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-sm dark:border-slate-800 dark:bg-slate-900"
+      >
+        <label
+          for="slug-input"
+          class="block text-sm font-semibold text-gray-700 dark:text-gray-200"
+        >
+          {t('slugGenerator.inputLabel', { fallback: 'Enter Text' })}
+        </label>
+        <textarea
+          id="slug-input"
+          rows="3"
+          dir={isRtl ? 'rtl' : 'ltr'}
+          placeholder={t('slugGenerator.placeholder', {
+            fallback: 'e.g. How to Buy Bitcoin in 2025!',
+          })}
+          class="w-full resize-none rounded-xl border border-gray-200 bg-white p-4 font-persian text-base text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+        ></textarea>
+      </div>
+
+      <div
+        class="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-sm dark:border-slate-800 dark:bg-slate-900"
+      >
+        <div class="flex items-center justify-between">
+          <label class="block text-sm font-semibold text-gray-700 dark:text-gray-200">
+            {t('slugGenerator.resultLabel', { fallback: 'Generated Slug' })}
           </label>
-          <textarea
-            id="slug-input"
-            rows="3"
-            dir={isRtl ? 'rtl' : 'ltr'}
-            placeholder={t('slugGenerator.placeholder', { fallback: 'e.g. How to Buy Bitcoin in 2025!' })}
-            class="w-full border border-gray-200 rounded-xl p-4 focus:outline-none focus:border-primary text-base font-persian resize-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-          ></textarea>
+          <button
+            type="button"
+            id="copy-btn"
+            class="text-xs font-semibold text-primary hover:underline focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          >
+            {t('slugGenerator.copy', { fallback: 'Copy Slug' })}
+          </button>
         </div>
-
-        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian">
-          <div class="flex justify-between items-center">
-            <label class="block text-sm font-semibold text-gray-700">
-              {t('slugGenerator.resultLabel', { fallback: 'Generated Slug' })}
-            </label>
-            <button type="button" id="copy-btn" class="text-xs font-semibold text-primary hover:underline focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
-              {t('slugGenerator.copy', { fallback: 'Copy Slug' })}
-            </button>
-          </div>
-          <div id="slug-output" dir="ltr" class="w-full min-h-[3rem] border border-gray-200 rounded-xl p-4 bg-gray-50/50 text-primary font-mono text-sm break-all flex items-center">
-            your-slug-will-appear-here
-          </div>
-          <p id="copy-feedback" class="text-xs text-green-600 font-semibold font-persian opacity-0 transition-opacity">
-            {t('slugGenerator.copied', { fallback: 'Slug copied to clipboard!' })}
-          </p>
+        <div
+          id="slug-output"
+          dir="ltr"
+          class="flex min-h-12 w-full items-center rounded-xl border border-gray-200 bg-gray-50/50 p-4 font-mono text-sm break-all text-primary dark:border-slate-700 dark:bg-slate-900"
+        >
+          your-slug-will-appear-here
         </div>
-
-        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-3 font-persian">
-          <h3 class="text-sm font-bold text-gray-800">SEO Slug Best Practices:</h3>
-          <ul class="text-xs text-gray-600 space-y-2 list-disc list-inside">
-            <li>Keep slugs short — under 60 characters where possible.</li>
-            <li>Use hyphens (-) to separate words, never underscores.</li>
-            <li>Include your primary keyword, drop stop words like "the" or "and".</li>
-            <li>Always use lowercase letters for consistency.</li>
-          </ul>
-        </div>
+        <p
+          id="copy-feedback"
+          class="font-persian text-xs font-semibold text-green-600 opacity-0 transition-opacity"
+        >
+          {t('slugGenerator.copied', { fallback: 'Slug copied to clipboard!' })}
+        </p>
       </div>
-    </section>
-  
-  
-  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'utmBuilder', route: 'utm-builder' }, { key: 'seoTitleChecker', route: 'seo-title-checker' }, { key: 'metaGenerator', route: 'meta-generator' }]} ctaHref={`/${supportedLang}/services/seo`} isRtl={isRtl} />
+
+      <div
+        class="space-y-3 rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-sm dark:border-slate-800 dark:bg-slate-900"
+      >
+        <h3 class="text-sm font-bold text-gray-800 dark:text-gray-100">SEO Slug Best Practices:</h3>
+        <ul class="list-inside list-disc space-y-2 text-xs text-gray-600 dark:text-gray-300">
+          <li>Keep slugs short — under 60 characters where possible.</li>
+          <li>Use hyphens (-) to separate words, never underscores.</li>
+          <li>Include your primary keyword, drop stop words like "the" or "and".</li>
+          <li>Always use lowercase letters for consistency.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <ToolsCTA
+    lang={supportedLang}
+    t={t}
+    related={[
+      { key: 'utmBuilder', route: 'utm-builder' },
+      { key: 'seoTitleChecker', route: 'seo-title-checker' },
+      { key: 'metaGenerator', route: 'meta-generator' },
+    ]}
+    ctaHref={`/${supportedLang}/services/seo`}
+    isRtl={isRtl}
+  />
 </Layout>
 
 <script is:inline data-astro-rerun>
-  const input = document.getElementById('slug-input');
-  const output = document.getElementById('slug-output');
-  const copyBtn = document.getElementById('copy-btn');
-  const copyFeedback = document.getElementById('copy-feedback');
+  (() => {
+    const input = document.getElementById('slug-input');
+    const output = document.getElementById('slug-output');
+    const copyBtn = document.getElementById('copy-btn');
+    const copyFeedback = document.getElementById('copy-feedback');
 
-  // Basic Persian/Arabic to Latin transliteration map for readable slugs
-  const transliterationMap = {
-    'ا':'a','آ':'a','أ':'a','إ':'e','ب':'b','پ':'p','ت':'t','ث':'s','ج':'j','چ':'ch',
-    'ح':'h','خ':'kh','د':'d','ذ':'z','ر':'r','ز':'z','ژ':'zh','س':'s','ش':'sh','ص':'s',
-    'ض':'z','ط':'t','ظ':'z','ع':'a','غ':'gh','ف':'f','ق':'gh','ک':'k','ك':'k','گ':'g',
-    'ل':'l','م':'m','ن':'n','و':'v','ه':'h','ة':'h','ی':'y','ي':'y','ئ':'y','ء':''
-  };
+    // Basic Persian/Arabic to Latin transliteration map for readable slugs
+    const transliterationMap = {
+      ا: 'a',
+      آ: 'a',
+      أ: 'a',
+      إ: 'e',
+      ب: 'b',
+      پ: 'p',
+      ت: 't',
+      ث: 's',
+      ج: 'j',
+      چ: 'ch',
+      ح: 'h',
+      خ: 'kh',
+      د: 'd',
+      ذ: 'z',
+      ر: 'r',
+      ز: 'z',
+      ژ: 'zh',
+      س: 's',
+      ش: 'sh',
+      ص: 's',
+      ض: 'z',
+      ط: 't',
+      ظ: 'z',
+      ع: 'a',
+      غ: 'gh',
+      ف: 'f',
+      ق: 'gh',
+      ک: 'k',
+      ك: 'k',
+      گ: 'g',
+      ل: 'l',
+      م: 'm',
+      ن: 'n',
+      و: 'v',
+      ه: 'h',
+      ة: 'h',
+      ی: 'y',
+      ي: 'y',
+      ئ: 'y',
+      ء: '',
+    };
 
-  function slugify(text) {
-    let result = text.trim().toLowerCase();
+    function slugify(text) {
+      let result = text.trim().toLowerCase();
 
-    // Transliterate Persian/Arabic characters
-    result = result.split('').map(ch => transliterationMap[ch] !== undefined ? transliterationMap[ch] : ch).join('');
+      // Transliterate Persian/Arabic characters
+      result = result
+        .split('')
+        .map((ch) => (transliterationMap[ch] !== undefined ? transliterationMap[ch] : ch))
+        .join('');
 
-    result = result
-      .normalize('NFKD').replace(/[̀-ͯ]/g, '') // strip accents
-      .replace(/[^\w\s-]/g, '') // remove non-word chars
-      .replace(/[\s_]+/g, '-') // collapse whitespace/underscores to hyphen
-      .replace(/-+/g, '-') // collapse multiple hyphens
-      .replace(/^-+|-+$/g, ''); // trim leading/trailing hyphens
+      result = result
+        .normalize('NFKD')
+        .replace(/[̀-ͯ]/g, '') // strip accents
+        .replace(/[^\w\s-]/g, '') // remove non-word chars
+        .replace(/[\s_]+/g, '-') // collapse whitespace/underscores to hyphen
+        .replace(/-+/g, '-') // collapse multiple hyphens
+        .replace(/^-+|-+$/g, ''); // trim leading/trailing hyphens
 
-    return result;
-  }
-
-  function updateSlug() {
-    const text = input.value;
-    if (!text.trim()) {
-      output.textContent = 'your-slug-will-appear-here';
-      output.classList.add('text-gray-400');
-      output.classList.remove('text-primary');
-      return;
+      return result;
     }
-    const slug = slugify(text);
-    output.textContent = slug || '-';
-    output.classList.remove('text-gray-400');
-    output.classList.add('text-primary');
-  }
 
-  input.addEventListener('input', updateSlug);
+    function updateSlug() {
+      const text = input.value;
+      if (!text.trim()) {
+        output.textContent = 'your-slug-will-appear-here';
+        output.classList.add('text-gray-400');
+        output.classList.remove('text-primary');
+        return;
+      }
+      const slug = slugify(text);
+      output.textContent = slug || '-';
+      output.classList.remove('text-gray-400');
+      output.classList.add('text-primary');
+    }
 
-  copyBtn.addEventListener('click', () => {
-    const text = output.textContent;
-    if (!text || text === 'your-slug-will-appear-here') return;
-    navigator.clipboard.writeText(text).then(() => {
-      copyFeedback.classList.remove('opacity-0');
-      setTimeout(() => copyFeedback.classList.add('opacity-0'), 1800);
+    input.addEventListener('input', updateSlug);
+
+    copyBtn.addEventListener('click', () => {
+      const text = output.textContent;
+      if (!text || text === 'your-slug-will-appear-here') return;
+      navigator.clipboard.writeText(text).then(() => {
+        copyFeedback.classList.remove('opacity-0');
+        setTimeout(() => copyFeedback.classList.add('opacity-0'), 1800);
+      });
     });
-  });
+  })();
 </script>

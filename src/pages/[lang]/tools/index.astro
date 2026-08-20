@@ -16,7 +16,10 @@ const isRtl = languages[supportedLang]?.direction === 'rtl';
 const t = createTranslator(dictionary);
 
 const titleText = t('tools.title', { fallback: 'SEO & Marketing Utilities' });
-const descriptionText = t('tools.description', { fallback: 'A comprehensive suite of free local tools to analyze SEO ranking tags and format developer configs.' });
+const descriptionText = t('tools.description', {
+  fallback:
+    'A comprehensive suite of free local tools to analyze SEO ranking tags and format developer configs.',
+});
 
 // Match slugs exactly to old sitemap parameters
 const seoTools = [
@@ -28,7 +31,7 @@ const seoTools = [
   { key: 'utmBuilder', route: 'utm-builder' },
   { key: 'slugGenerator', route: 'slug-generator' },
   { key: 'socialPreview', route: 'social-media-preview' },
-  { key: 'seoTitleChecker', route: 'seo-title-checker' }
+  { key: 'seoTitleChecker', route: 'seo-title-checker' },
 ];
 
 const contentTools = [
@@ -41,99 +44,165 @@ const contentTools = [
   { key: 'loremGenerator', route: 'lorem-generator' },
   { key: 'qrGenerator', route: 'qr-generator' },
   { key: 'costCalculator', route: 'cost-calculator' },
-  { key: 'privacyGenerator', route: 'privacy-policy-generator' }
+  { key: 'privacyGenerator', route: 'privacy-policy-generator' },
 ];
 
 const devTools = [
   { key: 'base64', route: 'base64-encoder' },
   { key: 'jsonFormatter', route: 'json-formatter' },
   { key: 'robotsGenerator', route: 'robots-generator' },
-  { key: 'keywordDensity', route: 'keyword-density-analyzer' }
+  { key: 'keywordDensity', route: 'keyword-density-analyzer' },
 ];
 
-const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}/` },
-  { label: titleText }
-];
+const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { label: titleText }];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools">
-  
-      <!-- Hero Section -->
-    <section class="bg-linear-to-b from-primary/5 to-white pt-28 pb-12 md:pt-40 md:pb-24">
-      <div class="container mx-auto px-4">
-        <div class="max-w-3xl mx-auto text-center">
-          <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
-          <h1 class="text-3xl md:text-5xl font-bold mb-6 leading-normal font-persian">{titleText}</h1>
-          <p class="text-lg md:text-xl text-gray-600 font-persian leading-relaxed">{descriptionText}</p>
-        </div>
+  <!-- Hero Section -->
+  <section
+    class="bg-linear-to-b from-primary/10 via-background to-background pt-28 pb-12 md:pt-40 md:pb-24"
+  >
+    <div class="container mx-auto px-4">
+      <div class="mx-auto max-w-3xl text-center">
+        <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
+        <h1
+          class="mb-6 font-persian text-3xl leading-normal font-bold text-gray-900 md:text-5xl dark:text-white"
+        >
+          {titleText}
+        </h1>
+        <p class="font-persian text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-300">
+          {descriptionText}
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- SEO Marketers Tools Grid -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-4 max-w-6xl">
-        <div class="text-center mb-12 font-persian">
-          <h2 class="text-3xl font-bold mb-4 text-primary">{t('tools.seoMarketersTitle', { fallback: 'SEO & Search Utilities' })}</h2>
-          <p class="text-xl text-gray-500 max-w-3xl mx-auto">{t('tools.seoMarketersDesc', { fallback: 'Optimize your on-page and technical configurations.' })}</p>
-        </div>
+  <!-- SEO Marketers Tools Grid -->
+  <section class="bg-white py-16 dark:bg-slate-950">
+    <div class="container mx-auto max-w-6xl px-4">
+      <div class="mb-12 text-center font-persian">
+        <h2 class="mb-4 text-3xl font-bold text-primary">
+          {t('tools.seoMarketersTitle', { fallback: 'SEO & Search Utilities' })}
+        </h2>
+        <p class="mx-auto max-w-3xl text-xl text-gray-500 dark:text-gray-400">
+          {
+            t('tools.seoMarketersDesc', {
+              fallback: 'Optimize your on-page and technical configurations.',
+            })
+          }
+        </p>
+      </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {seoTools.map(({ key, route }) => (
-            <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-xs hover:shadow-lg transition-all duration-300 group font-persian">
-              <h3 class="text-2xl font-bold mb-4">{t(`${key}.title`, { fallback: key })}</h3>
-              <p class="text-gray-500 mb-6 text-sm leading-relaxed">{t(`${key}.description`, { fallback: 'Optimize assets and verify index markers.' })}</p>
-              <a href={`/${supportedLang}/tools/${route}`} class="text-primary font-bold text-sm inline-flex items-center gap-1">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {
+          seoTools.map(({ key, route }) => (
+            <a
+              href={`/${supportedLang}/tools/${route}/`}
+              class="group flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-8 font-persian shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-primary/30"
+            >
+              <div>
+                <h3 class="mb-4 text-2xl font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+                  {t(`${key}.title`, { fallback: key })}
+                </h3>
+                <p class="mb-6 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+                  {t(`${key}.description`, {
+                    fallback: 'Optimize assets and verify index markers.',
+                  })}
+                </p>
+              </div>
+              <div class="inline-flex items-center gap-1 text-sm font-bold text-primary transition-all group-hover:gap-2">
                 {t('common.readMore', { fallback: 'Launch Tool' })} {isRtl ? '←' : '→'}
-              </a>
-            </div>
-          ))}
-        </div>
+              </div>
+            </a>
+          ))
+        }
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Content Creators Tools Grid -->
-    <section class="py-16 bg-gray-50">
-      <div class="container mx-auto px-4 max-w-6xl font-sans">
-        <div class="text-center mb-12 font-persian">
-          <h2 class="text-3xl font-bold mb-4 text-green-600">{t('tools.contentCreatorsTitle', { fallback: 'Developer & Layout Utilities' })}</h2>
-          <p class="text-xl text-gray-500 max-w-3xl mx-auto">{t('tools.contentCreatorsDesc', { fallback: 'Helpers for generators and web layout components.' })}</p>
-        </div>
+  <!-- Content Creators Tools Grid -->
+  <section class="bg-gray-50 py-16 dark:bg-slate-900/50">
+    <div class="container mx-auto max-w-6xl px-4 font-sans">
+      <div class="mb-12 text-center font-persian">
+        <h2 class="mb-4 text-3xl font-bold text-green-600 dark:text-green-400">
+          {t('tools.contentCreatorsTitle', { fallback: 'Developer & Layout Utilities' })}
+        </h2>
+        <p class="mx-auto max-w-3xl text-xl text-gray-500 dark:text-gray-400">
+          {
+            t('tools.contentCreatorsDesc', {
+              fallback: 'Helpers for generators and web layout components.',
+            })
+          }
+        </p>
+      </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {contentTools.map(({ key, route }) => (
-            <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-xs hover:shadow-lg transition-all duration-300 group font-persian">
-              <h3 class="text-2xl font-bold mb-4">{t(`${key}.title`, { fallback: key })}</h3>
-              <p class="text-gray-500 mb-6 text-sm leading-relaxed">{t(`${key}.description`, { fallback: 'Optimize copy formatting and styling guidelines.' })}</p>
-              <a href={`/${supportedLang}/tools/${route}`} class="text-primary font-bold text-sm inline-flex items-center gap-1">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {
+          contentTools.map(({ key, route }) => (
+            <a
+              href={`/${supportedLang}/tools/${route}/`}
+              class="group flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-8 font-persian shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-primary/30"
+            >
+              <div>
+                <h3 class="mb-4 text-2xl font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+                  {t(`${key}.title`, { fallback: key })}
+                </h3>
+                <p class="mb-6 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+                  {t(`${key}.description`, {
+                    fallback: 'Optimize copy formatting and styling guidelines.',
+                  })}
+                </p>
+              </div>
+              <div class="inline-flex items-center gap-1 text-sm font-bold text-primary transition-all group-hover:gap-2">
                 {t('common.readMore', { fallback: 'Launch Tool' })} {isRtl ? '←' : '→'}
-              </a>
-            </div>
-          ))}
-        </div>
+              </div>
+            </a>
+          ))
+        }
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Developer & Technical SEO Tools -->
-    <section class="py-16 bg-white">
-      <div class="container mx-auto px-4 max-w-6xl font-sans">
-        <div class="text-center mb-12 font-persian">
-          <h2 class="text-3xl font-bold mb-4 text-primary">{t('tools.technicalTitle', { fallback: 'Technical SEO Utilities' })}</h2>
-          <p class="text-xl text-gray-500 max-w-3xl mx-auto">{t('tools.technicalDesc', { fallback: 'Crawler directives, structured data, and content formatting helpers.' })}</p>
-        </div>
+  <!-- Developer & Technical SEO Tools -->
+  <section class="bg-white py-16 dark:bg-slate-950">
+    <div class="container mx-auto max-w-6xl px-4 font-sans">
+      <div class="mb-12 text-center font-persian">
+        <h2 class="mb-4 text-3xl font-bold text-primary">
+          {t('tools.technicalTitle', { fallback: 'Technical SEO Utilities' })}
+        </h2>
+        <p class="mx-auto max-w-3xl text-xl text-gray-500 dark:text-gray-400">
+          {
+            t('tools.technicalDesc', {
+              fallback: 'Crawler directives, structured data, and content formatting helpers.',
+            })
+          }
+        </p>
+      </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {devTools.map(({ key, route }) => (
-            <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-xs hover:shadow-lg transition-all duration-300 group font-persian">
-              <h3 class="text-2xl font-bold mb-4">{t(`tools.${key}.title`, { fallback: key })}</h3>
-              <p class="text-gray-500 mb-6 text-sm leading-relaxed">{t(`tools.${key}.description`, { fallback: 'Optimize technical configurations for search engines.' })}</p>
-              <a href={`/${supportedLang}/tools/${route}`} class="text-primary font-bold text-sm inline-flex items-center gap-1">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {
+          devTools.map(({ key, route }) => (
+            <a
+              href={`/${supportedLang}/tools/${route}/`}
+              class="group flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-8 font-persian shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-primary/30"
+            >
+              <div>
+                <h3 class="mb-4 text-2xl font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+                  {t(`tools.${key}.title`, { fallback: key })}
+                </h3>
+                <p class="mb-6 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+                  {t(`tools.${key}.description`, {
+                    fallback: 'Optimize technical configurations for search engines.',
+                  })}
+                </p>
+              </div>
+              <div class="inline-flex items-center gap-1 text-sm font-bold text-primary transition-all group-hover:gap-2">
                 {t('common.readMore', { fallback: 'Launch Tool' })} {isRtl ? '←' : '→'}
-              </a>
-            </div>
-          ))}
-        </div>
+              </div>
+            </a>
+          ))
+        }
       </div>
-    </section>
-  
-  </Layout>
+    </div>
+  </section>
+</Layout>

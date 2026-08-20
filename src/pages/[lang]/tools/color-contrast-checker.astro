@@ -15,55 +15,77 @@ const dictionary = await getDictionary(supportedLang);
 const t = createTranslator(dictionary);
 
 const titleText = t('colorContrast.title', { fallback: 'WCAG Color Contrast Checker' });
-const descriptionText = t('colorContrast.description', { fallback: 'Test text and background color contrast ratios for WCAG 2.1 AA and AAA accessibility compliance.' });
+const descriptionText = t('colorContrast.description', {
+  fallback:
+    'Test text and background color contrast ratios for WCAG 2.1 AA and AAA accessibility compliance.',
+});
 
 const webAppSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "@id": `https://webabc.ir/${supportedLang}/tools/color-contrast-checker/#webapp`,
-  "name": titleText,
-  "description": descriptionText,
-  "applicationCategory": "DesignApplication",
-  "operatingSystem": "All",
-  "browserRequirements": "Requires HTML5 support",
-  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `https://webabc.ir/${supportedLang}/tools/color-contrast-checker/#webapp`,
+  name: titleText,
+  description: descriptionText,
+  applicationCategory: 'DesignApplication',
+  operatingSystem: 'All',
+  browserRequirements: 'Requires HTML5 support',
+  inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
 };
 
 const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
     {
-      "@type": "Question",
-      "name": supportedLang === 'fa' ? 'نسبت کنتراست استاندارد WCAG چیست؟' : supportedLang === 'ar' ? 'ما هي نسبة التباين الموصى بها في WCAG؟' : 'What is the recommended WCAG color contrast ratio?',
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": supportedLang === 'fa' ? 'بر اساس استاندارد WCAG 2.1 سطح AA، نسبت کنتراست متن عادی حداقل ۴.۵:۱ و برای متن بزرگ حداقل ۳:۱ است. سطح AAA نسبت ۷:۱ را الزام می‌کند.' : supportedLang === 'ar' ? 'تتطلب معايير WCAG 2.1 مستوى AA نسبة تباين لا تقل عن 4.5:1 للنصوص العادية و 3:1 للنصوص الكبيرة.' : 'WCAG 2.1 Level AA requires a minimum contrast ratio of 4.5:1 for normal body text and 3:1 for large text. Level AAA requires 7:1.'
-      }
-    }
-  ]
+      '@type': 'Question',
+      name:
+        supportedLang === 'fa'
+          ? 'نسبت کنتراست استاندارد WCAG چیست؟'
+          : supportedLang === 'ar'
+            ? 'ما هي نسبة التباين الموصى بها في WCAG؟'
+            : 'What is the recommended WCAG color contrast ratio?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text:
+          supportedLang === 'fa'
+            ? 'بر اساس استاندارد WCAG 2.1 سطح AA، نسبت کنتراست متن عادی حداقل ۴.۵:۱ و برای متن بزرگ حداقل ۳:۱ است. سطح AAA نسبت ۷:۱ را الزام می‌کند.'
+            : supportedLang === 'ar'
+              ? 'تتطلب معايير WCAG 2.1 مستوى AA نسبة تباين لا تقل عن 4.5:1 للنصوص العادية و 3:1 للنصوص الكبيرة.'
+              : 'WCAG 2.1 Level AA requires a minimum contrast ratio of 4.5:1 for normal body text and 3:1 for large text. Level AAA requires 7:1.',
+      },
+    },
+  ],
 };
 
 const breadcrumbs = [
   { label: t('common.home'), url: `/${supportedLang}/` },
   { label: t('common.tools'), url: `/${supportedLang}/tools/` },
-  { label: titleText }
+  { label: titleText },
 ];
 ---
 
-<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/color-contrast-checker">
+<Layout
+  title={titleText}
+  description={descriptionText}
+  lang={supportedLang}
+  slug="tools/color-contrast-checker"
+>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero Section -->
-  <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100 font-sans">
+  <section
+    class="border-b border-gray-100 bg-linear-to-b from-primary/10 via-background to-background pt-24 pb-12 font-sans md:pt-40 md:pb-24 dark:border-slate-800"
+  >
     <div class="container mx-auto px-4">
-      <div class="max-w-3xl mx-auto text-center">
+      <div class="mx-auto max-w-3xl text-center">
         <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
-        <h1 class="text-3xl md:text-5xl font-bold mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent leading-normal font-persian">
+        <h1
+          class="mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text font-persian text-3xl leading-normal font-bold text-transparent md:text-5xl"
+        >
           {titleText}
         </h1>
-        <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-persian">
+        <p class="font-persian text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-300">
           {descriptionText}
         </p>
       </div>
@@ -71,213 +93,334 @@ const breadcrumbs = [
   </section>
 
   <!-- Main Workspace -->
-  <section class="container mx-auto px-4 mt-12 mb-20 font-sans">
-    <div class="max-w-4xl mx-auto space-y-8">
-      
+  <section class="container mx-auto mt-12 mb-20 px-4 font-sans">
+    <div class="mx-auto max-w-4xl space-y-8">
       <!-- Color Pickers & Preview -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-        
+      <div class="grid grid-cols-1 items-stretch gap-8 md:grid-cols-2">
         <!-- Controls -->
-        <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-6 font-persian">
-          <h3 class="text-lg font-bold text-gray-800 border-b border-gray-100 pb-3">{t('colorContrast.colorInputs', { fallback: 'Color Inputs' })}</h3>
+        <div
+          class="space-y-6 rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-sm dark:border-slate-800 dark:bg-slate-900"
+        >
+          <h3
+            class="border-b border-gray-100 pb-3 text-lg font-bold text-gray-800 dark:border-slate-800 dark:text-gray-100"
+          >
+            {t('colorContrast.colorInputs', { fallback: 'Color Inputs' })}
+          </h3>
 
           <!-- Text Color -->
           <div class="space-y-2">
-            <label class="block text-sm font-semibold text-gray-700">{t('colorContrast.textColor', { fallback: 'Text Color (Foreground)' })}</label>
+            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-200"
+              >{t('colorContrast.textColor', { fallback: 'Text Color (Foreground)' })}</label
+            >
             <div class="flex items-center gap-3">
-              <input type="color" id="text-color-picker" value="#1E3A8A" class="w-12 h-12 rounded-lg cursor-pointer border border-gray-200 p-1" />
-              <input type="text" id="text-color-hex" value="#1E3A8A" class="grow border border-gray-200 rounded-xl px-4 py-2 text-sm font-mono uppercase focus:border-primary focus:outline-none" />
+              <input
+                type="color"
+                id="text-color-picker"
+                value="#1E3A8A"
+                class="h-12 w-12 cursor-pointer rounded-lg border border-gray-200 bg-white p-1 text-gray-900 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              />
+              <input
+                type="text"
+                id="text-color-hex"
+                value="#1E3A8A"
+                class="grow rounded-xl border border-gray-200 bg-white px-4 py-2 font-mono text-sm text-gray-900 uppercase focus:border-primary focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              />
             </div>
           </div>
 
           <!-- Background Color -->
           <div class="space-y-2">
-            <label class="block text-sm font-semibold text-gray-700">{t('colorContrast.bgColor', { fallback: 'Background Color' })}</label>
+            <label class="block text-sm font-semibold text-gray-700 dark:text-gray-200"
+              >{t('colorContrast.bgColor', { fallback: 'Background Color' })}</label
+            >
             <div class="flex items-center gap-3">
-              <input type="color" id="bg-color-picker" value="#F8FAFC" class="w-12 h-12 rounded-lg cursor-pointer border border-gray-200 p-1" />
-              <input type="text" id="bg-color-hex" value="#F8FAFC" class="grow border border-gray-200 rounded-xl px-4 py-2 text-sm font-mono uppercase focus:border-primary focus:outline-none" />
+              <input
+                type="color"
+                id="bg-color-picker"
+                value="#F8FAFC"
+                class="h-12 w-12 cursor-pointer rounded-lg border border-gray-200 bg-white p-1 text-gray-900 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              />
+              <input
+                type="text"
+                id="bg-color-hex"
+                value="#F8FAFC"
+                class="grow rounded-xl border border-gray-200 bg-white px-4 py-2 font-mono text-sm text-gray-900 uppercase focus:border-primary focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              />
             </div>
           </div>
 
-          <button type="button" id="swap-btn" class="w-full py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-xs font-bold text-gray-700 hover:bg-gray-100 transition-all flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
-            <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path></svg>
+          <button
+            type="button"
+            id="swap-btn"
+            class="flex w-full items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white py-2.5 text-xs font-bold text-gray-700 transition-all hover:bg-gray-50 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-gray-200"
+          >
+            <svg
+              aria-hidden="true"
+              class="h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path></svg
+            >
             {t('colorContrast.swap', { fallback: 'Swap Colors' })}
           </button>
         </div>
 
         <!-- Live Preview Card -->
-        <div id="preview-box" class="rounded-2xl p-8 shadow-sm border border-gray-200 flex flex-col justify-between transition-colors duration-300 min-h-[280px]">
+        <div
+          id="preview-box"
+          class="flex min-h-70 flex-col justify-between rounded-2xl border border-gray-200 bg-white p-8 text-gray-900 shadow-sm transition-colors duration-300 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+        >
           <div>
-            <span class="text-xs font-bold uppercase tracking-wider opacity-75">{t('colorContrast.livePreview', { fallback: 'Live Preview' })}</span>
-            <h2 class="text-2xl md:text-3xl font-bold mt-2 font-persian">{t('colorContrast.sampleHeading', { fallback: 'The Quick Brown Fox' })}</h2>
-            <p class="text-sm md:text-base mt-2 leading-relaxed opacity-90 font-persian">
-              {t('colorContrast.sampleBody', { fallback: 'Good contrast makes text easy to read for everyone, including people with visual impairments.' })}
+            <span class="text-xs font-bold tracking-wider uppercase opacity-75"
+              >{t('colorContrast.livePreview', { fallback: 'Live Preview' })}</span
+            >
+            <h2 class="mt-2 font-persian text-2xl font-bold md:text-3xl">
+              {t('colorContrast.sampleHeading', { fallback: 'The Quick Brown Fox' })}
+            </h2>
+            <p class="mt-2 font-persian text-sm leading-relaxed opacity-90 md:text-base">
+              {
+                t('colorContrast.sampleBody', {
+                  fallback:
+                    'Good contrast makes text easy to read for everyone, including people with visual impairments.',
+                })
+              }
             </p>
           </div>
-          <div class="pt-6 border-t border-current/20 flex justify-between items-center text-xs font-mono">
+          <div
+            class="flex items-center justify-between border-t border-current/20 pt-6 font-mono text-xs"
+          >
             <span>{t('colorContrast.buttonSample', { fallback: 'Button Sample' })}</span>
-            <button type="button" class="px-4 py-2 rounded-lg border border-current font-bold uppercase tracking-wider focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('colorContrast.clickMe', { fallback: 'Click Me' })}</button>
+            <button
+              type="button"
+              class="rounded-lg border border-current px-4 py-2 font-bold tracking-wider uppercase focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              >{t('colorContrast.clickMe', { fallback: 'Click Me' })}</button
+            >
           </div>
         </div>
-
       </div>
 
       <!-- Contrast Ratio & WCAG Results -->
-      <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 md:p-8 space-y-6 font-persian text-center">
+      <div
+        class="space-y-6 rounded-2xl border border-gray-100 bg-white p-6 text-center font-persian shadow-sm md:p-8 dark:border-slate-800 dark:bg-slate-900"
+      >
         <div>
-          <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">{t('colorContrast.contrastRatio', { fallback: 'Contrast Ratio' })}</span>
-          <div id="ratio-display" class="text-5xl md:text-6xl font-black text-primary font-mono my-2">-- : 1</div>
-          <p id="ratio-verdict" class="text-sm font-semibold text-gray-600">{t('colorContrast.calculating', { fallback: 'Calculating...' })}</p>
+          <span class="text-xs font-bold tracking-wider text-gray-400 uppercase"
+            >{t('colorContrast.contrastRatio', { fallback: 'Contrast Ratio' })}</span
+          >
+          <div
+            id="ratio-display"
+            class="my-2 font-mono text-5xl font-black text-primary md:text-6xl"
+          >
+            -- : 1
+          </div>
+          <p id="ratio-verdict" class="text-sm font-semibold text-gray-600 dark:text-gray-300">
+            {t('colorContrast.calculating', { fallback: 'Calculating...' })}
+          </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-gray-100">
-          <div class="p-4 rounded-xl border border-gray-100 bg-gray-50/50 space-y-2">
-            <h4 class="text-xs font-bold text-gray-500 uppercase">{t('colorContrast.normalAA', { fallback: 'Normal Text (AA)' })}</h4>
-            <div id="badge-normal-aa" class="inline-block px-3 py-1 text-xs font-bold rounded-full bg-gray-200 text-gray-700">{t('colorContrast.checking', { fallback: 'Checking...' })}</div>
-            <p class="text-[11px] text-gray-400">{t('colorContrast.minNormal', { fallback: 'Min 4.5:1 ratio required' })}</p>
+        <div
+          class="grid grid-cols-1 gap-4 border-t border-gray-100 pt-4 md:grid-cols-3 dark:border-slate-800"
+        >
+          <div
+            class="space-y-2 rounded-xl border border-gray-100 bg-gray-50/50 p-4 dark:border-slate-800 dark:bg-slate-800/50"
+          >
+            <h4 class="text-xs font-bold text-gray-500 uppercase dark:text-gray-400">
+              {t('colorContrast.normalAA', { fallback: 'Normal Text (AA)' })}
+            </h4>
+            <div
+              id="badge-normal-aa"
+              class="inline-block rounded-full bg-gray-200 px-3 py-1 text-xs font-bold text-gray-700 dark:bg-slate-700 dark:text-gray-300"
+            >
+              {t('colorContrast.checking', { fallback: 'Checking...' })}
+            </div>
+            <p class="text-[11px] text-gray-400">
+              {t('colorContrast.minNormal', { fallback: 'Min 4.5:1 ratio required' })}
+            </p>
           </div>
 
-          <div class="p-4 rounded-xl border border-gray-100 bg-gray-50/50 space-y-2">
-            <h4 class="text-xs font-bold text-gray-500 uppercase">{t('colorContrast.largeAA', { fallback: 'Large Text (AA / AAA)' })}</h4>
-            <div id="badge-large-aa" class="inline-block px-3 py-1 text-xs font-bold rounded-full bg-gray-200 text-gray-700">{t('colorContrast.checking', { fallback: 'Checking...' })}</div>
-            <p class="text-[11px] text-gray-400">{t('colorContrast.minLarge', { fallback: 'Min 3:1 (AA) or 4.5:1 (AAA)' })}</p>
+          <div
+            class="space-y-2 rounded-xl border border-gray-100 bg-gray-50/50 p-4 dark:border-slate-800 dark:bg-slate-800/50"
+          >
+            <h4 class="text-xs font-bold text-gray-500 uppercase dark:text-gray-400">
+              {t('colorContrast.largeAA', { fallback: 'Large Text (AA / AAA)' })}
+            </h4>
+            <div
+              id="badge-large-aa"
+              class="inline-block rounded-full bg-gray-200 px-3 py-1 text-xs font-bold text-gray-700 dark:bg-slate-700 dark:text-gray-300"
+            >
+              {t('colorContrast.checking', { fallback: 'Checking...' })}
+            </div>
+            <p class="text-[11px] text-gray-400">
+              {t('colorContrast.minLarge', { fallback: 'Min 3:1 (AA) or 4.5:1 (AAA)' })}
+            </p>
           </div>
 
-          <div class="p-4 rounded-xl border border-gray-100 bg-gray-50/50 space-y-2">
-            <h4 class="text-xs font-bold text-gray-500 uppercase">{t('colorContrast.enhancedAAA', { fallback: 'Enhanced (AAA)' })}</h4>
-            <div id="badge-normal-aaa" class="inline-block px-3 py-1 text-xs font-bold rounded-full bg-gray-200 text-gray-700">{t('colorContrast.checking', { fallback: 'Checking...' })}</div>
-            <p class="text-[11px] text-gray-400">{t('colorContrast.minEnhanced', { fallback: 'Min 7:1 ratio required' })}</p>
+          <div
+            class="space-y-2 rounded-xl border border-gray-100 bg-gray-50/50 p-4 dark:border-slate-800 dark:bg-slate-800/50"
+          >
+            <h4 class="text-xs font-bold text-gray-500 uppercase dark:text-gray-400">
+              {t('colorContrast.enhancedAAA', { fallback: 'Enhanced (AAA)' })}
+            </h4>
+            <div
+              id="badge-normal-aaa"
+              class="inline-block rounded-full bg-gray-200 px-3 py-1 text-xs font-bold text-gray-700 dark:bg-slate-700 dark:text-gray-300"
+            >
+              {t('colorContrast.checking', { fallback: 'Checking...' })}
+            </div>
+            <p class="text-[11px] text-gray-400">
+              {t('colorContrast.minEnhanced', { fallback: 'Min 7:1 ratio required' })}
+            </p>
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
-
-  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'boxShadow', route: 'box-shadow-generator' }, { key: 'gradientGen', route: 'css-gradient-generator' }, { key: 'glassGen', route: 'glassmorphism-generator' }]} ctaHref={`/${supportedLang}/services/ui-ux-audit`} isRtl={supportedLang !== 'en'} />
+  <ToolsCTA
+    lang={supportedLang}
+    t={t}
+    related={[
+      { key: 'boxShadow', route: 'box-shadow-generator' },
+      { key: 'gradientGen', route: 'css-gradient-generator' },
+      { key: 'glassGen', route: 'glassmorphism-generator' },
+    ]}
+    ctaHref={`/${supportedLang}/services/ui-ux-audit`}
+    isRtl={supportedLang !== 'en'}
+  />
 </Layout>
 
 <script is:inline data-astro-rerun>
-  const textPicker = document.getElementById('text-color-picker');
-  const textHex = document.getElementById('text-color-hex');
-  const bgPicker = document.getElementById('bg-color-picker');
-  const bgHex = document.getElementById('bg-color-hex');
-  const swapBtn = document.getElementById('swap-btn');
+  (() => {
+    const textPicker = document.getElementById('text-color-picker');
+    const textHex = document.getElementById('text-color-hex');
+    const bgPicker = document.getElementById('bg-color-picker');
+    const bgHex = document.getElementById('bg-color-hex');
+    const swapBtn = document.getElementById('swap-btn');
 
-  const previewBox = document.getElementById('preview-box');
-  const ratioDisplay = document.getElementById('ratio-display');
-  const ratioVerdict = document.getElementById('ratio-verdict');
+    const previewBox = document.getElementById('preview-box');
+    const ratioDisplay = document.getElementById('ratio-display');
+    const ratioVerdict = document.getElementById('ratio-verdict');
 
-  const badgeNormalAa = document.getElementById('badge-normal-aa');
-  const badgeLargeAa = document.getElementById('badge-large-aa');
-  const badgeNormalAaa = document.getElementById('badge-normal-aaa');
+    const badgeNormalAa = document.getElementById('badge-normal-aa');
+    const badgeLargeAa = document.getElementById('badge-large-aa');
+    const badgeNormalAaa = document.getElementById('badge-normal-aaa');
 
-  function hexToRgb(hex) {
-    let clean = hex.replace('#', '');
-    if (clean.length === 3) {
-      clean = clean.split('').map(c => c + c).join('');
+    function hexToRgb(hex) {
+      let clean = hex.replace('#', '');
+      if (clean.length === 3) {
+        clean = clean
+          .split('')
+          .map((c) => c + c)
+          .join('');
+      }
+      const num = parseInt(clean, 16);
+      return isNaN(num)
+        ? null
+        : {
+            r: (num >> 16) & 255,
+            g: (num >> 8) & 255,
+            b: num & 255,
+          };
     }
-    const num = parseInt(clean, 16);
-    return isNaN(num) ? null : {
-      r: (num >> 16) & 255,
-      g: (num >> 8) & 255,
-      b: num & 255
-    };
-  }
 
-  function getLuminance(r, g, b) {
-    const a = [r, g, b].map(v => {
-      v /= 255;
-      return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    function getLuminance(r, g, b) {
+      const a = [r, g, b].map((v) => {
+        v /= 255;
+        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+      });
+      return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+    }
+
+    function calculateContrast(hex1, hex2) {
+      const rgb1 = hexToRgb(hex1);
+      const rgb2 = hexToRgb(hex2);
+
+      if (!rgb1 || !rgb2) return null;
+
+      const lum1 = getLuminance(rgb1.r, rgb1.g, rgb1.b);
+      const lum2 = getLuminance(rgb2.r, rgb2.g, rgb2.b);
+
+      const brightest = Math.max(lum1, lum2);
+      const darkest = Math.min(lum1, lum2);
+
+      return (brightest + 0.05) / (darkest + 0.05);
+    }
+
+    function updateResults() {
+      let fg = textHex.value.trim();
+      let bg = bgHex.value.trim();
+
+      if (!fg.startsWith('#')) fg = '#' + fg;
+      if (!bg.startsWith('#')) bg = '#' + bg;
+
+      if (/^#[0-9A-Fa-f]{6}$/.test(fg)) textPicker.value = fg;
+      if (/^#[0-9A-Fa-f]{6}$/.test(bg)) bgPicker.value = bg;
+
+      previewBox.style.color = fg;
+      previewBox.style.backgroundColor = bg;
+
+      const ratio = calculateContrast(fg, bg);
+
+      if (!ratio) {
+        ratioDisplay.textContent = 'Invalid';
+        return;
+      }
+
+      const formatted = ratio.toFixed(2);
+      ratioDisplay.textContent = `${formatted} : 1`;
+
+      if (ratio >= 7) {
+        ratioVerdict.textContent = 'Excellent contrast ratio! High readability for all users.';
+        ratioVerdict.className = 'text-sm font-semibold text-green-600';
+      } else if (ratio >= 4.5) {
+        ratioVerdict.textContent = 'Good contrast ratio. Passes WCAG AA standard.';
+        ratioVerdict.className = 'text-sm font-semibold text-blue-600';
+      } else if (ratio >= 3) {
+        ratioVerdict.textContent = 'Moderate contrast. Passes for large text only.';
+        ratioVerdict.className = 'text-sm font-semibold text-amber-600';
+      } else {
+        ratioVerdict.textContent = 'Poor contrast ratio. Fails WCAG AA requirements.';
+        ratioVerdict.className = 'text-sm font-semibold text-red-600';
+      }
+
+      // Update Badges
+      const setBadge = (el, pass, label) => {
+        el.textContent = pass ? `PASS (${label})` : `FAIL (${label})`;
+        el.className = pass
+          ? 'inline-block px-3 py-1 text-xs font-bold rounded-full bg-green-100 text-green-700 dark:bg-green-950/50 dark:text-green-400'
+          : 'inline-block px-3 py-1 text-xs font-bold rounded-full bg-red-100 text-red-700 dark:bg-red-950/50 dark:text-red-400';
+      };
+
+      setBadge(badgeNormalAa, ratio >= 4.5, 'AA');
+      setBadge(badgeLargeAa, ratio >= 3.0, 'AA');
+      setBadge(badgeNormalAaa, ratio >= 7.0, 'AAA');
+    }
+
+    textPicker.addEventListener('input', (e) => {
+      textHex.value = e.target.value.toUpperCase();
+      updateResults();
     });
-    return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
-  }
 
-  function calculateContrast(hex1, hex2) {
-    const rgb1 = hexToRgb(hex1);
-    const rgb2 = hexToRgb(hex2);
+    bgPicker.addEventListener('input', (e) => {
+      bgHex.value = e.target.value.toUpperCase();
+      updateResults();
+    });
 
-    if (!rgb1 || !rgb2) return null;
+    textHex.addEventListener('input', updateResults);
+    bgHex.addEventListener('input', updateResults);
 
-    const lum1 = getLuminance(rgb1.r, rgb1.g, rgb1.b);
-    const lum2 = getLuminance(rgb2.r, rgb2.g, rgb2.b);
+    swapBtn.addEventListener('click', () => {
+      const temp = textHex.value;
+      textHex.value = bgHex.value;
+      bgHex.value = temp;
+      updateResults();
+    });
 
-    const brightest = Math.max(lum1, lum2);
-    const darkest = Math.min(lum1, lum2);
-
-    return (brightest + 0.05) / (darkest + 0.05);
-  }
-
-  function updateResults() {
-    let fg = textHex.value.trim();
-    let bg = bgHex.value.trim();
-
-    if (!fg.startsWith('#')) fg = '#' + fg;
-    if (!bg.startsWith('#')) bg = '#' + bg;
-
-    if (/^#[0-9A-Fa-f]{6}$/.test(fg)) textPicker.value = fg;
-    if (/^#[0-9A-Fa-f]{6}$/.test(bg)) bgPicker.value = bg;
-
-    previewBox.style.color = fg;
-    previewBox.style.backgroundColor = bg;
-
-    const ratio = calculateContrast(fg, bg);
-
-    if (!ratio) {
-      ratioDisplay.textContent = 'Invalid';
-      return;
-    }
-
-    const formatted = ratio.toFixed(2);
-    ratioDisplay.textContent = `${formatted} : 1`;
-
-    if (ratio >= 7) {
-      ratioVerdict.textContent = 'Excellent contrast ratio! High readability for all users.';
-      ratioVerdict.className = 'text-sm font-semibold text-green-600';
-    } else if (ratio >= 4.5) {
-      ratioVerdict.textContent = 'Good contrast ratio. Passes WCAG AA standard.';
-      ratioVerdict.className = 'text-sm font-semibold text-blue-600';
-    } else if (ratio >= 3) {
-      ratioVerdict.textContent = 'Moderate contrast. Passes for large text only.';
-      ratioVerdict.className = 'text-sm font-semibold text-amber-600';
-    } else {
-      ratioVerdict.textContent = 'Poor contrast ratio. Fails WCAG AA requirements.';
-      ratioVerdict.className = 'text-sm font-semibold text-red-600';
-    }
-
-    // Update Badges
-    const setBadge = (el, pass, label) => {
-      el.textContent = pass ? `PASS (${label})` : `FAIL (${label})`;
-      el.className = pass
-        ? 'inline-block px-3 py-1 text-xs font-bold rounded-full bg-green-100 text-green-700'
-        : 'inline-block px-3 py-1 text-xs font-bold rounded-full bg-red-100 text-red-700';
-    };
-
-    setBadge(badgeNormalAa, ratio >= 4.5, 'AA');
-    setBadge(badgeLargeAa, ratio >= 3.0, 'AA');
-    setBadge(badgeNormalAaa, ratio >= 7.0, 'AAA');
-  }
-
-  textPicker.addEventListener('input', (e) => {
-    textHex.value = e.target.value.toUpperCase();
     updateResults();
-  });
-
-  bgPicker.addEventListener('input', (e) => {
-    bgHex.value = e.target.value.toUpperCase();
-    updateResults();
-  });
-
-  textHex.addEventListener('input', updateResults);
-  bgHex.addEventListener('input', updateResults);
-
-  swapBtn.addEventListener('click', () => {
-    const temp = textHex.value;
-    textHex.value = bgHex.value;
-    bgHex.value = temp;
-    updateResults();
-  });
-
-  updateResults();
+  })();
 </script>

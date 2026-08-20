@@ -15,55 +15,76 @@ const dictionary = await getDictionary(supportedLang);
 const t = createTranslator(dictionary);
 
 const titleText = t('loremGenerator.title', { fallback: 'Lorem Ipsum & Dummy Text Generator' });
-const descriptionText = t('loremGenerator.description', { fallback: 'Generate placeholder text in English, Persian, or Arabic for web design mockups.' });
+const descriptionText = t('loremGenerator.description', {
+  fallback: 'Generate placeholder text in English, Persian, or Arabic for web design mockups.',
+});
 
 const webAppSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "@id": `https://webabc.ir/${supportedLang}/tools/lorem-generator/#webapp`,
-  "name": titleText,
-  "description": descriptionText,
-  "applicationCategory": "DesignApplication",
-  "operatingSystem": "All",
-  "browserRequirements": "Requires HTML5 support",
-  "inLanguage": supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR'
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `https://webabc.ir/${supportedLang}/tools/lorem-generator/#webapp`,
+  name: titleText,
+  description: descriptionText,
+  applicationCategory: 'DesignApplication',
+  operatingSystem: 'All',
+  browserRequirements: 'Requires HTML5 support',
+  inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
 };
 
 const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
     {
-      "@type": "Question",
-      "name": supportedLang === 'fa' ? 'متن لورم ایپسوم (Lorem Ipsum) چیست و چه کاربردی در طراحی وب دارد؟' : supportedLang === 'ar' ? 'ما هو نص لوريم إيبسوم وما أهميته في تصميم الويب؟' : 'What is Lorem Ipsum placeholder text?',
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": supportedLang === 'fa' ? 'لورم ایپسوم متن ساختگی با پراکندگی طبیعی حروف است که طراحان وب و گرافیست‌ها برای پر کردن قالب قبل از آماده شدن محتوای اصلی استفاده می‌کنند.' : supportedLang === 'ar' ? 'لوريم إيبسوم هو نص وهمي يستعمل في صناعات الطباعة والتصميم لمعاينة الشكل النهائي قبل إضافة المحتوى الفعلي.' : 'Lorem Ipsum is standardized dummy placeholder text used by web designers and developers to visualize page layouts without content distraction.'
-      }
-    }
-  ]
+      '@type': 'Question',
+      name:
+        supportedLang === 'fa'
+          ? 'متن لورم ایپسوم (Lorem Ipsum) چیست و چه کاربردی در طراحی وب دارد؟'
+          : supportedLang === 'ar'
+            ? 'ما هو نص لوريم إيبسوم وما أهميته في تصميم الويب؟'
+            : 'What is Lorem Ipsum placeholder text?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text:
+          supportedLang === 'fa'
+            ? 'لورم ایپسوم متن ساختگی با پراکندگی طبیعی حروف است که طراحان وب و گرافیست‌ها برای پر کردن قالب قبل از آماده شدن محتوای اصلی استفاده می‌کنند.'
+            : supportedLang === 'ar'
+              ? 'لوريم إيبسوم هو نص وهمي يستعمل في صناعات الطباعة والتصميم لمعاينة الشكل النهائي قبل إضافة المحتوى الفعلي.'
+              : 'Lorem Ipsum is standardized dummy placeholder text used by web designers and developers to visualize page layouts without content distraction.',
+      },
+    },
+  ],
 };
 
 const breadcrumbs = [
   { label: t('common.home'), url: `/${supportedLang}/` },
   { label: t('common.tools'), url: `/${supportedLang}/tools/` },
-  { label: titleText }
+  { label: titleText },
 ];
 ---
 
-<Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools/lorem-generator">
+<Layout
+  title={titleText}
+  description={descriptionText}
+  lang={supportedLang}
+  slug="tools/lorem-generator"
+>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(webAppSchema)} />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(faqSchema)} />
 
   <!-- Hero Section -->
-  <section class="bg-linear-to-b from-primary/5 to-white pt-24 pb-12 md:pt-40 md:pb-24 border-b border-gray-100 font-sans">
+  <section
+    class="border-b border-gray-100 bg-linear-to-b from-primary/10 via-background to-background pt-24 pb-12 font-sans md:pt-40 md:pb-24 dark:border-slate-800"
+  >
     <div class="container mx-auto px-4">
-      <div class="max-w-3xl mx-auto text-center">
+      <div class="mx-auto max-w-3xl text-center">
         <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
-        <h1 class="text-3xl md:text-5xl font-bold mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent leading-normal font-persian">
+        <h1
+          class="mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text font-persian text-3xl leading-normal font-bold text-transparent md:text-5xl"
+        >
           {titleText}
         </h1>
-        <p class="text-lg md:text-xl text-gray-600 leading-relaxed font-persian">
+        <p class="font-persian text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-300">
           {descriptionText}
         </p>
       </div>
@@ -71,93 +92,149 @@ const breadcrumbs = [
   </section>
 
   <!-- Main Workspace -->
-  <section class="container mx-auto px-4 mt-12 mb-20 font-sans">
-    <div class="max-w-4xl mx-auto space-y-8">
-      
+  <section class="container mx-auto mt-12 mb-20 px-4 font-sans">
+    <div class="mx-auto max-w-4xl space-y-8">
       <!-- Controls -->
-      <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div
+        class="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-sm dark:border-slate-800 dark:bg-slate-900"
+      >
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
           <div>
-            <label class="block text-xs font-semibold text-gray-600 mb-1">{t('loremGenerator.languageScript', { fallback: 'Language Script' })}</label>
-            <select id="lorem-lang" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
-              <option value="latin">{t('loremGenerator.themeClassic', { fallback: 'Classic Lorem Ipsum' })}</option>
-              <option value="persian">{t('loremGenerator.persianScript', { fallback: 'Persian (فارسی)' })}</option>
+            <label class="mb-1 block text-xs font-semibold text-gray-600 dark:text-gray-300"
+              >{t('loremGenerator.languageScript', { fallback: 'Language Script' })}</label
+            >
+            <select
+              id="lorem-lang"
+              class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+            >
+              <option value="latin"
+                >{t('loremGenerator.themeClassic', { fallback: 'Classic Lorem Ipsum' })}</option
+              >
+              <option value="persian"
+                >{t('loremGenerator.persianScript', { fallback: 'Persian (فارسی)' })}</option
+              >
             </select>
           </div>
           <div>
-            <label class="block text-xs font-semibold text-gray-600 mb-1">{t('loremGenerator.numParagraphs', { fallback: 'Paragraphs' })}</label>
-            <input type="number" id="lorem-count" min="1" max="20" value="3" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-primary focus:outline-none" />
+            <label class="mb-1 block text-xs font-semibold text-gray-600 dark:text-gray-300"
+              >{t('loremGenerator.numParagraphs', { fallback: 'Paragraphs' })}</label
+            >
+            <input
+              type="number"
+              id="lorem-count"
+              min="1"
+              max="20"
+              value="3"
+              class="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:border-primary focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+            />
           </div>
           <div class="flex items-end">
-            <button type="button" id="generate-lorem-btn" class="w-full py-2 bg-primary text-primary-foreground text-sm font-bold rounded-lg hover:bg-primary/90 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('loremGenerator.generate', { fallback: 'Generate Text' })}</button>
+            <button
+              type="button"
+              id="generate-lorem-btn"
+              class="w-full rounded-lg bg-primary py-2 text-sm font-bold text-primary-foreground transition-all hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              >{t('loremGenerator.generate', { fallback: 'Generate Text' })}</button
+            >
           </div>
         </div>
       </div>
 
       <!-- Generated Output -->
-      <div class="bg-white border border-gray-100 rounded-2xl shadow-sm p-6 space-y-4 font-persian">
-        <div class="flex justify-between items-center border-b border-gray-100 pb-3">
-          <h3 class="text-sm font-bold text-gray-800">{t('loremGenerator.generatedTitle', { fallback: 'Generated Dummy Text' })}</h3>
-          <button type="button" id="copy-lorem-btn" class="px-3 py-1.5 bg-primary text-primary-foreground text-xs font-bold rounded-lg hover:bg-primary/90 transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">{t('loremGenerator.copy', { fallback: 'Copy Text' })}</button>
+      <div
+        class="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-sm dark:border-slate-800 dark:bg-slate-900"
+      >
+        <div
+          class="flex items-center justify-between border-b border-gray-100 pb-3 dark:border-slate-800"
+        >
+          <h3 class="text-sm font-bold text-gray-800 dark:text-gray-100">
+            {t('loremGenerator.generatedTitle', { fallback: 'Generated Dummy Text' })}
+          </h3>
+          <button
+            type="button"
+            id="copy-lorem-btn"
+            class="rounded-lg bg-primary px-3 py-1.5 text-xs font-bold text-primary-foreground transition-all hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >{t('loremGenerator.copy', { fallback: 'Copy Text' })}</button
+          >
         </div>
 
-        <div id="lorem-output" class="p-6 bg-gray-50 rounded-xl text-gray-800 text-sm leading-relaxed space-y-4 min-h-[180px]"></div>
+        <div
+          id="lorem-output"
+          class="min-h-45 space-y-4 rounded-xl bg-gray-50 p-6 text-sm leading-relaxed text-gray-800 dark:bg-slate-800 dark:text-gray-100"
+        >
+        </div>
 
-        <p id="copy-status" class="text-xs text-green-600 font-semibold opacity-0 transition-opacity text-center">{t('loremGenerator.copied', { fallback: 'Copied to clipboard!' })}</p>
+        <p
+          id="copy-status"
+          class="text-center text-xs font-semibold text-green-600 opacity-0 transition-opacity"
+        >
+          {t('loremGenerator.copied', { fallback: 'Copied to clipboard!' })}
+        </p>
       </div>
-
     </div>
   </section>
 
-
-  <ToolsCTA lang={supportedLang} t={t} related={[{ key: 'tools.jsonFormatter', route: 'json-formatter' }, { key: 'tools.base64', route: 'base64-encoder' }, { key: 'slugGenerator', route: 'slug-generator' }]} ctaHref={`/${supportedLang}/services/web-development`} isRtl={supportedLang !== 'en'} />
+  <ToolsCTA
+    lang={supportedLang}
+    t={t}
+    related={[
+      { key: 'tools.jsonFormatter', route: 'json-formatter' },
+      { key: 'tools.base64', route: 'base64-encoder' },
+      { key: 'slugGenerator', route: 'slug-generator' },
+    ]}
+    ctaHref={`/${supportedLang}/services/web-development`}
+    isRtl={supportedLang !== 'en'}
+  />
 </Layout>
 
 <script is:inline data-astro-rerun>
-  const latinParagraphs = [
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida."
-  ];
+  (() => {
+    const latinParagraphs = [
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      'Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida.',
+    ];
 
-  const persianParagraphs = [
-    "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.",
-    "کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد.",
-    "در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل تایپ گردید و تقریبا تمام محتواهای طراحی شده در وبسایت را تکمیل کند."
-  ];
+    const persianParagraphs = [
+      'لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.',
+      'کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد.',
+      'در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل تایپ گردید و تقریبا تمام محتواهای طراحی شده در وبسایت را تکمیل کند.',
+    ];
 
-  const loremLang = document.getElementById('lorem-lang');
-  const loremCount = document.getElementById('lorem-count');
-  const genBtn = document.getElementById('generate-lorem-btn');
-  const output = document.getElementById('lorem-output');
-  const copyBtn = document.getElementById('copy-lorem-btn');
-  const copyStatus = document.getElementById('copy-status');
+    const loremLang = document.getElementById('lorem-lang');
+    const loremCount = document.getElementById('lorem-count');
+    const genBtn = document.getElementById('generate-lorem-btn');
+    const output = document.getElementById('lorem-output');
+    const copyBtn = document.getElementById('copy-lorem-btn');
+    const copyStatus = document.getElementById('copy-status');
 
-  function generateLorem() {
-    const count = parseInt(loremCount.value) || 3;
-    const isPersian = loremLang.value === 'persian';
-    const source = isPersian ? persianParagraphs : latinParagraphs;
+    function generateLorem() {
+      const count = parseInt(loremCount.value) || 3;
+      const isPersian = loremLang.value === 'persian';
+      const source = isPersian ? persianParagraphs : latinParagraphs;
 
-    output.dir = isPersian ? 'rtl' : 'ltr';
-    output.className = isPersian ? 'p-6 bg-gray-50 rounded-xl text-gray-800 text-sm leading-relaxed space-y-4 min-h-[180px] font-persian' : 'p-6 bg-gray-50 rounded-xl text-gray-800 text-sm leading-relaxed space-y-4 min-h-[180px] font-sans';
+      output.dir = isPersian ? 'rtl' : 'ltr';
+      output.className = isPersian
+        ? 'p-6 bg-gray-50 dark:bg-slate-800 rounded-xl text-gray-800 dark:text-gray-100 text-sm leading-relaxed space-y-4 min-h-45 font-persian'
+        : 'p-6 bg-gray-50 dark:bg-slate-800 rounded-xl text-gray-800 dark:text-gray-100 text-sm leading-relaxed space-y-4 min-h-45 font-sans';
 
-    let html = '';
-    for (let i = 0; i < count; i++) {
-      const p = source[i % source.length];
-      html += `<p>${p}</p>`;
+      let html = '';
+      for (let i = 0; i < count; i++) {
+        const p = source[i % source.length];
+        html += `<p>${p}</p>`;
+      }
+      output.innerHTML = html;
     }
-    output.innerHTML = html;
-  }
 
-  genBtn.addEventListener('click', generateLorem);
-  loremLang.addEventListener('change', generateLorem);
-  generateLorem();
+    genBtn.addEventListener('click', generateLorem);
+    loremLang.addEventListener('change', generateLorem);
+    generateLorem();
 
-  copyBtn.addEventListener('click', () => {
-    const text = output.innerText;
-    navigator.clipboard.writeText(text).then(() => {
-      copyStatus.classList.remove('opacity-0');
-      setTimeout(() => copyStatus.classList.add('opacity-0'), 2000);
+    copyBtn.addEventListener('click', () => {
+      const text = output.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        copyStatus.classList.remove('opacity-0');
+        setTimeout(() => copyStatus.classList.add('opacity-0'), 2000);
+      });
     });
-  });
+  })();
 </script>

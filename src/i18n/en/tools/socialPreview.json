@@ -1,12 +1,12 @@
 {
-    "title": "Social Media Preview",
-    "description": "Visualize how your website content will look on Facebook, Twitter, and LinkedIn. Optimize your social media presence with accurate open graph previews.",
-    "imageLabel": "Image URL or Upload",
-    "titleLabel": "Title",
-    "titlePlaceholder": "Your Post Title",
-    "descriptionLabel": "Description",
-    "descriptionPlaceholder": "A brief description of your content...",
-    "defaultTitle": "Your Title Here",
-    "defaultDesc": "Your description will appear here...",
-    "previewNote": "This is a simulation. Actual appearance may vary slightly by platform."
+  "title": "Social Media Preview",
+  "description": "Visualize how your website content will look on Facebook, Twitter, and LinkedIn. Optimize your social media presence with accurate open graph previews.",
+  "imageLabel": "Image URL or Upload",
+  "titleLabel": "Title",
+  "titlePlaceholder": "Your Post Title",
+  "descriptionLabel": "Description",
+  "descriptionPlaceholder": "A brief description of your content...",
+  "defaultTitle": "Your Title Here",
+  "defaultDesc": "Your description will appear here...",
+  "previewNote": "This is a simulation. Actual appearance may vary slightly by platform."
 }
