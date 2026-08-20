@@ -82,7 +82,7 @@ const phoneList = [
                     href={`tel:${p.tel}`}
                     class="inline-flex items-center gap-1.5 text-xs transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:text-sm"
                   >
-                    <span dir="ltr" class="font-mono">
+                    <span dir="ltr" class={lang === 'en' ? 'font-mono' : ''}>
                       {p.number}
                     </span>
                     <span class="text-foreground/70">{p.name}</span>
@@ -108,7 +108,8 @@ const phoneList = [
               </svg>
               <a
                 href="mailto:info@webabc.ir"
-                class="font-mono text-xs transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:text-sm"
+                class={`text-xs transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:text-sm ${lang === 'en' ? 'font-mono' : ''}`}
+                dir="ltr"
               >
                 info@webabc.ir
               </a>
