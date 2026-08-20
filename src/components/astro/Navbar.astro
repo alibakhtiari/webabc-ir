@@ -500,6 +500,8 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
           <button
             type="button"
             id="mobile-lang-btn"
+            aria-expanded="false"
+            aria-controls="mobile-lang-dropdown"
             class="flex items-center gap-1.5 rounded-full border border-gray-100 bg-white/80 px-3 py-1.5 text-sm font-semibold text-gray-700 shadow-xs transition-all hover:bg-gray-100 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800/80 dark:text-gray-200 dark:hover:bg-slate-700"
           >
             <svg
@@ -958,11 +960,13 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
       if (mobileLangBtn && mobileLangDropdown) {
         mobileLangBtn.onclick = (e) => {
           e.stopPropagation();
-          mobileLangDropdown.classList.toggle('hidden');
+          const isOpen = mobileLangDropdown.classList.toggle('hidden');
+          mobileLangBtn.setAttribute('aria-expanded', String(!isOpen));
         };
         document.addEventListener('click', (e) => {
           if (!mobileLangBtn.contains(e.target)) {
             mobileLangDropdown.classList.add('hidden');
+            mobileLangBtn.setAttribute('aria-expanded', 'false');
           }
         });
       }

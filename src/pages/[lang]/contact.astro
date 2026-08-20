@@ -136,7 +136,13 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
               {t('contact.submitMessage', { fallback: 'Send Message' })}
             </button>
 
-            <p id="response-msg" class="hidden text-center text-sm"></p>
+            <p
+              id="response-msg"
+              role="status"
+              aria-live="polite"
+              class="hidden text-center text-sm"
+            >
+            </p>
           </form>
         </div>
 
