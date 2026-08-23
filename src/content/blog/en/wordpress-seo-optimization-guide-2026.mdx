@@ -66,7 +66,7 @@ WordPress performance depends on the **caching stack**, not just plugin tweaks:
 ### Server-Level Caching (the most impactful tier)
 
 - **Full-page caching**: LiteSpeed Cache, WP Rocket, or server-level FastCGI caching serve static HTML instead of rebuilding each page. This alone typically drops TTFB from 800ms+ to under 200ms.
-- **Object caching**: Redis or Memcached store database query results, dramatically cutting backend load on sites with heavy dynamic content (e-commerce, membership, or directory sites).
+- **Object caching**: Redis or Memcached store database query results, dramatically cutting backend load on sites with heavy dynamic content ([e-commerce](/en/services/ecommerce/), membership, or directory sites).
 
 ### Plugin-Level Optimization
 
@@ -118,7 +118,7 @@ Never launch major WordPress changes directly on production without a staging ve
 4. Test 301 redirects from old URLs to new ones
 5. Verify schema markup renders correctly on the live URL (not the staging URL)
 6. Run a fresh crawl and compare to the pre-launch crawl
-7. Test contact forms, e-commerce checkout, and search functionality
+7. Test contact forms, [e-commerce](/en/services/ecommerce/) checkout, and search functionality
 
 **Post-launch:**
 

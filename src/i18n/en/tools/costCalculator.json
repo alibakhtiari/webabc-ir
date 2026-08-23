@@ -20,5 +20,22 @@
   "pages": "Pages",
   "responsive": "Mobile Responsive",
   "emailQuote": "Email Me This Quote",
-  "emailSent": "Opening your email client..."
+  "emailSent": "Opening your email client...",
+  "guide": {
+    "how": {
+      "title": "How the Website Cost Calculator Works",
+      "paragraphs": [
+        "The calculator estimates project cost from two inputs you control: page count and the feature set your site needs. Each additional page adds design, build, and content-layout effort, while toggles for multilingual support, SEO foundations, speed optimization, and security reflect the work that goes into production-grade builds.",
+        "Estimates are based on current market rates for agency-quality custom websites — not template reseller pricing. Treat the result as a realistic budgeting range: a final quote depends on content readiness, integrations, and the complexity of your design direction."
+      ]
+    },
+    "useCases": {
+      "title": "When to Use This Calculator",
+      "items": [
+        "Budgeting a new website before you request proposals, so vendor quotes are comparable.",
+        "Sanity-checking an received quote against transparent, market-rate line items.",
+        "Scoping a minimum viable launch: see exactly which features move the price and decide what can ship in phase two."
+      ]
+    }
+  }
 }

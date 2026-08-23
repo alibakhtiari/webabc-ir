@@ -47,6 +47,23 @@
   },
   "keywordDensity": {
     "title": "Semantic Keyword Density Analyzer",
-    "description": "Analyze text structures to identify keyword frequency and avoid over-optimization before publishing."
+    "description": "Analyze text structures to identify keyword frequency and avoid over-optimization before publishing.",
+    "guide": {
+      "how": {
+        "title": "How the Keyword Density Analyzer Works",
+        "paragraphs": [
+          "Paste your draft into the editor and the tool tokenizes the text, counts single words and two-word phrases, and reports each as a share of total word count. Modern search systems understand topics and synonyms, so density is a guardrail rather than a target: the analysis exists to show when a term is so repetitive that the text reads as spam.",
+          "There is no magic percentage. As a practical rule, if your primary phrase appears naturally it usually lands between 0.5% and 2.5%; anything pushing past 4% on a short page is worth rewriting. Use the phrase tabs to compare your primary keyword against secondary variations."
+        ]
+      },
+      "useCases": {
+        "title": "When to Use This Tool",
+        "items": [
+          "Before publishing: catch accidental over-optimization that could read as keyword stuffing to both users and search quality systems.",
+          "During content briefs: check that secondary keywords actually appear in the draft at meaningful (but natural) levels.",
+          "Auditing existing pages that plateaued: unnatural density from old-school optimization is a common cause."
+        ]
+      }
+    }
   }
 }

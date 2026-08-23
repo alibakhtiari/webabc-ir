@@ -13,5 +13,22 @@
   "placeholderUrl": "https://example.com/page",
   "placeholderDesc": "Your meta description",
   "previewTitleDefault": "Your Page Title Will Appear Here",
-  "previewDescDefault": "Your meta description will appear here. Make it compelling to improve click-through rates from search results."
+  "previewDescDefault": "Your meta description will appear here. Make it compelling to improve click-through rates from search results.",
+  "guide": {
+    "how": {
+      "title": "How the SERP Preview Tool Works",
+      "paragraphs": [
+        "Type (or paste) a page title and meta description and the tool renders them inside a simulated Google result — desktop and mobile — using pixel-width estimation that matches how Google actually truncates snippets. Wide characters, ALL-CAPS words, and long brand suffixes all cut off sooner than raw character counts suggest.",
+        "The counters update as you type: green means the length is in the ideal band (roughly 50–60 characters / 580px for titles, 110–160 characters / 990px for descriptions), yellow means short of it, red means Google will trim your text mid-sentence."
+      ]
+    },
+    "useCases": {
+      "title": "When to Use This Tool",
+      "items": [
+        "Before publishing any new page: verify the snippet reads fully on both desktop and mobile widths.",
+        "When rewriting meta tags on existing pages to recover click-through rate without changing rankings.",
+        "Comparing two candidate titles side by side to pick the one that survives truncation with the keyword intact."
+      ]
+    }
+  }
 }

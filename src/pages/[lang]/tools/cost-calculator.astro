@@ -43,7 +43,22 @@ const faqSchema = {
     },
   ],
 };
+
+const guideDict = dictionary.costCalculator?.guide;
+const guide = guideDict ? {
+  how: {
+    title: t('costCalculator.guide.how.title', { fallback: 'How It Works' }),
+    paragraphs: Array.isArray(guideDict.how?.paragraphs) ? guideDict.how.paragraphs : [],
+  },
+  useCases: {
+    title: t('costCalculator.guide.useCases.title', { fallback: 'When to Use This Tool' }),
+    items: Array.isArray(guideDict.useCases?.items) ? guideDict.useCases.items : [],
+  },
+} : undefined;
+
 ---
+
+
 
 <ToolLayout
   title={titleText}
@@ -52,6 +67,7 @@ const faqSchema = {
   slug="cost-calculator"
   dictionary={dictionary}
   faqSchema={faqSchema}
+  guide={guide}
 >
   <!-- Main Calculator Workspace -->
   <section class="container mx-auto mt-12 px-4 font-sans">

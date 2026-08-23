@@ -16,6 +16,22 @@ const t = createTranslator(dictionary);
 const titleText = t('tools.keywordDensity.title', {
   fallback: 'Semantic Keyword Density Analyzer',
 });
+
+const guideDict = dictionary.tools?.keywordDensity?.guide;
+const guide = guideDict
+  ? {
+      how: {
+        title: t('tools.keywordDensity.guide.how.title', { fallback: 'How It Works' }),
+        paragraphs: Array.isArray(guideDict.how?.paragraphs) ? guideDict.how.paragraphs : [],
+      },
+      useCases: {
+        title: t('tools.keywordDensity.guide.useCases.title', {
+          fallback: 'When to Use This Tool',
+        }),
+        items: Array.isArray(guideDict.useCases?.items) ? guideDict.useCases.items : [],
+      },
+    }
+  : undefined;
 const descriptionText = t('tools.keywordDensity.description', {
   fallback:
     'Analyze text structures to identify keyword frequency and avoid over-optimization before publishing.',
@@ -54,6 +70,7 @@ const faqSchema = {
   slug="keyword-density-analyzer"
   dictionary={dictionary}
   faqSchema={faqSchema}
+  guide={guide}
 >
   <!-- Main Workspace -->
   <section class="container mx-auto mt-12 px-4 font-sans">

@@ -46,9 +46,12 @@ export default defineConfig({
   build: {
     format: 'directory',
     // Inline the global stylesheet instead of a render-blocking <link> request —
-    // it's small and needed on every page, so a critical round-trip costs more than the
-    // (uncached) duplication. See PageSpeed "render-blocking requests" finding on Layout.css.
-    inlineStylesheets: 'always',
+    // The full stylesheet is ~120 KB — far past the inline threshold. With 'auto' it
+    // ships as a content-hashed external stylesheet under /_astro/* (immutable,
+    // cached for a year) instead of being re-downloaded inside the HTML of every
+    // page. Multi-page sessions stop paying ~120 KB per navigation; the cold-load
+    // cost is one same-origin edge-cached request (see audit M1).
+    inlineStylesheets: 'auto',
   },
   trailingSlash: 'always',
   experimental: {

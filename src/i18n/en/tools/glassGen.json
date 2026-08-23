@@ -10,5 +10,22 @@
   "cssOutput": "CSS Code",
   "copy": "Copy CSS",
   "copied": "CSS copied to clipboard!",
-  "previewText": "Glassmorphism Effect"
+  "previewText": "Glassmorphism Effect",
+  "guide": {
+    "how": {
+      "title": "How the Glassmorphism Generator Works",
+      "paragraphs": [
+        "Adjust the sliders for background blur, layer opacity, saturation, and color; the live preview updates instantly and the panel below produces ready-to-paste CSS using backdrop-filter with sensible fallbacks for browsers that lack support.",
+        "Glassmorphism reads best over colorful or image-backed backgrounds — a frosted layer needs something behind it to blur. Keep opacity between roughly 10% and 40% and blur around 8–24px for cards that stay legible without washing out the content on top."
+      ]
+    },
+    "useCases": {
+      "title": "When to Use This Tool",
+      "items": [
+        "Hero sections and feature cards where you want depth without heavy shadows or borders.",
+        "Dark-mode dashboards: frosted layers separate panels while keeping the ambient color scheme visible.",
+        "Rapidly exploring values in the browser instead of hand-tuning rgba() and blur values in a code editor."
+      ]
+    }
+  }
 }

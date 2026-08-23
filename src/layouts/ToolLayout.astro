@@ -18,6 +18,10 @@ interface Props {
   breadcrumbs?: Array<{ label: string; url?: string }>;
   relatedTools?: RelatedTool[];
   ctaHref?: string;
+  guide?: {
+    how: { title: string; paragraphs: string[] };
+    useCases: { title: string; items: string[] };
+  };
 }
 
 const {
@@ -31,6 +35,7 @@ const {
   breadcrumbs,
   relatedTools,
   ctaHref,
+  guide,
 } = Astro.props;
 
 const isRtl = languages[lang]?.direction === 'rtl';
@@ -114,6 +119,38 @@ const defaultBreadcrumbs = breadcrumbs || [
 
   <!-- Tool Workspace / Content -->
   <slot />
+
+  <!-- Supporting content: how it works + when to use (M4 depth) -->
+  {
+    guide && (
+      <section class={`container mx-auto mt-16 px-4 ${fontClass}`}>
+        <div class="mx-auto max-w-4xl space-y-10">
+          {guide.how && (
+            <div class="space-y-3">
+              <h2 class="text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">
+                {guide.how.title}
+              </h2>
+              {guide.how.paragraphs.map((p) => (
+                <p class="leading-relaxed text-gray-600 dark:text-gray-300">{p}</p>
+              ))}
+            </div>
+          )}
+          {guide.useCases && (
+            <div class="space-y-3">
+              <h2 class="text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">
+                {guide.useCases.title}
+              </h2>
+              <ul class="list-inside list-disc space-y-2 leading-relaxed text-gray-600 dark:text-gray-300">
+                {guide.useCases.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </section>
+    )
+  }
 
   <!-- On-Page FAQ / AEO Question Block -->
   <ToolFAQ lang={lang} faqSchema={faqSchema} />
