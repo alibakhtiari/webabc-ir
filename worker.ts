@@ -119,6 +119,22 @@ export default {
       return handleContact(request, env);
     }
 
+    // 2b. Trailing-slash normalization — permanent redirect. The assets layer
+    // answers bare-directory paths with a temporary 307, which leaves both URL
+    // variants indexed (confirmed in GSC). A single explicit 301 here collapses
+    // duplicates and passes link equity to the canonical slashed URL. Files with
+    // an extension (/rss.xml, /_astro/*.js, /images/*) are excluded.
+    const lastSegment = url.pathname.split('/').pop() || '';
+    if (
+      url.pathname !== '/' &&
+      !url.pathname.endsWith('/') &&
+      lastSegment !== '' &&
+      !/\.[a-z0-9]+$/i.test(lastSegment)
+    ) {
+      url.pathname += '/';
+      return Response.redirect(url.toString(), 301);
+    }
+
     // 3. Root path -> geo-based locale redirect. This MUST be a 302 (temporary),
     // not 301: a permanent redirect that varies by geolocation would (a) poison
     // browser/edge caches for visitors who change regions, and (b) is what Google

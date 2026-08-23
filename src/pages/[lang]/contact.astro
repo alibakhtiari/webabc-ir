@@ -194,6 +194,53 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
                   >
                 </p>
               </div>
+
+              <div>
+                <h3 class="font-medium text-gray-700 dark:text-gray-200">
+                  {t('contact.responseTime', { fallback: 'Response Time' })}
+                </h3>
+                <p class="leading-relaxed text-gray-600 dark:text-gray-300">
+                  {
+                    t('contact.responseTimeValue', {
+                      fallback:
+                        'We reply to every message within one business day. For urgent project inquiries, call or message us on WhatsApp.',
+                    })
+                  }
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Who we work with / process -->
+          <div
+            class="space-y-4 rounded-2xl border border-gray-100 bg-gray-50 p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900"
+          >
+            <h2 class="mb-1 text-2xl font-semibold text-gray-800 dark:text-white">
+              {t('contact.processTitle', { fallback: 'What Happens Next' })}
+            </h2>
+            <ol class="list-inside list-decimal space-y-3 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+              <li>{t('contact.step1', { fallback: 'You send the form with a short description of your project or goal.' })}</li>
+              <li>{t('contact.step2', { fallback: 'We review your site and reply within one business day with initial questions.' })}</li>
+              <li>{t('contact.step3', { fallback: 'We schedule a free consultation call and send a fixed-price proposal with scope and timeline.' })}</li>
+            </ol>
+            <div class="border-t border-gray-100 pt-4 dark:border-slate-800">
+              <h3 class="font-medium text-gray-700 dark:text-gray-200">
+                {t('contact.serviceAreasTitle', { fallback: 'Service Areas' })}
+              </h3>
+              <p class="leading-relaxed text-gray-600 dark:text-gray-300">
+                {
+                  t('contact.serviceAreasValue', {
+                    fallback:
+                      'Headquartered in Qazvin, Iran — working remotely with clients in Tehran, Dubai, Muscat, Riyadh, London, and Toronto.',
+                  })
+                }
+              </p>
+              <a
+                href={`/${supportedLang}/service-areas/`}
+                class="mt-2 inline-block text-sm font-semibold text-primary hover:underline focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              >
+                {t('contact.viewAllAreas', { fallback: 'View all service areas' })}
+              </a>
             </div>
           </div>
         </div>

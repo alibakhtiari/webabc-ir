@@ -1,6 +1,6 @@
 {
-  "title": "SEO Headline Checker & Blog Title Analyzer – Free Headline Tester",
-  "description": "Free SEO headline checker and blog title analyzer. Evaluate headline length, emotional impact, power words, and search CTR scores for higher rankings.",
+  "title": "Free SEO Title Checker – Score Any Headline Instantly",
+  "description": "Check any blog headline or meta title in seconds — pixel-accurate Google preview, length scoring and CTR tips. Free, instant, no signup.",
   "enterHeadline": "Enter Your Headline",
   "headlineLabel": "Headline",
   "placeholder": "Enter your headline here...",
@@ -19,6 +19,44 @@
     {
       "question": "How do I optimize a headline for SEO and clicks?",
       "answer": "High-performing headlines should be between 6 and 12 words, include numbers or brackets, contain power words, and front-load target keywords."
+    },
+    {
+      "question": "What is the optimal length for an SEO title tag?",
+      "answer": "The optimal title length is between 50 and 60 characters or 580 pixels on desktop viewports."
+    },
+    {
+      "question": "Why does Google rewrite page title tags?",
+      "answer": "Google rewrites title tags if they are truncated, keyword-stuffed, or poorly matched to the user search query."
     }
-  ]
+  ],
+  "meta": {
+    "heading": "Meta Title & Description Checker",
+    "subheading": "Test your exact <title> and meta description against Google’s real pixel limits with a live search preview.",
+    "keywordLabel": "Focus Keyword",
+    "keywordPlaceholder": "e.g. web design",
+    "titleLabel": "Meta Title",
+    "titlePlaceholder": "Write your page title...",
+    "descLabel": "Meta Description",
+    "descPlaceholder": "Write your page description here...",
+    "serpPreview": "Google Search Preview",
+    "desktop": "Desktop",
+    "mobile": "Mobile",
+    "overallScore": "SEO Score",
+    "titleScore": "Title",
+    "descScore": "Description",
+    "tips": "Suggestions"
+  },
+  "metaTips": {
+    "titlePerfect": "Title length is perfect.",
+    "titleTooLong": "Title is too long (over 60 chars or 580px). It will get truncated.",
+    "titleTooShort": "Title is too short (under 40 chars). Add more descriptive keywords.",
+    "descPerfect": "Description length is perfect.",
+    "descTooLong": "Description is too long. Keep it under 160 characters.",
+    "descTooShort": "Description is too short. Describe your page in 110-160 characters.",
+    "keywordFound": "Keyword found in title.",
+    "keywordMissing": "Keyword not found in title. Try inserting it naturally.",
+    "hasNumber": "Title contains a number (improves CTR).",
+    "hasPowerWord": "Title contains a CTR power word.",
+    "missingPowerWord": "Consider adding power words (e.g. \"free\", \"best\", \"guide\") to boost clicks."
+  }
 }

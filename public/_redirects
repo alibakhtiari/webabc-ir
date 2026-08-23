@@ -7,9 +7,16 @@
 # Old Next.js site used "seo-title-analyzer" as the slug; renamed on Astro migration.
 # Targets carry a trailing slash so this is a single 301 hop, not a 301 into a
 # second 307 (the server enforces trailing-slash URLs as canonical).
-/en/tools/seo-title-analyzer  /en/tools/seo-title-checker/  301
-/fa/tools/seo-title-analyzer  /fa/tools/seo-title-checker/  301
-/ar/tools/seo-title-analyzer  /ar/tools/seo-title-checker/  301
+/en/tools/seo-title-analyzer  /en/tools/headline-analyzer/  301
+/fa/tools/seo-title-analyzer  /fa/tools/headline-analyzer/  301
+/ar/tools/seo-title-analyzer  /ar/tools/headline-analyzer/  301
+
+# seo-title-checker was merged into headline-analyzer (which now includes the
+# meta title/description pixel checker and live SERP preview) to stop the two
+# pages cannibalizing the same "seo title checker" query cluster.
+/en/tools/seo-title-checker  /en/tools/headline-analyzer/  301
+/fa/tools/seo-title-checker  /fa/tools/headline-analyzer/  301
+/ar/tools/seo-title-checker  /ar/tools/headline-analyzer/  301
 
 # modern-web-development duplicated web-development's positioning (same tech stack,
 # same offer) and was merged into it to stop the two pages cannibalizing each other.
@@ -50,3 +57,18 @@
 /ar/portfolio/7              /ar/portfolio/4-seasons-carpet-clean/ 301
 /en/portfolio/10             /en/portfolio/samake-alpha/   301
 /ar/portfolio/10             /ar/portfolio/samake-alpha/   301
+
+# Blog posts refreshed for 2026 kept year-free slugs so future annual updates
+# don't churn URLs again. Old -2025 slugs redirect permanently.
+/en/blog/seo-best-practices-2025   /en/blog/seo-best-practices/   301
+/fa/blog/seo-best-practices-2025   /fa/blog/seo-best-practices/   301
+/ar/blog/seo-best-practices-2025   /ar/blog/seo-best-practices/   301
+/en/blog/best-seo-tools-2025       /en/blog/best-seo-tools/       301
+/fa/blog/best-seo-tools-2025       /fa/blog/best-seo-tools/       301
+/ar/blog/best-seo-tools-2025       /ar/blog/best-seo-tools/       301
+/en/blog/mobile-first-design-2025  /en/blog/mobile-first-design/  301
+/fa/blog/mobile-first-design-2025  /fa/blog/mobile-first-design/  301
+/ar/blog/mobile-first-design-2025  /ar/blog/mobile-first-design/  301
+/en/blog/web-design-trends-2025    /en/blog/web-design-trends/    301
+/fa/blog/web-design-trends-2025    /fa/blog/web-design-trends/    301
+/ar/blog/web-design-trends-2025    /ar/blog/web-design-trends/    301

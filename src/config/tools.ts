@@ -40,8 +40,8 @@ export const toolConfigMap: Record<string, ToolConfig> = {
   'cost-calculator': {
     category: 'BusinessApplication',
     related: [
-      { key: 'seoTitleChecker', route: 'seo-title-checker' },
       { key: 'headlineAnalyzer', route: 'headline-analyzer' },
+      { key: 'serpPreview', route: 'serp-preview' },
       { key: 'readabilityChecker', route: 'readability-checker' },
     ],
     serviceSlug: 'web-development',
@@ -76,7 +76,7 @@ export const toolConfigMap: Record<string, ToolConfig> = {
   'headline-analyzer': {
     category: 'BusinessApplication',
     related: [
-      { key: 'seoTitleChecker', route: 'seo-title-checker' },
+      { key: 'serpPreview', route: 'serp-preview' },
       { key: 'readabilityChecker', route: 'readability-checker' },
       { key: 'keywordDensity', route: 'keyword-density-analyzer' },
     ],
@@ -96,7 +96,7 @@ export const toolConfigMap: Record<string, ToolConfig> = {
     related: [
       { key: 'headlineAnalyzer', route: 'headline-analyzer' },
       { key: 'readabilityChecker', route: 'readability-checker' },
-      { key: 'seoTitleChecker', route: 'seo-title-checker' },
+      { key: 'metaGenerator', route: 'meta-generator' },
     ],
     serviceSlug: 'content-creation',
   },
@@ -150,7 +150,7 @@ export const toolConfigMap: Record<string, ToolConfig> = {
     related: [
       { key: 'headlineAnalyzer', route: 'headline-analyzer' },
       { key: 'keywordDensity', route: 'keyword-density-analyzer' },
-      { key: 'seoTitleChecker', route: 'seo-title-checker' },
+      { key: 'serpPreview', route: 'serp-preview' },
     ],
     serviceSlug: 'content-creation',
   },
@@ -172,19 +172,10 @@ export const toolConfigMap: Record<string, ToolConfig> = {
     ],
     serviceSlug: 'seo',
   },
-  'seo-title-checker': {
-    category: 'BusinessApplication',
-    related: [
-      { key: 'serpPreview', route: 'serp-preview' },
-      { key: 'headlineAnalyzer', route: 'headline-analyzer' },
-      { key: 'metaGenerator', route: 'meta-generator' },
-    ],
-    serviceSlug: 'seo',
-  },
   'serp-preview': {
     category: 'BusinessApplication',
     related: [
-      { key: 'seoTitleChecker', route: 'seo-title-checker' },
+      { key: 'headlineAnalyzer', route: 'headline-analyzer' },
       { key: 'socialPreview', route: 'social-media-preview' },
       { key: 'metaGenerator', route: 'meta-generator' },
     ],
@@ -194,7 +185,7 @@ export const toolConfigMap: Record<string, ToolConfig> = {
     category: 'BusinessApplication',
     related: [
       { key: 'utmBuilder', route: 'utm-builder' },
-      { key: 'seoTitleChecker', route: 'seo-title-checker' },
+      { key: 'headlineAnalyzer', route: 'headline-analyzer' },
       { key: 'qrGenerator', route: 'qr-generator' },
     ],
     serviceSlug: 'seo',

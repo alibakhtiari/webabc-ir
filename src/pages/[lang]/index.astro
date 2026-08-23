@@ -66,14 +66,6 @@ const websiteSchema = {
     fetchpriority="high"
     slot="head"
   />
-  <link
-    rel="preload"
-    as="image"
-    href="/images/homepage-hero.webp"
-    type="image/webp"
-    fetchpriority="high"
-    slot="head"
-  />
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(websiteSchema)} />
   <HeroSection lang={supportedLang} />
   <ServicesSection lang={supportedLang} />

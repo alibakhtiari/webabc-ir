@@ -1,6 +1,6 @@
 {
   "title": "UTM Link Builder",
-  "description": "Create trackable URLs with UTM parameters for Google Analytics. Measure the performance of your marketing campaigns across different traffic sources effectively.",
+  "description": "Create trackable URLs with UTM parameters for Google Analytics. Measure the performance of your marketing campaigns across different traffic sources",
   "campaignDetails": "Campaign Details",
   "websiteUrl": "Website URL (required)",
   "urlPlaceholder": "https://example.com",

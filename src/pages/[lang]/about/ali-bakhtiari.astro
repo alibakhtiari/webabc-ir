@@ -30,7 +30,7 @@ const bio =
       ? 'علي بختياري، مؤسس WebABC، يتمتع بخبرة تزيد عن 10 سنوات في تصميم الويب وتطوير التطبيقات وتحسين محركات البحث (SEO). يتخصص في بناء مواقع سريعة وآمنة ومحسنة لمحركات البحث.'
       : 'Ali Bakhtiari is the founder of WebABC with over 10 years of experience in web design, full-stack application development, and Search Engine Optimization (SEO). He specializes in building high-performance, secure, and Google-optimized web applications.';
 
-const titleText = `${name} – ${role} | WebABC`;
+const titleText = `${name} – ${role}`;
 const descriptionText =
   supportedLang === 'fa'
     ? 'علی بختیاری، بنیان‌گذار WebABC. بیش از ۱۰ سال تجربه در طراحی وب، توسعه فول‌استک و سئو فنی. تخصص او وردپرس، Core Web Vitals و بهینه‌سازی سرعت است.'
@@ -45,6 +45,99 @@ const breadcrumbs = [
 ];
 
 const origin = 'https://webabc.ir';
+
+const content = {
+  en: {
+    expertiseHeading: 'Areas of Expertise',
+    careerHeading: 'Career & Experience',
+    career: [
+      'Ali Bakhtiari is a web engineer and technical SEO specialist based in Qazvin, Iran. He founded WebABC to bring engineering discipline to a market where websites are too often built without performance budgets, semantic structure, or a measurable search strategy. Over more than a decade he has designed, developed, and optimized sites for clients in healthcare, e-commerce, industrial manufacturing, immigration consulting, and professional services across Iran, the Persian Gulf, Canada, and the UK.',
+      'His work sits at the intersection of development and search. On the development side he builds with Astro, Next.js, React, Node.js, and Python, and maintains custom WordPress architectures when a client needs its ecosystem. On the SEO side his focus is technical: crawl architecture, Core Web Vitals, structured data, multilingual hreflang implementations, and programmatic page generation. This site itself — a trilingual static build serving English, Persian, and Arabic from Cloudflare\u2019s edge — doubles as an ongoing case study in that approach.',
+      'Recent representative work includes a digital transformation portal for one of Karaj\u2019s largest dental clinics (Behrad), B2B e-commerce catalogs for industrial cosmetics and pharmaceutical packaging (Rostateb), cross-border storefronts such as Chocoreto in Toronto, high-performance local-service platforms like London Rug Cleaning in the UK, and ranking-first local campaigns documented in the WebABC portfolio.',
+      'He holds a degree from Imam Khomeini International University and works from the Qazvin Science & Technology Park, where WebABC is headquartered. He writes publicly about technical SEO and web performance on the WebABC blog and shares code and experiments through his GitHub profile.',
+    ],
+    projectsHeading: 'Selected Projects',
+    projectsBody:
+      'Every engagement listed in the portfolio shipped with the same checklist: sub-second Largest Contentful Paint, valid structured data, accessible markup, and a measurement plan before launch. The results — first-page rankings for competitive local queries and measurable organic growth for the businesses involved — are documented case by case.',
+    projectsLink: 'View the full portfolio',
+    methodologyHeading: 'How I Work',
+    methodology: [
+      'Projects start with measurement, not design: an audit of current rankings, crawl behavior, page speed, and conversion paths defines where engineering effort will actually move revenue. From there, work is prioritized by impact per hour — often technical fixes like render-blocking resources, missing structured data, or broken canonical signals deliver more growth in a week than months of new copy.',
+      'Deliverables are always verifiable. Clients receive Lighthouse and Search Console baselines before launch and can watch Core Web Vitals, impressions, and click-through rate respond to each change. Nothing on this site — the tools, the guides, or the case studies — would survive its own checklist if it could not be measured, so everything here is built to be audited.',
+      'Availability is direct: when you contact WebABC you talk to the person who designs, builds, and ranks your site, not an account manager relaying messages between departments.',
+    ],
+    extraExpertise: [
+      {
+        title: 'WordPress at Scale',
+        body: 'Custom themes and plugins, headless WordPress front-ends, security hardening, and database-level performance tuning.',
+      },
+      {
+        title: 'Analytics & Measurement',
+        body: 'Google Search Console, GA4 event architecture, rank tracking pipelines, and CTR diagnostics that tie SEO changes to outcomes.',
+      },
+    ],
+  },
+  fa: {
+    expertiseHeading: 'حوزه‌های تخصص و مهارت‌ها',
+    careerHeading: 'مسیر حرفه‌ای و تجربه',
+    career: [
+      'علی بختیاری، مهندس وب و متخصص سئوی فنی ساکن قزوین است. او وب اِی‌بی‌سی را با این هدف بنیان گذاشت که نظارت مهندسی را به بازاری ببرد که در آن وب‌سایت‌ها بدون بودجه کارایی، ساختار معنایی و استراتژی قابل اندازه‌گیری جستجو ساخته می‌شوند. در بیش از یک ده گذشته، او سایت‌هایی برای مشتریان در حوزه‌های درمان، فروشگاه اینترنتی، صنایع، مهاجرت و خدمات تخصصی در ایران، حاشیه خلیج فارس، کانادا و بریتانیا طراحی، توسعه و بهینه‌سازی کرده است.',
+      'کار او در نقطه تلاقی توسعه و جستجو قرار دارد. در سمت توسعه با Astro، Next.js، React، Node.js و پایتون کار می‌کند و در مواردی که کسب‌وکار به اکوسیستم وردپرس نیاز دارد، معماری سفارشی وردپرس ارائه می‌دهد. در سمت سئو، تمرکز او فنی است: معماری خزش، Core Web Vitals، داده ساختاریافته، پیاده‌سازی چندزبانه hreflang و تولید صفحه برنامه‌محور. همین سایت — یک بیلد استاتیک سه‌زبانه (انگلیسی، فارسی، عربی) روی زیرساخت Cloudflare — نمونه زنده همین رویکرد است.',
+      'از نمونه‌های اخیر می‌توان به پرتال تحول دیجیتال یکی از بزرگ‌ترین کلینیک‌های دندانپزشکی کرج (بهراد)، کاتالوگ‌های فروشگاهی B2B برای صنایع آرایشی و بهداشتی و دارویی (راستتاب)، فروشگاه‌های فرامرزی مانند Chocoreto در تورنتو، پلتفرم‌های پرسرعت خدمات محلی مانند London Rug Cleaning در بریتانیا و کمپین‌های سئوی محلی رتبه اول مستندشده در نمونه‌کارهای وب اِی‌بی‌سی اشاره کرد.',
+      'او دانش‌آموخته دانشگاه بین‌المللی امام خمینی (ره) است و از مرکز رشد فناوری‌های پیشرفته قزوین — محل استقرار وب اِی‌بی‌سی — فعالیت می‌کند. نوشته‌های او درباره سئوی فنی و کارایی وب در وبلاگ وب اِی‌بی‌سی منتشر می‌شود و کدها و آزمایش‌های او از طریق گیت‌هاب در دسترس است.',
+    ],
+    projectsHeading: 'نمونه پروژه‌های منتخب',
+    projectsBody:
+      'هر پروژه ثبت‌شده در نمونه‌کارها با چک‌لیست ثابتی تحویل شده است: LCP زیر یک ثانیه، داده ساختاریافته معتبر، نشانه‌گذاری در دسترس‌پذیر و برنامه اندازه‌گیری قبل از انتشار. نتایج — رتبه‌های صفحه اول برای کوئری‌های محلی رقابتی و رشد ارگانیک قابل اندازه‌گیری — به‌صورت موردبه‌مورد مستند شده‌اند.',
+    projectsLink: 'مشاهده همه نمونه‌کارها',
+    methodologyHeading: 'روش کار',
+    methodology: [
+      'پروژه‌ها با اندازه‌گیری شروع می‌شوند، نه با طراحی: ممیزی رتبه‌های فعلی، رفتار خزش، سرعت صفحه و مسیرهای تبدیل مشخص می‌کند که تلاش مهندسی کجا واقعاً بر درآمد اثر می‌گذارد. سپس کارها بر اساس «اثر به ازای هر ساعت» اولویت‌بندی می‌شوند — اغلب اصلاحات فنی مثل حذف منابع مسدودکننده رندر، افزودن داده ساختاریافته یا اصلاح سیگنال‌های کنونیکال، در یک هفته بیشتر از ماه‌ها تولید محتوای جدید رشد ایجاد می‌کنند.',
+      'خروجی‌ها همیشه قابل راستی‌آزمایی هستند. مشتریان پیش از انتشار، وضعیت پایه Lighthouse و Search Console را دریافت می‌کنند و می‌توانند واکنش Core Web Vitals، ایمپرشن و نرخ کلیک را نسبت به هر تغییر دنبال کنند. هیچ بخشی از این سایت — نه ابزارها، نه راهنماها و نه نمونه‌کارها — بدون قابلیت اندازه‌گیری دوام نمی‌آورد؛ بنابراین همه چیز اینجا برای ممیزی شدن ساخته شده است.',
+      'ارتباط مستقیم است: وقتی با وب اِی‌بی‌سی تماس می‌گیرید، با کسی صحبت می‌کنید که سایت شما را طراحی، توسعه و رتبه‌بندی می‌کند؛ نه با کارشناس جذبی که پیام‌ها را بین واحدها جابه‌جا کند.',
+    ],
+    extraExpertise: [
+      {
+        title: 'وردپرس در مقیاس بالا',
+        body: 'قالب و افزونه سفارشی، فرانت‌اند هدلس وردپرس، امنیت‌سازی و بهینه‌سازی عملکرد در سطح دیتابیس.',
+      },
+      {
+        title: 'تحلیل و اندازه‌گیری',
+        body: 'Google Search Console، معماری ایونت GA4، خط لوله ردیابی رتبه و تشخیص CTR برای اتصال تغییرات سئو به نتایج.',
+      },
+    ],
+  },
+  ar: {
+    expertiseHeading: 'مجالات الخبرة والمهارات',
+    careerHeading: 'المسيرة المهنية والخبرة',
+    career: [
+      'علي بختياري مهندس ويب ومستشار سيو تقني مقيم في قزوين بإيران. أسّس WebABC ليدخل الانضباط الهندسي إلى سوق تُبنى فيه المواقع غالباً دون ميزانية أداء أو بنية دلالية أو استراتيجية بحث قابلة للقياس. على مدى أكثر من عقد، صمّم وطوّر وحسّن مواقع لعملاء في قطاعات الرعاية الصحية والتجارة الإلكترونية والصناعات التحويلية والاستشارات والخدمات المهنية في إيران ودول الخليج وكندا والمملكة المتحدة.',
+      'يقع عمله عند تقاطع التطوير والبحث. في جانب التطوير يعمل مع Astro وNext.js وReact وNode.js وPython، ويقدّم هندسة مخصصة لـ WordPress عندما يحتاج العميل إلى منظومته. وفي جانب السيو يركّز على الجوانب التقنية: بنية الزحف ومؤشرات Core Web Vitals والبيانات المنظمة وتنفيذات hreflang متعددة اللغات وتوليد الصفحات البرمجي. هذا الموقع نفسه — بناء ثابت ثلاثي اللغات يخدم الإنجليزية والفارسية والعربية من شبكة Cloudflare — يمثّل نموذجاً حياً لهذا النهج.',
+      'من الأعمال الحديثة: بوابة التحول الرقمي لأحد أكبر عيادات طب الأسنان في كرج (Behrad)، وفهارس تجارة إلكترونية B2B لتغليف مستحضرات التجميل والأدوية (Rostateb)، ومتاجر عابرة للحدود مثل Chocoreto في تورونتو، ومنصات خدمات محلية فائقة السرعة مثل London Rug Cleaning في المملكة المتحدة، وحملات سيو محلي حققت المرتبة الأولى موثقة في أعمال WebABC.',
+      'حاصل على شهادة جامعة الإمام الخميني الدولية، ويعمل من مدينة قزوين للعلوم والتقنية حيث يقع مقر WebABC. يكتب عن السيو التقني وأداء الويب في مدونة WebABC ويشارك أكواده وتجاربه عبر GitHub.',
+    ],
+    projectsHeading: 'مشاريع مختارة',
+    projectsBody:
+      'كل مشروع في معرض الأعمال تم تسليمه بالقائمة ذاتها: أكبر رسم للمحتوى في أقل من ثانية، بيانات منظمة صحيحة، ترميز ميسّر للوصول، وخطة قياس قبل الإطلاق. النتائج — صفحات أولى لكلمات محلية تنافسية ونمو عضوي قابل للقياس — موثقة حالة بحالة.',
+    projectsLink: 'عرض جميع المشاريع',
+    methodologyHeading: 'كيف أعمل',
+    methodology: [
+      'تبدأ المشاريع بالقياس لا بالتصميم: تحليل الترتيبات الحالية وسلوك الزحف وسرعة الصفحات ومسارات التحويل يحدد أين سيحقق الجهد الهندسي أثراً حقيقياً على الإيرادات. بعد ذلك تُرتّب المهام حسب الأثر لكل ساعة — كثيراً ما تحقق الإصلاحات التقنية مثل إزالة الموارد المعيقة للعرض أو إضافة البيانات المنظمة أو تصحيح إشارات الكانونيكال نمواً في أسبوع يفوق شهوراً من المحتوى الجديد.',
+      'المخرجات قابلة للتحقق دائماً. يتسلم العملاء خط أساس Lighthouse وSearch Console قبل الإطلاق ويمكنهم متابعة استجابة Core Web Vitals والانطباعات ونسبة النقر لكل تغيير. لا شيء في هذا الموقع — الأدوات ولا الأدلة ولا دراسات الحالة — سينجو دون قابلية قياس، لذلك كل شيء هنا مبني ليكون قابلاً للتدقيق.',
+      'التواصل مباشر: عندما تتواصل مع WebABC فأنت تتحدث مع الشخص الذي يصمم موقعك ويطوره ويرفع ترتيبه، وليس مع مدير حسابات ينقل الرسائل بين الأقسام.',
+    ],
+    extraExpertise: [
+      {
+        title: 'ووردبريس على نطاق واسع',
+        body: 'قوالب وإضافات مخصصة، واجهات Headless لووردبريس، تحصين أمني، وتحسين أداء قاعدة البيانات.',
+      },
+      {
+        title: 'التحليلات والقياس',
+        body: 'Google Search Console، بنية أحداث GA4، خطوط تتبع الترتيب، وتشخيص CTR لربط تغييرات السيو بالنتائج.',
+      },
+    ],
+  },
+}[supportedLang];
 const personSchema = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -167,13 +260,7 @@ const personSchema = {
       <!-- Area of Expertise -->
       <div class="space-y-4 border-t border-gray-100 pt-8 dark:border-slate-800">
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-          {
-            supportedLang === 'fa'
-              ? 'حوزه‌های تخصص و مهارت‌ها'
-              : supportedLang === 'ar'
-                ? 'مجالات الخبرة والمهارات'
-                : 'Areas of Expertise'
-          }
+          {content.expertiseHeading}
         </h2>
         <div class="grid gap-4 sm:grid-cols-2">
           <div
@@ -196,6 +283,48 @@ const personSchema = {
               Astro, Next.js, React, Node.js, Python, Custom WordPress Architecture
             </p>
           </div>
+          {
+            content.extraExpertise.map((item) => (
+              <div class="space-y-1 rounded-xl border border-gray-100 bg-gray-50 p-4 dark:border-slate-700 dark:bg-slate-800/60">
+                <h3 class="text-base font-bold text-gray-800 dark:text-white">{item.title}</h3>
+                <p class="text-xs text-gray-500 dark:text-gray-400">{item.body}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Career & Experience -->
+      <div class="space-y-4 border-t border-gray-100 pt-8 dark:border-slate-800">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{content.careerHeading}</h2>
+        <div class="space-y-4">
+          {content.career.map((paragraph) => (
+            <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300">{paragraph}</p>
+          ))}
+        </div>
+      </div>
+
+      <!-- Selected Projects -->
+      <div class="space-y-4 border-t border-gray-100 pt-8 dark:border-slate-800">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{content.projectsHeading}</h2>
+        <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300">
+          {content.projectsBody}
+        </p>
+        <a
+          href={`/${supportedLang}/portfolio/`}
+          class="inline-flex items-center gap-1.5 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+        >
+          {content.projectsLink}
+        </a>
+      </div>
+
+      <!-- How I Work -->
+      <div class="space-y-4 border-t border-gray-100 pt-8 dark:border-slate-800">
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{content.methodologyHeading}</h2>
+        <div class="space-y-4">
+          {content.methodology.map((paragraph) => (
+            <p class="text-base leading-relaxed text-gray-600 dark:text-gray-300">{paragraph}</p>
+          ))}
         </div>
       </div>
 

@@ -59,6 +59,11 @@ const webAppSchema = {
   operatingSystem: 'All',
   browserRequirements: 'Requires HTML5 support',
   inLanguage: lang === 'en' ? 'en-US' : lang === 'ar' ? 'ar-SA' : 'fa-IR',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
 };
 
 const defaultBreadcrumbs = breadcrumbs || [

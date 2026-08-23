@@ -4,89 +4,89 @@
 
 ## Company & Overview
 
-- [Home](https://webabc.ir/en): Overview of WebABC's services, agency workflow, technology stack, and client case studies.
-- [About Us](https://webabc.ir/en/about): Agency background, engineering standards, and team profile.
-- [Contact & Consultation](https://webabc.ir/en/contact): Inquiry form and direct consultation request.
-- [FAQ](https://webabc.ir/en/faq): Answer Engine Optimized (AEO) FAQs regarding project timelines, pricing, and tech stacks.
-- [Privacy Policy](https://webabc.ir/en/privacy): GDPR-compliant privacy and data handling practices.
+- [Home](/en/): Overview of WebABC's services, agency workflow, technology stack, and client case studies.
+- [About Us](/en/about/): Agency background, engineering standards, and team profile.
+- [Contact & Consultation](/en/contact/): Inquiry form and direct consultation request.
+- [FAQ](/en/faq/): Answer Engine Optimized (AEO) FAQs regarding project timelines, pricing, and tech stacks.
+- [Privacy Policy](/en/privacy/): GDPR-compliant privacy and data handling practices.
 - [Security Policy](https://webabc.ir/.well-known/security.txt): Vulnerability reporting policy and security contacts.
 
 ## Core Services
 
-- [Services Overview](https://webabc.ir/en/services): Directory of specialized web design, engineering, and organic growth services.
-- [SEO & Growth](https://webabc.ir/en/services/seo): Enterprise technical SEO, on-page optimization, entity search, and Schema markup.
-- [Local SEO](https://webabc.ir/en/services/local-seo): Localized search optimization, Google Business Profile management, and regional citations.
-- [Web Development](https://webabc.ir/en/services/web-development): Custom full-stack Web Application development (Astro, React, TypeScript, Node.js, Cloudflare Edge).
-- [WordPress Development](https://webabc.ir/en/services/wordpress-development): Custom WordPress themes, WooCommerce storefronts, and headless CMS architecture.
-- [Web Design (UI/UX)](https://webabc.ir/en/services/web-design): High-conversion UX design, design systems, visual branding, and mobile responsiveness.
-- [E-commerce Development](https://webabc.ir/en/services/ecommerce): High-speed e-commerce stores, custom checkout flows, and payment integrations.
-- [Content Strategy & Creation](https://webabc.ir/en/services/content-creation): Semantic SEO content writing, multilingual strategy, and authority blogging.
-- [Link Building & Outreach](https://webabc.ir/en/services/link-building): High-authority backlink acquisition and digital PR campaigns.
-- [Speed & Performance Optimization](https://webabc.ir/en/services/speed-optimization): Core Web Vitals optimization, TTFB reduction, edge caching, and asset minification.
-- [UI/UX Diagnostic Audit](https://webabc.ir/en/services/ui-ux-audit): Comprehensive UX usability, conversion rate, and accessibility audits.
-- [Website Maintenance & Security](https://webabc.ir/en/services/website-maintenance): 24/7 uptime monitoring, security hardening, automated backups, and software updates.
+- [Services Overview](/en/services/): Directory of specialized web design, engineering, and organic growth services.
+- [SEO & Growth](/en/services/seo/): Enterprise technical SEO, on-page optimization, entity search, and Schema markup.
+- [Local SEO](/en/services/local-seo/): Localized search optimization, Google Business Profile management, and regional citations.
+- [Web Development](/en/services/web-development/): Custom full-stack Web Application development (Astro, React, TypeScript, Node.js, Cloudflare Edge).
+- [WordPress Development](/en/services/wordpress-development/): Custom WordPress themes, WooCommerce storefronts, and headless CMS architecture.
+- [Web Design (UI/UX)](/en/services/web-design/): High-conversion UX design, design systems, visual branding, and mobile responsiveness.
+- [E-commerce Development](/en/services/ecommerce/): High-speed e-commerce stores, custom checkout flows, and payment integrations.
+- [Content Strategy & Creation](/en/services/content-creation/): Semantic SEO content writing, multilingual strategy, and authority blogging.
+- [Link Building & Outreach](/en/services/link-building/): High-authority backlink acquisition and digital PR campaigns.
+- [Speed & Performance Optimization](/en/services/speed-optimization/): Core Web Vitals optimization, TTFB reduction, edge caching, and asset minification.
+- [UI/UX Diagnostic Audit](/en/services/ui-ux-audit/): Comprehensive UX usability, conversion rate, and accessibility audits.
+- [Website Maintenance & Security](/en/services/website-maintenance/): 24/7 uptime monitoring, security hardening, automated backups, and software updates.
 
 ## Geographic Service Areas (GEO / Localized Hubs)
 
-- [Service Areas Directory](https://webabc.ir/en/service-areas): Overview of regional offices and localized market coverage.
-- [Dubai, UAE](https://webabc.ir/en/service-areas/dubai): Web design, custom web app development, and technical SEO in Dubai & UAE.
-- [Riyadh, Saudi Arabia](https://webabc.ir/en/service-areas/riyadh): Digital transformation, enterprise web portals, and SEO in Riyadh.
-- [Abu Dhabi, UAE](https://webabc.ir/en/service-areas/abu-dhabi): High-security corporate web development and growth SEO in Abu Dhabi.
-- [Muscat, Oman](https://webabc.ir/en/service-areas/muscat): E-commerce storefronts and localized digital marketing in Muscat.
-- [Tehran, Iran](https://webabc.ir/en/service-areas/tehran): Custom web platforms, speed optimization, and SEO solutions in Tehran.
-- [Qazvin, Iran](https://webabc.ir/en/service-areas/qazvin): Industrial & commercial website development and local SEO in Qazvin.
+- [Service Areas Directory](/en/service-areas/): Overview of regional offices and localized market coverage.
+- [Dubai, UAE](/en/service-areas/dubai/): Web design, custom web app development, and technical SEO in Dubai & UAE.
+- [Riyadh, Saudi Arabia](/en/service-areas/riyadh/): Digital transformation, enterprise web portals, and SEO in Riyadh.
+- [Abu Dhabi, UAE](/en/service-areas/abu-dhabi/): High-security corporate web development and growth SEO in Abu Dhabi.
+- [Muscat, Oman](/en/service-areas/muscat/): E-commerce storefronts and localized digital marketing in Muscat.
+- [Tehran, Iran](/en/service-areas/tehran/): Custom web platforms, speed optimization, and SEO solutions in Tehran.
+- [Qazvin, Iran](/en/service-areas/qazvin/): Industrial & commercial website development and local SEO in Qazvin.
 
 ## Interactive Tools (Free Developer & SEO Utilities)
 
-- [All Developer & SEO Tools](https://webabc.ir/en/tools): Interactive client-side web utilities for developers, marketers, and content creators.
-- [SEO Headline Analyzer & Title Checker](https://webabc.ir/en/tools/headline-analyzer): Score headlines for emotional impact, power words, character length, and Google CTR.
-- [SEO Title & Meta Tag Checker](https://webabc.ir/en/tools/seo-title-checker): Pixel dimensions, character limits, and keyword positioning analyzer.
-- [Website Cost Calculator & Price Estimator](https://webabc.ir/en/tools/cost-calculator): Instant interactive budget estimation for web design and development projects.
-- [Google SERP Snippet Simulator](https://webabc.ir/en/tools/serp-preview): Desktop and mobile search result preview simulator with rich snippets.
-- [Content Readability Checker](https://webabc.ir/en/tools/readability-checker): Flesch-Kincaid grade level and reading ease analyzer.
-- [Keyword Density Analyzer](https://webabc.ir/en/tools/keyword-density-analyzer): Detect keyword frequency and prevent over-optimization penalties.
-- [URL Slug Generator](https://webabc.ir/en/tools/slug-generator): Clean, special-character-free SEO URL slug formatter.
-- [UTM Link Builder](https://webabc.ir/en/tools/utm-builder): Campaign URL generator with analytics parameter tracking.
-- [Social Media Card Preview](https://webabc.ir/en/tools/social-media-preview): Open Graph and Twitter Card validator.
-- [Privacy Policy Generator](https://webabc.ir/en/tools/privacy-policy-generator): Instant custom GDPR/CCPA privacy policy document maker.
-- [CSS Glassmorphism Generator](https://webabc.ir/en/tools/glassmorphism-generator): Interactive CSS backdrop-filter and UI code generator.
-- [JSON Formatter & Validator](https://webabc.ir/en/tools/json-formatter): Secure, client-side JSON formatting and syntax validation.
-- [Robots.txt Generator](https://webabc.ir/en/tools/robots-generator): Custom crawler directive rules generator.
-- [People Also Ask (PAA) Explorer](https://webabc.ir/en/tools/paa-scraper): Question research tool for AEO and featured snippet targeting.
-- [Schema Markup Generator](https://webabc.ir/en/tools/schema-generator): Structured data JSON-LD generator for Organization, Service, and FAQ schemas.
-- [FAQ Schema Generator](https://webabc.ir/en/tools/faq-generator): Create Schema.org FAQPage structured data markup.
-- [Base64 Encoder/Decoder](https://webabc.ir/en/tools/base64-encoder): Client-side string and asset Base64 converter.
-- [Box Shadow Generator](https://webabc.ir/en/tools/box-shadow-generator): Custom CSS shadow code design tool.
-- [Color Contrast Checker](https://webabc.ir/en/tools/color-contrast-checker): WCAG compliance accessibility color contrast tester.
-- [CSS Gradient Generator](https://webabc.ir/en/tools/css-gradient-generator): Linear and radial CSS gradient design tool.
-- [Lorem Ipsum Generator](https://webabc.ir/en/tools/lorem-generator): Placeholder text generator for designers and developers.
-- [Meta Tag Generator](https://webabc.ir/en/tools/meta-generator): Complete HTML head meta tags builder.
-- [QR Code Generator](https://webabc.ir/en/tools/qr-generator): Generate customizable vector QR codes.
+- [All Developer & SEO Tools](/en/tools/): Interactive client-side web utilities for developers, marketers, and content creators.
+- [SEO Headline Analyzer & Title Checker](/en/tools/headline-analyzer/): Score headlines for emotional impact, power words, character length, and Google CTR.
+- [SEO Title & Meta Tag Checker](/en/tools/headline-analyzer/): Pixel dimensions, character limits, and keyword positioning analyzer.
+- [Website Cost Calculator & Price Estimator](/en/tools/cost-calculator/): Instant interactive budget estimation for web design and development projects.
+- [Google SERP Snippet Simulator](/en/tools/serp-preview/): Desktop and mobile search result preview simulator with rich snippets.
+- [Content Readability Checker](/en/tools/readability-checker/): Flesch-Kincaid grade level and reading ease analyzer.
+- [Keyword Density Analyzer](/en/tools/keyword-density-analyzer/): Detect keyword frequency and prevent over-optimization penalties.
+- [URL Slug Generator](/en/tools/slug-generator/): Clean, special-character-free SEO URL slug formatter.
+- [UTM Link Builder](/en/tools/utm-builder/): Campaign URL generator with analytics parameter tracking.
+- [Social Media Card Preview](/en/tools/social-media-preview/): Open Graph and Twitter Card validator.
+- [Privacy Policy Generator](/en/tools/privacy-policy-generator/): Instant custom GDPR/CCPA privacy policy document maker.
+- [CSS Glassmorphism Generator](/en/tools/glassmorphism-generator/): Interactive CSS backdrop-filter and UI code generator.
+- [JSON Formatter & Validator](/en/tools/json-formatter/): Secure, client-side JSON formatting and syntax validation.
+- [Robots.txt Generator](/en/tools/robots-generator/): Custom crawler directive rules generator.
+- [People Also Ask (PAA) Explorer](/en/tools/paa-scraper/): Question research tool for AEO and featured snippet targeting.
+- [Schema Markup Generator](/en/tools/schema-generator/): Structured data JSON-LD generator for Organization, Service, and FAQ schemas.
+- [FAQ Schema Generator](/en/tools/faq-generator/): Create Schema.org FAQPage structured data markup.
+- [Base64 Encoder/Decoder](/en/tools/base64-encoder/): Client-side string and asset Base64 converter.
+- [Box Shadow Generator](/en/tools/box-shadow-generator/): Custom CSS shadow code design tool.
+- [Color Contrast Checker](/en/tools/color-contrast-checker/): WCAG compliance accessibility color contrast tester.
+- [CSS Gradient Generator](/en/tools/css-gradient-generator/): Linear and radial CSS gradient design tool.
+- [Lorem Ipsum Generator](/en/tools/lorem-generator/): Placeholder text generator for designers and developers.
+- [Meta Tag Generator](/en/tools/meta-generator/): Complete HTML head meta tags builder.
+- [QR Code Generator](/en/tools/qr-generator/): Generate customizable vector QR codes.
 
 ## Case Studies & Portfolio
 
-- [Portfolio Directory](https://webabc.ir/en/portfolio): Case studies highlighting client growth, technology stack implementation, and ROI.
-- [Ramzarz Negaran Case Study](https://webabc.ir/fa/portfolio/ramzarz-negaran): E-commerce and mining profitability calculator platform ranking #1 on Google.
-- [Zeytoun Masoud Case Study](https://webabc.ir/fa/portfolio/zeytoun-masoud): Organic food B2B ordering portal and national e-commerce logistics platform.
-- [Remido Case Study](https://webabc.ir/en/portfolio/remido): Digital agency platform with high-converting landing architectures.
+- [Portfolio Directory](/en/portfolio/): Case studies highlighting client growth, technology stack implementation, and ROI.
+- [Ramzarz Negaran Case Study](/fa/portfolio/ramzarz-negaran/): E-commerce and mining profitability calculator platform ranking #1 on Google.
+- [Zeytoun Masoud Case Study](/fa/portfolio/zeytoun-masoud/): Organic food B2B ordering portal and national e-commerce logistics platform.
+- [Remido Case Study](/en/portfolio/remido/): Digital agency platform with high-converting landing architectures.
 
 ## Research, Guides & Insights (Blog)
 
-- [Insights & Blog](https://webabc.ir/en/blog): In-depth articles on SEO, modern Astro web development, and digital marketing strategies.
-- [SEO Checklist 2026 / ۱۴۰۵: Complete Step-by-Step Audit Guide](https://webabc.ir/en/blog/seo-checklist-2026): 4-phase actionable framework covering technical infrastructure, on-page optimization, Core Web Vitals, and Answer Engine Optimization (AEO). In Persian as "چک لیست سئو 2026 (سال ۱۴۰۵)".
-- [Best Free SEO & Developer Tools in 2026](https://webabc.ir/en/blog/free-seo-developer-tools-guide-2026): Practical workflows for 23 zero-install client-side web and SEO utilities.
-- [Dubai & UAE Web Design and SEO Guide 2026](https://webabc.ir/en/blog/dubai-uae-web-design-seo-guide-2026): Market playbook covering bilingual UX, luxury aesthetics, GCC payment gateways, and local SEO.
-- [Oman & Muscat Web Design and SEO Guide 2026](https://webabc.ir/en/blog/oman-web-design-seo-guide-2026): Blueprint for entering the Omani market with localized Arabic/English web design and Google Maps optimization.
-- [Website Development Cost Calculator & Pricing Guide 2026](https://webabc.ir/en/blog/website-development-cost-calculator-guide-2026): Transparent pricing breakdown for custom Astro platforms, WordPress, and e-commerce stores.
-- [WordPress vs. Custom Web Development 2026](https://webabc.ir/en/blog/wordpress-vs-custom-development-guide-2026): Architectural comparison evaluating performance, security, maintenance, and 3-year TCO.
-- [Website Speed Optimization Pricing & Core Web Vitals ROI Guide 2026](https://webabc.ir/en/blog/website-speed-optimization-pricing-guide-2026): Guide to audit deliverables, speed pricing, and conversion rate ROI.
-- [Trilingual Website Maintenance and Security Guide 2026](https://webabc.ir/en/blog/website-maintenance-security-guide-2026): Technical guide on web security, automated backups, and 2026 Core Web Vitals.
-- [SEO Best Practices for 2026: The Definitive Search Guide](https://webabc.ir/en/blog/seo-best-practices-2025): Latest ranking signals for INP, AI Overviews, E-E-A-T, and structured data.
-- [Clickable Headlines Guide](https://webabc.ir/en/blog/how-to-write-clickable-headlines): CTR engineering techniques for search titles and article headlines.
-- [Local SEO Strategies for Middle East](https://webabc.ir/en/blog/local-seo-middle-east): Market penetration strategies for UAE, KSA, Oman, and Iran.
+- [Insights & Blog](/en/blog/): In-depth articles on SEO, modern Astro web development, and digital marketing strategies.
+- [SEO Checklist 2026 / ۱۴۰۵: Complete Step-by-Step Audit Guide](/en/blog/seo-checklist-2026/): 4-phase actionable framework covering technical infrastructure, on-page optimization, Core Web Vitals, and Answer Engine Optimization (AEO). In Persian as "چک لیست سئو 2026 (سال ۱۴۰۵)".
+- [Best Free SEO & Developer Tools in 2026](/en/blog/free-seo-developer-tools-guide-2026/): Practical workflows for 23 zero-install client-side web and SEO utilities.
+- [Dubai & UAE Web Design and SEO Guide 2026](/en/blog/dubai-uae-web-design-seo-guide-2026/): Market playbook covering bilingual UX, luxury aesthetics, GCC payment gateways, and local SEO.
+- [Oman & Muscat Web Design and SEO Guide 2026](/en/blog/oman-web-design-seo-guide-2026/): Blueprint for entering the Omani market with localized Arabic/English web design and Google Maps optimization.
+- [Website Development Cost Calculator & Pricing Guide 2026](/en/blog/website-development-cost-calculator-guide-2026/): Transparent pricing breakdown for custom Astro platforms, WordPress, and e-commerce stores.
+- [WordPress vs. Custom Web Development 2026](/en/blog/wordpress-vs-custom-development-guide-2026/): Architectural comparison evaluating performance, security, maintenance, and 3-year TCO.
+- [Website Speed Optimization Pricing & Core Web Vitals ROI Guide 2026](/en/blog/website-speed-optimization-pricing-guide-2026/): Guide to audit deliverables, speed pricing, and conversion rate ROI.
+- [Trilingual Website Maintenance and Security Guide 2026](/en/blog/website-maintenance-security-guide-2026/): Technical guide on web security, automated backups, and 2026 Core Web Vitals.
+- [SEO Best Practices for 2026: The Definitive Search Guide](/en/blog/seo-best-practices/): Latest ranking signals for INP, AI Overviews, E-E-A-T, and structured data.
+- [Clickable Headlines Guide](/en/blog/how-to-write-clickable-headlines/): CTR engineering techniques for search titles and article headlines.
+- [Local SEO Strategies for Middle East](/en/blog/local-seo-middle-east/): Market penetration strategies for UAE, KSA, Oman, and Iran.
 
 ## Direct Contact & Support
 
 - Email: info@webabc.ir
-- Support & Inquiry: https://webabc.ir/en/contact
+- Support & Inquiry: /en/contact/
 - Website: https://webabc.ir
