@@ -1,6 +1,6 @@
 {
-  "title": "Free SEO Title Checker – Score Any Headline Instantly",
-  "description": "Check any blog headline or meta title in seconds — pixel-accurate Google preview, length scoring and CTR tips. Free, instant, no signup.",
+  "title": "Free SEO Title Checker & Headline Analyzer – Blog Title Checker SEO Tool",
+  "description": "Free SEO title checker, headline checker & blog title analyzer. Check SEO headline, title checker SEO and blog title SEO with pixel-accurate Google SERP preview, length scoring and CTR tips. No signup.",
   "enterHeadline": "Enter Your Headline",
   "headlineLabel": "Headline",
   "placeholder": "Enter your headline here...",
@@ -22,11 +22,23 @@
     },
     {
       "question": "What is the optimal length for an SEO title tag?",
-      "answer": "The optimal title length is between 50 and 60 characters or 580 pixels on desktop viewports."
+      "answer": "The optimal title length is between 50 and 60 characters or 580 pixels on desktop. Use our SEO title checker and SERP preview to stay within limits."
     },
     {
       "question": "Why does Google rewrite page title tags?",
       "answer": "Google rewrites title tags if they are truncated, keyword-stuffed, or poorly matched to the user search query."
+    },
+    {
+      "question": "What is a blog title checker and how is it different from an SEO title checker?",
+      "answer": "A blog title checker scores your H1 headline for CTR (emotional words, numbers, length), while an SEO title checker validates your meta title tag for pixel limits and keyword placement. Our free headline checker does both — analyze your blog title and your meta title in one page."
+    },
+    {
+      "question": "Is this SEO headline checker free?",
+      "answer": "Yes, this free SEO headline checker and blog title analyzer is 100% free, no signup required. Check title SEO, SEO blog title and headline analyzer scores instantly with live Google preview."
+    },
+    {
+      "question": "How do I check title SEO for a blog post?",
+      "answer": "Paste your blog title in the headline analyzer, then use the meta title section to test title SEO with your focus keyword. The tool scores length, keyword position, power words and shows if Google will truncate your title."
     }
   ],
   "meta": {

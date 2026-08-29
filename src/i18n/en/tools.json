@@ -46,8 +46,8 @@
     "description": "Easily construct optimized crawler directives and map your sitemap configurations dynamically."
   },
   "keywordDensity": {
-    "title": "Semantic Keyword Density Analyzer",
-    "description": "Analyze text structures to identify keyword frequency and avoid over-optimization before publishing.",
+    "title": "Keyword Density Analyzer Script – Semantic Density Checker",
+    "description": "Free keyword density analyzer script: analyze text to identify keyword frequency, n-gram density and avoid over-optimization before publishing.",
     "guide": {
       "how": {
         "title": "How the Keyword Density Analyzer Works",
