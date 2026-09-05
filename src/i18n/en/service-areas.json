@@ -82,7 +82,7 @@
       "slug": "tehran",
       "country": "Iran",
       "title": "Web Design Agency Tehran & Ecommerce Website Design Tehran | SEO Services",
-      "description": "Web design agency Tehran & ecommerce website design Tehran. Web design company Tehran, ecommerce web design Tehran and online store development Tehran with SEO. Rank #1 on Google Iran.",
+      "description": "Tehran's top-rated web design agency: ecommerce website design, online stores & SEO that ranks #1. Get a free quote in 24 hours.",
       "longDescription": "As a leading web design agency Tehran and ecommerce website design Tehran specialist, we build online store development Tehran, ecommerce agency Tehran solutions and SEO for Iranian companies. From web design company Tehran to custom ecommerce web design Tehran, we help you dominate.",
       "localNotes": "Tehran's market has a technical quirk most outside agencies miss: Google Maps has limited practical use in Iran, so local map visibility depends more on apps like Neshan and Balad than on a Google Business Profile alone. Persian-first content with correct RTL layout is essential, and page speed matters more here given more variable connection quality than in Dubai or Muscat.",
       "services": [
@@ -123,6 +123,16 @@
         "High-performance modern Astro architecture",
         "Results-driven digital growth strategies",
         "24/7 dedicated support"
+      ],
+      "faqs": [
+        {
+          "question": "Which company offers web design in Qazvin?",
+          "answer": "WebABC is headquartered in Qazvin and builds corporate, industrial and ecommerce websites with local SEO and in-person support across Qazvin province."
+        },
+        {
+          "question": "Do you provide local SEO in Qazvin with Neshan and Balad listings?",
+          "answer": "Yes — our Qazvin local SEO covers Google Maps plus Neshan and Balad listings, NAP consistency and Persian content so you rank for city-based searches."
+        }
       ]
     },
     {
@@ -152,8 +162,8 @@
       "name": "Riyadh",
       "slug": "riyadh",
       "country": "Saudi Arabia",
-      "title": "Web Design & SEO Services in Riyadh, Saudi Arabia | WebABC",
-      "description": "Delivering high-performance web development and search engine optimization services to businesses in Riyadh under Vision 2030 digital expansion.",
+      "title": "SEO Services Riyadh & Web Design Riyadh, Saudi Arabia | WebABC",
+      "description": "SEO services Riyadh & web design in Riyadh: high-performance development and search optimization for Saudi businesses under Vision 2030.",
       "longDescription": "Saudi Arabia's Vision 2030 has catalyzed unprecedented digital growth in Riyadh. We build fast, secure, and search-optimized web applications tailored for the Saudi Arabian market.",
       "localNotes": "The Saudi market prioritizes mobile-first speed, localized Arabic copywriting, and seamless integration with regional payment and logistics gateways.",
       "services": [

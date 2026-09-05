@@ -1,6 +1,6 @@
 {
   "title": "Free SEO Title Checker & Headline Analyzer – Blog Title Checker SEO Tool",
-  "description": "Free SEO title checker, headline checker & blog title analyzer. Check SEO headline, title checker SEO and blog title SEO with pixel-accurate Google SERP preview, length scoring and CTR tips. No signup.",
+  "description": "Free blog title checker with pixel-accurate SERP preview. Keep titles 50–60 chars, boost CTR. Try it now — no signup.",
   "enterHeadline": "Enter Your Headline",
   "headlineLabel": "Headline",
   "placeholder": "Enter your headline here...",
@@ -39,6 +39,18 @@
     {
       "question": "How do I check title SEO for a blog post?",
       "answer": "Paste your blog title in the headline analyzer, then use the meta title section to test title SEO with your focus keyword. The tool scores length, keyword position, power words and shows if Google will truncate your title."
+    },
+    {
+      "question": "Headline checker vs Moz headline tool — which should I use?",
+      "answer": "Moz's headline tool is a solid classic for quick scoring, while our free headline checker adds a pixel-accurate SERP preview, meta title checks and unlimited use with no signup. Try both and keep the workflow you prefer."
+    },
+    {
+      "question": "What is the best analyzer for YouTube, book and Instagram titles?",
+      "answer": "Use the same CTR rules — around 50–60 characters, one number and one emotional hook — then paste your YouTube, book or Instagram title here to check length, power words and truncation before you publish."
+    },
+    {
+      "question": "How long should a title tag be?",
+      "answer": "Keep title tags 50–60 characters (about 580 pixels) with your keyword near the front. Paste yours above to see the exact pixel-accurate preview."
     }
   ],
   "meta": {
