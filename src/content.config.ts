@@ -49,6 +49,24 @@ const portfolio = defineCollection({
         label: z.string(),
       })
     ),
+    // Optional client testimonial data. Only real, sourced reviews belong
+    // here — never fabricate ratings. The template emits Review/
+    // AggregateRating JSON-LD only when these fields are present.
+    reviews: z
+      .array(
+        z.object({
+          author: z.string(),
+          text: z.string(),
+          rating: z.number().min(1).max(5).optional(),
+        })
+      )
+      .optional(),
+    rating: z
+      .object({
+        ratingValue: z.number().min(1).max(5),
+        reviewCount: z.number().int().positive(),
+      })
+      .optional(),
   }),
 });
 

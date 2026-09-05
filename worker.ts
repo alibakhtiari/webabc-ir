@@ -119,6 +119,27 @@ export default {
       return handleContact(request, env);
     }
 
+    // 2a. Legacy tool slugs -> canonical tool in a SINGLE 301 hop. Must run
+    // BEFORE trailing-slash normalization below, otherwise the bare path
+    // gets a slash first and the redirect costs two hops (both stay indexed).
+    const barePath =
+      url.pathname.length > 1 && url.pathname.endsWith('/')
+        ? url.pathname.slice(0, -1)
+        : url.pathname;
+    const toolRedirects: Record<string, string> = {};
+    for (const lang of ['en', 'fa', 'ar']) {
+      toolRedirects[`/${lang}/tools/seo-title-checker`] = `/${lang}/tools/headline-analyzer/`;
+    }
+    const toolTarget = toolRedirects[barePath];
+    if (toolTarget) {
+      return Response.redirect(`${url.origin}${toolTarget}${url.search}`, 301);
+    }
+    // Canonical tool URL without slash -> slashed, same single hop.
+    if (/^\/(en|fa|ar)\/tools\/headline-analyzer$/.test(url.pathname)) {
+      url.pathname += '/';
+      return Response.redirect(url.toString(), 301);
+    }
+
     // 2b. Trailing-slash normalization — permanent redirect. The assets layer
     // answers bare-directory paths with a temporary 307, which leaves both URL
     // variants indexed (confirmed in GSC). A single explicit 301 here collapses

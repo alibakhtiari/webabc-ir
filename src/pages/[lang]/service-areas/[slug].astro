@@ -58,6 +58,27 @@ const faqList = [1, 2, 3]
   }))
   .filter((item) => item.question && item.answer);
 
+// Location-level FAQs (per-location `faqs` on the location object, added
+// separately) merge into the global list. Guarded: no-op when absent. The
+// <FAQ> component below builds the FAQPage JSON-LD from the merged list, so
+// no second FAQPage block is emitted here.
+const locationFaqs = (Array.isArray(locationInfo.faqs) ? locationInfo.faqs : []).filter(
+  (f: any) => f?.question && f?.answer
+);
+const allFaqs = [...faqList, ...locationFaqs];
+
+// City coords for GeoCoordinates. Country stays an ISO code (lang-neutral);
+// locality/country display names keep coming from localized locationInfo.
+const LOCATION_GEO: Record<string, { latitude: number; longitude: number; countryCode: string }> = {
+  qazvin: { latitude: 36.27, longitude: 50.0, countryCode: 'IR' },
+  tehran: { latitude: 35.69, longitude: 51.39, countryCode: 'IR' },
+  muscat: { latitude: 23.59, longitude: 58.54, countryCode: 'OM' },
+  dubai: { latitude: 25.2, longitude: 55.27, countryCode: 'AE' },
+  'abu-dhabi': { latitude: 24.45, longitude: 54.38, countryCode: 'AE' },
+  riyadh: { latitude: 24.71, longitude: 46.68, countryCode: 'SA' },
+};
+const locationGeo = LOCATION_GEO[slug];
+
 const origin = 'https://webabc.ir';
 const locationSchema = {
   '@context': 'https://schema.org',
@@ -79,6 +100,20 @@ const locationSchema = {
       ? { '@type': 'Country', name: locationInfo.country }
       : undefined,
   },
+  ...(locationGeo
+    ? {
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: locationGeo.latitude,
+          longitude: locationGeo.longitude,
+        },
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: locationInfo.name,
+          addressCountry: locationGeo.countryCode,
+        },
+      }
+    : {}),
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: `Web & SEO Services in ${locationInfo.name}`,
@@ -95,8 +130,9 @@ const locationSchema = {
 };
 
 // The FAQPage JSON-LD for this list is emitted by the <FAQ> component itself
-// (it builds its own schema from faqList), so we intentionally do NOT emit a
-// second FAQPage script here — two FAQPage blocks on one URL is duplicative.
+// (it builds its own schema from the merged list passed to it), so we
+// intentionally do NOT emit a second FAQPage script here — two FAQPage blocks
+// on one URL is duplicative.
 ---
 
 <Layout
@@ -251,9 +287,9 @@ const locationSchema = {
 
       <!-- FAQ Section -->
       {
-        faqList.length > 0 && (
+        allFaqs.length > 0 && (
           <div class="mx-auto mb-12 max-w-3xl">
-            <FAQ faqList={faqList} lang={supportedLang} />
+            <FAQ faqList={allFaqs} lang={supportedLang} />
           </div>
         )
       }

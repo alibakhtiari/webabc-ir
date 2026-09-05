@@ -49,6 +49,38 @@ const breadcrumbs = [
 ];
 
 const origin = 'https://webabc.ir';
+
+// Review/AggregateRating — emitted ONLY when the entry frontmatter carries
+// real testimonial data (reviews/rating). No entry has such data today, so
+// this stays dormant until a genuine, attributed client quote is added.
+const entryReviews = project.data.reviews ?? [];
+const entryRating = project.data.rating;
+const hasReviewData = entryReviews.length > 0 || entryRating !== undefined;
+const reviewSchemaPart = hasReviewData
+  ? {
+      ...(entryReviews.length > 0
+        ? {
+            review: entryReviews.map((r) => ({
+              '@type': 'Review',
+              author: { '@type': 'Person', name: r.author },
+              reviewBody: r.text,
+              ...(typeof r.rating === 'number'
+                ? { reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5 } }
+                : {}),
+            })),
+          }
+        : {}),
+      ...(entryRating
+        ? {
+            aggregateRating: {
+              '@type': 'AggregateRating',
+              ratingValue: entryRating.ratingValue,
+              reviewCount: entryRating.reviewCount,
+            },
+          }
+        : {}),
+    }
+  : {};
 const projectSchema = {
   '@context': 'https://schema.org',
   '@type': ['CreativeWork', 'CaseStudy'],
@@ -65,6 +97,7 @@ const projectSchema = {
   publisher: { '@id': `${origin}/#organization` },
   author: { '@id': `${origin}/${supportedLang}/about/ali-bakhtiari/#person` },
   inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
+  ...reviewSchemaPart,
 };
 ---
 
@@ -140,6 +173,25 @@ const projectSchema = {
               }
             </div>
           </div>
+
+          {/* Client testimonial — renders only when the entry has real review data */}
+          {
+            entryReviews.length > 0 && (
+              <div class="space-y-6">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+                  {t('portfolio.clientFeedback', { fallback: 'Client Feedback' })}
+                </h2>
+                <blockquote class="rounded-e-xl border border-s-4 border-gray-100 border-s-primary bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900">
+                  <p class="leading-relaxed text-gray-600 italic dark:text-gray-300">
+                    “{entryReviews[0].text}”
+                  </p>
+                  <footer class="mt-3 text-sm font-bold text-gray-800 dark:text-gray-200">
+                    — {entryReviews[0].author}
+                  </footer>
+                </blockquote>
+              </div>
+            )
+          }
         </div>
 
         <!-- Sidebar details -->
