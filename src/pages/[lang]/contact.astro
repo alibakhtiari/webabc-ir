@@ -78,13 +78,16 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
           <form id="contact-form" class="space-y-6">
             <div>
               <label
+                for="contact-name"
                 class="mb-2 block text-start text-sm font-medium text-gray-700 dark:text-gray-300"
                 >{t('contact.consultation.fullName', { fallback: 'Full Name' })}</label
               >
               <input
+                id="contact-name"
                 name="name"
                 type="text"
                 required
+                autocomplete="name"
                 placeholder={t('contact.consultation.fullName', { fallback: 'Full Name' })}
                 class="h-11 w-full rounded-lg border border-gray-200 bg-white px-4 text-gray-900 focus:border-primary focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
               />
@@ -92,13 +95,16 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
 
             <div>
               <label
+                for="contact-email"
                 class="mb-2 block text-start text-sm font-medium text-gray-700 dark:text-gray-300"
                 >{t('contact.consultation.email', { fallback: 'Email' })}</label
               >
               <input
+                id="contact-email"
                 name="email"
                 type="email"
                 required
+                autocomplete="email"
                 placeholder="example@domain.com"
                 class="h-11 w-full rounded-lg border border-gray-200 bg-white px-4 text-gray-900 focus:border-primary focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
               />
@@ -106,10 +112,12 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
 
             <div>
               <label
+                for="contact-message"
                 class="mb-2 block text-start text-sm font-medium text-gray-700 dark:text-gray-300"
                 >{t('contact.consultation.message', { fallback: 'Message' })}</label
               >
               <textarea
+                id="contact-message"
                 name="message"
                 rows="5"
                 required

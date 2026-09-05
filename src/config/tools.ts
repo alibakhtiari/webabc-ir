@@ -13,7 +13,7 @@ export const toolConfigMap: Record<string, ToolConfig> = {
   'base64-encoder': {
     category: 'DeveloperApplication',
     related: [
-      { key: 'jsonFormatter', route: 'json-formatter' },
+      { key: 'tools.jsonFormatter', route: 'json-formatter' },
       { key: 'qrGenerator', route: 'qr-generator' },
       { key: 'slugGenerator', route: 'slug-generator' },
     ],
@@ -22,8 +22,8 @@ export const toolConfigMap: Record<string, ToolConfig> = {
   'box-shadow-generator': {
     category: 'DesignApplication',
     related: [
-      { key: 'glassmorphism', route: 'glassmorphism-generator' },
-      { key: 'cssGradient', route: 'css-gradient-generator' },
+      { key: 'glassGen', route: 'glassmorphism-generator' },
+      { key: 'gradientGen', route: 'css-gradient-generator' },
       { key: 'colorContrast', route: 'color-contrast-checker' },
     ],
     serviceSlug: 'web-design',
@@ -31,9 +31,9 @@ export const toolConfigMap: Record<string, ToolConfig> = {
   'color-contrast-checker': {
     category: 'DesignApplication',
     related: [
-      { key: 'glassmorphism', route: 'glassmorphism-generator' },
+      { key: 'glassGen', route: 'glassmorphism-generator' },
       { key: 'boxShadow', route: 'box-shadow-generator' },
-      { key: 'cssGradient', route: 'css-gradient-generator' },
+      { key: 'gradientGen', route: 'css-gradient-generator' },
     ],
     serviceSlug: 'ui-ux-audit',
   },
@@ -49,7 +49,7 @@ export const toolConfigMap: Record<string, ToolConfig> = {
   'css-gradient-generator': {
     category: 'DesignApplication',
     related: [
-      { key: 'glassmorphism', route: 'glassmorphism-generator' },
+      { key: 'glassGen', route: 'glassmorphism-generator' },
       { key: 'boxShadow', route: 'box-shadow-generator' },
       { key: 'colorContrast', route: 'color-contrast-checker' },
     ],
@@ -60,14 +60,14 @@ export const toolConfigMap: Record<string, ToolConfig> = {
     related: [
       { key: 'schemaGenerator', route: 'schema-generator' },
       { key: 'metaGenerator', route: 'meta-generator' },
-      { key: 'robotsGenerator', route: 'robots-generator' },
+      { key: 'tools.robotsGenerator', route: 'robots-generator' },
     ],
     serviceSlug: 'content-creation',
   },
   'glassmorphism-generator': {
     category: 'BusinessApplication',
     related: [
-      { key: 'cssGradient', route: 'css-gradient-generator' },
+      { key: 'gradientGen', route: 'css-gradient-generator' },
       { key: 'boxShadow', route: 'box-shadow-generator' },
       { key: 'colorContrast', route: 'color-contrast-checker' },
     ],
@@ -78,14 +78,14 @@ export const toolConfigMap: Record<string, ToolConfig> = {
     related: [
       { key: 'serpPreview', route: 'serp-preview' },
       { key: 'readabilityChecker', route: 'readability-checker' },
-      { key: 'keywordDensity', route: 'keyword-density-analyzer' },
+      { key: 'tools.keywordDensity', route: 'keyword-density-analyzer' },
     ],
     serviceSlug: 'content-creation',
   },
   'json-formatter': {
     category: 'BusinessApplication',
     related: [
-      { key: 'base64Encoder', route: 'base64-encoder' },
+      { key: 'base64', route: 'base64-encoder' },
       { key: 'schemaGenerator', route: 'schema-generator' },
       { key: 'qrGenerator', route: 'qr-generator' },
     ],
@@ -104,7 +104,7 @@ export const toolConfigMap: Record<string, ToolConfig> = {
     category: 'DesignApplication',
     related: [
       { key: 'slugGenerator', route: 'slug-generator' },
-      { key: 'base64Encoder', route: 'base64-encoder' },
+      { key: 'base64', route: 'base64-encoder' },
       { key: 'qrGenerator', route: 'qr-generator' },
     ],
     serviceSlug: 'web-development',
@@ -114,14 +114,14 @@ export const toolConfigMap: Record<string, ToolConfig> = {
     related: [
       { key: 'serpPreview', route: 'serp-preview' },
       { key: 'socialPreview', route: 'social-media-preview' },
-      { key: 'robotsGenerator', route: 'robots-generator' },
+      { key: 'tools.robotsGenerator', route: 'robots-generator' },
     ],
     serviceSlug: 'seo',
   },
   'paa-scraper': {
     category: 'BusinessApplication',
     related: [
-      { key: 'keywordDensity', route: 'keyword-density-analyzer' },
+      { key: 'tools.keywordDensity', route: 'keyword-density-analyzer' },
       { key: 'headlineAnalyzer', route: 'headline-analyzer' },
       { key: 'faqGenerator', route: 'faq-generator' },
     ],
@@ -130,7 +130,7 @@ export const toolConfigMap: Record<string, ToolConfig> = {
   'privacy-policy-generator': {
     category: 'BusinessApplication',
     related: [
-      { key: 'robotsGenerator', route: 'robots-generator' },
+      { key: 'tools.robotsGenerator', route: 'robots-generator' },
       { key: 'metaGenerator', route: 'meta-generator' },
       { key: 'schemaGenerator', route: 'schema-generator' },
     ],
@@ -141,7 +141,7 @@ export const toolConfigMap: Record<string, ToolConfig> = {
     related: [
       { key: 'utmBuilder', route: 'utm-builder' },
       { key: 'slugGenerator', route: 'slug-generator' },
-      { key: 'base64Encoder', route: 'base64-encoder' },
+      { key: 'base64', route: 'base64-encoder' },
     ],
     serviceSlug: 'web-design',
   },
@@ -149,7 +149,7 @@ export const toolConfigMap: Record<string, ToolConfig> = {
     category: 'BusinessApplication',
     related: [
       { key: 'headlineAnalyzer', route: 'headline-analyzer' },
-      { key: 'keywordDensity', route: 'keyword-density-analyzer' },
+      { key: 'tools.keywordDensity', route: 'keyword-density-analyzer' },
       { key: 'serpPreview', route: 'serp-preview' },
     ],
     serviceSlug: 'content-creation',
@@ -167,7 +167,7 @@ export const toolConfigMap: Record<string, ToolConfig> = {
     category: 'DeveloperApplication',
     related: [
       { key: 'metaGenerator', route: 'meta-generator' },
-      { key: 'robotsGenerator', route: 'robots-generator' },
+      { key: 'tools.robotsGenerator', route: 'robots-generator' },
       { key: 'faqGenerator', route: 'faq-generator' },
     ],
     serviceSlug: 'seo',

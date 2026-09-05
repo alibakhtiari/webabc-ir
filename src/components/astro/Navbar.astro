@@ -562,13 +562,14 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
     </div>
   </div>
 
-  <!-- Mobile Dropdown drawer Menu -->
+  <!-- Mobile Dropdown drawer Menu (z-[60] keeps the whole drawer, panel included,
+       above the fixed site header at z-50 so the close row stays visible/clickable) -->
   <div
     id="mobile-drawer"
     role="dialog"
     aria-modal="true"
     aria-label="Mobile Navigation"
-    class="fixed inset-0 z-40 hidden bg-black/60 backdrop-blur-xs transition-opacity duration-300"
+    class="fixed inset-0 z-[60] hidden bg-black/60 backdrop-blur-xs transition-opacity duration-300"
   >
     <div
       class={`fixed top-0 bottom-0 ${isRtl ? 'left-0' : 'right-0'} w-[85%] max-w-sm bg-white dark:bg-slate-900 text-foreground shadow-2xl p-6 flex flex-col h-full overflow-y-auto z-50 border-s border-transparent dark:border-slate-800`}
@@ -631,22 +632,22 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
                 >
                   <a
                     href={linkPath('/services/seo')}
-                    class="py-1 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                     >{t('services.seoTitle')}</a
                   >
                   <a
                     href={linkPath('/services/local-seo')}
-                    class="py-1 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                     >{t('services.localSeoTitle')}</a
                   >
                   <a
                     href={linkPath('/services/link-building')}
-                    class="py-1 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                     >{t('services.linkBuildingTitle')}</a
                   >
                   <a
                     href={linkPath('/services/content-creation')}
-                    class="py-1 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                     >{t('services.contentCreationTitle')}</a
                   >
                 </div>
@@ -662,22 +663,22 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
                 >
                   <a
                     href={linkPath('/services/web-development')}
-                    class="py-1 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                     >{t('services.webDevTitle')}</a
                   >
                   <a
                     href={linkPath('/services/wordpress-development')}
-                    class="py-1 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                     >{t('wordpress.wordpressAndWoocommerce')}</a
                   >
                   <a
                     href={linkPath('/services/web-design')}
-                    class="py-1 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                     >{t('common.webDesignAndDevelopment')}</a
                   >
                   <a
                     href={linkPath('/services/ecommerce')}
-                    class="py-1 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                     >{t('ecommerce.title', { fallback: 'E-commerce' })}</a
                   >
                 </div>
@@ -824,44 +825,63 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
     </div>
     <form id="consultation-form" class="space-y-4">
       <div>
-        <label class="mb-1.5 block text-sm font-semibold text-gray-700 dark:text-gray-300">
+        <label
+          for="consultation-name"
+          class="mb-1.5 block text-sm font-semibold text-gray-700 dark:text-gray-300"
+        >
           {t('consultation.fullName', { fallback: 'Full Name' })}
         </label>
         <input
+          id="consultation-name"
           type="text"
           name="name"
           required
+          autocomplete="name"
           class="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white"
         />
       </div>
       <div>
-        <label class="mb-1.5 block text-sm font-semibold text-gray-700 dark:text-gray-300">
+        <label
+          for="consultation-phone"
+          class="mb-1.5 block text-sm font-semibold text-gray-700 dark:text-gray-300"
+        >
           {t('consultation.phone', { fallback: 'Phone Number' })}
         </label>
         <input
+          id="consultation-phone"
           type="tel"
           name="phone"
           required
+          autocomplete="tel"
           class="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white"
           dir="ltr"
         />
       </div>
       <div>
-        <label class="mb-1.5 block text-sm font-semibold text-gray-700 dark:text-gray-300">
+        <label
+          for="consultation-email"
+          class="mb-1.5 block text-sm font-semibold text-gray-700 dark:text-gray-300"
+        >
           {t('consultation.email', { fallback: 'Email Address' })}
         </label>
         <input
+          id="consultation-email"
           type="email"
           name="email"
+          autocomplete="email"
           class="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white"
           dir="ltr"
         />
       </div>
       <div>
-        <label class="mb-1.5 block text-sm font-semibold text-gray-700 dark:text-gray-300">
+        <label
+          for="consultation-message"
+          class="mb-1.5 block text-sm font-semibold text-gray-700 dark:text-gray-300"
+        >
           {t('consultation.message', { fallback: 'Message' })}
         </label>
         <textarea
+          id="consultation-message"
           name="message"
           rows="3"
           required
@@ -888,6 +908,11 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
 
 <script is:inline>
   (() => {
+    // setupNavbar re-runs on every astro:page-load (SPA navigation swaps the
+    // navbar DOM), so document-level listeners are registered exactly once and
+    // resolve their targets fresh on each event instead of closing over stale nodes.
+    let documentListenersBound = false;
+
     function setupNavbar() {
       // Mobile Menu Drawer Control
       const mobileBtn = document.getElementById('mobile-menu-btn');
@@ -963,12 +988,6 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
           const isOpen = mobileLangDropdown.classList.toggle('hidden');
           mobileLangBtn.setAttribute('aria-expanded', String(!isOpen));
         };
-        document.addEventListener('click', (e) => {
-          if (!mobileLangBtn.contains(e.target)) {
-            mobileLangDropdown.classList.add('hidden');
-            mobileLangBtn.setAttribute('aria-expanded', 'false');
-          }
-        });
       }
 
       // Theme Toggle Controls
@@ -1102,12 +1121,32 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
         };
       }
 
-      // Global Escape Key Listener for Dialogs and Drawers
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && drawer && !drawer.classList.contains('hidden')) {
-          closeDrawer();
-        }
-      });
+      // Document-level listeners: registered once (see flag above). Each handler
+      // looks up the current navbar DOM so SPA navigations never go stale.
+      if (!documentListenersBound) {
+        documentListenersBound = true;
+        document.addEventListener('click', (e) => {
+          const langBtn = document.getElementById('mobile-lang-btn');
+          const langDd = document.getElementById('mobile-lang-dropdown');
+          if (langBtn && langDd && !langBtn.contains(e.target)) {
+            langDd.classList.add('hidden');
+            langBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key !== 'Escape') return;
+          const d = document.getElementById('mobile-drawer');
+          if (d && !d.classList.contains('hidden')) {
+            d.classList.add('hidden');
+            document.body.style.overflow = '';
+            const mb = document.getElementById('mobile-menu-btn');
+            if (mb) {
+              mb.setAttribute('aria-expanded', 'false');
+              mb.focus();
+            }
+          }
+        });
+      }
     }
 
     document.addEventListener('astro:page-load', setupNavbar);
