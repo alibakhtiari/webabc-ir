@@ -4,177 +4,394 @@ import Hero from '@/components/astro/Hero.astro';
 import OptimizedImage from '@/components/astro/OptimizedImage.astro';
 import { getLanguageStaticPaths, type SupportedLanguage, languages } from '@/types/language';
 import { getDictionary } from '@/i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
 import { getCollection } from 'astro:content';
+import {
+  PILLARS,
+  PILLAR_LABELS,
+  getProjectPillar,
+  formatLocalizedNumber,
+  type PortfolioPillar,
+} from '@/data/portfolio-meta';
 
 export const getStaticPaths = getLanguageStaticPaths;
 
 const { lang } = Astro.params;
 const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
+const t = createTranslator(dictionary);
 const isRtl = languages[supportedLang]?.direction === 'rtl';
+const fontClass = supportedLang === 'en' ? 'font-sans' : supportedLang === 'ar' ? 'font-arabic' : 'font-persian';
 
-// Fetch projects
+// Fetch all projects for the current language
 const allProjects = await getCollection('portfolio');
 const filteredProjects = allProjects.filter((proj) => proj.id.startsWith(`${supportedLang}/`));
 
-const items = filteredProjects.map((p) => ({
-  slug: p.id.replace(`${supportedLang}/`, '').replace(/\.mdx?$/, ''),
-  title: p.data.title,
-  description: p.data.description,
-  category: p.data.category,
-  image: p.data.image,
-  technologies: p.data.technologies || [],
-}));
-
-const categories = ['all', ...new Set(items.map((item) => item.category))];
-
-const titleText = t('portfolio.title', { fallback: 'Case Studies' });
-const descriptionText = t('portfolio.description', { fallback: 'Showcasing our projects' });
-
-const getCategoryLabel = (category: string) => {
-  if (category === 'all') return t('portfolio.allProjects', { fallback: 'All Projects' });
-  if (category === 'Web Design') return t('portfolio.webDesign', { fallback: 'Web Design' });
-  if (category === 'SEO') return t('portfolio.seoProjects', { fallback: 'SEO Projects' });
-  if (category === 'Local SEO') return t('portfolio.localSeo', { fallback: 'Local SEO' });
-  if (category === 'E-commerce') return t('portfolio.ecommerce', { fallback: 'E-Commerce' });
-  return category;
+// Pillar counts calculation
+const counts: Record<PortfolioPillar, number> = {
+  'all': filteredProjects.length,
+  'web-dev': 0,
+  'ecommerce': 0,
+  'seo': 0,
+  'local-seo': 0,
 };
 
-const breadcrumbs = [
-  { label: t('common.home'), url: `/${supportedLang}/` },
-  { label: t('common.portfolio') },
-];
+const items = filteredProjects.map((p) => {
+  const slug = p.id.replace(`${supportedLang}/`, '').replace(/\.mdx?$/, '');
+  const pillar = getProjectPillar(slug, p.data.category);
+  counts[pillar] = (counts[pillar] || 0) + 1;
 
-// Helper to translate strings
-function t(key: string, options?: { fallback: string }) {
-  const parts = key.split('.');
-  let current: any = dictionary;
-  for (const part of parts) {
-    if (current && current[part] !== undefined) {
-      current = current[part];
-    } else {
-      return options?.fallback || key;
-    }
-  }
-  return typeof current === 'string' ? current : options?.fallback || key;
-}
+  return {
+    slug,
+    title: p.data.title,
+    description: p.data.description,
+    client: p.data.client,
+    category: p.data.category,
+    pillar,
+    pillarLabel: PILLAR_LABELS[supportedLang][pillar],
+    image: p.data.image,
+    technologies: p.data.technologies || [],
+    results: p.data.results || [],
+    projectUrl: p.data.projectUrl,
+  };
+});
+
+const titleText = t('portfolio.title', { fallback: 'Our Portfolio - Case Studies | WebABC' });
+const descriptionText = t('portfolio.description', {
+  fallback: 'Browse our portfolio of successful web design, development, and SEO projects.',
+});
+
+const breadcrumbs = [
+  { label: t('common.home', { fallback: 'Home' }), url: `/${supportedLang}/` },
+  { label: t('common.portfolio', { fallback: 'Portfolio' }) },
+];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="portfolio">
+  <!-- Hero Section with Breadcrumbs -->
   <Hero
     title={titleText}
     description={descriptionText}
     breadcrumbs={breadcrumbs}
     lang={supportedLang}
-  />
-
-  <!-- Portfolio Grid Section -->
-  <section class="py-16 font-sans">
-    <div class="container mx-auto px-4">
-      <h2
-        class={`text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center font-${supportedLang === 'en' ? 'sans' : 'persian'}`}
+  >
+    <!-- Social Proof Stats Banner directly integrated with Hero -->
+    <div class="mt-8 w-full">
+      <div
+        class="mx-auto grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-3 md:gap-6 text-start"
       >
-        {
-          supportedLang === 'fa'
-            ? 'نمونه کارهای سئو و طراحی سایت'
-            : supportedLang === 'ar'
-              ? 'معرض أعمالنا وحالات الدراسة'
-              : 'Featured Client Case Studies & Projects'
-        }
-      </h2>
-
-      <!-- Category Filter -->
-      <div class="mb-12 flex flex-wrap justify-center gap-3 font-persian">
-        {
-          categories.map((category, idx) => (
-            <a
-              href={`/${supportedLang}/portfolio/?category=${encodeURIComponent(category)}`}
-              data-filter-btn={category}
-              aria-current={idx === 0 ? 'true' : 'false'}
-              class={`cursor-pointer rounded-full border px-5 py-2.5 text-xs font-semibold transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
-                idx === 0
-                  ? 'border-primary bg-primary text-primary-foreground shadow-sm'
-                  : 'border-gray-200 bg-white text-gray-700 hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700'
-              }`}
+        <!-- Stat 1 -->
+        <div
+          class="relative overflow-hidden rounded-2xl border border-gray-200/80 bg-white/80 p-5 shadow-xs backdrop-blur-md transition-all hover:border-primary/40 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/80"
+        >
+          <div class="flex items-center gap-4">
+            <div
+              class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary"
             >
-              {getCategoryLabel(category)}
-            </a>
-          ))
-        }
+              <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+              </svg>
+            </div>
+            <div>
+              <div class="font-mono text-2xl md:text-3xl font-extrabold text-gray-900 dark:text-white">
+                {t('portfolio.stats.caseStudiesValue', { fallback: '16+' })}
+              </div>
+              <div class="text-xs font-semibold text-gray-500 dark:text-gray-400">
+                {t('portfolio.stats.caseStudiesLabel', { fallback: 'Verified Case Studies' })}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stat 2 -->
+        <div
+          class="relative overflow-hidden rounded-2xl border border-gray-200/80 bg-white/80 p-5 shadow-xs backdrop-blur-md transition-all hover:border-primary/40 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/80"
+        >
+          <div class="flex items-center gap-4">
+            <div
+              class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+            >
+              <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
+            </div>
+            <div>
+              <div class="font-mono text-2xl md:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400">
+                {t('portfolio.stats.trafficValue', { fallback: '4x' })}
+              </div>
+              <div class="text-xs font-semibold text-gray-500 dark:text-gray-400">
+                {t('portfolio.stats.trafficLabel', { fallback: 'Avg Organic Traffic' })}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stat 3 -->
+        <div
+          class="relative overflow-hidden rounded-2xl border border-gray-200/80 bg-white/80 p-5 shadow-xs backdrop-blur-md transition-all hover:border-primary/40 hover:shadow-md dark:border-slate-800 dark:bg-slate-900/80"
+        >
+          <div class="flex items-center gap-4">
+            <div
+              class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400"
+            >
+              <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <div class="font-mono text-2xl md:text-3xl font-extrabold text-blue-600 dark:text-blue-400">
+                {t('portfolio.stats.deliveryValue', { fallback: '100%' })}
+              </div>
+              <div class="text-xs font-semibold text-gray-500 dark:text-gray-400">
+                {t('portfolio.stats.deliveryLabel', { fallback: 'On-Time Delivery' })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Hero>
+
+  <!-- Interactive Portfolio Section -->
+  <section class={`py-12 md:py-16 ${fontClass}`}>
+    <div class="container mx-auto px-4">
+      <!-- Search & Filters Container -->
+      <div class="mx-auto mb-10 max-w-4xl space-y-6">
+        <!-- Instant Search Bar -->
+        <div class="relative">
+          <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-4 text-gray-400">
+            <svg aria-hidden="true" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <input
+            id="portfolio-search-input"
+            type="search"
+            autocomplete="off"
+            placeholder={t('portfolio.search.placeholder', {
+              fallback: 'Search by client, keyword, or technology (e.g. Astro, WooCommerce, SEO)...',
+            })}
+            class="h-13 w-full rounded-2xl border border-gray-200 bg-white pe-12 ps-12 text-sm text-gray-900 shadow-xs transition-all placeholder:text-gray-400 focus:border-primary focus:bg-white focus:outline-none focus:ring-3 focus:ring-primary/15 dark:border-slate-800 dark:bg-slate-900 dark:text-white dark:placeholder:text-gray-500 dark:focus:border-primary dark:focus:bg-slate-900"
+          />
+          <button
+            id="clear-search-btn"
+            type="button"
+            title={t('portfolio.search.clear', { fallback: 'Clear search' })}
+            aria-label={t('portfolio.search.clear', { fallback: 'Clear search' })}
+            class="absolute inset-y-0 end-0 hidden items-center pe-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200"
+          >
+            <svg aria-hidden="true" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Unified Category Filter Pills -->
+        <div class="flex flex-wrap items-center justify-center gap-2 md:gap-3" role="tablist" aria-label="Project categories">
+          {
+            PILLARS.map((pillarKey, idx) => {
+              const label = PILLAR_LABELS[supportedLang][pillarKey];
+              const count = counts[pillarKey];
+              const localizedCount = formatLocalizedNumber(count, supportedLang);
+              const isActive = idx === 0;
+
+              return (
+                <button
+                  type="button"
+                  data-filter-btn={pillarKey}
+                  role="tab"
+                  aria-selected={isActive ? 'true' : 'false'}
+                  class={`group flex cursor-pointer items-center gap-1.5 rounded-full border px-4 py-2 text-xs font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
+                    isActive
+                      ? 'border-primary bg-primary text-primary-foreground shadow-sm'
+                      : 'border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50 dark:border-slate-800 dark:bg-slate-900 dark:text-gray-300 dark:hover:border-slate-700 dark:hover:bg-slate-800'
+                  }`}
+                >
+                  <span>{label}</span>
+                  <span
+                    data-count-badge
+                    class={`inline-flex items-center justify-center rounded-full px-2 py-0.5 text-[11px] font-mono font-bold transition-colors ${
+                      isActive
+                        ? 'bg-primary-foreground/20 text-primary-foreground'
+                        : 'bg-gray-100 text-gray-600 group-hover:bg-gray-200 dark:bg-slate-800 dark:text-gray-400 dark:group-hover:bg-slate-700'
+                    }`}
+                  >
+                    {localizedCount}
+                  </span>
+                </button>
+              );
+            })
+          }
+        </div>
+
+        <!-- Real-time Active Results Counter -->
+        <div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 px-1">
+          <div id="results-count-text">
+            <span>{t('portfolio.search.showing', { fallback: 'Showing' })}</span>
+            <span id="visible-count" class="font-bold text-gray-900 dark:text-white px-1 font-mono">
+              {formatLocalizedNumber(items.length, supportedLang)}
+            </span>
+            <span>{t('portfolio.search.of', { fallback: 'of' })}</span>
+            <span class="font-bold text-gray-900 dark:text-white px-1 font-mono">
+              {formatLocalizedNumber(items.length, supportedLang)}
+            </span>
+            <span>{t('portfolio.search.projects', { fallback: 'case studies' })}</span>
+          </div>
+        </div>
       </div>
 
-      <!-- Portfolio Grid -->
-      <div class="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Empty State Indicator -->
+      <div
+        id="no-results-state"
+        class="hidden my-12 rounded-3xl border border-dashed border-gray-300 bg-gray-50/70 p-12 text-center dark:border-slate-800 dark:bg-slate-900/50"
+      >
+        <div
+          class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary"
+        >
+          <svg aria-hidden="true" class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">
+          {t('portfolio.search.noResultsTitle', { fallback: 'No case studies match your query' })}
+        </h3>
+        <p class="mx-auto mb-6 max-w-md text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+          {t('portfolio.search.noResultsDesc', {
+            fallback: 'Try clearing filters, searching for a different keyword, or selecting another category.',
+          })}
+        </p>
+        <button
+          id="reset-filter-btn"
+          type="button"
+          class="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-xs font-bold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        >
+          <svg aria-hidden="true" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+          <span>{t('portfolio.search.reset', { fallback: 'Reset All Filters' })}</span>
+        </button>
+      </div>
+
+      <!-- Modern Portfolio Grid -->
+      <div
+        id="portfolio-grid"
+        class="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
+      >
         {
-          items.map((item) => (
-            <div
-              data-portfolio-card={item.category}
-              class="group overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
-            >
-              <a href={`/${supportedLang}/portfolio/${item.slug}/`} class="block">
-                <div class="relative aspect-video overflow-hidden">
+          items.map((item) => {
+            const topMetrics = item.results.slice(0, 2);
+            const displayedTech = item.technologies.slice(0, 3);
+            const remainingTechCount = item.technologies.length - displayedTech.length;
+            const searchable = `${item.title} ${item.client} ${item.description} ${item.technologies.join(' ')} ${item.pillarLabel}`.toLowerCase();
+
+            return (
+              <article
+                data-portfolio-card="true"
+                data-category={item.pillar}
+                data-client={item.client.toLowerCase()}
+                data-search={searchable}
+                class="group flex flex-col overflow-hidden rounded-2xl border border-gray-200/80 bg-white shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
+              >
+                <!-- Card Media Container -->
+                <a
+                  href={`/${supportedLang}/portfolio/${item.slug}/`}
+                  class="relative aspect-16/10 block overflow-hidden bg-gray-100 dark:bg-slate-800"
+                  aria-label={item.title}
+                >
                   <OptimizedImage
                     src={item.image}
                     alt={item.title}
-                    width={400}
-                    height={225}
+                    width={500}
+                    height={312}
                     loading="lazy"
                     class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <div class="absolute bottom-4 left-4">
-                      <span class="rounded bg-primary px-2.5 py-1 text-xs font-semibold text-primary-foreground">
-                        {getCategoryLabel(item.category)}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div class="space-y-4 p-6">
-                  <h3 class="mb-2 line-clamp-1 font-persian text-xl font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
-                    {item.title}
-                  </h3>
-                  <p class="mb-4 line-clamp-2 font-persian text-sm leading-relaxed text-gray-500 dark:text-gray-400">
-                    {item.description}
-                  </p>
+                  <!-- Gradient Overlay -->
+                  <div class="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90"></div>
 
-                  <div class="flex items-center gap-1 font-persian text-sm font-semibold text-primary transition-all group-hover:gap-2">
-                    {t('common.viewDetails', { fallback: 'View Details' })}
-                    {isRtl ? (
-                      <svg
-                        aria-hidden="true"
-                        class="h-4 w-4 rotate-180 transform"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M14 5l7 7m0 0l-7 7m7-7H3"
-                        />
-                      </svg>
-                    ) : (
-                      <svg
-                        aria-hidden="true"
-                        class="h-4 w-4"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M14 5l7 7m0 0l-7 7m7-7H3"
-                        />
-                      </svg>
+                  <!-- Badges on Image -->
+                  <div class="absolute top-3 inset-x-3 flex items-center justify-between gap-2">
+                    <span class="rounded-full bg-black/60 px-3 py-1 text-[11px] font-semibold text-white backdrop-blur-md">
+                      {item.client}
+                    </span>
+                    <span class="rounded-full bg-primary px-3 py-1 text-[11px] font-bold text-primary-foreground shadow-xs">
+                      {item.pillarLabel}
+                    </span>
+                  </div>
+                </a>
+
+                <!-- Card Body -->
+                <div class="flex flex-1 flex-col justify-between p-6">
+                  <div class="space-y-4">
+                    <!-- Title -->
+                    <h3 class="line-clamp-1 text-lg font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+                      <a href={`/${supportedLang}/portfolio/${item.slug}/`}>
+                        {item.title}
+                      </a>
+                    </h3>
+
+                    <!-- Description -->
+                    <p class="line-clamp-2 text-xs leading-relaxed text-gray-600 dark:text-gray-400">
+                      {item.description}
+                    </p>
+
+                    <!-- Top 2 Key Metric Badges -->
+                    {topMetrics.length > 0 && (
+                      <div class="grid grid-cols-2 gap-2 pt-1">
+                        {topMetrics.map((res) => (
+                          <div class="flex flex-col justify-center rounded-xl border border-primary/15 bg-primary/5 p-2.5 text-center transition-colors dark:border-primary/20 dark:bg-primary/10">
+                            <span class="font-mono text-sm font-extrabold text-primary">
+                              {res.value}
+                            </span>
+                            <span class="truncate text-[10px] font-medium text-gray-500 dark:text-gray-400">
+                              {res.label}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    <!-- Technology Badges -->
+                    {displayedTech.length > 0 && (
+                      <div class="flex flex-wrap gap-1.5 pt-1">
+                        {displayedTech.map((tech) => (
+                          <span class="rounded-md border border-gray-200 bg-gray-50 px-2 py-0.5 font-mono text-[11px] text-gray-600 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300">
+                            {tech}
+                          </span>
+                        ))}
+                        {remainingTechCount > 0 && (
+                          <span class="rounded-md border border-gray-200 bg-gray-50 px-1.5 py-0.5 font-mono text-[11px] text-gray-400 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-500">
+                            +{remainingTechCount}
+                          </span>
+                        )}
+                      </div>
                     )}
                   </div>
+
+                  <!-- Card Footer Action -->
+                  <div class="mt-6 border-t border-gray-100 pt-4 dark:border-slate-800/80">
+                    <a
+                      href={`/${supportedLang}/portfolio/${item.slug}/`}
+                      class="flex items-center justify-between text-xs font-bold text-primary transition-all group-hover:text-primary/80"
+                    >
+                      <span>{t('portfolio.card.viewCaseStudy', { fallback: 'View Case Study' })}</span>
+                      <span class="transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
+                        {isRtl ? (
+                          <svg aria-hidden="true" class="h-4 w-4 rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
+                        ) : (
+                          <svg aria-hidden="true" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
+                        )}
+                      </span>
+                    </a>
+                  </div>
                 </div>
-              </a>
-            </div>
-          ))
+              </article>
+            );
+          })
         }
       </div>
     </div>
@@ -183,67 +400,182 @@ function t(key: string, options?: { fallback: string }) {
 
 <script is:inline>
   (() => {
-    function initPortfolioFilter() {
+    function initPortfolioSearchAndFilter() {
+      const searchInput = document.getElementById('portfolio-search-input');
+      const clearBtn = document.getElementById('clear-search-btn');
       const filterBtns = document.querySelectorAll('[data-filter-btn]');
-      const portfolioCards = document.querySelectorAll('[data-portfolio-card]');
+      const portfolioCards = document.querySelectorAll('[data-portfolio-card="true"]');
+      const noResultsState = document.getElementById('no-results-state');
+      const resetBtn = document.getElementById('reset-filter-btn');
+      const visibleCountEl = document.getElementById('visible-count');
 
-      if (!filterBtns.length) return;
+      if (!portfolioCards.length) return;
 
-      const activeClass =
-        'px-5 py-2.5 text-xs font-semibold rounded-full border border-primary bg-primary text-primary-foreground shadow-sm cursor-pointer transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2';
-      const inactiveClass =
-        'px-5 py-2.5 text-xs font-semibold rounded-full border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-700 cursor-pointer transition-all focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2';
+      let currentCategory = 'all';
+      let currentQuery = '';
 
-      function applyFilter(selected) {
-        filterBtns.forEach((b) => {
-          b.className = inactiveClass;
-          b.removeAttribute('aria-current');
-        });
-        const activeBtn =
-          document.querySelector(`[data-filter-btn="${selected}"]`) ||
-          document.querySelector('[data-filter-btn="all"]');
-        if (activeBtn) {
-          activeBtn.className = activeClass;
-          activeBtn.setAttribute('aria-current', 'true');
+      const activeBtnClass =
+        'border-primary bg-primary text-primary-foreground shadow-sm';
+      const inactiveBtnClass =
+        'border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50 dark:border-slate-800 dark:bg-slate-900 dark:text-gray-300 dark:hover:border-slate-700 dark:hover:bg-slate-800';
+
+      const activeBadgeClass =
+        'bg-primary-foreground/20 text-primary-foreground';
+      const inactiveBadgeClass =
+        'bg-gray-100 text-gray-600 group-hover:bg-gray-200 dark:bg-slate-800 dark:text-gray-400 dark:group-hover:bg-slate-700';
+
+      function updateURL(category, query) {
+        const url = new URL(window.location.href);
+        if (category && category !== 'all') {
+          url.searchParams.set('category', category);
+        } else {
+          url.searchParams.delete('category');
         }
 
+        if (query && query.trim().length > 0) {
+          url.searchParams.set('q', query.trim());
+        } else {
+          url.searchParams.delete('q');
+        }
+
+        window.history.replaceState({}, '', url.toString());
+      }
+
+      function applyFilter() {
+        const normalizedQuery = currentQuery.trim().toLowerCase();
+        let visibleCount = 0;
+
         portfolioCards.forEach((card) => {
-          const cardCat = card.getAttribute('data-portfolio-card');
-          if (selected === 'all' || cardCat === selected) {
+          const cardCat = card.getAttribute('data-category');
+          const cardSearchData = card.getAttribute('data-search') || '';
+
+          const matchesCategory = currentCategory === 'all' || cardCat === currentCategory;
+          const matchesQuery =
+            normalizedQuery.length === 0 || cardSearchData.includes(normalizedQuery);
+
+          if (matchesCategory && matchesQuery) {
             card.classList.remove('hidden');
+            visibleCount++;
           } else {
             card.classList.add('hidden');
           }
         });
+
+        // Update button active state
+        filterBtns.forEach((btn) => {
+          const cat = btn.getAttribute('data-filter-btn');
+          const badge = btn.querySelector('[data-count-badge]');
+          const isSelected = cat === currentCategory;
+
+          btn.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+          btn.className = btn.className
+            .replace(activeBtnClass, '')
+            .replace(inactiveBtnClass, '')
+            .trim();
+          btn.className += ` ${isSelected ? activeBtnClass : inactiveBtnClass}`;
+
+          if (badge) {
+            badge.className = badge.className
+              .replace(activeBadgeClass, '')
+              .replace(inactiveBadgeClass, '')
+              .trim();
+            badge.className += ` ${isSelected ? activeBadgeClass : inactiveBadgeClass}`;
+          }
+        });
+
+        // Update clear button visibility
+        if (clearBtn) {
+          if (normalizedQuery.length > 0) {
+            clearBtn.classList.remove('hidden');
+            clearBtn.classList.add('flex');
+          } else {
+            clearBtn.classList.add('hidden');
+            clearBtn.classList.remove('flex');
+          }
+        }
+
+        // Toggle empty state
+        if (visibleCount === 0) {
+          noResultsState?.classList.remove('hidden');
+        } else {
+          noResultsState?.classList.add('hidden');
+        }
+
+        // Update count text
+        if (visibleCountEl) {
+          visibleCountEl.textContent = visibleCount.toString();
+        }
+
+        updateURL(currentCategory, currentQuery);
       }
 
+      // Filter button click handler
       filterBtns.forEach((btn) => {
         btn.onclick = (e) => {
           e.preventDefault();
-          const selected = btn.getAttribute('data-filter-btn');
-
-          applyFilter(selected);
-
-          const url = new URL(window.location);
-          if (selected === 'all') {
-            url.searchParams.delete('category');
-          } else {
-            url.searchParams.set('category', selected);
-          }
-          window.history.pushState({}, '', url);
+          const selected = btn.getAttribute('data-filter-btn') || 'all';
+          currentCategory = selected;
+          applyFilter();
         };
       });
 
-      const urlParams = new URLSearchParams(window.location.search);
-      const initialCategory = urlParams.get('category');
-      if (initialCategory) {
-        applyFilter(decodeURIComponent(initialCategory));
+      // Search input handler
+      if (searchInput) {
+        searchInput.oninput = (e) => {
+          currentQuery = e.target.value;
+          applyFilter();
+        };
       }
+
+      // Clear search button handler
+      if (clearBtn) {
+        clearBtn.onclick = () => {
+          if (searchInput) {
+            searchInput.value = '';
+            searchInput.focus();
+          }
+          currentQuery = '';
+          applyFilter();
+        };
+      }
+
+      // Reset button in empty state
+      if (resetBtn) {
+        resetBtn.onclick = () => {
+          if (searchInput) {
+            searchInput.value = '';
+          }
+          currentQuery = '';
+          currentCategory = 'all';
+          applyFilter();
+        };
+      }
+
+      // Initialize from URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const initialCat = urlParams.get('category');
+      const initialQuery = urlParams.get('q');
+
+      if (initialCat) {
+        const matchingBtn = document.querySelector(`[data-filter-btn="${initialCat}"]`);
+        if (matchingBtn) {
+          currentCategory = initialCat;
+        }
+      }
+
+      if (initialQuery) {
+        currentQuery = initialQuery;
+        if (searchInput) {
+          searchInput.value = initialQuery;
+        }
+      }
+
+      applyFilter();
     }
 
-    document.addEventListener('astro:page-load', initPortfolioFilter);
+    document.addEventListener('astro:page-load', initPortfolioSearchAndFilter);
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
-      initPortfolioFilter();
+      initPortfolioSearchAndFilter();
     }
   })();
 </script>
