@@ -40,6 +40,65 @@ const ARABIC_COUNTRIES = [
 // noindex header so it can never compete with the canonical site in search.
 const CANONICAL_HOST = 'webabc.ir';
 
+const STATIC_REDIRECTS: Record<string, string> = {
+  // Sitemaps
+  '/sitemap.xml': '/sitemap-index.xml',
+
+  // Tool legacy slugs
+  '/en/tools/seo-title-analyzer': '/en/tools/headline-analyzer/',
+  '/fa/tools/seo-title-analyzer': '/fa/tools/headline-analyzer/',
+  '/ar/tools/seo-title-analyzer': '/ar/tools/headline-analyzer/',
+  '/en/tools/seo-title-checker': '/en/tools/headline-analyzer/',
+  '/fa/tools/seo-title-checker': '/fa/tools/headline-analyzer/',
+  '/ar/tools/seo-title-checker': '/ar/tools/headline-analyzer/',
+
+  // Services
+  '/en/services/modern-web-development': '/en/services/web-development/',
+  '/fa/services/modern-web-development': '/fa/services/web-development/',
+  '/ar/services/modern-web-development': '/ar/services/web-development/',
+  '/en/local-seo-services': '/en/services/seo/',
+  '/en/local-seo': '/en/services/seo/',
+  '/fa/local-seo': '/fa/services/seo/',
+  '/ar/local-seo': '/ar/services/seo/',
+  '/en/seo-services': '/en/services/seo/',
+  '/ar/seo-services': '/ar/services/seo/',
+  '/fa/web-design': '/fa/services/web-design/',
+  '/fa/web-development-services': '/fa/services/web-development/',
+  '/ar/web-development-services': '/ar/services/web-development/',
+
+  // Service Areas
+  '/en/dubai': '/en/service-areas/dubai/',
+  '/ar/dubai': '/ar/service-areas/dubai/',
+
+  // Portfolio
+  '/en/case-studies': '/en/portfolio/',
+  '/en/portfolio/1': '/en/portfolio/samake-alpha/',
+  '/ar/portfolio/1': '/ar/portfolio/samake-alpha/',
+  '/en/portfolio/2': '/en/portfolio/samake-bartar/',
+  '/ar/portfolio/2': '/ar/portfolio/samake-bartar/',
+  '/ar/portfolio/4': '/ar/portfolio/zeytoun-masoud/',
+  '/en/portfolio/5': '/en/portfolio/ramzarz-negaran/',
+  '/ar/portfolio/5': '/ar/portfolio/ramzarz-negaran/',
+  '/fa/portfolio/7': '/fa/portfolio/4-seasons-carpet-clean/',
+  '/ar/portfolio/7': '/ar/portfolio/4-seasons-carpet-clean/',
+  '/en/portfolio/10': '/en/portfolio/samake-alpha/',
+  '/ar/portfolio/10': '/ar/portfolio/samake-alpha/',
+
+  // Blog 2025 legacy slugs
+  '/en/blog/seo-best-practices-2025': '/en/blog/seo-best-practices/',
+  '/fa/blog/seo-best-practices-2025': '/fa/blog/seo-best-practices/',
+  '/ar/blog/seo-best-practices-2025': '/ar/blog/seo-best-practices/',
+  '/en/blog/best-seo-tools-2025': '/en/blog/best-seo-tools/',
+  '/fa/blog/best-seo-tools-2025': '/fa/blog/best-seo-tools/',
+  '/ar/blog/best-seo-tools-2025': '/ar/blog/best-seo-tools/',
+  '/en/blog/mobile-first-design-2025': '/en/blog/mobile-first-design/',
+  '/fa/blog/mobile-first-design-2025': '/fa/blog/mobile-first-design/',
+  '/ar/blog/mobile-first-design-2025': '/ar/blog/mobile-first-design/',
+  '/en/blog/web-design-trends-2025': '/en/blog/web-design-trends/',
+  '/fa/blog/web-design-trends-2025': '/fa/blog/web-design-trends/',
+  '/ar/blog/web-design-trends-2025': '/ar/blog/web-design-trends/',
+};
+
 async function handleContact(request: Request, env: Env): Promise<Response> {
   try {
     const { name, email, phone, message, token } = (await request.json()) as {
@@ -119,20 +178,16 @@ export default {
       return handleContact(request, env);
     }
 
-    // 2a. Legacy tool slugs -> canonical tool in a SINGLE 301 hop. Must run
-    // BEFORE trailing-slash normalization below, otherwise the bare path
-    // gets a slash first and the redirect costs two hops (both stay indexed).
+    // 2a. Legacy & Canonical Redirects (single 301 hop).
+    // Must run BEFORE trailing-slash normalization below, so that both barePath
+    // and slashed paths are redirected in a single hop and never return 404.
     const barePath =
       url.pathname.length > 1 && url.pathname.endsWith('/')
         ? url.pathname.slice(0, -1)
         : url.pathname;
-    const toolRedirects: Record<string, string> = {};
-    for (const lang of ['en', 'fa', 'ar']) {
-      toolRedirects[`/${lang}/tools/seo-title-checker`] = `/${lang}/tools/headline-analyzer/`;
-    }
-    const toolTarget = toolRedirects[barePath];
-    if (toolTarget) {
-      return Response.redirect(`${url.origin}${toolTarget}${url.search}`, 301);
+    const redirectTarget = STATIC_REDIRECTS[barePath] || STATIC_REDIRECTS[url.pathname];
+    if (redirectTarget) {
+      return Response.redirect(`${url.origin}${redirectTarget}${url.search}`, 301);
     }
     // Canonical tool URL without slash -> slashed, same single hop.
     if (/^\/(en|fa|ar)\/tools\/headline-analyzer$/.test(url.pathname)) {
@@ -170,17 +225,18 @@ export default {
 
     // 4. Everything else: serve static build, adding noindex on non-canonical hosts and 404 pages
     const response = await env.ASSETS.fetch(request);
-    const is404Page = url.pathname.endsWith('/404') || url.pathname.endsWith('/404/');
-    if (url.hostname !== CANONICAL_HOST || is404Page) {
+    const is404 =
+      url.pathname.endsWith('/404') || url.pathname.endsWith('/404/') || response.status === 404;
+    if (url.hostname !== CANONICAL_HOST || is404) {
       const headers = new Headers(response.headers);
-      if (is404Page) {
+      if (is404) {
         headers.set('X-Robots-Tag', 'noindex, follow');
       } else {
         headers.set('X-Robots-Tag', 'noindex, nofollow');
       }
       return new Response(response.body, {
-        status: is404Page ? 404 : response.status,
-        statusText: is404Page ? 'Not Found' : response.statusText,
+        status: is404 ? 404 : response.status,
+        statusText: is404 ? 'Not Found' : response.statusText,
         headers,
       });
     }
