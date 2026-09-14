@@ -46,6 +46,7 @@ export const projectToPillar: Record<string, Exclude<PortfolioPillar, 'all'>> = 
   'zeytoun-masoud': 'ecommerce',
   'samake-alpha': 'seo',
   'samake-bartar': 'seo',
+  'tahami-clinic': 'seo',
   'behrad-dc': 'web-dev',
   'mahsun-visa': 'web-dev',
   'mapfan': 'web-dev',
@@ -58,7 +59,10 @@ export const rawCategoryToPillar: Record<string, Exclude<PortfolioPillar, 'all'>
   'Local SEO & Automated Marketing': 'local-seo',
   'Local SEO': 'local-seo',
   'Web Design': 'web-dev',
+  'Web design': 'web-dev',
   'Web Development': 'web-dev',
+  'Web design and SEO': 'web-dev',
+  'Web Design and SEO': 'web-dev',
   'E-commerce': 'ecommerce',
   'E-commerce & Custom Development': 'ecommerce',
   'E-commerce & Logistics': 'ecommerce',
@@ -70,10 +74,12 @@ export const rawCategoryToPillar: Record<string, Exclude<PortfolioPillar, 'all'>
   // Persian
   'سئو محلی و بازاریابی خودکار': 'local-seo',
   'سئو محلی': 'local-seo',
+  'سئو': 'seo',
   'تجارت الکترونیک و توسعه اختصاصی': 'ecommerce',
   'تجارت الکترونیک و لجستیک': 'ecommerce',
   'سئو پزشکی و طراحی وب': 'seo',
   'طراحی وب': 'web-dev',
+  'طراحی وب و سئو': 'web-dev',
   'توسعه وب': 'web-dev',
   'توسعه وب و سئو': 'web-dev',
 
@@ -82,6 +88,7 @@ export const rawCategoryToPillar: Record<string, Exclude<PortfolioPillar, 'all'>
   'تحسين محركات البحث المحلية': 'local-seo',
   'السيو المحلي': 'local-seo',
   'تصميم المواقع والسيو': 'web-dev',
+  'تصميم المواقع': 'web-dev',
   'التجارة الإلكترونية والسيو': 'ecommerce',
   'التجارة الإلكترونية والتطوير المخصص': 'ecommerce',
   'التجارة الإلكترونية واللوجستيات': 'ecommerce',
@@ -835,6 +842,73 @@ export const projectMeta: Record<string, ProjectMetaItem> = {
           question: 'ما هي النتيجة بعد إطلاق الموقع المحدث؟',
           answer:
             'استعادة كاملة للمراكز التنافسية خلال ٤٥ يوماً وزيادة الاستشارات بنسبة +١٤٠٪.',
+        },
+      ],
+    },
+  },
+
+  'tahami-clinic': {
+    pillar: 'seo',
+    market: {
+      en: 'Tehran, Iran (Jordan)',
+      fa: 'تهران، ایران (جردن)',
+      ar: 'طهران، إيران (جوردن)',
+    },
+    timeline: {
+      en: '6 Months',
+      fa: '۶ ماه',
+      ar: '٦ أشهر',
+    },
+    faqs: {
+      en: [
+        {
+          question: 'How did Tahami Clinic achieve #1 Google rankings in competitive aesthetic surgery in Tehran?',
+          answer:
+            'By structuring localized aesthetic topic clusters (blepharoplasty, submental liposuction), strict medical E-E-A-T compliance with surgeon medical council licensing, Google Maps 3-pack dominance in northern Tehran, and technical Core Web Vitals optimization.',
+        },
+        {
+          question: 'What role did Local SEO play in patient consultation bookings?',
+          answer:
+            'Multi-platform optimization on Google Maps, Neshan, and Balad for the Jordan location (Atefi Gharbi) coupled with geo-targeted landing pages increased phone consultations and in-clinic appointments by 2.8x.',
+        },
+        {
+          question: 'How did the clinic maintain resilience against Google Medical Updates (YMYL)?',
+          answer:
+            'With verified surgeon credentials, post-operative care guides, and deep MedicalClinic and MedicalProcedure schema markup, the site maintained resilient organic growth of +340%.',
+        },
+      ],
+      fa: [
+        {
+          question: 'چگونه کلینیک تهامی در حوزه رقابتی جراحی‌های زیبایی تهران به رتبه ۱ رسید؟',
+          answer:
+            'با بازطراحی ساختار صفحات لندینگ بر اساس کلاسترهای تخصصی (بلفاروپلاستی، ساکشن غبغب، فیلر)، رعایت دقیق اصول E-E-A-T پزشکی با تاییدیه نظام پزشکی جراحان، بهینه‌سازی نقشه گوگل در مناطق ۱ و ۳ تهران و رفع خطاهای سئوی تکنیکال.',
+        },
+        {
+          question: 'نقش سئوی محلی در جذب مراجعان حضوری کلینیک تهامی چه بود؟',
+          answer:
+            'با ثبت و وریفای چندسکویی در گوگل مپ، نشان و بلد برای لوکیشن جردن (خیابان عاطفی غربی) و ایجاد صفحات هدفمند منطقه‌ای برای مناطق شمال تهران شامل جردن، الهیه و ظفر، تماس‌های ورودی و مراجعات حضوری ۲.۸ برابر شد.',
+        },
+        {
+          question: 'آیا الگوریتم‌های سلامت گوگل (YMYL) تاثیری بر ترافیک سایت گذاشتند؟',
+          answer:
+            'با مستندسازی مدارک پزشکان، درج بیوگرافی و شماره نظام پزشکی، ایجاد بخش رضایت و مراقبت‌های پس از عمل و پیاده‌سازی اسکیمای MedicalClinic و MedicalProcedure، وب‌سایت در برابر تمام آپدیت‌های هسته و مدیکال گوگل مصون ماند و رشد پایدار ۳۴۰ درصدی ثبت کرد.',
+        },
+      ],
+      ar: [
+        {
+          question: 'كيف حققت عيادة تهامي المرتبة الأولى في جراحات التجميل التنافسية بطهران؟',
+          answer:
+            'من خلال هيكلة مجموعات المحتوى التجميلي، والالتزام بمعايير E-E-A-T الطبية المعتمدة، وتحسين محركات البحث المحلية في منطقة جوردن بشمال طهران.',
+        },
+        {
+          question: 'ما هو تأثير تحسين محركات البحث المحلي على حجز الاستشارات؟',
+          answer:
+            'ساهم التسجيل في خرائط جوجل ونشان وبلد في مضاعفة المكالمات وحجوزات العمليات الجراحية بنسبة ٢.٨ ضعفاً.',
+        },
+        {
+          question: 'كيف تعامل الموقع مع تحديثات جوجل الطبية (YMYL)؟',
+          answer:
+            'من خلال توثيق تراخيص الجراحين وترميز البيانات المنظمة MedicalClinic وMedicalProcedure، حافظ الموقع على نمو عضوي مستقر بنسبة +٣٤٠٪.',
         },
       ],
     },
