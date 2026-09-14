@@ -11,6 +11,7 @@ import {
   getProjectPillar,
   getProjectMeta,
   PILLAR_LABELS,
+  type PortfolioPillar,
 } from "@/data/portfolio-meta";
 
 export async function getStaticPaths() {
@@ -226,6 +227,151 @@ const otherProjects = langProjects
 const samePillar = otherProjects.filter((p) => p.pillar === projectPillar);
 const otherPillar = otherProjects.filter((p) => p.pillar !== projectPillar);
 const relatedProjects = [...samePillar, ...otherPillar].slice(0, 3);
+
+// Contextual Internal Linking: Related Services, Pillar Guides & Free Tools
+interface PillarResource {
+  serviceUrl: string;
+  serviceTitle: string;
+  guideUrl: string;
+  guideTitle: string;
+  toolUrl: string;
+  toolTitle: string;
+}
+
+const PILLAR_RESOURCES: Record<PortfolioPillar, Record<SupportedLanguage, PillarResource>> = {
+  ecommerce: {
+    fa: {
+      serviceUrl: '/fa/services/ecommerce/',
+      serviceTitle: 'خدمات طراحی فروشگاه اینترنتی',
+      guideUrl: '/fa/blog/wordpress-website-cost-guide-2026/',
+      guideTitle: 'محاسبه هزینه ووکامرس ۲۰۲۶',
+      toolUrl: '/fa/tools/cost-calculator/',
+      toolTitle: 'ماشین‌حساب آنلاین هزینه سایت',
+    },
+    en: {
+      serviceUrl: '/en/services/ecommerce/',
+      serviceTitle: 'E-Commerce Store Development',
+      guideUrl: '/en/blog/wordpress-website-cost-guide-2026/',
+      guideTitle: 'WordPress & Store Pricing Guide',
+      toolUrl: '/en/tools/cost-calculator/',
+      toolTitle: 'Interactive Project Cost Estimator',
+    },
+    ar: {
+      serviceUrl: '/ar/services/ecommerce/',
+      serviceTitle: 'تصميم وبرمجة المتاجر الإلكترونية',
+      guideUrl: '/ar/blog/wordpress-website-cost-guide-2026/',
+      guideTitle: 'دليل تكلفة متاجر ووردبريس 2026',
+      toolUrl: '/ar/tools/cost-calculator/',
+      toolTitle: 'حاسبة تكلفة تطوير المواقع الفورية',
+    },
+  },
+  'local-seo': {
+    fa: {
+      serviceUrl: '/fa/services/local-seo/',
+      serviceTitle: 'خدمات سئو محلی و نقشه گوگل',
+      guideUrl: '/fa/blog/local-seo-services-guide-2026/',
+      guideTitle: 'راهنمای رتبه ۱ نقشه گوگل و نشان',
+      toolUrl: '/fa/tools/schema-generator/',
+      toolTitle: 'تولید اسکیما LocalBusiness',
+    },
+    en: {
+      serviceUrl: '/en/services/local-seo/',
+      serviceTitle: 'Local SEO & Maps Optimization',
+      guideUrl: '/en/blog/local-seo-services-guide-2026/',
+      guideTitle: 'Local 3-Pack & Maps Guide 2026',
+      toolUrl: '/en/tools/schema-generator/',
+      toolTitle: 'Schema.org Markup Generator',
+    },
+    ar: {
+      serviceUrl: '/ar/services/local-seo/',
+      serviceTitle: 'خدمات السيو المحلي وخرائط جوجل',
+      guideUrl: '/ar/blog/local-seo-services-guide-2026/',
+      guideTitle: 'دليل تصدر خرائط جوجل 2026',
+      toolUrl: '/ar/tools/schema-generator/',
+      toolTitle: 'مولد بيانات Schema للأنشطة المحلية',
+    },
+  },
+  seo: {
+    fa: {
+      serviceUrl: '/fa/services/seo/',
+      serviceTitle: 'خدمات تخصصی سئو و رشد ارگانیک',
+      guideUrl: '/fa/blog/ai-search-optimization-guide-2026/',
+      guideTitle: 'راهنمای سئو هوش مصنوعی (GEO)',
+      toolUrl: '/fa/tools/serp-preview/',
+      toolTitle: 'پیش‌نمایش نتایج جستجوی گوگل',
+    },
+    en: {
+      serviceUrl: '/en/services/seo/',
+      serviceTitle: 'SEO & Organic Growth Services',
+      guideUrl: '/en/blog/ai-search-optimization-guide-2026/',
+      guideTitle: 'Generative Engine Optimization Guide',
+      toolUrl: '/en/tools/serp-preview/',
+      toolTitle: 'Google SERP Preview Tool',
+    },
+    ar: {
+      serviceUrl: '/ar/services/seo/',
+      serviceTitle: 'خدمات السيو وتحسين محركات البحث',
+      guideUrl: '/ar/blog/ai-search-optimization-guide-2026/',
+      guideTitle: 'دليل سيو الذكاء الاصطناعي 2026',
+      toolUrl: '/ar/tools/serp-preview/',
+      toolTitle: 'أداة معاينة مظهر البحث SERP',
+    },
+  },
+  'web-dev': {
+    fa: {
+      serviceUrl: '/fa/services/web-development/',
+      serviceTitle: 'خدمات توسعه پورتال و وب‌اپلیکیشن',
+      guideUrl: '/fa/blog/website-development-cost-calculator-guide-2026/',
+      guideTitle: 'فرمول‌های قیمت‌گذاری وب سال ۲۰۲۶',
+      toolUrl: '/fa/tools/cost-calculator/',
+      toolTitle: 'محاسبه هزینه وب‌اپلیکیشن و پورتال',
+    },
+    en: {
+      serviceUrl: '/en/services/web-development/',
+      serviceTitle: 'Enterprise Web Development',
+      guideUrl: '/en/blog/website-development-cost-calculator-guide-2026/',
+      guideTitle: 'Web Development Cost Guide 2026',
+      toolUrl: '/en/tools/cost-calculator/',
+      toolTitle: 'Web Application Cost Estimator',
+    },
+    ar: {
+      serviceUrl: '/ar/services/web-development/',
+      serviceTitle: 'تطوير المواقع والبوابات المؤسسية',
+      guideUrl: '/ar/blog/website-development-cost-calculator-guide-2026/',
+      guideTitle: 'دليل تكلفة تطوير المنصات 2026',
+      toolUrl: '/ar/tools/cost-calculator/',
+      toolTitle: 'حاسبة ميزانية المنصات الرقمية',
+    },
+  },
+  all: {
+    fa: {
+      serviceUrl: '/fa/services/web-design/',
+      serviceTitle: 'طراحی سایت مدرن و اختصاصی',
+      guideUrl: '/fa/blog/ui-ux-audit-redesign-guide-2026/',
+      guideTitle: 'راهنمای ممیزی و ریدیزاین UI/UX',
+      toolUrl: '/fa/tools/cost-calculator/',
+      toolTitle: 'برآورد آنلاین قیمت پروژه وب',
+    },
+    en: {
+      serviceUrl: '/en/services/web-design/',
+      serviceTitle: 'Custom Web Design & UX',
+      guideUrl: '/en/blog/ui-ux-audit-redesign-guide-2026/',
+      guideTitle: 'UI/UX Redesign & Audit Guide',
+      toolUrl: '/en/tools/cost-calculator/',
+      toolTitle: 'Online Web Design Budget Estimator',
+    },
+    ar: {
+      serviceUrl: '/ar/services/web-design/',
+      serviceTitle: 'تصميم المواقع وتجربة المستخدم UI/UX',
+      guideUrl: '/ar/blog/ui-ux-audit-redesign-guide-2026/',
+      guideTitle: 'دليل تدقيق وإعادة تصميم UI/UX',
+      toolUrl: '/ar/tools/cost-calculator/',
+      toolTitle: 'حاسبة تقدير ميزانية تصميم المواقع',
+    },
+  },
+};
+
+const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
 ---
 
 <Layout
@@ -743,6 +889,51 @@ const relatedProjects = [...samePillar, ...otherPillar].slice(0, 3);
                   <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </a>
+            </div>
+
+            <!-- Contextual Internal Linking: Related Services, Pillar Guide & Free Tool -->
+            <div class="space-y-4 rounded-3xl border border-gray-200/80 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900">
+              <div class="border-b border-gray-100 pb-3 dark:border-slate-800 flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-gray-900 dark:text-white flex items-center gap-1.5">
+                  <svg aria-hidden="true" class="h-4 w-4 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                  </svg>
+                  <span>{supportedLang === 'fa' ? 'خدمات و راهنماهای مرتبط' : supportedLang === 'ar' ? 'الخدمات والأدلة ذات الصلة' : 'Related Services & Guides'}</span>
+                </span>
+              </div>
+              <div class="space-y-2.5 text-xs">
+                <a
+                  href={pillarResource.serviceUrl}
+                  class="group flex items-center justify-between rounded-xl border border-gray-100 bg-gray-50/70 p-3 transition-all hover:border-primary/40 hover:bg-primary/5 dark:border-slate-800 dark:bg-slate-800/60"
+                >
+                  <div class="font-semibold text-gray-800 dark:text-gray-200 group-hover:text-primary">
+                    {pillarResource.serviceTitle}
+                  </div>
+                  <span class="text-primary font-bold transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5">
+                    {isRtl ? '←' : '→'}
+                  </span>
+                </a>
+                <a
+                  href={pillarResource.guideUrl}
+                  class="group flex items-center justify-between rounded-xl border border-gray-100 bg-gray-50/70 p-3 transition-all hover:border-primary/40 hover:bg-primary/5 dark:border-slate-800 dark:bg-slate-800/60"
+                >
+                  <div class="font-semibold text-gray-800 dark:text-gray-200 group-hover:text-primary">
+                    {pillarResource.guideTitle}
+                  </div>
+                  <span class="text-primary font-bold transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5">
+                    {isRtl ? '←' : '→'}
+                  </span>
+                </a>
+                <a
+                  href={pillarResource.toolUrl}
+                  class="group flex items-center justify-between rounded-xl border border-gray-100 bg-gray-50/70 p-3 transition-all hover:border-primary/40 hover:bg-primary/5 dark:border-slate-800 dark:bg-slate-800/60"
+                >
+                  <div class="font-semibold text-gray-800 dark:text-gray-200 group-hover:text-primary">
+                    {pillarResource.toolTitle}
+                  </div>
+                  <span class="text-primary text-[10px] font-bold">🛠️</span>
+                </a>
+              </div>
             </div>
 
             <!-- Quick Contact / Consultation Card -->
