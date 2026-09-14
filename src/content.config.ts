@@ -67,6 +67,16 @@ const portfolio = defineCollection({
         reviewCount: z.number().int().positive(),
       })
       .optional(),
+    market: z.string().optional(),
+    timeline: z.string().optional(),
+    faq: z
+      .array(
+        z.object({
+          question: z.string(),
+          answer: z.string(),
+        })
+      )
+      .optional(),
   }),
 });
 
