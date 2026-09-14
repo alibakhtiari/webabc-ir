@@ -165,6 +165,204 @@ const authorRole = isAliBakhtiari
       ? 'مطور ووردبريس وأخصائي سيو'
       : 'WordPress Developer & SEO Specialist'
   : '';
+
+// Internal Linking: Contextual Related Articles (same language, prioritizing matching category)
+const allPosts = await getCollection('blog');
+const langPosts = allPosts.filter((p) => {
+  const [pLang, pSlug] = p.id.split('/');
+  return pLang === supportedLang && pSlug !== slug;
+});
+const sameCategoryPosts = langPosts.filter((p) => p.data.category === post.data.category);
+const otherCategoryPosts = langPosts.filter((p) => p.data.category !== post.data.category);
+const relatedPosts = [...sameCategoryPosts, ...otherCategoryPosts].slice(0, 3).map((p) => {
+  const [_, pSlug] = p.id.split('/');
+  return {
+    slug: pSlug,
+    title: p.data.title,
+    description: p.data.description,
+    image: p.data.image,
+    date: p.data.date,
+    category: p.data.category,
+    readTime: p.data.readTime || 8,
+  };
+});
+
+// Category to Service & Free Interactive Tool mapping for high-intent internal link conversion
+interface ServiceToolMeta {
+  serviceUrl: string;
+  serviceTitle: string;
+  serviceDesc: string;
+  toolUrl: string;
+  toolTitle: string;
+}
+
+const serviceToolDict: Record<string, Record<SupportedLanguage, ServiceToolMeta>> = {
+  SEO: {
+    fa: {
+      serviceUrl: '/fa/services/seo/',
+      serviceTitle: 'خدمات تخصصی سئو و بهینه‌سازی',
+      serviceDesc: 'مشاوره و اجرای استراتژی‌های سئو تکنیکال، محتوایی و لینک‌سازی هدفمند.',
+      toolUrl: '/fa/tools/serp-preview/',
+      toolTitle: 'ابزار پیش‌نمایش نتایج گوگل (SERP)',
+    },
+    en: {
+      serviceUrl: '/en/services/seo/',
+      serviceTitle: 'SEO & Organic Growth Services',
+      serviceDesc: 'Technical auditing, content engineering, and high-impact search optimization.',
+      toolUrl: '/en/tools/serp-preview/',
+      toolTitle: 'Google SERP Snippet Preview Tool',
+    },
+    ar: {
+      serviceUrl: '/ar/services/seo/',
+      serviceTitle: 'خدمات السيو وتحسين محركات البحث',
+      serviceDesc: 'تدقيق تقني متقدم واستراتيجيات تصدر نتائج البحث العضوية في الخليج.',
+      toolUrl: '/ar/tools/serp-preview/',
+      toolTitle: 'أداة معاينة نتائج بحث جوجل (SERP)',
+    },
+  },
+  'Local SEO': {
+    fa: {
+      serviceUrl: '/fa/services/local-seo/',
+      serviceTitle: 'خدمات سئو محلی و نقشه گوگل',
+      serviceDesc: 'رتبه‌بندی شماره ۱ در بسته سه‌تایی گوگل مپ و مسیریاب‌های نشان و بلد.',
+      toolUrl: '/fa/tools/schema-generator/',
+      toolTitle: 'ابزار تولید کدهای اسکیما (Schema)',
+    },
+    en: {
+      serviceUrl: '/en/services/local-seo/',
+      serviceTitle: 'Local SEO & Google Maps Optimization',
+      serviceDesc: 'Rank #1 in Google Maps 3-Pack and capture high-intent local customer calls.',
+      toolUrl: '/en/tools/schema-generator/',
+      toolTitle: 'LocalBusiness Schema Generator',
+    },
+    ar: {
+      serviceUrl: '/ar/services/local-seo/',
+      serviceTitle: 'خدمات السيو المحلي وخرائط جوجل',
+      serviceDesc: 'تصدر حزمة الخرائط الثلاثية وزيادة المكالمات وزيارات الفروع في الخليج.',
+      toolUrl: '/ar/tools/schema-generator/',
+      toolTitle: 'مولد بيانات Schema للأنشطة المحلية',
+    },
+  },
+  WordPress: {
+    fa: {
+      serviceUrl: '/fa/services/wordpress-development/',
+      serviceTitle: 'توسعه اختصاصی سایت وردپرس',
+      serviceDesc: 'کدنویسی قالب سبک، رفع تداخل افزونه‌ها و لود زیر ۱ ثانیه در Core Web Vitals.',
+      toolUrl: '/fa/tools/cost-calculator/',
+      toolTitle: 'ماشین‌حساب آنلاین هزینه طراحی سایت',
+    },
+    en: {
+      serviceUrl: '/en/services/wordpress-development/',
+      serviceTitle: 'Custom WordPress Development',
+      serviceDesc: 'Bespoke themes, zero plugin bloat, sub-second loads, and headless setups.',
+      toolUrl: '/en/tools/cost-calculator/',
+      toolTitle: 'Interactive Web Cost Calculator',
+    },
+    ar: {
+      serviceUrl: '/ar/services/wordpress-development/',
+      serviceTitle: 'تطوير مواقع ووردبريس المخصصة',
+      serviceDesc: 'برمجة قوالب نظيفة وخالية من الإضافات الثقيلة وسرعة قياسية للمواقع.',
+      toolUrl: '/ar/tools/cost-calculator/',
+      toolTitle: 'حاسبة تكلفة تطوير المواقع الفورية',
+    },
+  },
+  'Web Design': {
+    fa: {
+      serviceUrl: '/fa/services/web-design/',
+      serviceTitle: 'خدمات طراحی سایت مدرن و کاربرپسند',
+      serviceDesc: 'طراحی پروتوتایپ اختصاصی در Figma با چیدمان استاندارد و نرخ تبدیل حداکثری.',
+      toolUrl: '/fa/tools/cost-calculator/',
+      toolTitle: 'برآورد آنلاین قیمت پروژه وب',
+    },
+    en: {
+      serviceUrl: '/en/services/web-design/',
+      serviceTitle: 'Modern UI/UX Web Design Services',
+      serviceDesc: 'Tailored Figma wireframing, high-converting layouts, and fluid responsiveness.',
+      toolUrl: '/en/tools/cost-calculator/',
+      toolTitle: 'Online Web Design Budget Estimator',
+    },
+    ar: {
+      serviceUrl: '/ar/services/web-design/',
+      serviceTitle: 'خدمات تصميم المواقع وواجهات المستخدم',
+      serviceDesc: 'تصاميم فاخرة ومخصصة عبر Figma تزيد من معدل التحويل وتناسب السوق الخليجي.',
+      toolUrl: '/ar/tools/cost-calculator/',
+      toolTitle: 'حاسبة تقدير ميزانية تصميم المواقع',
+    },
+  },
+  'Web Development': {
+    fa: {
+      serviceUrl: '/fa/services/web-development/',
+      serviceTitle: 'خدمات توسعه نرم‌افزار و وب‌اپلیکیشن',
+      serviceDesc: 'توسعه با فریم‌ورک‌های مدرن Astro و React و Next.js برای مقیاس‌پذیری بالا.',
+      toolUrl: '/fa/tools/cost-calculator/',
+      toolTitle: 'محاسبه هزینه وب‌اپلیکیشن و پورتال',
+    },
+    en: {
+      serviceUrl: '/en/services/web-development/',
+      serviceTitle: 'High-Performance Web Engineering',
+      serviceDesc: 'Next-gen static and SSR architectures using Astro, React, and TypeScript.',
+      toolUrl: '/en/tools/cost-calculator/',
+      toolTitle: 'Web Application Cost Estimator',
+    },
+    ar: {
+      serviceUrl: '/ar/services/web-development/',
+      serviceTitle: 'تطوير تطبيقات الويب والبرمجة المخصصة',
+      serviceDesc: 'هندسة منصات ويب حديثة وفائقة السرعة بأحدث تقنيات Astro و TypeScript.',
+      toolUrl: '/ar/tools/cost-calculator/',
+      toolTitle: 'حاسبة تكلفة برمجة المنصات الرقمية',
+    },
+  },
+  'E-Commerce': {
+    fa: {
+      serviceUrl: '/fa/services/ecommerce/',
+      serviceTitle: 'طراحی سایت فروشگاه اینترنتی',
+      serviceDesc: 'سیستم‌های ووکامرس پیشرفته، اتصال به درگاه‌های پرداخت، انبارداری و ترب/ایمالز.',
+      toolUrl: '/fa/tools/cost-calculator/',
+      toolTitle: 'محاسبه آنلاین هزینه فروشگاه اینترنتی',
+    },
+    en: {
+      serviceUrl: '/en/services/ecommerce/',
+      serviceTitle: 'E-Commerce Store Development',
+      serviceDesc: 'High-converting custom WooCommerce and headless e-commerce store architecture.',
+      toolUrl: '/en/tools/cost-calculator/',
+      toolTitle: 'Online Store Pricing Calculator',
+    },
+    ar: {
+      serviceUrl: '/ar/services/ecommerce/',
+      serviceTitle: 'تصميم وبرمجة المتاجر الإلكترونية',
+      serviceDesc: 'متاجر ووكامرس متطورة مع ربط بوابات الدفع الخليجية وإدارة المخزون والطلبات.',
+      toolUrl: '/ar/tools/cost-calculator/',
+      toolTitle: 'حاسبة تكلفة إنشاء متجر إلكتروني',
+    },
+  },
+};
+
+const defaultServiceTool: Record<SupportedLanguage, ServiceToolMeta> = {
+  fa: {
+    serviceUrl: '/fa/services/web-design/',
+    serviceTitle: 'خدمات طراحی سایت و توسعه وب',
+    serviceDesc: 'راهکارهای جامع توسعه دیجیتال، سئو تکنیکال و تجربه کاربری مدرن.',
+    toolUrl: '/fa/tools/headline-analyzer/',
+    toolTitle: 'تحلیل‌گر آنلاین هدلاین و عنوان سئو',
+  },
+  en: {
+    serviceUrl: '/en/services/web-design/',
+    serviceTitle: 'Web Design & Digital Growth Solutions',
+    serviceDesc: 'Comprehensive digital engineering, technical SEO, and conversion UX.',
+    toolUrl: '/en/tools/headline-analyzer/',
+    toolTitle: 'SEO Headline & Title Analyzer Tool',
+  },
+  ar: {
+    serviceUrl: '/ar/services/web-design/',
+    serviceTitle: 'تصميم المواقع وحلول النمو الرقمي',
+    serviceDesc: 'حلول متكاملة لهندسة المواقع وتصدر محركات البحث وتجربة المستخدم.',
+    toolUrl: '/ar/tools/headline-analyzer/',
+    toolTitle: 'أداة فحص وتحليل عناوين السيو',
+  },
+};
+
+const activeServiceTool =
+  serviceToolDict[post.data.category]?.[supportedLang] || defaultServiceTool[supportedLang];
 ---
 
 <Layout
@@ -516,7 +714,117 @@ const authorRole = isAliBakhtiari
       <!-- FAQ Component -->
       {
         post.data.faq && post.data.faq.length > 0 && (
-          <FAQ faqList={post.data.faq} lang={supportedLang} />
+          <div class="mb-12">
+            <FAQ faqList={post.data.faq} lang={supportedLang} />
+          </div>
+        )
+      }
+
+      <!-- Contextual Internal Linking: Related Services & Free Interactive Tools -->
+      <section
+        aria-label="Related Services and Tools"
+        class="my-12 overflow-hidden rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/5 via-white to-primary/10 p-6 md:p-8 shadow-sm dark:from-primary/10 dark:via-slate-900 dark:to-primary/5 dark:border-primary/30"
+      >
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div class="space-y-2 max-w-xl">
+            <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary">
+              <svg aria-hidden="true" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              <span>{supportedLang === 'fa' ? 'خدمات تخصصی و ابزارها' : supportedLang === 'ar' ? 'الخدمات والأدوات التفاعلية' : 'Related Services & Tools'}</span>
+            </span>
+            <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
+              {activeServiceTool.serviceTitle}
+            </h3>
+            <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+              {activeServiceTool.serviceDesc}
+            </p>
+          </div>
+
+          <div class="flex flex-wrap sm:flex-nowrap gap-3 shrink-0">
+            <a
+              href={activeServiceTool.serviceUrl}
+              class="inline-flex items-center justify-center rounded-xl bg-primary px-5 py-2.5 text-sm font-bold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
+              <span>{supportedLang === 'fa' ? 'مشاهده جزئیات خدمات' : supportedLang === 'ar' ? 'تفاصيل الخدمة' : 'Explore Service'}</span>
+            </a>
+            <a
+              href={activeServiceTool.toolUrl}
+              class="inline-flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-5 py-2.5 text-sm font-bold text-gray-800 shadow-xs transition-all hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700"
+            >
+              <svg aria-hidden="true" class="h-4 w-4 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+              <span>{activeServiceTool.toolTitle}</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contextual Internal Linking: Related Blog Articles -->
+      {
+        relatedPosts.length > 0 && (
+          <section aria-label="Related Articles" class="my-16 space-y-6">
+            <div class="flex items-center justify-between border-b border-gray-200 pb-4 dark:border-slate-800">
+              <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+                {supportedLang === 'fa'
+                  ? 'راهنماها و مقالات مرتبط'
+                  : supportedLang === 'ar'
+                    ? 'مقالات وأدلة ذات صلة'
+                    : 'Related Guides & Articles'}
+              </h2>
+              <a
+                href={`/${supportedLang}/blog/`}
+                class="text-xs font-bold text-primary hover:underline"
+              >
+                {supportedLang === 'fa'
+                  ? 'مشاهده همه مقالات ←'
+                  : supportedLang === 'ar'
+                    ? 'جميع المقالات ←'
+                    : 'View All Articles →'}
+              </a>
+            </div>
+
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+              {relatedPosts.map((rel) => (
+                <a
+                  href={`/${supportedLang}/blog/${rel.slug}/`}
+                  class="group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
+                >
+                  <div class="relative aspect-16/9 overflow-hidden bg-gray-100 dark:bg-slate-950">
+                    <OptimizedImage
+                      src={rel.image}
+                      alt={rel.title}
+                      width={400}
+                      height={225}
+                      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <span class="absolute top-2.5 start-2.5 rounded-md bg-black/60 backdrop-blur-xs px-2 py-0.5 text-[10px] font-bold text-white uppercase">
+                      {getCategoryLabel(rel.category, supportedLang)}
+                    </span>
+                  </div>
+
+                  <div class="flex flex-1 flex-col justify-between p-4 space-y-3">
+                    <h3 class="line-clamp-2 text-sm font-bold text-gray-900 group-hover:text-primary transition-colors dark:text-white">
+                      {rel.title}
+                    </h3>
+                    <div class="flex items-center justify-between text-[11px] text-gray-500 dark:text-gray-400">
+                      <span>{formatDate(rel.date)}</span>
+                      <span>
+                        {rel.readTime}{' '}
+                        {supportedLang === 'fa'
+                          ? 'دقیقه'
+                          : supportedLang === 'ar'
+                            ? 'دقائق'
+                            : 'min read'}
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
         )
       }
     </div>
