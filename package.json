@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "manifests": "node scripts/resolve-sitemap-lastmod.mjs && node scripts/generate-og-manifest.mjs",
+    "build": "npm run manifests && astro build",
     "preview": "astro preview",
-    "deploy": "astro build && wrangler deploy",
+    "deploy": "npm run build && wrangler deploy",
     "lint": "eslint src && tsc --noemit",
     "check": "astro check",
     "format": "prettier --write .",

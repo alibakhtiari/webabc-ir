@@ -31,9 +31,9 @@ export const getImageForPage = (pageKey) => {
     const slug = pageKey.replace(/^(en|fa|ar)\/portfolio\//, '').replace(/\/$/, '');
     return `/images/og/portfolio/${slug}.webp`;
   }
-  // Tools index and individual tools: some have hero images
-  if (pageKey.match(/^(en|fa|ar)\/tools\/$/)) {
-    return '/images/og/tools/headline-analyzer.webp'; // fallback representative
+  // Tools index and individual tools
+  if (pageKey.match(/^(en|fa|ar)\/tools(\/.*)?$/)) {
+    return '/images/og/tools/headline-analyzer.webp';
   }
   return undefined;
 }; // site-launch date — never a build timestamp
