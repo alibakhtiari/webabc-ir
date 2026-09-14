@@ -27,10 +27,7 @@ export function createServiceSchema(
         description: descVal,
         inLanguage: inLang,
         isPartOf: {
-          '@id': 'https://webabc.ir/#website',
-        },
-        breadcrumb: {
-          '@id': `${canonicalUrl}#breadcrumb`,
+          '@id': `https://webabc.ir/${langVal}/#website`,
         },
         mainEntity: {
           '@id': `${canonicalUrl}#service`,
@@ -54,19 +51,16 @@ export function createServiceSchema(
           '@id': 'https://webabc.ir/#organization',
         },
         areaServed: [
-          {
-            '@type': 'Country',
-            name: 'Iran',
-          },
-          {
-            '@type': 'Country',
-            name: 'Global',
-          },
+          { '@type': 'City', name: 'Tehran' },
+          { '@type': 'City', name: 'Dubai' },
+          { '@type': 'City', name: 'Muscat' },
+          { '@type': 'City', name: 'Riyadh' },
+          { '@type': 'City', name: 'Abu Dhabi' },
+          { '@type': 'City', name: 'Qazvin' },
+          { '@type': 'Country', name: 'Global' },
         ],
         offers: {
           '@type': 'Offer',
-          price: '0',
-          priceCurrency: 'USD',
           availability: 'https://schema.org/InStock',
           url: canonicalUrl,
         },
@@ -81,30 +75,6 @@ export function createServiceSchema(
             },
           })),
         },
-      },
-      {
-        '@type': 'BreadcrumbList',
-        '@id': `${canonicalUrl}#breadcrumb`,
-        itemListElement: [
-          {
-            '@type': 'ListItem',
-            position: 1,
-            name: homeLabel,
-            item: `https://webabc.ir/${langVal}/`,
-          },
-          {
-            '@type': 'ListItem',
-            position: 2,
-            name: servicesLabel,
-            item: `https://webabc.ir/${langVal}/services/`,
-          },
-          {
-            '@type': 'ListItem',
-            position: 3,
-            name: titleVal,
-            item: canonicalUrl,
-          },
-        ],
       },
     ],
   };
