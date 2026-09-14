@@ -64,7 +64,7 @@ const breadcrumbs = [
     </h1>
     <p class="mb-12 font-mono text-sm text-gray-500 dark:text-gray-400">
       {privacy.lastUpdated}
-      {new Date().toLocaleDateString(supportedLang)}
+      {new Date('2026-08-07T00:00:00Z').toLocaleDateString(supportedLang, { year: 'numeric', month: 'long', day: 'numeric' })}
     </p>
 
     <div

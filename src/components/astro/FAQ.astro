@@ -9,6 +9,7 @@ interface Props {
 
 const { faqList, lang } = Astro.props;
 const dictionary = await getDictionary(lang);
+const fontClass = lang === 'fa' ? 'font-persian' : lang === 'ar' ? 'font-arabic' : 'font-sans';
 
 const titleText = dictionary.blog?.faq || 'سوالات متداول';
 
@@ -35,7 +36,7 @@ const schema = {
 <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
 <div
-  class="mb-8 rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-xs dark:border-slate-800 dark:bg-slate-900"
+  class={`mb-8 rounded-2xl border border-gray-100 bg-white p-6 ${fontClass} shadow-xs dark:border-slate-800 dark:bg-slate-900`}
 >
   <h2 class="mb-6 flex items-center gap-2 text-2xl font-bold text-gray-900 dark:text-white">
     {titleText}

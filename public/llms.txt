@@ -84,9 +84,35 @@
 - [SEO Best Practices for 2026: The Definitive Search Guide](/en/blog/seo-best-practices/): Latest ranking signals for INP, AI Overviews, E-E-A-T, and structured data.
 - [Clickable Headlines Guide](/en/blog/how-to-write-clickable-headlines/): CTR engineering techniques for search titles and article headlines.
 - [Local SEO Strategies for Middle East](/en/blog/local-seo-middle-east/): Market penetration strategies for UAE, KSA, Oman, and Iran.
+- [Local SEO Services Guide 2026 (EN)](/en/blog/local-seo-services-guide-2026/): Google Maps, Local 3-Pack and AEO blueprint.
+- [WordPress Cost Calculator Guide 2026 (EN)](/en/blog/wordpress-website-cost-guide-2026/): 2026 pricing benchmarks and cost drivers.
+
+## Persian Corpus & Regional Hubs (fa)
+
+- [صفحه اصلی وب اِی‌بی‌سی](/fa/): معرفی خدمات طراحی سایت، سئو پیشرفته و نمونه کارها.
+- [خدمات سئو در ایران](/fa/services/seo/): سئوی تکنیکال، بهینه‌سازی کلمات کلیدی، و رشد ارگانیک در بازار ایران.
+- [خدمات سئو محلی](/fa/services/local-seo/): صدرنشینی در گوگل مپ، ثبت و رتبه‌گیری در نشان و بلد.
+- [طراحی سایت در تهران](/fa/service-areas/tehran/): خدمات طراحی وب، بهینه‌سازی سرعت و سئو برای شرکت‌های تهران.
+- [طراحی سایت در قزوین](/fa/service-areas/qazvin/): دفتر مرکزی و خدمات اختصاصی شرکت‌ها و صنایع استان قزوین.
+- [راهنمای جامع خدمات سئو محلی ۲۰۲۶](/fa/blog/local-seo-services-guide-2026/): استراتژی رتبه ۱ نقشه گوگل، نشان و بلد.
+- [محاسبه آنلاین هزینه طراحی سایت وردپرس ۱۴۰۵](/fa/blog/wordpress-website-cost-guide-2026/): تعرفه و فرمول قیمت‌گذاری.
+- [راهنمای سئوی وردپرس ۲۰۲۶](/fa/blog/wordpress-seo-optimization-guide-2026/): تکنیک‌های رتبه‌گیری و سرعت در وردپرس.
+- [هزینه طراحی سایت در سال ۲۰۲۶](/fa/blog/how-much-does-a-website-cost-2026/): مقایسه جامع تعرفه‌های طراحی سایت.
+
+## Arabic Corpus & GCC Hubs (ar)
+
+- [الرئيسية ويب إيه بي سي](/ar/): خدمات تصميم وتطوير المواقع وتحسين محركات البحث في الخليج العربي.
+- [تصميم مواقع وسيو في دبي والإمارات](/ar/service-areas/dubai/): حلول رقمية مخصصة للشركات والمتاجر في دبي.
+- [تصميم مواقع وسيو في الرياض والسعودية](/ar/service-areas/riyadh/): حلول متوافقة مع رؤية 2030 وبوابات الدفع السعودية.
+- [تصميم مواقع وسيو في مسقط وعمان](/ar/service-areas/muscat/): خدمات السيو والمتاجر الإلكترونية في سلطنة عمان.
+- [تصميم مواقع وسيو في أبوظبي](/ar/service-areas/abu-dhabi/): خدمات المؤسسات والشركات في العاصمة الإماراتية.
+- [دليل خدمات السيو المحلي لعام 2026](/ar/blog/local-seo-services-guide-2026/): تصدر خرائط جوجل والنتائج المحلية في الخليج.
+- [دليل حاسبة وتكلفة تصميم مواقع ووردبريس 2026](/ar/blog/wordpress-website-cost-guide-2026/): تفصيل الأسعار والميزانية في الخليج.
+- [دليل سيو ووردبريس الشامل 2026](/ar/blog/wordpress-seo-optimization-guide-2026/): البنية التقنية و Rank Math ومؤشرات الويب.
+- [كم تكلفة تصميم موقع إلكتروني في 2026؟](/ar/blog/how-much-does-a-website-cost-2026/): الأسعار الدقيقة للمتاجر والمواقع.
 
 ## Direct Contact & Support
 
 - Email: info@webabc.ir
-- Support & Inquiry: /en/contact/
+- Support & Inquiry: /en/contact/ | /fa/contact/ | /ar/contact/
 - Website: https://webabc.ir
