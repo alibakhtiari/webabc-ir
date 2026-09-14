@@ -85,6 +85,6 @@ const dictionaries: Record<SupportedLanguage, () => Promise<any>> = {
 };
 
 export const getDictionary = async (locale: SupportedLanguage) => {
-  const dictionaryLoader = dictionaries[locale] || dictionaries.fa;
+  const dictionaryLoader = dictionaries[locale] || dictionaries.en;
   return dictionaryLoader();
 };

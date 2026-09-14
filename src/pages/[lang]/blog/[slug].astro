@@ -409,7 +409,7 @@ const activeServiceTool =
       <div class="mb-8 aspect-video overflow-hidden rounded-2xl shadow-xs">
         <OptimizedImage
           src={post.data.image}
-          alt={post.data.title}
+          alt={post.data.imageAlt || post.data.title}
           width={1200}
           height={630}
           fetchpriority="high"

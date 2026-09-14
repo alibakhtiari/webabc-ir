@@ -16,6 +16,7 @@ const blog = defineCollection({
     tags: z.array(z.string()).optional(),
     author: z.string().optional(),
     image: z.string(),
+    imageAlt: z.string().optional(),
     readTime: z.number().optional(),
     keyTakeaways: z.array(z.string()).optional(),
     faq: z
@@ -39,6 +40,7 @@ const portfolio = defineCollection({
     title: z.string(),
     description: z.string(),
     image: z.string(),
+    imageAlt: z.string().optional(),
     category: z.string(),
     client: z.string(),
     technologies: z.array(z.string()),

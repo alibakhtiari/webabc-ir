@@ -740,7 +740,7 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
             <div class="relative aspect-16/9 overflow-hidden bg-gray-100 dark:bg-slate-950">
               <OptimizedImage
                 src={project.data.image}
-                alt={project.data.title}
+                alt={project.data.imageAlt || project.data.title}
                 width={900}
                 height={506}
                 class="h-full w-full object-cover transition-transform duration-700 hover:scale-102"
