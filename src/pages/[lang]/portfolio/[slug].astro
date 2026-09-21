@@ -1,23 +1,23 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Breadcrumbs from "@/components/astro/Breadcrumbs.astro";
-import CTA from "@/components/astro/CTA.astro";
-import OptimizedImage from "@/components/astro/OptimizedImage.astro";
-import { getCollection, render } from "astro:content";
-import { type SupportedLanguage, languages } from "@/types/language";
-import { getDictionary } from "@/i18n/get-dictionary";
-import { createTranslator } from "@/i18n/translate";
+import Layout from '@/layouts/Layout.astro';
+import Breadcrumbs from '@/components/astro/Breadcrumbs.astro';
+import CTA from '@/components/astro/CTA.astro';
+import OptimizedImage from '@/components/astro/OptimizedImage.astro';
+import { getCollection, render } from 'astro:content';
+import { type SupportedLanguage, languages } from '@/types/language';
+import { getDictionary } from '@/i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
 import {
   getProjectPillar,
   getProjectMeta,
   PILLAR_LABELS,
   type PortfolioPillar,
-} from "@/data/portfolio-meta";
+} from '@/data/portfolio-meta';
 
 export async function getStaticPaths() {
-  const items = await getCollection("portfolio");
+  const items = await getCollection('portfolio');
   return items.map((item) => {
-    const [lang, slug] = item.id.split("/");
+    const [lang, slug] = item.id.split('/');
     return {
       params: { lang, slug },
       props: { project: item },
@@ -29,9 +29,9 @@ const { lang, slug } = Astro.params;
 const { project } = Astro.props;
 const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
-const isRtl = languages[supportedLang]?.direction === "rtl";
+const isRtl = languages[supportedLang]?.direction === 'rtl';
 const fontClass =
-  supportedLang === "en" ? "font-sans" : supportedLang === "ar" ? "font-arabic" : "font-persian";
+  supportedLang === 'en' ? 'font-sans' : supportedLang === 'ar' ? 'font-arabic' : 'font-persian';
 
 if (!project) {
   return Astro.redirect(`/${supportedLang}/404/`);
@@ -50,29 +50,44 @@ const faqs = project.data.faq || meta.faqs || [];
 const market = project.data.market || meta.market;
 const timeline = project.data.timeline || meta.timeline;
 
+// Structural cross-linking (3.4): link the market badge/widget to the matching
+// service-area page when — and only when — the existing market string names a
+// city we actually serve. Matching is substring against the localized area
+// names already in the dictionary, so no market/area association is invented:
+// Tehran/Qazvin-market projects link out; London/Toronto/Stockholm/Istanbul
+// (no area page) render as plain text.
+const areaLocations = Array.isArray((dictionary as any)?.['service-areas']?.locations)
+  ? (dictionary as any)['service-areas'].locations
+  : [];
+const marketArea =
+  typeof market === 'string'
+    ? areaLocations.find((loc: any) => loc?.slug && loc?.name && market.includes(loc.name))
+    : undefined;
+const marketAreaUrl = marketArea ? `/${supportedLang}/service-areas/${marketArea.slug}/` : null;
+
 // Estimated reading time
-const wordCount = (project.body || "")
-  .replace(/```[\s\S]*?```/g, " ")
-  .replace(/<[^>]+>/g, " ")
-  .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
-  .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
-  .replace(/[#*_>`~]/g, " ")
+const wordCount = (project.body || '')
+  .replace(/```[\s\S]*?```/g, ' ')
+  .replace(/<[^>]+>/g, ' ')
+  .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+  .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+  .replace(/[#*_>`~]/g, ' ')
   .split(/\s+/)
   .filter(Boolean).length;
-const estimatedReadTime = Math.max(3, Math.ceil(wordCount / (supportedLang === "en" ? 200 : 160)));
+const estimatedReadTime = Math.max(3, Math.ceil(wordCount / (supportedLang === 'en' ? 200 : 160)));
 
 // Clean domain extraction for browser mockup frame
-let cleanDomain = "webabc.ir";
+let cleanDomain = 'webabc.ir';
 try {
-  cleanDomain = new URL(project.data.projectUrl).hostname.replace(/^www\./, "");
+  cleanDomain = new URL(project.data.projectUrl).hostname.replace(/^www\./, '');
 } catch {
   cleanDomain = project.data.projectUrl
-    .replace(/^https?:\/\//, "")
-    .replace(/^www\./, "")
-    .split("/")[0];
+    .replace(/^https?:\/\//, '')
+    .replace(/^www\./, '')
+    .split('/')[0];
 }
 
-const origin = "https://webabc.ir";
+const origin = 'https://webabc.ir';
 const canonicalUrl = `${origin}/${supportedLang}/portfolio/${slug}/`;
 const shareText = encodeURIComponent(`${project.data.title} | WebABC`);
 const shareTwitter = `https://twitter.com/intent/tweet?text=${shareText}&url=${encodeURIComponent(canonicalUrl)}`;
@@ -81,8 +96,8 @@ const shareWhatsApp = `https://api.whatsapp.com/send?text=${shareText}%20${encod
 
 // Breadcrumbs
 const breadcrumbs = [
-  { label: t("common.home", { fallback: "Home" }), url: `/${supportedLang}/` },
-  { label: t("common.portfolio", { fallback: "Portfolio" }), url: `/${supportedLang}/portfolio/` },
+  { label: t('common.home', { fallback: 'Home' }), url: `/${supportedLang}/` },
+  { label: t('common.portfolio', { fallback: 'Portfolio' }), url: `/${supportedLang}/portfolio/` },
   { label: project.data.title },
 ];
 
@@ -96,11 +111,11 @@ const reviewSchemaPart = hasReviewData
       ...(entryReviews.length > 0
         ? {
             review: entryReviews.map((r) => ({
-              "@type": "Review",
-              author: { "@type": "Person", name: r.author },
+              '@type': 'Review',
+              author: { '@type': 'Person', name: r.author },
               reviewBody: r.text,
-              ...(typeof r.rating === "number"
-                ? { reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5 } }
+              ...(typeof r.rating === 'number'
+                ? { reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5 } }
                 : {}),
             })),
           }
@@ -108,7 +123,7 @@ const reviewSchemaPart = hasReviewData
       ...(entryRating
         ? {
             aggregateRating: {
-              "@type": "AggregateRating",
+              '@type': 'AggregateRating',
               ratingValue: entryRating.ratingValue,
               reviewCount: entryRating.reviewCount,
             },
@@ -118,33 +133,33 @@ const reviewSchemaPart = hasReviewData
   : {};
 
 const caseStudySchema = {
-  "@type": ["CreativeWork", "CaseStudy"],
-  "@id": `${origin}/${supportedLang}/portfolio/${slug}/#project`,
+  '@type': ['CreativeWork', 'CaseStudy'],
+  '@id': `${origin}/${supportedLang}/portfolio/${slug}/#project`,
   name: project.data.title,
   description: project.data.description,
-  image: project.data.image.startsWith("http")
+  image: project.data.image.startsWith('http')
     ? project.data.image
     : `${origin}${project.data.image}`,
   url: `${origin}/${supportedLang}/portfolio/${slug}/`,
   about: pillarLabel,
-  keywords: project.data.technologies?.join(", ") || "",
-  creator: { "@id": `${origin}/#organization` },
-  publisher: { "@id": `${origin}/#organization` },
-  author: { "@id": `${origin}/${supportedLang}/about/ali-bakhtiari/#person` },
-  inLanguage: supportedLang === "en" ? "en-US" : supportedLang === "ar" ? "ar-SA" : "fa-IR",
+  keywords: project.data.technologies?.join(', ') || '',
+  creator: { '@id': `${origin}/#organization` },
+  publisher: { '@id': `${origin}/#organization` },
+  author: { '@id': `${origin}/${supportedLang}/about/ali-bakhtiari/#person` },
+  inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
   ...reviewSchemaPart,
 };
 
 const faqSchema =
   faqs.length > 0
     ? {
-        "@type": "FAQPage",
-        "@id": `${origin}/${supportedLang}/portfolio/${slug}/#faq`,
+        '@type': 'FAQPage',
+        '@id': `${origin}/${supportedLang}/portfolio/${slug}/#faq`,
         mainEntity: faqs.map((f) => ({
-          "@type": "Question",
+          '@type': 'Question',
           name: f.question,
           acceptedAnswer: {
-            "@type": "Answer",
+            '@type': 'Answer',
             text: f.answer,
           },
         })),
@@ -152,23 +167,21 @@ const faqSchema =
     : null;
 
 const fullSchema = {
-  "@context": "https://schema.org",
-  "@graph": [caseStudySchema, ...(faqSchema ? [faqSchema] : [])],
+  '@context': 'https://schema.org',
+  '@graph': [caseStudySchema, ...(faqSchema ? [faqSchema] : [])],
 };
 
 // Fetch related projects & Next/Previous navigation
-const allProjects = await getCollection("portfolio");
+const allProjects = await getCollection('portfolio');
 const langProjects = allProjects.filter((p) => p.id.startsWith(`${supportedLang}/`));
 
 const currentIndex = langProjects.findIndex((p) => {
-  const pSlug = p.id.replace(`${supportedLang}/`, "").replace(/\.mdx?$/, "");
+  const pSlug = p.id.replace(`${supportedLang}/`, '').replace(/\.mdx?$/, '');
   return pSlug === slug;
 });
 
 const prevProjectEntry =
-  currentIndex > 0
-    ? langProjects[currentIndex - 1]
-    : langProjects[langProjects.length - 1];
+  currentIndex > 0 ? langProjects[currentIndex - 1] : langProjects[langProjects.length - 1];
 
 const nextProjectEntry =
   currentIndex >= 0 && currentIndex < langProjects.length - 1
@@ -177,12 +190,12 @@ const nextProjectEntry =
 
 const prevProject = prevProjectEntry
   ? {
-      slug: prevProjectEntry.id.replace(`${supportedLang}/`, "").replace(/\.mdx?$/, ""),
+      slug: prevProjectEntry.id.replace(`${supportedLang}/`, '').replace(/\.mdx?$/, ''),
       title: prevProjectEntry.data.title,
       category:
         PILLAR_LABELS[supportedLang][
           getProjectPillar(
-            prevProjectEntry.id.replace(`${supportedLang}/`, "").replace(/\.mdx?$/, ""),
+            prevProjectEntry.id.replace(`${supportedLang}/`, '').replace(/\.mdx?$/, ''),
             prevProjectEntry.data.category
           )
         ],
@@ -191,12 +204,12 @@ const prevProject = prevProjectEntry
 
 const nextProject = nextProjectEntry
   ? {
-      slug: nextProjectEntry.id.replace(`${supportedLang}/`, "").replace(/\.mdx?$/, ""),
+      slug: nextProjectEntry.id.replace(`${supportedLang}/`, '').replace(/\.mdx?$/, ''),
       title: nextProjectEntry.data.title,
       category:
         PILLAR_LABELS[supportedLang][
           getProjectPillar(
-            nextProjectEntry.id.replace(`${supportedLang}/`, "").replace(/\.mdx?$/, ""),
+            nextProjectEntry.id.replace(`${supportedLang}/`, '').replace(/\.mdx?$/, ''),
             nextProjectEntry.data.category
           )
         ],
@@ -206,11 +219,11 @@ const nextProject = nextProjectEntry
 // Related projects: prioritize same pillar, take up to 3
 const otherProjects = langProjects
   .filter((p) => {
-    const pSlug = p.id.replace(`${supportedLang}/`, "").replace(/\.mdx?$/, "");
+    const pSlug = p.id.replace(`${supportedLang}/`, '').replace(/\.mdx?$/, '');
     return pSlug !== slug;
   })
   .map((p) => {
-    const pSlug = p.id.replace(`${supportedLang}/`, "").replace(/\.mdx?$/, "");
+    const pSlug = p.id.replace(`${supportedLang}/`, '').replace(/\.mdx?$/, '');
     const pPillar = getProjectPillar(pSlug, p.data.category);
     return {
       slug: pSlug,
@@ -390,18 +403,24 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
       <!-- Header & Badges -->
       <header class="space-y-4">
         <div class="flex flex-wrap items-center gap-2.5">
-          <span class="rounded-full bg-primary px-3.5 py-1 text-xs font-bold text-primary-foreground shadow-xs">
+          <span
+            class="rounded-full bg-primary px-3.5 py-1 text-xs font-bold text-primary-foreground shadow-xs"
+          >
             {pillarLabel}
           </span>
-          <span class="rounded-full border border-gray-200 bg-white px-3.5 py-1 text-xs font-semibold text-gray-700 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300">
+          <span
+            class="rounded-full border border-gray-200 bg-white px-3.5 py-1 text-xs font-semibold text-gray-700 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300"
+          >
             {project.data.client}
           </span>
-          <span class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-medium text-gray-600 dark:border-slate-800 dark:bg-slate-900 dark:text-gray-400">
+          <span
+            class="rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-medium text-gray-600 dark:border-slate-800 dark:bg-slate-900 dark:text-gray-400"
+          >
             {market}
           </span>
         </div>
 
-        <h1 class="text-3xl font-extrabold leading-tight text-gray-900 md:text-5xl dark:text-white">
+        <h1 class="text-3xl leading-tight font-extrabold text-gray-900 md:text-5xl dark:text-white">
           {project.data.title}
         </h1>
 
@@ -410,21 +429,47 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
         </p>
 
         <!-- Action & Utility Bar -->
-        <div class="flex flex-wrap items-center justify-between gap-3 border-y border-gray-100 py-3.5 dark:border-slate-800">
+        <div
+          class="flex flex-wrap items-center justify-between gap-3 border-y border-gray-100 py-3.5 dark:border-slate-800"
+        >
           <!-- Reading time & verified tag -->
           <div class="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
             <span class="inline-flex items-center gap-1.5 font-medium">
-              <svg aria-hidden="true" class="h-4 w-4 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <svg
+                aria-hidden="true"
+                class="h-4 w-4 text-primary"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
-              <span>{estimatedReadTime} {t("portfolio.detail.minutes", { fallback: "min read" })}</span>
+              <span
+                >{estimatedReadTime} {t('portfolio.detail.minutes', { fallback: 'min read' })}</span
+              >
             </span>
             <span class="h-3 w-px bg-gray-200 dark:bg-slate-700"></span>
-            <span class="inline-flex items-center gap-1 font-semibold text-emerald-600 dark:text-emerald-400">
-              <svg aria-hidden="true" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <span
+              class="inline-flex items-center gap-1 font-semibold text-emerald-600 dark:text-emerald-400"
+            >
+              <svg
+                aria-hidden="true"
+                class="h-3.5 w-3.5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
-              <span>{t("portfolio.card.verifiedImpact", { fallback: "Verified Case Study" })}</span>
+              <span>{t('portfolio.card.verifiedImpact', { fallback: 'Verified Case Study' })}</span>
             </span>
           </div>
 
@@ -434,14 +479,27 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
             <button
               type="button"
               id="copy-case-study-btn"
-              data-copied-text={t("portfolio.detail.copied", { fallback: "Copied! ✓" })}
-              data-original-text={t("portfolio.detail.copyLink", { fallback: "Copy Link" })}
+              data-copied-text={t('portfolio.detail.copied', { fallback: 'Copied! ✓' })}
+              data-original-text={t('portfolio.detail.copyLink', { fallback: 'Copy Link' })}
               class="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-semibold text-gray-700 shadow-xs transition-all hover:border-primary hover:text-primary dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300 dark:hover:border-primary"
             >
-              <svg aria-hidden="true" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              <svg
+                aria-hidden="true"
+                class="h-3.5 w-3.5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                ></path>
               </svg>
-              <span id="copy-btn-label">{t("portfolio.detail.copyLink", { fallback: "Copy Link" })}</span>
+              <span id="copy-btn-label"
+                >{t('portfolio.detail.copyLink', { fallback: 'Copy Link' })}</span
+              >
             </button>
 
             <!-- Social Share shortcuts -->
@@ -453,7 +511,9 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
               class="flex h-7 w-7 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 transition-colors hover:border-primary hover:text-primary dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300"
             >
               <svg aria-hidden="true" class="h-3 w-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                ></path>
               </svg>
             </a>
 
@@ -465,7 +525,9 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
               class="flex h-7 w-7 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 transition-colors hover:border-primary hover:text-primary dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300"
             >
               <svg aria-hidden="true" class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 0 0-1.6 1.6 1.6 1.6 0 0 0 1.6 1.6 1.6 1.6 0 0 0 1.6-1.6 1.6 1.6 0 0 0-1.6-1.6z" />
+                <path
+                  d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 0 0-1.6 1.6 1.6 1.6 0 0 0 1.6 1.6 1.6 1.6 0 0 0 1.6-1.6 1.6 1.6 0 0 0-1.6-1.6z"
+                ></path>
               </svg>
             </a>
 
@@ -477,7 +539,9 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
               class="flex h-7 w-7 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-600 transition-colors hover:border-emerald-500 hover:text-emerald-500 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300"
             >
               <svg aria-hidden="true" class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.24-.75-.67-1.25-1.49-1.4-1.74-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.17-.48-.29z" />
+                <path
+                  d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.24-.75-.67-1.25-1.49-1.4-1.74-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.7 4.29 3.79.6.26 1.07.41 1.44.53.6.19 1.15.16 1.58.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.17-.48-.29z"
+                ></path>
               </svg>
             </a>
 
@@ -488,9 +552,20 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
               rel="noopener noreferrer nofollow external"
               class="inline-flex items-center gap-1 rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground shadow-xs transition-all hover:bg-primary/90"
             >
-              <span>{t("portfolio.detail.visitLive", { fallback: "Visit Live Site" })}</span>
-              <svg aria-hidden="true" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              <span>{t('portfolio.detail.visitLive', { fallback: 'Visit Live Site' })}</span>
+              <svg
+                aria-hidden="true"
+                class="h-3 w-3"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                ></path>
               </svg>
             </a>
           </div>
@@ -501,31 +576,60 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
       <section
         id="overview"
         aria-label="Executive Summary"
-        class="relative overflow-hidden rounded-3xl border border-primary/20 bg-linear-to-br from-primary/5 via-background to-primary/10 p-6 md:p-8 shadow-xs dark:border-primary/25 dark:from-primary/10 dark:via-slate-900/60 dark:to-primary/5"
+        class="relative overflow-hidden rounded-3xl border border-primary/20 bg-linear-to-br from-primary/5 via-background to-primary/10 p-6 shadow-xs md:p-8 dark:border-primary/25 dark:from-primary/10 dark:via-slate-900/60 dark:to-primary/5"
       >
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-primary/15 pb-6 dark:border-slate-800">
+        <div
+          class="flex flex-col gap-4 border-b border-primary/15 pb-6 md:flex-row md:items-center md:justify-between dark:border-slate-800"
+        >
           <div class="space-y-1">
             <div class="flex items-center gap-2">
-              <span class="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                <svg aria-hidden="true" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              <span
+                class="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-primary-foreground"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                 </svg>
               </span>
               <h2 class="text-xl font-bold text-gray-950 dark:text-white">
-                {t("portfolio.detail.executiveSummary", { fallback: "Executive Summary (TL;DR)" })}
+                {t('portfolio.detail.executiveSummary', { fallback: 'Executive Summary (TL;DR)' })}
               </h2>
             </div>
             <p class="text-xs text-gray-600 dark:text-gray-400">
-              {t("portfolio.detail.summaryDesc", {
-                fallback: "Key facts and verified outcomes formatted for decision makers and AI search engines.",
-              })}
+              {
+                t('portfolio.detail.summaryDesc', {
+                  fallback:
+                    'Key facts and verified outcomes formatted for decision makers and AI search engines.',
+                })
+              }
             </p>
           </div>
-          <span class="self-start md:self-auto inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[11px] font-bold text-primary">
-            <svg aria-hidden="true" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <span
+            class="inline-flex items-center gap-1.5 self-start rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[11px] font-bold text-primary md:self-auto"
+          >
+            <svg
+              aria-hidden="true"
+              class="h-3.5 w-3.5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
-            <span>{t("portfolio.detail.summaryBadge", { fallback: "AEO / GEO Summary" })}</span>
+            <span>{t('portfolio.detail.summaryBadge', { fallback: 'AEO / GEO Summary' })}</span>
           </span>
         </div>
 
@@ -533,8 +637,10 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
         <div class="grid grid-cols-2 gap-5 pt-6 sm:grid-cols-3 lg:grid-cols-6">
           <!-- Client -->
           <div>
-            <div class="text-[11px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              {t("portfolio.client", { fallback: "Client" })}
+            <div
+              class="text-[11px] font-bold tracking-wider text-gray-500 uppercase dark:text-gray-400"
+            >
+              {t('portfolio.client', { fallback: 'Client' })}
             </div>
             <div class="mt-1 font-bold text-gray-900 dark:text-white">
               {project.data.client}
@@ -543,8 +649,10 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
 
           <!-- Category Pillar -->
           <div>
-            <div class="text-[11px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              {t("portfolio.category", { fallback: "Category" })}
+            <div
+              class="text-[11px] font-bold tracking-wider text-gray-500 uppercase dark:text-gray-400"
+            >
+              {t('portfolio.category', { fallback: 'Category' })}
             </div>
             <div class="mt-1 font-bold text-primary">
               {pillarLabel}
@@ -553,8 +661,10 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
 
           <!-- Market / Country -->
           <div>
-            <div class="text-[11px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              {t("portfolio.detail.market", { fallback: "Market / Country" })}
+            <div
+              class="text-[11px] font-bold tracking-wider text-gray-500 uppercase dark:text-gray-400"
+            >
+              {t('portfolio.detail.market', { fallback: 'Market / Country' })}
             </div>
             <div class="mt-1 font-bold text-gray-900 dark:text-white">
               {market}
@@ -563,8 +673,10 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
 
           <!-- Timeline -->
           <div>
-            <div class="text-[11px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              {t("portfolio.detail.timeline", { fallback: "Timeline" })}
+            <div
+              class="text-[11px] font-bold tracking-wider text-gray-500 uppercase dark:text-gray-400"
+            >
+              {t('portfolio.detail.timeline', { fallback: 'Timeline' })}
             </div>
             <div class="mt-1 font-bold text-gray-900 dark:text-white">
               {timeline}
@@ -573,18 +685,25 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
 
           <!-- Core Tech -->
           <div>
-            <div class="text-[11px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              {t("portfolio.detail.coreTech", { fallback: "Core Tech Stack" })}
+            <div
+              class="text-[11px] font-bold tracking-wider text-gray-500 uppercase dark:text-gray-400"
+            >
+              {t('portfolio.detail.coreTech', { fallback: 'Core Tech Stack' })}
             </div>
-            <div class="mt-1 font-mono text-xs font-semibold text-gray-800 dark:text-gray-200 truncate" title={project.data.technologies.slice(0, 3).join(", ")}>
-              {project.data.technologies.slice(0, 2).join(", ")}
+            <div
+              class="mt-1 truncate font-mono text-xs font-semibold text-gray-800 dark:text-gray-200"
+              title={project.data.technologies.slice(0, 3).join(', ')}
+            >
+              {project.data.technologies.slice(0, 2).join(', ')}
             </div>
           </div>
 
           <!-- Live Website Link -->
           <div>
-            <div class="text-[11px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-              {t("portfolio.detail.liveProject", { fallback: "Live Website" })}
+            <div
+              class="text-[11px] font-bold tracking-wider text-gray-500 uppercase dark:text-gray-400"
+            >
+              {t('portfolio.detail.liveProject', { fallback: 'Live Website' })}
             </div>
             <div class="mt-1">
               <a
@@ -593,9 +712,20 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
                 rel="noopener noreferrer nofollow external"
                 class="inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline"
               >
-                <span>{t("portfolio.detail.visitLive", { fallback: "Visit Live Site" })}</span>
-                <svg aria-hidden="true" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                <span>{t('portfolio.detail.visitLive', { fallback: 'Visit Live Site' })}</span>
+                <svg
+                  aria-hidden="true"
+                  class="h-3.5 w-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  ></path>
                 </svg>
               </a>
             </div>
@@ -606,112 +736,146 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
       <!-- Sticky Section Navigator (Sub-navigation Pills) -->
       <nav
         aria-label="Section Navigation"
-        class="sticky top-20 z-30 -mx-4 px-4 py-2.5 backdrop-blur-md bg-white/90 dark:bg-slate-900/90 border-y border-gray-100 dark:border-slate-800 shadow-xs"
+        class="sticky top-20 z-30 -mx-4 border-y border-gray-100 bg-white/90 px-4 py-2.5 shadow-xs backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/90"
       >
-        <div class="flex items-center justify-between gap-2 overflow-x-auto no-scrollbar py-1">
-          <div class="flex items-center gap-1.5 shrink-0">
+        <div class="no-scrollbar flex items-center justify-between gap-2 overflow-x-auto py-1">
+          <div class="flex shrink-0 items-center gap-1.5">
             <a
               href="#overview"
               data-nav-pill
-              class="rounded-full px-3 py-1 text-xs font-semibold transition-all border border-primary bg-primary text-primary-foreground shadow-2xs"
+              class="rounded-full border border-primary bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground shadow-2xs transition-all"
             >
-              {t("portfolio.detail.navOverview", { fallback: "Overview" })}
+              {t('portfolio.detail.navOverview', { fallback: 'Overview' })}
             </a>
-            {project.data.results && project.data.results.length > 0 && (
-              <a
-                href="#results"
-                data-nav-pill
-                class="rounded-full px-3 py-1 text-xs font-semibold text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 border border-transparent transition-all"
-              >
-                {t("portfolio.detail.navResults", { fallback: "Key Results" })}
-              </a>
-            )}
+            {
+              project.data.results && project.data.results.length > 0 && (
+                <a
+                  href="#results"
+                  data-nav-pill
+                  class="rounded-full border border-transparent px-3 py-1 text-xs font-semibold text-gray-600 transition-all hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-slate-800"
+                >
+                  {t('portfolio.detail.navResults', { fallback: 'Key Results' })}
+                </a>
+              )
+            }
             <a
               href="#narrative"
               data-nav-pill
-              class="rounded-full px-3 py-1 text-xs font-semibold text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 border border-transparent transition-all"
+              class="rounded-full border border-transparent px-3 py-1 text-xs font-semibold text-gray-600 transition-all hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-slate-800"
             >
-              {t("portfolio.detail.navNarrative", { fallback: "Case Study" })}
+              {t('portfolio.detail.navNarrative', { fallback: 'Case Study' })}
             </a>
-            {faqs.length > 0 && (
-              <a
-                href="#faq"
-                data-nav-pill
-                class="rounded-full px-3 py-1 text-xs font-semibold text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 border border-transparent transition-all"
-              >
-                {t("portfolio.detail.navFaq", { fallback: "FAQs" })}
-              </a>
-            )}
-            {relatedProjects.length > 0 && (
-              <a
-                href="#related"
-                data-nav-pill
-                class="rounded-full px-3 py-1 text-xs font-semibold text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 border border-transparent transition-all"
-              >
-                {t("portfolio.detail.navRelated", { fallback: "Related" })}
-              </a>
-            )}
+            {
+              faqs.length > 0 && (
+                <a
+                  href="#faq"
+                  data-nav-pill
+                  class="rounded-full border border-transparent px-3 py-1 text-xs font-semibold text-gray-600 transition-all hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-slate-800"
+                >
+                  {t('portfolio.detail.navFaq', { fallback: 'FAQs' })}
+                </a>
+              )
+            }
+            {
+              relatedProjects.length > 0 && (
+                <a
+                  href="#related"
+                  data-nav-pill
+                  class="rounded-full border border-transparent px-3 py-1 text-xs font-semibold text-gray-600 transition-all hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-slate-800"
+                >
+                  {t('portfolio.detail.navRelated', { fallback: 'Related' })}
+                </a>
+              )
+            }
           </div>
 
           <a
             href={`/${supportedLang}/portfolio/`}
-            class="hidden sm:inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline shrink-0"
+            class="hidden shrink-0 items-center gap-1 text-xs font-bold text-primary hover:underline sm:inline-flex"
           >
-            <span>{t("portfolio.detail.allProjectsLink", { fallback: "← All Projects" })}</span>
+            <span>{t('portfolio.detail.allProjectsLink', { fallback: '← All Projects' })}</span>
           </a>
         </div>
       </nav>
 
       <!-- High-Impact Visual Metric Cards -->
-      {project.data.results && project.data.results.length > 0 && (
-        <section id="results" aria-label="Key Results" class="scroll-mt-36 space-y-4">
-          <div class="flex items-center justify-between">
-            <h2 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
-              {t("portfolio.keyResults", { fallback: "Key Results" })}
-            </h2>
-            <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-              <svg aria-hidden="true" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-              </svg>
-              <span>{t("portfolio.card.verifiedImpact", { fallback: "Verified Impact" })}</span>
-            </span>
-          </div>
+      {
+        project.data.results && project.data.results.length > 0 && (
+          <section id="results" aria-label="Key Results" class="scroll-mt-36 space-y-4">
+            <div class="flex items-center justify-between">
+              <h2 class="text-xl font-bold text-gray-900 md:text-2xl dark:text-white">
+                {t('portfolio.keyResults', { fallback: 'Key Results' })}
+              </h2>
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                <svg
+                  aria-hidden="true"
+                  class="h-3.5 w-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                  />
+                </svg>
+                <span>{t('portfolio.card.verifiedImpact', { fallback: 'Verified Impact' })}</span>
+              </span>
+            </div>
 
-          <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
-            {project.data.results.map((result) => (
-              <div class="relative overflow-hidden rounded-2xl border border-gray-200/80 bg-white p-5 shadow-xs transition-all hover:border-primary/40 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
-                <div class="flex items-center justify-between">
-                  <span class="font-mono text-2xl md:text-3xl font-extrabold text-primary">
-                    {result.value}
-                  </span>
-                  <span class="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                    <svg aria-hidden="true" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                    </svg>
-                  </span>
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+              {project.data.results.map((result) => (
+                <div class="relative overflow-hidden rounded-2xl border border-gray-200/80 bg-white p-5 shadow-xs transition-all hover:border-primary/40 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+                  <div class="flex items-center justify-between">
+                    <span class="font-mono text-2xl font-extrabold text-primary md:text-3xl">
+                      {result.value}
+                    </span>
+                    <span class="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                      <svg
+                        aria-hidden="true"
+                        class="h-3.5 w-3.5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M5 10l7-7m0 0l7 7m-7-7v18"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="mt-2 text-xs font-semibold text-gray-600 dark:text-gray-400">
+                    {result.label}
+                  </div>
                 </div>
-                <div class="mt-2 text-xs font-semibold text-gray-600 dark:text-gray-400">
-                  {result.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
+              ))}
+            </div>
+          </section>
+        )
+      }
 
       <!-- Main Layout: Content & Sidebar -->
       <div class="grid grid-cols-1 gap-12 lg:grid-cols-3">
         <!-- Main Content Area -->
         <div class="space-y-12 lg:col-span-2">
           <!-- Hero macOS Browser Mockup Frame -->
-          <div class="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-xl dark:border-slate-800 dark:bg-slate-900">
+          <div
+            class="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-xl dark:border-slate-800 dark:bg-slate-900"
+          >
             <!-- Browser Header Bar -->
-            <div class="flex items-center justify-between border-b border-gray-100 bg-gray-50/90 px-4 py-3 dark:border-slate-800 dark:bg-slate-800/60">
+            <div
+              class="flex items-center justify-between border-b border-gray-100 bg-gray-50/90 px-4 py-3 dark:border-slate-800 dark:bg-slate-800/60"
+            >
               <!-- Traffic Light Dots -->
               <div class="flex items-center gap-1.5">
-                <span class="h-3 w-3 rounded-full bg-rose-500 inline-block"></span>
-                <span class="h-3 w-3 rounded-full bg-amber-400 inline-block"></span>
-                <span class="h-3 w-3 rounded-full bg-emerald-500 inline-block"></span>
+                <span class="inline-block h-3 w-3 rounded-full bg-rose-500"></span>
+                <span class="inline-block h-3 w-3 rounded-full bg-amber-400"></span>
+                <span class="inline-block h-3 w-3 rounded-full bg-emerald-500"></span>
               </div>
 
               <!-- Simulated URL Pill -->
@@ -719,14 +883,33 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
                 href={project.data.projectUrl}
                 target="_blank"
                 rel="noopener noreferrer nofollow external"
-                class="flex max-w-[240px] sm:max-w-xs md:max-w-md items-center gap-1.5 truncate rounded-lg border border-gray-200/80 bg-white px-3 py-1 font-mono text-[11px] text-gray-600 transition-colors hover:border-primary hover:text-primary dark:border-slate-700 dark:bg-slate-900 dark:text-gray-300"
+                class="flex max-w-[240px] items-center gap-1.5 truncate rounded-lg border border-gray-200/80 bg-white px-3 py-1 font-mono text-[11px] text-gray-600 transition-colors hover:border-primary hover:text-primary sm:max-w-xs md:max-w-md dark:border-slate-700 dark:bg-slate-900 dark:text-gray-300"
               >
-                <svg aria-hidden="true" class="h-3 w-3 shrink-0 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                <svg
+                  aria-hidden="true"
+                  class="h-3 w-3 shrink-0 text-emerald-500"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                    clip-rule="evenodd"></path>
                 </svg>
                 <span class="truncate">https://{cleanDomain}</span>
-                <svg aria-hidden="true" class="h-3 w-3 shrink-0 text-gray-400 ms-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                <svg
+                  aria-hidden="true"
+                  class="ms-auto h-3 w-3 shrink-0 text-gray-400"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  ></path>
                 </svg>
               </a>
 
@@ -751,77 +934,101 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
 
           <!-- Structured Case Study Narrative -->
           <div id="narrative" class="scroll-mt-36 space-y-6">
-            <article class="prose prose-lg max-w-none text-gray-700 leading-relaxed dark:text-gray-300 dark:prose-invert prose-headings:font-bold prose-headings:text-gray-900 dark:prose-headings:text-white prose-h2:mt-10 prose-h2:border-b prose-h2:border-gray-100 dark:prose-h2:border-slate-800 prose-h2:pb-3 prose-h2:text-2xl prose-a:text-primary">
+            <article
+              class="prose prose-lg max-w-none leading-relaxed text-gray-700 dark:text-gray-300 dark:prose-invert prose-headings:font-bold prose-headings:text-gray-900 dark:prose-headings:text-white prose-h2:mt-10 prose-h2:border-b prose-h2:border-gray-100 prose-h2:pb-3 prose-h2:text-2xl dark:prose-h2:border-slate-800 prose-a:text-primary"
+            >
               <Content />
             </article>
           </div>
 
           <!-- Client Testimonial (Renders when entry has review data) -->
-          {entryReviews.length > 0 && (
-            <div class="space-y-4">
-              <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-                {t("portfolio.testimonial", { fallback: "Client Testimonial" })}
-              </h2>
-              <blockquote class="rounded-2xl border-s-4 border-primary bg-primary/5 p-6 dark:bg-primary/10">
-                <p class="text-base italic leading-relaxed text-gray-700 dark:text-gray-300">
-                  “{entryReviews[0].text}”
-                </p>
-                <footer class="mt-3 text-sm font-bold text-gray-900 dark:text-white">
-                  — {entryReviews[0].author}
-                </footer>
-              </blockquote>
-            </div>
-          )}
+          {
+            entryReviews.length > 0 && (
+              <div class="space-y-4">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+                  {t('portfolio.testimonial', { fallback: 'Client Testimonial' })}
+                </h2>
+                <blockquote class="rounded-2xl border-s-4 border-primary bg-primary/5 p-6 dark:bg-primary/10">
+                  <p class="text-base leading-relaxed text-gray-700 italic dark:text-gray-300">
+                    “{entryReviews[0].text}”
+                  </p>
+                  <footer class="mt-3 text-sm font-bold text-gray-900 dark:text-white">
+                    — {entryReviews[0].author}
+                  </footer>
+                </blockquote>
+              </div>
+            )
+          }
 
           <!-- Project FAQ Accordion (AEO / Answer Engine Optimization) -->
-          {faqs.length > 0 && (
-            <section id="faq" aria-label="Project FAQ" class="scroll-mt-36 space-y-6 pt-4">
-              <div>
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-                  {t("portfolio.detail.faqTitle", { fallback: "Frequently Asked Questions" })}
-                </h2>
-                <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                  {t("portfolio.detail.faqSubtitle", {
-                    fallback: "Key answers regarding the technical architecture, search strategy, and outcomes of this project.",
-                  })}
-                </p>
-              </div>
+          {
+            faqs.length > 0 && (
+              <section id="faq" aria-label="Project FAQ" class="scroll-mt-36 space-y-6 pt-4">
+                <div>
+                  <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+                    {t('portfolio.detail.faqTitle', { fallback: 'Frequently Asked Questions' })}
+                  </h2>
+                  <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                    {t('portfolio.detail.faqSubtitle', {
+                      fallback:
+                        'Key answers regarding the technical architecture, search strategy, and outcomes of this project.',
+                    })}
+                  </p>
+                </div>
 
-              <div class="space-y-3">
-                {faqs.map((faq) => (
-                  <details class="group rounded-2xl border border-gray-200/80 bg-white p-5 shadow-xs transition-all open:border-primary/40 open:shadow-md dark:border-slate-800 dark:bg-slate-900">
-                    <summary class="flex cursor-pointer list-none items-center justify-between font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
-                      <span class="pe-4 text-sm md:text-base leading-snug">{faq.question}</span>
-                      <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition-transform duration-200 group-open:rotate-180 group-open:bg-primary/10 group-open:text-primary dark:bg-slate-800 dark:text-gray-400">
-                        <svg aria-hidden="true" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </span>
-                    </summary>
-                    <div class="mt-4 border-t border-gray-100 pt-4 text-xs md:text-sm leading-relaxed text-gray-600 dark:border-slate-800 dark:text-gray-300">
-                      <p>{faq.answer}</p>
-                    </div>
-                  </details>
-                ))}
-              </div>
-            </section>
-          )}
+                <div class="space-y-3">
+                  {faqs.map((faq) => (
+                    <details class="group rounded-2xl border border-gray-200/80 bg-white p-5 shadow-xs transition-all open:border-primary/40 open:shadow-md dark:border-slate-800 dark:bg-slate-900">
+                      <summary class="flex cursor-pointer list-none items-center justify-between font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+                        <span class="pe-4 text-sm leading-snug md:text-base">{faq.question}</span>
+                        <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition-transform duration-200 group-open:rotate-180 group-open:bg-primary/10 group-open:text-primary dark:bg-slate-800 dark:text-gray-400">
+                          <svg
+                            aria-hidden="true"
+                            class="h-4 w-4"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M19 9l-7 7-7-7"
+                            />
+                          </svg>
+                        </span>
+                      </summary>
+                      <div class="mt-4 border-t border-gray-100 pt-4 text-xs leading-relaxed text-gray-600 md:text-sm dark:border-slate-800 dark:text-gray-300">
+                        <p>{faq.answer}</p>
+                      </div>
+                    </details>
+                  ))}
+                </div>
+              </section>
+            )
+          }
         </div>
 
         <!-- Sticky Sidebar Area -->
         <aside class="space-y-8">
           <div class="sticky top-28 space-y-6">
             <!-- Project Details Widget -->
-            <div class="space-y-6 rounded-3xl border border-gray-200/80 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900">
-              <h3 class="border-b border-gray-100 pb-4 text-lg font-bold text-gray-900 dark:border-slate-800 dark:text-white">
-                {t("portfolio.projectDetails", { fallback: "Project Details" })}
+            <div
+              class="space-y-6 rounded-3xl border border-gray-200/80 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900"
+            >
+              <h3
+                class="border-b border-gray-100 pb-4 text-lg font-bold text-gray-900 dark:border-slate-800 dark:text-white"
+              >
+                {t('portfolio.projectDetails', { fallback: 'Project Details' })}
               </h3>
 
               <div class="space-y-4">
                 <!-- Client -->
                 <div>
-                  <div class="text-[11px] font-bold text-gray-500 uppercase tracking-wider dark:text-gray-400">
-                    {t("portfolio.client", { fallback: "Client" })}
+                  <div
+                    class="text-[11px] font-bold tracking-wider text-gray-500 uppercase dark:text-gray-400"
+                  >
+                    {t('portfolio.client', { fallback: 'Client' })}
                   </div>
                   <div class="mt-0.5 font-bold text-gray-900 dark:text-white">
                     {project.data.client}
@@ -830,8 +1037,10 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
 
                 <!-- Category -->
                 <div>
-                  <div class="text-[11px] font-bold text-gray-500 uppercase tracking-wider dark:text-gray-400">
-                    {t("portfolio.category", { fallback: "Category" })}
+                  <div
+                    class="text-[11px] font-bold tracking-wider text-gray-500 uppercase dark:text-gray-400"
+                  >
+                    {t('portfolio.category', { fallback: 'Category' })}
                   </div>
                   <div class="mt-0.5 font-semibold text-primary">
                     {pillarLabel}
@@ -840,18 +1049,34 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
 
                 <!-- Market -->
                 <div>
-                  <div class="text-[11px] font-bold text-gray-500 uppercase tracking-wider dark:text-gray-400">
-                    {t("portfolio.detail.market", { fallback: "Market / Country" })}
+                  <div
+                    class="text-[11px] font-bold tracking-wider text-gray-500 uppercase dark:text-gray-400"
+                  >
+                    {t('portfolio.detail.market', { fallback: 'Market / Country' })}
                   </div>
                   <div class="mt-0.5 font-medium text-gray-800 dark:text-gray-200">
-                    {market}
+                    {
+                      marketAreaUrl ? (
+                        <a
+                          href={marketAreaUrl}
+                          title={marketArea.name}
+                          class="font-semibold text-primary hover:underline"
+                        >
+                          {market}
+                        </a>
+                      ) : (
+                        market
+                      )
+                    }
                   </div>
                 </div>
 
                 <!-- Timeline -->
                 <div>
-                  <div class="text-[11px] font-bold text-gray-500 uppercase tracking-wider dark:text-gray-400">
-                    {t("portfolio.detail.timeline", { fallback: "Timeline" })}
+                  <div
+                    class="text-[11px] font-bold tracking-wider text-gray-500 uppercase dark:text-gray-400"
+                  >
+                    {t('portfolio.detail.timeline', { fallback: 'Timeline' })}
                   </div>
                   <div class="mt-0.5 font-medium text-gray-800 dark:text-gray-200">
                     {timeline}
@@ -860,19 +1085,23 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
 
                 <!-- Tech Stack with interactive search filters -->
                 <div>
-                  <div class="text-[11px] font-bold text-gray-500 uppercase tracking-wider dark:text-gray-400">
-                    {t("portfolio.technologies", { fallback: "Technologies" })}
+                  <div
+                    class="text-[11px] font-bold tracking-wider text-gray-500 uppercase dark:text-gray-400"
+                  >
+                    {t('portfolio.technologies', { fallback: 'Technologies' })}
                   </div>
                   <div class="mt-2 flex flex-wrap gap-1.5">
-                    {project.data.technologies?.map((tech) => (
-                      <a
-                        href={`/${supportedLang}/portfolio/?q=${encodeURIComponent(tech)}`}
-                        class="rounded-lg border border-gray-200 bg-gray-50 px-2.5 py-1 font-mono text-xs text-gray-700 transition-colors hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300 dark:hover:border-primary dark:hover:text-primary"
-                        title={`Filter case studies by ${tech}`}
-                      >
-                        {tech}
-                      </a>
-                    ))}
+                    {
+                      project.data.technologies?.map((tech) => (
+                        <a
+                          href={`/${supportedLang}/portfolio/?q=${encodeURIComponent(tech)}`}
+                          class="rounded-lg border border-gray-200 bg-gray-50 px-2.5 py-1 font-mono text-xs text-gray-700 transition-colors hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300 dark:hover:border-primary dark:hover:text-primary"
+                          title={`Filter case studies by ${tech}`}
+                        >
+                          {tech}
+                        </a>
+                      ))
+                    }
                   </div>
                 </div>
               </div>
@@ -882,23 +1111,59 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
                 href={project.data.projectUrl}
                 target="_blank"
                 rel="noopener noreferrer nofollow external"
-                class="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary font-bold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                class="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary font-bold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:outline-none"
               >
-                <span>{t("portfolio.detail.visitLive", { fallback: "Visit Live Website" })}</span>
-                <svg aria-hidden="true" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                <span>{t('portfolio.detail.visitLive', { fallback: 'Visit Live Website' })}</span>
+                <svg
+                  aria-hidden="true"
+                  class="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  ></path>
                 </svg>
               </a>
             </div>
 
             <!-- Contextual Internal Linking: Related Services, Pillar Guide & Free Tool -->
-            <div class="space-y-4 rounded-3xl border border-gray-200/80 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900">
-              <div class="border-b border-gray-100 pb-3 dark:border-slate-800 flex items-center justify-between">
-                <span class="text-xs font-bold uppercase tracking-wider text-gray-900 dark:text-white flex items-center gap-1.5">
-                  <svg aria-hidden="true" class="h-4 w-4 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+            <div
+              class="space-y-4 rounded-3xl border border-gray-200/80 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900"
+            >
+              <div
+                class="flex items-center justify-between border-b border-gray-100 pb-3 dark:border-slate-800"
+              >
+                <span
+                  class="flex items-center gap-1.5 text-xs font-bold tracking-wider text-gray-900 uppercase dark:text-white"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="h-4 w-4 text-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                    ></path>
                   </svg>
-                  <span>{supportedLang === 'fa' ? 'خدمات و راهنماهای مرتبط' : supportedLang === 'ar' ? 'الخدمات والأدلة ذات الصلة' : 'Related Services & Guides'}</span>
+                  <span
+                    >{
+                      supportedLang === 'fa'
+                        ? 'خدمات و راهنماهای مرتبط'
+                        : supportedLang === 'ar'
+                          ? 'الخدمات والأدلة ذات الصلة'
+                          : 'Related Services & Guides'
+                    }</span
+                  >
                 </span>
               </div>
               <div class="space-y-2.5 text-xs">
@@ -906,10 +1171,14 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
                   href={pillarResource.serviceUrl}
                   class="group flex items-center justify-between rounded-xl border border-gray-100 bg-gray-50/70 p-3 transition-all hover:border-primary/40 hover:bg-primary/5 dark:border-slate-800 dark:bg-slate-800/60"
                 >
-                  <div class="font-semibold text-gray-800 dark:text-gray-200 group-hover:text-primary">
+                  <div
+                    class="font-semibold text-gray-800 group-hover:text-primary dark:text-gray-200"
+                  >
                     {pillarResource.serviceTitle}
                   </div>
-                  <span class="text-primary font-bold transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5">
+                  <span
+                    class="font-bold text-primary transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5"
+                  >
                     {isRtl ? '←' : '→'}
                   </span>
                 </a>
@@ -917,10 +1186,14 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
                   href={pillarResource.guideUrl}
                   class="group flex items-center justify-between rounded-xl border border-gray-100 bg-gray-50/70 p-3 transition-all hover:border-primary/40 hover:bg-primary/5 dark:border-slate-800 dark:bg-slate-800/60"
                 >
-                  <div class="font-semibold text-gray-800 dark:text-gray-200 group-hover:text-primary">
+                  <div
+                    class="font-semibold text-gray-800 group-hover:text-primary dark:text-gray-200"
+                  >
                     {pillarResource.guideTitle}
                   </div>
-                  <span class="text-primary font-bold transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5">
+                  <span
+                    class="font-bold text-primary transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5"
+                  >
                     {isRtl ? '←' : '→'}
                   </span>
                 </a>
@@ -928,29 +1201,36 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
                   href={pillarResource.toolUrl}
                   class="group flex items-center justify-between rounded-xl border border-gray-100 bg-gray-50/70 p-3 transition-all hover:border-primary/40 hover:bg-primary/5 dark:border-slate-800 dark:bg-slate-800/60"
                 >
-                  <div class="font-semibold text-gray-800 dark:text-gray-200 group-hover:text-primary">
+                  <div
+                    class="font-semibold text-gray-800 group-hover:text-primary dark:text-gray-200"
+                  >
                     {pillarResource.toolTitle}
                   </div>
-                  <span class="text-primary text-[10px] font-bold">🛠️</span>
+                  <span class="text-[10px] font-bold text-primary">🛠️</span>
                 </a>
               </div>
             </div>
 
             <!-- Quick Contact / Consultation Card -->
-            <div class="rounded-3xl border border-primary/20 bg-primary/5 p-6 dark:border-primary/25 dark:bg-primary/10">
+            <div
+              class="rounded-3xl border border-primary/20 bg-primary/5 p-6 dark:border-primary/25 dark:bg-primary/10"
+            >
               <h4 class="font-bold text-gray-900 dark:text-white">
-                {t("portfolio.needSimilarProject", { fallback: "Need a Similar Project?" })}
+                {t('portfolio.needSimilarProject', { fallback: 'Need a Similar Project?' })}
               </h4>
               <p class="mt-2 text-xs leading-relaxed text-gray-600 dark:text-gray-400">
-                {t("portfolio.ctaDescription", {
-                  fallback: "Contact our agency to analyze your requirements and get a free blueprint outline.",
-                })}
+                {
+                  t('portfolio.ctaDescription', {
+                    fallback:
+                      'Contact our agency to analyze your requirements and get a free blueprint outline.',
+                  })
+                }
               </p>
               <a
                 href={`/${supportedLang}/contact/`}
                 class="mt-4 inline-flex w-full items-center justify-center rounded-xl bg-gray-900 py-3 text-xs font-bold text-white transition-all hover:bg-gray-800 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100"
               >
-                {t("common.freeConsultation", { fallback: "Request Consultation" })}
+                {t('common.freeConsultation', { fallback: 'Request Consultation' })}
               </a>
             </div>
           </div>
@@ -959,111 +1239,120 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
 
       <!-- Next / Previous Project Navigation -->
       <nav aria-label="Case Study Navigation" class="my-12 grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {prevProject && (
-          <a
-            href={`/${supportedLang}/portfolio/${prevProject.slug}/`}
-            class="group flex flex-col rounded-2xl border border-gray-200/80 bg-white p-6 shadow-xs transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
-          >
-            <div class="mb-2 flex items-center gap-2 text-xs font-bold text-gray-500 uppercase dark:text-gray-400">
-              <span class="transition-transform group-hover:-translate-x-1 rtl:group-hover:translate-x-1">
-                {isRtl ? "→" : "←"}
-              </span>
-              <span>{t("portfolio.detail.prevProject", { fallback: "Previous Project" })}</span>
-            </div>
-            <div class="line-clamp-1 font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
-              {prevProject.title}
-            </div>
-            <div class="mt-1 text-xs font-medium text-primary">
-              {prevProject.category}
-            </div>
-          </a>
-        )}
+        {
+          prevProject && (
+            <a
+              href={`/${supportedLang}/portfolio/${prevProject.slug}/`}
+              class="group flex flex-col rounded-2xl border border-gray-200/80 bg-white p-6 shadow-xs transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+            >
+              <div class="mb-2 flex items-center gap-2 text-xs font-bold text-gray-500 uppercase dark:text-gray-400">
+                <span class="transition-transform group-hover:-translate-x-1 rtl:group-hover:translate-x-1">
+                  {isRtl ? '→' : '←'}
+                </span>
+                <span>{t('portfolio.detail.prevProject', { fallback: 'Previous Project' })}</span>
+              </div>
+              <div class="line-clamp-1 font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+                {prevProject.title}
+              </div>
+              <div class="mt-1 text-xs font-medium text-primary">{prevProject.category}</div>
+            </a>
+          )
+        }
 
-        {nextProject && (
-          <a
-            href={`/${supportedLang}/portfolio/${nextProject.slug}/`}
-            class="group flex flex-col items-end text-end rounded-2xl border border-gray-200/80 bg-white p-6 shadow-xs transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
-          >
-            <div class="mb-2 flex items-center gap-2 text-xs font-bold text-gray-500 uppercase dark:text-gray-400">
-              <span>{t("portfolio.detail.nextProject", { fallback: "Next Project" })}</span>
-              <span class="transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
-                {isRtl ? "←" : "→"}
-              </span>
-            </div>
-            <div class="line-clamp-1 font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
-              {nextProject.title}
-            </div>
-            <div class="mt-1 text-xs font-medium text-primary">
-              {nextProject.category}
-            </div>
-          </a>
-        )}
+        {
+          nextProject && (
+            <a
+              href={`/${supportedLang}/portfolio/${nextProject.slug}/`}
+              class="group flex flex-col items-end rounded-2xl border border-gray-200/80 bg-white p-6 text-end shadow-xs transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+            >
+              <div class="mb-2 flex items-center gap-2 text-xs font-bold text-gray-500 uppercase dark:text-gray-400">
+                <span>{t('portfolio.detail.nextProject', { fallback: 'Next Project' })}</span>
+                <span class="transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
+                  {isRtl ? '←' : '→'}
+                </span>
+              </div>
+              <div class="line-clamp-1 font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+                {nextProject.title}
+              </div>
+              <div class="mt-1 text-xs font-medium text-primary">{nextProject.category}</div>
+            </a>
+          )
+        }
       </nav>
 
       <!-- Related Case Studies -->
-      {relatedProjects.length > 0 && (
-        <section id="related" aria-label="Related Projects" class="scroll-mt-36 my-16 space-y-8">
-          <div class="text-center md:text-start">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
-              {t("portfolio.detail.relatedTitle", { fallback: "Related Case Studies" })}
-            </h2>
-            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
-              {t("portfolio.detail.relatedSubtitle", {
-                fallback: "Explore how we solved similar architectural and growth challenges for other brands.",
-              })}
-            </p>
-          </div>
+      {
+        relatedProjects.length > 0 && (
+          <section id="related" aria-label="Related Projects" class="my-16 scroll-mt-36 space-y-8">
+            <div class="text-center md:text-start">
+              <h2 class="text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">
+                {t('portfolio.detail.relatedTitle', { fallback: 'Related Case Studies' })}
+              </h2>
+              <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                {t('portfolio.detail.relatedSubtitle', {
+                  fallback:
+                    'Explore how we solved similar architectural and growth challenges for other brands.',
+                })}
+              </p>
+            </div>
 
-          <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-            {relatedProjects.map((rel) => (
-              <a
-                href={`/${supportedLang}/portfolio/${rel.slug}/`}
-                class="group flex flex-col overflow-hidden rounded-2xl border border-gray-200/80 bg-white shadow-xs transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
-              >
-                <div class="relative aspect-video overflow-hidden bg-gray-100 dark:bg-slate-800">
-                  <OptimizedImage
-                    src={rel.image}
-                    alt={rel.title}
-                    width={450}
-                    height={253}
-                    loading="lazy"
-                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div class="absolute top-2.5 start-2.5">
-                    <span class="rounded-full bg-black/60 px-2.5 py-0.5 text-[10px] font-semibold text-white backdrop-blur-md">
-                      {rel.pillarLabel}
-                    </span>
-                  </div>
-                </div>
-                <div class="flex flex-1 flex-col justify-between p-5">
-                  <div>
-                    <div class="text-xs font-semibold text-primary mb-1">{rel.client}</div>
-                    <h3 class="line-clamp-2 text-sm font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
-                      {rel.title}
-                    </h3>
-                  </div>
-                  {rel.results.length > 0 && (
-                    <div class="mt-4 border-t border-gray-100 pt-3 dark:border-slate-800 flex items-center justify-between text-xs">
-                      <span class="text-gray-500 dark:text-gray-400 truncate">{rel.results[0].label}</span>
-                      <span class="font-mono font-bold text-primary shrink-0">{rel.results[0].value}</span>
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+              {relatedProjects.map((rel) => (
+                <a
+                  href={`/${supportedLang}/portfolio/${rel.slug}/`}
+                  class="group flex flex-col overflow-hidden rounded-2xl border border-gray-200/80 bg-white shadow-xs transition-all hover:-translate-y-1 hover:border-primary/40 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+                >
+                  <div class="relative aspect-video overflow-hidden bg-gray-100 dark:bg-slate-800">
+                    <OptimizedImage
+                      src={rel.image}
+                      alt={rel.title}
+                      width={450}
+                      height={253}
+                      loading="lazy"
+                      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div class="absolute start-2.5 top-2.5">
+                      <span class="rounded-full bg-black/60 px-2.5 py-0.5 text-[10px] font-semibold text-white backdrop-blur-md">
+                        {rel.pillarLabel}
+                      </span>
                     </div>
-                  )}
-                </div>
-              </a>
-            ))}
-          </div>
-        </section>
-      )}
+                  </div>
+                  <div class="flex flex-1 flex-col justify-between p-5">
+                    <div>
+                      <div class="mb-1 text-xs font-semibold text-primary">{rel.client}</div>
+                      <h3 class="line-clamp-2 text-sm font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+                        {rel.title}
+                      </h3>
+                    </div>
+                    {rel.results.length > 0 && (
+                      <div class="mt-4 flex items-center justify-between border-t border-gray-100 pt-3 text-xs dark:border-slate-800">
+                        <span class="truncate text-gray-500 dark:text-gray-400">
+                          {rel.results[0].label}
+                        </span>
+                        <span class="shrink-0 font-mono font-bold text-primary">
+                          {rel.results[0].value}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        )
+      }
 
       <!-- Premium Consultation CTA -->
       <CTA
         lang={supportedLang}
-        title={t("portfolio.detail.consultationTitle", { fallback: "Need Similar Results for Your Business?" })}
-        description={t("portfolio.detail.consultationDesc", {
-          fallback:
-            "Schedule a free technical and SEO consultation. We will analyze your website and provide a concrete execution blueprint.",
+        title={t('portfolio.detail.consultationTitle', {
+          fallback: 'Need Similar Results for Your Business?',
         })}
-        buttonText={t("portfolio.detail.consultationBtn", { fallback: "Book Free Consultation" })}
+        description={t('portfolio.detail.consultationDesc', {
+          fallback:
+            'Schedule a free technical and SEO consultation. We will analyze your website and provide a concrete execution blueprint.',
+        })}
+        buttonText={t('portfolio.detail.consultationBtn', { fallback: 'Book Free Consultation' })}
       />
     </div>
   </article>
@@ -1073,19 +1362,27 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
   (() => {
     function initCaseStudyUtilities() {
       // 1. Copy Link handler
-      const copyBtn = document.getElementById("copy-case-study-btn");
-      const copyLabel = document.getElementById("copy-btn-label");
+      const copyBtn = document.getElementById('copy-case-study-btn');
+      const copyLabel = document.getElementById('copy-btn-label');
       if (copyBtn && copyLabel) {
         copyBtn.onclick = async () => {
-          const originalText = copyBtn.getAttribute("data-original-text") || "Copy Link";
-          const copiedText = copyBtn.getAttribute("data-copied-text") || "Copied! ✓";
+          const originalText = copyBtn.getAttribute('data-original-text') || 'Copy Link';
+          const copiedText = copyBtn.getAttribute('data-copied-text') || 'Copied! ✓';
           try {
             await navigator.clipboard.writeText(window.location.href);
             copyLabel.textContent = copiedText;
-            copyBtn.classList.add("border-emerald-500", "text-emerald-600", "dark:text-emerald-400");
+            copyBtn.classList.add(
+              'border-emerald-500',
+              'text-emerald-600',
+              'dark:text-emerald-400'
+            );
             setTimeout(() => {
               copyLabel.textContent = originalText;
-              copyBtn.classList.remove("border-emerald-500", "text-emerald-600", "dark:text-emerald-400");
+              copyBtn.classList.remove(
+                'border-emerald-500',
+                'text-emerald-600',
+                'dark:text-emerald-400'
+              );
             }, 2500);
           } catch {
             copyLabel.textContent = copiedText;
@@ -1097,15 +1394,17 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
       }
 
       // 2. Sticky Section Navigator Scrollspy
-      const navPills = document.querySelectorAll("[data-nav-pill]");
+      const navPills = document.querySelectorAll('[data-nav-pill]');
       if (!navPills.length) return;
 
       const activeClass =
-        "rounded-full px-3 py-1 text-xs font-semibold transition-all border border-primary bg-primary text-primary-foreground shadow-2xs";
+        'rounded-full px-3 py-1 text-xs font-semibold transition-all border border-primary bg-primary text-primary-foreground shadow-2xs';
       const inactiveClass =
-        "rounded-full px-3 py-1 text-xs font-semibold text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 border border-transparent transition-all";
+        'rounded-full px-3 py-1 text-xs font-semibold text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-800 border border-transparent transition-all';
 
-      const sectionIds = Array.from(navPills).map((p) => p.getAttribute("href")?.replace("#", "")).filter(Boolean);
+      const sectionIds = Array.from(navPills)
+        .map((p) => p.getAttribute('href')?.replace('#', ''))
+        .filter(Boolean);
       const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
 
       function updateActivePill() {
@@ -1119,7 +1418,7 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
         }
 
         navPills.forEach((pill) => {
-          const href = pill.getAttribute("href");
+          const href = pill.getAttribute('href');
           if (href === `#${currentSectionId}`) {
             pill.className = activeClass;
           } else {
@@ -1128,12 +1427,12 @@ const pillarResource = PILLAR_RESOURCES[projectPillar][supportedLang];
         });
       }
 
-      window.addEventListener("scroll", updateActivePill, { passive: true });
+      window.addEventListener('scroll', updateActivePill, { passive: true });
       updateActivePill();
     }
 
-    document.addEventListener("astro:page-load", initCaseStudyUtilities);
-    if (document.readyState === "complete" || document.readyState === "interactive") {
+    document.addEventListener('astro:page-load', initCaseStudyUtilities);
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
       initCaseStudyUtilities();
     }
   })();

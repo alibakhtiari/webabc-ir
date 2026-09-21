@@ -128,13 +128,12 @@ const phoneList = [
                   stroke-linejoin="round"
                   stroke-width="2"
                   d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                />
+                ></path>
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
               </svg>
               <span class="text-xs leading-relaxed text-foreground/70">
                 {t('cta.addressValue')}
@@ -331,7 +330,14 @@ const phoneList = [
     </div>
 
     <div class="border-t border-gray-200 py-4 text-center dark:border-slate-800">
-      <p class={`text-foreground/70 text-sm font-${lang === 'en' ? 'sans' : 'persian'}`}>
+      <!-- Exact-match brand anchor to the locale homepage (brand query 2.5).
+           The logo link above carries only an aria-label, so this visible
+           "WebABC" link is additive — no existing nav label was removed. -->
+      <a
+        href={linkPath('')}
+        class="text-sm font-bold text-foreground/80 transition-colors hover:text-primary">WebABC</a
+      >
+      <p class={`text-foreground/70 mt-1 text-sm font-${lang === 'en' ? 'sans' : 'persian'}`}>
         {t('common.copyright').replace('{year}', copyrightYear)}
       </p>
     </div>

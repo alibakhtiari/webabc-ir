@@ -10,6 +10,9 @@
 /en/tools/seo-title-analyzer  /en/tools/headline-analyzer/  301
 /fa/tools/seo-title-analyzer  /fa/tools/headline-analyzer/  301
 /ar/tools/seo-title-analyzer  /ar/tools/headline-analyzer/  301
+/en/tools/seo-title-analyzer/  /en/tools/headline-analyzer/  301
+/fa/tools/seo-title-analyzer/  /fa/tools/headline-analyzer/  301
+/ar/tools/seo-title-analyzer/  /ar/tools/headline-analyzer/  301
 
 # seo-title-checker was merged into headline-analyzer (which now includes the
 # meta title/description pixel checker and live SERP preview) to stop the two
