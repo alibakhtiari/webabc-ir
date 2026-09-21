@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "manifests": "node scripts/resolve-sitemap-lastmod.mjs && node scripts/generate-og-manifest.mjs",
-    "build": "npm run manifests && astro build",
+    "llms": "node scripts/generate-llms-full.mjs",
+    "build": "npm run manifests && npm run llms && astro build",
     "preview": "astro preview",
     "deploy": "npm run build && wrangler deploy",
     "lint": "eslint src && tsc --noemit",

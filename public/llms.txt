@@ -2,6 +2,8 @@
 
 > WebABC (https://webabc.ir) is a premier web design, full-stack custom development, performance SEO, and AI engine optimization (AEO/GEO) agency serving clients across the Middle East (Dubai, Tehran, Muscat, Riyadh, Abu Dhabi, Qazvin) and internationally. Built on Astro for ultra-fast performance, zero-JS baseline rendering, and optimal AI crawling readability. The site is published in English (`/en`), Persian (`/fa`), and Arabic (`/ar`).
 
+> Full-text corpus for long-context models: /llms-full.txt (this index plus the bodies of key pricing and service guides, regenerated on every build, capped at ~500KB).
+
 ## Company & Overview
 
 - [Home](/en/): Overview of WebABC's services, agency workflow, technology stack, and client case studies.
@@ -86,6 +88,8 @@
 - [Local SEO Strategies for Middle East](/en/blog/local-seo-middle-east/): Market penetration strategies for UAE, KSA, Oman, and Iran.
 - [Local SEO Services Guide 2026 (EN)](/en/blog/local-seo-services-guide-2026/): Google Maps, Local 3-Pack and AEO blueprint.
 - [WordPress Cost Calculator Guide 2026 (EN)](/en/blog/wordpress-website-cost-guide-2026/): 2026 pricing benchmarks and cost drivers.
+- [Title Tag Checker Tools Compared 2026](/en/blog/best-title-tag-checker-tools-2026/): Hands-on comparison of 6 free title tag checkers and SERP preview tools with CTR data.
+- [Tehran E-commerce Web Design Guide 2026](/en/blog/tehran-ecommerce-web-design-guide-2026/): Store costs, checkout UX recovery, and local SEO for Tehran online stores.
 
 ## Persian Corpus & Regional Hubs (fa)
 
@@ -98,6 +102,15 @@
 - [محاسبه آنلاین هزینه طراحی سایت وردپرس ۱۴۰۵](/fa/blog/wordpress-website-cost-guide-2026/): تعرفه و فرمول قیمت‌گذاری.
 - [راهنمای سئوی وردپرس ۲۰۲۶](/fa/blog/wordpress-seo-optimization-guide-2026/): تکنیک‌های رتبه‌گیری و سرعت در وردپرس.
 - [هزینه طراحی سایت در سال ۲۰۲۶](/fa/blog/how-much-does-a-website-cost-2026/): مقایسه جامع تعرفه‌های طراحی سایت.
+- [راهنمای ماشین‌حساب هزینه توسعه وب‌سایت ۲۰۲۶](/fa/blog/website-development-cost-calculator-guide-2026/): تفکیک شفاف قیمت پلتفرم‌های آسترو، وردپرس و فروشگاه اینترنتی.
+- [راهنمای قیمت بهینه‌سازی سرعت سایت و بازگشت سرمایه ۲۰۲۶](/fa/blog/website-speed-optimization-pricing-guide-2026/): خدمات آدیت سرعت، تعرفه‌ها و اثر نرخ تبدیل.
+- [مقایسه 6 ابزار رایگان بررسی تگ عنوان در 2026](/fa/blog/best-title-tag-checker-tools-2026/): مقایسه عملی ۶ چکر رایگان تگ عنوان و پیش‌نمایش گوگل با داده CTR.
+- [طراحی فروشگاه اینترنتی در تهران: هزینه، UX و سئو [2026]](/fa/blog/tehran-ecommerce-web-design-guide-2026/): هزینه فروشگاه، بازیابی تسویه‌حساب و سئوی محلی تهران.
+- [تحلیلگر تیتر سئو](/fa/tools/headline-analyzer/): امتیازدهی به تیترها از نظر بار احساسی، طول کاراکتر و نرخ کلیک گوگل.
+- [ماشین‌حساب هزینه طراحی سایت](/fa/tools/cost-calculator/): برآورد تعاملی بودجه پروژه‌های طراحی و توسعه وب.
+- [پیش‌نمایش نتایج گوگل (SERP)](/fa/tools/serp-preview/): شبیه‌ساز نمایش نتایج جستجو در دسکتاپ و موبایل با ریچ‌اسنیپت.
+- [سازنده اسکیمای ساخت‌یافته](/fa/tools/schema-generator/): تولید نشانه‌گذاری JSON-LD برای Organization و Service و FAQ.
+- [سازنده اسلاگ URL](/fa/tools/slug-generator/): قالب‌بندی تمیز و استاندارد اسلاگ‌های سئو.
 
 ## Arabic Corpus & GCC Hubs (ar)
 
@@ -110,6 +123,15 @@
 - [دليل حاسبة وتكلفة تصميم مواقع ووردبريس 2026](/ar/blog/wordpress-website-cost-guide-2026/): تفصيل الأسعار والميزانية في الخليج.
 - [دليل سيو ووردبريس الشامل 2026](/ar/blog/wordpress-seo-optimization-guide-2026/): البنية التقنية و Rank Math ومؤشرات الويب.
 - [كم تكلفة تصميم موقع إلكتروني في 2026؟](/ar/blog/how-much-does-a-website-cost-2026/): الأسعار الدقيقة للمتاجر والمواقع.
+- [دليل حاسبة تكلفة تطوير المواقع 2026](/ar/blog/website-development-cost-calculator-guide-2026/): تفصيل شفاف لأسعار منصات أسترو وووردبريس والمتاجر الإلكترونية.
+- [دليل أسعار تحسين سرعة المواقع وعائد الاستثمار 2026](/ar/blog/website-speed-optimization-pricing-guide-2026/): خدمات التدقيق الفني والأسعار وأثر معدل التحويل.
+- [أفضل 6 أدوات مجانية لفحص Title Tag [2026]](/ar/blog/best-title-tag-checker-tools-2026/): مقارنة عملية لأدوات فحص العناوين ومعاينة جوجل مع بيانات CTR.
+- [تصميم متجر إلكتروني في طهران: التكلفة والسيو [2026]](/ar/blog/tehran-ecommerce-web-design-guide-2026/): تكاليف المتاجر وتجربة الدفع والسيو المحلي.
+- [محلل عناوين السيو](/ar/tools/headline-analyzer/): تقييم العناوين من حيث التأثير العاطفي وطول الأحرف ونسبة النقر في جوجل.
+- [حاسبة تكلفة تصميم المواقع](/ar/tools/cost-calculator/): تقدير تفاعلي فوري لميزانية مشاريع تصميم وتطوير الويب.
+- [معاينة نتائج بحث جوجل (SERP)](/ar/tools/serp-preview/): محاكي معاينة نتائج البحث لسطح المكتب والجوال مع المقتطفات الغنية.
+- [مولد ترميز سكيما](/ar/tools/schema-generator/): توليد بيانات JSON-LD المنظمة لأنواع Organization وService وFAQ.
+- [مولد روابط URL](/ar/tools/slug-generator/): تنسيق روابط URL نظيفة ومتوافقة مع السيو.
 
 ## Direct Contact & Support
 
