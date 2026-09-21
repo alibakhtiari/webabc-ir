@@ -18,6 +18,12 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
 
 const items = faqSchema?.mainEntity || [];
 
+// Single FAQPage emitter for tool pages (replaces the former head-slot block in
+// ToolLayout.astro): emitted only when visible FAQ items actually render, so an
+// empty faqSchema never produces a thin FAQPage node. Payload is byte-identical
+// to what ToolLayout emitted (same object via JSON.stringify).
+const faqJsonLd: string | null = items.length > 0 && faqSchema ? JSON.stringify(faqSchema) : null;
+
 const heading =
   lang === 'fa'
     ? 'سوالات متداول (FAQ)'
@@ -26,6 +32,7 @@ const heading =
       : 'Frequently Asked Questions (FAQ)';
 ---
 
+{faqJsonLd && <script type="application/ld+json" set:html={faqJsonLd} />}
 {
   items.length > 0 && (
     <section class="container mx-auto mt-12 px-4 font-sans">

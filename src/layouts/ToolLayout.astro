@@ -85,16 +85,8 @@ const defaultBreadcrumbs = breadcrumbs || [
     slot="head"
     set:html={JSON.stringify(webAppSchema)}
   />
-  {
-    faqSchema && (
-      <script
-        is:inline
-        type="application/ld+json"
-        slot="head"
-        set:html={JSON.stringify(faqSchema)}
-      />
-    )
-  }
+  <!-- FAQPage is emitted once by <ToolFAQ /> below (only when FAQ items render).
+       Do NOT re-add a faqSchema head script here — it would duplicate FAQPage. -->
 
   <!-- Standard Hero Section for Tool Pages -->
   <section
