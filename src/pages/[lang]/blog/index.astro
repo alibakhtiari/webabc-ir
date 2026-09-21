@@ -113,16 +113,21 @@ const breadcrumbs = [
           {t('blog.allCategories', { fallback: 'All Categories' })}
         </a>
         {
-          categories.map((category) => (
-            <a
-              href={`/${supportedLang}/blog/?category=${encodeURIComponent(category)}`}
-              data-filter-btn={category}
-              aria-current="false"
-              class="filter-btn cursor-pointer rounded-full bg-gray-100 px-4 py-2 text-xs font-semibold text-gray-700 transition-all hover:bg-gray-200 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700"
-            >
-              {getCategoryLabel(category, supportedLang)}
-            </a>
-          ))
+          categories.map((category) => {
+            // Untranslated categories resolve to '' outside English — hide them.
+            const label = getCategoryLabel(category, supportedLang);
+            if (!label) return null;
+            return (
+              <a
+                href={`/${supportedLang}/blog/?category=${encodeURIComponent(category)}`}
+                data-filter-btn={category}
+                aria-current="false"
+                class="filter-btn cursor-pointer rounded-full bg-gray-100 px-4 py-2 text-xs font-semibold text-gray-700 transition-all hover:bg-gray-200 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700"
+              >
+                {label}
+              </a>
+            );
+          })
         }
       </div>
     </div>
@@ -158,9 +163,14 @@ const breadcrumbs = [
                   </div>
                   <div class="space-y-4 p-6">
                     <div class="flex flex-wrap items-center gap-2">
-                      <span class="rounded bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600 uppercase dark:bg-slate-800 dark:text-gray-300">
-                        {getCategoryLabel(post.category, supportedLang)}
-                      </span>
+                      {(() => {
+                        const label = getCategoryLabel(post.category, supportedLang);
+                        return label ? (
+                          <span class="rounded bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600 uppercase dark:bg-slate-800 dark:text-gray-300">
+                            {label}
+                          </span>
+                        ) : null;
+                      })()}
                       <span class={`text-xs text-gray-500 dark:text-gray-400 ${metaFontClass}`}>
                         {new Date(post.date).toLocaleDateString(
                           supportedLang === 'ar'

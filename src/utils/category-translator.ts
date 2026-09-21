@@ -51,6 +51,16 @@ export const categoryTranslations: Record<string, Record<SupportedLanguage, stri
     fa: 'وردپرس',
     ar: 'ووردبريس',
   },
+  'Local SEO': {
+    en: 'Local SEO',
+    fa: 'سئوی محلی',
+    ar: 'السيو المحلي',
+  },
+  Performance: {
+    en: 'Performance',
+    fa: 'عملکرد',
+    ar: 'الأداء',
+  },
 };
 
 export function getCategoryLabel(category: string, lang: SupportedLanguage): string {
@@ -58,7 +68,9 @@ export function getCategoryLabel(category: string, lang: SupportedLanguage): str
   if (categoryTranslations[normCategory] && categoryTranslations[normCategory][lang]) {
     return categoryTranslations[normCategory][lang];
   }
-  return category;
+  // Unknown categories render raw in English but stay hidden in fa/ar
+  // so cards never show an untranslated badge.
+  return lang === 'en' ? category : '';
 }
 
 export function normalizeCategoryKey(category: string): string {
@@ -92,5 +104,14 @@ export function normalizeCategoryKey(category: string): string {
   if (c === 'طراحی UI/UX' || c === 'تصميم UI/UX' || c.toLowerCase() === 'ui/ux design')
     return 'UI/UX Design';
   if (c === 'وردپرس' || c === 'ووردبريس' || c.toLowerCase() === 'wordpress') return 'WordPress';
+  if (
+    c === 'سئوی محلی' ||
+    c === 'سئو محلی' ||
+    c === 'السيو المحلي' ||
+    c.toLowerCase() === 'local seo'
+  )
+    return 'Local SEO';
+  if (c === 'عملکرد' || c === 'الأداء' || c.toLowerCase() === 'performance')
+    return 'Performance';
   return c;
 }
