@@ -11,12 +11,20 @@ const { lang } = Astro.params;
 const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
 const isRtl = languages[supportedLang]?.direction === 'rtl';
+const fontClass =
+  supportedLang === 'fa' ? 'font-persian' : supportedLang === 'ar' ? 'font-arabic' : 'font-sans';
 
 // Helper to translate strings
 const t = createTranslator(dictionary);
 
 const titleText = t('contact.title', { fallback: 'Contact Us' });
 const descriptionText = t('contact.subtitle', { fallback: 'Get in Touch with Our Team' });
+const headingText = t('contact.getInTouch', { fallback: 'Get In Touch' });
+const formTitle = t('contact.sendMessage', { fallback: 'Send Us A Message' });
+const formDescription = t('contact.consultation.description', {
+  fallback: 'Fill in the form below and our experts will contact you shortly.',
+});
+const submitLabel = t('contact.submitMessage', { fallback: 'Send Message' });
 
 const contactPageSchema = {
   '@context': 'https://schema.org',
@@ -37,121 +45,251 @@ const contactPageSchema = {
   },
 };
 
-const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { label: titleText }];
+const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { label: headingText }];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="contact">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(contactPageSchema)} />
 
-  <div class="mx-auto w-full max-w-4xl px-4 pt-36 pb-12 sm:px-6 lg:px-8">
-    <div class="space-y-12">
-      <div class="text-center">
-        <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
-        <h1
-          class="mb-4 font-persian text-4xl leading-normal font-bold text-gray-900 md:text-5xl dark:text-white"
+  <div class={`mx-auto w-full max-w-6xl px-4 pt-32 pb-16 sm:px-6 lg:px-8 ${fontClass}`}>
+    {/* Page header */}
+    <div class="mx-auto max-w-2xl text-center">
+      <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered />
+      <h1
+        class="mb-4 text-4xl leading-normal font-bold text-gray-900 md:text-5xl dark:text-white"
+      >
+        {headingText}
+      </h1>
+      <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-300">
+        {descriptionText}
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-8 lg:grid-cols-5 lg:gap-10">
+      {/* Contact Form */}
+      <div
+        class="rounded-2xl border border-gray-100 bg-white p-6 shadow-xl sm:p-8 lg:col-span-3 dark:border-slate-800 dark:bg-slate-900"
+      >
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+          {formTitle}
+        </h2>
+        <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+          {formDescription}
+        </p>
+        <p class="mt-3 inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.8"
+            stroke="currentColor"
+            class="h-3.5 w-3.5"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
+          {t('contact.formRequiredNote', { fallback: 'All fields are required.' })}
+        </p>
+
+        <form
+          id="contact-form"
+          class="mt-6 space-y-5"
+          novalidate
+          data-captcha-required={t('contact.captchaRequired', {
+            fallback: 'Please complete the verification captcha.',
+          })}
+          data-sending={t('contact.sending', { fallback: 'Sending...' })}
+          data-success={t('contact.messageSent', { fallback: 'Message sent successfully!' })}
+          data-error={t('contact.messageFailed', { fallback: 'Failed to send message.' })}
+          data-unexpected={t('contact.unexpectedError', {
+            fallback: 'An error occurred. Please try again.',
+          })}
+          data-submit-label={submitLabel}
+          data-err-name={t('contact.consultation.fullNameRequired', {
+            fallback: 'Full name is required',
+          })}
+          data-err-email={t('contact.consultation.emailInvalid', {
+            fallback: 'Please enter a valid email address',
+          })}
+          data-err-message={t('contact.messageTooShort', {
+            fallback: 'Please write at least 10 characters.',
+          })}
         >
-          {t('contact.getInTouch', { fallback: 'Get In Touch' })}
-        </h1>
+          {/* Honeypot — hidden from humans, catches bots */}
+          <div class="hidden" aria-hidden="true">
+            <label for="contact-company">Company</label>
+            <input id="contact-company" name="company" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div>
+            <label
+              for="contact-name"
+              class="mb-2 block text-start text-sm font-medium text-gray-700 dark:text-gray-300"
+              >{t('contact.consultation.fullName', { fallback: 'Full Name' })} <span
+                class="text-red-500"
+                aria-hidden="true">*</span
+              ></label
+            >
+            <input
+              id="contact-name"
+              name="name"
+              type="text"
+              required
+              minlength="2"
+              maxlength="100"
+              autocomplete="name"
+              aria-describedby="contact-name-error"
+              placeholder={t('contact.consultation.fullName', { fallback: 'Full Name' })}
+              class="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-gray-900 transition-colors focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none aria-[invalid=true]:border-red-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+            />
+            <p id="contact-name-error" class="mt-1.5 hidden text-start text-xs text-red-600"></p>
+          </div>
+
+          <div>
+            <label
+              for="contact-email"
+              class="mb-2 block text-start text-sm font-medium text-gray-700 dark:text-gray-300"
+              >{t('contact.formEmail', { fallback: 'Email' })} <span
+                class="text-red-500"
+                aria-hidden="true">*</span
+              ></label
+            >
+            <input
+              id="contact-email"
+              name="email"
+              type="email"
+              required
+              maxlength="254"
+              autocomplete="email"
+              inputmode="email"
+              dir="ltr"
+              aria-describedby="contact-email-error"
+              placeholder="example@domain.com"
+              class="h-12 w-full rounded-xl border border-gray-200 bg-white px-4 text-start text-gray-900 transition-colors placeholder:text-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none aria-[invalid=true]:border-red-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+            />
+            <p id="contact-email-error" class="mt-1.5 hidden text-start text-xs text-red-600"></p>
+          </div>
+
+          <div>
+            <label
+              for="contact-message"
+              class="mb-2 block text-start text-sm font-medium text-gray-700 dark:text-gray-300"
+              >{t('contact.consultation.message', { fallback: 'Message' })} <span
+                class="text-red-500"
+                aria-hidden="true">*</span
+              ></label
+            >
+            <textarea
+              id="contact-message"
+              name="message"
+              rows="5"
+              required
+              minlength="10"
+              maxlength="5000"
+              aria-describedby="contact-message-hint contact-message-error"
+              placeholder={t('contact.yourMessage', { fallback: 'Write your message...' })}
+              class="w-full resize-none rounded-xl border border-gray-200 bg-white p-4 text-gray-900 transition-colors placeholder:text-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 focus:outline-none aria-[invalid=true]:border-red-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+            ></textarea>
+            <p id="contact-message-hint" class="mt-1.5 text-start text-xs text-gray-500 dark:text-gray-400">
+              {
+                t('contact.messageHint', {
+                  fallback: 'Tell us about your project, goals, and timeline (min. 10 characters).',
+                })
+              }
+            </p>
+            <p id="contact-message-error" class="mt-1.5 hidden text-start text-xs text-red-600"></p>
+          </div>
+
+          <!-- Captcha container -->
+          <div id="captcha-container" class="flex min-h-18 justify-center">
+            <div
+              class="cf-turnstile"
+              data-sitekey="0x4AAAAAAD7BmzK13TeKwviJ"
+              data-theme="auto"
+              data-callback="onTurnstileVerify"
+              data-expired-callback="onTurnstileExpired"
+              data-error-callback="onTurnstileError"
+            >
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            id="submit-btn"
+            class="flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-primary font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70"
+          >
+            <svg
+              id="submit-spinner"
+              class="hidden h-5 w-5 animate-spin"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"
+              ></circle>
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 0 1 8-8v4a4 4 0 0 0-4 4H4z"
+              ></path>
+            </svg>
+            <span id="submit-btn-label">{submitLabel}</span>
+          </button>
+
+          <p
+            id="response-msg"
+            role="status"
+            aria-live="polite"
+            class="hidden rounded-xl px-4 py-3 text-center text-sm font-medium"
+          >
+          </p>
+        </form>
       </div>
 
-      <div class="grid gap-8 md:grid-cols-2 md:gap-12">
-        <!-- Contact Form -->
+      {/* Contact Info */}
+      <aside class="space-y-6 lg:col-span-2">
         <div
-          class="rounded-2xl border border-gray-100 bg-white p-8 font-persian shadow-xl dark:border-slate-800 dark:bg-slate-900"
+          class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
         >
-          <form id="contact-form" class="space-y-6">
-            <div>
-              <label
-                for="contact-name"
-                class="mb-2 block text-start text-sm font-medium text-gray-700 dark:text-gray-300"
-                >{t('contact.consultation.fullName', { fallback: 'Full Name' })}</label
+          <h2 class="mb-5 text-xl font-bold text-gray-900 dark:text-white">
+            {t('contact.contactInfo', { fallback: 'Contact Info' })}
+          </h2>
+          <ul class="space-y-5">
+            <li class="flex gap-3">
+              <span
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary"
+                aria-hidden="true"
               >
-              <input
-                id="contact-name"
-                name="name"
-                type="text"
-                required
-                autocomplete="name"
-                placeholder={t('contact.consultation.fullName', { fallback: 'Full Name' })}
-                class="h-11 w-full rounded-lg border border-gray-200 bg-white px-4 text-gray-900 focus:border-primary focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
-              />
-            </div>
-
-            <div>
-              <label
-                for="contact-email"
-                class="mb-2 block text-start text-sm font-medium text-gray-700 dark:text-gray-300"
-                >{t('contact.consultation.email', { fallback: 'Email' })}</label
-              >
-              <input
-                id="contact-email"
-                name="email"
-                type="email"
-                required
-                autocomplete="email"
-                placeholder="example@domain.com"
-                class="h-11 w-full rounded-lg border border-gray-200 bg-white px-4 text-gray-900 focus:border-primary focus:outline-none dark:border-slate-700 dark:bg-slate-800 dark:text-white"
-              />
-            </div>
-
-            <div>
-              <label
-                for="contact-message"
-                class="mb-2 block text-start text-sm font-medium text-gray-700 dark:text-gray-300"
-                >{t('contact.consultation.message', { fallback: 'Message' })}</label
-              >
-              <textarea
-                id="contact-message"
-                name="message"
-                rows="5"
-                required
-                placeholder={t('contact.yourMessage', { fallback: 'Write your message...' })}
-                class="w-full resize-none rounded-lg border border-gray-200 bg-white p-4 text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
-              ></textarea>
-            </div>
-
-            <!-- Captcha container -->
-            <div id="captcha-container" class="my-4 flex min-h-18 justify-center">
-              <div
-                class="cf-turnstile"
-                data-sitekey="0x4AAAAAAD7BmzK13TeKwviJ"
-                data-callback="onTurnstileVerify"
-              >
-              </div>
-            </div>
-
-            <button
-              type="submit"
-              id="submit-btn"
-              class="flex h-11 w-full cursor-pointer items-center justify-center rounded-lg bg-primary font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-            >
-              {t('contact.submitMessage', { fallback: 'Send Message' })}
-            </button>
-
-            <p
-              id="response-msg"
-              role="status"
-              aria-live="polite"
-              class="hidden text-center text-sm"
-            >
-            </p>
-          </form>
-        </div>
-
-        <!-- Contact Info -->
-        <div class="space-y-8 font-persian">
-          <div
-            class="rounded-2xl border border-gray-100 bg-gray-50 p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900"
-          >
-            <h2 class="mb-4 text-2xl font-semibold text-gray-800 dark:text-white">
-              {t('contact.contactInfo', { fallback: 'Contact Info' })}
-            </h2>
-            <div class="space-y-4">
-              <div>
-                <h3 class="font-medium text-gray-700 dark:text-gray-200">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.8"
+                  stroke="currentColor"
+                  class="h-5 w-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                  />
+                </svg>
+              </span>
+              <div class="min-w-0">
+                <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100">
                   {t('contact.officeAddress', { fallback: 'Office Address' })}
                 </h3>
-                <p class="leading-relaxed text-gray-600 dark:text-gray-300">
+                <p class="mt-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
                   {
                     t('contact.addressValue', {
                       fallback: 'Qazvin Science & Technology Park, Km 2 Barajin Road, Qazvin, Iran',
@@ -159,39 +297,104 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
                   }
                 </p>
               </div>
+            </li>
 
-              <div>
-                <h3 class="font-medium text-gray-700 dark:text-gray-200">
+            <li class="flex gap-3">
+              <span
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary"
+                aria-hidden="true"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.8"
+                  stroke="currentColor"
+                  class="h-5 w-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+                  />
+                </svg>
+              </span>
+              <div class="min-w-0">
+                <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100">
                   {t('contact.phoneNumber', { fallback: 'Phone Number' })}
                 </h3>
-                <p class="text-gray-600 dark:text-gray-300" dir="ltr">
-                  <a href="tel:+989125811880" class="transition-colors hover:text-primary">
+                <p class="mt-1 text-sm text-gray-600 dark:text-gray-300" dir="ltr">
+                  <a href="tel:+989125811880" class="text-start transition-colors hover:text-primary">
                     {t('contact.phoneValue', { fallback: '+98 912 581 1880' })}
                   </a>
                 </p>
-                <p class="text-gray-600 dark:text-gray-300" dir="ltr">
-                  <a href="tel:+989354767068" class="transition-colors hover:text-primary">
+                <p class="mt-0.5 text-sm text-gray-600 dark:text-gray-300" dir="ltr">
+                  <a href="tel:+989354767068" class="text-start transition-colors hover:text-primary">
                     {t('contact.phoneValue2', { fallback: '+98 935 476 7068' })}
                   </a>
                 </p>
               </div>
+            </li>
 
-              <div>
-                <h3 class="font-medium text-gray-700 dark:text-gray-200">
+            <li class="flex gap-3">
+              <span
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary"
+                aria-hidden="true"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.8"
+                  stroke="currentColor"
+                  class="h-5 w-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
+                  />
+                </svg>
+              </span>
+              <div class="min-w-0">
+                <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100">
                   {t('contact.emailAddress', { fallback: 'Email Address' })}
                 </h3>
-                <p class="text-gray-600 dark:text-gray-300">
-                  <a href="mailto:info@webabc.ir" class="transition-colors hover:text-primary"
+                <p class="mt-1 text-sm text-gray-600 dark:text-gray-300" dir="ltr">
+                  <a
+                    href="mailto:info@webabc.ir"
+                    class="text-start transition-colors hover:text-primary"
                     >info@webabc.ir</a
                   >
                 </p>
               </div>
+            </li>
 
-              <div>
-                <h3 class="font-medium text-gray-700 dark:text-gray-200">
+            <li class="flex gap-3">
+              <span
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary"
+                aria-hidden="true"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.8"
+                  stroke="currentColor"
+                  class="h-5 w-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                  />
+                </svg>
+              </span>
+              <div class="min-w-0">
+                <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100">
                   {t('contact.responseTime', { fallback: 'Response Time' })}
                 </h3>
-                <p class="leading-relaxed text-gray-600 dark:text-gray-300">
+                <p class="mt-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
                   {
                     t('contact.responseTimeValue', {
                       fallback:
@@ -200,43 +403,88 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
                   }
                 </p>
               </div>
-            </div>
-          </div>
+            </li>
+          </ul>
 
-          <!-- Who we work with / process -->
-          <div
-            class="space-y-4 rounded-2xl border border-gray-100 bg-gray-50 p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900"
-          >
-            <h2 class="mb-1 text-2xl font-semibold text-gray-800 dark:text-white">
-              {t('contact.processTitle', { fallback: 'What Happens Next' })}
-            </h2>
-            <ol class="list-inside list-decimal space-y-3 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-              <li>{t('contact.step1', { fallback: 'You send the form with a short description of your project or goal.' })}</li>
-              <li>{t('contact.step2', { fallback: 'We review your site and reply within one business day with initial questions.' })}</li>
-              <li>{t('contact.step3', { fallback: 'We schedule a free consultation call and send a fixed-price proposal with scope and timeline.' })}</li>
-            </ol>
-            <div class="border-t border-gray-100 pt-4 dark:border-slate-800">
-              <h3 class="font-medium text-gray-700 dark:text-gray-200">
-                {t('contact.serviceAreasTitle', { fallback: 'Service Areas' })}
-              </h3>
-              <p class="leading-relaxed text-gray-600 dark:text-gray-300">
-                {
-                  t('contact.serviceAreasValue', {
-                    fallback:
-                      'Headquartered in Qazvin, Iran — working remotely with clients in Tehran, Dubai, Muscat, Riyadh, London, and Toronto.',
-                  })
-                }
-              </p>
-              <a
-                href={`/${supportedLang}/service-areas/`}
-                class="mt-2 inline-block text-sm font-semibold text-primary hover:underline focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-              >
-                {t('contact.viewAllAreas', { fallback: 'View all service areas' })}
-              </a>
-            </div>
+          {/* Quick actions */}
+          <div class="mt-6 grid grid-cols-2 gap-3">
+            <a
+              href="tel:+989125811880"
+              class="flex h-11 items-center justify-center gap-1.5 rounded-xl border border-gray-200 text-sm font-semibold text-gray-700 transition-colors hover:border-primary hover:text-primary dark:border-slate-700 dark:text-gray-200"
+            >
+              {t('contact.callNow', { fallback: 'Call Now' })}
+            </a>
+            <a
+              href="https://wa.me/989125811880"
+              target="_blank"
+              rel="noopener"
+              class="flex h-11 items-center justify-center gap-1.5 rounded-xl bg-[#25D366]/10 text-sm font-semibold text-[#128C4B] transition-colors hover:bg-[#25D366]/20 dark:text-[#25D366]"
+            >
+              {t('contact.whatsappChat', { fallback: 'Chat on WhatsApp' })}
+            </a>
           </div>
         </div>
-      </div>
+
+        {/* What happens next */}
+        <div
+          class="rounded-2xl border border-gray-100 bg-gray-50 p-6 dark:border-slate-800 dark:bg-slate-900"
+        >
+          <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
+            {t('contact.processTitle', { fallback: 'What Happens Next' })}
+          </h2>
+          <ol class="space-y-4">
+            <li class="flex gap-3">
+              <span
+                aria-hidden="true"
+                class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white"
+                >1</span
+              >
+              <p class="pt-0.5 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                {t('contact.step1', { fallback: 'You send the form with a short description of your project or goal.' })}
+              </p>
+            </li>
+            <li class="flex gap-3">
+              <span
+                aria-hidden="true"
+                class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white"
+                >2</span
+              >
+              <p class="pt-0.5 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                {t('contact.step2', { fallback: 'We review your site and reply within one business day with initial questions.' })}
+              </p>
+            </li>
+            <li class="flex gap-3">
+              <span
+                aria-hidden="true"
+                class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-white"
+                >3</span
+              >
+              <p class="pt-0.5 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                {t('contact.step3', { fallback: 'We schedule a free consultation call and send a fixed-price proposal with scope and timeline.' })}
+              </p>
+            </li>
+          </ol>
+          <div class="mt-5 border-t border-gray-200 pt-4 dark:border-slate-700">
+            <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100">
+              {t('contact.serviceAreasTitle', { fallback: 'Service Areas' })}
+            </h3>
+            <p class="mt-1 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+              {
+                t('contact.serviceAreasValue', {
+                  fallback:
+                    'Headquartered in Qazvin, Iran — working remotely with clients in Tehran, Dubai, Muscat, Riyadh, London, and Toronto.',
+                })
+              }
+            </p>
+            <a
+              href={`/${supportedLang}/service-areas/`}
+              class="mt-2 inline-block text-sm font-semibold text-primary hover:underline focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
+              {t('contact.viewAllAreas', { fallback: 'View all service areas' })}
+            </a>
+          </div>
+        </div>
+      </aside>
     </div>
   </div>
 </Layout>
@@ -248,66 +496,182 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
   (() => {
     let verifiedToken = null;
 
-    // Callback target for Turnstile widget
+    // Callback targets for the Turnstile widget
     window.onTurnstileVerify = function (token) {
       verifiedToken = token;
+    };
+    window.onTurnstileExpired = function () {
+      verifiedToken = null;
+    };
+    window.onTurnstileError = function () {
+      verifiedToken = null;
     };
 
     function initContactForm() {
       const form = document.getElementById('contact-form');
       const submitBtn = document.getElementById('submit-btn');
+      const submitBtnLabel = document.getElementById('submit-btn-label');
+      const submitSpinner = document.getElementById('submit-spinner');
       const responseMsg = document.getElementById('response-msg');
 
-      if (!form) return;
+      if (!form || form.dataset.bound === 'true') return;
+      form.dataset.bound = 'true';
 
-      form.onsubmit = async (e) => {
-        e.preventDefault();
+      const msg = (key, fallback) => form.dataset[key] || fallback;
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        if (!verifiedToken) {
-          responseMsg.textContent = 'Please complete the verification captcha.';
-          responseMsg.className = 'text-center text-sm text-red-600 block';
-          return;
+      const fields = {
+        name: {
+          input: document.getElementById('contact-name'),
+          error: document.getElementById('contact-name-error'),
+        },
+        email: {
+          input: document.getElementById('contact-email'),
+          error: document.getElementById('contact-email-error'),
+        },
+        message: {
+          input: document.getElementById('contact-message'),
+          error: document.getElementById('contact-message-error'),
+        },
+      };
+
+      const setFieldError = (field, message) => {
+        if (!field || !field.input || !field.error) return;
+        if (message) {
+          field.error.textContent = message;
+          field.error.classList.remove('hidden');
+          field.input.setAttribute('aria-invalid', 'true');
+        } else {
+          field.error.textContent = '';
+          field.error.classList.add('hidden');
+          field.input.removeAttribute('aria-invalid');
         }
+      };
 
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
+      const clearAllErrors = () => {
+        Object.values(fields).forEach((f) => setFieldError(f, ''));
+      };
+
+      const showStatus = (text, ok) => {
+        responseMsg.textContent = text;
+        responseMsg.classList.remove('hidden');
+        responseMsg.className = ok
+          ? 'rounded-xl px-4 py-3 text-center text-sm font-medium bg-green-50 text-green-700 block dark:bg-green-950 dark:text-green-300'
+          : 'rounded-xl px-4 py-3 text-center text-sm font-medium bg-red-50 text-red-600 block dark:bg-red-950 dark:text-red-300';
+      };
+
+      const hideStatus = () => {
+        responseMsg.textContent = '';
         responseMsg.classList.add('hidden');
+      };
+
+      Object.values(fields).forEach((f) => {
+        if (f.input) {
+          f.input.addEventListener('input', () => setFieldError(f, ''));
+        }
+      });
+
+      const setLoading = (loading) => {
+        submitBtn.disabled = loading;
+        submitSpinner.classList.toggle('hidden', !loading);
+        submitBtnLabel.textContent = loading ? msg('sending', 'Sending...') : msg('submitLabel', 'Send Message');
+      };
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        clearAllErrors();
+        hideStatus();
 
         const formData = new FormData(form);
         const payload = {
-          name: formData.get('name'),
-          email: formData.get('email'),
-          message: formData.get('message'),
+          name: String(formData.get('name') || '').trim(),
+          email: String(formData.get('email') || '').trim(),
+          message: String(formData.get('message') || '').trim(),
+          company: String(formData.get('company') || ''),
           token: verifiedToken,
         };
+
+        // Localized client-side validation (browser-native messages would
+        // follow the browser locale, not the site locale).
+        let firstInvalid = null;
+        if (payload.name.length < 2) {
+          setFieldError(fields.name, msg('errName', 'Full name is required'));
+          firstInvalid = firstInvalid || fields.name.input;
+        }
+        if (!emailRe.test(payload.email)) {
+          setFieldError(fields.email, msg('errEmail', 'Please enter a valid email address'));
+          firstInvalid = firstInvalid || fields.email.input;
+        }
+        if (payload.message.length < 10) {
+          setFieldError(fields.message, msg('errMessage', 'Please write at least 10 characters.'));
+          firstInvalid = firstInvalid || fields.message.input;
+        }
+        if (firstInvalid) {
+          firstInvalid.focus();
+          return;
+        }
+
+        if (!verifiedToken) {
+          showStatus(msg('captchaRequired', 'Please complete the verification captcha.'), false);
+          return;
+        }
+
+        setLoading(true);
+
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 15000);
 
         try {
           const res = await fetch('/api/contact', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
             body: JSON.stringify(payload),
+            signal: controller.signal,
           });
 
-          const result = await res.json();
+          let result = {};
+          try {
+            result = await res.json();
+          } catch {
+            result = {};
+          }
 
-          if (res.ok) {
-            responseMsg.textContent = result.message || 'Message sent successfully!';
-            responseMsg.className = 'text-center text-sm text-green-600 block';
+          if (res.ok && (result.success || !result.error)) {
+            showStatus(result.message || msg('success', 'Message sent successfully!'), true);
             form.reset();
             if (window.turnstile) window.turnstile.reset();
             verifiedToken = null;
           } else {
-            responseMsg.textContent = result.error || 'Failed to send message.';
-            responseMsg.className = 'text-center text-sm text-red-600 block';
+            // Map backend error codes to localized strings.
+            const code = result.code;
+            if (code === 'invalid_name') {
+              setFieldError(fields.name, msg('errName', result.error || 'Invalid name'));
+              fields.name.input.focus();
+            } else if (code === 'invalid_email') {
+              setFieldError(fields.email, msg('errEmail', result.error || 'Invalid email'));
+              fields.email.input.focus();
+            } else if (code === 'invalid_message') {
+              setFieldError(fields.message, msg('errMessage', result.error || 'Invalid message'));
+              fields.message.input.focus();
+            }
+            showStatus(
+              code === 'invalid_captcha'
+                ? msg('captchaRequired', result.error || 'Invalid captcha')
+                : result.error && !code
+                  ? result.error
+                  : code && code.startsWith('invalid_')
+                    ? msg('error', 'Failed to send message.')
+                    : result.error || msg('error', 'Failed to send message.'),
+              false
+            );
           }
         } catch (error) {
-          responseMsg.textContent = 'An error occurred. Please try again.';
-          responseMsg.className = 'text-center text-sm text-red-600 block';
+          showStatus(msg('unexpected', 'An error occurred. Please try again.'), false);
         } finally {
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Send Message';
+          clearTimeout(timeout);
+          setLoading(false);
         }
-      };
+      });
     }
 
     document.addEventListener('astro:page-load', initContactForm);

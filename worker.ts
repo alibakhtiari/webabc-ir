@@ -4,6 +4,7 @@ interface Env {
   ASSETS: { fetch(request: Request): Promise<Response> };
   RESEND_API_KEY: string;
   TURNSTILE_SECRET_KEY?: string;
+  CONTACT_EMAIL_TO?: string;
 }
 
 // This is the actual entrypoint Cloudflare Workers runs for `wrangler deploy`.
@@ -100,23 +101,58 @@ const STATIC_REDIRECTS: Record<string, string> = {
 };
 
 async function handleContact(request: Request, env: Env): Promise<Response> {
+  const json = (body: unknown, status = 200) =>
+    new Response(JSON.stringify(body), {
+      status,
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+  let payload: {
+    name?: unknown;
+    email?: unknown;
+    phone?: unknown;
+    message?: unknown;
+    token?: unknown;
+    company?: unknown; // honeypot — bots fill it, humans don't
+  };
   try {
-    const { name, email, phone, message, token } = (await request.json()) as {
-      name?: string;
-      email?: string;
-      phone?: string;
-      message?: string;
-      token?: string;
-    };
+    payload = (await request.json()) as typeof payload;
+  } catch {
+    return json({ error: 'Invalid request body', code: 'invalid_input' }, 400);
+  }
 
-    if (!env.RESEND_API_KEY) {
-      return new Response(JSON.stringify({ error: 'Missing API Key' }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      });
+  // Silent success for bots so they can't probe the endpoint.
+  if (typeof payload.company === 'string' && payload.company.trim() !== '') {
+    return json({ success: true });
+  }
+
+  const name = typeof payload.name === 'string' ? payload.name.trim() : '';
+  const email = typeof payload.email === 'string' ? payload.email.trim() : '';
+  const phone = typeof payload.phone === 'string' ? payload.phone.trim() : '';
+  const message = typeof payload.message === 'string' ? payload.message.trim() : '';
+  const token = typeof payload.token === 'string' ? payload.token : '';
+
+  if (name.length < 2 || name.length > 100) {
+    return json({ error: 'Invalid name', code: 'invalid_name' }, 400);
+  }
+  if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return json({ error: 'Invalid email', code: 'invalid_email' }, 400);
+  }
+  if (message.length < 10 || message.length > 5000) {
+    return json({ error: 'Invalid message', code: 'invalid_message' }, 400);
+  }
+
+  if (!env.RESEND_API_KEY) {
+    return json({ error: 'Missing API Key', code: 'server_misconfigured' }, 500);
+  }
+
+  // Verify captcha when a secret is configured (production). Without a secret
+  // (local dev) verification is skipped so the form stays testable.
+  if (env.TURNSTILE_SECRET_KEY) {
+    if (!token) {
+      return json({ error: 'Invalid Captcha', code: 'invalid_captcha' }, 403);
     }
-
-    if (token && env.TURNSTILE_SECRET_KEY) {
+    try {
       const turnstileResult = await fetch(
         'https://challenges.cloudflare.com/turnstile/v0/siteverify',
         {
@@ -127,13 +163,14 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
       );
       const outcome = (await turnstileResult.json()) as { success?: boolean };
       if (!outcome.success) {
-        return new Response(JSON.stringify({ error: 'Invalid Captcha' }), {
-          status: 403,
-          headers: { 'Content-Type': 'application/json' },
-        });
+        return json({ error: 'Invalid Captcha', code: 'invalid_captcha' }, 403);
       }
+    } catch {
+      return json({ error: 'Invalid Captcha', code: 'invalid_captcha' }, 403);
     }
+  }
 
+  try {
     const resend = new Resend(env.RESEND_API_KEY);
     const esc = (v: unknown) =>
       String(v ?? '').replace(
@@ -146,20 +183,18 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
     const safeMessage = esc(message);
     const data = await resend.emails.send({
       from: 'onboarding@resend.dev', // Update this if you have a verified domain
-      to: 'alibakhtiari.dev@gmail.com',
+      to: env.CONTACT_EMAIL_TO || 'alibakhtiari.dev@gmail.com',
       replyTo: email,
       subject: `New Inquiry from ${safeName}${safePhone ? ` (${safePhone})` : ''}`,
       html: `<p><strong>Name:</strong> ${safeName}</p>${safePhone ? `<p><strong>Phone:</strong> <a href="tel:${safePhone}">${safePhone}</a></p>` : ''}<p><strong>Email:</strong> ${safeEmail ? `<a href="mailto:${safeEmail}">${safeEmail}</a>` : 'Not provided'}</p><p><strong>Message:</strong><br/>${safeMessage || 'N/A'}</p>`,
     });
 
-    return new Response(JSON.stringify({ success: true, data }), {
-      headers: { 'Content-Type': 'application/json' },
-    });
+    return json({ success: true, message: 'Message sent successfully!', data });
   } catch (error) {
-    return new Response(JSON.stringify({ error: 'Failed to send email', details: String(error) }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    return json(
+      { error: 'Failed to send email', code: 'send_failed', details: String(error) },
+      500
+    );
   }
 }
 
