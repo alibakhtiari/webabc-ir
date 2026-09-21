@@ -16,39 +16,12 @@ const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
 const title = dictionary.home?.title || 'WebABC';
 const description = dictionary.home?.description || 'Web Design and Development Services';
-const siteUrl = 'https://webabc.ir';
-const homeUrl = `${siteUrl}/${supportedLang}/`;
-
 const homeFaqList = [1, 2, 3, 4]
   .map((n) => ({
     question: dictionary.home?.faq?.[`q${n}`] || '',
     answer: dictionary.home?.faq?.[`a${n}`] || '',
   }))
   .filter((item) => item.question && item.answer);
-
-const websiteSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  '@id': `${siteUrl}/${supportedLang}/#website`,
-  url: homeUrl,
-  name: 'WebABC',
-  alternateName:
-    supportedLang === 'fa'
-      ? 'وب اِی‌بی‌سی'
-      : supportedLang === 'ar'
-        ? 'ويب إيه بي سي'
-        : 'WebABC Web & SEO Agency',
-  inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
-  publisher: { '@id': `${siteUrl}/#organization` },
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: {
-      '@type': 'EntryPoint',
-      urlTemplate: `${siteUrl}/${supportedLang}/blog?tag={search_term_string}`,
-    },
-    'query-input': 'required name=search_term_string',
-  },
-};
 ---
 
 <Layout
@@ -66,7 +39,6 @@ const websiteSchema = {
     fetchpriority="high"
     slot="head"
   />
-  <script type="application/ld+json" slot="head" set:html={JSON.stringify(websiteSchema)} />
   <HeroSection lang={supportedLang} />
   <ServicesSection lang={supportedLang} />
   <BenefitsSection lang={supportedLang} />

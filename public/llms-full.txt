@@ -41,8 +41,7 @@
 ## Interactive Tools (Free Developer & SEO Utilities)
 
 - [All Developer & SEO Tools](/en/tools/): Interactive client-side web utilities for developers, marketers, and content creators.
-- [SEO Headline Analyzer & Title Checker](/en/tools/headline-analyzer/): Score headlines for emotional impact, power words, character length, and Google CTR.
-- [SEO Title & Meta Tag Checker](/en/tools/headline-analyzer/): Pixel dimensions, character limits, and keyword positioning analyzer.
+- [SEO Headline Analyzer & Title Checker](/en/tools/headline-analyzer/): Score headlines for emotional impact, power words, character length, Google CTR, and pixel-accurate title/meta tag preview.
 - [Website Cost Calculator & Price Estimator](/en/tools/cost-calculator/): Instant interactive budget estimation for web design and development projects.
 - [Google SERP Snippet Simulator](/en/tools/serp-preview/): Desktop and mobile search result preview simulator with rich snippets.
 - [Content Readability Checker](/en/tools/readability-checker/): Flesch-Kincaid grade level and reading ease analyzer.

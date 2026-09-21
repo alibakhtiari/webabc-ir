@@ -35,7 +35,7 @@ const pageNotFoundSchema = {
   name: title,
   description: description,
   inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
-  isPartOf: { '@id': `${origin}/${supportedLang}#website` },
+  isPartOf: { '@id': `${origin}/#website` },
   publisher: { '@id': `${origin}/#organization` },
 };
 

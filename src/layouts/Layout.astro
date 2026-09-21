@@ -91,6 +91,20 @@ function createOrganizationSchema(
   };
 }
 
+function createWebsiteSchema(url: string, lang: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${url}/#website`,
+    url: `${url}/${lang}/`,
+    name: 'WebABC',
+    alternateName:
+      lang === 'fa' ? 'وب اِی‌بی‌سی' : lang === 'ar' ? 'ويب إيه بي سي' : 'WebABC Web & SEO Agency',
+    inLanguage: lang === 'en' ? 'en-US' : lang === 'ar' ? 'ar-SA' : 'fa-IR',
+    publisher: { '@id': `${url}/#organization` },
+  };
+}
+
 interface Props {
   title?: string;
   description?: string;
@@ -167,6 +181,9 @@ const organizationSchema = createOrganizationSchema(
   ],
   lang
 );
+
+// Schema WebSite
+const websiteSchema = createWebsiteSchema(siteUrl, lang);
 ---
 
 <!doctype html>
@@ -224,9 +241,7 @@ const organizationSchema = createOrganizationSchema(
     <meta property="og:image:alt" content={pageTitle} />
     <meta property="og:site_name" content="WebABC" />
     <meta property="og:locale" content={ogLocale} />
-    {alternateLocales.map((loc) => (
-      <meta property="og:locale:alternate" content={loc} />
-    ))}
+    {alternateLocales.map((loc) => <meta property="og:locale:alternate" content={loc} />)}
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -300,6 +315,7 @@ const organizationSchema = createOrganizationSchema(
 
     <!-- Inline Schema -->
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
 
     <slot name="head" />
   </head>
