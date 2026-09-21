@@ -32,6 +32,12 @@ const KEY_PAGES = [
   ['en', 'tehran-ecommerce-web-design-guide-2026'],
   ['fa', 'tehran-ecommerce-web-design-guide-2026'],
   ['ar', 'tehran-ecommerce-web-design-guide-2026'],
+  ['en', 'seo-services-pricing-guide-2026'],
+  ['fa', 'seo-services-pricing-guide-2026'],
+  ['ar', 'seo-services-pricing-guide-2026'],
+  ['en', 'qazvin-web-design-seo-guide-2026'],
+  ['fa', 'qazvin-web-design-seo-guide-2026'],
+  ['ar', 'qazvin-web-design-seo-guide-2026'],
 ];
 
 const MAX_BYTES = 500 * 1024; // ~500KB cap

@@ -88,6 +88,8 @@
 - [WordPress Cost Calculator Guide 2026 (EN)](/en/blog/wordpress-website-cost-guide-2026/): 2026 pricing benchmarks and cost drivers.
 - [Title Tag Checker Tools Compared 2026](/en/blog/best-title-tag-checker-tools-2026/): Hands-on comparison of 6 free title tag checkers and SERP preview tools with CTR data.
 - [Tehran E-commerce Web Design Guide 2026](/en/blog/tehran-ecommerce-web-design-guide-2026/): Store costs, checkout UX recovery, and local SEO for Tehran online stores.
+- [SEO Services Pricing Guide 2026](/en/blog/seo-services-pricing-guide-2026/): Transparent SEO pricing tiers, technical audit scope, retainer ROI, and local package benchmarks.
+- [Qazvin Web Design & Local SEO Guide 2026](/en/blog/qazvin-web-design-seo-guide-2026/): Strategic guide for Caspian and Liya industrial zones, Google Maps, and municipal B2B web development.
 
 ## Persian Corpus & Regional Hubs (fa)
 
@@ -104,6 +106,8 @@
 - [راهنمای قیمت بهینه‌سازی سرعت سایت و بازگشت سرمایه ۲۰۲۶](/fa/blog/website-speed-optimization-pricing-guide-2026/): خدمات آدیت سرعت، تعرفه‌ها و اثر نرخ تبدیل.
 - [مقایسه 6 ابزار رایگان بررسی تگ عنوان در 2026](/fa/blog/best-title-tag-checker-tools-2026/): مقایسه عملی ۶ چکر رایگان تگ عنوان و پیش‌نمایش گوگل با داده CTR.
 - [طراحی فروشگاه اینترنتی در تهران: هزینه، UX و سئو [2026]](/fa/blog/tehran-ecommerce-web-design-guide-2026/): هزینه فروشگاه، بازیابی تسویه‌حساب و سئوی محلی تهران.
+- [راهنمای تعرفه سئو و قیمت خدمات سئو ۲۰۲۶](/fa/blog/seo-services-pricing-guide-2026/): جدول شفاف پکیج‌های سئو تکنیکال، ریتینر ماهانه، سئو محلی و محاسبه بازگشت سرمایه.
+- [راهنمای طراحی سایت در قزوین و سئو محلی ۲۰۲۶](/fa/blog/qazvin-web-design-seo-guide-2026/): توسعه وب شهرک‌های صنعتی کاسپین و لیا، رتبه ۱ نقشه گوگل، نشان و بلد.
 - [تحلیلگر تیتر سئو و پیش‌نمایش نتایج گوگل (SERP)](/fa/tools/headline-analyzer/): امتیازدهی به تیترها از نظر بار احساسی، طول کاراکتر و نرخ کلیک، همراه با شبیه‌ساز زنده نتایج گوگل در دسکتاپ و موبایل.
 - [ماشین‌حساب هزینه طراحی سایت](/fa/tools/cost-calculator/): برآورد تعاملی بودجه پروژه‌های طراحی و توسعه وب.
 - [سازنده اسکیمای ساخت‌یافته](/fa/tools/schema-generator/): تولید نشانه‌گذاری JSON-LD برای Organization و Service و FAQ.
@@ -124,6 +128,8 @@
 - [دليل أسعار تحسين سرعة المواقع وعائد الاستثمار 2026](/ar/blog/website-speed-optimization-pricing-guide-2026/): خدمات التدقيق الفني والأسعار وأثر معدل التحويل.
 - [أفضل 6 أدوات مجانية لفحص Title Tag [2026]](/ar/blog/best-title-tag-checker-tools-2026/): مقارنة عملية لأدوات فحص العناوين ومعاينة جوجل مع بيانات CTR.
 - [تصميم متجر إلكتروني في طهران: التكلفة والسيو [2026]](/ar/blog/tehran-ecommerce-web-design-guide-2026/): تكاليف المتاجر وتجربة الدفع والسيو المحلي.
+- [دليل أسعار باقات السيو لعام 2026](/ar/blog/seo-services-pricing-guide-2026/): جدول أسعار التدقيق التقني، السيو المحلي في الخليج، العقود الشهرية، وعائد الاستثمار.
+- [دليل تصميم المواقع والسيو المحلي في قزوين 2026](/ar/blog/qazvin-web-design-seo-guide-2026/): تطوير منصات مصانع كاسبيان وليا الصناعية، خرائط جوجل، وصادرات B2B.
 - [محلل عناوين السيو ومعاينة نتائج جوجل (SERP)](/ar/tools/headline-analyzer/): تقييم العناوين من حيث التأثير العاطفي وطول الأحرف ونسبة النقر، مع محاكاة مظهر النتائج على ديسكتوب وجوال.
 - [حاسبة تكلفة تصميم المواقع](/ar/tools/cost-calculator/): تقدير تفاعلي فوري لميزانية مشاريع تصميم وتطوير الويب.
 - [مولد ترميز سكيما](/ar/tools/schema-generator/): توليد بيانات JSON-LD المنظمة لأنواع Organization وService وFAQ.
