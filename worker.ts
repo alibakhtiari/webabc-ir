@@ -52,6 +52,12 @@ const STATIC_REDIRECTS: Record<string, string> = {
   '/en/tools/seo-title-checker': '/en/tools/headline-analyzer/',
   '/fa/tools/seo-title-checker': '/fa/tools/headline-analyzer/',
   '/ar/tools/seo-title-checker': '/ar/tools/headline-analyzer/',
+  '/en/tools/serp-preview': '/en/tools/headline-analyzer/',
+  '/fa/tools/serp-preview': '/fa/tools/headline-analyzer/',
+  '/ar/tools/serp-preview': '/ar/tools/headline-analyzer/',
+  '/en/tools/serp-preview/': '/en/tools/headline-analyzer/',
+  '/fa/tools/serp-preview/': '/fa/tools/headline-analyzer/',
+  '/ar/tools/serp-preview/': '/ar/tools/headline-analyzer/',
 
   // Services
   '/en/services/modern-web-development': '/en/services/web-development/',

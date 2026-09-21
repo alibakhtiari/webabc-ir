@@ -138,6 +138,10 @@ const articleSchema = {
   articleSection: post.data.category,
   wordCount: plainTextWordCount,
   inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['.tldr-takeaways', '.prose > p:first-of-type'],
+  },
 };
 
 const breadcrumbs = [
@@ -202,22 +206,22 @@ const serviceToolDict: Record<string, Record<SupportedLanguage, ServiceToolMeta>
       serviceUrl: '/fa/services/seo/',
       serviceTitle: 'خدمات تخصصی سئو و بهینه‌سازی',
       serviceDesc: 'مشاوره و اجرای استراتژی‌های سئو تکنیکال، محتوایی و لینک‌سازی هدفمند.',
-      toolUrl: '/fa/tools/serp-preview/',
-      toolTitle: 'ابزار پیش‌نمایش نتایج گوگل (SERP)',
+      toolUrl: '/fa/tools/headline-analyzer/',
+      toolTitle: 'آنالیزور تیتر و پیش‌نمایش SERP گوگل',
     },
     en: {
       serviceUrl: '/en/services/seo/',
       serviceTitle: 'SEO & Organic Growth Services',
       serviceDesc: 'Technical auditing, content engineering, and high-impact search optimization.',
-      toolUrl: '/en/tools/serp-preview/',
-      toolTitle: 'Google SERP Snippet Preview Tool',
+      toolUrl: '/en/tools/headline-analyzer/',
+      toolTitle: 'Headline Analyzer & Google SERP Simulator',
     },
     ar: {
       serviceUrl: '/ar/services/seo/',
       serviceTitle: 'خدمات السيو وتحسين محركات البحث',
       serviceDesc: 'تدقيق تقني متقدم واستراتيجيات تصدر نتائج البحث العضوية في الخليج.',
-      toolUrl: '/ar/tools/serp-preview/',
-      toolTitle: 'أداة معاينة نتائج بحث جوجل (SERP)',
+      toolUrl: '/ar/tools/headline-analyzer/',
+      toolTitle: 'محلل عناوين ومحاكي نتائج بحث جوجل (SERP)',
     },
   },
   'Local SEO': {

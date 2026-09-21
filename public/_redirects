@@ -24,6 +24,15 @@
 /fa/tools/seo-title-checker/  /fa/tools/headline-analyzer/  301
 /ar/tools/seo-title-checker/  /ar/tools/headline-analyzer/  301
 
+# serp-preview was merged into headline-analyzer (which unifies CTR headline scoring
+# with pixel-accurate desktop and mobile SERP preview) to prevent keyword cannibalization.
+/en/tools/serp-preview  /en/tools/headline-analyzer/  301
+/fa/tools/serp-preview  /fa/tools/headline-analyzer/  301
+/ar/tools/serp-preview  /ar/tools/headline-analyzer/  301
+/en/tools/serp-preview/  /en/tools/headline-analyzer/  301
+/fa/tools/serp-preview/  /fa/tools/headline-analyzer/  301
+/ar/tools/serp-preview/  /ar/tools/headline-analyzer/  301
+
 # Canonicalize headline-analyzer trailing slash (GSC shows 1,399 imp on non-slash duplicate pos 55.37)
 /en/tools/headline-analyzer  /en/tools/headline-analyzer/  301
 /fa/tools/headline-analyzer  /fa/tools/headline-analyzer/  301

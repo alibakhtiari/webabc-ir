@@ -1,5 +1,5 @@
 {
-  "_generated": "2026-09-21T13:09:39.786Z",
+  "_generated": "2026-09-21T14:20:40.984Z",
   "_fallback": "2025-01-01T00:00:00.000Z",
   "en/": "2026-07-22",
   "en/about/": "2026-07-22",
@@ -292,9 +292,6 @@
   "en/tools/schema-generator/": "2026-08-07",
   "fa/tools/schema-generator/": "2026-08-07",
   "ar/tools/schema-generator/": "2026-08-07",
-  "en/tools/serp-preview/": "2026-08-07",
-  "fa/tools/serp-preview/": "2026-08-07",
-  "ar/tools/serp-preview/": "2026-08-07",
   "en/tools/slug-generator/": "2026-08-07",
   "fa/tools/slug-generator/": "2026-08-07",
   "ar/tools/slug-generator/": "2026-08-07",

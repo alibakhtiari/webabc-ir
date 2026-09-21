@@ -41,9 +41,8 @@
 ## Interactive Tools (Free Developer & SEO Utilities)
 
 - [All Developer & SEO Tools](/en/tools/): Interactive client-side web utilities for developers, marketers, and content creators.
-- [SEO Headline Analyzer & Title Checker](/en/tools/headline-analyzer/): Score headlines for emotional impact, power words, character length, Google CTR, and pixel-accurate title/meta tag preview.
+- [SEO Headline Analyzer & SERP Preview Simulator](/en/tools/headline-analyzer/): Score headlines for emotional impact, power words, character length, Google CTR, and simulate pixel-accurate desktop and mobile SERP previews with rich snippets.
 - [Website Cost Calculator & Price Estimator](/en/tools/cost-calculator/): Instant interactive budget estimation for web design and development projects.
-- [Google SERP Snippet Simulator](/en/tools/serp-preview/): Desktop and mobile search result preview simulator with rich snippets.
 - [Content Readability Checker](/en/tools/readability-checker/): Flesch-Kincaid grade level and reading ease analyzer.
 - [Keyword Density Analyzer](/en/tools/keyword-density-analyzer/): Detect keyword frequency and prevent over-optimization penalties.
 - [URL Slug Generator](/en/tools/slug-generator/): Clean, special-character-free SEO URL slug formatter.
@@ -105,9 +104,8 @@
 - [راهنمای قیمت بهینه‌سازی سرعت سایت و بازگشت سرمایه ۲۰۲۶](/fa/blog/website-speed-optimization-pricing-guide-2026/): خدمات آدیت سرعت، تعرفه‌ها و اثر نرخ تبدیل.
 - [مقایسه 6 ابزار رایگان بررسی تگ عنوان در 2026](/fa/blog/best-title-tag-checker-tools-2026/): مقایسه عملی ۶ چکر رایگان تگ عنوان و پیش‌نمایش گوگل با داده CTR.
 - [طراحی فروشگاه اینترنتی در تهران: هزینه، UX و سئو [2026]](/fa/blog/tehran-ecommerce-web-design-guide-2026/): هزینه فروشگاه، بازیابی تسویه‌حساب و سئوی محلی تهران.
-- [تحلیلگر تیتر سئو](/fa/tools/headline-analyzer/): امتیازدهی به تیترها از نظر بار احساسی، طول کاراکتر و نرخ کلیک گوگل.
+- [تحلیلگر تیتر سئو و پیش‌نمایش نتایج گوگل (SERP)](/fa/tools/headline-analyzer/): امتیازدهی به تیترها از نظر بار احساسی، طول کاراکتر و نرخ کلیک، همراه با شبیه‌ساز زنده نتایج گوگل در دسکتاپ و موبایل.
 - [ماشین‌حساب هزینه طراحی سایت](/fa/tools/cost-calculator/): برآورد تعاملی بودجه پروژه‌های طراحی و توسعه وب.
-- [پیش‌نمایش نتایج گوگل (SERP)](/fa/tools/serp-preview/): شبیه‌ساز نمایش نتایج جستجو در دسکتاپ و موبایل با ریچ‌اسنیپت.
 - [سازنده اسکیمای ساخت‌یافته](/fa/tools/schema-generator/): تولید نشانه‌گذاری JSON-LD برای Organization و Service و FAQ.
 - [سازنده اسلاگ URL](/fa/tools/slug-generator/): قالب‌بندی تمیز و استاندارد اسلاگ‌های سئو.
 
@@ -126,9 +124,8 @@
 - [دليل أسعار تحسين سرعة المواقع وعائد الاستثمار 2026](/ar/blog/website-speed-optimization-pricing-guide-2026/): خدمات التدقيق الفني والأسعار وأثر معدل التحويل.
 - [أفضل 6 أدوات مجانية لفحص Title Tag [2026]](/ar/blog/best-title-tag-checker-tools-2026/): مقارنة عملية لأدوات فحص العناوين ومعاينة جوجل مع بيانات CTR.
 - [تصميم متجر إلكتروني في طهران: التكلفة والسيو [2026]](/ar/blog/tehran-ecommerce-web-design-guide-2026/): تكاليف المتاجر وتجربة الدفع والسيو المحلي.
-- [محلل عناوين السيو](/ar/tools/headline-analyzer/): تقييم العناوين من حيث التأثير العاطفي وطول الأحرف ونسبة النقر في جوجل.
+- [محلل عناوين السيو ومعاينة نتائج جوجل (SERP)](/ar/tools/headline-analyzer/): تقييم العناوين من حيث التأثير العاطفي وطول الأحرف ونسبة النقر، مع محاكاة مظهر النتائج على ديسكتوب وجوال.
 - [حاسبة تكلفة تصميم المواقع](/ar/tools/cost-calculator/): تقدير تفاعلي فوري لميزانية مشاريع تصميم وتطوير الويب.
-- [معاينة نتائج بحث جوجل (SERP)](/ar/tools/serp-preview/): محاكي معاينة نتائج البحث لسطح المكتب والجوال مع المقتطفات الغنية.
 - [مولد ترميز سكيما](/ar/tools/schema-generator/): توليد بيانات JSON-LD المنظمة لأنواع Organization وService وFAQ.
 - [مولد روابط URL](/ar/tools/slug-generator/): تنسيق روابط URL نظيفة ومتوافقة مع السيو.
 
@@ -185,7 +182,7 @@ In this guide, we demystify [web development](/en/services/web-development/) pri
 └─────────────────────────┴───────────────────────────────┘
 ```
 
-You can optimize your search presence early by verifying page titles with our free [SEO Title Checker](/en/tools/headline-analyzer/ and testing SERP display in our [SERP Preview](/en/tools/serp-preview/) tool.
+You can optimize your search presence early by verifying page titles with our free [SEO Title Checker](/en/tools/headline-analyzer/) and testing SERP display in our [SERP Preview](/en/tools/headline-analyzer/) tool.
 
 ---
 
@@ -329,7 +326,7 @@ Ready to build a high-performance web platform? [Contact WebABC today](/en/conta
 └─────────────────────────┴───────────────────────────────┘
 ```
 
-يمكنك التحقق من مظهر عنوان صفحتك في نتائج البحث باستخدام [أداة فحص عنوان السيو](/ar/tools/headline-analyzer/ وأداة [معاينة نتائج جوجل SERP](/ar/tools/serp-preview/).
+يمكنك التحقق من مظهر عنوان صفحتك في نتائج البحث باستخدام [أداة فحص عنوان السيو](/ar/tools/headline-analyzer/) وأداة [معاينة نتائج جوجل SERP](/ar/tools/headline-analyzer/).
 
 ---
 
@@ -2424,7 +2421,7 @@ Ready to dominate your local market, outrank neighborhood competitors, and claim
 ```
 
 > [!TIP]
-> يمكنك إنشاء واختبار هذه الأكواد تلقائياً وبسرعة عبر [أداة إنشاء كود السكيما المتقدمة (Schema Generator)](/ar/tools/schema-generator/) وفحص مظهرها النهائي في نتائج البحث عبر [معاينة نتائج جوجل SERP](/ar/tools/serp-preview/).
+> يمكنك إنشاء واختبار هذه الأكواد تلقائياً وبسرعة عبر [أداة إنشاء كود السكيما المتقدمة (Schema Generator)](/ar/tools/schema-generator/) وفحص مظهرها النهائي في نتائج البحث عبر [معاينة نتائج جوجل SERP](/ar/tools/headline-analyzer/).
 
 ---
 
@@ -2576,9 +2573,9 @@ You can test and generate valid structured data using our free [Schema Generator
 ## 2. Phase 2: On-Page Content & AEO Checklist
 
 - **Heading Hierarchy:** Strictly one `<h1>` per page, supported by logical `<h2>` and `<h3>` topical subheadings.
-- **Title & Description Pixel Check:** Verify that titles don't get truncated in SERPs using our [SEO Title Checker](/en/tools/headline-analyzer/.
+- **Title & Description Pixel Check:** Verify that titles don't get truncated in SERPs using our [SEO Title Checker](/en/tools/headline-analyzer/).
 - **Click-Through Rate (CTR) Tuning:** Score headline emotional balance and power words using the [Headline Analyzer](/en/tools/headline-analyzer/).
-- **SERP Preview Simulation:** Check mobile and desktop snippet layouts in our [SERP Preview Tool](/en/tools/serp-preview/).
+- **SERP Preview Simulation:** Check mobile and desktop snippet layouts in our [SERP Preview Tool](/en/tools/headline-analyzer/).
 - **Keyword Density Balance:** Ensure natural semantic terminology without stuffing via the [Keyword Density Analyzer](/en/tools/keyword-density-analyzer/).
 - **AEO Summary Box:** Include a concise `<TLDR />` Key Takeaways section to capture Google AI Overview citations.
 
@@ -2659,17 +2656,17 @@ Winning organic search traffic requires a repeatable pre-publish optimization ch
 
 ## 2. Deep Dive: Essential Free Tools for Marketers & Engineers
 
-### 1. [SEO Title Checker](/en/tools/headline-analyzer/ & Pixel Verification
+### 1. [SEO Title Checker](/en/tools/headline-analyzer/) & Pixel Verification
 
-Never guess whether Google will truncate your meta title. The [SEO Title Checker](/en/tools/headline-analyzer/ measures exact pixel dimensions across desktop and mobile viewports, alerting you before titles get cut off with ellipses.
+Never guess whether Google will truncate your meta title. The [SEO Title Checker](/en/tools/headline-analyzer/) measures exact pixel dimensions across desktop and mobile viewports, alerting you before titles get cut off with ellipses.
 
 ### 2. [Headline Analyzer](/en/tools/headline-analyzer/) for Maximum CTR
 
 Organic rankings mean nothing if searchers don't click. Our [Headline Analyzer](/en/tools/headline-analyzer/) evaluates word balance, power phrases, emotional impact, and optimal character lengths to turn standard titles into high-converting click magnets.
 
-### 3. [SERP Preview Tool](/en/tools/serp-preview/)
+### 3. [SERP Preview Tool](/en/tools/headline-analyzer/#meta-checker-heading)
 
-Visualize how your title, URL breadcrumb, meta description, and rich snippet stars will render across Google mobile and desktop result cards with the [SERP Preview](/en/tools/serp-preview/) utility.
+Visualize how your title, URL breadcrumb, meta description, and rich snippet stars will render across Google mobile and desktop result cards with the [SERP Preview](/en/tools/headline-analyzer/#meta-checker-heading) utility.
 
 ### 4. [JSON-LD Schema Generator](/en/tools/schema-generator/)
 
@@ -2689,9 +2686,9 @@ Ensure your marketing attribution stays pristine across email, social, and PPC c
 
 | Tool Name                                            | Primary Purpose                 | Ideal For                   | Recommended Frequency     |
 | :--------------------------------------------------- | :------------------------------ | :-------------------------- | :------------------------ |
-| **[SEO Title Checker](/en/tools/headline-analyzer/** | Pixel width & keyword position  | SEOs & Content Writers      | Every published page      |
+| **[SEO Title Checker](/en/tools/headline-analyzer/)** | Pixel width & keyword position  | SEOs & Content Writers      | Every published page      |
 | **[Headline Analyzer](/en/tools/headline-analyzer/)** | Click-through rate optimization | Copywriters & Bloggers      | Pre-launch headline tests |
-| **[SERP Preview](/en/tools/serp-preview/)**           | Real-time SERP simulation       | Digital Marketers           | Metadata audits           |
+| **[SERP Preview](/en/tools/headline-analyzer/#meta-checker-heading)**           | Real-time SERP simulation       | Digital Marketers           | Metadata audits           |
 | **[Schema Generator](/en/tools/schema-generator/)**   | Rich snippet & AEO markup       | Developers & Technical SEOs | Template & page builds    |
 | **[Cost Calculator](/en/tools/cost-calculator/)**     | Project budget estimation       | Business Owners & Agencies  | Project scoping           |
 
@@ -2777,7 +2774,7 @@ Delivering sub-100ms server response times across GCC telecom networks (Etisalat
 └─────────────────────────┴───────────────────────────────┘
 ```
 
-You can verify your search snippets using our free [SEO Title Checker](/en/tools/headline-analyzer/ and test Google SERP layouts with the [SERP Preview Tool](/en/tools/serp-preview/).
+You can verify your search snippets using our free [SEO Title Checker](/en/tools/headline-analyzer/) and test Google SERP layouts with the [SERP Preview Tool](/en/tools/headline-analyzer/).
 
 ---
 
@@ -2914,7 +2911,7 @@ Weaknesses? It's a drafting tool, not an auditor: it can't crawl your live site 
 
 ### 2. WebABC SERP Preview — best lightweight snippet simulator
 
-If the analyzer is the laboratory, our [SERP preview tool](/en/tools/serp-preview/) is the fitting room: paste a title, description, and URL to see the snippet exactly as Google renders it, on desktop and mobile. No scoring, no signup, no noise — useful when you've already written the title and just need a truncation verdict in five seconds. We use it as the second pass after the analyzer in our own publishing workflow, and our [title optimization guide](/en/blog/seo-title-optimization-guide-2026/) walks through that two-step process.
+If the analyzer is the laboratory, our [SERP preview tool](/en/tools/headline-analyzer/#meta-checker-heading) is the fitting room: paste a title, description, and URL to see the snippet exactly as Google renders it, on desktop and mobile. No scoring, no signup, no noise — useful when you've already written the title and just need a truncation verdict in five seconds. We use it as the second pass after the analyzer in our own publishing workflow, and our [title optimization guide](/en/blog/seo-title-optimization-guide-2026/) walks through that two-step process.
 
 ### 3. Portent SERP Preview Tool — best pixel counter
 
@@ -2943,7 +2940,7 @@ The odd one out, and that's its strength: instead of drafting new titles, you pa
 
 ## Which title tag checker should you actually use?
 
-Match the tool to the job, not the hype. Drafting a new post? Score the H1 and the meta title together in our [headline analyzer](/en/tools/headline-analyzer/), then confirm truncation in [SERP preview](/en/tools/serp-preview/). Already ranking but under-clicked? Pull the live title through SmallSEOTools, rewrite with a numeral and a front-loaded keyword, and watch Search Console for 2–3 weeks at the same position — a good rewrite typically lifts CTR 10–30% before rank follows.
+Match the tool to the job, not the hype. Drafting a new post? Score the H1 and the meta title together in our [headline analyzer](/en/tools/headline-analyzer/), then confirm truncation in [SERP preview](/en/tools/headline-analyzer/#meta-checker-heading). Already ranking but under-clicked? Pull the live title through SmallSEOTools, rewrite with a numeral and a front-loaded keyword, and watch Search Console for 2–3 weeks at the same position — a good rewrite typically lifts CTR 10–30% before rank follows.
 
 {/* [UNIQUE INSIGHT] */}
 Here's the pattern our own data supports: the tools that only measure length are losing relevance. Our headline-analyzer page ranks page two for thousands of "title checker" queries yet converts almost none of them — proof that measurement without persuasion doesn't move clicks. The winning workflow in 2026 is score first (emotion, numbers, keyword position), then simulate (pixels, mobile, competitors). Any tool that does only one half leaves money on the table.
@@ -3030,7 +3027,7 @@ Title tag checkers aren't interchangeable: preview simulators prevent truncation
 
 ### 2. پیش‌نمایش SERP وب اِی‌بی‌سی — سبک‌ترین شبیه‌ساز اسنیپت
 
-اگر آنالیزور آزمایشگاه است، [ابزار پیش‌نمایش SERP](/fa/tools/serp-preview/) ما پرو است: عنوان، دیسکریپشن و URL را بچسبانید تا اسنیپت را دقیقاً همان‌طور که گوگل رندر می‌کند ببینید، در دسکتاپ و موبایل. بدون امتیازدهی، بدون ثبت‌نام، بدون نویز — وقتی عنوان را نوشته‌اید و فقط در پنج ثانیه حکم برش را می‌خواهید به کار می‌آید. ما در فرایند انتشار خودمان آن را گذر دوم بعد از آنالیزور استفاده می‌کنیم و [راهنمای بهینه‌سازی عنوان](/fa/blog/seo-title-optimization-guide-2026/) ما آن فرایند دو مرحله‌ای را قدم‌به‌قدم توضیح می‌دهد.
+اگر آنالیزور آزمایشگاه است، [ابزار پیش‌نمایش SERP](/fa/tools/headline-analyzer/#meta-checker-heading) ما پرو است: عنوان، دیسکریپشن و URL را بچسبانید تا اسنیپت را دقیقاً همان‌طور که گوگل رندر می‌کند ببینید، در دسکتاپ و موبایل. بدون امتیازدهی، بدون ثبت‌نام، بدون نویز — وقتی عنوان را نوشته‌اید و فقط در پنج ثانیه حکم برش را می‌خواهید به کار می‌آید. ما در فرایند انتشار خودمان آن را گذر دوم بعد از آنالیزور استفاده می‌کنیم و [راهنمای بهینه‌سازی عنوان](/fa/blog/seo-title-optimization-guide-2026/) ما آن فرایند دو مرحله‌ای را قدم‌به‌قدم توضیح می‌دهد.
 
 ### 3. ابزار پیش‌نمایش SERP در Portent — بهترین شمارنده پیکسل
 
@@ -3059,7 +3056,7 @@ Moz ابزار پیش‌نمایش را با قوی‌ترین صفحه آموز
 
 ## در عمل از کدام چکر تگ عنوان استفاده کنید؟
 
-ابزار را با کار جفت کنید، نه با هایپ. پست جدید می‌نویسید؟ H1 و متا تایتل را با هم در [آنالیزور عنوان](/fa/tools/headline-analyzer/) امتیاز بدهید، بعد برش را در [پیش‌نمایش SERP](/fa/tools/serp-preview/) تأیید کنید. رتبه دارید اما کم‌کلیک‌اید؟ عنوان زنده را از SmallSEOTools رد کنید، با عدد و کلمه کلیدی اول‌جمله بازنویسی کنید و 2 تا 3 هفته در همان رتبه سرچ کنسول را زیر نظر بگیرید — بازنویسی خوب معمولاً پیش از آن‌که رتبه تکان بخورد CTR را 10 تا 30% بالا می‌برد.
+ابزار را با کار جفت کنید، نه با هایپ. پست جدید می‌نویسید؟ H1 و متا تایتل را با هم در [آنالیزور عنوان](/fa/tools/headline-analyzer/) امتیاز بدهید، بعد برش را در [پیش‌نمایش SERP](/fa/tools/headline-analyzer/#meta-checker-heading) تأیید کنید. رتبه دارید اما کم‌کلیک‌اید؟ عنوان زنده را از SmallSEOTools رد کنید، با عدد و کلمه کلیدی اول‌جمله بازنویسی کنید و 2 تا 3 هفته در همان رتبه سرچ کنسول را زیر نظر بگیرید — بازنویسی خوب معمولاً پیش از آن‌که رتبه تکان بخورد CTR را 10 تا 30% بالا می‌برد.
 
 {/* [UNIQUE INSIGHT] */}
 الگویی که داده خودمان تأییدش می‌کند: ابزارهایی که فقط طول را می‌سنجند دارند کاربردشان را از دست می‌دهند. صفحه آنالیزور عنوان ما برای هزاران کوئری «title checker» در صفحه دوم رتبه دارد اما تقریباً هیچ‌کدام را تبدیل نمی‌کند — اثبات این‌که سنجش بدون ترغیب کلیک را تکان نمی‌دهد. فرایند برنده در 2026 این است: اول امتیاز (احساس، اعداد، جایگاه کلمه کلیدی)، بعد شبیه‌سازی (پیکسل، موبایل، رقبا). هر ابزاری که فقط نصف را انجام دهد پول روی میز جا می‌گذارد.
@@ -3145,7 +3142,7 @@ Moz ابزار پیش‌نمایش را با قوی‌ترین صفحه آموز
 
 ### 2. معاينة SERP من WebABC — أخف محاكي مقتطفات
 
-إذا كان المحلل هو المختبر، فأداة [معاينة SERP](/ar/tools/serp-preview/) لدينا هي غرفة القياس: الصق العنوان والوصف والرابط لترى المقتطف كما تعرضه جوجل تماماً، على سطح المكتب والجوال. لا تقييم ولا تسجيل ولا ضجيج — مفيدة حين كتبت العنوان فعلاً وتحتاج حكم اقتطاع في خمس ثوانٍ. نستخدمها تمريرة ثانية بعد المحلل في سير النشر لدينا، ودليل [تحسين عناوين السيو](/ar/blog/seo-title-optimization-guide-2026/) يشرح هذه العملية بخطوتين.
+إذا كان المحلل هو المختبر، فأداة [معاينة SERP](/ar/tools/headline-analyzer/#meta-checker-heading) لدينا هي غرفة القياس: الصق العنوان والوصف والرابط لترى المقتطف كما تعرضه جوجل تماماً، على سطح المكتب والجوال. لا تقييم ولا تسجيل ولا ضجيج — مفيدة حين كتبت العنوان فعلاً وتحتاج حكم اقتطاع في خمس ثوانٍ. نستخدمها تمريرة ثانية بعد المحلل في سير النشر لدينا، ودليل [تحسين عناوين السيو](/ar/blog/seo-title-optimization-guide-2026/) يشرح هذه العملية بخطوتين.
 
 ### 3. أداة Portent لمعاينة SERP — أفضل عدّاد بكسل
 
@@ -3174,7 +3171,7 @@ Moz ابزار پیش‌نمایش را با قوی‌ترین صفحه آموز
 
 ## أي أداة فحص عناوين يجب أن تستخدم فعلاً؟
 
-طابق الأداة مع المهمة لا مع الضجيج. تصوغ تدوينة جديدة؟ قيّم H1 وعنوان الميتا معاً في [محلل العناوين](/ar/tools/headline-analyzer/) لدينا، ثم أكد الاقتطاع في [معاينة SERP](/ar/tools/serp-preview/). تترتب فعلاً لكن النقرات دون المتوقع؟ مرر العنوان المنشور عبر SmallSEOTools، وأعد كتابته برقم وكلمة مفتاحية في المقدمة، وراقب Search Console من 2 إلى 3 أسابيع عند المركز نفسه — إعادة الكتابة الجيدة ترفع CTR عادة بنسبة 10–30% قبل أن يتبعها الترتيب.
+طابق الأداة مع المهمة لا مع الضجيج. تصوغ تدوينة جديدة؟ قيّم H1 وعنوان الميتا معاً في [محلل العناوين](/ar/tools/headline-analyzer/) لدينا، ثم أكد الاقتطاع في [معاينة SERP](/ar/tools/headline-analyzer/#meta-checker-heading). تترتب فعلاً لكن النقرات دون المتوقع؟ مرر العنوان المنشور عبر SmallSEOTools، وأعد كتابته برقم وكلمة مفتاحية في المقدمة، وراقب Search Console من 2 إلى 3 أسابيع عند المركز نفسه — إعادة الكتابة الجيدة ترفع CTR عادة بنسبة 10–30% قبل أن يتبعها الترتيب.
 
 إليك النمط الذي تدعمه بياناتنا: الأدوات التي تقيس الطول فقط تفقد أهميتها. صفحة محلل العناوين لدينا تترتب في الصفحة الثانية لآلاف استعلامات «فاحص العناوين» لكنها لا تحول أياً منها تقريباً — دليل أن القياس دون إقناع لا يحرك النقرات. سير العمل الرابح في 2026 هو التقييم أولاً (العاطفة والأرقام وموضع الكلمة)، ثم المحاكاة (البكسل والجوال والمنافسون). أي أداة تفعل نصفاً واحداً تترك مالاً على الطاولة.
 

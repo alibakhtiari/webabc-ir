@@ -82,5 +82,21 @@
     "hasNumber": "Title contains a number (improves CTR).",
     "hasPowerWord": "Title contains a CTR power word.",
     "missingPowerWord": "Consider adding power words (e.g. \"free\", \"best\", \"guide\") to boost clicks."
+  },
+  "vsSerpPreview": {
+    "heading": "Headline Analyzer vs SERP Preview Tool",
+    "subheading": "This tool unifies CTR headline scoring with pixel-accurate desktop and mobile SERP preview into a single optimization workflow.",
+    "headlineTitle": "CTR Headline Scoring",
+    "headlineDesc": "Evaluates emotional resonance, word balance, curiosity hooks, and character length to predict click-through performance on search pages and social feeds.",
+    "headlinePoint1": "Power words & emotional triggers analysis",
+    "headlinePoint2": "Optimal word and character count feedback",
+    "headlinePoint3": "Sentiment and engagement scoring",
+    "serpTitle": "Pixel-Accurate SERP Preview",
+    "serpDesc": "Simulates Google search result snippets across desktop (580px limit) and mobile devices to prevent title and description truncation before indexing.",
+    "serpPoint1": "Live desktop & mobile Google snippet simulator",
+    "serpPoint2": "Real-time pixel width cut-off detection (580px)",
+    "serpPoint3": "Focus keyword prominence and placement check",
+    "unifiedTitle": "Why They Belong Together",
+    "unifiedDesc": "A headline with a high CTR score can still fail if Google truncates its key phrase in search results. This unified tool lets you craft high-converting titles and verify their exact SERP rendering in one seamless step."
   }
 }

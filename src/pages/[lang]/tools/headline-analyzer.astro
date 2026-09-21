@@ -476,6 +476,156 @@ const faqSchema = buildFaqSchema(faqs);
       </div>
     </section>
 
+    <!-- Headline Analyzer vs SERP Preview Tool (Consolidated) -->
+    <section class="container mx-auto mt-16 px-4 font-sans" id="headline-vs-serp">
+      <div class="mx-auto max-w-6xl space-y-8">
+        <div class="space-y-2">
+          <h2 class="text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">
+            {t('headlineAnalyzer.vsSerpPreview.heading', {
+              fallback: 'Headline Analyzer vs SERP Preview Tool',
+            })}
+          </h2>
+          <p class="leading-relaxed text-gray-600 dark:text-gray-300">
+            {t('headlineAnalyzer.vsSerpPreview.subheading', {
+              fallback:
+                'This tool unifies CTR headline scoring with pixel-accurate desktop and mobile SERP preview into a single optimization workflow.',
+            })}
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <!-- Column 1: Headline Analyzer -->
+          <div
+            class="space-y-3 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+          >
+            <div class="flex items-center gap-3">
+              <div
+                class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary dark:bg-primary/20"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100">
+                {t('headlineAnalyzer.vsSerpPreview.headlineTitle', {
+                  fallback: 'CTR Headline Scoring',
+                })}
+              </h3>
+            </div>
+            <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+              {t('headlineAnalyzer.vsSerpPreview.headlineDesc', {
+                fallback:
+                  'Evaluates emotional resonance, word balance, curiosity hooks, and character length to predict click-through performance on search pages and social feeds.',
+              })}
+            </p>
+            <ul class="space-y-1.5 pt-2 text-xs text-gray-500 dark:text-gray-400">
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-500">✓</span>
+                <span>{t('headlineAnalyzer.vsSerpPreview.headlinePoint1', { fallback: 'Power words & emotional triggers analysis' })}</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-500">✓</span>
+                <span>{t('headlineAnalyzer.vsSerpPreview.headlinePoint2', { fallback: 'Optimal word and character count feedback' })}</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-500">✓</span>
+                <span>{t('headlineAnalyzer.vsSerpPreview.headlinePoint3', { fallback: 'Sentiment and engagement scoring' })}</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 2: SERP Preview -->
+          <div
+            class="space-y-3 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+          >
+            <div class="flex items-center gap-3">
+              <div
+                class="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-gray-800 dark:text-gray-100">
+                {t('headlineAnalyzer.vsSerpPreview.serpTitle', {
+                  fallback: 'Pixel-Accurate SERP Preview',
+                })}
+              </h3>
+            </div>
+            <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+              {t('headlineAnalyzer.vsSerpPreview.serpDesc', {
+                fallback:
+                  'Simulates Google search result snippets across desktop (580px limit) and mobile devices to prevent title and description truncation before indexing.',
+              })}
+            </p>
+            <ul class="space-y-1.5 pt-2 text-xs text-gray-500 dark:text-gray-400">
+              <li class="flex items-center gap-2">
+                <span class="text-blue-500">✓</span>
+                <span>{t('headlineAnalyzer.vsSerpPreview.serpPoint1', { fallback: 'Live desktop & mobile Google snippet simulator' })}</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-blue-500">✓</span>
+                <span>{t('headlineAnalyzer.vsSerpPreview.serpPoint2', { fallback: 'Real-time pixel width cut-off detection (580px)' })}</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-blue-500">✓</span>
+                <span>{t('headlineAnalyzer.vsSerpPreview.serpPoint3', { fallback: 'Focus keyword prominence and placement check' })}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Unified Benefit Banner -->
+        <div
+          class="rounded-2xl border border-primary/20 bg-primary/5 p-6 dark:border-primary/30 dark:bg-primary/10"
+        >
+          <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div class="space-y-1">
+              <h4 class="text-base font-bold text-gray-900 dark:text-white">
+                {t('headlineAnalyzer.vsSerpPreview.unifiedTitle', {
+                  fallback: 'Why They Belong Together',
+                })}
+              </h4>
+              <p class="text-xs leading-relaxed text-gray-600 sm:text-sm dark:text-gray-300">
+                {t('headlineAnalyzer.vsSerpPreview.unifiedDesc', {
+                  fallback:
+                    'A headline with a high CTR score can still fail if Google truncates its key phrase in search results. This unified tool lets you craft high-converting titles and verify their exact SERP rendering in one seamless step.',
+                })}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SEO Guide Content -->
     <section class="container mx-auto mt-16 px-4 font-sans">
       <div class="mx-auto max-w-4xl space-y-8">
@@ -493,6 +643,11 @@ const faqSchema = buildFaqSchema(faqs);
             <li>
               <a href="#meta-checker-heading" class="font-semibold text-primary hover:underline"
                 >Meta Title &amp; Description Checker</a
+              >
+            </li>
+            <li>
+              <a href="#headline-vs-serp" class="font-semibold text-primary hover:underline"
+                >{t('headlineAnalyzer.vsSerpPreview.heading', { fallback: 'Headline Analyzer vs SERP Preview' })}</a
               >
             </li>
             <li>

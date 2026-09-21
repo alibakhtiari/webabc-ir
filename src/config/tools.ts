@@ -7,6 +7,7 @@ export interface ToolConfig {
   category: string;
   related: RelatedTool[];
   serviceSlug: string;
+  description?: string;
 }
 
 export const toolConfigMap: Record<string, ToolConfig> = {
@@ -41,7 +42,7 @@ export const toolConfigMap: Record<string, ToolConfig> = {
     category: 'BusinessApplication',
     related: [
       { key: 'headlineAnalyzer', route: 'headline-analyzer' },
-      { key: 'serpPreview', route: 'serp-preview' },
+      { key: 'tools.keywordDensity', route: 'keyword-density-analyzer' },
       { key: 'readabilityChecker', route: 'readability-checker' },
     ],
     serviceSlug: 'web-development',
@@ -73,10 +74,13 @@ export const toolConfigMap: Record<string, ToolConfig> = {
     ],
     serviceSlug: 'web-design',
   },
+  // Headline Analyzer & SERP Preview Simulator: Unifies CTR headline scoring with pixel-accurate desktop and mobile Google SERP preview
   'headline-analyzer': {
     category: 'BusinessApplication',
+    description:
+      'Unifies CTR headline scoring with pixel-accurate desktop and mobile Google SERP preview simulation.',
     related: [
-      { key: 'serpPreview', route: 'serp-preview' },
+      { key: 'metaGenerator', route: 'meta-generator' },
       { key: 'readabilityChecker', route: 'readability-checker' },
       { key: 'tools.keywordDensity', route: 'keyword-density-analyzer' },
     ],
@@ -112,7 +116,7 @@ export const toolConfigMap: Record<string, ToolConfig> = {
   'meta-generator': {
     category: 'DeveloperApplication',
     related: [
-      { key: 'serpPreview', route: 'serp-preview' },
+      { key: 'headlineAnalyzer', route: 'headline-analyzer' },
       { key: 'socialPreview', route: 'social-media-preview' },
       { key: 'tools.robotsGenerator', route: 'robots-generator' },
     ],
@@ -150,7 +154,7 @@ export const toolConfigMap: Record<string, ToolConfig> = {
     related: [
       { key: 'headlineAnalyzer', route: 'headline-analyzer' },
       { key: 'tools.keywordDensity', route: 'keyword-density-analyzer' },
-      { key: 'serpPreview', route: 'serp-preview' },
+      { key: 'metaGenerator', route: 'meta-generator' },
     ],
     serviceSlug: 'content-creation',
   },
@@ -159,7 +163,7 @@ export const toolConfigMap: Record<string, ToolConfig> = {
     related: [
       { key: 'metaGenerator', route: 'meta-generator' },
       { key: 'schemaGenerator', route: 'schema-generator' },
-      { key: 'serpPreview', route: 'serp-preview' },
+      { key: 'headlineAnalyzer', route: 'headline-analyzer' },
     ],
     serviceSlug: 'seo',
   },
@@ -169,15 +173,6 @@ export const toolConfigMap: Record<string, ToolConfig> = {
       { key: 'metaGenerator', route: 'meta-generator' },
       { key: 'tools.robotsGenerator', route: 'robots-generator' },
       { key: 'faqGenerator', route: 'faq-generator' },
-    ],
-    serviceSlug: 'seo',
-  },
-  'serp-preview': {
-    category: 'BusinessApplication',
-    related: [
-      { key: 'headlineAnalyzer', route: 'headline-analyzer' },
-      { key: 'socialPreview', route: 'social-media-preview' },
-      { key: 'metaGenerator', route: 'meta-generator' },
     ],
     serviceSlug: 'seo',
   },
@@ -193,7 +188,7 @@ export const toolConfigMap: Record<string, ToolConfig> = {
   'social-media-preview': {
     category: 'BusinessApplication',
     related: [
-      { key: 'serpPreview', route: 'serp-preview' },
+      { key: 'headlineAnalyzer', route: 'headline-analyzer' },
       { key: 'metaGenerator', route: 'meta-generator' },
       { key: 'utmBuilder', route: 'utm-builder' },
     ],
