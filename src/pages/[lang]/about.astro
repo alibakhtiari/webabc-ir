@@ -10,12 +10,16 @@ export const getStaticPaths = getLanguageStaticPaths;
 const { lang } = Astro.params;
 const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
+const fontClass =
+  supportedLang === 'fa' ? 'font-persian' : supportedLang === 'ar' ? 'font-arabic' : 'font-sans';
 
 // Helper to translate strings
 const t = createTranslator(dictionary);
 
 const titleText = t('about.title', { fallback: 'About Us' });
 const descriptionText = t('about.subtitle', { fallback: 'We build digital solutions.' });
+// Short human-readable label for H1 + breadcrumb (the SEO title above is too long).
+const headingText = t('common.about', { fallback: 'About Us' });
 
 const approachItems = [0, 1, 2, 3]
   .map((i) => ({
@@ -43,36 +47,34 @@ const aboutPageSchema = {
   },
 };
 
-const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { label: titleText }];
+const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { label: headingText }];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="about">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(aboutPageSchema)} />
 
-  <div class="mx-auto w-full max-w-6xl px-4 pt-36 pb-12 font-sans sm:px-6 lg:px-8">
-    <div class="space-y-16">
-      <!-- Hero Section -->
-      <div class="text-center">
-        <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
+  <div class={`mx-auto w-full max-w-6xl px-4 pt-32 pb-16 sm:px-6 lg:px-8 ${fontClass}`}>
+    <div class="space-y-14">
+      <div class="mx-auto max-w-2xl text-center">
+        <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered />
         <h1
-          class="mb-4 font-persian text-4xl leading-normal font-bold text-gray-900 md:text-5xl dark:text-white"
+          class="mb-4 text-4xl leading-normal font-bold text-gray-900 md:text-5xl dark:text-white"
         >
-          {titleText}
+          {headingText}
         </h1>
-        <p class="mx-auto max-w-2xl font-persian text-xl text-gray-600 dark:text-gray-300">
+        <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-300">
           {descriptionText}
         </p>
       </div>
 
-      <!-- Mission Section -->
       <div
         class="rounded-2xl border border-transparent bg-linear-to-br from-blue-50 to-purple-50 p-8 dark:border-slate-800 dark:from-slate-900 dark:to-slate-800/80"
       >
         <div class="mx-auto max-w-3xl space-y-4 text-center">
-          <h2 class="font-persian text-2xl font-semibold text-gray-800 dark:text-white">
+          <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">
             {t('about.mission', { fallback: 'Our Mission' })}
           </h2>
-          <p class="font-persian leading-relaxed text-gray-600 dark:text-gray-300">
+          <p class="leading-relaxed text-gray-600 dark:text-gray-300">
             {
               t('about.missionText', {
                 fallback:
@@ -83,17 +85,24 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
         </div>
       </div>
 
-      <!-- How We Work Section -->
       {
         approachItems.length > 0 && (
-          <div class="space-y-10">
-            <h2 class="text-center font-persian text-3xl font-bold text-gray-900 dark:text-white">
+          <div class="space-y-8">
+            <h2 class="text-center text-3xl font-bold text-gray-900 dark:text-white">
               {t('about.approach.title', { fallback: 'How We Work' })}
             </h2>
-            <div class="grid gap-6 font-persian md:grid-cols-2">
-              {approachItems.map((item) => (
-                <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900">
-                  <h3 class="mb-2 text-lg font-bold text-gray-800 dark:text-white">{item.title}</h3>
+            <div class="grid gap-6 md:grid-cols-2">
+              {approachItems.map((item, idx) => (
+                <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                  <div class="mb-3 flex items-center gap-3">
+                    <span
+                      aria-hidden="true"
+                      class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-sm font-bold text-primary"
+                    >
+                      {String(idx + 1).padStart(2, '0')}
+                    </span>
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white">{item.title}</h3>
+                  </div>
                   <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
                     {item.description}
                   </p>
@@ -104,47 +113,76 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
         )
       }
 
-      <!-- Who We Serve Section -->
-      <div class="mx-auto max-w-3xl space-y-4 text-center font-persian">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-          {t('about.whoWeServe.title', { fallback: 'Who We Work With' })}
-        </h2>
-        <p class="leading-relaxed text-gray-600 dark:text-gray-300">
-          {t('about.whoWeServe.text', { fallback: '' })}
-        </p>
+      <div
+        class="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+      >
+        <div class="mx-auto max-w-3xl space-y-4 text-center">
+          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+            {t('about.whoWeServe.title', { fallback: 'Who We Work With' })}
+          </h2>
+          <p class="leading-relaxed text-gray-600 dark:text-gray-300">
+            {t('about.whoWeServe.text', { fallback: '' })}
+          </p>
+        </div>
       </div>
 
-      <!-- Stats Section -->
-      <div class="grid gap-8 text-center font-persian md:grid-cols-3">
+      <div class="grid gap-6 text-center md:grid-cols-3">
         <div
-          class="rounded-2xl border border-transparent bg-blue-50/80 py-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+          class="rounded-2xl border border-gray-100 bg-white py-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
         >
-          <div class="mb-2 text-3xl font-bold text-blue-600 dark:text-blue-400">
-            {t('about.stats.years.value', { fallback: '5+' })}
+          <div class="mb-2 text-4xl font-bold text-blue-600 dark:text-blue-400">
+            {t('about.stats.years.value', { fallback: '10+' })}
           </div>
           <div class="text-gray-700 dark:text-gray-300">
             {t('about.yearsExperience', { fallback: 'Years Experience' })}
           </div>
         </div>
         <div
-          class="rounded-2xl border border-transparent bg-purple-50/80 py-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+          class="rounded-2xl border border-gray-100 bg-white py-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
         >
-          <div class="mb-2 text-3xl font-bold text-purple-600 dark:text-purple-400">
-            {t('about.stats.projects.value', { fallback: '100+' })}
+          <div class="mb-2 text-4xl font-bold text-purple-600 dark:text-purple-400">
+            {t('about.stats.projects.value', { fallback: '500+' })}
           </div>
           <div class="text-gray-700 dark:text-gray-300">
             {t('about.successfulProjects', { fallback: 'Successful Projects' })}
           </div>
         </div>
         <div
-          class="rounded-2xl border border-transparent bg-green-50/80 py-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+          class="rounded-2xl border border-gray-100 bg-white py-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
         >
-          <div class="mb-2 text-3xl font-bold text-green-600 dark:text-green-400">
-            {t('about.stats.satisfaction.value', { fallback: '100%' })}
+          <div class="mb-2 text-4xl font-bold text-green-600 dark:text-green-400">
+            {t('about.stats.satisfaction.value', { fallback: '98%' })}
           </div>
           <div class="text-gray-700 dark:text-gray-300">
             {t('about.clientSatisfaction', { fallback: 'Client Satisfaction' })}
           </div>
+        </div>
+      </div>
+
+      <div
+        class="rounded-2xl bg-primary px-8 py-10 text-center text-primary-foreground shadow-lg"
+      >
+        <h2 class="text-2xl font-bold md:text-3xl">
+          {t('contact.consultation.title', { fallback: 'Request Free Consultation' })}
+        </h2>
+        <p class="mx-auto mt-3 max-w-xl leading-relaxed opacity-90">
+          {t('contact.consultation.description', {
+            fallback: 'Fill in the form below and our experts will contact you shortly.',
+          })}
+        </p>
+        <div class="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a
+            href={`/${supportedLang}/contact/`}
+            class="flex h-12 items-center justify-center rounded-xl bg-white px-8 font-bold text-primary shadow transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+          >
+            {t('common.freeConsultation', { fallback: 'Free Consultation' })}
+          </a>
+          <a
+            href={`/${supportedLang}/portfolio/`}
+            class="flex h-12 items-center justify-center rounded-xl border-2 border-white/40 px-8 font-bold text-white transition-colors hover:border-white hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+          >
+            {t('common.viewPortfolio', { fallback: 'View Portfolio' })}
+          </a>
         </div>
       </div>
     </div>
