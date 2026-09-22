@@ -106,6 +106,116 @@ const STATIC_REDIRECTS: Record<string, string> = {
   '/ar/blog/web-design-trends-2025': '/ar/blog/web-design-trends/',
 };
 
+// ---------------------------------------------------------------------------
+// acceptmarkdown.com RFC 9110 content negotiation helpers
+// ---------------------------------------------------------------------------
+type AcceptEntry = { type: string; q: number; specificity: number };
+
+function parseAccept(header: string): AcceptEntry[] {
+  return header
+    .split(',')
+    .map((raw) => {
+      const parts = raw
+        .trim()
+        .split(';')
+        .map((s) => s.trim());
+      const type = parts[0]?.toLowerCase();
+      if (!type) return null;
+      let q = 1;
+      for (const param of parts.slice(1)) {
+        const [name, value] = param.split('=').map((s) => s.trim());
+        if (name === 'q') {
+          const parsed = Number(value);
+          if (!Number.isNaN(parsed)) q = Math.max(0, Math.min(1, parsed));
+        }
+      }
+      const specificity = type === '*/*' ? 0 : type.endsWith('/*') ? 1 : 2;
+      return { type, q, specificity };
+    })
+    .filter((e): e is AcceptEntry => e !== null);
+}
+
+function matches(entry: AcceptEntry, candidate: string): boolean {
+  if (entry.type === '*/*') return true;
+  if (entry.type.endsWith('/*')) return candidate.startsWith(entry.type.slice(0, -1));
+  return entry.type === candidate;
+}
+
+function preferredType(header: string | null, produces: string[]): string | null {
+  if (!header) return produces[0] ?? null;
+  const entries = parseAccept(header);
+  if (entries.length === 0) return produces[0] ?? null;
+
+  let bestType: string | null = null;
+  let bestQ = -1;
+  let bestPosition = Infinity;
+
+  for (const candidate of produces) {
+    let matched: AcceptEntry | null = null;
+    let matchedPosition = Infinity;
+    for (let idx = 0; idx < entries.length; idx++) {
+      const e = entries[idx];
+      if (!matches(e, candidate)) continue;
+      if (
+        matched === null ||
+        e.specificity > matched.specificity ||
+        (e.specificity === matched.specificity && idx < matchedPosition)
+      ) {
+        matched = e;
+        matchedPosition = idx;
+      }
+    }
+    if (matched === null) continue;
+    const matchedQ: number = matched.q;
+    if (matchedQ <= 0) continue; // explicit rejection
+
+    if (matchedQ > bestQ || (matchedQ === bestQ && matchedPosition < bestPosition)) {
+      bestQ = matchedQ;
+      bestPosition = matchedPosition;
+      bestType = candidate;
+    }
+  }
+
+  return bestType;
+}
+
+function appendVaryAccept(headers: Headers): void {
+  const existing = headers.get('vary');
+  if (!existing) {
+    headers.set('Vary', 'Accept');
+    return;
+  }
+  const tokens = existing.split(',').map((s) => s.trim().toLowerCase());
+  if (!tokens.includes('accept')) {
+    headers.set('Vary', `${existing}, Accept`);
+  }
+}
+
+function markdownPath(pathname: string): string {
+  const clean = pathname.replace(/\/$/, '') || '/';
+  if (clean === '/') return '/index.md';
+  return `${clean}/index.md`;
+}
+
+const MARKDOWN_404_BODY = `# Page Not Found
+
+The requested WebABC resource does not exist or has moved. Use the following machine-readable and directory indexes to recover:
+
+- Return to the English homepage: https://webabc.ir/en/
+- Read the machine-readable site guide: https://webabc.ir/llms.txt
+- Browse the full LLM corpus: https://webabc.ir/llms-full.txt
+- Browse the XML sitemap index: https://webabc.ir/sitemap-index.xml
+- Explore core web design & SEO services: https://webabc.ir/en/services/
+- Try developer & SEO interactive tools: https://webabc.ir/en/tools/
+- Review client case studies & portfolio: https://webabc.ir/en/portfolio/
+- Read our latest technical insights: https://webabc.ir/en/blog/
+- Contact our team for consultation: https://webabc.ir/en/contact/
+
+Available representations:
+- Request \`Accept: text/markdown\` on any page to receive structured Markdown.
+- Request \`Accept: text/html\` to receive full interactive web pages.
+`;
+
 async function handleContact(request: Request, env: Env): Promise<Response> {
   const json = (body: unknown, status = 200) =>
     new Response(JSON.stringify(body), {
@@ -236,11 +346,9 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
 
-    // 2b. Trailing-slash normalization — permanent redirect. The assets layer
-    // answers bare-directory paths with a temporary 307, which leaves both URL
-    // variants indexed (confirmed in GSC). A single explicit 301 here collapses
-    // duplicates and passes link equity to the canonical slashed URL. Files with
-    // an extension (/rss.xml, /_astro/*.js, /images/*) are excluded.
+    // 2b. Trailing-slash normalization — permanent redirect for valid routes.
+    // Only redirect if the path actually exists as a directory/page in assets.
+    // Nonexistent paths must return 404 directly, never a 301 redirect hop.
     const lastSegment = url.pathname.split('/').pop() || '';
     if (
       url.pathname !== '/' &&
@@ -248,8 +356,14 @@ export default {
       lastSegment !== '' &&
       !/\.[a-z0-9]+$/i.test(lastSegment)
     ) {
-      url.pathname += '/';
-      return Response.redirect(url.toString(), 301);
+      const slashedUrl = new URL(url);
+      slashedUrl.pathname += '/';
+      const probe = await env.ASSETS.fetch(
+        new Request(slashedUrl.toString(), { method: 'HEAD' })
+      );
+      if (probe.status === 200) {
+        return Response.redirect(slashedUrl.toString(), 301);
+      }
     }
 
     // 3. Root path -> geo-based locale redirect. This MUST be a 302 (temporary),
@@ -264,23 +378,183 @@ export default {
       return Response.redirect(`${url.origin}/${targetLang}/`, 302);
     }
 
-    // 4. Everything else: serve static build, adding noindex on non-canonical hosts and 404 pages
-    const response = await env.ASSETS.fetch(request);
-    const is404 =
-      url.pathname.endsWith('/404') || url.pathname.endsWith('/404/') || response.status === 404;
-    if (url.hostname !== CANONICAL_HOST || is404) {
-      const headers = new Headers(response.headers);
-      if (is404) {
+    // 4. Static assets (.css, .js, .webp, .svg, .xml, .txt, .json, .md, etc.)
+    const STATIC_EXT =
+      /\.(?:css|js|mjs|map|png|jpe?g|webp|gif|svg|avif|ico|woff2?|ttf|otf|eot|xml|txt|json|pdf|mp4|webm|mp3|wav|ogg|zip|md)$/i;
+    if (STATIC_EXT.test(url.pathname)) {
+      const assetRes = await env.ASSETS.fetch(request);
+      if (assetRes.status === 404 && url.pathname.endsWith('.md')) {
+        const headers = new Headers();
+        headers.set('Content-Type', 'text/markdown; charset=utf-8');
         headers.set('X-Robots-Tag', 'noindex, follow');
-      } else {
-        headers.set('X-Robots-Tag', 'noindex, nofollow');
+        appendVaryAccept(headers);
+        return new Response(MARKDOWN_404_BODY, { status: 404, statusText: 'Not Found', headers });
       }
-      return new Response(response.body, {
-        status: is404 ? 404 : response.status,
-        statusText: is404 ? 'Not Found' : response.statusText,
+      return assetRes;
+    }
+
+    // 5. Content negotiation for HTML and Markdown pages (acceptmarkdown.com compliant)
+    const acceptHeader = request.headers.get('accept');
+    const chosen = preferredType(acceptHeader, ['text/html', 'text/markdown']);
+
+    // Client explicitly rejected all available representations (e.g. q=0 on both html and markdown)
+    if (chosen === null && acceptHeader) {
+      const headers = new Headers({
+        'Content-Type': 'text/plain; charset=utf-8',
+        'X-Robots-Tag': 'noindex, nofollow',
+      });
+      appendVaryAccept(headers);
+      return new Response('Not Acceptable\n\nAvailable: text/html, text/markdown\n', {
+        status: 406,
+        statusText: 'Not Acceptable',
         headers,
       });
     }
-    return response;
+
+    // Client requested text/markdown representation
+    if (chosen === 'text/markdown') {
+      const mdPath = markdownPath(url.pathname);
+      const mdUrl = new URL(mdPath, url);
+      const mdReq = new Request(mdUrl.toString(), request);
+      const mdRes = await env.ASSETS.fetch(mdReq);
+
+      if (mdRes.status === 200) {
+        const headers = new Headers(mdRes.headers);
+        headers.set('Content-Type', 'text/markdown; charset=utf-8');
+        appendVaryAccept(headers);
+        if (url.hostname !== CANONICAL_HOST) {
+          headers.set('X-Robots-Tag', 'noindex, nofollow');
+        }
+        return new Response(mdRes.body, { status: 200, headers });
+      }
+
+      // If specific /index.md failed, try bare .md (e.g. /en.md)
+      const bareMdPath = `${url.pathname.replace(/\/$/, '')}.md`;
+      if (bareMdPath !== mdPath) {
+        const bareUrl = new URL(bareMdPath, url);
+        const bareRes = await env.ASSETS.fetch(new Request(bareUrl.toString(), request));
+        if (bareRes.status === 200) {
+          const headers = new Headers(bareRes.headers);
+          headers.set('Content-Type', 'text/markdown; charset=utf-8');
+          appendVaryAccept(headers);
+          if (url.hostname !== CANONICAL_HOST) {
+            headers.set('X-Robots-Tag', 'noindex, nofollow');
+          }
+          return new Response(bareRes.body, { status: 200, headers });
+        }
+      }
+
+      // Check whether this path is a 404
+      const htmlCheck = await env.ASSETS.fetch(request);
+      const is404 =
+        htmlCheck.status === 404 ||
+        url.pathname.endsWith('/404') ||
+        url.pathname.endsWith('/404/');
+
+      if (is404) {
+        const headers = new Headers({
+          'Content-Type': 'text/markdown; charset=utf-8',
+          'X-Robots-Tag': 'noindex, follow',
+        });
+        appendVaryAccept(headers);
+        return new Response(MARKDOWN_404_BODY, { status: 404, statusText: 'Not Found', headers });
+      }
+
+      // Page exists in HTML, but no markdown sibling found.
+      // If client explicitly rejects HTML, return 406 Not Acceptable.
+      if (!preferredType(acceptHeader, ['text/html'])) {
+        const headers = new Headers({
+          'Content-Type': 'text/plain; charset=utf-8',
+        });
+        appendVaryAccept(headers);
+        return new Response(
+          'Not Acceptable\n\nMarkdown sibling missing and HTML is not acceptable.\n',
+          {
+            status: 406,
+            statusText: 'Not Acceptable',
+            headers,
+          }
+        );
+      }
+
+      // Fall back to HTML representation with Vary: Accept
+      const headers = new Headers(htmlCheck.headers);
+      appendVaryAccept(headers);
+      if (url.hostname !== CANONICAL_HOST) {
+        headers.set('X-Robots-Tag', 'noindex, nofollow');
+      }
+      return new Response(htmlCheck.body, {
+        status: htmlCheck.status,
+        headers,
+      });
+    }
+
+    // 6. Client requested text/html (or default wildcard)
+    const response = await env.ASSETS.fetch(request);
+    const is404 =
+      url.pathname.endsWith('/404') || url.pathname.endsWith('/404/') || response.status === 404;
+
+    if (is404) {
+      const rawAccept = (acceptHeader || '').toLowerCase();
+      const userAgent = (request.headers.get('user-agent') || '').toLowerCase();
+      const isAgentOrCli =
+        !rawAccept.includes('text/html') ||
+        rawAccept.includes('markdown') ||
+        userAgent.includes('curl') ||
+        userAgent.includes('bot') ||
+        userAgent.includes('agent') ||
+        userAgent.includes('crawler') ||
+        userAgent.includes('spider') ||
+        userAgent.includes('ora');
+
+      if (isAgentOrCli) {
+        const headers = new Headers({
+          'Content-Type': 'text/markdown; charset=utf-8',
+          'X-Robots-Tag': 'noindex, follow',
+        });
+        appendVaryAccept(headers);
+        return new Response(MARKDOWN_404_BODY, {
+          status: 404,
+          statusText: 'Not Found',
+          headers,
+        });
+      }
+
+      const headers = new Headers(response.headers);
+      headers.set('X-Robots-Tag', 'noindex, follow');
+      headers.set('Link', '</404.md>; rel="alternate"; type="text/markdown"');
+      appendVaryAccept(headers);
+      return new Response(response.body, {
+        status: 404,
+        statusText: 'Not Found',
+        headers,
+      });
+    }
+
+    // Standard HTML page response: add Vary: Accept and advertise markdown alternate if it exists
+    const headers = new Headers(response.headers);
+    appendVaryAccept(headers);
+
+    if (url.hostname !== CANONICAL_HOST) {
+      headers.set('X-Robots-Tag', 'noindex, nofollow');
+    }
+
+    if (headers.get('content-type')?.includes('text/html')) {
+      const mdPath = markdownPath(url.pathname);
+      const mdHead = await env.ASSETS.fetch(
+        new Request(new URL(mdPath, url).toString(), { method: 'HEAD' })
+      );
+      if (mdHead.status === 200) {
+        const linkValue = `<${mdPath}>; rel="alternate"; type="text/markdown"`;
+        const existingLink = headers.get('link');
+        headers.set('Link', existingLink ? `${existingLink}, ${linkValue}` : linkValue);
+      }
+    }
+
+    return new Response(response.body, {
+      status: response.status,
+      statusText: response.statusText,
+      headers,
+    });
   },
 };

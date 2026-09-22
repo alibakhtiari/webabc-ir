@@ -7,11 +7,12 @@
     "dev": "astro dev",
     "manifests": "node scripts/resolve-sitemap-lastmod.mjs && node scripts/generate-og-manifest.mjs",
     "llms": "node scripts/generate-llms-full.mjs",
-    "build": "npm run manifests && npm run llms && astro build",
+    "build": "npm run manifests && npm run llms && astro build && node scripts/generate-markdown-representations.mjs",
     "preview": "astro preview",
     "deploy": "npm run build && wrangler deploy",
     "lint": "eslint src && tsc --noemit",
     "check": "astro check",
+    "test": "node --experimental-strip-types scripts/verify-agentic.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },

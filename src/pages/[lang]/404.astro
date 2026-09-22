@@ -147,6 +147,28 @@ const quickLinks = [
             }
           </div>
         </div>
+
+        <!-- Machine-Readable Agent Recovery Links -->
+        <nav aria-label="Agent recovery links" class="border-t border-gray-200/60 pt-5 text-xs text-gray-500 dark:border-slate-800">
+          <p class="font-mono font-semibold tracking-wider text-gray-400 uppercase">
+            {
+              supportedLang === 'fa'
+                ? 'راهنمای ربات‌ها و بازیابی آدرس'
+                : supportedLang === 'ar'
+                  ? 'روابط استرداد الذكاء الاصطناعي'
+                  : 'Agent & Crawler Recovery Links'
+            }
+          </p>
+          <div class="mt-2.5 flex flex-wrap justify-center gap-3 font-mono text-[11px]">
+            <a href="/llms.txt" class="text-gray-600 underline hover:text-primary dark:text-gray-400">/llms.txt</a>
+            <span class="text-gray-300 dark:text-gray-700">•</span>
+            <a href="/llms-full.txt" class="text-gray-600 underline hover:text-primary dark:text-gray-400">/llms-full.txt</a>
+            <span class="text-gray-300 dark:text-gray-700">•</span>
+            <a href="/sitemap-index.xml" class="text-gray-600 underline hover:text-primary dark:text-gray-400">/sitemap-index.xml</a>
+            <span class="text-gray-300 dark:text-gray-700">•</span>
+            <a href="/404.md" class="text-gray-600 underline hover:text-primary dark:text-gray-400">/404.md</a>
+          </div>
+        </nav>
       </div>
 
       <!-- Featured Services Section for AEO / Link Equity Retention -->

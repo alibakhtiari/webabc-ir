@@ -13,11 +13,12 @@ function createOrganizationSchema(
   url: string,
   logo: string,
   contactPoints: { telephone: string; contactType: string }[],
-  lang: string
+  lang: string,
+  description?: string
 ) {
   return {
     '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
+    '@type': ['Organization', 'ProfessionalService'],
     '@id': `${url}/#organization`,
     url: url,
     logo: `${url}${logo}`,
@@ -25,6 +26,9 @@ function createOrganizationSchema(
     priceRange: '$$',
     name: 'WebABC',
     legalName: 'WebABC Web Design & SEO Agency',
+    description:
+      description ||
+      'Premier Web Design, Full-Stack Custom Development, Performance SEO, and AEO Agency',
     telephone: '+989125811880',
     email: 'info@webabc.ir',
     knowsLanguage: ['en', 'fa', 'ar'],
@@ -32,11 +36,16 @@ function createOrganizationSchema(
       '@type': 'ContactPoint',
       telephone: cp.telephone,
       contactType: cp.contactType,
+      email: 'info@webabc.ir',
+      url: `${url}/${lang}/contact/`,
+      availableLanguage: ['English', 'Persian', 'Arabic'],
     })),
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Qazvin Science & Technology Park, Km 2 Barajin Road',
       addressLocality: 'Qazvin',
+      addressRegion: 'Qazvin',
+      postalCode: '34136',
       addressCountry: 'IR',
     },
     geo: {
@@ -177,9 +186,10 @@ const organizationSchema = createOrganizationSchema(
   '/images/logo.webp',
   [
     { telephone: '+989125811880', contactType: 'customer service' },
-    { telephone: '+989354767068', contactType: 'customer service' },
+    { telephone: '+989354767068', contactType: 'technical support' },
   ],
-  lang
+  lang,
+  pageDescription
 );
 
 // Schema WebSite
@@ -276,6 +286,12 @@ const websiteSchema = createWebsiteSchema(siteUrl, lang);
       href={`${siteUrl}/${supportedLang}/rss.xml`}
     />
     <link rel="llms-txt" href="/llms.txt" />
+    <link
+      rel="alternate"
+      type="text/markdown"
+      href={`${canonicalPath}index.md`}
+    />
+    <meta name="is-agentic-site-type" content="business" />
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
