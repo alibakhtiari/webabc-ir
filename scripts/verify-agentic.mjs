@@ -139,6 +139,33 @@ async function test() {
     res3.headers.get('link')?.includes('/404.md'),
     `Link header points to /404.md alternate (got ${res3.headers.get('link')})`
   );
+  // Regression guard: a blank 404 body reached real users because wrangler.toml
+  // had no not_found_handling. Assert the browser actually gets a document.
+  const body3 = await res3.clone().text();
+  assert(
+    body3.length > 50000,
+    `Browser 404 body is a real document (got ${body3.length} bytes, expected > 50000)`
+  );
+  assert(
+    body3.includes('<title>Page Not Found | WebABC</title>'),
+    `Browser 404 body is the 404 document (got title: ${body3.slice(0, 200)})`
+  );
+  // Locale-prefixed 404s must serve that locale's document, not the English root page.
+  const res3fa = await worker.fetch(
+    new Request('https://webabc.ir/fa/hiany-sayh', {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)',
+        Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+      },
+    }),
+    env
+  );
+  const body3fa = await res3fa.text();
+  assert(res3fa.status === 404, `Persian 404 status is 404 (got ${res3fa.status})`);
+  assert(
+    body3fa.includes('صفحه پیدا نشد'),
+    `Persian 404 serves the fa document (got ${body3fa.length} bytes)`
+  );
 
   // 4. Markdown content negotiation on Homepage (/en/)
   console.log('\n4. Testing Accept: text/markdown negotiation on /en/:');

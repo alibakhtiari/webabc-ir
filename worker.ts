@@ -520,11 +520,31 @@ export default {
         });
       }
 
-      const headers = new Headers(response.headers);
+      // Browser branch. `not_found_handling = "404.html"` in wrangler.toml
+      // guarantees a body for unmatched paths; without it the assets layer
+      // returns 404 with content-length: 0 and real users got a blank page.
+      // For locale-prefixed paths, swap in that locale's own document so /fa/
+      // and /ar/ visitors get their language instead of the English root page.
+      let notFound = response;
+      if (response.status === 404) {
+        const locale = url.pathname.match(/^\/(en|fa|ar)(?:\/|$)/)?.[1];
+        if (locale) {
+          try {
+            const localized = await env.ASSETS.fetch(
+              new Request(`${url.origin}/${locale}/404/`, { headers: request.headers })
+            );
+            if (localized.ok && localized.body) notFound = localized;
+          } catch {
+            // Fall back to whatever not_found_handling served.
+          }
+        }
+      }
+
+      const headers = new Headers(notFound.headers);
       headers.set('X-Robots-Tag', 'noindex, follow');
       headers.set('Link', '</404.md>; rel="alternate"; type="text/markdown"');
       appendVaryAccept(headers);
-      return new Response(response.body, {
+      return new Response(notFound.body, {
         status: 404,
         statusText: 'Not Found',
         headers,

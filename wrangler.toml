@@ -10,3 +10,9 @@ binding = "ASSETS"
 # instead of the assets layer's temporary 307, and `/` gets the server-side
 # geo-based locale redirect instead of the JS shim page.
 run_worker_first = true
+# Without this, unmatched paths return 404 with an EMPTY body under
+# run_worker_first: the assets layer never falls back to dist/404.html, so
+# worker.ts was passing a zero-byte page through to real browsers (bots still
+# got the markdown recovery body). worker.ts swaps in /{lang}/404/ for
+# locale-prefixed paths, so this root document is only the fallback.
+not_found_handling = "404.html"
