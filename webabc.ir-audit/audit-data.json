@@ -1,1 +1,238 @@
-{"action_plan":{"phases":[{"items":["Differentiate headline-analyzer title vs webnewstips (i18n EN/FA/AR)","Snippet hooks for zero-click cluster + jump-links","Re-point stale seo-title-checker internal links"],"name":"Phase 1: Critical Fixes","timeframe":"Week 1"},{"items":["Add BreadcrumbList JSON-LD to blog + tool templates","Deduplicate double FAQPage on tool pages","Add WebSite node to schema graph","Strike striking-distance pages (speed-pricing fa, tehran, local-seo fa, muscat, web-design)","Own brand query webabc (currently pos 3.4)"],"name":"Phase 2: High-Impact Improvements","timeframe":"Weeks 2-3"},{"items":["Localize proof per locale (break 1:1 symmetry on 5 money posts)","Batch-shorten titles to <=60 chars","Replicate fa pricing-content formula per locale","Service-area internal link-up + NAP pass"],"name":"Phase 3: Content & Authority","timeframe":"Month 2"},{"items":["llms.txt v2 (fa/ar deep links) + llms-full.txt generator","Citation hygiene: definition-first passages, no fake reviews","Monthly GSC zero-click + slash-consolidation check","Quarterly decay refresh via updatedDate/lastmod"],"name":"Phase 4: Monitoring & Iteration","timeframe":"Ongoing"}]},"artifacts":{"findings_dir":"findings/"},"categories":[{"findings":[{"description":"25,743 impressions at position 14.0 with 30 clicks (CTR 0.12%). 81% of site visibility earns nothing. Page-2 rank + undifferentiated snippet.","recommendation":"Rewrite title/description with differentiated hook; add jump-links; build internal links from ranking guides.","severity":"Critical","title":"Headline-analyzer: 81% of impressions, 0.12% CTR"}],"name":"On-Page SEO","score":62,"what_works":["Homepage brand CTR 27% at pos 5.1","fa pricing post 7.34% CTR proves hooks work"]},{"findings":[{"description":"Query 'seo title checker for blog by webnewstips com': 10,157 impressions, pos 5.5, 0 clicks. Title collides with brand owner's tool name.","recommendation":"Rename to unownable variant across en/fa/ar dictionaries.","severity":"Critical","title":"Competitor-brand query trap"},{"description":"60 URL groups appear with and without trailing slash. Edge 301s verified live; split is historical.","recommendation":"Monthly GSC check for consolidation; no code change.","severity":"Medium","title":"Slash duplicates"}],"name":"GSC Performance","score":58,"what_works":["seo headline checker converts 3.42%","US demand proven (18.7k impr)"]},{"findings":[{"description":"grep finds zero emitted BreadcrumbList entities; UI breadcrumbs render without JSON-LD.","recommendation":"Emit BreadcrumbList in blog + tool templates.","severity":"High","title":"Missing BreadcrumbList"},{"description":"Live tool HTML contains FAQPage x2 (layout head slot + component).","recommendation":"Single emitter per template.","severity":"High","title":"Duplicate FAQPage"}],"name":"Schema","score":74,"what_works":["Organization + BlogPosting + WebApplication graphs","Review gating discipline in content.config.ts"]}],"summary":{"business_type":"Agency (services + publisher + free tools; local-service geo hubs)","health_score":78,"quick_wins":["Differentiate headline-analyzer title (targets 10k-impr zero-click query)","Add BreadcrumbList JSON-LD (zero entities today)","Deduplicate double FAQPage on tool pages","Extend llms.txt with fa/ar deep links + llms-full.txt","Dedicated OG image for headline-analyzer"],"top_findings":["One page = 81% of impressions at 0.12% CTR","10k-impr page-1 query with 0 clicks (title collision)","60 slash/non-slash duplicate groups (301s live, monitor)","No BreadcrumbList + duplicate FAQPage","96-post parity without locale differentiation"]}}
+{
+  "audit": {
+    "property": "https://webabc.ir",
+    "date": "2026-09-22",
+    "supersedes": "stale-2026-09-21",
+    "data_source": "webabc.ir-Performance-on-Search-2026-09-21.xlsx",
+    "gsc_window": { "from": "2026-06-19", "to": "2026-09-18", "days": 92, "search_type": "Web" },
+    "stack": {
+      "framework": "Astro 7",
+      "output": "static",
+      "trailingSlash": "always",
+      "build_format": "directory",
+      "edge": "cloudflare-workers",
+      "run_worker_first": true
+    },
+    "locales": ["en", "fa", "ar"],
+    "x_default": "en"
+  },
+
+  "scores": {
+    "weights": { "technical": 0.22, "content": 0.23, "onpage": 0.20, "schema": 0.10, "performance": 0.10, "ai_search": 0.10, "images": 0.05 },
+    "categories": {
+      "technical":  { "current": 84, "previous": 88 },
+      "content":    { "current": 66, "previous": 78 },
+      "onpage":     { "current": 68, "previous": 62 },
+      "schema":     { "current": 88, "previous": 74 },
+      "performance":{ "current": 75, "previous": 85, "estimated": true, "note": "No field or lab CWV data exists; proxy estimate from transfer size, encoding, caching." },
+      "ai_search":  { "current": 81, "previous": 82, "aeo": 82, "geo": 80 },
+      "images":     { "current": 84, "previous": 80 }
+    },
+    "total": { "current": 76, "previous": 78 }
+  },
+
+  "gsc": {
+    "totals": { "clicks": 124, "impressions": 31561, "ctr": 0.0039, "queries": 416, "page_rows": 289, "page_urls_unique": 229, "countries": 118 },
+    "monthly": [
+      { "month": "2026-06", "partial_from": "2026-06-19", "clicks": 4, "impressions": 399, "impr_per_day": 33 },
+      { "month": "2026-07", "clicks": 9, "impressions": 845, "impr_per_day": 27 },
+      { "month": "2026-08", "clicks": 60, "impressions": 17298, "impr_per_day": 558 },
+      { "month": "2026-09", "partial_to": "2026-09-18", "clicks": 51, "impressions": 13019, "impr_per_day": 723 }
+    ],
+    "devices": [
+      { "device": "Desktop", "clicks": 81, "impressions": 18700, "ctr": 0.0043, "position": 18.34 },
+      { "device": "Mobile",  "clicks": 43, "impressions": 12768, "ctr": 0.0034, "position": 14.50 },
+      { "device": "Tablet",  "clicks": 0,  "impressions": 93,    "ctr": 0.0,    "position": 29.40 }
+    ],
+    "countries_top": [
+      { "country": "United States", "clicks": 46, "impressions": 18708, "ctr": 0.0025, "position": 12.96 },
+      { "country": "Iran",          "clicks": 52, "impressions": 3084,  "ctr": 0.0169, "position": 27.40, "note": "only market that converts; 6.76x US CTR from worse position" },
+      { "country": "United Kingdom","clicks": 0,  "impressions": 1793,  "ctr": 0.0,    "position": 24.32 },
+      { "country": "India",         "clicks": 6,  "impressions": 1253,  "ctr": 0.0048, "position": 18.60 },
+      { "country": "Germany",       "clicks": 0,  "impressions": 1160,  "ctr": 0.0,    "position": 20.59 },
+      { "country": "Canada",        "clicks": 1,  "impressions": 991,   "ctr": 0.001,  "position": 14.13 }
+    ],
+    "zero_click": { "queries": 398, "of_queries": 416, "share": 0.96, "impression_share": 0.716 },
+    "title_headline_cluster": { "queries": 23, "impressions": 23814, "clicks": 9, "ctr": 0.0004, "impression_share": 0.754, "click_share": 0.073 },
+    "dominant_page": { "url": "/en/tools/headline-analyzer/", "impressions": 25743, "share_of_total": 0.816, "clicks": 30, "ctr": 0.0012, "position": 13.97 },
+    "control_experiment": [
+      { "query": "seo headline checker", "impressions": 382, "clicks": 13, "ctr": 0.0342, "position": 21.27 },
+      { "query": "seo title checker",    "impressions": 3938, "clicks": 3,  "ctr": 0.0008, "position": 16.80, "note": "43x worse CTR from a better position" }
+    ],
+    "competitor_brand_query": { "query": "seo title checker for blog by webnewstips com", "impressions": 10157, "clicks": 0, "position": 5.55, "share_of_total_impressions": 0.322, "action": "exclude from CTR targets permanently" },
+    "brand_queries": [
+      { "query": "webabc",  "clicks": 38, "impressions": 86,  "ctr": 0.4419, "position": 3.41, "target_position": 1.0 },
+      { "query": "ويب سي", "clicks": 0,  "impressions": 218, "ctr": 0.0,    "position": 4.93, "note": "declared as WebSite.alternateName for fa but not owned in SERP" }
+    ],
+    "best_content": { "url": "/fa/blog/website-speed-optimization-pricing-guide-2026/", "clicks": 13, "share_of_all_site_clicks": 0.105, "impressions": 177, "ctr": 0.0734, "position": 14.28 },
+    "arabic_homepage": { "url": "/ar/", "impressions": 232, "clicks": 0, "position": 5.01, "note": "top-5, zero clicks" },
+    "translated_results": { "impressions": 170, "clicks": 0, "position": 92.88, "note": "not a markup defect; hreflang verified correct" },
+    "slash_duplicates": { "pairs": 60, "impressions_in_pairs": 29000, "page_row_impressions": 32016, "status": "historical - all non-slash variants now 301, verified live" },
+    "sitemap_coverage": { "sitemap_urls": 306, "never_seen_in_gsc": 93, "gsc_only_urls": 15, "gsc_only_note": "all legacy 301 sources plus /" }
+  },
+
+  "inventory": {
+    "blog_posts": 108, "blog_per_lang": 36, "slug_parity": true,
+    "portfolio": 51, "portfolio_per_lang": 17,
+    "tools": 21, "tools_note": "plus /tools/ hub; README claims 24, llms.txt claims 23 - both wrong",
+    "services": 11, "service_areas": 6,
+    "service_area_slugs": ["dubai", "tehran", "muscat", "qazvin", "abu-dhabi", "riyadh"],
+    "sitemap": { "urls": 306, "per_lang": 102, "hreflang_links": 1224, "image_entries": 276, "lastmod_present": 306, "homepage_included": false },
+    "markdown_siblings": 205,
+    "content_coverage": { "faq": "108/108", "key_takeaways": "108/108", "updatedDate": "96/108" }
+  },
+
+  "content": {
+    "word_count_en": { "min": 322, "min_post": "website-maintenance-security-guide-2026", "median": 598, "max": 2529, "max_post": "local-seo-services-guide-2026", "under_900": 22, "under_1200": 25, "total": 36 },
+    "title_length_over_60": { "en": 4, "fa": 8, "ar": 6 },
+    "description_out_of_band": { "over_160": { "en": 0, "fa": 0, "ar": 1 }, "under_120": { "en": 1, "fa": 2, "ar": 5 } },
+    "freshness": {
+      "publish_date_distribution_en": { "2026-08-07": 19, "2026-08-15": 8, "2026-09-21": 4, "2026-09-14": 3, "2026-09-05": 1, "2025-01-24": 1 },
+      "updated_date_distribution_en": { "2026-08-18": 26, "2026-09-21": 4, "2026-09-14": 2 },
+      "posts_predating_2026_08_07": 1,
+      "risk": "mass-production signal under May 2026 Core Update and March/June 2026 spam provisions"
+    },
+    "cannibalization_clusters": [
+      { "id": "A", "topic": "how much does a website cost", "severity": "high", "posts": ["how-much-does-a-website-cost-2026", "website-development-cost-guide-2026", "website-development-costs", "website-development-cost-calculator-guide-2026"], "note": "two posts share a near-identical H1", "body_similarity": 0.038, "action": "consolidate to 2, 301 the rest" },
+      { "id": "B", "topic": "wordpress vs custom", "severity": "medium", "posts": ["wordpress-vs-custom-development", "wordpress-vs-custom-development-guide-2026"], "body_similarity": 0.037, "action": "differentiate titles or merge" },
+      { "id": "C", "topic": "title/headline writing", "severity": "high", "priority": 1, "posts": ["seo-title-optimization-guide-2026", "how-to-write-clickable-headlines", "best-title-tag-checker-tools-2026"], "note": "overlaps /en/tools/headline-analyzer/ which carries 75% of site impressions", "body_similarity": 0.034, "action": "merge the two how-to posts; keep listicle; varied anchors to tool" },
+      { "id": "D", "topic": "website speed", "severity": "medium", "posts": ["website-speed-optimization-pricing-guide-2026", "website-speed-optimization-guide-2026"], "body_similarity": 0.03, "action": "make pricing-vs-how-to explicit in titles" },
+      { "id": "E", "topic": "local seo", "severity": "medium", "posts": ["local-seo-services-guide-2026", "local-seo-middle-east"], "action": "expand ME post or fold into pillar" },
+      { "id": "F", "topic": "design trends", "severity": "medium", "posts": ["web-design-trends", "modern-ui-ux-trends"], "body_similarity": 0.066, "note": "highest measured similarity", "action": "differentiate by audience or merge" },
+      { "id": "G", "topic": "mobile first", "severity": "low", "posts": ["mobile-first-design", "mobile-first-web-design-guide-2026"], "action": "merge" }
+    ],
+    "cannibalization_note": "body similarity 3-7% across all pairs => genuine title/intent cannibalization, NOT duplicate content",
+    "taxonomy": {
+      "categories_en": { "SEO": 12, "Web Development": 6, "Web Design": 4, "Local SEO": 3, "WordPress": 2, "E-Commerce": 2, "Digital Marketing": 2, "UI/UX Design": 1, "Maintenance": 1, "Performance": 1, "Speed Optimization": 1, "Link Building": 1 },
+      "serviceToolDict_keys": ["SEO", "Local SEO", "WordPress", "Web Design", "Web Development", "E-Commerce"],
+      "unmapped_categories": ["Digital Marketing", "UI/UX Design", "Maintenance", "Performance", "Speed Optimization", "Link Building"],
+      "posts_with_generic_fallback_cta": 7,
+      "taxonomy_split": ["Performance", "Speed Optimization"]
+    }
+  },
+
+  "schema": {
+    "homepage_blocks": ["Organization(array Organization+ProfessionalService)", "WebSite", "FAQPage"],
+    "tool_page_blocks": ["Organization", "WebSite", "WebApplication", "BreadcrumbList", "FAQPage"],
+    "blog_page_blocks": ["Organization", "WebSite", "BlogPosting", "BreadcrumbList", "FAQPage", "Person", "WebPage", "SpeakableSpecification"],
+    "faq_page_count_per_page": 1,
+    "ids": { "organization": "https://webabc.ir/#organization", "website": "https://webabc.ir/#website", "faq": "per-page #faq" },
+    "defects": [
+      { "id": "dangling-webpage-ref", "severity": "medium", "detail": "FAQ.astro isPartOf -> {pageUrl}#webpage but no node declares that @id; WebPage node @id is {pageUrl}/ with no fragment", "fix": "emit explicit WebPage @id = {pageUrl}#webpage with isPartOf -> #website and breadcrumb" },
+      { "id": "website-url-varies", "severity": "low", "detail": "WebSite.url is per-language while @id is site-wide" },
+      { "id": "org-sameas-thin", "severity": "low", "detail": "3 of 4 Organization sameAs entries are the founder's personal profiles" }
+    ],
+    "correctly_omitted": ["HowTo(deprecated 2023)", "QAPage(editorial FAQs, not user Q&A)", "WebSite.SearchAction(no site search exists)", "homepage BreadcrumbList(self-referential)", "fabricated AggregateRating"],
+    "speakable_selectors": [".tldr-takeaways", ".prose > p:first-of-type"],
+    "speakable_verified": true,
+    "review_gating": "Review/AggregateRating emitted only when real frontmatter exists (content.config.ts:57-71)"
+  },
+
+  "technical": {
+    "verified_working": [
+      "www -> non-www 301",
+      "trailing-slash 301 (4/4 live)",
+      "legacy slug merges 301 single hop: seo-title-checker, serp-preview, seo-title-analyzer -> headline-analyzer/",
+      "/sitemap.xml -> /sitemap-index.xml 301",
+      "root / geo redirect is 302 (correct; must stay 302)",
+      "canonical self-referencing",
+      "robots meta index,follow with max-image-preview/snippet/video-preview",
+      "404 page X-Robots-Tag noindex,follow",
+      "non-canonical host -> noindex,nofollow",
+      "RSS 200",
+      "brotli on HTML and CSS",
+      "HSTS preload, CSP, X-Frame-Options, nosniff, Referrer-Policy, Permissions-Policy",
+      "content negotiation Accept: text/markdown with Vary: Accept and 406 handling",
+      "immutable 1-year caching on /images /fonts /_astro"
+    ],
+    "defects": [
+      { "id": "blank-404", "severity": "critical", "evidence": "curl Chrome UA -> HTTP/2 404 content-length: 0; /en/404/ returns 125693 B", "root_cause": "wrangler.toml [assets] has no not_found_handling; worker.ts passes empty body through", "fix": "not_found_handling = \"404.html\"", "falsifiable_check": "curl with browser UA on a nonexistent URL returns status 404 and content-length > 50000" },
+      { "id": "md-duplicates", "severity": "high", "evidence": "205 index.md files served 200 with x-robots-tag: index, follow, no canonical, no Vary on the direct URL", "root_cause": "worker.ts static-asset branch returns .md raw; site-wide _headers /* stamps index,follow", "fix": "X-Robots-Tag: noindex + Link: <html-url>; rel=canonical + Vary: Accept on .md responses; keep negotiated markdown on the HTML URL available", "falsifiable_check": "curl -D- index.md shows noindex and a rel=canonical Link header" },
+      { "id": "homepage-not-in-sitemap", "severity": "medium", "root_cause": "astro.config.mjs filter: page !== SITE + '/'", "note": "defensible (geo 302 + x-default -> /en/) but undocumented", "fix": "keep excluded, document the decision at the filter" },
+      { "id": "dead-html-cache-rule", "severity": "low", "detail": "public/_headers /*.html rule never matches because build.format: directory means no URL ends in .html; live HTML gets max-age=0,must-revalidate", "fix": "fix the glob or delete the rule; if enabling HTML cache, Vary: Accept must remain" },
+      { "id": "redirect-dual-source", "severity": "low", "detail": "_redirects and worker.ts STATIC_REDIRECTS currently agree but are two sources of truth" },
+      { "id": "hreflang-double-implementation", "severity": "low", "detail": "Layout.astro hand-writes hreflang; astro.config.mjs generates sitemap hreflang; outputs currently identical but can drift", "fix": "build-time assertion that the two match" }
+    ],
+    "robots_txt": { "wildcard_allow": true, "disallow": ["/private/", "/api/"], "ai_crawlers_allowed": ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User", "PerplexityBot", "Google-Extended", "CCBot", "Bytespider"], "sitemap_line": "https://webabc.ir/sitemap-index.xml", "note": "/private/ matches no existing route (dead but harmless)" },
+    "markdown_negotiation": { "implemented": true, "accept_header": true, "direct_md": true, "head_link_tag": true, "link_header_on_404": true, "vary_accept": true, "406_handling": true, "agent_404_body_bytes": 923, "compliant_with": "acceptmarkdown.com" },
+    "i18n": { "hreflang_emitted": ["en", "fa", "ar", "x-default"], "x_default_target": "/en/", "self_referencing": true, "suppressed_on_noindex": true, "sitemap_mirrors_hreflang": true, "root_geo_redirect_status": 302, "rtl_locales": ["fa", "ar"], "font_delivery": { "en": "self-hosted woff2 preload", "fa": "self-hosted woff2 preload", "ar": "Google Fonts + 2 preconnects (asymmetry)" } }
+  },
+
+  "aeo": {
+    "zero_js_static_html": true,
+    "js_file_bytes": 13828,
+    "tldr_coverage": "108/108 across 3 languages",
+    "faq_coverage": "108/108 across 3 languages",
+    "speakable_resolves": true,
+    "llms_txt_link_tag": true,
+    "is_agentic_site_type": "business",
+    "answer_first_formatting": "uneven; 61% of EN posts too thin (<900 words) to host self-contained 120-180 word citable passages",
+    "human_handoff": "broken - blank 404 for browser UAs while agents get a markdown recovery doc",
+    "score": 82
+  },
+
+  "geo": {
+    "ai_crawler_allowlist": true,
+    "llms_txt": { "lines": 166, "sections": 12, "deep_links": { "en": 69, "fa": 22, "ar": 20 }, "shares": { "en": 0.61, "fa": 0.19, "ar": 0.18 }, "has_negative_scope": true, "has_agent_invocation_section": true, "cross_references_llms_full": true },
+    "llms_full": { "exists": true, "bytes_public": 430336, "bytes_live": 431274, "cap_bytes": 512000, "path_mentions": { "en": 190, "fa": 96, "ar": 97 }, "build_script": "scripts/generate-llms-full.mjs", "recommended_warning_threshold": 491520 },
+    "entity_definition": "strong - what it is, where it operates, how it is built, what languages",
+    "knows_about_claims": ["SEO", "Technical SEO & Core Web Vitals", "Answer Engine Optimization (AEO)", "Generative Engine Optimization (GEO)"],
+    "offsite_footprint": { "organization_sameas": 4, "personal_profiles": 3, "note": "3 of 4 are the founder's personal profiles, not agency profiles", "fix": "agency-level LinkedIn + X; tool listings; consider open-sourcing the 21 client-side tools", "severity": "high - the one GEO item code cannot fix" },
+    "citation_testing": { "in_place": false, "fixed_prompts": ["best free seo title checker 2026", "how much does a website cost in 2026", "technical seo audit checklist", "web design agency qazvin / طراحی سایت در قزوین", "best headline analyzer tool"], "surfaces": ["ChatGPT Search", "Perplexity", "Google AI Overviews", "Gemini"], "cadence": "monthly" },
+    "markdown_duplicates_risk": "205 indexable .md URLs split citation attribution between …/post/ and …/post/index.md",
+    "score": 80
+  },
+
+  "performance": {
+    "measured": { "no_cwv_data": true, "reason": "no PSI/CrUX credentials at ~/.config/claude-seo/google-api.json; GSC export has no page-experience sheet" },
+    "pages": [
+      { "url": "/en/", "html_bytes": 134892, "fetch_seconds": 0.74, "images_bytes": 989609, "images_count": 5 },
+      { "url": "/en/tools/headline-analyzer/", "html_bytes": 155732, "fetch_seconds": 0.42, "images_bytes": 0, "images_count": 0 },
+      { "url": "/en/blog/seo-checklist-2026/", "html_bytes": 140814, "fetch_seconds": 0.31, "images_bytes": 492276, "images_count": 5 }
+    ],
+    "css": { "files": 1, "bytes": 139559, "brotli": true, "cache": "public, max-age=31536000, immutable" },
+    "js": { "files": 1, "bytes": 13828, "note": "near-floor for a 300-page site" },
+    "cache": { "html_declared": "public, max-age=3600, must-revalidate (/*.html rule)", "html_actual": "public, max-age=0, must-revalidate", "rule_matches": false },
+    "images": { "formats": ["AVIF", "WebP"], "alt_required_by_type": true, "missing_alt": 0, "sitemap_image_entries": 276, "homepage_bytes": 989609, "all_tools_share_one_og": true, "og_fallback": "/images/og/tools/headline-analyzer.webp" },
+    "third_party": { "en": 0, "fa": 0, "ar": 2, "ar_origins": ["https://fonts.googleapis.com", "https://fonts.gstatic.com"] },
+    "score_estimated": 75,
+    "images_score": 84
+  },
+
+  "findings_ranked": [
+    { "rank": 1,  "id": "thin-content",        "severity": "critical", "file": "findings/05-content-blog.md",    "action_phase": "2.2" },
+    { "rank": 2,  "id": "blank-404",           "severity": "critical", "file": "findings/03-technical.md",       "action_phase": "1.1" },
+    { "rank": 3,  "id": "zero-click-cluster",  "severity": "critical", "file": "findings/01-gsc-performance.md", "action_phase": "1.3" },
+    { "rank": 4,  "id": "md-duplicates",       "severity": "high",     "file": "findings/03-technical.md",       "action_phase": "1.2" },
+    { "rank": 5,  "id": "cannibalization",     "severity": "high",     "file": "findings/05-content-blog.md",    "action_phase": "2.3" },
+    { "rank": 6,  "id": "llms-txt-unbalanced", "severity": "high",     "file": "findings/08-geo-ai-citations.md","action_phase": "2.1" },
+    { "rank": 7,  "id": "offsite-footprint",   "severity": "high",     "file": "findings/08-geo-ai-citations.md","action_phase": "3.3" },
+    { "rank": 8,  "id": "homepage-not-in-sitemap", "severity": "medium", "file": "findings/03-technical.md",     "action_phase": "4.1" },
+    { "rank": 9,  "id": "dangling-webpage-ref","severity": "medium",   "file": "findings/04-schema.md",          "action_phase": "4.2" },
+    { "rank": 10, "id": "shared-tool-og",      "severity": "medium",   "file": "findings/09-performance-images.md", "action_phase": "4.5" },
+    { "rank": 11, "id": "cta-map-missing",     "severity": "medium",   "file": "findings/05-content-blog.md",    "action_phase": "2.5" },
+    { "rank": 12, "id": "dead-html-cache-rule","severity": "low",      "file": "findings/09-performance-images.md", "action_phase": "4.4" },
+    { "rank": 13, "id": "arabic-font-third-party", "severity": "low",  "file": "findings/09-performance-images.md", "action_phase": "4.6" },
+    { "rank": 14, "id": "tool-count-copy",     "severity": "low",      "file": "findings/05-content-blog.md",    "action_phase": "4.7" },
+    { "rank": 15, "id": "no-cwv-data",         "severity": "unknown",  "file": "findings/09-performance-images.md", "action_phase": "0.2" }
+  ],
+
+  "do_not_change": [
+    "root / geo redirect must stay 302",
+    "do not add WebSite.SearchAction (no site search exists)",
+    "do not add BreadcrumbList to the homepage",
+    "do not add QAPage (FAQs are editorial, not user-submitted)",
+    "do not add HowTo (deprecated 2023)",
+    "do not remove FAQPage (entity value remains after Google retired FAQ rich results)",
+    "do not fabricate AggregateRating/Review",
+    "do not backdate publish dates"
+  ],
+
+  "known_gaps": [
+    "No Core Web Vitals / page-experience data anywhere for this property",
+    "No backlink / referring-domain data",
+    "No query-to-page mapping in the GSC export; tool-cluster page attribution is inferred from topic + 81.6% impression share",
+    "No citation-performance baseline for AI engines",
+    "93 of 306 sitemap URLs earned zero impressions in the 92-day window"
+  ]
+}
