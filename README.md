@@ -1,6 +1,6 @@
 # WebABC — High-Performance Multilingual Web & SEO Platform
 
-A modern, fast, multilingual digital marketing and web development agency website built with Astro v5, deployed on Cloudflare Pages.
+A multilingual digital marketing and web development agency site built with **Astro 7**, deployed as a **Cloudflare Worker** with a static asset layer.
 
 ## 🌍 Supported Languages
 
@@ -10,28 +10,31 @@ A modern, fast, multilingual digital marketing and web development agency websit
 
 ## 🚀 Key Features & SEO / GEO / AEO Architecture
 
-- **Zero-JS Static Delivery**: Utilizing Astro's Islands Architecture to eliminate runtime framework overhead.
-- **Multilingual i18n**: Bidirectional routing and static generation mapping (`/en`, `/fa`, `/ar`).
-- **Semantic Schema Graphs**:
-  - `BlogPosting` JSON-LD with full `datePublished`, `dateModified`, `wordCount`, and `inLanguage` attributes.
-  - `Person` schema with `sameAs` authority profiles (LinkedIn, GitHub, X).
-  - `WebApplication` schema across all 24 interactive tools.
-  - `Service` & `ProfessionalService` schemas across location-based service area landing pages.
+- **Zero-JS Static Delivery**: Astro's Islands Architecture eliminates runtime framework overhead.
+- **Multilingual i18n**: Bidirectional routing and static generation across `/en`, `/fa`, `/ar`, with self-referencing canonicals and `hreflang` alternates injected by the global `<Layout />`.
+- **Edge URL Normalization** (`worker.ts`): trailing-slash requests answer with a permanent `301` (instead of the assets layer's `307`), the root path `/` issues a server-side geo-based locale `302`, and legacy paths are redirected at the edge. Non-existent paths answer `404` directly rather than bouncing through a `301` first.
+- **Content Negotiation**: every page serves both an HTML and a Markdown representation, selected by `Accept` and advertised via `Link: …; rel="alternate"`, with `Vary: Accept` and a `406` when neither representation is acceptable. This is what AI crawlers and LLM agents consume.
+- **Locale-aware 404**: `wrangler.toml` sets `not_found_handling = "404.html"` so unmatched paths always carry a real body; `worker.ts` then swaps in `/{lang}/404/` for locale-prefixed paths, so `/fa/…` and `/ar/…` failures render in the visitor's language. Bots requesting Markdown get a compact `MARKDOWN_404_BODY` instead.
+- **Semantic Schema Graph**:
+  - `BlogPosting` JSON-LD with `datePublished`, `dateModified`, `wordCount`, and `inLanguage`.
+  - `Organization` and `WebSite` entity nodes with `contactPoint`, `PostalAddress`, and `sameAs` authority profiles.
+  - `BreadcrumbList` emitted by `Breadcrumbs.astro` (exactly 1 per page).
+  - `WebApplication` schema across the tools, `Service` / `ProfessionalService` across location pages, and `FAQPage` on pages with FAQ content.
 - **AI Engine Optimization (GEO/AEO)**:
-  - Quotable key takeaway callouts (`<TLDR />`) and question-based `FAQPage` schemas for AI engine citability (ChatGPT, Perplexity, Google AI Overviews).
-  - Explicit AI crawler permissions in `public/robots.txt` (`GPTBot`, `ClaudeBot`, `PerplexityBot`, etc.).
-  - Structured `/llms.txt` listing all site pages and key entity offerings.
-- **Edge Security Headers**: Pre-configured in `public/_headers` (HSTS, CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy).
-- **Client-Side SEO Utilities**: 24 free interactive tools (Robots Generator, Keyword Density Analyzer, SEO Title Checker, JSON Formatter, Cost Calculator, etc.).
+  - Quotable key-takeaway callouts (`<TLDR />`) and `FAQPage` JSON-LD for AI engine citability (ChatGPT, Perplexity, Google AI Overviews).
+  - Explicit AI crawler permissions in `public/robots.txt` (`GPTBot`, `ClaudeBot`, `PerplexityBot`, and others).
+  - `public/llms.txt` as the site index, and `public/llms-full.txt` — a long-context corpus regenerated on every build by `scripts/generate-llms-full.mjs`.
+- **Edge Security Headers**: pre-configured in `public/_headers` (HSTS, CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy).
+- **21 free client-side SEO tools**: Headline Analyzer + SERP Preview, Schema Generator, Cost Calculator, UTM Builder, Readability Checker, QR Generator, and more.
 
 ## 📦 Tech Stack
 
-- **Framework**: Astro v5 (`astro@^7.2.0`, Static Output / SSG)
-- **Integrations**: `@astrojs/mdx`, `@astrojs/sitemap`
-- **Styling**: Tailwind CSS v4 (`@tailwindcss/vite`, `@tailwindcss/typography`, `tailwind-merge`)
-- **Deployment**: Cloudflare Pages & Workers (`wrangler`)
+- **Framework**: Astro 7 (`astro@^7.2.4`, static output / SSG)
+- **Integrations**: `@astrojs/mdx`, `@astrojs/rss`, `@astrojs/sitemap`
+- **Styling**: Tailwind CSS v4 (`@tailwindcss/vite`, `@tailwindcss/typography`, `tailwind-merge`, `clsx`)
+- **Runtime & Deployment**: Cloudflare Workers (`wrangler`), edge worker in `worker.ts`, config in `wrangler.toml`
 - **Language**: TypeScript (`^5.9.3`)
-- **Tooling & Utilities**: `qrcode`, `resend`, `sharp`
+- **Utilities**: `qrcode`, `resend` (contact form delivery), `sharp` (image pipeline, dev)
 
 ## 🛠 Development & Commands
 
@@ -53,22 +56,39 @@ Visit `http://localhost:4321` to view the site locally.
 
 ### Key Commands
 
-- `npm run dev`: Start local development server.
-- `npm run build`: Build static production site in `dist/`.
-- `npm run preview`: Preview production build locally.
-- `npm run deploy`: Build and deploy to Cloudflare Pages.
-- `npm run lint`: Lint TypeScript and source files with ESLint.
+- `npm run dev`: Start the local development server.
+- `npm run build`: Run the full pipeline — sitemap `lastmod` + OG manifest, `llms-full.txt`, `astro build`, then Markdown representations.
+- `npm run manifests`: Regenerate sitemap `lastmod` and the OG image manifest only.
+- `npm run llms`: Regenerate `public/llms-full.txt` only.
+- `npm run preview`: Preview the production build locally.
+- `npm run deploy`: Build, then `wrangler deploy` to Cloudflare Workers.
+- `npm run lint`: Lint source with ESLint and type-check with `tsc --noemit`.
+- `npm run check`: Run `astro check` (types + template diagnostics).
+- `npm test`: Run `scripts/verify-agentic.mjs` — asserts content negotiation, 404 handling (including that the browser 404 body is a real document, not empty), Organization schema completeness, and `llms.txt` agent guidance.
+- `npm run format`: Format the repo with Prettier.
+- `npm run format:check`: Verify formatting without writing.
 
 ## 🔧 Configuration
 
-- **Alternate Links**: The global `<Layout />` dynamically injects bi-directional self-referential canonicals and `hreflang` alternate links across all 3 languages.
-- **Sitemap**: Automatically generated using `@astrojs/sitemap` matching all static routes.
+- **Alternate Links**: the global `<Layout />` injects bi-directional self-referential canonicals and `hreflang` alternate links across all 3 languages (plus `x-default`).
+- **Sitemap**: generated by `@astrojs/sitemap`, then post-processed by `scripts/resolve-sitemap-lastmod.mjs`.
+- **Markdown pipeline**: `scripts/generate-markdown-representations.mjs` runs after `astro build` and emits `.md` siblings next to every HTML page in `dist/`.
+- **Environment**: see `.env.example` for `RESEND_API_KEY`, contact From/To addresses, and `TURNSTILE_SECRET_KEY`.
 
 ## 📝 Content Management
 
-- **Portfolios & Blogs**: Managed as MDX collections inside `src/content/`.
-- **Service Areas & Locations**: Managed via localized dictionary files in `src/i18n/[lang]/service-areas.json`.
-- **Translations**: Standard JSON namespaces inside `src/i18n/[lang]/`.
+- **Blog**: 36 posts per locale (108 total) as MDX in `src/content/blog/{en,fa,ar}/`. Slugs are byte-identical across locales — **never rename one without mirroring all three**, or hreflang and internal links break.
+- **Portfolio**: MDX collection in `src/content/portfolio/`.
+- **Schema contract**: the blog frontmatter schema lives in `src/content.config.ts`; required fields are `title`, `description`, `date`, `category`, and `image`.
+- **Rewrite standard**: `docs/BLOG-REWRITE-SPEC.md` is the binding contract for editing blog posts — length targets, title/description limits, answer-first formatting, and hard rules (no fabricated statistics, no invented case studies, never change `date` or the filename).
+- **Service Areas & Locations**: localized dictionary files in `src/i18n/[lang]/service-areas.json`.
+- **Translations**: standard JSON namespaces inside `src/i18n/[lang]/`.
+
+## 📚 Documentation
+
+- `docs/BLOG-REWRITE-SPEC.md` — the blog rewrite contract (read before editing any post).
+- `webabc.ir-audit/README.md` — index of the full SEO / AEO / GEO audit, scorecard, findings, and action plan.
+- `webabc.ir-audit/stale-2026-09-21/` — the superseded audit and optimization plan, preserved for provenance.
 
 ---
 
