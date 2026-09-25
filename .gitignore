@@ -25,6 +25,10 @@ bun.lock
 bun.lockb
 package-lock.json
 
+# Python bytecode and spec self-check run output
+__pycache__/
+.selfcheck-*.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
