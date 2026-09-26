@@ -286,11 +286,21 @@ const websiteSchema = createWebsiteSchema(siteUrl, lang);
       href={`${siteUrl}/${supportedLang}/rss.xml`}
     />
     <link rel="llms-txt" href="/llms.txt" />
-    <link
-      rel="alternate"
-      type="text/markdown"
-      href={`${canonicalPath}index.md`}
-    />
+    {/* The 404 document is the one page with no markdown sibling: it is
+        served with a 404 status (verified: /en/404/ -> 404), so shipping an
+        index.md for it would answer 200 for a not-found document. Every other
+        route has a real sibling -- generate-markdown-representations.mjs
+        covers blog, portfolio, tools, services, hubs, cities, homepages,
+        about and the blog index. Crawlers still get markdown on 404s: worker
+       .ts answers Accept: text/markdown for unknown paths with a dedicated
+        recovery body. */}
+    {slug !== '404' && (
+      <link
+        rel="alternate"
+        type="text/markdown"
+        href={`${canonicalPath}index.md`}
+      />
+    )}
     <meta name="is-agentic-site-type" content="business" />
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />

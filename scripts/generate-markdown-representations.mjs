@@ -338,6 +338,9 @@ function plainText(str) {
 
 // FAQPage JSON-LD — emitted by ToolFAQ.astro exactly once, immediately before the
 // visible FAQ block, so the first <h2> after it is that block's heading.
+// `start`/`end` delimit the visible FAQ section inside the string that was passed
+// in, so callers doing a prose walk can skip it and emit the block instead
+// (section 8). Callers that ignore them are unaffected.
 function findFaqBlock(html) {
   const scripts = html.matchAll(
     /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g
@@ -352,9 +355,12 @@ function findFaqBlock(html) {
     if (data && data['@type'] === 'FAQPage' && Array.isArray(data.mainEntity)) {
       const after = html.slice(m.index + m[0].length);
       const heading = after.match(/<h2[^>]*>([\s\S]*?)<\/h2>/);
+      const sectionEnd = html.indexOf('</section>', m.index + m[0].length);
       return {
         items: data.mainEntity,
         heading: heading ? textOf(heading[1]) : 'FAQ',
+        start: m.index,
+        end: sectionEnd === -1 ? html.length : sectionEnd,
       };
     }
   }
@@ -422,6 +428,140 @@ for (const lang of TOOL_LOCALES) {
     writeMd(`${lang}/tools/${slug}/index.md`, lines.join('\n'));
     generatedCount++;
   }
+}
+
+// 8. Service detail, blog index and about pages — markdown siblings for the same
+//    rel="alternate" type="text/markdown" link. Same rule as the tool branch
+//    above: the body is read back out of the HTML Astro just built (first <h1>,
+//    meta description, the visible prose headings/paragraphs/list items and the
+//    FAQPage JSON-LD), so the markdown can only restate what the page renders.
+//    Nothing below writes copy that is not already in the page.
+const MD_PAGE_LOCALES = ['en', 'fa', 'ar'];
+
+const markdownPages = [];
+for (const lang of MD_PAGE_LOCALES) {
+  // Service detail pages: dist/<lang>/services/<slug>/index.html
+  const servicesDir = path.join(distDir, lang, 'services');
+  if (fs.existsSync(servicesDir)) {
+    for (const entry of fs.readdirSync(servicesDir, { withFileTypes: true })) {
+      if (!entry.isDirectory()) continue;
+      markdownPages.push({
+        lang,
+        htmlPath: path.join(servicesDir, entry.name, 'index.html'),
+        mdRelPath: `${lang}/services/${entry.name}/index.md`,
+        url: `https://webabc.ir/${lang}/services/${entry.name}/`,
+        footer: 'WebABC Service',
+        fallbackTitle: entry.name,
+      });
+    }
+  }
+
+  // Blog index: dist/<lang>/blog/index.html
+  markdownPages.push({
+    lang,
+    htmlPath: path.join(distDir, lang, 'blog', 'index.html'),
+    mdRelPath: `${lang}/blog/index.md`,
+    url: `https://webabc.ir/${lang}/blog/`,
+    footer: 'WebABC Agency',
+    fallbackTitle: 'Blog',
+  });
+
+  // Founder profile: dist/<lang>/about/ali-bakhtiari/index.html
+  markdownPages.push({
+    lang,
+    htmlPath: path.join(distDir, lang, 'about', 'ali-bakhtiari', 'index.html'),
+    mdRelPath: `${lang}/about/ali-bakhtiari/index.md`,
+    url: `https://webabc.ir/${lang}/about/ali-bakhtiari/`,
+    footer: 'WebABC Agency',
+    fallbackTitle: 'Ali Bakhtiari',
+  });
+}
+
+const PROSE_BLOCK_RE = /<(h2|h3|p|li)(?:\s[^>]*)?>([\s\S]*?)<\/\1>/g;
+
+// Ordered h2/h3/p/li blocks of a fragment, each carrying its own span so the
+// caller can drop the ones that fall inside the visible FAQ section.
+function proseBlocks(seg) {
+  PROSE_BLOCK_RE.lastIndex = 0;
+  const raw = [];
+  let m;
+  while ((m = PROSE_BLOCK_RE.exec(seg)) !== null) {
+    const text = textOf(m[2]);
+    if (!text) continue;
+    raw.push({ start: m.index, end: m.index + m[0].length, tag: m[1], text });
+  }
+  const kept = [];
+  for (const b of raw) {
+    const prev = kept[kept.length - 1];
+    if (prev && b.start < prev.end) continue;
+    kept.push(b);
+  }
+  return kept;
+}
+
+for (const page of markdownPages) {
+  if (!fs.existsSync(page.htmlPath)) continue;
+  const html = fs.readFileSync(page.htmlPath, 'utf8');
+
+  const mainStart = html.indexOf('<main');
+  const mainEnd = html.indexOf('</main>');
+  const seg =
+    mainStart !== -1 && mainEnd > mainStart ? html.slice(mainStart, mainEnd) : html;
+
+  const h1 = seg.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
+  const title = h1 ? textOf(h1[1]) : page.fallbackTitle;
+  const descMatch = html.match(/<meta name="description" content="([^"]*)"/);
+  const description = descMatch ? decodeHtmlEntities(descMatch[1]) : '';
+
+  const faq = findFaqBlock(seg);
+  const faqItems = (faq?.items || []).filter(
+    (q) => q && q.name && q.acceptedAnswer && q.acceptedAnswer.text
+  );
+
+  const blocks = [];
+  let listBuffer = [];
+  const flushList = () => {
+    if (listBuffer.length > 0) {
+      blocks.push(listBuffer.join('\n'));
+      listBuffer = [];
+    }
+  };
+  const emitFaq = () => {
+    if (faqItems.length === 0) return;
+    flushList();
+    blocks.push(`## ${faq.heading}`);
+    blocks.push(
+      faqItems
+        .map((q, i) => `${i + 1}. **${plainText(q.name)}** ${plainText(q.acceptedAnswer.text)}`)
+        .join('\n')
+    );
+  };
+
+  let faqEmitted = !faq;
+  for (const b of proseBlocks(seg)) {
+    if (!faqEmitted && faq && b.start >= faq.start) {
+      emitFaq();
+      faqEmitted = true;
+    }
+    if (faq && b.start >= faq.start && b.end <= faq.end) continue;
+    if (description && b.text === description) continue;
+    if (b.tag === 'li') {
+      listBuffer.push(`- ${b.text}`);
+      continue;
+    }
+    flushList();
+    blocks.push(b.tag === 'h2' ? `## ${b.text}` : b.tag === 'h3' ? `### ${b.text}` : b.text);
+  }
+  if (!faqEmitted) emitFaq();
+  flushList();
+
+  const lines = [`# ${title}`];
+  if (description) lines.push('', `> ${description}`);
+  for (const block of blocks) lines.push('', block);
+  lines.push('', '---', `*${page.footer}: ${page.url}*`);
+
+  writeMd(page.mdRelPath, lines.join('\n'));
+  generatedCount++;
 }
 
 console.log(`Successfully generated ${generatedCount} markdown representations in dist/.`);
