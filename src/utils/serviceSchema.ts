@@ -27,7 +27,7 @@ export function createServiceSchema(
         description: descVal,
         inLanguage: inLang,
         isPartOf: {
-          '@id': 'https://webabc.ir/#website',
+          '@id': `https://webabc.ir/${langVal}/#website`,
         },
         mainEntity: {
           '@id': `${canonicalUrl}#service`,

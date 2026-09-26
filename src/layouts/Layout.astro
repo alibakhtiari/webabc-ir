@@ -104,7 +104,7 @@ function createWebsiteSchema(url: string, lang: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    '@id': `${url}/#website`,
+    '@id': `${url}/${lang}/#website`,
     url: `${url}/${lang}/`,
     name: 'WebABC',
     alternateName:
@@ -193,7 +193,7 @@ const organizationSchema = createOrganizationSchema(
 );
 
 // Schema WebSite
-const websiteSchema = createWebsiteSchema(siteUrl, lang);
+const websiteSchema = createWebsiteSchema(siteUrl, supportedLang);
 ---
 
 <!doctype html>
