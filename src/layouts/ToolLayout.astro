@@ -58,6 +58,7 @@ const webAppSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   '@id': `https://webabc.ir/${lang}/tools/${cleanSlug}/#webapp`,
+  url: `https://webabc.ir/${lang}/tools/${cleanSlug}/`,
   name: title,
   description: description,
   applicationCategory: finalCategory,
@@ -68,6 +69,12 @@ const webAppSchema = {
     '@type': 'Offer',
     price: '0',
     priceCurrency: 'USD',
+  },
+  // Join the canonical Organization entity that <Layout /> emits as
+  // `#organization` (see Layout.astro createOrganizationSchema) so this
+  // WebApplication is never published by an unreferenced stub.
+  publisher: {
+    '@id': 'https://webabc.ir/#organization',
   },
 };
 
