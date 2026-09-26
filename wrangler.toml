@@ -15,4 +15,7 @@ run_worker_first = true
 # worker.ts was passing a zero-byte page through to real browsers (bots still
 # got the markdown recovery body). worker.ts swaps in /{lang}/404/ for
 # locale-prefixed paths, so this root document is only the fallback.
-not_found_handling = "404.html"
+# Value is the semantic mode, not a filename: "404-page" makes the assets
+# layer serve dist/404.html with a 404 status. "404.html" is not a valid
+# mode and wrangler rejects the config outright.
+not_found_handling = "404-page"
