@@ -93,14 +93,20 @@ const guide = guideDict ? {
                 checked
               />
               <span class="text-xl">WordPress</span>
-              <span class="text-xs text-gray-500 dark:text-gray-400">Flexible CMS & Blog</span>
+              <span class="text-xs text-gray-500 dark:text-gray-400"
+                >{t('costCalculator.siteTypeWordPressSub', { fallback: 'Flexible CMS & Blog' })}</span
+              >
             </label>
             <label
               class="relative flex cursor-pointer flex-col items-center space-y-2 rounded-xl border border-gray-200 bg-white p-4 text-center text-gray-900 transition-all hover:border-primary dark:border-slate-700 dark:bg-slate-900 dark:text-white"
             >
               <input type="radio" name="site-type" value="custom" class="absolute top-4 right-4" />
-              <span class="text-xl">Custom Coding</span>
-              <span class="text-xs text-gray-500 dark:text-gray-400">Next.js / Astro Webapp</span>
+              <span class="text-xl"
+                >{t('costCalculator.siteTypeCustom', { fallback: 'Custom Coding' })}</span
+              >
+              <span class="text-xs text-gray-500 dark:text-gray-400"
+                >{t('costCalculator.siteTypeCustomSub', { fallback: 'Next.js / Astro Webapp' })}</span
+              >
             </label>
             <label
               class="relative flex cursor-pointer flex-col items-center space-y-2 rounded-xl border border-gray-200 bg-white p-4 text-center text-gray-900 transition-all hover:border-primary dark:border-slate-700 dark:bg-slate-900 dark:text-white"
@@ -111,9 +117,13 @@ const guide = guideDict ? {
                 value="ecommerce"
                 class="absolute top-4 right-4"
               />
-              <span class="text-xl">E-commerce</span>
+              <span class="text-xl"
+                >{t('costCalculator.siteTypeEcommerce', { fallback: 'E-commerce' })}</span
+              >
               <span class="text-xs text-gray-500 dark:text-gray-400"
-                >Shopify / WooCommerce Store</span
+                >{t('costCalculator.siteTypeEcommerceSub', {
+                  fallback: 'Shopify / WooCommerce Store',
+                })}</span
               >
             </label>
           </div>
@@ -127,7 +137,13 @@ const guide = guideDict ? {
             <h2 class="text-base font-bold text-gray-800 dark:text-gray-100"
               >{t('costCalculator.stepNumberOfPages', { fallback: '2. Number of Pages' })}</h2
             >
-            <span id="page-count-val" class="font-bold text-primary">5 Pages</span>
+            <span
+              id="page-count-val"
+              class="font-bold text-primary"
+              data-pages-one={t('costCalculator.pageSingular', { fallback: 'Page' })}
+              data-pages-many={t('costCalculator.pagePlural', { fallback: 'Pages' })}
+              >{`5 ${t('costCalculator.pagePlural', { fallback: 'Pages' })}`}</span
+            >
           </div>
           <input
             type="range"
@@ -158,10 +174,12 @@ const guide = guideDict ? {
               />
               <div class="flex flex-col">
                 <span class="text-sm font-semibold text-gray-800 dark:text-gray-100"
-                  >Multilingual (RTL/LTR)</span
+                  >{t('costCalculator.multilingualLabel', { fallback: 'Multilingual (RTL/LTR)' })}</span
                 >
                 <span class="text-xs text-gray-500 dark:text-gray-400"
-                  >Arabic, Farsi, and English support</span
+                  >{t('costCalculator.multilingualSub', {
+                    fallback: 'Arabic, Farsi, and English support',
+                  })}</span
                 >
               </div>
             </label>
@@ -176,10 +194,12 @@ const guide = guideDict ? {
               />
               <div class="flex flex-col">
                 <span class="text-sm font-semibold text-gray-800 dark:text-gray-100"
-                  >Advanced SEO Setup</span
+                  >{t('costCalculator.advancedSeo', { fallback: 'Advanced SEO Setup' })}</span
                 >
                 <span class="text-xs text-gray-500 dark:text-gray-400"
-                  >Optimized schemas and structures</span
+                  >{t('costCalculator.advancedSeoSub', {
+                    fallback: 'Optimized schemas and structures',
+                  })}</span
                 >
               </div>
             </label>
@@ -194,10 +214,12 @@ const guide = guideDict ? {
               />
               <div class="flex flex-col">
                 <span class="text-sm font-semibold text-gray-800 dark:text-gray-100"
-                  >Speed Optimization</span
+                  >{t('costCalculator.speedOptimization', { fallback: 'Speed Optimization' })}</span
                 >
                 <span class="text-xs text-gray-500 dark:text-gray-400"
-                  >Core Web Vitals max performance</span
+                  >{t('costCalculator.speedOptimizationSub', {
+                    fallback: 'Core Web Vitals max performance',
+                  })}</span
                 >
               </div>
             </label>
@@ -212,10 +234,12 @@ const guide = guideDict ? {
               />
               <div class="flex flex-col">
                 <span class="text-sm font-semibold text-gray-800 dark:text-gray-100"
-                  >WAF & Security Shield</span
+                  >{t('costCalculator.wafSecurity', { fallback: 'WAF & Security Shield' })}</span
                 >
                 <span class="text-xs text-gray-500 dark:text-gray-400"
-                  >Anti-DDoS, SSL & firewall hardening</span
+                  >{t('costCalculator.wafSecuritySub', {
+                    fallback: 'Anti-DDoS, SSL & firewall hardening',
+                  })}</span
                 >
               </div>
             </label>
@@ -231,24 +255,30 @@ const guide = guideDict ? {
           <h2
             class="border-b border-gray-50 pb-4 text-lg font-bold text-gray-800 dark:text-gray-100"
           >
-            Estimate Breakdown
+            {t('costCalculator.estimateBreakdown', { fallback: 'Estimate Breakdown' })}
           </h2>
 
           <div class="space-y-3 text-sm">
             <div class="flex justify-between">
-              <span class="text-gray-500 dark:text-gray-400">Base Type Cost:</span>
+              <span class="text-gray-500 dark:text-gray-400"
+                >{t('costCalculator.baseTypeCost', { fallback: 'Base Type Cost:' })}</span
+              >
               <span class="font-semibold text-gray-700 dark:text-gray-200" id="base-cost-text"
                 >$800</span
               >
             </div>
             <div class="flex justify-between">
-              <span class="text-gray-500 dark:text-gray-400">Pages Cost:</span>
+              <span class="text-gray-500 dark:text-gray-400"
+                >{t('costCalculator.pagesCost', { fallback: 'Pages Cost:' })}</span
+              >
               <span class="font-semibold text-gray-700 dark:text-gray-200" id="pages-cost-text"
                 >$250</span
               >
             </div>
             <div class="flex justify-between">
-              <span class="text-gray-500 dark:text-gray-400">Addons & Features:</span>
+              <span class="text-gray-500 dark:text-gray-400"
+                >{t('costCalculator.addonsCost', { fallback: 'Addons & Features:' })}</span
+              >
               <span class="font-semibold text-gray-700 dark:text-gray-200" id="addons-cost-text"
                 >$0</span
               >
@@ -259,7 +289,7 @@ const guide = guideDict ? {
             class="flex flex-col items-center justify-center space-y-2 border-t border-gray-100 pt-6"
           >
             <span class="text-xs font-medium text-gray-500 dark:text-gray-400"
-              >Estimated Budget</span
+              >{t('costCalculator.estimatedBudget', { fallback: 'Estimated Budget' })}</span
             >
             <span class="text-4xl font-extrabold text-primary" id="total-price-text">$1,050</span>
           </div>
@@ -268,7 +298,7 @@ const guide = guideDict ? {
             type="button"
             class="w-full rounded-xl bg-primary py-3 text-sm font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
-            Book Consultation
+            {t('costCalculator.bookConsultation', { fallback: 'Book Consultation' })}
           </button>
         </div>
       </div>
@@ -280,14 +310,13 @@ const guide = guideDict ? {
     <div class="mx-auto max-w-4xl space-y-8">
       <div class="space-y-3">
         <h2 class="text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">
-          How Much Does a Website Really Cost?
+          {t('costCalculator.howMuchTitle', { fallback: 'How Much Does a Website Really Cost?' })}
         </h2>
         <p class="leading-relaxed text-gray-600 dark:text-gray-300">
-          This free website cost calculator gives you an instant price estimate based on the same
-          variables agencies use in a real quote: platform (WordPress, custom code, or e-commerce),
-          page count, and add-on features like multilingual support, advanced SEO setup, speed
-          optimization, and security hardening. Adjust any option to see the estimated budget update
-          in real time.
+          {t('costCalculator.howMuchBody', {
+            fallback:
+              'This free website cost calculator gives you an instant price estimate based on the same variables agencies use in a real quote: platform (WordPress, custom code, or e-commerce), page count, and add-on features like multilingual support, advanced SEO setup, speed optimization, and security hardening. Adjust any option to see the estimated budget update in real time.',
+          })}
         </p>
       </div>
 
@@ -296,24 +325,26 @@ const guide = guideDict ? {
           class="rounded-xl border border-gray-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
         >
           <h3 class="mb-2 text-sm font-bold text-gray-800 dark:text-gray-100">
-            WordPress vs. Custom Coding
+            {t('costCalculator.wpVsCustomTitle', { fallback: 'WordPress vs. Custom Coding' })}
           </h3>
           <p class="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
-            WordPress is faster and cheaper to launch with a flexible CMS and blog. Custom-coded
-            sites (Next.js, Astro) cost more upfront but load faster and scale better for complex,
-            high-traffic projects.
+            {t('costCalculator.wpVsCustomBody', {
+              fallback:
+                'WordPress is faster and cheaper to launch with a flexible CMS and blog. Custom-coded sites (Next.js, Astro) cost more upfront but load faster and scale better for complex, high-traffic projects.',
+            })}
           </p>
         </div>
         <div
           class="rounded-xl border border-gray-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
         >
           <h3 class="mb-2 text-sm font-bold text-gray-800 dark:text-gray-100">
-            What Drives the Price Up
+            {t('costCalculator.priceUpTitle', { fallback: 'What Drives the Price Up' })}
           </h3>
           <p class="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
-            Page count, e-commerce functionality, multilingual (RTL/LTR) support, and advanced SEO
-            setup are the biggest cost multipliers. Speed and security hardening add a smaller,
-            fixed premium.
+            {t('costCalculator.priceUpBody', {
+              fallback:
+                'Page count, e-commerce functionality, multilingual (RTL/LTR) support, and advanced SEO setup are the biggest cost multipliers. Speed and security hardening add a smaller, fixed premium.',
+            })}
           </p>
         </div>
         <div
@@ -429,7 +460,9 @@ const guide = guideDict ? {
 
       // 2. Page multiplier
       const pageCount = parseInt(slider.value);
-      pageValText.innerText = `${pageCount} Page${pageCount > 1 ? 's' : ''}`;
+      pageValText.innerText = `${pageCount} ${
+        pageCount > 1 ? pageValText.dataset.pagesMany : pageValText.dataset.pagesOne
+      }`;
       const pagesCost = pageCount * 50;
 
       // 3. Checkbox additions

@@ -16,6 +16,10 @@
   "yes": "✓ Yes",
   "no": "✗ No",
   "bestPracticesTitle": "SEO Headline Best Practices:",
+  "bestPracticesItem1": "Keep it between 50-60 characters so it doesn't get cut off in Google SERPs.",
+  "bestPracticesItem2": "Include your primary keyword naturally near the beginning.",
+  "bestPracticesItem3": "Use a number (e.g., \"7 Tips\") to increase click-through rates by up to 36%.",
+  "bestPracticesItem4": "Add emotional triggers or power words (like \"Proven\", \"Instantly\", \"Unbelievable\").",
   "faqs": [
     {
       "question": "How do I optimize a headline for SEO and clicks?",

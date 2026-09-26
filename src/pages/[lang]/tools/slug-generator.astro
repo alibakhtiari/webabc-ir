@@ -119,10 +119,26 @@ const faqSchema = {
           {t('slugGenerator.bestPracticesTitle', { fallback: 'SEO Slug Best Practices:' })}
         </h2>
         <ul class="list-inside list-disc space-y-2 text-xs text-gray-600 dark:text-gray-300">
-          <li>Keep slugs short — under 60 characters where possible.</li>
-          <li>Use hyphens (-) to separate words, never underscores.</li>
-          <li>Include your primary keyword, drop stop words like "the" or "and".</li>
-          <li>Always use lowercase letters for consistency.</li>
+          <li>
+            {t('slugGenerator.bestPracticesItem1', {
+              fallback: 'Keep slugs short — under 60 characters where possible.',
+            })}
+          </li>
+          <li>
+            {t('slugGenerator.bestPracticesItem2', {
+              fallback: 'Use hyphens (-) to separate words, never underscores.',
+            })}
+          </li>
+          <li>
+            {t('slugGenerator.bestPracticesItem3', {
+              fallback: 'Include your primary keyword, drop stop words like "the" or "and".',
+            })}
+          </li>
+          <li>
+            {t('slugGenerator.bestPracticesItem4', {
+              fallback: 'Always use lowercase letters for consistency.',
+            })}
+          </li>
         </ul>
       </div>
     </div>

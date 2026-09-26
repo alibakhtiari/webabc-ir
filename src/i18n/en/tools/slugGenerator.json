@@ -8,5 +8,9 @@
   "copy": "Copy Slug",
   "copied": "Slug copied to clipboard!",
   "generated": "Slug generated!",
-  "bestPracticesTitle": "SEO Slug Best Practices:"
+  "bestPracticesTitle": "SEO Slug Best Practices:",
+  "bestPracticesItem1": "Keep slugs short — under 60 characters where possible.",
+  "bestPracticesItem2": "Use hyphens (-) to separate words, never underscores.",
+  "bestPracticesItem3": "Include your primary keyword, drop stop words like \"the\" or \"and\".",
+  "bestPracticesItem4": "Always use lowercase letters for consistency."
 }

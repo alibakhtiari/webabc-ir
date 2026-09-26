@@ -77,11 +77,26 @@ const faqSchema = buildFaqSchema(faqs);
             {t('headlineAnalyzer.bestPracticesTitle', { fallback: 'SEO Headline Best Practices:' })}
           </h2>
           <ul class="list-inside list-disc space-y-2 text-xs text-gray-600 dark:text-gray-300">
-            <li>Keep it between 50-60 characters so it doesn't get cut off in Google SERPs.</li>
-            <li>Include your primary keyword naturally near the beginning.</li>
-            <li>Use a number (e.g., "7 Tips") to increase click-through rates by up to 36%.</li>
             <li>
-              Add emotional triggers or power words (like "Proven", "Instantly", "Unbelievable").
+              {t('headlineAnalyzer.bestPracticesItem1', {
+                fallback: "Keep it between 50-60 characters so it doesn't get cut off in Google SERPs.",
+              })}
+            </li>
+            <li>
+              {t('headlineAnalyzer.bestPracticesItem2', {
+                fallback: 'Include your primary keyword naturally near the beginning.',
+              })}
+            </li>
+            <li>
+              {t('headlineAnalyzer.bestPracticesItem3', {
+                fallback: 'Use a number (e.g., "7 Tips") to increase click-through rates by up to 36%.',
+              })}
+            </li>
+            <li>
+              {t('headlineAnalyzer.bestPracticesItem4', {
+                fallback:
+                  'Add emotional triggers or power words (like "Proven", "Instantly", "Unbelievable").',
+              })}
             </li>
           </ul>
         </div>
