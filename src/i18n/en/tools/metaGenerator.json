@@ -17,5 +17,22 @@
   "canonicalUrlLabel": "Canonical Page URL",
   "socialImageLabel": "Social Image URL (og:image)",
   "authorLabel": "Author",
-  "robotsLabel": "Robots Directive"
+  "robotsLabel": "Robots Directive",
+  "guide": {
+    "how": {
+      "title": "How the Meta Tag Generator Works",
+      "paragraphs": [
+        "Enter the page title and meta description, then the optional canonical URL, social image, author and robots directive. The panel on the right assembles the head markup for those values as you type, and the copy button puts the whole block on your clipboard.",
+        "The output contains the title tag, description, author, robots directive, canonical link, Open Graph tags and Twitter card tags. Paste it into the head of the page it describes; nothing is published until you do, so the preview only reflects what you typed here."
+      ]
+    },
+    "useCases": {
+      "title": "When to Use This Tool",
+      "items": [
+        "Deciding the search snippet a page will show before it goes live.",
+        "Getting matching Open Graph and Twitter tags so a shared link shows the right title, description and image.",
+        "Keeping the head markup consistent by copying the same block into each page template."
+      ]
+    }
+  }
 }

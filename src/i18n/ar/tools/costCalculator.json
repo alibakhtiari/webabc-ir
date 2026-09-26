@@ -21,6 +21,9 @@
   "responsive": "استجابة للجوال",
   "emailQuote": "أرسل لي هذا الاقتباس",
   "emailSent": "فتح عميل البريد الإلكتروني...",
+  "stepProjectType": "١. نوع المشروع",
+  "stepNumberOfPages": "٢. عدد الصفحات",
+  "stepFeatures": "٣. الميزات والإضافات",
   "guide": {
     "how": {
       "title": "كيف تعمل حاسبة تكلفة المواقع؟",

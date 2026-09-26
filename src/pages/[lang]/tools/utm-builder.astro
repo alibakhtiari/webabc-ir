@@ -17,6 +17,20 @@ const descriptionText = t('utmBuilder.description', {
   fallback: 'Create trackable URLs with UTM parameters for Google Analytics.',
 });
 
+const guideDict = dictionary.utmBuilder?.guide;
+const guide = guideDict
+  ? {
+      how: {
+        title: t('utmBuilder.guide.how.title', { fallback: 'How It Works' }),
+        paragraphs: Array.isArray(guideDict.how?.paragraphs) ? guideDict.how.paragraphs : [],
+      },
+      useCases: {
+        title: t('utmBuilder.guide.useCases.title', { fallback: 'When to Use This Tool' }),
+        items: Array.isArray(guideDict.useCases?.items) ? guideDict.useCases.items : [],
+      },
+    }
+  : undefined;
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -54,6 +68,7 @@ const fillFieldsText = t('utmBuilder.fillFields', {
   slug="utm-builder"
   dictionary={dictionary}
   faqSchema={faqSchema}
+  guide={guide}
 >
   <!-- Main Workspace -->
   <section class="container mx-auto mt-12 px-4 font-sans">

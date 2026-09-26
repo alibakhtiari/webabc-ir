@@ -17,6 +17,20 @@ const descriptionText = t('faqGenerator.description', {
   fallback: 'Generate valid FAQPage JSON-LD schema markup and clean HTML accordions.',
 });
 
+const guideDict = dictionary.faqGenerator?.guide;
+const guide = guideDict
+  ? {
+      how: {
+        title: t('faqGenerator.guide.how.title', { fallback: 'How It Works' }),
+        paragraphs: Array.isArray(guideDict.how?.paragraphs) ? guideDict.how.paragraphs : [],
+      },
+      useCases: {
+        title: t('faqGenerator.guide.useCases.title', { fallback: 'When to Use This Tool' }),
+        items: Array.isArray(guideDict.useCases?.items) ? guideDict.useCases.items : [],
+      },
+    }
+  : undefined;
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -50,6 +64,7 @@ const faqSchema = {
   slug="faq-generator"
   dictionary={dictionary}
   faqSchema={faqSchema}
+  guide={guide}
 >
   <!-- Main Workspace -->
   <section class="container mx-auto mt-12 mb-20 px-4 font-sans">

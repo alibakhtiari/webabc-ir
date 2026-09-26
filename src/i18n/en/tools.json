@@ -43,7 +43,8 @@
   },
   "robotsGenerator": {
     "title": "Robots.txt & Sitemap Graph Builder",
-    "description": "Easily construct optimized crawler directives and map your sitemap configurations dynamically."
+    "description": "Easily construct optimized crawler directives and map your sitemap configurations dynamically.",
+    "builderSettings": "Builder Settings"
   },
   "keywordDensity": {
     "title": "Keyword Density Analyzer Script – Semantic Density Checker",

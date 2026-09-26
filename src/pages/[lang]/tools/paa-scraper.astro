@@ -17,6 +17,20 @@ const descriptionText = t('paaScraper.description', {
   fallback: "Scrape Google's 'People Also Ask' questions for any keyword.",
 });
 
+const guideDict = dictionary.paaScraper?.guide;
+const guide = guideDict
+  ? {
+      how: {
+        title: t('paaScraper.guide.how.title', { fallback: 'How It Works' }),
+        paragraphs: Array.isArray(guideDict.how?.paragraphs) ? guideDict.how.paragraphs : [],
+      },
+      useCases: {
+        title: t('paaScraper.guide.useCases.title', { fallback: 'When to Use This Tool' }),
+        items: Array.isArray(guideDict.useCases?.items) ? guideDict.useCases.items : [],
+      },
+    }
+  : undefined;
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -54,6 +68,7 @@ const questions = [1, 2, 3, 4, 5, 6, 7, 8].map((n) =>
   slug="paa-scraper"
   dictionary={dictionary}
   faqSchema={faqSchema}
+  guide={guide}
 >
   <!-- Main Workspace -->
   <section class="container mx-auto mt-12 px-4 font-sans">

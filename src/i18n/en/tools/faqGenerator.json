@@ -15,5 +15,22 @@
   "faqHeading": "Frequently Asked Questions",
   "jsonLdCode": "JSON-LD Schema Code",
   "htmlAccordion": "HTML Accordion Markup",
-  "copyHtml": "Copy HTML"
+  "copyHtml": "Copy HTML",
+  "guide": {
+    "how": {
+      "title": "How the FAQ Schema Generator Works",
+      "paragraphs": [
+        "Type a question and its answer into the form and the tool builds a FAQPage JSON-LD object from the pair, printing it in the panel on the right. The same pairs also produce an HTML accordion built from details and summary elements, so both outputs stay in sync as you add, edit or delete questions.",
+        "Paste the JSON-LD block into the head of the page that actually shows those questions and answers — schema describes what is on the page rather than creating it. The accordion markup is optional: use it when the page has no FAQ section of its own yet."
+      ]
+    },
+    "useCases": {
+      "title": "When to Use This Tool",
+      "items": [
+        "Marking up an existing FAQ, support or documentation page whose questions and answers are already written.",
+        "Producing accordion markup for a help centre or product page that needs an expandable question list.",
+        "Reviewing exactly what the generated code says before handing it to whoever installs it."
+      ]
+    }
+  }
 }

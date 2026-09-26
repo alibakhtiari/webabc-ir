@@ -21,6 +21,9 @@
   "responsive": "Mobile Responsive",
   "emailQuote": "Email Me This Quote",
   "emailSent": "Opening your email client...",
+  "stepProjectType": "1. Project Type",
+  "stepNumberOfPages": "2. Number of Pages",
+  "stepFeatures": "3. Features & Addons",
   "guide": {
     "how": {
       "title": "How the Website Cost Calculator Works",

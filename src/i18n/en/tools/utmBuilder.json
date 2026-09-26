@@ -22,5 +22,22 @@
   "generatedUrl": "Generated UTM URL",
   "fillFields": "Fill in the fields above to generate your UTM URL",
   "copyUrl": "Copy URL",
-  "copied": "URL copied to clipboard!"
+  "copied": "URL copied to clipboard!",
+  "guide": {
+    "how": {
+      "title": "How the UTM Link Builder Works",
+      "paragraphs": [
+        "Paste the full destination URL first, then fill in source, medium and campaign — the three parameters Google Analytics needs to place a visit in a campaign report. Term and content are optional and only matter for paid search ads and for telling similar ads apart. The finished link is assembled as you type and appears in the output box.",
+        "The parameters are appended to your URL, so the page the link opens does not change. Once the three required fields are filled you can copy the link and use it only in the ad, newsletter or post it was written for: each channel gets its own link, otherwise the visits cannot be told apart later."
+      ]
+    },
+    "useCases": {
+      "title": "When to Use This Tool",
+      "items": [
+        "Pointing the same landing page from several channels so Analytics reports where each visit came from.",
+        "Naming an email or social campaign once and reusing that name so its visits stay grouped.",
+        "Replacing a shared link with a tagged version when you need to trace clicks back to a specific post or ad."
+      ]
+    }
+  }
 }

@@ -17,5 +17,22 @@
   "q5": "How long does it take to design a website?",
   "q6": "What tools do web designers use?",
   "q7": "Is web design a good career?",
-  "q8": "What skills do you need for web design?"
+  "q8": "What skills do you need for web design?",
+  "guide": {
+    "how": {
+      "title": "How the People Also Ask Scraper Works",
+      "paragraphs": [
+        "The page lays out the People Also Ask workflow: a keyword field, a search button and a results panel. The button is disabled and the list beside it is a fixed set of eight example questions about web design, so you can see how the questions are phrased and grouped without leaving the page.",
+        "Nothing here queries Google. Live People Also Ask results have to come from a search API such as SerpAPI or DataForSEO, as the notice above the button states. Read the example list as a reference for structure and wording, not as a current snapshot of what is in the search results."
+      ]
+    },
+    "useCases": {
+      "title": "When to Use This Tool",
+      "items": [
+        "Seeing what a People Also Ask block contains before you connect a data source that returns one.",
+        "Drafting question-led sections for an article from the eight sample questions shown here.",
+        "Matching the style of question headings people actually type: short, specific and in plain language."
+      ]
+    }
+  }
 }
