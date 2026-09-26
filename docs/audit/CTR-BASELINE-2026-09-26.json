@@ -1,0 +1,2660 @@
+{
+ "generated_for": "4-week CTR baseline (diff point for future GSC exports)",
+ "generated_on": "2026-09-26",
+ "source_file": "webabc.ir-Performance-on-Search-2026-09-21.xlsx",
+ "export_date": "2026-09-21",
+ "sheet": "Pages",
+ "date_range_in_export": {
+  "filter": "Last 3 months",
+  "chart_first_date": "2026-06-19",
+  "chart_last_date": "2026-09-18"
+ },
+ "note": "Pages sheet covers the full 3-month export range; the file contains no 4-week slice. Per-URL figures below are 3-month totals as exported.",
+ "sheet_totals": {
+  "impressions": 32016,
+  "clicks": 124,
+  "page_rows": 289,
+  "impressions_recomputed": 32016,
+  "clicks_recomputed": 124,
+  "matches_expected": true
+ },
+ "kind_totals": {
+  "tool": {
+   "impressions": 26748,
+   "clicks": 46
+  },
+  "other": {
+   "impressions": 3250,
+   "clicks": 20
+  },
+  "blog": {
+   "impressions": 1453,
+   "clicks": 21
+  },
+  "home": {
+   "impressions": 470,
+   "clicks": 37
+  },
+  "tool-index": {
+   "impressions": 74,
+   "clicks": 0
+  },
+  "blog-index": {
+   "impressions": 19,
+   "clicks": 0
+  },
+  "root": {
+   "impressions": 2,
+   "clicks": 0
+  }
+ },
+ "queries_sheet_totals": {
+  "impressions": 29394,
+  "clicks": 73,
+  "query_rows": 416,
+  "authoritative": false
+ },
+ "pages": [
+  {
+   "url": "https://webabc.ir/en/tools/headline-analyzer/",
+   "impressions": 25743,
+   "clicks": 30,
+   "ctr_gsc": 0.0012,
+   "ctr": 0.0011653653420347278,
+   "position": 13.97,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/seo-best-practices/",
+   "impressions": 351,
+   "clicks": 2,
+   "ctr_gsc": 0.005699999999999999,
+   "ctr": 0.005698005698005698,
+   "position": 8.94,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/",
+   "impressions": 232,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 5.01,
+   "kind": "home"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/headline-analyzer",
+   "impressions": 230,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 57.14,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/ramzarz-negaran/",
+   "impressions": 226,
+   "clicks": 2,
+   "ctr_gsc": 0.0088,
+   "ctr": 0.008849557522123894,
+   "position": 6.85,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/service-areas/qazvin/",
+   "impressions": 224,
+   "clicks": 1,
+   "ctr_gsc": 0.0045000000000000005,
+   "ctr": 0.004464285714285714,
+   "position": 60.43,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/remido/",
+   "impressions": 189,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 4.36,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/services/web-design/",
+   "impressions": 184,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 87.91,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/website-speed-optimization-pricing-guide-2026/",
+   "impressions": 177,
+   "clicks": 13,
+   "ctr_gsc": 0.07339999999999999,
+   "ctr": 0.07344632768361582,
+   "position": 14.28,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/service-areas/tehran/",
+   "impressions": 166,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 16.67,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/local-seo/",
+   "impressions": 159,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 37.01,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/service-areas/dubai/",
+   "impressions": 152,
+   "clicks": 1,
+   "ctr_gsc": 0.0066,
+   "ctr": 0.006578947368421052,
+   "position": 42.66,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/service-areas/muscat/",
+   "impressions": 146,
+   "clicks": 2,
+   "ctr_gsc": 0.0137,
+   "ctr": 0.0136986301369863,
+   "position": 10.58,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/seo-title-checker",
+   "impressions": 127,
+   "clicks": 1,
+   "ctr_gsc": 0.0079,
+   "ctr": 0.007874015748031496,
+   "position": 56.23,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/en/",
+   "impressions": 126,
+   "clicks": 34,
+   "ctr_gsc": 0.2698,
+   "ctr": 0.2698412698412698,
+   "position": 5.08,
+   "kind": "home"
+  },
+  {
+   "url": "https://webabc.ir/ar/services/web-development/",
+   "impressions": 122,
+   "clicks": 1,
+   "ctr_gsc": 0.008199999999999999,
+   "ctr": 0.00819672131147541,
+   "position": 43.68,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/soheil-accessory/",
+   "impressions": 122,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 6.38,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/seo-title-checker/",
+   "impressions": 115,
+   "clicks": 1,
+   "ctr_gsc": 0.0087,
+   "ctr": 0.008695652173913044,
+   "position": 63.81,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/ramzarz-negaran",
+   "impressions": 105,
+   "clicks": 2,
+   "ctr_gsc": 0.019,
+   "ctr": 0.01904761904761905,
+   "position": 7.1,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/faq-generator/",
+   "impressions": 97,
+   "clicks": 1,
+   "ctr_gsc": 0.0103,
+   "ctr": 0.010309278350515464,
+   "position": 50.12,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/service-areas/tehran/",
+   "impressions": 89,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 76.66,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/website-development-cost-calculator-guide-2026/",
+   "impressions": 87,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 29.43,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/dubai-uae-web-design-seo-guide-2026/",
+   "impressions": 84,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 32.76,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/seo-checklist-2026/",
+   "impressions": 84,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 36.55,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/",
+   "impressions": 83,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 37.49,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/service-areas/",
+   "impressions": 81,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 23.16,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/mehromah-qazvin/",
+   "impressions": 69,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 10.52,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/services/local-seo/",
+   "impressions": 69,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 14.8,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/service-areas",
+   "impressions": 62,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 53.39,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/cost-calculator/",
+   "impressions": 61,
+   "clicks": 1,
+   "ctr_gsc": 0.016399999999999998,
+   "ctr": 0.01639344262295082,
+   "position": 44.31,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/utm-builder/",
+   "impressions": 61,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 67.92,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/keyword-density-analyzer/",
+   "impressions": 58,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 20.31,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/en/about/",
+   "impressions": 56,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 15.34,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/soheil-accessory/",
+   "impressions": 54,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 5.39,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/seo-best-practices-2025/",
+   "impressions": 51,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 22.53,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/",
+   "impressions": 47,
+   "clicks": 1,
+   "ctr_gsc": 0.0213,
+   "ctr": 0.02127659574468085,
+   "position": 43.72,
+   "kind": "home"
+  },
+  {
+   "url": "https://webabc.ir/fa/service-areas/qazvin",
+   "impressions": 47,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 71.47,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/remido/",
+   "impressions": 41,
+   "clicks": 1,
+   "ctr_gsc": 0.024399999999999998,
+   "ctr": 0.024390243902439025,
+   "position": 7.17,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/wordpress-vs-custom-development-guide-2026/",
+   "impressions": 41,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 12.56,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa",
+   "impressions": 38,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 31.97,
+   "kind": "home"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/behrad-dc/",
+   "impressions": 37,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 6.86,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/behrad-dc/",
+   "impressions": 36,
+   "clicks": 1,
+   "ctr_gsc": 0.0278,
+   "ctr": 0.027777777777777776,
+   "position": 7.44,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/",
+   "impressions": 36,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 15.42,
+   "kind": "tool-index"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/speed-optimization/",
+   "impressions": 36,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 63.44,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/zeytoun-masoud/",
+   "impressions": 34,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 5.15,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/wordpress-vs-custom-development/",
+   "impressions": 31,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 34.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/service-areas/muscat",
+   "impressions": 30,
+   "clicks": 2,
+   "ctr_gsc": 0.0667,
+   "ctr": 0.06666666666666667,
+   "position": 19.73,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/service-areas",
+   "impressions": 30,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 31.07,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/oman-web-design-seo-guide-2026/",
+   "impressions": 30,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 35.87,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/zeytoun-masoud",
+   "impressions": 29,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 6.76,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en",
+   "impressions": 27,
+   "clicks": 2,
+   "ctr_gsc": 0.0741,
+   "ctr": 0.07407407407407407,
+   "position": 4.19,
+   "kind": "home"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/zeytoun-masoud/",
+   "impressions": 27,
+   "clicks": 1,
+   "ctr_gsc": 0.037000000000000005,
+   "ctr": 0.037037037037037035,
+   "position": 5.19,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/website-development-costs/",
+   "impressions": 26,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 27.15,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/",
+   "impressions": 26,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 80.31,
+   "kind": "tool-index"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/remido/",
+   "impressions": 25,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 8.6,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/content-creation/",
+   "impressions": 25,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 87.72,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/modern-ui-ux-trends/",
+   "impressions": 24,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 5.79,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/cost-calculator/",
+   "impressions": 23,
+   "clicks": 2,
+   "ctr_gsc": 0.087,
+   "ctr": 0.08695652173913043,
+   "position": 52.65,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/website-development-cost-calculator-guide-2026/",
+   "impressions": 23,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 8.48,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/local-seo",
+   "impressions": 22,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 45.05,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/glassmorphism-generator/",
+   "impressions": 21,
+   "clicks": 2,
+   "ctr_gsc": 0.09519999999999999,
+   "ctr": 0.09523809523809523,
+   "position": 15.05,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/ecommerce-web-design-guide-2026",
+   "impressions": 21,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 18.19,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/service-areas/",
+   "impressions": 21,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 36.43,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/mobile-first-web-design-guide-2026/",
+   "impressions": 20,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 5.65,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/paa-scraper/",
+   "impressions": 20,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 44.7,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/web-design-trends/",
+   "impressions": 19,
+   "clicks": 1,
+   "ctr_gsc": 0.0526,
+   "ctr": 0.05263157894736842,
+   "position": 7.89,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/ecommerce-web-design-guide-2026/",
+   "impressions": 19,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 7.16,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/free-seo-developer-tools-guide-2026/",
+   "impressions": 19,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 12.89,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/contact/",
+   "impressions": 18,
+   "clicks": 1,
+   "ctr_gsc": 0.0556,
+   "ctr": 0.05555555555555555,
+   "position": 24.17,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/website-development-cost-calculator-guide-2026/",
+   "impressions": 18,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 34.56,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/seo-title-optimization-guide-2026/",
+   "impressions": 18,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 45.33,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/seo-best-practices/",
+   "impressions": 17,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 56.29,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/speed-optimization",
+   "impressions": 17,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 65.76,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/seo/",
+   "impressions": 17,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 88.65,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/services/wordpress-development/",
+   "impressions": 16,
+   "clicks": 1,
+   "ctr_gsc": 0.0625,
+   "ctr": 0.0625,
+   "position": 25.25,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/website-speed-optimization-pricing-guide-2026/",
+   "impressions": 16,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 8.75,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/about/ali-bakhtiari/",
+   "impressions": 15,
+   "clicks": 1,
+   "ctr_gsc": 0.0667,
+   "ctr": 0.06666666666666667,
+   "position": 13.4,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/service-areas/tehran",
+   "impressions": 15,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 10.27,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/ecommerce-web-design-guide-2026/",
+   "impressions": 15,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 32.6,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/rostateb/",
+   "impressions": 14,
+   "clicks": 1,
+   "ctr_gsc": 0.07139999999999999,
+   "ctr": 0.07142857142857142,
+   "position": 8.07,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/services/web-development",
+   "impressions": 14,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 10.36,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/website-speed-optimization-guide-2026/",
+   "impressions": 14,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 15.5,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/wordpress-vs-custom-development",
+   "impressions": 14,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 27.21,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/paa-scraper/",
+   "impressions": 13,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 3.54,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/website-development-cost-guide-2026/",
+   "impressions": 13,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 33.46,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/service-areas/riyadh/",
+   "impressions": 13,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 99.54,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/tools",
+   "impressions": 12,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 5.08,
+   "kind": "tool-index"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/website-development-cost-guide-2026/",
+   "impressions": 12,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 6.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/",
+   "impressions": 12,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 7.5,
+   "kind": "blog-index"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/london-rug-cleaning/",
+   "impressions": 12,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 17.17,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/london-rug-cleaning/",
+   "impressions": 12,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 26.75,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/services/local-seo/",
+   "impressions": 12,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 26.92,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/serp-preview/",
+   "impressions": 12,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 51.17,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/wordpress-seo-optimization-guide-2026/",
+   "impressions": 12,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 57.33,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/seo-checklist-2026/",
+   "impressions": 11,
+   "clicks": 2,
+   "ctr_gsc": 0.1818,
+   "ctr": 0.18181818181818182,
+   "position": 10.36,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/tehran-enamel/",
+   "impressions": 11,
+   "clicks": 1,
+   "ctr_gsc": 0.0909,
+   "ctr": 0.09090909090909091,
+   "position": 9.55,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/technical-seo-audit-guide-2026/",
+   "impressions": 11,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 35.36,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/services/content-creation/",
+   "impressions": 11,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 72.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/base64-encoder/",
+   "impressions": 10,
+   "clicks": 1,
+   "ctr_gsc": 0.1,
+   "ctr": 0.1,
+   "position": 10.6,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/",
+   "impressions": 10,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 5.7,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/mapfan/",
+   "impressions": 10,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 7.8,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/utm-builder/",
+   "impressions": 10,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 8.1,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/en/about",
+   "impressions": 10,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 16.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/meta-generator/",
+   "impressions": 10,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 25.4,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/service-areas/abu-dhabi/",
+   "impressions": 10,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 36.9,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/how-to-write-clickable-headlines/",
+   "impressions": 9,
+   "clicks": 1,
+   "ctr_gsc": 0.11109999999999999,
+   "ctr": 0.1111111111111111,
+   "position": 27.22,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/mahsun-visa/",
+   "impressions": 9,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 2.67,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/slug-generator/",
+   "impressions": 9,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 6.78,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/color-contrast-checker/",
+   "impressions": 9,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 8.56,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/local-seo-middle-east/",
+   "impressions": 9,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 38.33,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/chocoreto/",
+   "impressions": 9,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 45.89,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/cost-calculator",
+   "impressions": 9,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 60.89,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/chocoreto/",
+   "impressions": 8,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 11.62,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/link-building-strategies-guide-2026/",
+   "impressions": 8,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 39.75,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/service-areas/muscat/",
+   "impressions": 8,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 45.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/social-media-preview/",
+   "impressions": 8,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 60.88,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/slug-generator",
+   "impressions": 7,
+   "clicks": 3,
+   "ctr_gsc": 0.4286,
+   "ctr": 0.42857142857142855,
+   "position": 8.71,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/website-maintenance-security-guide-2026/",
+   "impressions": 7,
+   "clicks": 1,
+   "ctr_gsc": 0.1429,
+   "ctr": 0.14285714285714285,
+   "position": 13.29,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/tehran-enamel/",
+   "impressions": 7,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 8.43,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/ramzarz-negaran",
+   "impressions": 7,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 17.71,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/wordpress-seo-optimization-guide-2026/",
+   "impressions": 7,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 20.14,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/service-areas/abu-dhabi/",
+   "impressions": 7,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 35.57,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/free-seo-developer-tools-guide-2026/",
+   "impressions": 7,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 81.14,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/box-shadow-generator/",
+   "impressions": 6,
+   "clicks": 1,
+   "ctr_gsc": 0.16670000000000001,
+   "ctr": 0.16666666666666666,
+   "position": 6.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/ui-ux-audit-redesign-guide-2026/",
+   "impressions": 6,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 3.5,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/about/ali-bakhtiari/",
+   "impressions": 6,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 3.83,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/rostateb/",
+   "impressions": 6,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 3.83,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/soheil-accessory/",
+   "impressions": 6,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 7.67,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/service-areas/tehran",
+   "impressions": 6,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 12.67,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/privacy/",
+   "impressions": 6,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 25.33,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/cost-calculator/",
+   "impressions": 6,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 42.17,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/glassmorphism-generator/",
+   "impressions": 5,
+   "clicks": 1,
+   "ctr_gsc": 0.2,
+   "ctr": 0.2,
+   "position": 10.2,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/chocoreto/",
+   "impressions": 5,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 6.6,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/link-building-strategies-guide-2026/",
+   "impressions": 5,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 9.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/service-areas/muscat",
+   "impressions": 5,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 9.4,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/mehromah-qazvin/",
+   "impressions": 5,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 9.8,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/modern-ui-ux-trends/",
+   "impressions": 5,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 13.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/seo-best-practices/",
+   "impressions": 5,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 17.2,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/website-maintenance-security-guide-2026/",
+   "impressions": 5,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 24.6,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/css-gradient-generator/",
+   "impressions": 5,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 56.2,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/mobile-first-web-design-guide-2026/",
+   "impressions": 4,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 3.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/contact",
+   "impressions": 4,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 3.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/web-design-trends-2025",
+   "impressions": 4,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 3.25,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/wordpress-vs-custom-development-guide-2026/",
+   "impressions": 4,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 3.25,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/blog",
+   "impressions": 4,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 4.75,
+   "kind": "blog-index"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/4-seasons-carpet-clean",
+   "impressions": 4,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 6.75,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/4-seasons-carpet-clean/",
+   "impressions": 4,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 7.5,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/css-gradient-generator",
+   "impressions": 4,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 7.5,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/website-speed-optimization-pricing-guide-2026/",
+   "impressions": 4,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 7.75,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/seo-title-optimization-guide-2026/",
+   "impressions": 4,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 7.75,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/privacy",
+   "impressions": 4,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 8.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/meta-generator",
+   "impressions": 4,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 8.5,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/css-gradient-generator/",
+   "impressions": 4,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 10.25,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/ar/service-areas/riyadh/",
+   "impressions": 4,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 23.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/dubai-uae-web-design-seo-guide-2026/",
+   "impressions": 4,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 25.75,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/digital-marketing-roi-guide-2026/",
+   "impressions": 4,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 64.5,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/mobile-first-web-design-guide-2026/",
+   "impressions": 3,
+   "clicks": 1,
+   "ctr_gsc": 0.3333,
+   "ctr": 0.3333333333333333,
+   "position": 5.67,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/samake-bartar/",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 2.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/service-areas/muscat",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 4.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/digital-marketing-strategies/",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 4.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/samake-alpha",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 4.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/web-design/",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 4.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/ui-ux-audit-redesign-guide-2026/",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 4.33,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/mobile-first-design-2025/",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 4.67,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/privacy",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 5.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/mahsun-visa/",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 6.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/color-contrast-checker",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 6.33,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/seo-title-checker/",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 7.33,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/ecommerce-web-design-guide-2026",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 7.67,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/glassmorphism-generator",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 7.67,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/en/services/wordpress-development",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 8.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/seo-title-checker/",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 8.67,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/digital-marketing-strategies/",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 8.67,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/about/",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 9.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/services/local-seo",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 9.33,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/ui-ux-audit-redesign-guide-2026/",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 9.33,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/samake-bartar",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 9.33,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/base64-encoder",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 10.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/digital-marketing-roi-guide-2026/",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 11.33,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/ui-ux-audit",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 11.67,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/mapfan/",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 12.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/service-areas/qazvin/",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 16.33,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/keyword-density-analyzer/",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 19.33,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/utm-builder/",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 20.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/seo-best-practices-2025/",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 26.33,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/wordpress-seo-optimization-guide-2026/",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 33.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/4-seasons-carpet-clean",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 45.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/best-seo-tools-2025/",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 56.67,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/slug-generator/",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 57.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/local-seo-middle-east/",
+   "impressions": 3,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 92.67,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/contact",
+   "impressions": 2,
+   "clicks": 1,
+   "ctr_gsc": 0.5,
+   "ctr": 0.5,
+   "position": 5.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 2.5,
+   "kind": "root"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/seo-title-optimization-guide-2026/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 2.5,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/about/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 3.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/website-speed-optimization-guide-2026/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 3.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/digital-marketing-roi-guide-2026/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 4.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/website-maintenance-security-guide-2026/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 4.5,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/cost-calculator",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 4.5,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 5.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/service-areas/qazvin/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 5.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/modern-web-development",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 5.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/faq/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 5.5,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/odyps/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 6.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/services/ui-ux-audit/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 6.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/odyps/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 6.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/zeytoun-masoud",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 6.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/services/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 6.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/qr-generator/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 6.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 6.5,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/serp-preview/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 7.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/en/services/modern-web-development",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 8.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/privacy/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 8.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/ecommerce-web-design-guide-2026/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 11.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/oman-web-design-seo-guide-2026/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 14.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/utm-builder",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 15.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/seo-checklist-2026/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 18.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/how-to-write-clickable-headlines",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 18.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/wordpress-development/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 24.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/box-shadow-generator",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 26.5,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/free-seo-developer-tools-guide-2026/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 28.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/service-areas/muscat/",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 30.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/local-seo-middle-east",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 30.5,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/mobile-first-web-design-guide-2026",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 39.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/lorem-generator",
+   "impressions": 2,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 84.5,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/social-media-preview/",
+   "impressions": 1,
+   "clicks": 1,
+   "ctr_gsc": 1.0,
+   "ctr": 1.0,
+   "position": 3.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/readability-checker",
+   "impressions": 1,
+   "clicks": 1,
+   "ctr_gsc": 1.0,
+   "ctr": 1.0,
+   "position": 6.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/readability-checker/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 1.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/mahsun-visa/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 2.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/json-formatter/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 2.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/css-gradient-generator/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 2.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/ar/about/ali-bakhtiari/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 3.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/web-development/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 3.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/paa-scraper",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 3.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/website-maintenance-security-guide-2026",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 4.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/samake-alpha/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 4.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/services/link-building/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 4.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/wordpress-vs-custom-development",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 4.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/services/web-design",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 4.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/contact/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 4.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/meta-generator/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 4.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/ar/service-areas/dubai/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 5.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/headline-analyzer/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 5.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/ui-ux-audit/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 5.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 6.0,
+   "kind": "blog-index"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/utm-builder",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 6.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/paa-scraper",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 6.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 6.0,
+   "kind": "blog-index"
+  },
+  {
+   "url": "https://webabc.ir/en/services/content-creation/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 7.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/lorem-generator/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 7.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/mobile-first-design-2025",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 7.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/website-development-costs/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 7.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 7.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/mobile-first-design/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 8.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/mapfan/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 8.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/color-contrast-checker/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 8.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/robots-generator/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 8.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/mobile-first-design/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 8.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/schema-generator/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 8.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/how-to-write-clickable-headlines/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 9.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/london-rug-cleaning/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 9.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/en/faq/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 9.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/wordpress-vs-custom-development-guide-2026/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 9.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/base64-encoder/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 10.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/meta-generator/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 10.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/mobile-first-design/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 10.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/services/ecommerce/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 10.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 10.0,
+   "kind": "blog-index"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/web-design-trends/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 10.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/website-maintenance-security-guide-2026",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 10.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/samake-alpha",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 10.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/services",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 10.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/json-formatter/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 10.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/en/services/web-development/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 11.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/oman-web-design-seo-guide-2026/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 14.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/local-seo-middle-east/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 14.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/web-design-trends-2025/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 19.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/lorem-generator/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 23.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/web-design-trends-2025",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 27.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/qr-generator",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 37.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/glassmorphism-generator",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 38.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/box-shadow-generator",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 45.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/link-building/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 51.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/technical-seo-audit-guide-2026/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 59.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/lorem-generator/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 59.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/serp-preview/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 79.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/seo",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 84.0,
+   "kind": "other"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/lorem-generator",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 84.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/schema-generator/",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 85.0,
+   "kind": "tool"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/web-development",
+   "impressions": 1,
+   "clicks": 0,
+   "ctr_gsc": 0.0,
+   "ctr": 0.0,
+   "position": 98.0,
+   "kind": "other"
+  }
+ ]
+}
