@@ -1,0 +1,134 @@
+---
+title: 'Web Development Guide 2026: Process, Options, Hiring'
+description: 'What web development covers, how a project runs from brief to launch, how custom code compares with a CMS or site builder, and how to judge a supplier.'
+date: '2026-09-24'
+category: 'Web Development'
+author: 'Ali Bakhtiari'
+image: '/images/blog/web-development-guide-2026.webp'
+imageAlt: 'Web development project moving from written brief and wireframes through code, testing and launch'
+readTime: 12
+tags: ['Web Development', 'Development Process', 'Custom Development', 'CMS vs Site Builder', 'Hiring a Developer']
+keyTakeaways:
+  - 'Web development is the engineering side of a site — content model, templates, integrations, delivery — while web design decides layout and interaction; the two overlap in the handoff, not in the deliverables.'
+  - 'Projects run in eight stages from discovery to maintenance, and decisions taken after the build starts get expensive because routes and data models already carry the earlier assumptions.'
+  - 'Custom code, a CMS and a site builder each fail differently when a project outgrows them, so the choice is made from constraints such as integration depth and editorial workflow, not from preference.'
+  - 'Cost follows scope, integration depth, existing content and approval chains, measured in hours per phase; a proposal without a phase breakdown is a guess with a signature under it.'
+faq:
+  - question: 'How long does a web development project take?'
+    answer: 'Duration tracks committed hours, not page count. Divide the estimated hours per phase by the hours a week the team actually sets aside, and you get a timeline you can check against the proposal, including content entry, testing and launch rehearsal rather than build time alone.'
+  - question: 'Do I need custom development, or is WordPress enough?'
+    answer: 'If the site is mostly text and images, updated a few times a month, with no deep connection to internal systems, a CMS is usually the faster and cheaper route to maintain. Custom code earns its cost when performance, a bespoke data model or integration depth is written into the brief.'
+  - question: 'How much does a website cost?'
+    answer: 'There is no honest fixed number before scope exists. Price comes from hours per phase, and hours come from how many distinct things the system does, what it must integrate with, how much content already exists, and how many people approve each decision. Estimate the band first, then compare proposals against it.'
+  - question: 'Who owns the website and its code after launch?'
+    answer: 'Whoever holds the accounts, the repository and the domain controls the site. Agree ownership in writing before launch: repository access, hosting and DNS accounts, licence keys, documentation, and what happens to all of it if the relationship ends.'
+---
+
+## What is web development, and where does web design stop?
+
+Web development is the engineering half of putting a site online: information architecture, templates, delivery from a server or edge, data, integrations, forms, payments, performance and security. Web design decides how pages look and behave. Neither is finished when the other starts, and the seam between them is where projects usually go wrong.
+
+Design answers what a page should communicate and how it should feel; development answers how that page gets produced, stored, delivered and maintained. A designer owns layout, typography, colour, motion, and the states a visitor moves through between hovering, focusing and submitting. A developer owns the content model sitting behind those pages, the templates that render it, the routes and forms, the connection to whatever system holds the data, and how fast the thing loads on a mid-range phone over an ordinary network. Treat them as one phase and the build inherits decisions nobody priced: a layout that needs fields the CMS cannot hold, a form with nowhere to send its submissions, a design that only survives at desktop width.
+
+- **Web design delivers** wireframes and mockups, a type and spacing scale, interaction states, and accessibility notes per component.
+- **Web development delivers** the content model, templates, routes, integrations, build pipeline, tests, and a deployment path someone can repeat at 2am.
+
+Structural problems need development rather than styling; a visual gap is [web design](/en/services/web-design/) work. This year's [web design trends](/en/blog/web-design-trends/) show how much of the visual side now sits in layout systems and type instead of imagery.
+
+## What happens in a web development project from brief to launch?
+
+A web development project runs in eight stages: discovery, information architecture, design, build, content, quality assurance, launch and maintenance. The sequence matters more than the labels do. Decisions taken after the build starts get expensive, because templates, routes and data models already carry the earlier assumptions.
+
+Discovery is where the constraints surface: who the site is for, what a visitor must be able to do, which systems already hold the data, and what nobody is allowed to break. Information architecture turns that into structure — a page inventory, navigation, and the model for each kind of content. Design works on real content rather than placeholders, because placeholder text hides layout problems until launch week. Build happens in reviewable slices instead of one long silent month. Content gets written against the model as it exists, not against a mockup. Quality assurance covers devices, forms, browsers, redirects and accessibility. Launch is a rehearsal with a rollback ready. Maintenance starts the day after, not the first time something breaks.
+
+1. **Discovery** — goals, audience, constraints, existing systems.
+2. **Information architecture** — inventory, navigation, content model.
+3. **Design** — layout and interaction on real content.
+4. **Build** — templates, routes, integrations, in reviewable slices.
+5. **Content** — writing, migration, metadata against the shipped model.
+6. **Quality assurance** — devices, browsers, forms, redirects, keyboard paths.
+7. **Launch** — DNS, redirects, analytics, rollback plan, someone watching.
+8. **Maintenance** — updates, monitoring, backups, next round of changes.
+
+## What are your build options: custom code, a CMS, or a site builder?
+
+Three routes cover nearly every project: a site builder subscribes to a platform that renders your pages, a CMS gives you content management on top of a system someone else maintains, and custom code means your team owns the templates, data model and deployment. None is the default answer; each fails differently once the project outgrows it.
+
+The choice is decided by constraints, not preference. A site builder is right when pages are mostly text and images, changes are rare, and nothing needs to talk to an internal system — and it stops being right the moment you need a data model it will not give you. A CMS fits teams that publish often, need editorial workflow, and can live inside the platform's structure. Custom code is justified when performance, integration depth, or a content model nobody else supports is written into the brief. Whichever route you take, you are also choosing who can work on the site two years from now. Ask a supplier which of the three it plans to propose and why — it usually reveals what they are used to building.
+
+| Criterion | Site builder | CMS | Custom code |
+| --- | --- | --- | --- |
+| Content model | Fixed | Flexible within platform | Anything you define |
+| Integrations | Vendor-dependent | Via plugins | Unlimited, yours to maintain |
+| Performance ceiling | Platform's limit | Plugins and hosting | Your implementation |
+| Editing after two years | Vendor dashboard | Plugin health dependent | Documentation dependent |
+
+Read the architecture side — rendering paths, security surface, scaling — in [WordPress vs custom development](/en/blog/wordpress-vs-custom-development-guide-2026/), the budget and timing side in [the business guide](/en/blog/wordpress-vs-custom-development/), and checkout and catalogue concerns in [e-commerce web design](/en/blog/ecommerce-web-design-guide-2026/).
+
+## What should a brief contain before anyone quotes a price?
+
+A brief that produces a comparable price states the goal, the audience, the pages or content types, the integrations, who writes the content, what success looks like, and the constraints nobody can move — deadline, budget ceiling, legal requirements. Suppliers quoting from a one-line email are quoting from their own assumptions, not from your project.
+
+The brief does not need to be long. It needs to be unambiguous about the parts that change the estimate, because every unstated requirement becomes a line item later, at change-request rates. Write the audience and the main job of the site in two sentences, then list the content types and the systems the site must connect to. Name who approves each stage, since approval latency is where schedules quietly die. Record the constraints as facts rather than wishes: a fixed launch date, a legal requirement, a language the site must support, an existing domain or analytics account that must be preserved. A page of adjectives is worth less than a list of the systems you already pay for and must keep working.
+
+- **Content inventory** — page types, volume, authorship, and whether old content migrates.
+- **Integrations** — payments, CRM, booking, email, analytics: name each system.
+- **Constraints** — deadline, budget ceiling, languages, compliance, existing contracts.
+- **Ownership** — who approves, who answers questions, how fast decisions return.
+
+## How do you read a development proposal without being misled?
+
+Read a proposal for what it makes explicit: scope broken into deliverables, the assumptions behind each line, who is responsible for content and approvals, what happens when scope changes, and what you own at the end. A single total with no breakdown is not a price; it is a guess with a signature under it.
+
+Start with the assumptions, not the number. Every proposal rests on things nobody wrote down — that your team supplies content, that the third-party API behaves, that revisions happen in one round. When those assumptions fail, the price you were quoted does not change; only the amount you owe does. Then look for the phases: discovery, design, build, content, testing and launch should each appear with hours or a fixed deliverable attached. Check what is explicitly excluded, because exclusions are where the real comparison between two bids happens. Finally, read the change clause, which tells you what the working relationship will feel like once the surprises start. A bid that skipped the phases is not a saving; it is a schedule you pay for twice.
+
+- **Phases with hours** — a single aggregated line cannot be compared with anything.
+- **Written assumptions** — who supplies content, images, accounts and approvals, and when.
+- **Named exclusions** — the real difference between two bids usually sits here.
+- **Handover terms** — repositories, accounts, documentation and licences in your name at the end.
+
+## What actually drives the cost of a web development project?
+
+Cost follows four things: how many distinct things the system must do, how much of it must integrate with software you already run, how much content exists before anyone starts, and how many people approve each decision. Page count is the loosest of the four, which is why per-page pricing so often ends in an argument.
+
+Each driver shows up in the estimate as hours, the only honest unit before scope is fixed. A hypothetical build makes it concrete: two developers committing 20 hours a week each for six weeks is 2 × 20 × 6 = 240 hours, and the labour line is that total multiplied by whatever rate applies. Content entry, redirect mapping and browser testing are hours too, and they are the lines that disappear from a cheap proposal and return as change requests later. Before comparing totals, compare hours per phase. Two numbers built from different assumptions cannot be compared, however precise they look on paper. A proposal that will not break hours down by phase has not estimated the work, only what you would accept.
+
+The [cost calculator](/en/tools/cost-calculator/) runs the same arithmetic in the open, so the band you carry into a conversation is one you can defend rather than one you were handed.
+
+## What are the common failure modes, and what does each cost?
+
+Five repeat across projects of every size: scope written as a mood rather than a list, content treated as someone else's job, no one named as decision-maker, design approved before the data model exists, and launch treated as the finish line. Each costs rework hours, and each is visible in the first week if anyone looks.
+
+These failures share a shape: a decision nobody made gets made later, by whoever is closest to the deadline. Scope left as adjectives becomes features built on a developer's reasonable guess, then rebuilt when the person holding the real picture finally reviews it. Content left until the end turns into a rushed migration that breaks layouts built for placeholder text. Two approvers with different opinions produce two rounds of design. Launch with no rehearsal means the redirect map, the analytics and the rollback plan are all discovered live, with traffic arriving. None of the five needs a heavy process: a one-page scope, a named content owner, a single approver, a data model agreed before design, and one dry run of the launch take care of all five.
+
+- **Mood instead of list** — cost: features rebuilt once the real requirement appears.
+- **No content owner** — cost: launch slips while writers catch up.
+- **No single decision-maker** — cost: duplicate rounds and stalled approvals.
+- **Design before data model** — cost: templates reworked once fields exist.
+- **Unrehearsed launch** — cost: broken links, lost analytics, no rollback.
+
+## Which questions should you ask a supplier before signing?
+
+Ask what happens when the scope changes, who writes and approves content, what the hosting and domain arrangements are, who holds the accounts, what happens to the code if the relationship ends, and which parts of this work they have done before. The answers say more about the engagement than any portfolio page can.
+
+A supplier who answers these in writing, in plain language, is telling you how the next few months will run. Hesitation on ownership questions is the loudest signal in the list: it usually means the accounts were created under the agency's own name, which is convenient until you want to leave. Ask to see a project of similar shape at the same stage rather than a finished showcase — anyone can show a launch, few can show the mess at week three. Ask who actually does the work, since the person in the meeting and the person in the repository are not always the same. Ask for names rather than roles, and ask who covers that work when someone is away.
+
+- **Ownership now** — who holds the repository, hosting and domain?
+- **Change pricing** — what is excluded, and how is a change priced?
+- **Your side** — who writes content and approves, and by when?
+- **Comparable delivery** — what they have shipped of similar shape.
+- **After launch** — what monitoring and updates are included, what costs extra.
+
+## What do buyers most often ask about web development?
+
+Four questions come up in nearly every first conversation: how long it takes, whether custom code is worth it, what it costs, and who owns the result. The four answers below share one shape, and each names the inputs you need before a number or a verdict means anything.
+
+Timeline comes from committed hours and from who actually sets aside time each week, not from a page count. The build decision comes from how deeply the site must connect to the systems you already run. Price comes from hours per phase, and hours come from scope, integration depth, existing content and approval chains. Ownership comes from who holds the repository, the hosting account and the domain on the day after launch. None of these is a matter of opinion; each is a fact you can establish from documents you either have or do not have. The sections above carry the reasoning, so this is the short version to take into a first call with a supplier you have not spoken to yet.
+
+**How long does a web development project take?** Duration tracks committed hours, not page count. Divide the hours per phase by the hours a week the team genuinely sets aside, then add content, testing and launch rehearsal if the proposal omitted them.
+
+**Do I need custom development, or is WordPress enough?** A CMS is faster and cheaper to keep alive when the site is mostly text and images. Custom code earns its cost only when performance, a bespoke data model or integration depth sits in the brief.
+
+**How much does a website cost?** No honest number exists before scope does. Price is hours per phase, and hours follow scope, integration depth, existing content and approval chains. Build that band yourself with the [cost calculator](/en/tools/cost-calculator/) before reading anyone's total.
+
+**Who owns the website and its code after launch?** Whoever holds the accounts, the repository and the domain controls the site. Settle that in writing before launch, and name who handles patches — our [maintenance guide](/en/blog/website-maintenance-security-guide-2026/) covers that routine, and our [web development services](/en/services/web-development/) page lists the scope.

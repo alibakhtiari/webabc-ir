@@ -1,0 +1,194 @@
+---
+title: 'Keyword Density Analyzer Script: Formula and Code'
+description: 'Write a keyword density analyzer script: the density formula, a defensible target range, per-field counting rules, and the mistakes that make the number lie.'
+date: '2026-09-19'
+author: 'Ali Bakhtiari'
+category: 'SEO'
+tags: ['Keyword Density', 'Keyword Density Analyzer', 'On-Page SEO', 'SEO Scripts', 'Content Optimization']
+image: '/images/blog/keyword-density-analyzer-script.webp'
+imageAlt: 'Keyword density formula and analyzer script output showing word count, phrase count and percentage'
+readTime: 12
+keyTakeaways:
+  - 'Density is phrase occurrences divided by visible words, times one hundred, and it should be computed per field rather than once per page.'
+  - 'Practitioner judgement puts a primary phrase at roughly one to two and a half percent: above about three percent it reads as deliberate repetition, below about half a percent the topic is usually never named.'
+  - 'Normalise before counting: case, punctuation, whitespace, and for Persian and Arabic the letter forms and the zero-width non-joiner, then match on tokens so the word rank does not match inside ranking.'
+  - 'Distribution beats average. Four mentions in the first 150 words and none in the pricing block is the real finding, and the page-level percentage hides it completely.'
+  - 'Density is a monitoring check, not a writing instruction: it never justifies adding a sentence to move a ratio, and it says nothing about whether the page answers the query.'
+faq:
+  - question: 'What is a good keyword density for SEO?'
+    answer: 'As practitioner judgement rather than a published benchmark, roughly one to two and a half percent for a primary phrase on a page of a few hundred words. Below about half a percent the page rarely names its topic; above about three percent the repetition becomes visible to a reader. No search engine documents a threshold, so compare a draft against its own previous version instead of against a universal number.'
+  - question: 'How do you count keyword density for a phrase instead of a single word?'
+    answer: 'Normalise the text to lowercase tokens with punctuation stripped, then slide the target phrase across the token array and count each full match once. Six matches of a two-word phrase in 480 words is six divided by 480, times one hundred, which is 1.25 percent. Counting each word of the phrase separately would report double the real density.'
+  - question: 'Does keyword density still affect rankings?'
+    answer: 'No search engine documents density as a ranking input. It remains useful as a diagnostic because it exposes two concrete problems: a page that never names its target phrase, and a page that repeats it until the text reads as manipulation. Rankings still follow intent match, coverage, page quality and links, none of which a percentage measures.'
+  - question: 'How often should you run a keyword density check?'
+    answer: 'On any page you are editing, run it before publishing and again after the edit so you can compare drafts. On a template-driven set, run it in the build once per release to catch fields that regressed. A page nobody is touching does not need a schedule.'
+  - question: 'Should I write my own density script or use an online analyzer?'
+    answer: 'Write the script when density has to run automatically across many pages, inside a build step or a CMS hook, because that is where a single broken template field hides. Use an online analyzer for a one-off draft you have in a text box right now, with no repository and no build.'
+---
+
+Keyword density is easy to compute and surprisingly easy to compute differently from the person next to you. In our own Search Console export, queries about density analyzers and analyzer scripts collected roughly seventy impressions between positions fourteen and twenty-four without a single click, which is what happens when the ranking pages explain neither the formula nor the code.
+
+So this is the tutorial those queries were missing: what density actually measures, the arithmetic worked by hand, a script you can paste into a build step, and a candid account of what the resulting number is worth.
+
+## What is keyword density?
+
+Keyword density is the share of a page's visible words that a chosen phrase occupies, expressed as a percentage. If your target phrase appears eight times in a page with seven hundred words, the density is eight divided by seven hundred, times one hundred: about 1.14 percent.
+
+Three qualifiers carry the meaning. **Visible words** means the text a reader actually sees: body copy, headings, list items, captions. Navigation labels, footer links, alt attributes and structured data stay out of the denominator unless you decide otherwise, which is why two analyzers can report different figures for the same URL.
+
+**A chosen phrase** means you picked the unit. Density of the single word shoes and density of the phrase running shoes are separate measurements of the same page, and a tool that will not let you choose the unit hands you back a number you cannot interpret. **A percentage** is only a ratio, and a ratio has no opinion on its own: it becomes meaningful when you set it beside your other pages, beside the previous draft, or beside what a reader of that subject would call normal.
+
+## How do you calculate keyword density?
+
+Divide the number of times the target phrase occurs by the total number of words in the same text, then multiply by one hundred. Six occurrences in four hundred and eighty words is six divided by four hundred and eighty, times one hundred: exactly 1.25 percent.
+
+The formula is worth writing out longhand before you automate it, because every ambiguous case lives in one of the two inputs. **Occurrences:** for a multi-word phrase, count each match once, so six matches of a two-word phrase is six, not twelve. **Total words:** count tokens after normalisation, not characters, and decide explicitly whether standalone numbers count.
+
+The second decision is the one people skip. Run the formula per field instead of once per page, because a page is not one block of text:
+
+```
+density = (occurrences / totalWords) * 100
+(6 / 480) * 100 = 1.25%
+
+title tag           2 /  60 words = 3.33%
+meta description    3 / 155 words = 1.94%
+H1                  1 /   9 words = 11.11%
+body               6 / 480 words = 1.25%
+```
+
+The page-level figure of 1.25 percent and the H1 figure of 11.11 percent are both correct and mean different things. Reporting one number for a page throws that away.
+
+## How should a script count words and phrases?
+
+Normalise first, then count. Lowercase the text, strip punctuation, collapse whitespace, split into tokens, and match the phrase against that token array rather than against the raw string. Counting raw HTML folds attributes and hidden markup into your denominator and quietly distorts every percentage you report afterwards.
+
+Normalisation is where a density script earns or loses trust. Stripping punctuation before splitting decides whether the compound seo-tools matches the phrase seo tools; case folding handles Keyword and keyword. Persian and Arabic add more to reconcile: the Arabic and Persian forms of one letter should fold together, and the zero-width non-joiner between words must be kept as a separator or removed consistently, or identical sentences score differently.
+
+A compact implementation that counts phrase matches on tokens:
+
+```js
+export function keywordDensity(text, phrase) {
+  const tokens = (s) =>
+    s
+      .toLowerCase()
+      .replace(/[^\p{L}\p{N}\s]/gu, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .split(' ')
+      .filter(Boolean);
+
+  const words = tokens(text);
+  const target = tokens(phrase);
+  let count = 0;
+
+  for (let i = 0; i + target.length <= words.length; i++) {
+    if (target.every((w, j) => words[i + j] === w)) count++;
+  }
+
+  const density = words.length ? (count / words.length) * 100 : 0;
+  return { words: words.length, count, density: Number(density.toFixed(2)) };
+}
+```
+
+Two rules are worth stating out loud. **Match on tokens, not substrings**, so the word rank never matches inside ranking and you count the phrase you meant to. **Do not stem silently.** A script without stemming reports that running shoes does not match running shoe, which is usually what you want for a controlled phrase. Add variants as explicit targets instead of letting a fuzzy match inflate the count.
+
+## What keyword density range is actually safe?
+
+Practitioner judgement, not a published benchmark: for a primary phrase, roughly one to two and a half percent reads as normal on a page of a few hundred words, above about three percent reads as deliberate repetition, and below about half a percent usually means the page never names its topic at all.
+
+No search engine publishes a stuffing threshold, so treat that band as a description of what looks normal to a reader and an editor, not a limit an algorithm enforces. On a thousand-word page, three percent is thirty mentions, roughly one every thirty words, which a reader notices within the first screenful. On a hundred-and-fifty-word page, one extra mention moves the density by about 0.67 percentage points, so short pages swing hard and should never be compared against long ones.
+
+Two consequences follow. Judge a page against its own previous draft rather than a universal number, and set a floor as well as a ceiling: never naming the topic costs at least as much as naming it on every line. For the surrounding checks a ratio cannot give you, run the page through the [keyword density analyzer](/en/tools/keyword-density-analyzer/) with a pass on structure and headings.
+
+## How do you run a density check step by step?
+
+Extract the visible text, normalise it, count the phrase and the words, compute a percentage for each field, then read the surrounding paragraphs before touching anything. The measurement takes seconds; the judgement about whether a sentence earned its repetition is the step that actually improves the page.
+
+The sequence I use on every draft:
+
+1. **Extract rendered text.** Copy from the browser or pull the CMS field, never the repository's raw HTML.
+2. **Normalise once, reuse everywhere.** The same function for every field, or the numbers stop being comparable.
+3. **Count per field.** Title tag, meta description, H1, opening paragraph, body.
+4. **Compute percentages to two decimals.** Below that, rounding noise reads like signal.
+5. **Compare fields against each other.** One field at 15 percent among fields at 1 percent is the finding, not the page average.
+6. **Read the paragraph behind each cluster of hits.** Decide whether the sentence earned the phrase or was padded to carry it.
+7. **Re-run after editing and diff against the previous draft.** A number with no predecessor cannot be acted on.
+
+Where the check runs matters as much as how. A one-off draft goes through the analyzer in a text box; a site with a template behind forty pages gets the script in the build, so a regressed field fails loudly instead of shipping quietly. The wider pre-publish order is in the [SEO checklist](/en/blog/seo-checklist-2026/).
+
+## What goes wrong when you optimize for density?
+
+Two failures dominate. Keyword stuffing makes the repetition visible to any reader, while density-chasing tunes the percentage without ever asking whether the page answers the query. Both leave you with a healthy-looking number, a page that does not satisfy the searcher, and no diagnosis of why it is not ranking.
+
+The specific ways I see this break:
+
+- **Repetition you can hear.** The phrase lands in every second sentence and a reader reaches the conclusion before the argument, while density sits inside the band.
+- **A cluster hidden by the average.** The page reports 1.1 percent while four of seven mentions sit in the first 150 words. The average is fine; the opening is not.
+- **Lowering the number with filler.** A writer under pressure adds two hundred words of padding instead of cutting redundant mentions. The metric improves and the page gets worse.
+- **Optimizing the wrong unit.** The brief targets one word, the audience searches a two-word phrase, and the count answers a question nobody asked.
+- **Chasing the ratio while intent goes unanswered.** The density is right and the page still fails the sub-questions the query implies. [SEO best practices](/en/blog/seo-best-practices/) states the ordering: content depth beats keyword density, density is the check that follows.
+
+## How does density compare with TF-IDF and topical coverage?
+
+Density counts one phrase you already chose; TF-IDF scores how distinctive a term is against a reference collection of documents; topical coverage asks whether the concepts a reader expects appear at all. They answer three different questions, and only the first is computable from a single page with no outside data.
+
+| Method | What it measures | Inputs it needs | Failure it catches | Failure it misses |
+|---|---|---|---|---|
+| Keyword density | Share of one chosen phrase in the page's words | The page text and a phrase you picked | Phrase absent, or repeated until it reads as manipulation | Page answers a different query |
+| TF-IDF | How unusual a term is versus a reference corpus | A corpus beyond the page plus tokenisation rules | Generic vocabulary instead of specifics | A stuffed phrase that is also frequent in the topic |
+| Topical coverage | Whether expected concepts and sub-questions are present | A concept list from the query, the SERP or your outline | Thin pages that skip a required sub-topic | Repetition of the concepts present |
+
+Used together they form a cheap sequence. Density runs first because it needs nothing but the text in front of you. Coverage decides rankings, and it needs a concept list someone builds from the query. TF-IDF sits awkwardly between them: it wants a corpus larger than the page, and on short pages the scores are too noisy to edit a draft against.
+
+## What does a worked density audit look like?
+
+Take a hypothetical page: a fictional bike-repair service page of seven hundred words, invented for this walkthrough and not a client result. Count field by field and the value is not the final percentage but the distribution, because four mentions in the opening 150 words and none in the pricing block is a finding the page-level number hides.
+
+Baseline, phrase bike repair:
+
+- **Total page:** 700 words, 7 mentions, 7 divided by 700 times 100 = 1.00 percent.
+- **H1:** 9 words, 1 mention, 11.11 percent.
+- **Opening 150 words:** 4 mentions, 4 divided by 150 times 100 = 2.67 percent.
+- **Remaining 550 words:** 2 mentions, 0.36 percent.
+- **Pricing paragraph, 130 words:** 0 mentions.
+
+Against the band, 1.00 percent is comfortable and the page looks finished. Field by field, the opening does double duty while the block discussing money never names the service at all. Move two mentions from the intro into the pricing and process sections: the total stays at seven, the page-level figure stays at 1.00 percent, and the page reads differently.
+
+A second pass adds one natural mention to the FAQ answer, giving 8 divided by 700 times 100 = 1.14 percent. Both versions pass the density check; only one of them passes a read-through, which is the argument for keeping the fields separate.
+
+## When should you trust the number, and when should you ignore it?
+
+Trust it when you are comparing drafts of the same page or scanning a template-generated set for outliers, where one broken field in forty is invisible without a metric. Ignore it as an argument for adding a sentence: density is a monitoring signal, and monitoring signals do not write copy.
+
+Where it earns its place:
+
+- **Template and programmatic pages.** A set built from one layout occasionally ships a field that never got filled; density finds it the way a linter finds an empty string.
+- **Draft-to-draft regression.** Run it before and after an edit and the number gains a predecessor, which is the only version you can interpret.
+- **Brief handoff.** Give writers a band and a warning about what sits outside it, not a target to hit. A target gets hit.
+
+Where it does not belong: setting page length, adding a phrase you would not otherwise use, or comparing unrelated topics where a brand name repeats naturally. Density is one check inside a wider [technical SEO audit](/en/blog/technical-seo-audit-guide-2026/); pixel budgets and title drafts belong with an [SEO title checker](/en/blog/seo-title-optimization-guide-2026/), the [headline analyzer](/en/tools/headline-analyzer/) and, when a page needs more than a script can tell you, [our SEO services](/en/services/seo/).
+
+## What are the most common questions about keyword density?
+
+The five questions below are the ones that come up in audits and in briefs, and each is already answered somewhere in the section above. They are collected here so a reader who arrived with one of them in mind gets the short version without scrolling back.
+
+### What is a good keyword density for SEO?
+
+Practitioner judgement rather than a published benchmark: roughly one to two and a half percent for a primary phrase on a page of a few hundred words. Below about half a percent the page rarely names its topic; above about three percent the repetition shows. No search engine documents a threshold, so compare each draft with its own previous version.
+
+### How do you count keyword density for a phrase instead of a single word?
+
+Normalise the text into lowercase tokens with punctuation stripped, slide the target phrase across the token array, and count each complete match once. Six matches of a two-word phrase in 480 words is six divided by 480, times one hundred: 1.25 percent. Counting the words separately reports double the figure.
+
+### Does keyword density still affect rankings?
+
+No search engine documents density as a ranking input, so tuning the percentage does not move a position on its own. The number is still a useful diagnostic: it surfaces a page that never names its target phrase, and one that repeats it until the text reads as manipulation. Intent match, coverage and page quality do the ranking work.
+
+### How often should you run a keyword density check?
+
+On a page you are editing, run it before publishing and again after the edit so the two numbers can be compared. On a template-driven set, run it inside the build once per release. A page nobody is touching does not need a schedule.
+
+### Should I write my own density script or use an online analyzer?
+
+Write the script when density has to run across many pages inside a build step or a CMS hook, which is where one broken template field hides. Use an [online analyzer](/en/tools/keyword-density-analyzer/) for a single draft you already have in a text box. Most teams end up wanting both.
