@@ -59,7 +59,13 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      // Root `/` and 404 pages are excluded from index
+      // Root `/` and 404 pages are excluded from the index.
+      //
+      // `/` is geo-redirected server-side by `worker.ts` (a 302 to the
+      // visitor's locale), so it never answers 200 to a single-locale crawler.
+      // A sitemap entry for it would therefore point at a URL that changes
+      // response per visitor — the three locale roots (/en/, /fa/, /ar/) are the
+      // intended entry points instead. Do not "fix" this by adding `/` back.
       filter: (page) => page !== `${SITE}/` && !page.includes('/404'),
       serialize: (item) => {
         if (item.url !== `${SITE}/` && !item.url.endsWith('/')) {
