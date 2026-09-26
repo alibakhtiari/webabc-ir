@@ -114,6 +114,9 @@
 - [Tehran E-commerce Web Design Guide 2026](/en/blog/tehran-ecommerce-web-design-guide-2026/): Store costs, checkout UX recovery, and local SEO for Tehran online stores.
 - [SEO Services Pricing Guide 2026](/en/blog/seo-services-pricing-guide-2026/): Transparent SEO pricing tiers, technical audit scope, retainer ROI, and local package benchmarks.
 - [Qazvin Web Design & Local SEO Guide 2026](/en/blog/qazvin-web-design-seo-guide-2026/): Strategic guide for Caspian and Liya industrial zones, Google Maps, and municipal B2B web development.
+- [Keyword Density Analyzer Script: Formula and Code](/en/blog/keyword-density-analyzer-script/): The density formula, a defensible target range, per-field counting rules, and the mistakes that make the number lie.
+- [Moz Title Checker Alternatives: 5 Free Options](/en/blog/moz-title-checker-alternatives/): Compare 5 free alternatives on pixel width, mobile preview, live-page audit and export.
+- [Web Development Guide 2026: Process, Options, Hiring](/en/blog/web-development-guide-2026/): What web development covers, how a project runs from brief to launch, custom code vs CMS or site builder, and how to judge a supplier.
 
 ## Persian Corpus & Regional Hubs (fa)
 
@@ -132,6 +135,9 @@
 - [طراحی فروشگاه اینترنتی در تهران: هزینه، UX و سئو [2026]](/fa/blog/tehran-ecommerce-web-design-guide-2026/): هزینه فروشگاه، بازیابی تسویه‌حساب و سئوی محلی تهران.
 - [راهنمای تعرفه سئو و قیمت خدمات سئو ۲۰۲۶](/fa/blog/seo-services-pricing-guide-2026/): جدول شفاف پکیج‌های سئو تکنیکال، ریتینر ماهانه، سئو محلی و محاسبه بازگشت سرمایه.
 - [راهنمای طراحی سایت در قزوین و سئو محلی ۲۰۲۶](/fa/blog/qazvin-web-design-seo-guide-2026/): توسعه وب شهرک‌های صنعتی کاسپین و لیا، رتبه ۱ نقشه گوگل، نشان و بلد.
+- [اسکریپت تحلیل‌گر چگالی کلمه کلیدی: فرمول و کد](/fa/blog/keyword-density-analyzer-script/): فرمول چگالی، بازه هدف قابل‌دفاع، قواعد شمارش برای هر فیلد و اشتباهاتی که عدد را به دروغ نشان می‌دهد.
+- [جایگزین‌های چکر عنوان موز: ۵ ابزار رایگان](/fa/blog/moz-title-checker-alternatives/): مقایسه پنج جایگزین رایگان بر اساس عرض پیکسل، پیش‌نمایش موبایل، ممیزی صفحه زنده و خروجی.
+- [راهنمای توسعه وب ۲۰۲۶: فرایند، گزینه‌ها و انتخاب پیمانکار](/fa/blog/web-development-guide-2026/): حوزه پوشش توسعه وب، مسیر پروژه از بریف تا راه‌اندازی و مقایسه کد اختصاصی با CMS و سایت‌ساز.
 - [تحلیلگر تیتر سئو و پیش‌نمایش نتایج گوگل (SERP)](/fa/tools/headline-analyzer/): امتیازدهی به تیترها از نظر بار احساسی، طول کاراکتر و نرخ کلیک، همراه با شبیه‌ساز زنده نتایج گوگل در دسکتاپ و موبایل.
 - [ماشین‌حساب هزینه طراحی سایت](/fa/tools/cost-calculator/): برآورد تعاملی بودجه پروژه‌های طراحی و توسعه وب.
 - [سازنده اسکیمای ساخت‌یافته](/fa/tools/schema-generator/): تولید نشانه‌گذاری JSON-LD برای Organization و Service و FAQ.
@@ -154,6 +160,9 @@
 - [تصميم متجر إلكتروني في طهران: التكلفة والسيو [2026]](/ar/blog/tehran-ecommerce-web-design-guide-2026/): تكاليف المتاجر وتجربة الدفع والسيو المحلي.
 - [دليل أسعار باقات السيو لعام 2026](/ar/blog/seo-services-pricing-guide-2026/): جدول أسعار التدقيق التقني، السيو المحلي في الخليج، العقود الشهرية، وعائد الاستثمار.
 - [دليل تصميم المواقع والسيو المحلي في قزوين 2026](/ar/blog/qazvin-web-design-seo-guide-2026/): تطوير منصات مصانع كاسبيان وليا الصناعية، خرائط جوجل، وصادرات B2B.
+- [سكريبت محلل كثافة الكلمات المفتاحية: المعادلة والكود](/ar/blog/keyword-density-analyzer-script/): معادلة الكثافة، ونطاق مستهدف يمكن الدفاع عنه، وقواعد العدّ لكل حقل، والأخطاء التي تجعل الرقم يكذب.
+- [بدائل أداة فحص موز للعناوين: 5 خيارات مجانية](/ar/blog/moz-title-checker-alternatives/): مقارنة 5 بدائل مجانية بحسب عرض البكسل ومعاينة الهاتف وتدقيق الصفحة الحيّة وجودة التصدير.
+- [دليل تطوير الويب 2026: العملية والخيارات والمورد](/ar/blog/web-development-guide-2026/): ما يغطيه تطوير الويب، ومسار المشروع من الموجز حتى الإطلاق، ومقارنة الكود المخصص بنظام إدارة المحتوى ومنشئ المواقع.
 - [محلل عناوين السيو ومعاينة نتائج جوجل (SERP)](/ar/tools/headline-analyzer/): تقييم العناوين من حيث التأثير العاطفي وطول الأحرف ونسبة النقر، مع محاكاة مظهر النتائج على ديسكتوب وجوال.
 - [حاسبة تكلفة تصميم المواقع](/ar/tools/cost-calculator/): تقدير تفاعلي فوري لميزانية مشاريع تصميم وتطوير الويب.
 - [مولد ترميز سكيما](/ar/tools/schema-generator/): توليد بيانات JSON-LD المنظمة لأنواع Organization وService وFAQ.
