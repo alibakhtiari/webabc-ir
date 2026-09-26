@@ -111,7 +111,7 @@ const enHomeMd = `# WebABC — Premier Web Design, Custom Development & SEO Agen
 - **Enterprise SEO & AEO**: Technical site audits, Google Core Web Vitals optimization, entity-graph Schema.org structured data, and high-CTR snippet targeting.
 - **Local SEO & Middle East Growth**: Google Maps 3-Pack, local business directory management, and verified localized citations across the GCC and Iran.
 - **E-commerce & Web Applications**: Fast, high-conversion headless stores, custom checkout flows, and payment integrations.
-- **Free Developer & SEO Tools**: 23 zero-install client-side utilities including Headline Analyzer & SERP Preview, Website Cost Calculator, and Schema Generator.
+- **Free Developer & SEO Tools**: 21 zero-install client-side utilities including Headline Analyzer & SERP Preview, Website Cost Calculator, and Schema Generator.
 
 ## Geographic Service Hubs
 - **Dubai, UAE**: https://webabc.ir/en/service-areas/dubai/
@@ -145,7 +145,7 @@ const faHomeMd = `# وب اِی‌بی‌سی (WebABC) — شرکت طراحی �
 - **سئو تخصصی و رشد ارگانیک**: سئو تکنیکال، لینک‌سازی اصولی، داده‌های ساختاریافته Schema.org و بهبود نرخ کلیک (CTR).
 - **سئو محلی و رتبه ۱ نقشه**: ثبت و رتبه‌گیری در Google Maps، نشان و بلد برای کسب‌وکارهای تهران، قزوین و منطقه خلیج فارس.
 - **طراحی فروشگاه اینترنتی**: پلتفرم‌های فروشگاهی سریع با تجربه کاربری روان و اتصال به درگاه‌های بانکی.
-- **ابزارهای آنلاین رایگان**: ۲۳ ابزار بدون نیاز به نصب شامل تحلیلگر تیتر سئو و پیش‌نمایش گوگل، ماشین‌حساب هزینه طراحی سایت و سازنده اسکیما.
+- **ابزارهای آنلاین رایگان**: ۲۱ ابزار بدون نیاز به نصب شامل تحلیلگر تیتر سئو و پیش‌نمایش گوگل، ماشین‌حساب هزینه طراحی سایت و سازنده اسکیما.
 
 ## دفاتر و مناطق تحت پوشش
 - **قزوین (دفتر مرکزی و شهرک‌های صنعتی کاسپین و لیا)**: https://webabc.ir/fa/service-areas/qazvin/
@@ -167,7 +167,7 @@ const arHomeMd = `# ويب إيه بي سي (WebABC) — تصميم وتطوير
 - **السيو والنمو العضوي**: تحسين البنية التقنية، البيانات المنظمة Schema.org، وتصدر نتائج محركات البحث والذكاء الاصطناعي.
 - **السيو المحلي وخرائط جوجل**: تصدر حزمة النتائج الثلاثية في خرائط Google وإدارة الملفات التجارية في الخليج.
 - **المتاجر الإلكترونية**: متاجر متكاملة وسريعة متوافقة مع بوابات الدفع المحلية.
-- **أدوات السيو والتطوير المجانية**: أكثر من 20 أداة تفاعلية تشمل محلل عناوين السيو، حاسبة التكلفة، ومولد أكواد السكيما.
+- **أدوات السيو والتطوير المجانية**: 21 أداة تفاعلية تشمل محلل عناوين السيو، حاسبة التكلفة، ومولد أكواد السكيما.
 
 ## الأسواق الإقليمية
 - **دبي، الإمارات**: https://webabc.ir/ar/service-areas/dubai/
@@ -208,9 +208,9 @@ const HUBS = [
     titleEn: 'Free Online Developer & SEO Tools',
     titleFa: 'ابزارهای آنلاین رایگان سئو و توسعه وب',
     titleAr: 'أدوات مجانية للمطورين والسيو',
-    descEn: '23 zero-install client-side utilities including Headline Analyzer & SERP Preview Simulator, Cost Calculator, Schema Generator, and Readability Checker.',
-    descFa: '۲۳ ابزار آنلاین و رایگان شامل تحلیلگر تیتر سئو و پیش‌نمایش گوگل، ماشین‌حساب هزینه طراحی سایت، سازنده اسکیما و چکر خوانایی.',
-    descAr: 'أكثر من 20 أداة تفاعلية مجانية تشمل محلل عناوين السيو، حاسبة تكلفة المواقع، ومولد ترميز السكيما.'
+    descEn: '21 zero-install client-side utilities including Headline Analyzer & SERP Preview Simulator, Cost Calculator, Schema Generator, and Readability Checker.',
+    descFa: '۲۱ ابزار آنلاین و رایگان شامل تحلیلگر تیتر سئو و پیش‌نمایش گوگل، ماشین‌حساب هزینه طراحی سایت، سازنده اسکیما و چکر خوانایی.',
+    descAr: '21 أداة تفاعلية مجانية تشمل محلل عناوين السيو، حاسبة تكلفة المواقع، ومولد ترميز السكيما.'
   },
   {
     path: 'portfolio',
@@ -297,6 +297,131 @@ for (const city of CITIES) {
   writeMd(`ar/service-areas/${city}/index.md`, cityAr);
   writeMd(`ar/service-areas/${city}.md`, cityAr);
   generatedCount += 6;
+}
+
+// 7. Tool pages — markdown siblings for the rel="alternate" type="text/markdown"
+//    link Layout.astro emits at {canonicalPath}index.md. Everything below is read
+//    back out of the HTML Astro just built, so the markdown can only ever restate
+//    what the tool page actually renders (title, meta description, guide, FAQ).
+const TOOL_LOCALES = ['en', 'fa', 'ar'];
+const toolPageDir = path.join(root, 'src/pages/[lang]/tools');
+const toolSlugs = fs.existsSync(toolPageDir)
+  ? fs
+      .readdirSync(toolPageDir)
+      .filter((f) => f.endsWith('.astro') && f !== 'index.astro')
+      .map((f) => f.replace(/\.astro$/, ''))
+      .sort()
+  : [];
+
+function decodeHtmlEntities(str) {
+  return str
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#(\d+);/g, (_, dec) => String.fromCodePoint(Number(dec)))
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&');
+}
+
+function textOf(fragment) {
+  return decodeHtmlEntities(fragment.replace(/<[^>]*>/g, ' '))
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+// JSON-LD payloads are inserted verbatim via set:html, so their strings are raw
+// text already — no tag stripping and no entity decoding.
+function plainText(str) {
+  return String(str).replace(/\s+/g, ' ').trim();
+}
+
+// FAQPage JSON-LD — emitted by ToolFAQ.astro exactly once, immediately before the
+// visible FAQ block, so the first <h2> after it is that block's heading.
+function findFaqBlock(html) {
+  const scripts = html.matchAll(
+    /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g
+  );
+  for (const m of scripts) {
+    let data;
+    try {
+      data = JSON.parse(m[1]);
+    } catch {
+      continue;
+    }
+    if (data && data['@type'] === 'FAQPage' && Array.isArray(data.mainEntity)) {
+      const after = html.slice(m.index + m[0].length);
+      const heading = after.match(/<h2[^>]*>([\s\S]*?)<\/h2>/);
+      return {
+        items: data.mainEntity,
+        heading: heading ? textOf(heading[1]) : 'FAQ',
+      };
+    }
+  }
+  return null;
+}
+
+// "How it works" + "When to use" guide rendered by ToolLayout.astro when a tool
+// page passes a `guide` prop (3 tools today). Section marker is layout-specific;
+// a miss simply drops the section rather than inventing one.
+function findGuideSection(html) {
+  const start = html.indexOf('max-w-4xl space-y-10');
+  if (start === -1) return null;
+  const end = html.indexOf('</section>', start);
+  const seg = html.slice(start, end === -1 ? undefined : end);
+  const headings = [...seg.matchAll(/<h2[^>]*>([\s\S]*?)<\/h2>/g)].map((m) => textOf(m[1]));
+  if (headings.length === 0) return null;
+  return {
+    howTitle: headings[0],
+    paragraphs: [...seg.matchAll(/<p class="leading-relaxed[^"]*">([\s\S]*?)<\/p>/g)].map((m) =>
+      textOf(m[1])
+    ),
+    useCasesTitle: headings[1] || '',
+    items: [...seg.matchAll(/<li[^>]*>([\s\S]*?)<\/li>/g)].map((m) => textOf(m[1])),
+  };
+}
+
+for (const lang of TOOL_LOCALES) {
+  for (const slug of toolSlugs) {
+    const htmlPath = path.join(distDir, lang, 'tools', slug, 'index.html');
+    if (!fs.existsSync(htmlPath)) continue;
+    const html = fs.readFileSync(htmlPath, 'utf8');
+
+    const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
+    const title = h1 ? textOf(h1[1]) : slug;
+    const descMatch = html.match(/<meta name="description" content="([^"]*)"/);
+    const description = descMatch ? decodeHtmlEntities(descMatch[1]) : '';
+
+    const guide = findGuideSection(html);
+
+    const faq = findFaqBlock(html);
+    const faqItems = (faq?.items || []).filter(
+      (q) => q && q.name && q.acceptedAnswer && q.acceptedAnswer.text
+    );
+
+    const lines = [`# ${title}`];
+    if (description) lines.push('', `> ${description}`);
+
+    if (guide && guide.howTitle) {
+      lines.push('', `## ${guide.howTitle}`);
+      for (const p of guide.paragraphs) lines.push('', p);
+      if (guide.useCasesTitle && guide.items.length > 0) {
+        lines.push('', `## ${guide.useCasesTitle}`);
+        for (const item of guide.items) lines.push(`- ${item}`);
+      }
+    }
+
+    if (faqItems.length > 0) {
+      lines.push('', `## ${faq.heading}`);
+      faqItems.forEach((q, i) => {
+        lines.push(`${i + 1}. **${plainText(q.name)}** ${plainText(q.acceptedAnswer.text)}`);
+      });
+    }
+
+    lines.push('', '---', `*WebABC Tool: https://webabc.ir/${lang}/tools/${slug}*`);
+    writeMd(`${lang}/tools/${slug}/index.md`, lines.join('\n'));
+    generatedCount++;
+  }
 }
 
 console.log(`Successfully generated ${generatedCount} markdown representations in dist/.`);
