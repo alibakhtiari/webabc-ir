@@ -6,6 +6,19 @@ Severity scale: Critical → High → Medium → Low. Phase boundaries are depen
 
 ---
 
+## Completed
+
+Shipped and verified against the code. Kept as a ledger so closed items are not reopened or redone.
+
+| # | Item | Evidence it is closed | Shipped in |
+|---|---|---|---|
+| 1.1 | Locale-aware 404 with a real body | `wrangler.toml` sets `not_found_handling = "404.html"`; `worker.ts` swaps in `/{lang}/404/` for locale-prefixed paths and serves `MARKDOWN_404_BODY` to agent UAs | `dfa9a99` |
+| 2.2 | Thin-content triage | all 108 posts rewritten to the `docs/BLOG-REWRITE-SPEC.md` band — **0 posts under 900 words** in any locale (was 22/36 EN); minimum rose 323 → 1,532 | `7c8f9e9` · `049701f` · `94b05e3` |
+| 4.1 | Root-URL sitemap exclusion documented | the geo-302 rationale now sits at the `filter` in `astro.config.mjs` | `c192fe1` |
+| 4.7 | Tool count aligned at 21 | README, `llms.txt`, and the 21 tool routes all agree on 21 | `0026ff1` |
+
+---
+
 ## Phase 0 — Measurement foundation (do first, ~half a day)
 
 You cannot verify any GROW claim below without these two things.
@@ -28,27 +41,6 @@ Record per prompt: mentioned? linked? which URL? position in answer?
 ---
 
 ## Phase 1 — Critical (week 1)
-
-### 1.1 Fix the blank 404 🔴
-
-**Finding:** `03-technical.md` §2 · **Root cause:** `wrangler.toml` has no `not_found_handling`, so `env.ASSETS.fetch()` returns an empty-body 404 that `worker.ts:516-531` passes through.
-
-**Do:**
-```toml
-[assets]
-directory = "./dist"
-binding = "ASSETS"
-run_worker_first = true
-not_found_handling = "404.html"
-```
-(Alternative — worker-side: when `response.status === 404` and the body is empty, fetch `/404.html`, or `/${lang}/404/` when the path matches `^/(en|fa|ar)/`.)
-
-Also fix while you're in there: the non-slash/non-locale path should serve the right locale's 404 rather than the site-root one.
-
-**Falsifiability check (ACCEPT):**
-> `curl -A "<Chrome UA>" -H "Accept: text/html" https://webabc.ir/en/does-not-exist/` returns **status 404** with `content-length > 50000` and `<title>Page Not Found | WebABC</title>`.
-
----
 
 ### 1.2 Stop indexing 205 markdown duplicates 🟠
 
@@ -126,32 +118,6 @@ Mirror the leading-noun swap into `src/i18n/fa/tools/headlineAnalyzer.json` and 
 
 ---
 
-### 2.2 Thin-content triage 🔴
-
-**Finding:** `05-content-blog.md` §3 · median 598 words, 22/36 EN posts under 900, all carrying "Guide"/"Complete" titles.
-
-**Do — two options per post, pick one:**
-
-| Option | When | Work |
-|---|---|---|
-| **A. Retitle to match reality** | Post is genuinely narrow in scope | e.g. `Technical SEO Audit: 12-Point Checklist` instead of `…Guide 2026`. Cheap, immediate, removes the promise/reality mismatch |
-| **B. Expand to the promise** | Post is core to a money topic | Target 1,800–2,500 words for guide-scope, 1,200 minimum for standard how-to |
-
-**Priority order (do these 6 first — they map to the cannibalization clusters, so 2.2 and 2.3 share work):**
-1. `technical-seo-audit-guide-2026` (363w)
-2. `link-building-strategies-guide-2026` (356w)
-3. `website-maintenance-security-guide-2026` (322w)
-4. `seo-checklist-2026` (467w — its title promises a "Complete Step-by-Step Audit")
-5. `website-speed-optimization-guide-2026` (375w)
-6. `wordpress-vs-custom-development-guide-2026` (416w)
-
-**Do NOT backdate anything.** Fabricated earlier dates are worse than the current state.
-
-**Falsifiability check (ACCEPT):**
-> Re-count word counts after the pass: **0 posts under 900 words still carrying a `Guide`/`Complete` title.** If word count rises but the posts still earn 0 impressions after 8 weeks, depth was not the binding constraint → the topic has no demand (consider pruning instead).
-
----
-
 ### 2.3 Consolidate 7 cannibalization clusters 🟠
 
 **Finding:** `05-content-blog.md` §4 · bodies are **3–7% similar (genuinely distinct content)** — this is **title/intent cannibalization, not duplicate content**.
@@ -207,12 +173,19 @@ Mirror the leading-noun swap into `src/i18n/fa/tools/headlineAnalyzer.json` and 
 
 **The site already knows what works: narrow pricing intent + specific numbers.** The two assets that perform are depth (`local-seo-services-guide-2026`, 3,294w) and intent specificity (speed pricing).
 
-**Do:** produce 3 new posts using the same shape, in fa first (highest-converting market):
-1. `Web Design Cost in Iran 2026 — Real Prices by Project Type` (fa)
-2. `SEO Service Pricing 2026 — Monthly Retainer vs Project` (fa → en → ar)
-3. `Website Maintenance Cost 2026` (fills the thin `website-maintenance-security` gap)
+**Do:** produce a pricing post using the same shape, in fa first (highest-converting market). The three topics originally sketched here were **deliberately not written as-is** — `Web Design Cost in Iran` and `SEO Service Pricing` would have collided with the existing cost posts in cluster A, which is exactly the cannibalization item 2.3 exists to remove.
 
-**Falsifiability check (GROW):** at least 1 of the 3 reaches position ≤20 for a pricing query within 8 weeks. If all 3 sit >40, the market does not have that query demand → stop producing pricing content.
+Three posts were shipped instead (`e8946ed`), each from query evidence that already earns impressions with zero clicks:
+
+| Post | `date` | Query evidence (2026-09-21 export) |
+|---|---|---|
+| `keyword-density-analyzer-script` | 2026-09-19 | 6 keyword-density queries, **55 impressions, 0 clicks**, positions 14–54; exact match `keyword density analyzer script` 29 @ 14.14. Tool page: 58 impressions @ 20.31, 0 clicks |
+| `moz-title-checker-alternatives` | 2026-09-22 | 281 impressions across 3 Moz-branded queries, positions 10–16, **0 clicks** |
+| `web-development-guide-2026` | 2026-09-24 | 118 Arabic impressions across 3 queries, positions 37–45, **0 clicks** |
+
+**Still open:** a genuinely *pricing*-intent post — that is the hypothesis this item exists to test.
+
+**Falsifiability check (GROW):** the pricing post reaches position ≤20 for a pricing query within 8 weeks of publishing. If it sits >40, the market does not have that query demand → stop producing pricing content.
 
 ---
 
@@ -235,13 +208,11 @@ These are **relevance/depth/internal-link** problems. Do **not** sequence them a
 
 | # | Action | Evidence | Check |
 |---|---|---|---|
-| 4.1 | Homepage sitemap exclusion: keep `/` out (the geo-302 argument holds) but **document the decision** in `astro.config.mjs` so it isn't re-litigated; confirm `/en/`, `/fa/`, `/ar/` are the intended entry points | `03-technical.md` §3 | A comment exists at the `filter` explaining the 302 rationale |
 | 4.2 | Resolve dangling `#webpage`: either drop the fragment in `FAQ.astro`, or emit an explicit `WebPage @id = …/#webpage` with `isPartOf → …/#website` and `breadcrumb`, then point `BlogPosting.mainEntityOfPage` at it (preferred — completes the chain) | `04-schema.md` §4.1 | `curl` a blog post; every `@id` referenced by `isPartOf`/`mainEntityOfPage` exists as a node |
 | 4.3 | `WebSite.url` varies by language under a single `@id` → per-language `@id`, or drop `url` | `04-schema.md` §6 | One `WebSite` `@id` per language, or none carrying `url` |
 | 4.4 | Fix or delete the dead `/*.html` cache rule — `build.format: 'directory'` means no URL ends in `.html` | `09-performance-images.md` §3 | Live HTML `cache-control` matches whatever the file declares. **If you enable an HTML cache, `Vary: Accept` must remain** or markdown/HTML representations can cross-contaminate |
 | 4.5 | Per-tool OG images — `getImageForPage` maps every `*/tools/*` → `headline-analyzer.webp`, so 63 sitemap image entries and all social cards for 20 tools are wrong | `09-performance-images.md` §2 | Each tool URL's sitemap `<image:loc>` differs; sharing `cost-calculator` renders its own card |
 | 4.6 | Self-host Arabic fonts (`IBM Plex Sans Arabic` + `Cairo`) as `woff2` with the same preload pattern as `ltr.woff2`/`rtl.woff2`; drop both preconnects | `09-performance-images.md` §4 | `curl` an `/ar/` page: zero `fonts.googleapis.com` / `fonts.gstatic.com` references |
-| 4.7 | Tool count copy: `README.md` says 24, `llms.txt` says 23, reality is **21** | `05-content-blog.md` §1 | All three say 21 |
 | 4.8 | Add a **build-time assertion that on-page hreflang == sitemap hreflang** — they are implemented twice (`Layout.astro` and `astro.config.mjs`) and can drift | `06-i18n-hreflang.md` §2 | Build fails if the two outputs differ |
 | 4.9 | Consolidate `_redirects` and `worker.ts` `STATIC_REDIRECTS` to one source of truth (they currently agree — keep it that way) | `03-technical.md` §8 | Single list, or a test asserting equality |
 | 4.10 | Homepage image weight ~967 KB — measure with PSI first (0.2), add responsive `srcset`/`sizes` only if LCP is red | `09-performance-images.md` §1 | Field LCP ≤2.5 s before/after; **do not change anything if it's already green** |
@@ -262,9 +233,9 @@ These are **relevance/depth/internal-link** problems. Do **not** sequence them a
 
 ```
 Week 0   ─ Phase 0: baseline + CrUX + freeze 5 GEO prompts
-Week 1   ─ Phase 1: 404 fix · .md noindex · headline-analyzer title · CTR denominator
-Weeks 2-4 ─ Phase 2: llms.txt rebalance · thin-content triage · 7 cannibal merges
-           · cadence · CTA map · 3 new pricing posts
+Week 1   ─ Phase 1: .md noindex · headline-analyzer title · CTR denominator
+Weeks 2-4 ─ Phase 2: llms.txt rebalance · 7 cannibal merges · cadence · CTA map
+           · one pricing-intent post (2.6)
 Weeks 4-12 ─ Phase 3: buried pages · snippet rewrites · off-site footprint
            · Persian brand SERP · locale differentiation
 Ongoing  ─ Phase 4: technical debt batch · monthly citation test

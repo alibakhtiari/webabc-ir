@@ -1,6 +1,6 @@
 # Corrections to the Previous Audit
 
-**Superseded file:** `stale-2026-09-21/FULL-AUDIT-REPORT.md` (+ its `findings/`, `ACTION-PLAN.md`, `audit-data.json`)
+**Superseded file:** the 2026-09-21 `FULL-AUDIT-REPORT.md` (plus its `findings/`, `ACTION-PLAN.md` and `audit-data.json`) — removed from the tree during docs consolidation, retained in git history at `8e06389`
 **Reason for superseding:** the previous report contains factual claims that do not match the repository or the live site.
 
 This file exists so the corrections are auditable and so the same claims are not reintroduced.

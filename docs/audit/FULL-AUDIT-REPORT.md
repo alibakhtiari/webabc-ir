@@ -5,7 +5,7 @@
 **Locales:** `en` (x-default) · `fa` · `ar` — exact slug parity
 **Audit date:** 2026-09-22
 **Data source:** `webabc.ir-Performance-on-Search-2026-09-21.xlsx` (GSC, Search type **Web**, 2026-06-19 → 2026-09-18)
-**Supersedes:** the 2026-09-21 audit (archived in `stale-2026-09-21/`) — see `findings/10-corrections.md`
+**Supersedes:** the 2026-09-21 audit — all 13 corrections it required are catalogued in `findings/10-corrections.md`. The superseded files themselves were removed during docs consolidation; they remain in git history (see `8e06389`).
 
 ---
 
@@ -133,25 +133,9 @@ Trend is healthy: **27 → 723 impressions/day across three months (~27×)**. In
 
 ## 5. Deliverable index
 
-```
-webabc.ir-audit/
-├── README.md                        ← start here
-├── FULL-AUDIT-REPORT.md             ← this file
-├── ACTION-PLAN.md                   ← sequenced work with falsifiability checks
-├── audit-data.json                  ← machine-readable findings
-├── findings/
-│   ├── 01-gsc-performance.md        ← 416 queries, 289 pages, trend, zero-click clusters
-│   ├── 02-on-page-serp.md           ← titles/descriptions, CTR rewrites, cannibal CTA map
-│   ├── 03-technical.md              ← crawl, redirects, sitemap, 404 bug, headers, negotiation
-│   ├── 04-schema.md                 ← JSON-LD inventory + entity graph integrity
-│   ├── 05-content-blog.md           ← thin content, 7 cannibal clusters, freshness, taxonomy
-│   ├── 06-i18n-hreflang.md          ← hreflang, RTL, locale parity, geo-redirect
-│   ├── 07-aeo.md                    ← answer engine readiness
-│   ├── 08-geo-ai-citations.md       ← AI crawlers, llms.txt, entity footprint, citation testing
-│   ├── 09-performance-images.md     ← page weight, caching, fonts, OG images
-│   └── 10-corrections.md            ← what the previous audit got wrong (and right)
-└── stale-2026-09-21/                ← superseded report, preserved intact
-```
+Reading order, per-file scope, the evidence standard and the scoring weights all live in [`README.md`](./README.md) — this report intentionally does not duplicate that table.
+
+Short version: [`README.md`](./README.md) (start here) → this report → [`ACTION-PLAN.md`](./ACTION-PLAN.md) → `findings/01`–`10`, with `audit-data.json` for machine-readable diffing between audits.
 
 **Every claim in this package carries evidence**: a source path (with line number where relevant) or a live HTTP status/header dump taken 2026-09-22.
 

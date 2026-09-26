@@ -2,7 +2,7 @@
 
 **Audit date:** 2026-09-22 · **Overall health: 76 / 100**
 
-Data source: `../webabc.ir-Performance-on-Search-2026-09-21.xlsx` (GSC, Search type Web, 2026-06-19 → 2026-09-18) plus live HTTP verification and full source inspection of the Astro + Cloudflare Workers codebase.
+Data source: `../../webabc.ir-Performance-on-Search-2026-09-21.xlsx` (GSC, Search type Web, 2026-06-19 → 2026-09-18) plus live HTTP verification and full source inspection of the Astro + Cloudflare Workers codebase.
 
 ---
 
@@ -31,7 +31,7 @@ Data source: `../webabc.ir-Performance-on-Search-2026-09-21.xlsx` (GSC, Search t
 
 ## Superseded
 
-[`stale-2026-09-21/`](./stale-2026-09-21/) — the original report, preserved unmodified. It contains factual errors catalogued in `findings/10-corrections.md`; **do not act on it.**
+The 2026-09-21 report was retired: it contained factual errors now catalogued in [`findings/10-corrections.md`](./findings/10-corrections.md). Its files were removed during docs consolidation and remain recoverable from git history (see `8e06389`). **Do not act on it.**
 
 ---
 

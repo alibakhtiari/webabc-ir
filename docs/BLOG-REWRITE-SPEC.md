@@ -1,7 +1,7 @@
 # Blog Rewrite Contract — webabc.ir
 
 **Scope:** deep rewrite of all 36 EN posts, mirrored to `fa` and `ar` (108 files).
-**Target:** blog-skill quality thresholds. Audit finding this addresses: `webabc.ir-audit/findings/05-content-blog.md` §3 (median 571 words, 23/36 EN posts under 900 words under "Guide" titles).
+**Target:** blog-skill quality thresholds. Audit finding this addresses: `docs/audit/findings/05-content-blog.md` §3 (median 571 words, 23/36 EN posts under 900 words under "Guide" titles).
 
 Every rewrite agent — human or subagent — must follow this document exactly. It is the single source of truth for the job.
 
@@ -223,4 +223,4 @@ Write like the practitioner who has actually run the procedure being described. 
 
 ---
 
-**Back to:** `webabc.ir-audit/ACTION-PLAN.md` (Phase 2.2)
+**Back to:** `docs/audit/ACTION-PLAN.md` (Phase 2.2 — now recorded under Completed)

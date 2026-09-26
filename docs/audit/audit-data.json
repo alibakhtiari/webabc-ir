@@ -2,7 +2,7 @@
   "audit": {
     "property": "https://webabc.ir",
     "date": "2026-09-22",
-    "supersedes": "stale-2026-09-21",
+    "supersedes": "the 2026-09-21 audit (removed from the tree; see git 8e06389)",
     "data_source": "webabc.ir-Performance-on-Search-2026-09-21.xlsx",
     "gsc_window": { "from": "2026-06-19", "to": "2026-09-18", "days": 92, "search_type": "Web" },
     "stack": {

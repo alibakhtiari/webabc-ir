@@ -87,8 +87,7 @@ Visit `http://localhost:4321` to view the site locally.
 ## 📚 Documentation
 
 - `docs/BLOG-REWRITE-SPEC.md` — the blog rewrite contract (read before editing any post).
-- `webabc.ir-audit/README.md` — index of the full SEO / AEO / GEO audit, scorecard, findings, and action plan.
-- `webabc.ir-audit/stale-2026-09-21/` — the superseded audit and optimization plan, preserved for provenance.
+- `docs/audit/README.md` — index of the full SEO / AEO / GEO audit: scorecard, findings, and the sequenced action plan.
 
 ---
 
