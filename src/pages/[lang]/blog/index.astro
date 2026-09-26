@@ -40,6 +40,10 @@ const descriptionText = t('blog.blogDescription', {
 // Schema definitions
 const origin = 'https://webabc.ir';
 const currentUrl = `${origin}/${supportedLang}/blog/`;
+// One author identity per name, so index and detail pages emit the SAME @id.
+const isAliAuthor = (author?: string) =>
+  ['Ali Bakhtiari', 'علی بختیاری', 'علي بختياري'].includes(author?.trim() ?? '');
+
 const blogSchema = {
   '@context': 'https://schema.org',
   '@type': 'Blog',
@@ -53,10 +57,17 @@ const blogSchema = {
     description: post.description,
     image: post.image.startsWith('http') ? post.image : `${origin}${post.image}`,
     datePublished: post.date,
+    // Falls back to `date`, matching the detail page: `dateModified == date`
+    // simply means "unchanged since publication", which is true.
+    dateModified: post.updatedDate ?? post.date,
     author: {
-      '@type': ['Ali Bakhtiari', 'علی بختیاری', 'علي بختياري'].includes(post.author?.trim() ?? '')
-        ? 'Person'
-        : 'Organization',
+      '@type': isAliAuthor(post.author) ? 'Person' : 'Organization',
+      '@id': isAliAuthor(post.author)
+        ? `${origin}/${supportedLang}/about/ali-bakhtiari/#person`
+        : `${origin}/#organization`,
+      url: isAliAuthor(post.author)
+        ? `${origin}/${supportedLang}/about/ali-bakhtiari/`
+        : `${origin}/${supportedLang}/about/`,
       name:
         post.author ||
         (supportedLang === 'fa'
@@ -172,7 +183,11 @@ const breadcrumbs = [
                         ) : null;
                       })()}
                       <span class={`text-xs text-gray-500 dark:text-gray-400 ${metaFontClass}`}>
-                        {new Date(post.date).toLocaleDateString(
+                        {/* Show the revision date when one exists: the detail page
+                            prints "Updated: …" alongside the original date, so a
+                            card showing only the 2025 publication date reads as
+                            stale corpus to anyone (or anything) scanning the index. */}
+                        {new Date(post.updatedDate ?? post.date).toLocaleDateString(
                           supportedLang === 'ar'
                             ? 'ar-SA'
                             : supportedLang === 'fa'

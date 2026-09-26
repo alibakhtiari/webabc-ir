@@ -102,12 +102,22 @@ const articleSchema = {
   author: isAliBakhtiari
     ? {
         '@type': 'Person',
+        // Same @id as the canonical Person on the about page so every post
+        // author node joins one entity graph instead of creating a nameless
+        // orphan. Localised labels are expected; the identity is shared.
+        '@id': `${origin}/${supportedLang}/about/ali-bakhtiari/#person`,
         name:
           supportedLang === 'fa'
             ? 'علی بختیاری'
             : supportedLang === 'ar'
               ? 'علي بختياري'
               : 'Ali Bakhtiari',
+        jobTitle:
+          supportedLang === 'fa'
+            ? 'توسعه‌دهنده ارشد وردپرس و متخصص سئو'
+            : supportedLang === 'ar'
+              ? 'مطور ووردبريس ومستشار سيو'
+              : 'Senior WordPress Developer & SEO Specialist',
         url: `${origin}/${supportedLang}/about/ali-bakhtiari/`,
         image: `${origin}/ali-bakhtiari.webp`,
         sameAs: [
@@ -122,6 +132,9 @@ const articleSchema = {
       }
     : {
         '@type': 'Organization',
+        // Join the same Organization entity the `publisher` node references
+        // below, so a post is never published by an unreferenced stub.
+        '@id': `${origin}/#organization`,
         name: translatedAuthor,
         url: `${origin}/${supportedLang}/about/`,
         logo: `${origin}/webabc.webp`,
