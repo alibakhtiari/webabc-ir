@@ -2,6 +2,7 @@ import { defineConfig, svgoOptimizer } from 'astro/config';
 import tailwind from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
+import fs from 'node:fs';
 import sitemapLastmod from './src/generated/sitemap-lastmod.json' with { type: 'json' };
 
 const SITE = 'https://webabc.ir';
@@ -31,9 +32,18 @@ export const getImageForPage = (pageKey) => {
     const slug = pageKey.replace(/^(en|fa|ar)\/portfolio\//, '').replace(/\/$/, '');
     return `/images/og/portfolio/${slug}.webp`;
   }
-  // Tools index and individual tools
+  // Tools: per-tool art at /images/og/tools/<slug>.webp once it exists. The old
+  // branch returned that path unconditionally for every tool, so all 66 tool URLs
+  // published an <image:loc> pointing at images/og/tools/headline-analyzer.webp —
+  // a file that does not exist (ACTION-PLAN §4.5). Existence is checked here so a
+  // missing image degrades to the site default instead of shipping a 404, and the
+  // per-tool card appears automatically as soon as the art is generated.
   if (pageKey.match(/^(en|fa|ar)\/tools(\/.*)?$/)) {
-    return '/images/og/tools/headline-analyzer.webp';
+    const tool = pageKey.match(/^(en|fa|ar)\/tools\/([^/]+)\/?$/);
+    if (tool && fs.existsSync(`public/images/og/tools/${tool[2]}.webp`)) {
+      return `/images/og/tools/${tool[2]}.webp`;
+    }
+    return '/images/og-image.webp';
   }
   return undefined;
 }; // site-launch date — never a build timestamp

@@ -108,16 +108,23 @@ async function generate(auth, prompt, quality, size) {
   throw new Error('no image_generation result returned by the codex backend');
 }
 
-const [, , slug, prompt, quality = 'high', size = GEN_SIZE] = process.argv;
+const argv = process.argv.slice(2);
+const outIdx = argv.indexOf('--out');
+const outDirArg = outIdx === -1 ? null : argv[outIdx + 1];
+if (outIdx !== -1) argv.splice(outIdx, outIdx === -1 ? 1 : 2);
+
+const [slug, prompt, quality = 'high', size = GEN_SIZE] = argv;
 if (!slug || !prompt) {
-  console.error('usage: node scripts/generate-blog-cover.mjs <slug> "<prompt>" [quality] [size]');
+  console.error(
+    'usage: node scripts/generate-blog-cover.mjs <slug> "<prompt>" [quality] [size] [--out <dir>]'
+  );
   process.exit(1);
 }
 
 const auth = await loadAuth();
 const base64 = await generate(auth, prompt, quality, size);
 
-const outDir = path.resolve('public/images/blog');
+const outDir = path.resolve(outDirArg ?? 'public/images/blog');
 await fs.mkdir(outDir, { recursive: true });
 
 const outPath = path.join(outDir, `${slug}.webp`);

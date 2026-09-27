@@ -62,6 +62,22 @@ if (fs.existsSync(blogDir)) {
   });
 }
 
+// 5. Tools — only when per-tool art exists. Layout.astro resolves og:image by
+// reading this manifest with slug "tools/<tool>", so an absent file falls through
+// to /images/og-image.webp instead of a broken URL. Adding public/images/og/tools/
+// art is all that is needed for the card to appear (ACTION-PLAN §4.5).
+const toolsSrc = path.join(root, 'src/config/tools.ts');
+if (fs.existsSync(toolsSrc)) {
+  const toolSlugs = [...fs.readFileSync(toolsSrc, 'utf-8').matchAll(/^  '([a-z0-9-]+)': \{/gm)].map(
+    (m) => m[1]
+  );
+  for (const t of toolSlugs) {
+    if (fs.existsSync(path.join(root, `public/images/og/tools/${t}.webp`))) {
+      manifest[`tools/${t}`] = `/images/og/tools/${t}.webp`;
+    }
+  }
+}
+
 // Ensure target dir exists
 const outPath = path.join(root, 'src/generated/og-images.json');
 fs.mkdirSync(path.dirname(outPath), { recursive: true });
