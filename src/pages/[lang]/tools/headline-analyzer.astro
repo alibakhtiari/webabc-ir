@@ -57,7 +57,10 @@ const faqSchema = buildFaqSchema(faqs);
 
           <div class="flex items-center justify-between">
             <span id="char-count" class="font-persian text-xs text-gray-500 dark:text-gray-400"
-              >0 / 60 characters</span
+              >{t('headlineAnalyzer.counter.char', { fallback: '{cur} / 60 characters' }).replace(
+                '{cur}',
+                '0',
+              )}</span
             >
             <button
               type="button"
@@ -117,7 +120,7 @@ const faqSchema = buildFaqSchema(faqs);
                 >0</span
               >
               <span class="absolute bottom-2 text-[10px] text-gray-500 dark:text-gray-400"
-                >Score</span
+                >{t('headlineAnalyzer.dashboard.score', { fallback: 'Score' })}</span
               >
             </div>
             <div class="space-y-1">
@@ -125,10 +128,12 @@ const faqSchema = buildFaqSchema(faqs);
                 class="font-persian text-lg font-bold text-gray-800 dark:text-gray-100"
                 id="grade-text"
               >
-                Awaiting Input
+                {t('headlineAnalyzer.dashboard.awaitingInput', { fallback: 'Awaiting Input' })}
               </h3>
               <p class="font-persian text-xs text-gray-500 dark:text-gray-400" id="grade-desc">
-                Type a headline to see real-time quality analytics.
+                {t('headlineAnalyzer.dashboard.gradeDescInitial', {
+                  fallback: 'Type a headline to see real-time quality analytics.',
+                })}
               </p>
             </div>
           </div>
@@ -139,7 +144,9 @@ const faqSchema = buildFaqSchema(faqs);
             <div class="space-y-1.5">
               <div class="flex justify-between text-xs">
                 <span class="font-persian font-medium text-gray-700 dark:text-gray-200"
-                  >SEO Length Match</span
+                  >{t('headlineAnalyzer.dashboard.lengthMatch', {
+                    fallback: 'SEO Length Match',
+                  })}</span
                 >
                 <span
                   class="font-persian font-semibold text-gray-600 dark:text-gray-300"
@@ -160,7 +167,9 @@ const faqSchema = buildFaqSchema(faqs);
               <div class="space-y-1.5">
                 <div class="flex justify-between text-xs">
                   <span class="font-persian font-medium text-gray-700 dark:text-gray-200"
-                    >Sentiment Balance</span
+                    >{t('headlineAnalyzer.dashboard.sentimentBalance', {
+                      fallback: 'Sentiment Balance',
+                    })}</span
                   >
                   <span
                     class="font-persian font-semibold text-gray-600 dark:text-gray-300"
@@ -182,7 +191,9 @@ const faqSchema = buildFaqSchema(faqs);
               <div class="space-y-1.5">
                 <div class="flex justify-between text-xs">
                   <span class="font-persian font-medium text-gray-700 dark:text-gray-200"
-                    >Power Words & Numbers</span
+                    >{t('headlineAnalyzer.dashboard.powerWords', {
+                      fallback: 'Power Words & Numbers',
+                    })}</span
                   >
                   <span
                     class="font-persian font-semibold text-gray-600 dark:text-gray-300"
@@ -258,7 +269,11 @@ const faqSchema = buildFaqSchema(faqs);
                     id="meta-title-counter"
                     class="rounded-sm bg-yellow-50 px-2 py-0.5 font-mono text-xs text-yellow-600"
                   >
-                    0 / 60 chars (0px)
+                    {t('headlineAnalyzer.counter.title', {
+                      fallback: '{cur} / 60 chars ({px}px)',
+                    })
+                      .replace('{cur}', '0')
+                      .replace('{px}', '0')}
                   </span>
                 </div>
                 <input
@@ -283,7 +298,11 @@ const faqSchema = buildFaqSchema(faqs);
                     id="meta-desc-counter"
                     class="rounded-sm bg-yellow-50 px-2 py-0.5 font-mono text-xs text-yellow-600"
                   >
-                    0 / 160 chars (0px)
+                    {t('headlineAnalyzer.counter.desc', {
+                      fallback: '{cur} / 160 chars ({px}px)',
+                    })
+                      .replace('{cur}', '0')
+                      .replace('{px}', '0')}
                   </span>
                 </div>
                 <textarea
@@ -312,7 +331,7 @@ const faqSchema = buildFaqSchema(faqs);
                       stroke-width="2"
                       d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 8H18.2"></path></svg
                   >
-                  {t('common.clear', { fallback: 'Clear' })}
+                  {t('headlineAnalyzer.clear', { fallback: 'Clear' })}
                 </button>
               </div>
             </div>
@@ -403,16 +422,23 @@ const faqSchema = buildFaqSchema(faqs);
                     id="meta-preview-title"
                     class="mb-1 cursor-pointer text-xl font-medium wrap-break-word text-[#1a0dab] hover:underline dark:text-[#8ab4f8]"
                   >
-                    Google Search Snippet Preview
+                    {t('headlineAnalyzer.meta.snippetPreview', {
+                      fallback: 'Google Search Snippet Preview',
+                    })}
                   </h3>
 
                   <p
                     id="meta-preview-desc"
-                    data-default-text="Write your page title and meta description tag inside the fields above to see how they will look when rendered inside Google Search results."
+                    data-default-text={t('headlineAnalyzer.meta.previewDefault', {
+                      fallback:
+                        'Write your page title and meta description tag inside the fields above to see how they will look when rendered inside Google Search results.',
+                    })}
                     class="font-sans text-sm leading-relaxed wrap-break-word text-[#4d5156] dark:text-[#bdc1c6]"
                   >
-                    Write your page title and meta description tag inside the fields above to see how
-                    they will look when rendered inside Google Search results.
+                    {t('headlineAnalyzer.meta.previewDefault', {
+                      fallback:
+                        'Write your page title and meta description tag inside the fields above to see how they will look when rendered inside Google Search results.',
+                    })}
                   </p>
                 </div>
               </div>
@@ -645,19 +671,25 @@ const faqSchema = buildFaqSchema(faqs);
     <section class="container mx-auto mt-16 px-4 font-sans">
       <div class="mx-auto max-w-4xl space-y-8">
         <nav
-          aria-label="On this page"
+          aria-label={t('headlineAnalyzer.guide.onThisPage', { fallback: 'On this page' })}
           class="rounded-xl border border-gray-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
         >
-          <p class="mb-2 text-sm font-bold text-gray-800 dark:text-gray-100">On this page</p>
+          <p class="mb-2 text-sm font-bold text-gray-800 dark:text-gray-100">
+            {t('headlineAnalyzer.guide.onThisPage', { fallback: 'On this page' })}
+          </p>
           <ul class="flex flex-wrap gap-x-4 gap-y-2 text-xs">
             <li>
               <a href="#meta-title-input" class="font-semibold text-primary hover:underline"
-                >Meta title input</a
+                >{t('headlineAnalyzer.guide.metaTitleInput', {
+                  fallback: 'Meta title input',
+                })}</a
               >
             </li>
             <li>
               <a href="#meta-checker-heading" class="font-semibold text-primary hover:underline"
-                >Meta Title &amp; Description Checker</a
+                >{t('headlineAnalyzer.meta.heading', {
+                  fallback: 'Meta Title & Description Checker',
+                })}</a
               >
             </li>
             <li>
@@ -667,7 +699,9 @@ const faqSchema = buildFaqSchema(faqs);
             </li>
             <li>
               <a href="#headline-scoring-guide" class="font-semibold text-primary hover:underline"
-                >How scoring works</a
+                >{t('headlineAnalyzer.guide.howScoringWorks', {
+                  fallback: 'How scoring works',
+                })}</a
               >
             </li>
           </ul>
@@ -677,17 +711,36 @@ const faqSchema = buildFaqSchema(faqs);
             id="headline-scoring-guide"
             class="text-2xl font-bold text-gray-900 md:text-3xl dark:text-white"
           >
-            How This Headline Checker Scores Your Title
+            {t('headlineAnalyzer.guide.heading', {
+              fallback: 'How This Headline Checker Scores Your Title',
+            })}
           </h2>
           <p class="leading-relaxed text-gray-600 dark:text-gray-300">
-            This free SEO headline checker and blog title analyzer scores your headline across three
-            factors that correlate with organic click-through rate: <strong>length</strong> (titles between
-            50–60 characters avoid truncation in Google search snippets), <strong
-              >power words &amp; numbers</strong
-            > (headlines with a number and an emotional trigger word see measurably higher CTR), and <strong
-              >sentiment balance</strong
+            {t('headlineAnalyzer.guide.introLead', {
+              fallback:
+                'This free SEO headline checker and blog title analyzer scores your headline across three factors that correlate with organic click-through rate:',
+            })}
+            <strong>{t('headlineAnalyzer.guide.introLength', { fallback: 'length' })}</strong>
+            {' '}
+            {t('headlineAnalyzer.guide.introLengthNote', {
+              fallback: '(titles between 50–60 characters avoid truncation in Google search snippets),',
+            })}{' '}
+            <strong
+              >{t('headlineAnalyzer.guide.introPower', {
+                fallback: 'power words & numbers',
+              })}</strong
             >
-            (questions and exclamations tend to drive more curiosity clicks than flat statements).
+            {' '}
+            {t('headlineAnalyzer.guide.introPowerNote', {
+              fallback:
+                '(headlines with a number and an emotional trigger word see measurably higher CTR), and',
+            })}{' '}
+            <strong>{t('headlineAnalyzer.guide.introSentiment', { fallback: 'sentiment balance' })}</strong>
+            {' '}
+            {t('headlineAnalyzer.guide.introSentimentNote', {
+              fallback:
+                '(questions and exclamations tend to drive more curiosity clicks than flat statements).',
+            })}
           </p>
         </div>
 
@@ -696,38 +749,47 @@ const faqSchema = buildFaqSchema(faqs);
             class="rounded-xl border border-gray-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
           >
             <h3 class="mb-2 text-sm font-bold text-gray-800 dark:text-gray-100">
-              Headline vs. Title Tag
+              {t('headlineAnalyzer.guide.card1Title', { fallback: 'Headline vs. Title Tag' })}
             </h3>
             <p class="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
-              Your on-page headline (H1) and your search-result title tag can be different. Analyze
-              your H1 with the tool above, then scroll to the
+              {t('headlineAnalyzer.guide.card1Text1', {
+                fallback:
+                  'Your on-page headline (H1) and your search-result title tag can be different. Analyze your H1 with the tool above, then scroll to the',
+              })}
               <a href="#meta-title-input" class="font-semibold text-primary hover:underline"
-                >Meta Title &amp; Description Checker</a
+                >{t('headlineAnalyzer.meta.heading', {
+                  fallback: 'Meta Title & Description Checker',
+                })}</a
               >
-              to test the exact snippet Google will show.
+              {t('headlineAnalyzer.guide.card1Text2', {
+                fallback: 'to test the exact snippet Google will show.',
+              })}
             </p>
           </div>
           <div
             class="rounded-xl border border-gray-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
           >
             <h3 class="mb-2 text-sm font-bold text-gray-800 dark:text-gray-100">
-              Ideal Headline Length
+              {t('headlineAnalyzer.guide.card2Title', { fallback: 'Ideal Headline Length' })}
             </h3>
             <p class="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
-              Aim for 50–60 characters. Shorter headlines lack context and keyword coverage; longer
-              ones risk truncation on both desktop and mobile SERPs.
+              {t('headlineAnalyzer.guide.card2Text', {
+                fallback:
+                  'Aim for 50–60 characters. Shorter headlines lack context and keyword coverage; longer ones risk truncation on both desktop and mobile SERPs.',
+              })}
             </p>
           </div>
           <div
             class="rounded-xl border border-gray-100 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
           >
             <h3 class="mb-2 text-sm font-bold text-gray-800 dark:text-gray-100">
-              Power Words That Work
+              {t('headlineAnalyzer.guide.card3Title', { fallback: 'Power Words That Work' })}
             </h3>
             <p class="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
-              Words like "proven", "free", "ultimate", or "essential" paired with a digit (e.g. "7
-              Tips") are the highest-performing combination for blog, YouTube, and article
-              headlines.
+              {t('headlineAnalyzer.guide.card3Text', {
+                fallback:
+                  'Words like "proven", "free", "ultimate", or "essential" paired with a digit (e.g. "7 Tips") are the highest-performing combination for blog, YouTube, and article headlines.',
+              })}
             </p>
           </div>
         </div>
@@ -735,8 +797,41 @@ const faqSchema = buildFaqSchema(faqs);
     </section>
   </section>
 
+  <!-- Client-side i18n strings (mirrors the meta-tips-i18n JSON-blob pattern) -->
+  <script type="application/json" id="headline-client-i18n" set:html={JSON.stringify({
+    charCountFormat: t('headlineAnalyzer.counter.char', { fallback: '{cur} / 60 characters' }),
+    titleCounterFormat: t('headlineAnalyzer.counter.title', { fallback: '{cur} / 60 chars ({px}px)' }),
+    descCounterFormat: t('headlineAnalyzer.counter.desc', { fallback: '{cur} / 160 chars ({px}px)' }),
+    snippetPreview: t('headlineAnalyzer.meta.snippetPreview', { fallback: 'Google Search Snippet Preview' }),
+    lengthTooShort: t('headlineAnalyzer.client.lengthTooShort', { fallback: 'Too Short' }),
+    lengthPerfect: t('headlineAnalyzer.client.lengthPerfect', { fallback: 'Perfect (50-60 chars)' }),
+    lengthGood: t('headlineAnalyzer.client.lengthGood', { fallback: 'Good Length' }),
+    lengthSlightlyLong: t('headlineAnalyzer.client.lengthSlightlyLong', { fallback: 'Slightly Long' }),
+    lengthTooLong: t('headlineAnalyzer.client.lengthTooLong', { fallback: 'Too Long (Will truncate)' }),
+    powerNone: t('headlineAnalyzer.client.powerNone', { fallback: 'No triggers' }),
+    powerBoth: t('headlineAnalyzer.client.powerBoth', { fallback: 'Numbers & Triggers Present' }),
+    powerOne: t('headlineAnalyzer.client.powerOne', { fallback: 'Good Trigger Usage' }),
+    powerAdd: t('headlineAnalyzer.client.powerAdd', { fallback: 'Add numbers or power words' }),
+    sentimentNeutral: t('headlineAnalyzer.client.sentimentNeutral', { fallback: 'Neutral / Balanced' }),
+    sentimentEngaging: t('headlineAnalyzer.client.sentimentEngaging', { fallback: 'Highly Engaging!' }),
+    sentimentCuriosity: t('headlineAnalyzer.client.sentimentCuriosity', { fallback: 'Curiosity Inducing' }),
+    gradeNeedsWork: t('headlineAnalyzer.client.gradeNeedsWork', { fallback: 'Needs Work' }),
+    gradeNeedsWorkDesc: t('headlineAnalyzer.client.gradeNeedsWorkDesc', { fallback: 'Try adding emotional numbers, action verbs, or optimizing length.' }),
+    gradeExcellent: t('headlineAnalyzer.client.gradeExcellent', { fallback: 'Excellent Headline!' }),
+    gradeExcellentDesc: t('headlineAnalyzer.client.gradeExcellentDesc', { fallback: 'Your title is perfectly optimized for search performance and user click-through rates.' }),
+    gradeDecent: t('headlineAnalyzer.client.gradeDecent', { fallback: 'Decent Headline' }),
+    gradeDecentDesc: t('headlineAnalyzer.client.gradeDecentDesc', { fallback: 'A few minor tweaks (like length or power words) could significantly boost your CTR.' }),
+    demoTitle: t('headlineAnalyzer.client.demoTitle', { fallback: 'Web Design and SEO Services - WebABC' }),
+    demoDesc: t('headlineAnalyzer.client.demoDesc', { fallback: 'We design highly optimized, modern websites and provide expert SEO consultation to help your business achieve digital excellence.' }),
+    demoKeyword: t('headlineAnalyzer.client.demoKeyword', { fallback: 'web design' }),
+  })}
+  >
+  </script>
+
   <script is:inline data-astro-rerun>
     (() => {
+      const I18N = JSON.parse(document.getElementById('headline-client-i18n').textContent);
+
       const input = document.getElementById('headline-input');
       const analyzeBtn = document.getElementById('analyze-btn');
       const charCount = document.getElementById('char-count');
@@ -803,32 +898,32 @@ const faqSchema = buildFaqSchema(faqs);
         // 1. Length check (ideal is between 50-60 characters)
         const len = text.length;
         let lenScore = 0;
-        let lenText = 'Too Short';
+        let lenText = I18N.lengthTooShort;
         let lenColorClass = 'bg-red-500';
 
         if (len >= 50 && len <= 60) {
           lenScore = 100;
-          lenText = 'Perfect (50-60 chars)';
+          lenText = I18N.lengthPerfect;
           lenColorClass = 'bg-green-500';
           score += 35;
         } else if (len >= 40 && len < 50) {
           lenScore = 75;
-          lenText = 'Good Length';
+          lenText = I18N.lengthGood;
           lenColorClass = 'bg-yellow-500';
           score += 25;
         } else if (len > 60 && len <= 75) {
           lenScore = 75;
-          lenText = 'Slightly Long';
+          lenText = I18N.lengthSlightlyLong;
           lenColorClass = 'bg-yellow-500';
           score += 20;
         } else if (len > 75) {
           lenScore = 40;
-          lenText = 'Too Long (Will truncate)';
+          lenText = I18N.lengthTooLong;
           lenColorClass = 'bg-red-500';
           score += 5;
         } else {
           lenScore = 30;
-          lenText = 'Too Short';
+          lenText = I18N.lengthTooShort;
           lenColorClass = 'bg-red-500';
           score += 10;
         }
@@ -849,22 +944,22 @@ const faqSchema = buildFaqSchema(faqs);
         });
 
         let powerScore = 0;
-        let powerText = 'No triggers';
+        let powerText = I18N.powerNone;
         let powerColorClass = 'bg-red-500';
 
         if (powerCount > 0 && hasNumber) {
           powerScore = 100;
-          powerText = 'Numbers & Triggers Present';
+          powerText = I18N.powerBoth;
           powerColorClass = 'bg-green-500';
           score += 35;
         } else if (powerCount > 0 || hasNumber) {
           powerScore = 70;
-          powerText = 'Good Trigger Usage';
+          powerText = I18N.powerOne;
           powerColorClass = 'bg-yellow-500';
           score += 20;
         } else {
           powerScore = 20;
-          powerText = 'Add numbers or power words';
+          powerText = I18N.powerAdd;
           powerColorClass = 'bg-red-500';
         }
 
@@ -877,17 +972,17 @@ const faqSchema = buildFaqSchema(faqs);
         const hasExclamation = text.includes('!');
         const hasQuestion = text.includes('?');
         let sentimentScore = 50;
-        let sentimentText = 'Neutral / Balanced';
+        let sentimentText = I18N.sentimentNeutral;
         let sentimentColorClass = 'bg-gray-400';
 
         if (hasExclamation) {
           sentimentScore = 90;
-          sentimentText = 'Highly Engaging!';
+          sentimentText = I18N.sentimentEngaging;
           sentimentColorClass = 'bg-green-500';
           score += 10;
         } else if (hasQuestion) {
           sentimentScore = 85;
-          sentimentText = 'Curiosity Inducing';
+          sentimentText = I18N.sentimentCuriosity;
           sentimentColorClass = 'bg-blue-500';
           score += 10;
         } else {
@@ -904,19 +999,17 @@ const faqSchema = buildFaqSchema(faqs);
         // Update Score Circle & Grade
         scoreVal.innerText = score;
 
-        let grade = 'Needs Work';
-        let desc = 'Try adding emotional numbers, action verbs, or optimizing length.';
+        let grade = I18N.gradeNeedsWork;
+        let desc = I18N.gradeNeedsWorkDesc;
         let circleColor = 'border-red-500 text-red-500 bg-red-50/50 dark:bg-red-950/30';
 
         if (score >= 80) {
-          grade = 'Excellent Headline!';
-          desc =
-            'Your title is perfectly optimized for search performance and user click-through rates.';
+          grade = I18N.gradeExcellent;
+          desc = I18N.gradeExcellentDesc;
           circleColor = 'border-green-500 text-green-500 bg-green-50/50 dark:bg-green-950/30';
         } else if (score >= 60) {
-          grade = 'Decent Headline';
-          desc =
-            'A few minor tweaks (like length or power words) could significantly boost your CTR.';
+          grade = I18N.gradeDecent;
+          desc = I18N.gradeDecentDesc;
           circleColor = 'border-yellow-500 text-yellow-500 bg-yellow-50/50 dark:bg-yellow-950/30';
         }
 
@@ -927,7 +1020,7 @@ const faqSchema = buildFaqSchema(faqs);
 
       input.addEventListener('input', () => {
         const len = input.value.trim().length;
-        charCount.innerText = `${len} / 60 characters`;
+        charCount.innerText = I18N.charCountFormat.replace('{cur}', len);
         if (len > 0) {
           analyzeHeadline();
         }
@@ -959,6 +1052,7 @@ const faqSchema = buildFaqSchema(faqs);
   <script is:inline data-astro-rerun>
     (() => {
       const TIPS = JSON.parse(document.getElementById('meta-tips-i18n').textContent);
+      const I18N = JSON.parse(document.getElementById('headline-client-i18n').textContent);
 
       const keywordInput = document.getElementById('meta-keyword-input');
       const titleInput = document.getElementById('meta-title-input');
@@ -1027,16 +1121,18 @@ const faqSchema = buildFaqSchema(faqs);
         const titleWidth = getPixelWidth(title);
         const descWidth = getPixelWidth(desc, true);
 
-        titleCounter.textContent = `${title.length} / 60 chars (${titleWidth}px)`;
-        descCounter.textContent = `${desc.length} / 160 chars (${descWidth}px)`;
+        titleCounter.textContent = I18N.titleCounterFormat
+          .replace('{cur}', title.length)
+          .replace('{px}', titleWidth);
+        descCounter.textContent = I18N.descCounterFormat
+          .replace('{cur}', desc.length)
+          .replace('{px}', descWidth);
 
         const isMobile = serpContainer.classList.contains('max-w-[375px]');
         const maxTitleW = isMobile ? 550 : 580;
         const maxDescW = isMobile ? 900 : 990;
 
-        previewTitle.textContent = title
-          ? truncateText(title, maxTitleW, false)
-          : 'Google Search Snippet Preview';
+        previewTitle.textContent = title ? truncateText(title, maxTitleW, false) : I18N.snippetPreview;
         previewDesc.textContent = desc
           ? truncateText(desc, maxDescW, true)
           : previewDesc.dataset.defaultText;
@@ -1165,10 +1261,9 @@ const faqSchema = buildFaqSchema(faqs);
         updatePreviews();
       });
 
-      titleInput.value = 'Web Design and SEO Services - WebABC';
-      descInput.value =
-        'We design highly optimized, modern websites and provide expert SEO consultation to help your business achieve digital excellence.';
-      keywordInput.value = 'web design';
+      titleInput.value = I18N.demoTitle;
+      descInput.value = I18N.demoDesc;
+      keywordInput.value = I18N.demoKeyword;
       updatePreviews();
     })();
   </script>

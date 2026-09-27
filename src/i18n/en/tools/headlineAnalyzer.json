@@ -5,6 +5,9 @@
   "headlineLabel": "Headline",
   "placeholder": "Enter your headline here...",
   "results": "Analysis Results",
+  "inputLabel": "Enter your headline:",
+  "button": "Analyze",
+  "clear": "Clear",
   "overallScore": "Overall Score",
   "wordCount": "Word Count",
   "wordCountIdeal": "Ideal: 6-12 words",
@@ -73,7 +76,9 @@
     "overallScore": "SEO Score",
     "titleScore": "Title",
     "descScore": "Description",
-    "tips": "Suggestions"
+    "tips": "Suggestions",
+    "snippetPreview": "Google Search Snippet Preview",
+    "previewDefault": "Write your page title and meta description tag inside the fields above to see how they will look when rendered inside Google Search results."
   },
   "metaTips": {
     "titlePerfect": "Title length is perfect.",
@@ -103,5 +108,61 @@
     "serpPoint3": "Focus keyword prominence and placement check",
     "unifiedTitle": "Why They Belong Together",
     "unifiedDesc": "A headline with a high CTR score can still fail if Google truncates its key phrase in search results. This unified tool lets you craft high-converting titles and verify their exact SERP rendering in one seamless step."
+  },
+  "counter": {
+    "char": "{cur} / 60 characters",
+    "title": "{cur} / 60 chars ({px}px)",
+    "desc": "{cur} / 160 chars ({px}px)"
+  },
+  "dashboard": {
+    "score": "Score",
+    "awaitingInput": "Awaiting Input",
+    "gradeDescInitial": "Type a headline to see real-time quality analytics.",
+    "lengthMatch": "SEO Length Match",
+    "sentimentBalance": "Sentiment Balance",
+    "powerWords": "Power Words & Numbers"
+  },
+  "guide": {
+    "onThisPage": "On this page",
+    "metaTitleInput": "Meta title input",
+    "howScoringWorks": "How scoring works",
+    "heading": "How This Headline Checker Scores Your Title",
+    "introLead": "This free SEO headline checker and blog title analyzer scores your headline across three factors that correlate with organic click-through rate:",
+    "introLength": "length",
+    "introLengthNote": "(titles between 50–60 characters avoid truncation in Google search snippets),",
+    "introPower": "power words & numbers",
+    "introPowerNote": "(headlines with a number and an emotional trigger word see measurably higher CTR), and",
+    "introSentiment": "sentiment balance",
+    "introSentimentNote": "(questions and exclamations tend to drive more curiosity clicks than flat statements).",
+    "card1Title": "Headline vs. Title Tag",
+    "card1Text1": "Your on-page headline (H1) and your search-result title tag can be different. Analyze your H1 with the tool above, then scroll to the",
+    "card1Text2": "to test the exact snippet Google will show.",
+    "card2Title": "Ideal Headline Length",
+    "card2Text": "Aim for 50–60 characters. Shorter headlines lack context and keyword coverage; longer ones risk truncation on both desktop and mobile SERPs.",
+    "card3Title": "Power Words That Work",
+    "card3Text": "Words like \"proven\", \"free\", \"ultimate\", or \"essential\" paired with a digit (e.g. \"7 Tips\") are the highest-performing combination for blog, YouTube, and article headlines."
+  },
+  "client": {
+    "lengthTooShort": "Too Short",
+    "lengthPerfect": "Perfect (50-60 chars)",
+    "lengthGood": "Good Length",
+    "lengthSlightlyLong": "Slightly Long",
+    "lengthTooLong": "Too Long (Will truncate)",
+    "powerNone": "No triggers",
+    "powerBoth": "Numbers & Triggers Present",
+    "powerOne": "Good Trigger Usage",
+    "powerAdd": "Add numbers or power words",
+    "sentimentNeutral": "Neutral / Balanced",
+    "sentimentEngaging": "Highly Engaging!",
+    "sentimentCuriosity": "Curiosity Inducing",
+    "gradeNeedsWork": "Needs Work",
+    "gradeNeedsWorkDesc": "Try adding emotional numbers, action verbs, or optimizing length.",
+    "gradeExcellent": "Excellent Headline!",
+    "gradeExcellentDesc": "Your title is perfectly optimized for search performance and user click-through rates.",
+    "gradeDecent": "Decent Headline",
+    "gradeDecentDesc": "A few minor tweaks (like length or power words) could significantly boost your CTR.",
+    "demoTitle": "Web Design and SEO Services - WebABC",
+    "demoDesc": "We design highly optimized, modern websites and provide expert SEO consultation to help your business achieve digital excellence.",
+    "demoKeyword": "web design"
   }
 }
