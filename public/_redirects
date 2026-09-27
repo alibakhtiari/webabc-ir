@@ -92,3 +92,11 @@
 /en/blog/web-design-trends-2025    /en/blog/web-design-trends/    301
 /fa/blog/web-design-trends-2025    /fa/blog/web-design-trends/    301
 /ar/blog/web-design-trends-2025    /ar/blog/web-design-trends/    301
+
+# how-to-write-clickable-headlines was merged into seo-title-optimization-guide-2026
+# (same "how to write titles" intent, 12 impressions vs 24) to stop the two posts
+# cannibalizing one query cluster. Targets carry a trailing slash so each stays a
+# single 301 hop.
+/en/blog/how-to-write-clickable-headlines    /en/blog/seo-title-optimization-guide-2026/    301
+/fa/blog/how-to-write-clickable-headlines    /fa/blog/seo-title-optimization-guide-2026/    301
+/ar/blog/how-to-write-clickable-headlines    /ar/blog/seo-title-optimization-guide-2026/    301

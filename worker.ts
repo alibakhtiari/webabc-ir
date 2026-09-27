@@ -104,6 +104,13 @@ const STATIC_REDIRECTS: Record<string, string> = {
   '/en/blog/web-design-trends-2025': '/en/blog/web-design-trends/',
   '/fa/blog/web-design-trends-2025': '/fa/blog/web-design-trends/',
   '/ar/blog/web-design-trends-2025': '/ar/blog/web-design-trends/',
+
+  // how-to-write-clickable-headlines merged into seo-title-optimization-guide-2026
+  // (same "how to write titles" intent, 12 imp vs 24) to stop the two posts
+  // cannibalizing the same query cluster. Trailing slash keeps it a single hop.
+  '/en/blog/how-to-write-clickable-headlines': '/en/blog/seo-title-optimization-guide-2026/',
+  '/fa/blog/how-to-write-clickable-headlines': '/fa/blog/seo-title-optimization-guide-2026/',
+  '/ar/blog/how-to-write-clickable-headlines': '/ar/blog/seo-title-optimization-guide-2026/',
 };
 
 // ---------------------------------------------------------------------------

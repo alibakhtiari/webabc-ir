@@ -106,7 +106,6 @@
 - [Website Speed Optimization Pricing & Core Web Vitals ROI Guide 2026](/en/blog/website-speed-optimization-pricing-guide-2026/): Complete guide to website speed optimization costs and Core Web Vitals pricing in 2026. Explore service rates for WordPress, WooCommerce, and custom web apps.
 - [Trilingual Website Maintenance and Security Guide 2026](/en/blog/website-maintenance-security-guide-2026/): Master website maintenance and security in 2026. Learn automated backup scheduling, SSL renewals, malware scans, database optimization, and uptime protocols.
 - [SEO Best Practices for 2026: The Definitive Search Guide](/en/blog/seo-best-practices/): Stay ahead with SEO best practices for 2026. Discover latest strategies for Core Web Vitals, AI search optimization (AEO), and technical SEO to boost rankings.
-- [Clickable Headlines Guide](/en/blog/how-to-write-clickable-headlines/): Learn to write headlines people click: power-word categories, number framing, curiosity gaps, SERP psychology, and a five-pass editing routine for 2026.
 - [Local SEO Strategies for Middle East](/en/blog/local-seo-middle-east/): Unlock local search success in Dubai, Abu Dhabi, Riyadh, Tehran, and Muscat. Master localization, multi-language schemas, and Google Maps optimizations.
 - [Local SEO Services Guide 2026 (EN)](/en/blog/local-seo-services-guide-2026/): Rank #1 on Google Maps in 2026: Local 3-Pack tactics, Google Business Profile optimization, NAP consistency, schema, and reviews that win nearby buyers.
 - [WordPress Cost Calculator Guide 2026 (EN)](/en/blog/wordpress-website-cost-guide-2026/): WordPress website cost in 2026: pricing for brochure sites, custom portals, WooCommerce stores, hosting, plugin licenses, and annual maintenance budgets.
@@ -164,7 +163,6 @@
 - [راهنمای طراحی سایت و سئو در دبی و امارات ۲۰۲۶](/fa/blog/dubai-uae-web-design-seo-guide-2026/): راهنمای طراحی سایت و سئو در دوبی و امارات: تجربه کاربری دوزبانه انگلیسی و عربی، استانداردهای بصری لوکس، اجرای سئوی محلی و درگاه‌های پرداخت خلیج فارس در ۲۰۲۶.
 - [راهنمای طراحی سایت فروشگاهی ۲۰۲۶: معماری و افزایش فروش](/fa/blog/ecommerce-web-design-guide-2026/): اصول طراحی سایت فروشگاهی در سال ۲۰۲۶ را بیاموزید: ناوبری موبایل‌محور، بهینه‌سازی تسویه‌حساب، درگاه پرداخت، اسکیمای محصول و تاکتیک‌هایی که واقعاً می‌فروشند.
 - [بهترین ابزارهای رایگان سئو و توسعه وب در سال ۲۰۲۶](/fa/blog/free-seo-developer-tools-guide-2026/): بهترین ابزارهای رایگان سئو و توسعه وب در ۲۰۲۶ را بشناسید؛ روال‌های گام‌به‌گام برای بهینه‌سازی عنوان، امتیازدهی تیتر، تولید اسکیما و پیش‌نمایش نتایج SERP.
-- [چگونه عنوان‌ها و تیترهای پرکلیک برای سئو در ۲۰۲۶ بنویسیم؟](/fa/blog/how-to-write-clickable-headlines/): یاد بگیرید چگونه عنوان‌هایی بنویسید که واقعاً کلیک می‌شوند: دسته‌بندی کلمات قدرت، قالب اعداد، شکاف کنجکاوی، روان‌شناسی SERP و روال پنج‌مرحله‌ای ویرایش.
 - [راهنمای لینک‌سازی ۲۰۲۶: استراتژی‌های اعتبار و بک‌لینک](/fa/blog/link-building-strategies-guide-2026/): راهنمای استراتژی‌های مدرن لینک‌سازی و ساخت بک‌لینک در ۲۰۲۶؛ بگیرید بک‌لینک تحریریه‌ای با اعتبار بالا، انکورتکست را متنوع کنید و اعتبار دامنه را بالا ببرید.
 - [استراتژی سئو محلی در خاورمیانه: دوبی، ریاض، تهران و مسقط](/fa/blog/local-seo-middle-east/): راهنمای سئو محلی خاورمیانه؛ رفتار جستجوی کاربران در دوبی، ریاض، تهران و مسقط، بهینه‌سازی پروفایل گوگل، اسکیمای چندزبانه و نقشه‌های محلی برای جذب مشتری نزدیک.
 - [طراحی موبایل-اول در ۲۰۲۶؛ استراتژی‌های ضروری](/fa/blog/mobile-first-design/): اصول طراحی موبایل-اول در سال ۲۰۲۶. بیاموزید چرا اولویت‌بندی تجربه کاربری موبایل برای سئو و فروش حیاتی است و چگونه رابط‌های کاربری لمس-پسند و پرسرعت بسازید.
@@ -233,7 +231,6 @@
 - [دليل تصميم المواقع والسيو في دبي والإمارات 2026](/ar/blog/dubai-uae-web-design-seo-guide-2026/): دليل تصميم المواقع والسيو في دولة الإمارات ودبي لعام 2026: واجهات ثنائية اللغة، معايير الرفاهية البصرية، تنفيذ السيو المحلي وبوابات دفع الخليج ومظهر فاخر.
 - [دليل تصميم المتاجر الإلكترونية 2026: الهندسة والتحويلات](/ar/blog/ecommerce-web-design-guide-2026/): أتقن تصميم المتاجر الإلكترونية في 2026: ناوبرية بالجوال أولاً، وتحسين الدفع، وبوابات دفع متعددة، وإسكيما المنتج، وتكتيكات تحويل تجعل الزائر يشتري فعلاً.
 - [أفضل أدوات السيو والتطوير المجانية لعام 2026](/ar/blog/free-seo-developer-tools-guide-2026/): أتقن أفضل أدوات السيو والتطوير المجانية في 2026: إجراءات خطوة بخطوة لتحسين عناوين السيو، وتقييم العناوين وجاذبيتها، وإنشاء السكيما، ومعاينة SERP قبل النشر.
-- [كيف تكتب عناوين جذابة وقابلة للنقر في السيو 2026](/ar/blog/how-to-write-clickable-headlines/): تعلّم كتابة عناوين ينقر عليها الزوار: أنواع الكلمات القوية، صياغة الأرقام، فجوات الفضول، سيكولوجية نتائج البحث، وروتين مراجعة من خمس مراحل خلال عام 2026.
 - [دليل استراتيجيات بناء الروابط 2026: رفع سلطة الدومين](/ar/blog/link-building-strategies-guide-2026/): دليل عملي لاستراتيجيات بناء الروابط في 2026: اكتساب روابط تحريرية عالية السلطة، تنويع النص الرابط وتوزيعه، تدقيق ملف الروابط، واستبعاد وإزالة الروابط السامة.
 - [استراتيجيات السيو المحلي في الشرق الأوسط لعام 2026](/ar/blog/local-seo-middle-east/): دليل سلوك البحث المحلي في دبي والرياض وطهران ومسقط، مع تحسين ملف جوجل التجاري، والبيانات المهيكلة متعددة اللغات، وتغطية خرائط المنطقة لجذب العملاء القريبين.
 - [التصميم للموبايل أولاً في 2026: استراتيجيات أساسية](/ar/blog/mobile-first-design/): أتقن التصميم للموبايل أولاً في 2026. تعرّع لماذا تحسين تجربة الهاتف حاسم لمحركات البحث والسيو، وكيف تبني واجهات سريعة وصديقة للاستخدام واللمس تحقق نتائج أفضل.
@@ -3512,7 +3509,7 @@ A rewrite that holds its position while improving the numeral and the keyword pl
 {/* [UNIQUE INSIGHT] */}
 Here's the pattern our own data supports: the tools that only measure length are losing relevance. Our headline-analyzer page ranks page two for thousands of "title checker" queries yet converts almost none of them — proof that measurement without persuasion doesn't move clicks. The winning workflow in 2026 is score first (emotion, numbers, keyword position), then simulate (pixels, mobile, competitors). Any tool that does only one half leaves money on the table.
 
-If you want the full craft behind the scores — power-word categories, the number formula, and the mistakes that kill CTR — our guide to [writing clickable headlines](/en/blog/how-to-write-clickable-headlines/) covers it, and [SEO best practices](/en/blog/seo-best-practices/) puts titles inside the complete 2026 ranking picture. Need titles written for you? Our [SEO services](/en/services/seo/) include snippet optimization in every engagement — [contact us](/en/contact/) and we'll audit your ten most-impressed, least-clicked pages first.
+If you want the full craft behind the scores — power-word categories, the number formula, and the mistakes that kill CTR — our guide to [writing clickable headlines](/en/blog/seo-title-optimization-guide-2026/) covers it, and [SEO best practices](/en/blog/seo-best-practices/) puts titles inside the complete 2026 ranking picture. Need titles written for you? Our [SEO services](/en/services/seo/) include snippet optimization in every engagement — [contact us](/en/contact/) and we'll audit your ten most-impressed, least-clicked pages first.
 
 ## Conclusion
 
@@ -3636,7 +3633,7 @@ Moz ابزار پیش‌نمایش را با قوی‌ترین صفحه آموز
 {/* [UNIQUE INSIGHT] */}
 الگویی که داده خودمان تأییدش می‌کند: ابزارهایی که فقط طول را می‌سنجند دارند کاربردشان را از دست می‌دهند. صفحه آنالیزور عنوان ما برای هزاران کوئری «title checker» در صفحه دوم رتبه دارد اما تقریباً هیچ‌کدام را تبدیل نمی‌کند — اثبات این‌که سنجش بدون ترغیب کلیک را تکان نمی‌دهد. فرایند برنده در 2026 این است: اول امتیاز (احساس، اعداد، جایگاه کلمه کلیدی)، بعد شبیه‌سازی (پیکسل، موبایل، رقبا). هر ابزاری که فقط نصف را انجام دهد پول روی میز جا می‌گذارد.
 
-اگر صنایع کامل پشت امتیازها را می‌خواهید — دسته‌های کلمات قدرتی، فرمول اعداد و اشتباهاتی که CTR را می‌کشند — راهنمای [نوشتن عنوان‌های کلیک‌خور](/fa/blog/how-to-write-clickable-headlines/) ما پوششش می‌دهد و [بهترین روش‌های سئو](/fa/blog/seo-best-practices/) عنوان را داخل تصویر کامل رتبه‌بندی 2026 می‌گذارد. عنوان‌ها را می‌خواهید برایتان بنویسند؟ [خدمات سئو](/fa/services/seo/) ما در هر قرارداد بهینه‌سازی اسنیپت را شامل می‌شود — [تماس بگیرید](/fa/contact/) و اول ده صفحه پرایمپرشن و کم‌کلیک شما را ممیزی می‌کنیم.
+اگر صنایع کامل پشت امتیازها را می‌خواهید — دسته‌های کلمات قدرتی، فرمول اعداد و اشتباهاتی که CTR را می‌کشند — راهنمای [نوشتن عنوان‌های کلیک‌خور](/fa/blog/seo-title-optimization-guide-2026/) ما پوششش می‌دهد و [بهترین روش‌های سئو](/fa/blog/seo-best-practices/) عنوان را داخل تصویر کامل رتبه‌بندی 2026 می‌گذارد. عنوان‌ها را می‌خواهید برایتان بنویسند؟ [خدمات سئو](/fa/services/seo/) ما در هر قرارداد بهینه‌سازی اسنیپت را شامل می‌شود — [تماس بگیرید](/fa/contact/) و اول ده صفحه پرایمپرشن و کم‌کلیک شما را ممیزی می‌کنیم.
 
 ## نتیجه‌گیری
 
@@ -3760,7 +3757,7 @@ Moz ابزار پیش‌نمایش را با قوی‌ترین صفحه آموز
 {/* [UNIQUE INSIGHT] */}
 إليك النمط الذي تدعمه بياناتنا: الأدوات التي تقيس الطول فقط تفقد أهميتها. صفحة محلل العناوين لدينا تترتب في الصفحة الثانية لآلاف استعلامات «فاحص العناوين» لكنها لا تحول أياً منها تقريباً — دليل أن القياس دون إقناع لا يحرك النقرات. سير العمل الرابح في 2026 هو التقييم أولاً (العاطفة والأرقام وموضع الكلمة)، ثم المحاكاة (البكسل والجوال والمنافسون). أي أداة تفعل نصفاً واحداً تترك مالاً على الطاولة.
 
-وإن أردت الحرفة الكاملة خلف التقييمات — فئات الكلمات القوية ومعادلة الأرقام والأخطاء التي تقتل CTR — يغطيها دليل [كتابة عناوين قابلة للنقر](/ar/blog/how-to-write-clickable-headlines/)، ويضع [أفضل ممارسات السيو](/ar/blog/seo-best-practices/) العناوين داخل الصورة الكاملة لترتيب 2026. تحتاج من يكتب العناوين لك؟ تشمل [خدمات السيو](/ar/services/seo/) لدينا تحسين المقتطفات في كل تعاقد — [تواصل معنا](/ar/contact/) وسندقق أولاً صفحاتك العشر الأعلى ظهوراً والأقل نقراً.
+وإن أردت الحرفة الكاملة خلف التقييمات — فئات الكلمات القوية ومعادلة الأرقام والأخطاء التي تقتل CTR — يغطيها دليل [كتابة عناوين قابلة للنقر](/ar/blog/seo-title-optimization-guide-2026/)، ويضع [أفضل ممارسات السيو](/ar/blog/seo-best-practices/) العناوين داخل الصورة الكاملة لترتيب 2026. تحتاج من يكتب العناوين لك؟ تشمل [خدمات السيو](/ar/services/seo/) لدينا تحسين المقتطفات في كل تعاقد — [تواصل معنا](/ar/contact/) وسندقق أولاً صفحاتك العشر الأعلى ظهوراً والأقل نقراً.
 
 ## الخلاصة
 
@@ -4011,6 +4008,8 @@ Every figure in this guide traces back to the sources below — read them before
 - **المحتوى والتصوير**: صور منتجات متّسقة، ونصوص فارسية لصفحات الفئات، وصيغ CSV جاهزة للاستيراد. توخل هنا فيصبح إدخال البيانات اليدوي أمراً تغييراً لاحقاً.
 - **العمل بعد الإطلاق**: مراقبة Search Console، ومتابعة التحويلات، وإصلاحات الدفع بعد الإطلاق. إعادة تصميم تتوقف عند الإطلاق إعادة تصميم تذبل.
 
-اطرح على كل مورد أسئلة تحديد النطا�
+اطرح على كل مورد أسئلة تحديد النطاق نفسها فتصبح العروض قابلة للمقارنة بندًا بند: كم صنفاً يدخل النظام ومن سيقوم بإدخالها، وأي بوابات الدفع وقواعد الشحن داخل النطاق، وما مصير الروابط الحالية، ومن يملك المتجر بعد التسليم. مورد يجيب بعدد صفحات يسعّر قالباً؛ ومورد يجيب بتفاصيل التكامل يسعّر مشروعك.
+
+لا تجمع ثلاثة عروض وتختار الأرخص — قارنها بنداً بنداً مقابل هذه المحركات باستخدام [حاسبة التكلفة](/ar/tools/cost-calculator/) المجانية أولاً، واقرأ التفصيل الكامل في دليل [تكلفة تطوير المواقع](/ar/blog/website-development-cost-guide-2026/). وأي منصة تشتريها تلك الميزانية؟ تحسم مقارنة [ووردبريس مقابل التطوير المخصص](/ar/blog/wordpress-vs-custom-development-guide-2026/) حسب تعقيد التك�
 
 ... [truncated: llms-full.txt capped at ~500KB; see individual /<lang>/blog/<slug>/ pages for full text]
