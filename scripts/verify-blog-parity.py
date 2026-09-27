@@ -14,15 +14,27 @@ def parse(f):
     nofence=re.sub(r'```.*?```','',b,flags=re.S)
     h2=re.findall(r'^(## .+)$',nofence,re.M)
     h3=re.findall(r'^(### .+)$',nofence,re.M)
-    # openers: first prose paragraph after each H2 (skip tables/lists/fences), stop before ###
+    # openers: first prose block after each H2, matching verify-blog-spec.py lines 56-78.
+    # The block runs from the first non-blank line until the next blank line.
+    # NOTE: a leading '*' is deliberately NOT a "not prose" marker -- a **bold-led**
+    # opener is the dominant pattern in this content and is exactly what spec line 93
+    # asks for. The previous implementation skipped those blocks and measured an
+    # unrelated later paragraph instead, which produced false failures on 22 posts.
     parts=re.split(r'^(## .+)$',nofence,flags=re.M)
     openers=[]
     for i in range(1,len(parts),2):
         c=parts[i+1]
         c=re.split(r'^### ',c,flags=re.M)[0]
         c=re.sub(r'```.*?```','',c,flags=re.S)
-        paras=[p.strip() for p in c.split('\n\n') if p.strip() and not p.strip().startswith('|') and not p.strip().startswith('-') and not p.strip().startswith('*') and not p.strip().startswith('1.')]
-        op=paras[0] if paras else ''
+        ls=c.split('\n')
+        j=0
+        while j<len(ls) and not ls[j].strip(): j+=1
+        blk=[]
+        while j<len(ls) and ls[j].strip(): blk.append(ls[j].strip()); j+=1
+        op=blk[0] if blk else ''
+        if op.startswith(('-','>','<','```','{','!','|','1.','2.','3.','4.','5.')):
+            openers.append(0); continue
+        op=' '.join(blk)
         op=re.sub(r'\[([^\]]*)\]\([^)]*\)',r'\1',op)
         op=re.sub(r'[#*`]','',op)
         openers.append(len(op.split()))
