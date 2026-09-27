@@ -12,11 +12,13 @@ Shipped and verified against the code. Kept as a ledger so closed items are not 
 
 | # | Item | Evidence it is closed | Shipped in |
 |---|---|---|---|
+| 0.1 | GSC re-export diffed | `webabc.ir-Performance-on-Search-2026-09-27.xlsx` (2026-06-25 → 2026-09-24, 3-month filter) diffed against the 2026-09-21 export into `docs/audit/CTR-BASELINE-2026-09-27.json`: 289 page rows, `kind` rules re-verified 289/289 against the prior file, plus a 92-day `daily_series`. The rolling window moved forward 6 days so the diff is **not** same-window, and the Pages sum exceeds the Chart total by 500 impressions — both recorded in the file's `note` | `cb84b05` |
 | 1.1 | Locale-aware 404 with a real body | `wrangler.toml` sets `not_found_handling = "404.html"`; `worker.ts` swaps in `/{lang}/404/` for locale-prefixed paths and serves `MARKDOWN_404_BODY` to agent UAs | `dfa9a99` |
 | 2.2 | Thin-content triage | all 108 posts rewritten to the `docs/BLOG-REWRITE-SPEC.md` band — **0 posts under 900 words** in any locale (was 22/36 EN); minimum rose 323 → 1,532 | `7c8f9e9` · `049701f` · `94b05e3` |
 | 2.3 C | Cluster C merged | `seo-title-optimization-guide-2026` absorbs `how-to-write-clickable-headlines` in all 3 locales — 12 H2s, block-identical across locales, 2,392/2,360/2,372w. Retiree 301s in both redirect sources, is absent from every sitemap, and `blog-links-baseline.json` asserts the union of both posts' 8 links survived | `c3bce47` |
 | 2.3 A | Cluster A re-checked, **not** merged | the 4→2 premise was written when the posts were 418–1,533w with two identical H1s; after §2.2 they are 1,783–2,378w with 4 unique titles in every locale and matching H2 counts (6/9/10/10) across locales. Merging would have cost ~4,364 words to fix a collision that was already gone — so the one genuine overlap was rewritten instead | `1e45bf9` |
 | 2.5 | Category → CTA mapping | all 11 categories resolve in `serviceToolDict`; `website-speed-optimization-pricing-guide-2026` moved `Performance` → `Speed Optimization`; **0 of 39 posts hit the fallback** | `f6ed62e` |
+| 2.6 | Pricing-intent post | `seo-services-pricing-guide-2026` ("SEO Services Pricing Guide 2026: Costs, ROI & Packages") shipped 2026-09-21 in all 3 locales — 2,211/2,399/2,021w, 8 numbered H2s, `H3=5 · kt=9 · faq=5 · links=7` identical across locales, openers 40–60, both committed gates green. No *second* pricing post is warranted: all 4 zero-click pricing queries ≥10 impressions already have a dedicated asset (175 impressions total). 8-week falsifiability clock runs to **2026-11-16** | `5206008` |
 | 3.4 | `Organization.sameAs` is agency-owned | LinkedIn company, X and Instagram agency handles plus the repo's GitHub. The 3 displaced personal URLs were not dropped — they still sit on the Person schema (7 entries) | `e4f36c4` |
 | 4.1 | Root-URL sitemap exclusion documented | the geo-302 rationale now sits at the `filter` in `astro.config.mjs` | `c192fe1` |
 | 4.6 | Arabic fonts self-hosted | `public/fonts/ar/` holds 19 woff2 files (289.5 KB) behind 28 `@font-face` rules; both Google preconnects and the render-blocking remote stylesheet are gone — **0 references** to `fonts.googleapis.com` / `fonts.gstatic.com` remain | `2f9ecd5` |
@@ -31,7 +33,7 @@ You cannot verify any GROW claim below without these two things.
 
 | # | Action | Why it blocks | Falsifiability check |
 |---|---|---|---|
-| 0.1 | **Re-export GSC** (same 3-month window) and diff against `webabc.ir-Performance-on-Search-2026-09-21.xlsx` | Establishes the baseline every other check compares to | Export fails or date filter differs → comparison is invalid |
+| 0.1 | ~~**Re-export GSC** (same 3-month window) and diff against `webabc.ir-Performance-on-Search-2026-09-21.xlsx`~~ — **shipped `cb84b05`**, see the ledger | Establishes the baseline every other check compares to | Done: diffed into `docs/audit/CTR-BASELINE-2026-09-27.json`. The rolling 3-month window moved forward 6 days, so treat the diff as a shifted-window comparison, not a same-window one |
 | 0.2 | **Configure PSI/CrUX credentials** at `~/.config/claude-seo/google-api.json` | No CWV data exists anywhere; Performance is currently a proxy estimate | Until field LCP/INP/CLS exist, **no performance claim in this audit may be treated as measured** |
 | 0.3 | **Define the 5 fixed GEO test prompts** and record today's answers in ChatGPT Search, Perplexity, Google AI Overviews, Gemini | Nothing measures citations today | If prompts change month to month, the series is not comparable — freeze the list |
 
@@ -189,9 +191,13 @@ Three posts were shipped instead (`e8946ed`), each from query evidence that alre
 | `moz-title-checker-alternatives` | 2026-09-22 | 281 impressions across 3 Moz-branded queries, positions 10–16, **0 clicks** |
 | `web-development-guide-2026` | 2026-09-24 | 118 Arabic impressions across 3 queries, positions 37–45, **0 clicks** |
 
-**Still open:** a genuinely *pricing*-intent post — that is the hypothesis this item exists to test.
+**Shipped** (`5206008`, 2026-09-21): the genuinely *pricing*-intent post this item exists to test — `seo-services-pricing-guide-2026`, *"SEO Services Pricing Guide 2026: Costs, ROI & Packages"* — landed in all 3 locales (2,211/2,399/2,021w, 8 numbered H2s, `H3=5 · kt=9 · faq=5 · links=7` identical across locales, openers 40–60, both committed gates green). It was written in fa first as specified. Its `date` of 2026-09-21 is what starts the clock below.
+
+The 2026-09-27 export rules out a **second** pricing post: every zero-click pricing query with ≥10 impressions already has a dedicated asset — `محاسبه آنلاین هزینه طراحی سایت وردپرس` 113 @ 42.4 → `wordpress-website-cost-guide-2026`, `تعرفه افزایش سرعت سایت` 22 @ 11.4 → `website-speed-optimization-pricing-guide-2026`, `محاسبه هزینه طراحی سایت` 21 @ 33.4 → `website-development-cost-calculator-guide-2026`, `web development pricing` 19 @ 25.0 → cluster A. That is 175 impressions across 4 queries, and writing another post would have cannibalised the one under test.
 
 **Falsifiability check (GROW):** the pricing post reaches position ≤20 for a pricing query within 8 weeks of publishing. If it sits >40, the market does not have that query demand → stop producing pricing content.
+
+**Clock started 2026-09-21 → evaluate 2026-11-16.** In the 2026-09-27 export the post shows 0 impressions — 6 days after publishing and inside GSC's 2–3 day lag, so that is *unmeasurable*, not failed. The comparable post that has settled, `website-speed-optimization-pricing-guide-2026`, sits at **position 8.8 with 17 clicks from 229 impressions**, which is the shape this item predicted.
 
 ---
 
