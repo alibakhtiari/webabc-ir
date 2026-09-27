@@ -1,6 +1,6 @@
 {
   "title": "WCAG Color Contrast Checker",
-  "description": "Test foreground and background text color contrast ratios for WCAG 2.1 AA and AAA web accessibility compliance.",
+  "description": "Check contrast against WCAG 2.1: pick text and background colors, swap them, and read the live ratio with AA and AAA pass or fail for normal and large text.",
   "colorInputs": "Color Inputs",
   "textColor": "Text Color (Foreground)",
   "bgColor": "Background Color",

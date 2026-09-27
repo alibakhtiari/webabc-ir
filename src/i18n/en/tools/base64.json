@@ -1,6 +1,6 @@
 {
   "title": "Base64 Image & Text Encoder/Decoder",
-  "description": "Convert images to Base64 data URLs and encode or decode UTF-8 text strings online.",
+  "description": "Turn any image into a Base64 data URL you can paste straight into HTML or CSS, and encode or decode UTF-8 text — all of it runs locally in your browser.",
   "modeImage": "Image to Base64",
   "modeText": "Text Encode / Decode",
   "dropHint": "Drop an Image file here or Click to Upload",

@@ -20,6 +20,26 @@ const descriptionText = t('tools.jsonFormatter.description', {
   fallback: 'Safely format, validate, and structure your JSON data completely inside your browser.',
 });
 
+const ui = {
+  rawJsonLabel: t('tools.jsonFormatter.rawJsonLabel', { fallback: 'Raw JSON' }),
+  formatBtn: t('tools.jsonFormatter.formatBtn', { fallback: 'Format' }),
+  minifyBtn: t('tools.jsonFormatter.minifyBtn', { fallback: 'Minify' }),
+  textareaPlaceholder: t('tools.jsonFormatter.textareaPlaceholder', {
+    fallback: 'Paste raw JSON here...',
+  }),
+  statusAwaiting: t('tools.jsonFormatter.statusAwaiting', { fallback: 'Awaiting Input' }),
+  clearBtn: t('tools.jsonFormatter.clearBtn', { fallback: 'Clear' }),
+  outputLabel: t('tools.jsonFormatter.outputLabel', { fallback: 'Formatted Output' }),
+  copyBtn: t('tools.jsonFormatter.copyBtn', { fallback: 'Copy' }),
+  outputPlaceholder: t('tools.jsonFormatter.outputPlaceholder', {
+    fallback: 'Formatted JSON will appear here...',
+  }),
+  emptyPayload: t('tools.jsonFormatter.emptyPayload', { fallback: 'Empty payload' }),
+  validJson: t('tools.jsonFormatter.validJson', { fallback: '✓ Valid JSON' }),
+  invalidJson: t('tools.jsonFormatter.invalidJson', { fallback: '✗ Invalid JSON' }),
+  copiedStatus: t('tools.jsonFormatter.copiedStatus', { fallback: 'Copied!' }),
+};
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -65,20 +85,21 @@ const faqSchema = {
           <div class="flex items-center justify-between">
             <label
               for="json-textarea"
-              class="block text-sm font-semibold text-gray-700 dark:text-gray-200">Raw JSON</label
+              class="block text-sm font-semibold text-gray-700 dark:text-gray-200"
+              >{ui.rawJsonLabel}</label
             >
             <div class="flex gap-2">
               <button
                 type="button"
                 id="format-btn"
                 class="rounded-md bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                >Format</button
+                >{ui.formatBtn}</button
               >
               <button
                 type="button"
                 id="minify-btn"
                 class="rounded-md border border-gray-200 bg-white px-3 py-1 text-xs font-semibold text-gray-700 hover:bg-gray-50 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-gray-200 dark:hover:bg-slate-800"
-                >Minify</button
+                >{ui.minifyBtn}</button
               >
             </div>
           </div>
@@ -86,7 +107,7 @@ const faqSchema = {
           <textarea
             id="json-textarea"
             rows="15"
-            placeholder="Paste raw JSON here..."
+            placeholder={ui.textareaPlaceholder}
             class="h-112.5 w-full resize-none rounded-xl border border-gray-200 bg-white p-4 font-mono text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
           ></textarea>
 
@@ -95,16 +116,20 @@ const faqSchema = {
               role="status"
               aria-live="polite"
               id="validation-status"
+              data-awaiting={ui.statusAwaiting}
+              data-empty={ui.emptyPayload}
+              data-valid={ui.validJson}
+              data-invalid={ui.invalidJson}
               class="rounded bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600 dark:bg-slate-800 dark:text-gray-300"
             >
-              Awaiting Input
+              {ui.statusAwaiting}
             </span>
             <button
               type="button"
               id="clear-btn"
               class="rounded-lg border border-gray-200 bg-white px-4 py-1.5 text-xs font-medium text-gray-700 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-gray-200"
             >
-              Clear
+              {ui.clearBtn}
             </button>
           </div>
         </div>
@@ -117,14 +142,16 @@ const faqSchema = {
         >
           <div class="flex items-center justify-between">
             <span class="block text-sm font-semibold text-gray-700 dark:text-gray-200"
-              >Formatted Output</span
+              >{ui.outputLabel}</span
             >
             <button
               type="button"
               id="copy-btn"
+              data-copy={ui.copyBtn}
+              data-copied={ui.copiedStatus}
               class="flex items-center gap-1 rounded-md bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-700 hover:bg-gray-200 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700"
             >
-              Copy
+              {ui.copyBtn}
             </button>
           </div>
 
@@ -133,7 +160,8 @@ const faqSchema = {
           >
             <pre
               id="json-output"
-              class="break-all whitespace-pre-wrap text-gray-800 dark:text-gray-100">Formatted JSON will appear here...</pre>
+              data-placeholder={ui.outputPlaceholder}
+              class="break-all whitespace-pre-wrap text-gray-800 dark:text-gray-100">{ui.outputPlaceholder}</pre>
           </div>
         </div>
       </div>
@@ -152,28 +180,35 @@ const faqSchema = {
     const copyBtn = document.getElementById('copy-btn');
     const statusSpan = document.getElementById('validation-status');
 
+    // Localized strings rendered server-side; English only as a safety net.
+    const msgs = {
+      placeholder: output.dataset.placeholder || 'Formatted JSON will appear here...',
+      awaiting: statusSpan.dataset.awaiting || 'Awaiting Input',
+      empty: statusSpan.dataset.empty || 'Empty payload',
+      valid: statusSpan.dataset.valid || '✓ Valid JSON',
+      invalid: statusSpan.dataset.invalid || '✗ Invalid JSON',
+      copy: copyBtn.dataset.copy || 'Copy',
+      copied: copyBtn.dataset.copied || 'Copied!',
+    };
+
     formatBtn.addEventListener('click', () => parseAndRender(2));
     minifyBtn.addEventListener('click', () => parseAndRender(0));
 
     clearBtn.addEventListener('click', () => {
       textarea.value = '';
-      output.textContent = 'Formatted JSON will appear here...';
-      statusSpan.textContent = 'Awaiting Input';
+      output.textContent = msgs.placeholder;
+      statusSpan.textContent = msgs.awaiting;
       statusSpan.className =
         'text-xs font-semibold px-2.5 py-1 rounded bg-gray-100 text-gray-600 dark:bg-slate-800 dark:text-gray-300';
     });
 
     copyBtn.addEventListener('click', () => {
       const textToCopy = output.textContent;
-      if (
-        textToCopy &&
-        textToCopy !== 'Formatted JSON will appear here...' &&
-        !textToCopy.startsWith('Error:')
-      ) {
+      if (textToCopy && textToCopy !== msgs.placeholder && !textToCopy.startsWith('Error:')) {
         navigator.clipboard.writeText(textToCopy);
-        copyBtn.textContent = 'Copied!';
+        copyBtn.textContent = msgs.copied;
         setTimeout(() => {
-          copyBtn.textContent = 'Copy';
+          copyBtn.textContent = msgs.copy;
         }, 1500);
       }
     });
@@ -181,7 +216,7 @@ const faqSchema = {
     function parseAndRender(spaces) {
       const rawVal = textarea.value.trim();
       if (!rawVal) {
-        statusSpan.textContent = 'Empty payload';
+        statusSpan.textContent = msgs.empty;
         statusSpan.className =
           'text-xs font-semibold px-2.5 py-1 rounded bg-yellow-50 text-yellow-600 dark:bg-yellow-950/40 dark:text-yellow-400';
         return;
@@ -191,12 +226,12 @@ const faqSchema = {
         const parsed = JSON.parse(rawVal);
         const formatted = JSON.stringify(parsed, null, spaces);
         output.textContent = formatted;
-        statusSpan.textContent = '✓ Valid JSON';
+        statusSpan.textContent = msgs.valid;
         statusSpan.className =
           'text-xs font-semibold px-2.5 py-1 rounded bg-green-50 text-green-600 dark:bg-green-950/40 dark:text-green-400';
       } catch (e) {
         output.textContent = `Error: ${e.message}`;
-        statusSpan.textContent = '✗ Invalid JSON';
+        statusSpan.textContent = msgs.invalid;
         statusSpan.className =
           'text-xs font-semibold px-2.5 py-1 rounded bg-red-50 text-red-600 dark:bg-red-950/40 dark:text-red-400';
       }
@@ -205,18 +240,18 @@ const faqSchema = {
     // Bind keyup validation
     textarea.addEventListener('input', () => {
       if (!textarea.value.trim()) {
-        statusSpan.textContent = 'Awaiting Input';
+        statusSpan.textContent = msgs.awaiting;
         statusSpan.className =
           'text-xs font-semibold px-2.5 py-1 rounded bg-gray-100 text-gray-600 dark:bg-slate-800 dark:text-gray-300';
         return;
       }
       try {
         JSON.parse(textarea.value);
-        statusSpan.textContent = '✓ Valid JSON';
+        statusSpan.textContent = msgs.valid;
         statusSpan.className =
           'text-xs font-semibold px-2.5 py-1 rounded bg-green-50 text-green-600 dark:bg-green-950/40 dark:text-green-400';
       } catch (e) {
-        statusSpan.textContent = '✗ Invalid JSON';
+        statusSpan.textContent = msgs.invalid;
         statusSpan.className =
           'text-xs font-semibold px-2.5 py-1 rounded bg-red-50 text-red-600 dark:bg-red-950/40 dark:text-red-400';
       }

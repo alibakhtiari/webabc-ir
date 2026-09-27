@@ -35,20 +35,46 @@
   "technicalDesc": "Crawler directives, structured data, and content formatting helpers.",
   "base64": {
     "title": "Base64 Image & Text Encoder/Decoder",
-    "description": "Convert images to Base64 data URLs and encode or decode UTF-8 text strings online."
+    "description": "Turn any image into a Base64 data URL you can paste straight into HTML or CSS, and encode or decode UTF-8 text — all of it runs locally in your browser."
   },
   "jsonFormatter": {
     "title": "Clientside JSON Formatter & Validator",
-    "description": "Safely format, validate, and structure your JSON data completely inside your browser."
+    "description": "Format, indent and minify raw JSON entirely inside your browser, with live validation that reports the exact syntax error. Your data never leaves the device.",
+    "rawJsonLabel": "Raw JSON",
+    "formatBtn": "Format",
+    "minifyBtn": "Minify",
+    "textareaPlaceholder": "Paste raw JSON here...",
+    "statusAwaiting": "Awaiting Input",
+    "clearBtn": "Clear",
+    "outputLabel": "Formatted Output",
+    "copyBtn": "Copy",
+    "outputPlaceholder": "Formatted JSON will appear here...",
+    "emptyPayload": "Empty payload",
+    "validJson": "✓ Valid JSON",
+    "invalidJson": "✗ Invalid JSON",
+    "copiedStatus": "Copied!"
   },
   "robotsGenerator": {
-    "title": "Robots.txt & Sitemap Graph Builder",
-    "description": "Easily construct optimized crawler directives and map your sitemap configurations dynamically.",
-    "builderSettings": "Builder Settings"
+    "title": "Robots.txt Generator & Sitemap Directive Builder",
+    "description": "Build a robots.txt file in your browser: choose the crawler user-agent, add the paths you want to disallow, set a crawl delay and sitemap URL, then download.",
+    "builderSettings": "Builder Settings",
+    "uaLabel": "Crawler User-Agent",
+    "uaAll": "All Bots (*)",
+    "delayLabel": "Crawl Delay (Seconds)",
+    "delayNone": "No Delay",
+    "delay5": "5 Seconds",
+    "delay10": "10 Seconds",
+    "delay20": "20 Seconds",
+    "sitemapLabel": "Sitemap URL",
+    "disallowLabel": "Disallowed Directories / Paths",
+    "disallowPlaceholder": "e.g. /admin",
+    "addBtn": "Add",
+    "outputLabel": "Generated Robots.txt",
+    "downloadBtn": "Download .txt"
   },
   "keywordDensity": {
     "title": "Keyword Density Analyzer Script – Semantic Density Checker",
-    "description": "Free keyword density analyzer script: analyze text to identify keyword frequency, n-gram density and avoid over-optimization before publishing.",
+    "description": "Free keyword density analyzer: paste your draft to get word and character counts, then the top single words and two-word phrases with their density percentages.",
     "guide": {
       "how": {
         "title": "How the Keyword Density Analyzer Works",
@@ -65,6 +91,19 @@
           "Auditing existing pages that plateaued: unnatural density from old-school optimization is a common cause."
         ]
       }
-    }
+    },
+    "textareaLabel": "Paste your copy/content below",
+    "textareaPlaceholder": "Pasted articles, blogs or web copy here...",
+    "wordsLabel": "Words:",
+    "charsLabel": "Characters:",
+    "clearBtn": "Clear",
+    "panelTitle": "Keyword Density",
+    "gram1": "1-Gram",
+    "gram2": "2-Gram",
+    "thKeyword": "Keyword",
+    "thCount": "Count",
+    "thDensity": "Density",
+    "emptyState": "Enter text to view keywords density",
+    "noContent": "No content keywords detected"
   }
 }

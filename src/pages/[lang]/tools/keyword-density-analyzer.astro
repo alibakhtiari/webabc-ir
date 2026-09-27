@@ -37,6 +37,28 @@ const descriptionText = t('tools.keywordDensity.description', {
     'Analyze text structures to identify keyword frequency and avoid over-optimization before publishing.',
 });
 
+const ui = {
+  textareaLabel: t('tools.keywordDensity.textareaLabel', {
+    fallback: 'Paste your copy/content below',
+  }),
+  textareaPlaceholder: t('tools.keywordDensity.textareaPlaceholder', {
+    fallback: 'Pasted articles, blogs or web copy here...',
+  }),
+  wordsLabel: t('tools.keywordDensity.wordsLabel', { fallback: 'Words:' }),
+  charsLabel: t('tools.keywordDensity.charsLabel', { fallback: 'Characters:' }),
+  clearBtn: t('tools.keywordDensity.clearBtn', { fallback: 'Clear' }),
+  panelTitle: t('tools.keywordDensity.panelTitle', { fallback: 'Keyword Density' }),
+  gram1: t('tools.keywordDensity.gram1', { fallback: '1-Gram' }),
+  gram2: t('tools.keywordDensity.gram2', { fallback: '2-Gram' }),
+  thKeyword: t('tools.keywordDensity.thKeyword', { fallback: 'Keyword' }),
+  thCount: t('tools.keywordDensity.thCount', { fallback: 'Count' }),
+  thDensity: t('tools.keywordDensity.thDensity', { fallback: 'Density' }),
+  emptyState: t('tools.keywordDensity.emptyState', {
+    fallback: 'Enter text to view keywords density',
+  }),
+  noContent: t('tools.keywordDensity.noContent', { fallback: 'No content keywords detected' }),
+};
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -84,28 +106,26 @@ const faqSchema = {
             for="analyzer-textarea"
             class="block text-sm font-semibold text-gray-700 dark:text-gray-200"
           >
-            {t('tools.keywordDensity.textareaLabel', { fallback: 'Paste your copy/content below' })}
+            {ui.textareaLabel}
           </label>
           <textarea
             id="analyzer-textarea"
             rows="12"
-            placeholder={t('tools.keywordDensity.textareaPlaceholder', {
-              fallback: 'Pasted articles, blogs or web copy here...',
-            })}
+            placeholder={ui.textareaPlaceholder}
             class="h-96 w-full resize-none rounded-xl border border-gray-200 bg-white p-4 text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
           ></textarea>
 
           <div class="flex items-center justify-between pt-2">
             <div class="flex gap-4 text-sm text-gray-500 dark:text-gray-400">
-              <span>Words: <strong id="word-count">0</strong></span>
-              <span>Characters: <strong id="char-count">0</strong></span>
+              <span>{ui.wordsLabel} <strong id="word-count">0</strong></span>
+              <span>{ui.charsLabel} <strong id="char-count">0</strong></span>
             </div>
             <button
               type="button"
               id="clear-btn"
               class="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-5 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-gray-200"
             >
-              Clear
+              {ui.clearBtn}
             </button>
           </div>
         </div>
@@ -120,7 +140,9 @@ const faqSchema = {
           <div
             class="flex items-center justify-between border-b border-gray-100 bg-gray-50 px-6 py-4 dark:border-slate-800"
           >
-            <span class="font-semibold text-gray-800 dark:text-gray-100"> Keyword Density </span>
+            <span class="font-semibold text-gray-800 dark:text-gray-100">
+              {ui.panelTitle}
+            </span>
             <div
               class="flex rounded-md border border-gray-200 bg-white p-0.5 text-gray-900 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
             >
@@ -129,14 +151,14 @@ const faqSchema = {
                 id="phrase-1"
                 aria-pressed="true"
                 class="phrase-tab rounded-sm bg-primary px-3 py-1 text-xs font-medium text-primary-foreground transition-colors focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                >1-Gram</button
+                >{ui.gram1}</button
               >
               <button
                 type="button"
                 id="phrase-2"
                 aria-pressed="false"
                 class="phrase-tab rounded-sm px-3 py-1 text-xs text-gray-600 transition-colors hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-gray-300 dark:hover:text-white"
-                >2-Gram</button
+                >{ui.gram2}</button
               >
             </div>
           </div>
@@ -148,15 +170,20 @@ const faqSchema = {
                   <tr
                     class="border-b border-gray-100 font-medium text-gray-500 dark:border-slate-800 dark:text-gray-400"
                   >
-                    <th class="pb-3 text-start">Keyword</th>
-                    <th class="w-16 pb-3 text-center">Count</th>
-                    <th class="w-20 pb-3 text-end">Density</th>
+                    <th class="pb-3 text-start">{ui.thKeyword}</th>
+                    <th class="w-16 pb-3 text-center">{ui.thCount}</th>
+                    <th class="w-20 pb-3 text-end">{ui.thDensity}</th>
                   </tr>
                 </thead>
-                <tbody id="density-tbody" class="divide-y divide-gray-50">
+                <tbody
+                  id="density-tbody"
+                  data-empty-text={ui.emptyState}
+                  data-no-content={ui.noContent}
+                  class="divide-y divide-gray-50"
+                >
                   <tr>
                     <td colspan="3" class="py-8 text-center text-gray-500 dark:text-gray-400"
-                      >Enter text to view keywords density</td
+                      >{ui.emptyState}</td
                     >
                   </tr>
                 </tbody>
@@ -180,6 +207,8 @@ const faqSchema = {
     const phrase1Btn = document.getElementById('phrase-1');
     const phrase2Btn = document.getElementById('phrase-2');
     const tbody = document.getElementById('density-tbody');
+    const emptyText = tbody.dataset.emptyText || 'Enter text to view keywords density';
+    const noContentText = tbody.dataset.noContent || 'No content keywords detected';
 
     let activeGram = 1; // 1 or 2 word phrases
 
@@ -387,7 +416,7 @@ const faqSchema = {
       wordCountSpan.textContent = words.length;
 
       if (words.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="3" class="py-8 text-center text-gray-500 dark:text-gray-400">Enter text to view keywords density</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="3" class="py-8 text-center text-gray-500 dark:text-gray-400">${emptyText}</td></tr>`;
         return;
       }
 
@@ -417,7 +446,7 @@ const faqSchema = {
         .slice(0, 15); // Show top 15 results
 
       if (sorted.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="3" class="py-8 text-center text-gray-500 dark:text-gray-400">No content keywords detected</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="3" class="py-8 text-center text-gray-500 dark:text-gray-400">${noContentText}</td></tr>`;
         return;
       }
 
