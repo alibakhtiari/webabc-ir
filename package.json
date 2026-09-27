@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "manifests": "node scripts/resolve-sitemap-lastmod.mjs && node scripts/generate-og-manifest.mjs",
     "llms": "node scripts/generate-llms-full.mjs",
-    "build": "npm run manifests && npm run llms && astro build && node scripts/generate-markdown-representations.mjs",
+    "build": "npm run manifests && npm run llms && astro build && node scripts/generate-markdown-representations.mjs && node scripts/verify-hreflang-parity.mjs",
     "preview": "astro preview",
     "deploy": "npm run build && wrangler deploy",
     "lint": "eslint src && tsc --noemit",
