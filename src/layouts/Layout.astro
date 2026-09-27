@@ -91,11 +91,16 @@ function createOrganizationSchema(
         closes: '18:00',
       },
     ],
+    // Agency-facing profiles: the three social handles are WebABC's, and the
+    // GitHub is the account this site's source is published from (see Footer).
+    // The founder's personal LinkedIn, X and aliib.ir used to sit here instead,
+    // making Organisation.sameAs 4/4 personal; they belong on the Person schema
+    // at src/pages/[lang]/about/ali-bakhtiari.astro — ACTION-PLAN §3.4.
     sameAs: [
+      'https://www.linkedin.com/company/webabc-ir',
+      'https://x.com/webabc_ir',
+      'https://www.instagram.com/webabc.ir',
       'https://github.com/alibakhtiari',
-      'https://www.linkedin.com/in/alibakhtiarii/',
-      'https://x.com/aliib1991',
-      'https://aliib.ir',
     ],
   };
 }
