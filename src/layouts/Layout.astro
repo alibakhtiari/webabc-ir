@@ -205,12 +205,17 @@ const websiteSchema = createWebsiteSchema(siteUrl, supportedLang);
     {
       lang === 'ar' ? (
         <>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          {/* Self-hosted (scripts/hoist-ar-fonts.mjs): the two Google preconnects
+              and the render-blocking third-party stylesheet used to live here. Same
+              faces, weights and unicode-range — only the origin moved. */}
           <link
-            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&display=swap"
-            rel="stylesheet"
+            rel="preload"
+            as="font"
+            type="font/woff2"
+            href="/fonts/ar/ibm-plex-sans-arabic-400-arabic.woff2"
+            crossorigin
           />
+          <link rel="stylesheet" href="/fonts/ar-fonts.css" />
         </>
       ) : (
         <link
