@@ -14,6 +14,7 @@ Shipped and verified against the code. Kept as a ledger so closed items are not 
 |---|---|---|---|
 | 0.1 | GSC re-export diffed | `webabc.ir-Performance-on-Search-2026-09-27.xlsx` (2026-06-25 → 2026-09-24, 3-month filter) diffed against the 2026-09-21 export into `docs/audit/CTR-BASELINE-2026-09-27.json`: 289 page rows, `kind` rules re-verified 289/289 against the prior file, plus a 92-day `daily_series`. The rolling window moved forward 6 days so the diff is **not** same-window, and the Pages sum exceeds the Chart total by 500 impressions — both recorded in the file's `note` | `cb84b05` |
 | 1.1 | Locale-aware 404 with a real body | `wrangler.toml` sets `not_found_handling = "404.html"`; `worker.ts` swaps in `/{lang}/404/` for locale-prefixed paths and serves `MARKDOWN_404_BODY` to agent UAs | `dfa9a99` |
+| 2.1 | Per-locale `llms.txt` + `llms-full.txt` | `public/llms.txt` is now a **language router** — `## Available Languages` pointing at all three canonical indexes, plus a curated 25-URL `## Core Global Content (English)` and the full agent guidance, so the original five §9 assertions still hold. Canonical indexes at `public/{en,fa,ar}/llms.txt`, each **93 links / 9 sections** (identical counts); parity is structural, `scripts/generate-llms-index.mjs` throws rather than ship an unbalanced index. fa/ar gained the 10 services and 5 service-areas they were missing (services 12/12/12, areas 7/7/7 now) and carry translated guidance in `src/i18n/{fa,ar}/llms-guidance.md`, all from `scripts/llms-index.data.json`. Corpus split per locale as `public/{en,fa,ar}/llms-full.txt` (217/236/221 KB) with root kept as an English fallback (202 KB) so existing recovery links still resolve. Discovery: locale-aware `<link rel="describedby">` in `Layout.astro`, `Link: </{lang}/llms.txt>; rel="describedby"` on HTML from `worker.ts`, and `text/plain; charset=utf-8` pinned on `.txt` — served in one hop with no geo variation (`STATIC_REDIRECTS` holds no `.txt` keys and the geo rule fires only on exact `/`). Fixes two defects the old file had: it shipped **512,002 bytes (2 over cap)** from a dangling UTF-8 lead byte, and silently dropped 2 of 12 curated posts mid-Arabic-word — whole-post exclusion now reports what it omits, and all four files fit with **0 omitted**, under the new 480 KB warning | `7e04f2b` |
 | 2.2 | Thin-content triage | all 108 posts rewritten to the `docs/BLOG-REWRITE-SPEC.md` band — **0 posts under 900 words** in any locale (was 22/36 EN); minimum rose 323 → 1,532 | `7c8f9e9` · `049701f` · `94b05e3` |
 | 2.3 C | Cluster C merged | `seo-title-optimization-guide-2026` absorbs `how-to-write-clickable-headlines` in all 3 locales — 12 H2s, block-identical across locales, 2,392/2,360/2,372w. Retiree 301s in both redirect sources, is absent from every sitemap, and `blog-links-baseline.json` asserts the union of both posts' 8 links survived | `c3bce47` |
 | 2.3 A | Cluster A re-checked, **not** merged | the 4→2 premise was written when the posts were 418–1,533w with two identical H1s; after §2.2 they are 1,783–2,378w with 4 unique titles in every locale and matching H2 counts (6/9/10/10) across locales. Merging would have cost ~4,364 words to fix a collision that was already gone — so the one genuine overlap was rewritten instead | `1e45bf9` |
@@ -116,15 +117,19 @@ Mirror the leading-noun swap into `src/i18n/fa/tools/headlineAnalyzer.json` and 
 
 ### 2.1 Rebalance `llms.txt` toward the converting market 🟠
 
-**Finding:** `08-geo-ai-citations.md` §3 · currently **69 en / 22 fa / 20 ar** links while **Iran is the only market converting (1.69% CTR vs US 0.25%)**.
+**Finding:** `08-geo-ai-citations.md` §3 · originally **69 en / 22 fa / 20 ar** links while **Iran is the only market converting (1.69% CTR vs US 0.25%)**.
+
+> **Two premises were stale by the time this was actioned.** The *69/22/20* split predates `67ad675`, which had already listed all 21 tools for fa and ar — the file actually read **87 / 67 / 65**, so fa/ar exposure was largely there and the real gap was structural: fa and ar sat in two flat append-only sections missing 10 services and 5 service-areas each. And *424 KB* described neither file: `llms-full.txt` was **512,002 bytes**, 2 over its own cap, because the truncation loop backed off continuation bytes but left the UTF-8 lead byte dangling — and it had silently dropped 2 of 12 curated posts, the tail cut mid-word in Arabic.
 
 **Do:**
-- Expose blog deep links at parity: **24 / 24 / 24** (72 total).
-- Expose tools and service pages in all three languages.
-- Apply the same rebalance inside `scripts/generate-llms-full.mjs`.
-- Add a build-time warning at **480 KB** (file is at 424 KB and capped at 500 KB).
+- Expose blog deep links at parity: **24 / 24 / 24** (72 total) → shipped at **39 / 39 / 39**.
+- Expose tools and service pages in all three languages → services **12 / 12 / 12**, service areas **7 / 7 / 7**, tools **22 / 22 / 22**.
+- Apply the same rebalance inside `scripts/generate-llms-full.mjs` → now emits one single-language corpus per locale.
+- Add a build-time warning at **480 KB** → added; no file trips it (largest is 236 KB).
 
-**Falsifiability check:** fa/ar prompts in ChatGPT/Perplexity start producing Persian/Arabic-language answers about the site's services. If they still return nothing after 4 weeks, `llms.txt` exposure was not the binding constraint → move to off-site footprint (2.4).
+**Shipped:** `scripts/generate-llms-index.mjs` builds a root language router plus three canonical indexes — **93 links / 9 sections each**, identical counts — from `scripts/llms-index.data.json`, and throws rather than ship an unbalanced index; `src/i18n/{fa,ar}/llms-guidance.md` carry the translated agent guidance (English extracted verbatim to `src/i18n/en/`). `scripts/generate-llms-full.mjs` writes `/{lang}/llms-full.txt` for all three locales plus an English root fallback, excludes whole posts instead of cutting mid-word (**0 omitted now, 2 before**), and warns above 480 KB. `worker.ts` pins `text/plain; charset=utf-8` on `.txt` and advertises `Link: </{lang}/llms.txt>; rel="describedby"` on HTML; `Layout.astro` emits the locale-aware `<link rel="describedby">`. Gated by the rewritten §9 in `scripts/verify-agentic.mjs`, which now asserts router shape, per-locale parity, corpus caps, direct 200 + charset on all three `.txt` files, and the discovery headers.
+
+**Falsifiability check:** fa/ar prompts in ChatGPT/Perplexity start producing Persian/Arabic-language answers about the site's services. If they still return nothing after 4 weeks (**2026-09-28 → 2026-10-26**), `llms.txt` exposure was not the binding constraint → move to off-site footprint (2.4).
 
 ---
 
