@@ -266,14 +266,88 @@ async function test() {
   }
   assert(foundOrg, 'Found valid Organization JSON-LD in dist/en/index.html');
 
-  // 9. When to Use This in public/llms.txt
-  console.log('\n9. Testing Agent Instruction in public/llms.txt:');
+  // 9. llms.txt: root language router + per-locale canonical indexes.
+  console.log('\n9. Testing llms.txt layout and agent guidance:');
   const llmsTxt = fs.readFileSync(path.join(root, 'public/llms.txt'), 'utf8');
+
+  // Root is a router first, so scrapers are handed the locale-correct index.
+  assert(llmsTxt.includes('## Available Languages'), 'Root has an "Available Languages" chooser');
+  for (const l of ['en', 'fa', 'ar']) {
+    assert(llmsTxt.includes(`https://webabc.ir/${l}/llms.txt`), `Root links to /${l}/llms.txt`);
+  }
+  // ...and it still works as an English fallback if a crawler stops there.
+  assert(llmsTxt.includes('## Core Global Content (English)'), 'Root keeps a curated English core');
   assert(llmsTxt.includes('## When to Use This (Agent Guidance)'), 'Contains "## When to Use This" section');
   assert(llmsTxt.includes('Jobs WebABC Excels At'), 'Details jobs WebABC excels at');
   assert(llmsTxt.includes('When to Pick WebABC Over Alternatives'), 'Details when to pick over alternatives');
   assert(llmsTxt.includes('When NOT to Use / Prerequisite Conditions'), 'Details prerequisites and when not to use');
   assert(llmsTxt.includes('Agent Invocation & Consumption Instructions'), 'Details agent consumption instructions');
+  const rootLinks = (llmsTxt.match(/^- \[/gm) || []).length;
+  assert(rootLinks >= 20 && rootLinks <= 50, `Root stays curated at 20-50 URLs (got ${rootLinks})`);
+
+  // Each locale ships its own canonical index with guidance in its own language.
+  const GUIDANCE = {
+    en: '## When to Use This (Agent Guidance)',
+    fa: '## چه زمانی از وب اِی‌بی‌سی استفاده کنیم',
+    ar: '## متى تستخدم WebABC',
+  };
+  const shape = [];
+  for (const l of ['en', 'fa', 'ar']) {
+    const p = path.join(root, 'public', l, 'llms.txt');
+    assert(fs.existsSync(p), `public/${l}/llms.txt exists`);
+    const t = fs.readFileSync(p, 'utf8');
+    assert(t.includes(GUIDANCE[l]), `/${l}/llms.txt carries localized guidance`);
+    assert(t.includes(`/${l}/llms-full.txt`), `/${l}/llms.txt points at its own corpus`);
+    shape.push({ l, links: (t.match(/^- \[/gm) || []).length, sections: (t.match(/^## /gm) || []).length });
+  }
+  assert(
+    new Set(shape.map((s) => s.links)).size === 1,
+    `Locale indexes carry equal link counts (${shape.map((s) => `${s.l}=${s.links}`).join(', ')})`
+  );
+  assert(
+    new Set(shape.map((s) => s.sections)).size === 1,
+    `Locale indexes carry equal section counts (${shape.map((s) => `${s.l}=${s.sections}`).join(', ')})`
+  );
+
+  // Per-locale corpus: single language, never concatenated, always under the cap.
+  const corpusSize = (rel) => {
+    const p = path.join(root, 'public', rel);
+    assert(fs.existsSync(p), `public/${rel} exists`);
+    return fs.existsSync(p) ? fs.statSync(p).size : 0;
+  };
+  for (const l of ['en', 'fa', 'ar']) {
+    const size = corpusSize(`${l}/llms-full.txt`);
+    assert(size <= 500 * 1024, `/${l}/llms-full.txt within 500KB hard cap (${size.toLocaleString('en-US')} bytes)`);
+  }
+  const rootCorpusSize = corpusSize('llms-full.txt');
+  assert(
+    rootCorpusSize <= 500 * 1024,
+    `root llms-full.txt within 500KB (${rootCorpusSize.toLocaleString('en-US')} bytes)`
+  );
+
+  // The worker must answer .txt directly: one hop, no geo variation, explicit
+  // UTF-8 so Persian and Arabic decode correctly.
+  for (const l of ['en', 'fa', 'ar']) {
+    const res = await worker.fetch(new Request(`https://webabc.ir/${l}/llms.txt`), env);
+    assert(res.status === 200, `/${l}/llms.txt served directly with 200 (got ${res.status})`);
+    const ct = res.headers.get('content-type') || '';
+    assert(
+      /text\/plain/i.test(ct) && /charset=/i.test(ct),
+      `/${l}/llms.txt Content-Type declares a charset (got ${ct})`
+    );
+  }
+
+  // Machine-readable discovery on rendered pages.
+  const faPage = await worker.fetch(new Request('https://webabc.ir/fa/', { headers: { Accept: 'text/html' } }), env);
+  assert(
+    (faPage.headers.get('link') || '').includes('</fa/llms.txt>; rel="describedby"'),
+    `Persian pages advertise their own index via Link describedby (got ${faPage.headers.get('link')})`
+  );
+  const enPage = await worker.fetch(new Request('https://webabc.ir/en/', { headers: { Accept: 'text/html' } }), env);
+  assert(
+    (enPage.headers.get('link') || '').includes('</en/llms.txt>; rel="describedby"'),
+    `English pages advertise their own index via Link describedby (got ${enPage.headers.get('link')})`
+  );
 
   console.log(`\n--- Verification Suite Completed: ${failures === 0 ? 'ALL CHECKS PASSED (100% Score)' : `${failures} FAILURES`} ---`);
   if (failures > 0) process.exit(1);

@@ -295,6 +295,7 @@ const websiteSchema = createWebsiteSchema(siteUrl, supportedLang);
       title="WebABC Blog RSS Feed"
       href={`${siteUrl}/${supportedLang}/rss.xml`}
     />
+    <link rel="describedby" href={`/${supportedLang}/llms.txt`} />
     <link rel="llms-txt" href="/llms.txt" />
     {/* The 404 document is the one page with no markdown sibling: it is
         served with a 404 status (verified: /en/404/ -> 404), so shipping an

@@ -122,8 +122,8 @@ const enHomeMd = `# WebABC — Premier Web Design, Custom Development & SEO Agen
 - **Qazvin, Iran**: https://webabc.ir/en/service-areas/qazvin/
 
 ## Key Resources
-- **Machine-readable Agent Guide**: https://webabc.ir/llms.txt
-- **Full Text Corpus**: https://webabc.ir/llms-full.txt
+- **Machine-readable Agent Guide**: https://webabc.ir/en/llms.txt
+- **Full Text Corpus**: https://webabc.ir/en/llms-full.txt
 - **All Services**: https://webabc.ir/en/services/
 - **Interactive Tools**: https://webabc.ir/en/tools/
 - **Portfolio & Case Studies**: https://webabc.ir/en/portfolio/
@@ -156,6 +156,7 @@ const faHomeMd = `# وب اِی‌بی‌سی (WebABC) — شرکت طراحی �
 - **ایمیل**: info@webabc.ir
 - **مشاوره رایگان و برآورد هزینه**: https://webabc.ir/fa/contact/
 - **ماشین‌حساب آنلاین قیمت**: https://webabc.ir/fa/tools/cost-calculator/
+ - **فهرست ماشین‌خوان وب‌سایت**: https://webabc.ir/fa/llms.txt
 `;
 
 const arHomeMd = `# ويب إيه بي سي (WebABC) — تصميم وتطوير المواقع وتحسين محركات البحث
@@ -179,6 +180,7 @@ const arHomeMd = `# ويب إيه بي سي (WebABC) — تصميم وتطوير
 - **البريد الإلكتروني**: info@webabc.ir
 - **طلب استشارة مجانية**: https://webabc.ir/ar/contact/
 - **حاسبة تكلفة المشاريع**: https://webabc.ir/ar/tools/cost-calculator/
+ - **الفهرس الآلي للموقع**: https://webabc.ir/ar/llms.txt
 `;
 
 writeMd('index.md', enHomeMd);
@@ -269,9 +271,9 @@ const HUBS = [
 ];
 
 for (const hub of HUBS) {
-  const mdEn = `# ${hub.titleEn}\n\n> ${hub.descEn}\n\nFor details visit https://webabc.ir/en/${hub.path}/\nOr read the machine-readable catalog at https://webabc.ir/llms.txt\n`;
-  const mdFa = `# ${hub.titleFa}\n\n> ${hub.descFa}\n\nبرای مشاهده کامل به https://webabc.ir/fa/${hub.path}/ مراجعه کنید.\nیا راهنمای جامع را در https://webabc.ir/llms.txt مطالعه نمایید.\n`;
-  const mdAr = `# ${hub.titleAr}\n\n> ${hub.descAr}\n\nللمزيد يرجى زيارة https://webabc.ir/ar/${hub.path}/\nأو قراءة الدليل على https://webabc.ir/llms.txt\n`;
+  const mdEn = `# ${hub.titleEn}\n\n> ${hub.descEn}\n\nFor details visit https://webabc.ir/en/${hub.path}/\nOr read the machine-readable catalog at https://webabc.ir/en/llms.txt\n`;
+  const mdFa = `# ${hub.titleFa}\n\n> ${hub.descFa}\n\nبرای مشاهده کامل به https://webabc.ir/fa/${hub.path}/ مراجعه کنید.\nیا راهنمای جامع را در https://webabc.ir/fa/llms.txt مطالعه نمایید.\n`;
+  const mdAr = `# ${hub.titleAr}\n\n> ${hub.descAr}\n\nللمزيد يرجى زيارة https://webabc.ir/ar/${hub.path}/\nأو قراءة الدليل على https://webabc.ir/ar/llms.txt\n`;
 
   writeMd(`en/${hub.path}/index.md`, mdEn);
   writeMd(`en/${hub.path}.md`, mdEn);

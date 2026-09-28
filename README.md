@@ -23,7 +23,7 @@ A multilingual digital marketing and web development agency site built with **As
 - **AI Engine Optimization (GEO/AEO)**:
   - Quotable key-takeaway callouts (`<TLDR />`) and `FAQPage` JSON-LD for AI engine citability (ChatGPT, Perplexity, Google AI Overviews).
   - Explicit AI crawler permissions in `public/robots.txt` (`GPTBot`, `ClaudeBot`, `PerplexityBot`, and others).
-  - `public/llms.txt` as the site index, and `public/llms-full.txt` — a long-context corpus regenerated on every build by `scripts/generate-llms-full.mjs`.
+  - `public/llms.txt` as the language router plus a curated English core, with canonical per-locale indexes at `public/en/llms.txt`, `public/fa/llms.txt`, and `public/ar/llms.txt`. Each locale ships its own single-language long-context corpus (`llms-full.txt`), all regenerated on every build by `scripts/generate-llms-index.mjs` and `scripts/generate-llms-full.mjs`.
 - **Edge Security Headers**: pre-configured in `public/_headers` (HSTS, CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy).
 - **21 free client-side SEO tools**: Headline Analyzer + SERP Preview, Schema Generator, Cost Calculator, UTM Builder, Readability Checker, QR Generator, and more.
 
@@ -57,14 +57,14 @@ Visit `http://localhost:4321` to view the site locally.
 ### Key Commands
 
 - `npm run dev`: Start the local development server.
-- `npm run build`: Run the full pipeline — sitemap `lastmod` + OG manifest, `llms-full.txt`, `astro build`, then Markdown representations.
+- `npm run build`: Run the full pipeline — sitemap `lastmod` + OG manifest, `llms.txt` indexes + `llms-full.txt` corpora, `astro build`, then Markdown representations.
 - `npm run manifests`: Regenerate sitemap `lastmod` and the OG image manifest only.
-- `npm run llms`: Regenerate `public/llms-full.txt` only.
+- `npm run llms`: Regenerate the per-locale `llms.txt` indexes and all four `llms-full.txt` corpora.
 - `npm run preview`: Preview the production build locally.
 - `npm run deploy`: Build, then `wrangler deploy` to Cloudflare Workers.
 - `npm run lint`: Lint source with ESLint and type-check with `tsc --noemit`.
 - `npm run check`: Run `astro check` (types + template diagnostics).
-- `npm test`: Run `scripts/verify-agentic.mjs` — asserts content negotiation, 404 handling (including that the browser 404 body is a real document, not empty), Organization schema completeness, and `llms.txt` agent guidance.
+- `npm test`: Run `scripts/verify-agentic.mjs` — asserts content negotiation, 404 handling (including that the browser 404 body is a real document, not empty), Organization schema completeness, and the `llms.txt` language-router layout: per-locale index parity, UTF-8 charset on `.txt`, and `Link: rel="describedby"` discovery.
 - `npm run format`: Format the repo with Prettier.
 - `npm run format:check`: Verify formatting without writing.
 

@@ -1,0 +1,1400 @@
+{
+  "company": {
+    "en": [
+      {
+        "t": "Home",
+        "u": "/en/",
+        "d": "Overview of WebABC's services, agency workflow, technology stack, and client case studies."
+      },
+      {
+        "t": "About Us",
+        "u": "/en/about/",
+        "d": "Agency background, engineering standards, and team profile."
+      },
+      {
+        "t": "Contact & Consultation",
+        "u": "/en/contact/",
+        "d": "Inquiry form and direct consultation request."
+      },
+      {
+        "t": "FAQ",
+        "u": "/en/faq/",
+        "d": "Answer Engine Optimized (AEO) FAQs regarding project timelines, pricing, and tech stacks."
+      },
+      {
+        "t": "Privacy Policy",
+        "u": "/en/privacy/",
+        "d": "GDPR-compliant privacy and data handling practices."
+      },
+      {
+        "t": "Security Policy",
+        "u": "https://webabc.ir/.well-known/security.txt",
+        "d": "Vulnerability reporting policy and security contacts."
+      }
+    ],
+    "fa": [
+      {
+        "t": "صفحه اصلی وب اِی‌بی‌سی",
+        "u": "/fa/",
+        "d": "معرفی خدمات طراحی سایت، سئو پیشرفته و نمونه کارها."
+      },
+      {
+        "t": "درباره ما",
+        "u": "/fa/about/",
+        "d": "بیش از یک دهه تجربه درخشان در حوزه دیجیتال مارکتینگ و توسعه وب. با تیم متخصص وب اِی‌بی‌سی (ويب سي)، مسیر تحول دیجیتال و رشد کسب‌وکارتان را هوشمندانه و اصولی طی کنید."
+      },
+      {
+        "t": "تماس و مشاوره",
+        "u": "/fa/contact/",
+        "d": "برای دریافت مشاوره رایگان طراحی سایت و سئو، همین امروز با کارشناسان وب اِی‌بی‌سی تماس بگیرید. آماده همکاری هستیم."
+      },
+      {
+        "t": "پرسش‌های متداول",
+        "u": "/fa/faq/",
+        "d": "پاسخ به سوالات رایج درباره خدمات طراحی سایت، سئو و نگهداری وب. تمام آنچه پیش از همکاری با WebABC باید بدانید."
+      },
+      {
+        "t": "سیاست حفظ حریم خصوصی",
+        "u": "/fa/privacy/",
+        "d": "GDPR-compliant privacy and data handling practices."
+      },
+      {
+        "t": "سیاست امنیت",
+        "u": "https://webabc.ir/.well-known/security.txt",
+        "d": "Vulnerability reporting policy and security contacts."
+      }
+    ],
+    "ar": [
+      {
+        "t": "الرئيسية ويب إيه بي سي",
+        "u": "/ar/",
+        "d": "خدمات تصميم وتطوير المواقع وتحسين محركات البحث في الخليج العربي."
+      },
+      {
+        "t": "من نحن",
+        "u": "/ar/about/",
+        "d": "تعرف على ويب إيه بي سي (ويب سي)، الوكالة الرائدة في التسويق الرقمي وتطوير الويب بأكثر من 10 سنوات من الخبرة."
+      },
+      {
+        "t": "التواصل والاستشارة",
+        "u": "/ar/contact/",
+        "d": "هل لديك مشروع في ذهنك؟ اتصل بفريق ويب إيه بي سي اليوم للحصول على استشارة مجانية حول تصميم الويب وتحسين محركات البحث."
+      },
+      {
+        "t": "الأسئلة الشائعة",
+        "u": "/ar/faq/",
+        "d": "إجابات على أسئلتك الشائعة حول خدمات ويب إيه بي سي في تصميم المواقع وتحسين محركات البحث والتطوير التقني. كل ما تحتاج معرفته قبل البدء."
+      },
+      {
+        "t": "سياسة الخصوصية",
+        "u": "/ar/privacy/",
+        "d": "GDPR-compliant privacy and data handling practices."
+      },
+      {
+        "t": "سياسة الأمان",
+        "u": "https://webabc.ir/.well-known/security.txt",
+        "d": "Vulnerability reporting policy and security contacts."
+      }
+    ]
+  },
+  "services": {
+    "en": [
+      {
+        "t": "Services Overview",
+        "u": "/en/services/",
+        "d": "Directory of specialized web design, engineering, and organic growth services."
+      },
+      {
+        "t": "SEO & Growth",
+        "u": "/en/services/seo/",
+        "d": "Enterprise technical SEO, on-page optimization, entity search, and Schema markup."
+      },
+      {
+        "t": "Local SEO",
+        "u": "/en/services/local-seo/",
+        "d": "Localized search optimization, Google Business Profile management, and regional citations."
+      },
+      {
+        "t": "Web Development",
+        "u": "/en/services/web-development/",
+        "d": "Custom full-stack Web Application development (Astro, React, TypeScript, Node.js, Cloudflare Edge)."
+      },
+      {
+        "t": "WordPress Development",
+        "u": "/en/services/wordpress-development/",
+        "d": "Custom WordPress themes, WooCommerce storefronts, and headless CMS architecture."
+      },
+      {
+        "t": "Web Design (UI/UX)",
+        "u": "/en/services/web-design/",
+        "d": "High-conversion UX design, design systems, visual branding, and mobile responsiveness."
+      },
+      {
+        "t": "E-commerce Development",
+        "u": "/en/services/ecommerce/",
+        "d": "High-speed e-commerce stores, custom checkout flows, and payment integrations."
+      },
+      {
+        "t": "Content Strategy & Creation",
+        "u": "/en/services/content-creation/",
+        "d": "Semantic SEO content writing, multilingual strategy, and authority blogging."
+      },
+      {
+        "t": "Link Building & Outreach",
+        "u": "/en/services/link-building/",
+        "d": "High-authority backlink acquisition and digital PR campaigns."
+      },
+      {
+        "t": "Speed & Performance Optimization",
+        "u": "/en/services/speed-optimization/",
+        "d": "Core Web Vitals optimization, TTFB reduction, edge caching, and asset minification."
+      },
+      {
+        "t": "UI/UX Diagnostic Audit",
+        "u": "/en/services/ui-ux-audit/",
+        "d": "Comprehensive UX usability, conversion rate, and accessibility audits."
+      },
+      {
+        "t": "Website Maintenance & Security",
+        "u": "/en/services/website-maintenance/",
+        "d": "24/7 uptime monitoring, security hardening, automated backups, and software updates."
+      }
+    ],
+    "fa": [
+      {
+        "t": "فهرست خدمات",
+        "u": "/fa/services/",
+        "d": "فهرست کامل خدمات طراحی سایت، توسعه مهندسی و رشد ارگانیک."
+      },
+      {
+        "t": "خدمات سئو در ایران",
+        "u": "/fa/services/seo/",
+        "d": "سئوی تکنیکال، بهینه‌سازی کلمات کلیدی، و رشد ارگانیک در بازار ایران."
+      },
+      {
+        "t": "خدمات سئو محلی",
+        "u": "/fa/services/local-seo/",
+        "d": "صدرنشینی در گوگل مپ، ثبت و رتبه‌گیری در نشان و بلد."
+      },
+      {
+        "t": "خدمات توسعه وب",
+        "u": "/fa/services/web-development/",
+        "d": "ما خدمات جامع توسعه وب را برای تحقق بخشیدن به ایده‌های شما ارائه می‌دهیم."
+      },
+      {
+        "t": "توسعه حرفه‌ای وردپرس و ووکامرس",
+        "u": "/fa/services/wordpress-development/",
+        "d": "طراحی سایت‌های وردپرسی و فروشگاه‌های ووکامرس کاملاً اختصاصی، واکنش‌گرا و بهینه برای سئو. راه‌اندازی سریع و حرفه‌ای حضور آنلاین شما با قالب‌های سفارشی مدرن."
+      },
+      {
+        "t": "طراحی سایت اختصاصی و پرسرعت در تهران و ایران | وب اِی‌بی‌سی",
+        "u": "/fa/services/web-design/",
+        "d": "طراحی اختصاصی سایت با سرعت لود زیر ۱ ثانیه و بهینه‌سازی نرخ تبدیل. بیش از ۱۰ سال تجربه موفق در تحویل پروژه‌های شرکتی و فروشگاهی پربازده در ایران."
+      },
+      {
+        "t": "طراحی و توسعه فروشگاه اینترنتی",
+        "u": "/fa/services/ecommerce/",
+        "d": "طراحی فروشگاه اینترنتی اختصاصی روی شاپیفای، ووکامرس یا زیرساخت هدلس — با پرداخت امن، تسویه سریع و صفحات محصول بهینه برای سئو."
+      },
+      {
+        "t": "خدمات تولید محتوا متنی و سئو شده برای سایت | وب اِی‌بی‌سی",
+        "u": "/fa/services/content-creation/",
+        "d": "ارائه خدمات تخصصی تولید محتوا متنی سئو شده، مقالات تخصصی وبلاگ و کپی‌رایتینگ حرفه‌ای برای افزایش ترافیک ارگانیک و رتبه ۱ گوگل."
+      },
+      {
+        "t": "خدمات لینک‌سازی",
+        "u": "/fa/services/link-building/",
+        "d": "اعتبار دامنه و رتبه‌بندی جستجوی خود را با بک‌لینک‌های باکیفیت افزایش دهید."
+      },
+      {
+        "t": "بهینه‌سازی سرعت سایت | قیمت و Core Web Vitals",
+        "u": "/fa/services/speed-optimization/",
+        "d": "قیمت بهینه سازی سرعت سایت با هزینه افزایش سرعت شفاف. بارگذاری فوق‌سریع برای سئوی بهتر و رتبه ۱ گوگل."
+      },
+      {
+        "t": "ممیزی حرفه‌ای UI/UX",
+        "u": "/fa/services/ui-ux-audit/",
+        "d": "کشف نقاط اصطکاک پنهانی که نرخ تبدیل شما را می‌کشند."
+      },
+      {
+        "t": "نگهداری و مراقبت از وب‌سایت",
+        "u": "/fa/services/website-maintenance/",
+        "d": "امن، سریع و همیشه آنلاین – تا شما بتوانید روی کسب‌وکار خود تمرکز کنید."
+      }
+    ],
+    "ar": [
+      {
+        "t": "دليل الخدمات",
+        "u": "/ar/services/",
+        "d": "دليل شامل لخدمات تصميم المواقع والهندسة والنمو العضوي."
+      },
+      {
+        "t": "خدمات تحسين محركات البحث (SEO) المتخصصة | ويب إيه بي سي",
+        "u": "/ar/services/seo/",
+        "d": "ارتقِ بموقعك إلى الصفحة الأولى في نتائج البحث. خدمات SEO احترافية تشمل السيو التقني، بناء الروابط، وتحسين المحتوى لزيادة الزيارات العضوية والمبيعات بشكل مستدام."
+      },
+      {
+        "t": "خدمات السيو المحلي (Local SEO) | تصدر نتائج خرائط جوجل",
+        "u": "/ar/services/local-seo/",
+        "d": "ضاعف مبيعاتك من خلال الظهور لعملائك القريبين. خدمات سئو محلي متكاملة من WebABC لتصدر خرائط جوجل والبحث المحلي. احصل على استشارة مجانية الآن!"
+      },
+      {
+        "t": "خدمات تطوير الويب وتطبيقات الويب الحديثة | React و Next.js",
+        "u": "/ar/services/web-development/",
+        "d": "خدمات تطوير الويب وبرمجة مواقع احترافية مخصصة للشركات. مواقع فائقة السرعة ومتوافقة مع السيو وأجهزة الجوال."
+      },
+      {
+        "t": "تطوير ووردبريس وووكومرس الاحترافي",
+        "u": "/ar/services/wordpress-development/",
+        "d": "تصميم وتطوير مواقع ووردبريس ومتاجر ووكومرس مخصصة بالكامل، متجاوبة ومحسنة للسيو. حضور رقمي سريع وبمظهر عصري."
+      },
+      {
+        "t": "تصميم وتطوير مواقع مخصصة في دبي والرياض | ويب إيه بي سي",
+        "u": "/ar/services/web-design/",
+        "d": "تصميم وتطوير مواقع مخصصة فائقة السرعة مع تحسين معدل التحويل والسئو التقني. خبرة تزيد عن 10 سنوات وأكثر من 50 مشروعاً رقمياً ناجحاً في دول الخليج."
+      },
+      {
+        "t": "تصميم وتطوير المتاجر الإلكترونية",
+        "u": "/ar/services/ecommerce/",
+        "d": "متاجر إلكترونية مخصصة على Shopify أو WooCommerce أو بنية Headless — بدفع آمن، وسرعة عالية، وصفحات منتجات جاهزة لمحركات البحث."
+      },
+      {
+        "t": "خدمات كتابة المحتوى التسويقي المتوافق مع SEO | ويب إيه بي سي",
+        "u": "/ar/services/content-creation/",
+        "d": "محتوى عالي الجودة وجذاب يجذب الزيارات ويبني سلطة العلامة التجارية."
+      },
+      {
+        "t": "خدمات بناء الروابط الخلفية وسلطة النطاق | ويب إيه بي سي",
+        "u": "/ar/services/link-building/",
+        "d": "عزز سلطة مجالك وترتيبك في البحث باستخدام روابط خلفية (Backlinks) عالية الجودة."
+      },
+      {
+        "t": "تحسين سرعة الموقع و Core Web Vitals",
+        "u": "/ar/services/speed-optimization/",
+        "d": "خدمات تسريع المواقع واجتياز Core Web Vitals. نقوم بتحسين الصور والكود وإعدادات الخادم لضمان تحميل فوري وتحسين ترتيبك في نتائج بحث جوجل وتجربة المستخدم."
+      },
+      {
+        "t": "خدمات تدقيق UI/UX وتجربة المستخدم الاحترافية | ويب إيه بي سي",
+        "u": "/ar/services/ui-ux-audit/",
+        "d": "خدمة تدقيق UI/UX احترافية لاكتشاف عوائق التحويل في موقعك. احصل على تحليل خبير بالفيديو وتقرير شامل لتحسين تجربة المستخدم وزيادة معدل المبيعات والاشتراكات."
+      },
+      {
+        "t": "خدمات صيانة ودعم المواقع الشاملة | ويب إيه بي سي",
+        "u": "/ar/services/website-maintenance/",
+        "d": "باقات صيانة المواقع الشاملة لضمان الأمان والسرعة. خدمات تشمل النسخ الاحتياطي اليومي، التحديثات الدورية، والمراقبة الأمنية المستمرة لحماية حضورك الرقمي."
+      }
+    ]
+  },
+  "serviceAreas": {
+    "en": [
+      {
+        "t": "Service Areas Directory",
+        "u": "/en/service-areas/",
+        "d": "Overview of regional offices and localized market coverage."
+      },
+      {
+        "t": "Dubai, UAE",
+        "u": "/en/service-areas/dubai/",
+        "d": "Web design, custom web app development, and technical SEO in Dubai & UAE."
+      },
+      {
+        "t": "Riyadh, Saudi Arabia",
+        "u": "/en/service-areas/riyadh/",
+        "d": "Digital transformation, enterprise web portals, and SEO in Riyadh."
+      },
+      {
+        "t": "Abu Dhabi, UAE",
+        "u": "/en/service-areas/abu-dhabi/",
+        "d": "High-security corporate web development and growth SEO in Abu Dhabi."
+      },
+      {
+        "t": "Muscat, Oman",
+        "u": "/en/service-areas/muscat/",
+        "d": "E-commerce storefronts and localized digital marketing in Muscat."
+      },
+      {
+        "t": "Tehran, Iran",
+        "u": "/en/service-areas/tehran/",
+        "d": "Custom web platforms, speed optimization, and SEO solutions in Tehran."
+      },
+      {
+        "t": "Qazvin, Iran",
+        "u": "/en/service-areas/qazvin/",
+        "d": "Industrial & commercial website development and local SEO in Qazvin."
+      }
+    ],
+    "fa": [
+      {
+        "t": "فهرست مناطق خدمات",
+        "u": "/fa/service-areas/",
+        "d": "نمای کلی دفاتر منطقه‌ای و پوشش بازارهای محلی."
+      },
+      {
+        "t": "دبی, امارات",
+        "u": "/fa/service-areas/dubai/",
+        "d": "طراحی سایت در دبی و سئو سایت در دبی با رتبه ۱ گوگل امارات. وب‌سایت‌های لوکس دوزبانه، سئو محلی و درگاه پرداخت بین‌المللی"
+      },
+      {
+        "t": "رياض, عربستان",
+        "u": "/fa/service-areas/riyadh/",
+        "d": "خدمات حرفه‌ای طراحی سایت در ریاض و سئو در عربستان سعودی مطابق با چشم‌انداز ۲۰۳۰. طراحی وب‌سایت‌های پرسرعت، فروشگاه‌های آنلاین و درگاه‌های پرداخت Mada"
+      },
+      {
+        "t": "ابوظبی, امارات",
+        "u": "/fa/service-areas/abu-dhabi/",
+        "d": "ارائه خدمات تخصصی طراحی سایت در ابوظبی و امارات، سئوی دوزبانه (عربی و انگلیسی) و امنیت سطح سازمانی برای شرکت‌ها و هلدینگ‌های پایتخت امارات"
+      },
+      {
+        "t": "مسقط, عمان",
+        "u": "/fa/service-areas/muscat/",
+        "d": "رتبه ۱ گوگل مسقط با طراحی سایت در عمان؛ سایت شرکتی و فروشگاهی دوزبانه عربی/انگلیسی با سئو سایت عمان. مشاوره رایگان بگیرید"
+      },
+      {
+        "t": "طراحی سایت در تهران",
+        "u": "/fa/service-areas/tehran/",
+        "d": "خدمات طراحی وب، بهینه‌سازی سرعت و سئو برای شرکت‌های تهران."
+      },
+      {
+        "t": "طراحی سایت در قزوین",
+        "u": "/fa/service-areas/qazvin/",
+        "d": "دفتر مرکزی و خدمات اختصاصی شرکت‌ها و صنایع استان قزوین."
+      }
+    ],
+    "ar": [
+      {
+        "t": "دليل مناطق الخدمة",
+        "u": "/ar/service-areas/",
+        "d": "نظرة عامة على المكاتب الإقليمية والتغطية المحلية."
+      },
+      {
+        "t": "تصميم مواقع وسيو في دبي والإمارات",
+        "u": "/ar/service-areas/dubai/",
+        "d": "حلول رقمية مخصصة للشركات والمتاجر في دبي."
+      },
+      {
+        "t": "تصميم مواقع وسيو في الرياض والسعودية",
+        "u": "/ar/service-areas/riyadh/",
+        "d": "حلول متوافقة مع رؤية 2030 وبوابات الدفع السعودية."
+      },
+      {
+        "t": "تصميم مواقع وسيو في أبوظبي",
+        "u": "/ar/service-areas/abu-dhabi/",
+        "d": "خدمات المؤسسات والشركات في العاصمة الإماراتية."
+      },
+      {
+        "t": "تصميم مواقع وسيو في مسقط وعمان",
+        "u": "/ar/service-areas/muscat/",
+        "d": "خدمات السيو والمتاجر الإلكترونية في سلطنة عمان."
+      },
+      {
+        "t": "طهران, إيران",
+        "u": "/ar/service-areas/tehran/",
+        "d": "نقدم خدمات تصميم المواقع والسيو المتقدم للشركات والأنشطة التجارية في طهران. بناء منصات ويب سريعة ومثبتة النجاح"
+      },
+      {
+        "t": "قزوين, إيران",
+        "u": "/ar/service-areas/qazvin/",
+        "d": "تقديم حلول رقمية وتصميم مواقع وسيو محلي للشركات والمصانع في قزوين. الدعم والخدمات المباشرة من مقرنا الرئيسي"
+      }
+    ]
+  },
+  "tools": {
+    "en": [
+      {
+        "t": "All Developer & SEO Tools",
+        "u": "/en/tools/",
+        "d": "Interactive client-side web utilities for developers, marketers, and content creators."
+      },
+      {
+        "t": "SEO Headline Analyzer & SERP Preview Simulator",
+        "u": "/en/tools/headline-analyzer/",
+        "d": "Score headlines for emotional impact, power words, character length, Google CTR, and simulate pixel-accurate desktop and mobile SERP previews with rich snippets."
+      },
+      {
+        "t": "Website Cost Calculator & Price Estimator",
+        "u": "/en/tools/cost-calculator/",
+        "d": "Instant interactive budget estimation for web design and development projects."
+      },
+      {
+        "t": "Content Readability Checker",
+        "u": "/en/tools/readability-checker/",
+        "d": "Flesch-Kincaid grade level and reading ease analyzer."
+      },
+      {
+        "t": "Keyword Density Analyzer",
+        "u": "/en/tools/keyword-density-analyzer/",
+        "d": "Detect keyword frequency and prevent over-optimization penalties."
+      },
+      {
+        "t": "URL Slug Generator",
+        "u": "/en/tools/slug-generator/",
+        "d": "Clean, special-character-free SEO URL slug formatter."
+      },
+      {
+        "t": "UTM Link Builder",
+        "u": "/en/tools/utm-builder/",
+        "d": "Campaign URL generator with analytics parameter tracking."
+      },
+      {
+        "t": "Social Media Card Preview",
+        "u": "/en/tools/social-media-preview/",
+        "d": "Open Graph and Twitter Card validator."
+      },
+      {
+        "t": "Privacy Policy Generator",
+        "u": "/en/tools/privacy-policy-generator/",
+        "d": "Instant custom GDPR/CCPA privacy policy document maker."
+      },
+      {
+        "t": "CSS Glassmorphism Generator",
+        "u": "/en/tools/glassmorphism-generator/",
+        "d": "Interactive CSS backdrop-filter and UI code generator."
+      },
+      {
+        "t": "JSON Formatter & Validator",
+        "u": "/en/tools/json-formatter/",
+        "d": "Secure, client-side JSON formatting and syntax validation."
+      },
+      {
+        "t": "Robots.txt Generator",
+        "u": "/en/tools/robots-generator/",
+        "d": "Custom crawler directive rules generator."
+      },
+      {
+        "t": "People Also Ask (PAA) Explorer",
+        "u": "/en/tools/paa-scraper/",
+        "d": "Question research tool for AEO and featured snippet targeting."
+      },
+      {
+        "t": "Schema Markup Generator",
+        "u": "/en/tools/schema-generator/",
+        "d": "Structured data JSON-LD generator for Organization, Service, and FAQ schemas."
+      },
+      {
+        "t": "FAQ Schema Generator",
+        "u": "/en/tools/faq-generator/",
+        "d": "Create Schema.org FAQPage structured data markup."
+      },
+      {
+        "t": "Base64 Encoder/Decoder",
+        "u": "/en/tools/base64-encoder/",
+        "d": "Client-side string and asset Base64 converter."
+      },
+      {
+        "t": "Box Shadow Generator",
+        "u": "/en/tools/box-shadow-generator/",
+        "d": "Custom CSS shadow code design tool."
+      },
+      {
+        "t": "Color Contrast Checker",
+        "u": "/en/tools/color-contrast-checker/",
+        "d": "WCAG compliance accessibility color contrast tester."
+      },
+      {
+        "t": "CSS Gradient Generator",
+        "u": "/en/tools/css-gradient-generator/",
+        "d": "Linear and radial CSS gradient design tool."
+      },
+      {
+        "t": "Lorem Ipsum Generator",
+        "u": "/en/tools/lorem-generator/",
+        "d": "Placeholder text generator for designers and developers."
+      },
+      {
+        "t": "Meta Tag Generator",
+        "u": "/en/tools/meta-generator/",
+        "d": "Complete HTML head meta tags builder."
+      },
+      {
+        "t": "QR Code Generator",
+        "u": "/en/tools/qr-generator/",
+        "d": "Generate customizable vector QR codes."
+      }
+    ],
+    "fa": [
+      {
+        "t": "ابزارهای رایگان سئو و دیجیتال مارکتینگ | وب اِی‌بی‌سی",
+        "u": "/fa/tools/",
+        "d": "مجموعه‌ای از ابزارهای رایگان و کاربردی سئو و تولید محتوا شامل تولیدکننده متاتگ، پاک‌سازی متن و تحلیل‌گر خوانایی. سئو سایت خود را همین امروز بهبود ببخشید."
+      },
+      {
+        "t": "تحلیلگر تیتر سئو و پیش‌نمایش نتایج گوگل (SERP)",
+        "u": "/fa/tools/headline-analyzer/",
+        "d": "امتیازدهی به تیترها از نظر بار احساسی، طول کاراکتر و نرخ کلیک، همراه با شبیه‌ساز زنده نتایج گوگل در دسکتاپ و موبایل."
+      },
+      {
+        "t": "ماشین‌حساب هزینه طراحی سایت",
+        "u": "/fa/tools/cost-calculator/",
+        "d": "برآورد تعاملی بودجه پروژه‌های طراحی و توسعه وب."
+      },
+      {
+        "t": "سازنده اسکیمای ساخت‌یافته",
+        "u": "/fa/tools/schema-generator/",
+        "d": "تولید نشانه‌گذاری JSON-LD برای Organization و Service و FAQ."
+      },
+      {
+        "t": "سازنده اسلاگ URL",
+        "u": "/fa/tools/slug-generator/",
+        "d": "قالب‌بندی تمیز و استاندارد اسلاگ‌های سئو."
+      },
+      {
+        "t": "بررسی‌کننده خوانایی",
+        "u": "/fa/tools/readability-checker/",
+        "d": "ابزار تحلیل خوانایی متن برای بررسی میزان سادگی و فهم محتوا برای مخاطبان. با بهبود ساختار جملات، تجربه کاربری و سئو محتوایی وب‌سایت خود را بهینه‌سازی کنید."
+      },
+      {
+        "t": "تحلیل‌گر تراکم کلمات کلیدی معنایی",
+        "u": "/fa/tools/keyword-density-analyzer/",
+        "d": "ساختار متن را برای شناسایی فراوانی کلمات کلیدی تحلیل کنید و از بیش‌بهینه‌سازی پیش از انتشار جلوگیری کنید."
+      },
+      {
+        "t": "سازنده لینک UTM و URL Builder – لینک‌ساز رایگان کمپین",
+        "u": "/fa/tools/utm-builder/",
+        "d": "سازنده استاندارد لینک‌های UTM برای ردیابی دقیق کمپین‌های تبلیغاتی در گوگل آنالیتیکس. پاراگراف‌های ردیابی را به آدرس‌های خود اضافه کنید و بازگشت سرمایه را"
+      },
+      {
+        "t": "پیش‌نمایش شبکه‌های اجتماعی",
+        "u": "/fa/tools/social-media-preview/",
+        "d": "ابزار رایگان پیش‌نمایش اشتراک‌گذاری در شبکه‌های اجتماعی فیسبوک، توییتر و لینکدین. ببینید پست‌های شما چگونه نمایش داده می‌شوند و تصاویر و تگ‌ها را بهینه کنید."
+      },
+      {
+        "t": "سازنده سیاست حفظ حریم خصوصی",
+        "u": "/fa/tools/privacy-policy-generator/",
+        "d": "سازنده آنلاین و خودکار سیاست حفظ حریم خصوصی (Privacy Policy) برای وب‌سایت. با وارد کردن اطلاعات کسب‌وکار، متن قانونی حقوق کاربر را تولید و برای سایت خود دریافت"
+      },
+      {
+        "t": "سازنده افکت شیشه‌ای CSS",
+        "u": "/fa/tools/glassmorphism-generator/",
+        "d": "سازنده آنلاین افکت شیشه‌ای (Glassmorphism) با کدهای CSS. با تنظیم تاری، شفافیت و رنگ، استایل‌های مدرن و خیره‌کننده برای رابط کاربری وب‌سایت خود طراحی و کپی"
+      },
+      {
+        "t": "فرمت‌ساز و اعتبارسنج JSON",
+        "u": "/fa/tools/json-formatter/",
+        "d": "داده‌های JSON خود را به‌طور ایمن و کاملاً درون مرورگر فرمت، اعتبارسنجی و ساختاردهی کنید."
+      },
+      {
+        "t": "سازنده Robots.txt و نقشه سایت",
+        "u": "/fa/tools/robots-generator/",
+        "d": "دستورات خزنده بهینه بسازید و پیکربندی نقشه سایت خود را به‌صورت پویا ترسیم کنید."
+      },
+      {
+        "t": "استخراج‌کننده \"افراد همچنین پرسیده‌اند\"",
+        "u": "/fa/tools/paa-scraper/",
+        "d": "استخراج‌کننده سوالات متداول گوگل (People Also Ask) برای پیدا کردن دغدغه‌های واقعی کاربران. منبعی عالی برای تحقیق کلمات کلیدی و یافتن ایده‌های جدید تولید محتوا."
+      },
+      {
+        "t": "سازنده اسکیمای سوالات متداول – JSON-LD رایگان",
+        "u": "/fa/tools/faq-generator/",
+        "d": "ابزار رایگان تولید کدهای اسکیما (Schema) برای صفحه سوالات متداول. با استفاده از این ابزار، نمایش سایت خود را در نتایج جستجوی گوگل بهبود داده و نرخ کلیک را بالا"
+      },
+      {
+        "t": "تبدیل عکس به Base64 و انکودر متون",
+        "u": "/fa/tools/base64-encoder/",
+        "d": "تبدیل آنلاین تصاویر به کدهای Data URL Base64 و رمزنگاری/رمزگشایی رشته‌های متنی."
+      },
+      {
+        "t": "سازنده سایه باکس CSS و نیومورفیسم",
+        "u": "/fa/tools/box-shadow-generator/",
+        "d": "طراحی بصری و آنلاین انواع سایه‌های مدرن باکس CSS، افکت‌های نیومورفیسم و دریافت کدهای آماده."
+      },
+      {
+        "t": "ابزار سنجش کنتراست رنگ و دسترس‌پذیری وب (WCAG)",
+        "u": "/fa/tools/color-contrast-checker/",
+        "d": "بررسی و محاسبه نسبت کنتراست رنگ متن و پس‌زمینه بر اساس استانداردهای بین‌المللی دسترس‌پذیری وب WCAG 2.1."
+      },
+      {
+        "t": "سازنده گرادیانت CSS",
+        "u": "/fa/tools/css-gradient-generator/",
+        "d": "ابزار حرفه‌ای برای ایجاد گرادیانت‌های زیبای CSS به صورت بصری و آنلاین. رنگ‌های دلخواه را ترکیب کنید و کدهای بهینه برای استایل‌دهی مدرن به وب‌سایت خود دریافت"
+      },
+      {
+        "t": "مولد لورم ایپسوم",
+        "u": "/fa/tools/lorem-generator/",
+        "d": "مولد حرفه‌ای متن لورم ایپسوم با امکان سفارشی‌سازی تعداد پاراگراف‌ها و تم‌های مختلف. ابزاری سریع و کاربردی برای طراحان وب جهت تست چیدمان محتوا در پروژه‌ها."
+      },
+      {
+        "t": "مولد توضیحات متا و تگ‌های سئو",
+        "u": "/fa/tools/meta-generator/",
+        "d": "ابزار آنلاین ساخت توضیحات متای استاندارد و تگ‌های هدر سئو. توضیحات جذاب و بهینه‌شده برای نتایج جستجو و شبکه‌های اجتماعی تولید کنید."
+      },
+      {
+        "t": "سازنده کد QR",
+        "u": "/fa/tools/qr-generator/",
+        "d": "ابزار رایگان ساخت کدهای QR سفارشی برای لینک، متن و اطلاعات تماس. با قابلیت تغییر رنگ و دانلود فوری، کدهای کیوآر اختصاصی خود را برای استفاده تجاری تولید کنید."
+      }
+    ],
+    "ar": [
+      {
+        "t": "أدوات السيو المجانية والمرافق التسويقية | WebABC",
+        "u": "/ar/tools/",
+        "d": "مجموعة أدوات WebABC المجانية لتحسين محركات البحث (SEO) وإنشاء المحتوى. عزز استراتيجيتك الرقمية بأدوات احترافية للتحليل والتحسين دون الحاجة للتسجيل أو التثبيت."
+      },
+      {
+        "t": "محلل عناوين السيو ومعاينة نتائج جوجل (SERP)",
+        "u": "/ar/tools/headline-analyzer/",
+        "d": "تقييم العناوين من حيث التأثير العاطفي وطول الأحرف ونسبة النقر، مع محاكاة مظهر النتائج على ديسكتوب وجوال."
+      },
+      {
+        "t": "حاسبة تكلفة تصميم المواقع",
+        "u": "/ar/tools/cost-calculator/",
+        "d": "تقدير تفاعلي فوري لميزانية مشاريع تصميم وتطوير الويب."
+      },
+      {
+        "t": "مولد ترميز سكيما",
+        "u": "/ar/tools/schema-generator/",
+        "d": "توليد بيانات JSON-LD المنظمة لأنواع Organization وService وFAQ."
+      },
+      {
+        "t": "مولد روابط URL",
+        "u": "/ar/tools/slug-generator/",
+        "d": "تنسيق روابط URL نظيفة ومتوافقة مع السيو."
+      },
+      {
+        "t": "أداة فحص سهولة القراءة",
+        "u": "/ar/tools/readability-checker/",
+        "d": "أداة فحص سهولة القراءة من WebABC. حلل نصوصك واحصل على تقييم فوري لمستوى الوضوح (Flesch-Kincaid) لضمان وصول رسالتك بوضوح لجميع القراء وتحسين تجربة القراءة."
+      },
+      {
+        "t": "محلل كثافة الكلمات المفتاحية الدلالي",
+        "u": "/ar/tools/keyword-density-analyzer/",
+        "d": "حلل بنية النص لتحديد تكرار الكلمات المفتاحية وتجنب الإفراط في التحسين قبل النشر."
+      },
+      {
+        "t": "منشئ روابط UTM وURL Builder – مولد روابط الحملات مجاناً",
+        "u": "/ar/tools/utm-builder/",
+        "d": "منشئ روابط UTM الاحترافي من WebABC. أنشئ روابط تتبع دقيقة لحملاتك التسويقية في جوجل أناليتيكس (GA4) لسهولة تحليل المصادر والوسائط وقياس نجاح حملاتك الرقمية."
+      },
+      {
+        "t": "معاينة وسائل التواصل الاجتماعي",
+        "u": "/ar/tools/social-media-preview/",
+        "d": "أداة معاينة مشاركات التواصل الاجتماعي من WebABC. عاين مظهر المحتوى قبل مشاركته على فيسبوك وتويتر ولينكد إن لضمان ظهور الصور والعناوين بشكل جذاب واحترافي."
+      },
+      {
+        "t": "مولد سياسة الخصوصية",
+        "u": "/ar/tools/privacy-policy-generator/",
+        "d": "مولد سياسة الخصوصية المجاني من WebABC. أنشئ سياسة خصوصية احترافية ومتوافقة لموقعك الإلكتروني خلال دقائق لحماية بيانات المستخدمين وتعزيز الثقة والمصداقية."
+      },
+      {
+        "t": "مولد تأثير الزجاج (Glassmorphism)",
+        "u": "/ar/tools/glassmorphism-generator/",
+        "d": "مولد تأثير الزجاج (Glassmorphism) الاحترافي. أنشئ أكواد CSS حديثة وجذابة لواجهة المستخدم الخاصة بك مع التحكم الكامل في درجة الضبابية، الشفافية، والألوان."
+      },
+      {
+        "t": "منسق ومدقق JSON",
+        "u": "/ar/tools/json-formatter/",
+        "d": "قم بتنسيق والتحقق من صحة بيانات JSON بأمان داخل متصفحك. خصوصية تامة."
+      },
+      {
+        "t": "منشئ Robots.txt وخريطة الموقع",
+        "u": "/ar/tools/robots-generator/",
+        "d": "أنشئ توجيهات زاحف محسّنة وارسم إعدادات خريطة الموقع بسهولة."
+      },
+      {
+        "t": "مستخرج \"الناس أيضًا يسألون\"",
+        "u": "/ar/tools/paa-scraper/",
+        "d": "أداة استخراج 'الناس أيضاً يسألون' (PAA) من WebABC. اكتشف الأسئلة الشائعة التي يطرحها المستخدمون حول أي موضوع لإنشاء محتوى غني يتصدر نتائج بحث جوجل."
+      },
+      {
+        "t": "منشئ مخطط الأسئلة الشائعة – مولد FAQPage JSON-LD مجاني",
+        "u": "/ar/tools/faq-generator/",
+        "d": "أداة إنشاء مخطط الأسئلة الشائعة (FAQ Schema) من WebABC. قم بتوليد كود JSON-LD احترافي لتحسين ظهور موقعك في نتائج بحث جوجل وزيادة معدل النقر مسبقاً وتلقائياً."
+      },
+      {
+        "t": "محول الصور والنصوص إلى Base64",
+        "u": "/ar/tools/base64-encoder/",
+        "d": "تحويل الصور إلى أكواد Data URL والتشفير وفك التشفير للنصوص عبر الإنترنت."
+      },
+      {
+        "t": "مولد ظلال CSS وتأثيرات Neumorphism",
+        "u": "/ar/tools/box-shadow-generator/",
+        "d": "تصميم ظلال العناصر وتأثيرات التصميم الحديثة بلغة CSS وتوليد الأكواد بشكل فوري."
+      },
+      {
+        "t": "فاحص تباين الألوان وإمكانية الوصول (WCAG)",
+        "u": "/ar/tools/color-contrast-checker/",
+        "d": "اختبار نسبة التباين بين لون النص والخلفية للتأكد من سهولة القراءة وتوافق معايير إمكانية الوصول."
+      },
+      {
+        "t": "مولد تدرج CSS",
+        "u": "/ar/tools/css-gradient-generator/",
+        "d": "مولد تدرج CSS المرئي من WebABC. أنشئ تدرجات ألوان (Gradient) مبهرة لموقعك بسهولة مع إمكانية نسخ الكود مباشرة لتعزيز جاذبية التصميم وتجربة المستخدم العصرية."
+      },
+      {
+        "t": "مولد Lorem Ipsum",
+        "u": "/ar/tools/lorem-generator/",
+        "d": "مولد نص لوريم إيبسوم (Lorem Ipsum) القابل للتخصيص. أنشئ نصوصاً بديلة احترافية لتصميماتك مع خيارات متعددة للسمات والفقرات لتسهيل عملية التنسيق الأولي للمواقع."
+      },
+      {
+        "t": "مولد وصف الميتا وعلامات السيو",
+        "u": "/ar/tools/meta-generator/",
+        "d": "أداة إنشاء وصف الميتا وعلامات Head للمواقع. قم بتوليد أوصاف ميتا محسّنة ومقتطفات Open Graph احترافية لتحسين جاذبية صفحاتك ومعدل النقر."
+      },
+      {
+        "t": "مولد رمز الاستجابة السريعة (QR)",
+        "u": "/ar/tools/qr-generator/",
+        "d": "منشئ رموز QR المخصصة من WebABC. أنشئ أكواد QR للروابط والنصوص والبيانات التجارية بسهولة مع إمكانية التحميل الفوري بصيغة عالية الجودة وتخصيص الألوان."
+      }
+    ]
+  },
+  "portfolio": {
+    "en": [
+      {
+        "t": "Portfolio Directory",
+        "u": "/en/portfolio/",
+        "d": "Case studies highlighting client growth, technology stack implementation, and ROI."
+      },
+      {
+        "t": "Ramzarz Negaran – Premier Legal Crypto Mining Platform",
+        "u": "/en/portfolio/ramzarz-negaran/",
+        "d": "Case study: How WebABC developed Iran's leading legal crypto mining platform with real-time profitability calculators and trust-centric e-commerce design."
+      },
+      {
+        "t": "Zeytoun Masoud – Digital Transformation for Traditional Agriculture & Olive Oil",
+        "u": "/en/portfolio/zeytoun-masoud/",
+        "d": "Transforming a traditional olive producer into a national e-commerce brand. Explore Zeytoun Masoud's hybrid B2B/B2C systems and dynamic logistics solutions."
+      },
+      {
+        "t": "Remido – Kalimba E-Commerce & Warranty Portal | WebABC Case Study",
+        "u": "/en/portfolio/remido/",
+        "d": "Official WebABC case study: Developing a specialized WooCommerce store and automated warranty verification system for Remido, the premier handcrafted Kalimba manufacturer."
+      }
+    ],
+    "fa": [
+      {
+        "t": "فهرست نمونه‌کارها",
+        "u": "/fa/portfolio/",
+        "d": "نمونه‌کارهایی با رشد قابل اندازه‌گیری مشتری، پیاده‌سازی فناوری و بازگشت سرمایه."
+      },
+      {
+        "t": "رمز ارز نگاران – پلتفرم فروشگاهی و سئوی تخصصی تجهیزات بلاک‌چین در تهران",
+        "u": "/fa/portfolio/ramzarz-negaran/",
+        "d": "کیس استدی طراحی سایت و سئوی اختصاصی شرکت رمز ارز نگاران (ramzarznegaran.com)، ماشین‌حساب آنلاین سودآوری، سئوی محلی تهران در نشان و بلد و رتبه ۱ گوگل."
+      },
+      {
+        "t": "زیتون مسعود – طراحی سایت و سئوی فروشگاه زیتون مسعود",
+        "u": "/fa/portfolio/zeytoun-masoud/",
+        "d": "کیس استدی طراحی سایت و سئوی برند زیتون مسعود (zeytounmasoud.ir)، فروشگاه آنلاین محصولات ارگانیک زیتون رودبار، پرتال سفارش عمده رستوران‌ها و ارسال کشوری."
+      },
+      {
+        "t": "رمیدو (Remido) – طراحی فروشگاه اینترنتی و اصالت کالا | وب اِی‌بی‌سی",
+        "u": "/fa/portfolio/remido/",
+        "d": "مطالعه موردی رسمی وب اِی‌بی‌سی: طراحی فروشگاه اینترنتی و سامانه ثبت گارانتی و استعلام اصالت کالا برای برند رمیدو (Remido)، برترین تولیدکننده کالیمبای دست‌ساز حرفه‌ای."
+      }
+    ],
+    "ar": [
+      {
+        "t": "دليل الأعمال",
+        "u": "/ar/portfolio/",
+        "d": "دراسات حالة تُظهر نمو العميل وتنفيذ التقنيات والعائد على الاستثمار."
+      },
+      {
+        "t": "رمز أرز نكاران - منصة تعدين العملات المشفرة القانونية",
+        "u": "/ar/portfolio/ramzarz-negaran/",
+        "d": "مشروع رمز أرز نكاران: تطوير أول منصة قانونية لتعدين العملات المشفرة في إيران مع حاسبة ربحية زنده ونظام متقدم لإدارة الثقة وسلاسل الإمداد."
+      },
+      {
+        "t": "زيتون مسعود - التحول الرقمي للزراعة التقليدية",
+        "u": "/ar/portfolio/zeytoun-masoud/",
+        "d": "زيتون مسعود: تحويل علامة تجارية تقليدية إلى رائدة في التجارة الإلكترونية الوطنية مع نظام B2B متخصص ولوجستيات شحن ديناميكية متطورة."
+      },
+      {
+        "t": "ريميدو (Remido) – متجر إلكتروني وبوابة الضمان | ويب إيه بي سي",
+        "u": "/ar/portfolio/remido/",
+        "d": "دراسة حالة رسمية من ويب إيه بي سي: تصميم وتطوير متجر ووكامرس وبوابة التحقق من الضمان والأصالة لعلامة ريميدو (Remido)، المصنّع الرائد لآلات الكالمبا المصنوعة يدويًا."
+      }
+    ]
+  },
+  "blog": {
+    "en": [
+      {
+        "t": "Insights & Blog",
+        "u": "/en/blog/",
+        "d": "In-depth articles on SEO, modern Astro web development, and digital marketing strategies."
+      },
+      {
+        "t": "SEO Checklist 2026 / ۱۴۰۵: Complete Step-by-Step Audit Guide",
+        "u": "/en/blog/seo-checklist-2026/",
+        "d": "The 2026 SEO checklist serious teams audit by: technical SEO, on-page content, Core Web Vitals, AEO, local search, off-page authority, and monitoring."
+      },
+      {
+        "t": "Best Free SEO & Developer Tools in 2026",
+        "u": "/en/blog/free-seo-developer-tools-guide-2026/",
+        "d": "Master the best free SEO and developer tools in 2026: step-by-step workflows for title optimization, headline scoring, schema generation, and SERP previews."
+      },
+      {
+        "t": "Dubai & UAE Web Design and SEO Guide 2026",
+        "u": "/en/blog/dubai-uae-web-design-seo-guide-2026/",
+        "d": "Guide to web design and SEO in Dubai and the UAE: bilingual English and Arabic UX, luxury visual standards, local search execution, and GCC payment rails"
+      },
+      {
+        "t": "Oman & Muscat Web Design and SEO Guide 2026",
+        "u": "/en/blog/oman-web-design-seo-guide-2026/",
+        "d": "Guide to web design and local SEO in Oman: bilingual Arabic and English layouts, regional payment gateways, Muscat district pages, and Gulf search tactics."
+      },
+      {
+        "t": "Website Development Cost Calculator & Pricing Guide 2026",
+        "u": "/en/blog/website-development-cost-calculator-guide-2026/",
+        "d": "Learn how a website cost calculator works: the formulas behind each estimate, the inputs to gather, worked examples, and how to sanity-check the output."
+      },
+      {
+        "t": "WordPress vs. Custom Web Development 2026",
+        "u": "/en/blog/wordpress-vs-custom-development-guide-2026/",
+        "d": "Architectural comparison of WordPress vs custom development: how the two stacks differ on performance, security, maintainability, and scaling in 2026."
+      },
+      {
+        "t": "Website Speed Optimization Pricing & Core Web Vitals ROI Guide 2026",
+        "u": "/en/blog/website-speed-optimization-pricing-guide-2026/",
+        "d": "Complete guide to website speed optimization costs and Core Web Vitals pricing in 2026. Explore service rates for WordPress, WooCommerce, and custom web apps."
+      },
+      {
+        "t": "Trilingual Website Maintenance and Security Guide 2026",
+        "u": "/en/blog/website-maintenance-security-guide-2026/",
+        "d": "Master website maintenance and security in 2026. Learn automated backup scheduling, SSL renewals, malware scans, database optimization, and uptime protocols."
+      },
+      {
+        "t": "SEO Best Practices for 2026: The Definitive Search Guide",
+        "u": "/en/blog/seo-best-practices/",
+        "d": "Stay ahead with SEO best practices for 2026. Discover latest strategies for Core Web Vitals, AI search optimization (AEO), and technical SEO to boost rankings."
+      },
+      {
+        "t": "Local SEO Strategies for Middle East",
+        "u": "/en/blog/local-seo-middle-east/",
+        "d": "Unlock local search success in Dubai, Abu Dhabi, Riyadh, Tehran, and Muscat. Master localization, multi-language schemas, and Google Maps optimizations."
+      },
+      {
+        "t": "Local SEO Services Guide 2026 (EN)",
+        "u": "/en/blog/local-seo-services-guide-2026/",
+        "d": "Rank #1 on Google Maps in 2026: Local 3-Pack tactics, Google Business Profile optimization, NAP consistency, schema, and reviews that win nearby buyers."
+      },
+      {
+        "t": "WordPress Cost Calculator Guide 2026 (EN)",
+        "u": "/en/blog/wordpress-website-cost-guide-2026/",
+        "d": "WordPress website cost in 2026: pricing for brochure sites, custom portals, WooCommerce stores, hosting, plugin licenses, and annual maintenance budgets."
+      },
+      {
+        "t": "Title Tag Checker Tools Compared 2026",
+        "u": "/en/blog/best-title-tag-checker-tools-2026/",
+        "d": "We tested 6 free title tag checker tools for 2026. Titles of 40–60 characters earn 8.9% higher CTR (Backlinko) — compare pixel preview, scoring and more."
+      },
+      {
+        "t": "Tehran E-commerce Web Design Guide 2026",
+        "u": "/en/blog/tehran-ecommerce-web-design-guide-2026/",
+        "d": "Selling online in Tehran in 2026? With 70.22% of carts abandoned globally (Baymard), checkout UX decides revenue — costs, mobile UX and how Tehran stores rank."
+      },
+      {
+        "t": "SEO Services Pricing Guide 2026",
+        "u": "/en/blog/seo-services-pricing-guide-2026/",
+        "d": "Transparent SEO services pricing guide for 2026. Compare technical SEO audits, monthly retainers, local SEO map packs, and calculate organic search ROI."
+      },
+      {
+        "t": "Qazvin Web Design & Local SEO Guide 2026",
+        "u": "/en/blog/qazvin-web-design-seo-guide-2026/",
+        "d": "Strategic guide to custom web design and local SEO in Qazvin for 2026. Digital engineering for Caspian and Liya industrial zones, Google Maps, and B2B growth."
+      },
+      {
+        "t": "Keyword Density Analyzer Script: Formula and Code",
+        "u": "/en/blog/keyword-density-analyzer-script/",
+        "d": "Write a keyword density analyzer script: the density formula, a defensible target range, per-field counting rules, and the mistakes that make the number lie."
+      },
+      {
+        "t": "Moz Title Checker Alternatives: 5 Free Options",
+        "u": "/en/blog/moz-title-checker-alternatives/",
+        "d": "Moz title checker only sees your draft. Compare 5 free alternatives on pixel width, mobile preview, live-page audit and export, and pick the right one."
+      },
+      {
+        "t": "Web Development Guide 2026: Process, Options, Hiring",
+        "u": "/en/blog/web-development-guide-2026/",
+        "d": "What web development covers, how a project runs from brief to launch, how custom code compares with a CMS or site builder, and how to judge a supplier."
+      },
+      {
+        "t": "Generative Engine Optimization (GEO) 2026: AI Search & AEO",
+        "u": "/en/blog/ai-search-optimization-guide-2026/",
+        "d": "Master Generative Engine Optimization (GEO) and AEO in 2026. Learn how to rank and get cited in Google AI Overviews, SearchGPT, Perplexity, and Claude."
+      },
+      {
+        "t": "Essential SEO Tools for Modern Businesses in 2026",
+        "u": "/en/blog/best-seo-tools/",
+        "d": "Boost organic traffic with the best SEO tools in 2026: keyword research, competitive analysis, performance tracking, and technical auditing, explained."
+      },
+      {
+        "t": "Digital Marketing ROI Guide 2026: Strategies & Funnel",
+        "u": "/en/blog/digital-marketing-roi-guide-2026/",
+        "d": "Master digital marketing strategies in 2026. Learn omni-channel acquisition funnels, campaign ROI attribution, UTM tracking, and revenue growth tactics."
+      },
+      {
+        "t": "Effective Digital Marketing Strategies for Small Businesses",
+        "u": "/en/blog/digital-marketing-strategies/",
+        "d": "Proven digital marketing strategies for small businesses in 2026: SEO, content, social media, email, local search, and paid ads — prioritized by real ROI."
+      },
+      {
+        "t": "E-Commerce Web Design Guide 2026: Architecture & Conversions",
+        "u": "/en/blog/ecommerce-web-design-guide-2026/",
+        "d": "Master e-commerce web design in 2026. Learn mobile-first navigation, checkout optimization, payment gateways, product schema, and conversion tactics that sell."
+      },
+      {
+        "t": "How Much Does a Website Cost in 2026?",
+        "u": "/en/blog/how-much-does-a-website-cost-2026/",
+        "d": "How much does a website cost in 2026? Compare development cost bands by site type, WordPress vs custom builds, ecommerce scope, and the factors behind quotes."
+      },
+      {
+        "t": "Link Building Strategies Guide 2026: Authority & Backlinks",
+        "u": "/en/blog/link-building-strategies-guide-2026/",
+        "d": "Discover modern link building strategies in 2026. Learn how to acquire high DA editorial backlinks, audit anchor text diversity, and boost domain authority."
+      },
+      {
+        "t": "Mobile-First Design in 2026 - Essential Strategies",
+        "u": "/en/blog/mobile-first-design/",
+        "d": "Master mobile-first design in 2026. Learn why prioritizing mobile experience is crucial for SEO and UX, and how to implement touch-friendly web projects."
+      },
+      {
+        "t": "Mobile-First Web Design Guide 2026: Usability & Performance",
+        "u": "/en/blog/mobile-first-web-design-guide-2026/",
+        "d": "Master mobile-first web design in 2026. Learn touch-target sizing, fluid typography, responsive layout breakpoints, and mobile SEO optimization strategies."
+      },
+      {
+        "t": "Modern UI/UX Trends in High-Performance Web Design",
+        "u": "/en/blog/modern-ui-ux-trends/",
+        "d": "Explore the top interaction and product design trends in 2026: how micro-animations, glassmorphism, accessibility, and dark modes improve user experience."
+      },
+      {
+        "t": "How to Write SEO Titles That Boost CTR [2026]",
+        "u": "/en/blog/seo-title-optimization-guide-2026/",
+        "d": "Master SEO title tag optimization, pixel limits vs character counts, and SERP previewing. Use our free SEO title checker for blog posts to maximize CTR."
+      },
+      {
+        "t": "Technical SEO Audit Guide 2026: Architecture & Indexing",
+        "u": "/en/blog/technical-seo-audit-guide-2026/",
+        "d": "Learn how to perform a comprehensive Technical SEO audit in 2026. Fix crawl errors, optimize XML sitemaps, canonical tags, and structured JSON-LD schemas."
+      },
+      {
+        "t": "UI/UX Audit & Redesign Guide 2026: Enhancing Conversions",
+        "u": "/en/blog/ui-ux-audit-redesign-guide-2026/",
+        "d": "Complete UI/UX audit guide for 2026. Learn heuristic evaluation, session data analysis, and step-by-step framework that turns findings into conversion fixes."
+      },
+      {
+        "t": "Modern Web Design Trends for 2026",
+        "u": "/en/blog/web-design-trends/",
+        "d": "Explore cutting-edge web design trends for 2026. From minimalist layouts to accessibility-first design, learn how to create stunning websites that convert."
+      },
+      {
+        "t": "Website Cost Drivers 2026: What You Are Paying For",
+        "u": "/en/blog/website-development-cost-guide-2026/",
+        "d": "What are you actually paying for when a website quote lands? This guide breaks the quote into design, engineering, integration, content, and QA effort."
+      },
+      {
+        "t": "Website Pricing Models: Fixed vs T&M vs Retainer",
+        "u": "/en/blog/website-development-costs/",
+        "d": "Fixed, time-and-materials, or retainer: how agencies price website work, what each model includes, when it fits, and the contract terms that change the number."
+      },
+      {
+        "t": "Website Speed Optimization Guide 2026: Step-by-Step",
+        "u": "/en/blog/website-speed-optimization-guide-2026/",
+        "d": "Hands-on website speed optimization guide for 2026: measure your baseline, fix LCP, INP, and CLS step by step, and finish with a full performance checklist."
+      },
+      {
+        "t": "WordPress SEO Optimization Guide 2026: Rank Higher on Google",
+        "u": "/en/blog/wordpress-seo-optimization-guide-2026/",
+        "d": "Master WordPress SEO in 2026: technical setup, Rank Math vs Yoast, Core Web Vitals speed, schema markup, internal linking and hreflang for higher rankings."
+      },
+      {
+        "t": "WordPress vs Custom Development: Business Decision Guide",
+        "u": "/en/blog/wordpress-vs-custom-development/",
+        "d": "WordPress or custom development? Compare cost, timeline, team fit, and maintenance load side by side, then pick the right platform for your business in 2026."
+      }
+    ],
+    "fa": [
+      {
+        "t": "مقالات و راهنماها",
+        "u": "/fa/blog/",
+        "d": "مقالات تخصصی درباره سئو، توسعه وب مدرن با Astro و استراتژی‌های بازاریابی دیجیتال."
+      },
+      {
+        "t": "راهنمای جامع خدمات سئو محلی ۲۰۲۶",
+        "u": "/fa/blog/local-seo-services-guide-2026/",
+        "d": "راهنمای جامع سئو محلی ۲۰۲۶: راهکارهای رتبه‌گیری در نقشه گوگل، بهینه‌سازی پروفایل کسب‌وکار، یکپارچگی NAP و اسکیمای LocalBusiness برای جذب مشتریان نزدیک وفادار."
+      },
+      {
+        "t": "محاسبه آنلاین هزینه طراحی سایت وردپرس ۱۴۰۵",
+        "u": "/fa/blog/wordpress-website-cost-guide-2026/",
+        "d": "هزینه وب‌سایت وردپرس در ۲۰۲۶: تعرفه سایت‌های معرفی، پورتال‌های اختصاصی، فروشگاه‌های ووکامرس، میزبانی، مجوز افزونه‌ها و بودجه نگهداری و به‌روزرسانی سالانه."
+      },
+      {
+        "t": "راهنمای سئوی وردپرس ۲۰۲۶",
+        "u": "/fa/blog/wordpress-seo-optimization-guide-2026/",
+        "d": "سئوی وردپرس در ۲۰۲۶ را مسلط شوید: راه‌اندازی فنی، Rank Math در برابر Yoast، سرعت Core Web Vitals، اسکیما، لینک‌سازی داخلی و hreflang برای رتبه‌های بالاتر."
+      },
+      {
+        "t": "هزینه طراحی سایت در سال ۲۰۲۶",
+        "u": "/fa/blog/how-much-does-a-website-cost-2026/",
+        "d": "هزینه طراحی سایت در سال ۲۰۲۶ چقدر است؟ مقایسه بازه‌های قیمت هر نوع سایت، وردپرس در برابر توسعه اختصاصی، دامنه فروشگاه اینترنتی و عوامل پشت پیش‌فاکتورها."
+      },
+      {
+        "t": "راهنمای ماشین‌حساب هزینه توسعه وب‌سایت ۲۰۲۶",
+        "u": "/fa/blog/website-development-cost-calculator-guide-2026/",
+        "d": "ببینید محاسبه‌گر هزینه وب‌سایت چگونه کار می‌کند: فرمول‌های پشت هر برآورد، داده‌هایی که باید جمع‌آوری کنید، مثال‌های کاربردی و راهی برای سنجش صحت خروجی."
+      },
+      {
+        "t": "راهنمای قیمت بهینه‌سازی سرعت سایت و بازگشت سرمایه ۲۰۲۶",
+        "u": "/fa/blog/website-speed-optimization-pricing-guide-2026/",
+        "d": "راهنمای کامل هزینه بهینه‌سازی سرعت سایت و قیمت Core Web Vitals در ۲۰۲۶؛ بازه تعرفه وردپرس، فروشگاه و وب‌اپ اختصاصی، همراه با معیارها و برآورد بازگشت سرمایه."
+      },
+      {
+        "t": "مقایسه 6 ابزار رایگان بررسی تگ عنوان در 2026",
+        "u": "/fa/blog/best-title-tag-checker-tools-2026/",
+        "d": "6 ابزار رایگان بررسی تگ عنوان را برای 2026 مقایسه کردیم: عنوان‌های 40 تا 60 کاراکتری 8.9% کلیک بیشتر می‌گیرند (Backlinko). پیش‌نمایش پیکسلی، امتیازدهی و ممیزی."
+      },
+      {
+        "t": "طراحی فروشگاه اینترنتی در تهران: هزینه، UX و سئو [2026]",
+        "u": "/fa/blog/tehran-ecommerce-web-design-guide-2026/",
+        "d": "فروش آنلاین در تهران در سال ۲۰۲۶؟ با رهاسازی ۷۰٫۲۲٪ سبدهای خرید در جهان (Baymard)، تجربه تسویه‌حساب سرنوشت درآمد شماست — هزینه، UX موبایل و راهنمای سئو."
+      },
+      {
+        "t": "راهنمای تعرفه سئو و قیمت خدمات سئو ۲۰۲۶",
+        "u": "/fa/blog/seo-services-pricing-guide-2026/",
+        "d": "راهنمای شفاف قیمت خدمات سئو در سال ۲۰۲۶؛ مقایسه ممیزی فنی، ریتینر ماهانه، سئو محلی و بسته‌های نقشه گوگل به‌همراه فرمول محاسبه بازگشت سرمایه و نکات انتخاب پکیج."
+      },
+      {
+        "t": "راهنمای طراحی سایت در قزوین و سئو محلی ۲۰۲۶",
+        "u": "/fa/blog/qazvin-web-design-seo-guide-2026/",
+        "d": "راهنمای راهبردی طراحی سایت اختصاصی و سئو محلی در قزوین برای سال ۲۰۲۶؛ مهندسی دیجیتال شهرک‌های صنعتی کاسپین و لیا، بهینه‌سازی نقشه گوگل و راهبرد رشد تجاری B2B."
+      },
+      {
+        "t": "اسکریپت تحلیل‌گر چگالی کلمه کلیدی: فرمول و کد",
+        "u": "/fa/blog/keyword-density-analyzer-script/",
+        "d": "اسکریپت تحلیل‌گر چگالی کلمه کلیدی بنویسید: فرمول چگالی، بازه هدف قابل‌دفاع، قواعد شمارش برای هر فیلد، اشتباهات رایج و زمانی که باید عدد را نادیده گرفت."
+      },
+      {
+        "t": "جایگزین‌های چکر عنوان موز: ۵ ابزار رایگان",
+        "u": "/fa/blog/moz-title-checker-alternatives/",
+        "d": "چکر عنوان موز فقط پیش‌نویس را می‌بیند. پنج جایگزین رایگان را بر اساس عرض پیکسل، پیش‌نمایش موبایل، ممیزی صفحه زنده و خروجی مقایسه کنید و گزینه درست را بردارید."
+      },
+      {
+        "t": "راهنمای توسعه وب ۲۰۲۶: فرایند، گزینه‌ها و انتخاب پیمانکار",
+        "u": "/fa/blog/web-development-guide-2026/",
+        "d": "در این راهنما می‌خوانید توسعه وب چه حوزه‌ای را پوشش می‌دهد، پروژه از بریف تا راه‌اندازی چگونه پیش می‌رود، و چگونه کد اختصاصی را با CMS و سایت‌ساز مقایسه کنید."
+      },
+      {
+        "t": "بهینه‌سازی موتورهای مولد (GEO) و AEO در جستجوی ۲۰۲۶",
+        "u": "/fa/blog/ai-search-optimization-guide-2026/",
+        "d": "بهینه‌سازی برای موتورهای مولد (GEO) و موتورهای پاسخگو (AEO) در سال ۲۰۲۶؛ یاد بگیرید چگونه در Google AI Overviews، SearchGPT، Perplexity و Claude نقل‌قول شوید."
+      },
+      {
+        "t": "ابزارهای ضروری سئو برای کسب‌وکارهای مدرن در سال ۲۰۲۶",
+        "u": "/fa/blog/best-seo-tools/",
+        "d": "ترافیک ارگانیک و رتبه گوگل خود را با بهترین ابزارهای سئو در سال ۲۰۲۶ افزایش دهید؛ تحقیق کلمات کلیدی، آنالیز رقبا، پایش عملکرد و ممیزی فنی، همراه با توضیح."
+      },
+      {
+        "t": "راهنمای جامع بازگشت سرمایه (ROI) در دیجیتال مارکتینگ ۲۰۲۶",
+        "u": "/fa/blog/digital-marketing-roi-guide-2026/",
+        "d": "بازگشت سرمایه دیجیتال مارکتینگ را در ۲۰۲۶ حرفه‌ای محاسبه کنید؛ قیف جذب چندکاناله، انتساب کمپین‌ها، ردیابی UTM، نسبت CAC به LTV و تخصیص بودجه بازاریابی."
+      },
+      {
+        "t": "استراتژی‌های موثر دیجیتال مارکتینگ برای کسب‌وکارهای کوچک",
+        "u": "/fa/blog/digital-marketing-strategies/",
+        "d": "استراتژی‌های دیجیتال مارکتینگ برای کسب‌وکارهای کوچک در ۲۰۲۶: سئو، محتوا، شبکه اجتماعی، ایمیل، جستجوی محلی و تبلیغات پولی، اولویت‌بندی‌شده بر اساس بازده."
+      },
+      {
+        "t": "راهنمای طراحی سایت و سئو در دبی و امارات ۲۰۲۶",
+        "u": "/fa/blog/dubai-uae-web-design-seo-guide-2026/",
+        "d": "راهنمای طراحی سایت و سئو در دوبی و امارات: تجربه کاربری دوزبانه انگلیسی و عربی، استانداردهای بصری لوکس، اجرای سئوی محلی و درگاه‌های پرداخت خلیج فارس در ۲۰۲۶."
+      },
+      {
+        "t": "راهنمای طراحی سایت فروشگاهی ۲۰۲۶: معماری و افزایش فروش",
+        "u": "/fa/blog/ecommerce-web-design-guide-2026/",
+        "d": "اصول طراحی سایت فروشگاهی در سال ۲۰۲۶ را بیاموزید: ناوبری موبایل‌محور، بهینه‌سازی تسویه‌حساب، درگاه پرداخت، اسکیمای محصول و تاکتیک‌هایی که واقعاً می‌فروشند."
+      },
+      {
+        "t": "بهترین ابزارهای رایگان سئو و توسعه وب در سال ۲۰۲۶",
+        "u": "/fa/blog/free-seo-developer-tools-guide-2026/",
+        "d": "بهترین ابزارهای رایگان سئو و توسعه وب در ۲۰۲۶ را بشناسید؛ روال‌های گام‌به‌گام برای بهینه‌سازی عنوان، امتیازدهی تیتر، تولید اسکیما و پیش‌نمایش نتایج SERP."
+      },
+      {
+        "t": "راهنمای لینک‌سازی ۲۰۲۶: استراتژی‌های اعتبار و بک‌لینک",
+        "u": "/fa/blog/link-building-strategies-guide-2026/",
+        "d": "راهنمای استراتژی‌های مدرن لینک‌سازی و ساخت بک‌لینک در ۲۰۲۶؛ بگیرید بک‌لینک تحریریه‌ای با اعتبار بالا، انکورتکست را متنوع کنید و اعتبار دامنه را بالا ببرید."
+      },
+      {
+        "t": "استراتژی سئو محلی در خاورمیانه: دوبی، ریاض، تهران و مسقط",
+        "u": "/fa/blog/local-seo-middle-east/",
+        "d": "راهنمای سئو محلی خاورمیانه؛ رفتار جستجوی کاربران در دوبی، ریاض، تهران و مسقط، بهینه‌سازی پروفایل گوگل، اسکیمای چندزبانه و نقشه‌های محلی برای جذب مشتری نزدیک."
+      },
+      {
+        "t": "طراحی موبایل-اول در ۲۰۲۶؛ استراتژی‌های ضروری",
+        "u": "/fa/blog/mobile-first-design/",
+        "d": "اصول طراحی موبایل-اول در سال ۲۰۲۶. بیاموزید چرا اولویت‌بندی تجربه کاربری موبایل برای سئو و فروش حیاتی است و چگونه رابط‌های کاربری لمس-پسند و پرسرعت بسازید."
+      },
+      {
+        "t": "راهنمای جامع طراحی سایت موبایل‌فرست (Mobile-First) ۲۰۲۶",
+        "u": "/fa/blog/mobile-first-web-design-guide-2026/",
+        "d": "اصول طراحی سایت موبایل‌فرست در سال ۲۰۲۶ را بیاموزید: ابعاد استاندارد دکمه‌های لمسی، فونت‌های شناور، بریک‌پوینت‌های واکنش‌گرا و بهینه‌سازی سئوی موبایل."
+      },
+      {
+        "t": "ترندهای UI/UX و تجربه کاربری در محصولات مدرن ۲۰۲۶",
+        "u": "/fa/blog/modern-ui-ux-trends/",
+        "d": "بررسی ترندهای تعاملی رابط و تجربه کاربری در ۲۰۲۶؛ گلاسمورفیسم، میکرواینتراکشن‌ها، حالت تاریک، طراحی توکن‌محور، ارگونومی فرم‌ها و شخصی‌سازی با هوش مصنوعی."
+      },
+      {
+        "t": "راهنمای جامع طراحی سایت و سئو در عمان و مسقط (۲۰۲۶)",
+        "u": "/fa/blog/oman-web-design-seo-guide-2026/",
+        "d": "راهنمای طراحی سایت و سئوی محلی در عمان؛ معماری دوزبانه عربی و انگلیسی، درگاه‌های پرداخت عمانی، صفحات محلی مسقط و تاکتیک‌های جستجوی خلیج فارس در سال ۲۰۲۶."
+      },
+      {
+        "t": "بهترین روش‌های سئو ۲۰۲۶: راهنمای نهایی رتبه‌بندی",
+        "u": "/fa/blog/seo-best-practices/",
+        "d": "بهترین روش‌های سئو در ۲۰۲۶ را بشناسید: استراتژی‌های تازه برای Core Web Vitals، بهینه‌سازی جستجوی هوشمند (AEO) و سئوی تکنیکال برای ارتقای پایدار رتبه در گوگل."
+      },
+      {
+        "t": "چک‌لیست سئو ۲۰۲۶/۱۴۰۵: ممیزی گام‌به‌گام گوگل",
+        "u": "/fa/blog/seo-checklist-2026/",
+        "d": "چک‌لیست سئوی ۲۰۲۶ که تیم‌های جدی با آن ممیزی می‌کنند: سئوی تکنیکال، محتوای داخلی، Core Web Vitals، AEO، جستجوی محلی، اعتبار خارجی و پایش هفتگی برای حفظ رتبه‌ها."
+      },
+      {
+        "t": "چگونه عنوان سئو بنویسیم که CTR را بالا ببرد [۲۰۲۶]",
+        "u": "/fa/blog/seo-title-optimization-guide-2026/",
+        "d": "بر آستانه پیکسل و تفاوت عرض پیکسل با تعداد کاراکتر در عنوان سئو مسلط شوید و پیش از انتشار با پیش‌نمایش سرپ آن را بسنجید تا نرخ کلیک مقاله وبلاگ بیشینه شود."
+      },
+      {
+        "t": "راهنمای ممیزی سئوی تکنیکال ۲۰۲۶: معماری و ایندکس",
+        "u": "/fa/blog/technical-seo-audit-guide-2026/",
+        "d": "یاد بگیرید چگونه در سال ۲۰۲۶ یک ممیزی کامل سئوی تکنیکال انجام دهید. رفع خطاهای خزش، بهینه‌سازی نقشه سایت XML، تگ‌های کانونیکال و اسکیمای ساختاریافته JSON-LD."
+      },
+      {
+        "t": "ممیزی و بازطراحی UI/UX در ۲۰۲۶: راهنمای افزایش تبدیل",
+        "u": "/fa/blog/ui-ux-audit-redesign-guide-2026/",
+        "d": "راهنمای کامل ممیزی UI/UX برای سال ۲۰۲۶؛ ارزیابی شهودی، تحلیل داده جلسات کاربری و نقشه راه گام‌به‌گام که یافته‌های ممیزی را به اصلاح افزایش تبدیل تبدیل می‌کند."
+      },
+      {
+        "t": "ترندهای بصری طراحی وب در ۲۰۲۶: چیدمان، تایپوگرافی و رنگ",
+        "u": "/fa/blog/web-design-trends/",
+        "d": "بررسی ترندهای بصری طراحی سایت در سال ۲۰۲۶؛ از چیدمان‌های مدولار و بنتوگرید و تایپوگرافی سیال تا پالت رنگی آرام، المان‌های سه‌بعدی و دسترسی‌پذیری WCAG 2.2."
+      },
+      {
+        "t": "عوامل تعیین‌کننده قیمت سایت ۲۰۲۶: چه چیزی می‌خرید",
+        "u": "/fa/blog/website-development-cost-guide-2026/",
+        "d": "وقتی پیش‌فاکتور سایت می‌رسد، بابت چه چیزی هزینه می‌کنید؟ این راهنما برآورد را به طراحی، مهندسی و یکپارچه‌سازی تقسیم می‌کند و هزینه‌های پنهان را آشکار می‌سازد."
+      },
+      {
+        "t": "مدل‌های قیمت‌گذاری وب‌سایت: ثابت، زمان و مواد، قرارداد",
+        "u": "/fa/blog/website-development-costs/",
+        "d": "ثابت، زمان و مواد یا قرارداد ماهانه: آژانس‌ها چگونه کار وب‌سایت را قیمت می‌گیرند، هر مدل چه چیزی دارد، کی مناسب است و کدام بند قرارداد عدد را عوض می‌کند."
+      },
+      {
+        "t": "راهنمای جامع نگهداری و امنیت وب‌سایت ۲۰۲۶: حفاظت",
+        "u": "/fa/blog/website-maintenance-security-guide-2026/",
+        "d": "نگهداری و امنیت وب‌سایت را در ۲۰۲۶ حرفه‌ای اجرا کنید؛ زمان‌بندی بکاپ خودکار، تمدید گواهی SSL، اسکن بدافزار، بهینه‌سازی دیتابیس و پروتکل‌های پایش آپتایم."
+      },
+      {
+        "t": "راهنمای افزایش سرعت سایت ۲۰۲۶: گام‌به‌گام عملی",
+        "u": "/fa/blog/website-speed-optimization-guide-2026/",
+        "d": "راهنمای عملی بهینه‌سازی سرعت سایت در ۲۰۲۶: معیار پایه را بسنجید، LCP و INP و CLS را گام‌به‌گام رفع کنید و کار را با چک‌لیست کامل در یک جلسه جمع‌بندی کنید."
+      },
+      {
+        "t": "وردپرس یا توسعه اختصاصی: راهنمای تصمیم کسب‌وکار",
+        "u": "/fa/blog/wordpress-vs-custom-development/",
+        "d": "وردپرس یا توسعه اختصاصی؟ هزینه، زمان‌بندی، تناسب تیم و بار نگهداری را کنار هم بسنجید و پلتفرم درست کسب‌وکارتان را برای موفقیت در سال ۲۰۲۶ انتخاب کنید."
+      },
+      {
+        "t": "وردپرس در برابر توسعه اختصاصی ۲۰۲۶: راهنمای معماری",
+        "u": "/fa/blog/wordpress-vs-custom-development-guide-2026/",
+        "d": "مقایسه معماری وردپرس و توسعه اختصاصی: تفاوت دو پشته در عملکرد، امنیت، نگهداری و مقیاس‌پذیری در سال ۲۰۲۶ و چارچوب تصمیم‌گیری گام‌به‌گام برای انتخاب پروژه شما."
+      }
+    ],
+    "ar": [
+      {
+        "t": "المقالات والأدلة",
+        "u": "/ar/blog/",
+        "d": "مقالات متعمقة في السيو وتطوير الويب الحديث باستخدام Astro واستراتيجيات التسويق الرقمي."
+      },
+      {
+        "t": "دليل خدمات السيو المحلي لعام 2026",
+        "u": "/ar/blog/local-seo-services-guide-2026/",
+        "d": "تصدر خرائط جوجل في 2026: تكتيكات الحزمة المحلية، تحسين ملف جوجل التجاري، تطابق بيانات NAP، أكواد Schema المنظمة وتقييمات العملاء لجذب الزبائن القريبين من موقعك."
+      },
+      {
+        "t": "دليل حاسبة وتكلفة تصميم مواقع ووردبريس 2026",
+        "u": "/ar/blog/wordpress-website-cost-guide-2026/",
+        "d": "تكلفة موقع ووردبريس في 2026: أسعار المواقع التعريفية والبوابات المخصصة ومتاجر ووكامرس، والاستضافة ورخص الإضافات وميزانية الصيانة والتحديث السنوي للموقع."
+      },
+      {
+        "t": "دليل سيو ووردبريس الشامل 2026",
+        "u": "/ar/blog/wordpress-seo-optimization-guide-2026/",
+        "d": "أتقن سيو ووردبريس في 2026: الإعداد التقني، Rank Math مقابل Yoast، سرعة Core Web Vitals، السكيما، والروابط الداخلية وhreflang للصعود إلى ترتيب أعلى في جوجل."
+      },
+      {
+        "t": "كم تكلفة تصميم موقع إلكتروني في 2026؟",
+        "u": "/ar/blog/how-much-does-a-website-cost-2026/",
+        "d": "كم تكلفة موقع إلكتروني في 2026؟ قارن نطاقات تكلفة التطوير حسب نوع الموقع، ووردبريس مقابل البرمجة المخصصة، ونطاقات المتاجر والعوامل التي تصنع عروض الأسعار."
+      },
+      {
+        "t": "دليل حاسبة تكلفة تطوير المواقع 2026",
+        "u": "/ar/blog/website-development-cost-calculator-guide-2026/",
+        "d": "اعرف كيف تعمل حاسبة تكلفة الموقع: القواعد خلف كل تقدير، والمدخلات التي تجمعها قبل الحساب، وأمثلة تطبيقية، والطريقة التي تفحص بها صحة الخروج قبل أي عرض سعر."
+      },
+      {
+        "t": "دليل أسعار تحسين سرعة المواقع وعائد الاستثمار 2026",
+        "u": "/ar/blog/website-speed-optimization-pricing-guide-2026/",
+        "d": "دليل شامل لتكلفة تسريع المواقع وأسعار Core Web Vitals في 2026: نطاقات أسعار ووردبريس والمتاجر والتطبيقات المخصصة، ومعايير القياس وحساب العائد الاستثماري."
+      },
+      {
+        "t": "أفضل 6 أدوات مجانية لفحص Title Tag [2026]",
+        "u": "/ar/blog/best-title-tag-checker-tools-2026/",
+        "d": "اختبرنا 6 أدوات مجانية لفحص Title Tag لعام 2026. العناوين بين 40 و60 حرفاً تحقق CTR أعلى بنسبة 8.9% (Backlinko) — قارن معاينة البكسل والنقاط القوية والمزايا."
+      },
+      {
+        "t": "تصميم متجر إلكتروني في طهران: التكلفة والسيو [2026]",
+        "u": "/ar/blog/tehran-ecommerce-web-design-guide-2026/",
+        "d": "تبيع عبر الإنترنت في طهران عام 2026؟ مع تخلٍّ عالمي عن السلات بنسبة 70.22% (Baymard)، تجربة الدفع تحسم إيرادك — التكلفة، وتجربة الجوال، وترتيبات جوجل."
+      },
+      {
+        "t": "دليل أسعار باقات السيو لعام 2026",
+        "u": "/ar/blog/seo-services-pricing-guide-2026/",
+        "d": "دليل شفاف لأسعار خدمات السيو في 2026: مقارنة التدقيق الفني وريتايمر النمو الشهري وحزم السيو المحلي، مع معادلة لحساب عائد الاستثمار من تحسين محركات البحث."
+      },
+      {
+        "t": "دليل تصميم المواقع والسيو المحلي في قزوين 2026",
+        "u": "/ar/blog/qazvin-web-design-seo-guide-2026/",
+        "d": "دليل راهبردي لتصميم المواقع المخصصة والسيو المحلي في قزوين لعام 2026: هندسة رقمية لمدن الصناعية كاسبيان وليا، وتحسين خرائط جوجل، ونمو تجاري B2B للصادرات."
+      },
+      {
+        "t": "سكريبت محلل كثافة الكلمات المفتاحية: المعادلة والكود",
+        "u": "/ar/blog/keyword-density-analyzer-script/",
+        "d": "اكتب سكريبتاً لمحلل كثافة الكلمات المفتاحية: المعادلة، ونطاق مستهدف يمكن الدفاع عنه، وقواعد العدّ لكل حقل على حدة، والأخطاء التي تجعل الرقم يكذب وكيف تتجاهله."
+      },
+      {
+        "t": "بدائل أداة فحص موز للعناوين: 5 خيارات مجانية",
+        "u": "/ar/blog/moz-title-checker-alternatives/",
+        "d": "أداة فحص موز لا ترى مسودتك وحدها. قارن 5 بدائل مجانية بحسب عرض البكسل ومعاينة الهاتف وتدقيق الصفحة الحيّة وجودة التصدير، ثم اختر الأداة التي تناسب مهمتك فعلاً."
+      },
+      {
+        "t": "دليل تطوير الويب 2026: العملية والخيارات والمورد",
+        "u": "/ar/blog/web-development-guide-2026/",
+        "d": "ما الذي يغطيه تطوير الويب، وكيف يسير المشروع من الموجز حتى الإطلاق، وكيف يقارن الكود المخصص بنظام إدارة المحتوى ومنشئ المواقع، وكيف تقرأ العرض وتقيّم المورد."
+      },
+      {
+        "t": "تحسين محركات البحث التوليدي (GEO) و AEO في 2026",
+        "u": "/ar/blog/ai-search-optimization-guide-2026/",
+        "d": "دليل شامل لتحسين محركات البحث التوليدي (GEO) ومحركات الإجابة (AEO) في 2026: كيف تحصل على الاقتباس في Google AI Overviews وSearchGPT وPerplexity وClaude."
+      },
+      {
+        "t": "أدوات السيو الأساسية للشركات الحديثة في 2026",
+        "u": "/ar/blog/best-seo-tools/",
+        "d": "ضاعف زيارات موقعك العضوية باستخدام أفضل أدوات السيو في 2026: بحث الكلمات المفتاحية، تحليل المنافسين، تتبع الأداء، والتدقيق التقني، مع شرح مبسط لكل فئة."
+      },
+      {
+        "t": "دليل عائد استثمار التسويق الرقمي 2026: القنوات والإسناد",
+        "u": "/ar/blog/digital-marketing-roi-guide-2026/",
+        "d": "احسب عائد الاستثمار في التسويق الرقمي لعام 2026 بدقة: قنوات الاستحواذ متعددة المسارات، وإسناد الحملات، وتتبع روابط UTM، ونسبة CAC إلى LTV، وتوزيع الميزانية."
+      },
+      {
+        "t": "استراتيجيات التسويق الرقمي الفعالة للشركات الصغيرة",
+        "u": "/ar/blog/digital-marketing-strategies/",
+        "d": "استراتيجيات تسويق رقمي مجربة للشركات الصغيرة في 2026: السيو، والمحتوى، والتواصل الاجتماعي، والبريد، والبحث المحلي، والإعلانات المدفوعة وفق العائد الفعلي."
+      },
+      {
+        "t": "دليل تصميم المواقع والسيو في دبي والإمارات 2026",
+        "u": "/ar/blog/dubai-uae-web-design-seo-guide-2026/",
+        "d": "دليل تصميم المواقع والسيو في دولة الإمارات ودبي لعام 2026: واجهات ثنائية اللغة، معايير الرفاهية البصرية، تنفيذ السيو المحلي وبوابات دفع الخليج ومظهر فاخر."
+      },
+      {
+        "t": "دليل تصميم المتاجر الإلكترونية 2026: الهندسة والتحويلات",
+        "u": "/ar/blog/ecommerce-web-design-guide-2026/",
+        "d": "أتقن تصميم المتاجر الإلكترونية في 2026: ناوبرية بالجوال أولاً، وتحسين الدفع، وبوابات دفع متعددة، وإسكيما المنتج، وتكتيكات تحويل تجعل الزائر يشتري فعلاً."
+      },
+      {
+        "t": "أفضل أدوات السيو والتطوير المجانية لعام 2026",
+        "u": "/ar/blog/free-seo-developer-tools-guide-2026/",
+        "d": "أتقن أفضل أدوات السيو والتطوير المجانية في 2026: إجراءات خطوة بخطوة لتحسين عناوين السيو، وتقييم العناوين وجاذبيتها، وإنشاء السكيما، ومعاينة SERP قبل النشر."
+      },
+      {
+        "t": "دليل استراتيجيات بناء الروابط 2026: رفع سلطة الدومين",
+        "u": "/ar/blog/link-building-strategies-guide-2026/",
+        "d": "دليل عملي لاستراتيجيات بناء الروابط في 2026: اكتساب روابط تحريرية عالية السلطة، تنويع النص الرابط وتوزيعه، تدقيق ملف الروابط، واستبعاد وإزالة الروابط السامة."
+      },
+      {
+        "t": "استراتيجيات السيو المحلي في الشرق الأوسط لعام 2026",
+        "u": "/ar/blog/local-seo-middle-east/",
+        "d": "دليل سلوك البحث المحلي في دبي والرياض وطهران ومسقط، مع تحسين ملف جوجل التجاري، والبيانات المهيكلة متعددة اللغات، وتغطية خرائط المنطقة لجذب العملاء القريبين."
+      },
+      {
+        "t": "التصميم للموبايل أولاً في 2026: استراتيجيات أساسية",
+        "u": "/ar/blog/mobile-first-design/",
+        "d": "أتقن التصميم للموبايل أولاً في 2026. تعرّع لماذا تحسين تجربة الهاتف حاسم لمحركات البحث والسيو، وكيف تبني واجهات سريعة وصديقة للاستخدام واللمس تحقق نتائج أفضل."
+      },
+      {
+        "t": "دليل تصميم المواقع الموجهة للهواتف 2026: Mobile-First",
+        "u": "/ar/blog/mobile-first-web-design-guide-2026/",
+        "d": "تعلم أساسات تصميم المواقع الموجهة للهواتف في 2026: أحجام أهداف اللمس، الخطوط المرنة، نقاط التوقف المتجاوبة، وتحسين سيو الموبايل لموقع أسرع وأبرز في البحث."
+      },
+      {
+        "t": "اتجاهات UI/UX الحديثة في تصميم المنتجات الرقمية",
+        "u": "/ar/blog/modern-ui-ux-trends/",
+        "d": "أبرز اتجاهات تجربة المستخدم وواجهة المستخدم في 2026: الزجاجية، الحركات الدقيقة، الوضع الداكن، رموز التصميم، تحسين النماذج والشخصنة بالذكاء الاصطناعي وأداء عالٍ."
+      },
+      {
+        "t": "دليل تصميم المواقع والسيو في عمان ومسقط 2026",
+        "u": "/ar/blog/oman-web-design-seo-guide-2026/",
+        "d": "دليل تصميم المواقع وSEO المحلي في سلطنة عمان: تخطيطات ثنائية اللغة من اليمين لليسار، بوابات الدفع العمانية، صفحات الأحياء في مسقط واستراتيجيات بحث الخليج."
+      },
+      {
+        "t": "أفضل ممارسات تحسين محركات البحث 2026: الدليل",
+        "u": "/ar/blog/seo-best-practices/",
+        "d": "تعرّف أفضل ممارسات تحسين محركات البحث لعام 2026: أحدث استراتيجيات لمؤشرات تجربة الموقع، وتحسين محركات الإجابة AEO، والسيو التقني لرفع الترتيب في جوجل بثبات."
+      },
+      {
+        "t": "قائمة تحقق السيو 2026: تدقيق شامل وخطوات ترتيب الصفحات",
+        "u": "/ar/blog/seo-checklist-2026/",
+        "d": "قائمة تحقق السيو لعام 2026 التي يعتمد عليها الفرق الجادة في التدقيق: السيو التقني، محتوى الصفحة، مؤشرات الموقع، تحسين محركات الإجابة، البحث المحلي والسلطة."
+      },
+      {
+        "t": "كيف تكتب عناوين السيو التي ترفع معدل النقر [2026]",
+        "u": "/ar/blog/seo-title-optimization-guide-2026/",
+        "d": "أتقن تحسين تگ عنوان السيو، وحدود البكسل مقابل عدد الحروف، ومعاينة نتائج البحث قبل النشر. استخدم أداة فحص عناوين السيو للمدونة مجاناً لزيادة معدل النقر."
+      },
+      {
+        "t": "دليل تدقيق السيو التقني 2026: الهيكلية والأرشفة",
+        "u": "/ar/blog/technical-seo-audit-guide-2026/",
+        "d": "تعلم كيف تجري تدقيقاً كاملاً للسيو التقني في عام 2026: إصلاح أخطاء الزحف، وتحسين خرائط XML، وعلامات Canonical، وتتبع سلاسل التوجيه ومخططات JSON-LD المنظمة."
+      },
+      {
+        "t": "تدقيق UI/UX وإعادة التصميم 2026: دليل رفع التحويلات",
+        "u": "/ar/blog/ui-ux-audit-redesign-guide-2026/",
+        "d": "دليل شامل لتدقيق واجهة وتجربة المستخدم UI/UX في 2026: تقييم استنادي، وتحليل بيانات الجلسات، وإطار عمل خطوة بخطوة يحول النتائج إلى إصلاحات لرفع التحويل."
+      },
+      {
+        "t": "اتجاهات تصميم الويب البصرية لعام 2026",
+        "u": "/ar/blog/web-design-trends/",
+        "d": "أحدث اتجاهات التصميم البصري للمواقع في 2026: التخطيطات المعيارية وبنتوغريد، الطباعة السائلة والخطوط المتغيرة، الألوان والملمس، ثلاثية الأبعاد وWCAG 2.2."
+      },
+      {
+        "t": "عوامل تكلفة الموقع 2026: ما الذي تدفع مقابله",
+        "u": "/ar/blog/website-development-cost-guide-2026/",
+        "d": "حين يصل عرض سعر موقع إلى يدك، ما الذي تدفع مقابله بالضبط؟ هذا الدليل يفكك العرض إلى جهد التصميم والهندسة والتكامل والمحتوى والتكاليف التشغيلية السنوية."
+      },
+      {
+        "t": "نماذج تسعير المواقع: ثابت أم وقت ومواد أم اشتراك",
+        "u": "/ar/blog/website-development-costs/",
+        "d": "ثابت أم وقت ومواد أم اشتراك: كيف تسعّر الوكالات عمل المواقع، وما الذي يشمله كل نموذج ومتى يناسب، وبنود العقد التي تغيّر الرقم النهائي قبل أن توقّع عرضاً."
+      },
+      {
+        "t": "دليل صيانة وأمان المواقع 2026: الحماية واستمرارية",
+        "u": "/ar/blog/website-maintenance-security-guide-2026/",
+        "d": "أتقن صيانة وأمان موقعك الإلكتروني في 2026: جدولة النسخ الاحتياطي التلقائي، تجديد شهادات SSL، فحص البرمجيات الخبيثة، تحسين قواعد البيانات، ومراقبة الاستمرارية."
+      },
+      {
+        "t": "دليل تسريع الموقع 2026: خطوات عملية",
+        "u": "/ar/blog/website-speed-optimization-guide-2026/",
+        "d": "دليل عملي لتحسين سرعة الموقع في 2026: قِس خط الأساس، وأصلح LCP و INP و CLS خطوة بخطوة، ثم اختتم بقائمة مراجعة الأداء التي تنفّذها بعد كل عملية نشر جديدة."
+      },
+      {
+        "t": "ووردبريس أم التطوير المخصص: دليل قرار العمل",
+        "u": "/ar/blog/wordpress-vs-custom-development/",
+        "d": "ووردبريس أم التطوير المخصص؟ قارن التكلفة والمدة الزمنية وملاءمة فريق عبء الصيانة وحدود التخصيص، ثم اختر منصة عملك الأنسب لمشروعك في عام 2026 قبل الإطلاق."
+      },
+      {
+        "t": "ووردبريس أم تطوير المواقع المخصصة: مقارنة 2026",
+        "u": "/ar/blog/wordpress-vs-custom-development-guide-2026/",
+        "d": "مقارنة معمارية بين ووردبريس والتطوير المخصص: كيف يختلف المخزنان في الأداء والأمان والصيانة والتوسع خلال عام 2026، مع إطار قرار من صفحة واحدة يناسب مشروعك."
+      }
+    ]
+  }
+}

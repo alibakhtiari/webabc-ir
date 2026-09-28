@@ -397,6 +397,23 @@ export default {
         appendVaryAccept(headers);
         return new Response(MARKDOWN_404_BODY, { status: 404, statusText: 'Not Found', headers });
       }
+      // llms.txt / llms-full.txt are fetched by AI crawlers, which crawl from
+      // US datacenter IPs and follow no geo variation: this branch never
+      // redirects and serves the asset verbatim. Pin an explicit UTF-8 charset
+      // so Persian and Arabic (RTL, non-Latin scripts) decode correctly even if
+      // the asset binding reports a bare media type.
+      if (url.pathname.endsWith('.txt')) {
+        const headers = new Headers(assetRes.headers);
+        const ct = headers.get('content-type');
+        if (!ct || !/charset=/i.test(ct)) {
+          headers.set('Content-Type', `${ct?.split(';')[0].trim() || 'text/plain'}; charset=utf-8`);
+        }
+        return new Response(assetRes.body, {
+          status: assetRes.status,
+          statusText: assetRes.statusText,
+          headers,
+        });
+      }
       return assetRes;
     }
 
@@ -567,12 +584,21 @@ export default {
     }
 
     if (headers.get('content-type')?.includes('text/html')) {
+      const links = [];
       const mdPath = markdownPath(url.pathname);
       const mdHead = await env.ASSETS.fetch(
         new Request(new URL(mdPath, url).toString(), { method: 'HEAD' })
       );
       if (mdHead.status === 200) {
-        const linkValue = `<${mdPath}>; rel="alternate"; type="text/markdown"`;
+        links.push(`<${mdPath}>; rel="alternate"; type="text/markdown"`);
+      }
+      // Machine-readable discovery: advertise the canonical per-locale index so
+      // headless and API clients do not have to guess the path. `describedby`
+      // per llmstxt.org; locale taken from the URL, English as fallback.
+      const locale = url.pathname.split('/')[1];
+      links.push(`</${locale === 'fa' || locale === 'ar' ? locale : 'en'}/llms.txt>; rel="describedby"`);
+      if (links.length) {
+        const linkValue = links.join(', ');
         const existingLink = headers.get('link');
         headers.set('Link', existingLink ? `${existingLink}, ${linkValue}` : linkValue);
       }
