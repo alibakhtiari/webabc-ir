@@ -38,6 +38,7 @@ Shipped and verified against the code. Kept as a ledger so closed items are not 
 | 2.4 | Editorial cadence closed as process | bulk history retained (no backdating); 105 bumps rewrite-justified and atomic; new publishes staggered; lastmod pipeline verified; standing rule + quarterly check recorded | docs only |
 | 3.1 | Buried pages gain depth + links | web-design Results section + orphaned features render; Tehran 3 location FAQs; 18 mirrored inbound links; checker legacy verified retired | `5c1ed65` |
 | 3.6 | Money-post proof localized per locale | denominations + Mahsun + Qazvin already per-locale from §2.2/§3.1; new Gulf-QA sentences + Dubai/Riyadh links in cost-guide §5 ×3 | `c4bfca5` |
+| OG-1 | fa/ar OG cards batch 1 (money pages) | 74 RTL typography cards (home + 21 tools + 11 services + top-4 portfolio × fa/ar) in IRANYekanXFaNum, mirrored tool-card system, self-guarded generation; locale-first `og:image` in Layout + sitemap, English art untouched | `d930956` + `e979d4b` |
 
 ---
 
