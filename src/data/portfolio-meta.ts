@@ -405,7 +405,7 @@ export const projectMeta: Record<string, ProjectMetaItem> = {
         {
           question: 'What was the organic growth in crypto hardware search queries?',
           answer:
-            'Achieved top 3 rankings for major ASIC miner model keywords, driving a +320% increase in qualified organic sales.',
+            'Ranked #1 for Legal Miner keywords with the Miner Calculator page as the top entry point.',
         },
       ],
       fa: [
@@ -422,7 +422,7 @@ export const projectMeta: Record<string, ProjectMetaItem> = {
         {
           question: 'سئوی تخصصی چه رتبه‌هایی برای فروشگاه ایجاد کرد؟',
           answer:
-            'رتبه‌های ۱ تا ۳ گوگل در عبارات کلیدی خرید ماینر قانونی و افزایش ۳۲۰ درصدی فروش ارگانیک.',
+            'رتبه ۱ گوگل در «ماینر قانونی» با صفحه ماشین‌حساب ماینر به‌عنوان برترین نقطه ورود.',
         },
       ],
       ar: [
@@ -439,7 +439,7 @@ export const projectMeta: Record<string, ProjectMetaItem> = {
         {
           question: 'ما هي نتائج السيو العضوي للكلمات التنافسية؟',
           answer:
-            'الوصول إلى المراكز الثلاثة الأولى في كلمات أجهزة التعدين ونمو المبيعات بنسبة +٣٢٠٪.',
+            'التصنيف ١ لكلمة تعدين قانوني مع صفحة حاسبة التعدين كنقطة دخول رئيسية.',
         },
       ],
     },
@@ -539,7 +539,7 @@ export const projectMeta: Record<string, ProjectMetaItem> = {
         {
           question: 'What was the growth in manufacturing client acquisition?',
           answer:
-            'B2B client inquiries from cosmetic manufacturers surged by +175% within 90 days.',
+            'Wholesale quote inquiries from cosmetic manufacturers grew by +190% within 4 months.',
         },
       ],
       fa: [
@@ -556,7 +556,7 @@ export const projectMeta: Record<string, ProjectMetaItem> = {
         {
           question: 'رشد جذب مشتریان کارخانه‌ای چه میزان بود؟',
           answer:
-            'دریافت سفارشات عمده از برندهای آرایشی و بهداشتی طی ۳ ماه ۱۷۵٪ افزایش یافت.',
+            'استعلام‌های عمده از برندهای آرایشی و بهداشتی در ۴ ماه ۱۹۰٪ رشد کرد.',
         },
       ],
       ar: [
@@ -573,7 +573,7 @@ export const projectMeta: Record<string, ProjectMetaItem> = {
         {
           question: 'ما هي نسبة زيادة استفسارات المصانع والشركات؟',
           answer:
-            'ارتفعت استفسارات التوريد بالجملة من شركات التجميل بنسبة +١٧٥٪ في غضون ٩٠ يوماً.',
+            'زيادة طلبات الجملة من شركات التجميل والأدوية بنسبة ۱۹۰٪ خلال ۴ أشهر.',
         },
       ],
     },
@@ -606,7 +606,7 @@ export const projectMeta: Record<string, ProjectMetaItem> = {
         {
           question: 'What was the recorded increase in online transactions?',
           answer:
-            'E-commerce sales increased by +260% in the first quarter post-launch.',
+            'Mobile conversion rates grew by +210% within 3 months of website launch.',
         },
       ],
       fa: [
@@ -623,7 +623,7 @@ export const projectMeta: Record<string, ProjectMetaItem> = {
         {
           question: 'میزان رشد تراکنش‌های آنلاین فروشگاه چقدر بوده است؟',
           answer:
-            'فروش آنلاین در سه‌ماهه اول پس از لانچ رشد ۲۶۰ درصدی را تجربه کرد.',
+            'فروش موبایل در ۳ ماه پس از لانچ رشد ۲۱۰ درصدی را تجربه کرد.',
         },
       ],
       ar: [
@@ -640,7 +640,7 @@ export const projectMeta: Record<string, ProjectMetaItem> = {
         {
           question: 'ما هي نسبة الزيادة في المبيعات الإلكترونية؟',
           answer:
-            'ارتفعت معاملات الشراء عبر الإنترنت بنسبة +٢٦٠٪ في الربع الأول بعد الإطلاق.',
+            'نما التحويل عبر الجوال بنسبة +٢١٠٪ خلال ٣ أشهر من إطلاق الموقع.',
         },
       ],
     },
@@ -1008,7 +1008,7 @@ export const projectMeta: Record<string, ProjectMetaItem> = {
         {
           question: 'What was the result on qualified consultation leads?',
           answer:
-            'Online consultation bookings grew by +210% within 4 months of launch.',
+            'Qualified migration consultation requests increased by 320% with 10,000+ completed bookings.',
         },
       ],
       fa: [
@@ -1025,7 +1025,7 @@ export const projectMeta: Record<string, ProjectMetaItem> = {
         {
           question: 'رشد درخواست‌های مشاوره پس از راه‌اندازی چقدر بود؟',
           answer:
-            'ثبت فرم‌های مشاوره تخصصی در ۴ ماه اول رشد ۲۱۰ درصدی را تجربه کرد.',
+            'رشد ۳۲۰ درصدی درخواست‌های مشاوره مهاجرت با بیش از ۱۰٬۰۰۰ رزرو.',
         },
       ],
       ar: [
@@ -1042,7 +1042,7 @@ export const projectMeta: Record<string, ProjectMetaItem> = {
         {
           question: 'ما هي نسبة نمو طلبات الاستشارة؟',
           answer:
-            'سجل الموقع زيادة بنسبة +٢١٠٪ في حجوزات الاستشارات المؤهلة خلال الأشهر الأولى.',
+            'زيادة طلبات الاستشارات بنسبة ۳۲۰٪ مع أكثر من ۱۰,۰۰۰ تقييم مكتمل.',
         },
       ],
     },
@@ -1209,7 +1209,7 @@ export const projectMeta: Record<string, ProjectMetaItem> = {
         {
           question: 'What results were observed in export and B2B requests?',
           answer:
-            'Export inquiry submissions and domestic manufacturing contracts grew by +130%.',
+            'Industrial contract inquiries increased by +175% from major manufacturers.',
         },
       ],
       fa: [
@@ -1226,7 +1226,7 @@ export const projectMeta: Record<string, ProjectMetaItem> = {
         {
           question: 'تاثیر سایت بر قراردادهای تولیدی و صادراتی چه بود؟',
           answer:
-            'ثبت درخواست‌های استعلام صادراتی و قراردادهای تأمین لعاب صنعتی ۱۳۰٪ افزایش یافت.',
+            'استعلام‌های صنعتی از کارخانجات بزرگ ۱۷۵٪ رشد کرد.',
         },
       ],
       ar: [
@@ -1243,7 +1243,7 @@ export const projectMeta: Record<string, ProjectMetaItem> = {
         {
           question: 'ما هو حجم النمو في طلبات التصدير والتعاقدات؟',
           answer:
-            'سجل الموقع نمواً بنسبة +١٣٠٪ في استفسارات التصدير وعقود التوريد الصناعية الكبرى.',
+            'زيادة استعلامات المشاريع الصناعية بنسبة ۱۷۵٪ من كبرى الشركات المصنعة.',
         },
       ],
     },
