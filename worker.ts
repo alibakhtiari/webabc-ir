@@ -41,7 +41,7 @@ const ARABIC_COUNTRIES = [
 // noindex header so it can never compete with the canonical site in search.
 const CANONICAL_HOST = 'webabc.ir';
 
-const STATIC_REDIRECTS: Record<string, string> = {
+export const STATIC_REDIRECTS: Record<string, string> = {
   // Sitemaps
   '/sitemap.xml': '/sitemap-index.xml',
 

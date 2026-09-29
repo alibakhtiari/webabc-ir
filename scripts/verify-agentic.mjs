@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import worker from '../worker.ts';
+import worker, { STATIC_REDIRECTS } from '../worker.ts';
 
 const root = process.cwd();
 const distDir = path.join(root, 'dist');
@@ -407,6 +407,54 @@ async function test() {
     !(negotiated.headers.get('x-robots-tag') || '').startsWith('noindex'),
     `negotiated markdown on the HTML URL is not noindexed (got ${negotiated.headers.get('x-robots-tag')})`
   );
+
+  // 11. `public/_redirects` and `worker.ts` STATIC_REDIRECTS agree: the test is
+  // the single source of truth. Every file rule must resolve through the worker
+  // in one 301 hop to the same target (the worker also serves the slash-form
+  // sources via its barePath lookup, and the 3 bare headline-analyzer rules via
+  // its explicit canonicalisation branch), and every map entry must have a file
+  // counterpart. Statuses must stay 301 — no 302/307 may sneak in.
+  console.log('\n11. Testing redirect parity (_redirects vs worker):');
+  const redirectsRaw = fs.readFileSync(path.join(root, 'public/_redirects'), 'utf8');
+  const redirectRules = [];
+  for (const line of redirectsRaw.split('\n')) {
+    const t = line.trim();
+    if (!t || t.startsWith('#')) continue;
+    const [src, dst, code] = t.split(/\s+/);
+    redirectRules.push({ src, dst, code });
+  }
+  assert(redirectRules.length > 0, `parsed ${redirectRules.length} rules from public/_redirects`);
+  const norm = (p) => (p.length > 1 ? p.replace(/\/$/, '') : p);
+  const fileMap = new Map();
+  for (const { src, dst, code } of redirectRules) {
+    assert(code === '301', `_redirects rule ${src} stays 301 (got ${code})`);
+    const res = await worker.fetch(new Request(`https://webabc.ir${src}`), env);
+    assert(res.status === 301, `_redirects source ${src} resolves 301 through the worker (got ${res.status})`);
+    assert(
+      res.headers.get('location') === `https://webabc.ir${dst}`,
+      `_redirects source ${src} lands on ${dst} (got ${res.headers.get('location')})`
+    );
+    const k = norm(src);
+    if (fileMap.has(k)) {
+      assert(
+        fileMap.get(k) === dst,
+        `_redirects duplicate source ${src} agrees on one target (got ${fileMap.get(k)} vs ${dst})`
+      );
+    } else {
+      fileMap.set(k, dst);
+    }
+  }
+  const mapKeys = Object.keys(STATIC_REDIRECTS);
+  assert(mapKeys.length > 0, `STATIC_REDIRECTS holds ${mapKeys.length} entries`);
+  for (const src of mapKeys) {
+    const k = norm(src);
+    assert(fileMap.has(k), `worker redirect ${src} has a _redirects counterpart`);
+    assert(
+      fileMap.get(k) === STATIC_REDIRECTS[src],
+      `worker redirect ${src} targets ${STATIC_REDIRECTS[src]} in both places (file has ${fileMap.get(k)})`
+    );
+  }
+  console.log(`  parity: ${redirectRules.length} file rules resolve via worker, ${mapKeys.length} map entries mirrored in file`);
 
   console.log(`\n--- Verification Suite Completed: ${failures === 0 ? 'ALL CHECKS PASSED (100% Score)' : `${failures} FAILURES`} ---`);
   if (failures > 0) process.exit(1);
