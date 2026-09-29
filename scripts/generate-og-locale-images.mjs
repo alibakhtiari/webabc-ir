@@ -25,16 +25,23 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 
-/* Repo-local fontconfig: absolute dir written to a temp conf so generation is
- * reproducible on any host without installing fonts system-wide. */
+/* Repo-local fontconfig: XDG_CONFIG_HOME supplements (never replaces) the
+ * host's default fontconfig, adding our dir. This distinction matters:
+ * FONTCONFIG_FILE/PATH *replace* the default config, under which the sharp
+ * stack silently falls back to DejaVu for every glyph (proven by
+ * byte-identical renders against a bogus family name) — the supplement path
+ * is the only mechanism verified to reach our TTFs (hash differs, IRANYekanX
+ * letterforms confirmed on render). No host font installation needed. */
 const ROOT = process.cwd();
 const FONTS_DIR = path.join(ROOT, 'assets/og-fonts');
-const FC_CONF = path.join(os.tmpdir(), `webabc-og-fonts-${process.pid}.conf`);
+const XDG_DIR = path.join(os.tmpdir(), `webabc-og-xdg-${process.pid}`);
+const FC_D_DIR = path.join(XDG_DIR, 'fontconfig');
+fs.mkdirSync(FC_D_DIR, { recursive: true });
 fs.writeFileSync(
-  FC_CONF,
+  path.join(FC_D_DIR, 'fonts.conf'),
   `<?xml version="1.0"?>\n<!DOCTYPE fontconfig SYSTEM "fonts.dtd">\n<fontconfig><dir>${FONTS_DIR}</dir></fontconfig>\n`
 );
-process.env.FONTCONFIG_FILE = FC_CONF;
+process.env.XDG_CONFIG_HOME = XDG_DIR;
 
 const { default: sharp } = await import('sharp');
 
@@ -462,7 +469,43 @@ function collectCards(lang) {
 
 /* ------------------------------------------------------------------ main */
 
+/**
+ * Prove the custom fonts reach the renderer before writing a single card.
+ * History: FONTCONFIG_FILE/PATH *replace* the host config, under which the
+ * sharp stack silently renders every glyph in DejaVu fallback — 162 cards
+ * shipped that way before a byte-compare against a bogus family caught it.
+ * This probe fails the run loudly if that ever regresses: the probe must
+ * differ from fallback, and weight 700 must differ from 400 (Bold file).
+ */
+async function verifyFontStack() {
+  const probe = 'گچپژ ۱۲۳';
+  const render = (fam, weight) =>
+    renderPng(
+      `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="160"><rect width="800" height="160" fill="#030711"/><text x="750" y="110" fill="#F8FAFC" font-family="${fam}" font-size="80" font-weight="${weight}" text-anchor="end">${probe}</text></svg>`
+    );
+  const [real, bogus, bold, regular] = await Promise.all([
+    render("'IRANYekanXFaNum'", 400),
+    render("'NoSuchFontXYZ'", 400),
+    render("'IRANYekanXFaNum'", 700),
+    render("'IRANYekanXFaNum'", 400),
+  ]);
+  if (real.equals(bogus)) {
+    console.error(
+      'Font stack check failed: IRANYekanXFaNum renders byte-identical to a bogus family — custom fonts are not reaching the renderer. Refusing to write.'
+    );
+    process.exit(1);
+  }
+  if (bold.equals(regular)) {
+    console.error(
+      'Font stack check failed: weight 700 renders byte-identical to 400 — the Bold file is not reached. Refusing to write.'
+    );
+    process.exit(1);
+  }
+  console.log('  font stack: IRANYekanXFaNum Regular + Bold resolve in-render');
+}
+
 async function main() {
+  await verifyFontStack();
   const only = process.argv[2];
   const langs = only ? [only] : ['fa', 'ar'];
   for (const l of langs) {
@@ -525,7 +568,7 @@ main()
   })
   .finally(() => {
     try {
-      fs.unlinkSync(FC_CONF);
+      fs.rmSync(XDG_DIR, { recursive: true, force: true });
     } catch {
       /* best effort */
     }
