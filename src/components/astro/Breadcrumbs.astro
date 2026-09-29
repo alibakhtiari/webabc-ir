@@ -1,4 +1,7 @@
 ---
+import { type SupportedLanguage } from '@/types/language';
+import { breadcrumbId, canonicalPageUrl } from '@/utils/schemaIds';
+
 interface Props {
   items: { label: string; url?: string }[];
   lang: string;
@@ -9,9 +12,11 @@ const { items, lang, centered = false } = Astro.props;
 const fontClass = lang === 'fa' ? 'font-persian' : lang === 'ar' ? 'font-arabic' : 'font-sans';
 
 const siteUrl = 'https://webabc.ir';
+const pageUrl = canonicalPageUrl(Astro.url.pathname);
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
+  '@id': breadcrumbId(pageUrl),
   itemListElement: items.map((item, index) => ({
     '@type': 'ListItem',
     position: index + 1,

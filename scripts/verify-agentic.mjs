@@ -456,6 +456,118 @@ async function test() {
   }
   console.log(`  parity: ${redirectRules.length} file rules resolve via worker, ${mapKeys.length} map entries mirrored in file`);
 
+  // 12. Same-document @id graph integrity (§4.2) + per-language WebSite (§4.3).
+  // Every @id referenced by isPartOf/mainEntityOfPage/breadcrumb/publisher must
+  // exist as a node on the same page. Cross-page identity refs (author/about)
+  // are deliberately NOT walked — they resolve on other pages by design.
+  console.log('\n12. Testing schema @id integrity:');
+  const LINK_PROPS = ['isPartOf', 'mainEntityOfPage', 'breadcrumb', 'publisher'];
+  const blocksOf = (html) =>
+    [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)]
+      .map((m) => {
+        try {
+          return JSON.parse(m[1]);
+        } catch {
+          return null;
+        }
+      })
+      .filter(Boolean)
+      .flatMap((d) => (Array.isArray(d) ? d : [d]));
+  const pageHtml = async (p) => {
+    const res = await worker.fetch(
+      new Request(`https://webabc.ir${p}`, { headers: { Accept: 'text/html' } }),
+      env
+    );
+    assert(res.status === 200, `${p} serves HTML 200 (got ${res.status})`);
+    return await res.text();
+  };
+  const assertLocalRefs = (label, html) => {
+    const nodes = blocksOf(html);
+    assert(nodes.length > 0, `${label} emits JSON-LD (${nodes.length} blocks)`);
+    const ids = new Set(nodes.map((n) => n['@id']).filter(Boolean));
+    const refs = [];
+    for (const n of nodes)
+      for (const p of LINK_PROPS) {
+        const v = n[p];
+        if (v && typeof v === 'object' && v['@id']) refs.push(`${n['@type']}.${p} -> ${v['@id']}`);
+      }
+    assert(refs.length > 0, `${label} declares ${refs.length} same-document refs`);
+    for (const r of refs)
+      assert(ids.has(r.slice(r.indexOf(' -> ') + 4)), `${label}: ${r} resolves`);
+    return { nodes, ids };
+  };
+
+  // Blog post: the full chain BlogPosting -> WebPage <- FAQPage, WebPage ->
+  // WebSite + BreadcrumbList.
+  const postUrl = 'https://webabc.ir/en/blog/seo-checklist-2026/';
+  const { nodes: postNodes } = assertLocalRefs('sample post', await pageHtml('/en/blog/seo-checklist-2026/'));
+  const byType = (t) => postNodes.find((n) => n['@type'] === t);
+  assert(
+    byType('BlogPosting')?.mainEntityOfPage?.['@id'] === `${postUrl}#webpage`,
+    `BlogPosting.mainEntityOfPage points at #webpage`
+  );
+  assert(
+    byType('FAQPage')?.isPartOf?.['@id'] === `${postUrl}#webpage`,
+    `FAQPage.isPartOf points at #webpage`
+  );
+  const wp = byType('WebPage');
+  assert(wp?.['@id'] === `${postUrl}#webpage`, `WebPage node #webpage exists`);
+  assert(wp?.url === postUrl && wp?.inLanguage === 'en-US', `WebPage carries url + inLanguage`);
+  assert(
+    wp?.isPartOf?.['@id'] === 'https://webabc.ir/en/#website',
+    `WebPage.isPartOf points at the per-language WebSite`
+  );
+  assert(
+    wp?.breadcrumb?.['@id'] === `${postUrl}#breadcrumb` &&
+      byType('BreadcrumbList')?.['@id'] === `${postUrl}#breadcrumb`,
+    `WebPage.breadcrumb links the BreadcrumbList node`
+  );
+
+  // Non-blog FAQ page (services, no Breadcrumbs): WebPage node present, refs
+  // resolve, and NO breadcrumb link (it would dangle without a BreadcrumbList).
+  const svcHtml = await pageHtml('/en/services/web-development/');
+  const { nodes: svcNodes } = assertLocalRefs('service page', svcHtml);
+  const svcWp = svcNodes.find((n) => n['@type'] === 'WebPage');
+  assert(svcWp?.isPartOf?.['@id'] === 'https://webabc.ir/en/#website', `service WebPage joins the WebSite`);
+  assert(!('breadcrumb' in (svcWp || {})), `service WebPage declares no breadcrumb link (no BreadcrumbList there)`);
+  assert(
+    svcNodes.find((n) => n['@type'] === 'FAQPage')?.isPartOf?.['@id'] === svcWp?.['@id'],
+    `service FAQPage.isPartOf resolves to the page WebPage node`
+  );
+
+  // §4.3: WebSite @id is already per-language — lock it in on all 3 homepages.
+  for (const lang of ['en', 'fa', 'ar']) {
+    const nodes = blocksOf(await pageHtml(`/${lang}/`));
+    const site = nodes.find((n) => n['@type'] === 'WebSite');
+    assert(site?.['@id'] === `https://webabc.ir/${lang}/#website`, `/${lang}/ WebSite @id is per-language`);
+    assert(site?.url === `https://webabc.ir/${lang}/`, `/${lang}/ WebSite url matches its @id language`);
+  }
+
+  // Dist sweep: every blog HTML carrying an FAQPage must carry its WebPage node
+  // (all 114 posts render FAQ today; a future faq-less post fails loudly here
+  // instead of shipping a dangling mainEntityOfPage).
+  let swept = 0;
+  for (const lang of ['en', 'fa', 'ar']) {
+    const dir = path.join(distDir, lang, 'blog');
+    for (const entry of fs.readdirSync(dir)) {
+      const f = path.join(dir, entry, 'index.html');
+      let html;
+      try {
+        html = fs.readFileSync(f, 'utf8');
+      } catch {
+        continue;
+      }
+      if (!html.includes('"@type":"FAQPage"')) continue;
+      swept++;
+      assert(html.includes('"@type":"WebPage"'), `${lang}/${entry} carries a WebPage node next to its FAQPage`);
+      assert(
+        html.includes('#webpage'),
+        `${lang}/${entry} WebPage node uses the #webpage identity mainEntityOfPage points at`
+      );
+    }
+  }
+  console.log(`  swept ${swept} blog HTML files with FAQPage, all paired with a WebPage node`);
+
   console.log(`\n--- Verification Suite Completed: ${failures === 0 ? 'ALL CHECKS PASSED (100% Score)' : `${failures} FAILURES`} ---`);
   if (failures > 0) process.exit(1);
 }

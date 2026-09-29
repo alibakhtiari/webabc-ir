@@ -10,6 +10,7 @@ import { type SupportedLanguage, languages } from '@/types/language';
 import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
 import { getCategoryLabel } from '@/utils/category-translator';
+import { breadcrumbId, canonicalPageUrl, webpageId } from '@/utils/schemaIds';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -145,7 +146,7 @@ const articleSchema = {
   },
   mainEntityOfPage: {
     '@type': 'WebPage',
-    '@id': `${origin}/${supportedLang}/blog/${slug}/`,
+    '@id': webpageId(canonicalPageUrl(`/${supportedLang}/blog/${slug}/`)),
   },
   keywords: post.data.tags?.join(', ') || '',
   articleSection: post.data.category,
@@ -851,7 +852,11 @@ const activeServiceTool =
       {
         post.data.faq && post.data.faq.length > 0 && (
           <div class="mb-12">
-            <FAQ faqList={post.data.faq} lang={supportedLang} />
+            <FAQ
+              faqList={post.data.faq}
+              lang={supportedLang}
+              breadcrumbId={breadcrumbId(canonicalPageUrl(`/${supportedLang}/blog/${slug}/`))}
+            />
           </div>
         )
       }

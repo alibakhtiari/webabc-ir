@@ -1,26 +1,34 @@
 ---
 import { getDictionary } from '@/i18n/get-dictionary';
 import { type SupportedLanguage } from '@/types/language';
+import { canonicalPageUrl, webpageId, websiteId } from '@/utils/schemaIds';
 
 interface Props {
   faqList: { question: string; answer: string }[];
   lang: SupportedLanguage;
+  /**
+   * Pass `breadcrumbId(pageUrl)` on pages that render `Breadcrumbs.astro`
+   * (today: blog posts) so the WebPage node links the BreadcrumbList.
+   * Omit everywhere else — an unconditional link would dangle on pages
+   * without a BreadcrumbList node.
+   */
+  breadcrumbId?: string;
 }
 
-const { faqList, lang } = Astro.props;
+const { faqList, lang, breadcrumbId: breadcrumbRef } = Astro.props;
 const dictionary = await getDictionary(lang);
 const fontClass = lang === 'fa' ? 'font-persian' : lang === 'ar' ? 'font-arabic' : 'font-sans';
 
 const titleText = dictionary.blog?.faq || 'سوالات متداول';
 
 // Generate FAQ Schema JSON-LD
-const rawPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
-const pageUrl = `https://webabc.ir${rawPath}`;
-const schema = {
+const pageUrl = canonicalPageUrl(Astro.url.pathname);
+const webpageRef = webpageId(pageUrl);
+const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   '@id': `${pageUrl}#faq`,
-  isPartOf: { '@id': `${pageUrl}#webpage` },
+  isPartOf: { '@id': webpageRef },
   inLanguage: lang === 'en' ? 'en-US' : lang === 'ar' ? 'ar-SA' : 'fa-IR',
   mainEntity: faqList.map((item) => ({
     '@type': 'Question',
@@ -31,9 +39,22 @@ const schema = {
     },
   })),
 };
+// The WebPage node `isPartOf` above points at: emitted here so the reference
+// resolves on every page type that renders this component (blog, homepage,
+// services, service-areas), not just pages with their own WebPage node.
+const webpageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': webpageRef,
+  url: pageUrl,
+  inLanguage: lang === 'en' ? 'en-US' : lang === 'ar' ? 'ar-SA' : 'fa-IR',
+  isPartOf: { '@id': websiteId(lang) },
+  ...(breadcrumbRef ? { breadcrumb: { '@id': breadcrumbRef } } : {}),
+};
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(webpageSchema)} />
 
 <div
   class={`mb-8 rounded-2xl border border-gray-100 bg-white p-6 ${fontClass} shadow-xs dark:border-slate-800 dark:bg-slate-900`}
