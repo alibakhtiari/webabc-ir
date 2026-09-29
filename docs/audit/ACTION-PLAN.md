@@ -39,6 +39,7 @@ Shipped and verified against the code. Kept as a ledger so closed items are not 
 | 3.1 | Buried pages gain depth + links | web-design Results section + orphaned features render; Tehran 3 location FAQs; 18 mirrored inbound links; checker legacy verified retired | `5c1ed65` |
 | 3.6 | Money-post proof localized per locale | denominations + Mahsun + Qazvin already per-locale from §2.2/§3.1; new Gulf-QA sentences + Dubai/Riyadh links in cost-guide §5 ×3 | `c4bfca5` |
 | OG-1 | fa/ar OG cards batch 1 (money pages) | 74 RTL typography cards (home + 21 tools + 11 services + top-4 portfolio × fa/ar) in IRANYekanXFaNum, mirrored tool-card system, self-guarded generation; locale-first `og:image` in Layout + sitemap, English art untouched | `d930956` + `e979d4b` |
+| OG-2 | fa/ar OG cards batch 2 (blog + areas) | 88 RTL cards (38 blog with verbatim-English category eyebrows + 6 areas × fa/ar); blog pages prefer locale cards over covers (covers stay in-article); sitemap locale-first with shared fallback; unquoted-YAML frontmatter blind spot fixed | `97e5988` + `45ff4e4` |
 
 ---
 
