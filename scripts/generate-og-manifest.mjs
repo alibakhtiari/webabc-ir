@@ -78,6 +78,26 @@ if (fs.existsSync(toolsSrc)) {
   }
 }
 
+// 6. Localized money-page cards (fa/ar batch 1: home, tools, services,
+// top-4 portfolio) at public/images/og/{lang}/... Manifest keys are
+// locale-prefixed (`fa/tools/<slug>`); Layout.astro tries `${lang}/${slug}`
+// before the locale-blind key, so English keeps its existing art.
+for (const lang of ['fa', 'ar']) {
+  const homeFile = `public/images/og/${lang}/home.webp`;
+  if (fs.existsSync(path.join(root, homeFile))) {
+    manifest[`${lang}/home`] = `/images/og/${lang}/home.webp`;
+  }
+  for (const cls of ['tools', 'services', 'portfolio']) {
+    const dir = path.join(root, `public/images/og/${lang}/${cls}`);
+    if (!fs.existsSync(dir)) continue;
+    for (const f of fs.readdirSync(dir)) {
+      if (f.endsWith('.webp')) {
+        manifest[`${lang}/${cls}/${f.replace('.webp', '')}`] = `/images/og/${lang}/${cls}/${f}`;
+      }
+    }
+  }
+}
+
 // Ensure target dir exists
 const outPath = path.join(root, 'src/generated/og-images.json');
 fs.mkdirSync(path.dirname(outPath), { recursive: true });

@@ -154,11 +154,17 @@ const canonicalUrl = `${siteUrl}${canonicalPath}`;
 // generated 1200x630 crop keyed by slug (services, service-areas, portfolio),
 // then service/area/portfolio defaults, then the site-wide default.
 let resolvedOgImage = ogImage;
+if (!resolvedOgImage) {
+  // Locale-first: `fa/tools/<slug>` wins over the locale-blind key, so each
+  // locale gets its own card while English keeps existing art. Homepage pages
+  // pass slug="" and resolve through the per-locale `home` entry.
+  const localeKey = slug ? `${lang}/${slug}` : `${lang}/home`;
+  resolvedOgImage =
+    (ogImageManifest as Record<string, string>)[localeKey] ||
+    (slug ? (ogImageManifest as Record<string, string>)[slug] : undefined);
+}
 if (!resolvedOgImage && slug) {
-  const manifestOgImage = (ogImageManifest as Record<string, string>)[slug];
-  if (manifestOgImage) {
-    resolvedOgImage = manifestOgImage;
-  } else if (slug.startsWith('services/')) {
+  if (slug.startsWith('services/')) {
     const sKey = slug.replace('services/', '');
     resolvedOgImage = ogImageMap[sKey] || `/images/og/services/${sKey}.webp`;
   } else if (slug.startsWith('service-areas/')) {
