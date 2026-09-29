@@ -32,6 +32,10 @@ Shipped and verified against the code. Kept as a ledger so closed items are not 
 | 4.4 | Dead `/*.html` cache rule deleted | `build.format: 'directory'` means no served URL ends in `.html`; live HTML `cache-control` verified identical before/after (platform default, no `Cache-Control` in code) | `9eedf7b` |
 | 4.2 | Dangling `#webpage` resolved with a real `WebPage` node | `FAQ.astro` emits the node (`url` + `inLanguage` + `isPartOf → /{lang}/#website` + conditional `breadcrumb`); `BlogPosting.mainEntityOfPage` points at it; identities from `src/utils/schemaIds.ts`; §12 sweeps 114/114 blog files | `fefed73` |
 | 4.3 | Per-language `WebSite @id` — already true, now locked | no code change (premise predates the per-language `createWebsiteSchema`); verified live on en/fa/ar homepages, §12 fails on regression | `fefed73` |
+| 3.5 | `ويب سي` reinforced in the `/fa/` title | About carried the string in `<title>` while the homepage did not; now `وب اِی‌بی‌سی (ويب سي) \| …` (52ch), verbatim mirror of description + `alternateName`. Clock 2026-09-29 → 2026-11-10; `webabc` >2.0 alongside means external competition → listings/PR | `7fa4d15` |
+| 3.2 | Outcome metrics front-loaded into 4 snippets | `/ar/` offer-led (114ch), ramzarz rank-1 (111ch), soheil +210%/96 (98ch), best-practices 8 steps (129ch); titles untouched. Metric conflicts (+320%/+260%/140%) parked as follow-ups, not mixed in | `f89474a` |
+| 1.4 | webnewstips exclusion recorded | `ctr_exclusion` + `note` in the baseline JSON: 0.39% with vs 0.58% without; applies at Queries sheet, never page rows | `ebba181` |
+| 2.4 | Editorial cadence closed as process | bulk history retained (no backdating); 105 bumps rewrite-justified and atomic; new publishes staggered; lastmod pipeline verified; standing rule + quarterly check recorded | docs only |
 
 ---
 
@@ -118,6 +122,8 @@ Mirror the leading-noun swap into `src/i18n/fa/tools/headlineAnalyzer.json` and 
 
 **Falsifiability check:** if after title differentiation it still shows 10k+ impressions at 0 clicks, it is structural — confirm the exclusion is permanent and stop revisiting it.
 
+**Closed 2026-09-29 (`ebba181`, reporting convention — no page rows touched):** the baseline JSON carries no query-level rows, so the exclusion is recorded where it applies — `CTR-BASELINE-2026-09-27.json:note` + machine-readable `ctr_exclusion`: 2026-09-21 with 0.39% (124/31,561) vs without 0.58% (124/21,404); exclusion applies at the Queries sheet of each xlsx export, never to a page row (the query has no page dimension).
+
 ---
 
 ## Phase 2 — High (weeks 2–4)
@@ -182,6 +188,8 @@ Mirror the leading-noun swap into `src/i18n/fa/tools/headlineAnalyzer.json` and 
 
 **Falsifiability check:** next quarter, no single date carries >10% of that quarter's publishes.
 
+**Closed 2026-09-29 (docs/process — history deliberately retained, never backdate):** bulk `date:` history stands (40 × 2026-08-07, 24 × 2026-08-15); all 105 `updatedDate: 2026-09-23` bumps arrived atomically inside the §2.2 rewrite commits (e.g. 75+/24− on `technical-seo-audit-guide-2026` in `7c8f9e9`); the 9 files without `updatedDate` are new publishes (09-19/22/24), which is correct, and post-audit publishes are staggered singles. Pipeline verified: `extractDate` prefers `updatedDate` → `date`, `sitemap-lastmod.json` matches frontmatter 3/3 probed. **Standing rule:** stagger future publishes; every `updatedDate` bump ships in the same commit as its content edit; never bypass `resolve-sitemap-lastmod.mjs`.
+
 ---
 
 ### 2.5 Fix category → CTA mapping 🟡
@@ -230,9 +238,9 @@ These are **relevance/depth/internal-link** problems. Do **not** sequence them a
 | # | Action | Evidence | Falsifiability check |
 |---|---|---|---|
 | 3.1 | Pages buried beyond page 2 need depth + internal links, **not** meta rewrites: `/en/services/web-design/` (**pos 87.9**), `/fa/service-areas/tehran/` (76.7), `/fa/service-areas/qazvin/` (60.4), `/en/tools/seo-title-checker` legacy (63.8) | `01-gsc-performance.md` §5 | Position must move ≥20 places in 8 weeks. If it does not, the query is beyond the page's relevance — rebuild or retire the page |
-| 3.2 | Snippet rewrites on striking-distance pages: **`/ar/` (pos 5.01, 0 clicks / 232 impr)**, `/fa/portfolio/ramzarz-negaran/` (6.85, 0.88% CTR), `/en/blog/seo-best-practices/` (8.94, 0.57%), `/fa/portfolio/soheil-accessory/` (6.38, 0 clicks) | `02-on-page-serp.md` §4 | CTR on these pages moves **before** position does. Four portfolio pages rank top-10 and convert at 0–1.9% — front-load the outcome metric from `results[]` into the description |
+| 3.2 | Snippet rewrites on striking-distance pages: **`/ar/` (pos 5.01, 0 clicks / 232 impr)**, `/fa/portfolio/ramzarz-negaran/` (6.85, 0.88% CTR), `/en/blog/seo-best-practices/` (8.94, 0.57%), `/fa/portfolio/soheil-accessory/` (6.38, 0 clicks) | `02-on-page-serp.md` §4 | CTR on these pages moves **before** position does. Four portfolio pages rank top-10 and convert at 0–1.9% — front-load the outcome metric from `results[]` into the description. **Shipped `f89474a`:** all four descriptions rewritten, titles untouched — `/ar/` leads with free-consultation + calculator offer (21 tools / 10+ yr, 114ch); ramzarz-negaran leads with `results[]` rank-1 «ماینر قانونی» (111ch, the +320% in `portfolio-meta.ts` deliberately unused — granularity conflict, follow-up); soheil-accessory leads with `results[]` +210% mobile / 96 speed (98ch, meta +260% and blog 140% untouched — conflict follow-up); seo-best-practices gains countable 8 steps (129ch) |
 | 3.3 | Off-site entity corroboration — **the one GEO item code cannot fix**: agency-level LinkedIn + X distinct from the founder's; tool listings/roundups for the 21 free tools; consider open-sourcing the client-side tools | `08-geo-ai-citations.md` §6 | `Organization.sameAs` should contain ≥4 **organisation** profiles. Citation rate on the 5 frozen prompts is the real metric |
-| 3.5 | Own the Persian brand SERP: `ويب سي` sits at **position 4.93 with 0 clicks across 218 impressions**, and the site *declares* this string as `WebSite.alternateName` for `fa` | `02-on-page-serp.md` §5 | Position ≤2 for `ويب سي` within 6 weeks. If `webabc` itself stays >2.0, this is external brand competition → escalate to listings/PR, not more on-page work |
+| 3.5 | Own the Persian brand SERP: `ويب سي` sits at **position 4.93 with 0 clicks across 218 impressions**, and the site *declares* this string as `WebSite.alternateName` for `fa` | `02-on-page-serp.md` §5 | Position ≤2 for `ويب سي` within 6 weeks. If `webabc` itself stays >2.0, this is external brand competition → escalate to listings/PR, not more on-page work. **Shipped `7fa4d15`:** the one remaining honest gap was the `/fa/` `<title>` (About carried the string, the homepage did not) — now `وب اِی‌بی‌سی (ويب سي) | …` (52ch), mirroring description + `alternateName` verbatim. Clock runs 2026-09-29 → 2026-11-10 |
 | 3.6 | Locale differentiation in the 5 money posts: fa → Iranian pricing in toman + existing case data (ramzarz-negaran, remido, mehromah-qazvin already earn clicks); ar → GCC/Vision-2030 + AED/SAR; en → USD benchmarks | `05-content-blog.md` §6 | `Translated results` appearance moves off 0 clicks / position 92.88 |
 
 ---
