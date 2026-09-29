@@ -18,7 +18,3 @@
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Cache HTML pages for 1 hour (revalidate more often)
-/*.html
-  Cache-Control: public, max-age=3600, must-revalidate
-
