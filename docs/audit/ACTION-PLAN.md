@@ -40,6 +40,9 @@ Shipped and verified against the code. Kept as a ledger so closed items are not 
 | 3.6 | Money-post proof localized per locale | denominations + Mahsun + Qazvin already per-locale from §2.2/§3.1; new Gulf-QA sentences + Dubai/Riyadh links in cost-guide §5 ×3 | `c4bfca5` |
 | OG-1 | fa/ar OG cards batch 1 (money pages) | 74 RTL typography cards (home + 21 tools + 11 services + top-4 portfolio × fa/ar) in IRANYekanXFaNum, mirrored tool-card system, self-guarded generation; locale-first `og:image` in Layout + sitemap, English art untouched | `d930956` + `e979d4b` |
 | OG-2 | fa/ar OG cards batch 2 (blog + areas) | 88 RTL cards (38 blog with verbatim-English category eyebrows + 6 areas × fa/ar); blog pages prefer locale cards over covers (covers stay in-article); sitemap locale-first with shared fallback; unquoted-YAML frontmatter blind spot fixed | `97e5988` + `45ff4e4` |
+| 1.3 | Headline-analyzer rewrite shipped | EN plan text verbatim (61ch/149ch); fa/ar 1:1 mirrors, all claims evidenced; fa/ar OG cards regenerated. Clock 2026-09-29 → 2026-10-27 | `6a0b7bd` |
+| 3.2+ | en-tehran + fa-muscat snippets + honesty fixes | tehran proof-led 151ch (top-rated/24h claims removed); muscat ODYPS hook + 2 FAQs; Omani-gateway clause removed (SEK/EUR evidence) | `8c7a203` |
+| MET | Portfolio % reconciliation (5 cases × 3) | page-results rule: ramzarz/soheil/mahsun/rostateb/tehran-enamel meta FAQs rewritten to page values. Backlog: remido/odyps/samake meta-vs-page deltas (different-metric nuances need human labels); escalated: reality of +320%/+260%/140%, Rank-1 re-check | `71a4eed` |
 
 ---
 
@@ -50,7 +53,7 @@ You cannot verify any GROW claim below without these two things.
 | # | Action | Why it blocks | Falsifiability check |
 |---|---|---|---|
 | 0.1 | ~~**Re-export GSC** (same 3-month window) and diff against `webabc.ir-Performance-on-Search-2026-09-21.xlsx`~~ — **shipped `cb84b05`**, see the ledger | Establishes the baseline every other check compares to | Done: diffed into `docs/audit/CTR-BASELINE-2026-09-27.json`. The rolling 3-month window moved forward 6 days, so treat the diff as a shifted-window comparison, not a same-window one |
-| 0.2 | **Configure PSI/CrUX credentials** at `~/.config/claude-seo/google-api.json` | No CWV data exists anywhere; Performance is currently a proxy estimate | Until field LCP/INP/CLS exist, **no performance claim in this audit may be treated as measured** |
+| 0.2 | **Configure PSI/CrUX credentials** at `~/.config/claude-seo/google-api.json` | No CWV data exists anywhere; Performance is currently a proxy estimate | Until field LCP/INP/CLS exist, **no performance claim in this audit may be treated as measured** — **declined by owner 2026-09-29, closed with §4.10** |
 | 0.3 | **Define the 5 fixed GEO test prompts** and record today's answers in ChatGPT Search, Perplexity, Google AI Overviews, Gemini | Nothing measures citations today | If prompts change month to month, the series is not comparable — freeze the list |
 
 **Test prompts (freeze these):**
@@ -116,6 +119,8 @@ Mirror the leading-noun swap into `src/i18n/fa/tools/headlineAnalyzer.json` and 
 - **Failed (ACCEPT):** after 4 weeks, `seo title checker for blog by webnewstips com` still ≥8k impressions at 0 clicks **and** page CTR still <0.5% → the title change did not land; re-test a different leading noun.
 - If CTR rises but position does not: title worked, you now need links (→ Phase 3).
 
+**Shipped `6a0b7bd` 2026-09-29 (freeze lifted by owner):** EN ships the plan text verbatim (61ch/149ch); fa/ar mirror the leading-noun swap 1:1 — pixel width, desktop/mobile, no-signup all evidenced in-tool, no new facts. fa/ar OG cards regenerated. Clock runs 2026-09-29 → 2026-10-27.
+
 ---
 
 ### 1.4 Settle the competitor-branded query 🟠
@@ -147,6 +152,8 @@ Mirror the leading-noun swap into `src/i18n/fa/tools/headlineAnalyzer.json` and 
 **Shipped:** `scripts/generate-llms-index.mjs` builds a root language router plus three canonical indexes — **93 links / 9 sections each**, identical counts — from `scripts/llms-index.data.json`, and throws rather than ship an unbalanced index; `src/i18n/{fa,ar}/llms-guidance.md` carry the translated agent guidance (English extracted verbatim to `src/i18n/en/`). `scripts/generate-llms-full.mjs` writes `/{lang}/llms-full.txt` for all three locales plus an English root fallback, excludes whole posts instead of cutting mid-word (**0 omitted now, 2 before**), and warns above 480 KB. `worker.ts` pins `text/plain; charset=utf-8` on `.txt` and advertises `Link: </{lang}/llms.txt>; rel="describedby"` on HTML; `Layout.astro` emits the locale-aware `<link rel="describedby">`. Gated by the rewritten §9 in `scripts/verify-agentic.mjs`, which now asserts router shape, per-locale parity, corpus caps, direct 200 + charset on all three `.txt` files, and the discovery headers.
 
 **Falsifiability check:** fa/ar prompts in ChatGPT/Perplexity start producing Persian/Arabic-language answers about the site's services. If they still return nothing after 4 weeks (**2026-09-28 → 2026-10-26**), `llms.txt` exposure was not the binding constraint → move to off-site footprint (2.4).
+
+**Decision 2026-09-29 (owner): keep 93 links/locale, thread closed.** Full tool/service/area/blog parity is the point of the indexes; curation to ≤50 would delete in-scope surface. No further action.
 
 ---
 
@@ -257,7 +264,7 @@ These are **relevance/depth/internal-link** problems. Do **not** sequence them a
 | 4.3 | `WebSite.url` varies by language under a single `@id` → per-language `@id`, or drop `url` | `04-schema.md` §6 | One `WebSite` `@id` per language, or none carrying `url`. **No code change — premise stale:** `createWebsiteSchema` already emits `@id https://webabc.ir/{lang}/#website` with matching per-language `url`, and every `isPartOf → #website` in the repo (about, contact, 404, serviceSchema, new WebPage nodes) already targets the per-language form. Verified live on all 3 homepages and locked by §12, which fails if any homepage regresses |
 | 4.4 | Fix or delete the dead `/*.html` cache rule — `build.format: 'directory'` means no URL ends in `.html` | `09-performance-images.md` §3 | Live HTML `cache-control` matches whatever the file declares. **If you enable an HTML cache, `Vary: Accept` must remain** or markdown/HTML representations can cross-contaminate. **Shipped `9eedf7b`: rule deleted.** The only `.html` artifact is `dist/404.html` — direct `/404.html` answers 307 before headers matter, and 404 bodies served at other paths match on the request path, not the file name, so the rule cached nothing real. Live HTML `cache-control: public, max-age=0, must-revalidate` is the platform default (no `Cache-Control` anywhere in `worker.ts`/`src/`), confirmed identical before removal |
 | 4.9 | Consolidate `_redirects` and `worker.ts` `STATIC_REDIRECTS` to one source of truth (they currently agree — keep it that way) | `03-technical.md` §8 | Single list, or a test asserting equality. **Shipped `01a851d`: the test is the source of truth.** §11 asserts all 63 file rules resolve through the worker in one 301 hop to the same target (slash-form legacy sources via the `barePath` lookup, the 3 bare headline-analyzer rules via the explicit 301 branch — the only normalised gap, deliberately in code not the map, since a map entry would self-redirect the slash form), every status stays 301, and all 54 map entries (now exported, behaviour-neutral) mirror a file rule |
-| 4.10 | Homepage image weight ~967 KB — measure with PSI first (0.2), add responsive `srcset`/`sizes` only if LCP is red | `09-performance-images.md` §1 | Field LCP ≤2.5 s before/after; **do not change anything if it's already green** |
+| 4.10 | Homepage image weight ~967 KB — measure with PSI first (0.2), add responsive `srcset`/`sizes` only if LCP is red | `09-performance-images.md` §1 | Field LCP ≤2.5 s before/after; **do not change anything if it's already green** — **closed unmeasured with §0.2 2026-09-29 (credentials declined; proxy estimates stand)** |
 | 4.11 | Set up the monthly 5-prompt citation test from Phase 0.3 as a standing check | `08-geo-ai-citations.md` §7 | Citations counted monthly. GSC impressions tell you **nothing** about GEO |
 
 **Do NOT do these** (correctly omitted — listed so nobody "improves" them):
