@@ -44,6 +44,7 @@ Shipped and verified against the code. Kept as a ledger so closed items are not 
 | 1.3 | Headline-analyzer rewrite shipped | EN plan text verbatim (61ch/149ch); fa/ar 1:1 mirrors, all claims evidenced; fa/ar OG cards regenerated. Clock 2026-09-29 → 2026-10-27 | `6a0b7bd` |
 | 3.2+ | en-tehran + fa-muscat snippets + honesty fixes | tehran proof-led 151ch (top-rated/24h claims removed); muscat ODYPS hook + 2 FAQs; Omani-gateway clause removed (SEK/EUR evidence) | `8c7a203` |
 | MET | Portfolio % reconciliation (5 cases × 3) | page-results rule: ramzarz/soheil/mahsun/rostateb/tehran-enamel meta FAQs rewritten to page values. Backlog: remido/odyps/samake meta-vs-page deltas (different-metric nuances need human labels); escalated: reality of +320%/+260%/140%, Rank-1 re-check | `71a4eed` |
+| 3.2b | Remido striking-distance snippets (all 3 locales) | Front-loaded Remido brand + serial warranty verification + verified page results (+340% sales / 93 speed) across ar/fa/en; targets GSC brand query (224 impr @ pos 5.04) and `/ar/portfolio/remido/` (190 impr @ pos 4.35) | this commit |
 
 ---
 
