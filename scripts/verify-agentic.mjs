@@ -349,6 +349,65 @@ async function test() {
     `English pages advertise their own index via Link describedby (got ${enPage.headers.get('link')})`
   );
 
+  // 10. `.md` siblings are noindexed duplicates, not standalone documents.
+  console.log('\n10. Testing .md noindex + canonical:');
+  for (const [mdPath, htmlPath] of [
+    ['/en/blog/seo-checklist-2026/index.md', '/en/blog/seo-checklist-2026/'],
+    ['/en/blog/seo-checklist-2026.md', '/en/blog/seo-checklist-2026/'],
+    ['/en/contact/index.md', '/en/contact/'],
+    ['/index.md', '/'],
+  ]) {
+    const res = await worker.fetch(new Request(`https://webabc.ir${mdPath}`), env);
+    assert(res.status === 200, `${mdPath} served with 200 (got ${res.status})`);
+    assert(
+      (res.headers.get('x-robots-tag') || '').startsWith('noindex'),
+      `${mdPath} is noindex (got ${res.headers.get('x-robots-tag')})`
+    );
+    const link = res.headers.get('link') || '';
+    assert(
+      link.includes(`<https://webabc.ir${htmlPath}>; rel="canonical"`),
+      `${mdPath} canonicalises to ${htmlPath} (got ${link || 'none'})`
+    );
+    assert(
+      (res.headers.get('vary') || '').toLowerCase().includes('accept'),
+      `${mdPath} varies on Accept (got ${res.headers.get('vary')})`
+    );
+  }
+
+  // 404.md maps to /404/, which answers 404 — noindex, but never canonical.
+  const md404 = await worker.fetch(new Request('https://webabc.ir/404.md'), env);
+  assert(
+    (md404.headers.get('x-robots-tag') || '').startsWith('noindex'),
+    `/404.md is noindex (got ${md404.headers.get('x-robots-tag')})`
+  );
+  assert(
+    !/rel="canonical"/.test(md404.headers.get('link') || ''),
+    `/404.md declares no canonical (got ${md404.headers.get('link') || 'none'})`
+  );
+
+  // Only `.md` is noindexed: the alternate representations must stay reachable
+  // and indexable, and negotiated markdown on the HTML URL must keep working.
+  const txt = await worker.fetch(new Request('https://webabc.ir/llms.txt'), env);
+  assert(
+    !(txt.headers.get('x-robots-tag') || '').includes('noindex'),
+    `llms.txt is not noindexed by the .md rule (got ${txt.headers.get('x-robots-tag')})`
+  );
+  const negotiated = await worker.fetch(
+    new Request('https://webabc.ir/en/blog/seo-checklist-2026/', {
+      headers: { Accept: 'text/markdown' },
+    }),
+    env
+  );
+  assert(negotiated.status === 200, `negotiated markdown on the HTML URL still 200 (got ${negotiated.status})`);
+  assert(
+    (negotiated.headers.get('content-type') || '').includes('text/markdown'),
+    `negotiated markdown on the HTML URL is text/markdown (got ${negotiated.headers.get('content-type')})`
+  );
+  assert(
+    !(negotiated.headers.get('x-robots-tag') || '').startsWith('noindex'),
+    `negotiated markdown on the HTML URL is not noindexed (got ${negotiated.headers.get('x-robots-tag')})`
+  );
+
   console.log(`\n--- Verification Suite Completed: ${failures === 0 ? 'ALL CHECKS PASSED (100% Score)' : `${failures} FAILURES`} ---`);
   if (failures > 0) process.exit(1);
 }

@@ -204,6 +204,15 @@ function markdownPath(pathname: string): string {
   return `${clean}/index.md`;
 }
 
+/** Inverse of markdownPath(): the HTML document a `.md` sibling represents.
+ *  `/en/contact/index.md` -> `/en/contact/`, `/en/contact.md` -> `/en/contact/`,
+ *  `/index.md` -> `/`. */
+function htmlPathFor(mdPathname: string): string {
+  if (mdPathname.endsWith('/index.md')) return `${mdPathname.slice(0, -'/index.md'.length)}/`;
+  const noExt = mdPathname.endsWith('.md') ? mdPathname.slice(0, -3) : mdPathname;
+  return noExt.endsWith('/') ? noExt : `${noExt}/`;
+}
+
 const MARKDOWN_404_BODY = `# Page Not Found
 
 The requested WebABC resource does not exist or has moved. Use the following machine-readable and directory indexes to recover:
@@ -396,6 +405,30 @@ export default {
         headers.set('X-Robots-Tag', 'noindex, follow');
         appendVaryAccept(headers);
         return new Response(MARKDOWN_404_BODY, { status: 404, statusText: 'Not Found', headers });
+      }
+      // `.md` siblings are alternate representations of an HTML route, not
+      // standalone documents. The site-wide `_headers` `/*` rule stamps them
+      // `index, follow`, which made all 524 of them indexable duplicates of
+      // their HTML twin. Noindex the `.md` URL and point it at that twin; the
+      // negotiated markdown served *on the HTML URL* stays fully available and
+      // is unaffected here.
+      if (url.pathname.endsWith('.md')) {
+        const headers = new Headers(assetRes.headers);
+        headers.set('X-Robots-Tag', 'noindex, follow');
+        const htmlPath = htmlPathFor(url.pathname);
+        // `/404.md` maps to `/404/`, which answers 404 — never declare a 4xx
+        // as canonical. Its noindex is enough to keep it out of the index.
+        if (htmlPath !== '/404/') {
+          const canonical = `<https://${CANONICAL_HOST}${htmlPath}>; rel="canonical"`;
+          const existingLink = headers.get('link');
+          headers.set('Link', existingLink ? `${existingLink}, ${canonical}` : canonical);
+        }
+        appendVaryAccept(headers);
+        return new Response(assetRes.body, {
+          status: assetRes.status,
+          statusText: assetRes.statusText,
+          headers,
+        });
       }
       // llms.txt / llms-full.txt are fetched by AI crawlers, which crawl from
       // US datacenter IPs and follow no geo variation: this branch never
