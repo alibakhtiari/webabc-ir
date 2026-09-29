@@ -370,7 +370,7 @@ Consider an e-commerce store generating $20,000 in monthly revenue with an avera
 - **Incremental Monthly Revenue:** $3,000 USD.
 - A $1,200 speed optimization investment achieves **100% payback in under 14 days**, delivering compounding pure profit every month thereafter.
 
-The calculation is deliberately conservative on its assumptions: it uses the lower end of the published conversion-lift range and prices the engagement at the mid-tier rate from section one. Before you sign anything, sanity-check the same arithmetic against your own analytics — monthly revenue, current conversion rate, and the share of traffic that reaches the checkout or contact form — so the ROI claim rests on your numbers rather than a model.
+The calculation is deliberately conservative on its assumptions: it uses the lower end of the published conversion-lift range and prices the engagement at the mid-tier rate from section one. Before you sign anything, sanity-check the same arithmetic against your own analytics — monthly revenue, current conversion rate, and the share of traffic that reaches the checkout or contact form — so the ROI claim rests on your numbers rather than a model. For a field-data reference point, our Qazvin retail platform work holds 98/100 PageSpeed across 300+ shops — see [web design in Qazvin](/en/service-areas/qazvin/).
 
 ## 6. When Do You Need a Professional Speed Optimization?
 
@@ -1690,7 +1690,7 @@ Every figure quoted above traces to one of these sources, each retrieved on the 
 
 ## /en/blog/tehran-ecommerce-web-design-guide-2026/
 
-Tehran's online shoppers are experienced: they compare across marketplaces, Instagram shops, and brand sites before spending a Rial. That makes your store's design a trust exam, not a beauty contest. And the global numbers say most stores fail it — In 2026, Baymard Institute's meta-analysis of 50 cart-abandonment studies puts the average abandonment rate at 70.22%. Seven out of ten carts, gone.
+Tehran's online shoppers are experienced: they compare across marketplaces, Instagram shops, and brand sites before spending a Rial. That makes your store's [design](/en/services/web-design/) a trust exam, not a beauty contest. And the global numbers say most stores fail it — In 2026, Baymard Institute's meta-analysis of 50 cart-abandonment studies puts the average abandonment rate at 70.22%. Seven out of ten carts, gone.
 
 > **AEO Quick Answer:**
 >
@@ -1825,7 +1825,7 @@ Websites built on heavy legacy CMS platforms or bloated page builders often suff
 Dominating search results for high-ticket commercial niches (e.g., cosmetic surgery, legal services, SaaS software, financial consulting) requires substantial digital PR outreach and content depth. For instance, our successful client campaign with [Tahami Medical Aesthetics](/en/portfolio/tahami-clinic/) required multi-layered semantic content hubs to overtake long-established clinical competitors. In a crowded niche the work is not harder to describe — it is harder to win, and the retainer has to fund the depth that makes winning possible.
 
 ### C. Geographic Targeting: Local vs. Regional vs. Global
-Optimizing for a single municipal territory (such as dental practices highlighted in our [Behrad Dental Clinic Case Study](/en/portfolio/behrad-dc/)) requires focused local citation consistency and review velocity. In contrast, expanding across international markets like [SEO in Dubai](/en/service-areas/dubai/) requires multi-currency, multi-language (English and Arabic), and regional GCC server infrastructure. Each additional market multiplies the surface that must be maintained, which is the honest reason global programmes sit in the enterprise band.
+Optimizing for a single municipal territory (such as dental practices highlighted in our [Behrad Dental Clinic Case Study](/en/portfolio/behrad-dc/)) requires focused local citation consistency and review velocity. In contrast, expanding across international markets like [SEO in Dubai](/en/service-areas/dubai/) or [SEO in Tehran](/en/service-areas/tehran/) requires multi-currency, multi-language (English and Arabic), and regional GCC server infrastructure. Each additional market multiplies the surface that must be maintained, which is the honest reason global programmes sit in the enterprise band.
 
 ### D. Content Depth & First-Hand Expertise (E-E-A-T)
 Google's automated spam algorithms actively filter out generic AI-generated articles. High-ranking content in 2026 demands original research, comparative data tables, expert quotes, and authoritative author attribution (Experience, Expertise, Authoritativeness, and Trustworthiness). Content written to that standard costs more per page than filler, and a quote that promises large volumes of cheap pages is usually promising the exact output the spam systems are built to ignore.
@@ -1944,7 +1944,7 @@ Qazvin's digital economy splits into three buyer types who each search different
 
 3. **Private Healthcare & Medical Specialists:** Clinics located along key municipal arteries (Khayyam, Daneshgah, Ferdowsi) where prospective patients search directly for specialized medical care followed by the "Qazvin" geographic qualifier. Trust signals, practitioner credentials, and appointment paths carry this sector, supported by consistent listings on the maps and directories those patients check before calling.
 
-Explore our dedicated [Qazvin Web Design Service Area Hub](/en/service-areas/qazvin/) for full regional capabilities.
+Explore our dedicated [Qazvin Web Design Service Area Hub](/en/service-areas/qazvin/) for full regional capabilities. Operating from the capital instead? See our [Tehran service area](/en/service-areas/tehran/).
 
 ## 2. Engineering Standards for Modern Qazvin Corporate Websites
 
