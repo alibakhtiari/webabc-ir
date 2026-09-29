@@ -32,6 +32,14 @@
       "description": "SEO-friendly website architecture and optimization for better search engine visibility and ranking."
     }
   },
+  "results": {
+    "title": "Client Results",
+    "items": [
+      {"slug": "ramzarz-negaran", "metric": "Rank 1 (Legal Miner)", "label": "Calculator Tool - Custom WP", "name": "Ramzarz Negaran – Premier Legal Crypto Mining Platform"},
+      {"slug": "mehromah-qazvin", "metric": "300+ Shops", "label": "#1 Shopping Hub - 98 / 100", "name": "Mehromah Complex – Digital Platform for Qazvin's Premier Commercial Mall"},
+      {"slug": "behrad-dc", "metric": "+230% Online", "label": "#1 Dental Karaj - 95 / 100", "name": "Behrad Dental Clinic – Digital Transformation & Medical SEO for Karaj Dental Practice"}
+    ]
+  },
   "process": {
     "title": "Our Web Design Process",
     "step1": {
