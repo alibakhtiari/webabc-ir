@@ -4,7 +4,8 @@
  * tools, top-4 portfolio) — the site-wide OG localisation batch 1.
  *
  * Output: public/images/og/{fa,ar}/{home.webp,tools/<slug>.webp,
- *   services/<slug>.webp,portfolio/<slug>.webp} at 1200x630.
+ *   services/<slug>.webp,portfolio/<slug>.webp,blog/<slug>.webp,
+ *   service-areas/<slug>.webp} at 1200x630.
  *
  * Same contract as scripts/generate-og-tool-images.mjs (typography cards via
  * hand-authored SVG + the sharp already in devDependencies — no image model,
@@ -72,13 +73,18 @@ const EYEBROW = {
   services: { fa: 'خدمات', ar: 'خدمات' },
   portfolio: { fa: 'مطالعه موردی', ar: 'دراسة حالة' },
   home: { fa: 'وب اِی‌بی‌سی', ar: 'ويب إيه بي سي' },
+  areas: { fa: 'خدمات منطقه‌ای', ar: 'خدمات المناطق' },
 };
+
+const AREA_SLUGS = ['muscat', 'dubai', 'tehran', 'qazvin', 'abu-dhabi', 'riyadh'];
 
 const PATH_LABEL = {
   tools: (lang, slug) => `/${lang}/tools/${slug}/`,
   services: (lang, slug) => `/${lang}/services/${slug}/`,
   portfolio: (lang, slug) => `/${lang}/portfolio/${slug}/`,
   home: (lang) => `/${lang}/`,
+  blog: (lang, slug) => `/${lang}/blog/${slug}/`,
+  areas: (lang, slug) => `/${lang}/service-areas/${slug}/`,
 };
 
 const PAD_X = 100;
@@ -327,9 +333,11 @@ function parseFrontmatter(file) {
   const txt = fs.readFileSync(file, 'utf8');
   const get = (k) => {
     const m = txt.match(new RegExp(`^${k}:\\s*['"](.*)['"]\\s*$`, 'm'));
-    return m ? m[1] : '';
+    if (m) return m[1];
+    const bare = txt.match(new RegExp(`^${k}:\\s*(.+?)\\s*$`, 'm'));
+    return bare ? bare[1] : '';
   };
-  return { title: get('title'), description: get('description') };
+  return { title: get('title'), description: get('description'), category: get('category') };
 }
 
 function readServiceSlugs() {
@@ -409,6 +417,43 @@ function collectCards(lang) {
       eyebrow: EYEBROW.portfolio[lang],
       title: fm.title,
       description: fm.description,
+    });
+  }
+
+  // 5. Blog — all 38 slugs. Eyebrow is the post `category`, which stays
+  // English in all 3 locales by project convention, so it is reused verbatim.
+  const blogDir = path.join(ROOT, 'src/content/blog', lang);
+  if (fs.existsSync(blogDir)) {
+    for (const f of fs.readdirSync(blogDir)) {
+      if (!f.endsWith('.mdx')) continue;
+      const slug = f.replace('.mdx', '');
+      const fm = parseFrontmatter(path.join(blogDir, f));
+      if (!fm.title || !fm.description) continue;
+      cards.push({
+        out: `public/images/og/${lang}/blog/${slug}.webp`,
+        pathLabel: PATH_LABEL.blog(lang, slug),
+        eyebrow: fm.category || 'Blog',
+        title: fm.title,
+        description: fm.description,
+      });
+    }
+  }
+
+  // 6. Service areas — all 6 locations, title/description from the locale's
+  // service-areas.json (the same strings the area pages render).
+  const areasJson = JSON.parse(
+    fs.readFileSync(path.join(ROOT, 'src/i18n', lang, 'service-areas.json'), 'utf8')
+  );
+  const locations = areasJson.locations || areasJson['service-areas']?.locations || [];
+  for (const slug of AREA_SLUGS) {
+    const loc = locations.find((l) => l.slug === slug);
+    if (!loc?.title || !loc?.description) continue;
+    cards.push({
+      out: `public/images/og/${lang}/service-areas/${slug}.webp`,
+      pathLabel: PATH_LABEL.areas(lang, slug),
+      eyebrow: EYEBROW.areas[lang],
+      title: loc.title,
+      description: loc.description,
     });
   }
 
