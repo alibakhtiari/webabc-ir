@@ -11,6 +11,7 @@ import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
 import { getCategoryLabel } from '@/utils/category-translator';
 import { breadcrumbId, canonicalPageUrl, webpageId } from '@/utils/schemaIds';
+import ogImageManifest from '@/generated/og-images.json';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -503,7 +504,9 @@ const activeServiceTool =
   description={post.data.description}
   lang={supportedLang}
   slug={`blog/${slug}`}
-  ogImage={post.data.image}
+  ogImage={
+    (ogImageManifest as Record<string, string>)[`${supportedLang}/blog/${slug}`] || post.data.image
+  }
   ogType="article"
 >
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(articleSchema)} />

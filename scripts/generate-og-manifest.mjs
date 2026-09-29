@@ -87,7 +87,7 @@ for (const lang of ['fa', 'ar']) {
   if (fs.existsSync(path.join(root, homeFile))) {
     manifest[`${lang}/home`] = `/images/og/${lang}/home.webp`;
   }
-  for (const cls of ['tools', 'services', 'portfolio']) {
+  for (const cls of ['tools', 'services', 'portfolio', 'blog', 'service-areas']) {
     const dir = path.join(root, `public/images/og/${lang}/${cls}`);
     if (!fs.existsSync(dir)) continue;
     for (const f of fs.readdirSync(dir)) {

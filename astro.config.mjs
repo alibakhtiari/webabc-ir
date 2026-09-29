@@ -12,9 +12,14 @@ const LASTMOD_FALLBACK = sitemapLastmod._fallback;
 
 // Map slug to its representative image for sitemap image entries
 export const getImageForPage = (pageKey) => {
-  // Blog posts: cover image is /images/blog/<slug>.webp (exists for all blog posts)
+  // Blog posts: locale typography card when generated, else the shared cover.
   if (pageKey.match(/^(en|fa|ar)\/blog\/(.+)$/)) {
-    const slug = pageKey.replace(/^(en|fa|ar)\/blog\//, '').replace(/\/$/, '');
+    const m = pageKey.match(/^(en|fa|ar)\/blog\/(.+?)\/?$/);
+    const lang = m[1];
+    const slug = m[2];
+    if (lang !== 'en' && fs.existsSync(`public/images/og/${lang}/blog/${slug}.webp`)) {
+      return `/images/og/${lang}/blog/${slug}.webp`;
+    }
     return `/images/blog/${slug}.webp`;
   }
   // Services: locale card when generated, else the shared EN card.
@@ -27,9 +32,14 @@ export const getImageForPage = (pageKey) => {
     }
     return `/images/og/services/${slug}.webp`;
   }
-  // Service areas: location image og crop at /images/og/service-areas/<slug>.webp
+  // Service areas: locale card when generated, else the shared location crop.
   if (pageKey.match(/^(en|fa|ar)\/service-areas\/(.+)$/)) {
-    const slug = pageKey.replace(/^(en|fa|ar)\/service-areas\//, '').replace(/\/$/, '');
+    const m = pageKey.match(/^(en|fa|ar)\/service-areas\/(.+?)\/?$/);
+    const lang = m[1];
+    const slug = m[2];
+    if (lang !== 'en' && fs.existsSync(`public/images/og/${lang}/service-areas/${slug}.webp`)) {
+      return `/images/og/${lang}/service-areas/${slug}.webp`;
+    }
     return `/images/og/service-areas/${slug}.webp`;
   }
   // Portfolio: locale money-page card when generated, else the shared crop.
