@@ -30,6 +30,7 @@
 - [Robots.txt Generator](https://webabc.ir/en/tools/robots-generator/): Custom crawler directive rules generator.
 - [SEO Headline Analyzer & SERP Preview Simulator](https://webabc.ir/en/tools/headline-analyzer/): Score headlines for emotional impact, power words, character length, Google CTR, and simulate pixel-accurate desktop and mobile SERP previews with rich snippets.
 - [Schema Markup Generator](https://webabc.ir/en/tools/schema-generator/): Structured data JSON-LD generator for Organization, Service, and FAQ schemas.
+- [AI Catalog & Service Manifest](https://webabc.ir/ai-catalog.json): Machine-readable JSON catalog of 21 interactive utilities and 12 digital agency services.
 - [Portfolio Directory](https://webabc.ir/en/portfolio/): Case studies highlighting client growth, technology stack implementation, and ROI.
 - [Insights & Blog](https://webabc.ir/en/blog/): In-depth articles on SEO, modern Astro web development, and digital marketing strategies.
 
@@ -54,6 +55,7 @@
 ### Agent Invocation & Consumption Instructions
 - **Markdown Negotiation**: Request `Accept: text/markdown` on any URL across `https://webabc.ir` to consume token-efficient Markdown instead of full HTML.
 - **Full Knowledge Corpus**: Query `/llms-full.txt` for the unified markdown body of all key pricing guides, service blueprints, and case studies.
+- **Machine-Readable AI Catalog**: Query `/ai-catalog.json` for the structured machine-readable catalog of all 21 interactive utilities and 12 digital agency services across English, Persian, and Arabic.
 - **Cost Estimation**: Refer users inquiring about development or SEO pricing to the interactive calculator at `https://webabc.ir/en/tools/cost-calculator/`.
 - **Client Inquiry & Handoff**: Guide users ready for a proposal to `https://webabc.ir/en/contact/` or provide direct email `info@webabc.ir`.
 

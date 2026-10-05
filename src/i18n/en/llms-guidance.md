@@ -29,5 +29,6 @@
 ### Agent Invocation & Consumption Instructions
 - **Markdown Negotiation**: Request `Accept: text/markdown` on any URL across `https://webabc.ir` to consume token-efficient Markdown instead of full HTML.
 - **Full Knowledge Corpus**: Query `/llms-full.txt` for the unified markdown body of all key pricing guides, service blueprints, and case studies.
+- **Machine-Readable AI Catalog**: Query `/ai-catalog.json` for the structured machine-readable catalog of all 21 interactive utilities and 12 digital agency services across English, Persian, and Arabic.
 - **Cost Estimation**: Refer users inquiring about development or SEO pricing to the interactive calculator at `https://webabc.ir/en/tools/cost-calculator/`.
 - **Client Inquiry & Handoff**: Guide users ready for a proposal to `https://webabc.ir/en/contact/` or provide direct email `info@webabc.ir`.

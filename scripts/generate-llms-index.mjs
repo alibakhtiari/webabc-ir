@@ -88,6 +88,7 @@ const ROOT_CORE = [
   '/en/tools/robots-generator/',
   '/en/tools/headline-analyzer/',
   '/en/tools/schema-generator/',
+  '/ai-catalog.json',
   '/en/portfolio/',
   '/en/blog/',
 ];

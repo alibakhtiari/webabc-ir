@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import worker, { STATIC_REDIRECTS } from '../worker.ts';
+import { toolConfigMap } from '../src/config/tools.ts';
 
 const root = process.cwd();
 const distDir = path.join(root, 'dist');
@@ -15,6 +16,10 @@ const mockAssets = {
     let filePath = path.join(distDir, pathname);
     if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
       return respondWithFile(filePath, req.method);
+    }
+    let pubPath = path.join(root, 'public', pathname);
+    if (fs.existsSync(pubPath) && fs.statSync(pubPath).isFile()) {
+      return respondWithFile(pubPath, req.method);
     }
     
     // Slashed or directory match -> look for index.html
@@ -567,6 +572,67 @@ async function test() {
     }
   }
   console.log(`  swept ${swept} blog HTML files with FAQPage, all paired with a WebPage node`);
+
+  // 13. AI Discovery Catalogue (`public/ai-catalog.json`)
+  console.log('\n13. Testing AI catalog integrity (public/ai-catalog.json):');
+  const catalogPath = path.join(root, 'public/ai-catalog.json');
+  assert(fs.existsSync(catalogPath), 'public/ai-catalog.json exists');
+  let catalog = null;
+  try {
+    catalog = JSON.parse(fs.readFileSync(catalogPath, 'utf8'));
+    assert(typeof catalog === 'object' && catalog !== null, 'ai-catalog.json is valid JSON');
+  } catch (err) {
+    assert(false, `ai-catalog.json parsing failed: ${err.message}`);
+  }
+
+  if (catalog) {
+    const expectedToolSlugs = new Set(Object.keys(toolConfigMap));
+    assert(expectedToolSlugs.size === 21, `toolConfigMap defines 21 tools (got ${expectedToolSlugs.size})`);
+
+    for (const lang of ['en', 'fa', 'ar']) {
+      const localeTools = catalog.tools?.[lang];
+      assert(
+        Array.isArray(localeTools) && localeTools.length === 21,
+        `tools.${lang} has 21 interactive tools (got ${localeTools?.length})`
+      );
+
+      const foundSlugs = new Set((localeTools || []).map((t) => t.slug || t.id));
+      for (const slug of expectedToolSlugs) {
+        assert(foundSlugs.has(slug), `tools.${lang} includes interactive tool '${slug}'`);
+      }
+
+      const localeServices = catalog.services?.[lang];
+      assert(
+        Array.isArray(localeServices) && localeServices.length === 12,
+        `services.${lang} has 12 items (got ${localeServices?.length})`
+      );
+
+      for (const tool of localeTools || []) {
+        const u = tool.url || tool.u;
+        assert(
+          typeof u === 'string' && (u.startsWith('https://webabc.ir/') || u.startsWith('/')),
+          `tool ${tool.slug} URL starts with https://webabc.ir/ or / (got ${u})`
+        );
+      }
+
+      for (const service of localeServices || []) {
+        const u = service.url || service.u;
+        assert(
+          typeof u === 'string' && (u.startsWith('https://webabc.ir/') || u.startsWith('/')),
+          `service ${service.slug || service.title} URL starts with https://webabc.ir/ or / (got ${u})`
+        );
+      }
+    }
+
+    const workerCatalogRes = await worker.fetch(
+      new Request('https://webabc.ir/ai-catalog.json'),
+      env
+    );
+    assert(
+      workerCatalogRes.status === 200,
+      `worker fetch returns 200 for https://webabc.ir/ai-catalog.json (got ${workerCatalogRes.status})`
+    );
+  }
 
   console.log(`\n--- Verification Suite Completed: ${failures === 0 ? 'ALL CHECKS PASSED (100% Score)' : `${failures} FAILURES`} ---`);
   if (failures > 0) process.exit(1);

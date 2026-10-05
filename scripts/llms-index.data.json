@@ -30,6 +30,11 @@
         "t": "Security Policy",
         "u": "https://webabc.ir/.well-known/security.txt",
         "d": "Vulnerability reporting policy and security contacts."
+      },
+      {
+        "t": "AI Catalog & Service Manifest",
+        "u": "/ai-catalog.json",
+        "d": "Machine-readable JSON catalog of 21 interactive utilities and 12 digital agency services."
       }
     ],
     "fa": [
@@ -62,6 +67,11 @@
         "t": "سیاست امنیت",
         "u": "https://webabc.ir/.well-known/security.txt",
         "d": "Vulnerability reporting policy and security contacts."
+      },
+      {
+        "t": "کاتالوگ هوش مصنوعی و مانیفست خدمات",
+        "u": "/ai-catalog.json",
+        "d": "کاتالوگ ماشین‌خوان JSON شامل ۲۱ ابزار تعاملی و ۱۲ خدمت آژانس ویژه عامل‌ها و موتورهای هوش مصنوعی."
       }
     ],
     "ar": [
@@ -94,6 +104,11 @@
         "t": "سياسة الأمان",
         "u": "https://webabc.ir/.well-known/security.txt",
         "d": "Vulnerability reporting policy and security contacts."
+      },
+      {
+        "t": "كتالوج الذكاء الاصطناعي ومخطط الخدمات",
+        "u": "/ai-catalog.json",
+        "d": "كتالوج JSON منظم وقابل للقراءة آلياً يضم 21 أداة تفاعلية و12 خدمة رقمية للوكلاء الأذكياء."
       }
     ]
   },
