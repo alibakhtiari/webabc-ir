@@ -100,7 +100,7 @@
 - [Portfolio Directory](https://webabc.ir/en/portfolio/): Case studies highlighting client growth, technology stack implementation, and ROI.
 - [Ramzarz Negaran – Premier Legal Crypto Mining Platform](https://webabc.ir/en/portfolio/ramzarz-negaran/): Case study: How WebABC developed Iran's leading legal crypto mining platform with real-time profitability calculators and trust-centric e-commerce design.
 - [Zeytoun Masoud – Digital Transformation for Traditional Agriculture & Olive Oil](https://webabc.ir/en/portfolio/zeytoun-masoud/): Transforming a traditional olive producer into a national e-commerce brand. Explore Zeytoun Masoud's hybrid B2B/B2C systems and dynamic logistics solutions.
-- [Remido – Kalimba E-Commerce & Warranty Portal | WebABC Case Study](https://webabc.ir/en/portfolio/remido/): Official WebABC case study: Developing a specialized WooCommerce store and automated warranty verification system for Remido, the premier handcrafted Kalimba manufacturer.
+- [Remido – Kalimba E-Commerce & Warranty | WebABC Case Study](https://webabc.ir/en/portfolio/remido/): Official WebABC case study: Developing a specialized WooCommerce store and automated warranty verification system for Remido, the premier handcrafted Kalimba manufacturer.
 
 ## Research, Guides & Insights (Blog)
 
