@@ -90,10 +90,10 @@ post-10-27 ─► SpeakableSpecification on tool layouts
   - *Context:* `ويب سي` earns 285 impressions at pos 4.9 with 0 clicks on `/ar/`.
   - *Action:* If CTR on `/ar/` is still 0% on 10-19, add `(ويب سي)` verbatim to the Arabic `<title>` (under 60 rendered characters), mirroring `/fa/`.
   - *Falsifiability Check:* Pos ≤ 2 on `ويب سي` by 2026-11-10.
-- **T12 `/ar/` Mobile LCP Optimization:**
-  - *Context:* PSI Mobile lab score is 3.3s LCP (sole performance defect on property).
-  - *Action:* Diagnose specific LCP element on `/ar/` and optimize without touching metadata or text under clock.
-  - *Falsifiability Check:* PSI Mobile lab LCP ≤ 2.5s.
+- **T12 `/ar/` Mobile LCP Status:**
+  - *Context:* Historical audit flagged 3.3s LCP. Live PSI Mobile API run on 2026-10-05 measured **2.3s LCP** (score 0.94), Performance **97/100**, TBT 0ms, CLS 0.
+  - *Action:* Currently **GREEN** and within <2.5s budget in lab tests. Re-verify on 10-19 during the title/snippet review.
+  - *Falsifiability Check:* Ensure mobile lab LCP remains ≤ 2.5s.
 
 #### Due 2026-10-27
 - **§1.3 Headline Analyzer Performance Evaluation (T4):**
@@ -122,8 +122,8 @@ post-10-27 ─► SpeakableSpecification on tool layouts
 - **§2.6 Pricing-Intent Post Evaluation:**
   - *Context:* `seo-services-pricing-guide-2026` shipped 2026-09-21 in en/fa/ar.
   - *Action:* Check whether any pricing query reaches position ≤ 20. If all sit > 40, market lacks that search demand; cease producing pricing content.
-- **MU-2 Moz Alternatives Post vs Tool Split:**
-  - *Action:* Decide whether to sharpen `moz-title-checker-alternatives` or formally designate `headline-analyzer` as canonical target for Moz-branded title queries.
+- **Moz Title Checker Alternatives Review:**
+  - *Action:* Review supporting performance of `moz-title-checker-alternatives` alongside the canonical tool page.
 
 #### Due 2026-11-24
 - **§3.1 Buried Pages Evaluation:**
@@ -138,21 +138,19 @@ post-10-27 ─► SpeakableSpecification on tool layouts
 
 ---
 
-## 3. Open Strategic Decisions
+## 3. Resolved Strategic Decisions & Baselines
 
-1. **MU-1: UTM Builder Query Fate (`url builder` 81 impr @ pos 41.2):**
-   - *Analysis:* `/en/tools/utm-builder/` already holds 23 inbound links, exact-match `<title>`, and meta description. SERP is dominated by dedicated domain builders (`utmbuilder.net`, `utm.io`, Google Campaign URL Builder).
-   - *Decision Options:*
-     - (a) Differentiate toward an underserved niche (e.g. multi-channel agency bulk UTM builder) with verified query demand.
-     - (b) Formally accept positions 30–50 long-tail traffic and make no further code/content changes.
-     - *(Recommendation: Option b — do not spend further equity unless impressions pass 200/28d).*
-
-2. **MU-2: Moz Title Checker Query Attribution:**
-   - *Analysis:* `moz title checker` (113 impr @ 10.3) and `moz title tag checker` (144 impr @ 15.4) attribute to `/en/tools/headline-analyzer/`, not the dedicated post `moz-title-checker-alternatives`.
-   - *Decision Options:*
-     - (a) Sharpen the blog post into an objective, data-backed comparison shootout.
-     - (b) Accept the tool page as the canonical ranking asset and retain the blog post as supporting content.
-     - *(Scheduled for resolution on 2026-11-16).*
+1. **MU-1: UTM Builder Query Fate (`url builder` 81 impr @ pos 41.2) — RESOLVED:**
+   - *Decision:* **Accepted positions 30–50 long-tail trickle.** Snippet, exact title, and 23 inbound links are already spent; SERP is dominated by dedicated builders (`utmbuilder.net`, Google Campaign URL Builder). No further code/content changes unless demand exceeds 200 impr/28d.
+2. **MU-2: Moz Title Checker Query Attribution — RESOLVED:**
+   - *Decision:* **Accepted `headline-analyzer` tool page as canonical target.** `moz title checker` (113i @ 10.3) and `moz title tag checker` (144i @ 15.4) serve the tool page; retained `moz-title-checker-alternatives` blog post as supporting educational coverage.
+3. **MU-3: 28-Day Money Page Drift Baseline Captured:**
+   - *Data:* Captured live via GSC API into [`DRIFT-BASELINE-2026-10-05.json`](./DRIFT-BASELINE-2026-10-05.json) across the 5 core money assets:
+     - Headline Analyzer: 20c / 8,266i / CTR 0.24% (up from 0.12%) / Pos 13.7
+     - Persian Speed Pricing: 12c / 121i / CTR 9.92% / Pos 17.4
+     - Ramzarz Negaran Portfolio: 1c / 71i / CTR 1.41% / Pos 6.8
+     - Persian Homepage `/fa/`: 1c / 17i / CTR 5.88% / Pos 37.2 (up from 41.0)
+     - English Web Design: 0c / 111i / CTR 0.0% / Pos 83.9 (up from 87.9)
 
 ---
 

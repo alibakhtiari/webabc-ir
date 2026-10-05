@@ -1,0 +1,52 @@
+{
+  "_generated": "2026-10-05T14:31:00+03:30",
+  "source": "Google Search Console API (gsc_query.py)",
+  "property": "sc-domain:webabc.ir",
+  "date_range": {
+    "start": "2026-09-07",
+    "end": "2026-10-02",
+    "days": 28
+  },
+  "property_totals": {
+    "clicks": 72,
+    "impressions": 10926,
+    "ctr": 0.66
+  },
+  "money_pages": {
+    "https://webabc.ir/en/tools/headline-analyzer/": {
+      "clicks": 20,
+      "impressions": 8266,
+      "ctr": 0.24,
+      "position": 13.7,
+      "notes": "CTR moved 0.12% -> 0.24% (+0.12pp) directionally post-rewrite; pos steady at 13.7"
+    },
+    "https://webabc.ir/fa/blog/website-speed-optimization-pricing-guide-2026/": {
+      "clicks": 12,
+      "impressions": 121,
+      "ctr": 9.92,
+      "position": 17.4,
+      "notes": "Top converting commercial asset; converts at ~10% CTR"
+    },
+    "https://webabc.ir/fa/portfolio/ramzarz-negaran/": {
+      "clicks": 1,
+      "impressions": 71,
+      "ctr": 1.41,
+      "position": 6.8,
+      "notes": "Page 1 portfolio asset holding position 6.8"
+    },
+    "https://webabc.ir/fa/": {
+      "clicks": 1,
+      "impressions": 17,
+      "ctr": 5.88,
+      "position": 37.2,
+      "notes": "Position moved 41.0 -> 37.2 post-(ويب سي) title addition"
+    },
+    "https://webabc.ir/en/services/web-design/": {
+      "clicks": 0,
+      "impressions": 111,
+      "ctr": 0.0,
+      "position": 83.9,
+      "notes": "Under clock to 2026-11-24; pos 83.9 vs historical 87.9"
+    }
+  }
+}
