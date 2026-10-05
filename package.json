@@ -1,48 +1,43 @@
 {
   "name": "webabc-ir",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "scripts": {
     "dev": "astro dev",
     "manifests": "node scripts/resolve-sitemap-lastmod.mjs && node scripts/generate-og-manifest.mjs",
     "llms": "node scripts/generate-llms-index.mjs && node scripts/generate-llms-full.mjs",
-    "build": "npm run manifests && npm run llms && astro build && node scripts/generate-markdown-representations.mjs && node scripts/verify-hreflang-parity.mjs",
+    "build": "npm run manifests && npm run llms && node scripts/generate-ai-catalog.mjs && astro build && node scripts/generate-markdown-representations.mjs && node scripts/verify-hreflang-parity.mjs",
     "preview": "astro preview",
     "deploy": "npm run build && wrangler deploy",
-    "lint": "eslint src && tsc --noemit",
+    "lint": "astro check",
     "check": "astro check",
     "test": "node --experimental-strip-types scripts/verify-agentic.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "@astrojs/mdx": "^7.0.7",
+    "@astrojs/mdx": "^8.0.2",
     "@astrojs/rss": "^4.0.19",
-    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/sitemap": "^3.7.4",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.2.4",
+    "astro": "^7.3.5",
     "clsx": "^2.1.1",
     "qrcode": "^1.5.4",
-    "resend": "^6.20.0",
-    "tailwind-merge": "^3.6.0"
+    "resend": "^6.32.0",
+    "tailwind-merge": "^3.7.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
-    "@eslint/js": "^9.39.5",
     "@tailwindcss/postcss": "^4.3.3",
-    "@types/node": "^26.2.0",
+    "@types/node": "^26.6.4",
     "@types/qrcode": "^1.5.6",
-    "eslint": "^9.39.5",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "globals": "^17.11.0",
-    "prettier": "^3.9.6",
-    "prettier-plugin-astro": "^0.14.1",
+    "prettier": "^3.9.9",
+    "prettier-plugin-astro": "^1.1.0",
     "prettier-plugin-tailwindcss": "^0.8.1",
-    "sharp": "^0.35.3",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.3.3",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.67.0"
+    "typescript": "^6.0.3"
   }
 }
