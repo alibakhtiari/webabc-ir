@@ -1,0 +1,6427 @@
+{
+ "generated_for": "webabc.ir",
+ "generated_on": "2026-10-05",
+ "source_file": "webabc.ir-Performance-on-Search-2026-10-05.xlsx",
+ "sheet": "Pages",
+ "date_range_in_export": {
+  "filter": "Last 3 months",
+  "chart_first_date": "2026-07-03 00:00:00",
+  "chart_last_date": "2026-10-02 00:00:00"
+ },
+ "note": "Shifted-window comparison vs 2026-09-27 export (window moved 2026-06-25->09-24 to 2026-07-03->10-02, +8 days). Pages sum exceeds Chart total (single-URL rows vs deduplicated days) as before. First export WITH per-query rows (525): query-level diffs vs 09-27 are impossible (old file holds aggregates only). Trailing-slash and non-trailing-slash rows kept separate here; sum them when comparing (GSC parsing trap). CTR convention (§1.4): webnewstips row 0c/10,158i@5.55 is byte-identical to 09-21 — exclusion permanent.",
+ "sheet_totals": {
+  "impressions": 33968.0,
+  "clicks": 151.0,
+  "page_rows": 297
+ },
+ "queries_sheet_totals": {
+  "impressions": 30926.0,
+  "clicks": 85.0,
+  "query_rows": 525,
+  "authoritative": true
+ },
+ "pages": [
+  {
+   "url": "https://webabc.ir/en/tools/headline-analyzer/",
+   "clicks": 32.0,
+   "impressions": 26624.0,
+   "position": 13.92,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/seo-best-practices/",
+   "clicks": 2.0,
+   "impressions": 475.0,
+   "position": 10.63,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/service-areas/qazvin/",
+   "clicks": 1.0,
+   "impressions": 340.0,
+   "position": 60.44,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/ar/",
+   "clicks": 0.0,
+   "impressions": 301.0,
+   "position": 4.91,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/ramzarz-negaran/",
+   "clicks": 3.0,
+   "impressions": 269.0,
+   "position": 6.78,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/website-speed-optimization-pricing-guide-2026/",
+   "clicks": 18.0,
+   "impressions": 235.0,
+   "position": 15.2,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/services/web-design/",
+   "clicks": 0.0,
+   "impressions": 233.0,
+   "position": 85.73,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/fa/service-areas/tehran/",
+   "clicks": 0.0,
+   "impressions": 222.0,
+   "position": 79.52,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/utm-builder/",
+   "clicks": 0.0,
+   "impressions": 209.0,
+   "position": 48.34,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/service-areas/tehran/",
+   "clicks": 0.0,
+   "impressions": 196.0,
+   "position": 14.72,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/remido/",
+   "clicks": 0.0,
+   "impressions": 190.0,
+   "position": 4.35,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/website-development-cost-calculator-guide-2026/",
+   "clicks": 2.0,
+   "impressions": 174.0,
+   "position": 31.49,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/local-seo/",
+   "clicks": 0.0,
+   "impressions": 164.0,
+   "position": 36.98,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/en/",
+   "clicks": 45.0,
+   "impressions": 156.0,
+   "position": 4.46,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/fa/service-areas/dubai/",
+   "clicks": 1.0,
+   "impressions": 156.0,
+   "position": 42.63,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/soheil-accessory/",
+   "clicks": 0.0,
+   "impressions": 155.0,
+   "position": 6.31,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/fa/service-areas/muscat/",
+   "clicks": 3.0,
+   "impressions": 149.0,
+   "position": 10.5,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/seo-title-checker",
+   "clicks": 1.0,
+   "impressions": 127.0,
+   "position": 56.23,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/ar/services/web-development/",
+   "clicks": 1.0,
+   "impressions": 122.0,
+   "position": 43.68,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/seo-title-checker/",
+   "clicks": 1.0,
+   "impressions": 115.0,
+   "position": 63.81,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/seo-checklist-2026/",
+   "clicks": 0.0,
+   "impressions": 115.0,
+   "position": 36.21,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/faq-generator/",
+   "clicks": 1.0,
+   "impressions": 111.0,
+   "position": 45.66,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/cost-calculator/",
+   "clicks": 2.0,
+   "impressions": 99.0,
+   "position": 52.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/service-areas/",
+   "clicks": 0.0,
+   "impressions": 99.0,
+   "position": 24.77,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/",
+   "clicks": 0.0,
+   "impressions": 97.0,
+   "position": 36.47,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/dubai-uae-web-design-seo-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 88.0,
+   "position": 33.08,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/about/",
+   "clicks": 0.0,
+   "impressions": 80.0,
+   "position": 14.07,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/en/services/local-seo/",
+   "clicks": 2.0,
+   "impressions": 77.0,
+   "position": 14.61,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/mehromah-qazvin/",
+   "clicks": 0.0,
+   "impressions": 72.0,
+   "position": 10.74,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/keyword-density-analyzer/",
+   "clicks": 0.0,
+   "impressions": 58.0,
+   "position": 20.31,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/soheil-accessory/",
+   "clicks": 0.0,
+   "impressions": 55.0,
+   "position": 5.36,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/fa/",
+   "clicks": 1.0,
+   "impressions": 54.0,
+   "position": 41.07,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/speed-optimization/",
+   "clicks": 0.0,
+   "impressions": 54.0,
+   "position": 54.96,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/modern-ui-ux-trends/",
+   "clicks": 0.0,
+   "impressions": 52.0,
+   "position": 5.31,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/zeytoun-masoud/",
+   "clicks": 0.0,
+   "impressions": 52.0,
+   "position": 5.5,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/",
+   "clicks": 0.0,
+   "impressions": 51.0,
+   "position": 12.06,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/seo-best-practices-2025/",
+   "clicks": 0.0,
+   "impressions": 51.0,
+   "position": 22.53,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/ramzarz-negaran",
+   "clicks": 1.0,
+   "impressions": 46.0,
+   "position": 7.5,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/remido/",
+   "clicks": 1.0,
+   "impressions": 43.0,
+   "position": 7.3,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/fa/service-areas/qazvin",
+   "clicks": 0.0,
+   "impressions": 43.0,
+   "position": 73.91,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/wordpress-vs-custom-development-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 41.0,
+   "position": 12.56,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/zeytoun-masoud/",
+   "clicks": 1.0,
+   "impressions": 40.0,
+   "position": 5.28,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/en/contact/",
+   "clicks": 1.0,
+   "impressions": 39.0,
+   "position": 16.56,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/behrad-dc/",
+   "clicks": 0.0,
+   "impressions": 39.0,
+   "position": 6.9,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/wordpress-vs-custom-development/",
+   "clicks": 0.0,
+   "impressions": 38.0,
+   "position": 36.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/seo/",
+   "clicks": 0.0,
+   "impressions": 38.0,
+   "position": 90.97,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/cost-calculator/",
+   "clicks": 2.0,
+   "impressions": 36.0,
+   "position": 42.83,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/behrad-dc/",
+   "clicks": 1.0,
+   "impressions": 36.0,
+   "position": 7.44,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/web-design-trends/",
+   "clicks": 1.0,
+   "impressions": 34.0,
+   "position": 6.44,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/oman-web-design-seo-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 32.0,
+   "position": 34.06,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/service-areas",
+   "clicks": 0.0,
+   "impressions": 29.0,
+   "position": 31.72,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/website-development-cost-calculator-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 28.0,
+   "position": 8.68,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/content-creation/",
+   "clicks": 0.0,
+   "impressions": 28.0,
+   "position": 84.89,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/fa/service-areas/muscat",
+   "clicks": 1.0,
+   "impressions": 27.0,
+   "position": 20.93,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/en/service-areas/muscat/",
+   "clicks": 0.0,
+   "impressions": 27.0,
+   "position": 22.93,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/remido/",
+   "clicks": 0.0,
+   "impressions": 26.0,
+   "position": 8.54,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/website-development-costs/",
+   "clicks": 0.0,
+   "impressions": 26.0,
+   "position": 27.15,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/service-areas",
+   "clicks": 0.0,
+   "impressions": 26.0,
+   "position": 57.54,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/",
+   "clicks": 0.0,
+   "impressions": 26.0,
+   "position": 80.31,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/glassmorphism-generator/",
+   "clicks": 3.0,
+   "impressions": 24.0,
+   "position": 14.38,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/rostateb/",
+   "clicks": 2.0,
+   "impressions": 21.0,
+   "position": 8.24,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/",
+   "clicks": 1.0,
+   "impressions": 21.0,
+   "position": 6.33,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/about/ali-bakhtiari/",
+   "clicks": 1.0,
+   "impressions": 21.0,
+   "position": 10.95,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/en/services/wordpress-development/",
+   "clicks": 1.0,
+   "impressions": 21.0,
+   "position": 19.71,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/mobile-first-web-design-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 21.0,
+   "position": 5.86,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/ecommerce-web-design-guide-2026",
+   "clicks": 0.0,
+   "impressions": 21.0,
+   "position": 18.19,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/service-areas/",
+   "clicks": 0.0,
+   "impressions": 21.0,
+   "position": 36.43,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/paa-scraper/",
+   "clicks": 0.0,
+   "impressions": 20.0,
+   "position": 44.7,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/local-seo",
+   "clicks": 0.0,
+   "impressions": 20.0,
+   "position": 48.6,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/ecommerce-web-design-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 19.0,
+   "position": 7.16,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/free-seo-developer-tools-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 19.0,
+   "position": 12.89,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/ecommerce-web-design-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 19.0,
+   "position": 26.68,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa",
+   "clicks": 0.0,
+   "impressions": 19.0,
+   "position": 28.95,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/seo-title-optimization-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 19.0,
+   "position": 43.42,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/paa-scraper/",
+   "clicks": 0.0,
+   "impressions": 18.0,
+   "position": 4.06,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/mapfan/",
+   "clicks": 0.0,
+   "impressions": 18.0,
+   "position": 7.44,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/website-development-cost-calculator-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 18.0,
+   "position": 34.56,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/seo-best-practices/",
+   "clicks": 0.0,
+   "impressions": 17.0,
+   "position": 56.29,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/speed-optimization",
+   "clicks": 0.0,
+   "impressions": 17.0,
+   "position": 65.76,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/website-speed-optimization-pricing-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 16.0,
+   "position": 8.75,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en",
+   "clicks": 1.0,
+   "impressions": 15.0,
+   "position": 1.87,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/zeytoun-masoud",
+   "clicks": 0.0,
+   "impressions": 15.0,
+   "position": 6.93,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/utm-builder/",
+   "clicks": 0.0,
+   "impressions": 15.0,
+   "position": 11.27,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/service-areas/riyadh/",
+   "clicks": 0.0,
+   "impressions": 15.0,
+   "position": 97.93,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/website-development-cost-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 14.0,
+   "position": 6.43,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/website-speed-optimization-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 14.0,
+   "position": 15.5,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/samake-alpha/",
+   "clicks": 0.0,
+   "impressions": 14.0,
+   "position": 22.21,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/slug-generator/",
+   "clicks": 0.0,
+   "impressions": 14.0,
+   "position": 22.79,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/website-development-cost-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 14.0,
+   "position": 31.21,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/serp-preview/",
+   "clicks": 0.0,
+   "impressions": 14.0,
+   "position": 48.93,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/london-rug-cleaning/",
+   "clicks": 0.0,
+   "impressions": 13.0,
+   "position": 16.69,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/wordpress-seo-optimization-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 13.0,
+   "position": 53.08,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/",
+   "clicks": 0.0,
+   "impressions": 12.0,
+   "position": 5.33,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/tahami-clinic/",
+   "clicks": 0.0,
+   "impressions": 12.0,
+   "position": 8.17,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/en/service-areas/tehran",
+   "clicks": 0.0,
+   "impressions": 12.0,
+   "position": 8.33,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/london-rug-cleaning/",
+   "clicks": 0.0,
+   "impressions": 12.0,
+   "position": 26.75,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/ar/services/local-seo/",
+   "clicks": 0.0,
+   "impressions": 12.0,
+   "position": 26.92,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/seo-checklist-2026/",
+   "clicks": 2.0,
+   "impressions": 11.0,
+   "position": 10.36,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/tehran-enamel/",
+   "clicks": 1.0,
+   "impressions": 11.0,
+   "position": 9.55,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/base64-encoder/",
+   "clicks": 1.0,
+   "impressions": 11.0,
+   "position": 10.55,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/color-contrast-checker/",
+   "clicks": 0.0,
+   "impressions": 11.0,
+   "position": 10.82,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/meta-generator/",
+   "clicks": 0.0,
+   "impressions": 11.0,
+   "position": 23.55,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/cost-calculator/",
+   "clicks": 0.0,
+   "impressions": 11.0,
+   "position": 25.55,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/technical-seo-audit-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 11.0,
+   "position": 35.36,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/services/content-creation/",
+   "clicks": 0.0,
+   "impressions": 11.0,
+   "position": 72.0,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/mahsun-visa/",
+   "clicks": 0.0,
+   "impressions": 10.0,
+   "position": 2.6,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/tehran-enamel/",
+   "clicks": 0.0,
+   "impressions": 10.0,
+   "position": 6.9,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/fa/service-areas/abu-dhabi/",
+   "clicks": 0.0,
+   "impressions": 10.0,
+   "position": 36.9,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/how-to-write-clickable-headlines/",
+   "clicks": 1.0,
+   "impressions": 9.0,
+   "position": 27.22,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/tools",
+   "clicks": 0.0,
+   "impressions": 9.0,
+   "position": 4.33,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/slug-generator/",
+   "clicks": 0.0,
+   "impressions": 9.0,
+   "position": 6.78,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/services/",
+   "clicks": 0.0,
+   "impressions": 9.0,
+   "position": 20.44,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/seo-best-practices/",
+   "clicks": 0.0,
+   "impressions": 9.0,
+   "position": 27.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/local-seo-middle-east/",
+   "clicks": 0.0,
+   "impressions": 9.0,
+   "position": 38.33,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/chocoreto/",
+   "clicks": 0.0,
+   "impressions": 9.0,
+   "position": 45.89,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/4-seasons-carpet-clean/",
+   "clicks": 0.0,
+   "impressions": 8.0,
+   "position": 7.88,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/chocoreto/",
+   "clicks": 0.0,
+   "impressions": 8.0,
+   "position": 11.62,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/technical-seo-audit-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 8.0,
+   "position": 33.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/link-building-strategies-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 8.0,
+   "position": 39.75,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/social-media-preview/",
+   "clicks": 0.0,
+   "impressions": 8.0,
+   "position": 60.88,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/slug-generator",
+   "clicks": 3.0,
+   "impressions": 7.0,
+   "position": 8.71,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/website-maintenance-security-guide-2026/",
+   "clicks": 1.0,
+   "impressions": 7.0,
+   "position": 13.29,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/services/content-creation/",
+   "clicks": 0.0,
+   "impressions": 7.0,
+   "position": 3.14,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/en/about/ali-bakhtiari/",
+   "clicks": 0.0,
+   "impressions": 7.0,
+   "position": 3.57,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/rostateb/",
+   "clicks": 0.0,
+   "impressions": 7.0,
+   "position": 3.71,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/wordpress-seo-optimization-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 7.0,
+   "position": 20.14,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/service-areas/abu-dhabi/",
+   "clicks": 0.0,
+   "impressions": 7.0,
+   "position": 35.57,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/free-seo-developer-tools-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 7.0,
+   "position": 81.14,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/box-shadow-generator/",
+   "clicks": 1.0,
+   "impressions": 6.0,
+   "position": 6.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/ui-ux-audit-redesign-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "position": 3.5,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/zeytoun-masoud/",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "position": 4.67,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/qr-generator/",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "position": 6.83,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/serp-preview/",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "position": 6.83,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/soheil-accessory/",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "position": 7.67,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/oman-web-design-seo-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "position": 10.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/modern-ui-ux-trends/",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "position": 12.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/web-design/",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "position": 14.0,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/en/privacy/",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "position": 25.33,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/css-gradient-generator/",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "position": 47.67,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/glassmorphism-generator/",
+   "clicks": 1.0,
+   "impressions": 5.0,
+   "position": 10.2,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/services/web-development",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "position": 4.6,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/chocoreto/",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "position": 6.6,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/link-building-strategies-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "position": 9.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/mehromah-qazvin/",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "position": 9.8,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/best-seo-tools/",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "position": 11.2,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/seo-title-checker/",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "position": 23.4,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/website-maintenance-security-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "position": 24.6,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/about",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "position": 27.0,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/tahami-clinic/",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "position": 39.4,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/mobile-first-web-design-guide-2026/",
+   "clicks": 1.0,
+   "impressions": 4.0,
+   "position": 6.25,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/web-design-trends/",
+   "clicks": 1.0,
+   "impressions": 4.0,
+   "position": 9.75,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/mobile-first-web-design-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "position": 3.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/contact",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "position": 3.0,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/wordpress-vs-custom-development-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "position": 3.25,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/privacy/",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "position": 6.25,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/meta-generator/",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "position": 6.25,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/css-gradient-generator",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "position": 7.5,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/website-speed-optimization-pricing-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "position": 7.75,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/seo-title-optimization-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "position": 7.75,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/privacy",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "position": 8.0,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/css-gradient-generator/",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "position": 10.25,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/seo-checklist-2026/",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "position": 12.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/service-areas/qazvin/",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "position": 13.25,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/fa/service-areas/tehran",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "position": 15.75,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/ar/service-areas/riyadh/",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "position": 23.0,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/wordpress-seo-optimization-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "position": 25.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/dubai-uae-web-design-seo-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "position": 25.75,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/wordpress-vs-custom-development",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "position": 30.75,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/digital-marketing-roi-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "position": 64.5,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/local-seo-middle-east/",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "position": 81.5,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/ui-ux-audit/",
+   "clicks": 1.0,
+   "impressions": 3.0,
+   "position": 2.67,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/samake-bartar/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 2.0,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/fa/about/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 2.67,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/seo-title-optimization-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 3.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/service-areas/muscat",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 4.0,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/digital-marketing-strategies/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 4.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/ui-ux-audit-redesign-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 4.33,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/mobile-first-design-2025/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 4.67,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/4-seasons-carpet-clean",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 5.33,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/fa/contact/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 5.67,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/mahsun-visa/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 6.0,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/color-contrast-checker",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 6.33,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 7.33,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/en/services/ecommerce/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 7.67,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/ecommerce-web-design-guide-2026",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 7.67,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/mobile-first-design/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 8.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/services/wordpress-development",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 8.0,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/seo-title-checker/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 8.67,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/digital-marketing-strategies/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 8.67,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/about/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 9.0,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/oman-web-design-seo-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 9.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/ui-ux-audit-redesign-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 9.33,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/lorem-generator/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 9.67,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/base64-encoder",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 10.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/digital-marketing-roi-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 11.33,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/mapfan/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 12.0,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 12.33,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/wordpress-development/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 16.33,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/keyword-density-analyzer/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 19.33,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/utm-builder/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 20.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/seo-best-practices-2025/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 26.33,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/mobile-first-design/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 28.33,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/headline-analyzer",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 29.33,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/best-seo-tools-2025/",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "position": 56.67,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/social-media-preview/",
+   "clicks": 1.0,
+   "impressions": 2.0,
+   "position": 2.5,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/readability-checker/",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 1.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 2.5,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/website-speed-optimization-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 3.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/digital-marketing-roi-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 4.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/blog",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 4.5,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/website-maintenance-security-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 4.5,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/cost-calculator",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 4.5,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 5.0,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/ar/service-areas/qazvin/",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 5.0,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/samake-alpha",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 5.0,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/fa/faq/",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 5.5,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/glassmorphism-generator",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 5.5,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/odyps/",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 6.0,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/ar/services/ui-ux-audit/",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 6.0,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/odyps/",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 6.0,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 6.5,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/meta-generator",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 7.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/service-areas/muscat",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 8.0,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/schema-generator/",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 8.5,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/service-areas/riyadh/",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 10.0,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/ecommerce-web-design-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 11.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/utm-builder",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 15.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/how-to-write-clickable-headlines",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 18.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/box-shadow-generator",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 26.5,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/link-building/",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 27.0,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/free-seo-developer-tools-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 28.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/service-areas/muscat/",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 30.0,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/local-seo-middle-east",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 30.5,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/mobile-first-web-design-guide-2026",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 39.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/lorem-generator",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "position": 84.5,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/ramzarz-negaran/",
+   "clicks": 1.0,
+   "impressions": 1.0,
+   "position": 1.0,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/readability-checker",
+   "clicks": 1.0,
+   "impressions": 1.0,
+   "position": 6.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/mahsun-visa/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 2.0,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/json-formatter/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 2.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/modern-web-development",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 2.0,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/css-gradient-generator/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 2.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/headline-analyzer/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 2.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/ar/about/ali-bakhtiari/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 3.0,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/web-development/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 3.0,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/paa-scraper",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 3.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/website-maintenance-security-guide-2026",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 4.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/samake-alpha/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 4.0,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/ar/services/link-building/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 4.0,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/ramzarz-negaran",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 4.0,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/ar/service-areas/dubai/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 5.0,
+   "kind": "service-areas"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/headline-analyzer/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 5.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 6.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/zeytoun-masoud",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 6.0,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/utm-builder",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 6.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/paa-scraper",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 6.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/contact",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 6.0,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/robots-generator/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 6.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/lorem-generator/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 7.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/mobile-first-design-2025",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 7.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/website-development-costs/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 7.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/mapfan/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 8.0,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/color-contrast-checker/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 8.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/robots-generator/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 8.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/samake-alpha/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 8.0,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/how-to-write-clickable-headlines/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 9.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/london-rug-cleaning/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 9.0,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/en/faq/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 9.0,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/en/portfolio/4-seasons-carpet-clean",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 9.0,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/en/services/link-building/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 9.0,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/en/services/website-maintenance/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 9.0,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/best-seo-tools/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 9.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/wordpress-vs-custom-development-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 9.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/portfolio/samake-bartar/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 10.0,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/base64-encoder/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 10.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/meta-generator/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 10.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/mobile-first-design/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 10.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 10.0,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/website-maintenance-security-guide-2026",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 10.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/samake-alpha",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 10.0,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/fa/portfolio/samake-bartar",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 10.0,
+   "kind": "portfolio"
+  },
+  {
+   "url": "https://webabc.ir/fa/services",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 10.0,
+   "kind": "page"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/json-formatter/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 10.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/services/modern-web-development",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 11.0,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/en/services/web-development/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 11.0,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/en/blog/local-seo-middle-east/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 14.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/web-design-trends-2025/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 19.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/website-development-cost-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 27.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/blog/web-design-trends-2025",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 27.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/box-shadow-generator",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 45.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/ar/blog/technical-seo-audit-guide-2026/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 59.0,
+   "kind": "blog"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/lorem-generator/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 59.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/serp-preview/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 79.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/en/tools/privacy-policy-generator/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 79.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/seo",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 84.0,
+   "kind": "services"
+  },
+  {
+   "url": "https://webabc.ir/fa/tools/lorem-generator",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 84.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/ar/tools/schema-generator/",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 85.0,
+   "kind": "tools"
+  },
+  {
+   "url": "https://webabc.ir/fa/services/web-development",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "position": 98.0,
+   "kind": "services"
+  }
+ ],
+ "queries": [
+  {
+   "query": "seo title checker for blog by webnewstips com",
+   "clicks": 0.0,
+   "impressions": 10158.0,
+   "ctr": 0.0,
+   "position": 5.55
+  },
+  {
+   "query": "seo title checker",
+   "clicks": 3.0,
+   "impressions": 4039.0,
+   "ctr": 0.0007,
+   "position": 15.53
+  },
+  {
+   "query": "title checker seo",
+   "clicks": 0.0,
+   "impressions": 2894.0,
+   "ctr": 0.0,
+   "position": 17.87
+  },
+  {
+   "query": "seo title check",
+   "clicks": 0.0,
+   "impressions": 2147.0,
+   "ctr": 0.0,
+   "position": 26.29
+  },
+  {
+   "query": "title seo check",
+   "clicks": 0.0,
+   "impressions": 1090.0,
+   "ctr": 0.0,
+   "position": 20.82
+  },
+  {
+   "query": "check seo title",
+   "clicks": 1.0,
+   "impressions": 1060.0,
+   "ctr": 0.0009,
+   "position": 22.01
+  },
+  {
+   "query": "title checker",
+   "clicks": 2.0,
+   "impressions": 587.0,
+   "ctr": 0.0034,
+   "position": 15.84
+  },
+  {
+   "query": "title tag checker",
+   "clicks": 0.0,
+   "impressions": 416.0,
+   "ctr": 0.0,
+   "position": 20.15
+  },
+  {
+   "query": "headline checker",
+   "clicks": 0.0,
+   "impressions": 361.0,
+   "ctr": 0.0,
+   "position": 26.75
+  },
+  {
+   "query": "seo headline checker",
+   "clicks": 13.0,
+   "impressions": 349.0,
+   "ctr": 0.0372,
+   "position": 18.78
+  },
+  {
+   "query": "title seo checker",
+   "clicks": 3.0,
+   "impressions": 325.0,
+   "ctr": 0.0092,
+   "position": 18.98
+  },
+  {
+   "query": "ويب سي",
+   "clicks": 0.0,
+   "impressions": 285.0,
+   "ctr": 0.0,
+   "position": 4.86
+  },
+  {
+   "query": "طراحی سایت در قزوین",
+   "clicks": 1.0,
+   "impressions": 254.0,
+   "ctr": 0.0039,
+   "position": 64.63
+  },
+  {
+   "query": "remido",
+   "clicks": 0.0,
+   "impressions": 224.0,
+   "ctr": 0.0,
+   "position": 5.04
+  },
+  {
+   "query": "طراحی سایت در عمان",
+   "clicks": 1.0,
+   "impressions": 209.0,
+   "ctr": 0.0048,
+   "position": 21.06
+  },
+  {
+   "query": "title analyzer",
+   "clicks": 0.0,
+   "impressions": 207.0,
+   "ctr": 0.0,
+   "position": 25.23
+  },
+  {
+   "query": "check title seo",
+   "clicks": 0.0,
+   "impressions": 185.0,
+   "ctr": 0.0,
+   "position": 16.55
+  },
+  {
+   "query": "title analysis",
+   "clicks": 0.0,
+   "impressions": 160.0,
+   "ctr": 0.0,
+   "position": 21.77
+  },
+  {
+   "query": "title tag preview",
+   "clicks": 0.0,
+   "impressions": 156.0,
+   "ctr": 0.0,
+   "position": 17.67
+  },
+  {
+   "query": "خدمات سئو محلی",
+   "clicks": 0.0,
+   "impressions": 146.0,
+   "ctr": 0.0,
+   "position": 35.34
+  },
+  {
+   "query": "moz title tag checker",
+   "clicks": 0.0,
+   "impressions": 144.0,
+   "ctr": 0.0,
+   "position": 15.38
+  },
+  {
+   "query": "رمز ارز نگاران",
+   "clicks": 2.0,
+   "impressions": 142.0,
+   "ctr": 0.0141,
+   "position": 6.72
+  },
+  {
+   "query": "seo headline",
+   "clicks": 0.0,
+   "impressions": 142.0,
+   "ctr": 0.0,
+   "position": 18.39
+  },
+  {
+   "query": "blog title checker",
+   "clicks": 0.0,
+   "impressions": 140.0,
+   "ctr": 0.0,
+   "position": 9.63
+  },
+  {
+   "query": "محاسبه آنلاین هزینه طراحی سایت وردپرس",
+   "clicks": 0.0,
+   "impressions": 122.0,
+   "ctr": 0.0,
+   "position": 41.47
+  },
+  {
+   "query": "moz title checker",
+   "clicks": 0.0,
+   "impressions": 113.0,
+   "ctr": 0.0,
+   "position": 10.32
+  },
+  {
+   "query": "title tag preview tool",
+   "clicks": 0.0,
+   "impressions": 113.0,
+   "ctr": 0.0,
+   "position": 20.08
+  },
+  {
+   "query": "seo check page title",
+   "clicks": 0.0,
+   "impressions": 113.0,
+   "ctr": 0.0,
+   "position": 50.26
+  },
+  {
+   "query": "چک لیست سئو 2026",
+   "clicks": 0.0,
+   "impressions": 112.0,
+   "ctr": 0.0,
+   "position": 36.39
+  },
+  {
+   "query": "طراحی سایت در تهران",
+   "clicks": 0.0,
+   "impressions": 105.0,
+   "ctr": 0.0,
+   "position": 77.1
+  },
+  {
+   "query": "قیمت بهینه سازی سرعت",
+   "clicks": 1.0,
+   "impressions": 102.0,
+   "ctr": 0.0098,
+   "position": 26.86
+  },
+  {
+   "query": "webabc",
+   "clicks": 46.0,
+   "impressions": 98.0,
+   "ctr": 0.4694,
+   "position": 3.27
+  },
+  {
+   "query": "title tag tester",
+   "clicks": 0.0,
+   "impressions": 97.0,
+   "ctr": 0.0,
+   "position": 17.34
+  },
+  {
+   "query": "seo title test",
+   "clicks": 0.0,
+   "impressions": 94.0,
+   "ctr": 0.0,
+   "position": 18.0
+  },
+  {
+   "query": "seo blog title checker",
+   "clicks": 0.0,
+   "impressions": 92.0,
+   "ctr": 0.0,
+   "position": 11.29
+  },
+  {
+   "query": "طراحی سایت در امارات",
+   "clicks": 0.0,
+   "impressions": 91.0,
+   "ctr": 0.0,
+   "position": 39.57
+  },
+  {
+   "query": "url builder",
+   "clicks": 0.0,
+   "impressions": 90.0,
+   "ctr": 0.0,
+   "position": 42.81
+  },
+  {
+   "query": "ecommerce web design tehran",
+   "clicks": 0.0,
+   "impressions": 86.0,
+   "ctr": 0.0,
+   "position": 21.27
+  },
+  {
+   "query": "طراحی سایت در دبی",
+   "clicks": 0.0,
+   "impressions": 84.0,
+   "ctr": 0.0,
+   "position": 39.36
+  },
+  {
+   "query": "check title for seo",
+   "clicks": 0.0,
+   "impressions": 82.0,
+   "ctr": 0.0,
+   "position": 15.13
+  },
+  {
+   "query": "how to check seo. headline for a blog",
+   "clicks": 0.0,
+   "impressions": 78.0,
+   "ctr": 0.0,
+   "position": 17.23
+  },
+  {
+   "query": "ecommerce website design tehran",
+   "clicks": 0.0,
+   "impressions": 77.0,
+   "ctr": 0.0,
+   "position": 19.7
+  },
+  {
+   "query": "طراحی سایت تهران",
+   "clicks": 0.0,
+   "impressions": 74.0,
+   "ctr": 0.0,
+   "position": 78.04
+  },
+  {
+   "query": "تطوير الويب",
+   "clicks": 0.0,
+   "impressions": 66.0,
+   "ctr": 0.0,
+   "position": 45.3
+  },
+  {
+   "query": "محاسبه آنلاین هزینه طراحی سایت",
+   "clicks": 1.0,
+   "impressions": 65.0,
+   "ctr": 0.0154,
+   "position": 49.49
+  },
+  {
+   "query": "seo title checker free",
+   "clicks": 1.0,
+   "impressions": 64.0,
+   "ctr": 0.0156,
+   "position": 12.56
+  },
+  {
+   "query": "moz headline tool",
+   "clicks": 0.0,
+   "impressions": 61.0,
+   "ctr": 0.0,
+   "position": 15.89
+  },
+  {
+   "query": "طراحی سایت دبی",
+   "clicks": 0.0,
+   "impressions": 57.0,
+   "ctr": 0.0,
+   "position": 47.74
+  },
+  {
+   "query": "seo page title checker",
+   "clicks": 0.0,
+   "impressions": 54.0,
+   "ctr": 0.0,
+   "position": 17.43
+  },
+  {
+   "query": "title tag test",
+   "clicks": 0.0,
+   "impressions": 49.0,
+   "ctr": 0.0,
+   "position": 20.35
+  },
+  {
+   "query": "soheil accessory",
+   "clicks": 0.0,
+   "impressions": 47.0,
+   "ctr": 0.0,
+   "position": 5.11
+  },
+  {
+   "query": "online store development tehran",
+   "clicks": 0.0,
+   "impressions": 47.0,
+   "ctr": 0.0,
+   "position": 16.32
+  },
+  {
+   "query": "seo title tester",
+   "clicks": 0.0,
+   "impressions": 47.0,
+   "ctr": 0.0,
+   "position": 16.38
+  },
+  {
+   "query": "title tag checker tool",
+   "clicks": 0.0,
+   "impressions": 47.0,
+   "ctr": 0.0,
+   "position": 19.45
+  },
+  {
+   "query": "تطوير ويب",
+   "clicks": 0.0,
+   "impressions": 47.0,
+   "ctr": 0.0,
+   "position": 42.64
+  },
+  {
+   "query": "seo free title tag search",
+   "clicks": 0.0,
+   "impressions": 46.0,
+   "ctr": 0.0,
+   "position": 13.59
+  },
+  {
+   "query": "title tag check",
+   "clicks": 0.0,
+   "impressions": 46.0,
+   "ctr": 0.0,
+   "position": 21.76
+  },
+  {
+   "query": "شرکت رمز ارز نگاران",
+   "clicks": 0.0,
+   "impressions": 44.0,
+   "ctr": 0.0,
+   "position": 6.75
+  },
+  {
+   "query": "faq schema",
+   "clicks": 0.0,
+   "impressions": 42.0,
+   "ctr": 0.0,
+   "position": 64.9
+  },
+  {
+   "query": "محاسبه هزینه طراحی سایت",
+   "clicks": 0.0,
+   "impressions": 39.0,
+   "ctr": 0.0,
+   "position": 34.31
+  },
+  {
+   "query": "سئو سایت در قزوین",
+   "clicks": 0.0,
+   "impressions": 37.0,
+   "ctr": 0.0,
+   "position": 46.46
+  },
+  {
+   "query": "behrad karaj reviews",
+   "clicks": 0.0,
+   "impressions": 36.0,
+   "ctr": 0.0,
+   "position": 7.67
+  },
+  {
+   "query": "ecommerce development tehran",
+   "clicks": 0.0,
+   "impressions": 34.0,
+   "ctr": 0.0,
+   "position": 21.41
+  },
+  {
+   "query": "moz title tag preview",
+   "clicks": 0.0,
+   "impressions": 33.0,
+   "ctr": 0.0,
+   "position": 17.39
+  },
+  {
+   "query": "check title tags",
+   "clicks": 0.0,
+   "impressions": 32.0,
+   "ctr": 0.0,
+   "position": 15.5
+  },
+  {
+   "query": "طراحی سایت شرکتی در قزوین",
+   "clicks": 0.0,
+   "impressions": 32.0,
+   "ctr": 0.0,
+   "position": 70.12
+  },
+  {
+   "query": "هزینه افزایش سرعت سایت",
+   "clicks": 2.0,
+   "impressions": 31.0,
+   "ctr": 0.0645,
+   "position": 8.58
+  },
+  {
+   "query": "شرکت طراحی سایت در قزوین",
+   "clicks": 0.0,
+   "impressions": 31.0,
+   "ctr": 0.0,
+   "position": 54.71
+  },
+  {
+   "query": "faq schema generator",
+   "clicks": 0.0,
+   "impressions": 30.0,
+   "ctr": 0.0,
+   "position": 11.53
+  },
+  {
+   "query": "jasa web design & development",
+   "clicks": 0.0,
+   "impressions": 30.0,
+   "ctr": 0.0,
+   "position": 94.7
+  },
+  {
+   "query": "keyword density analyzer script",
+   "clicks": 0.0,
+   "impressions": 29.0,
+   "ctr": 0.0,
+   "position": 14.14
+  },
+  {
+   "query": "سئو محلی",
+   "clicks": 0.0,
+   "impressions": 28.0,
+   "ctr": 0.0,
+   "position": 57.64
+  },
+  {
+   "query": "خدمات سئو و بهینه سازی",
+   "clicks": 0.0,
+   "impressions": 28.0,
+   "ctr": 0.0,
+   "position": 88.21
+  },
+  {
+   "query": "خدمات بهینه سازی سرعت",
+   "clicks": 0.0,
+   "impressions": 27.0,
+   "ctr": 0.0,
+   "position": 33.85
+  },
+  {
+   "query": "website title finder",
+   "clicks": 0.0,
+   "impressions": 27.0,
+   "ctr": 0.0,
+   "position": 40.81
+  },
+  {
+   "query": "قالب تتا",
+   "clicks": 0.0,
+   "impressions": 27.0,
+   "ctr": 0.0,
+   "position": 71.3
+  },
+  {
+   "query": "seo best practices 2025",
+   "clicks": 0.0,
+   "impressions": 25.0,
+   "ctr": 0.0,
+   "position": 22.4
+  },
+  {
+   "query": "متخصص بهینه سازی سرعت",
+   "clicks": 0.0,
+   "impressions": 25.0,
+   "ctr": 0.0,
+   "position": 62.72
+  },
+  {
+   "query": "web design agency tehran",
+   "clicks": 0.0,
+   "impressions": 24.0,
+   "ctr": 0.0,
+   "position": 7.21
+  },
+  {
+   "query": "webabc.hu",
+   "clicks": 0.0,
+   "impressions": 24.0,
+   "ctr": 0.0,
+   "position": 15.5
+  },
+  {
+   "query": "تعرفه افزایش سرعت سایت",
+   "clicks": 0.0,
+   "impressions": 23.0,
+   "ctr": 0.0,
+   "position": 11.13
+  },
+  {
+   "query": "moz title tag preview tool",
+   "clicks": 0.0,
+   "impressions": 23.0,
+   "ctr": 0.0,
+   "position": 12.26
+  },
+  {
+   "query": "أيهما أفضل ووردبريس ام تطوير المواقع المخصصة",
+   "clicks": 0.0,
+   "impressions": 23.0,
+   "ctr": 0.0,
+   "position": 19.48
+  },
+  {
+   "query": "title rank checker",
+   "clicks": 0.0,
+   "impressions": 23.0,
+   "ctr": 0.0,
+   "position": 22.22
+  },
+  {
+   "query": "jasa desain jilbab",
+   "clicks": 0.0,
+   "impressions": 23.0,
+   "ctr": 0.0,
+   "position": 89.61
+  },
+  {
+   "query": "سهیل اکسسوری",
+   "clicks": 0.0,
+   "impressions": 22.0,
+   "ctr": 0.0,
+   "position": 6.36
+  },
+  {
+   "query": "seo title preview",
+   "clicks": 0.0,
+   "impressions": 22.0,
+   "ctr": 0.0,
+   "position": 16.36
+  },
+  {
+   "query": "page title checker",
+   "clicks": 0.0,
+   "impressions": 22.0,
+   "ctr": 0.0,
+   "position": 17.05
+  },
+  {
+   "query": "ابزار های رایگان سئو",
+   "clicks": 0.0,
+   "impressions": 22.0,
+   "ctr": 0.0,
+   "position": 79.73
+  },
+  {
+   "query": "seo title tag tool",
+   "clicks": 0.0,
+   "impressions": 21.0,
+   "ctr": 0.0,
+   "position": 15.52
+  },
+  {
+   "query": "خدمات تولید محتوا",
+   "clicks": 0.0,
+   "impressions": 21.0,
+   "ctr": 0.0,
+   "position": 90.67
+  },
+  {
+   "query": "title checker tool",
+   "clicks": 0.0,
+   "impressions": 20.0,
+   "ctr": 0.0,
+   "position": 11.3
+  },
+  {
+   "query": "seo headline analyzer",
+   "clicks": 0.0,
+   "impressions": 20.0,
+   "ctr": 0.0,
+   "position": 15.25
+  },
+  {
+   "query": "headline check",
+   "clicks": 0.0,
+   "impressions": 20.0,
+   "ctr": 0.0,
+   "position": 18.3
+  },
+  {
+   "query": "رمزارزنگاران",
+   "clicks": 0.0,
+   "impressions": 19.0,
+   "ctr": 0.0,
+   "position": 6.95
+  },
+  {
+   "query": "title seo score checker",
+   "clicks": 0.0,
+   "impressions": 19.0,
+   "ctr": 0.0,
+   "position": 11.68
+  },
+  {
+   "query": "check title tag",
+   "clicks": 0.0,
+   "impressions": 19.0,
+   "ctr": 0.0,
+   "position": 20.79
+  },
+  {
+   "query": "web development pricing",
+   "clicks": 0.0,
+   "impressions": 19.0,
+   "ctr": 0.0,
+   "position": 25.0
+  },
+  {
+   "query": "خدمات بهینه سازی سرعت سایت",
+   "clicks": 0.0,
+   "impressions": 19.0,
+   "ctr": 0.0,
+   "position": 38.11
+  },
+  {
+   "query": "title score checker",
+   "clicks": 0.0,
+   "impressions": 18.0,
+   "ctr": 0.0,
+   "position": 9.89
+  },
+  {
+   "query": "web design company tehran",
+   "clicks": 0.0,
+   "impressions": 18.0,
+   "ctr": 0.0,
+   "position": 17.89
+  },
+  {
+   "query": "meta title and description checker",
+   "clicks": 0.0,
+   "impressions": 18.0,
+   "ctr": 0.0,
+   "position": 88.5
+  },
+  {
+   "query": "jasa desain hijab",
+   "clicks": 0.0,
+   "impressions": 18.0,
+   "ctr": 0.0,
+   "position": 96.28
+  },
+  {
+   "query": "seo services near me",
+   "clicks": 0.0,
+   "impressions": 17.0,
+   "ctr": 0.0,
+   "position": 11.82
+  },
+  {
+   "query": "check seo title and description",
+   "clicks": 0.0,
+   "impressions": 17.0,
+   "ctr": 0.0,
+   "position": 20.53
+  },
+  {
+   "query": "seo titel checker",
+   "clicks": 0.0,
+   "impressions": 17.0,
+   "ctr": 0.0,
+   "position": 20.82
+  },
+  {
+   "query": "keyword page analyzer",
+   "clicks": 0.0,
+   "impressions": 17.0,
+   "ctr": 0.0,
+   "position": 24.47
+  },
+  {
+   "query": "cls title checker",
+   "clicks": 0.0,
+   "impressions": 17.0,
+   "ctr": 0.0,
+   "position": 33.88
+  },
+  {
+   "query": "website title checker",
+   "clicks": 0.0,
+   "impressions": 16.0,
+   "ctr": 0.0,
+   "position": 11.56
+  },
+  {
+   "query": "هل يجب أن أستخدم ووردبريس أم تطوير المواقع المخصصة",
+   "clicks": 0.0,
+   "impressions": 16.0,
+   "ctr": 0.0,
+   "position": 29.44
+  },
+  {
+   "query": "ووردبريس ام تطوير المواقع المخصصة",
+   "clicks": 0.0,
+   "impressions": 15.0,
+   "ctr": 0.0,
+   "position": 19.47
+  },
+  {
+   "query": "headline tester",
+   "clicks": 0.0,
+   "impressions": 15.0,
+   "ctr": 0.0,
+   "position": 38.27
+  },
+  {
+   "query": "seo title analyzer",
+   "clicks": 0.0,
+   "impressions": 14.0,
+   "ctr": 0.0,
+   "position": 13.57
+  },
+  {
+   "query": "طراحی سایت قزوین",
+   "clicks": 0.0,
+   "impressions": 14.0,
+   "ctr": 0.0,
+   "position": 65.36
+  },
+  {
+   "query": "seo services tehran",
+   "clicks": 0.0,
+   "impressions": 13.0,
+   "ctr": 0.0,
+   "position": 11.77
+  },
+  {
+   "query": "seo moz title checker",
+   "clicks": 0.0,
+   "impressions": 13.0,
+   "ctr": 0.0,
+   "position": 15.54
+  },
+  {
+   "query": "seo title tag checker",
+   "clicks": 0.0,
+   "impressions": 13.0,
+   "ctr": 0.0,
+   "position": 16.0
+  },
+  {
+   "query": "local seo services near me",
+   "clicks": 0.0,
+   "impressions": 13.0,
+   "ctr": 0.0,
+   "position": 16.38
+  },
+  {
+   "query": "ecommerce agency tehran",
+   "clicks": 0.0,
+   "impressions": 13.0,
+   "ctr": 0.0,
+   "position": 31.46
+  },
+  {
+   "query": "jasa desain motif hijab",
+   "clicks": 0.0,
+   "impressions": 13.0,
+   "ctr": 0.0,
+   "position": 84.38
+  },
+  {
+   "query": "utm builder south africa",
+   "clicks": 0.0,
+   "impressions": 13.0,
+   "ctr": 0.0,
+   "position": 93.31
+  },
+  {
+   "query": "blog title seo checker",
+   "clicks": 0.0,
+   "impressions": 12.0,
+   "ctr": 0.0,
+   "position": 13.92
+  },
+  {
+   "query": "website title tag checker",
+   "clicks": 0.0,
+   "impressions": 12.0,
+   "ctr": 0.0,
+   "position": 19.0
+  },
+  {
+   "query": "web designer jakarta",
+   "clicks": 0.0,
+   "impressions": 12.0,
+   "ctr": 0.0,
+   "position": 95.92
+  },
+  {
+   "query": "پاساژ مهروماه قزوین",
+   "clicks": 0.0,
+   "impressions": 11.0,
+   "ctr": 0.0,
+   "position": 11.09
+  },
+  {
+   "query": "free seo headline analyzer",
+   "clicks": 0.0,
+   "impressions": 11.0,
+   "ctr": 0.0,
+   "position": 11.45
+  },
+  {
+   "query": "seo title and meta description checker",
+   "clicks": 0.0,
+   "impressions": 11.0,
+   "ctr": 0.0,
+   "position": 17.36
+  },
+  {
+   "query": "ابزار سئو رایگان",
+   "clicks": 0.0,
+   "impressions": 11.0,
+   "ctr": 0.0,
+   "position": 82.0
+  },
+  {
+   "query": "jasa desain kerudung",
+   "clicks": 0.0,
+   "impressions": 11.0,
+   "ctr": 0.0,
+   "position": 84.45
+  },
+  {
+   "query": "jasa pembuatan desain web",
+   "clicks": 0.0,
+   "impressions": 11.0,
+   "ctr": 0.0,
+   "position": 100.91
+  },
+  {
+   "query": "local seo",
+   "clicks": 0.0,
+   "impressions": 10.0,
+   "ctr": 0.0,
+   "position": 8.4
+  },
+  {
+   "query": "مجتمع مهروماه قزوین",
+   "clicks": 0.0,
+   "impressions": 10.0,
+   "ctr": 0.0,
+   "position": 10.8
+  },
+  {
+   "query": "title tester",
+   "clicks": 0.0,
+   "impressions": 10.0,
+   "ctr": 0.0,
+   "position": 21.1
+  },
+  {
+   "query": "web development company tehran",
+   "clicks": 0.0,
+   "impressions": 10.0,
+   "ctr": 0.0,
+   "position": 51.5
+  },
+  {
+   "query": "check page title",
+   "clicks": 0.0,
+   "impressions": 10.0,
+   "ctr": 0.0,
+   "position": 77.3
+  },
+  {
+   "query": "web design jakarta",
+   "clicks": 0.0,
+   "impressions": 10.0,
+   "ctr": 0.0,
+   "position": 98.6
+  },
+  {
+   "query": "حاسبة تكاليف موقع الكتروني",
+   "clicks": 0.0,
+   "impressions": 9.0,
+   "ctr": 0.0,
+   "position": 9.22
+  },
+  {
+   "query": "طراحی سایت اختصاصی در تهران",
+   "clicks": 0.0,
+   "impressions": 9.0,
+   "ctr": 0.0,
+   "position": 105.89
+  },
+  {
+   "query": "سئو سایت در دبی",
+   "clicks": 1.0,
+   "impressions": 8.0,
+   "ctr": 0.125,
+   "position": 7.12
+  },
+  {
+   "query": "google search central seo starter guide helpful content structured data 2026",
+   "clicks": 0.0,
+   "impressions": 8.0,
+   "ctr": 0.0,
+   "position": 9.12
+  },
+  {
+   "query": "seo agency tehran",
+   "clicks": 0.0,
+   "impressions": 8.0,
+   "ctr": 0.0,
+   "position": 9.25
+  },
+  {
+   "query": "calculating website costs",
+   "clicks": 0.0,
+   "impressions": 8.0,
+   "ctr": 0.0,
+   "position": 9.62
+  },
+  {
+   "query": "utm link maker",
+   "clicks": 0.0,
+   "impressions": 8.0,
+   "ctr": 0.0,
+   "position": 14.0
+  },
+  {
+   "query": "headline score checker",
+   "clicks": 0.0,
+   "impressions": 8.0,
+   "ctr": 0.0,
+   "position": 17.38
+  },
+  {
+   "query": "2026 best seo practices",
+   "clicks": 0.0,
+   "impressions": 8.0,
+   "ctr": 0.0,
+   "position": 33.75
+  },
+  {
+   "query": "jasa pembuatan website jakarta barat",
+   "clicks": 0.0,
+   "impressions": 8.0,
+   "ctr": 0.0,
+   "position": 94.38
+  },
+  {
+   "query": "خدمات بهینه سازی سایت",
+   "clicks": 0.0,
+   "impressions": 8.0,
+   "ctr": 0.0,
+   "position": 97.25
+  },
+  {
+   "query": "behrad karaj",
+   "clicks": 0.0,
+   "impressions": 7.0,
+   "ctr": 0.0,
+   "position": 6.29
+  },
+  {
+   "query": "seo title score checker",
+   "clicks": 0.0,
+   "impressions": 7.0,
+   "ctr": 0.0,
+   "position": 7.14
+  },
+  {
+   "query": "تبدیل عکس به base64",
+   "clicks": 0.0,
+   "impressions": 7.0,
+   "ctr": 0.0,
+   "position": 9.86
+  },
+  {
+   "query": "title checker free",
+   "clicks": 0.0,
+   "impressions": 7.0,
+   "ctr": 0.0,
+   "position": 12.57
+  },
+  {
+   "query": "best seo practices 2025",
+   "clicks": 0.0,
+   "impressions": 7.0,
+   "ctr": 0.0,
+   "position": 18.29
+  },
+  {
+   "query": "blog title analyzer",
+   "clicks": 0.0,
+   "impressions": 7.0,
+   "ctr": 0.0,
+   "position": 26.86
+  },
+  {
+   "query": "link builder",
+   "clicks": 0.0,
+   "impressions": 7.0,
+   "ctr": 0.0,
+   "position": 28.14
+  },
+  {
+   "query": "2026 seo best practices",
+   "clicks": 0.0,
+   "impressions": 7.0,
+   "ctr": 0.0,
+   "position": 33.57
+  },
+  {
+   "query": "تعرفه بهینه سازی سئو",
+   "clicks": 0.0,
+   "impressions": 7.0,
+   "ctr": 0.0,
+   "position": 36.71
+  },
+  {
+   "query": "url builders",
+   "clicks": 0.0,
+   "impressions": 7.0,
+   "ctr": 0.0,
+   "position": 39.86
+  },
+  {
+   "query": "url building",
+   "clicks": 0.0,
+   "impressions": 7.0,
+   "ctr": 0.0,
+   "position": 52.29
+  },
+  {
+   "query": "jasa buat web jakarta",
+   "clicks": 0.0,
+   "impressions": 7.0,
+   "ctr": 0.0,
+   "position": 97.86
+  },
+  {
+   "query": "ali bakhtiari",
+   "clicks": 1.0,
+   "impressions": 6.0,
+   "ctr": 0.1667,
+   "position": 15.5
+  },
+  {
+   "query": "google search central title link best practices length",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "ctr": 0.0,
+   "position": 3.0
+  },
+  {
+   "query": "seo expert oman",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "ctr": 0.0,
+   "position": 11.83
+  },
+  {
+   "query": "title chekce",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "ctr": 0.0,
+   "position": 13.0
+  },
+  {
+   "query": "title check",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "ctr": 0.0,
+   "position": 14.17
+  },
+  {
+   "query": "seo best practices 2026",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "ctr": 0.0,
+   "position": 14.33
+  },
+  {
+   "query": "keyword density analyzer",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "ctr": 0.0,
+   "position": 15.17
+  },
+  {
+   "query": "headline analyzer",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "ctr": 0.0,
+   "position": 28.83
+  },
+  {
+   "query": "title tag analysis",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "ctr": 0.0,
+   "position": 30.33
+  },
+  {
+   "query": "what are the best practices for on-page seo in 2026?",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "ctr": 0.0,
+   "position": 33.33
+  },
+  {
+   "query": "seo page content best practices 2026",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "ctr": 0.0,
+   "position": 35.0
+  },
+  {
+   "query": "seo agency iran",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "ctr": 0.0,
+   "position": 35.5
+  },
+  {
+   "query": "السيو المحلي",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "ctr": 0.0,
+   "position": 40.0
+  },
+  {
+   "query": "url builder form",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "ctr": 0.0,
+   "position": 40.83
+  },
+  {
+   "query": "تحسين محركات البحث الذكي",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "ctr": 0.0,
+   "position": 58.0
+  },
+  {
+   "query": "سفارش سئو سایت در تهران",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "ctr": 0.0,
+   "position": 69.5
+  },
+  {
+   "query": "jasa web design jakarta",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "ctr": 0.0,
+   "position": 96.5
+  },
+  {
+   "query": "local seo services",
+   "clicks": 1.0,
+   "impressions": 5.0,
+   "ctr": 0.2,
+   "position": 2.6
+  },
+  {
+   "query": "download webabc",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 2.4
+  },
+  {
+   "query": "قالیشویی لندن",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 10.4
+  },
+  {
+   "query": "seo services muscat",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 11.0
+  },
+  {
+   "query": "seo title score",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 16.6
+  },
+  {
+   "query": "title score",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 16.6
+  },
+  {
+   "query": "best seo company tehran",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 17.6
+  },
+  {
+   "query": "faq schema markup generator",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 18.6
+  },
+  {
+   "query": "seo services iran",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 23.6
+  },
+  {
+   "query": "headline title seo analyzer",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 24.8
+  },
+  {
+   "query": "site speed optimization 2026",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 27.0
+  },
+  {
+   "query": "حلول تطوير الويب",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 37.6
+  },
+  {
+   "query": "أستخدم ووردبريس أم تطوير المواقع المخصصة",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 44.6
+  },
+  {
+   "query": "seo description checker",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 54.4
+  },
+  {
+   "query": "modern technical seo formulas",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 71.4
+  },
+  {
+   "query": "چک لیست سئو",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 76.6
+  },
+  {
+   "query": "meta description check",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 77.4
+  },
+  {
+   "query": "تحسين محركات البحث الذكي الخليج",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 82.6
+  },
+  {
+   "query": "سفارش طراحی سایت در تهران",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 87.2
+  },
+  {
+   "query": "jasa web jakarta",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 92.0
+  },
+  {
+   "query": "jasa pembuatan website jakarta",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 98.6
+  },
+  {
+   "query": "website design jakarta",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 99.6
+  },
+  {
+   "query": "seo services riyadh",
+   "clicks": 0.0,
+   "impressions": 5.0,
+   "ctr": 0.0,
+   "position": 148.8
+  },
+  {
+   "query": "شرکت توسعه لعاب تهران",
+   "clicks": 1.0,
+   "impressions": 4.0,
+   "ctr": 0.25,
+   "position": 10.25
+  },
+  {
+   "query": "فروشگاه ۲۰۲۶",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 8.25
+  },
+  {
+   "query": "ويب cee",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 8.5
+  },
+  {
+   "query": "google search central seo starter guide structured data helpful content 2026",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 9.25
+  },
+  {
+   "query": "title tag checker seo",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 13.0
+  },
+  {
+   "query": "tools cek title tag",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 13.0
+  },
+  {
+   "query": "seo services oman",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 13.75
+  },
+  {
+   "query": "خدمة سيو محلي",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 16.5
+  },
+  {
+   "query": "seo headline tool",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 18.0
+  },
+  {
+   "query": "wordpress seo company near me",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 21.75
+  },
+  {
+   "query": "ووردبريس او تطوير المواقع المخصصة",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 26.25
+  },
+  {
+   "query": "local seo near me",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 29.5
+  },
+  {
+   "query": "title ranking checker",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 30.5
+  },
+  {
+   "query": "people also asked scraper",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 30.75
+  },
+  {
+   "query": "meta title checker",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 32.0
+  },
+  {
+   "query": "url link builder",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 32.0
+  },
+  {
+   "query": "unique url builder",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 35.0
+  },
+  {
+   "query": "url buider",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 42.25
+  },
+  {
+   "query": "urlbuilder",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 57.75
+  },
+  {
+   "query": "خدمات تولید محتوای متنی",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 77.75
+  },
+  {
+   "query": "calculateur coût site web",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 80.75
+  },
+  {
+   "query": "طراحی سایت فروشگاهی در تهران",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 88.25
+  },
+  {
+   "query": "jasa pembuatan website depok",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 95.25
+  },
+  {
+   "query": "jasa pembuatan website makassar",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 96.5
+  },
+  {
+   "query": "seo checklist 2026",
+   "clicks": 1.0,
+   "impressions": 3.0,
+   "ctr": 0.3333,
+   "position": 5.67
+  },
+  {
+   "query": "seo near me",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 6.33
+  },
+  {
+   "query": "تبدیل عکس به بارکد",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 7.0
+  },
+  {
+   "query": "site title checker",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 7.33
+  },
+  {
+   "query": "heading score checker",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 9.0
+  },
+  {
+   "query": "seo company muscat",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 10.67
+  },
+  {
+   "query": "seo title and description checker",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 11.33
+  },
+  {
+   "query": "moz title description tester",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 14.67
+  },
+  {
+   "query": "headline seo analyzer",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 15.0
+  },
+  {
+   "query": "تطوير ووردبريس",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 17.67
+  },
+  {
+   "query": "title tag tool",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 18.0
+  },
+  {
+   "query": "مجتمع مهر و ماه قزوین",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 18.0
+  },
+  {
+   "query": "headline seo",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 19.0
+  },
+  {
+   "query": "صيانة المواقع",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 20.33
+  },
+  {
+   "query": "حزم سيو المحلية الرياض",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 23.67
+  },
+  {
+   "query": "خدمات سئو در قزوین",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 24.0
+  },
+  {
+   "query": "متى تختار تطوير المواقع المخصصة",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 24.0
+  },
+  {
+   "query": "لورم",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 30.0
+  },
+  {
+   "query": "audiology e-commerce platform",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 32.67
+  },
+  {
+   "query": "google meta description best practices 2026",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 32.67
+  },
+  {
+   "query": "url tool builder",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 33.0
+  },
+  {
+   "query": "seo meta tags best practices 2026",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 33.33
+  },
+  {
+   "query": "free headline analyzer",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 35.0
+  },
+  {
+   "query": "heading score",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 40.33
+  },
+  {
+   "query": "build url",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 40.67
+  },
+  {
+   "query": "cross link builder",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 42.0
+  },
+  {
+   "query": "headline analyser",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 60.67
+  },
+  {
+   "query": "طراحی سایت فروشگاهی در قزوین",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 67.0
+  },
+  {
+   "query": "title tag description seo best practices 2026",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 75.0
+  },
+  {
+   "query": "question and answer schema",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 76.33
+  },
+  {
+   "query": "seo meta title description best practices 2026",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 79.33
+  },
+  {
+   "query": "خدمة كتابة المحتوى",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 79.33
+  },
+  {
+   "query": "طراحی وب سایت در تهران",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 80.0
+  },
+  {
+   "query": "خدمات صناعة و كتابة المحتوى",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 84.33
+  },
+  {
+   "query": "web design services in riyadh",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 92.67
+  },
+  {
+   "query": "web design indonesia",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 93.67
+  },
+  {
+   "query": "jasa pembuatan website bekasi",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 94.67
+  },
+  {
+   "query": "شرکت طراحی سایت در تهران",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 95.0
+  },
+  {
+   "query": "خدمات سئو و بهینه سازی سایت",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 97.67
+  },
+  {
+   "query": "css background color gradient",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 1.0
+  },
+  {
+   "query": "شماره تلفن دندانپزشکی بهراد کرج",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 1.0
+  },
+  {
+   "query": "seo area",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 4.0
+  },
+  {
+   "query": "best headline analyzer",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 4.5
+  },
+  {
+   "query": "زیتون مسعود",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 5.0
+  },
+  {
+   "query": "soheil boutique",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 6.0
+  },
+  {
+   "query": "google search central seo best practices 2026",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 6.5
+  },
+  {
+   "query": "سهیل اکسسوری قزوین",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 7.0
+  },
+  {
+   "query": "check title seo score",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 8.0
+  },
+  {
+   "query": "chocoreto",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 8.0
+  },
+  {
+   "query": "web design muscat",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 8.0
+  },
+  {
+   "query": "indexing in seo. my location is usa.",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 9.0
+  },
+  {
+   "query": "افضل ادوات السيو",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 9.5
+  },
+  {
+   "query": "title checker moz",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 10.0
+  },
+  {
+   "query": "title and description checker",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 11.5
+  },
+  {
+   "query": "google search central descriptive urls best practices 2026",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 12.5
+  },
+  {
+   "query": "title verifier",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 12.5
+  },
+  {
+   "query": "local search engine optimization service",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 13.0
+  },
+  {
+   "query": "test title tag",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 13.5
+  },
+  {
+   "query": "title rater",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 14.0
+  },
+  {
+   "query": "url slug generator",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 14.0
+  },
+  {
+   "query": "bulk title checker",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 14.5
+  },
+  {
+   "query": "title description checker",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 19.0
+  },
+  {
+   "query": "local seo spreadsheets",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 20.5
+  },
+  {
+   "query": "website cost calculator",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 25.5
+  },
+  {
+   "query": "ووردبريس أو تطوير المواقع المخصصة",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 26.0
+  },
+  {
+   "query": "technical seo best practices 2026",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 27.5
+  },
+  {
+   "query": "google url generator",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 29.5
+  },
+  {
+   "query": "سئو سایت عربی",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 30.5
+  },
+  {
+   "query": "بهترین دکتر رفع غبغب در جردن",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 36.0
+  },
+  {
+   "query": "url bilder",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 36.5
+  },
+  {
+   "query": "url builder online",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 38.0
+  },
+  {
+   "query": "builder url",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 39.0
+  },
+  {
+   "query": "paa scraper",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 42.0
+  },
+  {
+   "query": "headline score",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 46.5
+  },
+  {
+   "query": "سيو محلي",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 49.0
+  },
+  {
+   "query": "seo best practices citations source links per article",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 51.0
+  },
+  {
+   "query": "building strict site architecture for seo crawlability",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 51.5
+  },
+  {
+   "query": "utm url creator",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 51.5
+  },
+  {
+   "query": "faq checker",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 54.0
+  },
+  {
+   "query": "تعرفه طراحی سایت",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 56.5
+  },
+  {
+   "query": "faqs schema",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 67.0
+  },
+  {
+   "query": "check url preview",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 68.0
+  },
+  {
+   "query": "check meta title",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 71.0
+  },
+  {
+   "query": "خدمة كتابة محتوى",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 72.5
+  },
+  {
+   "query": "سئو سایت در تهران",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 74.0
+  },
+  {
+   "query": "best seo tools for international seo 2025",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 75.5
+  },
+  {
+   "query": "تطوير مواقع الويب ابو ظبي",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 76.0
+  },
+  {
+   "query": "خدمات كتابة المحتوى",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 76.0
+  },
+  {
+   "query": "طراحی فروشگاه اینترنتی در قزوین",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 76.5
+  },
+  {
+   "query": "agency web development web calculator",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 78.5
+  },
+  {
+   "query": "سئو سایت شرکتی در تهران",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 79.0
+  },
+  {
+   "query": "web design batam",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 86.5
+  },
+  {
+   "query": "jasa web design semarang",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 91.5
+  },
+  {
+   "query": "website design in riyadh",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 94.5
+  },
+  {
+   "query": "شرکت سئو در تهران",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 94.5
+  },
+  {
+   "query": "pembuatan website jakarta",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 97.5
+  },
+  {
+   "query": "jasa pembuatan",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 99.5
+  },
+  {
+   "query": "website price calculator",
+   "clicks": 1.0,
+   "impressions": 1.0,
+   "ctr": 1.0,
+   "position": 2.0
+  },
+  {
+   "query": "website design cost calculator",
+   "clicks": 1.0,
+   "impressions": 1.0,
+   "ctr": 1.0,
+   "position": 3.0
+  },
+  {
+   "query": "local seo expert",
+   "clicks": 1.0,
+   "impressions": 1.0,
+   "ctr": 1.0,
+   "position": 9.0
+  },
+  {
+   "query": "22 seo gratis",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 1.0
+  },
+  {
+   "query": "custom ecommerce website development",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 1.0
+  },
+  {
+   "query": "how much does web development cost",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 1.0
+  },
+  {
+   "query": "site:bzna.ir",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 1.0
+  },
+  {
+   "query": "web development company iran",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 1.0
+  },
+  {
+   "query": "دندانپزشکی بهراد",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 1.0
+  },
+  {
+   "query": "دندون پزشکی بهراد",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 1.0
+  },
+  {
+   "query": "サイト速度 改善 専門家の対策は何でしょうか？",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 1.0
+  },
+  {
+   "query": "local seo services​",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 2.0
+  },
+  {
+   "query": "glass hex code",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 3.0
+  },
+  {
+   "query": "google seo",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 3.0
+  },
+  {
+   "query": "how can i improve my website's search engine rankings effectively?. my \nlocation is germany.",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 3.0
+  },
+  {
+   "query": "how do you improve seo rankings?",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 3.0
+  },
+  {
+   "query": "how much is it worth?",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 3.0
+  },
+  {
+   "query": "mapfan",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 3.0
+  },
+  {
+   "query": "seo title checker. my location is usa.",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 3.0
+  },
+  {
+   "query": "web design cost calculator",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 3.0
+  },
+  {
+   "query": "youtube seo title checker",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 3.0
+  },
+  {
+   "query": "زيتون مسعود",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 3.0
+  },
+  {
+   "query": "accessory store",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 4.0
+  },
+  {
+   "query": "check the description",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 4.0
+  },
+  {
+   "query": "estimate website cost",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 4.0
+  },
+  {
+   "query": "google search central title links best practices documentation",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 4.0
+  },
+  {
+   "query": "test title",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 5.0
+  },
+  {
+   "query": "صثذ.ث",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 6.0
+  },
+  {
+   "query": "google search central core web vitals thresholds lcp 2.5 inp 200 cls 0.1",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 7.0
+  },
+  {
+   "query": "meta title analyzer",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 7.0
+  },
+  {
+   "query": "rmido",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 7.0
+  },
+  {
+   "query": "+google search central core web vitals lcp inp cls documentation",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 8.0
+  },
+  {
+   "query": "create faq schema",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 8.0
+  },
+  {
+   "query": "free title checker",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 8.0
+  },
+  {
+   "query": "google search central seo starter guide structured data 2026",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 8.0
+  },
+  {
+   "query": "how long should a title tag be",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 8.0
+  },
+  {
+   "query": "slug maker",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 8.0
+  },
+  {
+   "query": "سایت تخمین",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 8.0
+  },
+  {
+   "query": "4 seasons carpet clean reviews",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 9.0
+  },
+  {
+   "query": "css glassmorphism effect",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 9.0
+  },
+  {
+   "query": "expert seo",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 9.0
+  },
+  {
+   "query": "google search central seo starter guide structured data official 2026",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 9.0
+  },
+  {
+   "query": "mehr o mah shopping center qazvin",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 9.0
+  },
+  {
+   "query": "schema generator",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 9.0
+  },
+  {
+   "query": "social media preview",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 9.0
+  },
+  {
+   "query": "tittle checker",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 9.0
+  },
+  {
+   "query": "web e",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 9.0
+  },
+  {
+   "query": "روستا طب",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 9.0
+  },
+  {
+   "query": "aesthetic clinic",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 10.0
+  },
+  {
+   "query": "background blur css generator",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 10.0
+  },
+  {
+   "query": "css glass generator",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 10.0
+  },
+  {
+   "query": "designer mobile",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 10.0
+  },
+  {
+   "query": "google search central seo starter guide 2026",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 10.0
+  },
+  {
+   "query": "google search central video seo best practices structured data 2026",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 10.0
+  },
+  {
+   "query": "property=\"og:type\"",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 10.0
+  },
+  {
+   "query": "schema faq generator",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 10.0
+  },
+  {
+   "query": "4 seasons carpet clean",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 11.0
+  },
+  {
+   "query": "faqpage schema",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 11.0
+  },
+  {
+   "query": "moz free title tag preview",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 11.0
+  },
+  {
+   "query": "seo tehran",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 11.0
+  },
+  {
+   "query": "web custom",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 11.0
+  },
+  {
+   "query": "ادوات سيو",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 11.0
+  },
+  {
+   "query": "متا مولد",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 11.0
+  },
+  {
+   "query": "seo services",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 12.0
+  },
+  {
+   "query": "مرکز خرید مهر و ماه قزوین",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 12.0
+  },
+  {
+   "query": "مهروماه قزوین",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 12.0
+  },
+  {
+   "query": "seo company iran",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 13.0
+  },
+  {
+   "query": "ادوات السيو",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 14.0
+  },
+  {
+   "query": "article title checker",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 15.0
+  },
+  {
+   "query": "website and seo services near me",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 15.0
+  },
+  {
+   "query": "خدمات طراحی سایت اختصاصی",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 15.0
+  },
+  {
+   "query": "glassmorphism css generator",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 16.0
+  },
+  {
+   "query": "how much does a website cost in 2026",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 17.0
+  },
+  {
+   "query": "seo 2026 best practices",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 17.0
+  },
+  {
+   "query": "لعاب کاری فلزات در تهران",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 17.0
+  },
+  {
+   "query": "seo service near me",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 18.0
+  },
+  {
+   "query": "seo services in oman",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 18.0
+  },
+  {
+   "query": "سيو ووردبريس",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 18.0
+  },
+  {
+   "query": "plastic surgery local map pack dominance",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 19.0
+  },
+  {
+   "query": "show me",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 19.0
+  },
+  {
+   "query": "css radial gradient generator",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 20.0
+  },
+  {
+   "query": "google title tag checker",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 20.0
+  },
+  {
+   "query": "seo best practices for 2025",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 21.0
+  },
+  {
+   "query": "seo company tehran",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 21.0
+  },
+  {
+   "query": "وكالة سيو المحلية الرياض",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 21.0
+  },
+  {
+   "query": "current google seo best practices 2026",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 22.0
+  },
+  {
+   "query": "jasa desain web",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 22.0
+  },
+  {
+   "query": "local seo experts",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 22.0
+  },
+  {
+   "query": "seo guide 2026",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 23.0
+  },
+  {
+   "query": "google title checker",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 24.0
+  },
+  {
+   "query": "utm link builder",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 24.0
+  },
+  {
+   "query": "web design in oman",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 24.0
+  },
+  {
+   "query": "خدمات تطوير الويب",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 24.0
+  },
+  {
+   "query": "authority link building",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 25.0
+  },
+  {
+   "query": "campaign link generator",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 25.0
+  },
+  {
+   "query": "seo services in riyadh",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 25.0
+  },
+  {
+   "query": "google url maker",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 26.0
+  },
+  {
+   "query": "page keyword analyzer",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 26.0
+  },
+  {
+   "query": "check article for seo",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 27.0
+  },
+  {
+   "query": "moz title tag tool",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 27.0
+  },
+  {
+   "query": "خرید سایت در قزوین",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 27.0
+  },
+  {
+   "query": "local seo sh",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 28.0
+  },
+  {
+   "query": "title tag optimization tool",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 29.0
+  },
+  {
+   "query": "utm campaign generator",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 29.0
+  },
+  {
+   "query": "headline analyzer tool",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 30.0
+  },
+  {
+   "query": "rate my title",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 31.0
+  },
+  {
+   "query": "calculate cost of website",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 32.0
+  },
+  {
+   "query": "seo keyword research optimization best practices 2026",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 32.0
+  },
+  {
+   "query": "standard seo practices",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 33.0
+  },
+  {
+   "query": "web development price",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 33.0
+  },
+  {
+   "query": "custom url builder",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 34.0
+  },
+  {
+   "query": "url generator google",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 34.0
+  },
+  {
+   "query": "seo book keyword density analyzer",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 35.0
+  },
+  {
+   "query": "seo map",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 35.0
+  },
+  {
+   "query": "url bulder",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 35.0
+  },
+  {
+   "query": "url campaign builder",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 35.0
+  },
+  {
+   "query": "تزریق مزوژل پروفایلو در جردن",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 35.0
+  },
+  {
+   "query": "url buolder",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 36.0
+  },
+  {
+   "query": "بهترین دکتر بوکال فت در جردن",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 36.0
+  },
+  {
+   "query": "website development cost",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 37.0
+  },
+  {
+   "query": "headline analyzer free",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 38.0
+  },
+  {
+   "query": "seo for web design companies abu dhabi",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 38.0
+  },
+  {
+   "query": "seo",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 39.0
+  },
+  {
+   "query": "seo meta title best practices 2026",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 39.0
+  },
+  {
+   "query": "سيو محلي للشركات",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 39.0
+  },
+  {
+   "query": "web design and seo abu dhabi",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 40.0
+  },
+  {
+   "query": "ecommerce website cost calculator",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 41.0
+  },
+  {
+   "query": "توسعه ارتباطات الكترونيك تجارت ايرانيان شرکت سهامی خاص",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 43.0
+  },
+  {
+   "query": "ساخت utm",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 43.0
+  },
+  {
+   "query": "خدمات افزایش سرعت سایت",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 44.0
+  },
+  {
+   "query": "سئو در قزوین",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 46.0
+  },
+  {
+   "query": "web development cost",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 48.0
+  },
+  {
+   "query": "هزینه سئو سایت وردپرسی",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 48.0
+  },
+  {
+   "query": "cost of custom web development in 2026",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 49.0
+  },
+  {
+   "query": "website development costs",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 49.0
+  },
+  {
+   "query": "سئو محلی چیست",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 49.0
+  },
+  {
+   "query": "خدمات افزایش سرعت",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 50.0
+  },
+  {
+   "query": "قیمت طراحی سایت شرکتی",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 50.0
+  },
+  {
+   "query": "keyword analyzers",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 54.0
+  },
+  {
+   "query": "بهترین مرکز تزریق ژل پروفایلو در جردن",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 54.0
+  },
+  {
+   "query": "تحسين محركات الذكاء الاصطناعي",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 54.0
+  },
+  {
+   "query": "url creator",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 55.0
+  },
+  {
+   "query": "web design costs in 2026",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 55.0
+  },
+  {
+   "query": "تعرفه سئو سایت وردپرسی",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 55.0
+  },
+  {
+   "query": "تطوير تطبيق ويب",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 56.0
+  },
+  {
+   "query": "موسسه تتا",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 56.0
+  },
+  {
+   "query": "проверка title и description online",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 57.0
+  },
+  {
+   "query": "building url",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 58.0
+  },
+  {
+   "query": "seo title length best practices 2026",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 58.0
+  },
+  {
+   "query": "web design costs 2026",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 58.0
+  },
+  {
+   "query": "درمانگاه بهراد",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 59.0
+  },
+  {
+   "query": "glass effect generator",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 61.0
+  },
+  {
+   "query": "آموزش طراحی سایت در قزوین",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 61.0
+  },
+  {
+   "query": "أداء تحسين محركات البحث. ما هي أفضل الممارسات التي ستشجع الأشخاص على العودة",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 62.0
+  },
+  {
+   "query": "url preview online",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 64.0
+  },
+  {
+   "query": "utm link generator",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 64.0
+  },
+  {
+   "query": "seo professionals to watch in 2026",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 67.0
+  },
+  {
+   "query": "ppc service riyadh",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 68.0
+  },
+  {
+   "query": "سئو در تهران",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 68.0
+  },
+  {
+   "query": "social link preview",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 69.0
+  },
+  {
+   "query": "تحسين محركات البحث في المواقع الجديدة",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 69.0
+  },
+  {
+   "query": "faq schema generator tool",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 71.0
+  },
+  {
+   "query": "seo meta description test",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 71.0
+  },
+  {
+   "query": "إعداد robots.txt",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 72.0
+  },
+  {
+   "query": "seo agency in riyadh",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 73.0
+  },
+  {
+   "query": "بهبود رتبه‌بندی موبایل‌محور گوگل",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 75.0
+  },
+  {
+   "query": "محتوا نویس سایت",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 75.0
+  },
+  {
+   "query": "jasa website alafgani",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 77.0
+  },
+  {
+   "query": "privacy policy generator",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 79.0
+  },
+  {
+   "query": "utm link creator",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 79.0
+  },
+  {
+   "query": "بهینه سازی سرعت سایت",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 81.0
+  },
+  {
+   "query": "seo riyadh",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 83.0
+  },
+  {
+   "query": "webdesign indonesia",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 83.0
+  },
+  {
+   "query": "shema create",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 85.0
+  },
+  {
+   "query": "woocommerce.ir",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 85.0
+  },
+  {
+   "query": "jasa pembuatan website bangko",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 86.0
+  },
+  {
+   "query": "webaac solutions",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 87.0
+  },
+  {
+   "query": "jasa pembuatan website banyuwangi",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 88.0
+  },
+  {
+   "query": "خدمات سئو سایت در تهران",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 88.0
+  },
+  {
+   "query": "pembuat web jakarta",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 89.0
+  },
+  {
+   "query": "jasa pembuatan web bekasi",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 90.0
+  },
+  {
+   "query": "jasa web indonesia",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 91.0
+  },
+  {
+   "query": "check title and description in seo",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 92.0
+  },
+  {
+   "query": "خدمات آنالیز سئو",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 92.0
+  },
+  {
+   "query": "سعر تصميم موقع ووردبريس",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 92.0
+  },
+  {
+   "query": "check meta title and description",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 93.0
+  },
+  {
+   "query": "jasa pembuatan website jakarta pusat",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 93.0
+  },
+  {
+   "query": "buat website semarang",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 94.0
+  },
+  {
+   "query": "طراحی سایت شرکتی در تهران",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 94.0
+  },
+  {
+   "query": "google title and description checker",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 95.0
+  },
+  {
+   "query": "agency service fee calculator",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 96.0
+  },
+  {
+   "query": "free faq schema generator tool",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 97.0
+  },
+  {
+   "query": "خدمات سئو در تهران",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 97.0
+  },
+  {
+   "query": "jasa buat web bekasi",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 98.0
+  },
+  {
+   "query": "jasa web bekasi",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 98.0
+  },
+  {
+   "query": "خدمات توسعه وب web development services",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 98.0
+  },
+  {
+   "query": "bikin website bekasi",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 99.0
+  },
+  {
+   "query": "jasa pembuatan website di jakarta pusat",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 99.0
+  },
+  {
+   "query": "jasa web desain semarang",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 99.0
+  },
+  {
+   "query": "jasa web designer",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 99.0
+  },
+  {
+   "query": "website designer jakarta",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 99.0
+  },
+  {
+   "query": "jasa pembuatan website pemerintah",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 100.0
+  },
+  {
+   "query": "jasa pembuatan website profesional jakarta",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 100.0
+  },
+  {
+   "query": "jasa website bekasi",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 100.0
+  },
+  {
+   "query": "شرکت طراحی سایت تهران",
+   "clicks": 0.0,
+   "impressions": 1.0,
+   "ctr": 0.0,
+   "position": 132.0
+  }
+ ],
+ "daily_series": [
+  {
+   "date": "2026-07-03 00:00:00",
+   "clicks": 0.0,
+   "impressions": 9.0,
+   "ctr": 0.0,
+   "position": 18.8
+  },
+  {
+   "date": "2026-07-04 00:00:00",
+   "clicks": 0.0,
+   "impressions": 8.0,
+   "ctr": 0.0,
+   "position": 16.4
+  },
+  {
+   "date": "2026-07-05 00:00:00",
+   "clicks": 0.0,
+   "impressions": 14.0,
+   "ctr": 0.0,
+   "position": 14.1
+  },
+  {
+   "date": "2026-07-06 00:00:00",
+   "clicks": 0.0,
+   "impressions": 3.0,
+   "ctr": 0.0,
+   "position": 59.7
+  },
+  {
+   "date": "2026-07-07 00:00:00",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "ctr": 0.0,
+   "position": 36.2
+  },
+  {
+   "date": "2026-07-08 00:00:00",
+   "clicks": 0.0,
+   "impressions": 10.0,
+   "ctr": 0.0,
+   "position": 23.5
+  },
+  {
+   "date": "2026-07-09 00:00:00",
+   "clicks": 0.0,
+   "impressions": 6.0,
+   "ctr": 0.0,
+   "position": 25.2
+  },
+  {
+   "date": "2026-07-10 00:00:00",
+   "clicks": 1.0,
+   "impressions": 7.0,
+   "ctr": 0.1429,
+   "position": 30.9
+  },
+  {
+   "date": "2026-07-11 00:00:00",
+   "clicks": 0.0,
+   "impressions": 2.0,
+   "ctr": 0.0,
+   "position": 38.5
+  },
+  {
+   "date": "2026-07-12 00:00:00",
+   "clicks": 0.0,
+   "impressions": 9.0,
+   "ctr": 0.0,
+   "position": 21.4
+  },
+  {
+   "date": "2026-07-13 00:00:00",
+   "clicks": 0.0,
+   "impressions": 4.0,
+   "ctr": 0.0,
+   "position": 20.2
+  },
+  {
+   "date": "2026-07-14 00:00:00",
+   "clicks": 0.0,
+   "impressions": 11.0,
+   "ctr": 0.0,
+   "position": 23.0
+  },
+  {
+   "date": "2026-07-15 00:00:00",
+   "clicks": 1.0,
+   "impressions": 11.0,
+   "ctr": 0.0909,
+   "position": 16.6
+  },
+  {
+   "date": "2026-07-16 00:00:00",
+   "clicks": 2.0,
+   "impressions": 7.0,
+   "ctr": 0.2857,
+   "position": 21.3
+  },
+  {
+   "date": "2026-07-17 00:00:00",
+   "clicks": 0.0,
+   "impressions": 12.0,
+   "ctr": 0.0,
+   "position": 21.5
+  },
+  {
+   "date": "2026-07-18 00:00:00",
+   "clicks": 0.0,
+   "impressions": 11.0,
+   "ctr": 0.0,
+   "position": 17.1
+  },
+  {
+   "date": "2026-07-19 00:00:00",
+   "clicks": 1.0,
+   "impressions": 17.0,
+   "ctr": 0.0588,
+   "position": 16.4
+  },
+  {
+   "date": "2026-07-20 00:00:00",
+   "clicks": 0.0,
+   "impressions": 7.0,
+   "ctr": 0.0,
+   "position": 12.0
+  },
+  {
+   "date": "2026-07-21 00:00:00",
+   "clicks": 0.0,
+   "impressions": 14.0,
+   "ctr": 0.0,
+   "position": 10.4
+  },
+  {
+   "date": "2026-07-22 00:00:00",
+   "clicks": 0.0,
+   "impressions": 11.0,
+   "ctr": 0.0,
+   "position": 23.4
+  },
+  {
+   "date": "2026-07-23 00:00:00",
+   "clicks": 1.0,
+   "impressions": 29.0,
+   "ctr": 0.0345,
+   "position": 28.8
+  },
+  {
+   "date": "2026-07-24 00:00:00",
+   "clicks": 1.0,
+   "impressions": 85.0,
+   "ctr": 0.0118,
+   "position": 24.0
+  },
+  {
+   "date": "2026-07-25 00:00:00",
+   "clicks": 0.0,
+   "impressions": 79.0,
+   "ctr": 0.0,
+   "position": 40.3
+  },
+  {
+   "date": "2026-07-26 00:00:00",
+   "clicks": 0.0,
+   "impressions": 83.0,
+   "ctr": 0.0,
+   "position": 35.2
+  },
+  {
+   "date": "2026-07-27 00:00:00",
+   "clicks": 1.0,
+   "impressions": 79.0,
+   "ctr": 0.0127,
+   "position": 39.1
+  },
+  {
+   "date": "2026-07-28 00:00:00",
+   "clicks": 0.0,
+   "impressions": 89.0,
+   "ctr": 0.0,
+   "position": 41.9
+  },
+  {
+   "date": "2026-07-29 00:00:00",
+   "clicks": 0.0,
+   "impressions": 76.0,
+   "ctr": 0.0,
+   "position": 41.3
+  },
+  {
+   "date": "2026-07-30 00:00:00",
+   "clicks": 0.0,
+   "impressions": 44.0,
+   "ctr": 0.0,
+   "position": 27.7
+  },
+  {
+   "date": "2026-07-31 00:00:00",
+   "clicks": 1.0,
+   "impressions": 74.0,
+   "ctr": 0.0135,
+   "position": 36.6
+  },
+  {
+   "date": "2026-08-01 00:00:00",
+   "clicks": 0.0,
+   "impressions": 47.0,
+   "ctr": 0.0,
+   "position": 29.4
+  },
+  {
+   "date": "2026-08-02 00:00:00",
+   "clicks": 1.0,
+   "impressions": 68.0,
+   "ctr": 0.0147,
+   "position": 30.7
+  },
+  {
+   "date": "2026-08-03 00:00:00",
+   "clicks": 0.0,
+   "impressions": 66.0,
+   "ctr": 0.0,
+   "position": 36.8
+  },
+  {
+   "date": "2026-08-04 00:00:00",
+   "clicks": 2.0,
+   "impressions": 68.0,
+   "ctr": 0.0294,
+   "position": 31.9
+  },
+  {
+   "date": "2026-08-05 00:00:00",
+   "clicks": 1.0,
+   "impressions": 66.0,
+   "ctr": 0.0152,
+   "position": 36.0
+  },
+  {
+   "date": "2026-08-06 00:00:00",
+   "clicks": 0.0,
+   "impressions": 64.0,
+   "ctr": 0.0,
+   "position": 34.4
+  },
+  {
+   "date": "2026-08-07 00:00:00",
+   "clicks": 1.0,
+   "impressions": 48.0,
+   "ctr": 0.0208,
+   "position": 24.1
+  },
+  {
+   "date": "2026-08-08 00:00:00",
+   "clicks": 1.0,
+   "impressions": 94.0,
+   "ctr": 0.0106,
+   "position": 32.6
+  },
+  {
+   "date": "2026-08-09 00:00:00",
+   "clicks": 0.0,
+   "impressions": 65.0,
+   "ctr": 0.0,
+   "position": 20.3
+  },
+  {
+   "date": "2026-08-10 00:00:00",
+   "clicks": 1.0,
+   "impressions": 79.0,
+   "ctr": 0.0127,
+   "position": 21.2
+  },
+  {
+   "date": "2026-08-11 00:00:00",
+   "clicks": 5.0,
+   "impressions": 76.0,
+   "ctr": 0.0658,
+   "position": 26.1
+  },
+  {
+   "date": "2026-08-12 00:00:00",
+   "clicks": 0.0,
+   "impressions": 90.0,
+   "ctr": 0.0,
+   "position": 31.6
+  },
+  {
+   "date": "2026-08-13 00:00:00",
+   "clicks": 0.0,
+   "impressions": 354.0,
+   "ctr": 0.0,
+   "position": 23.4
+  },
+  {
+   "date": "2026-08-14 00:00:00",
+   "clicks": 0.0,
+   "impressions": 493.0,
+   "ctr": 0.0,
+   "position": 13.5
+  },
+  {
+   "date": "2026-08-15 00:00:00",
+   "clicks": 1.0,
+   "impressions": 464.0,
+   "ctr": 0.0022,
+   "position": 19.2
+  },
+  {
+   "date": "2026-08-16 00:00:00",
+   "clicks": 0.0,
+   "impressions": 631.0,
+   "ctr": 0.0,
+   "position": 20.8
+  },
+  {
+   "date": "2026-08-17 00:00:00",
+   "clicks": 3.0,
+   "impressions": 697.0,
+   "ctr": 0.0043,
+   "position": 16.2
+  },
+  {
+   "date": "2026-08-18 00:00:00",
+   "clicks": 2.0,
+   "impressions": 861.0,
+   "ctr": 0.0023,
+   "position": 17.9
+  },
+  {
+   "date": "2026-08-19 00:00:00",
+   "clicks": 0.0,
+   "impressions": 764.0,
+   "ctr": 0.0,
+   "position": 15.9
+  },
+  {
+   "date": "2026-08-20 00:00:00",
+   "clicks": 3.0,
+   "impressions": 773.0,
+   "ctr": 0.0039,
+   "position": 15.4
+  },
+  {
+   "date": "2026-08-21 00:00:00",
+   "clicks": 0.0,
+   "impressions": 947.0,
+   "ctr": 0.0,
+   "position": 11.6
+  },
+  {
+   "date": "2026-08-22 00:00:00",
+   "clicks": 0.0,
+   "impressions": 1131.0,
+   "ctr": 0.0,
+   "position": 11.8
+  },
+  {
+   "date": "2026-08-23 00:00:00",
+   "clicks": 12.0,
+   "impressions": 1510.0,
+   "ctr": 0.0079,
+   "position": 10.0
+  },
+  {
+   "date": "2026-08-24 00:00:00",
+   "clicks": 8.0,
+   "impressions": 1231.0,
+   "ctr": 0.0065,
+   "position": 12.3
+  },
+  {
+   "date": "2026-08-25 00:00:00",
+   "clicks": 9.0,
+   "impressions": 1324.0,
+   "ctr": 0.0068,
+   "position": 13.3
+  },
+  {
+   "date": "2026-08-26 00:00:00",
+   "clicks": 4.0,
+   "impressions": 1105.0,
+   "ctr": 0.0036,
+   "position": 12.9
+  },
+  {
+   "date": "2026-08-27 00:00:00",
+   "clicks": 2.0,
+   "impressions": 1243.0,
+   "ctr": 0.0016,
+   "position": 12.7
+  },
+  {
+   "date": "2026-08-28 00:00:00",
+   "clicks": 0.0,
+   "impressions": 1030.0,
+   "ctr": 0.0,
+   "position": 13.6
+  },
+  {
+   "date": "2026-08-29 00:00:00",
+   "clicks": 1.0,
+   "impressions": 706.0,
+   "ctr": 0.0014,
+   "position": 14.9
+  },
+  {
+   "date": "2026-08-30 00:00:00",
+   "clicks": 1.0,
+   "impressions": 499.0,
+   "ctr": 0.002,
+   "position": 22.2
+  },
+  {
+   "date": "2026-08-31 00:00:00",
+   "clicks": 2.0,
+   "impressions": 704.0,
+   "ctr": 0.0028,
+   "position": 17.4
+  },
+  {
+   "date": "2026-09-01 00:00:00",
+   "clicks": 1.0,
+   "impressions": 530.0,
+   "ctr": 0.0019,
+   "position": 18.9
+  },
+  {
+   "date": "2026-09-02 00:00:00",
+   "clicks": 1.0,
+   "impressions": 491.0,
+   "ctr": 0.002,
+   "position": 19.0
+  },
+  {
+   "date": "2026-09-03 00:00:00",
+   "clicks": 2.0,
+   "impressions": 463.0,
+   "ctr": 0.0043,
+   "position": 21.7
+  },
+  {
+   "date": "2026-09-04 00:00:00",
+   "clicks": 2.0,
+   "impressions": 927.0,
+   "ctr": 0.0022,
+   "position": 20.8
+  },
+  {
+   "date": "2026-09-05 00:00:00",
+   "clicks": 4.0,
+   "impressions": 1065.0,
+   "ctr": 0.0038,
+   "position": 19.6
+  },
+  {
+   "date": "2026-09-06 00:00:00",
+   "clicks": 0.0,
+   "impressions": 1118.0,
+   "ctr": 0.0,
+   "position": 19.9
+  },
+  {
+   "date": "2026-09-07 00:00:00",
+   "clicks": 3.0,
+   "impressions": 711.0,
+   "ctr": 0.0042,
+   "position": 22.1
+  },
+  {
+   "date": "2026-09-08 00:00:00",
+   "clicks": 3.0,
+   "impressions": 556.0,
+   "ctr": 0.0054,
+   "position": 20.1
+  },
+  {
+   "date": "2026-09-09 00:00:00",
+   "clicks": 6.0,
+   "impressions": 1040.0,
+   "ctr": 0.0058,
+   "position": 12.0
+  },
+  {
+   "date": "2026-09-10 00:00:00",
+   "clicks": 3.0,
+   "impressions": 924.0,
+   "ctr": 0.0032,
+   "position": 13.3
+  },
+  {
+   "date": "2026-09-11 00:00:00",
+   "clicks": 3.0,
+   "impressions": 682.0,
+   "ctr": 0.0044,
+   "position": 15.4
+  },
+  {
+   "date": "2026-09-12 00:00:00",
+   "clicks": 3.0,
+   "impressions": 782.0,
+   "ctr": 0.0038,
+   "position": 15.1
+  },
+  {
+   "date": "2026-09-13 00:00:00",
+   "clicks": 0.0,
+   "impressions": 758.0,
+   "ctr": 0.0,
+   "position": 13.4
+  },
+  {
+   "date": "2026-09-14 00:00:00",
+   "clicks": 5.0,
+   "impressions": 600.0,
+   "ctr": 0.0083,
+   "position": 14.3
+  },
+  {
+   "date": "2026-09-15 00:00:00",
+   "clicks": 1.0,
+   "impressions": 563.0,
+   "ctr": 0.0018,
+   "position": 17.4
+  },
+  {
+   "date": "2026-09-16 00:00:00",
+   "clicks": 7.0,
+   "impressions": 773.0,
+   "ctr": 0.0091,
+   "position": 16.5
+  },
+  {
+   "date": "2026-09-17 00:00:00",
+   "clicks": 4.0,
+   "impressions": 504.0,
+   "ctr": 0.0079,
+   "position": 17.3
+  },
+  {
+   "date": "2026-09-18 00:00:00",
+   "clicks": 3.0,
+   "impressions": 532.0,
+   "ctr": 0.0056,
+   "position": 16.0
+  },
+  {
+   "date": "2026-09-19 00:00:00",
+   "clicks": 6.0,
+   "impressions": 582.0,
+   "ctr": 0.0103,
+   "position": 16.5
+  },
+  {
+   "date": "2026-09-20 00:00:00",
+   "clicks": 4.0,
+   "impressions": 448.0,
+   "ctr": 0.0089,
+   "position": 16.8
+  },
+  {
+   "date": "2026-09-21 00:00:00",
+   "clicks": 5.0,
+   "impressions": 144.0,
+   "ctr": 0.0347,
+   "position": 37.6
+  },
+  {
+   "date": "2026-09-22 00:00:00",
+   "clicks": 1.0,
+   "impressions": 84.0,
+   "ctr": 0.0119,
+   "position": 30.5
+  },
+  {
+   "date": "2026-09-23 00:00:00",
+   "clicks": 0.0,
+   "impressions": 75.0,
+   "ctr": 0.0,
+   "position": 36.8
+  },
+  {
+   "date": "2026-09-24 00:00:00",
+   "clicks": 1.0,
+   "impressions": 104.0,
+   "ctr": 0.0096,
+   "position": 39.2
+  },
+  {
+   "date": "2026-09-25 00:00:00",
+   "clicks": 2.0,
+   "impressions": 118.0,
+   "ctr": 0.0169,
+   "position": 27.7
+  },
+  {
+   "date": "2026-09-26 00:00:00",
+   "clicks": 2.0,
+   "impressions": 97.0,
+   "ctr": 0.0206,
+   "position": 32.1
+  },
+  {
+   "date": "2026-09-27 00:00:00",
+   "clicks": 1.0,
+   "impressions": 91.0,
+   "ctr": 0.011,
+   "position": 31.9
+  },
+  {
+   "date": "2026-09-28 00:00:00",
+   "clicks": 0.0,
+   "impressions": 84.0,
+   "ctr": 0.0,
+   "position": 27.8
+  },
+  {
+   "date": "2026-09-29 00:00:00",
+   "clicks": 1.0,
+   "impressions": 113.0,
+   "ctr": 0.0088,
+   "position": 30.4
+  },
+  {
+   "date": "2026-09-30 00:00:00",
+   "clicks": 2.0,
+   "impressions": 90.0,
+   "ctr": 0.0222,
+   "position": 32.4
+  },
+  {
+   "date": "2026-10-01 00:00:00",
+   "clicks": 2.0,
+   "impressions": 93.0,
+   "ctr": 0.0215,
+   "position": 33.9
+  },
+  {
+   "date": "2026-10-02 00:00:00",
+   "clicks": 4.0,
+   "impressions": 130.0,
+   "ctr": 0.0308,
+   "position": 27.3
+  }
+ ]
+}
