@@ -1,7 +1,7 @@
 # webabc.ir — SEO / AEO / GEO Audit Package
 
 **Original audit:** 2026-09-22 · Health: 76 / 100  
-**Latest audit:** 2026-10-05 · Health: **82 / 100** (up +6 points) · Data: GSC export (2026-07-03 → 2026-10-02) + Search Console API & PSI API.  
+**Latest audit:** 2026-10-05 · Health: **83 / 100** (up +7 points) · Data: GSC export (2026-07-03 → 2026-10-02) + Search Console API & PSI API.  
 **Living Action Plan & Ledger:** [`ACTION-PLAN.md`](./ACTION-PLAN.md) — records all shipped work with commit hashes and schedules upcoming falsifiability clocks.
 
 ## Read in this order
@@ -9,7 +9,7 @@
 | # | File | What it answers | State |
 |---|---|---|---|
 | 1 | [`ACTION-PLAN.md`](./ACTION-PLAN.md) | **Source of truth**: Completed work ledger, active clocks calendar, strategic decisions | **Living document** |
-| 2 | [`AUDIT-REPORT-2026-10-05.md`](./AUDIT-REPORT-2026-10-05.md) | Latest audit: 2026-09-21 collapse analysis, health score 82/100, Persian market review | **Authoritative audit** |
+| 2 | [`AUDIT-REPORT-2026-10-05.md`](./AUDIT-REPORT-2026-10-05.md) | Latest audit: 2026-09-21 collapse analysis, health score 83/100, Persian market review | **Authoritative audit** |
 | 3 | [`FULL-AUDIT-REPORT.md`](./FULL-AUDIT-REPORT.md) | Original scorecard and baseline findings from 2026-09-22 | Baseline reference |
 | 4 | [`audit-data.json`](./audit-data.json) | Machine-readable findings for diffing between audits | Reference |
 | 5 | [`../BLOG-REWRITE-SPEC.md`](../BLOG-REWRITE-SPEC.md) | Binding content contract for all blog edits | **Active gate** |
@@ -19,6 +19,7 @@
 | File | Window | Notes |
 |---|---|---|
 | [`CTR-BASELINE-2026-10-05.json`](./CTR-BASELINE-2026-10-05.json) | 2026-07-03 → 2026-10-02 | **Latest.** 525 queries. Records permanent competitor exclusion (`ctr_exclusion`: 0.45% with vs 0.65% without). |
+| [`DRIFT-BASELINE-2026-10-05.json`](./DRIFT-BASELINE-2026-10-05.json) | 2026-09-07 → 2026-10-02 (28d) | Live Search Console API drift baseline for the 5 core money assets (headline-analyzer, speed-pricing, ramzarz, fa home, web-design). |
 | [`CTR-BASELINE-2026-09-27.json`](./CTR-BASELINE-2026-09-27.json) | 2026-06-25 → 2026-09-24 | Historical shifted-window baseline. |
 
 ## Detailed Findings Archive (2026-09-22)

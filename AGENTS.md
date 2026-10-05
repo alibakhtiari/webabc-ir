@@ -183,11 +183,11 @@ submit normal pages to it — it violates Google's policy. Always tell the user 
 
 | Item | Due | Read |
 |---|---|---|
-| §1.3 headline-analyzer title | 2026-10-27 | 6 days exposure — unmeasurable |
-| §3.2 / §3.2b snippets (`/ar/`, remido) | 2026-10-19 | first real CTR read |
+| §3.2b Remido CTR read | 2026-10-19 | title trimmed 65→58ch; read CTR on brand query `remido` |
+| §1.3 headline-analyzer title | 2026-10-27 | 6 days exposure — unmeasurable; check impression volume first |
+| §3.5 `ويب سي` brand (fa/ar) | 2026-11-10 | both home titles reinforced with `(ويب سي)`; pos ≤ 2 target |
 | §2.6 pricing post | 2026-11-16 | decides whether to produce more pricing content |
 | §3.1 buried pages | 2026-11-24 | services still rank 43–86 |
-| §3.5 `ويب سي` brand | 2026-11-10 | pos 4.9, 0 clicks |
 
 **Do not open a new work item whose clock has not expired.** Editing a page mid-clock
 destroys the measurement.

@@ -29,12 +29,12 @@ Scored on standard SEO/AEO/GEO category weights. All scores cite primary evidenc
 |---|---|---|---|
 | Technical SEO | 22% | **20** / 22 | Sitemaps 0 errors/0 warnings; 301 single-hop verified; `.md` siblings noindexed with canonical; `Vary: Accept` intact; `webabc.ir`-only canonical host; automated hreflang parity gate at build. |
 | Content Quality | 23% | **16** / 23 | 38×3 posts in 1500–2400w band with `keyTakeaways` + `faq`; thin content eliminated. 7 cannibalization clusters verified distinct or resolved. |
-| On-Page SEO | 20% | **15** / 20 | Titles/descriptions in character budgets; service areas hubs retitled to prevent city cannibalization; Remido title pending 10-19 trim. |
+| On-Page SEO | 20% | **16** / 20 | Titles/descriptions in character budgets; service areas hubs retitled; Remido titles trimmed across locales; `(ويب سي)` brand string added to both fa and ar home titles. |
 | Schema / Structured Data | 10% | **9** / 10 | `BlogPosting`, `FAQPage`, `BreadcrumbList`, `WebPage`, per-language `WebSite`, `WebApplication` + `Offer`. Rich results inspection PASS. |
-| Performance | 10% | **9** / 10 | Lighthouse lab 92–100, CLS 0, TBT 0–20ms. Only outlier is `/ar/` mobile (3.3s LCP). *Field data unavailable (CrUX below traffic threshold).* |
+| Performance | 10% | **9.5** / 10 | Lighthouse lab 97–100, CLS 0, TBT 0–20ms. `/ar/` mobile re-tested live at 2.3s LCP (score 0.94), 97/100 performance. *Field data unavailable (CrUX below traffic threshold).* |
 | AI Search Readiness (AEO/GEO) | 10% | **8** / 10 | Root router + 3 per-locale `llms.txt` (93 links each); full `llms-full.txt` corpora; `ai-catalog.json` published; 6 AI bots allowed; markdown negotiation. |
 | Images & Assets | 5% | **4** / 5 | 21 per-tool OG cards; 162 localized fa/ar RTL OG cards; Arabic fonts self-hosted in WOFF2 (zero Google Font calls). |
-| **Total** | **100%** | **82 / 100** | *(+6 points vs 2026-09-22 baseline)* |
+| **Total** | **100%** | **83 / 100** | *(+7 points vs 2026-09-22 baseline)* |
 
 ---
 
