@@ -12,38 +12,93 @@ const { lang, dictionary } = Astro.props;
 
 // Translate helpers
 const t = createTranslator(dictionary);
+const fontClass = lang === 'fa' ? 'font-persian' : lang === 'ar' ? 'font-arabic' : 'font-sans';
 
-const faqList = [1, 2, 3, 4]
+const faqList = [1, 2, 3, 4, 5]
   .map((n) => ({
     question: t(`localSeo.faq.q${n}`, ''),
     answer: t(`localSeo.faq.a${n}`, ''),
   }))
   .filter((item) => item.question && item.answer);
+
+const pricingData = (dictionary?.localSeo as any)?.pricing;
+const localProofData = (dictionary?.localSeo as any)?.localProof;
+const rightForBullets = (dictionary?.localSeo as any)?.rightFor?.bullets || [];
+
+const tiers = [
+  {
+    key: 'tier1',
+    data: pricingData?.tier1,
+    accent: 'blue',
+  },
+  {
+    key: 'tier2',
+    data: pricingData?.tier2,
+    accent: 'primary',
+    popular: true,
+  },
+  {
+    key: 'tier3',
+    data: pricingData?.tier3,
+    accent: 'amber',
+  },
+];
 ---
 
-<div class="space-y-16 py-8">
-  <!-- What Is Local SEO -->
+<div class={`space-y-20 py-8 ${fontClass}`}>
+  <!-- 1. What Is Local SEO -->
   <section class="bg-white dark:bg-slate-950">
     <div class="mx-auto max-w-4xl space-y-6 text-center">
-      <h2 class="font-persian text-3xl font-bold">
-        {t('localSeo.whatIs.title', 'What Is Local SEO?')}
+      <div class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary">
+        <span>📍</span>
+        <span>
+          {lang === 'fa' ? 'تسلط بر نقشه و جستجوی شهری' : lang === 'ar' ? 'تصدر الخرائط والبحث الجغرافي' : 'Local Search & Map Dominance'}
+        </span>
+      </div>
+      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+        {t('localSeo.whatIs.title', 'What Are Local SEO Services and How Do They Work?')}
       </h2>
-      <div class="space-y-4 font-persian leading-relaxed text-gray-600 dark:text-gray-300">
-        <p class="text-lg">{t('localSeo.whatIs.p1', '')}</p>
+      <div class="space-y-4 text-base leading-relaxed text-gray-600 sm:text-lg dark:text-gray-300">
+        <p>{t('localSeo.whatIs.p1', '')}</p>
         <p>{t('localSeo.whatIs.p2', '')}</p>
+      </div>
+
+      <!-- Quick Trust Badges -->
+      <div class="pt-4 flex flex-wrap items-center justify-center gap-3 text-xs font-medium text-gray-700 dark:text-gray-300">
+        <span class="rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-1.5 dark:border-slate-800 dark:bg-slate-900">
+          ✓ {lang === 'fa' ? 'بسته ۳تایی گوگل مپ (Google 3-Pack)' : lang === 'ar' ? 'حزمة خرائط جوجل الثلاثية' : 'Google Map 3-Pack'}
+        </span>
+        <span class="rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-1.5 dark:border-slate-800 dark:bg-slate-900">
+          ✓ {lang === 'fa' ? 'نقشه‌های نشان و بلد' : lang === 'ar' ? 'تطبيقات الملاحة الإقليمية' : 'Domestic Navigation Maps'}
+        </span>
+        <span class="rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-1.5 dark:border-slate-800 dark:bg-slate-900">
+          ✓ {lang === 'fa' ? 'انطباق ۱۰۰٪ استنادهای NAP' : lang === 'ar' ? 'تطابق بيانات NAP بنسبة 100%' : '100% Strict NAP Integrity'}
+        </span>
+        <span class="rounded-lg border border-gray-200 bg-gray-50/80 px-3 py-1.5 dark:border-slate-800 dark:bg-slate-900">
+          ✓ {lang === 'fa' ? 'اسکیمای LocalBusiness' : lang === 'ar' ? 'بيانات LocalBusiness المنظمة' : 'LocalBusiness Schema'}
+        </span>
       </div>
     </div>
   </section>
 
-  <!-- Features Section -->
+  <!-- 2. What Local SEO Includes (6 Core Pillars) -->
   <section class="bg-white dark:bg-slate-950">
     <div class="mx-auto max-w-6xl">
-      <h2 class="mb-12 text-center font-persian text-3xl font-bold">
-        {t('localSeo.features.title', 'Local SEO Solutions')}
-      </h2>
+      <div class="mb-12 text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+          {t('localSeo.features.title', 'What Does Local SEO Include?')}
+        </h2>
+        {
+          pricingData?.subtitle && (
+            <p class="mt-3 text-base text-gray-600 sm:text-lg dark:text-gray-300">
+              {t('localSeo.features.subtitle', '')}
+            </p>
+          )
+        }
+      </div>
 
       <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        <!-- Card 1: GMB -->
+        <!-- Pillar 1: Technical Local Audit -->
         <div
           class="group rounded-2xl border border-transparent bg-blue-50/50 p-6 transition-all duration-300 hover:border-blue-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500/30"
         >
@@ -57,31 +112,24 @@ const faqList = [1, 2, 3, 4]
               stroke="currentColor"
               stroke-width="2"
               viewBox="0 0 24 24"
-              ><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"
-              ></line><path
-                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
-              ></path></svg
             >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
           </div>
-          <h3 class="mb-3 font-persian text-xl font-bold text-gray-900 dark:text-white">
-            {t('localSeo.feature.gmb', 'Google Business Profile')}
+          <h3 class="mb-3 text-xl font-bold text-gray-900 dark:text-white">
+            {t('localSeo.feature.audit', 'Technical Local SEO Audit')}
           </h3>
-          <p class="font-persian text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-            {
-              t(
-                'localSeo.feature.gmbDesc',
-                'Claiming, optimizing, and keeping your Google Business Profile updated.'
-              )
-            }
+          <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            {t('localSeo.feature.auditDesc', 'Auditing mobile speed, LocalBusiness schema, and geo-landing pages.')}
           </p>
         </div>
 
-        <!-- Card 2: Local Keywords -->
+        <!-- Pillar 2: Google Business Profile (GBP) -->
         <div
-          class="group rounded-2xl border border-transparent bg-green-50/50 p-6 transition-all duration-300 hover:border-green-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-green-500/30"
+          class="group rounded-2xl border border-transparent bg-emerald-50/50 p-6 transition-all duration-300 hover:border-emerald-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-emerald-500/30"
         >
           <div
-            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-green-600 shadow-sm transition-transform group-hover:scale-110 dark:bg-slate-800"
+            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-emerald-600 shadow-sm transition-transform group-hover:scale-110 dark:bg-slate-800"
           >
             <svg
               aria-hidden="true"
@@ -90,120 +138,21 @@ const faqList = [1, 2, 3, 4]
               stroke="currentColor"
               stroke-width="2"
               viewBox="0 0 24 24"
-              ><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"
-              ></circle><circle cx="12" cy="12" r="2"></circle></svg
             >
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
           </div>
-          <h3 class="mb-3 font-persian text-xl font-bold text-gray-900 dark:text-white">
-            {t('localSeo.feature.localKeywords', 'Local Keyword Targeting')}
+          <h3 class="mb-3 text-xl font-bold text-gray-900 dark:text-white">
+            {t('localSeo.feature.gmb', 'Google Business Profile (GBP)')}
           </h3>
-          <p class="font-persian text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-            {
-              t(
-                'localSeo.feature.localKeywordsDesc',
-                'Targeting local keywords that potential customers in your area search for.'
-              )
-            }
+          <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            {t('localSeo.feature.gmbDesc', 'Optimizing Google Business Profile categories, photos, and weekly posts.')}
           </p>
         </div>
 
-        <!-- Card 3: Near Me -->
-        <div
-          class="group rounded-2xl border border-transparent bg-purple-50/50 p-6 transition-all duration-300 hover:border-purple-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-purple-500/30"
-        >
-          <div
-            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-purple-600 shadow-sm transition-transform group-hover:scale-110 dark:bg-slate-800"
-          >
-            <svg
-              aria-hidden="true"
-              class="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              ><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"
-              ></line></svg
-            >
-          </div>
-          <h3 class="mb-3 font-persian text-xl font-bold text-gray-900 dark:text-white">
-            {t('localSeo.feature.nearMe', 'Near Me Optimization')}
-          </h3>
-          <p class="font-persian text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-            {
-              t(
-                'localSeo.feature.nearMeDesc',
-                "Structuring layout content to capture highly-relevant 'near me' search queries."
-              )
-            }
-          </p>
-        </div>
-
-        <!-- Card 4: Local Links -->
-        <div
-          class="group rounded-2xl border border-transparent bg-amber-50/50 p-6 transition-all duration-300 hover:border-amber-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-amber-500/30"
-        >
-          <div
-            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-amber-600 shadow-sm transition-transform group-hover:scale-110 dark:bg-slate-800"
-          >
-            <svg
-              aria-hidden="true"
-              class="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              ><path d="M21 10c0 7-9 13-9 13s-9-6-9-12a9 9 0 0 1 18 0z"></path><circle
-                cx="12"
-                cy="10"
-                r="3"></circle></svg
-            >
-          </div>
-          <h3 class="mb-3 font-persian text-xl font-bold text-gray-900 dark:text-white">
-            {t('localSeo.feature.localLinks', 'Local Link Building')}
-          </h3>
-          <p class="font-persian text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-            {
-              t(
-                'localSeo.feature.localLinksDesc',
-                'Earning high-quality backlinks from popular regional sites and directories.'
-              )
-            }
-          </p>
-        </div>
-
-        <!-- Card 5: Reviews -->
-        <div
-          class="group rounded-2xl border border-transparent bg-rose-50/50 p-6 transition-all duration-300 hover:border-rose-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-rose-500/30"
-        >
-          <div
-            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-rose-600 shadow-sm transition-transform group-hover:scale-110 dark:bg-slate-800"
-          >
-            <svg
-              aria-hidden="true"
-              class="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              ><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline
-                points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="21"
-              ></line><polyline points="8 17 10 19 15 14"></polyline></svg
-            >
-          </div>
-          <h3 class="mb-3 font-persian text-xl font-bold text-gray-900 dark:text-white">
-            {t('localSeo.feature.reviews', 'Review Management')}
-          </h3>
-          <p class="font-persian text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-            {
-              t(
-                'localSeo.feature.reviewsDesc',
-                'Strategies for gathering positive client reviews and professional responses.'
-              )
-            }
-          </p>
-        </div>
-
-        <!-- Card 6: Reports -->
+        <!-- Pillar 3: Domestic Maps (Neshan & Balad) -->
         <div
           class="group rounded-2xl border border-transparent bg-indigo-50/50 p-6 transition-all duration-300 hover:border-indigo-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-indigo-500/30"
         >
@@ -217,33 +166,326 @@ const faqList = [1, 2, 3, 4]
               stroke="currentColor"
               stroke-width="2"
               viewBox="0 0 24 24"
-              ><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"
-              ></line><line x1="6" y1="20" x2="6" y2="14"></line></svg
             >
+              <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+            </svg>
           </div>
-          <h3 class="mb-3 font-persian text-xl font-bold text-gray-900 dark:text-white">
-            {t('localSeo.feature.localReports', 'Local Performance Reports')}
+          <h3 class="mb-3 text-xl font-bold text-gray-900 dark:text-white">
+            {t('localSeo.feature.iranMaps', 'Navigation Maps (Neshan & Balad)')}
           </h3>
-          <p class="font-persian text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-            {
-              t(
-                'localSeo.feature.localReportsDesc',
-                'Clear details on rank growth, Google Maps traffic, and interactions.'
-              )
-            }
+          <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            {t('localSeo.feature.iranMapsDesc', 'Registration and verification on leading regional navigation apps.')}
+          </p>
+        </div>
+
+        <!-- Pillar 4: NAP Consistency & Local Citations -->
+        <div
+          class="group rounded-2xl border border-transparent bg-amber-50/50 p-6 transition-all duration-300 hover:border-amber-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-amber-500/30"
+        >
+          <div
+            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-amber-600 shadow-sm transition-transform group-hover:scale-110 dark:bg-slate-800"
+          >
+            <svg
+              aria-hidden="true"
+              class="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-12a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <h3 class="mb-3 text-xl font-bold text-gray-900 dark:text-white">
+            {t('localSeo.feature.nap', 'NAP Consistency & Directory Citations')}
+          </h3>
+          <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            {t('localSeo.feature.napDesc', 'Building strict NAP consistency across trusted directories and trade registries.')}
+          </p>
+        </div>
+
+        <!-- Pillar 5: Review & Reputation Management -->
+        <div
+          class="group rounded-2xl border border-transparent bg-rose-50/50 p-6 transition-all duration-300 hover:border-rose-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-rose-500/30"
+        >
+          <div
+            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-rose-600 shadow-sm transition-transform group-hover:scale-110 dark:bg-slate-800"
+          >
+            <svg
+              aria-hidden="true"
+              class="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <h3 class="mb-3 text-xl font-bold text-gray-900 dark:text-white">
+            {t('localSeo.feature.reviews', 'Review & Reputation Management')}
+          </h3>
+          <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            {t('localSeo.feature.reviewsDesc', 'Workflows for capturing 5-star reviews and professional customer responses.')}
+          </p>
+        </div>
+
+        <!-- Pillar 6: Geo Keywords & 'Near Me' Search -->
+        <div
+          class="group rounded-2xl border border-transparent bg-purple-50/50 p-6 transition-all duration-300 hover:border-purple-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-purple-500/30"
+        >
+          <div
+            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-purple-600 shadow-sm transition-transform group-hover:scale-110 dark:bg-slate-800"
+          >
+            <svg
+              aria-hidden="true"
+              class="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+          <h3 class="mb-3 text-xl font-bold text-gray-900 dark:text-white">
+            {t('localSeo.feature.nearMe', 'Geo-Targeted & Near Me Search')}
+          </h3>
+          <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            {t('localSeo.feature.nearMeDesc', 'Structuring content to capture high-intent city queries and urgent near-me searches.')}
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Process Section -->
+  <!-- 3. Transparent Local SEO Price Band (Repo Facts) -->
+  <section class="rounded-3xl border border-gray-100 bg-gray-50/60 p-8 py-16 dark:border-slate-800 dark:bg-slate-900/60">
+    <div class="mx-auto max-w-6xl">
+      <div class="mb-12 text-center">
+        <div class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-3.5 py-1 text-xs font-bold text-emerald-700 dark:text-emerald-400">
+          <span>💰</span>
+          <span>{lang === 'fa' ? 'تعرفه مصوب و شفاف' : lang === 'ar' ? 'أسعار واضحة وموثقة' : 'Transparent Pricing'}</span>
+        </div>
+        <h2 class="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+          {t('localSeo.pricing.title', 'Transparent Local SEO Pricing & Packages (2026)')}
+        </h2>
+        {
+          pricingData?.subtitle && (
+            <p class="mt-3 text-base text-gray-600 sm:text-lg dark:text-gray-300">
+              {pricingData.subtitle}
+            </p>
+          )
+        }
+        {
+          pricingData?.note && (
+            <p class="mx-auto mt-2 max-w-2xl text-xs text-gray-500 dark:text-gray-400">
+              {pricingData.note}
+            </p>
+          )
+        }
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+        {
+          tiers.map((tier) => {
+            const data = tier.data;
+            if (!data) return null;
+            const isPopular = tier.popular;
+            return (
+              <div
+                class={`relative flex flex-col rounded-3xl bg-white p-8 transition-all duration-300 dark:bg-slate-900 ${
+                  isPopular
+                    ? 'border-2 border-primary shadow-xl ring-2 ring-primary/20 dark:border-primary'
+                    : 'border border-gray-100 shadow-sm hover:shadow-lg dark:border-slate-800'
+                }`}
+              >
+                {isPopular && (
+                  <div class="absolute -top-3.5 start-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-bold text-primary-foreground shadow-md">
+                    {lang === 'fa' ? 'محبوب‌ترین پکیج رقابتی' : lang === 'ar' ? 'الباقة الأكثر طلباً' : 'Most Popular Retainer'}
+                  </div>
+                )}
+
+                <div class="mb-6">
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+                    {data.name}
+                  </h3>
+                  <p class="mt-2 text-xs leading-relaxed text-gray-500 dark:text-gray-400">
+                    {data.desc}
+                  </p>
+                </div>
+
+                <div class="mb-6 rounded-2xl bg-gray-50 p-4 dark:bg-slate-800/60">
+                  <div class="text-2xl font-black text-gray-900 sm:text-3xl dark:text-white">
+                    {data.price}
+                  </div>
+                  <div class="mt-1 text-xs font-medium text-gray-500 dark:text-gray-400">
+                    {data.period} {data.usdPrice && `• ${data.usdPrice}`}
+                  </div>
+                </div>
+
+                <div class="mb-8 grow">
+                  <div class="mb-3 text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300">
+                    {lang === 'fa' ? 'خروجی‌ها و اقدامات کلیدی:' : lang === 'ar' ? 'المخرجات والإجراءات الرئيسية:' : 'Key Deliverables:'}
+                  </div>
+                  <ul class="space-y-2.5 text-xs text-gray-600 dark:text-gray-300">
+                    {Array.isArray(data.deliverables) &&
+                      data.deliverables.map((item: string) => (
+                        <li class="flex items-start gap-2">
+                          <svg
+                            aria-hidden="true"
+                            class="h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                            viewBox="0 0 24 24"
+                          >
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+
+                <a
+                  href={`/${lang}/contact/`}
+                  class={`inline-flex w-full items-center justify-center rounded-xl py-3 text-sm font-bold transition-all ${
+                    isPopular
+                      ? 'bg-primary text-primary-foreground shadow-md hover:bg-primary/90'
+                      : 'border border-gray-200 bg-white text-gray-800 hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700'
+                  }`}
+                >
+                  {lang === 'fa' ? 'درخواست مشاوره و سفارش' : lang === 'ar' ? 'طلب استشارة وعقد' : 'Request Consultation'}
+                </a>
+              </div>
+            );
+          })
+        }
+      </div>
+
+      <!-- Cross-Link to Full Pricing Guide -->
+      <div class="mt-10 text-center">
+        <a
+          href={pricingData?.ctaUrl || `/${lang}/blog/seo-services-pricing-guide-2026/`}
+          class="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-bold text-gray-900 shadow-sm border border-gray-200 transition-all hover:border-primary hover:text-primary dark:border-slate-800 dark:bg-slate-900 dark:text-white dark:hover:text-primary"
+        >
+          <span>
+            {t('localSeo.pricing.cta', 'View Comprehensive 2026 SEO Pricing Guide')}
+          </span>
+          <span class="text-primary transition-transform group-hover:translate-x-1" aria-hidden="true">
+            {lang === 'en' ? '→' : '←'}
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Verifiable Regional Proof & Case Studies (Qazvin & Beyond) -->
+  <section class="mx-auto max-w-6xl space-y-12">
+    <div class="text-center">
+      <div class="inline-flex items-center gap-1.5 rounded-full bg-blue-500/10 px-3.5 py-1 text-xs font-bold text-blue-700 dark:text-blue-400">
+        <span>🏢</span>
+        <span>{lang === 'fa' ? 'نتایج و سوابق اثبات‌شده' : lang === 'ar' ? 'نتائج مثبتة وموثقة' : 'Verifiable Local Track Record'}</span>
+      </div>
+      <h2 class="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+        {t('localSeo.localProof.title', 'Verifiable Regional Track Record: From Qazvin to Capital Hubs')}
+      </h2>
+      {
+        localProofData?.subtitle && (
+          <p class="mt-3 text-base text-gray-600 sm:text-lg dark:text-gray-300">
+            {localProofData.subtitle}
+          </p>
+        )
+      }
+    </div>
+
+    <!-- Verified Regional Proof Highlights Banner -->
+    {
+      localProofData?.points && Array.isArray(localProofData.points) && (
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {localProofData.points.map((point: any) => (
+            <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900">
+              <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                📍
+              </div>
+              <h3 class="mb-2 text-lg font-bold text-gray-900 dark:text-white">
+                {point.title}
+              </h3>
+              <p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300">
+                {point.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      )
+    }
+
+    <!-- Case Studies Cards Grid (Frontmatter-Reconciled Data) -->
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        [
+          {
+            slug: 'mehromah-qazvin',
+            title: lang === 'fa' ? 'مجتمع تجاری مهروماه قزوین' : lang === 'ar' ? 'مجمع مهروماه التجاري قزوين' : 'Mehromah Mall Qazvin',
+            tag: lang === 'fa' ? 'رتبه ۱ گوگل مپ قزوین' : lang === 'ar' ? 'المرتبة 1 خرائط جوجل' : '#1 Google Maps Qazvin',
+            desc: lang === 'fa'
+              ? 'بزرگ‌ترین مرکز خرید و پارکینگ هوشمند قزوین با بیش از ۳۰۰ واحد تجاری و تصاحب رتبه ۱ جستجوهای مراکز تجاری'
+              : lang === 'ar'
+              ? 'أكبر مركز تسوق ومواقف ذكية في قزوين وتصدر نتائج البحث مع أكثر من 300 متجر تجاري'
+              : 'Premier commercial retail & smart parking hub (+300 retail units) capturing top regional search visibility',
+          },
+          {
+            slug: 'behrad-dc',
+            title: lang === 'fa' ? 'کلینیک دندانپزشکی بهراد کرج' : lang === 'ar' ? 'عيادة بهراد لطب الأسنان كرج' : 'Behrad Dental Clinic Karaj',
+            tag: lang === 'fa' ? '+۲۳۰٪ نوبت‌دهی آنلاین' : lang === 'ar' ? '+230% حجز المواعيد' : '+230% Online Appointments',
+            desc: lang === 'fa'
+              ? 'افزایش ۲۳۰ درصدی نوبت‌دهی آنلاین و تصدر نتایج دندانپزشکی در منطقه شاهین ویلا و البرز'
+              : lang === 'ar'
+              ? 'زيادة حجز المواعيد بنسبة 230% وتصدر نتائج البحث الطبي لطب الأسنان في كرج'
+              : '230% surge in patient appointments through targeted geo-intent keyword dominance in Karaj',
+          },
+          {
+            slug: 'tahami-clinic',
+            title: lang === 'fa' ? 'کلینیک زیبایی تهامی تهران' : lang === 'ar' ? 'عيادة تهامي لجراحة التجميل طهران' : 'Tahami Aesthetic Clinic Tehran',
+            tag: lang === 'fa' ? '+۳۴۰٪ ورودی ارگانیک' : lang === 'ar' ? '+340% زيارات عضوية' : '+340% Organic Search',
+            desc: lang === 'fa'
+              ? 'سئوی محلی تخصصی و تسلط بر جستجوهای جراحی زیبایی و درماتولوژی با رشد ۳۴۰ درصدی ورودی ارگانیک در تهران'
+              : lang === 'ar'
+              ? 'تصدر عبارات جراحة التجميل والجلدية عالية المنافسة مع نمو 340% في الزيارات العضوية بطهران'
+              : 'Dominating competitive aesthetic and dermatology queries across Tehran with +340% organic traffic growth',
+          },
+        ].map((cs) => (
+          <a
+            href={`/${lang}/portfolio/${cs.slug}/`}
+            class="group block rounded-2xl border border-gray-100 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
+          >
+            <div class="mb-2">
+              <span class="inline-block rounded-md bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">
+                {cs.tag}
+              </span>
+            </div>
+            <h3 class="mb-2 text-lg font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+              {cs.title}
+            </h3>
+            <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+              {cs.desc}
+            </p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- 5. Process Section -->
   <section
     class="rounded-3xl border border-gray-100 bg-gray-50/50 p-8 py-16 dark:border-slate-800 dark:bg-slate-900"
   >
     <div class="mx-auto max-w-6xl">
-      <h2 class="mb-12 text-center font-persian text-3xl font-bold">
-        {t('localSeo.process.title', 'Our Execution Process')}
+      <h2 class="mb-12 text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+        {t('localSeo.process.title', 'Our Local SEO Process')}
       </h2>
 
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -253,10 +495,10 @@ const faqList = [1, 2, 3, 4]
               <div class="absolute -top-4 -left-4 flex h-12 w-12 rotate-3 items-center justify-center rounded-xl bg-primary text-xl font-bold text-primary-foreground shadow-lg transition-transform group-hover:scale-110 group-hover:rotate-6">
                 0{step}
               </div>
-              <h3 class="mt-2 mb-4 font-persian text-xl font-bold text-gray-900 dark:text-white">
+              <h3 class="mt-2 mb-4 text-xl font-bold text-gray-900 dark:text-white">
                 {t(`localSeo.process.step${step}.title`, `Step ${step}`)}
               </h3>
-              <p class="font-persian text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+              <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
                 {t(`localSeo.process.step${step}.desc`, '')}
               </p>
             </div>
@@ -266,27 +508,40 @@ const faqList = [1, 2, 3, 4]
     </div>
   </section>
 
-  <!-- Is This Right For You -->
+  <!-- 6. Is This Right For You -->
   <section
-    class="rounded-3xl border border-gray-100 bg-gray-50/50 py-16 dark:border-slate-800 dark:bg-slate-900"
+    class="rounded-3xl border border-gray-100 bg-gray-50/50 py-16 px-6 dark:border-slate-800 dark:bg-slate-900"
   >
-    <div class="mx-auto max-w-3xl space-y-4 px-4 text-center">
-      <h2 class="font-persian text-2xl font-bold">
+    <div class="mx-auto max-w-3xl space-y-6 text-center">
+      <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white">
         {t('localSeo.rightFor.title', 'Is Local SEO Right for Your Business?')}
       </h2>
-      <p class="font-persian leading-relaxed text-gray-600 dark:text-gray-300">
+      <p class="leading-relaxed text-gray-600 dark:text-gray-300">
         {t('localSeo.rightFor.text', '')}
       </p>
+
+      {
+        rightForBullets.length > 0 && (
+          <div class="grid grid-cols-1 gap-3 pt-4 text-start sm:grid-cols-2">
+            {rightForBullets.map((bullet: string) => (
+              <div class="flex items-center gap-2 rounded-xl bg-white p-3 text-xs font-medium text-gray-700 shadow-2xs dark:bg-slate-800 dark:text-gray-200">
+                <span class="text-emerald-500">✓</span>
+                <span>{bullet}</span>
+              </div>
+            ))}
+          </div>
+        )
+      }
     </div>
   </section>
 
-  <!-- Target Service Areas Grid -->
+  <!-- 7. Target Service Areas Grid -->
   <section class="mx-auto max-w-6xl">
     <div class="mb-10 text-center">
-      <h2 class="font-persian text-3xl font-bold text-gray-900 dark:text-white">
+      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
         {lang === 'fa' ? 'مناطق تحت پوشش سئو محلی' : lang === 'ar' ? 'المناطق والمدن المشمولة بالسيو المحلي' : 'Target Service Areas for Local SEO'}
       </h2>
-      <p class="mt-3 font-persian text-gray-600 dark:text-gray-300">
+      <p class="mt-3 text-gray-600 dark:text-gray-300">
         {lang === 'fa' 
           ? 'استراتژی‌های سئو شهری متناسب با قوانین نقشه، دایرکتوری‌های بومی و رفتار کاربران هر منطقه'
           : lang === 'ar'
@@ -306,7 +561,7 @@ const faqList = [1, 2, 3, 4]
           {
             slug: 'qazvin',
             name: lang === 'fa' ? 'قزوین' : lang === 'ar' ? 'قزوين' : 'Qazvin',
-            desc: lang === 'fa' ? 'سئو شهرک‌های صنعتی، بازار سنتی و حضور در رتبه اول نشان و بلد با دفتر مرکزی قزوین' : lang === 'ar' ? 'سيو الأنشطة الصناعية والتجارية والمراكز التجارية في قزوين' : 'Industrial hub & retail SEO with on-site headquarters support in Qazvin',
+            desc: lang === 'fa' ? 'سئو شهرک‌های صنعتی کاسپین و لیا، بازار سنتی، نشان و بلد با دفتر مرکزی قزوین' : lang === 'ar' ? 'سيو الأنشطة الصناعية والتجارية والمراكز التجارية في قزوين' : 'Industrial hub & retail SEO with on-site headquarters support in Qazvin',
           },
           {
             slug: 'dubai',
@@ -334,14 +589,14 @@ const faqList = [1, 2, 3, 4]
             class="group block rounded-2xl border border-gray-100 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
           >
             <div class="mb-3 flex items-center justify-between">
-              <h3 class="font-persian text-xl font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+              <h3 class="text-xl font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
                 {loc.name}
               </h3>
-              <span class="text-primary transition-transform group-hover:translate-x-1">
+              <span class="text-primary transition-transform group-hover:translate-x-1" aria-hidden="true">
                 {lang === 'en' ? '→' : '←'}
               </span>
             </div>
-            <p class="font-persian text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
               {loc.desc}
             </p>
           </a>
@@ -350,71 +605,13 @@ const faqList = [1, 2, 3, 4]
     </div>
   </section>
 
-  <!-- Local Case Studies Grid -->
+  <!-- 8. Strategic Guides & Pricing Benchmarks -->
   <section class="mx-auto max-w-6xl">
     <div class="mb-10 text-center">
-      <h2 class="font-persian text-3xl font-bold text-gray-900 dark:text-white">
-        {lang === 'fa' ? 'مطالعات موردی و نتایج اثبات‌شده سئو محلی' : lang === 'ar' ? 'دراسات حالة ونتائج حقيقية في السيو المحلي' : 'Verified Local SEO Case Studies'}
-      </h2>
-      <p class="mt-3 font-persian text-gray-600 dark:text-gray-300">
-        {lang === 'fa'
-          ? 'چگونه مشتریان ما در صنایع مختلف به رتبه ۱ نتایج شهری و نقشه گوگل دست یافتند'
-          : lang === 'ar'
-          ? 'قصص نجاح عملائنا في تصدر نتائج الخرائط ومحركات البحث بمختلف القطاعات'
-          : 'How our clients in healthcare, retail, and manufacturing captured #1 local rankings'}
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {
-        [
-          {
-            slug: 'mehromah-qazvin',
-            title: lang === 'fa' ? 'مجتمع تجاری مهروماه قزوین' : lang === 'ar' ? 'مجمع مهروماه التجاري قزوين' : 'Mehromah Mall Qazvin',
-            tag: lang === 'fa' ? 'رتبه ۱ گوگل مپ قزوین' : lang === 'ar' ? 'المرتبة 1 خرائط جوجل' : '#1 Google Maps Qazvin',
-            desc: lang === 'fa' ? 'بزرگ‌ترین مرکز خرید و پارکینگ هوشمند قزوین با تصاحب رتبه اول جستجوهای مراکز تجاری' : lang === 'ar' ? 'أكبر مركز تسوق ومواقف ذكية في قزوين وتصدر نتائج البحث' : 'Premier commercial retail & smart parking hub capturing top regional search visibility',
-          },
-          {
-            slug: 'behrad-dc',
-            title: lang === 'fa' ? 'کلینیک دندانپزشکی بهراد کرج' : lang === 'ar' ? 'عيادة بهراد لطب الأسنان كرج' : 'Behrad Dental Clinic Karaj',
-            tag: lang === 'fa' ? 'سئوی پزشکی و محلی' : lang === 'ar' ? 'سيو طبي ومحلي' : 'Medical Local SEO',
-            desc: lang === 'fa' ? 'افزایش ۳۰۰ درصدی نوبت‌دهی آنلاین و تصدر نتایج دندانپزشکی در منطقه کرج' : lang === 'ar' ? 'زيادة حجز المواعيد بنسبة 300% وتصدر نتائج البحث الطبي في كرج' : '300% surge in patient appointments through targeted geo-intent keyword dominance',
-          },
-          {
-            slug: 'tahami-clinic',
-            title: lang === 'fa' ? 'کلینیک زیبایی تهامی تهران' : lang === 'ar' ? 'عيادة تهامي لجراحة التجميل طهران' : 'Tahami Aesthetic Clinic Tehran',
-            tag: lang === 'fa' ? 'رتبه ۱ عبارات پررقابت تهران' : lang === 'ar' ? 'المرتبة 1 في طهران' : '#1 High-Intent Aesthetic Search',
-            desc: lang === 'fa' ? 'سئوی محلی تخصصی و تسلط بر جستجوهای جراحی زیبایی و درماتولوژی در تهران' : lang === 'ar' ? 'تصدر عبارات جراحة التجميل والجلدية عالية المنافسة في طهران' : 'Dominating competitive aesthetic and dermatology queries across Tehran districts',
-          },
-        ].map((cs) => (
-          <a
-            href={`/${lang}/portfolio/${cs.slug}/`}
-            class="group block rounded-2xl border border-gray-100 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
-          >
-            <div class="mb-2">
-              <span class="inline-block rounded-md bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">
-                {cs.tag}
-              </span>
-            </div>
-            <h3 class="mb-2 font-persian text-lg font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
-              {cs.title}
-            </h3>
-            <p class="font-persian text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-              {cs.desc}
-            </p>
-          </a>
-        ))
-      }
-    </div>
-  </section>
-
-  <!-- Strategic Guides & Pricing Benchmarks -->
-  <section class="mx-auto max-w-6xl">
-    <div class="mb-10 text-center">
-      <h2 class="font-persian text-3xl font-bold text-gray-900 dark:text-white">
+      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
         {lang === 'fa' ? 'راهنماهای تحلیلی، استراتژی و تعرفه سئو' : lang === 'ar' ? 'أدلة السيو الاستراتيجية وجدول الأسعار' : 'Strategic SEO & Pricing Guides'}
       </h2>
-      <p class="mt-3 font-persian text-gray-600 dark:text-gray-300">
+      <p class="mt-3 text-gray-600 dark:text-gray-300">
         {lang === 'fa'
           ? 'بررسی عمیق هزینه‌ها، استانداردهای سئو محلی و تکنیک‌های برتر رتبه‌گیری در سال ۲۰۲۶'
           : lang === 'ar'
@@ -454,10 +651,10 @@ const faqList = [1, 2, 3, 4]
                 {g.tag}
               </span>
             </div>
-            <h3 class="mb-2 font-persian text-lg font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+            <h3 class="mb-2 text-lg font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
               {g.title}
             </h3>
-            <p class="font-persian text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
               {g.desc}
             </p>
           </a>
@@ -466,7 +663,7 @@ const faqList = [1, 2, 3, 4]
     </div>
   </section>
 
-  <!-- FAQ Section -->
+  <!-- 9. FAQ Section -->
   {
     faqList.length > 0 && (
       <section class="mx-auto max-w-3xl">

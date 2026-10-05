@@ -242,6 +242,26 @@ const faqList = [1, 2, 3, 4]
               ))
             }
           </ul>
+
+          <div class="mt-6 pt-5 border-t border-amber-200/60 dark:border-slate-800">
+            <a
+              href={`/${lang}/services/local-seo/`}
+              class="inline-flex items-center gap-2 font-persian text-sm font-bold text-amber-700 transition-colors hover:text-amber-800 dark:text-amber-400 dark:hover:text-amber-300 group-hover:underline"
+            >
+              <span>
+                {
+                  lang === 'fa'
+                    ? 'مشاهده خدمات سئو محلی'
+                    : lang === 'ar'
+                      ? 'عرض خدمات السيو المحلي'
+                      : 'View Local SEO Services'
+                }
+              </span>
+              <span class="inline-block transition-transform group-hover:translate-x-1" aria-hidden="true">
+                {lang === 'en' ? '→' : '←'}
+              </span>
+            </a>
+          </div>
         </div>
       </div>
     </div>

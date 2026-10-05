@@ -1,31 +1,115 @@
 {
   "localSeoTitle": "Local SEO Services | Rank #1 in Google Maps & Local Search",
-  "localSeoDescription": "Skyrocket your local search visibility with WebABC. Dominate the Google Map Pack, get found by nearby customers, and drive foot traffic.",
+  "localSeoDescription": "Dominate the Google Map Pack and local search queries. Drive high-intent phone calls, in-store foot traffic, and verified local conversions with WebABC.",
   "whatIs": {
-    "title": "What is Local SEO?",
-    "p1": "Local SEO is a search engine optimization (SEO) strategy that helps your business be more visible in local search results on Google. Any business that has a physical location or serves a geographic area can benefit from local SEO.",
-    "p2": "When potential customers search for services 'near me' or in their city, Local SEO ensures your business appears at the top of the results, including the Google Map Pack. It's about connecting with customers who are ready to buy in your area."
+    "title": "What Are Local SEO Services and How Do They Work?",
+    "p1": "Local SEO is a targeted search engine optimization strategy that helps physical storefronts, service providers, and regional businesses dominate high-intent geographic searches. When prospective clients in your city look for immediate solutions, Local SEO connects you directly to ready-to-buy consumers.",
+    "p2": "When searchers query terms like 'Local SEO services', 'near me', or city-specific keywords like 'in Tehran', 'in Qazvin', or 'in Dubai', Local SEO ensures your business claims the top positions of the Google 3-Pack and regional navigation maps, where over 50% of mobile clicks convert to direct calls."
   },
   "features": {
-    "title": "Our Local SEO Features"
+    "title": "What Does Local SEO Include?",
+    "subtitle": "The 6 core engineering pillars to capture top local map rankings, foot traffic, and high-intent inbound calls"
   },
   "feature": {
-    "gmb": "Google Business Profile",
-    "gmbDesc": "Complete optimization of your Google Business Profile (formerly GMB), including categories, service areas, photos, and posts, to maximize visibility in Maps and local search.",
+    "audit": "Technical Local SEO Audit",
+    "auditDesc": "Auditing mobile performance, sub-second Core Web Vitals, LocalBusiness schema implementation, and geo-landing page architecture.",
+    "gmb": "Google Business Profile (GBP)",
+    "gmbDesc": "Complete setup, verification, and ongoing optimization of your Google Business Profile to dominate the 3-Pack with optimized categories, photos, and weekly posts.",
+    "iranMaps": "Regional & Domestic Navigation Maps",
+    "iranMapsDesc": "Registration and optimization on popular regional navigation maps and directories to capture driving routes and local consumer transit.",
+    "nap": "NAP Consistency & Directory Citations",
+    "napDesc": "Enforcing 100% strict Name, Address, and Phone Number (NAP) consistency across trusted directories to reinforce geographic trust signals.",
+    "reviews": "Review & Reputation Management",
+    "reviewsDesc": "Structured review-generation workflows to earn 5-star customer ratings and professional review response handling for algorithmic authority.",
+    "nearMe": "Geo-Targeted Keywords & 'Near Me' Search",
+    "nearMeDesc": "Researching and targeting high-intent commercial queries specific to your service cities, capturing mobile users seeking immediate solutions.",
     "localKeywords": "Local Keyword Targeting",
     "localKeywordsDesc": "Researching and targeting high-intent keywords specific to your city and service area, not just generic industry terms that ignore geography.",
-    "nearMe": "'Near Me' Optimization",
-    "nearMeDesc": "Structuring page content, headings, and schema to capture traffic from users searching for an immediate, nearby solution.",
     "localLinks": "Local Link Building",
     "localLinksDesc": "Acquiring high-quality backlinks from reputable local directories, chambers of commerce, and community websites relevant to your area.",
-    "reviews": "Review Management",
-    "reviewsDesc": "Strategies to generate more positive reviews consistently and respond professionally to every review, since review signals directly affect Map Pack ranking.",
     "localReports": "Local Performance Reporting",
     "localReportsDesc": "Detailed monthly reports tracking your local rankings, calls, direction requests, and Map Pack visibility so you can see exactly what's working."
   },
+  "pricing": {
+    "title": "Transparent Local SEO Pricing & Packages (2026)",
+    "subtitle": "Engineering-first, deliverable-backed retainers with zero hidden agency markups",
+    "note": "Based on WebABC's official 2026 SEO Pricing Guide; retainer tiers scale with industry competitive density and geographic footprint.",
+    "tier1": {
+      "name": "Local Map Pack Setup & Foundation",
+      "price": "$500 – $1,200",
+      "usdPrice": "$500 – $1,200",
+      "period": "One-time Project",
+      "desc": "For local businesses establishing their Google Maps presence and standardizing citation data.",
+      "deliverables": [
+        "Initial technical audit & NAP consistency check",
+        "GBP setup, claiming, category optimization & verification",
+        "Directory registration across trusted regional navigation maps",
+        "LocalBusiness Schema & GeoCoordinates implementation",
+        "Baseline visibility report & full account credential handover"
+      ]
+    },
+    "tier2": {
+      "name": "Monthly Local Growth & Dominance Retainer",
+      "price": "$800 – $1,500",
+      "usdPrice": "$800 – $1,500",
+      "period": "Monthly",
+      "popular": true,
+      "desc": "Built for clinics, practices, retail, and service providers actively competing for #1 Map Pack rankings.",
+      "deliverables": [
+        "Continuous 3-Pack rank monitoring for geo-intent keywords",
+        "Weekly Google Business Profile posts & photo updates",
+        "Automated 5-star review acquisition workflow & responses",
+        "Ongoing local citation building & niche regional backlinks",
+        "Local landing page CRO & conversion tracking",
+        "Transparent monthly report on phone calls & direction requests"
+      ]
+    },
+    "tier3": {
+      "name": "Industrial & Multi-Location Regional SEO",
+      "price": "$1,500 – $3,000+",
+      "usdPrice": "$1,500 – $3,000+",
+      "period": "Monthly",
+      "popular": false,
+      "desc": "For manufacturing plants (Caspian, Liya) or multi-location brands across capital and regional markets.",
+      "deliverables": [
+        "B2B industrial local search & Request For Quote (RFQ) capture",
+        "Multi-location NAP orchestration across branches",
+        "Multilingual localized content architecture (FA / EN / AR)",
+        "Regional digital PR & authoritative industry citations",
+        "Executive consultation & in-person strategic reviews"
+      ]
+    },
+    "cta": "View Full 2026 SEO Pricing Guide",
+    "ctaUrl": "/en/blog/seo-services-pricing-guide-2026/"
+  },
+  "localProof": {
+    "title": "Verifiable Regional Track Record: From Qazvin to Capital Hubs",
+    "subtitle": "From landmark retail foot traffic to heavy industrial manufacturing B2B visibility",
+    "intro": "With rooted engineering headquarters in Qazvin and multi-regional execution, WebABC validates local search strategies with real production outcomes:",
+    "points": [
+      {
+        "title": "Mehromah Mall Qazvin Landmark Project",
+        "desc": "Sub-second web platform and #1 Google Maps ranking for Qazvin's premier commercial retail center on North Khayyam Street (+300 shops, 900-car smart parking)."
+      },
+      {
+        "title": "Industrial Zone Dominance in Caspian & Liya",
+        "desc": "B2B local and international visibility for manufacturers across Caspian, Liya, and Alborz industrial complexes, driving enterprise commercial RFQs."
+      },
+      {
+        "title": "Physical Presence & 028 Regional Authority",
+        "desc": "In-person discovery meetings in Qazvin and Tehran with verified landline and 100% strict NAP consistency aligned with geographic algorithms."
+      }
+    ]
+  },
   "rightFor": {
     "title": "Is Local SEO Right for Your Business?",
-    "text": "Local SEO is essential if customers find you by searching in a specific city or 'near me,' whether you have a storefront or you're a Service Area Business like a plumber, electrician, or consultant who travels to clients. It matters less if your business sells purely online with no geographic focus — in that case, our general SEO service is usually the better starting point."
+    "text": "Local SEO is essential if customers find you by searching in a specific city or 'near me,' whether you have a storefront or you're a Service Area Business like a contractor or consultant who travels to clients:",
+    "bullets": [
+      "Healthcare practices, dental clinics, and medical centers seeking local appointment growth",
+      "Retail shopping malls, stores, and restaurants requiring increased in-person foot traffic",
+      "Industrial manufacturers and factory hubs seeking regional B2B commercial quotes",
+      "Service Area Businesses (SABs) such as contractors, legal counsel, and engineering consultants"
+    ]
   },
   "process": {
     "title": "Our Local SEO Process",
@@ -49,14 +133,16 @@
   },
   "faq": {
     "title": "Frequently Asked Questions",
-    "description": "Common questions about our Local SEO services.",
+    "description": "Common questions about our Local SEO services and Google Maps rankings.",
     "q1": "How long does it take to see results from Local SEO?",
-    "a1": "Typically, you can start seeing initial improvements in 3-4 months, with significant results in 6-12 months, depending on competition.",
+    "a1": "Typically, you can start seeing initial improvements in 4 to 8 weeks after NAP citation cleanup and GBP optimization, with peak ranking stabilization achieved within 3 to 6 months.",
     "q2": "Do I need a physical address for Local SEO?",
-    "a2": "Ideally yes, but Service Area Businesses (SABs) like plumbers or electricians can also rank without showing their address publicly.",
-    "q3": "What is the Google Map Pack?",
-    "a3": "It's the block of three business listings that appears below the map in Google search results. It's the most valuable real estate for local businesses.",
-    "q4": "How do reviews affect my ranking?",
-    "a4": "Reviews are a major ranking factor. Quantity, quality, and recency of reviews all signal trust and authority to Google."
+    "a2": "A physical address provides maximum ranking weight, but Service Area Businesses (SABs) like contractors, field consultants, and repair teams can also capture #1 3-Pack rankings by defining their service areas without displaying a street address publicly.",
+    "q3": "What is the Google Map Pack and why does it matter?",
+    "a3": "It is the three-listing block that appears above organic search results for queries with local intent. It captures over 50% of mobile search clicks and enables instant one-tap calling and directions.",
+    "q4": "How do domestic navigation apps impact local search in Iran?",
+    "a4": "Domestic apps like Neshan and Balad have widespread adoption for in-car and pedestrian navigation in Iran. Accurate business registration on these platforms alongside Google Maps is crucial for driving physical visits and direct phone inquiries.",
+    "q5": "How is Local SEO pricing structured?",
+    "a5": "Based on WebABC's official 2026 pricing benchmarks, initial local map setup ranges from $500 to $1,200, while ongoing local growth retainers range from $800 to $1,500/month (or 25–45 million Tomans in Iran). Retainers cover technical audits, Map Pack optimization, citation building, review acquisition, and transparent monthly call tracking."
   }
 }
