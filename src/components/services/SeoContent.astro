@@ -263,6 +263,26 @@ const faqList = [1, 2, 3, 4]
           )
         }
       </p>
+      {
+        (() => {
+          const items = (dictionary?.seoService as any)?.results?.items;
+          if (!Array.isArray(items) || items.length === 0) return null;
+          return (
+            <div class="grid grid-cols-1 gap-6 text-start md:grid-cols-3">
+              {items.map((item: any) => (
+                <a
+                  href={`/${lang}/portfolio/${item.slug}/`}
+                  class="flex flex-col rounded-2xl border border-gray-100 bg-white p-6 shadow-xs transition-all duration-300 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
+                >
+                  <div class="mb-2 text-2xl font-bold text-primary">{item.metric}</div>
+                  <div class="mb-3 text-sm text-gray-500 dark:text-gray-400">{item.label}</div>
+                  <div class="grow font-bold text-gray-900 dark:text-white">{item.name}</div>
+                </a>
+              ))}
+            </div>
+          );
+        })()
+      }
       <a
         href={`/${lang}/portfolio/`}
         class="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
