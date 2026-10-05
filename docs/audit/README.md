@@ -1,27 +1,27 @@
 # webabc.ir — SEO / AEO / GEO Audit Package
 
-**Original audit:** 2026-09-22 · Overall health: 76 / 100 · Data: GSC 2026-06-19 → 2026-09-18 plus live HTTP verification and full source inspection.
-**Now:** nearly every item is shipped and live. [`ACTION-PLAN.md`](./ACTION-PLAN.md) is the source of truth — its Completed ledger records what closed and in which commit; its open sections (§1.3, §2.6, falsifiability clocks) record what is still being measured.
+**Original audit:** 2026-09-22 · Health: 76 / 100  
+**Latest audit:** 2026-10-05 · Health: **82 / 100** (up +6 points) · Data: GSC export (2026-07-03 → 2026-10-02) + Search Console API & PSI API.  
+**Living Action Plan & Ledger:** [`ACTION-PLAN.md`](./ACTION-PLAN.md) — records all shipped work with commit hashes and schedules upcoming falsifiability clocks.
 
 ## Read in this order
 
 | # | File | What it answers | State |
 |---|---|---|---|
-| 1 | [`FULL-AUDIT-REPORT.md`](./FULL-AUDIT-REPORT.md) | Scorecard, verdict, market read at audit time | Historical — do not act on numbers without checking the ledger |
-| 2 | [`ACTION-PLAN.md`](./ACTION-PLAN.md) | Sequenced work, falsifiability checks, per-item shipped evidence | **Living document** |
-| 3 | [`audit-data.json`](./audit-data.json) | Machine-readable findings for diffing between audits | Reference |
-| 4 | [`../BLOG-REWRITE-SPEC.md`](../BLOG-REWRITE-SPEC.md) | Binding content contract for all blog edits | **Active gate** |
+| 1 | [`ACTION-PLAN.md`](./ACTION-PLAN.md) | **Source of truth**: Completed work ledger, active clocks calendar, strategic decisions | **Living document** |
+| 2 | [`AUDIT-REPORT-2026-10-05.md`](./AUDIT-REPORT-2026-10-05.md) | Latest audit: 2026-09-21 collapse analysis, health score 82/100, Persian market review | **Authoritative audit** |
+| 3 | [`FULL-AUDIT-REPORT.md`](./FULL-AUDIT-REPORT.md) | Original scorecard and baseline findings from 2026-09-22 | Baseline reference |
+| 4 | [`audit-data.json`](./audit-data.json) | Machine-readable findings for diffing between audits | Reference |
+| 5 | [`../BLOG-REWRITE-SPEC.md`](../BLOG-REWRITE-SPEC.md) | Binding content contract for all blog edits | **Active gate** |
 
 ## Data snapshots
 
 | File | Window | Notes |
 |---|---|---|
-| [`CTR-BASELINE-2026-09-27.json`](./CTR-BASELINE-2026-09-27.json) | 2026-06-25 → 2026-09-24 | Holds the §1.4 CTR-exclusion convention (`ctr_exclusion`) — still authoritative |
-| [`CTR-BASELINE-2026-10-05.json`](./CTR-BASELINE-2026-10-05.json) | 2026-07-03 → 2026-10-02 | **Latest.** First export with per-query rows (525). Verdict: optimize, no new posts |
+| [`CTR-BASELINE-2026-10-05.json`](./CTR-BASELINE-2026-10-05.json) | 2026-07-03 → 2026-10-02 | **Latest.** 525 queries. Records permanent competitor exclusion (`ctr_exclusion`: 0.45% with vs 0.65% without). |
+| [`CTR-BASELINE-2026-09-27.json`](./CTR-BASELINE-2026-09-27.json) | 2026-06-25 → 2026-09-24 | Historical shifted-window baseline. |
 
-Superseded snapshots (`CTR-BASELINE-2026-09-26.json`, `TOOL-METADATA-2026-09-26.json`) were removed; they remain in git history.
-
-## Findings (detail — evidence layer, cited by plan rows)
+## Detailed Findings Archive (2026-09-22)
 
 | File | Scope |
 |---|---|
@@ -34,7 +34,7 @@ Superseded snapshots (`CTR-BASELINE-2026-09-26.json`, `TOOL-METADATA-2026-09-26.
 | [`findings/07-aeo.md`](./findings/07-aeo.md) | Answer-engine readiness: negotiation, quotable blocks, answer-first formatting |
 | [`findings/08-geo-ai-citations.md`](./findings/08-geo-ai-citations.md) | AI crawler permissions, `llms.txt`, entity footprint, citation testing |
 | [`findings/09-performance-images.md`](./findings/09-performance-images.md) | Page weight, caching, encoding, fonts, OG images |
-| [`findings/10-corrections.md`](./findings/10-corrections.md) | What the previous (09-21) audit got wrong, missed, and right — historical |
+| [`findings/10-corrections.md`](./findings/10-corrections.md) | Historical corrections log from previous audit |
 
 ## Conventions (binding for future edits)
 
