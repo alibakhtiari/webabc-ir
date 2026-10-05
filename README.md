@@ -21,7 +21,7 @@ A multilingual digital marketing and web development agency site built with **As
   - `BreadcrumbList` emitted by `Breadcrumbs.astro` (exactly 1 per page).
   - `WebApplication` schema across the tools, `Service` / `ProfessionalService` across location pages, and `FAQPage` on pages with FAQ content.
 - **AI Engine Optimization (GEO/AEO)**:
-  - Quotable key-takeaway callouts (`<TLDR />`) and `FAQPage` JSON-LD for AI engine citability (ChatGPT, Perplexity, Google AI Overviews).
+  - Quotable key-takeaway callouts (`<TLDR />`) and `FAQPage` JSON-LD providing structured entity and topical question-and-answer context for AI and answer engines (ChatGPT, Perplexity, Claude, Gemini). Note: Google retired SERP FAQ rich results on 2026-05-07; FAQ schema is retained for structured semantic data and LLM knowledge graphs, not SERP snippet expansion.
   - Explicit AI crawler permissions in `public/robots.txt` (`GPTBot`, `ClaudeBot`, `PerplexityBot`, and others).
   - `public/llms.txt` as the language router plus a curated English core, with canonical per-locale indexes at `public/en/llms.txt`, `public/fa/llms.txt`, and `public/ar/llms.txt`. Each locale ships its own single-language long-context corpus (`llms-full.txt`), all regenerated on every build by `scripts/generate-llms-index.mjs` and `scripts/generate-llms-full.mjs`.
 - **Edge Security Headers**: pre-configured in `public/_headers` (HSTS, CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy).
