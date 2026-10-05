@@ -29,6 +29,13 @@ package-lock.json
 __pycache__/
 .selfcheck-*.json
 
+# Google API credentials (GSC / PageSpeed / CrUX). Never commit.
+.secrets/
+*.googleusercontent.com.json
+service_account.json
+oauth-token.json
+google-api.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
