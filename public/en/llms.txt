@@ -143,6 +143,8 @@
 - [Website Speed Optimization Guide 2026: Step-by-Step](https://webabc.ir/en/blog/website-speed-optimization-guide-2026/): Hands-on website speed optimization guide for 2026: measure your baseline, fix LCP, INP, and CLS step by step, and finish with a full performance checklist.
 - [WordPress SEO Optimization Guide 2026: Rank Higher on Google](https://webabc.ir/en/blog/wordpress-seo-optimization-guide-2026/): Master WordPress SEO in 2026: technical setup, Rank Math vs Yoast, Core Web Vitals speed, schema markup, internal linking and hreflang for higher rankings.
 - [WordPress vs Custom Development: Business Decision Guide](https://webabc.ir/en/blog/wordpress-vs-custom-development/): WordPress or custom development? Compare cost, timeline, team fit, and maintenance load side by side, then pick the right platform for your business in 2026.
+- [UTM Campaign Tracking & URL Builder Guide (2026)](https://webabc.ir/en/blog/utm-builder-campaign-tracking-guide-2026/): Complete guide to UTM parameter taxonomy, campaign naming conventions, and GA4 revenue attribution.
+- [Core Web Vitals & INP Optimization Guide (2026)](https://webabc.ir/en/blog/core-web-vitals-inp-guide-2026/): Comprehensive developer guide to optimizing INP, sub-second LCP breakdown, and Core Web Vitals for search & AI engines.
 
 ## Direct Contact & Support
 

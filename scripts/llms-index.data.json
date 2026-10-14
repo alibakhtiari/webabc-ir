@@ -1015,6 +1015,16 @@
         "t": "WordPress vs Custom Development: Business Decision Guide",
         "u": "/en/blog/wordpress-vs-custom-development/",
         "d": "WordPress or custom development? Compare cost, timeline, team fit, and maintenance load side by side, then pick the right platform for your business in 2026."
+      },
+      {
+        "t": "UTM Campaign Tracking & URL Builder Guide (2026)",
+        "u": "/en/blog/utm-builder-campaign-tracking-guide-2026/",
+        "d": "Complete guide to UTM parameter taxonomy, campaign naming conventions, and GA4 revenue attribution."
+      },
+      {
+        "t": "Core Web Vitals & INP Optimization Guide (2026)",
+        "u": "/en/blog/core-web-vitals-inp-guide-2026/",
+        "d": "Comprehensive developer guide to optimizing INP, sub-second LCP breakdown, and Core Web Vitals for search & AI engines."
       }
     ],
     "fa": [
@@ -1212,6 +1222,16 @@
         "t": "وردپرس در برابر توسعه اختصاصی ۲۰۲۶: راهنمای معماری",
         "u": "/fa/blog/wordpress-vs-custom-development-guide-2026/",
         "d": "مقایسه معماری وردپرس و توسعه اختصاصی: تفاوت دو پشته در عملکرد، امنیت، نگهداری و مقیاس‌پذیری در سال ۲۰۲۶ و چارچوب تصمیم‌گیری گام‌به‌گام برای انتخاب پروژه شما."
+      },
+      {
+        "t": "راهنمای جامع ساخت لینک UTM و ردیابی کمپین در گوگل آنالیتیکس (۲۰۲۶)",
+        "u": "/fa/blog/utm-builder-campaign-tracking-guide-2026/",
+        "d": "راهنمای استانداردسازی پارامترهای UTM، نام‌گذاری ساختاریافته و تحلیل نرخ بازگشت سرمایه در GA4."
+      },
+      {
+        "t": "راهنمای جامع بهینه‌سازی Core Web Vitals و شاخص INP (۲۰۲۶)",
+        "u": "/fa/blog/core-web-vitals-inp-guide-2026/",
+        "d": "راهنمای فنی بهینه‌سازی زمان پاسخ‌دهی تعاملی (INP)، کاهش تاخیر LCP، و پایداری بصری برای سئو و موتورهای هوش مصنوعی."
       }
     ],
     "ar": [
@@ -1409,6 +1429,16 @@
         "t": "ووردبريس أم تطوير المواقع المخصصة: مقارنة 2026",
         "u": "/ar/blog/wordpress-vs-custom-development-guide-2026/",
         "d": "مقارنة معمارية بين ووردبريس والتطوير المخصص: كيف يختلف المخزنان في الأداء والأمان والصيانة والتوسع خلال عام 2026، مع إطار قرار من صفحة واحدة يناسب مشروعك."
+      },
+      {
+        "t": "دليل تتبع الحملات التسويقية وبناء روابط UTM في جوجل أناليتكس (2026)",
+        "u": "/ar/blog/utm-builder-campaign-tracking-guide-2026/",
+        "d": "دليل شامل لمعايير تسمية معلمات UTM، وهندسة تتبع الحملات، وتحليل عائد الاستثمار في GA4."
+      },
+      {
+        "t": "دليل تحسين مؤشرات أداء الويب الأساسية Core Web Vitals وINP (2026)",
+        "u": "/ar/blog/core-web-vitals-inp-guide-2026/",
+        "d": "دليل تقني لتحسين مؤشر التفاعل مع الطلاء التالي (INP) وتقليل زمن استجابة LCP لتصدر نتائج البحث ومحركات الذكاء الاصطناعي."
       }
     ]
   }

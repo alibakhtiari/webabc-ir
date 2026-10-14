@@ -212,6 +212,25 @@ const fillFieldsText = t('utmBuilder.fillFields', {
           {t('utmBuilder.copied', { fallback: 'URL copied to clipboard!' })}
         </p>
       </div>
+
+      <div
+        class="flex flex-col items-center justify-between gap-3 rounded-2xl border border-primary/20 bg-primary/5 p-5 text-center font-persian sm:flex-row sm:text-start dark:border-primary/30 dark:bg-primary/10"
+      >
+        <div class="space-y-1">
+          <p class="text-xs font-semibold uppercase tracking-wider text-primary">
+            {supportedLang === 'fa' ? 'راهنمای آموزشی تخصصی' : supportedLang === 'ar' ? 'دليل إرشادي متخصص' : 'Specialized Campaign Guide'}
+          </p>
+          <p class="text-sm text-gray-700 dark:text-gray-200">
+            {t('utmBuilder.guideLinkText', { fallback: 'Looking for best practices, taxonomy rules, and GA4 attribution recipes?' })}
+          </p>
+        </div>
+        <a
+          href={`/${supportedLang}/blog/utm-builder-campaign-tracking-guide-2026/`}
+          class="inline-flex shrink-0 items-center justify-center rounded-xl bg-primary px-4 py-2 text-xs font-bold text-primary-foreground shadow-xs transition hover:bg-primary/90"
+        >
+          {t('utmBuilder.guideLinkTitle', { fallback: 'Read the Guide' })} &rarr;
+        </a>
+      </div>
     </div>
   </section>
 </ToolLayout>

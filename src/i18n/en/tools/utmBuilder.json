@@ -39,5 +39,7 @@
         "Replacing a shared link with a tagged version when you need to trace clicks back to a specific post or ad."
       ]
     }
-  }
+  },
+  "guideLinkText": "Looking for best practices, taxonomy rules, and GA4 attribution recipes? Read our",
+  "guideLinkTitle": "Complete UTM Campaign Tracking Guide (2026)"
 }
