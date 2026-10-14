@@ -26,6 +26,14 @@ const formDescription = t('contact.consultation.description', {
 });
 const submitLabel = t('contact.submitMessage', { fallback: 'Send Message' });
 
+const whatsappMessages: Record<string, string> = {
+  fa: 'سلام، برای مشاوره و همکاری با وب‌آ‌بی‌سی پیام می‌دهم.',
+  ar: 'مرحباً، أتواصل معكم للاستفسار عن خدمات ومشاريع ويب أيه بي سي.',
+  en: 'Hello, reaching out to inquire about WebABC web design and SEO services.',
+};
+const waMsg = encodeURIComponent(whatsappMessages[supportedLang] || whatsappMessages.en);
+const whatsappUrl = `https://wa.me/989125811880?text=${waMsg}`;
+
 const contactPageSchema = {
   '@context': 'https://schema.org',
   '@type': 'ContactPage',
@@ -291,6 +299,19 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
                     })
                   }
                 </p>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=36.3156,50.0381"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-primary transition-colors hover:underline"
+                >
+                  <svg class="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                  </svg>
+                  {t('contact.locationMap', { fallback: 'View on Map' })}
+                  <span>{isRtl ? '←' : '→'}</span>
+                </a>
               </div>
             </li>
 
@@ -409,9 +430,9 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
               {t('contact.callNow', { fallback: 'Call Now' })}
             </a>
             <a
-              href="https://wa.me/989125811880"
+              href={whatsappUrl}
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               class="flex h-11 items-center justify-center gap-1.5 rounded-xl bg-[#25D366]/10 text-sm font-semibold text-[#128C4B] transition-colors hover:bg-[#25D366]/20 dark:text-[#25D366]"
             >
               {t('contact.whatsappChat', { fallback: 'Chat on WhatsApp' })}

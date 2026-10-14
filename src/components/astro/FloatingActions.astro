@@ -15,7 +15,13 @@ const labels = {
 };
 
 const phoneNumber = '+989125811880';
-const whatsappUrl = 'https://wa.me/989125811880';
+const whatsappMessages: Record<string, string> = {
+  fa: 'سلام، برای مشاوره طراحی سایت و خدمات سئو پیام می‌دهم.',
+  ar: 'مرحباً، أود الاستفسار عن خدمات تصميم المواقع وتحسين محركات البحث.',
+  en: 'Hello, I would like to inquire about WebABC web design and SEO services.',
+};
+const encodedMsg = encodeURIComponent(whatsappMessages[lang] || whatsappMessages.en);
+const whatsappUrl = `https://wa.me/989125811880?text=${encodedMsg}`;
 ---
 
 <div

@@ -35,6 +35,20 @@ const isActive = (href: string) =>
   currentPathWithoutLang === href || currentPathWithoutLang.startsWith(`${href}/`);
 
 const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 'font-persian';
+
+const whatsappMessages: Record<string, string> = {
+  fa: 'سلام، مایل به دریافت مشاوره رایگان طراحی سایت و سئو هستم.',
+  ar: 'مرحباً، أود الحصول على استشارة مجانية لتصميم المواقع والسيو.',
+  en: 'Hello, I would like to request a free web design and SEO consultation.',
+};
+const encodedNavMsg = encodeURIComponent(whatsappMessages[lang] || whatsappMessages.en);
+const navWhatsappUrl = `https://wa.me/989125811880?text=${encodedNavMsg}`;
+const waDirectLabel =
+  lang === 'fa'
+    ? 'یا گفتگوی فوری در واتساپ'
+    : lang === 'ar'
+      ? 'أو تحدث معنا مباشرة عبر واتساب'
+      : 'Or Chat Directly on WhatsApp';
 ---
 
 <header
@@ -888,6 +902,10 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
           class="w-full resize-none rounded-xl border border-gray-200 bg-white p-3 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white"
         ></textarea>
       </div>
+
+      <!-- Honeypot -->
+      <input type="text" name="company" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+
       <button
         type="submit"
         id="consultation-submit-btn"
@@ -895,6 +913,24 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
       >
         {t('consultation.sendRequest', { fallback: 'Send Request' })}
       </button>
+
+      <div class="relative flex items-center justify-center py-1">
+        <div class="border-t border-gray-200 dark:border-slate-800 w-full"></div>
+        <span class="bg-white dark:bg-slate-900 px-3 text-xs text-gray-400 font-medium">{isRtl ? 'یا' : 'OR'}</span>
+      </div>
+
+      <a
+        href={navWhatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-sm font-bold text-emerald-600 transition-all hover:bg-emerald-500 hover:text-white dark:text-emerald-400 dark:hover:text-white"
+      >
+        <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.002 3.66 3.745-.993zm11.233-6.793c-.274-.137-1.625-.802-1.876-.893-.252-.092-.435-.137-.618.137-.183.274-.709.893-.869 1.076-.16.183-.32.206-.594.069-.274-.137-1.157-.426-2.204-1.36-.816-.728-1.367-1.628-1.527-1.902-.16-.274-.017-.422.12-.558.123-.122.274-.32.411-.48.137-.16.183-.274.274-.457.091-.183.046-.343-.023-.48-.069-.137-.618-1.486-.847-2.036-.223-.536-.45-.463-.618-.472-.16-.008-.343-.01-.526-.01-.183 0-.48.069-.731.343-.251.274-.96.938-.96 2.288 0 1.35.983 2.653 1.12 2.836.137.184 1.935 2.955 4.689 4.144.655.283 1.166.452 1.564.578.658.209 1.258.179 1.732.108.529-.079 1.625-.664 1.854-1.303.229-.639.229-1.187.16-1.303-.069-.115-.252-.183-.526-.32z"/>
+        </svg>
+        {waDirectLabel}
+      </a>
+
       <p
         id="consultation-response-msg"
         role="status"

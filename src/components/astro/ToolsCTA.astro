@@ -13,20 +13,54 @@ interface Props {
 }
 
 const { lang, t, related, ctaHref, isRtl = false } = Astro.props;
+const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 'font-persian';
+
+const whatsappMessages: Record<string, string> = {
+  fa: 'سلام، از بخش ابزارهای وب‌آ‌بی‌سی پیام می‌دهم و نیاز به مشاوره فنی دارم.',
+  ar: 'مرحباً، أتواصل معكم من قسم الأدوات في ويب أيه بي سي وأرغب في استشارة فنية.',
+  en: 'Hello, reaching out from WebABC tools to inquire about a technical consultation.',
+};
+const waMsg = encodeURIComponent(whatsappMessages[lang] || whatsappMessages.en);
+const waUrl = `https://wa.me/989125811880?text=${waMsg}`;
+const waLabel =
+  lang === 'fa'
+    ? 'گفتگوی فوری در واتساپ'
+    : lang === 'ar'
+      ? 'محادثة فورية عبر واتساب'
+      : 'Quick WhatsApp Chat';
+
+const trustItems: Record<string, string[]> = {
+  fa: [
+    'پاسخگویی سریع کمتر از ۱ ساعت',
+    'بررسی معماری و مشاوره تکنیکال رایگان',
+    'توسعه اختصاصی با تضمین نمره سرعت ۱۰۰',
+  ],
+  ar: [
+    'استجابة سريعة في أقل من ساعة',
+    'تدقيق تقني واستشارة أولية مجانية',
+    'بنية برمجية فائقة السرعة بنسبة 100%',
+  ],
+  en: [
+    'Fast response under 1 business hour',
+    'Free initial technical architecture audit',
+    'High-performance 100/100 PageSpeed engineering',
+  ],
+};
+const badges = trustItems[lang] || trustItems.en;
 ---
 
 {
   related.length > 0 && (
-    <section class="border-t border-gray-100 bg-gray-50 py-16 dark:border-slate-800 dark:bg-slate-900/50">
-      <div class="container mx-auto max-w-6xl px-4 font-sans">
-        <h2 class="mb-8 text-center font-persian text-2xl font-bold text-gray-900 dark:text-white">
+    <section class="border-t border-gray-100 bg-gray-50/70 py-16 dark:border-slate-800 dark:bg-slate-900/50">
+      <div class={`container mx-auto max-w-6xl px-4 ${fontClass}`}>
+        <h2 class="mb-8 text-center text-2xl font-bold text-gray-900 dark:text-white">
           {t('tools.relatedTitle', { fallback: 'Related Free Tools' })}
         </h2>
         <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
           {related.map(({ key, route }) => (
             <a
               href={`/${lang}/tools/${route.endsWith('/') ? route : route + '/'}`}
-              class="group flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-primary/30"
+              class="group flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-6 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-primary/30"
             >
               <div>
                 <h3 class="mb-2 text-lg font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
@@ -36,7 +70,7 @@ const { lang, t, related, ctaHref, isRtl = false } = Astro.props;
                   {t(`${key}.description`, { fallback: '' })}
                 </p>
               </div>
-              <div class="inline-flex items-center gap-1 font-persian text-xs font-semibold text-primary transition-all group-hover:gap-2">
+              <div class="inline-flex items-center gap-1 text-xs font-semibold text-primary transition-all group-hover:gap-2">
                 {t('common.readMore', { fallback: 'Launch Tool' })} {isRtl ? '←' : '→'}
               </div>
             </a>
@@ -47,25 +81,59 @@ const { lang, t, related, ctaHref, isRtl = false } = Astro.props;
   )
 }
 
-<section class="border-t border-gray-100 bg-white py-16 dark:border-slate-800 dark:bg-slate-950">
-  <div class="container mx-auto max-w-3xl px-4 text-center font-persian">
-    <h2 class="mb-4 text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">
-      {t('tools.ctaTitle', { fallback: 'Need More Advanced Tools?' })}
-    </h2>
-    <p class="mb-8 leading-relaxed text-gray-600 dark:text-gray-300">
-      {
-        t('tools.ctaDescription', {
-          fallback:
-            'Contact us for custom SEO tools and advanced analytics solutions tailored to your business needs.',
-        })
-      }
-    </p>
-    <a
-      href={ctaHref.endsWith('/') ? ctaHref : ctaHref + '/'}
-      class="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 font-bold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-    >
-      {t('common.freeConsultation', { fallback: 'Free Consultation' })}
-      {isRtl ? '←' : '→'}
-    </a>
+<section class="border-t border-gray-100 bg-linear-to-b from-white via-primary/5 to-white py-16 dark:border-slate-800 dark:from-slate-950 dark:via-primary/5 dark:to-slate-950">
+  <div class={`container mx-auto max-w-4xl px-4 text-center ${fontClass}`}>
+    <div class="rounded-3xl border border-primary/20 bg-white/80 p-8 shadow-xl backdrop-blur-md md:p-12 dark:border-primary/20 dark:bg-slate-900/80">
+      <div class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary mb-4">
+        <span class="inline-block h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+        WebABC Enterprise Engineering
+      </div>
+
+      <h2 class="mb-4 text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">
+        {t('tools.ctaTitle', { fallback: 'Need More Advanced Tools?' })}
+      </h2>
+
+      <p class="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-gray-600 md:text-lg dark:text-gray-300">
+        {
+          t('tools.ctaDescription', {
+            fallback:
+              'Contact us for custom SEO tools, high-speed web platforms, and advanced analytics solutions tailored to your business.',
+          })
+        }
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-8">
+        <a
+          href={ctaHref.endsWith('/') ? ctaHref : ctaHref + '/'}
+          class="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3.5 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:bg-primary/95 hover:scale-105 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 active:scale-95"
+        >
+          {t('common.freeConsultation', { fallback: 'Free Consultation' })}
+          {isRtl ? '←' : '→'}
+        </a>
+
+        <a
+          href={waUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-7 py-3.5 text-sm font-bold text-emerald-600 transition-all hover:bg-emerald-500 hover:text-white hover:scale-105 focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 active:scale-95 dark:text-emerald-400 dark:hover:text-white"
+        >
+          <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.002 3.66 3.745-.993zm11.233-6.793c-.274-.137-1.625-.802-1.876-.893-.252-.092-.435-.137-.618.137-.183.274-.709.893-.869 1.076-.16.183-.32.206-.594.069-.274-.137-1.157-.426-2.204-1.36-.816-.728-1.367-1.628-1.527-1.902-.16-.274-.017-.422.12-.558.123-.122.274-.32.411-.48.137-.16.183-.274.274-.457.091-.183.046-.343-.023-.48-.069-.137-.618-1.486-.847-2.036-.223-.536-.45-.463-.618-.472-.16-.008-.343-.01-.526-.01-.183 0-.48.069-.731.343-.251.274-.96.938-.96 2.288 0 1.35.983 2.653 1.12 2.836.137.184 1.935 2.955 4.689 4.144.655.283 1.166.452 1.564.578.658.209 1.258.179 1.732.108.529-.079 1.625-.664 1.854-1.303.229-.639.229-1.187.16-1.303-.069-.115-.252-.183-.526-.32z" />
+          </svg>
+          {waLabel}
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 gap-3 pt-6 border-t border-gray-100 sm:grid-cols-3 dark:border-slate-800">
+        {badges.map((b) => (
+          <div class="flex items-center justify-center gap-2 text-xs font-medium text-gray-500 dark:text-gray-400">
+            <svg class="h-4 w-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>{b}</span>
+          </div>
+        ))}
+      </div>
+    </div>
   </div>
 </section>

@@ -267,8 +267,15 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
   if (name.length < 2 || name.length > 100) {
     return json({ error: 'Invalid name', code: 'invalid_name' }, 400);
   }
-  if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  // Either email or phone must be provided.
+  if (!email && !phone) {
+    return json({ error: 'Either email or phone is required', code: 'invalid_contact' }, 400);
+  }
+  if (email && (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))) {
     return json({ error: 'Invalid email', code: 'invalid_email' }, 400);
+  }
+  if (phone && (phone.length < 5 || phone.length > 30)) {
+    return json({ error: 'Invalid phone', code: 'invalid_phone' }, 400);
   }
   if (message.length < 10 || message.length > 5000) {
     return json({ error: 'Invalid message', code: 'invalid_message' }, 400);
@@ -280,10 +287,12 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
 
   // Verify captcha when a secret is configured (production). Without a secret
   // (local dev) verification is skipped so the form stays testable.
-  if (env.TURNSTILE_SECRET_KEY) {
-    if (!token) {
-      return json({ error: 'Invalid Captcha', code: 'invalid_captcha' }, 403);
-    }
+  // Navbar consultation modal does not load Turnstile to preserve performance;
+  // it relies on honeypot + phone number requirement.
+  if (env.TURNSTILE_SECRET_KEY && !token && !phone) {
+    return json({ error: 'Invalid Captcha', code: 'invalid_captcha' }, 403);
+  }
+  if (env.TURNSTILE_SECRET_KEY && token) {
     try {
       const turnstileResult = await fetch(
         'https://challenges.cloudflare.com/turnstile/v0/siteverify',
@@ -316,7 +325,7 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
     const data = await resend.emails.send({
       from: 'onboarding@resend.dev', // Update this if you have a verified domain
       to: env.CONTACT_EMAIL_TO || 'alibakhtiari.dev@gmail.com',
-      replyTo: email,
+      replyTo: email || undefined,
       subject: `New Inquiry from ${safeName}${safePhone ? ` (${safePhone})` : ''}`,
       html: `<p><strong>Name:</strong> ${safeName}</p>${safePhone ? `<p><strong>Phone:</strong> <a href="tel:${safePhone}">${safePhone}</a></p>` : ''}<p><strong>Email:</strong> ${safeEmail ? `<a href="mailto:${safeEmail}">${safeEmail}</a>` : 'Not provided'}</p><p><strong>Message:</strong><br/>${safeMessage || 'N/A'}</p>`,
     });
