@@ -18,3 +18,7 @@
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
 
+# Zaraz client script caching
+/cdn-cgi/zaraz/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
