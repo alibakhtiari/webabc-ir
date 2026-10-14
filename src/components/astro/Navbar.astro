@@ -1188,6 +1188,8 @@ const waDirectLabel =
     document.addEventListener('astro:page-load', setupNavbar);
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
       setupNavbar();
+    } else {
+      document.addEventListener('DOMContentLoaded', setupNavbar);
     }
   })();
 </script>

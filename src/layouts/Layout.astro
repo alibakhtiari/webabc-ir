@@ -1,5 +1,4 @@
 ---
-import { ClientRouter } from 'astro:transitions';
 import { languages, type SupportedLanguage } from '@/types/language';
 import { getDictionary } from '@/i18n/get-dictionary';
 import Navbar from '@/components/astro/Navbar.astro';
@@ -341,16 +340,6 @@ const websiteSchema = createWebsiteSchema(siteUrl, supportedLang);
     <script is:inline>
       (function () {
         try {
-          // Pre-seed history.state so ClientRouter doesn't query window.scrollX/scrollY
-          // during module initialization on a dirty layout, eliminating a 51ms forced reflow.
-          if (!history.state || typeof history.state.index !== 'number') {
-            history.replaceState(
-              Object.assign({}, history.state, { index: 0, scrollX: 0, scrollY: 0 }),
-              ''
-            );
-          }
-          history.scrollRestoration = 'manual';
-
           const saved = localStorage.getItem('theme');
           const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
           const dark = saved === 'dark' || (!saved && prefersDark);
@@ -361,25 +350,11 @@ const websiteSchema = createWebsiteSchema(siteUrl, supportedLang);
           if (meta) meta.setAttribute('content', dark ? '#020617' : '#4361ee');
         } catch (e) {}
       })();
-
-      document.addEventListener('astro:after-swap', function () {
-        try {
-          const saved = localStorage.getItem('theme');
-          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          const dark = saved === 'dark' || (!saved && prefersDark);
-          const root = document.documentElement;
-          root.classList.toggle('dark', dark);
-          root.style.colorScheme = dark ? 'dark' : 'light';
-          const meta = document.querySelector('meta[name="theme-color"]');
-          if (meta) meta.setAttribute('content', dark ? '#020617' : '#4361ee');
-        } catch (e) {}
-      });
     </script>
 
     <!-- Inline Schema -->
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
-    <ClientRouter fallback="swap" />
   </head>
   <body
     class={`bg-background text-foreground min-h-screen flex flex-col font-${lang === 'en' ? 'sans' : lang === 'ar' ? 'arabic' : 'persian'}`}
