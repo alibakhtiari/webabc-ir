@@ -104,11 +104,13 @@ const linkPath = (path: string) => {
           </div>
           <OptimizedImage
             src="/images/homepage-hero.webp"
+            srcset="/images/homepage-hero-480.webp 480w, /images/homepage-hero-768.webp 768w, /images/homepage-hero.webp 1024w"
+            sizes="(max-width: 640px) 480px, (max-width: 1024px) 768px, 600px"
             alt={t('home.hero.imageAlt', {
               fallback: 'Digital marketing and web development illustration',
             })}
             width={600}
-            height={400}
+            height={600}
             class="h-auto w-full rounded-lg object-cover shadow-2xl"
             loading="eager"
             fetchpriority="high"

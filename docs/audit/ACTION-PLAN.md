@@ -48,6 +48,10 @@ Shipped, verified against code and live tests, and locked. Kept as a permanent l
 | 3.2+ | en-tehran + fa-muscat snippets | Tehran proof-led (151ch); Muscat ODYPS hook + 2 FAQs. Top-rated/24h claims removed. | `8c7a203` |
 | MET | Portfolio % reconciliation | Meta FAQs for ramzarz, soheil, mahsun, rostateb, and tehran-enamel aligned with page facts. | `71a4eed` |
 | 0.1b | 10-05 GSC export diffed | `webabc.ir-Performance-on-Search-2026-10-05.xlsx` snapshotted to `CTR-BASELINE-2026-10-05.json` (525 queries). Verdict: OPTIMIZE. | `06ee87a` |
+| 0.1c | 10-14 GSC export diffed | `webabc.ir-Performance-on-Search-2026-10-14.xlsx` snapshotted to `CTR-BASELINE-2026-10-14.json` (158 clicks, 34,396 chart impressions). UTM cluster surged >280i. | Pending |
+| PERF-1 | Client performance & SW fixes | Fixed `public/sw.js` TypeError; generated missing AVIF assets with `scripts/generate-avif.mjs` (asserted in §14); generated responsive hero images (480/768) and moved ClientRouter to head. | Pending |
+| MU-1b | UTM Campaign Guide shipped | UTM query demand surpassed 200i threshold. Published `utm-builder-campaign-tracking-guide-2026` across en/fa/ar (1851/2059/1730w, 7 H2s) with custom WebP/AVIF covers. | Pending |
+| CWV-1 | Core Web Vitals 2026 Guide shipped | Published `core-web-vitals-inp-guide-2026` across en/fa/ar (1611/1596/1606w, 7 H2s) covering INP, LCP 4 subparts, CLS, architecture, and AEO/GEO retrieval. | Pending |
 | U-1 | Service areas hubs retitled (en/fa/ar) | Hub title and description updated across `src/i18n/{en,fa,ar}/service-areas.json` to pure hub-and-spoke role, removing city names to prevent cannibalizing individual city pages. | `144bb14` |
 | U-2 | Qazvin strategic decision: Pillar | Decided Pillar over write-off (agency home base, 254 impr, PSI 100). Scheduled for post-11-24 execution. | `79530dc` |
 | U-3 | Local-proof depth on `/fa/services/local-seo/` | Added 6 pillars (GBP, Neshan/Balad, NAP, citations, reviews, near-me), Qazvin proof (Mehromah Mall, Caspian/Liya), transparent price bands, and cross-links. | `efcf145` |

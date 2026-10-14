@@ -34,8 +34,10 @@ const homeFaqList = [1, 2, 3, 4]
   <link
     rel="preload"
     as="image"
-    href="/images/homepage-hero.avif"
     type="image/avif"
+    href="/images/homepage-hero-480.avif"
+    imagesrcset="/images/homepage-hero-480.avif 480w, /images/homepage-hero-768.avif 768w, /images/homepage-hero.avif 1024w"
+    imagesizes="(max-width: 640px) 480px, (max-width: 1024px) 768px, 600px"
     fetchpriority="high"
     slot="head"
   />

@@ -128,11 +128,21 @@ const outDir = path.resolve(outDirArg ?? 'public/images/blog');
 await fs.mkdir(outDir, { recursive: true });
 
 const outPath = path.join(outDir, `${slug}.webp`);
-await sharp(Buffer.from(base64, 'base64'))
-  .resize(OUT_W, OUT_H, { fit: 'cover', position: 'centre' })
-  .webp({ quality: 82, effort: 5 })
-  .toFile(outPath);
+const avifPath = path.join(outDir, `${slug}.avif`);
+const imgBuffer = Buffer.from(base64, 'base64');
+
+await Promise.all([
+  sharp(imgBuffer)
+    .resize(OUT_W, OUT_H, { fit: 'cover', position: 'centre' })
+    .webp({ quality: 82, effort: 5 })
+    .toFile(outPath),
+  sharp(imgBuffer)
+    .resize(OUT_W, OUT_H, { fit: 'cover', position: 'centre' })
+    .avif({ quality: 70, effort: 5 })
+    .toFile(avifPath),
+]);
 
 const meta = await sharp(outPath).metadata();
-const kb = (await fs.stat(outPath)).size / 1024;
-console.log(`${outPath}  ${meta.width}x${meta.height}  ${kb.toFixed(0)} KB`);
+const kbWebp = (await fs.stat(outPath)).size / 1024;
+const kbAvif = (await fs.stat(avifPath)).size / 1024;
+console.log(`${outPath}  ${meta.width}x${meta.height}  ${kbWebp.toFixed(0)} KB (AVIF: ${kbAvif.toFixed(0)} KB)`);

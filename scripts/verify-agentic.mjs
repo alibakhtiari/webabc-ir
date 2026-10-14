@@ -634,6 +634,32 @@ async function test() {
     );
   }
 
+  // 14. Static image format parity (AVIF siblings for WebP content images)
+  console.log('\n14. Testing static image format parity (AVIF siblings for WebP):');
+  let checkedAvifs = 0;
+  for (const lang of ['en', 'fa', 'ar']) {
+    for (const coll of ['blog', 'portfolio']) {
+      const dir = path.join(root, 'src/content', coll, lang);
+      if (!fs.existsSync(dir)) continue;
+      for (const entry of fs.readdirSync(dir)) {
+        if (!entry.endsWith('.mdx')) continue;
+        const text = fs.readFileSync(path.join(dir, entry), 'utf8');
+        const m = text.match(/image:\s*['"]?([^'"\s\n]+)['"]?/);
+        if (!m) continue;
+        const src = m[1].replace(/['"]/g, '');
+        if (!src.endsWith('.webp')) continue;
+        const avif = src.replace(/\.webp$/i, '.avif');
+        const avifPath = path.join(root, 'public', avif);
+        assert(
+          fs.existsSync(avifPath),
+          `AVIF sibling exists for ${coll}/${lang}/${entry} (${avif})`
+        );
+        checkedAvifs++;
+      }
+    }
+  }
+  console.log(`  verified ${checkedAvifs} content images have matching .avif siblings on disk`);
+
   console.log(`\n--- Verification Suite Completed: ${failures === 0 ? 'ALL CHECKS PASSED (100% Score)' : `${failures} FAILURES`} ---`);
   if (failures > 0) process.exit(1);
 }

@@ -239,6 +239,8 @@ const websiteSchema = createWebsiteSchema(siteUrl, supportedLang);
       )
     }
 
+    <slot name="head" />
+
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
     <meta
@@ -359,8 +361,7 @@ const websiteSchema = createWebsiteSchema(siteUrl, supportedLang);
     <!-- Inline Schema -->
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
-
-    <slot name="head" />
+    <ClientRouter fallback="swap" />
   </head>
   <body
     class={`bg-background text-foreground min-h-screen flex flex-col font-${lang === 'en' ? 'sans' : lang === 'ar' ? 'arabic' : 'persian'}`}
@@ -377,7 +378,6 @@ const websiteSchema = createWebsiteSchema(siteUrl, supportedLang);
     </main>
     <Footer lang={lang} />
     <FloatingActions lang={lang} />
-    <ClientRouter fallback="swap" />
     <script is:inline>
       (() => {
         if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {

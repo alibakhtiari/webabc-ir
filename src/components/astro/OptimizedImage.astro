@@ -22,12 +22,13 @@ interface Props {
   title?: string;
 }
 
-const { src, alt, ...attrs } = Astro.props;
+const { src, alt, srcset, sizes, ...attrs } = Astro.props;
 const avifSrc = src.replace(/\.webp$/i, '.avif');
+const avifSrcset = srcset ? srcset.replace(/\.webp/gi, '.avif') : undefined;
 ---
 
 <picture>
-  <source type="image/avif" srcset={avifSrc} />
-  <source type="image/webp" srcset={src} />
-  <img src={src} alt={alt} {...attrs} />
+  <source type="image/avif" srcset={avifSrcset || avifSrc} sizes={sizes} />
+  <source type="image/webp" srcset={srcset || src} sizes={sizes} />
+  <img src={src} alt={alt} srcset={srcset} sizes={sizes} {...attrs} />
 </picture>
