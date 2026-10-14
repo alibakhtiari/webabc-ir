@@ -226,7 +226,15 @@ const websiteSchema = createWebsiteSchema(siteUrl, supportedLang);
             href="/fonts/ar/ibm-plex-sans-arabic-400-arabic.woff2"
             crossorigin
           />
-          <link rel="stylesheet" href="/fonts/ar-fonts.css" />
+          <link
+            rel="stylesheet"
+            href="/fonts/ar-fonts.css"
+            media="print"
+            onload="this.media='all'"
+          />
+          <noscript>
+            <link rel="stylesheet" href="/fonts/ar-fonts.css" />
+          </noscript>
         </>
       ) : (
         <link
