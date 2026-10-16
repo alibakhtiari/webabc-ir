@@ -68,3 +68,10 @@ Prepared locally; not pushed or deployed. Version advances to 1.3.0 for this opt
 New blog observation window starts on actual deployment, not this local edit. If deployed October 16, review November 13 after 28 full days, allowing GSC lag. If deployed later, shift review accordingly. Freeze these three guide versions during that window; do not treat low volume as failure.
 
 Normal pages must not be submitted through Google's Indexing API: eligibility is limited to JobPosting and livestream video pages. Use sitemap discovery and normal Search Console workflows.
+
+
+## October 16 action release
+
+User authorized publishing prepared corrections and continuing existing-post optimization. Initial commits `b12647b` and `65ed730` pushed to main; Cloudflare build succeeded and live EN guide content verified on October 16. The earlier “prepared locally” status records the pre-release state.
+
+Next eligible article: `seo-checklist-2026`, FA 133 impressions with zero clicks, outside active clocks. Commit `fd09918` improves all three translations with practical evidence/pass criteria, measurement instructions and primary-source corrections. Prior metadata and internal links preserved. EN/FA/AR word counts 1819/1956/1790. No new articles, redirects, tool edits or shared-template edits. Full lint/build/edge and manual edited-post checks pass. See ACTION-PLAN §0.1e for release verification and 28-day freeze.

@@ -68,10 +68,14 @@ Shipped, verified against code and live tests, and locked. Kept as a permanent l
 
 ---
 
-### Verified locally — awaiting deployment
+### October 16 optimization release
 
 - **§0.1d / blog evidence correction (2026-10-16), commit `b12647b`:** Re-read latest October 14 GSC workbook; corrected competitor exclusion to Queries-only CTR (92/21,537 = 0.427%), documented equal 28-day decline (78→59 clicks; 24,572→6,299 impressions), and corrected `seo-best-practices` claims with inline Google evidence across en/fa/ar. Publish dates and prior links preserved; updatedDate advanced atomically. Manual validators accept legitimate modification dates; manifest covers nine EN posts. Version 1.3.0. Lint, full build, edge suite and edited-post checks pass. See [evidence review](./GSC-REVIEW-2026-10-16.md).
-- **Status:** Local commit only; no push/deployment. Existing clocks remain unchanged. Freeze these three blog versions once deployed; review 28 full days after deployment plus GSC reporting lag (**November 13 if deployed October 16; otherwise shift date**). Check indexing first; below 100 impressions is inconclusive. At >=100 impressions with EN CTR <=0.297%, inspect query/snippet fit. This is an observation rule, not a causal claim. Do not use this local commit date as proof of live exposure.
+- **§0.1d deployment confirmed October 16:** Pushed through `65ed730`; Cloudflare Workers build `c7936cb3-ba40-4fba-ab6a-b16d46fb647f` succeeded. Live EN HTML returned `dateModified: 2026-10-16` and new AI-eligibility paragraph. Freeze three guide versions through November 13; read GSC after reporting lag. Below 100 impressions is inconclusive. At >=100 impressions with EN CTR <=0.297%, inspect query/snippet fit. This observation rule is not a causal claim.
+
+
+- **§0.1e checklist optimization, commit `fd09918`:** Existing `seo-checklist-2026` improved in en/fa/ar; no new posts. Baseline (92-day October 14 export): FA 0 clicks/133 impressions/position 35.70; EN 2/11/10.36; AR 0/4/12.00. Added evidence/pass criteria table and equal-period measurement procedure; sourced AI eligibility, sitemap and disavow guidance; removed citation guarantees and automatic refresh claims. Preserved titles, descriptions, slugs, publish metadata and prior internal links; updatedDate atomic. Generated lastmod and corpora through full build. EN/FA/AR 1819/1956/1790 words, seven H2 sections and three FAQ each. Manual manifest now covers ten EN posts, not full corpus. Lint (0 errors/warnings; 85 existing hints), build (323 pages; 318 hreflang URLs), edge tests and edited-blog gates pass. Included in October 16 release; live verification required before closing rollout.
+- **§0.1e falsifiability:** Freeze checklist translations for 28 full days from live deployment. If live October 16, review November 13, with GSC read after 2–3 days lag. Capture first complete post-release 28-day page/query API baseline; workbook totals above are opportunity evidence, not a comparable 28-day control. Leading indicators: successful crawl/indexing and relevant page-query impressions. If FA has >=100 impressions in observation window but still zero clicks, inspect query intent and snippet fit; below 100 impressions is inconclusive. Separate indexed-page metrics from sitewide CTR and AI-citation tests. Existing tool/money-page clocks unchanged.
 
 ---
 
