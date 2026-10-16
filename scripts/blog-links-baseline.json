@@ -107,5 +107,19 @@
       "/en/services/ui-ux-audit/",
       "/en/services/web-design/"
     ]
+  ],
+  [
+    "seo-best-practices.mdx",
+    [
+      "/en/services/speed-optimization/",
+      "/en/tools/readability-checker/",
+      "/en/services/web-design/",
+      "/en/services/wordpress-development/",
+      "/en/services/local-seo/",
+      "/en/tools/keyword-density-analyzer/",
+      "/en/blog/seo-checklist-2026/",
+      "/en/services/seo/",
+      "/en/contact/"
+    ]
   ]
 ]

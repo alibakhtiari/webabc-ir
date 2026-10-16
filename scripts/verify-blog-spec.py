@@ -1,3 +1,4 @@
+from datetime import date
 import re, sys, json
 
 BASE = "src/content/blog/en/"
@@ -27,7 +28,13 @@ def check(f, baseline_links):
     if w > 2400: bad.append(f"{w} words (>2400)")
     if len(t) > 60: bad.append(f"title {len(t)}ch (>60)")
     if not (150 <= len(d) <= 160): bad.append(f"desc {len(d)}ch (want 150-160)")
-    if not re.search(r"^updatedDate:\s*2026-09-23", fm, re.M): bad.append("updatedDate not 2026-09-23")
+    published = re.search(r"^date:\s*[\"']?(\d{4}-\d{2}-\d{2})", fm, re.M)
+    updated = re.search(r"^updatedDate:\s*[\"']?(\d{4}-\d{2}-\d{2})\s*[\"']?\s*$", fm, re.M)
+    try:
+        valid_date = published and updated and date.fromisoformat(published[1]) <= date.fromisoformat(updated[1]) <= date.today()
+    except ValueError:
+        valid_date = False
+    if not valid_date: bad.append("updatedDate invalid (want ISO date >= publish date and <= today)")
     if "keyTakeaways:" not in fm: bad.append("keyTakeaways MISSING")
     if re.search(r"^faq:", fm, re.M) is None: bad.append("faq MISSING")
     if re.search(r"^image:", fm, re.M) is None: bad.append("image MISSING")

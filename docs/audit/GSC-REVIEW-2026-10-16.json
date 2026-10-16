@@ -1,0 +1,272 @@
+{
+  "source_file": "webabc.ir-Performance-on-Search-2026-10-14.xlsx",
+  "sha256": "cd39d81a174f1d10e524f479d1878c5ea57dd253ce86f56613735e9493e4c76c",
+  "review_date": "2026-10-16",
+  "export_start": "2026-07-12",
+  "export_end": "2026-10-11",
+  "chart": {
+    "clicks": 158.0,
+    "impressions": 34396.0,
+    "ctr": 0.0045935573903942315,
+    "position": 17.46755727410164
+  },
+  "queries": {
+    "rows": 582,
+    "all": {
+      "clicks": 92.0,
+      "impressions": 31695.0,
+      "ctr": 0.002902666035652311,
+      "position": 17.69267171478151
+    },
+    "excluded": {
+      "clicks": 0.0,
+      "impressions": 10158.0,
+      "ctr": 0.0,
+      "position": 5.55
+    },
+    "without_competitor": {
+      "clicks": 92.0,
+      "impressions": 21537.0,
+      "ctr": 0.004271718438036867,
+      "position": 23.419804522449738
+    }
+  },
+  "pages": {
+    "raw_rows": 295,
+    "normalized_rows": 241,
+    "totals": {
+      "clicks": 158.0,
+      "impressions": 35040.0,
+      "ctr": 0.0045091324200913245,
+      "position": 17.522652397260273
+    }
+  },
+  "equal_28_day_windows": [
+    {
+      "start": "2026-08-17",
+      "end": "2026-09-13",
+      "days": 28,
+      "clicks": 78.0,
+      "impressions": 24572.0,
+      "ctr": 0.0031743447826794724,
+      "position": 15.332695751261598
+    },
+    {
+      "start": "2026-09-14",
+      "end": "2026-10-11",
+      "days": 28,
+      "clicks": 59.0,
+      "impressions": 6299.0,
+      "ctr": 0.009366566121606605,
+      "position": 21.823114780123827
+    }
+  ],
+  "top_pages": [
+    {
+      "url": "https://webabc.ir/en/tools/headline-analyzer/",
+      "variants": 2,
+      "clicks": 32.0,
+      "impressions": 26677.0,
+      "ctr": 0.0011995351801177044,
+      "position": 13.921732953480527
+    },
+    {
+      "url": "https://webabc.ir/en/blog/seo-best-practices/",
+      "variants": 1,
+      "clicks": 2.0,
+      "impressions": 673.0,
+      "ctr": 0.0029717682020802376,
+      "position": 12.609999999999998
+    },
+    {
+      "url": "https://webabc.ir/fa/service-areas/qazvin/",
+      "variants": 2,
+      "clicks": 1.0,
+      "impressions": 445.0,
+      "ctr": 0.0022471910112359553,
+      "position": 61.73096629213484
+    },
+    {
+      "url": "https://webabc.ir/en/tools/utm-builder/",
+      "variants": 1,
+      "clicks": 0.0,
+      "impressions": 412.0,
+      "ctr": 0.0,
+      "position": 38.63
+    },
+    {
+      "url": "https://webabc.ir/fa/portfolio/ramzarz-negaran/",
+      "variants": 2,
+      "clicks": 4.0,
+      "impressions": 344.0,
+      "ctr": 0.011627906976744186,
+      "position": 6.882558139534884
+    },
+    {
+      "url": "https://webabc.ir/ar/",
+      "variants": 1,
+      "clicks": 0.0,
+      "impressions": 332.0,
+      "ctr": 0.0,
+      "position": 5.0
+    },
+    {
+      "url": "https://webabc.ir/fa/service-areas/tehran/",
+      "variants": 2,
+      "clicks": 1.0,
+      "impressions": 304.0,
+      "ctr": 0.003289473684210526,
+      "position": 79.1842105263158
+    },
+    {
+      "url": "https://webabc.ir/fa/blog/website-speed-optimization-pricing-guide-2026/",
+      "variants": 1,
+      "clicks": 18.0,
+      "impressions": 247.0,
+      "ctr": 0.0728744939271255,
+      "position": 14.96
+    },
+    {
+      "url": "https://webabc.ir/en/tools/seo-title-checker/",
+      "variants": 2,
+      "clicks": 2.0,
+      "impressions": 242.0,
+      "ctr": 0.008264462809917356,
+      "position": 59.83206611570248
+    },
+    {
+      "url": "https://webabc.ir/en/services/web-design/",
+      "variants": 1,
+      "clicks": 0.0,
+      "impressions": 240.0,
+      "ctr": 0.0,
+      "position": 83.7
+    },
+    {
+      "url": "https://webabc.ir/en/service-areas/tehran/",
+      "variants": 2,
+      "clicks": 0.0,
+      "impressions": 240.0,
+      "ctr": 0.0,
+      "position": 12.9945
+    },
+    {
+      "url": "https://webabc.ir/fa/portfolio/soheil-accessory/",
+      "variants": 1,
+      "clicks": 0.0,
+      "impressions": 225.0,
+      "ctr": 0.0,
+      "position": 6.4
+    },
+    {
+      "url": "https://webabc.ir/ar/portfolio/remido/",
+      "variants": 1,
+      "clicks": 0.0,
+      "impressions": 190.0,
+      "ctr": 0.0,
+      "position": 4.35
+    },
+    {
+      "url": "https://webabc.ir/fa/services/local-seo/",
+      "variants": 2,
+      "clicks": 0.0,
+      "impressions": 187.0,
+      "ctr": 0.0,
+      "position": 38.68770053475936
+    },
+    {
+      "url": "https://webabc.ir/en/",
+      "variants": 2,
+      "clicks": 52.0,
+      "impressions": 181.0,
+      "ctr": 0.287292817679558,
+      "position": 4.068729281767956
+    },
+    {
+      "url": "https://webabc.ir/fa/blog/website-development-cost-calculator-guide-2026/",
+      "variants": 1,
+      "clicks": 2.0,
+      "impressions": 179.0,
+      "ctr": 0.0111731843575419,
+      "position": 32.25
+    },
+    {
+      "url": "https://webabc.ir/fa/service-areas/muscat/",
+      "variants": 2,
+      "clicks": 4.0,
+      "impressions": 178.0,
+      "ctr": 0.02247191011235955,
+      "position": 12.043820224719102
+    },
+    {
+      "url": "https://webabc.ir/fa/service-areas/dubai/",
+      "variants": 1,
+      "clicks": 1.0,
+      "impressions": 157.0,
+      "ctr": 0.006369426751592357,
+      "position": 42.53
+    },
+    {
+      "url": "https://webabc.ir/fa/tools/cost-calculator/",
+      "variants": 2,
+      "clicks": 2.0,
+      "impressions": 156.0,
+      "ctr": 0.01282051282051282,
+      "position": 60.50269230769231
+    },
+    {
+      "url": "https://webabc.ir/fa/blog/seo-checklist-2026/",
+      "variants": 1,
+      "clicks": 0.0,
+      "impressions": 133.0,
+      "ctr": 0.0,
+      "position": 35.7
+    },
+    {
+      "url": "https://webabc.ir/en/service-areas/",
+      "variants": 2,
+      "clicks": 0.0,
+      "impressions": 127.0,
+      "ctr": 0.0,
+      "position": 31.318346456692915
+    },
+    {
+      "url": "https://webabc.ir/ar/services/web-development/",
+      "variants": 1,
+      "clicks": 1.0,
+      "impressions": 122.0,
+      "ctr": 0.00819672131147541,
+      "position": 43.68
+    },
+    {
+      "url": "https://webabc.ir/en/tools/faq-generator/",
+      "variants": 1,
+      "clicks": 1.0,
+      "impressions": 119.0,
+      "ctr": 0.008403361344537815,
+      "position": 44.21
+    },
+    {
+      "url": "https://webabc.ir/en/portfolio/",
+      "variants": 2,
+      "clicks": 0.0,
+      "impressions": 110.0,
+      "ctr": 0.0,
+      "position": 34.904
+    },
+    {
+      "url": "https://webabc.ir/en/about/",
+      "variants": 2,
+      "clicks": 0.0,
+      "impressions": 91.0,
+      "ctr": 0.0,
+      "position": 13.974285714285713
+    }
+  ],
+  "limitations": [
+    "Page positions weighted by impressions across slash variants.",
+    "Competitor exclusion applies only within Queries sheet; no Chart or Pages subtraction.",
+    "Equal windows apply only to Chart: workbook does not expose daily page/query data.",
+    "Clicks are not conversions; XLSX does not measure AI-engine citations."
+  ]
+}

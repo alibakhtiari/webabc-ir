@@ -8,7 +8,7 @@
     "end": "2026-10-11",
     "days": 92
   },
-  "note": "92-day export (2026-07-12 -> 2026-10-11). Trailing-slash variants summed. Competitor query excluded from true property CTR.",
+  "note": "92-day export (2026-07-12 -> 2026-10-11). Trailing-slash variants summed. Competitor query excluded only within Queries sheet; Chart and Pages remain unadjusted. Corrected 2026-10-16.",
   "sheet_totals": {
     "pages_row_count": 241,
     "sum_page_clicks": 158.0,
@@ -23,16 +23,15 @@
   },
   "ctr_exclusion": {
     "query": "seo title checker for blog by webnewstips com",
-    "chart_total_impr": 34396,
-    "chart_total_clicks": 158,
     "query_impr": 10158,
     "query_clicks": 0,
-    "with_impr": 34396,
-    "with_clicks": 158,
-    "with_ctr": 0.0046,
-    "without_impr": 24238,
-    "without_clicks": 158,
-    "without_ctr": 0.0065
+    "with_impr": 31695,
+    "with_clicks": 92,
+    "with_ctr": 0.002902666035652311,
+    "without_impr": 21537,
+    "without_clicks": 92,
+    "without_ctr": 0.004271718438036867,
+    "scope": "Queries sheet only"
   },
   "pages": [
     {

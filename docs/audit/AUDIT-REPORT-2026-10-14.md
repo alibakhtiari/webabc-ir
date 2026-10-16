@@ -1,7 +1,7 @@
 # WebABC (webabc.ir) — SEO / AEO / GEO Audit Report (2026-10-14)
 
 **Audit Date:** 2026-10-14  
-**Data Sources:** `webabc.ir-Performance-on-Search-2026-10-14.xlsx` (GSC export: 34,396 impressions, 158 clicks, 582 queries, 303 pages), local AST / schema test suite (`verify-agentic.mjs`), Astro 7 SSG pipeline checks, and Lighthouse Core Web Vitals diagnostics.  
+**Data Sources:** `webabc.ir-Performance-on-Search-2026-10-14.xlsx` (GSC export: 34,396 impressions, 158 clicks, 582 queries, 295 raw page rows / 241 normalized URLs), local AST / schema test suite (`verify-agentic.mjs`), Astro 7 SSG pipeline checks, and Lighthouse Core Web Vitals diagnostics.  
 **Baseline Snapshot:** [`CTR-BASELINE-2026-10-14.json`](./CTR-BASELINE-2026-10-14.json)  
 **Living Action Plan & Ledger:** [`ACTION-PLAN.md`](./ACTION-PLAN.md)  
 **Supersedes:** `AUDIT-REPORT-2026-10-05.md` (83/100).
@@ -10,7 +10,7 @@
 
 ## 1. Executive Verdict
 
-**Health Score:** **88 / 100** (up +5 points from 83 / 100).
+**Historical editorial score:** **88 / 100**. This is an internal heuristic, not measured ranking, conversion, or AI-citation performance. See the [2026-10-16 evidence review](./GSC-REVIEW-2026-10-16.md) for equal-window traffic analysis and corrected CTR scope.
 
 The site's technical foundation, Core Web Vitals posture, and AEO/agentic distribution have achieved an industry-leading standard:
 1. **Critical Network Chain & CWV Flattened**: Inlined stylesheets (`inlineStylesheets: 'always'`), eliminated render-blocking CSS, eradicated a 51 ms forced reflow by removing `ClientRouter`, and collapsed critical request latency by 55% (741 ms → 331 ms HTML single-hop).
@@ -42,7 +42,7 @@ The site's technical foundation, Core Web Vitals posture, and AEO/agentic distri
 - **Chart Impressions**: 34,396
 - **Total Clicks**: 158
 - **Total Queries Tracked**: 582 (up from 525 on 10-05)
-- **Top Converting Locale**: Persian (`fa`) — drives 32% of clicks from ~9.5% of impressions.
+- **Click Share by Locale**: Persian (`fa`) — drives 32% of clicks from ~9.5% of impressions.
 
 ### Key Surging Queries
 1. **UTM & URL Builder Cluster (>280 impressions combined)**:
@@ -56,7 +56,7 @@ The site's technical foundation, Core Web Vitals posture, and AEO/agentic distri
    - `seo title checker`: 3 clicks, 4,039 impr, pos 15.5.
    - `title checker`: 2 clicks, 587 impr, pos 15.8.
 3. **Persian Commercial Intent**:
-   - `طراحی سایت در قزوین`: 277 impr, pos 64.5 (+23 impressions, gained first conversion click).
+   - `طراحی سایت در قزوین`: 277 impr, pos 64.5 (+23 impressions, gained first search click).
    - `رمز ارز نگاران`: 2 clicks, 168 impr, pos 6.7.
    - `هزینه افزایش سرعت سایت`: 2 clicks, 32 impr, pos 9.1 (**CTR: 6.25%**).
    - `طراحی سایت در عمان`: 1 click, 210 impr, pos 21.0.

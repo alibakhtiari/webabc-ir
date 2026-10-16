@@ -1,3 +1,4 @@
+from datetime import date
 import re,sys,io
 
 def parse(f):
@@ -46,7 +47,13 @@ def parse(f):
     if w<1500: bad.append(f'{w}w<1500')
     if len(t)>60: bad.append(f'title {len(t)}ch>60')
     if not (150<=len(d)<=160): bad.append(f'desc {len(d)}ch')
-    if not re.search(r'^updatedDate:\s*2026-09-23',fm,re.M): bad.append('updatedDate bad')
+    published = re.search(r"^date:\s*[\"']?(\d{4}-\d{2}-\d{2})", fm, re.M)
+    updated = re.search(r"^updatedDate:\s*[\"']?(\d{4}-\d{2}-\d{2})\s*[\"']?\s*$", fm, re.M)
+    try:
+        valid_date = published and updated and date.fromisoformat(published[1]) <= date.fromisoformat(updated[1]) <= date.today()
+    except ValueError:
+        valid_date = False
+    if not valid_date: bad.append("updatedDate invalid")
     if 'keyTakeaways:' not in fm: bad.append('kt MISSING')
     if re.search(r'^faq:',fm,re.M) is None: bad.append('faq MISSING')
     if re.search(r'^image:',fm,re.M) is None: bad.append('image MISSING')
