@@ -68,6 +68,13 @@ Shipped, verified against code and live tests, and locked. Kept as a permanent l
 
 ---
 
+### Verified locally — awaiting deployment
+
+- **§0.1d / blog evidence correction (2026-10-16), commit `b12647b`:** Re-read latest October 14 GSC workbook; corrected competitor exclusion to Queries-only CTR (92/21,537 = 0.427%), documented equal 28-day decline (78→59 clicks; 24,572→6,299 impressions), and corrected `seo-best-practices` claims with inline Google evidence across en/fa/ar. Publish dates and prior links preserved; updatedDate advanced atomically. Manual validators accept legitimate modification dates; manifest covers nine EN posts. Version 1.3.0. Lint, full build, edge suite and edited-post checks pass. See [evidence review](./GSC-REVIEW-2026-10-16.md).
+- **Status:** Local commit only; no push/deployment. Existing clocks remain unchanged. Freeze these three blog versions once deployed; review 28 full days after deployment plus GSC reporting lag (**November 13 if deployed October 16; otherwise shift date**). Check indexing first; below 100 impressions is inconclusive. At >=100 impressions with EN CTR <=0.297%, inspect query/snippet fit. This is an observation rule, not a causal claim. Do not use this local commit date as proof of live exposure.
+
+---
+
 ## 2. Active Falsifiability Clocks & Scheduled Roadmap
 
 All remaining code tasks are sequenced behind explicit falsifiability clocks. **Do not modify these pages before their due date**, as premature edits destroy measurement integrity.
