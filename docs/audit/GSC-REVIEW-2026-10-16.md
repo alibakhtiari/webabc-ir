@@ -75,3 +75,5 @@ Normal pages must not be submitted through Google's Indexing API: eligibility is
 User authorized publishing prepared corrections and continuing existing-post optimization. Initial commits `b12647b` and `65ed730` pushed to main; Cloudflare build succeeded and live EN guide content verified on October 16. The earlier “prepared locally” status records the pre-release state.
 
 Next eligible article: `seo-checklist-2026`, FA 133 impressions with zero clicks, outside active clocks. Commit `fd09918` improves all three translations with practical evidence/pass criteria, measurement instructions and primary-source corrections. Prior metadata and internal links preserved. EN/FA/AR word counts 1819/1956/1790. No new articles, redirects, tool edits or shared-template edits. Full lint/build/edge and manual edited-post checks pass. See ACTION-PLAN §0.1e for release verification and 28-day freeze.
+
+Checklist deployment confirmed October 16: all three live HTML pages contain the new evidence table, official AI guidance link, expected canonical and `dateModified: 2026-10-16`. Freeze through November 13; read complete results after GSC reporting lag, around November 16.
