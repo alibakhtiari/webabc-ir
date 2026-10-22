@@ -24,7 +24,12 @@ const featuredTools = [
   {
     idx: '01',
     slug: 'cost-calculator',
-    badge: 'ESTIMATOR · INSTANT',
+    badge:
+      lang === 'fa'
+        ? 'محاسبه‌گر · آنی'
+        : lang === 'ar'
+          ? 'حاسبة فورية'
+          : 'ESTIMATOR · INSTANT',
     glyph: '6980',
     title:
       lang === 'fa'
@@ -43,7 +48,12 @@ const featuredTools = [
   {
     idx: '02',
     slug: 'meta-generator',
-    badge: 'SERP · META-TAGS',
+    badge:
+      lang === 'fa'
+        ? 'نتایج گوگل · متاتگ‌ها'
+        : lang === 'ar'
+          ? 'سيو · وسوم الميتا'
+          : 'SERP · META-TAGS',
     glyph: '<meta>',
     title: t('metaGenerator.title', { fallback: 'Meta Description & Tag Generator' }),
     desc:
@@ -57,7 +67,12 @@ const featuredTools = [
   {
     idx: '03',
     slug: 'utm-builder',
-    badge: 'ANALYTICS · CAMPAIGN',
+    badge:
+      lang === 'fa'
+        ? 'آنالیتیکس · کمپین'
+        : lang === 'ar'
+          ? 'التحليلات · الحملات'
+          : 'ANALYTICS · CAMPAIGN',
     glyph: '?utm=',
     title: t('utmBuilder.title', {
       fallback: 'UTM Link Builder & URL Builder – Free Campaign URL Generator',
@@ -71,6 +86,86 @@ const featuredTools = [
     href: linkPath('/tools/utm-builder'),
   },
 ];
+
+const tool1Header =
+  lang === 'fa'
+    ? '╭─ [ابزار ۰۱] headline-analyzer.js ─╮'
+    : lang === 'ar'
+      ? '╭─ [أداة 01] headline-analyzer.js ─╮'
+      : '╭─ [TOOL 01] headline-analyzer.js ─╮';
+
+const tool1Badge =
+  lang === 'fa'
+    ? 'امتیاز CTR · عرض پیکسلی'
+    : lang === 'ar'
+      ? 'نقاط CTR · عرض البكسل'
+      : 'CTR-SCORE · PX-WIDTH';
+
+const tool1InputLabel =
+  lang === 'fa'
+    ? 'تست زنده عرض پیکسلی نتایج گوگل و امتیاز CTR:'
+    : lang === 'ar'
+      ? 'اختبار مباشر لعرض بكسل جوجل ونسبة النقر:'
+      : 'LIVE SERP PIXEL & CTR TESTER:';
+
+const tool1DefaultVal =
+  lang === 'fa'
+    ? 'راهنمای جامع سئو تکنیکال و مهندسی وب اختصاصی وب اِی‌بی‌سی'
+    : lang === 'ar'
+      ? 'دليل سيو التقني وهندسة الويب المخصصة من WebABC'
+      : 'WebABC Technical SEO & Custom Web Engineering Guide (2026)';
+
+const tool1WidthLabel = lang === 'fa' ? 'عرض:' : lang === 'ar' ? 'العرض:' : 'WIDTH:';
+const tool1CtrLabel = lang === 'fa' ? 'امتیاز CTR:' : lang === 'ar' ? 'نسبة CTR:' : 'CTR SCORE:';
+const tool1OptimalText = lang === 'fa' ? '✓ بهینه' : lang === 'ar' ? '✓ مثالي' : '✓ OPTIMAL';
+const tool1TruncatedText =
+  lang === 'fa' ? '⚠ برش‌خورده' : lang === 'ar' ? '⚠ مقصوص' : '⚠ TRUNCATED';
+const tool1ShortText =
+  lang === 'fa' ? '• خیلی کوتاه' : lang === 'ar' ? '• قصير جداً' : '• TOO SHORT';
+
+const tool1Footer =
+  lang === 'fa'
+    ? 'خط‌کش ۵۸۰ پیکسل · شبیه‌ساز نتایج گوگل'
+    : lang === 'ar'
+      ? 'مسطرة 580 بكسل · محاكي نتائج جوجل'
+      : '580PX RULER · SERP SIMULATOR';
+
+const tool2Header =
+  lang === 'fa'
+    ? '╭─ [ابزار ۰۲] faq-schema-generator.json ─╮'
+    : lang === 'ar'
+      ? '╭─ [أداة 02] faq-schema-generator.json ─╮'
+      : '╭─ [TOOL 02] faq-schema-generator.json ─╮';
+
+const tool2Badge =
+  lang === 'fa'
+    ? 'اسکیما JSON-LD · نتایج غنی'
+    : lang === 'ar'
+      ? 'بيانات JSON-LD · نتائج غنية'
+      : 'JSON-LD · RICH-RESULTS';
+
+const tool2CopyBtn =
+  lang === 'fa' ? 'کپی JSON-LD' : lang === 'ar' ? 'نسخ JSON-LD' : 'Copy JSON-LD';
+
+const tool2CopiedBtn =
+  lang === 'fa' ? '✓ کپی شد!' : lang === 'ar' ? '✓ تم النسخ!' : '✓ Copied!';
+
+const tool2SchemaCode =
+  lang === 'fa'
+    ? '{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"خدمات تخصصی وب اِی‌بی‌سی شامل چه مواردی است؟","acceptedAnswer":{"@type":"Answer","text":"طراحی اختصاصی سایت، سئو تکنیکال و بهینه‌سازی سرعت هسته حیاتی گوگل (Core Web Vitals)."}}]}'
+    : lang === 'ar'
+      ? '{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"ما هي الخدمات التي تقدمها وكالة WebABC؟","acceptedAnswer":{"@type":"Answer","text":"تطوير الويب المخصص، السيو التقني، وتحسين مؤشرات الأداء الحيوية للويب."}}]}'
+      : '{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What services does WebABC provide?","acceptedAnswer":{"@type":"Answer","text":"Custom web development, technical SEO, and Core Web Vitals optimization."}}]}';
+
+const tool2Footer =
+  lang === 'fa'
+    ? 'اعتبارسنجی استاندارد Schema.org'
+    : lang === 'ar'
+      ? 'معتمد وفق معايير Schema.org'
+      : 'SCHEMA.ORG VALIDATED';
+
+const freeUtilityLabel =
+  lang === 'fa' ? 'ابزار کاملاً رایگان' : lang === 'ar' ? 'أداة مجانية بالكامل' : 'FREE UTILITY';
 ---
 
 <section
@@ -81,7 +176,15 @@ const featuredTools = [
     <!-- Section Header -->
     <div class="mx-auto mb-10 max-w-3xl text-center">
       <div class="mb-2 flex justify-center">
-        <span class="slash-eyebrow text-xs" dir="ltr">/FREE-TOOLS · 5 BROWSER UTILITIES</span>
+        <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+          {
+            lang === 'fa'
+              ? '/ابزارهای-رایگان · ۵ ابزار کاربردی مرورگر'
+              : lang === 'ar'
+                ? '/الأدوات-المجانية · 5 أدوات تصفح سريعة'
+                : '/FREE-TOOLS · 5 BROWSER UTILITIES'
+          }
+        </span>
       </div>
 
       <h2 class="mb-3 text-2xl font-bold tracking-tight text-balance text-[var(--text-primary)] sm:text-3xl md:text-4xl">
@@ -112,9 +215,9 @@ const featuredTools = [
         <div>
           <div class="terminal-chrome-bar" dir="ltr">
             <span class="font-mono text-xs font-bold text-[var(--accent-amber)]">
-              ╭─ [TOOL 01] headline-analyzer.js ─╮
+              {tool1Header}
             </span>
-            <span class="monospace-telemetry-pill">CTR-SCORE · PX-WIDTH</span>
+            <span class="monospace-telemetry-pill">{tool1Badge}</span>
           </div>
 
           <div class="p-6">
@@ -144,24 +247,32 @@ const featuredTools = [
               <label
                 for="mini-headline-input"
                 class="mb-1.5 block font-mono text-[11px] text-[var(--text-secondary)]"
+                dir={isRtl ? 'rtl' : 'ltr'}
               >
-                LIVE SERP PIXEL &amp; CTR TESTER:
+                {tool1InputLabel}
               </label>
               <input
                 id="mini-headline-input"
                 type="text"
-                value="WebABC Technical SEO & Custom Web Engineering Guide (2026)"
+                value={tool1DefaultVal}
+                dir={isRtl ? 'rtl' : 'ltr'}
                 class="mb-3 h-9 w-full rounded border border-[var(--border-hairline)] bg-[var(--bg-surface)] px-3 font-mono text-xs text-[var(--text-primary)] focus:border-[var(--accent-green)] focus:outline-none"
               />
               <div class="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
                 <span class="text-[var(--text-secondary)]">
-                  WIDTH: <strong id="mini-px-count" class="text-[var(--accent-green)]">492px</strong> / 580px
+                  {tool1WidthLabel} <strong id="mini-px-count" class="text-[var(--accent-green)]">492px</strong> / 580px
                 </span>
                 <span class="text-[var(--text-secondary)]">
-                  CTR SCORE: <strong id="mini-ctr-score" class="text-[var(--accent-amber)]">92/100</strong>
+                  {tool1CtrLabel} <strong id="mini-ctr-score" class="text-[var(--accent-amber)]">92/100</strong>
                 </span>
-                <span id="mini-serp-status" class="monospace-telemetry-pill text-[var(--accent-green)]">
-                  ✓ OPTIMAL
+                <span
+                  id="mini-serp-status"
+                  class="monospace-telemetry-pill text-[var(--accent-green)]"
+                  data-opt={tool1OptimalText}
+                  data-trunc={tool1TruncatedText}
+                  data-short={tool1ShortText}
+                >
+                  {tool1OptimalText}
                 </span>
               </div>
             </div>
@@ -169,8 +280,8 @@ const featuredTools = [
         </div>
 
         <div class="flex items-center justify-between border-t border-[var(--border-hairline)] bg-[var(--bg-elevated)] px-6 py-3">
-          <span class="ltr-isolate font-mono text-[11px] text-[var(--text-secondary)]" dir="ltr">
-            580PX RULER · SERP SIMULATOR
+          <span class="font-mono text-[11px] text-[var(--text-secondary)]" dir={isRtl ? 'rtl' : 'ltr'}>
+            {tool1Footer}
           </span>
           <a
             href={linkPath('/tools/headline-analyzer')}
@@ -186,9 +297,9 @@ const featuredTools = [
         <div>
           <div class="terminal-chrome-bar" dir="ltr">
             <span class="font-mono text-xs font-bold text-[var(--accent-purple)]">
-              ╭─ [TOOL 02] faq-schema-generator.json ─╮
+              {tool2Header}
             </span>
-            <span class="monospace-telemetry-pill">JSON-LD · RICH-RESULTS</span>
+            <span class="monospace-telemetry-pill">{tool2Badge}</span>
           </div>
 
           <div class="p-6">
@@ -222,22 +333,23 @@ const featuredTools = [
                 <button
                   type="button"
                   id="mini-copy-jsonld-btn"
+                  data-copied={tool2CopiedBtn}
                   class="cursor-pointer rounded border border-[var(--border-hairline)] bg-[var(--bg-elevated)] px-2 py-0.5 font-mono text-[11px] text-[var(--accent-green)] hover:border-[var(--accent-green)]"
                 >
-                  Copy JSON-LD
+                  {tool2CopyBtn}
                 </button>
               </div>
               <pre
                 id="mini-jsonld-code"
                 class="overflow-x-auto font-mono text-[11px] leading-snug text-[var(--text-secondary)]"
-              >{`{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What services does WebABC provide?","acceptedAnswer":{"@type":"Answer","text":"Custom web development, technical SEO, and Core Web Vitals optimization."}}]}`}</pre>
+              >{tool2SchemaCode}</pre>
             </div>
           </div>
         </div>
 
         <div class="flex items-center justify-between border-t border-[var(--border-hairline)] bg-[var(--bg-elevated)] px-6 py-3">
-          <span class="ltr-isolate font-mono text-[11px] text-[var(--text-secondary)]" dir="ltr">
-            SCHEMA.ORG VALIDATED
+          <span class="font-mono text-[11px] text-[var(--text-secondary)]" dir={isRtl ? 'rtl' : 'ltr'}>
+            {tool2Footer}
           </span>
           <a
             href={linkPath('/tools/faq-generator')}
@@ -268,8 +380,8 @@ const featuredTools = [
             </div>
 
             <div class="flex items-center justify-between border-t border-[var(--border-hairline)] bg-[var(--bg-elevated)] px-6 py-3">
-              <span class="ltr-isolate font-mono text-[11px] text-[var(--text-secondary)]" dir="ltr">
-                FREE UTILITY
+              <span class="font-mono text-[11px] text-[var(--text-secondary)]" dir={isRtl ? 'rtl' : 'ltr'}>
+                {freeUtilityLabel}
               </span>
               <a
                 href={tool.href}
@@ -313,11 +425,15 @@ const featuredTools = [
       const status = document.getElementById('mini-serp-status');
 
       if (input && pxCount && ctrScore && status) {
+        const textOpt = status.dataset.opt || '✓ OPTIMAL';
+        const textTrunc = status.dataset.trunc || '⚠ TRUNCATED';
+        const textShort = status.dataset.short || '• TOO SHORT';
+
         input.oninput = () => {
           const val = input.value || '';
           const approxPx = Math.round(val.length * 8.5);
           pxCount.textContent = `${approxPx}px`;
-          const hasYear = /202\d/.test(val);
+          const hasYear = /202\d|۱۴۰\d/.test(val);
           const optimalLen = approxPx >= 280 && approxPx <= 580;
           const score = Math.min(
             98,
@@ -325,13 +441,13 @@ const featuredTools = [
           );
           ctrScore.textContent = `${score}/100`;
           if (approxPx > 580) {
-            status.textContent = '⚠ TRUNCATED';
+            status.textContent = textTrunc;
             status.style.color = 'var(--accent-coral)';
           } else if (approxPx < 220) {
-            status.textContent = '• TOO SHORT';
+            status.textContent = textShort;
             status.style.color = 'var(--accent-amber)';
           } else {
-            status.textContent = '✓ OPTIMAL';
+            status.textContent = textOpt;
             status.style.color = 'var(--accent-green)';
           }
         };
@@ -344,7 +460,8 @@ const featuredTools = [
           try {
             await navigator.clipboard.writeText(codeEl.textContent || '');
             const orig = copyBtn.textContent;
-            copyBtn.textContent = '✓ Copied!';
+            const textCopied = copyBtn.dataset.copied || '✓ Copied!';
+            copyBtn.textContent = textCopied;
             setTimeout(() => {
               copyBtn.textContent = orig;
             }, 1600);

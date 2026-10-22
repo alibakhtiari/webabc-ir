@@ -61,8 +61,14 @@ const sectionSubtitle =
         <!-- Header Row -->
         <div class="mb-10 flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-start">
           <div class="max-w-2xl">
-            <span class="slash-eyebrow text-xs" dir="ltr">
-              /PROVEN-CASE-STUDIES · SOCIAL PROOF &amp; ROI
+            <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+              {
+                lang === 'fa'
+                  ? '/نمونه‌کارهای-موفق · نتایج اثبات‌شده و بازگشت سرمایه'
+                  : lang === 'ar'
+                    ? '/دراسات-الحالة · نتائج مثبتة وعائد الاستثمار'
+                    : '/PROVEN-CASE-STUDIES · SOCIAL PROOF & ROI'
+              }
             </span>
             <h2 class="mt-1.5 text-2xl font-bold tracking-tight text-[var(--text-primary)] sm:text-3xl md:text-4xl">
               {sectionTitle}
@@ -96,7 +102,13 @@ const sectionSubtitle =
               <div>
                 <div class="terminal-chrome-bar" dir="ltr">
                   <span class="font-mono text-xs font-bold text-[var(--accent-green)]">
-                    [CASE 0{idx + 1}] · {item.client}
+                    {
+                      lang === 'fa'
+                        ? `[پروژه ۰${idx + 1}] · ${item.client}`
+                        : lang === 'ar'
+                          ? `[مشروع 0${idx + 1}] · ${item.client}`
+                          : `[CASE 0${idx + 1}] · ${item.client}`
+                    }
                   </span>
                   <span class="monospace-telemetry-pill">{item.pillarLabel}</span>
                 </div>

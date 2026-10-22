@@ -18,7 +18,12 @@ const t = createTranslator(dictionary);
 const benefits = [
   {
     idx: '01',
-    metric: 'TRUST · E-E-A-T',
+    metric:
+      lang === 'fa'
+        ? 'اعتبار · E-E-A-T'
+        : lang === 'ar'
+          ? 'الموثوقية · E-E-A-T'
+          : 'TRUST · E-E-A-T',
     title: t('benefits.brandCredibility.title', { fallback: 'Increase Brand Credibility' }),
     description: t('benefits.brandCredibility.description', {
       fallback: "Boost your brand's credibility with a strong presence in search results.",
@@ -26,7 +31,12 @@ const benefits = [
   },
   {
     idx: '02',
-    metric: 'CRO · REVENUE',
+    metric:
+      lang === 'fa'
+        ? 'نرخ تبدیل · رشد درآمد'
+        : lang === 'ar'
+          ? 'معدل التحويل · نمو الإيرادات'
+          : 'CRO · REVENUE',
     title: t('benefits.increaseSales.title', { fallback: 'Increase Sales and Revenue' }),
     description: t('benefits.increaseSales.description', {
       fallback: 'Attract targeted traffic to improve conversion rates and sales.',
@@ -34,7 +44,12 @@ const benefits = [
   },
   {
     idx: '03',
-    metric: 'CAC -48% · ORGANIC',
+    metric:
+      lang === 'fa'
+        ? 'کاهش ۴۸٪ هزینه جذب'
+        : lang === 'ar'
+          ? 'خفض 48% تكلفة الاكتساب'
+          : 'CAC -48% · ORGANIC',
     title: t('benefits.reduceCosts.title', { fallback: 'Reduce Advertising Costs' }),
     description: t('benefits.reduceCosts.description', {
       fallback: 'Lower your pay-per-click advertising costs by improving organic rankings.',
@@ -42,7 +57,12 @@ const benefits = [
   },
   {
     idx: '04',
-    metric: 'SERP MOAT · TOP-3',
+    metric:
+      lang === 'fa'
+        ? 'سنگر سئو · رتبه‌های ۱ تا ۳'
+        : lang === 'ar'
+          ? 'حصن السيو · المراتب 1-3'
+          : 'SERP MOAT · TOP-3',
     title: t('benefits.competitiveAdvantage.title', { fallback: 'Gain Competitive Advantage' }),
     description: t('benefits.competitiveAdvantage.description', {
       fallback: 'Get ahead of your competitors with advanced SEO strategies.',
@@ -71,8 +91,14 @@ const guaranteeList = [
     <!-- Part A: /WHY-WEBABC -->
     <div class="mx-auto mb-10 max-w-3xl text-center">
       <div class="mb-2 flex justify-center">
-        <span class="slash-eyebrow text-xs" dir="ltr">
-          /WHY-WEBABC · {t('benefits.sectionTag', { fallback: 'ENGINEERING ADVANTAGE' })}
+        <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+          {
+            lang === 'fa'
+              ? `/چرا-وب-ای‌بی‌سی · ${t('benefits.sectionTag', { fallback: 'مزیت مهندسی' })}`
+              : lang === 'ar'
+                ? `/لماذا-ويب-إي-بي-سي · ${t('benefits.sectionTag', { fallback: 'الميزة الهندسية' })}`
+                : `/WHY-WEBABC · ${t('benefits.sectionTag', { fallback: 'ENGINEERING ADVANTAGE' })}`
+          }
         </span>
       </div>
 
@@ -117,10 +143,18 @@ const guaranteeList = [
     <!-- Part B: /RESULTS (Tangible Results with Proven Methods) -->
     <div class="terminal-window">
       <div class="terminal-chrome-bar" dir="ltr">
-        <span class="slash-eyebrow text-xs" dir="ltr">
-          /RESULTS · VERIFIED CORE WEB VITALS &amp; RANKINGS
+        <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+          {
+            lang === 'fa'
+              ? '/نتایج-ملموس · شاخص‌های حیاتی وب و رتبه‌ها'
+              : lang === 'ar'
+                ? '/النتائج · مؤشرات الويب الأساسية والتصنيفات'
+                : '/RESULTS · VERIFIED CORE WEB VITALS & RANKINGS'
+          }
         </span>
-        <span class="monospace-telemetry-pill">star-history-climb · 12M ROI</span>
+        <span class="monospace-telemetry-pill">
+          star-history-climb · {lang === 'fa' ? 'بازده ۱۲ ماهه' : lang === 'ar' ? 'عائد 12 شهراً' : '12M ROI'}
+        </span>
       </div>
 
       <div class="grid grid-cols-1 items-center divide-y divide-[var(--border-hairline)] lg:grid-cols-12 lg:divide-x lg:divide-y-0 rtl:lg:divide-x-reverse">
