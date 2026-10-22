@@ -155,7 +155,7 @@ const processSteps = [
           : 'QUERY-DISCOVERY',
     title: t('services.keyFeatures.0.title', { fallback: 'Keyword Research' }),
     desc: t('services.keyFeatures.0.desc', {
-      fallback: 'Identifying the best keywords for your business',
+      fallback: 'Identifying the best keywords and search intent for your business',
     }),
   },
   {
@@ -168,7 +168,7 @@ const processSteps = [
           : 'SEMANTIC-HTML & SCHEMA',
     title: t('services.keyFeatures.1.title', { fallback: 'Content Optimization' }),
     desc: t('services.keyFeatures.1.desc', {
-      fallback: 'Quality content optimized for search engines',
+      fallback: 'Quality content and structured data optimized for search engines',
     }),
   },
   {
@@ -181,8 +181,29 @@ const processSteps = [
           : 'AUTHORITY-GRAPH',
     title: t('services.keyFeatures.2.title', { fallback: 'External Link Building' }),
     desc: t('services.keyFeatures.2.desc', {
-      fallback: 'Professional link building strategy to increase site authority',
+      fallback: 'Professional digital PR and backlinks to establish domain authority',
     }),
+  },
+  {
+    step: '04',
+    tag:
+      lang === 'fa'
+        ? 'نرخ تبدیل و سودآوری'
+        : lang === 'ar'
+          ? 'التحويل ومضاعفة الأرباح'
+          : 'CRO & 3× REVENUE',
+    title:
+      lang === 'fa'
+        ? 'رشد فروش و نرخ تبدیل'
+        : lang === 'ar'
+          ? 'مضاعفة الأرباح والتحويل'
+          : 'Revenue & Conversion ROI',
+    desc:
+      lang === 'fa'
+        ? 'تبدیل ترافیک ارگانیک به فروش نهایی و بازگشت سرمایه ۳ برابری پایدار'
+        : lang === 'ar'
+          ? 'تحويل الزيارات إلى مبيعات فعلية وتحقيق عوائد استثمارية مضاعفة'
+          : 'Converting organic search traffic into high-value leads and 3× compounding sales revenue',
   },
 ];
 ---
@@ -436,16 +457,16 @@ const processSteps = [
         <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
           {
             lang === 'fa'
-              ? '/فرآیند-اجرا · خط لوله ۳ مرحله‌ای'
+              ? '/فرآیند-اجرا · پایپ‌لاین ۴ مرحله‌ای سئو و مهندسی وب'
               : lang === 'ar'
-                ? '/مسار-التنفيذ · خط أنابيب ثلاثي المراحل'
-                : '/PROCESS · 3-STAGE EXECUTION PIPELINE'
+                ? '/مسار-التنفيذ · خط أنابيب رباعي المراحل'
+                : '/PROCESS · 4-STAGE EXECUTION PIPELINE'
           }
         </span>
-        <span class="monospace-telemetry-pill">git-branch-graph · 1×</span>
+        <span class="monospace-telemetry-pill">140×14 · git-branch-graph · 1×</span>
       </div>
 
-      <div class="grid grid-cols-1 divide-y divide-[var(--border-hairline)] md:grid-cols-3 md:divide-x md:divide-y-0 rtl:md:divide-x-reverse">
+      <div class="grid grid-cols-1 divide-y divide-[var(--border-hairline)] sm:grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-y-0 rtl:lg:divide-x-reverse">
         {
           processSteps.map((item) => (
             <div class="relative p-5">
@@ -462,7 +483,7 @@ const processSteps = [
         }
       </div>
 
-      <!-- Live Pipeline ASCII Strip (Full-Width 102-Column Architecture) -->
+      <!-- Live Pipeline ASCII Strip (Full-Width 140-Column Architecture) -->
       <div
         class="crt-scanlines overflow-hidden border-t border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-2 py-3"
         dir="ltr"
@@ -472,16 +493,16 @@ const processSteps = [
           piece="git-branch-graph"
           lang={lang}
           size="11.5"
-          max-size="12"
+          max-size="13.5"
           speed="1"
           look="original"
           role="img"
           aria-label={
             lang === 'fa'
-              ? 'گراف ۳ مرحله‌ای اجرای سئو'
+              ? 'گراف ۴ مرحله‌ای اجرای سئو و رشد فروش'
               : lang === 'ar'
-                ? 'مخطط مسار تنفيذ السيو ثلاثي المراحل'
-                : '3-stage SEO execution pipeline graph'
+                ? 'مخطط مسار تنفيذ السيو ومضاعفة الأرباح رباعي المراحل'
+                : '4-stage SEO & revenue execution pipeline graph'
           }
         ></ascii-art>
       </div>
@@ -512,7 +533,7 @@ const processSteps = [
       ];
 
       tabBtns.forEach((btn) => {
-        btn.onclick = () => {
+        btn.addEventListener('click', () => {
           tabBtns.forEach((b) => {
             b.classList.remove(...activeClasses);
             b.classList.add(...inactiveClasses);
@@ -531,19 +552,26 @@ const processSteps = [
           const targetPane = document.querySelector(`[data-tab-content="${targetId}"]`);
           if (targetPane) targetPane.classList.remove('hidden');
 
-          if (studioAscii && pieceSlug) {
-            studioAscii.setAttribute('piece', pieceSlug);
+          const asciiEl =
+            studioAscii && studioAscii.tagName.toLowerCase() === 'ascii-art'
+              ? studioAscii
+              : studioAscii?.querySelector('ascii-art');
+
+          if (asciiEl && pieceSlug) {
+            asciiEl.setAttribute('piece', pieceSlug);
           }
           if (studioBadge && badgeText) {
             studioBadge.textContent = badgeText;
           }
-        };
+        });
       });
     }
 
     document.addEventListener('astro:page-load', initServicesTabs);
-    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    if (document.readyState !== 'loading') {
       initServicesTabs();
+    } else {
+      document.addEventListener('DOMContentLoaded', initServicesTabs);
     }
   })();
 </script>

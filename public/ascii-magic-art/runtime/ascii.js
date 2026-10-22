@@ -117,7 +117,9 @@ class AsciiArtElement extends HTMLElement {
       this._pre.setAttribute('dir', 'ltr');
       this._pre.style.margin = '0 auto';
       this._pre.style.padding = '0';
-      this._pre.style.display = 'inline-block';
+      this._pre.style.display = 'block';
+      this._pre.style.width = 'fit-content';
+      this._pre.style.maxWidth = '100%';
       this._pre.style.fontFamily =
         "'JetBrains Mono', 'Geist Mono', 'Vazirmatn', 'IRANSansX', 'IBM Plex Sans Arabic', monospace";
       this._pre.style.lineHeight = '1.18';
