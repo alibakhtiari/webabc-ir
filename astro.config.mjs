@@ -82,6 +82,48 @@ export const getImageForPage = (pageKey) => {
   return undefined;
 }; // site-launch date — never a build timestamp
 
+// Vite plugin to mirror public/_redirects in local dev server (npm run dev)
+function devRedirectsPlugin() {
+  return {
+    name: 'dev-redirects',
+    apply: 'serve',
+    configureServer(server) {
+      let redirectMap = new Map();
+      try {
+        const redirectsRaw = fs.readFileSync('public/_redirects', 'utf-8');
+        for (const line of redirectsRaw.split('\n')) {
+          const t = line.trim();
+          if (!t || t.startsWith('#')) continue;
+          const [src, dst] = t.split(/\s+/);
+          if (src && dst) {
+            redirectMap.set(src, dst);
+            if (src.endsWith('/')) {
+              redirectMap.set(src.slice(0, -1), dst);
+            } else {
+              redirectMap.set(`${src}/`, dst);
+            }
+          }
+        }
+      } catch {
+        // public/_redirects not yet read
+      }
+
+      server.middlewares.use((req, res, next) => {
+        const rawUrl = (req.url || '').split('?')[0];
+        const target = redirectMap.get(rawUrl);
+        if (target) {
+          const search = req.url && req.url.includes('?') ? req.url.slice(req.url.indexOf('?')) : '';
+          res.statusCode = 301;
+          res.setHeader('Location', `${target}${search}`);
+          res.end();
+          return;
+        }
+        next();
+      });
+    },
+  };
+}
+
 // https://astro.build/config
 export default defineConfig({
   site: SITE,
@@ -156,7 +198,7 @@ export default defineConfig({
     mdx(),
   ],
   vite: {
-    plugins: [tailwind()],
+    plugins: [tailwind(), devRedirectsPlugin()],
     resolve: {
       alias: {
         '@': '/src',
