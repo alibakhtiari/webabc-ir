@@ -120,8 +120,9 @@ class AsciiArtElement extends HTMLElement {
       this._pre.style.display = 'inline-block';
       this._pre.style.fontFamily =
         "'JetBrains Mono', 'Geist Mono', 'Vazirmatn', 'IRANSansX', 'IBM Plex Sans Arabic', monospace";
-      this._pre.style.lineHeight = '1.2';
+      this._pre.style.lineHeight = '1.18';
       this._pre.style.letterSpacing = '0';
+      this._pre.style.whiteSpace = 'pre';
       this._pre.style.overflowX = 'hidden';
       this._pre.style.userSelect = 'none';
       this.style.textAlign = 'center';
@@ -206,25 +207,38 @@ class AsciiArtElement extends HTMLElement {
     const parent = this.parentElement || this;
     const hostWidth = parent.clientWidth || this.clientWidth || 0;
 
-    if (hostWidth > 60) {
+    // Configurable size bounds (crisp terminal typography)
+    const attrSize = parseFloat(this.getAttribute('size') || '');
+    const baseSize = Number.isFinite(attrSize) ? Math.max(7.5, Math.min(13, attrSize)) : 11.5;
+    const attrMax = parseFloat(this.getAttribute('max-size') || '');
+    const maxSize = Number.isFinite(attrMax) ? Math.min(14, attrMax) : Math.max(baseSize, 12.8);
+    const minSize = 4.8;
+
+    if (hostWidth > 40) {
+      // 16px safety padding inside terminal window
       const targetWidth = Math.max(40, hostWidth - 16);
-      let fontSize = targetWidth / (cols * 0.601);
-      const maxFont = parseFloat(this.getAttribute('max-size') || '22');
-      fontSize = Math.max(6.2, Math.min(maxFont, fontSize));
+      const idealWidth = cols * baseSize * 0.602;
+
+      let fontSize = baseSize;
+      if (idealWidth > targetWidth) {
+        // Narrower container or smaller screen: scale down cleanly to fit full width without wrapping
+        fontSize = Math.max(minSize, targetWidth / (cols * 0.602));
+      } else {
+        // Fits comfortably: calculate optimal fill size so it fills width without bloated font
+        const fitSize = targetWidth / (cols * 0.602);
+        fontSize = Math.min(maxSize, Math.max(baseSize, fitSize));
+      }
+
       this._pre.style.fontSize = `${fontSize.toFixed(2)}px`;
 
+      // Measure actual rendered width and calibrate to strictly avoid overflow clipping
       const measured = this._pre.scrollWidth;
-      if (measured > 0) {
-        const calibrated = Math.max(
-          6.2,
-          Math.min(maxFont, fontSize * (targetWidth / measured))
-        );
+      if (measured > targetWidth) {
+        const calibrated = Math.max(minSize, fontSize * (targetWidth / measured) * 0.98);
         this._pre.style.fontSize = `${calibrated.toFixed(2)}px`;
       }
     } else {
-      const sizeAttr = parseFloat(this.getAttribute('size') || '12');
-      const fontSize = Number.isFinite(sizeAttr) ? Math.max(7.5, Math.min(20, sizeAttr)) : 12;
-      this._pre.style.fontSize = `${fontSize}px`;
+      this._pre.style.fontSize = `${baseSize.toFixed(2)}px`;
     }
   }
 
@@ -278,6 +292,8 @@ class AsciiArtElement extends HTMLElement {
     const activePalette = this._getActivePalette();
 
     const htmlRows = [];
+    const LTR_ANCHOR_REGEX = /[│─┌┐└┘├┤┬┴┼╭╮╯╰═║►◄▲▼░▒▓█]/;
+
     for (let y = 0; y < frameData.lines.length; y++) {
       const row = frameData.lines[y];
       let rowHtml = '';
@@ -296,7 +312,8 @@ class AsciiArtElement extends HTMLElement {
           }
           currentColor = hex;
         }
-        buffer += escapeHtml(ch);
+        const escaped = escapeHtml(ch);
+        buffer += LTR_ANCHOR_REGEX.test(ch) ? `\u200E${escaped}\u200E` : escaped;
       }
       if (buffer) {
         rowHtml += `<span style="color:${currentColor}">${buffer}</span>`;

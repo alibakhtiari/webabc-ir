@@ -179,7 +179,7 @@ const LOGO_VERSIONS = [
             : '/LOGO-PREVIEW · Live Monospace Art'
       }
       meta="66×17 · 24 fps · Procedural"
-      size={13}
+      size={11.5}
       ariaLabel="Animated procedural WebABC ASCII logo"
     />
   </div>
@@ -209,7 +209,7 @@ const LOGO_VERSIONS = [
       ];
 
       tabs.forEach((tab) => {
-        tab.onclick = () => {
+        tab.addEventListener('click', () => {
           const piece = tab.getAttribute('data-logo-tab');
           const badge = tab.getAttribute('data-logo-badge');
           const desc = tab.getAttribute('data-logo-desc');
@@ -224,7 +224,8 @@ const LOGO_VERSIONS = [
           tab.classList.add(...activeClasses);
           tab.setAttribute('aria-pressed', 'true');
 
-          const asciiEl = stage.querySelector('ascii-art');
+          const asciiEl =
+            stage.tagName.toLowerCase() === 'ascii-art' ? stage : stage.querySelector('ascii-art');
           if (asciiEl && piece) {
             asciiEl.setAttribute('piece', piece);
           }
@@ -234,13 +235,15 @@ const LOGO_VERSIONS = [
           if (badgeEl && badge) {
             badgeEl.textContent = badge;
           }
-        };
+        });
       });
     }
 
     document.addEventListener('astro:page-load', initLogoStudio);
-    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    if (document.readyState !== 'loading') {
       initLogoStudio();
+    } else {
+      document.addEventListener('DOMContentLoaded', initLogoStudio);
     }
   })();
 </script>
