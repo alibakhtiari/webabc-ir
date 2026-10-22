@@ -13,6 +13,10 @@ import createSignupFunnel, { meta as metaSignupFunnel } from '../pieces/signup-f
 import createGitBranchGraph, { meta as metaGitBranchGraph } from '../pieces/git-branch-graph.js';
 import createLostInSpace404, { meta as metaLostInSpace404 } from '../pieces/lost-in-space-404.js';
 import createWebabcSeoTelemetry, { meta as metaWebabcSeoTelemetry } from '../pieces/webabc-seo-telemetry.js';
+import createWebabcLogoGlitch, { meta as metaWebabcLogoGlitch } from '../pieces/webabc-logo-glitch.js';
+import createWebabcLogoCube, { meta as metaWebabcLogoCube } from '../pieces/webabc-logo-cube.js';
+import createWebabcLogoWaveform, { meta as metaWebabcLogoWaveform } from '../pieces/webabc-logo-waveform.js';
+import createWebabcLogoOrbit, { meta as metaWebabcLogoOrbit } from '../pieces/webabc-logo-orbit.js';
 
 const BUILTIN_PIECES = {
   'hero-growth-story': { create: createHeroGrowthStory, meta: metaHeroGrowthStory },
@@ -37,6 +41,10 @@ const BUILTIN_PIECES = {
   'lost-in-space-404': { create: createLostInSpace404, meta: metaLostInSpace404 },
   'server-error-500': { create: createLostInSpace404, meta: metaLostInSpace404 },
   'webabc-seo-telemetry': { create: createWebabcSeoTelemetry, meta: metaWebabcSeoTelemetry },
+  'webabc-logo-glitch': { create: createWebabcLogoGlitch, meta: metaWebabcLogoGlitch },
+  'webabc-logo-cube': { create: createWebabcLogoCube, meta: metaWebabcLogoCube },
+  'webabc-logo-waveform': { create: createWebabcLogoWaveform, meta: metaWebabcLogoWaveform },
+  'webabc-logo-orbit': { create: createWebabcLogoOrbit, meta: metaWebabcLogoOrbit },
 };
 
 const THEME_PALETTES = {
