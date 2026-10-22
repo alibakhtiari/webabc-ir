@@ -1,6 +1,6 @@
 ---
 import { getDictionary } from '@/i18n/get-dictionary';
-import { languages, type SupportedLanguage } from '@/types/language';
+import { type SupportedLanguage } from '@/types/language';
 import { createTranslator } from '@/i18n/translate';
 
 interface Props {
@@ -9,14 +9,15 @@ interface Props {
   description?: string;
   buttonText?: string;
   buttonLink?: string;
+  serviceName?: string;
 }
 
-const { lang, title, description, buttonText, buttonLink = '/contact' } = Astro.props;
+const { lang, title, description, buttonText, buttonLink = '/contact', serviceName = '' } = Astro.props;
 
 const dictionary = await getDictionary(lang);
-const isRtl = languages[lang]?.direction === 'rtl';
+const isRtl = lang === 'fa' || lang === 'ar';
+const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 'font-persian';
 
-// Helper to translate strings
 const t = createTranslator(dictionary);
 
 const ctaTitle = title || t('cta.title', { fallback: 'Ready to Grow Your Business?' });
@@ -25,34 +26,41 @@ const ctaDesc =
   t('cta.description', {
     fallback: 'Contact our expert team today to get a customized strategy for your business.',
   });
-const ctaBtnText = buttonText || t('cta.primaryButton', { fallback: 'Get Started' });
+const ctaBtnText = buttonText || t('cta.primaryButton', { fallback: 'Get Free Consultation' });
 ---
 
-<div
-  class="relative my-12 overflow-hidden rounded-3xl border border-primary/15 bg-linear-to-r from-primary/10 via-primary/5 to-transparent p-8 font-persian md:p-10 dark:border-slate-800 dark:from-primary/15 dark:via-primary/5 dark:to-slate-900/30"
->
-  <!-- Interactive background blobs -->
-  <div class="absolute inset-0 -z-10 overflow-hidden">
-    <div class="absolute top-0 right-0 h-48 w-48 rounded-full bg-primary/5 blur-2xl"></div>
-    <div class="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-primary/10 blur-3xl"></div>
+<div class={`terminal-window my-10 ${fontClass}`}>
+  <div class="terminal-chrome-bar" dir="ltr">
+    <span class="slash-eyebrow text-xs" dir="ltr">/GET-STARTED · FREE STRATEGY &amp; AUDIT</span>
+    <span class="monospace-telemetry-pill text-[var(--accent-green)]">● SLA &lt; 2H</span>
   </div>
 
-  <div class="relative z-10 flex flex-col items-center justify-between gap-6 md:flex-row">
-    <div class="max-w-2xl space-y-3 text-center md:text-start">
-      <h3 class="text-2xl leading-tight font-bold text-gray-900 md:text-3xl dark:text-white">
+  <div class="flex flex-col items-center justify-between gap-6 p-6 sm:p-8 md:flex-row">
+    <div class="max-w-2xl space-y-2 text-center md:text-start">
+      <h3 class="text-xl leading-tight font-bold text-[var(--text-primary)] md:text-2xl">
         {ctaTitle}
       </h3>
-      <p class="text-sm leading-relaxed text-gray-600 md:text-base dark:text-gray-300">
+      <p class="text-sm leading-relaxed text-[var(--text-secondary)] md:text-base">
         {ctaDesc}
       </p>
     </div>
 
-    <div class="shrink-0">
-      <a
-        href={`/${lang}${buttonLink.endsWith('/') ? buttonLink : buttonLink + '/'}`}
-        class="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3.5 font-bold text-primary-foreground shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/95 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+    <div class="flex shrink-0 flex-wrap items-center justify-center gap-2.5">
+      <button
+        type="button"
+        data-consult-service={serviceName}
+        data-open-consultation={!serviceName ? true : undefined}
+        class="inline-flex h-10 cursor-pointer items-center justify-center gap-1.5 rounded border border-[var(--accent-green)] bg-[var(--accent-green-dim)] px-5 font-mono text-xs font-bold text-[var(--accent-contrast)] transition-all hover:bg-[var(--accent-green)] hover:text-[#090b0e]"
       >
         <span>{ctaBtnText}</span>
+        <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
+      </button>
+
+      <a
+        href={`/${lang}${buttonLink.endsWith('/') ? buttonLink : buttonLink + '/'}`}
+        class="inline-flex h-10 items-center justify-center rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-4 font-mono text-xs font-semibold text-[var(--text-primary)] transition-colors hover:border-[var(--accent-blue)] hover:text-[var(--accent-blue)]"
+      >
+        <span>{t('common.contactUs', { fallback: 'Contact Page' })}</span>
       </a>
     </div>
   </div>

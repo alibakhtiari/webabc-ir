@@ -22,9 +22,6 @@ const {
   heroImage,
   breadcrumbs,
   lang,
-  gradient = heroImage
-    ? 'bg-linear-to-b from-primary/10 via-background to-background'
-    : 'bg-linear-to-br from-primary/10 via-background to-primary/5',
   className = '',
   centered = !heroImage,
 } = Astro.props;
@@ -33,24 +30,27 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
 ---
 
 <section
-  class={`relative overflow-hidden ${heroImage ? 'pt-28 pb-16 md:pt-32 md:pb-24' : 'pt-36 pb-20'} ${gradient} ${className}`}
+  class={`relative overflow-hidden border-b border-[var(--border-hairline)] bg-[var(--bg-surface)] ${heroImage ? 'pt-12 pb-16 md:pt-16 md:pb-20' : 'pt-14 pb-16'} ${className}`}
 >
   <div class={`relative z-10 container mx-auto px-4 ${heroImage ? 'max-w-6xl' : 'max-w-4xl'}`}>
     <Breadcrumbs items={breadcrumbs} lang={lang} centered={centered} />
 
     <div
-      class={`mt-8 ${heroImage ? 'flex flex-col lg:flex-row items-center gap-12' : 'space-y-6 text-center mx-auto'}`}
+      class={`mt-6 ${heroImage ? 'flex flex-col lg:flex-row items-center gap-12' : 'space-y-5 text-center mx-auto'}`}
     >
       <!-- Text Content -->
       <div class={`${heroImage ? 'lg:w-1/2 w-full' : 'w-full'}`}>
+        <div class={`mb-3 ${centered ? 'flex justify-center' : ''}`}>
+          <span class="slash-eyebrow" dir="ltr">/WEBABC · TECHNICAL SPEC</span>
+        </div>
         <h1
-          class={`leading-tight font-bold text-gray-900 md:text-5xl dark:text-white ${heroImage ? 'mb-6 text-4xl' : 'text-4xl'} ${fontClass}`}
+          class={`leading-tight font-bold text-[var(--text-primary)] md:text-5xl ${heroImage ? 'mb-5 text-3xl sm:text-4xl' : 'text-3xl sm:text-4xl'} ${fontClass}`}
         >
           {title}
         </h1>
         {
           subtitle && (
-            <p class={`mb-6 text-xl leading-relaxed font-medium text-primary ${fontClass}`}>
+            <p class={`mb-5 text-lg leading-relaxed font-semibold text-[var(--accent-green)] ${fontClass}`}>
               {subtitle}
             </p>
           )
@@ -58,32 +58,38 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
         {
           description && (
             <p
-              class={`leading-relaxed text-gray-600 dark:text-gray-300 ${heroImage ? 'mb-8 text-lg' : 'mx-auto max-w-3xl text-xl'} ${fontClass}`}
+              class={`leading-relaxed text-[var(--text-secondary)] ${heroImage ? 'mb-8 text-base sm:text-lg' : 'mx-auto max-w-3xl text-base sm:text-lg'} ${fontClass}`}
             >
               {description}
             </p>
           )
         }
-        <div class={`flex flex-wrap gap-4 ${centered ? 'justify-center' : ''}`}>
+        <div class={`flex flex-wrap gap-3 ${centered ? 'justify-center' : ''}`}>
           <slot />
         </div>
       </div>
 
-      <!-- Optional Hero Image -->
+      <!-- Optional Hero Image inside Terminal Frame -->
       {
         heroImage && (
           <div class="mt-8 w-full lg:mt-0 lg:w-1/2">
-            <div class="relative h-75 w-full overflow-hidden rounded-2xl shadow-2xl lg:h-100">
-              <Picture
-                src={heroImage}
-                formats={['avif', 'webp']}
-                alt={title}
-                width={600}
-                height={400}
-                class="h-full w-full object-cover"
-                loading="eager"
-                fetchpriority="high"
-              />
+            <div class="terminal-window">
+              <div class="terminal-chrome-bar" dir="ltr">
+                <span>╭─ /ASSET-VIEW · HIGH-CONTRAST RENDER ─╮</span>
+                <span class="monospace-telemetry-pill">AVIF · WEBP</span>
+              </div>
+              <div class="relative h-72 w-full overflow-hidden lg:h-96">
+                <Picture
+                  src={heroImage}
+                  formats={['avif', 'webp']}
+                  alt={title}
+                  width={600}
+                  height={400}
+                  class="h-full w-full object-cover"
+                  loading="eager"
+                  fetchpriority="high"
+                />
+              </div>
             </div>
           </div>
         )
