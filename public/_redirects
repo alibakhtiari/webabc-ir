@@ -46,6 +46,36 @@
 
 /sitemap.xml                  /sitemap-index.xml            301
 
+# Legacy WordPress / Yoast Sitemaps & Feeds (unslashed + slashed forms for single-hop 301)
+/sitemap_index.xml             /sitemap-index.xml            301
+/sitemap_index.xml/            /sitemap-index.xml            301
+/post-sitemap.xml              /sitemap-index.xml            301
+/post-sitemap.xml/             /sitemap-index.xml            301
+/page-sitemap.xml              /sitemap-index.xml            301
+/page-sitemap.xml/             /sitemap-index.xml            301
+/product-sitemap.xml           /sitemap-index.xml            301
+/product-sitemap.xml/          /sitemap-index.xml            301
+/category-sitemap.xml          /sitemap-index.xml            301
+/category-sitemap.xml/         /sitemap-index.xml            301
+/product_brand-sitemap.xml     /sitemap-index.xml            301
+/product_brand-sitemap.xml/    /sitemap-index.xml            301
+/product_cat-sitemap.xml       /sitemap-index.xml            301
+/product_cat-sitemap.xml/      /sitemap-index.xml            301
+/author-sitemap.xml            /sitemap-index.xml            301
+/author-sitemap.xml/           /sitemap-index.xml            301
+/video-sitemap.xml             /sitemap-index.xml            301
+/video-sitemap.xml/            /sitemap-index.xml            301
+/local-sitemap.xml             /sitemap-index.xml            301
+/local-sitemap.xml/            /sitemap-index.xml            301
+/locations.kml                 /sitemap-index.xml            301
+/locations.kml/                /sitemap-index.xml            301
+/main-sitemap.xsl              /sitemap-index.xml            301
+/main-sitemap.xsl/             /sitemap-index.xml            301
+
+# Legacy WordPress Font Assets
+/wp-content/uploads/2024/10/IRANSansXFaNum-Regular.woff2   /fonts/rtl.woff2   301
+/wp-content/uploads/2024/10/IRANSansXFaNum-Regular.woff2/  /fonts/rtl.woff2   301
+
 # Legacy & GSC Error Fix Redirects
 /en/local-seo-services       /en/services/seo/             301
 /en/local-seo                /en/services/seo/             301

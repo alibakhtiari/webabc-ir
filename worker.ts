@@ -42,8 +42,23 @@ const ARABIC_COUNTRIES = [
 const CANONICAL_HOST = 'webabc.ir';
 
 export const STATIC_REDIRECTS: Record<string, string> = {
-  // Sitemaps
+  // Sitemaps & Feeds
   '/sitemap.xml': '/sitemap-index.xml',
+  '/sitemap_index.xml': '/sitemap-index.xml',
+  '/post-sitemap.xml': '/sitemap-index.xml',
+  '/page-sitemap.xml': '/sitemap-index.xml',
+  '/product-sitemap.xml': '/sitemap-index.xml',
+  '/category-sitemap.xml': '/sitemap-index.xml',
+  '/product_brand-sitemap.xml': '/sitemap-index.xml',
+  '/product_cat-sitemap.xml': '/sitemap-index.xml',
+  '/author-sitemap.xml': '/sitemap-index.xml',
+  '/video-sitemap.xml': '/sitemap-index.xml',
+  '/local-sitemap.xml': '/sitemap-index.xml',
+  '/locations.kml': '/sitemap-index.xml',
+  '/main-sitemap.xsl': '/sitemap-index.xml',
+
+  // Legacy WordPress Font Assets
+  '/wp-content/uploads/2024/10/IRANSansXFaNum-Regular.woff2': '/fonts/rtl.woff2',
 
   // Tool legacy slugs
   '/en/tools/seo-title-analyzer': '/en/tools/headline-analyzer/',
