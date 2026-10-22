@@ -50,12 +50,37 @@ const waDirectLabel =
       : 'Or Chat Directly on WhatsApp';
 
 const colorPalettes = [
-  { id: 'blue', label: 'Blue', dotColor: '#38bdf8' },
-  { id: 'mono', label: 'Dark/White', dotColor: '#ffffff', border: true },
-  { id: 'emerald', label: 'Green', dotColor: '#7ee787' },
-  { id: 'cyan', label: 'Teal', dotColor: '#2dd4bf' },
-  { id: 'violet', label: 'Violet', dotColor: '#a78bfa' },
-  { id: 'amber', label: 'Amber', dotColor: '#fbbf24' },
+  {
+    id: 'blue',
+    label: lang === 'fa' ? 'آبی' : lang === 'ar' ? 'أزرق' : 'Blue',
+    dotColor: '#38bdf8',
+  },
+  {
+    id: 'mono',
+    label: lang === 'fa' ? 'تیره/روشن' : lang === 'ar' ? 'أحادي' : 'Dark/White',
+    dotColor: '#ffffff',
+    border: true,
+  },
+  {
+    id: 'emerald',
+    label: lang === 'fa' ? 'سبز' : lang === 'ar' ? 'أخضر' : 'Green',
+    dotColor: '#7ee787',
+  },
+  {
+    id: 'cyan',
+    label: lang === 'fa' ? 'فیروزه‌ای' : lang === 'ar' ? 'سماوي' : 'Teal',
+    dotColor: '#2dd4bf',
+  },
+  {
+    id: 'violet',
+    label: lang === 'fa' ? 'بنفش' : lang === 'ar' ? 'بنفسجي' : 'Violet',
+    dotColor: '#a78bfa',
+  },
+  {
+    id: 'amber',
+    label: lang === 'fa' ? 'کهربایی' : lang === 'ar' ? 'كهرماني' : 'Amber',
+    dotColor: '#fbbf24',
+  },
 ];
 
 const serviceOptions = [
@@ -123,7 +148,9 @@ const serviceOptions = [
           <span
             class="inline-block h-2 w-2 rounded-full bg-[var(--accent-green)]"
             aria-hidden="true"></span>
-          <span class="font-semibold text-[var(--accent-green)]">CWV: PASS</span>
+          <span class="font-semibold text-[var(--accent-green)]">
+            {lang === 'fa' ? 'سرعت CWV: تایید' : lang === 'ar' ? 'سرعة CWV: ممتاز' : 'CWV: PASS'}
+          </span>
           <span class="hidden md:inline">· LCP 0.8s · INP 24ms · CLS 0.00</span>
         </span>
         <span class="hidden text-[var(--border-focus)] sm:inline">|</span>
@@ -131,14 +158,16 @@ const serviceOptions = [
           href={linkPath('/tools')}
           class="hidden items-center gap-1 font-medium text-[var(--accent-blue)] transition-colors hover:underline sm:inline-flex"
         >
-          <span>5 Free SEO &amp; Web Tools →</span>
+          <span>
+            {lang === 'fa' ? '۵ ابزار رایگان سئو و وب ←' : lang === 'ar' ? '5 أدوات سيو ومطورين مجانية ←' : '5 Free SEO & Web Tools →'}
+          </span>
         </a>
       </div>
 
       <!-- Right: Live Color Palette Switcher (Blue, Dark/White, Green, Teal, Violet, Amber) -->
       <div class="flex items-center gap-1.5 overflow-x-auto" role="group" aria-label="Color Theme Switcher">
         <span class="text-[10px] tracking-wider text-[var(--text-secondary)] uppercase">
-          COLOR:
+          {lang === 'fa' ? 'رنگ تم:' : lang === 'ar' ? 'اللون:' : 'COLOR:'}
         </span>
         {
           colorPalettes.map((p) => (
@@ -207,7 +236,13 @@ const serviceOptions = [
           >
             <div class="terminal-window border border-[var(--border-hairline)] bg-[var(--bg-surface)] shadow-2xl">
               <div class="terminal-chrome-bar" dir="ltr">
-                <span>╭─ /SERVICES · 11 SPECIALIZED SOLUTIONS ─╮</span>
+                <span>
+                  {lang === 'fa'
+                    ? '╭─ /سرویس‌ها · ۱۱ راهکار تخصصی رشد آنلاین ─╮'
+                    : lang === 'ar'
+                      ? '╭─ /الخدمات · 11 حلاً متخصصاً لتطوير أعمالك ─╮'
+                      : '╭─ /SERVICES · 11 SPECIALIZED SOLUTIONS ─╮'}
+                </span>
                 <span class="monospace-telemetry-pill">EN · FA · AR</span>
               </div>
 
@@ -215,7 +250,9 @@ const serviceOptions = [
                 <!-- Column 1: /SEO-SERVICES -->
                 <div class="space-y-2 pe-3">
                   <div class="border-b border-[var(--border-subtle)] pb-1.5">
-                    <span class="slash-eyebrow text-[10px]" dir="ltr">/SEO-SERVICES</span>
+                    <span class="slash-eyebrow text-[10px]">
+                      {lang === 'fa' ? '/خدمات-سئو' : lang === 'ar' ? '/خدمات-السيو' : '/SEO-SERVICES'}
+                    </span>
                   </div>
                   <ul class="space-y-1">
                     <li>
@@ -260,7 +297,9 @@ const serviceOptions = [
                 <!-- Column 2: /DEVELOPMENT-SERVICES -->
                 <div class="space-y-2 px-3">
                   <div class="border-b border-[var(--border-subtle)] pb-1.5">
-                    <span class="slash-eyebrow text-[10px]" dir="ltr">/DEVELOPMENT</span>
+                    <span class="slash-eyebrow text-[10px]">
+                      {lang === 'fa' ? '/طراحی-و-توسعه-سایت' : lang === 'ar' ? '/تطوير-وتصميم-المواقع' : '/DEVELOPMENT'}
+                    </span>
                   </div>
                   <ul class="space-y-1">
                     <li>
@@ -305,7 +344,9 @@ const serviceOptions = [
                 <!-- Column 3: /SUPPORT-AND-OPTIMIZATION -->
                 <div class="space-y-2 ps-3">
                   <div class="border-b border-[var(--border-subtle)] pb-1.5">
-                    <span class="slash-eyebrow text-[10px]" dir="ltr">/OPTIMIZATION</span>
+                    <span class="slash-eyebrow text-[10px]">
+                      {lang === 'fa' ? '/بهینه‌سازی-و-پشتیبانی' : lang === 'ar' ? '/التحسين-والصيانة' : '/OPTIMIZATION'}
+                    </span>
                   </div>
                   <ul class="space-y-1">
                     <li>
@@ -340,8 +381,12 @@ const serviceOptions = [
               </div>
 
               <div class="flex items-center justify-between border-t border-[var(--border-hairline)] bg-[var(--bg-elevated)] px-4 py-2">
-                <span class="ltr-isolate font-mono text-[10px] text-[var(--text-secondary)]" dir="ltr">
-                  ╰─ 11 SERVICES · CWV 99/100 GUARANTEED ─╯
+                <span class="ltr-isolate font-mono text-[10px] text-[var(--text-secondary)]">
+                  {lang === 'fa'
+                    ? '╰─ ۱۱ سرویس تخصصی · تضمین نمره سرعت ۹۹+ ─╯'
+                    : lang === 'ar'
+                      ? '╰─ 11 خدمة متخصصة · ضمان سرعة 99+ ─╯'
+                      : '╰─ 11 SERVICES · CWV 99/100 GUARANTEED ─╯'}
                 </span>
                 <a
                   href={linkPath('/services')}
@@ -561,7 +606,7 @@ const serviceOptions = [
           <!-- Mobile Color Palette Selector -->
           <div class="rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] p-3" dir="ltr">
             <div class="mb-2 font-mono text-[10px] tracking-wider text-[var(--text-secondary)] uppercase">
-              COLOR PALETTE:
+              {lang === 'fa' ? 'پالت رنگ:' : lang === 'ar' ? 'لوحة الألوان:' : 'COLOR PALETTE:'}
             </div>
             <div class="flex flex-wrap gap-1.5">
               {
@@ -598,12 +643,15 @@ const serviceOptions = [
             <!-- Services Nested Menu -->
             <div class="space-y-3 border-y border-[var(--border-hairline)] py-3">
               <div class="flex items-center justify-between">
-                <span class="slash-eyebrow text-xs" dir="ltr">/SERVICES</span>
+                <span class="slash-eyebrow text-xs">
+                  {lang === 'fa' ? '/سرویس‌ها' : lang === 'ar' ? '/الخدمات' : '/SERVICES'}
+                </span>
                 <a
                   href={linkPath('/services')}
                   class="font-mono text-xs font-bold text-[var(--accent-green)] hover:underline"
                 >
-                  {t('common.allServices')} →
+                  <span>{t('common.allServices')}</span>
+                  <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
                 </a>
               </div>
 
@@ -720,11 +768,16 @@ const serviceOptions = [
 <!-- Terminal-Styled Native HTML5 Dialog for Consultation Form -->
 <dialog
   id="consultation-modal"
+  data-inquiry-prefix={lang === 'fa' ? 'درخواست مشاوره درباره:' : lang === 'ar' ? 'استفسار بخصوص:' : 'Inquiry regarding:'}
   class={`fixed inset-0 m-auto max-h-[92vh] w-[calc(100%-2rem)] max-w-lg overflow-y-auto rounded-lg border border-[var(--border-focus)] bg-[var(--bg-surface)] p-0 text-[var(--text-primary)] shadow-2xl backdrop:bg-black/75 backdrop:backdrop-blur-xs ${fontClass}`}
 >
-  <div class="terminal-chrome-bar" dir="ltr">
+  <div class="terminal-chrome-bar">
     <span class="font-mono text-xs font-bold text-[var(--accent-green)]">
-      ╭─ Request a Consultation ─── ESC to close ─╮
+      {lang === 'fa'
+        ? '╭─ درخواست مشاوره تخصصی ─── کلید ESC برای بستن ─╮'
+        : lang === 'ar'
+          ? '╭─ طلب استشارة متخصصة ─── اضغط ESC للإغلاق ─╮'
+          : '╭─ Request a Consultation ─── ESC to close ─╮'}
     </span>
     <button
       type="button"
@@ -732,13 +785,19 @@ const serviceOptions = [
       class="cursor-pointer rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-2 py-0.5 font-mono text-xs text-[var(--text-secondary)] hover:border-[var(--accent-coral)] hover:text-[var(--accent-coral)]"
       aria-label={t('consultation.cancel', { fallback: 'Close' })}
     >
-      [✕ ESC]
+      {lang === 'fa' ? '[✕ بستن]' : lang === 'ar' ? '[✕ إغلاق]' : '[✕ ESC]'}
     </button>
   </div>
 
   <div class="p-6 sm:p-7">
     <div class="mb-5">
-      <span class="slash-eyebrow text-[11px]" dir="ltr">/CONSULTATION · DIRECT ENGINEERING HANDOFF</span>
+      <span class="slash-eyebrow text-[11px]">
+        {lang === 'fa'
+          ? '/مشاوره-تخصصی · ارتباط مستقیم با تیم فنی وب اِی‌بی‌سی'
+          : lang === 'ar'
+            ? '/طلب-استشارة · تواصل مباشر مع مهندسي WebABC'
+            : '/CONSULTATION · DIRECT ENGINEERING HANDOFF'}
+      </span>
       <div class="mt-1 text-xl font-bold text-[var(--text-primary)]">
         {t('consultation.title', { fallback: 'Request a Consultation' })}
       </div>
@@ -856,7 +915,8 @@ const serviceOptions = [
         id="consultation-submit-btn"
         class="h-10 w-full cursor-pointer rounded border border-[var(--accent-green)] bg-[var(--accent-green-dim)] font-mono text-xs font-bold text-[var(--accent-contrast)] transition-all hover:bg-[var(--accent-green)] hover:text-[#090b0e] disabled:opacity-60"
       >
-        {t('consultation.sendRequest', { fallback: 'Send Request' })} →
+        <span>{t('consultation.sendRequest', { fallback: 'Send Request' })}</span>
+        <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
       </button>
 
       <div class="relative flex items-center justify-center py-1">
@@ -916,7 +976,7 @@ const serviceOptions = [
         }
       }
       if (msgEl && serviceName && !msgEl.value) {
-        msgEl.placeholder = `Inquiry regarding: ${serviceName}`;
+        msgEl.placeholder = `${dialog?.dataset?.inquiryPrefix || 'Inquiry regarding:'} ${serviceName}`;
       }
       if (dialog && typeof dialog.showModal === 'function') {
         dialog.showModal();
