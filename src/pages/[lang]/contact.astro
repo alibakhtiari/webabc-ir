@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import Breadcrumbs from '@/components/astro/Breadcrumbs.astro';
+import AsciiStage from '@/components/astro/AsciiStage.astro';
 import { getLanguageStaticPaths, type SupportedLanguage, languages } from '@/types/language';
 import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
@@ -356,6 +357,25 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
               </a>
             </div>
           </div>
+        </div>
+
+        <!-- Live Middle East Radar & Uplink Telemetry -->
+        <div class="terminal-window">
+          <AsciiStage
+            id="contact-satellite-uplink"
+            lang={supportedLang}
+            defaultPiece="webabc-logo-orbit"
+            title={
+              supportedLang === 'fa'
+                ? '/رادار-ارتباطی · گره‌های شبکه خاورمیانه'
+                : supportedLang === 'ar'
+                  ? '/الرادار-الإقليمي · شبكة محطات الشرق الأوسط'
+                  : '/REGIONAL-RADAR · Middle East Telemetry Hubs'
+            }
+            meta="66×17 · 24 fps"
+            size={11}
+            ariaLabel="Middle East Regional Telemetry Radar"
+          />
         </div>
 
         <div class="terminal-window">
