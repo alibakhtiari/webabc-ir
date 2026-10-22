@@ -17,7 +17,7 @@ Hosted on Cloudflare (Worker + static assets), **automatically deployed on git p
 ```bash
 npm run dev          # local dev server
 npm run build        # the real pipeline — see below, do not shortcut to `astro build`
-npm run lint         # astro check (templates + TypeScript across all files)
+npm run lint         # oxlint + astro check (templates + TypeScript across all files)
 npm test             # verify-agentic.mjs (content negotiation, 404, schema, llms.txt, ai-catalog)
 npm run deploy       # manual fallback: build + wrangler deploy
 ```

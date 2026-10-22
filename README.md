@@ -62,11 +62,11 @@ Visit `http://localhost:4321` to view the site locally.
 - `npm run llms`: Regenerate the per-locale `llms.txt` indexes and all four `llms-full.txt` corpora.
 - `npm run preview`: Preview the production build locally.
 - `npm run deploy`: Build, then `wrangler deploy` to Cloudflare Workers.
-- `npm run lint`: Lint source with ESLint and type-check with `tsc --noemit`.
+- `npm run lint`: Lint source with Oxlint and type-check with `astro check`.
 - `npm run check`: Run `astro check` (types + template diagnostics).
 - `npm test`: Run `scripts/verify-agentic.mjs` — asserts content negotiation, 404 handling (including that the browser 404 body is a real document, not empty), Organization schema completeness, and the `llms.txt` language-router layout: per-locale index parity, UTF-8 charset on `.txt`, and `Link: rel="describedby"` discovery.
-- `npm run format`: Format the repo with Prettier.
-- `npm run format:check`: Verify formatting without writing.
+- `npm run format`: Format the repo with Oxfmt.
+- `npm run format:check`: Verify formatting without writing with Oxfmt.
 
 ## 🔧 Configuration
 

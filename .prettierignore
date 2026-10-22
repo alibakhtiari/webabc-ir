@@ -1,7 +1,0 @@
-dist/
-.astro/
-node_modules/
-package-lock.json
-public/
-src/generated/
-*.xlsx
