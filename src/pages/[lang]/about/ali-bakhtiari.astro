@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import Breadcrumbs from '@/components/astro/Breadcrumbs.astro';
 import CTA from '@/components/astro/CTA.astro';
+import AsciiStage from '@/components/astro/AsciiStage.astro';
 import { getLanguageStaticPaths, type SupportedLanguage } from '@/types/language';
 import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
@@ -316,6 +317,25 @@ const personSchema = {
         >
           {content.projectsLink}
         </a>
+      </div>
+
+      <!-- Procedural ASCII Terminal Stage -->
+      <div class="border-t border-gray-100 pt-8 dark:border-slate-800">
+        <AsciiStage
+          id="founder-ascii-stage"
+          lang={supportedLang}
+          defaultPiece="webabc-logo-waveform"
+          title={
+            supportedLang === 'fa'
+              ? '/تله‌متری-مهندسی · بیش از ۱۰ سال کدنویسی و بهینه‌سازی سرعت'
+              : supportedLang === 'ar'
+                ? '/سجل-التطوير · أكثر من 10 سنوات من هندسة الويب وتصدر السيو'
+                : '/ENGINEERING-TELEMETRY · Decade of Core Web Vitals & Search Velocity'
+          }
+          meta="66×17 · 24 fps · Web & SEO"
+          size={12}
+          ariaLabel="Interactive ASCII waveform and engineering telemetry"
+        />
       </div>
 
       <!-- How I Work -->
