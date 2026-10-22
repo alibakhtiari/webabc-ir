@@ -1,0 +1,28 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "printWidth": 100,
+  "sortPackageJson": false,
+  "sortTailwindcss": {
+    "stylesheet": "./src/styles/globals.css"
+  },
+  "astro": {},
+  "associations": [
+    {
+      "files": ["*.astro"],
+      "language": "astro"
+    }
+  ],
+  "ignorePatterns": [
+    "dist/",
+    ".astro/",
+    "node_modules/",
+    "package-lock.json",
+    "public/",
+    "src/generated/",
+    "*.xlsx"
+  ]
+}
