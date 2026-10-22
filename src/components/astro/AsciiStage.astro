@@ -1,0 +1,188 @@
+---
+import type { SupportedLanguage } from '@/types/language';
+
+export interface AsciiScene {
+  slug: string;
+  label: string;
+  category?: string;
+  dims?: string;
+  fps?: number;
+  size?: string;
+}
+
+interface Props {
+  id: string;
+  defaultPiece?: string;
+  title?: string;
+  meta?: string;
+  scenes?: AsciiScene[];
+  minHeight?: number;
+  size?: number;
+  ariaLabel?: string;
+  defaultLook?: string;
+  speed?: number;
+  showLookSwitcher?: boolean;
+  showControls?: boolean;
+  lang?: SupportedLanguage;
+  nextSceneLabel?: string;
+  nextSceneTitle?: string;
+}
+
+const {
+  id,
+  defaultPiece = 'live-line-chart',
+  title = '/LIVE-DATA · Organic Growth Telemetry',
+  meta = '66×17 · 30 fps · 3.3 KB',
+  scenes = [],
+  size = 12,
+  ariaLabel = 'Interactive ASCII engineering telemetry visualization',
+  lang = 'en',
+  nextSceneLabel = lang === 'fa' ? 'صحنه بعدی' : lang === 'ar' ? 'المشهد التالي' : 'Next Scene',
+  nextSceneTitle = lang === 'fa'
+    ? 'تغییر صحنه‌های تعاملی اسکی'
+    : lang === 'ar'
+      ? 'تبديل المشاهد التفاعلية'
+      : 'Cycle through curated WebABC ASCII scenes',
+} = Astro.props;
+---
+
+<div
+  class="ascii-stage-container terminal-window w-full"
+  dir="ltr"
+  style="unicode-bidi: isolate;"
+  data-ascii-stage={id}
+>
+  <!-- Terminal Window Header Bar -->
+  <div class="terminal-chrome-bar">
+    <div class="flex min-w-0 items-center gap-2 overflow-hidden">
+      <span
+        class="inline-block h-2 w-2 shrink-0 rounded-full bg-[var(--accent-green)]"
+        aria-hidden="true"></span>
+      <span
+        class="truncate font-mono text-xs font-semibold text-[var(--text-primary)]"
+        data-stage-title
+      >
+        {title}
+      </span>
+    </div>
+
+    <div class="flex shrink-0 items-center gap-1.5">
+      {
+        scenes.length > 1 && (
+          <button
+            type="button"
+            data-shuffle-btn={id}
+            class="inline-flex cursor-pointer items-center gap-1 rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-2 py-0.5 font-mono text-[11px] font-medium text-[var(--accent-blue)] transition-colors hover:border-[var(--accent-blue)] hover:bg-[var(--bg-elevated)]"
+            title={nextSceneTitle}
+          >
+            <span aria-hidden="true">⟳</span>
+            <span>{nextSceneLabel}</span>
+          </button>
+        )
+      }
+      <span class="monospace-telemetry-pill hidden sm:inline-flex" data-stage-meta>{meta}</span>
+    </div>
+  </div>
+
+  <!-- Optional Curated Scene Tabs (Responsive wrap so no tab ever clips) -->
+  {
+    scenes.length > 1 && (
+      <div
+        class="flex flex-wrap items-center gap-1 border-b border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-2.5 py-1.5"
+        role="tablist"
+        aria-label={lang === 'fa'
+          ? 'صحنه‌های ASCII'
+          : lang === 'ar'
+            ? 'مشاهد ASCII'
+            : 'ASCII Telemetry Scenes'}
+      >
+        {scenes.map((scene, idx) => (
+          <button
+            type="button"
+            role="tab"
+            aria-selected={idx === 0 ? 'true' : 'false'}
+            data-scene-tab={scene.slug}
+            data-scene-label={scene.label}
+            data-scene-meta={`${scene.dims || '66×17'} · ${scene.fps || 30} fps · ${scene.size || '3.3 KB'}`}
+            class={`look-pill px-2 py-1 text-[11px] ${idx === 0 ? 'is-active' : ''}`}
+          >
+            <span class="look-glyph">[{String(idx + 1).padStart(2, '0')}]</span>
+            <span>{scene.label}</span>
+          </button>
+        ))}
+      </div>
+    )
+  }
+
+  <!-- ASCII Art Canvas Stage (Auto-fits container width cleanly) -->
+  <div
+    class="ascii-canvas-wrapper crt-scanlines flex w-full items-center justify-center overflow-hidden bg-[var(--bg-surface)] px-1.5 py-2 transition-colors duration-200 sm:px-2 sm:py-3"
+  >
+    <ascii-art
+      id={id}
+      piece={defaultPiece}
+      size={String(size)}
+      speed="1"
+      look="original"
+      role="img"
+      aria-label={ariaLabel}
+    ></ascii-art>
+  </div>
+</div>
+
+<script is:inline>
+  (() => {
+    function initAsciiStages() {
+      document.querySelectorAll('[data-ascii-stage]').forEach((stage) => {
+        if (stage.dataset.bound === 'true') return;
+        stage.dataset.bound = 'true';
+
+        const asciiId = stage.getAttribute('data-ascii-stage');
+        const asciiEl = document.getElementById(asciiId);
+        if (!asciiEl) return;
+
+        const titleEl = stage.querySelector('[data-stage-title]');
+        const metaEl = stage.querySelector('[data-stage-meta]');
+        const sceneTabs = Array.from(stage.querySelectorAll('[data-scene-tab]'));
+        const shuffleBtn = stage.querySelector('[data-shuffle-btn]');
+
+        function activateScene(tabBtn) {
+          if (!tabBtn) return;
+          const slug = tabBtn.getAttribute('data-scene-tab');
+          const label = tabBtn.getAttribute('data-scene-label');
+          const metaText = tabBtn.getAttribute('data-scene-meta');
+          asciiEl.setAttribute('piece', slug);
+          if (titleEl && label) titleEl.textContent = `/SCENE · ${label}`;
+          if (metaEl && metaText) metaEl.textContent = metaText;
+          sceneTabs.forEach((b) => {
+            const active = b === tabBtn;
+            b.classList.toggle('is-active', active);
+            b.setAttribute('aria-selected', String(active));
+          });
+        }
+
+        sceneTabs.forEach((tabBtn) => {
+          tabBtn.addEventListener('click', () => activateScene(tabBtn));
+        });
+
+        if (shuffleBtn && sceneTabs.length > 1) {
+          shuffleBtn.addEventListener('click', () => {
+            const currentSlug = asciiEl.getAttribute('piece');
+            const currentIdx = sceneTabs.findIndex(
+              (b) => b.getAttribute('data-scene-tab') === currentSlug
+            );
+            const nextIdx = (currentIdx + 1) % sceneTabs.length;
+            activateScene(sceneTabs[nextIdx]);
+          });
+        }
+      });
+    }
+
+    document.addEventListener('astro:page-load', initAsciiStages);
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      initAsciiStages();
+    } else {
+      document.addEventListener('DOMContentLoaded', initAsciiStages);
+    }
+  })();
+</script>
