@@ -24,10 +24,59 @@ export const meta = {
   ]),
 };
 
-export default function create() {
-  const g = new Grid(meta.cols, meta.rows);
+const TEXTS = {
+  en: {
+    header: ' /RESULTS-VERIFIED · Compounding Organic Growth Curve ',
+    badge: ' ★ +285% ROI ',
+    chartTitle: 'IMPRESSIONS & TOP-3 KEYWORDS (12-MONTH TRAJECTORY)',
+    chartX: 'M01   M03   M06   M09   M12 [SUSTAINABLE GROWTH]',
+    sideTitle: 'CLIENT TELEMETRY',
+    l1: 'Organic Clicks',
+    v1: '▲ +312.4%',
+    l2: 'Top-3 Keywords',
+    v2: '▲ 140+ Terms',
+    l3: 'CWV Pass Rate',
+    v3: '✓ 99 / 100',
+    l4: 'Ad Spend Saved',
+    v4: '▼ -48% CAC',
+  },
+  fa: {
+    header: ' /نتایج-واقعی · روند رشد تصاعدی ترافیک ارگانیک ',
+    badge: ' ★ بازگشت سرمایه +۲۸۵٪ ',
+    chartTitle: 'ایمپرشن و رتبه‌های ۱ تا ۳ گوگل (مسیر ۱۲ ماهه)',
+    chartX: 'ماه ۱   ماه ۳   ماه ۶   ماه ۹   ماه ۱۲ [رشد مداوم]',
+    sideTitle: 'تله‌متری پروژه',
+    l1: 'کلیک ارگانیک',
+    v1: '▲ +۳۱۲.۴٪',
+    l2: 'کلمات رتبه ۱ تا ۳',
+    v2: '▲ ۱۴۰+ کلمه',
+    l3: 'نمره سرعت CWV',
+    v3: '✓ ۹۹ / ۱۰۰',
+    l4: 'کاهش هزینه تبلیغ',
+    v4: '▼ -۴۸٪ هزینه',
+  },
+  ar: {
+    header: ' /نتائج-موثقة · مسار النمو التراكمي للزيارات ',
+    badge: ' ★ عائد استثمار +285% ',
+    chartTitle: 'مرات الظهور وتصدر المراكز الثلاثة (12 شهراً)',
+    chartX: 'ش 1     ش 3     ش 6     ش 9     ش 12 [نمو مستمر]',
+    sideTitle: 'مؤشرات الأداء',
+    l1: 'النقرات العضوية',
+    v1: '▲ +312.4%',
+    l2: 'كلمات الصدارة',
+    v2: '▲ 140+ كلمة',
+    l3: 'اجتياز سرعة CWV',
+    v3: '✓ 99 / 100',
+    l4: 'توفير الإعلانات',
+    v4: '▼ -48% تكلفة',
+  },
+};
 
-  return (t) => {
+export default function create(lang = 'en') {
+  const g = new Grid(meta.cols, meta.rows);
+  const tStrings = TEXTS[lang] || TEXTS.en;
+
+  return (_t) => {
     g.clear(' ', '1');
     g.box(
       0,
@@ -36,13 +85,13 @@ export default function create() {
       17,
       'round',
       '8',
-      ' /RESULTS-VERIFIED · Compounding Organic Growth Curve ',
+      tStrings.header,
       '0',
-      ' ★ +285% ROI ',
+      tStrings.badge,
       '4'
     );
 
-    g.text(3, 2, 'IMPRESSIONS & TOP-3 KEYWORDS (12-MONTH TRAJECTORY)', '6');
+    g.text(3, 2, tStrings.chartTitle, '6');
 
     for (let x = 0; x < 38; x++) {
       const norm = x / 37;
@@ -55,18 +104,18 @@ export default function create() {
       }
     }
     g.hline(3, 14, 40, '─', '8');
-    g.text(4, 15, 'M01   M03   M06   M09   M12 [SUSTAINABLE GROWTH]', '1');
+    g.text(4, 15, tStrings.chartX, '1');
 
     g.vline(44, 1, 15, '│', '8');
-    g.text(46, 3, 'CLIENT TELEMETRY', '6');
-    g.text(46, 5, 'Organic Clicks', '1');
-    g.text(46, 6, '▲ +312.4%', '2');
-    g.text(46, 8, 'Top-3 Keywords', '1');
-    g.text(46, 9, '▲ 140+ Terms', '3');
-    g.text(46, 11, 'CWV Pass Rate', '1');
-    g.text(46, 12, '✓ 99 / 100', '2');
-    g.text(46, 14, 'Ad Spend Saved', '1');
-    g.text(46, 15, '▼ -48% CAC', '4');
+    g.text(46, 3, tStrings.sideTitle, '6');
+    g.text(46, 5, tStrings.l1, '1');
+    g.text(46, 6, tStrings.v1, '2');
+    g.text(46, 8, tStrings.l2, '1');
+    g.text(46, 9, tStrings.v2, '3');
+    g.text(46, 11, tStrings.l3, '1');
+    g.text(46, 12, tStrings.v3, '2');
+    g.text(46, 14, tStrings.l4, '1');
+    g.text(46, 15, tStrings.v4, '4');
 
     return g.frame();
   };

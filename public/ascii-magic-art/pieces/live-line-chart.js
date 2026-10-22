@@ -24,8 +24,45 @@ export const meta = {
   ]),
 };
 
-export default function create() {
+const TEXTS = {
+  en: {
+    header: ' /LIVE-DATA · WebABC Organic Search & CWV Engine ',
+    badge: ' ✓ LCP 0.8s ',
+    chartTitle: 'ORGANIC TRAFFIC & SERP',
+    chartSub: '+312% YoY',
+    xLabels: 'Q1    Q2    Q3    Q4   RANK #1 [OK]',
+    sideTitle: '/VITALS & TELEMETRY',
+    pass: 'PASS',
+    ctrLabel: 'SERP CTR:',
+    jsonLd: 'JSON-LD Graph: VALID',
+  },
+  fa: {
+    header: ' /دیتای-زنده · موتور جستجوی ارگانیک و سرعت CWV ',
+    badge: ' ✓ سرعت ۰.۸ث ',
+    chartTitle: 'ترافیک ارگانیک و رتبه‌ها',
+    chartSub: '+۳۱۲٪ سالانه',
+    xLabels: 'فصل ۱   فصل ۲   فصل ۳   فصل ۴  رتبه ۱ [عالی]',
+    sideTitle: '/سرعت و تله‌متری',
+    pass: 'تایید',
+    ctrLabel: 'نرخ کلیک:',
+    jsonLd: 'اسکیمای معتبر و فعال',
+  },
+  ar: {
+    header: ' /بيانات-حية · محرك السيو ومؤشرات سرعة CWV ',
+    badge: ' ✓ سرعة 0.8ث ',
+    chartTitle: 'الزيارات وتصدر النتائج',
+    chartSub: '+312% سنوياً',
+    xLabels: 'فصل 1   فصل 2   فصل 3   فصل 4  رتبة 1 [مؤكد]',
+    sideTitle: '/السرعة ومؤشرات الأداء',
+    pass: 'ممتاز',
+    ctrLabel: 'نسبة النقر:',
+    jsonLd: 'بيانات منظمة صالحة',
+  },
+};
+
+export default function create(lang = 'en') {
   const g = new Grid(meta.cols, meta.rows);
+  const tStrings = TEXTS[lang] || TEXTS.en;
   const SPARK = ['▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'];
   const SHADE = ['░', '▒', '▓', '█'];
 
@@ -38,15 +75,15 @@ export default function create() {
       17,
       'round',
       '8',
-      ' /LIVE-DATA · WebABC Organic Search & CWV Engine ',
+      tStrings.header,
       '0',
-      ' ✓ LCP 0.8s ',
+      tStrings.badge,
       '2'
     );
 
     // Left chart pane (cols 2..39, rows 2..14; col 41 is vertical divider)
-    g.text(2, 2, 'ORGANIC TRAFFIC & SERP', '6');
-    g.text(31, 2, '+312% YoY', '2');
+    g.text(2, 2, tStrings.chartTitle, '6');
+    g.text(31, 2, tStrings.chartSub, '2');
 
     for (let r = 3; r <= 13; r++) {
       g.set(2, r, '│', '8');
@@ -87,22 +124,22 @@ export default function create() {
     );
     const cursorY = Math.max(3, 12 - Math.round(cursorRatio * 8.5));
     g.set(3 + cursorX, cursorY, '●', '3');
-    g.text(3, 14, 'Q1    Q2    Q3    Q4   RANK #1 [OK]', '1');
+    g.text(3, 14, tStrings.xLabels, '1');
 
     // Vertical divider at col 41
     g.vline(41, 1, 15, '│', '8');
 
     // Right telemetry pane (cols 43..63)
-    g.text(43, 2, '/VITALS & TELEMETRY', '6');
+    g.text(43, 2, tStrings.sideTitle, '6');
 
     const lcpVal = (0.76 + Math.sin(t * 1.5) * 0.04).toFixed(2);
     g.text(43, 4, `LCP   ${lcpVal}s`, '0');
-    g.text(58, 4, 'PASS', '2');
+    g.text(58, 4, tStrings.pass, '2');
     g.slider(43, 5, 20, 0.92 + Math.sin(t * 1.5) * 0.03, '2', '8', '2');
 
     const inpVal = Math.round(22 + Math.cos(t * 2.1) * 3);
     g.text(43, 7, `INP   ${inpVal}ms`, '0');
-    g.text(58, 7, 'PASS', '2');
+    g.text(58, 7, tStrings.pass, '2');
     g.slider(43, 8, 20, 0.94, '3', '8', '3');
 
     g.text(43, 10, 'CLS   0.00', '0');
@@ -110,7 +147,7 @@ export default function create() {
     g.slider(43, 11, 20, 0.99, '2', '8', '2');
 
     // Live sparkline & JSON-LD pulse
-    g.text(43, 13, 'SERP CTR:', '1');
+    g.text(43, 13, tStrings.ctrLabel, '1');
     for (let i = 0; i < 10; i++) {
       const sIdx = Math.min(
         7,
@@ -119,7 +156,7 @@ export default function create() {
       g.set(53 + i, 13, SPARK[sIdx], i > 6 ? '2' : '3');
     }
     const pulse = Math.floor(t * 2) % 2 === 0 ? '●' : '•';
-    g.text(43, 14, `${pulse} JSON-LD Graph: VALID`, '4');
+    g.text(43, 14, `${pulse} ${tStrings.jsonLd}`, '4');
 
     return g.frame();
   };

@@ -75,7 +75,7 @@ function escapeHtml(ch) {
 
 class AsciiArtElement extends HTMLElement {
   static get observedAttributes() {
-    return ['piece', 'size', 'still'];
+    return ['piece', 'size', 'still', 'lang'];
   }
 
   constructor() {
@@ -111,12 +111,11 @@ class AsciiArtElement extends HTMLElement {
       this._pre.style.padding = '0';
       this._pre.style.display = 'inline-block';
       this._pre.style.fontFamily =
-        "'JetBrains Mono', 'Geist Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, monospace";
+        "'JetBrains Mono', 'Geist Mono', 'Vazirmatn', 'IRANSansX', 'IBM Plex Sans Arabic', monospace";
       this._pre.style.lineHeight = '1.2';
       this._pre.style.letterSpacing = '0';
       this._pre.style.overflowX = 'hidden';
       this._pre.style.userSelect = 'none';
-      this._pre.style.fontVariantLigatures = 'none';
       this.style.textAlign = 'center';
       this.appendChild(this._pre);
     }
@@ -180,7 +179,7 @@ class AsciiArtElement extends HTMLElement {
     if (name === 'size') {
       this._applyResponsiveSizing();
       this._renderAt(this._currentTimeSeconds());
-    } else if (name === 'piece') {
+    } else if (name === 'piece' || name === 'lang') {
       this._loadPiece();
       this._applyResponsiveSizing();
     } else if (name === 'still') {
@@ -249,7 +248,8 @@ class AsciiArtElement extends HTMLElement {
     const slug = this.getAttribute('piece') || 'hero-growth-story';
     const entry = BUILTIN_PIECES[slug] || BUILTIN_PIECES['hero-growth-story'];
     this._meta = entry.meta;
-    this._frameFn = entry.create();
+    const lang = this.getAttribute('lang') || document.documentElement.lang || 'en';
+    this._frameFn = entry.create(lang);
 
     if (!this.getAttribute('aria-label') && this._meta) {
       this.setAttribute('aria-label', `${this._meta.name} — ${this._meta.note}`);
