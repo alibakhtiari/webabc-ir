@@ -49,8 +49,18 @@ const webpageSchema = {
 
 <div class={`terminal-window mb-8 ${fontClass}`}>
   <div class="terminal-chrome-bar" dir="ltr">
-    <span class="slash-eyebrow text-xs" dir="ltr">/FAQS · TECHNICAL &amp; COMMERCIAL ANSWERS</span>
-    <span class="monospace-telemetry-pill">FAQPage JSON-LD · {faqList.length} ITEMS</span>
+    <span class="slash-eyebrow text-xs" dir={lang === 'fa' || lang === 'ar' ? 'rtl' : 'ltr'}>
+      {
+        lang === 'fa'
+          ? '/سوالات-متداول · پاسخ‌های فنی و تجاری'
+          : lang === 'ar'
+            ? '/الأسئلة-الشائعة · إجابات تقنية وتجارية'
+            : '/FAQS · TECHNICAL & COMMERCIAL ANSWERS'
+      }
+    </span>
+    <span class="monospace-telemetry-pill">
+      FAQPage JSON-LD · {faqList.length} {lang === 'fa' ? 'مورد' : lang === 'ar' ? 'عناصر' : 'ITEMS'}
+    </span>
   </div>
 
   <div class="p-6 sm:p-8">

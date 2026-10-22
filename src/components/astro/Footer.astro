@@ -48,9 +48,23 @@ const phoneList = [
       dir="ltr"
     >
       <span class="font-mono text-xs text-[var(--accent-green)]">
-        ╭─ /FOOTER · WebABC Engineering &amp; SEO Directory ─╮
+        ╭─ {
+          lang === 'fa'
+            ? '/فوتر · دایرکتوری مهندسی و سئو وب اِی‌بی‌سی'
+            : lang === 'ar'
+              ? '/التذييل · دليل هندسة وتطوير وسيو WebABC'
+              : '/FOOTER · WebABC Engineering & SEO Directory'
+        } ─╮
       </span>
-      <span class="monospace-telemetry-pill">QAZVIN · TEHRAN · DUBAI · RIYADH · MUSCAT</span>
+      <span class="monospace-telemetry-pill">
+        {
+          lang === 'fa'
+            ? 'قزوین · تهران · دبی · ریاض · مسقط'
+            : lang === 'ar'
+              ? 'دبي · الرياض · مسقط · قزوين · طهران'
+              : 'QAZVIN · TEHRAN · DUBAI · RIYADH · MUSCAT'
+        }
+      </span>
     </div>
 
     <div class="mb-12 grid grid-cols-1 gap-8 border-b border-[var(--border-hairline)] pb-12 md:grid-cols-12">
@@ -145,7 +159,9 @@ const phoneList = [
       <div class="grid grid-cols-1 gap-8 sm:grid-cols-3 md:col-span-8">
         <!-- /SERVICES -->
         <div>
-          <span class="slash-eyebrow mb-1 text-[11px]" dir="ltr">/SERVICES</span>
+          <span class="slash-eyebrow mb-1 text-[11px]" dir={isRtl ? 'rtl' : 'ltr'}>
+            {lang === 'fa' ? '/خدمات' : lang === 'ar' ? '/الخدمات' : '/SERVICES'}
+          </span>
           <h3 class={`mb-4 text-base font-bold text-[var(--text-primary)] ${fontClass}`}>
             {t('common.services')}
           </h3>
@@ -195,7 +211,9 @@ const phoneList = [
 
         <!-- /COMPANY -->
         <div>
-          <span class="slash-eyebrow mb-1 text-[11px]" dir="ltr">/COMPANY</span>
+          <span class="slash-eyebrow mb-1 text-[11px]" dir={isRtl ? 'rtl' : 'ltr'}>
+            {lang === 'fa' ? '/شرکت' : lang === 'ar' ? '/الشركة' : '/COMPANY'}
+          </span>
           <h3 class={`mb-4 text-base font-bold text-[var(--text-primary)] ${fontClass}`}>
             {t('common.company')}
           </h3>
@@ -253,7 +271,9 @@ const phoneList = [
 
         <!-- /FREE-TOOLS (All 5 Core Free Tools + Hub) -->
         <div>
-          <span class="slash-eyebrow mb-1 text-[11px]" dir="ltr">/FREE-TOOLS</span>
+          <span class="slash-eyebrow mb-1 text-[11px]" dir={isRtl ? 'rtl' : 'ltr'}>
+            {lang === 'fa' ? '/ابزارهای-رایگان' : lang === 'ar' ? '/الأدوات-المجانية' : '/FREE-TOOLS'}
+          </span>
           <h3 class={`mb-4 text-base font-bold text-[var(--text-primary)] ${fontClass}`}>
             <a href={linkPath('/tools')} class="transition-colors hover:text-[var(--accent-green)]">
               {t('common.tools')}

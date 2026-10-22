@@ -52,11 +52,17 @@ const waUrl = `https://wa.me/989125811880?text=${encodeURIComponent(whatsappMess
     <div class="mx-auto max-w-5xl">
       <div class="terminal-window border border-[var(--border-focus)]">
         <div class="terminal-chrome-bar" dir="ltr">
-          <span class="slash-eyebrow text-xs" dir="ltr">
-            ╭─ /GET-STARTED · ZERO-RISK CONSULTATION &amp; AUDIT ─╮
+          <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+            {
+              lang === 'fa'
+                ? '╭─ /شروع-همکاری · مشاوره و آنالیز بدون ریسک ─╮'
+                : lang === 'ar'
+                  ? '╭─ /ابدأ-الآن · استشارة وتدقيق بلا مخاطرة ─╮'
+                  : '╭─ /GET-STARTED · ZERO-RISK CONSULTATION & AUDIT ─╮'
+            }
           </span>
           <span class="monospace-telemetry-pill text-[var(--accent-green)]">
-            ● REPLY IN &lt; 2 HOURS
+            ● {lang === 'fa' ? 'پاسخ‌گویی زیر ۲ ساعت' : lang === 'ar' ? 'الرد خلال أقل من ساعتين' : 'REPLY IN < 2 HOURS'}
           </span>
         </div>
 
@@ -81,7 +87,13 @@ const waUrl = `https://wa.me/989125811880?text=${encodeURIComponent(whatsappMess
                 <div class="rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] p-4">
                   <div class="mb-1.5 flex items-center justify-between" dir="ltr">
                     <span class="font-mono text-xs font-bold text-[var(--accent-green)]">
-                      [STEP {s.num}]
+                      {
+                        lang === 'fa'
+                          ? `[گام ${s.num}]`
+                          : lang === 'ar'
+                            ? `[خطوة ${s.num}]`
+                            : `[STEP ${s.num}]`
+                      }
                     </span>
                     <span class="monospace-telemetry-pill">{s.time}</span>
                   </div>
