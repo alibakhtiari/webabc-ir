@@ -90,11 +90,6 @@ function createOrganizationSchema(
         closes: '18:00',
       },
     ],
-    // Agency-facing profiles: the three social handles are WebABC's, and the
-    // GitHub is the account this site's source is published from (see Footer).
-    // The founder's personal LinkedIn, X and aliib.ir used to sit here instead,
-    // making Organisation.sameAs 4/4 personal; they belong on the Person schema
-    // at src/pages/[lang]/about/ali-bakhtiari.astro — ACTION-PLAN §3.4.
     sameAs: [
       'https://www.linkedin.com/company/webabc-ir',
       'https://x.com/webabc_ir',
@@ -112,7 +107,11 @@ function createWebsiteSchema(url: string, lang: string) {
     url: `${url}/${lang}/`,
     name: 'WebABC',
     alternateName:
-      lang === 'fa' ? 'وب اِی‌بی‌سی (ويب سي)' : lang === 'ar' ? 'ويب إيه بي سي (ويب سي)' : 'WebABC Web & SEO Agency',
+      lang === 'fa'
+        ? 'وب اِی‌بی‌سی (ويب سي)'
+        : lang === 'ar'
+          ? 'ويب إيه بي سي (ويب سي)'
+          : 'WebABC Web & SEO Agency',
     inLanguage: lang === 'en' ? 'en-US' : lang === 'ar' ? 'ar-SA' : 'fa-IR',
     publisher: { '@id': `${url}/#organization` },
   };
@@ -134,7 +133,7 @@ const {
   description,
   lang,
   slug = '',
-  mainClass = 'grow w-full overflow-x-hidden bg-gray-50/50 dark:bg-slate-950 pt-0 pb-20',
+  mainClass = 'grow w-full overflow-x-hidden bg-[var(--bg-canvas)] text-[var(--text-primary)] pt-0 pb-20',
   noindex = false,
   ogImage,
   ogType = 'website',
@@ -142,21 +141,14 @@ const {
 
 const supportedLang = (lang as SupportedLanguage) in languages ? (lang as SupportedLanguage) : 'en';
 const languageMeta = languages[supportedLang] || languages.en;
-const isRtl = languageMeta.direction === 'rtl';
 const dictionary = await getDictionary(supportedLang);
 
 const siteUrl = 'https://webabc.ir';
 const canonicalPath = slug ? `/${lang}/${slug}/` : `/${lang}/`;
 const canonicalUrl = `${siteUrl}${canonicalPath}`;
 
-// Page-specific OG image: prefer the explicit prop (e.g. blog covers), then a
-// generated 1200x630 crop keyed by slug (services, service-areas, portfolio),
-// then service/area/portfolio defaults, then the site-wide default.
 let resolvedOgImage = ogImage;
 if (!resolvedOgImage) {
-  // Locale-first: `fa/tools/<slug>` wins over the locale-blind key, so each
-  // locale gets its own card while English keeps existing art. Homepage pages
-  // pass slug="" and resolve through the per-locale `home` entry.
   const localeKey = slug ? `${lang}/${slug}` : `${lang}/home`;
   resolvedOgImage =
     (ogImageManifest as Record<string, string>)[localeKey] ||
@@ -185,12 +177,10 @@ const ogLocale = lang === 'en' ? 'en_US' : lang === 'ar' ? 'ar_SA' : 'fa_IR';
 const alternateLocales =
   lang === 'en' ? ['fa_IR', 'ar_SA'] : lang === 'ar' ? ['en_US', 'fa_IR'] : ['en_US', 'ar_SA'];
 
-// Get default meta titles/descriptions from dictionary
 const pageTitle = title || dictionary.home?.title || 'WebABC';
 const pageDescription =
   description || dictionary.home?.description || 'Web Design and Development Services';
 
-// Schema Organisation
 const organizationSchema = createOrganizationSchema(
   siteUrl,
   '/images/logo.webp',
@@ -202,12 +192,17 @@ const organizationSchema = createOrganizationSchema(
   pageDescription
 );
 
-// Schema WebSite
 const websiteSchema = createWebsiteSchema(siteUrl, supportedLang);
 ---
 
 <!doctype html>
-<html lang={lang} dir={languageMeta.direction} class="scroll-smooth">
+<html
+  lang={lang}
+  dir={languageMeta.direction}
+  data-theme="dark"
+  data-palette="blue"
+  class="dark scroll-smooth"
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -215,9 +210,6 @@ const websiteSchema = createWebsiteSchema(siteUrl, supportedLang);
     {
       lang === 'ar' ? (
         <>
-          {/* Self-hosted (scripts/hoist-ar-fonts.mjs): the two Google preconnects
-              and the render-blocking third-party stylesheet used to live here. Same
-              faces, weights and unicode-range — only the origin moved. */}
           <link
             rel="preload"
             as="font"
@@ -312,21 +304,11 @@ const websiteSchema = createWebsiteSchema(siteUrl, supportedLang);
     />
     <link rel="describedby" href={`/${supportedLang}/llms.txt`} />
     <link rel="llms-txt" href="/llms.txt" />
-    {/* The 404 document is the one page with no markdown sibling: it is
-        served with a 404 status (verified: /en/404/ -> 404), so shipping an
-        index.md for it would answer 200 for a not-found document. Every other
-        route has a real sibling -- generate-markdown-representations.mjs
-        covers blog, portfolio, tools, services, hubs, cities, homepages,
-        about and the blog index. Crawlers still get markdown on 404s: worker
-       .ts answers Accept: text/markdown for unknown paths with a dedicated
-        recovery body. */}
-    {slug !== '404' && (
-      <link
-        rel="alternate"
-        type="text/markdown"
-        href={`${canonicalPath}index.md`}
-      />
-    )}
+    {
+      slug !== '404' && (
+        <link rel="alternate" type="text/markdown" href={`${canonicalPath}index.md`} />
+      )
+    }
     <meta name="is-agentic-site-type" content="business" />
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -334,23 +316,26 @@ const websiteSchema = createWebsiteSchema(siteUrl, supportedLang);
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#4361ee" />
+    <meta name="theme-color" content="#070b14" />
     <meta name="twitter:site" content="@aliib1991" />
     <meta name="twitter:creator" content="@aliib1991" />
     <script is:inline>
       (function () {
         try {
-          const saved = localStorage.getItem('theme');
-          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          const dark = saved === 'dark' || (!saved && prefersDark);
+          const savedTheme = localStorage.getItem('theme');
+          const savedPalette = localStorage.getItem('palette') || 'blue';
+          const dark = savedTheme ? savedTheme === 'dark' : true;
           const root = document.documentElement;
           root.classList.toggle('dark', dark);
+          root.setAttribute('data-theme', dark ? 'dark' : 'light');
+          root.setAttribute('data-palette', savedPalette);
           root.style.colorScheme = dark ? 'dark' : 'light';
           const meta = document.querySelector('meta[name="theme-color"]');
-          if (meta) meta.setAttribute('content', dark ? '#020617' : '#4361ee');
+          if (meta) meta.setAttribute('content', dark ? '#070b14' : '#ffffff');
         } catch (e) {}
       })();
     </script>
+    <script type="module" src="/ascii-magic-art/runtime/ascii.js"></script>
 
     <!-- Inline Schema -->
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
@@ -361,7 +346,7 @@ const websiteSchema = createWebsiteSchema(siteUrl, supportedLang);
   >
     <a
       href="#main-content"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-100 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-primary-foreground focus:shadow-lg"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-100 focus:rounded focus:bg-[var(--accent-green)] focus:px-4 focus:py-2 focus:font-mono focus:text-sm focus:font-bold focus:text-[var(--accent-contrast)] focus:shadow-lg"
     >
       {dictionary.common?.skipToContent || 'Skip to main content'}
     </a>

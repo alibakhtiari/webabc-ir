@@ -70,9 +70,6 @@ const webAppSchema = {
     price: '0',
     priceCurrency: 'USD',
   },
-  // Join the canonical Organization entity that <Layout /> emits as
-  // `#organization` (see Layout.astro createOrganizationSchema) so this
-  // WebApplication is never published by an unreferenced stub.
   publisher: {
     '@id': 'https://webabc.ir/#organization',
   },
@@ -92,23 +89,22 @@ const defaultBreadcrumbs = breadcrumbs || [
     slot="head"
     set:html={JSON.stringify(webAppSchema)}
   />
-  <!-- FAQPage is emitted once by <ToolFAQ /> below (only when FAQ items render).
-       Do NOT re-add a faqSchema head script here — it would duplicate FAQPage. -->
 
-  <!-- Standard Hero Section for Tool Pages -->
-  <section
-    class="border-b border-gray-100 bg-linear-to-b from-primary/10 via-background to-background pt-24 pb-12 font-sans md:pt-40 md:pb-24 dark:border-slate-800"
-  >
+  <!-- Terminal-Native Hero Section for Tool Pages -->
+  <section class="border-b border-[var(--border-hairline)] bg-[var(--bg-surface)] pt-12 pb-12 font-sans md:pt-16 md:pb-16">
     <div class="container mx-auto px-4">
       <div class="mx-auto max-w-3xl text-center">
         <Breadcrumbs items={defaultBreadcrumbs} lang={lang} centered={true} />
+        <div class="mt-4 mb-3 flex justify-center">
+          <span class="slash-eyebrow" dir="ltr">/FREE-TOOL · {cleanSlug.toUpperCase()}</span>
+        </div>
         <h1
-          class={`mb-6 bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-3xl leading-normal font-bold text-transparent md:text-5xl ${fontClass}`}
+          class={`mb-4 text-3xl leading-tight font-bold text-[var(--text-primary)] md:text-5xl ${fontClass}`}
         >
           {title}
         </h1>
         <p
-          class={`text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-300 ${fontClass}`}
+          class={`text-base leading-relaxed text-[var(--text-secondary)] md:text-lg ${fontClass}`}
         >
           {description}
         </p>
@@ -126,20 +122,20 @@ const defaultBreadcrumbs = breadcrumbs || [
         <div class="mx-auto max-w-4xl space-y-10">
           {guide.how && (
             <div class="space-y-3">
-              <h2 class="text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">
+              <h2 class="text-2xl font-bold text-[var(--text-primary)] md:text-3xl">
                 {guide.how.title}
               </h2>
               {guide.how.paragraphs.map((p) => (
-                <p class="leading-relaxed text-gray-600 dark:text-gray-300">{p}</p>
+                <p class="leading-relaxed text-[var(--text-secondary)]">{p}</p>
               ))}
             </div>
           )}
           {guide.useCases && (
             <div class="space-y-3">
-              <h2 class="text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">
+              <h2 class="text-2xl font-bold text-[var(--text-primary)] md:text-3xl">
                 {guide.useCases.title}
               </h2>
-              <ul class="list-inside list-disc space-y-2 leading-relaxed text-gray-600 dark:text-gray-300">
+              <ul class="list-inside list-disc space-y-2 leading-relaxed text-[var(--text-secondary)]">
                 {guide.useCases.items.map((item) => (
                   <li>{item}</li>
                 ))}

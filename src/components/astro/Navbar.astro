@@ -12,10 +12,8 @@ const { lang } = Astro.props;
 const dictionary = await getDictionary(lang);
 const isRtl = languages[lang]?.direction === 'rtl';
 
-// Helper to translate strings
 const t = createTranslator(dictionary);
 
-// Generate relative paths correctly based on lang with trailing slashes
 const linkPath = (path: string) => {
   if (!path || path === '/') return `/${lang}/`;
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
@@ -23,8 +21,9 @@ const linkPath = (path: string) => {
 };
 
 const navItems = [
-  { key: 'service-areas', label: 'common.serviceAreas', href: '/service-areas' },
+  { key: 'tools', label: 'common.tools', href: '/tools' },
   { key: 'portfolio', label: 'common.portfolio', href: '/portfolio' },
+  { key: 'service-areas', label: 'common.serviceAreas', href: '/service-areas' },
   { key: 'blog', label: 'common.blog', href: '/blog' },
   { key: 'about', label: 'common.about', href: '/about' },
   { key: 'contact', label: 'common.contact', href: '/contact' },
@@ -49,354 +48,307 @@ const waDirectLabel =
     : lang === 'ar'
       ? 'أو تحدث معنا مباشرة عبر واتساب'
       : 'Or Chat Directly on WhatsApp';
+
+const colorPalettes = [
+  { id: 'blue', label: 'Blue', dotColor: '#38bdf8' },
+  { id: 'mono', label: 'Dark/White', dotColor: '#ffffff', border: true },
+  { id: 'emerald', label: 'Green', dotColor: '#7ee787' },
+  { id: 'cyan', label: 'Teal', dotColor: '#2dd4bf' },
+  { id: 'violet', label: 'Violet', dotColor: '#a78bfa' },
+  { id: 'amber', label: 'Amber', dotColor: '#fbbf24' },
+];
+
+const serviceOptions = [
+  {
+    value: 'SEO & Specialized Optimization',
+    label: t('services.seoTitle', { fallback: 'SEO & Specialized Optimization' }),
+  },
+  {
+    value: 'Local SEO',
+    label: t('services.localSeoTitle', { fallback: 'Local SEO' }),
+  },
+  {
+    value: 'Link Building',
+    label: t('services.linkBuildingTitle', { fallback: 'Link Building' }),
+  },
+  {
+    value: 'Specialized Content Creation',
+    label: t('services.contentCreationTitle', { fallback: 'Specialized Content Creation' }),
+  },
+  {
+    value: 'Custom Web Development',
+    label: t('services.webDevTitle', { fallback: 'Web Development' }),
+  },
+  {
+    value: 'WordPress & WooCommerce',
+    label: t('wordpress.wordpressAndWoocommerce', { fallback: 'WordPress & WooCommerce' }),
+  },
+  {
+    value: 'Custom Website Design',
+    label: t('common.webDesignAndDevelopment', { fallback: 'Custom Website Design' }),
+  },
+  {
+    value: 'E-commerce Website Design & Development',
+    label: t('ecommerce.title', { fallback: 'E-commerce Website Design & Development' }),
+  },
+  {
+    value: 'Website Maintenance & Care Plans',
+    label: t('maintenance.title', { fallback: 'Website Maintenance & Care Plans' }),
+  },
+  {
+    value: 'Core Web Vitals & Speed Optimization',
+    label: t('speedOptimization.title', { fallback: 'Core Web Vitals & Speed Optimization' }),
+  },
+  {
+    value: 'Professional UI/UX Audit',
+    label: t('uiUxAudit.title', { fallback: 'Professional UI/UX Audit' }),
+  },
+];
 ---
 
 <header
   id="main-header"
-  class="fixed top-0 right-0 left-0 z-50 px-4 py-3 transition-all duration-300 ease-in-out"
+  class="sticky top-0 right-0 left-0 z-50 border-b border-[var(--border-hairline)] bg-[var(--bg-surface)]/95 backdrop-blur-md transition-colors duration-200"
 >
-  <div class="mx-auto max-w-7xl">
-    <div
-      class="flex items-center justify-between rounded-full border border-white/20 bg-white/70 px-6 py-3 shadow-lg backdrop-blur-xl dark:border-slate-800/80 dark:bg-slate-900/80"
-    >
-      <!-- Brand Logo -->
-      <a href={linkPath('')} class="flex items-center space-x-2" aria-label={t('common.home')}>
-        <Logo class="xs:w-40 h-auto w-35 sm:w-45 xl:w-65" />
+  <!-- Top Bar: Telemetry + Instant Color & Dark/White Switcher -->
+  <div
+    class="border-b border-[var(--border-subtle)] bg-[var(--bg-canvas)] px-4 py-1.5 text-xs"
+    dir="ltr"
+    style="unicode-bidi: isolate;"
+  >
+    <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 font-mono">
+      <!-- Left: CWV Telemetry + Free Tools Link -->
+      <div class="flex items-center gap-3 text-[11px] text-[var(--text-secondary)]">
+        <span class="inline-flex items-center gap-1.5">
+          <span
+            class="inline-block h-2 w-2 rounded-full bg-[var(--accent-green)]"
+            aria-hidden="true"></span>
+          <span class="font-semibold text-[var(--accent-green)]">CWV: PASS</span>
+          <span class="hidden md:inline">· LCP 0.8s · INP 24ms · CLS 0.00</span>
+        </span>
+        <span class="hidden text-[var(--border-focus)] sm:inline">|</span>
+        <a
+          href={linkPath('/tools')}
+          class="hidden items-center gap-1 font-medium text-[var(--accent-blue)] transition-colors hover:underline sm:inline-flex"
+        >
+          <span>5 Free SEO &amp; Web Tools →</span>
+        </a>
+      </div>
+
+      <!-- Right: Live Color Palette Switcher (Blue, Dark/White, Green, Teal, Violet, Amber) -->
+      <div class="flex items-center gap-1.5 overflow-x-auto" role="group" aria-label="Color Theme Switcher">
+        <span class="text-[10px] tracking-wider text-[var(--text-secondary)] uppercase">
+          COLOR:
+        </span>
+        {
+          colorPalettes.map((p) => (
+            <button
+              type="button"
+              data-palette-btn={p.id}
+              class="palette-swatch-btn"
+              title={`Switch site palette to ${p.label}`}
+            >
+              <span
+                class="inline-block h-2.5 w-2.5 shrink-0 rounded-full"
+                style={`background-color: ${p.dotColor}; ${p.border ? 'border: 1px solid #71717a;' : ''}`}
+              />
+              <span>{p.label}</span>
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Single-Line Navigation Bar -->
+  <div class="mx-auto max-w-7xl px-4 py-2.5">
+    <div class="flex items-center justify-between gap-3">
+      <!-- Clean Brand Logo (No redundant badges crowding the nav) -->
+      <a
+        href={linkPath('')}
+        class="flex shrink-0 items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-green)]"
+        aria-label={t('common.home')}
+      >
+        <Logo class="h-auto w-28 sm:w-32" />
       </a>
 
-      <!-- Desktop Navigation Menu -->
-      <nav class="mx-4 hidden grow items-center justify-center gap-6 xl:flex">
-        <!-- Services Mega Menu -->
-        <div class="group relative">
+      <!-- Desktop Single-Line Navigation Menu -->
+      <nav class="mx-2 hidden grow items-center justify-center gap-1 lg:flex xl:gap-2">
+        <!-- 3-Column Services Mega-Menu Trigger -->
+        <div class="group relative shrink-0">
           <button
             type="button"
             id="desktop-services-btn"
             aria-expanded="false"
             aria-haspopup="true"
             aria-controls="desktop-services-panel"
-            class={`flex items-center gap-1 text-sm font-medium text-foreground/80 hover:text-primary transition-colors ${fontClass}`}
+            class={`flex cursor-pointer items-center gap-1 rounded px-2.5 py-1.5 text-[13px] font-medium whitespace-nowrap text-[var(--text-primary)] transition-colors hover:bg-[var(--bg-elevated)] hover:text-[var(--accent-green)] ${fontClass}`}
           >
-            {t('common.services')}
+            <span>{t('common.services')}</span>
             <svg
               aria-hidden="true"
-              class="h-4 w-4 transition-transform duration-200 group-focus-within:rotate-180 group-hover:rotate-180"
+              class="h-3.5 w-3.5 shrink-0 text-[var(--text-secondary)] transition-transform duration-200 group-focus-within:rotate-180 group-hover:rotate-180"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
-              ><path
+            >
+              <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M19 9l-7 7-7-7"></path></svg
-            >
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
           </button>
 
-          <!-- Mega Menu dropdown content -->
+          <!-- Mega-Menu Dropdown Content (Compact, no service descriptions) -->
           <div
             id="desktop-services-panel"
-            class={`absolute top-full ${isRtl ? '-right-25' : '-left-25'} mt-2 w-180 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 group-focus-within:translate-y-0 z-50`}
+            class={`invisible absolute top-full ${isRtl ? '-right-12' : '-left-12'} z-50 mt-2 w-[36rem] max-w-[calc(100vw-2rem)] translate-y-1 opacity-0 transition-all duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 xl:w-[39rem]`}
           >
-            <div
-              class="rounded-2xl border border-gray-100 bg-white p-6 shadow-2xl dark:border-slate-800 dark:bg-slate-900"
-            >
-              <div class="grid grid-cols-3 gap-6 text-start">
-                <!-- SEO Services Column -->
-                <div class="space-y-4">
-                  <div
-                    class="mb-2 flex items-center gap-2 border-b border-gray-100 pb-2 dark:border-slate-800"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="h-4 w-4 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      ><path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-                      ></path></svg
-                    >
-                    <p class="font-persian text-sm font-bold text-primary">
-                      {t('common.seoServices', { fallback: 'SEO Services' })}
-                    </p>
+            <div class="terminal-window border border-[var(--border-hairline)] bg-[var(--bg-surface)] shadow-2xl">
+              <div class="terminal-chrome-bar" dir="ltr">
+                <span>╭─ /SERVICES · 11 SPECIALIZED SOLUTIONS ─╮</span>
+                <span class="monospace-telemetry-pill">EN · FA · AR</span>
+              </div>
+
+              <div class="grid grid-cols-3 divide-x divide-[var(--border-hairline)] p-4 text-start rtl:divide-x-reverse">
+                <!-- Column 1: /SEO-SERVICES -->
+                <div class="space-y-2 pe-3">
+                  <div class="border-b border-[var(--border-subtle)] pb-1.5">
+                    <span class="slash-eyebrow text-[10px]" dir="ltr">/SEO-SERVICES</span>
                   </div>
-                  <ul class="space-y-3">
+                  <ul class="space-y-1">
                     <li>
                       <a
                         href={linkPath('/services/seo')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                        class={`group/item flex items-center gap-2 rounded px-2 py-1.5 text-xs font-semibold text-[var(--text-primary)] transition-colors hover:bg-[var(--bg-elevated)] hover:text-[var(--accent-green)] ${fontClass}`}
                       >
-                        <span class="block font-semibold"
-                          >{t('services.seoTitle', { fallback: 'SEO Optimization' })}</span
-                        >
-                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
-                          >{
-                            t('services.seoDescription', { fallback: 'Search ranking growth' })
-                          }</span
-                        >
+                        <span class="ltr-isolate shrink-0 font-mono text-[10px] text-[var(--accent-green)]" dir="ltr">[01]</span>
+                        <span>{t('services.seoTitle', { fallback: 'SEO Services' })}</span>
                       </a>
                     </li>
                     <li>
                       <a
                         href={linkPath('/services/local-seo')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                        class={`group/item flex items-center gap-2 rounded px-2 py-1.5 text-xs font-semibold text-[var(--text-primary)] transition-colors hover:bg-[var(--bg-elevated)] hover:text-[var(--accent-green)] ${fontClass}`}
                       >
-                        <span class="block font-semibold"
-                          >{t('services.localSeoTitle', { fallback: 'Local SEO' })}</span
-                        >
-                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
-                          >{
-                            t('services.localSeoDescription', { fallback: 'Google Maps marketing' })
-                          }</span
-                        >
+                        <span class="ltr-isolate shrink-0 font-mono text-[10px] text-[var(--accent-green)]" dir="ltr">[02]</span>
+                        <span>{t('services.localSeoTitle', { fallback: 'Local SEO' })}</span>
                       </a>
                     </li>
                     <li>
                       <a
                         href={linkPath('/services/link-building')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                        class={`group/item flex items-center gap-2 rounded px-2 py-1.5 text-xs font-semibold text-[var(--text-primary)] transition-colors hover:bg-[var(--bg-elevated)] hover:text-[var(--accent-green)] ${fontClass}`}
                       >
-                        <span class="block font-semibold"
-                          >{t('services.linkBuildingTitle', { fallback: 'Link Building' })}</span
-                        >
-                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
-                          >{
-                            t('services.linkBuildingDescription', {
-                              fallback: 'Authority enhancement',
-                            })
-                          }</span
-                        >
+                        <span class="ltr-isolate shrink-0 font-mono text-[10px] text-[var(--accent-green)]" dir="ltr">[03]</span>
+                        <span>{t('services.linkBuildingTitle', { fallback: 'Link Building' })}</span>
                       </a>
                     </li>
                     <li>
                       <a
                         href={linkPath('/services/content-creation')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                        class={`group/item flex items-center gap-2 rounded px-2 py-1.5 text-xs font-semibold text-[var(--text-primary)] transition-colors hover:bg-[var(--bg-elevated)] hover:text-[var(--accent-green)] ${fontClass}`}
                       >
-                        <span class="block font-semibold"
-                          >{
-                            t('services.contentCreationTitle', { fallback: 'Content Strategy' })
-                          }</span
-                        >
-                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
-                          >{
-                            t('services.contentCreationDescription', {
-                              fallback: 'SEO articles writing',
-                            })
-                          }</span
-                        >
+                        <span class="ltr-isolate shrink-0 font-mono text-[10px] text-[var(--accent-green)]" dir="ltr">[04]</span>
+                        <span>{t('services.contentCreationTitle', { fallback: 'Content Creation' })}</span>
                       </a>
                     </li>
                   </ul>
                 </div>
 
-                <!-- Development Column -->
-                <div class="space-y-4">
-                  <div
-                    class="mb-2 flex items-center gap-2 border-b border-gray-100 pb-2 dark:border-slate-800"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="h-4 w-4 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      ><path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg
-                    >
-                    <p class="font-persian text-sm font-bold text-primary">
-                      {t('common.developmentServices', { fallback: 'Development' })}
-                    </p>
+                <!-- Column 2: /DEVELOPMENT-SERVICES -->
+                <div class="space-y-2 px-3">
+                  <div class="border-b border-[var(--border-subtle)] pb-1.5">
+                    <span class="slash-eyebrow text-[10px]" dir="ltr">/DEVELOPMENT</span>
                   </div>
-                  <ul class="space-y-3">
+                  <ul class="space-y-1">
                     <li>
                       <a
                         href={linkPath('/services/web-development')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                        class={`group/item flex items-center gap-2 rounded px-2 py-1.5 text-xs font-semibold text-[var(--text-primary)] transition-colors hover:bg-[var(--bg-elevated)] hover:text-[var(--accent-blue)] ${fontClass}`}
                       >
-                        <span class="block font-semibold"
-                          >{t('services.webDevTitle', { fallback: 'Web Development' })}</span
-                        >
-                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
-                          >{
-                            t('services.webDevDescription', {
-                              fallback: 'Custom web projects coding',
-                            })
-                          }</span
-                        >
+                        <span class="ltr-isolate shrink-0 font-mono text-[10px] text-[var(--accent-blue)]" dir="ltr">[05]</span>
+                        <span>{t('services.webDevTitle', { fallback: 'Web Development' })}</span>
                       </a>
                     </li>
                     <li>
                       <a
                         href={linkPath('/services/wordpress-development')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                        class={`group/item flex items-center gap-2 rounded px-2 py-1.5 text-xs font-semibold text-[var(--text-primary)] transition-colors hover:bg-[var(--bg-elevated)] hover:text-[var(--accent-blue)] ${fontClass}`}
                       >
-                        <span class="block font-semibold"
-                          >{
-                            t('wordpress.wordpressAndWoocommerce', { fallback: 'WordPress & Shop' })
-                          }</span
-                        >
-                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
-                          >{t('wordpress.subtitle', { fallback: 'CMS sites development' })}</span
-                        >
+                        <span class="ltr-isolate shrink-0 font-mono text-[10px] text-[var(--accent-blue)]" dir="ltr">[06]</span>
+                        <span>{t('wordpress.wordpressAndWoocommerce', { fallback: 'WordPress & WooCommerce' })}</span>
                       </a>
                     </li>
                     <li>
                       <a
                         href={linkPath('/services/web-design')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                        class={`group/item flex items-center gap-2 rounded px-2 py-1.5 text-xs font-semibold text-[var(--text-primary)] transition-colors hover:bg-[var(--bg-elevated)] hover:text-[var(--accent-blue)] ${fontClass}`}
                       >
-                        <span class="block font-semibold"
-                          >{t('common.webDesignAndDevelopment', { fallback: 'Web Design' })}</span
-                        >
-                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
-                          >{
-                            t('services.webDevDescription', {
-                              fallback: 'Premium layouts & prototypes',
-                            })
-                          }</span
-                        >
+                        <span class="ltr-isolate shrink-0 font-mono text-[10px] text-[var(--accent-blue)]" dir="ltr">[07]</span>
+                        <span>{t('common.webDesignAndDevelopment', { fallback: 'Web Design & Development' })}</span>
                       </a>
                     </li>
                     <li>
                       <a
                         href={linkPath('/services/ecommerce')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                        class={`group/item flex items-center gap-2 rounded px-2 py-1.5 text-xs font-semibold text-[var(--text-primary)] transition-colors hover:bg-[var(--bg-elevated)] hover:text-[var(--accent-blue)] ${fontClass}`}
                       >
-                        <span class="block font-semibold"
-                          >{t('ecommerce.title', { fallback: 'E-commerce' })}</span
-                        >
-                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
-                          >{
-                            t('ecommerce.storeSetup', { fallback: 'Shopify & WooCommerce stores' })
-                          }</span
-                        >
+                        <span class="ltr-isolate shrink-0 font-mono text-[10px] text-[var(--accent-blue)]" dir="ltr">[08]</span>
+                        <span>{t('ecommerce.title', { fallback: 'E-commerce Design & Dev' })}</span>
                       </a>
                     </li>
                   </ul>
                 </div>
 
-                <!-- Support Services Column -->
-                <div class="space-y-4">
-                  <div
-                    class="mb-2 flex items-center gap-2 border-b border-gray-100 pb-2 dark:border-slate-800"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      class="h-4 w-4 text-primary"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      ><path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                      ></path></svg
-                    >
-                    <p class="font-persian text-sm font-bold text-primary">
-                      {t('common.supportServices', { fallback: 'Support' })}
-                    </p>
+                <!-- Column 3: /SUPPORT-AND-OPTIMIZATION -->
+                <div class="space-y-2 ps-3">
+                  <div class="border-b border-[var(--border-subtle)] pb-1.5">
+                    <span class="slash-eyebrow text-[10px]" dir="ltr">/OPTIMIZATION</span>
                   </div>
-                  <ul class="space-y-3">
+                  <ul class="space-y-1">
                     <li>
                       <a
                         href={linkPath('/services/website-maintenance')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                        class={`group/item flex items-center gap-2 rounded px-2 py-1.5 text-xs font-semibold text-[var(--text-primary)] transition-colors hover:bg-[var(--bg-elevated)] hover:text-[var(--accent-amber)] ${fontClass}`}
                       >
-                        <span class="block font-semibold"
-                          >{t('maintenance.title', { fallback: 'Maintenance' })}</span
-                        >
-                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
-                          >{
-                            t('maintenance.subtitle', {
-                              fallback: 'Backup, updates & uptime monitoring',
-                            })
-                          }</span
-                        >
+                        <span class="ltr-isolate shrink-0 font-mono text-[10px] text-[var(--accent-amber)]" dir="ltr">[09]</span>
+                        <span>{t('maintenance.title', { fallback: 'Website Maintenance' })}</span>
                       </a>
                     </li>
                     <li>
                       <a
                         href={linkPath('/services/speed-optimization')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                        class={`group/item flex items-center gap-2 rounded px-2 py-1.5 text-xs font-semibold text-[var(--text-primary)] transition-colors hover:bg-[var(--bg-elevated)] hover:text-[var(--accent-amber)] ${fontClass}`}
                       >
-                        <span class="block font-semibold"
-                          >{t('speedOptimization.title', { fallback: 'Speed Optimization' })}</span
-                        >
-                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
-                          >{
-                            t('speedOptimization.subtitle', { fallback: 'Core Web Vitals tuning' })
-                          }</span
-                        >
+                        <span class="ltr-isolate shrink-0 font-mono text-[10px] text-[var(--accent-amber)]" dir="ltr">[10]</span>
+                        <span>{t('speedOptimization.title', { fallback: 'Speed & Core Web Vitals' })}</span>
                       </a>
                     </li>
                     <li>
                       <a
                         href={linkPath('/services/ui-ux-audit')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                        class={`group/item flex items-center gap-2 rounded px-2 py-1.5 text-xs font-semibold text-[var(--text-primary)] transition-colors hover:bg-[var(--bg-elevated)] hover:text-[var(--accent-amber)] ${fontClass}`}
                       >
-                        <span class="block font-semibold"
-                          >{t('uiUxAudit.title', { fallback: 'UI/UX Audit' })}</span
-                        >
-                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
-                          >{
-                            t('uiUxAudit.subtitle', { fallback: 'Usability, flows & audit report' })
-                          }</span
-                        >
+                        <span class="ltr-isolate shrink-0 font-mono text-[10px] text-[var(--accent-amber)]" dir="ltr">[11]</span>
+                        <span>{t('uiUxAudit.title', { fallback: 'Professional UI/UX Audit' })}</span>
                       </a>
                     </li>
                   </ul>
                 </div>
               </div>
 
-              <div
-                class="mt-6 flex justify-end border-t border-gray-100 pt-4 dark:border-slate-800"
-              >
+              <div class="flex items-center justify-between border-t border-[var(--border-hairline)] bg-[var(--bg-elevated)] px-4 py-2">
+                <span class="ltr-isolate font-mono text-[10px] text-[var(--text-secondary)]" dir="ltr">
+                  ╰─ 11 SERVICES · CWV 99/100 GUARANTEED ─╯
+                </span>
                 <a
                   href={linkPath('/services')}
-                  class="inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline"
+                  class={`inline-flex items-center gap-1 font-mono text-xs font-bold text-[var(--accent-green)] hover:underline ${fontClass}`}
                 >
-                  {t('common.viewAll')}
-                  {t('common.services')}
-                  {
-                    isRtl ? (
-                      <svg
-                        aria-hidden="true"
-                        class="h-3 w-3"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                        />
-                      </svg>
-                    ) : (
-                      <svg
-                        aria-hidden="true"
-                        class="h-3 w-3"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M14 5l7 7m0 0l-7 7m7-7H3"
-                        />
-                      </svg>
-                    )
-                  }
+                  <span>{t('common.viewAll')} {t('common.services')}</span>
+                  <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
                 </a>
               </div>
             </div>
@@ -408,7 +360,11 @@ const waDirectLabel =
             <a
               href={linkPath(item.href)}
               aria-current={isActive(item.href) ? 'page' : undefined}
-              class={`rounded-md px-1 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${fontClass} ${isActive(item.href) ? 'font-semibold text-primary' : 'text-foreground/80 hover:text-primary'}`}
+              class={`shrink-0 rounded px-2.5 py-1.5 text-[13px] font-medium whitespace-nowrap transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-green)] ${fontClass} ${
+                isActive(item.href)
+                  ? 'bg-[var(--bg-elevated)] font-semibold text-[var(--accent-green)]'
+                  : 'text-[var(--text-secondary)] hover:bg-[var(--bg-elevated)] hover:text-[var(--text-primary)]'
+              }`}
             >
               {t(item.label)}
             </a>
@@ -416,99 +372,100 @@ const waDirectLabel =
         }
       </nav>
 
-      <!-- Desktop Right-Side Actions -->
-      <div class="hidden items-center gap-4 xl:flex">
-        <!-- Language Select -->
-        <div class="group relative">
-          <button
-            type="button"
-            id="desktop-lang-btn"
-            aria-expanded="false"
-            aria-haspopup="true"
-            aria-controls="desktop-lang-panel"
-            class="flex items-center gap-1 text-sm font-medium text-foreground/80 transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-          >
-            <svg
-              aria-hidden="true"
-              class="h-4 w-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              ><path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-              ></path></svg
-            >
-            <span class="uppercase">{lang}</span>
-          </button>
-          <div
-            id="desktop-lang-panel"
-            class="invisible absolute top-full right-0 z-50 mt-2 w-28 rounded-md border border-gray-100 bg-white py-1 opacity-0 shadow-lg transition-all duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100 dark:border-slate-800 dark:bg-slate-900"
-          >
-            {
-              Object.keys(languages).map((l) => (
-                <a
-                  href={`/${l}${currentPathWithoutLang}`}
-                  aria-current={lang === l ? 'true' : undefined}
-                  class="block px-4 py-2 text-center text-sm text-gray-700 uppercase hover:bg-gray-50 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-gray-200 dark:hover:bg-slate-800"
-                >
-                  {l}
-                </a>
-              ))
-            }
-          </div>
+      <!-- Desktop Right Utility Cluster (Single-line guaranteed) -->
+      <div class="hidden shrink-0 items-center gap-2 lg:flex">
+        <!-- Segmented Locale Switcher (en | fa | ar) -->
+        <div
+          class="ltr-isolate inline-flex shrink-0 items-center rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] p-0.5 font-mono text-xs"
+          dir="ltr"
+          role="group"
+          aria-label="Language switcher"
+        >
+          {
+            Object.keys(languages).map((l) => (
+              <a
+                href={`/${l}${currentPathWithoutLang}`}
+                aria-current={lang === l ? 'true' : undefined}
+                class={`rounded-xs px-2 py-1 text-[11px] font-bold uppercase transition-colors ${
+                  lang === l
+                    ? 'bg-[var(--bg-elevated)] text-[var(--accent-green)]'
+                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                }`}
+              >
+                {l}
+              </a>
+            ))
+          }
         </div>
 
+        <!-- Dark / White Mode Toggle Button -->
         <button
           type="button"
           id="theme-toggle"
           data-label-dark={t('common.switchToDark', { fallback: 'Switch to dark mode' })}
           data-label-light={t('common.switchToLight', { fallback: 'Switch to light mode' })}
-          class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-gray-300 dark:hover:bg-slate-800 dark:hover:text-white"
+          class="ltr-isolate inline-flex h-8 shrink-0 cursor-pointer items-center gap-1.5 rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-2.5 font-mono text-xs whitespace-nowrap text-[var(--text-secondary)] transition-colors hover:border-[var(--border-focus)] hover:text-[var(--text-primary)] focus-visible:ring-2 focus-visible:ring-[var(--accent-green)]"
+          dir="ltr"
           aria-label={t('common.switchToDark', { fallback: 'Switch to dark mode' })}
         >
           <svg
             data-icon="sun"
             aria-hidden="true"
-            class="hidden h-5 w-5 text-yellow-400"
+            class="hidden h-3.5 w-3.5 shrink-0 text-[var(--accent-amber)]"
             fill="none"
             stroke="currentColor"
             stroke-width="2"
             viewBox="0 0 24 24"
-            ><circle cx="12" cy="12" r="4"></circle><path
+          >
+            <circle cx="12" cy="12" r="4"></circle>
+            <path
               stroke-linecap="round"
               stroke-linejoin="round"
               d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
-            ></path></svg
-          >
+            ></path>
+          </svg>
           <svg
             data-icon="moon"
             aria-hidden="true"
-            class="h-5 w-5 text-gray-600 dark:text-gray-300"
+            class="h-3.5 w-3.5 shrink-0 text-[var(--accent-blue)]"
             fill="none"
             stroke="currentColor"
             stroke-width="2"
             viewBox="0 0 24 24"
-            ><path
+          >
+            <path
               stroke-linecap="round"
               stroke-linejoin="round"
-              d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg
-          >
+              d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+          <span data-theme-mode-pill class="text-[11px] font-semibold">DARK</span>
         </button>
 
+        <!-- Primary Action Button: Free Consultation (Single-line whitespace-nowrap) -->
         <button
           type="button"
           id="open-consultation-btn"
-          class="cursor-pointer rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          data-open-consultation
+          class={`inline-flex h-8 shrink-0 cursor-pointer items-center gap-1 rounded border border-[var(--accent-green)] bg-[var(--accent-green-dim)] px-3.5 text-xs font-bold whitespace-nowrap text-[var(--accent-contrast)] transition-all hover:bg-[var(--accent-green)] hover:text-[#090b0e] focus-visible:ring-2 focus-visible:ring-[var(--accent-green)] ${fontClass}`}
         >
-          {t('common.freeConsultation')}
+          <span>{t('common.freeConsultation')}</span>
+          <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
         </button>
       </div>
 
       <!-- Mobile Controls -->
-      <div class="flex items-center gap-3 xl:hidden">
+      <div class="flex items-center gap-2 lg:hidden">
+        <!-- Mobile Dark/White Quick Toggle -->
+        <button
+          type="button"
+          id="theme-toggle-mobile-top"
+          class="ltr-isolate inline-flex h-8 cursor-pointer items-center gap-1 rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-2 font-mono text-[11px] font-bold text-[var(--text-primary)]"
+          dir="ltr"
+          aria-label="Toggle Dark or White mode"
+        >
+          <span data-theme-mode-pill-mobile>DARK</span>
+        </button>
+
         <!-- Mobile Language Selector -->
         <div class="relative">
           <button
@@ -516,35 +473,24 @@ const waDirectLabel =
             id="mobile-lang-btn"
             aria-expanded="false"
             aria-controls="mobile-lang-dropdown"
-            class="flex items-center gap-1.5 rounded-full border border-gray-100 bg-white/80 px-3 py-1.5 text-sm font-semibold text-gray-700 shadow-xs transition-all hover:bg-gray-100 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800/80 dark:text-gray-200 dark:hover:bg-slate-700"
+            class="ltr-isolate flex h-8 items-center gap-1 rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-2.5 font-mono text-xs font-bold text-[var(--text-primary)] uppercase"
+            dir="ltr"
           >
-            <svg
-              aria-hidden="true"
-              class="h-4 w-4 text-gray-500 dark:text-gray-400"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              ><path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-              ></path></svg
-            >
-            <span>{languages[lang]?.nativeName}</span>
+            <span>{lang}</span>
+            <span aria-hidden="true">▾</span>
           </button>
           <div
             id="mobile-lang-dropdown"
-            class="absolute top-full right-0 z-50 mt-2 hidden w-32 rounded-xl border border-gray-100 bg-white py-1 shadow-xl dark:border-slate-800 dark:bg-slate-900"
+            class="absolute top-full right-0 z-50 mt-1 hidden w-32 rounded border border-[var(--border-hairline)] bg-[var(--bg-surface)] py-1 shadow-xl"
           >
             {
               Object.entries(languages).map(([code, meta]) => (
                 <a
                   href={`/${code}${currentPathWithoutLang}`}
                   aria-current={lang === code ? 'true' : undefined}
-                  class="block px-4 py-2.5 text-center text-sm font-medium text-gray-700 hover:bg-gray-50 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-gray-200 dark:hover:bg-slate-800"
+                  class="block px-3 py-2 text-center text-xs font-medium text-[var(--text-primary)] hover:bg-[var(--bg-elevated)] hover:text-[var(--accent-green)]"
                 >
-                  {meta.nativeName}
+                  {meta.nativeName} ({code.toUpperCase()})
                 </a>
               ))
             }
@@ -554,250 +500,216 @@ const waDirectLabel =
         <button
           type="button"
           id="mobile-menu-btn"
-          class="rounded-lg p-2 text-foreground/80 hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          class="rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] p-1.5 text-[var(--text-primary)] hover:border-[var(--border-focus)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-green)]"
           aria-label="Toggle Menu"
           aria-expanded="false"
           aria-controls="mobile-drawer"
         >
           <svg
             aria-hidden="true"
-            class="h-6 w-6"
+            class="h-5 w-5"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            ><path
+          >
+            <path
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"></path></svg
-          >
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Mobile Dropdown drawer Menu (z-[60] keeps the whole drawer, panel included,
-       above the fixed site header at z-50 so the close row stays visible/clickable) -->
+  <!-- Mobile Dropdown Drawer Menu -->
   <div
     id="mobile-drawer"
     role="dialog"
     aria-modal="true"
     aria-label="Mobile Navigation"
-    class="fixed inset-0 z-[60] hidden bg-black/60 backdrop-blur-xs transition-opacity duration-300"
+    class="fixed inset-0 z-[60] hidden bg-black/75 backdrop-blur-xs transition-opacity duration-200"
   >
     <div
-      class={`fixed top-0 bottom-0 ${isRtl ? 'left-0' : 'right-0'} w-[85%] max-w-sm bg-white dark:bg-slate-900 text-foreground shadow-2xl p-6 flex flex-col h-full overflow-y-auto z-50 border-s border-transparent dark:border-slate-800`}
+      class={`fixed top-0 bottom-0 ${isRtl ? 'left-0' : 'right-0'} z-50 flex h-full w-[88%] max-w-sm flex-col overflow-y-auto border-s border-[var(--border-hairline)] bg-[var(--bg-surface)] p-5 text-[var(--text-primary)] shadow-2xl`}
     >
-      <div class={`flex flex-col space-y-6 ${fontClass} h-full justify-between`}>
-        <div class="space-y-6">
-          <!-- Header -->
-          <div
-            class="flex items-center justify-between border-b border-gray-100 pb-4 dark:border-slate-800"
-          >
-            <a href={linkPath('')} class="flex items-center space-x-2">
-              <Logo class="h-auto w-32.5" />
+      <div class={`flex h-full flex-col justify-between space-y-6 ${fontClass}`}>
+        <div class="space-y-5">
+          <div class="flex items-center justify-between border-b border-[var(--border-hairline)] pb-3">
+            <a href={linkPath('')} class="flex items-center gap-2">
+              <Logo class="h-auto w-28" />
             </a>
             <button
               type="button"
               id="mobile-drawer-close"
-              class="cursor-pointer text-gray-500 hover:text-gray-700 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-200"
+              class="cursor-pointer rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] p-1.5 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
             >
               <svg
                 aria-hidden="true"
-                class="h-6 w-6"
+                class="h-5 w-5"
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
                 viewBox="0 0 24 24"
-                ><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"
-                ></path></svg
               >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
             </button>
           </div>
 
-          <!-- Links List -->
-          <div class="space-y-4">
+          <!-- Mobile Color Palette Selector -->
+          <div class="rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] p-3" dir="ltr">
+            <div class="mb-2 font-mono text-[10px] tracking-wider text-[var(--text-secondary)] uppercase">
+              COLOR PALETTE:
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              {
+                colorPalettes.map((p) => (
+                  <button
+                    type="button"
+                    data-palette-btn={p.id}
+                    class="palette-swatch-btn"
+                  >
+                    <span
+                      class="inline-block h-2.5 w-2.5 shrink-0 rounded-full"
+                      style={`background-color: ${p.dotColor}; ${p.border ? 'border: 1px solid #71717a;' : ''}`}
+                    />
+                    <span>{p.label}</span>
+                  </button>
+                ))
+              }
+            </div>
+          </div>
+
+          <div class="space-y-3">
             <a
               href={linkPath('')}
               aria-current={currentPathWithoutLang === '/' ? 'page' : undefined}
-              class={`block text-lg font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm ${currentPathWithoutLang === '/' ? 'text-primary' : 'text-gray-900 dark:text-gray-100 hover:text-primary'}`}
-              >{t('common.home')}</a
+              class={`block rounded px-2 py-1.5 text-base font-bold ${
+                currentPathWithoutLang === '/'
+                  ? 'text-[var(--accent-green)]'
+                  : 'text-[var(--text-primary)]'
+              }`}
             >
+              {t('common.home')}
+            </a>
 
             <!-- Services Nested Menu -->
-            <div class="my-2 space-y-4 border-y border-gray-100 py-4 dark:border-slate-800">
-              <div class="text-lg font-bold text-gray-900 dark:text-white">
-                {t('common.services')}
-              </div>
-              <a
-                href={linkPath('/services')}
-                aria-current={isActive('/services') ? 'page' : undefined}
-                class={`block ps-3 border-s-2 transition-colors font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm ${isActive('/services') ? 'border-primary text-primary' : 'border-primary/40 text-foreground/80 hover:text-primary'}`}
-                >{t('common.allServices')}</a
-              >
-
-              <!-- SEO Services Subgroup -->
-              <div class="space-y-2 ps-3">
-                <p class="text-xs font-bold tracking-wider text-muted-foreground uppercase">
-                  {t('common.seoServices')}
-                </p>
-                <div
-                  class="grid grid-cols-2 gap-2 border-s border-gray-100 ps-3 dark:border-slate-800"
+            <div class="space-y-3 border-y border-[var(--border-hairline)] py-3">
+              <div class="flex items-center justify-between">
+                <span class="slash-eyebrow text-xs" dir="ltr">/SERVICES</span>
+                <a
+                  href={linkPath('/services')}
+                  class="font-mono text-xs font-bold text-[var(--accent-green)] hover:underline"
                 >
-                  <a
-                    href={linkPath('/services/seo')}
-                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                    >{t('services.seoTitle')}</a
-                  >
-                  <a
-                    href={linkPath('/services/local-seo')}
-                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                    >{t('services.localSeoTitle')}</a
-                  >
-                  <a
-                    href={linkPath('/services/link-building')}
-                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                    >{t('services.linkBuildingTitle')}</a
-                  >
-                  <a
-                    href={linkPath('/services/content-creation')}
-                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                    >{t('services.contentCreationTitle')}</a
-                  >
-                </div>
+                  {t('common.allServices')} →
+                </a>
               </div>
 
-              <!-- Development Services Subgroup -->
-              <div class="space-y-2 ps-3">
-                <p class="text-xs font-bold tracking-wider text-muted-foreground uppercase">
-                  {t('common.developmentServices')}
-                </p>
-                <div
-                  class="grid grid-cols-2 gap-2 border-s border-gray-100 ps-3 dark:border-slate-800"
-                >
-                  <a
-                    href={linkPath('/services/web-development')}
-                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                    >{t('services.webDevTitle')}</a
-                  >
-                  <a
-                    href={linkPath('/services/wordpress-development')}
-                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                    >{t('wordpress.wordpressAndWoocommerce')}</a
-                  >
-                  <a
-                    href={linkPath('/services/web-design')}
-                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                    >{t('common.webDesignAndDevelopment')}</a
-                  >
-                  <a
-                    href={linkPath('/services/ecommerce')}
-                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                    >{t('ecommerce.title', { fallback: 'E-commerce' })}</a
-                  >
-                </div>
+              <div class="grid grid-cols-1 gap-1.5 ps-2">
+                <a href={linkPath('/services/seo')} class="py-1 text-xs text-[var(--text-secondary)] hover:text-[var(--accent-green)]">
+                  [01] {t('services.seoTitle')}
+                </a>
+                <a href={linkPath('/services/local-seo')} class="py-1 text-xs text-[var(--text-secondary)] hover:text-[var(--accent-green)]">
+                  [02] {t('services.localSeoTitle')}
+                </a>
+                <a href={linkPath('/services/link-building')} class="py-1 text-xs text-[var(--text-secondary)] hover:text-[var(--accent-green)]">
+                  [03] {t('services.linkBuildingTitle')}
+                </a>
+                <a href={linkPath('/services/content-creation')} class="py-1 text-xs text-[var(--text-secondary)] hover:text-[var(--accent-green)]">
+                  [04] {t('services.contentCreationTitle')}
+                </a>
+                <a href={linkPath('/services/web-development')} class="py-1 text-xs text-[var(--text-secondary)] hover:text-[var(--accent-blue)]">
+                  [05] {t('services.webDevTitle')}
+                </a>
+                <a href={linkPath('/services/wordpress-development')} class="py-1 text-xs text-[var(--text-secondary)] hover:text-[var(--accent-blue)]">
+                  [06] {t('wordpress.wordpressAndWoocommerce')}
+                </a>
+                <a href={linkPath('/services/web-design')} class="py-1 text-xs text-[var(--text-secondary)] hover:text-[var(--accent-blue)]">
+                  [07] {t('common.webDesignAndDevelopment')}
+                </a>
+                <a href={linkPath('/services/ecommerce')} class="py-1 text-xs text-[var(--text-secondary)] hover:text-[var(--accent-blue)]">
+                  [08] {t('ecommerce.title')}
+                </a>
+                <a href={linkPath('/services/website-maintenance')} class="py-1 text-xs text-[var(--text-secondary)] hover:text-[var(--accent-amber)]">
+                  [09] {t('maintenance.title')}
+                </a>
+                <a href={linkPath('/services/speed-optimization')} class="py-1 text-xs text-[var(--text-secondary)] hover:text-[var(--accent-amber)]">
+                  [10] {t('speedOptimization.title')}
+                </a>
+                <a href={linkPath('/services/ui-ux-audit')} class="py-1 text-xs text-[var(--text-secondary)] hover:text-[var(--accent-amber)]">
+                  [11] {t('uiUxAudit.title')}
+                </a>
               </div>
             </div>
 
-            <a
-              href={linkPath('/portfolio')}
-              aria-current={isActive('/portfolio') ? 'page' : undefined}
-              class={`block text-lg font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm ${isActive('/portfolio') ? 'text-primary' : 'text-gray-900 dark:text-gray-100 hover:text-primary'}`}
-              >{t('common.portfolio')}</a
-            >
-            <a
-              href={linkPath('/service-areas')}
-              aria-current={isActive('/service-areas') ? 'page' : undefined}
-              class={`block text-lg font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm ${isActive('/service-areas') ? 'text-primary' : 'text-gray-900 dark:text-gray-100 hover:text-primary'}`}
-              >{t('common.serviceAreas')}</a
-            >
-            <a
-              href={linkPath('/blog')}
-              aria-current={isActive('/blog') ? 'page' : undefined}
-              class={`block text-lg font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm ${isActive('/blog') ? 'text-primary' : 'text-gray-900 dark:text-gray-100 hover:text-primary'}`}
-              >{t('common.blog')}</a
-            >
-            <a
-              href={linkPath('/about')}
-              aria-current={isActive('/about') ? 'page' : undefined}
-              class={`block text-lg font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm ${isActive('/about') ? 'text-primary' : 'text-gray-900 dark:text-gray-100 hover:text-primary'}`}
-              >{t('common.about')}</a
-            >
-            <a
-              href={linkPath('/contact')}
-              aria-current={isActive('/contact') ? 'page' : undefined}
-              class={`block text-lg font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm ${isActive('/contact') ? 'text-primary' : 'text-gray-900 dark:text-gray-100 hover:text-primary'}`}
-              >{t('common.contact')}</a
-            >
-          </div>
-        </div>
-
-        <div>
-          <!-- Language buttons Inline -->
-          <div
-            class="flex justify-center gap-2 border-t border-gray-100 py-4 dark:border-slate-800"
-          >
             {
-              Object.entries(languages).map(([code, meta]) => (
+              navItems.map((item) => (
                 <a
-                  href={`/${code}${currentPathWithoutLang}`}
-                  aria-current={lang === code ? 'true' : undefined}
-                  class={`rounded-lg border px-4 py-2 text-xs font-bold transition-all ${lang === code ? 'border-primary bg-primary text-primary-foreground' : 'border-gray-200 bg-white text-gray-600 hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700'}`}
+                  href={linkPath(item.href)}
+                  aria-current={isActive(item.href) ? 'page' : undefined}
+                  class={`block rounded px-2 py-1.5 text-sm font-semibold ${
+                    isActive(item.href)
+                      ? 'text-[var(--accent-green)]'
+                      : 'text-[var(--text-primary)]'
+                  }`}
                 >
-                  {meta.nativeName}
+                  {t(item.label)}
                 </a>
               ))
             }
           </div>
+        </div>
 
-          <!-- Button -->
+        <div class="space-y-2.5 border-t border-[var(--border-hairline)] pt-4">
           <button
             type="button"
             id="open-consultation-btn-mobile"
-            class="w-full cursor-pointer rounded-xl bg-primary py-3 text-center font-bold text-primary-foreground shadow-md focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            class="w-full cursor-pointer rounded border border-[var(--accent-green)] bg-[var(--accent-green-dim)] py-2.5 text-center text-sm font-bold text-[var(--accent-contrast)]"
           >
-            {t('common.freeConsultation')}
+            {t('common.freeConsultation')} →
           </button>
 
-          <!-- Theme Toggle -->
           <button
             type="button"
             id="theme-toggle-mobile"
             data-label-dark={t('common.switchToDark', { fallback: 'Switch to dark mode' })}
             data-label-light={t('common.switchToLight', { fallback: 'Switch to light mode' })}
-            class="mt-3 flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-gray-100 py-3 text-center font-bold text-gray-700 shadow-md transition-colors hover:bg-gray-200 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700"
+            class="flex w-full cursor-pointer items-center justify-center gap-2 rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] py-2.5 text-center font-mono text-xs font-bold text-[var(--text-primary)]"
             aria-label={t('common.switchToDark', { fallback: 'Switch to dark mode' })}
           >
             <svg
               data-icon="sun"
               aria-hidden="true"
-              class="hidden h-5 w-5 text-yellow-400"
+              class="hidden h-4 w-4 text-[var(--accent-amber)]"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
               viewBox="0 0 24 24"
-              ><circle cx="12" cy="12" r="4"></circle><path
+            >
+              <circle cx="12" cy="12" r="4"></circle>
+              <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
-              ></path></svg
-            >
+              ></path>
+            </svg>
             <svg
               data-icon="moon"
               aria-hidden="true"
-              class="h-5 w-5 text-gray-600 dark:text-gray-300"
+              class="h-4 w-4 text-[var(--accent-blue)]"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
               viewBox="0 0 24 24"
-              ><path
+            >
+              <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg
-            >
-            <span data-theme-label
-              >{t('common.switchToDark', { fallback: 'Switch to dark mode' })}</span
-            >
+                d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+            </svg>
+            <span data-theme-label>{t('common.switchToDark', { fallback: 'Switch to dark mode' })}</span>
           </button>
         </div>
       </div>
@@ -805,45 +717,48 @@ const waDirectLabel =
   </div>
 </header>
 
-<!-- Native HTML5 Dialog for Consultation Form -->
+<!-- Terminal-Styled Native HTML5 Dialog for Consultation Form -->
 <dialog
   id="consultation-modal"
-  class="fixed inset-0 m-auto max-h-[90vh] w-[calc(100%-2rem)] max-w-lg overflow-y-auto rounded-3xl border border-gray-100 bg-white p-0 font-persian shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-xs dark:border-slate-800 dark:bg-slate-900"
+  class={`fixed inset-0 m-auto max-h-[92vh] w-[calc(100%-2rem)] max-w-lg overflow-y-auto rounded-lg border border-[var(--border-focus)] bg-[var(--bg-surface)] p-0 text-[var(--text-primary)] shadow-2xl backdrop:bg-black/75 backdrop:backdrop-blur-xs ${fontClass}`}
 >
-  <div class="relative p-6 text-foreground sm:p-8">
+  <div class="terminal-chrome-bar" dir="ltr">
+    <span class="font-mono text-xs font-bold text-[var(--accent-green)]">
+      ╭─ Request a Consultation ─── ESC to close ─╮
+    </span>
     <button
       type="button"
       id="close-modal-btn"
-      class="absolute top-4 right-4 cursor-pointer rounded-full p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-gray-400 dark:hover:bg-slate-800 dark:hover:text-gray-200"
+      class="cursor-pointer rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-2 py-0.5 font-mono text-xs text-[var(--text-secondary)] hover:border-[var(--accent-coral)] hover:text-[var(--accent-coral)]"
       aria-label={t('consultation.cancel', { fallback: 'Close' })}
     >
-      <svg aria-hidden="true" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-        ><path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M6 18L18 6M6 6l12 12"></path></svg
-      >
+      [✕ ESC]
     </button>
-    <div class="mb-6 text-center">
-      <div class="text-2xl font-bold text-gray-900 dark:text-white">
-        {t('consultation.title', { fallback: 'Free Consultation' })}
+  </div>
+
+  <div class="p-6 sm:p-7">
+    <div class="mb-5">
+      <span class="slash-eyebrow text-[11px]" dir="ltr">/CONSULTATION · DIRECT ENGINEERING HANDOFF</span>
+      <div class="mt-1 text-xl font-bold text-[var(--text-primary)]">
+        {t('consultation.title', { fallback: 'Request a Consultation' })}
       </div>
-      <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+      <p class="mt-1 text-xs text-[var(--text-secondary)]">
         {
           t('consultation.description', {
-            fallback: 'Fill out the form below to request a consultation.',
+            fallback:
+              'Fill out the form below to request a custom SEO or web engineering consultation.',
           })
         }
       </p>
     </div>
-    <form id="consultation-form" class="space-y-4">
+
+    <form id="consultation-form" class="space-y-3.5">
       <div>
         <label
           for="consultation-name"
-          class="mb-1.5 block text-sm font-semibold text-gray-700 dark:text-gray-300"
+          class="mb-1 block text-xs font-semibold text-[var(--text-secondary)]"
         >
-          {t('consultation.fullName', { fallback: 'Full Name' })}
+          {t('consultation.fullName', { fallback: 'Full Name' })} *
         </label>
         <input
           id="consultation-name"
@@ -851,106 +766,166 @@ const waDirectLabel =
           name="name"
           required
           autocomplete="name"
-          class="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+          class="h-10 w-full rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-3 text-sm text-[var(--text-primary)] focus:border-[var(--accent-green)] focus:outline-none"
         />
       </div>
+
+      <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div>
+          <label
+            for="consultation-phone"
+            class="mb-1 block text-xs font-semibold text-[var(--text-secondary)]"
+          >
+            {t('consultation.phone', { fallback: 'Phone Number' })} *
+          </label>
+          <input
+            id="consultation-phone"
+            type="tel"
+            name="phone"
+            required
+            autocomplete="tel"
+            placeholder="+98 912 ..."
+            class="ltr-isolate h-10 w-full rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-3 font-mono text-sm text-[var(--text-primary)] focus:border-[var(--accent-green)] focus:outline-none"
+            dir="ltr"
+          />
+        </div>
+
+        <div>
+          <label
+            for="consultation-email"
+            class="mb-1 block text-xs font-semibold text-[var(--text-secondary)]"
+          >
+            {t('consultation.email', { fallback: 'Email Address' })}
+          </label>
+          <input
+            id="consultation-email"
+            type="email"
+            name="email"
+            autocomplete="email"
+            placeholder="you@company.com"
+            class="ltr-isolate h-10 w-full rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-3 font-mono text-sm text-[var(--text-primary)] focus:border-[var(--accent-green)] focus:outline-none"
+            dir="ltr"
+          />
+        </div>
+      </div>
+
       <div>
         <label
-          for="consultation-phone"
-          class="mb-1.5 block text-sm font-semibold text-gray-700 dark:text-gray-300"
+          for="consultation-service"
+          class="mb-1 block text-xs font-semibold text-[var(--text-secondary)]"
         >
-          {t('consultation.phone', { fallback: 'Phone Number' })}
+          {lang === 'fa' ? 'خدمت مورد نظر' : lang === 'ar' ? 'الخدمة المطلوبة' : 'Selected Service'}
         </label>
-        <input
-          id="consultation-phone"
-          type="tel"
-          name="phone"
-          required
-          autocomplete="tel"
-          class="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white"
-          dir="ltr"
-        />
-      </div>
-      <div>
-        <label
-          for="consultation-email"
-          class="mb-1.5 block text-sm font-semibold text-gray-700 dark:text-gray-300"
+        <select
+          id="consultation-service"
+          name="service"
+          class="h-10 w-full rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-3 text-sm text-[var(--text-primary)] focus:border-[var(--accent-green)] focus:outline-none"
         >
-          {t('consultation.email', { fallback: 'Email Address' })}
-        </label>
-        <input
-          id="consultation-email"
-          type="email"
-          name="email"
-          autocomplete="email"
-          class="h-11 w-full rounded-xl border border-gray-200 bg-white px-4 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white"
-          dir="ltr"
-        />
+          {serviceOptions.map((opt) => <option value={opt.value}>{opt.label}</option>)}
+        </select>
       </div>
+
       <div>
         <label
           for="consultation-message"
-          class="mb-1.5 block text-sm font-semibold text-gray-700 dark:text-gray-300"
+          class="mb-1 block text-xs font-semibold text-[var(--text-secondary)]"
         >
-          {t('consultation.message', { fallback: 'Message' })}
+          {t('consultation.message', { fallback: 'Message' })} *
         </label>
         <textarea
           id="consultation-message"
           name="message"
           rows="3"
           required
-          class="w-full resize-none rounded-xl border border-gray-200 bg-white p-3 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+          class="w-full resize-none rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] p-3 text-sm text-[var(--text-primary)] focus:border-[var(--accent-green)] focus:outline-none"
         ></textarea>
       </div>
 
       <!-- Honeypot -->
-      <input type="text" name="company" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+      <input
+        type="text"
+        name="company"
+        tabindex="-1"
+        autocomplete="off"
+        class="hidden"
+        aria-hidden="true"
+      />
 
       <button
         type="submit"
         id="consultation-submit-btn"
-        class="h-11 w-full cursor-pointer rounded-xl bg-primary font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-60"
+        class="h-10 w-full cursor-pointer rounded border border-[var(--accent-green)] bg-[var(--accent-green-dim)] font-mono text-xs font-bold text-[var(--accent-contrast)] transition-all hover:bg-[var(--accent-green)] hover:text-[#090b0e] disabled:opacity-60"
       >
-        {t('consultation.sendRequest', { fallback: 'Send Request' })}
+        {t('consultation.sendRequest', { fallback: 'Send Request' })} →
       </button>
 
       <div class="relative flex items-center justify-center py-1">
-        <div class="border-t border-gray-200 dark:border-slate-800 w-full"></div>
-        <span class="bg-white dark:bg-slate-900 px-3 text-xs text-gray-400 font-medium">{isRtl ? 'یا' : 'OR'}</span>
+        <div class="w-full border-t border-[var(--border-hairline)]"></div>
+        <span class="bg-[var(--bg-surface)] px-3 font-mono text-[11px] text-[var(--text-secondary)]">
+          {isRtl ? 'یا' : 'OR'}
+        </span>
       </div>
 
       <a
         href={navWhatsappUrl}
+        id="consultation-whatsapp-link"
         target="_blank"
         rel="noopener noreferrer"
-        class="flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-sm font-bold text-emerald-600 transition-all hover:bg-emerald-500 hover:text-white dark:text-emerald-400 dark:hover:text-white"
+        class="flex h-10 w-full items-center justify-center gap-2 rounded border border-[var(--accent-green)]/40 bg-[var(--bg-canvas)] text-xs font-bold text-[var(--accent-green)] transition-all hover:bg-[var(--accent-green)] hover:text-[#090b0e]"
       >
         <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.002 3.66 3.745-.993zm11.233-6.793c-.274-.137-1.625-.802-1.876-.893-.252-.092-.435-.137-.618.137-.183.274-.709.893-.869 1.076-.16.183-.32.206-.594.069-.274-.137-1.157-.426-2.204-1.36-.816-.728-1.367-1.628-1.527-1.902-.16-.274-.017-.422.12-.558.123-.122.274-.32.411-.48.137-.16.183-.274.274-.457.091-.183.046-.343-.023-.48-.069-.137-.618-1.486-.847-2.036-.223-.536-.45-.463-.618-.472-.16-.008-.343-.01-.526-.01-.183 0-.48.069-.731.343-.251.274-.96.938-.96 2.288 0 1.35.983 2.653 1.12 2.836.137.184 1.935 2.955 4.689 4.144.655.283 1.166.452 1.564.578.658.209 1.258.179 1.732.108.529-.079 1.625-.664 1.854-1.303.229-.639.229-1.187.16-1.303-.069-.115-.252-.183-.526-.32z"/>
+          <path
+            d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.002 3.66 3.745-.993zm11.233-6.793c-.274-.137-1.625-.802-1.876-.893-.252-.092-.435-.137-.618.137-.183.274-.709.893-.869 1.076-.16.183-.32.206-.594.069-.274-.137-1.157-.426-2.204-1.36-.816-.728-1.367-1.628-1.527-1.902-.16-.274-.017-.422.12-.558.123-.122.274-.32.411-.48.137-.16.183-.274.274-.457.091-.183.046-.343-.023-.48-.069-.137-.618-1.486-.847-2.036-.223-.536-.45-.463-.618-.472-.16-.008-.343-.01-.526-.01-.183 0-.48.069-.731.343-.251.274-.96.938-.96 2.288 0 1.35.983 2.653 1.12 2.836.137.184 1.935 2.955 4.689 4.144.655.283 1.166.452 1.564.578.658.209 1.258.179 1.732.108.529-.079 1.625-.664 1.854-1.303.229-.639.229-1.187.16-1.303-.069-.115-.252-.183-.526-.32z"
+          ></path>
         </svg>
-        {waDirectLabel}
+        <span>{waDirectLabel}</span>
       </a>
 
       <p
         id="consultation-response-msg"
         role="status"
         aria-live="polite"
-        class="hidden text-center text-sm font-medium"
-      >
-      </p>
+        class="hidden text-center font-mono text-xs font-medium"
+      ></p>
     </form>
   </div>
 </dialog>
 
 <script is:inline>
   (() => {
-    // setupNavbar re-runs on every astro:page-load (SPA navigation swaps the
-    // navbar DOM), so document-level listeners are registered exactly once and
-    // resolve their targets fresh on each event instead of closing over stale nodes.
     let documentListenersBound = false;
 
+    function openConsultationWithService(serviceName) {
+      const dialog = document.getElementById('consultation-modal');
+      const selectEl = document.getElementById('consultation-service');
+      const msgEl = document.getElementById('consultation-message');
+      if (selectEl && serviceName) {
+        const match = Array.from(selectEl.options).find(
+          (o) =>
+            o.value.toLowerCase() === serviceName.toLowerCase() ||
+            o.text.toLowerCase().includes(serviceName.toLowerCase())
+        );
+        if (match) {
+          selectEl.value = match.value;
+        } else {
+          const customOpt = document.createElement('option');
+          customOpt.value = serviceName;
+          customOpt.textContent = serviceName;
+          selectEl.appendChild(customOpt);
+          selectEl.value = serviceName;
+        }
+      }
+      if (msgEl && serviceName && !msgEl.value) {
+        msgEl.placeholder = `Inquiry regarding: ${serviceName}`;
+      }
+      if (dialog && typeof dialog.showModal === 'function') {
+        dialog.showModal();
+      }
+    }
+
+    window.openConsultationModal = openConsultationWithService;
+
     function setupNavbar() {
-      // Mobile Menu Drawer Control
       const mobileBtn = document.getElementById('mobile-menu-btn');
       const drawer = document.getElementById('mobile-drawer');
       const drawerCloseBtn = document.getElementById('mobile-drawer-close');
@@ -973,37 +948,15 @@ const waDirectLabel =
         }
       }
 
-      function trapDrawerFocus(e) {
-        if (!drawer || drawer.classList.contains('hidden')) return;
-        if (e.key !== 'Tab') return;
-        const focusables = drawer.querySelectorAll(
-          'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
-        );
-        if (!focusables.length) return;
-        const first = focusables[0];
-        const last = focusables[focusables.length - 1];
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault();
-          if (last && typeof last.focus === 'function') last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          if (first && typeof first.focus === 'function') first.focus();
-        }
-      }
-
       if (mobileBtn && drawer) {
         mobileBtn.onclick = openDrawer;
-        if (drawerCloseBtn) {
-          drawerCloseBtn.onclick = closeDrawer;
-        }
+        if (drawerCloseBtn) drawerCloseBtn.onclick = closeDrawer;
         drawer.onclick = (e) => {
           if (e.target === drawer) closeDrawer();
         };
-        drawer.addEventListener('keydown', trapDrawerFocus);
       }
 
-      // Desktop hover/focus dropdowns: keep aria-expanded in sync with CSS state
-      document.querySelectorAll('#desktop-services-btn, #desktop-lang-btn').forEach((btn) => {
+      document.querySelectorAll('#desktop-services-btn').forEach((btn) => {
         const group = btn.closest('.group');
         if (!group) return;
         const sync = () =>
@@ -1015,7 +968,6 @@ const waDirectLabel =
         sync();
       });
 
-      // Mobile Language Dropdown Toggle
       const mobileLangBtn = document.getElementById('mobile-lang-btn');
       const mobileLangDropdown = document.getElementById('mobile-lang-dropdown');
       if (mobileLangBtn && mobileLangDropdown) {
@@ -1026,33 +978,35 @@ const waDirectLabel =
         };
       }
 
-      // Theme Toggle Controls
       const themeToggle = document.getElementById('theme-toggle');
       const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+      const themeToggleMobileTop = document.getElementById('theme-toggle-mobile-top');
 
       function syncThemeUI() {
-        const isDark = document.documentElement.classList.contains('dark');
+        const root = document.documentElement;
+        const isDark = root.classList.contains('dark');
+        const activePalette = root.getAttribute('data-palette') || 'blue';
         const labelDark = (themeToggle && themeToggle.dataset.labelDark) || 'Switch to dark mode';
         const labelLight =
           (themeToggle && themeToggle.dataset.labelLight) || 'Switch to light mode';
         const activeLabel = isDark ? labelLight : labelDark;
 
-        // In dark mode: show Sun icon (to switch to light), hide Moon icon
-        // In light mode: show Moon icon (to switch to dark), hide Sun icon
         document
           .querySelectorAll(
             '#theme-toggle [data-icon="sun"], #theme-toggle-mobile [data-icon="sun"]'
           )
-          .forEach((el) => {
-            el.classList.toggle('hidden', !isDark);
-          });
+          .forEach((el) => el.classList.toggle('hidden', !isDark));
         document
           .querySelectorAll(
             '#theme-toggle [data-icon="moon"], #theme-toggle-mobile [data-icon="moon"]'
           )
-          .forEach((el) => {
-            el.classList.toggle('hidden', isDark);
-          });
+          .forEach((el) => el.classList.toggle('hidden', isDark));
+
+        const modePill = document.querySelector('[data-theme-mode-pill]');
+        if (modePill) modePill.textContent = isDark ? 'DARK' : 'WHITE';
+
+        const modePillMobile = document.querySelector('[data-theme-mode-pill-mobile]');
+        if (modePillMobile) modePillMobile.textContent = isDark ? 'DARK' : 'WHITE';
 
         if (themeToggle) themeToggle.setAttribute('aria-label', activeLabel);
         if (themeToggleMobile) {
@@ -1060,27 +1014,53 @@ const waDirectLabel =
           const labelSpan = themeToggleMobile.querySelector('[data-theme-label]');
           if (labelSpan) labelSpan.textContent = activeLabel;
         }
+
+        // Sync active palette swatch buttons
+        document.querySelectorAll('[data-palette-btn]').forEach((btn) => {
+          const isCurrent = btn.getAttribute('data-palette-btn') === activePalette;
+          btn.classList.toggle('is-active', isCurrent);
+          btn.setAttribute('aria-pressed', String(isCurrent));
+        });
       }
 
       function toggleTheme() {
-        const isDark = document.documentElement.classList.contains('dark');
+        const root = document.documentElement;
+        const isDark = root.classList.contains('dark');
         const nextDark = !isDark;
-        document.documentElement.classList.toggle('dark', nextDark);
-        document.documentElement.style.colorScheme = nextDark ? 'dark' : 'light';
+        root.classList.toggle('dark', nextDark);
+        root.setAttribute('data-theme', nextDark ? 'dark' : 'light');
+        root.style.colorScheme = nextDark ? 'dark' : 'light';
         try {
           localStorage.setItem('theme', nextDark ? 'dark' : 'light');
         } catch (e) {}
         const meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.setAttribute('content', nextDark ? '#020617' : '#4361ee');
+        if (meta) meta.setAttribute('content', nextDark ? '#070b14' : '#ffffff');
+        syncThemeUI();
+      }
+
+      function setPalette(paletteId) {
+        if (!paletteId) return;
+        const root = document.documentElement;
+        root.setAttribute('data-palette', paletteId);
+        try {
+          localStorage.setItem('palette', paletteId);
+        } catch (e) {}
         syncThemeUI();
       }
 
       if (themeToggle) themeToggle.onclick = toggleTheme;
       if (themeToggleMobile) themeToggleMobile.onclick = toggleTheme;
+      if (themeToggleMobileTop) themeToggleMobileTop.onclick = toggleTheme;
+
+      document.querySelectorAll('[data-palette-btn]').forEach((btn) => {
+        btn.onclick = () => {
+          const pId = btn.getAttribute('data-palette-btn');
+          setPalette(pId);
+        };
+      });
 
       syncThemeUI();
 
-      // Dialog Controls
       const dialog = document.getElementById('consultation-modal');
       const openBtn = document.getElementById('open-consultation-btn');
       const openMobileBtn = document.getElementById('open-consultation-btn-mobile');
@@ -1089,11 +1069,11 @@ const waDirectLabel =
       const consultSubmitBtn = document.getElementById('consultation-submit-btn');
       const consultResponseMsg = document.getElementById('consultation-response-msg');
 
-      if (openBtn && dialog) openBtn.onclick = () => dialog.showModal();
+      if (openBtn && dialog) openBtn.onclick = () => openConsultationWithService('');
       if (openMobileBtn && dialog) {
         openMobileBtn.onclick = () => {
           closeDrawer();
-          dialog.showModal();
+          openConsultationWithService('');
         };
       }
       if (closeBtn && dialog) closeBtn.onclick = () => dialog.close();
@@ -1103,7 +1083,15 @@ const waDirectLabel =
         };
       }
 
-      // Consultation Form AJAX Submission
+      // Bind any page button with [data-consult-service] or [data-open-consultation]
+      document.querySelectorAll('[data-consult-service], [data-open-consultation]').forEach((btn) => {
+        if (btn.id === 'open-consultation-btn' || btn.id === 'open-consultation-btn-mobile') return;
+        btn.addEventListener('click', () => {
+          const svc = btn.getAttribute('data-consult-service') || '';
+          openConsultationWithService(svc);
+        });
+      });
+
       if (consultForm && consultSubmitBtn && consultResponseMsg) {
         consultForm.onsubmit = async (e) => {
           e.preventDefault();
@@ -1113,11 +1101,13 @@ const waDirectLabel =
           consultResponseMsg.classList.add('hidden');
 
           const fd = new FormData(consultForm);
+          const selectedSvc = fd.get('service');
+          const rawMsg = fd.get('message') || '';
           const payload = {
             name: fd.get('name'),
             phone: fd.get('phone'),
             email: fd.get('email'),
-            message: fd.get('message'),
+            message: selectedSvc ? `[Service: ${selectedSvc}] ${rawMsg}` : rawMsg,
           };
 
           try {
@@ -1128,9 +1118,9 @@ const waDirectLabel =
             });
 
             if (res.ok) {
-              consultResponseMsg.textContent = 'Request submitted successfully!';
+              consultResponseMsg.textContent = '✓ Request submitted successfully!';
               consultResponseMsg.className =
-                'text-center text-sm text-green-600 dark:text-green-400 block';
+                'text-center font-mono text-xs text-[var(--accent-green)] block';
               consultForm.reset();
               setTimeout(() => {
                 if (dialog && dialog.open) dialog.close();
@@ -1143,42 +1133,36 @@ const waDirectLabel =
               consultResponseMsg.textContent =
                 data.error || 'Failed to send request. Please try again.';
               consultResponseMsg.className =
-                'text-center text-sm text-red-600 dark:text-red-400 block';
+                'text-center font-mono text-xs text-[var(--accent-coral)] block';
               consultSubmitBtn.disabled = false;
               consultSubmitBtn.textContent = origText;
             }
           } catch (err) {
             consultResponseMsg.textContent = 'Network error. Please try again.';
             consultResponseMsg.className =
-              'text-center text-sm text-red-600 dark:text-red-400 block';
+              'text-center font-mono text-xs text-[var(--accent-coral)] block';
             consultSubmitBtn.disabled = false;
             consultSubmitBtn.textContent = origText;
           }
         };
       }
 
-      // Document-level listeners: registered once (see flag above). Each handler
-      // looks up the current navbar DOM so SPA navigations never go stale.
       if (!documentListenersBound) {
         documentListenersBound = true;
         document.addEventListener('click', (e) => {
-          const langBtn = document.getElementById('mobile-lang-btn');
-          const langDd = document.getElementById('mobile-lang-dropdown');
-          if (langBtn && langDd && !langBtn.contains(e.target)) {
-            langDd.classList.add('hidden');
-            langBtn.setAttribute('aria-expanded', 'false');
+          const mBtn = document.getElementById('mobile-lang-btn');
+          const mDrop = document.getElementById('mobile-lang-dropdown');
+          if (mBtn && mDrop && !mBtn.contains(e.target) && !mDrop.contains(e.target)) {
+            mDrop.classList.add('hidden');
+            mBtn.setAttribute('aria-expanded', 'false');
           }
         });
         document.addEventListener('keydown', (e) => {
-          if (e.key !== 'Escape') return;
-          const d = document.getElementById('mobile-drawer');
-          if (d && !d.classList.contains('hidden')) {
-            d.classList.add('hidden');
-            document.body.style.overflow = '';
-            const mb = document.getElementById('mobile-menu-btn');
-            if (mb) {
-              mb.setAttribute('aria-expanded', 'false');
-              mb.focus();
+          if (e.key === 'Escape') {
+            const d = document.getElementById('mobile-drawer');
+            if (d && !d.classList.contains('hidden')) {
+              d.classList.add('hidden');
+              document.body.style.overflow = '';
             }
           }
         });

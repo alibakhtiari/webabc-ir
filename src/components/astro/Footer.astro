@@ -11,13 +11,13 @@ interface Props {
 const { lang } = Astro.props;
 const dictionary = await getDictionary(lang);
 const isRtl = languages[lang]?.direction === 'rtl';
+const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 'font-persian';
 
 const copyrightYear = new Intl.DateTimeFormat(
   lang === 'fa' ? 'fa-IR' : lang === 'ar' ? 'ar-SA' : 'en-US',
   { year: 'numeric' }
 ).format(new Date());
 
-// Helper to translate strings
 const t = createTranslator(dictionary);
 
 const linkPath = (path: string) => {
@@ -29,315 +29,303 @@ const linkPath = (path: string) => {
 const phoneList = [
   {
     tel: '+989125811880',
-    number: lang === 'fa' ? '۰۹۱۲۵۸۱۱۸۸۰' : '+98 912 581 1880',
+    number: '+98 912 581 1880',
     name: lang === 'fa' ? '(بختیاری)' : lang === 'ar' ? '(بختیاری)' : '(A. Bakhtiari)',
   },
   {
     tel: '+989354767068',
-    number: lang === 'fa' ? '۰۹۳۵۴۷۶۷۰۶۸' : '+98 935 476 7068',
+    number: '+98 935 476 7068',
     name: lang === 'fa' ? '(سبدبافان)' : lang === 'ar' ? '(سبدبافان)' : '(F. SabadBafan)',
   },
 ];
 ---
 
-<footer
-  class="border-t border-gray-100 bg-gray-50 pt-16 font-sans dark:border-slate-800 dark:bg-slate-950"
->
+<footer class="border-t border-[var(--border-hairline)] bg-[var(--bg-surface)] pt-14 font-sans text-[var(--text-primary)]">
   <div class="container mx-auto px-4 md:px-6">
-    <div class="mb-12 grid grid-cols-1 gap-8 md:grid-cols-4">
-      <div class="md:col-span-1">
-        <div class="flex flex-col space-y-4">
-          <a href={linkPath('')} class="flex items-center space-x-2" aria-label={t('common.home')}>
-            <Logo class="h-auto w-35 sm:w-45" />
+    <!-- Top Terminal Status Bar -->
+    <div
+      class="terminal-chrome-bar mb-10 rounded border border-[var(--border-hairline)]"
+      dir="ltr"
+    >
+      <span class="font-mono text-xs text-[var(--accent-green)]">
+        ╭─ /FOOTER · WebABC Engineering &amp; SEO Directory ─╮
+      </span>
+      <span class="monospace-telemetry-pill">QAZVIN · TEHRAN · DUBAI · RIYADH · MUSCAT</span>
+    </div>
+
+    <div class="mb-12 grid grid-cols-1 gap-8 border-b border-[var(--border-hairline)] pb-12 md:grid-cols-12">
+      <!-- Column 1: Agency Summary & Direct Contacts -->
+      <div class="space-y-4 md:col-span-4">
+        <a href={linkPath('')} class="inline-flex items-center gap-2.5" aria-label={t('common.home')}>
+          <span class="ltr-isolate rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-2 py-0.5 font-mono text-xs font-bold text-[var(--accent-green)]" dir="ltr">
+            ▓▒░
+          </span>
+          <Logo class="h-auto w-32 sm:w-40" />
+        </a>
+
+        <p class={`text-sm leading-relaxed text-[var(--text-secondary)] ${fontClass}`}>
+          {t('common.aboutCompany')}
+        </p>
+
+        <div class={`space-y-2.5 pt-1 text-sm ${fontClass}`}>
+          {
+            phoneList.map((p) => (
+              <div class="flex items-center gap-2">
+                <span class="ltr-isolate font-mono text-xs text-[var(--accent-green)]" dir="ltr">[TEL]</span>
+                <a
+                  href={`tel:${p.tel}`}
+                  class="inline-flex items-center gap-1.5 text-xs transition-colors hover:text-[var(--accent-green)] sm:text-sm"
+                >
+                  <span dir="ltr" class="ltr-isolate font-mono text-[var(--text-primary)]">
+                    {p.number}
+                  </span>
+                  <span class="text-[var(--text-secondary)]">{p.name}</span>
+                </a>
+              </div>
+            ))
+          }
+
+          <div class="flex items-center gap-2">
+            <span class="ltr-isolate font-mono text-xs text-[var(--accent-blue)]" dir="ltr">[MSG]</span>
+            <a
+              href="mailto:info@webabc.ir"
+              class="ltr-isolate font-mono text-xs text-[var(--text-primary)] transition-colors hover:text-[var(--accent-blue)] sm:text-sm"
+              dir="ltr"
+            >
+              info@webabc.ir
+            </a>
+          </div>
+
+          <div class="flex items-start gap-2 pt-0.5">
+            <span class="ltr-isolate font-mono text-xs text-[var(--accent-purple)]" dir="ltr">[LOC]</span>
+            <span class="text-xs leading-relaxed text-[var(--text-secondary)]">
+              {t('cta.addressValue', {
+                fallback: 'Qazvin Science & Technology Park, Km 2 Barajin Road, Qazvin, Iran',
+              })}
+            </span>
+          </div>
+        </div>
+
+        <!-- Verified Social Links -->
+        <div class={`flex items-center gap-2.5 pt-2 ${isRtl ? 'space-x-reverse' : ''}`}>
+          <a
+            href="https://github.com/alibakhtiari"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="ltr-isolate inline-flex h-9 items-center gap-1.5 rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-3 font-mono text-xs text-[var(--text-secondary)] transition-colors hover:border-[var(--accent-green)] hover:text-[var(--accent-green)]"
+            dir="ltr"
+            aria-label="GitHub"
+          >
+            <span>GitHub</span>
           </a>
-
-          <p
-            class={`text-sm leading-relaxed text-foreground/70 font-${lang === 'en' ? 'sans' : 'persian'}`}
+          <a
+            href="https://x.com/aliib1991"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="ltr-isolate inline-flex h-9 items-center gap-1.5 rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-3 font-mono text-xs text-[var(--text-secondary)] transition-colors hover:border-[var(--accent-blue)] hover:text-[var(--accent-blue)]"
+            dir="ltr"
+            aria-label="X (Twitter)"
           >
-            {t('common.aboutCompany')}
-          </p>
-          <div
-            class={`space-y-2 pt-1 font-${lang === 'en' ? 'sans' : 'persian'} text-sm text-foreground/80`}
+            <span>X / Twitter</span>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/alibakhtiarii/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="ltr-isolate inline-flex h-9 items-center gap-1.5 rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-3 font-mono text-xs text-[var(--text-secondary)] transition-colors hover:border-[var(--accent-purple)] hover:text-[var(--accent-purple)]"
+            dir="ltr"
+            aria-label="LinkedIn"
           >
-            {
-              phoneList.map((p) => (
-                <div class="flex items-center gap-2">
-                  <svg
-                    aria-hidden="true"
-                    class="h-4 w-4 shrink-0 text-primary"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                    />
-                  </svg>
-                  <a
-                    href={`tel:${p.tel}`}
-                    class="inline-flex items-center gap-1.5 text-xs transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:text-sm"
-                  >
-                    <span dir="ltr" class={lang === 'en' ? 'font-mono' : ''}>
-                      {p.number}
-                    </span>
-                    <span class="text-foreground/70">{p.name}</span>
-                  </a>
-                </div>
-              ))
-            }
-
-            <div class="flex items-center gap-2">
-              <svg
-                aria-hidden="true"
-                class="h-4 w-4 shrink-0 text-primary"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                ></path>
-              </svg>
-              <a
-                href="mailto:info@webabc.ir"
-                class={`text-xs transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:text-sm ${lang === 'en' ? 'font-mono' : ''}`}
-                dir="ltr"
-              >
-                info@webabc.ir
-              </a>
-            </div>
-
-            <div class="flex items-start gap-2 pt-0.5">
-              <svg
-                aria-hidden="true"
-                class="mt-0.5 h-4 w-4 shrink-0 text-primary"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                ></path>
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-              </svg>
-              <span class="text-xs leading-relaxed text-foreground/70">
-                {t('cta.addressValue')}
-              </span>
-            </div>
-          </div>
-
-          <div class={`flex space-x-4 pt-1 ${isRtl ? 'space-x-reverse' : ''}`}>
-            <!-- Verified Social Links -->
-            <a
-              href="https://github.com/alibakhtiari"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-100 bg-white text-gray-600 shadow-xs transition-all hover:bg-primary hover:text-primary-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300"
-              aria-label="GitHub"
-            >
-              <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"
-                ><path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z"
-                ></path></svg
-              >
-            </a>
-            <a
-              href="https://x.com/aliib1991"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-100 bg-white text-gray-600 shadow-xs transition-all hover:bg-primary hover:text-primary-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300"
-              aria-label="X (Twitter)"
-            >
-              <svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"
-                ><path
-                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-                ></path></svg
-              >
-            </a>
-            <a
-              href="https://www.linkedin.com/in/alibakhtiarii/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex h-10 w-10 items-center justify-center rounded-full border border-gray-100 bg-white text-gray-600 shadow-xs transition-all hover:bg-primary hover:text-primary-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300"
-              aria-label="LinkedIn"
-            >
-              <svg
-                aria-hidden="true"
-                class="h-5 w-5"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
-                ></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"
-                ></circle></svg
-              >
-            </a>
-          </div>
+            <span>LinkedIn</span>
+          </a>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 gap-8 sm:grid-cols-3 md:col-span-3">
+      <!-- Link Columns: Services, Company, Tools -->
+      <div class="grid grid-cols-1 gap-8 sm:grid-cols-3 md:col-span-8">
+        <!-- /SERVICES -->
         <div>
-          <h3 class={`text-lg font-medium mb-4 font-${lang === 'en' ? 'sans' : 'persian'}`}>
+          <span class="slash-eyebrow mb-1 text-[11px]" dir="ltr">/SERVICES</span>
+          <h3 class={`mb-4 text-base font-bold text-[var(--text-primary)] ${fontClass}`}>
             {t('common.services')}
           </h3>
-          <ul class="space-y-2">
+          <ul class={`space-y-2.5 text-sm ${fontClass}`}>
             <li>
               <a
                 href={linkPath('/services/seo')}
-                class="text-foreground/70 transition-colors hover:text-primary"
-                >{t('services.seoTitle')}</a
+                class="text-[var(--text-secondary)] transition-colors hover:text-[var(--accent-green)]"
               >
+                {t('services.seoTitle')}
+              </a>
             </li>
             <li>
               <a
                 href={linkPath('/services/web-design')}
-                class="text-foreground/70 transition-colors hover:text-primary"
-                >{t('services.webDesignTitle')}</a
+                class="text-[var(--text-secondary)] transition-colors hover:text-[var(--accent-green)]"
               >
+                {t('services.webDesignTitle')}
+              </a>
             </li>
             <li>
               <a
                 href={linkPath('/services/content-creation')}
-                class="text-foreground/70 transition-colors hover:text-primary"
-                >{t('services.contentCreationTitle')}</a
+                class="text-[var(--text-secondary)] transition-colors hover:text-[var(--accent-green)]"
               >
+                {t('services.contentCreationTitle')}
+              </a>
             </li>
             <li>
               <a
                 href={linkPath('/services/speed-optimization')}
-                class="text-foreground/70 transition-colors hover:text-primary"
-                >{t('services.technicalOptimization')}</a
+                class="text-[var(--text-secondary)] transition-colors hover:text-[var(--accent-green)]"
               >
+                {t('services.technicalOptimization')}
+              </a>
             </li>
             <li>
               <a
                 href={linkPath('/services/link-building')}
-                class="text-foreground/70 transition-colors hover:text-primary"
-                >{t('services.linkBuildingTitle')}</a
+                class="text-[var(--text-secondary)] transition-colors hover:text-[var(--accent-green)]"
               >
+                {t('services.linkBuildingTitle')}
+              </a>
             </li>
           </ul>
         </div>
+
+        <!-- /COMPANY -->
         <div>
-          <h3 class={`text-lg font-medium mb-4 font-${lang === 'en' ? 'sans' : 'persian'}`}>
+          <span class="slash-eyebrow mb-1 text-[11px]" dir="ltr">/COMPANY</span>
+          <h3 class={`mb-4 text-base font-bold text-[var(--text-primary)] ${fontClass}`}>
             {t('common.company')}
           </h3>
-          <ul class="space-y-2">
+          <ul class={`space-y-2.5 text-sm ${fontClass}`}>
             <li>
               <a
                 href={linkPath('/about')}
-                class="text-foreground/70 transition-colors hover:text-primary"
-                >{t('common.about')}</a
+                class="text-[var(--text-secondary)] transition-colors hover:text-[var(--accent-green)]"
               >
+                {t('common.about')}
+              </a>
             </li>
             <li>
               <a
                 href={linkPath('/portfolio')}
-                class="text-foreground/70 transition-colors hover:text-primary"
-                >{t('common.portfolio')}</a
+                class="text-[var(--text-secondary)] transition-colors hover:text-[var(--accent-green)]"
               >
+                {t('common.portfolio')}
+              </a>
             </li>
             <li>
               <a
                 href={linkPath('/service-areas')}
-                class="text-foreground/70 transition-colors hover:text-primary"
-                >{t('common.serviceAreas')}</a
+                class="text-[var(--text-secondary)] transition-colors hover:text-[var(--accent-green)]"
               >
+                {t('common.serviceAreas')}
+              </a>
             </li>
             <li>
               <a
                 href={linkPath('/blog')}
-                class="text-foreground/70 transition-colors hover:text-primary"
-                >{t('common.blog')}</a
+                class="text-[var(--text-secondary)] transition-colors hover:text-[var(--accent-green)]"
               >
+                {t('common.blog')}
+              </a>
             </li>
             <li>
               <a
                 href={linkPath('/contact')}
-                class="text-foreground/70 transition-colors hover:text-primary"
-                >{t('common.contact')}</a
+                class="text-[var(--text-secondary)] transition-colors hover:text-[var(--accent-green)]"
               >
+                {t('common.contact')}
+              </a>
             </li>
             <li>
               <a
                 href={linkPath('/privacy')}
-                class="text-foreground/70 transition-colors hover:text-primary"
-                >{t('common.privacyPolicy')}</a
+                class="text-[var(--text-secondary)] transition-colors hover:text-[var(--accent-green)]"
               >
+                {t('common.privacyPolicy')}
+              </a>
             </li>
           </ul>
         </div>
+
+        <!-- /FREE-TOOLS (All 5 Core Free Tools + Hub) -->
         <div>
-          <h3 class={`text-lg font-medium mb-4 font-${lang === 'en' ? 'sans' : 'persian'}`}>
-            <a href={linkPath('/tools')} class="transition-colors hover:text-primary"
-              >{t('common.tools')}</a
-            >
+          <span class="slash-eyebrow mb-1 text-[11px]" dir="ltr">/FREE-TOOLS</span>
+          <h3 class={`mb-4 text-base font-bold text-[var(--text-primary)] ${fontClass}`}>
+            <a href={linkPath('/tools')} class="transition-colors hover:text-[var(--accent-green)]">
+              {t('common.tools')}
+            </a>
           </h3>
-          <ul class="space-y-2">
+          <ul class={`space-y-2.5 text-sm ${fontClass}`}>
+            <li>
+              <a
+                href={linkPath('/tools/cost-calculator')}
+                class="text-[var(--text-secondary)] transition-colors hover:text-[var(--accent-green)]"
+              >
+                {t('costCalculator.title', { fallback: 'Website Cost Calculator' })}
+              </a>
+            </li>
             <li>
               <a
                 href={linkPath('/tools/meta-generator')}
-                class="text-foreground/70 transition-colors hover:text-primary"
-                >{t('metaGenerator.title')}</a
+                class="text-[var(--text-secondary)] transition-colors hover:text-[var(--accent-green)]"
               >
+                {t('metaGenerator.title', { fallback: 'Meta Description & Tag Generator' })}
+              </a>
             </li>
             <li>
               <a
                 href={linkPath('/tools/headline-analyzer')}
-                class="text-foreground/70 transition-colors hover:text-primary"
-                >{t('headlineAnalyzer.title')}</a
+                class="text-[var(--text-secondary)] transition-colors hover:text-[var(--accent-green)]"
               >
+                {t('headlineAnalyzer.title', { fallback: 'Headline & Title Checker' })}
+              </a>
             </li>
             <li>
               <a
                 href={linkPath('/tools/utm-builder')}
-                class="text-foreground/70 transition-colors hover:text-primary"
-                >{t('utmBuilder.title')}</a
+                class="text-[var(--text-secondary)] transition-colors hover:text-[var(--accent-green)]"
               >
+                {t('utmBuilder.title', { fallback: 'UTM Link Builder & URL Builder' })}
+              </a>
             </li>
             <li>
               <a
                 href={linkPath('/tools/faq-generator')}
-                class="text-foreground/70 transition-colors hover:text-primary"
-                >{t('faqGenerator.title')}</a
+                class="text-[var(--text-secondary)] transition-colors hover:text-[var(--accent-green)]"
               >
+                {t('faqGenerator.title', { fallback: 'FAQ Schema Generator' })}
+              </a>
             </li>
           </ul>
         </div>
       </div>
     </div>
 
-    <div class="border-t border-gray-200 py-4 text-center dark:border-slate-800">
-      <!-- Exact-match brand anchor to the locale homepage (brand query 2.5).
-           The logo link above carries only an aria-label, so this visible
-           "WebABC" link is additive — no existing nav label was removed. -->
-      <a
-        href={linkPath('')}
-        class="text-sm font-bold text-foreground/80 transition-colors hover:text-primary">WebABC</a
-      >
-      <p class={`text-foreground/70 mt-1 text-sm font-${lang === 'en' ? 'sans' : 'persian'}`}>
-        {t('common.copyright').replace('{year}', copyrightYear)}
-      </p>
+    <div class="flex flex-col items-center justify-between gap-3 py-6 text-center sm:flex-row">
+      <div class="flex items-center gap-2">
+        <!-- Exact-match brand anchor to the locale homepage (brand query 2.5) -->
+        <a
+          href={linkPath('')}
+          class="font-mono text-sm font-bold text-[var(--accent-green)] transition-colors hover:underline"
+        >
+          WebABC
+        </a>
+        <span class="text-xs text-[var(--text-secondary)]">·</span>
+        <p class={`text-xs text-[var(--text-secondary)] ${fontClass}`}>
+          {t('common.copyright').replace('{year}', copyrightYear)}
+        </p>
+      </div>
+      <div class="ltr-isolate flex items-center gap-3 font-mono text-[11px] text-[var(--text-secondary)]" dir="ltr">
+        <a href={`/${lang}/llms.txt`} class="hover:text-[var(--accent-blue)]">/llms.txt</a>
+        <span>·</span>
+        <a href="/ai-catalog.json" class="hover:text-[var(--accent-blue)]">/ai-catalog.json</a>
+        <span>·</span>
+        <a href="/sitemap-index.xml" class="hover:text-[var(--accent-blue)]">/sitemap</a>
+      </div>
     </div>
   </div>
 </footer>
