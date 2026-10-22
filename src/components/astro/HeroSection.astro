@@ -2,7 +2,7 @@
 import { getDictionary } from '@/i18n/get-dictionary';
 import { languages, type SupportedLanguage } from '@/types/language';
 import { createTranslator } from '@/i18n/translate';
-import AsciiStage from './AsciiStage.astro';
+import HeroConversionDashboard from './HeroConversionDashboard.astro';
 
 interface Props {
   lang: SupportedLanguage;
@@ -168,28 +168,9 @@ const auditBtnText =
         </div>
       </div>
 
-      <!-- Right Column: Single Engaging Client Growth Storyboard -->
+      <!-- Right Column: Interactive Client Conversion & ROI Dashboard -->
       <div class="col-span-1 w-full lg:col-span-7">
-        <AsciiStage
-          id="hero-ascii"
-          lang={lang}
-          defaultPiece="hero-growth-story"
-          title={lang === 'fa'
-            ? 'مسیر رشد و تحول آنلاین شما با وب اِی‌بی‌سی'
-            : lang === 'ar'
-              ? 'رحلة نمو موقعك الرقمي مع WebABC'
-              : 'YOUR GROWTH JOURNEY WITH WEBABC'}
-          meta={lang === 'fa'
-            ? '۱۰۱×۱۸ · خط لوله ۴ مرحله‌ای رشد · ۲۴ فریم'
-            : lang === 'ar'
-              ? '101×18 · مسار نمو رباعي المراحل · 24 إطار'
-              : '101×18 · 4-STAGE PIPELINE · 24 FPS'}
-          size={11.5}
-          ariaLabel={t('home.hero.imageAlt', {
-            fallback:
-              'Animated 4-step visual showing how WebABC builds a fast website, ranks you #1 on Google, builds domain authority, and multiplies sales',
-          })}
-        />
+        <HeroConversionDashboard lang={lang} />
       </div>
     </div>
   </div>

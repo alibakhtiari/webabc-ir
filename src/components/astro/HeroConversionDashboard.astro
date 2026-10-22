@@ -1,0 +1,505 @@
+---
+import { languages, type SupportedLanguage } from '@/types/language';
+
+interface Props {
+  lang: SupportedLanguage;
+}
+
+const { lang } = Astro.props;
+const isRtl = languages[lang]?.direction === 'rtl';
+const fontClass = lang === 'en' ? 'font-mono' : lang === 'ar' ? 'font-arabic' : 'font-persian';
+const bodyFont = isRtl ? fontClass : 'font-mono';
+const trackingTitle = isRtl ? 'tracking-normal' : 'tracking-wider';
+
+const t = {
+  chromeTitle:
+    lang === 'fa'
+      ? 'وب اِی‌بی‌سی // موتور جذب مشتری و رشد تصاعدی سود کسب‌وکار'
+      : lang === 'ar'
+        ? 'WebABC // محرك استقطاب العملاء ومضاعفة أرباح الشركات'
+        : 'WEBABC // CLIENT ACQUISITION & COMMERCIAL REVENUE ENGINE',
+  statusBadge:
+    lang === 'fa'
+      ? '● بازده مشتری: فعال'
+      : lang === 'ar'
+        ? '● عائد العملاء: نشط'
+        : '● CLIENT ROI: ACTIVE',
+  roiBadge:
+    lang === 'fa'
+      ? '★ سودآوری: ۳.۴ برابر'
+      : lang === 'ar'
+        ? '★ مضاعفة الأرباح: 3.4×'
+        : '★ 3.4× REVENUE VALUE',
+
+  pipelineHeading:
+    lang === 'fa'
+      ? 'فرآیند تبدیل ورودی سایت به درآمد و فروش قطعی:'
+      : lang === 'ar'
+        ? 'مسار تحويل الزوار إلى عملاء فعليين وأرباح مضاعفة:'
+        : 'CLIENT BUSINESS TRANSFORMATION & REVENUE PIPELINE:',
+  pipelineBadge:
+    lang === 'fa'
+      ? '[ مسیر ۴ مرحله‌ای ]'
+      : lang === 'ar'
+        ? '[ مسار من 4 مراحل ]'
+        : '[ 4-STAGE PIPELINE ]',
+
+  s1Title:
+    lang === 'fa' ? '[۰۱] وب‌سایت پرسرعت' : lang === 'ar' ? '[01] موقع فائق السرعة' : '[01] ULTRA-FAST WEBSITE',
+  s1Metric:
+    lang === 'fa'
+      ? '⚡ لود زیر ۰.۸ث (CWV ۱۰۰٪)'
+      : lang === 'ar'
+        ? '⚡ تحميل أقل من 0.8ث (CWV 100%)'
+        : '⚡ Load Time < 0.8s (CWV 100%)',
+  s1Desc:
+    lang === 'fa'
+      ? 'حذف ۸۰٪ پرش کاربر از صفحه'
+      : lang === 'ar'
+        ? 'القضاء على 80% من ارتداد الزوار'
+        : 'Instant loads eliminate 80% bounce',
+  s1Sub:
+    lang === 'fa'
+      ? 'Astro 7 + Cloudflare Edge'
+      : lang === 'ar'
+        ? 'بنية Astro 7 وسحابة Cloudflare'
+        : 'Astro 7 + Cloudflare Edge',
+
+  s2Title:
+    lang === 'fa' ? '[۰۲] رتبه ۱ نتایج گوگل' : lang === 'ar' ? '[02] #1 في بحث جوجل' : '[02] #1 ON GOOGLE SEARCH',
+  s2Metric:
+    lang === 'fa'
+      ? '🔍 کلمات کلیدی خریداران هدف'
+      : lang === 'ar'
+        ? '🔍 استهداف الكلمات الشرائية'
+        : '🔍 High-Intent Commercial Queries',
+  s2Desc:
+    lang === 'fa'
+      ? 'جذب ۶۸.۷٪ کلیک‌های ارزشمند بازار'
+      : lang === 'ar'
+        ? 'الاستحواذ على 68.7% من النقرات'
+        : 'Top 3 positions capture 68.7% clicks',
+  s2Sub:
+    lang === 'fa'
+      ? 'سئو معنایی AEO و اعتبار دامنه'
+      : lang === 'ar'
+        ? 'سيو ذكاء اصطناعي AEO وقوة النطاق'
+        : 'Semantic AEO + Domain Authority',
+
+  s3Title:
+    lang === 'fa' ? '[۰۳] دریافت لید و تماس' : lang === 'ar' ? '[03] عملاء محتملون مستمرون' : '[03] INBOUND QUALIFIED LEADS',
+  s3Metric:
+    lang === 'fa'
+      ? '📈 بهینه‌سازی مسیر خرید (CRO)'
+      : lang === 'ar'
+        ? '📈 مسارات تحويل عالية الفعالية'
+        : '📈 High-Converting Sales Funnels',
+  s3Desc:
+    lang === 'fa'
+      ? 'جریان مداوم تماس و سفارش مشتری'
+      : lang === 'ar'
+        ? 'تدفق مستمر للاتصالات والاستفسارات'
+        : 'Steady flow of calls & buyer inquiries',
+  s3Sub:
+    lang === 'fa'
+      ? 'تجربه کاربری روان + ثبت لید خودکار'
+      : lang === 'ar'
+        ? 'تجربة مستخدم سلسة والتقاط فوري'
+        : 'Frictionless UX + Automated CRO',
+
+  s4Title:
+    lang === 'fa' ? '[۰۴] ۳ برابر فروش و سود' : lang === 'ar' ? '[04] 3 أضعاف الأرباح والعائد' : '[04] 3× CLIENT REVENUE & ROI',
+  s4Metric:
+    lang === 'fa'
+      ? '▲ +۳۱۲٪ رشد قطعی درآمد و فروش'
+      : lang === 'ar'
+        ? '▲ +312% نمو الإيرادات والمبيعات'
+        : '▲ +312% Compounding Business Growth',
+  s4Desc:
+    lang === 'fa'
+      ? 'سودآوری صعودی ماه به ماه'
+      : lang === 'ar'
+        ? 'أرباح متصاعدة شهراً بعد شهر'
+        : 'Profitable customer growth month-over-month',
+  s4Sub:
+    lang === 'fa'
+      ? 'رشد مستمر بدون هزینه تبلیغات روزانه'
+      : lang === 'ar'
+        ? 'نمو دائم بدون تكاليف إعلانية متكررة'
+        : 'Zero reliance on expensive daily ads',
+
+  resultsHeading:
+    lang === 'fa'
+      ? 'نتایج اثبات‌شده و بازگشت سرمایه ملموس مشتریان:'
+      : lang === 'ar'
+        ? 'النتائج الموثقة وأثر الإيرادات المباشر للعملاء:'
+        : 'PROVEN CLIENT RESULTS & REVENUE IMPACT:',
+
+  c1Metric:
+    lang === 'fa'
+      ? '▲ +۳۱۲٪ لید و فروش قطعی'
+      : lang === 'ar'
+        ? '▲ +312% مبيعات وعملاء مؤهلون'
+        : '▲ +312% SALES & QUALIFIED LEADS',
+  c1Desc:
+    lang === 'fa'
+      ? 'میانگین رشد تجاری کسب‌وکارها در ۹۰ روز اول همکاری.'
+      : lang === 'ar'
+        ? 'متوسط النمو التجاري المحقق خلال أول 90 يوماً.'
+        : 'Average client commercial growth recorded in first 90 days.',
+  c1Sub:
+    lang === 'fa'
+      ? 'تبدیل بازدیدکننده بی‌تفاوت به مشتری خریدار و عقد قرارداد.'
+      : lang === 'ar'
+        ? 'تحويل الزيارات العادية إلى عقود مبيعات ناجحة.'
+        : 'Turn passive website visits into ready-to-buy customer contracts.',
+
+  c2Metric:
+    lang === 'fa'
+      ? '★ ۳.۴ برابر بازگشت سرمایه و سود خالص'
+      : lang === 'ar'
+        ? '★ 3.4 أضعاف عائد الاستثمار المالي المؤكد'
+        : '★ 3.4× VERIFIED REVENUE MULTIPLIER',
+  c2Desc:
+    lang === 'fa'
+      ? 'به ازای هر ۱ میلیون تومان سرمایه‌گذاری، ۳.۴ میلیون تومان فروش نقدی.'
+      : lang === 'ar'
+        ? 'كل 1,000$ استثمار تحقق 3,400$+ أرباح صفقات مغلقة.'
+        : 'Every $1 invested delivers $3.40 in verified customer revenue.',
+  c2Sub:
+    lang === 'fa'
+      ? 'دارایی دیجیتال ارزشمند که بدون هزینه تبلیغاتی پیوسته می‌فروشد.'
+      : lang === 'ar'
+        ? 'أصول رقمية موثوقة تستمر بجلب الأرباح بدون إعلانات يومية.'
+        : 'High-authority digital assets that compound without recurring ad bills.',
+
+  c3MetricLabel:
+    lang === 'fa'
+      ? '✓ نرخ تبدیل فروش:'
+      : lang === 'ar'
+        ? '✓ معدل التحويل التجاري:'
+        : '✓ CONVERSION RATE:',
+  c3Desc:
+    lang === 'fa'
+      ? 'سرعت زیر ۱ ثانیه + ساختار مدرن، بازدیدکننده را خریدار می‌کند.'
+      : lang === 'ar'
+        ? 'سرعة فائقة وتصميم مدروس يحولان الزائر إلى مشترٍ فوراً.'
+        : 'Sub-second speeds + CRO layout turn more visitors into buyers.',
+  c3Sub:
+    lang === 'fa'
+      ? '۳ برابر فروش بیشتر از همان ترافیک فعلی بدون هزینه اضافه.'
+      : lang === 'ar'
+        ? 'مضاعفة المبيعات 3 مرات من نفس عدد الزوار الحالي.'
+        : 'Triple your inbound deals without needing more advertising budget.',
+
+  chartHeading:
+    lang === 'fa'
+      ? 'مقیاس ترافیک خریداران و رتبه‌های اول گوگل:'
+      : lang === 'ar'
+        ? 'نمو زيارات المشترين وصدارة المراتب الأولى في جوجل:'
+        : 'SEARCH VISIBILITY & BUYER TRAFFIC GROWTH:',
+  chartSubLabel:
+    lang === 'fa'
+      ? 'ورودی خریداران هدف:'
+      : lang === 'ar'
+        ? 'زيارات المشترين الفعليين:'
+        : 'HIGH-INTENT BUYERS:',
+
+  kwHeading:
+    lang === 'fa'
+      ? 'کلمات کلیدی تجاری در رتبه ۱ صفحه اول گوگل:'
+      : lang === 'ar'
+        ? 'الكلمات المفتاحية التجارية المتصدرة للمرتبة الأولى:'
+        : 'TARGET COMMERCIAL KEYWORDS DOMINATING PAGE #1:',
+  kw1Query:
+    lang === 'fa'
+      ? '[✓] «خدمات تخصصی و پروژه‌های باارزش شما»'
+      : lang === 'ar'
+        ? '[✓] "خدماتك وحلولك التجارية الكبرى"'
+        : '[✓] "your high-value commercial services"',
+  kw1Rank:
+    lang === 'fa' ? 'رتبه ۱ در گوگل' : lang === 'ar' ? 'المرتبة #1 في جوجل' : '#1 ON GOOGLE',
+
+  kw2Query:
+    lang === 'fa'
+      ? '[✓] «سفارش طراحی سایت و پلتفرم اختصاصی»'
+      : lang === 'ar'
+        ? '[✓] "تصميم المواقع وتطوير الأنظمة المخصصة"'
+        : '[✓] "custom enterprise client solution"',
+  kw2Rank:
+    lang === 'fa' ? 'رتبه ۱ در گوگل' : lang === 'ar' ? 'المرتبة #1 في جوجل' : '#1 ON GOOGLE',
+
+  g1:
+    lang === 'fa'
+      ? '✓ تضمین سرعت: ۰.۸ث یا آنالیز رایگان'
+      : lang === 'ar'
+        ? '✓ ضمان السرعة: 0.8ث أو تدقيق مجاني'
+        : '✓ SPEED GUARANTEE: 0.8s OR FREE AUDIT',
+  g2:
+    lang === 'fa'
+      ? '✓ بدون قفل قرارداد · نتایج تضمینی'
+      : lang === 'ar'
+        ? '✓ عقود مرنة · نتائج مضمونة وملموسة'
+        : '✓ NO CONTRACT LOCK-IN · RESULTS GUARANTEED',
+  g3:
+    lang === 'fa'
+      ? '✓ مشاوره رایگان ۳۰ دقیقه‌ای · پاسخ < ۲ ساعت'
+      : lang === 'ar'
+        ? '✓ استشارة مجانية 30 دقيقة · رد فوري < 2س'
+        : '✓ FREE 30-MIN STRATEGY CALL · SLA < 2H',
+};
+---
+
+<div
+  class={`terminal-window w-full overflow-hidden rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-elevated)] shadow-2xl transition-all ${bodyFont}`}
+  dir={isRtl ? 'rtl' : 'ltr'}
+>
+  <!-- Chrome Header Bar -->
+  <div class="terminal-chrome-bar flex flex-wrap items-center justify-between gap-2 px-3 py-2.5 sm:px-4">
+    <div class="flex min-w-0 items-center gap-2">
+      <!-- Terminal control dots -->
+      <div class="flex shrink-0 items-center gap-1.5" dir="ltr">
+        <span class="inline-block h-2.5 w-2.5 rounded-full bg-[#ef4444]" aria-hidden="true"></span>
+        <span class="inline-block h-2.5 w-2.5 rounded-full bg-[#f59e0b]" aria-hidden="true"></span>
+        <span class="inline-block h-2.5 w-2.5 rounded-full bg-[var(--accent-green)]" aria-hidden="true"></span>
+      </div>
+      <span class={`truncate text-[11px] font-bold text-[var(--text-primary)] sm:text-xs ${bodyFont}`}>
+        {t.chromeTitle}
+      </span>
+    </div>
+
+    <div class="flex shrink-0 items-center gap-1.5 text-[11px]">
+      <span class={`rounded border border-[#10b981] bg-[#064e3b]/80 px-2 py-0.5 font-bold text-[#7ee787] ${bodyFont}`}>
+        {t.statusBadge}
+      </span>
+      <span class={`hidden rounded border border-[#6366f1] bg-[#1e1b4b]/80 px-2 py-0.5 font-bold text-[#79c0ff] sm:inline-flex ${bodyFont}`}>
+        {t.roiBadge}
+      </span>
+    </div>
+  </div>
+
+  <!-- Main Terminal Content Body -->
+  <div class="space-y-4 p-3.5 sm:p-5">
+    <!-- SECTION 1: THE 4-STAGE PIPELINE (WHAT WE DELIVER TO THE CLIENT) -->
+    <div>
+      <div class="mb-2 flex items-center justify-between">
+        <span class={`text-[11px] font-bold ${trackingTitle} text-[var(--text-secondary)] uppercase ${bodyFont}`}>
+          {t.pipelineHeading}
+        </span>
+        <span class={`text-[10px] text-[var(--accent-green)] hidden sm:inline-block ${bodyFont}`}>
+          {t.pipelineBadge}
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- Stage 01 -->
+        <div class="group relative rounded-lg border border-[var(--accent-green)]/70 bg-[var(--bg-surface)] p-3 transition-all hover:border-[var(--accent-green)] hover:shadow-sm">
+          <div class="mb-1.5 flex items-center justify-between border-b border-[var(--border-hairline)] pb-1">
+            <span class={`text-[11px] font-bold text-[var(--accent-green)] ${bodyFont}`}>{t.s1Title}</span>
+            <span class="text-xs text-[var(--accent-green)]" aria-hidden="true">{isRtl ? '◄' : '►'}</span>
+          </div>
+          <div class={`text-xs font-bold text-[var(--text-primary)] ${bodyFont}`}>{t.s1Metric}</div>
+          <div class="mt-1 text-[11px] text-[var(--text-secondary)] leading-tight">{t.s1Desc}</div>
+          <div class={`mt-1 text-[10px] text-[var(--text-muted)] ${bodyFont}`}>{t.s1Sub}</div>
+        </div>
+
+        <!-- Stage 02 -->
+        <div class="group relative rounded-lg border border-[var(--accent-blue)]/70 bg-[var(--bg-surface)] p-3 transition-all hover:border-[var(--accent-blue)] hover:shadow-sm">
+          <div class="mb-1.5 flex items-center justify-between border-b border-[var(--border-hairline)] pb-1">
+            <span class={`text-[11px] font-bold text-[var(--accent-blue)] ${bodyFont}`}>{t.s2Title}</span>
+            <span class="text-xs text-[var(--accent-blue)]" aria-hidden="true">{isRtl ? '◄' : '►'}</span>
+          </div>
+          <div class={`text-xs font-bold text-[var(--text-primary)] ${bodyFont}`}>{t.s2Metric}</div>
+          <div class="mt-1 text-[11px] text-[var(--text-secondary)] leading-tight">{t.s2Desc}</div>
+          <div class={`mt-1 text-[10px] text-[var(--text-muted)] ${bodyFont}`}>{t.s2Sub}</div>
+        </div>
+
+        <!-- Stage 03 -->
+        <div class="group relative rounded-lg border border-[var(--accent-purple)]/70 bg-[var(--bg-surface)] p-3 transition-all hover:border-[var(--accent-purple)] hover:shadow-sm">
+          <div class="mb-1.5 flex items-center justify-between border-b border-[var(--border-hairline)] pb-1">
+            <span class={`text-[11px] font-bold text-[var(--accent-purple)] ${bodyFont}`}>{t.s3Title}</span>
+            <span class="text-xs text-[var(--accent-purple)]" aria-hidden="true">{isRtl ? '◄' : '►'}</span>
+          </div>
+          <div class={`text-xs font-bold text-[var(--text-primary)] ${bodyFont}`}>{t.s3Metric}</div>
+          <div class="mt-1 text-[11px] text-[var(--text-secondary)] leading-tight">{t.s3Desc}</div>
+          <div class={`mt-1 text-[10px] text-[var(--text-muted)] ${bodyFont}`}>{t.s3Sub}</div>
+        </div>
+
+        <!-- Stage 04 -->
+        <div class="group relative rounded-lg border border-[var(--accent-amber)]/70 bg-[var(--bg-surface)] p-3 transition-all hover:border-[var(--accent-amber)] hover:shadow-sm">
+          <div class="mb-1.5 flex items-center justify-between border-b border-[var(--border-hairline)] pb-1">
+            <span class={`text-[11px] font-bold text-[var(--accent-amber)] ${bodyFont}`}>{t.s4Title}</span>
+            <span class="font-mono text-[10px] text-[var(--accent-amber)]" dir="ltr">★ 3×</span>
+          </div>
+          <div class={`text-xs font-bold text-[var(--text-primary)] ${bodyFont}`}>{t.s4Metric}</div>
+          <div class="mt-1 text-[11px] text-[var(--text-secondary)] leading-tight">{t.s4Desc}</div>
+          <div class={`mt-1 text-[10px] text-[var(--text-muted)] ${bodyFont}`}>{t.s4Sub}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2: PROVEN RESULTS (LEFT) & TRAFFIC SCALING (RIGHT) -->
+    <div class="grid grid-cols-1 gap-3.5 lg:grid-cols-12">
+      <!-- Left Column: 3 High-Impact Result Cards -->
+      <div class="space-y-2.5 lg:col-span-6">
+        <div class={`text-[11px] font-bold ${trackingTitle} text-[var(--text-secondary)] uppercase ${bodyFont}`}>
+          {t.resultsHeading}
+        </div>
+
+        <!-- Metric Card 1 -->
+        <div class="rounded-lg border border-[#10b981]/60 bg-[var(--bg-surface)] p-3 transition-all hover:border-[#10b981]">
+          <div class={`text-sm font-bold text-[var(--accent-green)] sm:text-base ${bodyFont}`}>
+            {t.c1Metric}
+          </div>
+          <div class="mt-0.5 text-xs font-medium text-[var(--text-primary)] leading-snug">
+            {t.c1Desc}
+          </div>
+          <div class="mt-1 text-[11px] text-[var(--text-secondary)]">
+            {t.c1Sub}
+          </div>
+        </div>
+
+        <!-- Metric Card 2 -->
+        <div class="rounded-lg border border-[#38bdf8]/60 bg-[var(--bg-surface)] p-3 transition-all hover:border-[#38bdf8]">
+          <div class={`text-sm font-bold text-[var(--accent-blue)] sm:text-base ${bodyFont}`}>
+            {t.c2Metric}
+          </div>
+          <div class="mt-0.5 text-xs font-medium text-[var(--text-primary)] leading-snug">
+            {t.c2Desc}
+          </div>
+          <div class="mt-1 text-[11px] text-[var(--text-secondary)]">
+            {t.c2Sub}
+          </div>
+        </div>
+
+        <!-- Metric Card 3 -->
+        <div class="rounded-lg border border-[#a855f7]/60 bg-[var(--bg-surface)] p-3 transition-all hover:border-[#a855f7]">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class={`text-sm font-bold text-[var(--accent-purple)] sm:text-base ${bodyFont}`}>
+              {t.c3MetricLabel}
+            </span>
+            <span class="inline-flex items-center gap-1.5 font-mono text-sm font-bold text-[var(--accent-purple)] sm:text-base" dir="ltr">
+              <span>2.1%</span>
+              <span class="text-[var(--accent-purple)]">──────►</span>
+              <span class="text-[var(--accent-green)] font-extrabold">6.8%</span>
+            </span>
+          </div>
+          <div class="mt-0.5 text-xs font-medium text-[var(--text-primary)] leading-snug">
+            {t.c3Desc}
+          </div>
+          <div class="mt-1 text-[11px] text-[var(--text-secondary)]">
+            {t.c3Sub}
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Traffic Scaling Bar Chart + #1 Google Keyword Tracker -->
+      <div class="flex flex-col justify-between rounded-lg border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-3.5 lg:col-span-6">
+        <div>
+          <div class={`text-[11px] font-bold ${trackingTitle} text-[var(--text-secondary)] uppercase ${bodyFont}`}>
+            {t.chartHeading}
+          </div>
+          <div class="mt-1 flex flex-wrap items-center gap-2">
+            <span class={`text-xs font-bold text-[var(--accent-blue)] ${bodyFont}`}>
+              {t.chartSubLabel}
+            </span>
+            <span class="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-[var(--accent-green)]" dir="ltr">
+              <span class="text-[var(--text-secondary)]">150/mo</span>
+              <span class="text-[var(--accent-blue)]">──────►</span>
+              <span class="text-[var(--accent-green)] font-extrabold">24,800/mo</span>
+            </span>
+          </div>
+
+          <!-- HTML/CSS Monospace Growth Chart -->
+          <div class="mt-4 rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] p-3" dir="ltr">
+            <div class="flex h-24 items-end justify-between gap-1.5 sm:gap-2 pt-2">
+              <div class="flex flex-1 flex-col items-center gap-1">
+                <div class="w-full rounded-t bg-[#1e293b]" style="height: 14%;"></div>
+                <span class="font-mono text-[10px] text-[var(--text-muted)]">M1</span>
+              </div>
+              <div class="flex flex-1 flex-col items-center gap-1">
+                <div class="w-full rounded-t bg-[#1e293b]" style="height: 22%;"></div>
+                <span class="font-mono text-[10px] text-[var(--text-muted)]">M2</span>
+              </div>
+              <div class="flex flex-1 flex-col items-center gap-1">
+                <div class="w-full rounded-t bg-[#0369a1]" style="height: 36%;"></div>
+                <span class="font-mono text-[10px] text-[var(--text-muted)]">M3</span>
+              </div>
+              <div class="flex flex-1 flex-col items-center gap-1">
+                <div class="w-full rounded-t bg-[#0284c7]" style="height: 52%;"></div>
+                <span class="font-mono text-[10px] text-[var(--text-muted)]">M4</span>
+              </div>
+              <div class="flex flex-1 flex-col items-center gap-1">
+                <div class="w-full rounded-t bg-[#0284c7]" style="height: 68%;"></div>
+                <span class="font-mono text-[10px] text-[var(--text-muted)]">M5</span>
+              </div>
+              <div class="flex flex-1 flex-col items-center gap-1">
+                <div class="w-full rounded-t bg-[#10b981]" style="height: 80%;"></div>
+                <span class="font-mono text-[10px] text-[var(--text-muted)]">M6</span>
+              </div>
+              <div class="flex flex-1 flex-col items-center gap-1">
+                <div class="w-full rounded-t bg-[#10b981]" style="height: 90%;"></div>
+                <span class="font-mono text-[10px] text-[var(--text-muted)]">M7</span>
+              </div>
+              <div class="flex flex-1 flex-col items-center gap-1">
+                <span class="font-mono text-[9px] font-bold text-[var(--accent-green)] animate-pulse">24.8k▲</span>
+                <div class="w-full rounded-t bg-[var(--accent-green)] shadow-[0_0_12px_rgba(34,197,94,0.5)]" style="height: 100%;"></div>
+                <span class="font-mono text-[10px] font-bold text-[var(--accent-green)]">M8</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Verified Keyword Tracker Box -->
+        <div class="mt-3 rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] p-2.5">
+          <div class={`text-[10px] font-bold text-[var(--accent-amber)] uppercase ${bodyFont}`}>
+            {t.kwHeading}
+          </div>
+          <div class="mt-1 flex flex-wrap items-center justify-between gap-1">
+            <span class={`text-xs font-bold text-[var(--text-primary)] ${bodyFont}`}>
+              {t.kw1Query}
+            </span>
+            <span class="inline-flex items-center gap-1 font-mono text-[11px] font-bold text-[var(--accent-green)]" dir="ltr">
+              <span>──►</span>
+              <span>{t.kw1Rank}</span>
+            </span>
+          </div>
+          <div class="mt-1 flex flex-wrap items-center justify-between gap-1">
+            <span class={`text-xs font-bold text-[var(--text-primary)] ${bodyFont}`}>
+              {t.kw2Query}
+            </span>
+            <span class="inline-flex items-center gap-1 font-mono text-[11px] font-bold text-[var(--accent-blue)]" dir="ltr">
+              <span>──►</span>
+              <span>{t.kw2Rank}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: VALUE GUARANTEES (RISK-REVERSAL PILLS) -->
+    <div class="border-t border-[var(--border-hairline)] pt-3">
+      <div class="grid grid-cols-1 gap-2 sm:grid-cols-3">
+        <div class={`flex items-center justify-center rounded border border-[#10b981]/50 bg-[#064e3b]/30 px-2.5 py-1.5 text-center text-[11px] font-bold text-[var(--accent-green)] ${bodyFont}`}>
+          {t.g1}
+        </div>
+        <div class={`flex items-center justify-center rounded border border-[#6366f1]/50 bg-[#1e1b4b]/30 px-2.5 py-1.5 text-center text-[11px] font-bold text-[var(--accent-blue)] ${bodyFont}`}>
+          {t.g2}
+        </div>
+        <div class={`flex items-center justify-center rounded border border-[#f59e0b]/50 bg-[#451a03]/30 px-2.5 py-1.5 text-center text-[11px] font-bold text-[var(--accent-amber)] ${bodyFont}`}>
+          {t.g3}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .terminal-window {
+    background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.04) 0%, rgba(13, 17, 23, 0.98) 75%), var(--bg-surface);
+  }
+  .terminal-chrome-bar {
+    border-bottom: 1px solid var(--border-hairline);
+    background-color: var(--bg-surface);
+  }
+</style>
