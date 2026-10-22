@@ -251,7 +251,7 @@ const t = {
 ---
 
 <div
-  class={`terminal-window w-full overflow-hidden rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-elevated)] shadow-2xl transition-all ${bodyFont}`}
+  class={`terminal-window w-full overflow-hidden rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-surface)] shadow-2xl transition-all ${bodyFont}`}
   dir={isRtl ? 'rtl' : 'ltr'}
 >
   <!-- Chrome Header Bar -->
@@ -261,7 +261,7 @@ const t = {
       <div class="flex shrink-0 items-center gap-1.5" dir="ltr">
         <span class="inline-block h-2.5 w-2.5 rounded-full bg-[#ef4444]" aria-hidden="true"></span>
         <span class="inline-block h-2.5 w-2.5 rounded-full bg-[#f59e0b]" aria-hidden="true"></span>
-        <span class="inline-block h-2.5 w-2.5 rounded-full bg-[var(--accent-green)]" aria-hidden="true"></span>
+        <span class="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500" aria-hidden="true"></span>
       </div>
       <span class={`truncate text-[11px] font-bold text-[var(--text-primary)] sm:text-xs ${bodyFont}`}>
         {t.chromeTitle}
@@ -269,10 +269,10 @@ const t = {
     </div>
 
     <div class="flex shrink-0 items-center gap-1.5 text-[11px]">
-      <span class={`rounded border border-[#10b981] bg-[#064e3b]/80 px-2 py-0.5 font-bold text-[#7ee787] ${bodyFont}`}>
+      <span class={`rounded border border-emerald-300 bg-emerald-50 px-2 py-0.5 font-bold text-emerald-800 dark:border-[#10b981] dark:bg-[#064e3b]/80 dark:text-[#7ee787] ${bodyFont}`}>
         {t.statusBadge}
       </span>
-      <span class={`hidden rounded border border-[#6366f1] bg-[#1e1b4b]/80 px-2 py-0.5 font-bold text-[#79c0ff] sm:inline-flex ${bodyFont}`}>
+      <span class={`hidden rounded border border-indigo-300 bg-indigo-50 px-2 py-0.5 font-bold text-indigo-800 dark:border-[#6366f1] dark:bg-[#1e1b4b]/80 dark:text-[#79c0ff] sm:inline-flex ${bodyFont}`}>
         {t.roiBadge}
       </span>
     </div>
@@ -286,17 +286,17 @@ const t = {
         <span class={`text-[11px] font-bold ${trackingTitle} text-[var(--text-secondary)] uppercase ${bodyFont}`}>
           {t.pipelineHeading}
         </span>
-        <span class={`text-[10px] text-[var(--accent-green)] hidden sm:inline-block ${bodyFont}`}>
+        <span class={`text-[10px] text-emerald-700 dark:text-[var(--accent-green)] font-semibold hidden sm:inline-block ${bodyFont}`}>
           {t.pipelineBadge}
         </span>
       </div>
 
       <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
         <!-- Stage 01 -->
-        <div class="group relative rounded-lg border border-[var(--accent-green)]/70 bg-[var(--bg-surface)] p-3 transition-all hover:border-[var(--accent-green)] hover:shadow-sm">
+        <div class="group relative rounded-lg border border-emerald-300/80 bg-[var(--bg-canvas)] p-3 shadow-xs transition-all hover:border-emerald-500 dark:border-[var(--accent-green)]/70 dark:bg-[var(--bg-surface)] dark:hover:border-[var(--accent-green)]">
           <div class="mb-1.5 flex items-center justify-between border-b border-[var(--border-hairline)] pb-1">
-            <span class={`text-[11px] font-bold text-[var(--accent-green)] ${bodyFont}`}>{t.s1Title}</span>
-            <span class="text-xs text-[var(--accent-green)]" aria-hidden="true">{isRtl ? '◄' : '►'}</span>
+            <span class={`text-[11px] font-bold text-emerald-700 dark:text-[var(--accent-green)] ${bodyFont}`}>{t.s1Title}</span>
+            <span class="text-xs text-emerald-600 dark:text-[var(--accent-green)]" aria-hidden="true">{isRtl ? '◄' : '►'}</span>
           </div>
           <div class={`text-xs font-bold text-[var(--text-primary)] ${bodyFont}`}>{t.s1Metric}</div>
           <div class="mt-1 text-[11px] text-[var(--text-secondary)] leading-tight">{t.s1Desc}</div>
@@ -304,10 +304,10 @@ const t = {
         </div>
 
         <!-- Stage 02 -->
-        <div class="group relative rounded-lg border border-[var(--accent-blue)]/70 bg-[var(--bg-surface)] p-3 transition-all hover:border-[var(--accent-blue)] hover:shadow-sm">
+        <div class="group relative rounded-lg border border-sky-300/80 bg-[var(--bg-canvas)] p-3 shadow-xs transition-all hover:border-sky-500 dark:border-[var(--accent-blue)]/70 dark:bg-[var(--bg-surface)] dark:hover:border-[var(--accent-blue)]">
           <div class="mb-1.5 flex items-center justify-between border-b border-[var(--border-hairline)] pb-1">
-            <span class={`text-[11px] font-bold text-[var(--accent-blue)] ${bodyFont}`}>{t.s2Title}</span>
-            <span class="text-xs text-[var(--accent-blue)]" aria-hidden="true">{isRtl ? '◄' : '►'}</span>
+            <span class={`text-[11px] font-bold text-sky-700 dark:text-[var(--accent-blue)] ${bodyFont}`}>{t.s2Title}</span>
+            <span class="text-xs text-sky-600 dark:text-[var(--accent-blue)]" aria-hidden="true">{isRtl ? '◄' : '►'}</span>
           </div>
           <div class={`text-xs font-bold text-[var(--text-primary)] ${bodyFont}`}>{t.s2Metric}</div>
           <div class="mt-1 text-[11px] text-[var(--text-secondary)] leading-tight">{t.s2Desc}</div>
@@ -315,10 +315,10 @@ const t = {
         </div>
 
         <!-- Stage 03 -->
-        <div class="group relative rounded-lg border border-[var(--accent-purple)]/70 bg-[var(--bg-surface)] p-3 transition-all hover:border-[var(--accent-purple)] hover:shadow-sm">
+        <div class="group relative rounded-lg border border-purple-300/80 bg-[var(--bg-canvas)] p-3 shadow-xs transition-all hover:border-purple-500 dark:border-[var(--accent-purple)]/70 dark:bg-[var(--bg-surface)] dark:hover:border-[var(--accent-purple)]">
           <div class="mb-1.5 flex items-center justify-between border-b border-[var(--border-hairline)] pb-1">
-            <span class={`text-[11px] font-bold text-[var(--accent-purple)] ${bodyFont}`}>{t.s3Title}</span>
-            <span class="text-xs text-[var(--accent-purple)]" aria-hidden="true">{isRtl ? '◄' : '►'}</span>
+            <span class={`text-[11px] font-bold text-purple-700 dark:text-[var(--accent-purple)] ${bodyFont}`}>{t.s3Title}</span>
+            <span class="text-xs text-purple-600 dark:text-[var(--accent-purple)]" aria-hidden="true">{isRtl ? '◄' : '►'}</span>
           </div>
           <div class={`text-xs font-bold text-[var(--text-primary)] ${bodyFont}`}>{t.s3Metric}</div>
           <div class="mt-1 text-[11px] text-[var(--text-secondary)] leading-tight">{t.s3Desc}</div>
@@ -326,10 +326,10 @@ const t = {
         </div>
 
         <!-- Stage 04 -->
-        <div class="group relative rounded-lg border border-[var(--accent-amber)]/70 bg-[var(--bg-surface)] p-3 transition-all hover:border-[var(--accent-amber)] hover:shadow-sm">
+        <div class="group relative rounded-lg border border-amber-300/80 bg-[var(--bg-canvas)] p-3 shadow-xs transition-all hover:border-amber-500 dark:border-[var(--accent-amber)]/70 dark:bg-[var(--bg-surface)] dark:hover:border-[var(--accent-amber)]">
           <div class="mb-1.5 flex items-center justify-between border-b border-[var(--border-hairline)] pb-1">
-            <span class={`text-[11px] font-bold text-[var(--accent-amber)] ${bodyFont}`}>{t.s4Title}</span>
-            <span class="font-mono text-[10px] text-[var(--accent-amber)]" dir="ltr">★ 3×</span>
+            <span class={`text-[11px] font-bold text-amber-700 dark:text-[var(--accent-amber)] ${bodyFont}`}>{t.s4Title}</span>
+            <span class="font-mono text-[10px] font-bold text-amber-700 dark:text-[var(--accent-amber)]" dir="ltr">★ 3×</span>
           </div>
           <div class={`text-xs font-bold text-[var(--text-primary)] ${bodyFont}`}>{t.s4Metric}</div>
           <div class="mt-1 text-[11px] text-[var(--text-secondary)] leading-tight">{t.s4Desc}</div>
@@ -347,8 +347,8 @@ const t = {
         </div>
 
         <!-- Metric Card 1 -->
-        <div class="rounded-lg border border-[#10b981]/60 bg-[var(--bg-surface)] p-3 transition-all hover:border-[#10b981]">
-          <div class={`text-sm font-bold text-[var(--accent-green)] sm:text-base ${bodyFont}`}>
+        <div class="rounded-lg border border-emerald-300/80 bg-[var(--bg-canvas)] p-3 shadow-xs transition-all hover:border-emerald-500 dark:border-[#10b981]/60 dark:bg-[var(--bg-surface)] dark:hover:border-[#10b981]">
+          <div class={`text-sm font-bold text-emerald-700 sm:text-base dark:text-[var(--accent-green)] ${bodyFont}`}>
             {t.c1Metric}
           </div>
           <div class="mt-0.5 text-xs font-medium text-[var(--text-primary)] leading-snug">
@@ -360,8 +360,8 @@ const t = {
         </div>
 
         <!-- Metric Card 2 -->
-        <div class="rounded-lg border border-[#38bdf8]/60 bg-[var(--bg-surface)] p-3 transition-all hover:border-[#38bdf8]">
-          <div class={`text-sm font-bold text-[var(--accent-blue)] sm:text-base ${bodyFont}`}>
+        <div class="rounded-lg border border-sky-300/80 bg-[var(--bg-canvas)] p-3 shadow-xs transition-all hover:border-sky-500 dark:border-[#38bdf8]/60 dark:bg-[var(--bg-surface)] dark:hover:border-[#38bdf8]">
+          <div class={`text-sm font-bold text-sky-700 sm:text-base dark:text-[var(--accent-blue)] ${bodyFont}`}>
             {t.c2Metric}
           </div>
           <div class="mt-0.5 text-xs font-medium text-[var(--text-primary)] leading-snug">
@@ -373,15 +373,15 @@ const t = {
         </div>
 
         <!-- Metric Card 3 -->
-        <div class="rounded-lg border border-[#a855f7]/60 bg-[var(--bg-surface)] p-3 transition-all hover:border-[#a855f7]">
+        <div class="rounded-lg border border-purple-300/80 bg-[var(--bg-canvas)] p-3 shadow-xs transition-all hover:border-purple-500 dark:border-[#a855f7]/60 dark:bg-[var(--bg-surface)] dark:hover:border-[#a855f7]">
           <div class="flex flex-wrap items-center gap-2">
-            <span class={`text-sm font-bold text-[var(--accent-purple)] sm:text-base ${bodyFont}`}>
+            <span class={`text-sm font-bold text-purple-700 sm:text-base dark:text-[var(--accent-purple)] ${bodyFont}`}>
               {t.c3MetricLabel}
             </span>
-            <span class="inline-flex items-center gap-1.5 font-mono text-sm font-bold text-[var(--accent-purple)] sm:text-base" dir="ltr">
-              <span>2.1%</span>
-              <span class="text-[var(--accent-purple)]">──────►</span>
-              <span class="text-[var(--accent-green)] font-extrabold">6.8%</span>
+            <span class="inline-flex items-center gap-1.5 font-mono text-sm font-bold text-purple-700 sm:text-base dark:text-[var(--accent-purple)]" dir="ltr">
+              <span class="text-[var(--text-secondary)]">2.1%</span>
+              <span class="text-purple-600 dark:text-[var(--accent-purple)]">──────►</span>
+              <span class="text-emerald-700 font-extrabold dark:text-[var(--accent-green)]">6.8%</span>
             </span>
           </div>
           <div class="mt-0.5 text-xs font-medium text-[var(--text-primary)] leading-snug">
@@ -394,72 +394,72 @@ const t = {
       </div>
 
       <!-- Right Column: Traffic Scaling Bar Chart + #1 Google Keyword Tracker -->
-      <div class="flex flex-col justify-between rounded-lg border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-3.5 lg:col-span-6">
+      <div class="flex flex-col justify-between rounded-lg border border-[var(--border-hairline)] bg-[var(--bg-canvas)] p-3.5 shadow-xs dark:bg-[var(--bg-surface)] lg:col-span-6">
         <div>
           <div class={`text-[11px] font-bold ${trackingTitle} text-[var(--text-secondary)] uppercase ${bodyFont}`}>
             {t.chartHeading}
           </div>
           <div class="mt-1 flex flex-wrap items-center gap-2">
-            <span class={`text-xs font-bold text-[var(--accent-blue)] ${bodyFont}`}>
+            <span class={`text-xs font-bold text-sky-700 dark:text-[var(--accent-blue)] ${bodyFont}`}>
               {t.chartSubLabel}
             </span>
-            <span class="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-[var(--accent-green)]" dir="ltr">
+            <span class="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-emerald-700 dark:text-[var(--accent-green)]" dir="ltr">
               <span class="text-[var(--text-secondary)]">150/mo</span>
-              <span class="text-[var(--accent-blue)]">──────►</span>
-              <span class="text-[var(--accent-green)] font-extrabold">24,800/mo</span>
+              <span class="text-sky-600 dark:text-[var(--accent-blue)]">──────►</span>
+              <span class="text-emerald-700 font-extrabold dark:text-[var(--accent-green)]">24,800/mo</span>
             </span>
           </div>
 
           <!-- HTML/CSS Monospace Growth Chart -->
-          <div class="mt-4 rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] p-3" dir="ltr">
-            <div class="flex h-24 items-end justify-between gap-1.5 sm:gap-2 pt-2">
-              <div class="flex flex-1 flex-col items-center gap-1">
-                <div class="w-full rounded-t bg-[#1e293b]" style="height: 14%;"></div>
-                <span class="font-mono text-[10px] text-[var(--text-muted)]">M1</span>
+          <div class="mt-4 rounded border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-3 dark:bg-[var(--bg-canvas)]" dir="ltr">
+            <div class="flex h-28 items-end justify-between gap-1.5 sm:gap-2 pt-2">
+              <div class="flex flex-1 flex-col items-center justify-end">
+                <div class="w-full rounded-t bg-slate-300 dark:bg-[#1e293b] h-[12px]"></div>
+                <span class="mt-1 font-mono text-[10px] text-[var(--text-muted)]">M1</span>
               </div>
-              <div class="flex flex-1 flex-col items-center gap-1">
-                <div class="w-full rounded-t bg-[#1e293b]" style="height: 22%;"></div>
-                <span class="font-mono text-[10px] text-[var(--text-muted)]">M2</span>
+              <div class="flex flex-1 flex-col items-center justify-end">
+                <div class="w-full rounded-t bg-slate-300 dark:bg-[#1e293b] h-[18px]"></div>
+                <span class="mt-1 font-mono text-[10px] text-[var(--text-muted)]">M2</span>
               </div>
-              <div class="flex flex-1 flex-col items-center gap-1">
-                <div class="w-full rounded-t bg-[#0369a1]" style="height: 36%;"></div>
-                <span class="font-mono text-[10px] text-[var(--text-muted)]">M3</span>
+              <div class="flex flex-1 flex-col items-center justify-end">
+                <div class="w-full rounded-t bg-sky-300 dark:bg-[#0369a1] h-[28px]"></div>
+                <span class="mt-1 font-mono text-[10px] text-[var(--text-muted)]">M3</span>
               </div>
-              <div class="flex flex-1 flex-col items-center gap-1">
-                <div class="w-full rounded-t bg-[#0284c7]" style="height: 52%;"></div>
-                <span class="font-mono text-[10px] text-[var(--text-muted)]">M4</span>
+              <div class="flex flex-1 flex-col items-center justify-end">
+                <div class="w-full rounded-t bg-sky-400 dark:bg-[#0284c7] h-[42px]"></div>
+                <span class="mt-1 font-mono text-[10px] text-[var(--text-muted)]">M4</span>
               </div>
-              <div class="flex flex-1 flex-col items-center gap-1">
-                <div class="w-full rounded-t bg-[#0284c7]" style="height: 68%;"></div>
-                <span class="font-mono text-[10px] text-[var(--text-muted)]">M5</span>
+              <div class="flex flex-1 flex-col items-center justify-end">
+                <div class="w-full rounded-t bg-sky-500 dark:bg-[#0284c7] h-[54px]"></div>
+                <span class="mt-1 font-mono text-[10px] text-[var(--text-muted)]">M5</span>
               </div>
-              <div class="flex flex-1 flex-col items-center gap-1">
-                <div class="w-full rounded-t bg-[#10b981]" style="height: 80%;"></div>
-                <span class="font-mono text-[10px] text-[var(--text-muted)]">M6</span>
+              <div class="flex flex-1 flex-col items-center justify-end">
+                <div class="w-full rounded-t bg-emerald-400 dark:bg-[#10b981] h-[64px]"></div>
+                <span class="mt-1 font-mono text-[10px] text-[var(--text-muted)]">M6</span>
               </div>
-              <div class="flex flex-1 flex-col items-center gap-1">
-                <div class="w-full rounded-t bg-[#10b981]" style="height: 90%;"></div>
-                <span class="font-mono text-[10px] text-[var(--text-muted)]">M7</span>
+              <div class="flex flex-1 flex-col items-center justify-end">
+                <div class="w-full rounded-t bg-emerald-500 dark:bg-[#10b981] h-[72px]"></div>
+                <span class="mt-1 font-mono text-[10px] text-[var(--text-muted)]">M7</span>
               </div>
-              <div class="flex flex-1 flex-col items-center gap-1">
-                <span class="font-mono text-[9px] font-bold text-[var(--accent-green)] animate-pulse">24.8k▲</span>
-                <div class="w-full rounded-t bg-[var(--accent-green)] shadow-[0_0_12px_rgba(34,197,94,0.5)]" style="height: 100%;"></div>
-                <span class="font-mono text-[10px] font-bold text-[var(--accent-green)]">M8</span>
+              <div class="flex flex-1 flex-col items-center justify-end">
+                <span class="font-mono text-[9px] font-extrabold text-emerald-700 dark:text-[var(--accent-green)] animate-pulse pb-0.5">24.8k▲</span>
+                <div class="w-full rounded-t bg-emerald-600 dark:bg-[var(--accent-green)] shadow-[0_0_12px_rgba(16,185,129,0.4)] dark:shadow-[0_0_12px_rgba(34,197,94,0.5)] h-[80px]"></div>
+                <span class="mt-1 font-mono text-[10px] font-bold text-emerald-700 dark:text-[var(--accent-green)]">M8</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Verified Keyword Tracker Box -->
-        <div class="mt-3 rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] p-2.5">
-          <div class={`text-[10px] font-bold text-[var(--accent-amber)] uppercase ${bodyFont}`}>
+        <div class="mt-3 rounded border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-2.5 dark:bg-[var(--bg-canvas)]">
+          <div class={`text-[10px] font-bold text-amber-700 dark:text-[var(--accent-amber)] uppercase ${bodyFont}`}>
             {t.kwHeading}
           </div>
           <div class="mt-1 flex flex-wrap items-center justify-between gap-1">
             <span class={`text-xs font-bold text-[var(--text-primary)] ${bodyFont}`}>
               {t.kw1Query}
             </span>
-            <span class="inline-flex items-center gap-1 font-mono text-[11px] font-bold text-[var(--accent-green)]" dir="ltr">
+            <span class="inline-flex items-center gap-1 font-mono text-[11px] font-bold text-emerald-700 dark:text-[var(--accent-green)]" dir="ltr">
               <span>──►</span>
               <span>{t.kw1Rank}</span>
             </span>
@@ -468,7 +468,7 @@ const t = {
             <span class={`text-xs font-bold text-[var(--text-primary)] ${bodyFont}`}>
               {t.kw2Query}
             </span>
-            <span class="inline-flex items-center gap-1 font-mono text-[11px] font-bold text-[var(--accent-blue)]" dir="ltr">
+            <span class="inline-flex items-center gap-1 font-mono text-[11px] font-bold text-sky-700 dark:text-[var(--accent-blue)]" dir="ltr">
               <span>──►</span>
               <span>{t.kw2Rank}</span>
             </span>
@@ -480,13 +480,13 @@ const t = {
     <!-- SECTION 3: VALUE GUARANTEES (RISK-REVERSAL PILLS) -->
     <div class="border-t border-[var(--border-hairline)] pt-3">
       <div class="grid grid-cols-1 gap-2 sm:grid-cols-3">
-        <div class={`flex items-center justify-center rounded border border-[#10b981]/50 bg-[#064e3b]/30 px-2.5 py-1.5 text-center text-[11px] font-bold text-[var(--accent-green)] ${bodyFont}`}>
+        <div class={`flex items-center justify-center rounded border border-emerald-300 bg-emerald-50 px-2.5 py-1.5 text-center text-[11px] font-bold text-emerald-800 dark:border-[#10b981]/50 dark:bg-[#064e3b]/30 dark:text-[var(--accent-green)] ${bodyFont}`}>
           {t.g1}
         </div>
-        <div class={`flex items-center justify-center rounded border border-[#6366f1]/50 bg-[#1e1b4b]/30 px-2.5 py-1.5 text-center text-[11px] font-bold text-[var(--accent-blue)] ${bodyFont}`}>
+        <div class={`flex items-center justify-center rounded border border-indigo-300 bg-indigo-50 px-2.5 py-1.5 text-center text-[11px] font-bold text-indigo-800 dark:border-[#6366f1]/50 dark:bg-[#1e1b4b]/30 dark:text-[var(--accent-blue)] ${bodyFont}`}>
           {t.g2}
         </div>
-        <div class={`flex items-center justify-center rounded border border-[#f59e0b]/50 bg-[#451a03]/30 px-2.5 py-1.5 text-center text-[11px] font-bold text-[var(--accent-amber)] ${bodyFont}`}>
+        <div class={`flex items-center justify-center rounded border border-amber-300 bg-amber-50 px-2.5 py-1.5 text-center text-[11px] font-bold text-amber-800 dark:border-[#f59e0b]/50 dark:bg-[#451a03]/30 dark:text-[var(--accent-amber)] ${bodyFont}`}>
           {t.g3}
         </div>
       </div>
@@ -496,10 +496,14 @@ const t = {
 
 <style>
   .terminal-window {
+    background: linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg-surface) 100%);
+  }
+  :global(.dark) .terminal-window,
+  :global([data-theme='dark']) .terminal-window {
     background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.04) 0%, rgba(13, 17, 23, 0.98) 75%), var(--bg-surface);
   }
   .terminal-chrome-bar {
     border-bottom: 1px solid var(--border-hairline);
-    background-color: var(--bg-surface);
+    background-color: var(--bg-elevated);
   }
 </style>
