@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import Hero from '@/components/astro/Hero.astro';
 import CTA from '@/components/astro/CTA.astro';
+import AsciiLogoStudio from '@/components/astro/AsciiLogoStudio.astro';
 import { getLanguageStaticPaths, type SupportedLanguage } from '@/types/language';
 import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
@@ -106,6 +107,9 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
           </div>
         </div>
       </div>
+
+      <!-- Interactive Animated ASCII Logo Studio (All 4 Versions) -->
+      <AsciiLogoStudio lang={supportedLang} />
 
       <!-- Mission Terminal Window -->
       <div class="terminal-window">

@@ -1,0 +1,246 @@
+---
+import { languages, type SupportedLanguage } from '@/types/language';
+import AsciiStage from './AsciiStage.astro';
+
+interface Props {
+  lang: SupportedLanguage;
+}
+
+const { lang } = Astro.props;
+const isRtl = languages[lang]?.direction === 'rtl';
+const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 'font-persian';
+
+const LOGO_VERSIONS = [
+  {
+    id: 'webabc-logo-glitch',
+    piece: 'webabc-logo-glitch',
+    num: '01',
+    label:
+      lang === 'fa'
+        ? 'اسکن خطی گلیچ'
+        : lang === 'ar'
+          ? 'المصفوفة الرقمية'
+          : 'Matrix Scanline Glitch',
+    badge: 'SCANLINE · MATRIX',
+    desc:
+      lang === 'fa'
+        ? 'نمایش سایبرپانک تایپوگرافی با پرتو اسکن شطرنجی و باران کدهای باینری'
+        : lang === 'ar'
+          ? 'عرض رقمي متطور للعلامة التجارية مع مسح شريطي وتأثيرات المصفوفة'
+          : 'Cyberpunk typographic reveal with animated raster beam and binary code rain',
+  },
+  {
+    id: 'webabc-logo-cube',
+    piece: 'webabc-logo-cube',
+    num: '02',
+    label:
+      lang === 'fa'
+        ? 'مکعب سه‌بعدی وکتور'
+        : lang === 'ar'
+          ? 'مكعب ثلاثي الأبعاد'
+          : '3D Wireframe Cube',
+    badge: 'ISOMETRIC · 3D VECTORS',
+    desc:
+      lang === 'fa'
+        ? 'چرخش محاسباتی ۳ بعدی مکعب و منشور برداری با زوایای لحظه‌ای اویلر'
+        : lang === 'ar'
+          ? 'دوران فوري متزامن لمكعب المتجهات ثلاثي الأبعاد وحساب زوايا أويلر'
+          : 'Real-time 3D isometric rotation with Euler angles and vector telemetry matrix',
+  },
+  {
+    id: 'webabc-logo-waveform',
+    piece: 'webabc-logo-waveform',
+    num: '03',
+    label:
+      lang === 'fa'
+        ? 'طیف بسامدی و سرعت'
+        : lang === 'ar'
+          ? 'طيف الإشارات والسرعة'
+          : 'Audio Waveform & CWV',
+    badge: 'SYNTHESIZER · CWV GAUGES',
+    desc:
+      lang === 'fa'
+        ? 'آنالایزر بسامد هارمونیک و اکولایزر زنده در کنار گیج‌های شاخص‌های حیاتی وب'
+        : lang === 'ar'
+          ? 'محلل الترددات الصوتية المتناغمة مع مقاييس أداء مؤشرات الويب الأساسية'
+          : 'Harmonic frequency synthesizer with live equalizer bands and Core Web Vitals gauges',
+  },
+  {
+    id: 'webabc-logo-orbit',
+    piece: 'webabc-logo-orbit',
+    num: '04',
+    label:
+      lang === 'fa'
+        ? 'رادار مداری خاورمیانه'
+        : lang === 'ar'
+          ? 'الرادار المداري الإقليمي'
+          : 'Orbital Regional Radar',
+    badge: 'REGIONAL NODES · TLS 1.3',
+    desc:
+      lang === 'fa'
+        ? 'ردیاب مداری و گردش ماهواره‌ای گره‌های ارتباطی قزوین، تهران، دبی، ریاض و مسقط'
+        : lang === 'ar'
+          ? 'رادار مداري يرصد المحطات السحابية في قزوين، طهران، دبي، الرياض ومسقط'
+          : 'Orbital celestial scanner tracing 5 regional Middle East edge infrastructure hubs',
+  },
+];
+---
+
+<section class={`terminal-window mb-12 ${fontClass}`}>
+  <div class="terminal-chrome-bar" dir="ltr">
+    <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+      {
+        lang === 'fa'
+          ? '╭─ /هویت-بصری · استودیو تعاملی لوگوهای متحرک اسکی ─╮'
+          : lang === 'ar'
+            ? '╭─ /الهوية-البصرية · استوديو شعارات ASCII التفاعلية المتحركة ─╮'
+            : '╭─ /BRAND-IDENTITY · Interactive Animated ASCII Logo Studio ─╮'
+      }
+    </span>
+    <span class="monospace-telemetry-pill">4 PROCEDURAL EDITIONS · 60 FPS</span>
+  </div>
+
+  <div class="p-5 sm:p-7">
+    <div class="mb-6 flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+      <div>
+        <h3 class="text-xl font-bold text-[var(--text-primary)] sm:text-2xl">
+          {
+            lang === 'fa'
+              ? 'آزمایشگاه لوگوی ترمینالی و هویت برند وب اِی‌بی‌سی'
+              : lang === 'ar'
+                ? 'مختبر شعار الطرفية والهوية الرقمية لـ WebABC'
+                : 'WebABC Terminal Brandmark & Procedural ASCII Lab'
+          }
+        </h3>
+        <p class="mt-1 text-xs text-[var(--text-secondary)] sm:text-sm">
+          {
+            lang === 'fa'
+              ? 'توسعه‌یافته بر پایه پردازش لحظه‌ای کاراکترها در مرورگر با صفر بایت وابستگی خارجی.'
+              : lang === 'ar'
+                ? 'تم تطويرها حسابياً عبر المتصفح باستخدام نصوص ASCII وبدون أي مكتبات ثقيلة.'
+                : 'Zero-weight procedural ASCII brandmarks rendered in real-time inside your browser.'
+          }
+        </p>
+      </div>
+
+      <!-- Live Version Switcher Buttons -->
+      <div
+        class="flex flex-wrap items-center gap-1.5"
+        role="tablist"
+        aria-label="ASCII Logo Version Switcher"
+      >
+        {
+          LOGO_VERSIONS.map((ver, idx) => (
+            <button
+              type="button"
+              role="tab"
+              data-logo-tab={ver.piece}
+              data-logo-badge={ver.badge}
+              data-logo-desc={ver.desc}
+              aria-pressed={idx === 0 ? 'true' : 'false'}
+              class={`cursor-pointer rounded border px-3 py-1.5 font-mono text-xs font-bold transition-all ${
+                idx === 0
+                  ? 'active-logo-tab border-[var(--accent-green)] bg-[var(--bg-surface)] text-[var(--accent-green)] shadow-xs'
+                  : 'border-[var(--border-hairline)] bg-[var(--bg-canvas)] text-[var(--text-secondary)] hover:border-[var(--border-focus)] hover:text-[var(--text-primary)]'
+              }`}
+            >
+              <span class="ltr-isolate me-1 text-[var(--accent-purple)]" dir="ltr">[{ver.num}]</span>
+              <span>{ver.label}</span>
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Active Version Description Pill -->
+    <div class="mb-4 flex items-center justify-between border-b border-[var(--border-hairline)] pb-3">
+      <div id="logo-active-desc" class="text-xs font-medium text-[var(--text-secondary)]">
+        {LOGO_VERSIONS[0].desc}
+      </div>
+      <span
+        id="logo-active-badge"
+        class="monospace-telemetry-pill shrink-0 hidden sm:inline-flex"
+        dir="ltr"
+      >
+        {LOGO_VERSIONS[0].badge}
+      </span>
+    </div>
+
+    <!-- Primary ASCII Stage Canvas for Logo -->
+    <AsciiStage
+      id="logo-studio-stage"
+      lang={lang}
+      defaultPiece="webabc-logo-glitch"
+      title={
+        lang === 'fa'
+          ? '/پیش‌نمایش-لوگو · بوم زنده ترمینال'
+          : lang === 'ar'
+            ? '/معاينة-الشعار · لوحة الطرفية الحية'
+            : '/LOGO-PREVIEW · Live Monospace Art'
+      }
+      meta="66×17 · 24 fps · Procedural"
+      size={13}
+      ariaLabel="Animated procedural WebABC ASCII logo"
+    />
+  </div>
+</section>
+
+<script is:inline>
+  (() => {
+    function initLogoStudio() {
+      const tabs = document.querySelectorAll('[data-logo-tab]');
+      const stage = document.getElementById('logo-studio-stage');
+      const descEl = document.getElementById('logo-active-desc');
+      const badgeEl = document.getElementById('logo-active-badge');
+
+      if (!tabs.length || !stage) return;
+
+      const activeClasses = [
+        'active-logo-tab',
+        'border-[var(--accent-green)]',
+        'bg-[var(--bg-surface)]',
+        'text-[var(--accent-green)]',
+        'shadow-xs',
+      ];
+      const inactiveClasses = [
+        'border-[var(--border-hairline)]',
+        'bg-[var(--bg-canvas)]',
+        'text-[var(--text-secondary)]',
+      ];
+
+      tabs.forEach((tab) => {
+        tab.onclick = () => {
+          const piece = tab.getAttribute('data-logo-tab');
+          const badge = tab.getAttribute('data-logo-badge');
+          const desc = tab.getAttribute('data-logo-desc');
+
+          tabs.forEach((t) => {
+            t.classList.remove(...activeClasses);
+            t.classList.add(...inactiveClasses);
+            t.setAttribute('aria-pressed', 'false');
+          });
+
+          tab.classList.remove(...inactiveClasses);
+          tab.classList.add(...activeClasses);
+          tab.setAttribute('aria-pressed', 'true');
+
+          const asciiEl = stage.querySelector('ascii-art');
+          if (asciiEl && piece) {
+            asciiEl.setAttribute('piece', piece);
+          }
+          if (descEl && desc) {
+            descEl.textContent = desc;
+          }
+          if (badgeEl && badge) {
+            badgeEl.textContent = badge;
+          }
+        };
+      });
+    }
+
+    document.addEventListener('astro:page-load', initLogoStudio);
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      initLogoStudio();
+    }
+  })();
+</script>
