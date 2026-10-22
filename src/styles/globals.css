@@ -209,11 +209,12 @@
   --animate-zoom-in: zoom-in 0.6s ease-out;
   --animate-blur-in: blur-in 0.6s ease-out;
 
-  --font-sans: 'Lato', system-ui, sans-serif;
-  --font-persian: 'IRANSansX', sans-serif;
+  --font-sans: 'Geist', 'Inter', 'Lato', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Geist Mono', 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
+  --font-persian: 'Vazirmatn', 'IRANSansX', sans-serif;
   --font-arabic:
-    'IBM Plex Sans Arabic', 'Cairo', 'Tajawal', 'Noto Kufi Arabic', system-ui, -apple-system,
-    BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    'Vazirmatn', 'IBM Plex Sans Arabic', 'Cairo', 'Tajawal', 'Noto Kufi Arabic', system-ui,
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   @keyframes accordion-down {
     from {
@@ -312,7 +313,6 @@
     }
   }
 
-  /* TailwindCSS Animate Keyframes */
   @keyframes enter {
     from {
       opacity: var(--tw-enter-opacity, 1);
@@ -332,98 +332,337 @@
   }
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+/* ============================================================================
+   MULTI-PALETTE & DARK/WHITE DESIGN TOKENS
+   Supports:
+   - Mode: Dark (.dark / [data-theme='dark']) & White/Light (:not(.dark) / [data-theme='light'])
+   - Palettes:
+     1. blue (Brand Blue — Ocean/Sky Blue)
+     2. emerald (Terminal Phosphor Green)
+     3. mono (Pure Dark / White Monochrome)
+     4. cyan (Teal / Cyber Matrix)
+     5. violet (Royal Indigo / Violet)
+     6. amber (Warm Amber Gold)
+   ============================================================================ */
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
+/* Default Dark Surfaces & Emerald Base */
+:root,
+[data-theme='dark'],
+.dark {
+  --bg-canvas: #090b0e;
+  --bg-surface: #0d1117;
+  --bg-elevated: #161b22;
+  --bg-glass: rgba(13, 17, 23, 0.88);
+
+  --border-subtle: #21262d;
+  --border-hairline: #30363d;
+  --border-focus: #484f58;
+
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted: #6e7681;
+  --ink-primary: #e6edf3;
+  --ink-secondary: #8b949e;
+
+  --accent-green: #38bdf8;
+  --accent-green-dim: #0284c7;
+  --accent-contrast: #ffffff;
+  --accent-blue: #818cf8;
+  --accent-amber: #fbbf24;
+  --accent-coral: #f87171;
+  --accent-purple: #60a5fa;
+
+  --ink-PhosphorGreen: var(--accent-green);
+  --ink-ForestGreen: var(--accent-green-dim);
+  --ink-TerminalBlue: var(--accent-blue);
+  --ink-AmberGold: var(--accent-amber);
+  --ink-CoralRed: var(--accent-coral);
+  --ink-LavenderPurple: var(--accent-purple);
+}
+
+/* Default Light / White Surfaces */
+html:not(.dark),
+[data-theme='light'] {
+  --bg-canvas: #ffffff;
+  --bg-surface: #f8fafc;
+  --bg-elevated: #f1f5f9;
+  --bg-glass: rgba(255, 255, 255, 0.92);
+
+  --border-subtle: #e2e8f0;
+  --border-hairline: #cbd5e1;
+  --border-focus: #94a3b8;
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --ink-primary: #0f172a;
+  --ink-secondary: #475569;
+
+  --accent-green: #0284c7;
+  --accent-green-dim: #0369a1;
+  --accent-contrast: #ffffff;
+  --accent-blue: #4f46e5;
+  --accent-amber: #d97706;
+  --accent-coral: #dc2626;
+  --accent-purple: #2563eb;
+}
+
+/* 1. PALETTE: BLUE (WebABC Brand Blue) */
+html.dark[data-palette='blue'] {
+  --bg-canvas: #070b14;
+  --bg-surface: #0b1120;
+  --bg-elevated: #111827;
+  --border-subtle: #1e293b;
+  --border-hairline: #1e293b;
+  --border-focus: #3b82f6;
+  --accent-green: #38bdf8;
+  --accent-green-dim: #0284c7;
+  --accent-contrast: #ffffff;
+  --accent-blue: #818cf8;
+  --accent-purple: #60a5fa;
+}
+html:not(.dark)[data-palette='blue'] {
+  --bg-canvas: #ffffff;
+  --bg-surface: #f8fafc;
+  --bg-elevated: #f1f5f9;
+  --border-subtle: #e2e8f0;
+  --border-hairline: #cbd5e1;
+  --border-focus: #0284c7;
+  --accent-green: #0284c7;
+  --accent-green-dim: #0369a1;
+  --accent-contrast: #ffffff;
+  --accent-blue: #4f46e5;
+  --accent-purple: #2563eb;
+}
+
+/* 2. PALETTE: EMERALD (Phosphor Terminal Green) */
+html.dark[data-palette='emerald'] {
+  --bg-canvas: #090b0e;
+  --bg-surface: #0d1117;
+  --bg-elevated: #161b22;
+  --border-subtle: #21262d;
+  --border-hairline: #30363d;
+  --border-focus: #484f58;
+  --accent-green: #7ee787;
+  --accent-green-dim: #2ea043;
+  --accent-contrast: #ffffff;
+  --accent-blue: #79c0ff;
+  --accent-purple: #d2a8ff;
+}
+html:not(.dark)[data-palette='emerald'] {
+  --bg-canvas: #ffffff;
+  --bg-surface: #f6f8fa;
+  --bg-elevated: #eaeef2;
+  --border-subtle: #eaeef2;
+  --border-hairline: #d0d7de;
+  --border-focus: #8c959f;
+  --accent-green: #1a7f37;
+  --accent-green-dim: #1f883d;
+  --accent-contrast: #ffffff;
+  --accent-blue: #0969da;
+  --accent-purple: #8250df;
+}
+
+/* 3. PALETTE: MONO (Pure Dark / White Brutalist Monochrome) */
+html.dark[data-palette='mono'] {
+  --bg-canvas: #09090b;
+  --bg-surface: #121215;
+  --bg-elevated: #18181b;
+  --border-subtle: #27272a;
+  --border-hairline: #27272a;
+  --border-focus: #71717a;
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --accent-green: #ffffff;
+  --accent-green-dim: #f4f4f5;
+  --accent-contrast: #09090b;
+  --accent-blue: #d4d4d8;
+  --accent-amber: #e4e4e7;
+  --accent-purple: #a1a1aa;
+}
+html:not(.dark)[data-palette='mono'] {
+  --bg-canvas: #ffffff;
+  --bg-surface: #fafafa;
+  --bg-elevated: #f4f4f5;
+  --border-subtle: #e4e4e7;
+  --border-hairline: #d4d4d8;
+  --border-focus: #52525b;
+  --text-primary: #09090b;
+  --text-secondary: #52525b;
+  --accent-green: #09090b;
+  --accent-green-dim: #18181b;
+  --accent-contrast: #ffffff;
+  --accent-blue: #3f3f46;
+  --accent-amber: #27272a;
+  --accent-purple: #52525b;
+}
+
+/* 4. PALETTE: CYAN (Teal / Mint Matrix) */
+html.dark[data-palette='cyan'] {
+  --bg-canvas: #060d10;
+  --bg-surface: #0b1519;
+  --bg-elevated: #112026;
+  --border-subtle: #162a32;
+  --border-hairline: #1e3a44;
+  --border-focus: #2dd4bf;
+  --accent-green: #2dd4bf;
+  --accent-green-dim: #0d9488;
+  --accent-contrast: #ffffff;
+  --accent-blue: #38bdf8;
+  --accent-purple: #67e8f9;
+}
+html:not(.dark)[data-palette='cyan'] {
+  --bg-canvas: #ffffff;
+  --bg-surface: #f0fdfa;
+  --bg-elevated: #ccfbf1;
+  --border-subtle: #cbd5e1;
+  --border-hairline: #99f6e4;
+  --border-focus: #0d9488;
+  --accent-green: #0d9488;
+  --accent-green-dim: #0f766e;
+  --accent-contrast: #ffffff;
+  --accent-blue: #0284c7;
+  --accent-purple: #0891b2;
+}
+
+/* 5. PALETTE: VIOLET (Royal Indigo / AI Purple) */
+html.dark[data-palette='violet'] {
+  --bg-canvas: #090812;
+  --bg-surface: #100e1e;
+  --bg-elevated: #19162d;
+  --border-subtle: #252140;
+  --border-hairline: #2e294e;
+  --border-focus: #8b5cf6;
+  --accent-green: #a78bfa;
+  --accent-green-dim: #7c3aed;
+  --accent-contrast: #ffffff;
+  --accent-blue: #38bdf8;
+  --accent-purple: #c084fc;
+}
+html:not(.dark)[data-palette='violet'] {
+  --bg-canvas: #ffffff;
+  --bg-surface: #faf5ff;
+  --bg-elevated: #f3e8ff;
+  --border-subtle: #e9d5ff;
+  --border-hairline: #d8b4fe;
+  --border-focus: #7c3aed;
+  --accent-green: #6d28d9;
+  --accent-green-dim: #5b21b6;
+  --accent-contrast: #ffffff;
+  --accent-blue: #0284c7;
+  --accent-purple: #7c3aed;
+}
+
+/* 6. PALETTE: AMBER (Warm Gold / Terminal Amber) */
+html.dark[data-palette='amber'] {
+  --bg-canvas: #0c0a09;
+  --bg-surface: #141210;
+  --bg-elevated: #1c1917;
+  --border-subtle: #292524;
+  --border-hairline: #38322e;
+  --border-focus: #f59e0b;
+  --accent-green: #fbbf24;
+  --accent-green-dim: #d97706;
+  --accent-contrast: #ffffff;
+  --accent-blue: #38bdf8;
+  --accent-purple: #fcd34d;
+}
+html:not(.dark)[data-palette='amber'] {
+  --bg-canvas: #ffffff;
+  --bg-surface: #fffbeb;
+  --bg-elevated: #fef3c7;
+  --border-subtle: #fde68a;
+  --border-hairline: #fcd34d;
+  --border-focus: #d97706;
+  --accent-green: #b45309;
+  --accent-green-dim: #92400e;
+  --accent-contrast: #ffffff;
+  --accent-blue: #0284c7;
+  --accent-purple: #b45309;
+}
+
 @layer base {
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
-
-  .dark *,
-  .dark ::after,
-  .dark ::before,
-  .dark ::backdrop,
-  .dark ::file-selector-button {
-    border-color: hsl(var(--border));
+    border-color: var(--border-hairline);
   }
 
   :root {
     --background: 0 0% 100%;
-    --foreground: 222 47% 11.2%;
+    --foreground: 213 13% 14%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11.2%;
+    --card: 210 29% 97%;
+    --card-foreground: 213 13% 14%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11.2%;
+    --popover-foreground: 213 13% 14%;
 
-    --primary: 210 100% 40%;
+    --primary: 199 89% 48%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222 47.4% 11.2%;
+    --secondary: 210 24% 93%;
+    --secondary-foreground: 213 13% 14%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215 16% 43%;
+    --muted: 210 24% 93%;
+    --muted-foreground: 212 10% 39%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222 47.4% 11.2%;
+    --accent: 210 24% 93%;
+    --accent-foreground: 213 13% 14%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 356 72% 47%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222 84% 4.9%;
+    --border: 210 18% 84%;
+    --input: 210 18% 84%;
+    --ring: 199 89% 48%;
 
-    --radius: 0.75rem;
+    --radius: 0.375rem;
   }
 
   .dark {
     color-scheme: dark;
-    --background: 224 71% 4%;
-    --foreground: 210 40% 98%;
+    --background: 216 22% 5%;
+    --foreground: 210 29% 93%;
 
-    --card: 222 47% 9%;
-    --card-foreground: 210 40% 98%;
+    --card: 215 28% 7%;
+    --card-foreground: 210 29% 93%;
 
-    --popover: 222 47% 9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 215 28% 7%;
+    --popover-foreground: 210 29% 93%;
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 222 47.4% 11.2%;
+    --primary: 199 92% 60%;
+    --primary-foreground: 216 22% 5%;
 
-    --secondary: 217.2 32.6% 15%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 215 21% 11%;
+    --secondary-foreground: 210 29% 93%;
 
-    --muted: 217.2 32.6% 15%;
-    --muted-foreground: 215 20.2% 70%;
+    --muted: 215 21% 11%;
+    --muted-foreground: 212 9% 58%;
 
-    --accent: 217.2 32.6% 15%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 215 21% 11%;
+    --accent-foreground: 210 29% 93%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 4 100% 72%;
+    --destructive-foreground: 216 22% 5%;
 
-    --border: 217.2 32.6% 18%;
-    --input: 217.2 32.6% 18%;
-    --ring: 217 91% 60%;
+    --border: 212 12% 21%;
+    --input: 212 12% 21%;
+    --ring: 199 92% 60%;
+  }
+
+  html,
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
   }
 
   .dark html,
   .dark body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
   }
 
   .dark
@@ -432,19 +671,183 @@
     ),
   .dark textarea,
   .dark select {
-    background-color: hsl(var(--card));
-    color: hsl(var(--foreground));
-    border-color: hsl(var(--border));
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    border-color: var(--border-hairline);
   }
 
   .dark input::placeholder,
   .dark textarea::placeholder {
-    color: hsl(var(--muted-foreground));
+    color: var(--text-muted);
   }
 }
 
+/* ============================================================================
+   CRITICAL RTL ISOLATION FOR PERSIAN (/fa/) & ARABIC (/ar/) VIEWS
+   Protects box-drawing characters (╭─╮│╰─╯) and <ascii-art> canvases
+   ============================================================================ */
+ascii-art,
+.ascii-stage-container,
+.ascii-stage-card,
+.terminal-chrome-bar,
+.monospace-telemetry-pill,
+.ltr-isolate,
+pre,
+code {
+  direction: ltr !important;
+  unicode-bidi: isolate !important;
+  text-align: left !important;
+  font-variant-ligatures: none;
+}
+
+/* ============================================================================
+   TERMINAL-NATIVE & ASCII STUDIO UTILITIES
+   ============================================================================ */
+.slash-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-purple);
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+.terminal-window {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+.terminal-window:hover,
+.terminal-window:focus-within {
+  border-color: var(--border-focus);
+}
+
+.terminal-chrome-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 36px;
+  padding: 0.375rem 0.875rem;
+  background-color: var(--bg-elevated);
+  border-bottom: 1px solid var(--border-hairline);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.monospace-telemetry-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.125rem 0.5rem;
+  border: 1px solid var(--border-hairline);
+  border-radius: 0.25rem;
+  background-color: var(--bg-canvas);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.look-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border: 1px solid var(--border-hairline);
+  border-radius: 0.25rem;
+  background-color: var(--bg-canvas);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.2;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    border-color 120ms ease,
+    color 120ms ease,
+    background-color 120ms ease;
+}
+
+.look-pill:hover {
+  border-color: var(--border-focus);
+  color: var(--text-primary);
+  background-color: var(--bg-elevated);
+}
+
+.look-pill.is-active {
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+  background-color: color-mix(in srgb, var(--accent-green) 12%, var(--bg-surface));
+}
+
+.look-glyph {
+  color: var(--accent-blue);
+  font-weight: 700;
+}
+
+.look-pill.is-active .look-glyph {
+  color: var(--accent-green);
+}
+
+.palette-swatch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border-hairline);
+  background-color: var(--bg-canvas);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 140ms ease;
+}
+
+.palette-swatch-btn:hover {
+  border-color: var(--border-focus);
+  color: var(--text-primary);
+}
+
+.palette-swatch-btn.is-active {
+  border-color: var(--accent-green);
+  color: var(--text-primary);
+  background-color: var(--bg-elevated);
+  box-shadow: 0 0 0 1px var(--accent-green);
+}
+
+.crt-scanlines {
+  position: relative;
+}
+
+.crt-scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.06) 3px
+  );
+  opacity: 0.45;
+}
+
 @utility font-persian {
-  font-family: 'IRANSansX', sans-serif;
+  font-family: var(--font-persian);
 }
 
 @utility font-arabic {
@@ -455,25 +858,28 @@
   font-family: var(--font-sans);
 }
 
+@utility font-mono {
+  font-family: var(--font-mono);
+}
+
 @utility text-balance {
   text-wrap: balance;
 }
 
 @utility glass-morphism {
-  @apply rounded-xl border border-white/20 bg-white/80 shadow-lg backdrop-blur-md dark:border-slate-800/80 dark:bg-slate-900/80 dark:shadow-black/40;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: 0.5rem;
 }
 
 @utility neo-morphism {
-  @apply border border-gray-100/80 bg-white dark:border-slate-800/80 dark:bg-slate-900;
-  box-shadow: 0 8px 30px rgb(0 0 0 / 0.06);
-}
-
-.dark .neo-morphism {
-  box-shadow: 0 8px 30px rgb(0 0 0 / 0.35);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  border-radius: 0.5rem;
 }
 
 @utility content-transition {
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @utility snap-container {
@@ -492,21 +898,17 @@
 
   html:lang(en) {
     text-rendering: optimizeLegibility;
-  }
-
-  /* Global font families based on HTML lang attribute */
-  html:lang(en) {
-    --font-sans: 'Lato', system-ui, sans-serif;
+    --font-sans: 'Geist', 'Inter', 'Lato', system-ui, sans-serif;
     font-family: var(--font-sans);
   }
 
   html:lang(en) .font-persian,
   html:lang(en) .font-arabic {
-    font-family: 'Lato', system-ui, sans-serif;
+    font-family: 'Geist', 'Inter', 'Lato', system-ui, sans-serif;
   }
 
   html:lang(fa) {
-    --font-sans: 'IRANSansX', sans-serif;
+    --font-sans: 'Vazirmatn', 'IRANSansX', sans-serif;
     font-family: var(--font-sans);
   }
 
@@ -530,10 +932,11 @@
 }
 
 #logoh {
-  fill: #2d59c3;
-  stroke: #2d59c3;
+  fill: var(--accent-green);
+  stroke: var(--accent-green);
   fill-opacity: 1;
   stroke-width: 0;
+  transition: fill 150ms ease, stroke 150ms ease;
 }
 
 @media (prefers-reduced-motion: reduce) {
