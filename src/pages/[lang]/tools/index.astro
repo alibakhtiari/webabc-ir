@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import Hero from '@/components/astro/Hero.astro';
 import CTA from '@/components/astro/CTA.astro';
+import AsciiStage from '@/components/astro/AsciiStage.astro';
 import { getLanguageStaticPaths, type SupportedLanguage, languages } from '@/types/language';
 import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
@@ -86,6 +87,27 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
       </button>
     </div>
   </Hero>
+
+  <!-- Interactive Terminal Engine Stage -->
+  <section class={`border-b border-[var(--border-hairline)] bg-[var(--bg-canvas)] py-8 ${fontClass}`}>
+    <div class="container mx-auto max-w-6xl px-4">
+      <AsciiStage
+        id="tools-engine-stage"
+        lang={supportedLang}
+        defaultPiece="code-editor"
+        title={
+          supportedLang === 'fa'
+            ? '/موتور-ابزارها · پردازش زنده در مرورگر شما بدون هیچ وابستگی'
+            : supportedLang === 'ar'
+              ? '/محرك-الأدوات · معالجة فورية محلية بدون استهلاك لموارد الخادم'
+              : '/TOOLS-ENGINE · 100% In-Browser Execution · Zero Server Overhead'
+        }
+        meta="66×17 · 24 fps · 21 Tools"
+        size={12}
+        ariaLabel="Interactive in-browser code editor and tools execution engine"
+      />
+    </div>
+  </section>
 
   <!-- SEO Marketers Tools Grid -->
   <section class={`border-b border-[var(--border-hairline)] bg-[var(--bg-canvas)] py-12 md:py-16 ${fontClass}`}>
