@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import Breadcrumbs from '@/components/astro/Breadcrumbs.astro';
+import Hero from '@/components/astro/Hero.astro';
+import CTA from '@/components/astro/CTA.astro';
 import { getLanguageStaticPaths, type SupportedLanguage } from '@/types/language';
 import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
@@ -11,8 +12,9 @@ const { lang } = Astro.params;
 const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
 const isRtl = supportedLang === 'fa' || supportedLang === 'ar';
+const fontClass =
+  supportedLang === 'en' ? 'font-sans' : supportedLang === 'ar' ? 'font-arabic' : 'font-persian';
 
-// Helper to translate strings
 const t = createTranslator(dictionary);
 
 const titleText = t('service-areas.title', { fallback: 'Our Service Areas' });
@@ -30,63 +32,91 @@ const breadcrumbs = [
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="service-areas">
-  <!-- Hero Section -->
-  <section class="bg-linear-to-b from-primary/10 via-background to-background pt-36 pb-16 md:pb-24">
-    <div class="container mx-auto max-w-4xl px-4 text-center">
-      <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
-      <h1
-        class={`text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-normal font-${supportedLang === 'en' ? 'sans' : 'persian'}`}
+  <Hero
+    title={titleText}
+    description={descriptionText}
+    breadcrumbs={breadcrumbs}
+    lang={supportedLang}
+  >
+    <div class={`mt-4 flex flex-wrap justify-center gap-3 ${fontClass}`}>
+      <button
+        type="button"
+        data-open-consultation
+        class="inline-flex h-10 cursor-pointer items-center gap-1.5 rounded border border-[var(--accent-green)] bg-[var(--accent-green-dim)] px-5 font-mono text-xs font-bold text-[var(--accent-contrast)] transition-all hover:bg-[var(--accent-green)] hover:text-[#090b0e] sm:text-sm"
       >
-        {titleText}
-      </h1>
-      <p
-        class={`text-xl text-gray-600 dark:text-gray-300 leading-relaxed font-${supportedLang === 'en' ? 'sans' : 'persian'}`}
-      >
-        {descriptionText}
-      </p>
+        <span>{t('common.freeConsultation', { fallback: 'Get Regional SEO Consultation' })}</span>
+        <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
+      </button>
     </div>
-  </section>
+  </Hero>
 
   <!-- Locations list -->
-  <section class="bg-white py-16 font-sans dark:bg-slate-950">
-    <div class="container mx-auto max-w-4xl px-4">
-      <h2
-        class={`text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center font-${supportedLang === 'en' ? 'sans' : 'persian'}`}
-      >
+  <section class={`bg-[var(--bg-canvas)] py-12 md:py-16 ${fontClass}`}>
+    <div class="container mx-auto max-w-5xl px-4">
+      <div class="mb-8 text-center">
+        <span class="slash-eyebrow text-xs" dir="ltr">/REGIONAL-HUBS · LOCAL SEO &amp; WEB DEV</span>
+        <h2 class="mt-1 text-2xl font-bold text-[var(--text-primary)] sm:text-3xl">
+          {
+            supportedLang === 'fa'
+              ? 'مناطق تحت پوشش خدمات وب اِی‌بی‌سی'
+              : supportedLang === 'ar'
+                ? 'المناطق الجغرافية لخدماتنا'
+                : 'Explore Our Service Locations'
+          }
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
         {
-          supportedLang === 'fa'
-            ? 'مناطق تحت پوشش خدمات وب اِی‌بی‌سی'
-            : supportedLang === 'ar'
-              ? 'المناطق الجغرافية لخدماتنا'
-              : 'Explore Our Service Locations'
-        }
-      </h2>
-      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-        {
-          locationsList.map((loc: any) => (
-            <div
-              class={`space-y-4 rounded-2xl border border-gray-100 bg-white p-8 shadow-xs transition-all hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 font-${supportedLang === 'en' ? 'sans' : 'persian'}`}
-            >
-              <div class="flex items-center justify-between">
-                <h3 class="text-2xl font-bold text-gray-900 dark:text-white">{loc.name}</h3>
-                {loc.country && (
-                  <span class="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">
-                    {loc.country}
+          locationsList.map((loc: any, idx: number) => (
+            <div class="terminal-window flex flex-col justify-between">
+              <div>
+                <div class="terminal-chrome-bar" dir="ltr">
+                  <span class="font-mono text-xs font-bold text-[var(--accent-green)]">
+                    [HUB 0{idx + 1}] /{loc.slug}
                   </span>
-                )}
+                  {loc.country && (
+                    <span class="monospace-telemetry-pill">{loc.country}</span>
+                  )}
+                </div>
+
+                <div class="space-y-3 p-6">
+                  <h3 class="text-xl font-bold text-[var(--text-primary)]">
+                    <a
+                      href={`/${supportedLang}/service-areas/${loc.slug}/`}
+                      class="transition-colors hover:text-[var(--accent-green)]"
+                    >
+                      {loc.name}
+                    </a>
+                  </h3>
+                  <p class="text-sm leading-relaxed text-[var(--text-secondary)]">
+                    {loc.description}
+                  </p>
+                </div>
               </div>
-              <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-                {loc.description}
-              </p>
-              <a
-                href={`/${supportedLang}/service-areas/${loc.slug}/`}
-                class="inline-flex items-center gap-1 text-sm font-bold text-primary hover:underline"
-              >
-                {t('common.viewDetails', { fallback: 'View Details' })} {isRtl ? '←' : '→'}
-              </a>
+
+              <div class="flex items-center justify-between border-t border-[var(--border-hairline)] bg-[var(--bg-elevated)] px-6 py-3">
+                <button
+                  type="button"
+                  data-consult-service={`Local SEO & Web Design (${loc.name})`}
+                  class="cursor-pointer font-mono text-xs font-bold text-[var(--accent-green)] hover:underline"
+                >
+                  {t('common.freeConsultation', { fallback: 'Free Consultation' })} →
+                </button>
+                <a
+                  href={`/${supportedLang}/service-areas/${loc.slug}/`}
+                  class="font-mono text-xs font-semibold text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                >
+                  {t('common.viewDetails', { fallback: 'View Details' })} {isRtl ? '←' : '→'}
+                </a>
+              </div>
             </div>
           ))
         }
+      </div>
+
+      <div class="mt-12">
+        <CTA lang={supportedLang} />
       </div>
     </div>
   </section>

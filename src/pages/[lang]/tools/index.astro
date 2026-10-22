@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import Breadcrumbs from '@/components/astro/Breadcrumbs.astro';
+import Hero from '@/components/astro/Hero.astro';
+import CTA from '@/components/astro/CTA.astro';
 import { getLanguageStaticPaths, type SupportedLanguage, languages } from '@/types/language';
 import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
@@ -11,8 +12,9 @@ const { lang } = Astro.params;
 const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
 const isRtl = languages[supportedLang]?.direction === 'rtl';
+const fontClass =
+  supportedLang === 'en' ? 'font-sans' : supportedLang === 'ar' ? 'font-arabic' : 'font-persian';
 
-// Helper to translate strings
 const t = createTranslator(dictionary);
 
 const titleText = t('tools.title', { fallback: 'SEO & Marketing Utilities' });
@@ -21,95 +23,113 @@ const descriptionText = t('tools.description', {
     'A comprehensive suite of free local tools to analyze SEO ranking tags and format developer configs.',
 });
 
-// Match slugs exactly to old sitemap parameters
 const seoTools = [
-  { key: 'headlineAnalyzer', route: 'headline-analyzer' },
-  { key: 'metaGenerator', route: 'meta-generator' },
-  { key: 'schemaGenerator', route: 'schema-generator' },
-  { key: 'faqGenerator', route: 'faq-generator' },
-  { key: 'paaScraper', route: 'paa-scraper' },
-  { key: 'utmBuilder', route: 'utm-builder' },
-  { key: 'slugGenerator', route: 'slug-generator' },
-  { key: 'socialPreview', route: 'social-media-preview' },
+  { key: 'headlineAnalyzer', route: 'headline-analyzer', badge: 'CTR · 580PX' },
+  { key: 'metaGenerator', route: 'meta-generator', badge: 'SERP TAGS' },
+  { key: 'schemaGenerator', route: 'schema-generator', badge: 'JSON-LD' },
+  { key: 'faqGenerator', route: 'faq-generator', badge: 'RICH RESULTS' },
+  { key: 'paaScraper', route: 'paa-scraper', badge: 'AEO / PAA' },
+  { key: 'utmBuilder', route: 'utm-builder', badge: 'CAMPAIGN URL' },
+  { key: 'slugGenerator', route: 'slug-generator', badge: 'CLEAN URL' },
+  { key: 'socialPreview', route: 'social-media-preview', badge: 'OG / CARDS' },
 ];
 
 const contentTools = [
-  { key: 'readabilityChecker', route: 'readability-checker' },
-  { key: 'colorContrast', route: 'color-contrast-checker' },
-  { key: 'boxShadow', route: 'box-shadow-generator' },
-  { key: 'gradientGen', route: 'css-gradient-generator' },
-  { key: 'glassGen', route: 'glassmorphism-generator' },
-  { key: 'loremGenerator', route: 'lorem-generator' },
-  { key: 'qrGenerator', route: 'qr-generator' },
-  { key: 'costCalculator', route: 'cost-calculator' },
-  { key: 'privacyGenerator', route: 'privacy-policy-generator' },
+  { key: 'costCalculator', route: 'cost-calculator', badge: '★ MOST POPULAR' },
+  { key: 'readabilityChecker', route: 'readability-checker', badge: 'CONTENT UX' },
+  { key: 'colorContrast', route: 'color-contrast-checker', badge: 'WCAG 2.2 AA' },
+  { key: 'boxShadow', route: 'box-shadow-generator', badge: 'CSS UI' },
+  { key: 'gradientGen', route: 'css-gradient-generator', badge: 'CSS UI' },
+  { key: 'glassGen', route: 'glassmorphism-generator', badge: 'CSS UI' },
+  { key: 'loremGenerator', route: 'lorem-generator', badge: 'MOCKTEXT' },
+  { key: 'qrGenerator', route: 'qr-generator', badge: 'SVG / PNG' },
+  { key: 'privacyGenerator', route: 'privacy-policy-generator', badge: 'COMPLIANCE' },
 ];
 
 const devTools = [
-  { key: 'base64', route: 'base64-encoder' },
-  { key: 'jsonFormatter', route: 'json-formatter' },
-  { key: 'robotsGenerator', route: 'robots-generator' },
-  { key: 'keywordDensity', route: 'keyword-density-analyzer' },
+  { key: 'base64', route: 'base64-encoder', badge: 'ENCODING' },
+  { key: 'jsonFormatter', route: 'json-formatter', badge: 'VALIDATOR' },
+  { key: 'robotsGenerator', route: 'robots-generator', badge: 'CRAWLER' },
+  { key: 'keywordDensity', route: 'keyword-density-analyzer', badge: 'ON-PAGE' },
 ];
 
 const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { label: titleText }];
 ---
 
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="tools">
-  <!-- Hero Section -->
-  <section
-    class="bg-linear-to-b from-primary/10 via-background to-background pt-28 pb-12 md:pt-40 md:pb-24"
+  <Hero
+    title={titleText}
+    description={descriptionText}
+    breadcrumbs={breadcrumbs}
+    lang={supportedLang}
   >
-    <div class="container mx-auto px-4">
-      <div class="mx-auto max-w-3xl text-center">
-        <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
-        <h1
-          class="mb-6 font-persian text-3xl leading-normal font-bold text-gray-900 md:text-5xl dark:text-white"
-        >
-          {titleText}
-        </h1>
-        <p class="font-persian text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-300">
-          {descriptionText}
-        </p>
-      </div>
+    <div class={`mt-4 flex flex-wrap justify-center gap-3 ${fontClass}`}>
+      <a
+        href={`/${supportedLang}/tools/cost-calculator/`}
+        class="inline-flex h-10 items-center gap-1.5 rounded border border-[var(--accent-green)] bg-[var(--accent-green-dim)] px-5 font-mono text-xs font-bold text-[var(--accent-contrast)] transition-all hover:bg-[var(--accent-green)] hover:text-[#090b0e] sm:text-sm"
+      >
+        <span dir="ltr">⚡</span>
+        <span>
+          {supportedLang === 'fa'
+            ? 'ماشین‌حساب هزینه طراحی سایت و سئو ←'
+            : supportedLang === 'ar'
+              ? 'حاسبة تكلفة الموقع والسيو ←'
+              : 'Launch Website Cost Calculator →'}
+        </span>
+      </a>
+      <button
+        type="button"
+        data-open-consultation
+        class="inline-flex h-10 cursor-pointer items-center gap-1.5 rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-4 font-mono text-xs font-bold text-[var(--text-primary)] transition-colors hover:border-[var(--accent-blue)] hover:text-[var(--accent-blue)] sm:text-sm"
+      >
+        <span>{t('common.freeConsultation', { fallback: 'Need Custom Engineering?' })}</span>
+      </button>
     </div>
-  </section>
+  </Hero>
 
   <!-- SEO Marketers Tools Grid -->
-  <section class="bg-white py-16 dark:bg-slate-950">
+  <section class={`border-b border-[var(--border-hairline)] bg-[var(--bg-canvas)] py-12 md:py-16 ${fontClass}`}>
     <div class="container mx-auto max-w-6xl px-4">
-      <div class="mb-12 text-center font-persian">
-        <h2 class="mb-4 text-3xl font-bold text-primary">
+      <div class="mb-8 text-center">
+        <span class="slash-eyebrow text-xs" dir="ltr">/SEO-UTILITIES · 8 TOOLS</span>
+        <h2 class="mt-1 mb-2 text-2xl font-bold text-[var(--text-primary)] sm:text-3xl">
           {t('tools.seoMarketersTitle', { fallback: 'SEO & Search Utilities' })}
         </h2>
-        <p class="mx-auto max-w-3xl text-xl text-gray-500 dark:text-gray-400">
-          {
-            t('tools.seoMarketersDesc', {
-              fallback: 'Optimize your on-page and technical configurations.',
-            })
-          }
+        <p class="mx-auto max-w-2xl text-sm text-[var(--text-secondary)] sm:text-base">
+          {t('tools.seoMarketersDesc', {
+            fallback: 'Optimize your on-page and technical configurations.',
+          })}
         </p>
       </div>
 
-      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
         {
-          seoTools.map(({ key, route }) => (
+          seoTools.map(({ key, route, badge }, idx) => (
             <a
               href={`/${supportedLang}/tools/${route}/`}
-              class="group flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-8 font-persian shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-primary/30"
+              class="terminal-window group flex flex-col justify-between"
             >
               <div>
-                <h3 class="mb-4 text-2xl font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
-                  {t(`${key}.title`, { fallback: key })}
-                </h3>
-                <p class="mb-6 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
-                  {t(`${key}.description`, {
-                    fallback: 'Optimize assets and verify index markers.',
-                  })}
-                </p>
+                <div class="terminal-chrome-bar" dir="ltr">
+                  <span class="font-mono text-xs font-bold text-[var(--accent-green)]">
+                    [0{idx + 1}] {route}
+                  </span>
+                  <span class="monospace-telemetry-pill">{badge}</span>
+                </div>
+                <div class="p-5">
+                  <h3 class="mb-2 text-lg font-bold text-[var(--text-primary)] transition-colors group-hover:text-[var(--accent-green)]">
+                    {t(`${key}.title`, { fallback: key })}
+                  </h3>
+                  <p class="text-xs leading-relaxed text-[var(--text-secondary)] sm:text-sm">
+                    {t(`${key}.description`, {
+                      fallback: 'Optimize assets and verify index markers.',
+                    })}
+                  </p>
+                </div>
               </div>
-              <div class="inline-flex items-center gap-1 text-sm font-bold text-primary transition-all group-hover:gap-2">
-                {t('common.readMore', { fallback: 'Launch Tool' })} {isRtl ? '←' : '→'}
+              <div class="flex items-center justify-between border-t border-[var(--border-hairline)] bg-[var(--bg-elevated)] px-5 py-2.5 font-mono text-xs font-bold text-[var(--accent-green)]">
+                <span>{t('common.readMore', { fallback: 'Launch Tool' })}</span>
+                <span>{isRtl ? '←' : '→'}</span>
               </div>
             </a>
           ))
@@ -118,41 +138,49 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
     </div>
   </section>
 
-  <!-- Content Creators Tools Grid -->
-  <section class="bg-gray-50 py-16 dark:bg-slate-900/50">
-    <div class="container mx-auto max-w-6xl px-4 font-sans">
-      <div class="mb-12 text-center font-persian">
-        <h2 class="mb-4 text-3xl font-bold text-green-600 dark:text-green-400">
+  <!-- Content & Business Tools Grid -->
+  <section class={`border-b border-[var(--border-hairline)] bg-[var(--bg-canvas)] py-12 md:py-16 ${fontClass}`}>
+    <div class="container mx-auto max-w-6xl px-4">
+      <div class="mb-8 text-center">
+        <span class="slash-eyebrow text-xs" dir="ltr">/DESIGN-AND-COST-UTILITIES · 9 TOOLS</span>
+        <h2 class="mt-1 mb-2 text-2xl font-bold text-[var(--text-primary)] sm:text-3xl">
           {t('tools.contentCreatorsTitle', { fallback: 'Developer & Layout Utilities' })}
         </h2>
-        <p class="mx-auto max-w-3xl text-xl text-gray-500 dark:text-gray-400">
-          {
-            t('tools.contentCreatorsDesc', {
-              fallback: 'Helpers for generators and web layout components.',
-            })
-          }
+        <p class="mx-auto max-w-2xl text-sm text-[var(--text-secondary)] sm:text-base">
+          {t('tools.contentCreatorsDesc', {
+            fallback: 'Helpers for generators and web layout components.',
+          })}
         </p>
       </div>
 
-      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
         {
-          contentTools.map(({ key, route }) => (
+          contentTools.map(({ key, route, badge }, idx) => (
             <a
               href={`/${supportedLang}/tools/${route}/`}
-              class="group flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-8 font-persian shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-primary/30"
+              class="terminal-window group flex flex-col justify-between"
             >
               <div>
-                <h3 class="mb-4 text-2xl font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
-                  {t(`${key}.title`, { fallback: key })}
-                </h3>
-                <p class="mb-6 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
-                  {t(`${key}.description`, {
-                    fallback: 'Optimize copy formatting and styling guidelines.',
-                  })}
-                </p>
+                <div class="terminal-chrome-bar" dir="ltr">
+                  <span class="font-mono text-xs font-bold text-[var(--accent-blue)]">
+                    [0{idx + 1}] {route}
+                  </span>
+                  <span class="monospace-telemetry-pill">{badge}</span>
+                </div>
+                <div class="p-5">
+                  <h3 class="mb-2 text-lg font-bold text-[var(--text-primary)] transition-colors group-hover:text-[var(--accent-green)]">
+                    {t(`${key}.title`, { fallback: key })}
+                  </h3>
+                  <p class="text-xs leading-relaxed text-[var(--text-secondary)] sm:text-sm">
+                    {t(`${key}.description`, {
+                      fallback: 'Optimize copy formatting and styling guidelines.',
+                    })}
+                  </p>
+                </div>
               </div>
-              <div class="inline-flex items-center gap-1 text-sm font-bold text-primary transition-all group-hover:gap-2">
-                {t('common.readMore', { fallback: 'Launch Tool' })} {isRtl ? '←' : '→'}
+              <div class="flex items-center justify-between border-t border-[var(--border-hairline)] bg-[var(--bg-elevated)] px-5 py-2.5 font-mono text-xs font-bold text-[var(--accent-green)]">
+                <span>{t('common.readMore', { fallback: 'Launch Tool' })}</span>
+                <span>{isRtl ? '←' : '→'}</span>
               </div>
             </a>
           ))
@@ -161,45 +189,65 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
     </div>
   </section>
 
-  <!-- Developer & Technical SEO Tools -->
-  <section class="bg-white py-16 dark:bg-slate-950">
-    <div class="container mx-auto max-w-6xl px-4 font-sans">
-      <div class="mb-12 text-center font-persian">
-        <h2 class="mb-4 text-3xl font-bold text-primary">
+  <!-- Technical SEO Tools -->
+  <section class={`bg-[var(--bg-canvas)] py-12 md:py-16 ${fontClass}`}>
+    <div class="container mx-auto max-w-6xl px-4">
+      <div class="mb-8 text-center">
+        <span class="slash-eyebrow text-xs" dir="ltr">/TECHNICAL-SEO-UTILITIES · 4 TOOLS</span>
+        <h2 class="mt-1 mb-2 text-2xl font-bold text-[var(--text-primary)] sm:text-3xl">
           {t('tools.technicalTitle', { fallback: 'Technical SEO Utilities' })}
         </h2>
-        <p class="mx-auto max-w-3xl text-xl text-gray-500 dark:text-gray-400">
-          {
-            t('tools.technicalDesc', {
-              fallback: 'Crawler directives, structured data, and content formatting helpers.',
-            })
-          }
+        <p class="mx-auto max-w-2xl text-sm text-[var(--text-secondary)] sm:text-base">
+          {t('tools.technicalDesc', {
+            fallback: 'Crawler directives, structured data, and content formatting helpers.',
+          })}
         </p>
       </div>
 
-      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
         {
-          devTools.map(({ key, route }) => (
+          devTools.map(({ key, route, badge }, idx) => (
             <a
               href={`/${supportedLang}/tools/${route}/`}
-              class="group flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-8 font-persian shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/20 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-primary/30"
+              class="terminal-window group flex flex-col justify-between"
             >
               <div>
-                <h3 class="mb-4 text-2xl font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
-                  {t(`tools.${key}.title`, { fallback: key })}
-                </h3>
-                <p class="mb-6 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
-                  {t(`tools.${key}.description`, {
-                    fallback: 'Optimize technical configurations for search engines.',
-                  })}
-                </p>
+                <div class="terminal-chrome-bar" dir="ltr">
+                  <span class="font-mono text-xs font-bold text-[var(--accent-amber)]">
+                    [0{idx + 1}] {route}
+                  </span>
+                  <span class="monospace-telemetry-pill">{badge}</span>
+                </div>
+                <div class="p-5">
+                  <h3 class="mb-2 text-base font-bold text-[var(--text-primary)] transition-colors group-hover:text-[var(--accent-green)] sm:text-lg">
+                    {t(`tools.${key}.title`, { fallback: key })}
+                  </h3>
+                  <p class="text-xs leading-relaxed text-[var(--text-secondary)]">
+                    {t(`tools.${key}.description`, {
+                      fallback: 'Optimize technical configurations for search engines.',
+                    })}
+                  </p>
+                </div>
               </div>
-              <div class="inline-flex items-center gap-1 text-sm font-bold text-primary transition-all group-hover:gap-2">
-                {t('common.readMore', { fallback: 'Launch Tool' })} {isRtl ? '←' : '→'}
+              <div class="flex items-center justify-between border-t border-[var(--border-hairline)] bg-[var(--bg-elevated)] px-5 py-2.5 font-mono text-xs font-bold text-[var(--accent-green)]">
+                <span>{t('common.readMore', { fallback: 'Launch Tool' })}</span>
+                <span>{isRtl ? '←' : '→'}</span>
               </div>
             </a>
           ))
         }
+      </div>
+
+      <div class="mt-12">
+        <CTA
+          lang={supportedLang}
+          title={t('tools.ctaTitle', { fallback: 'Want Our Engineers to Optimize Your Website?' })}
+          description={t('tools.ctaDescription', {
+            fallback:
+              'Get a full technical SEO, Core Web Vitals, and conversion rate audit performed by our senior team.',
+          })}
+          buttonText={t('common.freeConsultation', { fallback: 'Request Free Audit' })}
+        />
       </div>
     </div>
   </section>
