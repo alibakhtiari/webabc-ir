@@ -1,0 +1,361 @@
+---
+import { getDictionary } from '@/i18n/get-dictionary';
+import { languages, type SupportedLanguage } from '@/types/language';
+import { createTranslator } from '@/i18n/translate';
+
+interface Props {
+  lang: SupportedLanguage;
+}
+
+const { lang } = Astro.props;
+const dictionary = await getDictionary(lang);
+const isRtl = languages[lang]?.direction === 'rtl';
+const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 'font-persian';
+
+const t = createTranslator(dictionary);
+
+const linkPath = (path: string) => {
+  if (!path || path === '/') return `/${lang}/`;
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return `/${lang}${cleanPath.endsWith('/') ? cleanPath : cleanPath + '/'}`;
+};
+
+const featuredTools = [
+  {
+    idx: '01',
+    slug: 'cost-calculator',
+    badge: 'ESTIMATOR · INSTANT',
+    glyph: '6980',
+    title:
+      lang === 'fa'
+        ? 'ماشین‌حساب هزینه طراحی سایت و سئو'
+        : lang === 'ar'
+          ? 'حاسبة تكلفة تصميم الموقع والسيو'
+          : 'Website Cost Calculator',
+    desc:
+      lang === 'fa'
+        ? 'محاسبه آنی و شفاف هزینه طراحی سایت اختصاصی، وردپرس و سئو بر اساس امکانات پروژه شما.'
+        : lang === 'ar'
+          ? 'حاسبة فورية لتقدير تكلفة تصميم وتطوير المواقع وتحسين محركات البحث بدقة.'
+          : 'Interactive project scope calculator for instant, itemized web design and SEO price estimates.',
+    href: linkPath('/tools/cost-calculator'),
+  },
+  {
+    idx: '02',
+    slug: 'meta-generator',
+    badge: 'SERP · META-TAGS',
+    glyph: '<meta>',
+    title: t('metaGenerator.title', { fallback: 'Meta Description & Tag Generator' }),
+    desc:
+      lang === 'fa'
+        ? 'تولید تگ‌های استاندارد title، meta description و Open Graph با شمارنده زنده کاراکتر و پیکسل.'
+        : lang === 'ar'
+          ? 'إنشاء وسوم العنوان والوصف التعريفي المتوافقة مع معايير جوجل مع عداد مباشر.'
+          : 'Generates SEO-compliant <title> and <meta name="description"> tags with live character and pixel counters.',
+    href: linkPath('/tools/meta-generator'),
+  },
+  {
+    idx: '03',
+    slug: 'utm-builder',
+    badge: 'ANALYTICS · CAMPAIGN',
+    glyph: '?utm=',
+    title: t('utmBuilder.title', {
+      fallback: 'UTM Link Builder & URL Builder – Free Campaign URL Generator',
+    }),
+    desc:
+      lang === 'fa'
+        ? 'ساخت لینک‌های کمپین تبلیغاتی استاندارد با پارامترهای utm_source، utm_medium و utm_campaign.'
+        : lang === 'ar'
+          ? 'مولد روابط الحملات الإعلانية المجاني مع معلمات UTM القياسية لتتبع التحويلات.'
+          : 'Free campaign URL generator appending standardized utm_source, utm_medium, and utm_campaign parameters.',
+    href: linkPath('/tools/utm-builder'),
+  },
+];
+---
+
+<section
+  id="free-tools"
+  class={`border-b border-[var(--border-hairline)] bg-[var(--bg-canvas)] py-12 md:py-16 ${fontClass}`}
+>
+  <div class="container mx-auto px-4 md:px-6">
+    <!-- Section Header -->
+    <div class="mx-auto mb-10 max-w-3xl text-center">
+      <div class="mb-2 flex justify-center">
+        <span class="slash-eyebrow text-xs" dir="ltr">/FREE-TOOLS · 5 BROWSER UTILITIES</span>
+      </div>
+
+      <h2 class="mb-3 text-2xl font-bold tracking-tight text-balance text-[var(--text-primary)] sm:text-3xl md:text-4xl">
+        {
+          lang === 'fa'
+            ? 'ابزارهای رایگان سئو و مهندسی وب در مرورگر شما'
+            : lang === 'ar'
+              ? 'أدوات السيو وتطوير الويب التفاعلية المجانية'
+              : 'Interactive Free SEO & Web Engineering Tools'
+        }
+      </h2>
+
+      <p class="leading-relaxed text-balance text-[var(--text-secondary)]">
+        {
+          lang === 'fa'
+            ? 'بدون نیاز به ثبت‌نام یا نصب؛ ابزارهای تخصصی وب اِی‌بی‌سی را مستقیماً در مرورگر آزمایش کنید.'
+            : lang === 'ar'
+              ? 'اختبر أدوات WebABC المجانية مباشرة في المتصفح لتحسين ظهور موقعك ونسبة النقر.'
+              : 'Zero-install browser utilities built by WebABC engineers to test SERP pixel widths, generate JSON-LD schema, and estimate project scope.'
+        }
+      </p>
+    </div>
+
+    <!-- Top Row: 2 Interactive Micro-Demo Cards (Headline CTR Checker + FAQ Schema Generator) -->
+    <div class="mb-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <!-- Interactive Card 1: Headline & Title Checker -->
+      <div class="terminal-window flex flex-col justify-between">
+        <div>
+          <div class="terminal-chrome-bar" dir="ltr">
+            <span class="font-mono text-xs font-bold text-[var(--accent-amber)]">
+              ╭─ [TOOL 01] headline-analyzer.js ─╮
+            </span>
+            <span class="monospace-telemetry-pill">CTR-SCORE · PX-WIDTH</span>
+          </div>
+
+          <div class="p-6">
+            <h3 class="mb-2 text-xl font-bold text-[var(--text-primary)]">
+              {
+                t('headlineAnalyzer.title', {
+                  fallback: 'Headline & Title Checker — Score CTR + See Exact Google Width',
+                })
+              }
+            </h3>
+            <p class="mb-4 text-sm text-[var(--text-secondary)]">
+              {
+                lang === 'fa'
+                  ? 'امتیاز نرخ کلیک (CTR) و عرض دقیق پیکسلی عنوان در نتایج گوگل (حداکثر ۵۸۰ پیکسل) را زنده بررسی کنید.'
+                  : lang === 'ar'
+                    ? 'اختبر قوة العنوان ونسبة النقر (CTR) وعرض البكسل الفعلي في نتائج بحث جوجل (580px).'
+                    : 'Scores headline click-through rate (CTR) and previews exact Google SERP pixel width before 580px truncation.'
+              }
+            </p>
+
+            <!-- Live Mini-Preview Widget -->
+            <div
+              class="rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] p-4"
+              dir="ltr"
+              style="unicode-bidi: isolate;"
+            >
+              <label
+                for="mini-headline-input"
+                class="mb-1.5 block font-mono text-[11px] text-[var(--text-secondary)]"
+              >
+                LIVE SERP PIXEL &amp; CTR TESTER:
+              </label>
+              <input
+                id="mini-headline-input"
+                type="text"
+                value="WebABC Technical SEO & Custom Web Engineering Guide (2026)"
+                class="mb-3 h-9 w-full rounded border border-[var(--border-hairline)] bg-[var(--bg-surface)] px-3 font-mono text-xs text-[var(--text-primary)] focus:border-[var(--accent-green)] focus:outline-none"
+              />
+              <div class="flex flex-wrap items-center justify-between gap-2 font-mono text-xs">
+                <span class="text-[var(--text-secondary)]">
+                  WIDTH: <strong id="mini-px-count" class="text-[var(--accent-green)]">492px</strong> / 580px
+                </span>
+                <span class="text-[var(--text-secondary)]">
+                  CTR SCORE: <strong id="mini-ctr-score" class="text-[var(--accent-amber)]">92/100</strong>
+                </span>
+                <span id="mini-serp-status" class="monospace-telemetry-pill text-[var(--accent-green)]">
+                  ✓ OPTIMAL
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between border-t border-[var(--border-hairline)] bg-[var(--bg-elevated)] px-6 py-3">
+          <span class="ltr-isolate font-mono text-[11px] text-[var(--text-secondary)]" dir="ltr">
+            580PX RULER · SERP SIMULATOR
+          </span>
+          <a
+            href={linkPath('/tools/headline-analyzer')}
+            class="font-mono text-xs font-bold text-[var(--accent-green)] hover:underline"
+          >
+            {lang === 'fa' ? 'باز کردن ابزار کامل' : lang === 'ar' ? 'فتح الأداة الكاملة' : 'Open Full Tool'} {isRtl ? '←' : '→'}
+          </a>
+        </div>
+      </div>
+
+      <!-- Interactive Card 2: FAQ Schema Generator -->
+      <div class="terminal-window flex flex-col justify-between">
+        <div>
+          <div class="terminal-chrome-bar" dir="ltr">
+            <span class="font-mono text-xs font-bold text-[var(--accent-purple)]">
+              ╭─ [TOOL 02] faq-schema-generator.json ─╮
+            </span>
+            <span class="monospace-telemetry-pill">JSON-LD · RICH-RESULTS</span>
+          </div>
+
+          <div class="p-6">
+            <h3 class="mb-2 text-xl font-bold text-[var(--text-primary)]">
+              {
+                t('faqGenerator.title', {
+                  fallback: 'FAQ Schema Generator – Free FAQPage JSON-LD Schema Maker',
+                })
+              }
+            </h3>
+            <p class="mb-4 text-sm text-[var(--text-secondary)]">
+              {
+                lang === 'fa'
+                  ? 'تولید کد اسکیمای FAQPage استاندارد JSON-LD با قابلیت کپی سریع برای غنی‌سازی نتایج جستجو.'
+                  : lang === 'ar'
+                    ? 'مولد بيانات منظمة FAQPage بصيغة JSON-LD جاهز للنسخ لتحسين الظهور في نتائج البحث.'
+                    : 'Free FAQPage JSON-LD structured data maker with one-click copy for Google & AI Engine citation.'
+              }
+            </p>
+
+            <!-- Live JSON-LD Code Preview -->
+            <div
+              class="rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] p-3"
+              dir="ltr"
+              style="unicode-bidi: isolate;"
+            >
+              <div class="mb-1.5 flex items-center justify-between">
+                <span class="font-mono text-[11px] text-[var(--accent-purple)]">
+                  application/ld+json
+                </span>
+                <button
+                  type="button"
+                  id="mini-copy-jsonld-btn"
+                  class="cursor-pointer rounded border border-[var(--border-hairline)] bg-[var(--bg-elevated)] px-2 py-0.5 font-mono text-[11px] text-[var(--accent-green)] hover:border-[var(--accent-green)]"
+                >
+                  Copy JSON-LD
+                </button>
+              </div>
+              <pre
+                id="mini-jsonld-code"
+                class="overflow-x-auto font-mono text-[11px] leading-snug text-[var(--text-secondary)]"
+              >{`{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What services does WebABC provide?","acceptedAnswer":{"@type":"Answer","text":"Custom web development, technical SEO, and Core Web Vitals optimization."}}]}`}</pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between border-t border-[var(--border-hairline)] bg-[var(--bg-elevated)] px-6 py-3">
+          <span class="ltr-isolate font-mono text-[11px] text-[var(--text-secondary)]" dir="ltr">
+            SCHEMA.ORG VALIDATED
+          </span>
+          <a
+            href={linkPath('/tools/faq-generator')}
+            class="font-mono text-xs font-bold text-[var(--accent-green)] hover:underline"
+          >
+            {lang === 'fa' ? 'باز کردن ابزار کامل' : lang === 'ar' ? 'فتح الأداة الكاملة' : 'Open Full Tool'} {isRtl ? '←' : '→'}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Row: 3 Remaining Core Free Tools -->
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      {
+        featuredTools.map((tool) => (
+          <div class="terminal-window flex flex-col justify-between">
+            <div>
+              <div class="terminal-chrome-bar" dir="ltr">
+                <span class="font-mono text-xs font-bold text-[var(--accent-blue)]">
+                  {tool.glyph} · {tool.slug}
+                </span>
+                <span class="monospace-telemetry-pill">{tool.badge}</span>
+              </div>
+              <div class="p-6">
+                <h3 class="mb-2 text-lg font-bold text-[var(--text-primary)]">{tool.title}</h3>
+                <p class="text-sm leading-relaxed text-[var(--text-secondary)]">{tool.desc}</p>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between border-t border-[var(--border-hairline)] bg-[var(--bg-elevated)] px-6 py-3">
+              <span class="ltr-isolate font-mono text-[11px] text-[var(--text-secondary)]" dir="ltr">
+                FREE UTILITY
+              </span>
+              <a
+                href={tool.href}
+                class="font-mono text-xs font-bold text-[var(--accent-green)] hover:underline"
+              >
+                {lang === 'fa' ? 'اجرای ابزار' : lang === 'ar' ? 'تشغيل الأداة' : 'Launch Tool'} {isRtl ? '←' : '→'}
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- View All 21 Tools Footer Strip -->
+    <div class="mt-8 text-center">
+      <a
+        href={linkPath('/tools')}
+        class="inline-flex items-center gap-2 rounded border border-[var(--border-hairline)] bg-[var(--bg-surface)] px-5 py-2.5 font-mono text-xs font-bold text-[var(--accent-blue)] transition-colors hover:border-[var(--accent-blue)] hover:bg-[var(--bg-elevated)]"
+      >
+        <span>
+          {
+            lang === 'fa'
+              ? 'مشاهده همه ۲۱ ابزار رایگان سئو و توسعه وب'
+              : lang === 'ar'
+                ? 'استكشاف جميع أدوات السيو والمطورين (21 أداة مجانية)'
+                : 'Explore All 21 Free Browser SEO & Developer Utilities'
+          }
+        </span>
+        <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (() => {
+    function initFreeToolsPreview() {
+      const input = document.getElementById('mini-headline-input');
+      const pxCount = document.getElementById('mini-px-count');
+      const ctrScore = document.getElementById('mini-ctr-score');
+      const status = document.getElementById('mini-serp-status');
+
+      if (input && pxCount && ctrScore && status) {
+        input.oninput = () => {
+          const val = input.value || '';
+          const approxPx = Math.round(val.length * 8.5);
+          pxCount.textContent = `${approxPx}px`;
+          const hasYear = /202\d/.test(val);
+          const optimalLen = approxPx >= 280 && approxPx <= 580;
+          const score = Math.min(
+            98,
+            Math.max(35, (optimalLen ? 78 : 54) + (hasYear ? 10 : 0) + (val.length > 25 ? 6 : 0))
+          );
+          ctrScore.textContent = `${score}/100`;
+          if (approxPx > 580) {
+            status.textContent = '⚠ TRUNCATED';
+            status.style.color = 'var(--accent-coral)';
+          } else if (approxPx < 220) {
+            status.textContent = '• TOO SHORT';
+            status.style.color = 'var(--accent-amber)';
+          } else {
+            status.textContent = '✓ OPTIMAL';
+            status.style.color = 'var(--accent-green)';
+          }
+        };
+      }
+
+      const copyBtn = document.getElementById('mini-copy-jsonld-btn');
+      const codeEl = document.getElementById('mini-jsonld-code');
+      if (copyBtn && codeEl) {
+        copyBtn.onclick = async () => {
+          try {
+            await navigator.clipboard.writeText(codeEl.textContent || '');
+            const orig = copyBtn.textContent;
+            copyBtn.textContent = '✓ Copied!';
+            setTimeout(() => {
+              copyBtn.textContent = orig;
+            }, 1600);
+          } catch (e) {}
+        };
+      }
+    }
+
+    document.addEventListener('astro:page-load', initFreeToolsPreview);
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      initFreeToolsPreview();
+    }
+  })();
+</script>

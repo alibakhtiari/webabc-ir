@@ -2,7 +2,7 @@
 import { getDictionary } from '@/i18n/get-dictionary';
 import { languages, type SupportedLanguage } from '@/types/language';
 import { createTranslator } from '@/i18n/translate';
-import OptimizedImage from './OptimizedImage.astro';
+import AsciiStage from './AsciiStage.astro';
 
 interface Props {
   lang: SupportedLanguage;
@@ -12,7 +12,6 @@ const { lang } = Astro.props;
 const dictionary = await getDictionary(lang);
 const isRtl = languages[lang]?.direction === 'rtl';
 
-// Helper to translate strings
 const t = createTranslator(dictionary);
 const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 'font-persian';
 
@@ -21,16 +20,45 @@ const linkPath = (path: string) => {
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
   return `/${lang}${cleanPath.endsWith('/') ? cleanPath : cleanPath + '/'}`;
 };
+
+const trustStats =
+  lang === 'fa'
+    ? ['✓ مشاوره و آنالیز رایگان', '✓ پاسخگویی زیر ۲ ساعت', '✓ تضمین نمره سرعت و سئو', '✓ بدون قراردادهای قفل‌کننده']
+    : lang === 'ar'
+      ? ['✓ تدقيق واستشارة مجانية', '✓ رد خلال ساعتين', '✓ ضمان السرعة والسيو', '✓ عقود مرنة بدون التزام طويل']
+      : ['✓ Free 30-Min Strategy Call', '✓ Reply Under 2 Hours', '✓ CWV & Ranking Guarantee', '✓ No Long-Term Lock-In'];
+
+const auditPlaceholder =
+  lang === 'fa'
+    ? 'آدرس سایت شما (مثلاً yoursite.ir) برای آنالیز رایگان...'
+    : lang === 'ar'
+      ? 'أدخل رابط موقعك (مثل yoursite.com) للتدقيق المجاني...'
+      : 'Enter your website URL (e.g. yourcompany.com) for a free audit...';
+
+const auditBtnText =
+  lang === 'fa'
+    ? 'دریافت آنالیز رایگان ←'
+    : lang === 'ar'
+      ? 'احصل على تدقيق مجاني ←'
+      : 'Get Free Audit →';
 ---
 
-<section
-  class="overflow-hidden bg-linear-to-b from-primary/10 via-background to-background pt-32 pb-20 font-sans md:pt-40 md:pb-32"
->
+<section class="relative overflow-hidden border-b border-[var(--border-hairline)] bg-[var(--bg-canvas)] py-8 sm:py-12 lg:py-16">
   <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
-      <div class="col-span-1 text-center lg:col-span-6 lg:text-start">
+    <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10">
+      <!-- Left Column: High-Converting Value Proposition, Instant URL Audit & CTAs -->
+      <div class="col-span-1 space-y-5 text-center lg:col-span-5 lg:text-start">
+        <div class="inline-flex flex-wrap items-center justify-center gap-2 lg:justify-start">
+          <span class="slash-eyebrow text-[11px]" dir="ltr">
+            /HERO · WEB-ENGINEERING &amp; TECHNICAL SEO
+          </span>
+          <span class="monospace-telemetry-pill text-[var(--accent-green)]" dir="ltr">
+            ★ 4.9/5 · 150+ CLIENTS
+          </span>
+        </div>
+
         <h1
-          class={`text-4xl md:text-6xl font-bold mb-6 leading-normal text-gray-900 dark:text-white ${fontClass}`}
+          class={`text-2xl sm:text-3xl lg:text-4xl xl:text-[2.45rem] font-bold leading-[1.18] tracking-tight text-balance text-[var(--text-primary)] ${fontClass}`}
         >
           {
             t('home.hero.title', {
@@ -38,85 +66,152 @@ const linkPath = (path: string) => {
             })
           }
         </h1>
+
         <p
-          class={`text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 ${fontClass}`}
+          class={`text-sm sm:text-base leading-relaxed text-[var(--text-secondary)] max-w-xl mx-auto lg:mx-0 ${fontClass}`}
         >
           {
             t('home.hero.description', {
               fallback:
-                'We help businesses grow online with professional web development and SEO strategies that deliver real results.',
+                'WebABC is a full-service digital agency specializing in custom web development, technical SEO, and data-driven growth strategies for businesses across the Middle East.',
             })
           }
         </p>
-        <div class={`flex flex-col sm:flex-row gap-4 justify-center lg:justify-start ${fontClass}`}>
-          <a
-            href={linkPath('/services')}
-            class="rounded-lg bg-primary px-8 py-4 text-center font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+
+        <!-- CRO Micro-Funnel: Instant Website / SEO Audit Bar -->
+        <form
+          id="hero-instant-audit-form"
+          class="mx-auto flex max-w-xl flex-col gap-2 rounded-lg border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-2 shadow-sm sm:flex-row lg:mx-0"
+        >
+          <label for="hero-audit-url" class="sr-only">{auditPlaceholder}</label>
+          <input
+            id="hero-audit-url"
+            type="text"
+            dir="ltr"
+            placeholder={auditPlaceholder}
+            class="ltr-isolate h-10 grow rounded border border-[var(--border-subtle)] bg-[var(--bg-canvas)] px-3 font-mono text-xs text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] focus:border-[var(--accent-green)] focus:outline-none"
+          />
+          <button
+            type="submit"
+            class={`inline-flex h-10 shrink-0 cursor-pointer items-center justify-center rounded border border-[var(--accent-green)] bg-[var(--accent-green-dim)] px-4 font-mono text-xs font-bold whitespace-nowrap text-[var(--accent-contrast)] transition-all hover:bg-[var(--accent-green)] hover:text-[#090b0e] ${fontClass}`}
           >
-            {t('home.hero.primaryCta', { fallback: 'Explore Services' })}
+            {auditBtnText}
+          </button>
+        </form>
+
+        <!-- Secondary Action Links (Cost Estimator + Case Studies + Services) -->
+        <div class={`flex flex-wrap items-center justify-center gap-2.5 lg:justify-start ${fontClass}`}>
+          <button
+            type="button"
+            data-open-consultation
+            class="inline-flex h-9 cursor-pointer items-center gap-1.5 rounded border border-[var(--border-hairline)] bg-[var(--bg-surface)] px-3.5 text-xs font-bold whitespace-nowrap text-[var(--text-primary)] transition-colors hover:border-[var(--accent-green)] hover:text-[var(--accent-green)]"
+          >
+            <span>{t('common.freeConsultation', { fallback: 'Free Consultation' })}</span>
+            <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
+          </button>
+
+          <a
+            href={linkPath('/tools/cost-calculator')}
+            class="inline-flex h-9 items-center gap-1.5 rounded border border-[var(--border-hairline)] bg-[var(--bg-surface)] px-3.5 text-xs font-semibold whitespace-nowrap text-[var(--accent-blue)] transition-colors hover:border-[var(--accent-blue)] hover:bg-[var(--bg-elevated)]"
+          >
+            <span dir="ltr">⚡</span>
+            <span>
+              {
+                lang === 'fa'
+                  ? 'محاسبه آنلاین هزینه پروژه'
+                  : lang === 'ar'
+                    ? 'حاسبة تكلفة المشروع الفورية'
+                    : 'Estimate Project Cost'
+              }
+            </span>
           </a>
+
           <a
             href={linkPath('/portfolio')}
-            class="flex items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-8 py-4 text-gray-700 transition-all hover:bg-gray-50 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700"
+            class="inline-flex h-9 items-center gap-1 rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-3 text-xs font-semibold whitespace-nowrap text-[var(--text-secondary)] transition-colors hover:border-[var(--border-focus)] hover:text-[var(--text-primary)]"
           >
-            {t('home.hero.secondaryCta', { fallback: 'View Portfolio' })}
-            {
-              isRtl ? (
-                <svg
-                  aria-hidden="true"
-                  class="h-4 w-4"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  aria-hidden="true"
-                  class="h-4 w-4"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
-              )
-            }
+            <span>{t('home.hero.secondaryCta', { fallback: 'View Portfolio' })} (16+)</span>
+            <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
           </a>
         </div>
-      </div>
-      <div class="col-span-1 lg:col-span-6">
-        <div class="relative">
-          <div
-            class="absolute inset-0 -z-10 scale-110 transform rounded-full bg-linear-to-tr from-primary/20 to-secondary/20 blur-3xl"
-          >
-          </div>
-          <OptimizedImage
-            src="/images/homepage-hero.webp"
-            srcset="/images/homepage-hero-480.webp 480w, /images/homepage-hero-665.webp 665w, /images/homepage-hero.webp 1024w"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 665px"
-            alt={t('home.hero.imageAlt', {
-              fallback: 'Digital marketing and web development illustration',
-            })}
-            width={665}
-            height={665}
-            class="h-auto w-full rounded-lg object-cover shadow-2xl"
-            loading="eager"
-            fetchpriority="high"
-          />
+
+        <!-- Risk-Reversal & SLA Guarantees -->
+        <div class="flex flex-wrap items-center justify-center gap-1.5 pt-0.5 lg:justify-start">
+          {
+            trustStats.map((stat, idx) => (
+              <span
+                class={`inline-flex items-center rounded border border-[var(--border-hairline)] bg-[var(--bg-surface)] px-2.5 py-1 font-mono text-[11px] whitespace-nowrap ${
+                  idx === 0
+                    ? 'font-bold text-[var(--accent-green)]'
+                    : 'text-[var(--text-secondary)]'
+                }`}
+              >
+                {stat}
+              </span>
+            ))
+          }
         </div>
+      </div>
+
+      <!-- Right Column: Single Engaging Client Growth Storyboard -->
+      <div class="col-span-1 w-full lg:col-span-7">
+        <AsciiStage
+          id="hero-ascii"
+          lang={lang}
+          defaultPiece="hero-growth-story"
+          title={lang === 'fa'
+            ? 'مسیر رشد و تحول آنلاین شما با وب اِی‌بی‌سی'
+            : lang === 'ar'
+              ? 'رحلة نمو موقعك الرقمي مع WebABC'
+              : 'YOUR GROWTH JOURNEY WITH WEBABC'}
+          meta={lang === 'fa'
+            ? 'سایت پرسرعت ← رتبه ۱ گوگل ← ۳ برابر فروش'
+            : lang === 'ar'
+              ? 'موقع فائق السرعة ← تصدر جوجل ← مضاعفة المبيعات'
+              : 'FAST SITE → #1 GOOGLE → 3× SALES'}
+          size={14}
+          ariaLabel={t('home.hero.imageAlt', {
+            fallback:
+              'Animated 3-step visual showing how WebABC builds a modern fast website, ranks you #1 on Google, and grows your sales',
+          })}
+        />
       </div>
     </div>
   </div>
 </section>
+
+<script is:inline>
+  (() => {
+    function initHeroAuditForm() {
+      const form = document.getElementById('hero-instant-audit-form');
+      const urlInput = document.getElementById('hero-audit-url');
+      if (!form || form.dataset.bound === 'true') return;
+      form.dataset.bound = 'true';
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const rawUrl = (urlInput && urlInput.value ? urlInput.value.trim() : '');
+        const modalWebsiteInput = document.getElementById('consultation-website');
+        const modalMsgInput = document.getElementById('consultation-message');
+
+        if (modalWebsiteInput && rawUrl) {
+          modalWebsiteInput.value = rawUrl;
+        }
+        if (modalMsgInput && rawUrl && !modalMsgInput.value) {
+          modalMsgInput.value = `Please audit my website (${rawUrl}) and share an SEO & conversion roadmap.`;
+        }
+        if (typeof window.openConsultationModal === 'function') {
+          window.openConsultationModal('SEO & Specialized Optimization');
+        } else {
+          const dialog = document.getElementById('consultation-modal');
+          if (dialog && typeof dialog.showModal === 'function') dialog.showModal();
+        }
+      });
+    }
+
+    document.addEventListener('astro:page-load', initHeroAuditForm);
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      initHeroAuditForm();
+    }
+  })();
+</script>

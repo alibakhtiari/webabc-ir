@@ -10,8 +10,8 @@ interface Props {
 const { lang } = Astro.props;
 const dictionary = await getDictionary(lang);
 const isRtl = languages[lang]?.direction === 'rtl';
+const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 'font-persian';
 
-// Helper to translate strings
 const t = createTranslator(dictionary);
 
 const linkPath = (path: string) => {
@@ -19,46 +19,117 @@ const linkPath = (path: string) => {
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
   return `/${lang}${cleanPath.endsWith('/') ? cleanPath : cleanPath + '/'}`;
 };
+
+const steps =
+  lang === 'fa'
+    ? [
+        { num: '01', title: 'آنالیز رایگان سایت و رقبا', time: 'ظرف ۲۴ ساعت' },
+        { num: '02', title: 'جلسه مشاوره و نقشه راه اختصاصی', time: '۳۰ دقیقه آنلاین/تلفنی' },
+        { num: '03', title: 'پیشنهاد قیمت شفاف و شروع رشد', time: 'تضمین نتیجه' },
+      ]
+    : lang === 'ar'
+      ? [
+          { num: '01', title: 'تدقيق مجاني للموقع والمنافسين', time: 'خلال 24 ساعة' },
+          { num: '02', title: 'جلسة استشارة وخارطة طريق مخصصة', time: '30 دقيقة مجاناً' },
+          { num: '03', title: 'عرض سعر ثابت وبدء التنفيذ', time: 'ضمان النتائج' },
+        ]
+      : [
+          { num: '01', title: 'Free Website & Competitor Audit', time: 'Within 24 Hours' },
+          { num: '02', title: '1-on-1 Strategy & Growth Roadmap', time: '30-Min Free Call' },
+          { num: '03', title: 'Fixed-Price Proposal & Execution', time: 'Guaranteed CWV/SEO' },
+        ];
+
+const whatsappMessages: Record<string, string> = {
+  fa: 'سلام، برای دریافت مشاوره رایگان و آنالیز سایت پیام می‌دهم.',
+  ar: 'مرحباً، أود الحصول على استشارة مجانية وتدقيق لموقعي.',
+  en: 'Hello, I would like to request a free website audit and growth consultation.',
+};
+const waUrl = `https://wa.me/989125811880?text=${encodeURIComponent(whatsappMessages[lang] || whatsappMessages.en)}`;
 ---
 
-<section id="contact" class="relative overflow-hidden py-24 font-sans">
-  <div class="relative z-10 container mx-auto px-4 md:px-6">
+<section id="contact" class={`border-t border-[var(--border-hairline)] bg-[var(--bg-canvas)] py-14 md:py-20 ${fontClass}`}>
+  <div class="container mx-auto px-4 md:px-6">
     <div class="mx-auto max-w-5xl">
-      <div class="relative overflow-hidden rounded-3xl bg-primary p-8 md:p-12">
-        <!-- Background elements -->
-        <div class="absolute inset-0 overflow-hidden">
-          <div class="absolute top-0 right-0 h-64 w-64 rounded-full bg-white/10 blur-3xl"></div>
-          <div class="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-white/5 blur-3xl"></div>
+      <div class="terminal-window border border-[var(--border-focus)]">
+        <div class="terminal-chrome-bar" dir="ltr">
+          <span class="slash-eyebrow text-xs" dir="ltr">
+            ╭─ /GET-STARTED · ZERO-RISK CONSULTATION &amp; AUDIT ─╮
+          </span>
+          <span class="monospace-telemetry-pill text-[var(--accent-green)]">
+            ● REPLY IN &lt; 2 HOURS
+          </span>
         </div>
 
-        <div class="relative z-10 text-center">
-          <h2
-            class={`text-3xl md:text-4xl font-bold text-white mb-6 text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}
-          >
-            {t('cta.title')}
+        <div class="p-6 text-center sm:p-10">
+          <h2 class="mb-3 text-2xl font-bold text-balance text-[var(--text-primary)] sm:text-3xl md:text-4xl">
+            {t('cta.title', { fallback: 'Ready to take your business to the next level?' })}
           </h2>
 
-          <p
-            class={`text-white/90 text-lg mb-8 max-w-3xl mx-auto text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}
-          >
-            {t('cta.description')}
+          <p class="mx-auto mb-8 max-w-2xl text-sm text-balance text-[var(--text-secondary)] sm:text-base">
+            {
+              t('cta.description', {
+                fallback:
+                  'Get a free consultation and receive a custom SEO and web development strategy for your business.',
+              })
+            }
           </p>
 
-          <div
-            class={`flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 font-${lang === 'en' ? 'sans' : 'persian'}`}
-          >
+          <!-- 3-Step "What Happens Next" Clarity Strip (Reduces anxiety & boosts conversion) -->
+          <div class="mb-8 grid grid-cols-1 gap-3 text-start md:grid-cols-3">
+            {
+              steps.map((s) => (
+                <div class="rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] p-4">
+                  <div class="mb-1.5 flex items-center justify-between" dir="ltr">
+                    <span class="font-mono text-xs font-bold text-[var(--accent-green)]">
+                      [STEP {s.num}]
+                    </span>
+                    <span class="monospace-telemetry-pill">{s.time}</span>
+                  </div>
+                  <div class="text-sm font-bold text-[var(--text-primary)]">{s.title}</div>
+                </div>
+              ))
+            }
+          </div>
+
+          <!-- Primary & Multi-Channel Conversion Buttons -->
+          <div class="flex flex-wrap items-center justify-center gap-3">
             <button
               type="button"
               id="cta-consultation-btn"
-              class={`px-6 py-3 rounded-full bg-white text-primary font-medium transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2 ${isRtl ? 'flex-row-reverse' : ''}`}
+              data-open-consultation
+              class="inline-flex h-11 cursor-pointer items-center gap-2 rounded border border-[var(--accent-green)] bg-[var(--accent-green-dim)] px-6 font-mono text-xs font-bold text-[var(--accent-contrast)] transition-all hover:bg-[var(--accent-green)] hover:text-[#090b0e] sm:text-sm"
             >
-              <span>{t('cta.primaryButton')}</span>
+              <span>{t('cta.primaryButton', { fallback: 'Get Free Consultation' })}</span>
+              <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
             </button>
+
             <a
-              href={linkPath('/contact')}
-              class="rounded-full border border-white/30 bg-transparent px-6 py-3 text-white transition-all duration-300 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              href={waUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex h-11 items-center gap-2 rounded border border-[var(--accent-green)]/50 bg-[var(--bg-canvas)] px-5 font-mono text-xs font-bold text-[var(--accent-green)] transition-all hover:bg-[var(--accent-green)] hover:text-[#090b0e] sm:text-sm"
             >
-              <span>{t('cta.secondaryButton')}</span>
+              <span>
+                {lang === 'fa'
+                  ? 'چت فوری در واتساپ'
+                  : lang === 'ar'
+                    ? 'محادثة فورية عبر واتساب'
+                    : 'Instant WhatsApp Chat'}
+              </span>
+            </a>
+
+            <a
+              href={linkPath('/tools/cost-calculator')}
+              class="inline-flex h-11 items-center gap-1.5 rounded border border-[var(--border-hairline)] bg-[var(--bg-elevated)] px-5 font-mono text-xs font-semibold text-[var(--text-primary)] transition-all hover:border-[var(--accent-blue)] hover:text-[var(--accent-blue)] sm:text-sm"
+            >
+              <span dir="ltr">⚡</span>
+              <span>
+                {lang === 'fa'
+                  ? 'ماشین‌حساب هزینه پروژه'
+                  : lang === 'ar'
+                    ? 'حاسبة تكلفة المشروع'
+                    : 'Calculate Project Cost'}
+              </span>
             </a>
           </div>
         </div>
@@ -66,22 +137,3 @@ const linkPath = (path: string) => {
     </div>
   </div>
 </section>
-
-<script is:inline>
-  (() => {
-    function initCta() {
-      const ctaBtn = document.getElementById('cta-consultation-btn');
-      const consultationModal = document.getElementById('consultation-modal');
-      if (ctaBtn && consultationModal) {
-        ctaBtn.onclick = () => {
-          consultationModal.showModal();
-        };
-      }
-    }
-
-    document.addEventListener('astro:page-load', initCta);
-    if (document.readyState === 'complete' || document.readyState === 'interactive') {
-      initCta();
-    }
-  })();
-</script>

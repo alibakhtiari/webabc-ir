@@ -1,9 +1,8 @@
 ---
-import { Picture } from 'astro:assets';
 import { getDictionary } from '@/i18n/get-dictionary';
 import { languages, type SupportedLanguage } from '@/types/language';
 import { createTranslator } from '@/i18n/translate';
-import seoResultsImg from '@/assets/images/seo-results.webp';
+import AsciiStage from './AsciiStage.astro';
 
 interface Props {
   lang: SupportedLanguage;
@@ -14,210 +13,182 @@ const dictionary = await getDictionary(lang);
 const isRtl = languages[lang]?.direction === 'rtl';
 const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 'font-persian';
 
-// Helper to translate strings
 const t = createTranslator(dictionary);
 
 const benefits = [
   {
-    title: t('benefits.brandCredibility.title', { fallback: 'افزایش اعتبار برند' }),
+    idx: '01',
+    metric: 'TRUST · E-E-A-T',
+    title: t('benefits.brandCredibility.title', { fallback: 'Increase Brand Credibility' }),
     description: t('benefits.brandCredibility.description', {
-      fallback: 'با حضور قدرتمند در نتایج جستجو، اعتبار برند خود را افزایش دهید.',
+      fallback: "Boost your brand's credibility with a strong presence in search results.",
     }),
   },
   {
-    title: t('benefits.increaseSales.title', { fallback: 'افزایش فروش و درآمد' }),
+    idx: '02',
+    metric: 'CRO · REVENUE',
+    title: t('benefits.increaseSales.title', { fallback: 'Increase Sales and Revenue' }),
     description: t('benefits.increaseSales.description', {
-      fallback: 'با جذب ترافیک هدفمند، نرخ تبدیل و فروش خود را افزایش دهید.',
+      fallback: 'Attract targeted traffic to improve conversion rates and sales.',
     }),
   },
   {
-    title: t('benefits.reduceCosts.title', { fallback: 'کاهش هزینه‌های تبلیغاتی' }),
+    idx: '03',
+    metric: 'CAC -48% · ORGANIC',
+    title: t('benefits.reduceCosts.title', { fallback: 'Reduce Advertising Costs' }),
     description: t('benefits.reduceCosts.description', {
-      fallback: 'با بهبود رتبه‌های ارگانیک، هزینه‌های تبلیغات کلیکی را کاهش دهید.',
+      fallback: 'Lower your pay-per-click advertising costs by improving organic rankings.',
     }),
   },
   {
-    title: t('benefits.competitiveAdvantage.title', { fallback: 'برتری نسبت به رقبا' }),
+    idx: '04',
+    metric: 'SERP MOAT · TOP-3',
+    title: t('benefits.competitiveAdvantage.title', { fallback: 'Gain Competitive Advantage' }),
     description: t('benefits.competitiveAdvantage.description', {
-      fallback: 'با استراتژی‌های سئوی پیشرفته، از رقبای خود پیشی بگیرید.',
+      fallback: 'Get ahead of your competitors with advanced SEO strategies.',
     }),
   },
 ];
+
+const guaranteeList = [
+  t('benefits.guaranteeFeatures.0', {
+    fallback: 'Monthly reports with precise metrics',
+  }),
+  t('benefits.guaranteeFeatures.1', {
+    fallback: 'Complete transparency throughout the collaboration',
+  }),
+  t('benefits.guaranteeFeatures.2', {
+    fallback: 'Guaranteed improvement in target keyword rankings',
+  }),
+  t('benefits.guaranteeFeatures.3', {
+    fallback: 'Flexible contracts with no long-term commitment',
+  }),
+];
 ---
 
-<section class="relative overflow-hidden bg-background py-20 font-sans md:py-32">
-  <!-- Background Decorations -->
-  <div class="pointer-events-none absolute inset-0 overflow-hidden">
-    <div class="absolute top-40 left-10 h-72 w-72 rounded-full bg-primary/5 blur-3xl"></div>
-    <div class="absolute right-20 bottom-40 h-64 w-64 rounded-full bg-primary/10 blur-3xl"></div>
-  </div>
+<section class={`border-b border-[var(--border-hairline)] bg-[var(--bg-canvas)] py-12 md:py-16 ${fontClass}`}>
+  <div class="container mx-auto px-4 md:px-6">
+    <!-- Part A: /WHY-WEBABC -->
+    <div class="mx-auto mb-10 max-w-3xl text-center">
+      <div class="mb-2 flex justify-center">
+        <span class="slash-eyebrow text-xs" dir="ltr">
+          /WHY-WEBABC · {t('benefits.sectionTag', { fallback: 'ENGINEERING ADVANTAGE' })}
+        </span>
+      </div>
 
-  <div class="relative z-10 container mx-auto px-4 md:px-6">
-    <div class="mx-auto mb-16 max-w-3xl text-center">
-      <span
-        class={`inline-block mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium ${fontClass}`}
-      >
-        {t('benefits.sectionTag', { fallback: 'مزایای همکاری با ما' })}
-      </span>
-
-      <h2 class={`text-3xl md:text-4xl font-bold tracking-tight mb-6 text-balance ${fontClass}`}>
-        {t('benefits.sectionTitle.prefix', { fallback: 'چرا ' })}
-        <span class="text-primary"
-          >{t('benefits.sectionTitle.highlight', { fallback: 'WebABC' })}</span
-        >
-        {t('benefits.sectionTitle.suffix', { fallback: ' را انتخاب کنید؟' })}
+      <h2 class="mb-3 text-2xl font-bold tracking-tight text-balance text-[var(--text-primary)] sm:text-3xl md:text-4xl">
+        {t('benefits.sectionTitle.prefix', { fallback: 'Why Choose ' })}
+        <span class="text-[var(--accent-green)]">
+          {t('benefits.sectionTitle.highlight', { fallback: 'WebABC' })}
+        </span>
+        {t('benefits.sectionTitle.suffix', { fallback: '?' })}
       </h2>
 
-      <p class={`text-foreground/80 leading-relaxed text-balance ${fontClass}`}>
+      <p class="text-sm leading-relaxed text-balance text-[var(--text-secondary)] sm:text-base">
         {
           t('benefits.sectionDescription', {
             fallback:
-              'ما با تمرکز بر نتایج ملموس و استراتژی‌های اثبات شده، به کسب و کار شما کمک می‌کنیم تا در دنیای دیجیتال امروزی رشد کند.',
+              'Focusing on tangible results and proven strategies, we help your business grow in today’s digital world.',
           })
         }
       </p>
     </div>
 
-    <div class="mb-16 grid grid-cols-1 gap-8 md:grid-cols-2">
+    <!-- 4-Card Hairline Grid with Monospace Index Numbers ([01]-[04]) -->
+    <div class="mb-12 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-[var(--border-hairline)] bg-[var(--border-hairline)] md:grid-cols-2">
       {
         benefits.map((benefit) => (
-          <div class="glass-morphism rounded-xl p-6 transition-all duration-300 hover:shadow-md">
-            <div class="flex items-start gap-4">
-              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <svg
-                  aria-hidden="true"
-                  class="h-5 w-5"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <div class="space-y-2">
-                <h3 class={`text-xl font-medium ${fontClass}`}>{benefit.title}</h3>
-                <p class={`text-foreground/70 ${fontClass}`}>{benefit.description}</p>
-              </div>
+          <div class="bg-[var(--bg-surface)] p-5 transition-colors hover:bg-[var(--bg-elevated)] sm:p-6">
+            <div class="mb-3 flex items-center justify-between" dir="ltr">
+              <span class="font-mono text-xs font-bold text-[var(--accent-green)]">
+                [{benefit.idx}]
+              </span>
+              <span class="monospace-telemetry-pill">{benefit.metric}</span>
             </div>
+            <h3 class="mb-1.5 text-lg font-bold text-[var(--text-primary)]">{benefit.title}</h3>
+            <p class="text-xs leading-relaxed text-[var(--text-secondary)] sm:text-sm">
+              {benefit.description}
+            </p>
           </div>
         ))
       }
     </div>
 
-    <!-- Guarantee Block -->
-    <div class="overflow-hidden rounded-2xl neo-morphism">
-      <div class="grid grid-cols-1 lg:grid-cols-2">
-        <div class="flex flex-col justify-center p-8 md:p-12">
-          <div
-            class="mb-2 flex max-w-max rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs text-primary"
-          >
-            <span>{t('benefits.guaranteeTag', { fallback: 'تضمین نتیجه' })}</span>
+    <!-- Part B: /RESULTS (Tangible Results with Proven Methods) -->
+    <div class="terminal-window">
+      <div class="terminal-chrome-bar" dir="ltr">
+        <span class="slash-eyebrow text-xs" dir="ltr">
+          /RESULTS · VERIFIED CORE WEB VITALS &amp; RANKINGS
+        </span>
+        <span class="monospace-telemetry-pill">star-history-climb · 12M ROI</span>
+      </div>
+
+      <div class="grid grid-cols-1 items-center divide-y divide-[var(--border-hairline)] lg:grid-cols-12 lg:divide-x lg:divide-y-0 rtl:lg:divide-x-reverse">
+        <!-- Left Column: Verified Checklist -->
+        <div class="flex flex-col justify-center p-5 sm:p-7 lg:col-span-5">
+          <div class="mb-2">
+            <span class="monospace-telemetry-pill text-[var(--accent-green)]">
+              {t('benefits.guaranteeTag', { fallback: 'RESULTS GUARANTEED' })}
+            </span>
           </div>
 
-          <h3 class={`text-2xl md:text-3xl font-bold mb-6 text-balance ${fontClass}`}>
-            {t('benefits.guaranteeTitle.prefix', { fallback: 'نتایج ملموس با روش‌های ' })}
-            <span class="text-primary"
-              >{t('benefits.guaranteeTitle.highlight', { fallback: 'اثبات شده' })}</span
-            >
+          <h3 class="mt-1 mb-3 text-xl font-bold text-balance text-[var(--text-primary)] sm:text-2xl">
+            {t('benefits.guaranteeTitle.prefix', { fallback: 'Tangible Results with ' })}
+            <span class="text-[var(--accent-green)]">
+              {t('benefits.guaranteeTitle.highlight', { fallback: 'Proven Methods' })}
+            </span>
           </h3>
 
-          <p class={`text-foreground/80 leading-relaxed mb-8 text-balance ${fontClass}`}>
+          <p class="mb-5 text-sm leading-relaxed text-balance text-[var(--text-secondary)]">
             {
               t('benefits.guaranteeDescription', {
                 fallback:
-                  'ما معتقدیم که سئو یک فرآیند مستمر است و با برنامه‌ریزی دقیق و استراتژی‌های اصولی، نتایج درازمدت و پایداری را برای کسب و کار شما به ارمغان می‌آوریم.',
+                  'We believe that SEO is an ongoing process. With careful planning and sound strategies, we bring long-term and sustainable results to your business.',
               })
             }
           </p>
 
-          <ul class="mb-8 space-y-4">
+          <ul class="mb-6 space-y-2.5">
             {
-              [
-                t('benefits.guaranteeFeatures.0', {
-                  fallback: 'گزارش‌های ماهانه با متریک‌های دقیق',
-                }),
-                t('benefits.guaranteeFeatures.1', { fallback: 'شفافیت کامل در تمام مراحل همکاری' }),
-                t('benefits.guaranteeFeatures.2', {
-                  fallback: 'تضمین بهبود رتبه در کلمات کلیدی هدف',
-                }),
-                t('benefits.guaranteeFeatures.3', {
-                  fallback: 'قراردادهای منعطف و بدون تعهد بلندمدت',
-                }),
-              ].map((item) => (
-                <li class={`flex items-center ${fontClass}`}>
-                  <div class="me-3 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
-                    <svg
-                      aria-hidden="true"
-                      class="h-4 w-4"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                    >
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
+              guaranteeList.map((item) => (
+                <li class="flex items-start gap-2 text-xs text-[var(--text-primary)] sm:text-sm">
+                  <span class="ltr-isolate mt-0.5 shrink-0 font-mono text-xs font-bold text-[var(--accent-green)]" dir="ltr">
+                    [✓]
+                  </span>
                   <span>{item}</span>
                 </li>
               ))
             }
           </ul>
 
-          <div class="flex items-center">
+          <div>
             <button
               type="button"
-              class={`px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2 ${fontClass}`}
+              data-open-consultation
+              class="inline-flex cursor-pointer items-center gap-2 rounded border border-[var(--accent-green)] bg-[var(--accent-green-dim)] px-4 py-2.5 font-mono text-xs font-bold text-[var(--accent-contrast)] transition-all hover:bg-[var(--accent-green)] hover:text-[#090b0e] sm:text-sm"
             >
-              <span>{t('benefits.ctaButton', { fallback: 'دریافت مشاوره رایگان' })}</span>
-              {
-                isRtl ? (
-                  <svg
-                    aria-hidden="true"
-                    class="h-4 w-4"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    aria-hidden="true"
-                    class="h-4 w-4"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                )
-              }
+              <span>{t('benefits.ctaButton', { fallback: 'Get Free Consultation' })}</span>
+              <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
             </button>
           </div>
         </div>
 
-        <div
-          class="relative flex aspect-video min-h-100 items-center justify-center bg-gray-50 lg:aspect-auto dark:bg-slate-900"
-        >
-          <Picture
-            src={seoResultsImg}
-            formats={['avif', 'webp']}
-            alt={t('benefits.imageAlt', { fallback: 'تصویر نتایج سئو' })}
-            width={600}
-            height={400}
-            loading="lazy"
-            class="h-full w-full object-cover"
+        <!-- Right Column: Live <ascii-art piece="star-history-climb"> Telemetry Card -->
+        <div class="bg-[var(--bg-canvas)] p-3 sm:p-5 lg:col-span-7">
+          <AsciiStage
+            id="results-ascii"
+            lang={lang}
+            defaultPiece="star-history-climb"
+            title={lang === 'fa'
+              ? '/تله‌متری · رشد تصاعدی ایمپرشن ارگانیک و رتبه‌های ۱ تا ۳'
+              : lang === 'ar'
+                ? '/القياس عن بُعد · نمو مرات الظهور وتصدر المراتب الثلاث الأولى'
+                : '/TELEMETRY · Compounding Organic Impressions & Top-3 Velocity'}
+            meta="66×17 · 24 fps · 3.2 KB"
+            size={12}
+            ariaLabel={t('benefits.imageAlt', {
+              fallback: 'Live ASCII chart showing compounding SEO growth and Core Web Vitals metrics',
+            })}
           />
         </div>
       </div>

@@ -1,0 +1,163 @@
+---
+import { getCollection } from 'astro:content';
+import { getDictionary } from '@/i18n/get-dictionary';
+import { languages, type SupportedLanguage } from '@/types/language';
+import { createTranslator } from '@/i18n/translate';
+import { PILLAR_LABELS, getProjectPillar } from '@/data/portfolio-meta';
+
+interface Props {
+  lang: SupportedLanguage;
+}
+
+const { lang } = Astro.props;
+const dictionary = await getDictionary(lang);
+const isRtl = languages[lang]?.direction === 'rtl';
+const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 'font-persian';
+const t = createTranslator(dictionary);
+
+const linkPath = (path: string) => {
+  if (!path || path === '/') return `/${lang}/`;
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return `/${lang}${cleanPath.endsWith('/') ? cleanPath : cleanPath + '/'}`;
+};
+
+const allProjects = await getCollection('portfolio');
+const localeProjects = allProjects
+  .filter((proj) => proj.id.startsWith(`${lang}/`))
+  .slice(0, 3)
+  .map((p) => {
+    const slug = p.id.replace(`${lang}/`, '').replace(/\.mdx?$/, '');
+    const pillar = getProjectPillar(slug, p.data.category);
+    return {
+      slug,
+      title: p.data.title,
+      client: p.data.client,
+      description: p.data.description,
+      pillarLabel: PILLAR_LABELS[lang]?.[pillar] || p.data.category,
+      results: (p.data.results || []).slice(0, 2),
+      technologies: (p.data.technologies || []).slice(0, 3),
+    };
+  });
+
+const sectionTitle =
+  lang === 'fa'
+    ? 'نمونه‌کارها و نتایج واقعی مشتریان وب اِی‌بی‌سی'
+    : lang === 'ar'
+      ? 'دراسات حالة ونتائج حقيقية لعملاء WebABC'
+      : 'Verified Client Case Studies & Measurable ROI';
+
+const sectionSubtitle =
+  lang === 'fa'
+    ? 'بیش از ۱۶ پروژه موفق با رشد چندبرابری ترافیک ارگانیک، سرعت لود زیر ۱ ثانیه و افزایش مستقیم فروش.'
+    : lang === 'ar'
+      ? 'أكثر من 16 دراسة حالة موثقة بمضاعفة الزيارات العضوية وتحسين معدل التحويل والمبيعات.'
+      : 'See how our custom web engineering and technical SEO campaigns have multiplied organic traffic and sales for real businesses.';
+---
+
+{
+  localeProjects.length > 0 && (
+    <section class={`border-b border-[var(--border-hairline)] bg-[var(--bg-canvas)] py-12 md:py-16 ${fontClass}`}>
+      <div class="container mx-auto px-4 md:px-6">
+        <!-- Header Row -->
+        <div class="mb-10 flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-start">
+          <div class="max-w-2xl">
+            <span class="slash-eyebrow text-xs" dir="ltr">
+              /PROVEN-CASE-STUDIES · SOCIAL PROOF &amp; ROI
+            </span>
+            <h2 class="mt-1.5 text-2xl font-bold tracking-tight text-[var(--text-primary)] sm:text-3xl md:text-4xl">
+              {sectionTitle}
+            </h2>
+            <p class="mt-2 text-sm leading-relaxed text-[var(--text-secondary)] sm:text-base">
+              {sectionSubtitle}
+            </p>
+          </div>
+
+          <div class="flex shrink-0 flex-wrap items-center gap-2.5">
+            <a
+              href={linkPath('/portfolio')}
+              class="inline-flex h-10 items-center gap-1.5 rounded border border-[var(--border-hairline)] bg-[var(--bg-surface)] px-4 font-mono text-xs font-bold text-[var(--accent-blue)] transition-colors hover:border-[var(--accent-blue)] hover:bg-[var(--bg-elevated)]"
+            >
+              <span>
+                {lang === 'fa'
+                  ? 'مشاهده همه ۱۶+ نمونه‌کار'
+                  : lang === 'ar'
+                    ? 'عرض جميع الأعمال (16+)'
+                    : 'View All 16+ Case Studies'}
+              </span>
+              <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3 Verified Case Study Cards -->
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+          {localeProjects.map((item, idx) => (
+            <article class="terminal-window flex flex-col justify-between">
+              <div>
+                <div class="terminal-chrome-bar" dir="ltr">
+                  <span class="font-mono text-xs font-bold text-[var(--accent-green)]">
+                    [CASE 0{idx + 1}] · {item.client}
+                  </span>
+                  <span class="monospace-telemetry-pill">{item.pillarLabel}</span>
+                </div>
+
+                <div class="space-y-4 p-5 sm:p-6">
+                  <h3 class="text-lg font-bold text-[var(--text-primary)] transition-colors hover:text-[var(--accent-green)]">
+                    <a href={linkPath(`/portfolio/${item.slug}`)}>{item.title}</a>
+                  </h3>
+
+                  <p class="line-clamp-2 text-xs leading-relaxed text-[var(--text-secondary)] sm:text-sm">
+                    {item.description}
+                  </p>
+
+                  {item.results.length > 0 && (
+                    <div class="grid grid-cols-2 gap-2.5 pt-1">
+                      {item.results.map((res: any) => (
+                        <div class="rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] p-2.5 text-center">
+                          <div class="font-mono text-base font-extrabold text-[var(--accent-green)]">
+                            {res.value}
+                          </div>
+                          <div class="mt-0.5 truncate text-[11px] text-[var(--text-secondary)]">
+                            {res.label}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {item.technologies.length > 0 && (
+                    <div class="flex flex-wrap gap-1.5 pt-1" dir="ltr">
+                      {item.technologies.map((tech: string) => (
+                        <span class="monospace-telemetry-pill text-[10px]">{tech}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between border-t border-[var(--border-hairline)] bg-[var(--bg-elevated)] px-5 py-3">
+                <button
+                  type="button"
+                  data-consult-service={`${item.pillarLabel} (Similar to ${item.client})`}
+                  class="cursor-pointer font-mono text-xs font-bold text-[var(--accent-green)] hover:underline"
+                >
+                  {lang === 'fa'
+                    ? 'سفارش پروژه مشابه ←'
+                    : lang === 'ar'
+                      ? 'اطلب مشروعاً مشابهاً ←'
+                      : 'Request Similar Results →'}
+                </button>
+                <a
+                  href={linkPath(`/portfolio/${item.slug}`)}
+                  class="font-mono text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                >
+                  {t('portfolio.card.viewCaseStudy', { fallback: 'Case Study' })} {isRtl ? '←' : '→'}
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
