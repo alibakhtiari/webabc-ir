@@ -3,7 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import Hero from '@/components/astro/Hero.astro';
 import ServicesSection from '@/components/astro/ServicesSection.astro';
 import CTA from '@/components/astro/CTA.astro';
-import { getLanguageStaticPaths, languages, type SupportedLanguage } from '@/types/language';
+import { getLanguageStaticPaths, type SupportedLanguage } from '@/types/language';
 import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
 
@@ -14,7 +14,6 @@ const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
 
 const t = createTranslator(dictionary);
-const isRtl = languages[supportedLang]?.direction === 'rtl';
 
 const title = `${t('common.notFound.title', { fallback: '404 - Page Not Found' })} | WebABC`;
 const description = t('common.notFound.subtitle', {
@@ -26,7 +25,6 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
 
 const origin = 'https://webabc.ir';
 
-// Schema.org for AI search engines & crawlers (GEO / AEO optimized)
 const pageNotFoundSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
@@ -61,119 +59,123 @@ const quickLinks = [
     lang={supportedLang}
   />
 
-  <section class="bg-white py-16 font-persian font-sans dark:bg-slate-950">
+  <section class="bg-[var(--bg-canvas)] py-16 font-persian font-sans">
     <div class="container mx-auto max-w-4xl space-y-12 px-4 text-center">
-      <!-- Interactive 404 Hero Card -->
-      <div
-        class="space-y-6 rounded-3xl border border-gray-100 bg-gray-50 p-8 shadow-xs md:p-12 dark:border-slate-800 dark:bg-slate-900"
-      >
-        <span
-          class="inline-block rounded-full bg-primary/10 px-4 py-1.5 font-mono text-sm font-black tracking-wider text-primary uppercase"
+      <!-- Interactive 404 Terminal Card -->
+      <div class="terminal-window">
+        <div class="terminal-chrome-bar" dir="ltr">
+          <span class="font-mono text-xs font-bold text-[var(--accent-coral)]">
+            ╭─ /ERROR-404 · lost-in-space-404.js ─╮
+          </span>
+          <span class="monospace-telemetry-pill">STATUS 404 · RECOVERY</span>
+        </div>
+
+        <div
+          class="crt-scanlines overflow-x-auto border-b border-[var(--border-hairline)] bg-[var(--bg-canvas)] py-2"
+          dir="ltr"
+          style="min-height: 210px; unicode-bidi: isolate;"
         >
-          Error 404
-        </span>
-        <h2 class="text-3xl leading-tight font-extrabold text-gray-900 md:text-4xl dark:text-white">
-          {
-            supportedLang === 'fa'
-              ? 'صفحه مورد نظر شما پیدا نشد'
-              : supportedLang === 'ar'
-                ? 'الصفحة المطلوبة غير موجودة'
-                : 'Looking for Web Design or SEO Services?'
-          }
-        </h2>
-        <p class="mx-auto max-w-2xl leading-relaxed text-gray-600 dark:text-gray-300">
-          {
-            supportedLang === 'fa'
-              ? 'ممکن است آدرس صفحه تغییر کرده یا حذف شده باشد. از لینک‌های سریع زیر برای دسترسی به بخش‌های اصلی سایت استفاده کنید.'
-              : supportedLang === 'ar'
-                ? 'قد تكون الصفحة قد تم نقلها أو حذفها. يمكنك استخدام الروابط السريعة أدناه للوصول إلى أقسام الموقع الرئيسية.'
-                : 'The link you followed may be broken or the page has moved. Browse our core agency solutions below or head straight to our home page.'
-          }
-        </p>
+          <ascii-art
+            piece="lost-in-space-404"
+            size="11"
+            speed="1"
+            look="original"
+            role="img"
+            aria-label="404 route not found ASCII telemetry"
+          ></ascii-art>
+        </div>
 
-        <!-- Navigation Buttons -->
-        <div class="flex flex-wrap justify-center gap-4 pt-2">
-          <a
-            href={`/${supportedLang}/`}
-            class="flex items-center gap-2 rounded-xl bg-primary px-8 py-3.5 font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-          >
-            <svg
-              aria-hidden="true"
-              class="h-5 w-5"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
+        <div class="space-y-6 p-8 md:p-10">
+          <span class="monospace-telemetry-pill text-[var(--accent-coral)]" dir="ltr">
+            Error 404
+          </span>
+          <h2 class="text-2xl leading-tight font-extrabold text-[var(--text-primary)] md:text-3xl">
+            {
+              supportedLang === 'fa'
+                ? 'صفحه مورد نظر شما پیدا نشد'
+                : supportedLang === 'ar'
+                  ? 'الصفحة المطلوبة غير موجودة'
+                  : 'Looking for Web Design or SEO Services?'
+            }
+          </h2>
+          <p class="mx-auto max-w-2xl leading-relaxed text-[var(--text-secondary)]">
+            {
+              supportedLang === 'fa'
+                ? 'ممکن است آدرس صفحه تغییر کرده یا حذف شده باشد. از لینک‌های سریع زیر برای دسترسی به بخش‌های اصلی سایت استفاده کنید.'
+                : supportedLang === 'ar'
+                  ? 'قد تكون الصفحة قد تم نقلها أو حذفها. يمكنك استخدام الروابط السريعة أدناه للوصول إلى أقسام الموقع الرئيسية.'
+                  : 'The link you followed may be broken or the page has moved. Browse our core agency solutions below or head straight to our home page.'
+            }
+          </p>
+
+          <!-- Navigation Buttons -->
+          <div class="flex flex-wrap justify-center gap-3 pt-2">
+            <a
+              href={`/${supportedLang}/`}
+              class="inline-flex items-center gap-2 rounded border border-[var(--accent-green)] bg-[var(--accent-green-dim)] px-6 py-3 font-mono text-xs font-bold text-white transition-all hover:bg-[var(--accent-green)] hover:text-[#090b0e] sm:text-sm"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 00-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-              ></path>
-            </svg>
-            {t('common.notFound.backHome', { fallback: 'Return to Homepage' })}
-          </a>
-          <a
-            href={`/${supportedLang}/contact/`}
-            class="rounded-xl border border-gray-200 bg-white px-8 py-3.5 font-bold text-gray-700 transition-all hover:bg-gray-100 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700"
-          >
-            {t('common.contactUs', { fallback: 'Contact Support' })}
-          </a>
-        </div>
-
-        <!-- Quick Links Pill Cloud -->
-        <div class="border-t border-gray-200/60 pt-6 dark:border-slate-800">
-          <p
-            class="mb-3 text-xs font-semibold tracking-wider text-gray-500 uppercase dark:text-gray-400"
-          >
-            {
-              supportedLang === 'fa'
-                ? 'دسترسی سریع'
-                : supportedLang === 'ar'
-                  ? 'روابط سريعة'
-                  : 'Quick Site Navigation'
-            }
-          </p>
-          <div class="flex flex-wrap justify-center gap-2">
-            {
-              quickLinks.map((link) => (
-                <a
-                  href={link.url}
-                  class="rounded-lg border border-gray-200 bg-white px-3.5 py-1.5 text-sm text-gray-700 shadow-xs transition-colors hover:border-primary/40 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-200 dark:hover:text-primary"
-                >
-                  {link.label}
-                </a>
-              ))
-            }
+              <span>{t('common.notFound.backHome', { fallback: 'Return to Homepage' })}</span>
+            </a>
+            <a
+              href={`/${supportedLang}/contact/`}
+              class="rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-6 py-3 font-mono text-xs font-bold text-[var(--text-primary)] transition-all hover:border-[var(--accent-blue)] hover:text-[var(--accent-blue)] sm:text-sm"
+            >
+              {t('common.contactUs', { fallback: 'Contact Support' })}
+            </a>
           </div>
-        </div>
 
-        <!-- Machine-Readable Agent Recovery Links -->
-        <nav aria-label="Agent recovery links" class="border-t border-gray-200/60 pt-5 text-xs text-gray-500 dark:border-slate-800">
-          <p class="font-mono font-semibold tracking-wider text-gray-400 uppercase">
-            {
-              supportedLang === 'fa'
-                ? 'راهنمای ربات‌ها و بازیابی آدرس'
-                : supportedLang === 'ar'
-                  ? 'روابط استرداد الذكاء الاصطناعي'
-                  : 'Agent & Crawler Recovery Links'
-            }
-          </p>
-          <div class="mt-2.5 flex flex-wrap justify-center gap-3 font-mono text-[11px]">
-            <a href={`/${supportedLang}/llms.txt`} class="text-gray-600 underline hover:text-primary dark:text-gray-400">/{supportedLang}/llms.txt</a>
-            <span class="text-gray-300 dark:text-gray-700">•</span>
-            <a href={`/${supportedLang}/llms-full.txt`} class="text-gray-600 underline hover:text-primary dark:text-gray-400">/{supportedLang}/llms-full.txt</a>
-            <span class="text-gray-300 dark:text-gray-700">•</span>
-            <a href="/sitemap-index.xml" class="text-gray-600 underline hover:text-primary dark:text-gray-400">/sitemap-index.xml</a>
-            <span class="text-gray-300 dark:text-gray-700">•</span>
-            <a href="/404.md" class="text-gray-600 underline hover:text-primary dark:text-gray-400">/404.md</a>
+          <!-- Quick Links Pill Cloud -->
+          <div class="border-t border-[var(--border-hairline)] pt-6">
+            <p class="mb-3 font-mono text-xs font-semibold tracking-wider text-[var(--text-secondary)] uppercase">
+              {
+                supportedLang === 'fa'
+                  ? 'دسترسی سریع'
+                  : supportedLang === 'ar'
+                    ? 'روابط سريعة'
+                    : 'Quick Site Navigation'
+              }
+            </p>
+            <div class="flex flex-wrap justify-center gap-2">
+              {
+                quickLinks.map((link) => (
+                  <a
+                    href={link.url}
+                    class="rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-3.5 py-1.5 text-xs text-[var(--text-primary)] transition-colors hover:border-[var(--accent-green)] hover:text-[var(--accent-green)]"
+                  >
+                    {link.label}
+                  </a>
+                ))
+              }
+            </div>
           </div>
-        </nav>
+
+          <!-- Machine-Readable Agent Recovery Links -->
+          <nav aria-label="Agent recovery links" class="border-t border-[var(--border-hairline)] pt-5 text-xs">
+            <p class="font-mono font-semibold tracking-wider text-[var(--text-secondary)] uppercase">
+              {
+                supportedLang === 'fa'
+                  ? 'راهنمای ربات‌ها و بازیابی آدرس'
+                  : supportedLang === 'ar'
+                    ? 'روابط استرداد الذكاء الاصطناعي'
+                    : 'Agent & Crawler Recovery Links'
+              }
+            </p>
+            <div class="ltr-isolate mt-2.5 flex flex-wrap justify-center gap-3 font-mono text-[11px]" dir="ltr">
+              <a href={`/${supportedLang}/llms.txt`} class="text-[var(--accent-blue)] underline hover:text-[var(--accent-green)]">/{supportedLang}/llms.txt</a>
+              <span class="text-[var(--border-focus)]">•</span>
+              <a href={`/${supportedLang}/llms-full.txt`} class="text-[var(--accent-blue)] underline hover:text-[var(--accent-green)]">/{supportedLang}/llms-full.txt</a>
+              <span class="text-[var(--border-focus)]">•</span>
+              <a href="/sitemap-index.xml" class="text-[var(--accent-blue)] underline hover:text-[var(--accent-green)]">/sitemap-index.xml</a>
+              <span class="text-[var(--border-focus)]">•</span>
+              <a href="/404.md" class="text-[var(--accent-blue)] underline hover:text-[var(--accent-green)]">/404.md</a>
+            </div>
+          </nav>
+        </div>
       </div>
 
       <!-- Featured Services Section for AEO / Link Equity Retention -->
       <div class="space-y-6 text-start">
-        <h3 class="text-center text-2xl font-bold text-gray-900 dark:text-white">
+        <h3 class="text-center text-2xl font-bold text-[var(--text-primary)]">
           {
             supportedLang === 'fa'
               ? 'خدمات محبوب وب اِی‌بی‌سی'

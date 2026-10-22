@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import Breadcrumbs from '@/components/astro/Breadcrumbs.astro';
+import Hero from '@/components/astro/Hero.astro';
+import CTA from '@/components/astro/CTA.astro';
 import { getLanguageStaticPaths, type SupportedLanguage } from '@/types/language';
 import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
@@ -10,15 +11,14 @@ export const getStaticPaths = getLanguageStaticPaths;
 const { lang } = Astro.params;
 const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
+const isRtl = supportedLang === 'fa' || supportedLang === 'ar';
 const fontClass =
   supportedLang === 'fa' ? 'font-persian' : supportedLang === 'ar' ? 'font-arabic' : 'font-sans';
 
-// Helper to translate strings
 const t = createTranslator(dictionary);
 
 const titleText = t('about.title', { fallback: 'About Us' });
 const descriptionText = t('about.subtitle', { fallback: 'We build digital solutions.' });
-// Short human-readable label for H1 + breadcrumb (the SEO title above is too long).
 const headingText = t('common.about', { fallback: 'About Us' });
 
 const approachItems = [0, 1, 2, 3]
@@ -53,28 +53,71 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
 <Layout title={titleText} description={descriptionText} lang={supportedLang} slug="about">
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(aboutPageSchema)} />
 
-  <div class={`mx-auto w-full max-w-6xl px-4 pt-32 pb-16 sm:px-6 lg:px-8 ${fontClass}`}>
-    <div class="space-y-14">
-      <div class="mx-auto max-w-2xl text-center">
-        <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered />
-        <h1
-          class="mb-4 text-4xl leading-normal font-bold text-gray-900 md:text-5xl dark:text-white"
-        >
-          {headingText}
-        </h1>
-        <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-300">
-          {descriptionText}
-        </p>
+  <Hero
+    title={headingText}
+    description={descriptionText}
+    breadcrumbs={breadcrumbs}
+    lang={supportedLang}
+  >
+    <div class={`mt-4 flex flex-wrap justify-center gap-3 ${fontClass}`}>
+      <button
+        type="button"
+        data-open-consultation
+        class="inline-flex h-10 cursor-pointer items-center gap-1.5 rounded border border-[var(--accent-green)] bg-[var(--accent-green-dim)] px-5 font-mono text-xs font-bold text-[var(--accent-contrast)] transition-all hover:bg-[var(--accent-green)] hover:text-[#090b0e] sm:text-sm"
+      >
+        <span>{t('common.freeConsultation', { fallback: 'Work With Our Team' })}</span>
+        <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
+      </button>
+      <a
+        href={`/${supportedLang}/portfolio/`}
+        class="inline-flex h-10 items-center gap-1.5 rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-4 font-mono text-xs font-bold text-[var(--text-primary)] transition-colors hover:border-[var(--accent-blue)] hover:text-[var(--accent-blue)] sm:text-sm"
+      >
+        <span>{t('common.viewPortfolio', { fallback: 'View Case Studies' })}</span>
+      </a>
+    </div>
+  </Hero>
+
+  <div class={`mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8 ${fontClass}`}>
+    <div class="space-y-12">
+      <!-- Mission & Verified Stats -->
+      <div class="grid gap-6 md:grid-cols-3">
+        <div class="terminal-window p-6 text-center">
+          <div class="font-mono text-3xl font-extrabold text-[var(--accent-green)] sm:text-4xl">
+            {t('about.stats.years.value', { fallback: '10+' })}
+          </div>
+          <div class="mt-1 text-sm font-semibold text-[var(--text-secondary)]">
+            {t('about.yearsExperience', { fallback: 'Years Experience' })}
+          </div>
+        </div>
+        <div class="terminal-window p-6 text-center">
+          <div class="font-mono text-3xl font-extrabold text-[var(--accent-blue)] sm:text-4xl">
+            {t('about.stats.projects.value', { fallback: '500+' })}
+          </div>
+          <div class="mt-1 text-sm font-semibold text-[var(--text-secondary)]">
+            {t('about.successfulProjects', { fallback: 'Successful Projects' })}
+          </div>
+        </div>
+        <div class="terminal-window p-6 text-center">
+          <div class="font-mono text-3xl font-extrabold text-[var(--accent-amber)] sm:text-4xl">
+            {t('about.stats.satisfaction.value', { fallback: '98%' })}
+          </div>
+          <div class="mt-1 text-sm font-semibold text-[var(--text-secondary)]">
+            {t('about.clientSatisfaction', { fallback: 'Client Satisfaction' })}
+          </div>
+        </div>
       </div>
 
-      <div
-        class="rounded-2xl border border-transparent bg-linear-to-br from-blue-50 to-purple-50 p-8 dark:border-slate-800 dark:from-slate-900 dark:to-slate-800/80"
-      >
-        <div class="mx-auto max-w-3xl space-y-4 text-center">
-          <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">
+      <!-- Mission Terminal Window -->
+      <div class="terminal-window">
+        <div class="terminal-chrome-bar" dir="ltr">
+          <span class="slash-eyebrow text-xs" dir="ltr">/OUR-MISSION</span>
+          <span class="monospace-telemetry-pill">ENGINEERING EXCELLENCE</span>
+        </div>
+        <div class="mx-auto max-w-3xl space-y-3 p-6 text-center sm:p-8">
+          <h2 class="text-2xl font-bold text-[var(--text-primary)]">
             {t('about.mission', { fallback: 'Our Mission' })}
           </h2>
-          <p class="leading-relaxed text-gray-600 dark:text-gray-300">
+          <p class="leading-relaxed text-[var(--text-secondary)]">
             {
               t('about.missionText', {
                 fallback:
@@ -87,23 +130,23 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
 
       {
         approachItems.length > 0 && (
-          <div class="space-y-8">
-            <h2 class="text-center text-3xl font-bold text-gray-900 dark:text-white">
-              {t('about.approach.title', { fallback: 'How We Work' })}
-            </h2>
-            <div class="grid gap-6 md:grid-cols-2">
+          <div class="space-y-6">
+            <div class="text-center">
+              <span class="slash-eyebrow text-xs" dir="ltr">/METHODOLOGY</span>
+              <h2 class="mt-1 text-2xl font-bold text-[var(--text-primary)] sm:text-3xl">
+                {t('about.approach.title', { fallback: 'How We Work' })}
+              </h2>
+            </div>
+            <div class="grid gap-5 md:grid-cols-2">
               {approachItems.map((item, idx) => (
-                <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-                  <div class="mb-3 flex items-center gap-3">
-                    <span
-                      aria-hidden="true"
-                      class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-sm font-bold text-primary"
-                    >
-                      {String(idx + 1).padStart(2, '0')}
+                <div class="terminal-window p-6">
+                  <div class="mb-3 flex items-center gap-2.5">
+                    <span class="ltr-isolate font-mono text-sm font-bold text-[var(--accent-green)]" dir="ltr">
+                      [0{idx + 1}]
                     </span>
-                    <h3 class="text-lg font-bold text-gray-800 dark:text-white">{item.title}</h3>
+                    <h3 class="text-lg font-bold text-[var(--text-primary)]">{item.title}</h3>
                   </div>
-                  <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                  <p class="text-sm leading-relaxed text-[var(--text-secondary)]">
                     {item.description}
                   </p>
                 </div>
@@ -113,78 +156,29 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
         )
       }
 
-      <div
-        class="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
-      >
-        <div class="mx-auto max-w-3xl space-y-4 text-center">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+      <div class="terminal-window">
+        <div class="terminal-chrome-bar" dir="ltr">
+          <span class="slash-eyebrow text-xs" dir="ltr">/PARTNERSHIPS</span>
+          <span class="monospace-telemetry-pill">MENA &amp; GLOBAL</span>
+        </div>
+        <div class="mx-auto max-w-3xl space-y-3 p-6 text-center sm:p-8">
+          <h2 class="text-2xl font-bold text-[var(--text-primary)]">
             {t('about.whoWeServe.title', { fallback: 'Who We Work With' })}
           </h2>
-          <p class="leading-relaxed text-gray-600 dark:text-gray-300">
+          <p class="leading-relaxed text-[var(--text-secondary)]">
             {t('about.whoWeServe.text', { fallback: '' })}
           </p>
         </div>
       </div>
 
-      <div class="grid gap-6 text-center md:grid-cols-3">
-        <div
-          class="rounded-2xl border border-gray-100 bg-white py-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
-        >
-          <div class="mb-2 text-4xl font-bold text-blue-600 dark:text-blue-400">
-            {t('about.stats.years.value', { fallback: '10+' })}
-          </div>
-          <div class="text-gray-700 dark:text-gray-300">
-            {t('about.yearsExperience', { fallback: 'Years Experience' })}
-          </div>
-        </div>
-        <div
-          class="rounded-2xl border border-gray-100 bg-white py-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
-        >
-          <div class="mb-2 text-4xl font-bold text-purple-600 dark:text-purple-400">
-            {t('about.stats.projects.value', { fallback: '500+' })}
-          </div>
-          <div class="text-gray-700 dark:text-gray-300">
-            {t('about.successfulProjects', { fallback: 'Successful Projects' })}
-          </div>
-        </div>
-        <div
-          class="rounded-2xl border border-gray-100 bg-white py-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
-        >
-          <div class="mb-2 text-4xl font-bold text-green-600 dark:text-green-400">
-            {t('about.stats.satisfaction.value', { fallback: '98%' })}
-          </div>
-          <div class="text-gray-700 dark:text-gray-300">
-            {t('about.clientSatisfaction', { fallback: 'Client Satisfaction' })}
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="rounded-2xl bg-primary px-8 py-10 text-center text-primary-foreground shadow-lg"
-      >
-        <h2 class="text-2xl font-bold md:text-3xl">
-          {t('contact.consultation.title', { fallback: 'Request Free Consultation' })}
-        </h2>
-        <p class="mx-auto mt-3 max-w-xl leading-relaxed opacity-90">
-          {t('contact.consultation.description', {
-            fallback: 'Fill in the form below and our experts will contact you shortly.',
-          })}
-        </p>
-        <div class="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <a
-            href={`/${supportedLang}/contact/`}
-            class="flex h-12 items-center justify-center rounded-xl bg-white px-8 font-bold text-primary shadow transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
-          >
-            {t('common.freeConsultation', { fallback: 'Free Consultation' })}
-          </a>
-          <a
-            href={`/${supportedLang}/portfolio/`}
-            class="flex h-12 items-center justify-center rounded-xl border-2 border-white/40 px-8 font-bold text-white transition-colors hover:border-white hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
-          >
-            {t('common.viewPortfolio', { fallback: 'View Portfolio' })}
-          </a>
-        </div>
-      </div>
+      <CTA
+        lang={supportedLang}
+        title={t('contact.consultation.title', { fallback: 'Request Free Consultation' })}
+        description={t('contact.consultation.description', {
+          fallback: 'Fill in the form below and our experts will contact you shortly.',
+        })}
+        buttonText={t('common.freeConsultation', { fallback: 'Free Consultation' })}
+      />
     </div>
   </div>
 </Layout>
