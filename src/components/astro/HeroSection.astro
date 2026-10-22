@@ -49,11 +49,19 @@ const auditBtnText =
       <!-- Left Column: High-Converting Value Proposition, Instant URL Audit & CTAs -->
       <div class="col-span-1 space-y-5 text-center lg:col-span-5 lg:text-start">
         <div class="inline-flex flex-wrap items-center justify-center gap-2 lg:justify-start">
-          <span class="slash-eyebrow text-[11px]" dir="ltr">
-            /HERO · WEB-ENGINEERING &amp; TECHNICAL SEO
+          <span class="slash-eyebrow text-[11px]">
+            {lang === 'fa'
+              ? '/سئو-و-طراحی-سایت · وب اِی‌بی‌سی'
+              : lang === 'ar'
+                ? '/سيو-وتصميم-المواقع · WebABC'
+                : '/HERO · WEB-ENGINEERING & TECHNICAL SEO'}
           </span>
-          <span class="monospace-telemetry-pill text-[var(--accent-green)]" dir="ltr">
-            ★ 4.9/5 · 150+ CLIENTS
+          <span class="monospace-telemetry-pill text-[var(--accent-green)]">
+            {lang === 'fa'
+              ? '★ رضایت ۴.۹ از ۵ · ۱۵۰+ پروژه موفق'
+              : lang === 'ar'
+                ? '★ تقييم 4.9/5 · أكثر من 150 عميل'
+                : '★ 4.9/5 · 150+ CLIENTS'}
           </span>
         </div>
 
@@ -81,6 +89,13 @@ const auditBtnText =
         <!-- CRO Micro-Funnel: Instant Website / SEO Audit Bar -->
         <form
           id="hero-instant-audit-form"
+          data-audit-msg={
+            lang === 'fa'
+              ? 'لطفاً سایت من ({url}) را آنالیز کرده و نقشه راه سئو و بهبود نرخ تبدیل را ارسال فرمایید.'
+              : lang === 'ar'
+                ? 'يرجى تدقيق موقعي ({url}) وإرسال خارطة طريق تحسين السيو ومعدل التحويل.'
+                : 'Please audit my website ({url}) and share an SEO & conversion roadmap.'
+          }
           class="mx-auto flex max-w-xl flex-col gap-2 rounded-lg border border-[var(--border-hairline)] bg-[var(--bg-surface)] p-2 shadow-sm sm:flex-row lg:mx-0"
         >
           <label for="hero-audit-url" class="sr-only">{auditPlaceholder}</label>
@@ -198,7 +213,10 @@ const auditBtnText =
           modalWebsiteInput.value = rawUrl;
         }
         if (modalMsgInput && rawUrl && !modalMsgInput.value) {
-          modalMsgInput.value = `Please audit my website (${rawUrl}) and share an SEO & conversion roadmap.`;
+          const auditTemplate =
+            form.dataset.auditMsg ||
+            'Please audit my website ({url}) and share an SEO & conversion roadmap.';
+          modalMsgInput.value = auditTemplate.replace('{url}', rawUrl);
         }
         if (typeof window.openConsultationModal === 'function') {
           window.openConsultationModal('SEO & Specialized Optimization');

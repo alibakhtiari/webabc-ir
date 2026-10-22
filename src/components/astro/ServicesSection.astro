@@ -25,7 +25,12 @@ const services = [
   {
     id: 'seo',
     piece: 'live-line-chart',
-    badge: 'SERP · ORGANIC · CWV',
+    badge:
+      lang === 'fa'
+        ? 'سئو تخصصی · رتبه ۱ گوگل'
+        : lang === 'ar'
+          ? 'سيو متخصص · تصدر نتائج البحث'
+          : 'SERP · ORGANIC · CWV',
     href: '/services/seo',
     title: t('services.seo.title', { fallback: 'SEO & Specialized Optimization' }),
     description: t('services.seo.description', {
@@ -43,7 +48,12 @@ const services = [
   {
     id: 'web-design',
     piece: 'code-editor',
-    badge: 'ASTRO · REACT · WOOCOMMERCE',
+    badge:
+      lang === 'fa'
+        ? 'طراحی اختصاصی · واکنش‌گرا'
+        : lang === 'ar'
+          ? 'تصميم مواقع مخصص · متجاوب'
+          : 'ASTRO · REACT · WOOCOMMERCE',
     href: '/services/web-design',
     title: t('services.webDesign.title', { fallback: 'Custom Website Design' }),
     description: t('services.webDesign.description', {
@@ -61,7 +71,12 @@ const services = [
   {
     id: 'content',
     piece: 'syntax-highlight-pass',
-    badge: 'SEMANTIC · AEO · COPY',
+    badge:
+      lang === 'fa'
+        ? 'محتوای تخصصی · سئو معنایی'
+        : lang === 'ar'
+          ? 'محتوى متخصص · سيو دلالي'
+          : 'SEMANTIC · AEO · COPY',
     href: '/services/content-creation',
     title: t('services.contentCreation.title', { fallback: 'Specialized Content Creation' }),
     description: t('services.contentCreation.description', {
@@ -82,7 +97,12 @@ const supportPillars = [
   {
     idx: '01',
     piece: 'request-waterfall',
-    badge: 'LCP < 0.9s · INP · CLS 0.00',
+    badge:
+      lang === 'fa'
+        ? 'سرعت زیر ۱ ثانیه · قبولی کامل CWV'
+        : lang === 'ar'
+          ? 'تحميل أقل من ثانية · اجتياز CWV'
+          : 'LCP < 0.9s · INP · CLS 0.00',
     title: t('speedOptimization.title', { fallback: 'Core Web Vitals & Speed Optimization' }),
     desc: t('speedOptimization.subtitle', {
       fallback:
@@ -93,7 +113,12 @@ const supportPillars = [
   {
     idx: '02',
     piece: 'signup-funnel',
-    badge: 'CRO · HEATMAP · WCAG AA',
+    badge:
+      lang === 'fa'
+        ? 'افزایش نرخ تبدیل · هیت‌مپ'
+        : lang === 'ar'
+          ? 'زيادة معدل التحويل · تدقيق UX'
+          : 'CRO · HEATMAP · WCAG AA',
     title: t('uiUxAudit.title', { fallback: 'Professional UI/UX Audit' }),
     desc: t('uiUxAudit.subtitle', {
       fallback:
@@ -104,7 +129,12 @@ const supportPillars = [
   {
     idx: '03',
     piece: 'status-page',
-    badge: '99.99% UPTIME · WAF · BACKUP',
+    badge:
+      lang === 'fa'
+        ? 'آپ‌تایم ۹۹.۹۹٪ · امنیت و بکاپ'
+        : lang === 'ar'
+          ? 'جاهزية 99.99% · أمان ونسخ احتياطي'
+          : '99.99% UPTIME · WAF · BACKUP',
     title: t('maintenance.title', { fallback: 'Website Maintenance & Care Plans' }),
     desc: t('maintenance.subtitle', {
       fallback:
@@ -117,7 +147,12 @@ const supportPillars = [
 const processSteps = [
   {
     step: '01',
-    tag: 'QUERY-DISCOVERY',
+    tag:
+      lang === 'fa'
+        ? 'تحلیل و استخراج کلمات'
+        : lang === 'ar'
+          ? 'استكشاف الكلمات والجمهور'
+          : 'QUERY-DISCOVERY',
     title: t('services.keyFeatures.0.title', { fallback: 'Keyword Research' }),
     desc: t('services.keyFeatures.0.desc', {
       fallback: 'Identifying the best keywords for your business',
@@ -125,7 +160,12 @@ const processSteps = [
   },
   {
     step: '02',
-    tag: 'SEMANTIC-HTML & SCHEMA',
+    tag:
+      lang === 'fa'
+        ? 'محتوا، کد و اسکیما'
+        : lang === 'ar'
+          ? 'المحتوى والبيانات المنظمة'
+          : 'SEMANTIC-HTML & SCHEMA',
     title: t('services.keyFeatures.1.title', { fallback: 'Content Optimization' }),
     desc: t('services.keyFeatures.1.desc', {
       fallback: 'Quality content optimized for search engines',
@@ -133,7 +173,12 @@ const processSteps = [
   },
   {
     step: '03',
-    tag: 'AUTHORITY-GRAPH',
+    tag:
+      lang === 'fa'
+        ? 'اعتبار و شبکه لینک‌ها'
+        : lang === 'ar'
+          ? 'بناء السلطة والروابط'
+          : 'AUTHORITY-GRAPH',
     title: t('services.keyFeatures.2.title', { fallback: 'External Link Building' }),
     desc: t('services.keyFeatures.2.desc', {
       fallback: 'Professional link building strategy to increase site authority',
@@ -150,7 +195,15 @@ const processSteps = [
     <!-- Section Header -->
     <div class="mx-auto mb-10 max-w-3xl text-center">
       <div class="mb-2 flex justify-center">
-        <span class="slash-eyebrow text-xs" dir="ltr">/SERVICES · 11 SPECIALIZED SOLUTIONS</span>
+        <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+          {
+            lang === 'fa'
+              ? '/خدمات-تخصصی · ۱۱ راهکار مهندسی'
+              : lang === 'ar'
+                ? '/الخدمات-المتخصصة · 11 حلاً هندسياً'
+                : '/SERVICES · 11 SPECIALIZED SOLUTIONS'
+          }
+        </span>
       </div>
 
       <h2 class="mb-3 text-2xl font-bold tracking-tight text-balance text-[var(--text-primary)] sm:text-3xl md:text-4xl">
@@ -215,8 +268,14 @@ const processSteps = [
                 class={`tab-pane space-y-5 ${idx === 0 ? '' : 'hidden'}`}
               >
                 <div>
-                  <span class="slash-eyebrow text-[11px]" dir="ltr">
-                    /{service.id.toUpperCase()} · STUDIO SPECIFICATION
+                  <span class="slash-eyebrow text-[11px]" dir={isRtl ? 'rtl' : 'ltr'}>
+                    /{service.id.toUpperCase()} · {
+                      lang === 'fa'
+                        ? 'مشخصات استودیو'
+                        : lang === 'ar'
+                          ? 'مواصفات الاستوديو'
+                          : 'STUDIO SPECIFICATION'
+                    }
                   </span>
                   <h3 class="mt-1 text-xl font-bold text-[var(--text-primary)] sm:text-2xl">
                     {service.title}
@@ -229,8 +288,14 @@ const processSteps = [
 
                 <!-- Deliverable Pills -->
                 <div>
-                  <div class="ltr-isolate mb-2 font-mono text-[10px] tracking-wider text-[var(--text-secondary)] uppercase" dir="ltr">
-                    DELIVERABLES &amp; CAPABILITIES:
+                  <div class="mb-2 font-mono text-[10px] tracking-wider text-[var(--text-secondary)] uppercase">
+                    {
+                      lang === 'fa'
+                        ? 'دستاوردهای کلیدی و قابلیت‌ها:'
+                        : lang === 'ar'
+                          ? 'المخرجات والإمكانيات الرئيسية:'
+                          : 'DELIVERABLES & CAPABILITIES:'
+                    }
                   </div>
                   <ul class="flex flex-wrap gap-1.5">
                     {service.features.map((feature) => (
@@ -290,7 +355,15 @@ const processSteps = [
     <!-- Secondary Technical Services Bento Row (Support & Optimization Pillars) -->
     <div class="mb-12">
       <div class="mb-3 flex items-center justify-between">
-        <span class="slash-eyebrow text-xs" dir="ltr">/SUPPORT-AND-OPTIMIZATION · TECHNICAL PILLARS</span>
+        <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+          {
+            lang === 'fa'
+              ? '/پشتیبانی-و-بهینه‌سازی · ارکان فنی'
+              : lang === 'ar'
+                ? '/الدعم-والتحسين · الركائز التقنية'
+                : '/SUPPORT-AND-OPTIMIZATION · TECHNICAL PILLARS'
+          }
+        </span>
         <a
           href={linkPath('/services')}
           class="font-mono text-xs font-bold text-[var(--accent-blue)] hover:underline"
@@ -318,6 +391,7 @@ const processSteps = [
                 >
                   <ascii-art
                     piece={pillar.piece}
+                    lang={lang}
                     size="11"
                     max-size="20"
                     speed="1"
@@ -359,8 +433,14 @@ const processSteps = [
     <!-- 3-Step Execution Pipeline (/PROCESS) -->
     <div class="terminal-window">
       <div class="terminal-chrome-bar" dir="ltr">
-        <span class="slash-eyebrow text-xs" dir="ltr">
-          /PROCESS · 3-STAGE EXECUTION PIPELINE
+        <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+          {
+            lang === 'fa'
+              ? '/فرآیند-اجرا · خط لوله ۳ مرحله‌ای'
+              : lang === 'ar'
+                ? '/مسار-التنفيذ · خط أنابيب ثلاثي المراحل'
+                : '/PROCESS · 3-STAGE EXECUTION PIPELINE'
+          }
         </span>
         <span class="monospace-telemetry-pill">git-branch-graph · 1×</span>
       </div>
@@ -371,7 +451,7 @@ const processSteps = [
             <div class="relative p-5">
               <div class="mb-2.5 flex items-center justify-between" dir="ltr">
                 <span class="font-mono text-xs font-bold text-[var(--accent-green)]">
-                  [{item.step}] ───►
+                  [{item.step}] {isRtl ? '◄───' : '───►'}
                 </span>
                 <span class="monospace-telemetry-pill">{item.tag}</span>
               </div>
@@ -390,12 +470,19 @@ const processSteps = [
       >
         <ascii-art
           piece="git-branch-graph"
+          lang={lang}
           size="14"
           max-size="22"
           speed="1"
           look="original"
           role="img"
-          aria-label="3-stage SEO execution pipeline graph"
+          aria-label={
+            lang === 'fa'
+              ? 'گراف ۳ مرحله‌ای اجرای سئو'
+              : lang === 'ar'
+                ? 'مخطط مسار تنفيذ السيو ثلاثي المراحل'
+                : '3-stage SEO execution pipeline graph'
+          }
         ></ascii-art>
       </div>
     </div>
