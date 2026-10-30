@@ -1,7 +1,7 @@
 {
   "name": "webabc-ir",
   "private": true,
-  "version": "1.4.0",
+  "version": "1.5.0",
   "type": "module",
   "scripts": {
     "dev": "astro dev",
@@ -21,15 +21,15 @@
     "format:check": "oxfmt --check"
   },
   "dependencies": {
-    "@astrojs/mdx": "^8.1.1",
+    "@astrojs/mdx": "^8.1.2",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.4.2",
+    "astro": "^7.4.3",
     "clsx": "^2.1.1",
     "qrcode": "^1.5.4",
-    "resend": "^6.34.1",
+    "resend": "^6.35.0",
     "tailwind-merge": "^3.7.0"
   },
   "devDependencies": {
@@ -38,8 +38,8 @@
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^26.6.5",
     "@types/qrcode": "^1.5.6",
-    "oxfmt": "^0.74.0",
-    "oxlint": "^1.89.0",
+    "oxfmt": "^0.75.0",
+    "oxlint": "^1.90.0",
     "sharp": "^0.35.5",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3"
