@@ -243,33 +243,46 @@ const breadcrumbs = [
       <!-- Empty State Indicator -->
       <div
         id="no-results-state"
-        class="hidden my-12 rounded-3xl border border-dashed border-gray-300 bg-gray-50/70 p-12 text-center dark:border-slate-800 dark:bg-slate-900/50"
+        class="hidden my-12 terminal-window max-w-xl mx-auto text-center"
       >
-        <div
-          class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary"
-        >
-          <svg aria-hidden="true" class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
+        <div class="terminal-chrome-bar" dir="ltr">
+          <span class="font-mono text-xs font-bold text-[var(--accent-coral)]">
+            [FILTER_EMPTY · 0 MATCHES]
+          </span>
+          <span class="monospace-telemetry-pill">QUERY: NOT_FOUND</span>
         </div>
-        <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">
-          {t('portfolio.search.noResultsTitle', { fallback: 'No case studies match your query' })}
-        </h3>
-        <p class="mx-auto mb-6 max-w-md text-sm leading-relaxed text-gray-600 dark:text-gray-400">
-          {t('portfolio.search.noResultsDesc', {
-            fallback: 'Try clearing filters, searching for a different keyword, or selecting another category.',
-          })}
-        </p>
-        <button
-          id="reset-filter-btn"
-          type="button"
-          class="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-xs font-bold text-primary-foreground shadow-sm transition-all hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-        >
-          <svg aria-hidden="true" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-          </svg>
-          <span>{t('portfolio.search.reset', { fallback: 'Reset All Filters' })}</span>
-        </button>
+        <div class="p-6 md:p-8 space-y-4">
+          <div
+            class="crt-scanlines overflow-x-auto border-b border-[var(--border-hairline)] bg-[var(--bg-canvas)] py-2"
+            dir="ltr"
+            style="min-height: 180px; unicode-bidi: isolate;"
+          >
+            <ascii-art
+              piece="lost-in-space-404"
+              size="10"
+              speed="1"
+              look="original"
+              role="img"
+              aria-label="No projects found telemetry"
+            ></ascii-art>
+          </div>
+          <h3 class="text-lg font-bold text-[var(--text-primary)]">
+            {t('portfolio.search.noResultsTitle', { fallback: 'No case studies match your query' })}
+          </h3>
+          <p class="mx-auto max-w-md text-xs leading-relaxed text-[var(--text-secondary)]">
+            {t('portfolio.search.noResultsDesc', {
+              fallback: 'Try clearing filters, searching for a different keyword, or selecting another category.',
+            })}
+          </p>
+          <button
+            id="reset-filter-btn"
+            type="button"
+            class="inline-flex cursor-pointer items-center gap-2 rounded border border-[var(--accent-green)] bg-[var(--accent-green-dim)] px-4 py-2 font-mono text-xs font-bold text-[var(--accent-contrast)] transition-all hover:bg-[var(--accent-green)] hover:text-[#090b0e]"
+          >
+            <span>Reset Filters</span>
+            <span aria-hidden="true">↺</span>
+          </button>
+        </div>
       </div>
 
       <!-- Modern Portfolio Grid -->

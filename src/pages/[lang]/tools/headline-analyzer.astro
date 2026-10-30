@@ -267,7 +267,7 @@ const faqSchema = buildFaqSchema(faqs);
                   </label>
                   <span
                     id="meta-title-counter"
-                    class="rounded-sm bg-yellow-50 px-2 py-0.5 font-mono text-xs text-yellow-600"
+                    class="rounded-sm bg-amber-100 px-2 py-0.5 font-mono text-xs text-amber-900 dark:bg-amber-950 dark:text-amber-200"
                   >
                     {t('headlineAnalyzer.counter.title', {
                       fallback: '{cur} / 60 chars ({px}px)',
@@ -296,7 +296,7 @@ const faqSchema = buildFaqSchema(faqs);
                   </label>
                   <span
                     id="meta-desc-counter"
-                    class="rounded-sm bg-yellow-50 px-2 py-0.5 font-mono text-xs text-yellow-600"
+                    class="rounded-sm bg-amber-100 px-2 py-0.5 font-mono text-xs text-amber-900 dark:bg-amber-950 dark:text-amber-200"
                   >
                     {t('headlineAnalyzer.counter.desc', {
                       fallback: '{cur} / 160 chars ({px}px)',
@@ -341,7 +341,7 @@ const faqSchema = buildFaqSchema(faqs);
               class="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900"
             >
               <div
-                class="flex items-center justify-between border-b border-gray-100 bg-gray-50 px-6 py-4 dark:border-slate-800"
+                class="flex items-center justify-between border-b border-gray-100 bg-gray-50 px-6 py-4 dark:border-slate-800 dark:bg-slate-800"
               >
                 <span class="flex items-center gap-2 font-semibold text-gray-800 dark:text-gray-100">
                   <svg
@@ -501,7 +501,7 @@ const faqSchema = buildFaqSchema(faqs);
             <div
               class="overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900"
             >
-              <div class="border-b border-gray-100 bg-gray-50 px-6 py-4 dark:border-slate-800">
+              <div class="border-b border-gray-100 bg-gray-50 px-6 py-4 dark:border-slate-800 dark:bg-slate-800">
                 <span class="font-semibold text-gray-800 dark:text-gray-100">
                   {t('headlineAnalyzer.meta.tips', { fallback: 'Suggestions' })}
                 </span>
@@ -1145,8 +1145,8 @@ const faqSchema = buildFaqSchema(faqs);
         if (desc.length > 160 || descWidth > 990) descStatus = 'tooLong';
         else if (desc.length >= 110 && descWidth >= 680) descStatus = 'perfect';
 
-        titleCounter.className = `text-xs font-mono px-2 py-0.5 rounded-sm ${titleStatus === 'perfect' ? 'bg-green-50 text-green-600' : titleStatus === 'tooLong' ? 'bg-red-50 text-red-600' : 'bg-yellow-50 text-yellow-600'}`;
-        descCounter.className = `text-xs font-mono px-2 py-0.5 rounded-sm ${descStatus === 'perfect' ? 'bg-green-50 text-green-600' : descStatus === 'tooLong' ? 'bg-red-50 text-red-600' : 'bg-yellow-50 text-yellow-600'}`;
+        titleCounter.className = `text-xs font-mono px-2 py-0.5 rounded-sm ${titleStatus === 'perfect' ? 'bg-green-100 text-green-900 dark:bg-green-950 dark:text-green-200' : titleStatus === 'tooLong' ? 'bg-red-100 text-red-900 dark:bg-red-950 dark:text-red-200' : 'bg-amber-100 text-amber-900 dark:bg-amber-950 dark:text-amber-200'}`;
+        descCounter.className = `text-xs font-mono px-2 py-0.5 rounded-sm ${descStatus === 'perfect' ? 'bg-green-100 text-green-900 dark:bg-green-950 dark:text-green-200' : descStatus === 'tooLong' ? 'bg-red-100 text-red-900 dark:bg-red-950 dark:text-red-200' : 'bg-amber-100 text-amber-900 dark:bg-amber-950 dark:text-amber-200'}`;
 
         let titleScore = 0;
         if (titleStatus === 'perfect') titleScore = 40;
@@ -1201,8 +1201,8 @@ const faqSchema = buildFaqSchema(faqs);
             type === 'success'
               ? 'text-gray-700 dark:text-gray-200'
               : type === 'error'
-                ? 'text-red-700 font-medium'
-                : 'text-yellow-700';
+                ? 'text-red-800 dark:text-red-300 font-medium'
+                : 'text-amber-900 dark:text-amber-300 font-medium';
           li.innerHTML = `<span class="${iconColor} shrink-0 mt-0.5 font-bold">${type === 'success' ? '✓' : '⚠'}</span><span class="${textColor}"></span>`;
           li.querySelector('span + span').textContent = text;
           tipsList.appendChild(li);

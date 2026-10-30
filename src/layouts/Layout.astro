@@ -189,7 +189,8 @@ const organizationSchema = createOrganizationSchema(
     { telephone: '+989354767068', contactType: 'technical support' },
   ],
   lang,
-  pageDescription
+  dictionary.home?.description ||
+    'Premier Web Design, Full-Stack Custom Development, Performance SEO, and AEO Agency'
 );
 
 const websiteSchema = createWebsiteSchema(siteUrl, supportedLang);

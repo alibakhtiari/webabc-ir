@@ -47,10 +47,10 @@ const faqSchema = {
         '@type': 'Answer',
         text:
           supportedLang === 'fa'
-            ? 'کدهای FAQPage به موتورهای جستجو و هوش مصنوعی اجازه می‌دهند سوالات و پاسخ‌های متداول را به‌طور مستقیم در نتایج گوگل و پاسخ‌های هوشمند نمایش دهند.'
+            ? 'کدهای FAQPage به موتورهای جستجو و هوش مصنوعی اجازه می‌دهند ساختار پرسش و پاسخ‌های صفحه را به‌طور شفاف و استاندارد تفسیر و پردازش کنند.'
             : supportedLang === 'ar'
-              ? 'تسمح كود مخطط FAQPage لموتورات البحث والذكاء الاصطناعي بتوليد الإجابات المباشرة للأسئلة الشائعة في نتائج البحث.'
-              : 'FAQPage Schema allows search engines and AI engines to display rich expandable Q&A accordions directly in search results.',
+              ? 'تسمح كودات مخطط FAQPage لمحركات البحث وأنظمة الذكاء الاصطناعي بفهم بنية الأسئلة والأجوبة واستيعابها برمجياً بدقة.'
+              : 'FAQPage Schema helps search engines and AI assistants parse structured question-and-answer pairs clearly and accurately.',
       },
     },
   ],
@@ -104,8 +104,8 @@ const faqSchema = {
                 class="faq-a w-full resize-none rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
                 aria-label={t('faqGenerator.answerLabel', { fallback: 'Answer' })}
                 rows="2"
-                >FAQ Schema is structured data code added to a website to help search engines
-                display interactive rich snippets directly in Google search results.</textarea
+                >FAQ Schema is structured data code (JSON-LD) added to a website to describe
+                question-and-answer pairs clearly to search engines and AI crawlers.</textarea
               >
             </div>
             <!-- Item 2 -->
@@ -121,8 +121,8 @@ const faqSchema = {
               <textarea
                 class="faq-a w-full resize-none rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900 focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
                 aria-label={t('faqGenerator.answerLabel', { fallback: 'Answer' })}
-                >Yes, FAQ schema enhances search visibility, expands your search snippet footprint,
-                and increases click-through rates (CTR).</textarea
+                >Yes, FAQ schema provides explicit machine-readable context about your content,
+                helping search engines understand your question and answer hierarchy accurately.</textarea
               >
             </div>
           </div>

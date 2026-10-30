@@ -10,6 +10,10 @@ const { lang } = Astro.params;
 const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
 
+const isRtl = supportedLang === 'fa' || supportedLang === 'ar';
+const fontClass =
+  supportedLang === 'en' ? 'font-sans' : supportedLang === 'ar' ? 'font-arabic' : 'font-persian';
+
 const privacy = dictionary.privacyPolicy || {
   title: 'Privacy Policy',
   introduction: 'This privacy policy governs your use of this application.',
@@ -57,76 +61,99 @@ const breadcrumbs = [
   lang={supportedLang}
   slug="privacy"
 >
-  <div class="container mx-auto max-w-3xl px-4 py-16 pt-36 font-persian font-sans">
-    <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
-    <h1 class="mb-4 text-4xl leading-normal font-bold text-gray-900 dark:text-white">
-      {privacy.title}
-    </h1>
-    <p class="mb-12 font-mono text-sm text-gray-500 dark:text-gray-400">
-      {privacy.lastUpdated}
-      {new Date('2026-08-07T00:00:00Z').toLocaleDateString(supportedLang, { year: 'numeric', month: 'long', day: 'numeric' })}
-    </p>
+  <div class={`min-h-screen bg-[var(--bg-canvas)] py-12 md:py-16 pt-32 ${fontClass}`}>
+    <div class="container mx-auto max-w-4xl px-4 space-y-6">
+      <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
 
-    <div
-      class="prose prose-lg max-w-none space-y-10 leading-relaxed text-gray-700 dark:text-gray-300 dark:prose-invert"
-    >
-      <p class="text-lg leading-relaxed">{privacy.introduction}</p>
+      <div class="terminal-window">
+        <div class="terminal-chrome-bar" dir="ltr">
+          <span class="slash-eyebrow text-xs">/LEGAL-PRIVACY · COMPLIANCE & DATA INTEGRITY</span>
+          <span class="monospace-telemetry-pill">POLICY: ACTIVE</span>
+        </div>
+        <div class="p-6 md:p-10 space-y-8">
+          <div class="border-b border-[var(--border-hairline)] pb-6">
+            <h1 class="text-2xl md:text-3xl font-extrabold text-[var(--text-primary)] tracking-tight">
+              {privacy.title}
+            </h1>
+            <p class="mt-1 font-mono text-xs text-[var(--text-muted)]">
+              {privacy.lastUpdated}
+              {new Date('2026-08-07T00:00:00Z').toLocaleDateString(supportedLang, { year: 'numeric', month: 'long', day: 'numeric' })}
+            </p>
+            <p class="mt-4 text-sm text-[var(--text-secondary)] leading-relaxed">
+              {privacy.introduction}
+            </p>
+          </div>
 
-      <section class="space-y-4">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-          {privacy.dataCollection.title}
-        </h2>
-        {
-          renderContent(privacy.dataCollection.content).map((paragraph) => (
-            <p set:html={paragraph} />
-          ))
-        }
-      </section>
+          <!-- Privacy sections styled with terminal accents -->
+          <div class="space-y-8 text-[var(--text-secondary)]">
+            <section class="space-y-3">
+              <h2 class="text-lg md:text-xl font-bold text-[var(--text-primary)]">
+                {privacy.dataCollection.title}
+              </h2>
+              <div class="space-y-2 text-sm leading-relaxed text-[var(--text-secondary)] [&_strong]:text-[var(--text-primary)]">
+                {renderContent(privacy.dataCollection.content).map((paragraph) => (
+                  <p set:html={paragraph} />
+                ))}
+              </div>
+            </section>
 
-      <section class="space-y-4">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">{privacy.dataUsage.title}</h2>
-        {renderContent(privacy.dataUsage.content).map((paragraph) => <p set:html={paragraph} />)}
-      </section>
+            <section class="space-y-3">
+              <h2 class="text-lg md:text-xl font-bold text-[var(--text-primary)]">
+                {privacy.dataUsage.title}
+              </h2>
+              <div class="space-y-2 text-sm leading-relaxed text-[var(--text-secondary)] [&_strong]:text-[var(--text-primary)]">
+                {renderContent(privacy.dataUsage.content).map((paragraph) => (
+                  <p set:html={paragraph} />
+                ))}
+              </div>
+            </section>
 
-      <section class="space-y-4">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-          {privacy.thirdPartySharing.title}
-        </h2>
-        {
-          renderContent(privacy.thirdPartySharing.content).map((paragraph) => (
-            <p set:html={paragraph} />
-          ))
-        }
-      </section>
+            <section class="space-y-3">
+              <h2 class="text-lg md:text-xl font-bold text-[var(--text-primary)]">
+                {privacy.thirdPartySharing.title}
+              </h2>
+              <div class="space-y-2 text-sm leading-relaxed text-[var(--text-secondary)] [&_strong]:text-[var(--text-primary)]">
+                {renderContent(privacy.thirdPartySharing.content).map((paragraph) => (
+                  <p set:html={paragraph} />
+                ))}
+              </div>
+            </section>
 
-      <section class="space-y-4">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-          {privacy.dataRetentionAndDeletion.title}
-        </h2>
-        {
-          renderContent(privacy.dataRetentionAndDeletion.content).map((paragraph) => (
-            <p set:html={paragraph} />
-          ))
-        }
-      </section>
+            <section class="space-y-3">
+              <h2 class="text-lg md:text-xl font-bold text-[var(--text-primary)]">
+                {privacy.dataRetentionAndDeletion.title}
+              </h2>
+              <div class="space-y-2 text-sm leading-relaxed text-[var(--text-secondary)] [&_strong]:text-[var(--text-primary)]">
+                {renderContent(privacy.dataRetentionAndDeletion.content).map((paragraph) => (
+                  <p set:html={paragraph} />
+                ))}
+              </div>
+            </section>
 
-      <section class="space-y-4">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-          {privacy.cookieUsage.title}
-        </h2>
-        {renderContent(privacy.cookieUsage.content).map((paragraph) => <p set:html={paragraph} />)}
-      </section>
+            <section class="space-y-3">
+              <h2 class="text-lg md:text-xl font-bold text-[var(--text-primary)]">
+                {privacy.cookieUsage.title}
+              </h2>
+              <div class="space-y-2 text-sm leading-relaxed text-[var(--text-secondary)] [&_strong]:text-[var(--text-primary)]">
+                {renderContent(privacy.cookieUsage.content).map((paragraph) => (
+                  <p set:html={paragraph} />
+                ))}
+              </div>
+            </section>
 
-      <section class="space-y-4">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-          {privacy.contactInformation.title}
-        </h2>
-        {
-          renderContent(privacy.contactInformation.content).map((paragraph) => (
-            <p set:html={paragraph} />
-          ))
-        }
-      </section>
+            <section class="space-y-3">
+              <h2 class="text-lg md:text-xl font-bold text-[var(--text-primary)]">
+                {privacy.contactInformation.title}
+              </h2>
+              <div class="space-y-2 text-sm leading-relaxed text-[var(--text-secondary)] [&_strong]:text-[var(--text-primary)]">
+                {renderContent(privacy.contactInformation.content).map((paragraph) => (
+                  <p set:html={paragraph} />
+                ))}
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </Layout>

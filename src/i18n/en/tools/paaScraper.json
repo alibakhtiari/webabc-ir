@@ -1,6 +1,6 @@
 {
-  "title": "\"People Also Ask\" Scraper",
-  "description": "Scrape Google's 'People Also Ask' questions for any keyword. Find common user queries and generate content ideas that drive organic traffic to your blog.",
+  "title": "\"People Also Ask\" Question Explorer",
+  "description": "Explore Google-style 'People Also Ask' questions with an interactive workflow preview. Review common user queries and structure question-led content ideas.",
   "enterKeyword": "Enter Keyword",
   "enterKeywordDesc": "Find questions people are asking about your topic",
   "keywordLabel": "Keyword or Topic",
