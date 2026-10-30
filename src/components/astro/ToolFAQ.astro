@@ -15,6 +15,7 @@ interface Props {
 
 const { lang, faqSchema } = Astro.props;
 const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 'font-persian';
+const isRtl = lang === 'fa' || lang === 'ar';
 
 const items = faqSchema?.mainEntity || [];
 
@@ -33,9 +34,25 @@ const heading =
   items.length > 0 && (
     <section class="container mx-auto mt-12 px-4 font-sans">
       <div class="terminal-window mx-auto max-w-4xl">
-        <div class="terminal-chrome-bar" dir="ltr">
-          <span class="slash-eyebrow text-xs" dir="ltr">/TOOL-FAQS · FAQPage JSON-LD</span>
-          <span class="monospace-telemetry-pill">{items.length} QUESTIONS</span>
+        <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
+          <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+            {
+              lang === 'fa'
+                ? '/سوالات-متداول · داده‌های ساختاریافته FAQ'
+                : lang === 'ar'
+                  ? '/الأسئلة-الشائعة · بيانات FAQ المنظمة'
+                  : '/TOOL-FAQS · FAQPage JSON-LD'
+            }
+          </span>
+          <span class="monospace-telemetry-pill">
+            {
+              lang === 'fa'
+                ? `${items.length} پرسش و پاسخ`
+                : lang === 'ar'
+                  ? `${items.length} أسئلة`
+                  : `${items.length} QUESTIONS`
+            }
+          </span>
         </div>
 
         <div class="space-y-4 p-6 sm:p-8">

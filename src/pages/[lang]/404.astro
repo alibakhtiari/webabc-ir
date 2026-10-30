@@ -14,6 +14,7 @@ const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
 
 const t = createTranslator(dictionary);
+const isRtl = supportedLang === 'fa' || supportedLang === 'ar';
 
 const title = `${t('common.notFound.title', { fallback: '404 - Page Not Found' })} | WebABC`;
 const description = t('common.notFound.subtitle', {
@@ -63,11 +64,19 @@ const quickLinks = [
     <div class="container mx-auto max-w-4xl space-y-12 px-4 text-center">
       <!-- Interactive 404 Terminal Card -->
       <div class="terminal-window">
-        <div class="terminal-chrome-bar" dir="ltr">
-          <span class="font-mono text-xs font-bold text-[var(--accent-coral)]">
+        <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
+          <span class="font-mono text-xs font-bold text-[var(--accent-coral)]" dir="ltr">
             ╭─ /ERROR-404 · lost-in-space-404.js ─╮
           </span>
-          <span class="monospace-telemetry-pill">STATUS 404 · RECOVERY</span>
+          <span class="monospace-telemetry-pill">
+            {
+              supportedLang === 'fa'
+                ? 'وضعیت ۴۰۴ · بازیابی'
+                : supportedLang === 'ar'
+                  ? 'الحالة 404 · استرداد'
+                  : 'STATUS 404 · RECOVERY'
+            }
+          </span>
         </div>
 
         <div

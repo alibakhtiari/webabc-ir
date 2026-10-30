@@ -113,7 +113,15 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
   <section class={`border-b border-[var(--border-hairline)] bg-[var(--bg-canvas)] py-12 md:py-16 ${fontClass}`}>
     <div class="container mx-auto max-w-6xl px-4">
       <div class="mb-8 text-center">
-        <span class="slash-eyebrow text-xs" dir="ltr">/SEO-UTILITIES · 8 TOOLS</span>
+        <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+          {
+            supportedLang === 'fa'
+              ? '/ابزارهای-سئو · ۸ ابزار'
+              : supportedLang === 'ar'
+                ? '/أدوات-السيو · 8 أدوات'
+                : '/SEO-UTILITIES · 8 TOOLS'
+          }
+        </span>
         <h2 class="mt-1 mb-2 text-2xl font-bold text-[var(--text-primary)] sm:text-3xl">
           {t('tools.seoMarketersTitle', { fallback: 'SEO & Search Utilities' })}
         </h2>
@@ -164,7 +172,15 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
   <section class={`border-b border-[var(--border-hairline)] bg-[var(--bg-canvas)] py-12 md:py-16 ${fontClass}`}>
     <div class="container mx-auto max-w-6xl px-4">
       <div class="mb-8 text-center">
-        <span class="slash-eyebrow text-xs" dir="ltr">/DESIGN-AND-COST-UTILITIES · 9 TOOLS</span>
+        <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+          {
+            supportedLang === 'fa'
+              ? '/ابزارهای-طراحی-و-برآورد-هزینه · ۹ ابزار'
+              : supportedLang === 'ar'
+                ? '/أدوات-التصميم-وتقدير-التكلفة · 9 أدوات'
+                : '/DESIGN-AND-COST-UTILITIES · 9 TOOLS'
+          }
+        </span>
         <h2 class="mt-1 mb-2 text-2xl font-bold text-[var(--text-primary)] sm:text-3xl">
           {t('tools.contentCreatorsTitle', { fallback: 'Developer & Layout Utilities' })}
         </h2>
@@ -215,7 +231,15 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
   <section class={`bg-[var(--bg-canvas)] py-12 md:py-16 ${fontClass}`}>
     <div class="container mx-auto max-w-6xl px-4">
       <div class="mb-8 text-center">
-        <span class="slash-eyebrow text-xs" dir="ltr">/TECHNICAL-SEO-UTILITIES · 4 TOOLS</span>
+        <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+          {
+            supportedLang === 'fa'
+              ? '/ابزارهای-سئو-تکنیکال · ۴ ابزار'
+              : supportedLang === 'ar'
+                ? '/أدوات-السيو-التقني · 4 أدوات'
+                : '/TECHNICAL-SEO-UTILITIES · 4 TOOLS'
+          }
+        </span>
         <h2 class="mt-1 mb-2 text-2xl font-bold text-[var(--text-primary)] sm:text-3xl">
           {t('tools.technicalTitle', { fallback: 'Technical SEO Utilities' })}
         </h2>

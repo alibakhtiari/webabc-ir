@@ -88,7 +88,15 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
     <div class="mx-auto max-w-2xl text-center">
       <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered />
       <div class="mb-2 flex justify-center">
-        <span class="slash-eyebrow text-xs" dir="ltr">/CONTACT · DIRECT ENGINEERING CONSULTATION</span>
+        <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+          {
+            supportedLang === 'fa'
+              ? '/تماس-با-ما · مشاوره مستقیم فنی و مهندسی'
+              : supportedLang === 'ar'
+                ? '/اتصل-بنا · استشارة هندسية وتقنية مباشرة'
+                : '/CONTACT · DIRECT ENGINEERING CONSULTATION'
+          }
+        </span>
       </div>
       <h1 class="mb-3 text-3xl leading-tight font-bold text-[var(--text-primary)] md:text-5xl">
         {headingText}
@@ -100,11 +108,25 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
 
     <div class="mt-10 grid gap-8 lg:grid-cols-5 lg:gap-10">
       <div class="terminal-window lg:col-span-3">
-        <div class="terminal-chrome-bar" dir="ltr">
+        <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
           <span class="font-mono text-xs font-bold text-[var(--accent-green)]">
-            ╭─ /SEND-INQUIRY · FREE PROJECT &amp; SEO AUDIT ─╮
+            {
+              supportedLang === 'fa'
+                ? '╭─ /ارسال-پیام · استعلام پروژه و آنالیز رایگان سئو ─╮'
+                : supportedLang === 'ar'
+                  ? '╭─ /إرسال-طلب · تدقيق مجاني واستشارة للمشروع ─╮'
+                  : '╭─ /SEND-INQUIRY · FREE PROJECT & SEO AUDIT ─╮'
+            }
           </span>
-          <span class="monospace-telemetry-pill">SLA &lt; 2 HOURS</span>
+          <span class="monospace-telemetry-pill">
+            {
+              supportedLang === 'fa'
+                ? 'پاسخ‌گویی زیر ۲ ساعت'
+                : supportedLang === 'ar'
+                  ? 'الرد خلال أقل من ساعتين'
+                  : 'SLA < 2 HOURS'
+            }
+          </span>
         </div>
 
         <div class="p-6 sm:p-8">
@@ -288,9 +310,25 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
 
       <aside class="space-y-6 lg:col-span-2">
         <div class="terminal-window">
-          <div class="terminal-chrome-bar" dir="ltr">
-            <span>/DIRECT-CHANNELS</span>
-            <span class="monospace-telemetry-pill">FAST RESPONSE</span>
+          <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
+            <span>
+              {
+                supportedLang === 'fa'
+                  ? '/راه‌های-ارتباط-مستقیم'
+                  : supportedLang === 'ar'
+                    ? '/قنوات-الاتصال-المباشرة'
+                    : '/DIRECT-CHANNELS'
+              }
+            </span>
+            <span class="monospace-telemetry-pill">
+              {
+                supportedLang === 'fa'
+                  ? 'پاسخگویی سریع'
+                  : supportedLang === 'ar'
+                    ? 'استجابة سريعة'
+                    : 'FAST RESPONSE'
+              }
+            </span>
           </div>
 
           <div class="p-6">
@@ -299,7 +337,9 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
             </h2>
             <ul class="space-y-4 text-sm">
               <li>
-                <div class="font-mono text-xs font-bold text-[var(--accent-purple)]" dir="ltr">[ADDRESS]</div>
+                <div class="font-mono text-xs font-bold text-[var(--accent-purple)]" dir={isRtl ? 'rtl' : 'ltr'}>
+                  {supportedLang === 'fa' ? '[آدرس]' : supportedLang === 'ar' ? '[العنوان]' : '[ADDRESS]'}
+                </div>
                 <p class="mt-1 text-xs leading-relaxed text-[var(--text-secondary)] sm:text-sm">
                   {
                     t('contact.addressValue', {
@@ -319,7 +359,9 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
               </li>
 
               <li>
-                <div class="font-mono text-xs font-bold text-[var(--accent-green)]" dir="ltr">[TELEPHONE]</div>
+                <div class="font-mono text-xs font-bold text-[var(--accent-green)]" dir={isRtl ? 'rtl' : 'ltr'}>
+                  {supportedLang === 'fa' ? '[شماره تماس]' : supportedLang === 'ar' ? '[الهاتف]' : '[TELEPHONE]'}
+                </div>
                 <p class="mt-1 font-mono text-sm text-[var(--text-primary)]" dir="ltr">
                   <a href="tel:+989125811880" class="hover:text-[var(--accent-green)]">
                     {t('contact.phoneValue', { fallback: '+98 912 581 1880' })}
@@ -333,7 +375,9 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
               </li>
 
               <li>
-                <div class="font-mono text-xs font-bold text-[var(--accent-blue)]" dir="ltr">[EMAIL]</div>
+                <div class="font-mono text-xs font-bold text-[var(--accent-blue)]" dir={isRtl ? 'rtl' : 'ltr'}>
+                  {supportedLang === 'fa' ? '[ایمیل]' : supportedLang === 'ar' ? '[البريد الإلكتروني]' : '[EMAIL]'}
+                </div>
                 <p class="mt-1 font-mono text-sm text-[var(--text-primary)]" dir="ltr">
                   <a href="mailto:info@webabc.ir" class="hover:text-[var(--accent-blue)]">info@webabc.ir</a>
                 </p>
@@ -379,9 +423,25 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
         </div>
 
         <div class="terminal-window">
-          <div class="terminal-chrome-bar" dir="ltr">
-            <span>/NEXT-STEPS</span>
-            <span class="monospace-telemetry-pill">3 STAGES</span>
+          <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
+            <span>
+              {
+                supportedLang === 'fa'
+                  ? '/مراحل-همکاری'
+                  : supportedLang === 'ar'
+                    ? '/الخطوات-التالية'
+                    : '/NEXT-STEPS'
+              }
+            </span>
+            <span class="monospace-telemetry-pill">
+              {
+                supportedLang === 'fa'
+                  ? '۳ مرحله'
+                  : supportedLang === 'ar'
+                    ? '3 مراحل'
+                    : '3 STAGES'
+              }
+            </span>
           </div>
           <div class="p-6">
             <h2 class="mb-4 text-lg font-bold text-[var(--text-primary)]">

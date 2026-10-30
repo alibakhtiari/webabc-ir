@@ -27,6 +27,7 @@ const {
 } = Astro.props;
 
 const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 'font-persian';
+const isRtl = lang === 'fa' || lang === 'ar';
 ---
 
 <section
@@ -41,7 +42,15 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
       <!-- Text Content -->
       <div class={`${heroImage ? 'lg:w-1/2 w-full' : 'w-full'}`}>
         <div class={`mb-3 ${centered ? 'flex justify-center' : ''}`}>
-          <span class="slash-eyebrow" dir="ltr">/WEBABC · TECHNICAL SPEC</span>
+          <span class="slash-eyebrow" dir={isRtl ? 'rtl' : 'ltr'}>
+            {
+              lang === 'fa'
+                ? '/وب-ای‌بی‌سی · مشخصات فنی و مهندسی'
+                : lang === 'ar'
+                  ? '/ويب-أيه-بي-سي · المواصفات الفنية'
+                  : '/WEBABC · TECHNICAL SPEC'
+            }
+          </span>
         </div>
         <h1
           class={`leading-tight font-bold text-[var(--text-primary)] md:text-5xl ${heroImage ? 'mb-5 text-3xl sm:text-4xl' : 'text-3xl sm:text-4xl'} ${fontClass}`}
@@ -74,8 +83,16 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
         heroImage && (
           <div class="mt-8 w-full lg:mt-0 lg:w-1/2">
             <div class="terminal-window">
-              <div class="terminal-chrome-bar" dir="ltr">
-                <span>╭─ /ASSET-VIEW · HIGH-CONTRAST RENDER ─╮</span>
+              <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
+                <span>
+                  {
+                    lang === 'fa'
+                      ? '╭─ /نمای-بصری · پردازش با کنتراست بالا ─╮'
+                      : lang === 'ar'
+                        ? '╭─ /عرض-الأصول · معالجة بصرية عالية الدقة ─╮'
+                        : '╭─ /ASSET-VIEW · HIGH-CONTRAST RENDER ─╮'
+                  }
+                </span>
                 <span class="monospace-telemetry-pill">AVIF · WEBP</span>
               </div>
               <div class="relative h-72 w-full overflow-hidden lg:h-96">

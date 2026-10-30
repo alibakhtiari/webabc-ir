@@ -30,9 +30,19 @@ const ctaBtnText = buttonText || t('cta.primaryButton', { fallback: 'Get Free Co
 ---
 
 <div class={`terminal-window my-10 ${fontClass}`}>
-  <div class="terminal-chrome-bar" dir="ltr">
-    <span class="slash-eyebrow text-xs" dir="ltr">/GET-STARTED · FREE STRATEGY &amp; AUDIT</span>
-    <span class="monospace-telemetry-pill text-[var(--accent-green)]">● SLA &lt; 2H</span>
+  <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
+    <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+      {
+        lang === 'fa'
+          ? '/شروع-همکاری · استراتژی و ممیزی رایگان'
+          : lang === 'ar'
+            ? '/ابدأ-الآن · استراتيجية وتدقيق مجاني'
+            : '/GET-STARTED · FREE STRATEGY & AUDIT'
+      }
+    </span>
+    <span class="monospace-telemetry-pill text-[var(--accent-green)]">
+      ● {lang === 'fa' ? 'پاسخ‌گویی زیر ۲ ساعت' : lang === 'ar' ? 'الرد خلال أقل من ساعتين' : 'SLA < 2H'}
+    </span>
   </div>
 
   <div class="flex flex-col items-center justify-between gap-6 p-6 sm:p-8 md:flex-row">
@@ -50,7 +60,7 @@ const ctaBtnText = buttonText || t('cta.primaryButton', { fallback: 'Get Free Co
         type="button"
         data-consult-service={serviceName}
         data-open-consultation={!serviceName ? true : undefined}
-        class="inline-flex h-10 cursor-pointer items-center justify-center gap-1.5 rounded border border-[var(--accent-green)] bg-[var(--accent-green-dim)] px-5 font-mono text-xs font-bold text-[var(--accent-contrast)] transition-all hover:bg-[var(--accent-green)] hover:text-[#090b0e]"
+        class={`inline-flex h-10 cursor-pointer items-center justify-center gap-1.5 rounded border border-[var(--accent-green)] bg-[var(--accent-green-dim)] px-5 ${isRtl ? (lang === 'ar' ? 'font-arabic' : 'font-persian') : 'font-mono'} text-xs font-bold text-[var(--accent-contrast)] transition-all hover:bg-[var(--accent-green)] hover:text-[#090b0e]`}
       >
         <span>{ctaBtnText}</span>
         <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
@@ -58,7 +68,7 @@ const ctaBtnText = buttonText || t('cta.primaryButton', { fallback: 'Get Free Co
 
       <a
         href={`/${lang}${buttonLink.endsWith('/') ? buttonLink : buttonLink + '/'}`}
-        class="inline-flex h-10 items-center justify-center rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-4 font-mono text-xs font-semibold text-[var(--text-primary)] transition-colors hover:border-[var(--accent-blue)] hover:text-[var(--accent-blue)]"
+        class={`inline-flex h-10 items-center justify-center rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] px-4 ${isRtl ? (lang === 'ar' ? 'font-arabic' : 'font-persian') : 'font-mono'} text-xs font-semibold text-[var(--text-primary)] transition-colors hover:border-[var(--accent-blue)] hover:text-[var(--accent-blue)]`}
       >
         <span>{t('common.contactUs', { fallback: 'Contact Page' })}</span>
       </a>

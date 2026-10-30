@@ -113,9 +113,25 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
 
       <!-- Mission Terminal Window -->
       <div class="terminal-window">
-        <div class="terminal-chrome-bar" dir="ltr">
-          <span class="slash-eyebrow text-xs" dir="ltr">/OUR-MISSION</span>
-          <span class="monospace-telemetry-pill">ENGINEERING EXCELLENCE</span>
+        <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
+          <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+            {
+              supportedLang === 'fa'
+                ? '/ماموریت-ما'
+                : supportedLang === 'ar'
+                  ? '/مهمتنا'
+                  : '/OUR-MISSION'
+            }
+          </span>
+          <span class="monospace-telemetry-pill">
+            {
+              supportedLang === 'fa'
+                ? 'تعالی مهندسی'
+                : supportedLang === 'ar'
+                  ? 'التميز الهندسي'
+                  : 'ENGINEERING EXCELLENCE'
+            }
+          </span>
         </div>
         <div class="mx-auto max-w-3xl space-y-3 p-6 text-center sm:p-8">
           <h2 class="text-2xl font-bold text-[var(--text-primary)]">
@@ -136,7 +152,15 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
         approachItems.length > 0 && (
           <div class="space-y-6">
             <div class="text-center">
-              <span class="slash-eyebrow text-xs" dir="ltr">/METHODOLOGY</span>
+              <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+                {
+                  supportedLang === 'fa'
+                    ? '/روش-کار-ما'
+                    : supportedLang === 'ar'
+                      ? '/منهجية-العمل'
+                      : '/METHODOLOGY'
+                }
+              </span>
               <h2 class="mt-1 text-2xl font-bold text-[var(--text-primary)] sm:text-3xl">
                 {t('about.approach.title', { fallback: 'How We Work' })}
               </h2>
@@ -161,9 +185,25 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
       }
 
       <div class="terminal-window">
-        <div class="terminal-chrome-bar" dir="ltr">
-          <span class="slash-eyebrow text-xs" dir="ltr">/PARTNERSHIPS</span>
-          <span class="monospace-telemetry-pill">MENA &amp; GLOBAL</span>
+        <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
+          <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+            {
+              supportedLang === 'fa'
+                ? '/همکاری‌های-منطقه‌ای'
+                : supportedLang === 'ar'
+                  ? '/الشراكات-الإقليمية'
+                  : '/PARTNERSHIPS'
+            }
+          </span>
+          <span class="monospace-telemetry-pill">
+            {
+              supportedLang === 'fa'
+                ? 'خاورمیانه و بین‌الملل'
+                : supportedLang === 'ar'
+                  ? 'الشرق الأوسط والعالم'
+                  : 'MENA & GLOBAL'
+            }
+          </span>
         </div>
         <div class="mx-auto max-w-3xl space-y-3 p-6 text-center sm:p-8">
           <h2 class="text-2xl font-bold text-[var(--text-primary)]">

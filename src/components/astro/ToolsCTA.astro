@@ -54,7 +54,15 @@ const badges = trustItems[lang] || trustItems.en;
     <section class="border-t border-[var(--border-hairline)] bg-[var(--bg-canvas)] py-16">
       <div class={`container mx-auto max-w-6xl px-4 ${fontClass}`}>
         <div class="mb-2 flex justify-center">
-          <span class="slash-eyebrow" dir="ltr">/RELATED-UTILITIES</span>
+          <span class="slash-eyebrow" dir={isRtl ? 'rtl' : 'ltr'}>
+            {
+              lang === 'fa'
+                ? '/ابزارهای-مرتبط'
+                : lang === 'ar'
+                  ? '/أدوات-ذات-صلة'
+                  : '/RELATED-UTILITIES'
+            }
+          </span>
         </div>
         <h2 class="mb-8 text-center text-2xl font-bold text-[var(--text-primary)]">
           {t('tools.relatedTitle', { fallback: 'Related Free Tools' })}
@@ -91,8 +99,16 @@ const badges = trustItems[lang] || trustItems.en;
 <section class="border-t border-[var(--border-hairline)] bg-[var(--bg-canvas)] py-16">
   <div class={`container mx-auto max-w-4xl px-4 text-center ${fontClass}`}>
     <div class="terminal-window">
-      <div class="terminal-chrome-bar" dir="ltr">
-        <span class="slash-eyebrow text-xs" dir="ltr">╭─ /ENTERPRISE-ENGINEERING · WEBABC ─╮</span>
+      <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
+        <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+          {
+            lang === 'fa'
+              ? '╭─ /مهندسی-سازمانی · وب اِی‌بی‌سی ─╮'
+              : lang === 'ar'
+                ? '╭─ /الهندسة-المتقدمة · ويب أيه بي سي ─╮'
+                : '╭─ /ENTERPRISE-ENGINEERING · WEBABC ─╮'
+          }
+        </span>
         <span class="monospace-telemetry-pill">CWV 100/100</span>
       </div>
 

@@ -21,7 +21,12 @@ const LOGO_VERSIONS = [
         : lang === 'ar'
           ? 'المصفوفة الرقمية'
           : 'Matrix Scanline Glitch',
-    badge: 'SCANLINE · MATRIX',
+    badge:
+      lang === 'fa'
+        ? 'اسکن خطی · ماتریکس'
+        : lang === 'ar'
+          ? 'مسح شريطي · مصفوفة'
+          : 'SCANLINE · MATRIX',
     desc:
       lang === 'fa'
         ? 'نمایش سایبرپانک تایپوگرافی با پرتو اسکن شطرنجی و باران کدهای باینری'
@@ -39,7 +44,12 @@ const LOGO_VERSIONS = [
         : lang === 'ar'
           ? 'مكعب ثلاثي الأبعاد'
           : '3D Wireframe Cube',
-    badge: 'ISOMETRIC · 3D VECTORS',
+    badge:
+      lang === 'fa'
+        ? 'ایزومتریک · وکتور ۳بعدی'
+        : lang === 'ar'
+          ? 'إيزومتري · متجهات 3D'
+          : 'ISOMETRIC · 3D VECTORS',
     desc:
       lang === 'fa'
         ? 'چرخش محاسباتی ۳ بعدی مکعب و منشور برداری با زوایای لحظه‌ای اویلر'
@@ -57,7 +67,12 @@ const LOGO_VERSIONS = [
         : lang === 'ar'
           ? 'طيف الإشارات والسرعة'
           : 'Audio Waveform & CWV',
-    badge: 'SYNTHESIZER · CWV GAUGES',
+    badge:
+      lang === 'fa'
+        ? 'سنتز بسامدی · شاخص CWV'
+        : lang === 'ar'
+          ? 'مركّب الترددات · مؤشرات CWV'
+          : 'SYNTHESIZER · CWV GAUGES',
     desc:
       lang === 'fa'
         ? 'آنالایزر بسامد هارمونیک و اکولایزر زنده در کنار گیج‌های شاخص‌های حیاتی وب'
@@ -75,7 +90,12 @@ const LOGO_VERSIONS = [
         : lang === 'ar'
           ? 'الرادار المداري الإقليمي'
           : 'Orbital Regional Radar',
-    badge: 'REGIONAL NODES · TLS 1.3',
+    badge:
+      lang === 'fa'
+        ? 'گره‌های منطقه‌ای · TLS 1.3'
+        : lang === 'ar'
+          ? 'محطات إقليمية · TLS 1.3'
+          : 'REGIONAL NODES · TLS 1.3',
     desc:
       lang === 'fa'
         ? 'ردیاب مداری و گردش ماهواره‌ای گره‌های ارتباطی قزوین، تهران، دبی، ریاض و مسقط'
@@ -97,7 +117,15 @@ const LOGO_VERSIONS = [
             : '╭─ /BRAND-IDENTITY · Interactive Animated ASCII Logo Studio ─╮'
       }
     </span>
-    <span class="monospace-telemetry-pill">4 PROCEDURAL EDITIONS · 60 FPS</span>
+    <span class="monospace-telemetry-pill">
+      {
+        lang === 'fa'
+          ? '۴ نسخه الگوریتمی · ۶۰ فریم'
+          : lang === 'ar'
+            ? '4 إصدارات برمجية · 60 إطار'
+            : '4 PROCEDURAL EDITIONS · 60 FPS'
+      }
+    </span>
   </div>
 
   <div class="p-5 sm:p-7">
@@ -137,8 +165,8 @@ const LOGO_VERSIONS = [
               data-logo-tab={ver.piece}
               data-logo-badge={ver.badge}
               data-logo-desc={ver.desc}
-              aria-pressed={idx === 0 ? 'true' : 'false'}
-              class={`cursor-pointer rounded border px-3 py-1.5 font-mono text-xs font-bold transition-all ${
+              aria-selected={idx === 0 ? 'true' : 'false'}
+              class={`cursor-pointer rounded border px-3 py-1.5 ${isRtl ? (lang === 'ar' ? 'font-arabic' : 'font-persian') : 'font-mono'} text-xs font-bold transition-all ${
                 idx === 0
                   ? 'active-logo-tab border-[var(--accent-green)] bg-[var(--bg-surface)] text-[var(--accent-green)] shadow-xs'
                   : 'border-[var(--border-hairline)] bg-[var(--bg-canvas)] text-[var(--text-secondary)] hover:border-[var(--border-focus)] hover:text-[var(--text-primary)]'
@@ -217,12 +245,12 @@ const LOGO_VERSIONS = [
           tabs.forEach((t) => {
             t.classList.remove(...activeClasses);
             t.classList.add(...inactiveClasses);
-            t.setAttribute('aria-pressed', 'false');
+            t.setAttribute('aria-selected', 'false');
           });
 
           tab.classList.remove(...inactiveClasses);
           tab.classList.add(...activeClasses);
-          tab.setAttribute('aria-pressed', 'true');
+          tab.setAttribute('aria-selected', 'true');
 
           const asciiEl =
             stage.tagName.toLowerCase() === 'ascii-art' ? stage : stage.querySelector('ascii-art');
