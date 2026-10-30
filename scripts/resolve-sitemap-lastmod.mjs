@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { execSync } from 'node:child_process';
 
 const root = process.cwd();
 const lastmodFile = path.join(root, 'src/generated/sitemap-lastmod.json');
@@ -11,6 +12,22 @@ if (fs.existsSync(lastmodFile)) {
   } catch (e) {
     current = {};
   }
+}
+
+// Helper to look up latest authored date from git commit history
+function getGitDate(filePaths, fallbackDate) {
+  try {
+    const validPaths = (Array.isArray(filePaths) ? filePaths : [filePaths]).filter((p) =>
+      fs.existsSync(path.join(root, p))
+    );
+    if (validPaths.length === 0) return fallbackDate;
+    const cmd = `git log -1 --format="%cs" -- ${validPaths.map((p) => `"${p}"`).join(' ')}`;
+    const stdout = execSync(cmd, { encoding: 'utf8', stdio: ['pipe', 'pipe', 'ignore'] }).trim();
+    if (stdout && /^\d{4}-\d{2}-\d{2}$/.test(stdout)) {
+      return stdout;
+    }
+  } catch (e) {}
+  return fallbackDate;
 }
 
 const fallback = current._fallback || '2025-01-01T00:00:00.000Z';
@@ -99,17 +116,27 @@ const services = [
   'website-maintenance',
   'ecommerce',
 ];
+const serviceGitDate = getGitDate(
+  ['src/pages/[lang]/services/[slug].astro', 'src/config/services.ts'],
+  '2026-08-18'
+);
 langs.forEach((lang) => {
   services.forEach((s) => {
-    updated[`${lang}/services/${s}/`] = '2026-08-18';
+    const key = `${lang}/services/${s}/`;
+    updated[key] = current[key] && current[key] > serviceGitDate ? current[key] : serviceGitDate;
   });
 });
 
 // Service areas
 const areas = ['dubai', 'riyadh', 'abu-dhabi', 'muscat', 'tehran', 'qazvin'];
+const areaGitDate = getGitDate(
+  ['src/pages/[lang]/service-areas/[slug].astro'],
+  '2026-08-18'
+);
 langs.forEach((lang) => {
   areas.forEach((a) => {
-    updated[`${lang}/service-areas/${a}/`] = '2026-08-18';
+    const key = `${lang}/service-areas/${a}/`;
+    updated[key] = current[key] && current[key] > areaGitDate ? current[key] : areaGitDate;
   });
 });
 
@@ -120,8 +147,13 @@ if (fs.existsSync(toolsDir)) {
   files.forEach((f) => {
     if (f.endsWith('.astro') && f !== 'index.astro') {
       const toolSlug = f.replace('.astro', '');
+      const toolGitDate = getGitDate(
+        [`src/pages/[lang]/tools/${f}`, `src/config/tools.ts`],
+        '2026-08-07'
+      );
       langs.forEach((lang) => {
-        updated[`${lang}/tools/${toolSlug}/`] = '2026-08-07';
+        const key = `${lang}/tools/${toolSlug}/`;
+        updated[key] = current[key] && current[key] > toolGitDate ? current[key] : toolGitDate;
       });
     }
   });

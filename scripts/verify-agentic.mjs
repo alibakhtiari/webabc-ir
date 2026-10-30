@@ -660,6 +660,26 @@ async function test() {
   }
   console.log(`  verified ${checkedAvifs} content images have matching .avif siblings on disk`);
 
+  // 15. Sitemap image resolution parity (T-01 assertion)
+  // Ensure that all <image:loc> URLs in dist/sitemap-*.xml exist on disk in public/
+  console.log('\n15. Testing sitemap <image:loc> disk existence:');
+  const sitemapFiles = fs.readdirSync(distDir).filter((f) => f.startsWith('sitemap-') && f.endsWith('.xml'));
+  let totalSitemapImagesChecked = 0;
+  for (const sf of sitemapFiles) {
+    const sxml = fs.readFileSync(path.join(distDir, sf), 'utf8');
+    const imageLocs = [...sxml.matchAll(/<image:loc>([^<]+)<\/image:loc>/g)].map((m) => m[1]);
+    for (const loc of imageLocs) {
+      totalSitemapImagesChecked++;
+      const rel = loc.replace('https://webabc.ir/', '').replace(/^\//, '');
+      const localPath = path.join(root, 'public', rel);
+      assert(
+        fs.existsSync(localPath),
+        `sitemap image ${loc} exists on disk at public/${rel}`
+      );
+    }
+  }
+  console.log(`  verified ${totalSitemapImagesChecked} sitemap <image:loc> entries exist on disk`);
+
   console.log(`\n--- Verification Suite Completed: ${failures === 0 ? 'ALL CHECKS PASSED (100% Score)' : `${failures} FAILURES`} ---`);
   if (failures > 0) process.exit(1);
 }

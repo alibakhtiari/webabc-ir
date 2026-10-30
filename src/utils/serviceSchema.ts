@@ -57,7 +57,7 @@ export function createServiceSchema(
           { '@type': 'City', name: 'Riyadh' },
           { '@type': 'City', name: 'Abu Dhabi' },
           { '@type': 'City', name: 'Qazvin' },
-          { '@type': 'Country', name: 'Global' },
+          { '@type': 'AdministrativeArea', name: 'Worldwide' },
         ],
         offers: {
           '@type': 'Offer',

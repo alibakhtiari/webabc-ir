@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WebABC AI Discovery Catalog Schema",
+  "type": "object",
+  "required": ["metadata", "tools", "services"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri"
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["name", "description", "version", "homepage", "canonical", "updated", "locales", "toolsCount", "servicesCount"],
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "version": { "type": "string" },
+        "homepage": { "type": "string", "format": "uri" },
+        "canonical": { "type": "string", "format": "uri" },
+        "updated": { "type": "string" },
+        "locales": { "type": "array", "items": { "type": "string" } },
+        "toolsCount": { "type": "integer" },
+        "servicesCount": { "type": "integer" }
+      }
+    },
+    "tools": {
+      "type": "object",
+      "properties": {
+        "en": { "type": "array" },
+        "fa": { "type": "array" },
+        "ar": { "type": "array" }
+      }
+    },
+    "services": {
+      "type": "object",
+      "properties": {
+        "en": { "type": "array" },
+        "fa": { "type": "array" },
+        "ar": { "type": "array" }
+      }
+    }
+  }
+}
