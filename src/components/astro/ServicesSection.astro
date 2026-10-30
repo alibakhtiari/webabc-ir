@@ -258,7 +258,7 @@ const processSteps = [
                 data-tab-btn={service.id}
                 data-tab-piece={service.piece}
                 data-tab-badge={service.badge}
-                aria-pressed={idx === 0 ? 'true' : 'false'}
+                aria-selected={idx === 0 ? 'true' : 'false'}
                 class={`tab-btn cursor-pointer rounded border px-3 py-1.5 text-xs font-bold transition-all sm:text-sm ${
                   idx === 0
                     ? 'active-tab border-[var(--accent-green)] bg-[var(--bg-surface)] text-[var(--accent-green)]'
@@ -434,13 +434,13 @@ const processSteps = [
                 <button
                   type="button"
                   data-consult-service={pillar.title}
-                  class="cursor-pointer font-mono text-xs font-bold text-[var(--accent-green)] hover:underline"
+                  class={`cursor-pointer ${isRtl ? (lang === 'ar' ? 'font-arabic' : 'font-persian') : 'font-mono'} text-xs font-bold text-[var(--accent-green)] hover:underline`}
                 >
-                  {t('common.freeConsultation', { fallback: 'Free Consultation' })} →
+                  {t('common.freeConsultation', { fallback: 'Free Consultation' })} {isRtl ? '←' : '→'}
                 </button>
                 <a
                   href={pillar.href}
-                  class="font-mono text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                  class={`${isRtl ? (lang === 'ar' ? 'font-arabic' : 'font-persian') : 'font-mono'} text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)]`}
                 >
                   {t('common.learnMore', { fallback: 'Specs' })} {isRtl ? '←' : '→'}
                 </a>
@@ -537,13 +537,13 @@ const processSteps = [
           tabBtns.forEach((b) => {
             b.classList.remove(...activeClasses);
             b.classList.add(...inactiveClasses);
-            b.setAttribute('aria-pressed', 'false');
+            b.setAttribute('aria-selected', 'false');
           });
           tabPanes.forEach((pane) => pane.classList.add('hidden'));
 
           btn.classList.add(...activeClasses);
           btn.classList.remove(...inactiveClasses);
-          btn.setAttribute('aria-pressed', 'true');
+          btn.setAttribute('aria-selected', 'true');
 
           const targetId = btn.getAttribute('data-tab-btn');
           const pieceSlug = btn.getAttribute('data-tab-piece');

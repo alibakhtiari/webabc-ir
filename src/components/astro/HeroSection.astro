@@ -108,7 +108,7 @@ const auditBtnText =
           />
           <button
             type="submit"
-            class={`inline-flex h-10 shrink-0 cursor-pointer items-center justify-center rounded border border-[var(--accent-green)] bg-[var(--accent-green-dim)] px-4 font-mono text-xs font-bold whitespace-nowrap text-[var(--accent-contrast)] transition-all hover:bg-[var(--accent-green)] hover:text-[#090b0e] ${fontClass}`}
+            class={`inline-flex h-10 shrink-0 cursor-pointer items-center justify-center rounded border border-[var(--accent-green)] bg-[var(--accent-green-dim)] px-4 ${isRtl ? (lang === 'ar' ? 'font-arabic' : 'font-persian') : 'font-mono'} text-xs font-bold whitespace-nowrap text-[var(--accent-contrast)] transition-all hover:bg-[var(--accent-green)] hover:text-[#090b0e]`}
           >
             {auditBtnText}
           </button>

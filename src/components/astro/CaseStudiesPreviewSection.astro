@@ -81,7 +81,7 @@ const sectionSubtitle =
           <div class="flex shrink-0 flex-wrap items-center gap-2.5">
             <a
               href={linkPath('/portfolio')}
-              class="inline-flex h-10 items-center gap-1.5 rounded border border-[var(--border-hairline)] bg-[var(--bg-surface)] px-4 font-mono text-xs font-bold text-[var(--accent-blue)] transition-colors hover:border-[var(--accent-blue)] hover:bg-[var(--bg-elevated)]"
+              class={`inline-flex h-10 items-center gap-1.5 rounded border border-[var(--border-hairline)] bg-[var(--bg-surface)] px-4 ${isRtl ? (lang === 'ar' ? 'font-arabic' : 'font-persian') : 'font-mono'} text-xs font-bold text-[var(--accent-blue)] transition-colors hover:border-[var(--accent-blue)] hover:bg-[var(--bg-elevated)]`}
             >
               <span>
                 {lang === 'fa'
@@ -151,7 +151,7 @@ const sectionSubtitle =
                 <button
                   type="button"
                   data-consult-service={`${item.pillarLabel} (Similar to ${item.client})`}
-                  class="cursor-pointer font-mono text-xs font-bold text-[var(--accent-green)] hover:underline"
+                  class={`cursor-pointer ${isRtl ? (lang === 'ar' ? 'font-arabic' : 'font-persian') : 'font-mono'} text-xs font-bold text-[var(--accent-green)] hover:underline`}
                 >
                   {lang === 'fa'
                     ? 'سفارش پروژه مشابه ←'
@@ -161,7 +161,7 @@ const sectionSubtitle =
                 </button>
                 <a
                   href={linkPath(`/portfolio/${item.slug}`)}
-                  class="font-mono text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                  class={`${isRtl ? (lang === 'ar' ? 'font-arabic' : 'font-persian') : 'font-mono'} text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)]`}
                 >
                   {t('portfolio.card.viewCaseStudy', { fallback: 'Case Study' })} {isRtl ? '←' : '→'}
                 </a>
