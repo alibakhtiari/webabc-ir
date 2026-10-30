@@ -11,8 +11,26 @@ const LANG_HREF = { en: 'en', fa: 'fa', ar: 'ar' };
 const LASTMOD_FALLBACK = sitemapLastmod._fallback;
 
 // Map slug to its representative image for sitemap image entries
+// Pre-index blog images from frontmatter so sitemap image URLs are 100% truthful and exist on disk.
+const blogImagesBySlug = {};
+['en', 'fa', 'ar'].forEach((lang) => {
+  const dir = `src/content/blog/${lang}`;
+  if (fs.existsSync(dir)) {
+    fs.readdirSync(dir).forEach((f) => {
+      if (f.endsWith('.mdx')) {
+        const slug = f.replace('.mdx', '');
+        if (!blogImagesBySlug[slug]) {
+          const content = fs.readFileSync(`${dir}/${f}`, 'utf8');
+          const m = content.match(/image:\s*['"]?([^'"\n\r]+)['"]?/);
+          if (m) blogImagesBySlug[slug] = m[1].trim();
+        }
+      }
+    });
+  }
+});
+
 export const getImageForPage = (pageKey) => {
-  // Blog posts: locale typography card when generated, else the shared cover.
+  // Blog posts: locale typography card when generated, else the frontmatter cover image.
   if (pageKey.match(/^(en|fa|ar)\/blog\/(.+)$/)) {
     const m = pageKey.match(/^(en|fa|ar)\/blog\/(.+?)\/?$/);
     const lang = m[1];
@@ -20,9 +38,16 @@ export const getImageForPage = (pageKey) => {
     if (lang !== 'en' && fs.existsSync(`public/images/og/${lang}/blog/${slug}.webp`)) {
       return `/images/og/${lang}/blog/${slug}.webp`;
     }
-    return `/images/blog/${slug}.webp`;
+    const cover = blogImagesBySlug[slug];
+    if (cover && fs.existsSync(`public${cover}`)) {
+      return cover;
+    }
+    if (fs.existsSync(`public/images/blog/${slug}.webp`)) {
+      return `/images/blog/${slug}.webp`;
+    }
+    return undefined;
   }
-  // Services: locale card when generated, else the shared EN card.
+  // Services: locale card when generated, else the shared EN card if it exists.
   if (pageKey.match(/^(en|fa|ar)\/services\/(.+)$/)) {
     const m = pageKey.match(/^(en|fa|ar)\/services\/(.+?)\/?$/);
     const lang = m[1];
@@ -30,9 +55,12 @@ export const getImageForPage = (pageKey) => {
     if (lang !== 'en' && fs.existsSync(`public/images/og/${lang}/services/${slug}.webp`)) {
       return `/images/og/${lang}/services/${slug}.webp`;
     }
-    return `/images/og/services/${slug}.webp`;
+    if (fs.existsSync(`public/images/og/services/${slug}.webp`)) {
+      return `/images/og/services/${slug}.webp`;
+    }
+    return undefined;
   }
-  // Service areas: locale card when generated, else the shared location crop.
+  // Service areas: locale card when generated, else the shared location crop if it exists.
   if (pageKey.match(/^(en|fa|ar)\/service-areas\/(.+)$/)) {
     const m = pageKey.match(/^(en|fa|ar)\/service-areas\/(.+?)\/?$/);
     const lang = m[1];
@@ -40,9 +68,12 @@ export const getImageForPage = (pageKey) => {
     if (lang !== 'en' && fs.existsSync(`public/images/og/${lang}/service-areas/${slug}.webp`)) {
       return `/images/og/${lang}/service-areas/${slug}.webp`;
     }
-    return `/images/og/service-areas/${slug}.webp`;
+    if (fs.existsSync(`public/images/og/service-areas/${slug}.webp`)) {
+      return `/images/og/service-areas/${slug}.webp`;
+    }
+    return undefined;
   }
-  // Portfolio: locale money-page card when generated, else the shared crop.
+  // Portfolio: locale money-page card when generated, else the shared crop if it exists.
   if (pageKey.match(/^(en|fa|ar)\/portfolio\/(.+)$/)) {
     const m = pageKey.match(/^(en|fa|ar)\/portfolio\/(.+?)\/?$/);
     const lang = m[1];
@@ -50,7 +81,10 @@ export const getImageForPage = (pageKey) => {
     if (lang !== 'en' && fs.existsSync(`public/images/og/${lang}/portfolio/${slug}.webp`)) {
       return `/images/og/${lang}/portfolio/${slug}.webp`;
     }
-    return `/images/og/portfolio/${slug}.webp`;
+    if (fs.existsSync(`public/images/og/portfolio/${slug}.webp`)) {
+      return `/images/og/portfolio/${slug}.webp`;
+    }
+    return undefined;
   }
   // Tools: per-tool art at /images/og/tools/<slug>.webp once it exists. The old
   // branch returned that path unconditionally for every tool, so all 66 tool URLs
@@ -70,7 +104,10 @@ export const getImageForPage = (pageKey) => {
         return `/images/og/tools/${tool[2]}.webp`;
       }
     }
-    return '/images/og-image.webp';
+    if (fs.existsSync('public/images/og-image.webp')) {
+      return '/images/og-image.webp';
+    }
+    return undefined;
   }
   // Locale homepages: per-locale home card once generated.
   if (pageKey.match(/^(en|fa|ar)\/$/)) {

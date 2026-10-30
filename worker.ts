@@ -422,11 +422,12 @@ export default {
     const STATIC_EXT =
       /\.(?:css|js|mjs|map|png|jpe?g|webp|gif|svg|avif|ico|woff2?|ttf|otf|eot|xml|txt|json|pdf|mp4|webm|mp3|wav|ogg|zip|md)$/i;
     if (STATIC_EXT.test(url.pathname)) {
+      const isCanonical = url.hostname === CANONICAL_HOST;
       const assetRes = await env.ASSETS.fetch(request);
       if (assetRes.status === 404 && url.pathname.endsWith('.md')) {
         const headers = new Headers();
         headers.set('Content-Type', 'text/markdown; charset=utf-8');
-        headers.set('X-Robots-Tag', 'noindex, follow');
+        headers.set('X-Robots-Tag', isCanonical ? 'noindex, follow' : 'noindex, nofollow');
         appendVaryAccept(headers);
         return new Response(MARKDOWN_404_BODY, { status: 404, statusText: 'Not Found', headers });
       }
@@ -438,7 +439,7 @@ export default {
       // is unaffected here.
       if (url.pathname.endsWith('.md')) {
         const headers = new Headers(assetRes.headers);
-        headers.set('X-Robots-Tag', 'noindex, follow');
+        headers.set('X-Robots-Tag', isCanonical ? 'noindex, follow' : 'noindex, nofollow');
         const htmlPath = htmlPathFor(url.pathname);
         // `/404.md` maps to `/404/`, which answers 404 — never declare a 4xx
         // as canonical. Its noindex is enough to keep it out of the index.
@@ -465,6 +466,18 @@ export default {
         if (!ct || !/charset=/i.test(ct)) {
           headers.set('Content-Type', `${ct?.split(';')[0].trim() || 'text/plain'}; charset=utf-8`);
         }
+        if (!isCanonical) {
+          headers.set('X-Robots-Tag', 'noindex, nofollow');
+        }
+        return new Response(assetRes.body, {
+          status: assetRes.status,
+          statusText: assetRes.statusText,
+          headers,
+        });
+      }
+      if (!isCanonical) {
+        const headers = new Headers(assetRes.headers);
+        headers.set('X-Robots-Tag', 'noindex, nofollow');
         return new Response(assetRes.body, {
           status: assetRes.status,
           statusText: assetRes.statusText,
