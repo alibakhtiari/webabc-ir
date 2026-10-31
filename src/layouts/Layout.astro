@@ -324,12 +324,11 @@ const websiteSchema = createWebsiteSchema(siteUrl, supportedLang);
       (function () {
         try {
           const savedTheme = localStorage.getItem('theme');
-          const savedPalette = localStorage.getItem('palette') || 'blue';
           const dark = savedTheme ? savedTheme === 'dark' : true;
           const root = document.documentElement;
           root.classList.toggle('dark', dark);
           root.setAttribute('data-theme', dark ? 'dark' : 'light');
-          root.setAttribute('data-palette', savedPalette);
+          root.setAttribute('data-palette', 'blue');
           root.style.colorScheme = dark ? 'dark' : 'light';
           const meta = document.querySelector('meta[name="theme-color"]');
           if (meta) meta.setAttribute('content', dark ? '#070b14' : '#ffffff');

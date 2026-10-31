@@ -49,40 +49,6 @@ const waDirectLabel =
       ? 'أو تحدث معنا مباشرة عبر واتساب'
       : 'Or Chat Directly on WhatsApp';
 
-const colorPalettes = [
-  {
-    id: 'blue',
-    label: lang === 'fa' ? 'آبی' : lang === 'ar' ? 'أزرق' : 'Blue',
-    dotColor: '#38bdf8',
-  },
-  {
-    id: 'mono',
-    label: lang === 'fa' ? 'تیره/روشن' : lang === 'ar' ? 'أحادي' : 'Dark/White',
-    dotColor: '#ffffff',
-    border: true,
-  },
-  {
-    id: 'emerald',
-    label: lang === 'fa' ? 'سبز' : lang === 'ar' ? 'أخضر' : 'Green',
-    dotColor: '#7ee787',
-  },
-  {
-    id: 'cyan',
-    label: lang === 'fa' ? 'فیروزه‌ای' : lang === 'ar' ? 'سماوي' : 'Teal',
-    dotColor: '#2dd4bf',
-  },
-  {
-    id: 'violet',
-    label: lang === 'fa' ? 'بنفش' : lang === 'ar' ? 'بنفسجي' : 'Violet',
-    dotColor: '#a78bfa',
-  },
-  {
-    id: 'amber',
-    label: lang === 'fa' ? 'کهربایی' : lang === 'ar' ? 'كهرماني' : 'Amber',
-    dotColor: '#fbbf24',
-  },
-];
-
 const serviceOptions = [
   {
     value: 'SEO & Specialized Optimization',
@@ -164,27 +130,12 @@ const serviceOptions = [
         </a>
       </div>
 
-      <!-- Right: Live Color Palette Switcher (Blue, Dark/White, Green, Teal, Violet, Amber) -->
-      <div class="flex items-center gap-1.5 overflow-x-auto" role="group" aria-label="Color Theme Switcher">
-        <span class="text-[10px] tracking-wider text-[var(--text-secondary)] uppercase">
-          {lang === 'fa' ? 'رنگ تم:' : lang === 'ar' ? 'اللون:' : 'COLOR:'}
+      <!-- Right: Technical SLA & Response Guarantee -->
+      <div class="hidden items-center gap-2 text-[11px] text-[var(--text-secondary)] sm:inline-flex">
+        <span class="inline-block h-1.5 w-1.5 rounded-full bg-[var(--accent-blue)]" aria-hidden="true"></span>
+        <span>
+          {lang === 'fa' ? 'پاسخگویی فنی کمتر از ۲ ساعت' : lang === 'ar' ? 'استجابة تقنية أقل من ساعتين' : 'TECHNICAL SLA < 2H'}
         </span>
-        {
-          colorPalettes.map((p) => (
-            <button
-              type="button"
-              data-palette-btn={p.id}
-              class="palette-swatch-btn"
-              title={`Switch site palette to ${p.label}`}
-            >
-              <span
-                class="inline-block h-2.5 w-2.5 shrink-0 rounded-full"
-                style={`background-color: ${p.dotColor}; ${p.border ? 'border: 1px solid #71717a;' : ''}`}
-              />
-              <span>{p.label}</span>
-            </button>
-          ))
-        }
       </div>
     </div>
   </div>
@@ -603,29 +554,7 @@ const serviceOptions = [
             </button>
           </div>
 
-          <!-- Mobile Color Palette Selector -->
-          <div class="rounded border border-[var(--border-hairline)] bg-[var(--bg-canvas)] p-3" dir="ltr">
-            <div class="mb-2 font-mono text-[10px] tracking-wider text-[var(--text-secondary)] uppercase">
-              {lang === 'fa' ? 'پالت رنگ:' : lang === 'ar' ? 'لوحة الألوان:' : 'COLOR PALETTE:'}
-            </div>
-            <div class="flex flex-wrap gap-1.5">
-              {
-                colorPalettes.map((p) => (
-                  <button
-                    type="button"
-                    data-palette-btn={p.id}
-                    class="palette-swatch-btn"
-                  >
-                    <span
-                      class="inline-block h-2.5 w-2.5 shrink-0 rounded-full"
-                      style={`background-color: ${p.dotColor}; ${p.border ? 'border: 1px solid #71717a;' : ''}`}
-                    />
-                    <span>{p.label}</span>
-                  </button>
-                ))
-              }
-            </div>
-          </div>
+
 
           <div class="space-y-3">
             <a
@@ -1045,7 +974,6 @@ const serviceOptions = [
       function syncThemeUI() {
         const root = document.documentElement;
         const isDark = root.classList.contains('dark');
-        const activePalette = root.getAttribute('data-palette') || 'blue';
         const labelDark = (themeToggle && themeToggle.dataset.labelDark) || 'Switch to dark mode';
         const labelLight =
           (themeToggle && themeToggle.dataset.labelLight) || 'Switch to light mode';
@@ -1075,12 +1003,7 @@ const serviceOptions = [
           if (labelSpan) labelSpan.textContent = activeLabel;
         }
 
-        // Sync active palette swatch buttons
-        document.querySelectorAll('[data-palette-btn]').forEach((btn) => {
-          const isCurrent = btn.getAttribute('data-palette-btn') === activePalette;
-          btn.classList.toggle('is-active', isCurrent);
-          btn.setAttribute('aria-pressed', String(isCurrent));
-        });
+        root.setAttribute('data-palette', 'blue');
       }
 
       function toggleTheme() {
@@ -1089,6 +1012,7 @@ const serviceOptions = [
         const nextDark = !isDark;
         root.classList.toggle('dark', nextDark);
         root.setAttribute('data-theme', nextDark ? 'dark' : 'light');
+        root.setAttribute('data-palette', 'blue');
         root.style.colorScheme = nextDark ? 'dark' : 'light';
         try {
           localStorage.setItem('theme', nextDark ? 'dark' : 'light');
@@ -1098,26 +1022,9 @@ const serviceOptions = [
         syncThemeUI();
       }
 
-      function setPalette(paletteId) {
-        if (!paletteId) return;
-        const root = document.documentElement;
-        root.setAttribute('data-palette', paletteId);
-        try {
-          localStorage.setItem('palette', paletteId);
-        } catch (e) {}
-        syncThemeUI();
-      }
-
       if (themeToggle) themeToggle.onclick = toggleTheme;
       if (themeToggleMobile) themeToggleMobile.onclick = toggleTheme;
       if (themeToggleMobileTop) themeToggleMobileTop.onclick = toggleTheme;
-
-      document.querySelectorAll('[data-palette-btn]').forEach((btn) => {
-        btn.onclick = () => {
-          const pId = btn.getAttribute('data-palette-btn');
-          setPalette(pId);
-        };
-      });
 
       syncThemeUI();
 
