@@ -24,8 +24,27 @@ export const meta = {
   ]),
 };
 
-export default function create() {
+export default function create(lang = 'en') {
   const g = new Grid(meta.cols, meta.rows);
+  const isFa = lang === 'fa';
+  const isAr = lang === 'ar';
+
+  const header = isFa
+    ? ' /استودیو-توسعه · معماری مدرن وب اِی‌بی‌سی '
+    : isAr
+      ? ' /استوديو-التطوير · بنية الكود الحديث '
+      : ' /DEV-STUDIO · src/pages/[lang]/index.astro ';
+
+  const badge = isFa ? ' کد تمیز · ۹۹/۱۰۰ ' : isAr ? ' أداء 99/100 ' : ' TS · 99/100 ';
+  const statusBar = isFa
+    ? 'عادی │ شاخه اصلی │ یونیکد │ 0.0KB JS'
+    : isAr
+      ? 'نشط │ الفرع الرئيسي │ UTF-8 │ 0.0KB JS'
+      : 'NORMAL │ main→ascii │ UTF-8 │ 0.0KB JS';
+  const viewportTitle = isFa ? 'پیش‌نمایش واکنش‌گرا' : isAr ? 'عرض متجاوب' : 'VIEWPORT [RESPONSIVE]';
+  const buildTitle = isFa ? 'پایپ‌لاین بیلد:' : isAr ? 'مسار البناء:' : 'BUILD PIPELINE:';
+  const ttfbText = isFa ? 'پاسخ: ۱۸ میلی‌ثانیه' : isAr ? 'الاستجابة: 18ms' : 'TTFB: 18ms · Edge';
+
   const CODE_LINES = [
     { ln: '01', tokens: [['import', '5'], [' { Astro, Schema } ', '0'], ['from', '5'], [" '@webabc/core';", '2']] },
     { ln: '02', tokens: [['export const', '5'], [' prerender = ', '0'], ['true', '3'], [';', '1']] },
@@ -49,9 +68,9 @@ export default function create() {
       17,
       'round',
       '8',
-      ' /DEV-STUDIO · src/pages/[lang]/index.astro ',
+      header,
       '0',
-      ' TS · 99/100 ',
+      badge,
       '3'
     );
 
@@ -74,22 +93,22 @@ export default function create() {
 
     // Bottom status bar in editor
     g.hline(1, 14, 41, '─', '8');
-    g.text(2, 15, 'NORMAL │ main→ascii │ UTF-8 │ 0.0KB JS', '2');
+    g.text(2, 15, statusBar, '2');
 
     // Right live viewport preview (cols 43..64)
     g.vline(42, 1, 15, '│', '8');
-    g.text(44, 2, 'VIEWPORT [RESPONSIVE]', '6');
+    g.text(44, 2, viewportTitle, '6');
     g.box(44, 3, 20, 7, 'single', '3', ' webabc.ir ', '0');
     g.text(46, 4, '╭──────╮ ╭──────╮', '2');
-    g.text(46, 5, '│ SEO  │ │  DEV │', '0');
+    g.text(46, 5, isFa ? '│ سئو  │ │ توسعه│' : isAr ? '│ سيو  │ │ برمج │' : '│ SEO  │ │  DEV │', '0');
     g.text(46, 6, '╰──────╯ ╰──────╯', '2');
     const barShift = Math.floor(t * 3) % 4;
     g.text(46, 7, '▓▒░'.repeat(4).slice(barShift, barShift + 8), '3');
     g.text(46, 8, '✓ SSR  ✓ Edge CDN', '2');
 
-    g.text(44, 11, 'BUILD PIPELINE:', '1');
+    g.text(44, 11, buildTitle, '1');
     g.bar(44, 12, 19, 0.88 + Math.sin(t * 2) * 0.1, '2', '8');
-    g.text(44, 14, 'TTFB: 18ms · Edge', '4');
+    g.text(44, 14, ttfbText, '4');
     g.text(44, 15, 'HREFLANG: en/fa/ar', '3');
 
     return g.frame();

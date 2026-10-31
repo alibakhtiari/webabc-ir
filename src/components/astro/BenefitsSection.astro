@@ -89,7 +89,7 @@ const guaranteeList = [
 <section class={`border-b border-[var(--border-hairline)] bg-[var(--bg-canvas)] py-12 md:py-16 ${fontClass}`}>
   <div class="container mx-auto px-4 md:px-6">
     <!-- Part A: /WHY-WEBABC -->
-    <div class="mx-auto mb-10 max-w-3xl text-center">
+    <div class="mx-auto mb-10 max-w-3xl text-center" dir={isRtl ? 'rtl' : 'ltr'}>
       <div class="mb-2 flex justify-center">
         <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
           {
@@ -142,7 +142,7 @@ const guaranteeList = [
 
     <!-- Part B: /RESULTS (Tangible Results with Proven Methods) -->
     <div class="terminal-window">
-      <div class="terminal-chrome-bar" dir="ltr">
+      <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
         <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
           {
             lang === 'fa'

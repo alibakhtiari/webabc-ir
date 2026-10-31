@@ -61,9 +61,19 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
   <div class={`py-12 md:py-16 bg-[var(--bg-canvas)] ${fontClass}`}>
     <div class="container mx-auto max-w-4xl px-4 space-y-8">
       <div class="terminal-window">
-        <div class="terminal-chrome-bar" dir="ltr">
-          <span class="slash-eyebrow text-xs">/FAQS · GENERAL & SERVICE INQUIRIES</span>
-          <span class="monospace-telemetry-pill">5 ENTRIES</span>
+        <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
+          <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+            {
+              supportedLang === 'fa'
+                ? '/سوالات-متداول · پرسش‌های عمومی و خدمات'
+                : supportedLang === 'ar'
+                  ? '/الأسئلة-الشائعة · الاستفسارات العامة والخدمات'
+                  : '/FAQS · GENERAL & SERVICE INQUIRIES'
+            }
+          </span>
+          <span class="monospace-telemetry-pill">
+            {faqKeys.length} {supportedLang === 'fa' ? 'مورد' : supportedLang === 'ar' ? 'عناصر' : 'ENTRIES'}
+          </span>
         </div>
         <div class="p-6 md:p-8 space-y-4">
           {faqKeys.map((item) => (
@@ -85,8 +95,16 @@ const breadcrumbs = [{ label: t('common.home'), url: `/${supportedLang}/` }, { l
       </div>
 
       <!-- Still have questions terminal card -->
-      <div class="terminal-window p-8 text-center bg-[var(--bg-elevated)]">
-        <span class="slash-eyebrow text-xs" dir="ltr">/SUPPORT-UPLINK</span>
+      <div class="terminal-window p-8 text-center bg-[var(--bg-elevated)]" dir={isRtl ? 'rtl' : 'ltr'}>
+        <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+          {
+            supportedLang === 'fa'
+              ? '/ارتباط-مستقیم · پشتیبانی فنی'
+              : supportedLang === 'ar'
+                ? '/التواصل-المباشر · الدعم التقني'
+                : '/SUPPORT-UPLINK · DIRECT ACCESS'
+          }
+        </span>
         <h2 class="mt-2 mb-3 text-xl md:text-2xl font-bold text-[var(--text-primary)]">
           {t('faq.stillHaveQuestions', { fallback: 'Still have questions?' })}
         </h2>

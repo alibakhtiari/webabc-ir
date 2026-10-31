@@ -59,7 +59,7 @@ const sectionSubtitle =
     <section class={`border-b border-[var(--border-hairline)] bg-[var(--bg-canvas)] py-12 md:py-16 ${fontClass}`}>
       <div class="container mx-auto px-4 md:px-6">
         <!-- Header Row -->
-        <div class="mb-10 flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-start">
+        <div class="mb-10 flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-start" dir={isRtl ? 'rtl' : 'ltr'}>
           <div class="max-w-2xl">
             <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
               {
@@ -100,8 +100,8 @@ const sectionSubtitle =
           {localeProjects.map((item, idx) => (
             <article class="terminal-window flex flex-col justify-between">
               <div>
-                <div class="terminal-chrome-bar" dir="ltr">
-                  <span class="font-mono text-xs font-bold text-[var(--accent-green)]">
+                <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
+                  <span class={`text-xs font-bold text-[var(--accent-green)] ${isRtl ? (lang === 'ar' ? 'font-arabic' : 'font-persian') : 'font-mono'}`}>
                     {
                       lang === 'fa'
                         ? `[پروژه ۰${idx + 1}] · ${item.client}`

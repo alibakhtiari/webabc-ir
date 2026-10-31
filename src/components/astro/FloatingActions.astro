@@ -27,8 +27,9 @@ const whatsappUrl = `https://wa.me/989125811880?text=${encodedMsg}`;
 ---
 
 <div
-  class={`fixed bottom-5 ${isRtl ? 'left-5' : 'right-5'} z-50 flex flex-col gap-2.5 items-end pointer-events-none`}
+  class={`fixed bottom-5 ${isRtl ? 'left-5 items-start' : 'right-5 items-end'} z-50 flex flex-col gap-2.5 pointer-events-none`}
   id="floating-actions-container"
+  dir={isRtl ? 'rtl' : 'ltr'}
 >
   <!-- Back to Top Button -->
   <button
@@ -96,6 +97,7 @@ const whatsappUrl = `https://wa.me/989125811880?text=${encodedMsg}`;
   <button
     type="button"
     data-open-consultation
+    dir={isRtl ? 'rtl' : 'ltr'}
     class={`pointer-events-auto inline-flex h-10 cursor-pointer items-center gap-1.5 rounded border border-[var(--accent-green)] bg-[var(--accent-green-dim)] px-3.5 ${pillFontClass} text-xs font-bold whitespace-nowrap text-[var(--accent-contrast)] shadow-xl transition-all hover:bg-[var(--accent-green)] hover:text-[#090b0e]`}
   >
     <span class="inline-block h-2 w-2 rounded-full bg-current" aria-hidden="true"></span>

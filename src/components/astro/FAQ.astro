@@ -48,7 +48,7 @@ const webpageSchema = {
 <script type="application/ld+json" set:html={JSON.stringify(webpageSchema)} />
 
 <div class={`terminal-window mb-8 ${fontClass}`}>
-  <div class="terminal-chrome-bar" dir="ltr">
+  <div class="terminal-chrome-bar" dir={lang === 'fa' || lang === 'ar' ? 'rtl' : 'ltr'}>
     <span class="slash-eyebrow text-xs" dir={lang === 'fa' || lang === 'ar' ? 'rtl' : 'ltr'}>
       {
         lang === 'fa'

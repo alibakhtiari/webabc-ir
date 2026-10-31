@@ -121,7 +121,7 @@ class AsciiArtElement extends HTMLElement {
       this._pre.style.width = 'fit-content';
       this._pre.style.maxWidth = '100%';
       this._pre.style.fontFamily =
-        "'JetBrains Mono', 'Geist Mono', 'Vazirmatn', 'IRANSansX', 'IBM Plex Sans Arabic', monospace";
+        "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace";
       this._pre.style.lineHeight = '1.18';
       this._pre.style.letterSpacing = '0';
       this._pre.style.whiteSpace = 'pre';
@@ -294,54 +294,72 @@ class AsciiArtElement extends HTMLElement {
     const activePalette = this._getActivePalette();
 
     const htmlRows = [];
-    const LTR_ANCHOR_REGEX = /[│─┌┐└┘├┤┬┴┼╭╮╯╰═║►◄▲▼░▒▓█]/;
+    const LTR_ANCHOR_REGEX = /[│─┌┐└┘├┤┬┴┼╭╮╯╰═║►◄▲▼▸░▒▓█#><]/;
     const ARABIC_PERSIAN_REGEX =
       /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF\u200C\u200D]/;
 
     for (let y = 0; y < frameData.lines.length; y++) {
       const row = frameData.lines[y];
-      let rowHtml = '';
-      let currentColor = null;
-      let currentIsRtl = false;
-      let buffer = '';
-      let cellCount = 0;
+      const chars = row.chars;
+      const colors = row.colors;
 
-      const flush = () => {
-        if (!buffer) return;
-        if (currentIsRtl) {
-          rowHtml += `<span style="color:${currentColor};display:inline-block;width:${cellCount}ch;vertical-align:top;white-space:nowrap;overflow:hidden;unicode-bidi:isolate;" dir="rtl">${buffer}</span>`;
+      // Identify contiguous RTL text runs (sentences/phrases containing Arabic/Persian)
+      const runStarts = new Map(); // startIdx -> { end, text, cellCount }
+      let i = 0;
+      while (i < chars.length) {
+        if (LTR_ANCHOR_REGEX.test(chars[i]) || chars[i] === ' ') {
+          i++;
+          continue;
+        }
+        const start = i;
+        while (i < chars.length && !LTR_ANCHOR_REGEX.test(chars[i])) {
+          if (chars[i] === ' ' && i + 1 < chars.length && chars[i + 1] === ' ') {
+            break; // 2+ consecutive spaces marks grid padding
+          }
+          i++;
+        }
+        let end = i;
+        while (end > start && chars[end - 1] === ' ') {
+          end--;
+        }
+        const seg = chars.slice(start, end).join('');
+        if (ARABIC_PERSIAN_REGEX.test(seg)) {
+          runStarts.set(start, { end, text: seg, cellCount: end - start });
+          i = end;
         } else {
-          rowHtml += `<span style="color:${currentColor}">${buffer}</span>`;
+          i = end;
         }
-        buffer = '';
-        cellCount = 0;
-      };
-
-      for (let x = 0; x < row.chars.length; x++) {
-        const ch = row.chars[x];
-        const colorIdx = parseInt(row.colors[x], 10);
-        const hex = activePalette[Number.isFinite(colorIdx) ? colorIdx : 0] || activePalette[0];
-        const isAnchor = LTR_ANCHOR_REGEX.test(ch);
-        const isArabic = ARABIC_PERSIAN_REGEX.test(ch);
-        const isRtlChar =
-          !isAnchor &&
-          (isArabic ||
-            (currentIsRtl &&
-              (ch === ' ' || ch === '·' || ch === '-' || ch === ':') &&
-              x + 1 < row.chars.length &&
-              ARABIC_PERSIAN_REGEX.test(row.chars[x + 1])));
-
-        if (hex !== currentColor || isRtlChar !== currentIsRtl) {
-          flush();
-          currentColor = hex;
-          currentIsRtl = isRtlChar;
-        }
-
-        const escaped = escapeHtml(ch);
-        buffer += isAnchor ? `\u200E${escaped}\u200E` : escaped;
-        cellCount++;
       }
-      flush();
+
+      let rowHtml = '';
+      let x = 0;
+      while (x < chars.length) {
+        if (runStarts.has(x)) {
+          const run = runStarts.get(x);
+          const colorIdx = parseInt(colors[x], 10);
+          const hex = activePalette[Number.isFinite(colorIdx) ? colorIdx : 0] || activePalette[0];
+          const escaped = escapeHtml(run.text);
+          rowHtml += `<span style="color:${hex};display:inline-block;width:${run.cellCount}ch;vertical-align:top;white-space:nowrap;unicode-bidi:isolate;font-family:var(--font-persian),var(--font-arabic),sans-serif;" dir="rtl">${escaped}</span>`;
+          x = run.end;
+        } else {
+          const colorIdx = parseInt(colors[x], 10);
+          const currentColor = activePalette[Number.isFinite(colorIdx) ? colorIdx : 0] || activePalette[0];
+          let buffer = '';
+          while (x < chars.length && !runStarts.has(x)) {
+            const nextIdx = parseInt(colors[x], 10);
+            const hex = activePalette[Number.isFinite(nextIdx) ? nextIdx : 0] || activePalette[0];
+            if (hex !== currentColor) break;
+            const ch = chars[x];
+            const isAnchor = LTR_ANCHOR_REGEX.test(ch);
+            const escaped = escapeHtml(ch);
+            buffer += isAnchor ? `\u200E${escaped}\u200E` : escaped;
+            x++;
+          }
+          if (buffer) {
+            rowHtml += `<span style="color:${currentColor}">${buffer}</span>`;
+          }
+        }
+      }
       htmlRows.push(rowHtml);
     }
 

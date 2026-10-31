@@ -107,14 +107,14 @@ const LOGO_VERSIONS = [
 ---
 
 <section class={`terminal-window mb-12 ${fontClass}`}>
-  <div class="terminal-chrome-bar" dir="ltr">
+  <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
     <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
       {
         lang === 'fa'
-          ? '╭─ /هویت-بصری · استودیو تعاملی لوگوهای متحرک اسکی ─╮'
+          ? '/هویت-بصری · استودیو تعاملی لوگوهای متحرک اسکی'
           : lang === 'ar'
-            ? '╭─ /الهوية-البصرية · استوديو شعارات ASCII التفاعلية المتحركة ─╮'
-            : '╭─ /BRAND-IDENTITY · Interactive Animated ASCII Logo Studio ─╮'
+            ? '/الهوية-البصرية · استوديو شعارات ASCII التفاعلية المتحركة'
+            : '/BRAND-IDENTITY · Interactive Animated ASCII Logo Studio'
       }
     </span>
     <span class="monospace-telemetry-pill">

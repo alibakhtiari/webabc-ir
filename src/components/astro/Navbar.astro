@@ -186,13 +186,13 @@ const serviceOptions = [
             class={`invisible absolute top-full ${isRtl ? '-right-12' : '-left-12'} z-50 mt-2 w-[36rem] max-w-[calc(100vw-2rem)] translate-y-1 opacity-0 transition-all duration-200 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 xl:w-[39rem]`}
           >
             <div class="terminal-window border border-[var(--border-hairline)] bg-[var(--bg-surface)] shadow-2xl">
-              <div class="terminal-chrome-bar" dir="ltr">
-                <span>
+              <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
+                <span class={isRtl ? (lang === 'ar' ? 'font-arabic' : 'font-persian') : 'font-mono'}>
                   {lang === 'fa'
-                    ? '╭─ /سرویس‌ها · ۱۱ راهکار تخصصی رشد آنلاین ─╮'
+                    ? '/سرویس‌ها · ۱۱ راهکار تخصصی رشد آنلاین'
                     : lang === 'ar'
-                      ? '╭─ /الخدمات · 11 حلاً متخصصاً لتطوير أعمالك ─╮'
-                      : '╭─ /SERVICES · 11 SPECIALIZED SOLUTIONS ─╮'}
+                      ? '/الخدمات · 11 حلاً متخصصاً لتطوير أعمالك'
+                      : '/SERVICES · 11 SPECIALIZED SOLUTIONS'}
                 </span>
                 <span class="monospace-telemetry-pill">EN · FA · AR</span>
               </div>
@@ -700,13 +700,13 @@ const serviceOptions = [
   data-inquiry-prefix={lang === 'fa' ? 'درخواست مشاوره درباره:' : lang === 'ar' ? 'استفسار بخصوص:' : 'Inquiry regarding:'}
   class={`fixed inset-0 m-auto max-h-[92vh] w-[calc(100%-2rem)] max-w-lg overflow-y-auto rounded-lg border border-[var(--border-focus)] bg-[var(--bg-surface)] p-0 text-[var(--text-primary)] shadow-2xl backdrop:bg-black/75 backdrop:backdrop-blur-xs ${fontClass}`}
 >
-  <div class="terminal-chrome-bar">
-    <span class="font-mono text-xs font-bold text-[var(--accent-green)]">
+  <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
+    <span class={`text-xs font-bold text-[var(--accent-green)] ${isRtl ? (lang === 'ar' ? 'font-arabic' : 'font-persian') : 'font-mono'}`}>
       {lang === 'fa'
-        ? '╭─ درخواست مشاوره تخصصی ─── کلید ESC برای بستن ─╮'
+        ? '/درخواست-مشاوره-تخصصی · کلید ESC برای بستن'
         : lang === 'ar'
-          ? '╭─ طلب استشارة متخصصة ─── اضغط ESC للإغلاق ─╮'
-          : '╭─ Request a Consultation ─── ESC to close ─╮'}
+          ? '/طلب-استشارة-متخصصة · اضغط ESC للإغلاق'
+          : '/REQUEST-A-CONSULTATION · ESC TO CLOSE'}
     </span>
     <button
       type="button"

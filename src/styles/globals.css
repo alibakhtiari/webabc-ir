@@ -713,7 +713,6 @@ code {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--accent-purple);
-  direction: ltr;
   unicode-bidi: isolate;
 }
 
@@ -932,11 +931,35 @@ code {
     font-family: var(--font-arabic);
   }
 
-  /* RTL typography refinement: prevent positive letter-spacing from breaking Arabic/Persian cursive ligatures */
-  html[dir='rtl'] .slash-eyebrow,
-  html:lang(fa) .slash-eyebrow,
-  html:lang(ar) .slash-eyebrow {
+  /* RTL typography refinement: prevent positive letter-spacing from breaking Arabic/Persian cursive ligatures & ensure correct directionality */
+  html[dir='rtl'] .slash-eyebrow:not([dir='ltr']),
+  html:lang(fa) .slash-eyebrow:not([dir='ltr']),
+  html:lang(ar) .slash-eyebrow:not([dir='ltr']) {
+    direction: rtl;
     letter-spacing: normal;
+    text-transform: none;
+  }
+
+  html:lang(fa) .slash-eyebrow:not([dir='ltr']) {
+    font-family: var(--font-persian);
+  }
+
+  html:lang(ar) .slash-eyebrow:not([dir='ltr']) {
+    font-family: var(--font-arabic);
+  }
+
+  html[dir='rtl'] .terminal-chrome-bar:not([dir='ltr']),
+  html:lang(fa) .terminal-chrome-bar:not([dir='ltr']),
+  html:lang(ar) .terminal-chrome-bar:not([dir='ltr']) {
+    direction: rtl;
+  }
+
+  html:lang(fa) .terminal-chrome-bar:not([dir='ltr']) {
+    font-family: var(--font-persian);
+  }
+
+  html:lang(ar) .terminal-chrome-bar:not([dir='ltr']) {
+    font-family: var(--font-arabic);
   }
 
   html[dir='rtl'] [class*='tracking-'],

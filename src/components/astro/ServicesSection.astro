@@ -214,7 +214,7 @@ const processSteps = [
 >
   <div class="container mx-auto px-4 md:px-6">
     <!-- Section Header -->
-    <div class="mx-auto mb-10 max-w-3xl text-center">
+    <div class="mx-auto mb-10 max-w-3xl text-center" dir={isRtl ? 'rtl' : 'ltr'}>
       <div class="mb-2 flex justify-center">
         <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
           {
@@ -290,12 +290,12 @@ const processSteps = [
               >
                 <div>
                   <span class="slash-eyebrow text-[11px]" dir={isRtl ? 'rtl' : 'ltr'}>
-                    /{service.id.toUpperCase()} · {
+                    {
                       lang === 'fa'
-                        ? 'مشخصات استودیو'
+                        ? `/مشخصات-استودیو · ${service.id === 'seo' ? 'سئو' : service.id === 'web-design' ? 'طراحی وب' : 'تولید محتوا'}`
                         : lang === 'ar'
-                          ? 'مواصفات الاستوديو'
-                          : 'STUDIO SPECIFICATION'
+                          ? `/مواصفات-الاستوديو · ${service.id === 'seo' ? 'سيو' : service.id === 'web-design' ? 'تصميم الويب' : 'صناعة المحتوى'}`
+                          : `/${service.id.toUpperCase()} · STUDIO SPECIFICATION`
                     }
                   </span>
                   <h3 class="mt-1 text-xl font-bold text-[var(--text-primary)] sm:text-2xl">
@@ -398,11 +398,11 @@ const processSteps = [
           supportPillars.map((pillar) => (
             <div class="terminal-window flex flex-col justify-between">
               <div>
-                <div class="terminal-chrome-bar" dir="ltr">
-                  <span class="font-mono text-xs text-[var(--accent-amber)]">
+                <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
+                  <span class="font-mono text-xs text-[var(--accent-amber)]" dir="ltr">
                     [{pillar.idx}] {pillar.piece}.js
                   </span>
-                  <span class="monospace-telemetry-pill">{pillar.badge}</span>
+                  <span class="monospace-telemetry-pill" dir="ltr">{pillar.badge}</span>
                 </div>
 
                 <div

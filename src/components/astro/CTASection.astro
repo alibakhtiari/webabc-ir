@@ -51,14 +51,14 @@ const waUrl = `https://wa.me/989125811880?text=${encodeURIComponent(whatsappMess
   <div class="container mx-auto px-4 md:px-6">
     <div class="mx-auto max-w-5xl">
       <div class="terminal-window border border-[var(--border-focus)]">
-        <div class="terminal-chrome-bar" dir="ltr">
+        <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
           <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
             {
               lang === 'fa'
-                ? '╭─ /شروع-همکاری · مشاوره و آنالیز بدون ریسک ─╮'
+                ? '/شروع-همکاری · مشاوره و آنالیز بدون ریسک'
                 : lang === 'ar'
-                  ? '╭─ /ابدأ-الآن · استشارة وتدقيق بلا مخاطرة ─╮'
-                  : '╭─ /GET-STARTED · ZERO-RISK CONSULTATION & AUDIT ─╮'
+                  ? '/ابدأ-الآن · استشارة وتدقيق بلا مخاطرة'
+                  : '/GET-STARTED · ZERO-RISK CONSULTATION & AUDIT'
             }
           </span>
           <span class="monospace-telemetry-pill text-[var(--accent-green)]">

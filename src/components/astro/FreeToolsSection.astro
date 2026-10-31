@@ -174,7 +174,7 @@ const freeUtilityLabel =
 >
   <div class="container mx-auto px-4 md:px-6">
     <!-- Section Header -->
-    <div class="mx-auto mb-10 max-w-3xl text-center">
+    <div class="mx-auto mb-10 max-w-3xl text-center" dir={isRtl ? 'rtl' : 'ltr'}>
       <div class="mb-2 flex justify-center">
         <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
           {
@@ -213,8 +213,8 @@ const freeUtilityLabel =
       <!-- Interactive Card 1: Headline & Title Checker -->
       <div class="terminal-window flex flex-col justify-between">
         <div>
-          <div class="terminal-chrome-bar" dir="ltr">
-            <span class="font-mono text-xs font-bold text-[var(--accent-amber)]">
+          <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
+            <span class={`text-xs font-bold text-[var(--accent-amber)] ${isRtl ? (lang === 'ar' ? 'font-arabic' : 'font-persian') : 'font-mono'}`}>
               {tool1Header}
             </span>
             <span class="monospace-telemetry-pill">{tool1Badge}</span>
@@ -295,8 +295,8 @@ const freeUtilityLabel =
       <!-- Interactive Card 2: FAQ Schema Generator -->
       <div class="terminal-window flex flex-col justify-between">
         <div>
-          <div class="terminal-chrome-bar" dir="ltr">
-            <span class="font-mono text-xs font-bold text-[var(--accent-purple)]">
+          <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
+            <span class={`text-xs font-bold text-[var(--accent-purple)] ${isRtl ? (lang === 'ar' ? 'font-arabic' : 'font-persian') : 'font-mono'}`}>
               {tool2Header}
             </span>
             <span class="monospace-telemetry-pill">{tool2Badge}</span>
@@ -367,8 +367,8 @@ const freeUtilityLabel =
         featuredTools.map((tool) => (
           <div class="terminal-window flex flex-col justify-between">
             <div>
-              <div class="terminal-chrome-bar" dir="ltr">
-                <span class="font-mono text-xs font-bold text-[var(--accent-blue)]">
+              <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
+                <span class={`text-xs font-bold text-[var(--accent-blue)] ${isRtl ? (lang === 'ar' ? 'font-arabic' : 'font-persian') : 'font-mono'}`}>
                   {tool.glyph} · {tool.slug}
                 </span>
                 <span class="monospace-telemetry-pill">{tool.badge}</span>

@@ -66,8 +66,16 @@ const breadcrumbs = [
       <Breadcrumbs items={breadcrumbs} lang={supportedLang} />
 
       <div class="terminal-window">
-        <div class="terminal-chrome-bar" dir="ltr">
-          <span class="slash-eyebrow text-xs">/LEGAL-PRIVACY · COMPLIANCE & DATA INTEGRITY</span>
+        <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
+          <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
+            {
+              supportedLang === 'fa'
+                ? '/حریم-خصوصی · انطباق قانونی و امنیت داده‌ها'
+                : supportedLang === 'ar'
+                  ? '/سياسة-الخصوصية · الامتثال القانوني وأمان البيانات'
+                  : '/LEGAL-PRIVACY · COMPLIANCE & DATA INTEGRITY'
+            }
+          </span>
           <span class="monospace-telemetry-pill">POLICY: ACTIVE</span>
         </div>
         <div class="p-6 md:p-10 space-y-8">
