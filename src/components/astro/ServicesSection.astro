@@ -453,7 +453,7 @@ const processSteps = [
 
     <!-- 3-Step Execution Pipeline (/PROCESS) -->
     <div class="terminal-window">
-      <div class="terminal-chrome-bar" dir="ltr">
+      <div class="terminal-chrome-bar" dir={isRtl ? 'rtl' : 'ltr'}>
         <span class="slash-eyebrow text-xs" dir={isRtl ? 'rtl' : 'ltr'}>
           {
             lang === 'fa'
@@ -470,7 +470,7 @@ const processSteps = [
         {
           processSteps.map((item) => (
             <div class="relative p-5">
-              <div class="mb-2.5 flex items-center justify-between" dir="ltr">
+              <div class="mb-2.5 flex items-center justify-between" dir={isRtl ? 'rtl' : 'ltr'}>
                 <span class="font-mono text-xs font-bold text-[var(--accent-green)]">
                   [{item.step}] {isRtl ? '◄───' : '───►'}
                 </span>

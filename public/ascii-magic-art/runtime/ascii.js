@@ -295,31 +295,53 @@ class AsciiArtElement extends HTMLElement {
 
     const htmlRows = [];
     const LTR_ANCHOR_REGEX = /[│─┌┐└┘├┤┬┴┼╭╮╯╰═║►◄▲▼░▒▓█]/;
+    const ARABIC_PERSIAN_REGEX =
+      /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF\u200C\u200D]/;
 
     for (let y = 0; y < frameData.lines.length; y++) {
       const row = frameData.lines[y];
       let rowHtml = '';
       let currentColor = null;
+      let currentIsRtl = false;
       let buffer = '';
+      let cellCount = 0;
+
+      const flush = () => {
+        if (!buffer) return;
+        if (currentIsRtl) {
+          rowHtml += `<span style="color:${currentColor};display:inline-block;width:${cellCount}ch;vertical-align:top;white-space:nowrap;overflow:hidden;unicode-bidi:isolate;" dir="rtl">${buffer}</span>`;
+        } else {
+          rowHtml += `<span style="color:${currentColor}">${buffer}</span>`;
+        }
+        buffer = '';
+        cellCount = 0;
+      };
 
       for (let x = 0; x < row.chars.length; x++) {
         const ch = row.chars[x];
         const colorIdx = parseInt(row.colors[x], 10);
         const hex = activePalette[Number.isFinite(colorIdx) ? colorIdx : 0] || activePalette[0];
+        const isAnchor = LTR_ANCHOR_REGEX.test(ch);
+        const isArabic = ARABIC_PERSIAN_REGEX.test(ch);
+        const isRtlChar =
+          !isAnchor &&
+          (isArabic ||
+            (currentIsRtl &&
+              (ch === ' ' || ch === '·' || ch === '-' || ch === ':') &&
+              x + 1 < row.chars.length &&
+              ARABIC_PERSIAN_REGEX.test(row.chars[x + 1])));
 
-        if (hex !== currentColor) {
-          if (buffer) {
-            rowHtml += `<span style="color:${currentColor}">${buffer}</span>`;
-            buffer = '';
-          }
+        if (hex !== currentColor || isRtlChar !== currentIsRtl) {
+          flush();
           currentColor = hex;
+          currentIsRtl = isRtlChar;
         }
+
         const escaped = escapeHtml(ch);
-        buffer += LTR_ANCHOR_REGEX.test(ch) ? `\u200E${escaped}\u200E` : escaped;
+        buffer += isAnchor ? `\u200E${escaped}\u200E` : escaped;
+        cellCount++;
       }
-      if (buffer) {
-        rowHtml += `<span style="color:${currentColor}">${buffer}</span>`;
-      }
+      flush();
       htmlRows.push(rowHtml);
     }
 
