@@ -4,3 +4,4 @@ minimumReleaseAgeExclude:
   - '@astrojs/prism@4.1.2'
   - '@astrojs/telemetry@3.4.2'
   - astro@7.4.3
+  - resend@6.37.0
