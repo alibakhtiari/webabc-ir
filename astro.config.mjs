@@ -10,24 +10,19 @@ const LANGS = ['en', 'fa', 'ar'];
 const LANG_HREF = { en: 'en', fa: 'fa', ar: 'ar' };
 const LASTMOD_FALLBACK = sitemapLastmod._fallback;
 
-// Map slug to its representative image for sitemap image entries
-// Pre-index blog images from frontmatter so sitemap image URLs are 100% truthful and exist on disk.
-const blogImagesBySlug = {};
-['en', 'fa', 'ar'].forEach((lang) => {
+// Index each locale's blog covers for sitemap image entries.
+const blogImages = new Map();
+for (const lang of LANGS) {
   const dir = `src/content/blog/${lang}`;
-  if (fs.existsSync(dir)) {
-    fs.readdirSync(dir).forEach((f) => {
-      if (f.endsWith('.mdx')) {
-        const slug = f.replace('.mdx', '');
-        if (!blogImagesBySlug[slug]) {
-          const content = fs.readFileSync(`${dir}/${f}`, 'utf8');
-          const m = content.match(/image:\s*['"]?([^'"\n\r]+)['"]?/);
-          if (m) blogImagesBySlug[slug] = m[1].trim();
-        }
-      }
-    });
+  if (!fs.existsSync(dir)) continue;
+  for (const file of fs.readdirSync(dir)) {
+    if (!file.endsWith('.mdx')) continue;
+    const content = fs.readFileSync(`${dir}/${file}`, 'utf8');
+    const frontmatter = content.split(/^---\s*$/m, 3)[1];
+    const image = frontmatter?.match(/^image:[ \t]*['"]?(\/images\/[^'"\r\n]+)['"]?/m)?.[1].trim();
+    if (image) blogImages.set(`${lang}/${file.slice(0, -4)}`, image);
   }
-});
+}
 
 export const getImageForPage = (pageKey) => {
   // Blog posts: locale typography card when generated, else the frontmatter cover image.
@@ -38,7 +33,7 @@ export const getImageForPage = (pageKey) => {
     if (lang !== 'en' && fs.existsSync(`public/images/og/${lang}/blog/${slug}.webp`)) {
       return `/images/og/${lang}/blog/${slug}.webp`;
     }
-    const cover = blogImagesBySlug[slug];
+    const cover = blogImages.get(`${lang}/${slug}`);
     if (cover && fs.existsSync(`public${cover}`)) {
       return cover;
     }

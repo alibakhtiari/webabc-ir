@@ -12,9 +12,9 @@ const dictionary = await getDictionary(supportedLang);
 
 const t = createTranslator(dictionary);
 
-const titleText = t('paaScraper.title', { fallback: '"People Also Ask" Scraper' });
+const titleText = t('paaScraper.title', { fallback: '"People Also Ask" Question Explorer' });
 const descriptionText = t('paaScraper.description', {
-  fallback: "Scrape Google's 'People Also Ask' questions for any keyword.",
+  fallback: 'Preview the workflow with a fixed set of sample questions about web design.',
 });
 
 const guideDict = dictionary.paaScraper?.guide;
@@ -82,7 +82,7 @@ const questions = [1, 2, 3, 4, 5, 6, 7, 8].map((n) =>
         <p class="text-xs text-gray-500 dark:text-gray-400">
           {
             t('paaScraper.enterKeywordDesc', {
-              fallback: 'Find questions people are asking about your topic',
+              fallback: 'Preview a keyword field and review the sample questions below.',
             })
           }
         </p>
