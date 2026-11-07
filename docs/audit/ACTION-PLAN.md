@@ -79,6 +79,12 @@ Shipped, verified against code and live tests, and locked. Kept as a permanent l
 
 ---
 
+### November 7 production recovery candidate
+
+- **Candidate `9cd22c3` on `codex/seo-production-recovery`, pending production deployment.** Remote `main` was `d2c2d6b`. The October sitemap and link fixes were on the `ascii` branch. This batch brings the sitemap, nine article link corrections, AI catalog schema, regional coverage wording and FAQ/PAA tool copy to a `main`-based release across en/fa/ar. It also corrects empty phrase and Persian/Arabic letter handling in the published keyword-density examples.
+- **Evidence before release.** Production returned 404 for 22 distinct sitemap images, two sampled link targets and the catalog schema. The candidate passed lint, build, edge checks, and targeted checks for 285 sitemap image entries, nine article links and 21 snippet cases. The service-area schema and commercial experiments remain scheduled behind their active clocks.
+- **Post-deployment check, due within one day of release.** Record the Cloudflare deployment ID, SHA and timestamp. Fetch every image URL advertised by the live sitemap, check both repaired articles and both tool pages in each locale, validate the live catalog against its schema, and confirm edge canaries. Reopen this item if a listed image or linked canonical destination fails or the old claims persist. Use 28 complete post-release days plus reporting lag for the EN keyword-density guide. Its Oct 10–Nov 6 baseline was 0 clicks on 104 impressions at average position 8.1. Review query intent before a title test and classify sparse query evidence as inconclusive.
+
 ## 2. Active Falsifiability Clocks & Scheduled Roadmap
 
 All remaining code tasks are sequenced behind explicit falsifiability clocks. **Do not modify these pages before their due date**, as premature edits destroy measurement integrity.
