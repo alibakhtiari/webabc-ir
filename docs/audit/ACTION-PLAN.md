@@ -79,6 +79,12 @@ Shipped, verified against code and live tests, and locked. Kept as a permanent l
 
 ---
 
+### November 7 content refresh candidate
+
+- **Candidate `2641b4e`, pending deployment after production recovery.** Updated the existing speed-pricing and UTM campaign guides and the speed service in en/fa/ar. The pricing guide now explains scope, quote comparison, and lab versus field verification. The UTM guide cites Google Analytics documentation for attribution and channel rules. The UTM builder preserves existing query parameters and fragments. No commercial price range was available from a verified source.
+- **Speed query baseline, Oct 10–Nov 6.** The exact FA query `قیمت بهینه سازی سرعت` produced zero clicks on 20 guide impressions at position 14.0 and zero clicks on 18 service impressions at 62.3. Compare the same query across both URLs 28 full days after deployment plus reporting lag. Record clicks, impressions, and position, and separate consultation clicks from verified inquiries.
+- **UTM baseline, Oct 10–Nov 6.** The EN builder had zero clicks on 903 impressions. Exact `url builder` had zero clicks on 347 impressions at position 30.3. Keep that query separate from campaign tagging intent. Check link generation on all three live tools within one day of deployment. Read the guide and tool separately after 28 full days plus reporting lag. Treat fewer than 100 target impressions as inconclusive for a snippet test.
+
 ## 2. Active Falsifiability Clocks & Scheduled Roadmap
 
 All remaining code tasks are sequenced behind explicit falsifiability clocks. **Do not modify these pages before their due date**, as premature edits destroy measurement integrity.
