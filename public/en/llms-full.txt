@@ -84,7 +84,7 @@
 - [CSS Glassmorphism Generator](https://webabc.ir/en/tools/glassmorphism-generator/): Interactive CSS backdrop-filter and UI code generator.
 - [JSON Formatter & Validator](https://webabc.ir/en/tools/json-formatter/): Secure, client-side JSON formatting and syntax validation.
 - [Robots.txt Generator](https://webabc.ir/en/tools/robots-generator/): Custom crawler directive rules generator.
-- [People Also Ask (PAA) Explorer](https://webabc.ir/en/tools/paa-scraper/): Question research tool for AEO and featured snippet targeting.
+- [People Also Ask (PAA) Explorer](https://webabc.ir/en/tools/paa-scraper/): Interactive question explorer and workflow preview for content structure.
 - [Schema Markup Generator](https://webabc.ir/en/tools/schema-generator/): Structured data JSON-LD generator for Organization, Service, and FAQ schemas.
 - [FAQ Schema Generator](https://webabc.ir/en/tools/faq-generator/): Create Schema.org FAQPage structured data markup.
 - [Base64 Encoder/Decoder](https://webabc.ir/en/tools/base64-encoder/): Client-side string and asset Base64 converter.

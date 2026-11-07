@@ -660,6 +660,24 @@ async function test() {
   }
   console.log(`  verified ${checkedAvifs} content images have matching .avif siblings on disk`);
 
+  // 15. Sitemap image resolution parity (T-01 assertion)
+  // Verify images against the same dist directory deployed to Cloudflare.
+  console.log('\n15. Testing sitemap <image:loc> disk existence:');
+  const sitemapFiles = fs.readdirSync(distDir).filter((f) => f.startsWith('sitemap-') && f.endsWith('.xml'));
+  let totalSitemapImagesChecked = 0;
+  for (const sf of sitemapFiles) {
+    const sxml = fs.readFileSync(path.join(distDir, sf), 'utf8');
+    const imageLocs = [...sxml.matchAll(/<image:loc>([^<]+)<\/image:loc>/g)].map((m) => m[1]);
+    for (const loc of imageLocs) {
+      totalSitemapImagesChecked++;
+      const rel = loc.replace('https://webabc.ir/', '').replace(/^\//, '');
+      const localPath = path.join(distDir, rel);
+      assert(fs.statSync(localPath, { throwIfNoEntry: false })?.isFile(), `sitemap image ${loc} exists in dist`);
+    }
+  }
+  assert(totalSitemapImagesChecked > 0, 'sitemap contains image entries');
+  console.log(`  verified ${totalSitemapImagesChecked} sitemap <image:loc> entries in dist`);
+
   console.log(`\n--- Verification Suite Completed: ${failures === 0 ? 'ALL CHECKS PASSED (100% Score)' : `${failures} FAILURES`} ---`);
   if (failures > 0) process.exit(1);
 }

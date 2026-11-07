@@ -264,7 +264,7 @@ const HUBS = [
     titleEn: 'Service Areas & Regional Coverage',
     titleFa: 'مناطق تحت پوشش خدمات',
     titleAr: 'المناطق والمدن المشمولة',
-    descEn: 'Local offices and targeted services across Dubai, Riyadh, Abu Dhabi, Muscat, Tehran, and Qazvin.',
+    descEn: 'Regional service coverage and targeted web services across Dubai, Riyadh, Abu Dhabi, Muscat, Tehran, and Qazvin.',
     descFa: 'مناطق و شهرهای تحت پوشش خدمات سئو و طراحی سایت در ایران و کشورهای حوزه خلیج فارس.',
     descAr: 'التغطية الإقليمية لخدماتنا في دبي، الرياض، مسقط، وأبوظبي.'
   }
