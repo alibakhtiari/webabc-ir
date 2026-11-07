@@ -253,8 +253,13 @@ const fillFieldsText = t('utmBuilder.fillFields', {
     const copyFeedback = document.getElementById('utm-copy-feedback');
 
     function buildUrl() {
-      const url = urlInput.value.trim();
-      if (!url) return '';
+      let url;
+      try {
+        url = new URL(urlInput.value.trim());
+      } catch {
+        return '';
+      }
+      if (url.protocol !== 'https:' && url.protocol !== 'http:') return '';
 
       const params = new URLSearchParams();
       if (sourceInput.value.trim()) params.append('utm_source', sourceInput.value.trim());
@@ -263,8 +268,8 @@ const fillFieldsText = t('utmBuilder.fillFields', {
       if (termInput.value.trim()) params.append('utm_term', termInput.value.trim());
       if (contentInput.value.trim()) params.append('utm_content', contentInput.value.trim());
 
-      const qs = params.toString();
-      return qs ? `${url}?${qs}` : url;
+      for (const [key, value] of params) url.searchParams.set(key, value);
+      return url.href;
     }
 
     function update() {

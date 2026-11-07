@@ -44,7 +44,8 @@ const ns = info ? info.ns : 'services';
 const serviceData = dictionary[ns] || {};
 
 const pageTitle = t(info?.titleKey || '', { fallback: slug });
-const pageDesc = t(info?.subtitleKey || '', {
+const descriptionKey = slug === 'speed-optimization' ? 'speedOptimization.heroDescription' : info?.subtitleKey;
+const pageDesc = t(descriptionKey || '', {
   fallback: 'Professional services to grow your digital presence.',
 });
 const heroImage = (info ? info.img : slugInfoMap.seo.img) as ImageMetadata;
