@@ -1,26 +1,26 @@
 {
   "title": "Core Web Vitals & Speed Optimization",
   "subtitle": "Achieve lightning-fast load times for better SEO rankings and higher conversions. We optimize images, code, and servers to pass Google's Core Web Vitals.",
-  "description": "A slow website costs you money. We optimize your site's code, images, and server settings to achieve 90+ Google PageSpeed scores, ensuring you pass Core Web Vitals and rank higher.",
+  "description": "Start with the slow pages or actions your users report. We can review images, scripts, caching and server response, then identify which changes belong in the quote.",
   "intro": {
-    "title": "Why Core Web Vitals Matter for Your Business",
-    "text": "Core Web Vitals (LCP, INP, and CLS) measure real user experience: how fast your main content appears, how quickly the page responds to interaction, and whether elements jump around while loading. Google uses these scores directly in ranking, and studies consistently show every extra second of load time costs conversions. Most sites we audit are slowed down by the same handful of issues: unoptimized images, render-blocking scripts, and bloated plugin stacks, all fixable without a full rebuild."
+    "title": "What will you measure and deliver?",
+    "text": "We record a baseline for agreed pages and interactions. The proposal separates the audit and implementation, identifies any access needed, and explains how we will verify the work."
   },
   "features": [
     "Advanced Caching & CDN Configuration",
     "Image Compression & Next-Gen Formats",
     "Code Minification (CSS/JS/HTML)",
     "Database Cleanup & Optimization",
-    "Core Web Vitals Assessment Pass"
+    "Before-and-after performance measurements"
   ],
   "benefits": {
     "0": {
-      "title": "Rank Higher on Google",
-      "description": "Google explicitly favors faster websites. Passing Core Web Vitals is a direct ranking signal that pushes you above competitors."
+      "title": "Reproduce reported delays",
+      "description": "We use a repeatable test to identify what slows the affected page or interaction."
     },
     "1": {
-      "title": "Boost Conversion Rates",
-      "description": "A 1-second delay reduces conversions by 7%. Speed is the simplest way to increase sales without spending more on ads."
+      "title": "Verify the work after release",
+      "description": "Compare results for the same pages and settings. We label lab results separately from field data when both are available."
     },
     "2": {
       "title": "Better User Experience",
@@ -45,20 +45,19 @@
       "description": "We configure advanced caching (Redis/Varnish) and CDNs to serve your content from the edge, closest to your users."
     },
     "3": {
-      "title": "Verification & Reporting",
-      "description": "We re-test with Google PageSpeed tools and deliver a before-and-after report proving the speed gains."
+      "title": "Verify the work after release",
+      "description": "Compare results for the same pages and settings. We label lab results separately from field data when both are available."
     }
   },
-  "heroDescription": "Boost your Google rankings and conversion rates with a lightning-fast website. We optimize Code, Images, and Server settings for maximum performance.",
+  "heroDescription": "Find out what slows your site and get a quote for the fixes. We measure affected pages, agree on the scope, and repeat the same checks after deployment.",
   "ctaButton": "Boost My Speed",
   "faq": {
-    "q1": "How much faster will my website be?",
-    "a1": "While every site is unique, we guarantee a significant improvement. We aim for a 'green' score (90+) on Google PageSpeed Insights and load times under 2 seconds. This improvement is critical for both user experience and Google rankings.",
-    "q2": "Is this a one-time fix or a monthly service?",
-    "a2": "Our optimization is a comprehensive one-time project. We overhaul your site's technical foundation. However, maintaining this speed over time as you add new content may require occasional check-ups, which are covered in our Maintenance Plans.",
-    "q3": "Will optimizing speed break my site's design?",
-    "a3": "Never. We meticulously test every change on a staging environment before applying it to your live site. We insure your layout, functionality, and design remain intact—just much faster.",
-    "q4": "Do you need access to my server?",
-    "a4": "Yes, to perform deep optimizations, we will need administrative access to your WordPress dashboard and your hosting control panel (FTP/SFTP). We treat your credentials with the highest level of security."
-  }
+    "q1": "How much does website speed optimization cost?",
+    "a1": "The quote depends on the pages, platform and fixes. Send the affected URLs and any existing measurements. We will confirm the scope before quoting.",
+    "q2": "What will you measure and deliver?",
+    "a2": "We record a baseline for agreed pages and interactions. The proposal separates the audit and implementation, identifies any access needed, and explains how we will verify the work.",
+    "q3": "How do you verify results?",
+    "a3": "Compare results for the same pages and settings. We label lab results separately from field data when both are available."
+  },
+  "pricingGuideLabel": "Read the speed optimization cost guide"
 }

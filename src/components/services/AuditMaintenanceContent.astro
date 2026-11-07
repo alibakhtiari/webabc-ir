@@ -86,6 +86,15 @@ const theme = colorThemes[slug] || colorThemes['website-maintenance'];
       <p class="text-center font-persian text-xl leading-relaxed text-gray-600 dark:text-gray-300">
         {t(`${ns}.description`, '')}
       </p>
+      {
+        slug === 'speed-optimization' && (
+          <p class="text-center font-persian">
+            <a href={`/${lang}/blog/website-speed-optimization-pricing-guide-2026/`} class="underline">
+              {t('speedOptimization.pricingGuideLabel', 'Read the speed optimization cost guide')}
+            </a>
+          </p>
+        )
+      }
     </div>
 
     <!-- Intro Section -->
