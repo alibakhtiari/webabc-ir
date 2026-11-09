@@ -55,6 +55,21 @@ export const getImageForPage = (pageKey) => {
     }
     return undefined;
   }
+  // Industrial, Export, Enterprise Automation landing pages
+  if (pageKey.match(/^(en|fa|ar)\/(industrial-web-design|export-web-design|enterprise-automation)(\/.*)?$/)) {
+    const m = pageKey.match(/^(en|fa|ar)\/([^/]+)\/?$/);
+    if (m && fs.existsSync(`public/images/og/services/${m[2]}.webp`)) {
+      return `/images/og/services/${m[2]}.webp`;
+    }
+    return undefined;
+  }
+  // Consultation
+  if (pageKey.match(/^(en|fa|ar)\/consultation(\/.*)?$/)) {
+    if (fs.existsSync('public/images/og/consultation.webp')) {
+      return '/images/og/consultation.webp';
+    }
+    return undefined;
+  }
   // Service areas: locale card when generated, else the shared location crop if it exists.
   if (pageKey.match(/^(en|fa|ar)\/service-areas\/(.+)$/)) {
     const m = pageKey.match(/^(en|fa|ar)\/service-areas\/(.+?)\/?$/);

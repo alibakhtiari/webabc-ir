@@ -242,6 +242,42 @@ const HUBS = [
     descAr: 'تواصل مع فريقنا للحصول على استشارة فنية مجانية وعرض سعر مخصص. البريد: info@webabc.ir'
   },
   {
+    path: 'consultation',
+    titleEn: 'Direct Web Engineering & SEO Consultation',
+    titleFa: 'مشاوره رایگان و مستقیم با تیم فنی و سئو',
+    titleAr: 'استشارة هندسية وتقنية مجانية لتصميم المواقع والسيو',
+    descEn: 'Direct consultation call with senior web engineers and technical SEO leads. Instant callback within 2 hours.',
+    descFa: 'مشاوره تلفنی مستقیم و بدون واسطه با مهندسان سئو و توسعه وب اِی‌بی‌سی؛ پاسخگویی سریع زیر ۲ ساعت.',
+    descAr: 'استشارة فنية وهندسية مباشرة مع كبار مهندسي الويب وتحسين محركات البحث؛ معاودة الاتصال خلال ساعتين.'
+  },
+  {
+    path: 'industrial-web-design',
+    titleEn: 'Industrial Web Design & B2B Manufacturing SEO',
+    titleFa: 'طراحی سایت صنعتی و سئوی کارخانجات B2B',
+    titleAr: 'تصميم المواقع الصناعية وسيو المصانع B2B',
+    descEn: 'Specialized web design, digital specs catalogs, RFQ quote workflows, and B2B search engine optimization for industrial manufacturers.',
+    descFa: 'طراحی سایت تخصصی، کاتالوگ دیجیتال قطعات، سیستم استعلام قیمت RFQ و سئوی B2B کارخانجات و شرکت‌های صنعتی.',
+    descAr: 'تصميم المواقع الصناعية، الكتالوج الرقمي، نظام طلب عروض الأسعار RFQ والسيو للمصانع والشركات الهندسية.'
+  },
+  {
+    path: 'export-web-design',
+    titleEn: 'Export Web Design & Multilingual International SEO',
+    titleFa: 'طراحی سایت صادراتی و سئو بین‌المللی چندزبانه',
+    titleAr: 'تصميم مواقع التصدير والسيو الدولي متعدد اللغات',
+    descEn: 'Multilingual web design and international target-market SEO for global exporters across the GCC, Europe, and North America.',
+    descFa: 'طراحی سایت چندزبانه و سئو بین‌المللی شرکت‌های صادراتی در بازارهای خلیج فارس، اوراسیا و غرب.',
+    descAr: 'تصميم المواقع متعددة اللغات والسيو الدولي لشركات التصدير والتجارة العابرة للحدود.'
+  },
+  {
+    path: 'enterprise-automation',
+    titleEn: 'Enterprise Automation & CRM/ERP Integration',
+    titleFa: 'اتوماسیون سازمانی و یکپارچه‌سازی ERP و CRM',
+    titleAr: 'أتمتة المؤسسات وتكامل أنظمة CRM و ERP',
+    descEn: 'Custom ERP and CRM integration (Sepidar, Rahkaran, Zoho, Salesforce), B2B client portals, automated quote-to-invoice pipelines, and workflow automation.',
+    descFa: 'یکپارچه‌سازی اختصاصی ERP و CRM (سپیدار، راهکاران، Zoho، Salesforce)، پورتال‌های سازمانی B2B، پایپ‌لاین‌های خودکار استعلام تا فاکتور و اتوماسیون گردش کار.',
+    descAr: 'تكامل مخصص لأنظمة سيبيدار، راهكاران، زوهو، وسيلزفورس، بوابات B2B المؤسسية، خطوط الفوترة المؤتمتة وأتمتة مسارات العمل.'
+  },
+  {
     path: 'faq',
     titleEn: 'Frequently Asked Questions (FAQ)',
     titleFa: 'سوالات متداول',

@@ -236,6 +236,30 @@ const phoneList = [
                 >{t('services.linkBuildingTitle')}</a
               >
             </li>
+            <li>
+              <a
+                href={linkPath('/industrial-web-design')}
+                class="text-foreground/70 transition-colors hover:text-primary"
+              >
+                {lang === 'fa' ? 'طراحی سایت صنعتی B2B' : lang === 'ar' ? 'تصميم المواقع الصناعية B2B' : 'Industrial Web Design'}
+              </a>
+            </li>
+            <li>
+              <a
+                href={linkPath('/export-web-design')}
+                class="text-foreground/70 transition-colors hover:text-primary"
+              >
+                {lang === 'fa' ? 'طراحی سایت صادراتی' : lang === 'ar' ? 'تصميم مواقع التصدير' : 'Export Web Design'}
+              </a>
+            </li>
+            <li>
+              <a
+                href={linkPath('/enterprise-automation')}
+                class="text-foreground/70 transition-colors hover:text-primary"
+              >
+                {lang === 'fa' ? 'اتوماسیون سازمانی' : lang === 'ar' ? 'أتمتة المؤسسات' : 'Enterprise Automation'}
+              </a>
+            </li>
           </ul>
         </div>
         <div>
@@ -270,6 +294,14 @@ const phoneList = [
                 class="text-foreground/70 transition-colors hover:text-primary"
                 >{t('common.blog')}</a
               >
+            </li>
+            <li>
+              <a
+                href={linkPath('/consultation')}
+                class="text-foreground/70 transition-colors hover:text-primary"
+              >
+                {lang === 'fa' ? 'مشاوره مستقیم' : lang === 'ar' ? 'استشارة مباشرة' : 'Direct Consultation'}
+              </a>
             </li>
             <li>
               <a

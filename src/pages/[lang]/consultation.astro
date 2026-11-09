@@ -1,0 +1,688 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Breadcrumbs from '@/components/astro/Breadcrumbs.astro';
+import { getLanguageStaticPaths, type SupportedLanguage, languages } from '@/types/language';
+import { getDictionary } from '@/i18n/get-dictionary';
+import { createTranslator } from '@/i18n/translate';
+
+export const getStaticPaths = getLanguageStaticPaths;
+
+const { lang } = Astro.params;
+const supportedLang = lang as SupportedLanguage;
+const dictionary = await getDictionary(supportedLang);
+const isRtl = languages[supportedLang]?.direction === 'rtl';
+const fontClass =
+  supportedLang === 'fa' ? 'font-persian' : supportedLang === 'ar' ? 'font-arabic' : 'font-sans';
+
+const t = createTranslator(dictionary);
+
+const pageTitle = t('consultation.pageTitle', {
+  fallback: 'Direct Web Engineering & Technical SEO Consultation',
+});
+const pageDescription = t('consultation.pageDescription', {
+  fallback:
+    'Direct consultation call with senior web engineers and technical SEO leads. Fast callback within 2 hours.',
+});
+const heroHeading = t('consultation.heroHeading', {
+  fallback: 'Direct Consultation Call with Senior Web Engineers',
+});
+const heroSubtitle = t('consultation.heroSubtitle', {
+  fallback:
+    'No sales gatekeepers. Speak directly with a lead technical architect about your web engineering, performance, or SEO roadmap.',
+});
+
+const breadcrumbs = [
+  { label: t('common.home', { fallback: 'Home' }), url: `/${supportedLang}/` },
+  { label: pageTitle },
+];
+
+const topicsByLocale = {
+  fa: [
+    'سئو تکنیکال و Core Web Vitals',
+    'طراحی و بازنویسی اختصاصی سایت',
+    'طراحی سایت صنعتی و B2B',
+    'طراحی سایت صادراتی و چندزبانه',
+    'اتوماسیون سازمانی و اتصال به CRM/ERP',
+    'مهاجرت از وردپرس به آسترو (Astro)',
+  ],
+  ar: [
+    'سيو تقني وسرعة Core Web Vitals',
+    'تصميم وتطوير المواقع المخصصة',
+    'تصميم المواقع الصناعية B2B',
+    'تصميم مواقع التصدير متعددة اللغات',
+    'أتمتة المؤسسات وتكامل CRM/ERP',
+    'الترقية من ووردبريس إلى أسترو',
+  ],
+  en: [
+    'Technical SEO & Core Web Vitals',
+    'Custom High-Performance Web Development',
+    'Industrial & B2B Web Design',
+    'Export & Multilingual Web Design',
+    'Enterprise Automation & CRM/ERP Integration',
+    'WordPress to Astro Edge Migration',
+  ],
+};
+
+const currentTopics = topicsByLocale[supportedLang] || topicsByLocale.en;
+const whatsappMessage =
+  supportedLang === 'fa'
+    ? 'سلام، مایل به دریافت مشاوره فنی در زمینه طراحی سایت و سئو هستم.'
+    : supportedLang === 'ar'
+      ? 'مرحباً، أود الحصول على استشارة فنية حول تصميم المواقع والسيو.'
+      : 'Hello, I would like to schedule a technical consultation regarding web engineering and SEO.';
+const whatsappUrl = `https://wa.me/989125811880?text=${encodeURIComponent(whatsappMessage)}`;
+
+const consultationSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ContactPage',
+      '@id': `https://webabc.ir/${supportedLang}/consultation/#webpage`,
+      url: `https://webabc.ir/${supportedLang}/consultation/`,
+      name: pageTitle,
+      description: pageDescription,
+      inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
+      isPartOf: {
+        '@type': 'WebSite',
+        '@id': `https://webabc.ir/${supportedLang}/#website`,
+        name: 'WebABC',
+        url: `https://webabc.ir/${supportedLang}/`,
+      },
+      mainEntity: {
+        '@id': 'https://webabc.ir/#organization',
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `https://webabc.ir/${supportedLang}/consultation/#faq`,
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: t('consultation.q1'),
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: t('consultation.a1'),
+          },
+        },
+        {
+          '@type': 'Question',
+          name: t('consultation.q2'),
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: t('consultation.a2'),
+          },
+        },
+        {
+          '@type': 'Question',
+          name: t('consultation.q3'),
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: t('consultation.a3'),
+          },
+        },
+      ],
+    },
+  ],
+};
+---
+
+<Layout title={pageTitle} description={pageDescription} lang={supportedLang} slug="consultation">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(consultationSchema)} />
+
+  <!-- Hero Header -->
+  <section class="relative overflow-hidden bg-linear-to-b from-primary/10 via-background to-background pt-32 pb-12 font-sans md:pt-36 md:pb-16">
+    <div class="container mx-auto px-4 max-w-4xl text-center">
+      <Breadcrumbs items={breadcrumbs} lang={supportedLang} centered={true} />
+
+      <div class="mt-6 mb-3 flex justify-center">
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary">
+          {t('consultation.eyebrow')}
+        </span>
+      </div>
+
+      <h1 class={`mb-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl dark:text-white ${fontClass}`}>
+        {heroHeading}
+      </h1>
+
+      <p class={`mx-auto max-w-2xl text-base leading-relaxed text-gray-600 sm:text-lg dark:text-gray-300 ${fontClass}`}>
+        {heroSubtitle}
+      </p>
+
+      <!-- SLA Badge -->
+      <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
+        <span class="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+          <span class="inline-block h-2 w-2 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true"></span>
+          {t('consultation.slaBadge')}
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <div class={`mx-auto w-full max-w-6xl px-4 pb-20 sm:px-6 lg:px-8 ${fontClass}`}>
+    <!-- Direct Action Bar (Click-to-Call & WhatsApp) -->
+    <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-6">
+      <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
+        <div class="text-center md:text-start">
+          <div class="text-sm font-bold text-primary">
+            {t('consultation.directPhoneTitle')}
+          </div>
+          <p class="mt-1 text-xs text-gray-600 dark:text-gray-400 sm:text-sm">
+            {t('consultation.workingHours')}
+          </p>
+        </div>
+
+        <div class="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+          <a
+            href="tel:+989125811880"
+            class="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-primary px-5 text-sm font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary"
+          >
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+              />
+            </svg>
+            <span dir="ltr">+98 912 581 1880</span>
+            <span class="text-xs font-normal opacity-90">({t('consultation.callNow')})</span>
+          </a>
+
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-5 text-sm font-semibold text-gray-700 transition-all hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700"
+          >
+            <svg class="h-4 w-4 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.698.077-2.21-.548-1.745-.722-2.887-2.483-2.977-2.6-.088-.119-.711-.947-.711-1.808 0-.86.449-1.284.609-1.459.16-.176.352-.22.469-.22.12 0 .24 0 .346.005.111.006.26-.042.406.31.15.364.513 1.25.558 1.341.045.091.075.197.015.317-.06.12-.09.196-.179.301-.09.106-.188.236-.269.317-.09.09-.185.188-.08.368.106.18.47 1.776 1.01 2.257.697.62 1.286.812 1.468.902.182.09.289.076.395-.046.106-.12.456-.531.577-.713.121-.182.242-.151.406-.09.164.06 1.042.492 1.221.581.18.09.299.135.344.212.044.076.044.441-.1.846z"/>
+            </svg>
+            <span>{t('consultation.whatsappChat')}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Grid: Form (Left/Center) + Proof & Channels (Right) -->
+    <div class="mt-8 grid gap-8 lg:grid-cols-12">
+      <!-- Consultation Form (7 Cols) -->
+      <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-8 lg:col-span-7">
+        <div class="flex items-center justify-between border-b border-gray-100 pb-4 dark:border-slate-800">
+          <div>
+            <h2 class="text-xl font-bold text-gray-900 sm:text-2xl dark:text-white">
+              {t('consultation.formTitle')}
+            </h2>
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+              {t('consultation.formSubtitle')}
+            </p>
+          </div>
+          <span class="inline-flex rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+            {supportedLang === 'fa' ? 'پاسخ زیر ۲ ساعت' : supportedLang === 'ar' ? 'اتصال خلال ساعتين' : 'SLA < 2H'}
+          </span>
+        </div>
+
+        <!-- Quick Topic Pills -->
+        <div class="mt-6">
+          <span class="mb-2 block text-xs font-semibold text-gray-700 dark:text-gray-300">
+            {t('consultation.selectTopic')}
+          </span>
+          <div class="flex flex-wrap gap-2" id="topic-chips-container">
+            {
+              currentTopics.map((topic, idx) => (
+                <button
+                  type="button"
+                  data-topic={topic}
+                  class={`cursor-pointer rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
+                    idx === 0
+                      ? 'border-primary bg-primary/10 text-primary'
+                      : 'border-gray-200 bg-gray-50 text-gray-700 hover:border-primary hover:text-primary dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300'
+                  }`}
+                >
+                  <span>{topic}</span>
+                </button>
+              ))
+            }
+          </div>
+        </div>
+
+        <form id="consultation-page-form" class="mt-6 space-y-4" novalidate>
+          <!-- Honeypot -->
+          <div class="hidden" aria-hidden="true">
+            <label for="consult-company">Company</label>
+            <input id="consult-company" name="company" type="text" tabindex="-1" autocomplete="off" />
+            <input id="consult-selected-topic" name="topic" type="hidden" value={currentTopics[0]} />
+          </div>
+
+          <!-- Full Name -->
+          <div>
+            <label
+              for="consult-name"
+              class="mb-1.5 block text-start text-xs font-semibold text-gray-700 dark:text-gray-300"
+            >
+              {t('consultation.fullName')} <span class="text-rose-500" aria-hidden="true">*</span>
+            </label>
+            <input
+              id="consult-name"
+              name="name"
+              type="text"
+              required
+              minlength="2"
+              maxlength="100"
+              autocomplete="name"
+              placeholder={t('consultation.fullNamePlaceholder')}
+              class="h-11 w-full rounded-lg border border-gray-200 bg-white px-3.5 text-sm text-gray-900 transition-colors focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+            />
+            <p id="consult-name-err" class="mt-1 hidden text-start text-xs text-rose-500"></p>
+          </div>
+
+          <!-- Phone Number & Website in 2 Columns on sm+ -->
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label
+                for="consult-phone"
+                class="mb-1.5 block text-start text-xs font-semibold text-gray-700 dark:text-gray-300"
+              >
+                {t('consultation.phone')} <span class="text-rose-500" aria-hidden="true">*</span>
+              </label>
+              <input
+                id="consult-phone"
+                name="phone"
+                type="tel"
+                inputmode="tel"
+                required
+                dir="ltr"
+                placeholder={t('consultation.phonePlaceholder')}
+                class="ltr-isolate h-11 w-full rounded-lg border border-gray-200 bg-white px-3.5 text-sm text-gray-900 transition-colors focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              />
+              <p id="consult-phone-err" class="mt-1 hidden text-start text-xs text-rose-500"></p>
+            </div>
+
+            <div>
+              <label
+                for="consult-website"
+                class="mb-1.5 block text-start text-xs font-semibold text-gray-700 dark:text-gray-300"
+              >
+                {t('consultation.website')}
+              </label>
+              <input
+                id="consult-website"
+                name="website"
+                type="text"
+                dir="ltr"
+                placeholder={t('consultation.websitePlaceholder')}
+                class="ltr-isolate h-11 w-full rounded-lg border border-gray-200 bg-white px-3.5 text-sm text-gray-900 transition-colors focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+              />
+            </div>
+          </div>
+
+          <!-- Message / Notes -->
+          <div>
+            <label
+              for="consult-message"
+              class="mb-1.5 block text-start text-xs font-semibold text-gray-700 dark:text-gray-300"
+            >
+              {t('consultation.message')}
+            </label>
+            <textarea
+              id="consult-message"
+              name="message"
+              rows="3"
+              maxlength="3000"
+              placeholder={t('consultation.messagePlaceholder')}
+              class="w-full resize-none rounded-lg border border-gray-200 bg-white p-3.5 text-sm text-gray-900 transition-colors focus:border-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary dark:border-slate-700 dark:bg-slate-800 dark:text-white"
+            ></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            id="consult-submit-btn"
+            class="flex h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-primary text-sm font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-70"
+          >
+            <svg
+              id="consult-spinner"
+              class="hidden h-5 w-5 animate-spin"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 0 1 8-8v4a4 4 0 0 0-4 4H4z"></path>
+            </svg>
+            <span id="consult-submit-label">{t('consultation.submitConsultation')}</span>
+          </button>
+
+          <!-- Status Banner -->
+          <div
+            id="consult-status-msg"
+            role="status"
+            aria-live="polite"
+            class="hidden rounded-lg px-4 py-3 text-center text-xs font-medium"
+          >
+          </div>
+
+          <!-- Privacy Guarantee Note -->
+          <p class="text-start text-xs leading-relaxed text-gray-500 dark:text-gray-400">
+            🔒 {t('consultation.privacyGuarantee')}
+          </p>
+        </form>
+      </div>
+
+      <!-- Trust Signals, Key Facts & Direct Lines (5 Cols) -->
+      <aside class="space-y-6 lg:col-span-5">
+        <!-- Direct Phone & Contact Details Card -->
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div class="flex items-center justify-between border-b border-gray-100 pb-3 dark:border-slate-800">
+            <span class="text-xs font-semibold text-primary uppercase">
+              {supportedLang === 'fa' ? 'تماس فوری و مستقیم' : supportedLang === 'ar' ? 'اتصال مباشر فوري' : 'Direct Engineering Line'}
+            </span>
+            <span class="inline-flex rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+              {supportedLang === 'fa' ? 'پاسخگو' : supportedLang === 'ar' ? 'متاح الآن' : 'Available'}
+            </span>
+          </div>
+          <div class="pt-4">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white">
+              {supportedLang === 'fa' ? 'خطوط تماس و پشتیبانی مستقیم' : supportedLang === 'ar' ? 'أرقام الاتصال المباشرة' : 'Direct Technical Contacts'}
+            </h3>
+            <ul class="mt-4 space-y-3.5 text-sm">
+              <li class="rounded-xl border border-gray-100 bg-gray-50/70 p-3 dark:border-slate-800 dark:bg-slate-800/40">
+                <div class="text-xs font-medium text-gray-500 dark:text-gray-400">
+                  {supportedLang === 'fa' ? 'شماره همراه سرپرست فنی (بختیاری)' : supportedLang === 'ar' ? 'المشرف الفني المباشر' : 'Lead Technical Architect'}
+                </div>
+                <div class="mt-1 text-base font-bold text-gray-900 dark:text-white" dir="ltr">
+                  <a href="tel:+989125811880" class="hover:text-primary transition-colors">
+                    +98 912 581 1880
+                  </a>
+                </div>
+              </li>
+              <li class="rounded-xl border border-gray-100 bg-gray-50/70 p-3 dark:border-slate-800 dark:bg-slate-800/40">
+                <div class="text-xs font-medium text-gray-500 dark:text-gray-400">
+                  {supportedLang === 'fa' ? 'پشتیبانی و هماهنگی (سبدبافان)' : supportedLang === 'ar' ? 'الدعم الفني والتنسيق' : 'Project Support & Scheduling'}
+                </div>
+                <div class="mt-1 text-base font-bold text-gray-900 dark:text-white" dir="ltr">
+                  <a href="tel:+989354767068" class="hover:text-primary transition-colors">
+                    +98 935 476 7068
+                  </a>
+                </div>
+              </li>
+              <li class="rounded-xl border border-gray-100 bg-gray-50/70 p-3 dark:border-slate-800 dark:bg-slate-800/40">
+                <div class="text-xs font-medium text-gray-500 dark:text-gray-400">
+                  {supportedLang === 'fa' ? 'ایمیل رسمی' : supportedLang === 'ar' ? 'البريد الإلكتروني' : 'Official Email'}
+                </div>
+                <div class="mt-1 text-sm font-semibold text-gray-900 dark:text-white" dir="ltr">
+                  <a href="mailto:info@webabc.ir" class="hover:text-primary transition-colors">
+                    info@webabc.ir
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Verified Performance Proofs Card -->
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div class="flex items-center justify-between border-b border-gray-100 pb-3 dark:border-slate-800">
+            <span class="text-xs font-semibold text-primary uppercase">
+              {supportedLang === 'fa' ? 'شواهد عملکرد' : supportedLang === 'ar' ? 'مؤشرات الأداء' : 'Verified Benchmarks'}
+            </span>
+            <span class="inline-flex rounded-full bg-blue-500/10 px-2.5 py-0.5 text-xs font-semibold text-blue-600 dark:text-blue-400">
+              100% Proven
+            </span>
+          </div>
+          <div class="pt-4">
+            <h3 class="text-base font-bold text-gray-900 dark:text-white">
+              {supportedLang === 'fa' ? 'نتایج واقعی پروژه‌های مستند WebABC' : supportedLang === 'ar' ? 'نتائج مثبتة لمشاريع WebABC' : 'Documented Benchmark Proof'}
+            </h3>
+            <div class="mt-4 grid grid-cols-2 gap-3">
+              <div class="rounded-xl border border-gray-100 bg-gray-50/70 p-3 dark:border-slate-800 dark:bg-slate-800/40">
+                <div class="text-xl font-bold text-emerald-600 dark:text-emerald-400">+۱۷۵٪</div>
+                <div class="mt-1 text-xs text-gray-600 dark:text-gray-400">
+                  {supportedLang === 'fa' ? 'رشد استعلام صنعتی B2B' : supportedLang === 'ar' ? 'نمو طلبات B2B' : 'B2B RFQ Growth'}
+                </div>
+              </div>
+              <div class="rounded-xl border border-gray-100 bg-gray-50/70 p-3 dark:border-slate-800 dark:bg-slate-800/40">
+                <div class="text-xl font-bold text-blue-600 dark:text-blue-400">۰.۴ ثانیه</div>
+                <div class="mt-1 text-xs text-gray-600 dark:text-gray-400">
+                  {supportedLang === 'fa' ? 'سرعت لود در انگلستان' : supportedLang === 'ar' ? 'سرعة التحميل الدولية' : 'Global Load Speed'}
+                </div>
+              </div>
+              <div class="rounded-xl border border-gray-100 bg-gray-50/70 p-3 dark:border-slate-800 dark:bg-slate-800/40">
+                <div class="text-xl font-bold text-purple-600 dark:text-purple-400">۹۹/۱۰۰</div>
+                <div class="mt-1 text-xs text-gray-600 dark:text-gray-400">
+                  {supportedLang === 'fa' ? 'امتیاز PageSpeed' : supportedLang === 'ar' ? 'مؤشر PageSpeed' : 'PageSpeed Score'}
+                </div>
+              </div>
+              <div class="rounded-xl border border-gray-100 bg-gray-50/70 p-3 dark:border-slate-800 dark:bg-slate-800/40">
+                <div class="text-xl font-bold text-emerald-600 dark:text-emerald-400">+۱۶۰٪</div>
+                <div class="mt-1 text-xs text-gray-600 dark:text-gray-400">
+                  {supportedLang === 'fa' ? 'جذب لید اتوماسیون' : supportedLang === 'ar' ? 'نمو ليد أتمتة' : 'Automation Leads'}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Why WebABC Consultation (3 Feature Cards) -->
+    <div class="mt-16">
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white">
+          {t('consultation.benefitsTitle')}
+        </h2>
+        <p class="mx-auto mt-2 max-w-2xl text-sm leading-relaxed text-gray-600 sm:text-base dark:text-gray-300">
+          {t('consultation.benefitsSubtitle')}
+        </p>
+      </div>
+
+      <div class="mt-8 grid gap-6 md:grid-cols-3">
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs transition-all hover:border-primary/50 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-sm font-bold text-primary">
+            01
+          </div>
+          <h3 class="mt-4 text-lg font-bold text-gray-900 dark:text-white">
+            {t('consultation.b1Title')}
+          </h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            {t('consultation.b1Desc')}
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs transition-all hover:border-primary/50 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-sm font-bold text-primary">
+            02
+          </div>
+          <h3 class="mt-4 text-lg font-bold text-gray-900 dark:text-white">
+            {t('consultation.b2Title')}
+          </h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            {t('consultation.b2Desc')}
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs transition-all hover:border-primary/50 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-sm font-bold text-primary">
+            03
+          </div>
+          <h3 class="mt-4 text-lg font-bold text-gray-900 dark:text-white">
+            {t('consultation.b3Title')}
+          </h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            {t('consultation.b3Desc')}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Accordions -->
+    <div class="mt-16">
+      <div class="text-center">
+        <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white">
+          {t('consultation.faqTitle')}
+        </h2>
+      </div>
+
+      <div class="mx-auto mt-8 max-w-3xl space-y-4">
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white">
+            {t('consultation.q1')}
+          </h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            {t('consultation.a1')}
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white">
+            {t('consultation.q2')}
+          </h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            {t('consultation.a2')}
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900">
+          <h3 class="text-base font-bold text-gray-900 dark:text-white">
+            {t('consultation.q3')}
+          </h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            {t('consultation.a3')}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script is:inline>
+  (function () {
+    function initConsultationPage() {
+      const form = document.getElementById('consultation-page-form');
+      if (!form || form.dataset.bound === 'true') return;
+      form.dataset.bound = 'true';
+
+      const nameInput = document.getElementById('consult-name');
+      const phoneInput = document.getElementById('consult-phone');
+      const websiteInput = document.getElementById('consult-website');
+      const msgInput = document.getElementById('consult-message');
+      const topicInput = document.getElementById('consult-selected-topic');
+      const nameErr = document.getElementById('consult-name-err');
+      const phoneErr = document.getElementById('consult-phone-err');
+      const submitBtn = document.getElementById('consult-submit-btn');
+      const submitSpinner = document.getElementById('consult-spinner');
+      const submitLabel = document.getElementById('consult-submit-label');
+      const statusMsg = document.getElementById('consult-status-msg');
+      const chipsContainer = document.getElementById('topic-chips-container');
+
+      // Chip selection logic
+      if (chipsContainer && topicInput) {
+        chipsContainer.addEventListener('click', (e) => {
+          const btn = e.target.closest('button[data-topic]');
+          if (!btn) return;
+          const topic = btn.getAttribute('data-topic');
+          topicInput.value = topic;
+
+          chipsContainer.querySelectorAll('button[data-topic]').forEach((b) => {
+            b.classList.remove('border-primary', 'bg-primary/10', 'text-primary');
+            b.classList.add('border-gray-200', 'bg-gray-50', 'text-gray-700');
+          });
+          btn.classList.remove('border-gray-200', 'bg-gray-50', 'text-gray-700');
+          btn.classList.add('border-primary', 'bg-primary/10', 'text-primary');
+        });
+      }
+
+      const showStatus = (text, isOk) => {
+        if (!statusMsg) return;
+        statusMsg.textContent = text;
+        statusMsg.classList.remove('hidden');
+        statusMsg.className = isOk
+          ? 'rounded-lg border border-emerald-500/30 bg-emerald-50 px-4 py-3 text-center text-xs font-semibold text-emerald-800 dark:bg-emerald-950/30 dark:text-emerald-400 block'
+          : 'rounded-lg border border-rose-500/30 bg-rose-50 px-4 py-3 text-center text-xs font-semibold text-rose-800 dark:bg-rose-950/30 dark:text-rose-400 block';
+      };
+
+      const clearErrors = () => {
+        if (nameErr) nameErr.classList.add('hidden');
+        if (phoneErr) phoneErr.classList.add('hidden');
+        if (statusMsg) statusMsg.classList.add('hidden');
+      };
+
+      if (nameInput) nameInput.addEventListener('input', () => nameErr && nameErr.classList.add('hidden'));
+      if (phoneInput) phoneInput.addEventListener('input', () => phoneErr && phoneErr.classList.add('hidden'));
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        clearErrors();
+
+        const nameVal = (nameInput ? nameInput.value : '').trim();
+        const phoneVal = (phoneInput ? phoneInput.value : '').trim();
+        const websiteVal = (websiteInput ? websiteInput.value : '').trim();
+        const rawMsgVal = (msgInput ? msgInput.value : '').trim();
+        const topicVal = (topicInput ? topicInput.value : '').trim();
+        const companyVal = (form.querySelector('input[name="company"]')?.value || '').trim();
+
+        let hasError = false;
+        if (nameVal.length < 2) {
+          if (nameErr) {
+            nameErr.textContent = 'لطفاً نام خود را کامل وارد کنید (حداقل ۲ کاراکتر).';
+            nameErr.classList.remove('hidden');
+          }
+          if (!hasError && nameInput) nameInput.focus();
+          hasError = true;
+        }
+
+        const phoneRe = /^[\d+\-\s()]{7,25}$/;
+        if (!phoneRe.test(phoneVal)) {
+          if (phoneErr) {
+            phoneErr.textContent = 'لطفاً یک شماره تماس معتبر وارد کنید.';
+            phoneErr.classList.remove('hidden');
+          }
+          if (!hasError && phoneInput) phoneInput.focus();
+          hasError = true;
+        }
+
+        if (hasError) return;
+
+        const constructedMessage = `[درخواست مشاوره تلفنی فوری] موضوع: ${topicVal}${websiteVal ? ` | وب‌سایت: ${websiteVal}` : ''}${rawMsgVal ? ` | پیام: ${rawMsgVal}` : ' | درخواست بررسی و تماس تلفنی'}`;
+
+        const payload = {
+          name: nameVal,
+          phone: phoneVal,
+          message: constructedMessage,
+          company: companyVal,
+        };
+
+        if (submitBtn) submitBtn.disabled = true;
+        if (submitSpinner) submitSpinner.classList.remove('hidden');
+        if (submitLabel) submitLabel.textContent = 'در حال ثبت درخواست...';
+
+        try {
+          const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify(payload),
+          });
+
+          const data = await res.json().catch(() => ({}));
+          if (res.ok && (data.success || !data.error)) {
+            showStatus('✓ درخواست شما با موفقیت ثبت شد. کارشناسان ما در سریع‌ترین زمان (کمتر از ۲ ساعت) با شما تماس خواهند گرفت.', true);
+            form.reset();
+          } else {
+            showStatus(data.error || 'خطا در ثبت درخواست. لطفاً مجدداً تلاش نمایید یا مستقیماً تماس بگیرید.', false);
+          }
+        } catch (err) {
+          showStatus('خطا در برقراری ارتباط با سرور. لطفاً مستقیماً تماس بگیرید.', false);
+        } finally {
+          if (submitBtn) submitBtn.disabled = false;
+          if (submitSpinner) submitSpinner.classList.add('hidden');
+          if (submitLabel) submitLabel.textContent = 'درخواست تماس و مشاوره تلفنی →';
+        }
+      });
+    }
+
+    document.addEventListener('astro:page-load', initConsultationPage);
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      initConsultationPage();
+    }
+  })();
+</script>

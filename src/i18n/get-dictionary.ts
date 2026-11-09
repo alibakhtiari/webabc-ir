@@ -32,6 +32,9 @@ const namespaces = {
 
   notFound: 'notFound',
   consultation: 'consultation',
+  industrial: 'industrial',
+  export: 'export',
+  enterpriseAutomation: 'enterprise-automation',
 
   // Tools Namespaces
   serpPreview: 'tools/serpPreview',

@@ -17,6 +17,9 @@ const services = [
   'ui-ux-audit',
   'website-maintenance',
   'ecommerce',
+  'industrial-web-design',
+  'export-web-design',
+  'enterprise-automation',
 ];
 
 services.forEach((s) => {
@@ -25,6 +28,10 @@ services.forEach((s) => {
     manifest[`services/${s}`] = `/images/og/services/${fileKey}.webp`;
   }
 });
+
+if (fs.existsSync(path.join(root, 'public/images/og/consultation.webp'))) {
+  manifest['consultation'] = '/images/og/consultation.webp';
+}
 
 // 2. Service Areas
 const areas = ['dubai', 'riyadh', 'abu-dhabi', 'muscat', 'tehran', 'qazvin'];
