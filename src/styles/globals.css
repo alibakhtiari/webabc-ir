@@ -527,6 +527,13 @@
   html:lang(ar) .font-arabic {
     font-family: var(--font-arabic);
   }
+
+  /* RTL typography refinement: prevent positive letter-spacing from breaking Arabic/Persian cursive ligatures */
+  html[dir='rtl'] [class*='tracking-'],
+  html:lang(fa) [class*='tracking-'],
+  html:lang(ar) [class*='tracking-'] {
+    letter-spacing: normal;
+  }
 }
 
 #logoh {
@@ -545,4 +552,10 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Syntax highlighting comment contrast fix (WCAG AA 4.5:1) */
+pre code span[style*='color:#6A737D'],
+pre code span[style*='color:#6a737d'] {
+  color: #94a3b8 !important;
 }
