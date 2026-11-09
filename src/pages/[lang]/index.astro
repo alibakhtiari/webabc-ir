@@ -2,7 +2,10 @@
 import Layout from '@/layouts/Layout.astro';
 import HeroSection from '@/components/astro/HeroSection.astro';
 import ServicesSection from '@/components/astro/ServicesSection.astro';
+import AiSmartAutomationSection from '@/components/astro/AiSmartAutomationSection.astro';
 import BenefitsSection from '@/components/astro/BenefitsSection.astro';
+import CaseStudiesPreviewSection from '@/components/astro/CaseStudiesPreviewSection.astro';
+import FreeToolsSection from '@/components/astro/FreeToolsSection.astro';
 import CTASection from '@/components/astro/CTASection.astro';
 import FAQ from '@/components/astro/FAQ.astro';
 import { getLanguageStaticPaths, type SupportedLanguage } from '@/types/language';
@@ -31,23 +34,16 @@ const homeFaqList = [1, 2, 3, 4]
   slug=""
   mainClass="relative overflow-x-hidden pt-0"
 >
-  <link
-    rel="preload"
-    as="image"
-    type="image/avif"
-    href="/images/homepage-hero-665.avif"
-    imagesrcset="/images/homepage-hero-480.avif 480w, /images/homepage-hero-665.avif 665w, /images/homepage-hero.avif 1024w"
-    imagesizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 665px"
-    fetchpriority="high"
-    slot="head"
-  />
   <HeroSection lang={supportedLang} />
   <ServicesSection lang={supportedLang} />
+  <AiSmartAutomationSection lang={supportedLang} />
   <BenefitsSection lang={supportedLang} />
+  <CaseStudiesPreviewSection lang={supportedLang} />
+  <FreeToolsSection lang={supportedLang} />
   {
     homeFaqList.length > 0 && (
       <section class="border-y border-gray-100 bg-gray-50/50 py-16 dark:border-slate-800 dark:bg-slate-950">
-        <div class="container mx-auto max-w-3xl px-4">
+        <div class="container mx-auto max-w-4xl px-4 md:px-6">
           <FAQ faqList={homeFaqList} lang={supportedLang} />
         </div>
       </section>

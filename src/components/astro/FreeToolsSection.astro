@@ -1,0 +1,468 @@
+---
+import { getDictionary } from '@/i18n/get-dictionary';
+import { languages, type SupportedLanguage } from '@/types/language';
+import { createTranslator } from '@/i18n/translate';
+
+interface Props {
+  lang: SupportedLanguage;
+}
+
+const { lang } = Astro.props;
+const dictionary = await getDictionary(lang);
+const isRtl = languages[lang]?.direction === 'rtl';
+const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 'font-persian';
+
+const t = createTranslator(dictionary);
+
+const linkPath = (path: string) => {
+  if (!path || path === '/') return `/${lang}/`;
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return `/${lang}${cleanPath.endsWith('/') ? cleanPath : cleanPath + '/'}`;
+};
+
+const featuredTools = [
+  {
+    idx: '01',
+    slug: 'cost-calculator',
+    badge:
+      lang === 'fa'
+        ? 'محاسبه‌گر · آنی'
+        : lang === 'ar'
+          ? 'حاسبة فورية'
+          : 'Estimator · Instant',
+    glyph: '⚡',
+    title:
+      lang === 'fa'
+        ? 'ماشین‌حساب هزینه طراحی سایت و سئو'
+        : lang === 'ar'
+          ? 'حاسبة تكلفة تصميم الموقع والسيو'
+          : 'Website Cost Calculator',
+    desc:
+      lang === 'fa'
+        ? 'محاسبه آنی و شفاف هزینه طراحی سایت اختصاصی، وردپرس و سئو بر اساس امکانات پروژه شما.'
+        : lang === 'ar'
+          ? 'حاسبة فورية لتقدير تكلفة تصميم وتطوير المواقع وتحسين محركات البحث بدقة.'
+          : 'Interactive project scope calculator for instant, itemized web design and SEO price estimates.',
+    href: linkPath('/tools/cost-calculator'),
+  },
+  {
+    idx: '02',
+    slug: 'meta-generator',
+    badge:
+      lang === 'fa'
+        ? 'نتایج گوگل · متاتگ‌ها'
+        : lang === 'ar'
+          ? 'سيو · وسوم الميتا'
+          : 'SERP · Meta Tags',
+    glyph: '🏷️',
+    title: t('metaGenerator.title', { fallback: 'Meta Description & Tag Generator' }),
+    desc:
+      lang === 'fa'
+        ? 'تولید تگ‌های استاندارد title، meta description و Open Graph با شمارنده زنده کاراکتر و پیکسل.'
+        : lang === 'ar'
+          ? 'إنشاء وسوم العنوان والوصف التعريفي المتوافقة مع معايير جوجل مع عداد مباشر.'
+          : 'Generates SEO-compliant <title> and <meta name="description"> tags with live character and pixel counters.',
+    href: linkPath('/tools/meta-generator'),
+  },
+  {
+    idx: '03',
+    slug: 'utm-builder',
+    badge:
+      lang === 'fa'
+        ? 'آنالیتیکس · کمپین'
+        : lang === 'ar'
+          ? 'التحليلات · الحملات'
+          : 'Analytics · Campaign',
+    glyph: '🔗',
+    title: t('utmBuilder.title', {
+      fallback: 'UTM Link Builder & URL Builder – Free Campaign URL Generator',
+    }),
+    desc:
+      lang === 'fa'
+        ? 'ساخت لینک‌های کمپین تبلیغاتی استاندارد با پارامترهای utm_source، utm_medium و utm_campaign.'
+        : lang === 'ar'
+          ? 'مولد روابط الحملات الإعلانية المجاني مع معلمات UTM القياسية لتتبع التحويلات.'
+          : 'Free campaign URL generator appending standardized utm_source, utm_medium, and utm_campaign parameters.',
+    href: linkPath('/tools/utm-builder'),
+  },
+];
+
+const tool1Header =
+  lang === 'fa'
+    ? 'ابزار تحلیل تیتر و عرض پیکسلی گوگل'
+    : lang === 'ar'
+      ? 'أداة تحليل العناوين وعرض بكسل جوجل'
+      : 'Headline Analyzer & SERP Pixel Width';
+
+const tool1Badge =
+  lang === 'fa'
+    ? 'امتیاز CTR · ۵۸۰ پیکسل'
+    : lang === 'ar'
+      ? 'نقاط CTR · 580 بكسل'
+      : 'CTR Score · 580px Ruler';
+
+const tool1InputLabel =
+  lang === 'fa'
+    ? 'تست زنده عرض پیکسلی نتایج گوگل و امتیاز CTR:'
+    : lang === 'ar'
+      ? 'اختبار مباشر لعرض بكسل جوجل ونسبة النقر:'
+      : 'Live SERP Pixel & CTR Tester:';
+
+const tool1DefaultVal =
+  lang === 'fa'
+    ? 'راهنمای جامع سئو تکنیکال و مهندسی وب اختصاصی وب اِی‌بی‌سی'
+    : lang === 'ar'
+      ? 'دليل سيو التقني وهندسة الويب المخصصة من WebABC'
+      : 'WebABC Technical SEO & Custom Web Engineering Guide (2026)';
+
+const tool1WidthLabel = lang === 'fa' ? 'عرض پیکسلی:' : lang === 'ar' ? 'العرض:' : 'Width:';
+const tool1CtrLabel = lang === 'fa' ? 'امتیاز CTR:' : lang === 'ar' ? 'نسبة CTR:' : 'CTR Score:';
+const tool1OptimalText = lang === 'fa' ? '✓ بهینه' : lang === 'ar' ? '✓ مثالي' : '✓ Optimal';
+const tool1TruncatedText =
+  lang === 'fa' ? '⚠ برش‌خورده' : lang === 'ar' ? '⚠ مقصوص' : '⚠ Truncated';
+const tool1ShortText =
+  lang === 'fa' ? '• خیلی کوتاه' : lang === 'ar' ? '• قصير جداً' : '• Too Short';
+
+const tool1Footer =
+  lang === 'fa'
+    ? 'خط‌کش ۵۸۰ پیکسل استاندارد دسکتاپ گوگل'
+    : lang === 'ar'
+      ? 'مسطرة 580 بكسل القياسية لسطح المكتب في جوجل'
+      : '580px Standard Google Desktop Ruler';
+
+const tool2Header =
+  lang === 'fa'
+    ? 'تولیدکننده کدهای اسکیما FAQPage'
+    : lang === 'ar'
+      ? 'مولد بيانات الأسئلة الشائعة FAQ Schema'
+      : 'FAQPage JSON-LD Schema Generator';
+
+const tool2Badge =
+  lang === 'fa'
+    ? 'اسکیما JSON-LD · نتایج غنی'
+    : lang === 'ar'
+      ? 'بيانات JSON-LD · نتائج غنية'
+      : 'JSON-LD · Rich Results';
+
+const tool2CopyBtn =
+  lang === 'fa' ? 'کپی JSON-LD' : lang === 'ar' ? 'نسخ JSON-LD' : 'Copy JSON-LD';
+
+const tool2CopiedBtn =
+  lang === 'fa' ? '✓ کپی شد!' : lang === 'ar' ? '✓ تم النسخ!' : '✓ Copied!';
+
+const tool2SchemaCode =
+  lang === 'fa'
+    ? '{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"خدمات تخصصی وب اِی‌بی‌سی شامل چه مواردی است؟","acceptedAnswer":{"@type":"Answer","text":"طراحی اختصاصی سایت، سئو تکنیکال و بهینه‌سازی سرعت هسته حیاتی گوگل (Core Web Vitals)."}}]}'
+    : lang === 'ar'
+      ? '{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"ما هي الخدمات التي تقدمها وكالة WebABC؟","acceptedAnswer":{"@type":"Answer","text":"تطوير الويب المخصص، السيو التقني، وتحسين مؤشرات الأداء الحيوية للويب."}}]}'
+      : '{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What services does WebABC provide?","acceptedAnswer":{"@type":"Answer","text":"Custom web development, technical SEO, and Core Web Vitals optimization."}}]}';
+
+const tool2Footer =
+  lang === 'fa'
+    ? 'اعتبارسنجی استاندارد Schema.org'
+    : lang === 'ar'
+      ? 'معتمد وفق معايير Schema.org'
+      : 'Schema.org Validated';
+---
+
+<section
+  id="free-tools"
+  class={`relative overflow-hidden bg-background py-16 md:py-24 ${fontClass}`}
+  dir={isRtl ? 'rtl' : 'ltr'}
+>
+  <div class="container mx-auto px-4 md:px-6">
+    <!-- Section Header -->
+    <div class="mx-auto mb-12 max-w-3xl text-center">
+      <div class="mb-3 flex justify-center">
+        <span class="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary">
+          {
+            lang === 'fa'
+              ? 'ابزارهای رایگان آنلاین · ۲۱ ابزار کاربردی'
+              : lang === 'ar'
+                ? 'الأدوات التفاعلية المجانية · 21 أداة سريعة'
+                : 'Free Browser Utilities · 21 Interactive Tools'
+          }
+        </span>
+      </div>
+
+      <h2 class="mb-3 text-3xl font-extrabold tracking-tight text-balance text-gray-900 sm:text-4xl dark:text-white">
+        {
+          lang === 'fa'
+            ? 'ابزارهای رایگان سئو و مهندسی وب در مرورگر شما'
+            : lang === 'ar'
+              ? 'أدوات السيو وتطوير الويب التفاعلية المجانية'
+              : 'Interactive Free SEO & Web Engineering Tools'
+        }
+      </h2>
+
+      <p class="text-base leading-relaxed text-balance text-gray-600 dark:text-gray-300">
+        {
+          lang === 'fa'
+            ? 'بدون نیاز به ثبت‌نام یا نصب؛ ابزارهای تخصصی وب اِی‌بی‌سی را مستقیماً در مرورگر آزمایش کنید.'
+            : lang === 'ar'
+              ? 'اختبر أدوات WebABC المجانية مباشرة في المتصفح لتحسين ظهور موقعك ونسبة النقر.'
+              : 'Zero-install browser utilities built by WebABC engineers to test SERP pixel widths, generate JSON-LD schema, and estimate project scope.'
+        }
+      </p>
+    </div>
+
+    <!-- Top Row: 2 Interactive Micro-Demo Cards -->
+    <div class="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
+      <!-- Interactive Card 1: Headline & Title Checker -->
+      <div class="flex flex-col justify-between rounded-3xl border border-gray-100 bg-white p-7 shadow-lg transition-all duration-300 hover:border-primary/30 hover:shadow-2xl dark:border-slate-800 dark:bg-slate-900">
+        <div>
+          <div class="mb-4 flex items-center justify-between border-b border-gray-100 pb-3 dark:border-slate-800">
+            <span class="text-xs font-bold text-primary">
+              {tool1Header}
+            </span>
+            <span class="rounded-full border border-primary/20 bg-primary/5 px-2.5 py-0.5 text-[10px] font-semibold text-primary">
+              {tool1Badge}
+            </span>
+          </div>
+
+          <div>
+            <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">
+              {
+                t('headlineAnalyzer.title', {
+                  fallback: 'Headline & Title Checker — Score CTR + See Exact Google Width',
+                })
+              }
+            </h3>
+            <p class="mb-5 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+              {
+                lang === 'fa'
+                  ? 'امتیاز نرخ کلیک (CTR) و عرض دقیق پیکسلی عنوان در نتایج گوگل (حداکثر ۵۸۰ پیکسل) را زنده بررسی کنید.'
+                  : lang === 'ar'
+                    ? 'اختبر قوة العنوان ونسبة النقر (CTR) وعرض البكسل الفعلي في نتائج بحث جوجل (580px).'
+                    : 'Scores headline click-through rate (CTR) and previews exact Google SERP pixel width before 580px truncation.'
+              }
+            </p>
+
+            <!-- Live Mini-Preview Widget -->
+            <div class="rounded-2xl border border-gray-200/80 bg-gray-50/70 p-4 dark:border-slate-700/80 dark:bg-slate-800/50">
+              <label
+                for="mini-headline-input"
+                class="mb-2 block text-xs font-semibold text-gray-700 dark:text-gray-300"
+              >
+                {tool1InputLabel}
+              </label>
+              <input
+                id="mini-headline-input"
+                type="text"
+                value={tool1DefaultVal}
+                class="mb-3 h-10 w-full rounded-xl border border-gray-200 bg-white px-3.5 text-xs sm:text-sm text-gray-900 shadow-xs focus:border-primary focus:outline-none dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              />
+              <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
+                <span class="text-gray-600 dark:text-gray-400">
+                  {tool1WidthLabel} <strong id="mini-px-count" class="text-primary font-bold">492px</strong> / 580px
+                </span>
+                <span class="text-gray-600 dark:text-gray-400">
+                  {tool1CtrLabel} <strong id="mini-ctr-score" class="text-amber-500 font-bold">92/100</strong>
+                </span>
+                <span
+                  id="mini-serp-status"
+                  class="rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-bold text-emerald-600 dark:text-emerald-400"
+                  data-opt={tool1OptimalText}
+                  data-trunc={tool1TruncatedText}
+                  data-short={tool1ShortText}
+                >
+                  {tool1OptimalText}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 flex items-center justify-between border-t border-gray-100 pt-4 dark:border-slate-800">
+          <span class="text-[11px] text-gray-500 dark:text-gray-400">
+            {tool1Footer}
+          </span>
+          <a
+            href={linkPath('/tools/headline-analyzer')}
+            class="inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline"
+          >
+            <span>{lang === 'fa' ? 'باز کردن ابزار کامل' : lang === 'ar' ? 'فتح الأداة الكاملة' : 'Open Full Tool'}</span>
+            <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Interactive Card 2: FAQ Schema Generator -->
+      <div class="flex flex-col justify-between rounded-3xl border border-gray-100 bg-white p-7 shadow-lg transition-all duration-300 hover:border-primary/30 hover:shadow-2xl dark:border-slate-800 dark:bg-slate-900">
+        <div>
+          <div class="mb-4 flex items-center justify-between border-b border-gray-100 pb-3 dark:border-slate-800">
+            <span class="text-xs font-bold text-purple-600 dark:text-purple-400">
+              {tool2Header}
+            </span>
+            <span class="rounded-full border border-purple-500/20 bg-purple-500/5 px-2.5 py-0.5 text-[10px] font-semibold text-purple-600 dark:text-purple-400">
+              {tool2Badge}
+            </span>
+          </div>
+
+          <div>
+            <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">
+              {
+                t('faqGenerator.title', {
+                  fallback: 'FAQ Schema Generator – Free FAQPage JSON-LD Schema Maker',
+                })
+              }
+            </h3>
+            <p class="mb-5 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
+              {
+                lang === 'fa'
+                  ? 'تولید کد اسکیمای FAQPage استاندارد JSON-LD با قابلیت کپی سریع برای غنی‌سازی نتایج جستجو.'
+                  : lang === 'ar'
+                    ? 'مولد بيانات منظمة FAQPage بصيغة JSON-LD جاهز للنسخ لتحسين الظهور في نتائج البحث.'
+                    : 'Free FAQPage JSON-LD structured data maker with one-click copy for Google & AI Engine citation.'
+              }
+            </p>
+
+            <!-- Live JSON-LD Code Preview -->
+            <div class="rounded-2xl border border-gray-200/80 bg-gray-50/70 p-4 dark:border-slate-700/80 dark:bg-slate-800/50" dir="ltr">
+              <div class="mb-2 flex items-center justify-between">
+                <span class="text-[11px] font-mono text-purple-600 dark:text-purple-400 font-semibold">
+                  application/ld+json
+                </span>
+                <button
+                  type="button"
+                  id="mini-copy-jsonld-btn"
+                  data-copied={tool2CopiedBtn}
+                  class="cursor-pointer rounded-lg border border-gray-200 bg-white px-2.5 py-1 text-xs font-semibold text-gray-700 shadow-xs hover:border-primary hover:text-primary dark:border-slate-700 dark:bg-slate-900 dark:text-gray-200"
+                >
+                  {tool2CopyBtn}
+                </button>
+              </div>
+              <pre
+                id="mini-jsonld-code"
+                class="overflow-x-auto text-[11px] leading-relaxed text-gray-700 dark:text-gray-300 font-mono"
+              >{tool2SchemaCode}</pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 flex items-center justify-between border-t border-gray-100 pt-4 dark:border-slate-800">
+          <span class="text-[11px] text-gray-500 dark:text-gray-400">
+            {tool2Footer}
+          </span>
+          <a
+            href={linkPath('/tools/faq-generator')}
+            class="inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline"
+          >
+            <span>{lang === 'fa' ? 'باز کردن ابزار کامل' : lang === 'ar' ? 'فتح الأداة الكاملة' : 'Open Full Tool'}</span>
+            <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Row: 3 Featured Core Tools -->
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      {
+        featuredTools.map((tool) => (
+          <div class="flex flex-col justify-between rounded-3xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
+            <div>
+              <div class="mb-4 flex items-center justify-between">
+                <span class="text-lg">{tool.glyph}</span>
+                <span class="rounded-full border border-gray-200 bg-gray-50 px-2.5 py-0.5 text-[10px] font-semibold text-gray-600 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300">
+                  {tool.badge}
+                </span>
+              </div>
+              <h3 class="mb-2 text-base font-bold text-gray-900 dark:text-white">{tool.title}</h3>
+              <p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300">{tool.desc}</p>
+            </div>
+
+            <div class="mt-6 border-t border-gray-100 pt-4 dark:border-slate-800">
+              <a
+                href={tool.href}
+                class="inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline"
+              >
+                <span>{lang === 'fa' ? 'شروع کار با ابزار' : lang === 'ar' ? 'بدء استخدام الأداة' : 'Launch Tool'}</span>
+                <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- All Tools CTA -->
+    <div class="mt-12 text-center">
+      <a
+        href={linkPath('/tools')}
+        class="inline-flex items-center gap-2 rounded-xl bg-primary/10 px-6 py-3 text-sm font-bold text-primary transition-all hover:bg-primary hover:text-primary-foreground shadow-xs"
+      >
+        <span>
+          {
+            lang === 'fa'
+              ? 'مشاهده همه ۲۱ ابزار رایگان سئو و توسعه وب'
+              : lang === 'ar'
+                ? 'استكشاف جميع أدوات السيو والمطورين (21 أداة مجانية)'
+                : 'Explore All 21 Free Browser SEO & Developer Utilities'
+          }
+        </span>
+        <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (() => {
+    function initFreeToolsPreview() {
+      const input = document.getElementById('mini-headline-input');
+      const pxCount = document.getElementById('mini-px-count');
+      const ctrScore = document.getElementById('mini-ctr-score');
+      const status = document.getElementById('mini-serp-status');
+
+      if (input && pxCount && ctrScore && status) {
+        const textOpt = status.dataset.opt || '✓ Optimal';
+        const textTrunc = status.dataset.trunc || '⚠ Truncated';
+        const textShort = status.dataset.short || '• Too Short';
+
+        input.oninput = () => {
+          const val = input.value || '';
+          const approxPx = Math.round(val.length * 8.5);
+          pxCount.textContent = `${approxPx}px`;
+          const hasYear = /202\d|۱۴۰\d/.test(val);
+          const optimalLen = approxPx >= 280 && approxPx <= 580;
+          const score = Math.min(
+            98,
+            Math.max(35, (optimalLen ? 78 : 54) + (hasYear ? 10 : 0) + (val.length > 25 ? 6 : 0))
+          );
+          ctrScore.textContent = `${score}/100`;
+          if (approxPx > 580) {
+            status.textContent = textTrunc;
+            status.className = 'rounded-full bg-red-500/10 px-2.5 py-0.5 text-xs font-bold text-red-600 dark:text-red-400';
+          } else if (approxPx < 220) {
+            status.textContent = textShort;
+            status.className = 'rounded-full bg-amber-500/10 px-2.5 py-0.5 text-xs font-bold text-amber-600 dark:text-amber-400';
+          } else {
+            status.textContent = textOpt;
+            status.className = 'rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-bold text-emerald-600 dark:text-emerald-400';
+          }
+        };
+      }
+
+      const copyBtn = document.getElementById('mini-copy-jsonld-btn');
+      const codeEl = document.getElementById('mini-jsonld-code');
+      if (copyBtn && codeEl) {
+        copyBtn.onclick = async () => {
+          try {
+            await navigator.clipboard.writeText(codeEl.textContent || '');
+            const orig = copyBtn.textContent;
+            const textCopied = copyBtn.dataset.copied || '✓ Copied!';
+            copyBtn.textContent = textCopied;
+            setTimeout(() => {
+              copyBtn.textContent = orig;
+            }, 1600);
+          } catch (e) {}
+        };
+      }
+    }
+
+    document.addEventListener('astro:page-load', initFreeToolsPreview);
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      initFreeToolsPreview();
+    }
+  })();
+</script>

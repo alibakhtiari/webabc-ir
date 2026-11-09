@@ -1,11 +1,7 @@
 ---
-import { Picture } from 'astro:assets';
 import { getDictionary } from '@/i18n/get-dictionary';
 import { languages, type SupportedLanguage } from '@/types/language';
 import { createTranslator } from '@/i18n/translate';
-import seoImg from '@/assets/images/services/seo.webp';
-import webDesignImg from '@/assets/images/services/web-design.webp';
-import digitalMarketingImg from '@/assets/images/blog/digital-marketing.webp';
 
 interface Props {
   lang: SupportedLanguage;
@@ -14,276 +10,399 @@ interface Props {
 const { lang } = Astro.props;
 const dictionary = await getDictionary(lang);
 const isRtl = languages[lang]?.direction === 'rtl';
+const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 'font-persian';
 
-// Helper to translate strings
 const t = createTranslator(dictionary);
+
+const linkPath = (path: string) => {
+  if (!path || path === '/') return `/${lang}/`;
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return `/${lang}${cleanPath.endsWith('/') ? cleanPath : cleanPath + '/'}`;
+};
 
 const services = [
   {
     id: 'seo',
-    title: t('services.seo.title', { fallback: 'سئو تخصصی و بهینه‌سازی' }),
+    icon: 'chart',
+    badge:
+      lang === 'fa'
+        ? 'سئو تخصصی · رتبه ۱ گوگل'
+        : lang === 'ar'
+          ? 'سيو متخصص · تصدر نتائج البحث'
+          : 'SERP · Organic · CWV',
+    href: '/services/seo',
+    title: t('services.seo.title', { fallback: 'SEO & Specialized Optimization' }),
     description: t('services.seo.description', {
-      fallback: 'افزایش رتبه وب‌سایت شما در موتورهای جستجو با استفاده از تکنیک‌های استاندارد سئو.',
+      fallback:
+        'Professional SEO services to boost your search engine ranking. We use advanced, standard techniques to increase organic traffic, improve visibility, and grow your online presence.',
     }),
     features: [
-      t('services.seo.features.0', { fallback: 'تحقیق کلمات کلیدی' }),
-      t('services.seo.features.1', { fallback: 'بهینه‌سازی محتوا' }),
-      t('services.seo.features.2', { fallback: 'سئو فنی' }),
-      t('services.seo.features.3', { fallback: 'لینک‌سازی خارجی' }),
-      t('services.seo.features.4', { fallback: 'گزارش‌دهی ماهانه' }),
+      t('services.seo.features.0', { fallback: 'Keyword Research' }),
+      t('services.seo.features.1', { fallback: 'Content Optimization' }),
+      t('services.seo.features.2', { fallback: 'Technical SEO' }),
+      t('services.seo.features.3', { fallback: 'External Link Building' }),
+      t('services.seo.features.4', { fallback: 'Monthly Reporting' }),
     ],
-    image: seoImg,
   },
   {
     id: 'web-design',
-    title: t('services.webDesign.title', { fallback: 'طراحی سایت اختصاصی' }),
+    icon: 'code',
+    badge:
+      lang === 'fa'
+        ? 'طراحی اختصاصی · واکنش‌گرا'
+        : lang === 'ar'
+          ? 'تصميم مواقع مخصص · متجاوب'
+          : 'Astro · React · High-Speed',
+    href: '/services/web-design',
+    title: t('services.webDesign.title', { fallback: 'Custom Website Design' }),
     description: t('services.webDesign.description', {
-      fallback: 'طراحی و توسعه وب‌سایت با رابط کاربری جذاب، کدنویسی تمیز و سازگار با موبایل.',
+      fallback:
+        'Custom web design and development services for modern businesses. We create attractive, SEO-friendly, and mobile-responsive websites that engage users and drive conversions.',
     }),
     features: [
-      t('services.webDesign.features.0', { fallback: 'طراحی ریسپانسیو' }),
-      t('services.webDesign.features.1', { fallback: 'رابط کاربری مدرن' }),
-      t('services.webDesign.features.2', { fallback: 'سرعت بارگذاری بالا' }),
-      t('services.webDesign.features.3', { fallback: 'سازگار با سئو' }),
-      t('services.webDesign.features.4', { fallback: 'امنیت بالا' }),
+      t('services.webDesign.features.0', { fallback: 'Responsive Design' }),
+      t('services.webDesign.features.1', { fallback: 'Modern User Interface' }),
+      t('services.webDesign.features.2', { fallback: 'Fast Loading Speed' }),
+      t('services.webDesign.features.3', { fallback: 'SEO Friendly' }),
+      t('services.webDesign.features.4', { fallback: 'High Security' }),
     ],
-    image: webDesignImg,
   },
   {
     id: 'content',
-    title: t('services.contentCreation.title', { fallback: 'تولید محتوای تخصصی' }),
+    icon: 'pen',
+    badge:
+      lang === 'fa'
+        ? 'محتوای تخصصی · سئو معنایی'
+        : lang === 'ar'
+          ? 'محتوى متخصص · سيو دلالي'
+          : 'Semantic · AEO · Copy',
+    href: '/services/content-creation',
+    title: t('services.contentCreation.title', { fallback: 'Specialized Content Creation' }),
     description: t('services.contentCreation.description', {
-      fallback: 'تولید محتوا با کیفیت، اصولی و بهینه شده برای کلمات کلیدی مرتبط با کسب و کار شما.',
+      fallback:
+        'High-quality content creation services tailored to your niche. We produce SEO-optimized articles and copy that resonate with your audience and improve search performance.',
     }),
     features: [
-      t('services.contentCreation.features.0', { fallback: 'محتوای تخصصی' }),
-      t('services.contentCreation.features.1', { fallback: 'بهینه‌شده برای سئو' }),
-      t('services.contentCreation.features.2', { fallback: 'استراتژی محتوا' }),
-      t('services.contentCreation.features.3', { fallback: 'تقویم انتشار' }),
-      t('services.contentCreation.features.4', { fallback: 'گرافیک اختصاصی' }),
+      t('services.contentCreation.features.0', { fallback: 'Specialized Content' }),
+      t('services.contentCreation.features.1', { fallback: 'SEO Optimized' }),
+      t('services.contentCreation.features.2', { fallback: 'Content Strategy' }),
+      t('services.contentCreation.features.3', { fallback: 'Publication Calendar' }),
+      t('services.contentCreation.features.4', { fallback: 'Custom Graphics' }),
     ],
-    image: digitalMarketingImg,
+  },
+];
+
+const supportPillars = [
+  {
+    idx: '01',
+    badge:
+      lang === 'fa'
+        ? 'سرعت زیر ۱ ثانیه · قبولی کامل CWV'
+        : lang === 'ar'
+          ? 'تحميل أقل من ثانية · اجتياز CWV'
+          : 'LCP < 0.9s · INP · CLS 0.00',
+    title: t('speedOptimization.title', { fallback: 'Core Web Vitals & Speed Optimization' }),
+    desc: t('speedOptimization.subtitle', {
+      fallback:
+        'Achieve lightning-fast load times for better SEO rankings and higher conversions. We optimize images, code, and servers to pass Google Core Web Vitals.',
+    }),
+    href: linkPath('/services/speed-optimization'),
+  },
+  {
+    idx: '02',
+    badge:
+      lang === 'fa'
+        ? 'افزایش نرخ تبدیل · هیت‌مپ'
+        : lang === 'ar'
+          ? 'زيادة معدل التحويل · تدقيق UX'
+          : 'CRO · Heatmap · WCAG AA',
+    title: t('uiUxAudit.title', { fallback: 'Professional UI/UX Audit' }),
+    desc: t('uiUxAudit.subtitle', {
+      fallback:
+        'Identify and fix hidden friction points on your website that are hurting sales. Get a comprehensive UI/UX audit to boost conversions and user satisfaction.',
+    }),
+    href: linkPath('/services/ui-ux-audit'),
+  },
+  {
+    idx: '03',
+    badge:
+      lang === 'fa'
+        ? 'آپ‌تایم ۹۹.۹۹٪ · امنیت و بکاپ'
+        : lang === 'ar'
+          ? 'جاهزية 99.99% · أمان ونسخ احتياطي'
+          : '99.99% Uptime · WAF · Backup',
+    title: t('maintenance.title', { fallback: 'Website Maintenance & Care Plans' }),
+    desc: t('maintenance.subtitle', {
+      fallback:
+        'Professional website maintenance and security care plans. We keep your site secure, updated, and high-performing while you focus on growing your business.',
+    }),
+    href: linkPath('/services/website-maintenance'),
+  },
+];
+
+const processSteps = [
+  {
+    step: '01',
+    tag:
+      lang === 'fa'
+        ? 'تحلیل و استخراج کلمات'
+        : lang === 'ar'
+          ? 'استكشاف الكلمات والجمهور'
+          : 'Query Discovery',
+    title: t('services.keyFeatures.0.title', { fallback: 'Keyword Research' }),
+    desc: t('services.keyFeatures.0.desc', {
+      fallback: 'Identifying the best keywords and search intent for your business',
+    }),
+  },
+  {
+    step: '02',
+    tag:
+      lang === 'fa'
+        ? 'محتوا، کد و اسکیما'
+        : lang === 'ar'
+          ? 'المحتوى والبيانات المنظمة'
+          : 'Semantic HTML & Schema',
+    title: t('services.keyFeatures.1.title', { fallback: 'Content Optimization' }),
+    desc: t('services.keyFeatures.1.desc', {
+      fallback: 'Quality content and structured data optimized for search engines',
+    }),
+  },
+  {
+    step: '03',
+    tag:
+      lang === 'fa'
+        ? 'اعتبار و شبکه لینک‌ها'
+        : lang === 'ar'
+          ? 'بناء السلطة والروابط'
+          : 'Authority Graph',
+    title: t('services.keyFeatures.2.title', { fallback: 'External Link Building' }),
+    desc: t('services.keyFeatures.2.desc', {
+      fallback: 'Professional digital PR and backlinks to establish domain authority',
+    }),
+  },
+  {
+    step: '04',
+    tag:
+      lang === 'fa'
+        ? 'نرخ تبدیل و سودآوری'
+        : lang === 'ar'
+          ? 'التحويل ومضاعفة الأرباح'
+          : 'CRO & 3× Revenue',
+    title:
+      lang === 'fa'
+        ? 'رشد فروش و نرخ تبدیل'
+        : lang === 'ar'
+          ? 'مضاعفة الأرباح والتحويل'
+          : 'Revenue & Conversion ROI',
+    desc:
+      lang === 'fa'
+        ? 'تبدیل ترافیک ارگانیک به فروش نهایی و بازگشت سرمایه ۳ برابری پایدار'
+        : lang === 'ar'
+          ? 'تحويل الزيارات إلى مبيعات فعلية وتحقيق عوائد استثمارية مضاعفة'
+          : 'Converting organic search traffic into high-value leads and 3× compounding sales revenue',
   },
 ];
 ---
 
 <section
   id="services"
-  class="relative overflow-hidden bg-linear-to-b from-background via-background to-muted/20 py-24 font-sans dark:from-background dark:to-slate-950"
+  class={`relative overflow-hidden bg-background py-16 md:py-24 ${fontClass}`}
+  dir={isRtl ? 'rtl' : 'ltr'}
 >
-  <div class="absolute inset-0 overflow-hidden">
-    <div class="absolute bottom-0 left-0 h-96 w-96 rounded-full bg-primary/5 blur-3xl"></div>
-  </div>
+  <div class="container mx-auto px-4 md:px-6">
+    <!-- Section Header -->
+    <div class="mx-auto mb-14 max-w-3xl text-center">
+      <div class="mb-3 flex justify-center">
+        <span class="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary">
+          {
+            lang === 'fa'
+              ? 'خدمات تخصصی دیجیتال · ۱۲ راهکار مهندسی'
+              : lang === 'ar'
+                ? 'الخدمات المتخصصة · 12 حلاً هندسياً متكاملاً'
+                : 'Specialized Digital Services · 12 Engineering Solutions'
+          }
+        </span>
+      </div>
 
-  <div class="relative z-10 container mx-auto px-4 md:px-6">
-    <div class="mx-auto mb-16 max-w-3xl text-center">
-      <span
-        class={`inline-block mb-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium font-${lang === 'en' ? 'sans' : 'persian'}`}
-      >
-        {t('services.sectionTag', { fallback: 'خدمات ما' })}
-      </span>
-
-      <h2
-        class={`text-3xl md:text-4xl font-bold tracking-tight mb-6 text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}
-      >
-        {t('services.sectionTitle.prefix', { fallback: 'راهکارهای ' })}
-        <span class="text-primary"
-          >{t('services.sectionTitle.highlight', { fallback: 'دیجیتال مارکتینگ' })}</span
-        >
-        {t('services.sectionTitle.suffix', { fallback: ' برای کسب و کار شما' })}
+      <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-balance text-gray-900 sm:text-4xl lg:text-5xl dark:text-white">
+        {t('services.sectionTitle.prefix', { fallback: '' })}
+        <span class="text-primary">
+          {t('services.sectionTitle.highlight', { fallback: 'Digital Marketing' })}
+        </span>
+        {t('services.sectionTitle.suffix', { fallback: ' Solutions for Your Business' })}
       </h2>
 
-      <p
-        class={`text-foreground/80 leading-relaxed text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}
-      >
+      <p class="text-base sm:text-lg leading-relaxed text-balance text-gray-600 dark:text-gray-300">
         {
           t('services.sectionDescription', {
             fallback:
-              'ما خدمات جامع سئو و توسعه وب را ارائه می‌دهیم تا کسب و کار شما در فضای آنلاین موفق شود. تمامی خدمات ما با استانداردهای روز دنیا و متناسب با نیازهای بازار ایران طراحی شده‌اند.',
+              'We provide comprehensive SEO and web development services to help your business succeed online. All our services are designed according to the latest global standards and customized for the specific needs of the market.',
           })
         }
       </p>
     </div>
 
-    <!-- Tabs header -->
-    <div class="-mx-4 mb-8 flex snap-x overflow-x-auto px-4 pb-4">
-      <div class="mx-auto flex gap-2">
-        {
-          services.map((service, idx) => (
-            <button
-              type="button"
-              data-tab-btn={service.id}
-              aria-pressed={idx === 0 ? 'true' : 'false'}
-              class={`tab-btn cursor-pointer snap-start rounded-full px-6 py-3 whitespace-nowrap transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 font-${lang === 'en' ? 'sans' : 'persian'} ${
-                idx === 0
-                  ? 'active-tab bg-primary text-primary-foreground shadow-md'
-                  : 'border border-gray-200 bg-white text-foreground/80 hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700'
-              }`}
-            >
-              {service.title}
-            </button>
-          ))
-        }
-      </div>
-    </div>
-
-    <!-- Tabs Content -->
-    <div>
+    <!-- 3 Core Service Cards -->
+    <div class="mb-14 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
       {
-        services.map((service, idx) => (
-          <div
-            data-tab-content={service.id}
-            class={`tab-pane glass-morphism rounded-2xl p-8 transition-all duration-500 ${
-              idx === 0 ? '' : 'hidden'
-            }`}
-            style="min-height: 400px;"
-          >
-            <div class="grid grid-cols-1 gap-8 md:grid-cols-5">
-              <div class="space-y-6 md:col-span-3">
-                <h3
-                  class={`text-2xl font-bold text-foreground font-${lang === 'en' ? 'sans' : 'persian'}`}
-                >
-                  {service.title}
-                </h3>
+        services.map((service) => (
+          <div class="group relative flex flex-col justify-between rounded-3xl border border-gray-100 bg-white p-7 shadow-lg transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-2xl dark:border-slate-800 dark:bg-slate-900">
+            <div>
+              <div class="mb-6 flex items-center justify-between">
+                <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  {service.icon === 'chart' && (
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                  )}
+                  {service.icon === 'code' && (
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                  )}
+                  {service.icon === 'pen' && (
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
+                  )}
+                </div>
+                <span class="rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-semibold text-primary">
+                  {service.badge}
+                </span>
+              </div>
 
-                <p
-                  class={`leading-relaxed text-foreground/80 font-${lang === 'en' ? 'sans' : 'persian'}`}
-                >
-                  {service.description}
-                </p>
+              <h3 class="mb-3 text-xl font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+                {service.title}
+              </h3>
 
-                <ul class="mt-6 space-y-3">
+              <p class="mb-6 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                {service.description}
+              </p>
+
+              <!-- Deliverable Pills -->
+              <div class="mb-6 border-t border-gray-100 pt-5 dark:border-slate-800">
+                <ul class="space-y-2.5">
                   {service.features.map((feature) => (
-                    <li class={`flex items-center font-${lang === 'en' ? 'sans' : 'persian'}`}>
-                      <svg
-                        aria-hidden="true"
-                        class="me-2 h-5 w-5 shrink-0 text-primary"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
+                    <li class="flex items-center gap-2 text-xs font-medium text-gray-700 dark:text-gray-300">
+                      <svg class="h-4 w-4 shrink-0 text-emerald-500" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                       </svg>
                       <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
-
-                <button
-                  type="button"
-                  class={`mt-8 rounded-full bg-primary px-6 py-3 text-primary-foreground shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg font-${lang === 'en' ? 'sans' : 'persian'}`}
-                >
-                  {t('services.consultButton', { fallback: 'مشاوره در مورد' })} {service.title}
-                </button>
               </div>
+            </div>
 
-              <div class="md:col-span-2">
-                <div class="relative aspect-square w-full overflow-hidden rounded-xl shadow-xl">
-                  <Picture
-                    src={service.image}
-                    formats={['avif', 'webp']}
-                    alt={service.title}
-                    width={500}
-                    height={500}
-                    loading="lazy"
-                    class="h-full w-full object-cover"
-                  />
-                </div>
-              </div>
+            <div class="flex items-center justify-between border-t border-gray-100 pt-5 dark:border-slate-800">
+              <a
+                href={linkPath(service.href)}
+                class="inline-flex items-center gap-1.5 text-xs font-bold text-primary transition-colors hover:underline"
+              >
+                <span>{t('common.viewDetails', { fallback: 'View Details' })}</span>
+                <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
+              </a>
+
+              <button
+                type="button"
+                data-open-consultation
+                class="cursor-pointer rounded-xl bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+              >
+                {t('common.freeConsultation', { fallback: 'Consultation' })}
+              </button>
             </div>
           </div>
         ))
       }
     </div>
 
-    <!-- Extra features cards -->
-    <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
-      {
-        [
+    <!-- Secondary Technical Services Bento Row -->
+    <div class="mb-16">
+      <div class="mb-6 flex items-center justify-between">
+        <span class="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs font-bold text-gray-700 dark:border-slate-800 dark:bg-slate-800 dark:text-gray-300">
           {
-            title: t('services.keyFeatures.0.title', { fallback: 'تحقیق کلمات کلیدی' }),
-            desc: t('services.keyFeatures.0.desc', {
-              fallback: 'شناسایی بهترین کلمات کلیدی برای کسب و کار شما',
-            }),
-          },
+            lang === 'fa'
+              ? 'ستون‌های فنی و بهینه‌سازی سرعت'
+              : lang === 'ar'
+                ? 'الركائز التقنية وتحسين السرعة'
+                : 'Technical Support & CWV Optimization Pillars'
+          }
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+        {
+          supportPillars.map((pillar) => (
+            <a
+              href={pillar.href}
+              class="group flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
+            >
+              <div>
+                <div class="mb-3 flex items-center justify-between">
+                  <span class="font-mono text-xs font-bold text-primary">[{pillar.idx}]</span>
+                  <span class="rounded-md border border-gray-200/80 bg-gray-50 px-2.5 py-0.5 text-[10px] font-semibold text-gray-600 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300">
+                    {pillar.badge}
+                  </span>
+                </div>
+                <h3 class="mb-2 text-base font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+                  {pillar.title}
+                </h3>
+                <p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300">
+                  {pillar.desc}
+                </p>
+              </div>
+
+              <div class="mt-4 flex items-center gap-1 text-xs font-bold text-primary">
+                <span>{t('common.viewDetails', { fallback: 'Explore Service' })}</span>
+                <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- 4-Stage Execution Methodology -->
+    <div class="rounded-3xl border border-gray-100 bg-gray-50/70 p-8 dark:border-slate-800 dark:bg-slate-900/60 md:p-10">
+      <div class="mx-auto mb-8 max-w-2xl text-center">
+        <h3 class="text-xl font-bold text-gray-900 sm:text-2xl dark:text-white">
           {
-            title: t('services.keyFeatures.1.title', { fallback: 'بهینه‌سازی محتوا' }),
-            desc: t('services.keyFeatures.1.desc', {
-              fallback: 'محتوای با کیفیت و بهینه شده برای موتورهای جستجو',
-            }),
-          },
+            lang === 'fa'
+              ? 'متدولوژی مهندسی وب اِی‌بی‌سی در ۴ مرحله'
+              : lang === 'ar'
+                ? 'منهجية WebABC الهندسية في 4 مراحل'
+                : 'WebABC 4-Stage Execution Methodology'
+          }
+        </h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
           {
-            title: t('services.keyFeatures.2.title', { fallback: 'لینک‌سازی خارجی' }),
-            desc: t('services.keyFeatures.2.desc', {
-              fallback: 'استراتژی حرفه‌ای لینک‌سازی برای افزایش اعتبار سایت',
-            }),
-          },
-        ].map((item, idx) => (
-          <div class="rounded-xl neo-morphism p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
-            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-              <span class="text-xl font-bold">{idx + 1}</span>
+            lang === 'fa'
+              ? 'مسیری استاندارد و مبتنی بر داده از اولین تحلیل کلمات تا عقد قراردادهای فروش پایدار.'
+              : lang === 'ar'
+                ? 'مسار معياري قائم على البيانات من استكشاف الكلمات إلى إتمام الصفقات التجارية.'
+                : 'A structured, data-driven pipeline from keyword discovery to closed commercial revenue.'
+          }
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          processSteps.map((step) => (
+            <div class="relative rounded-2xl border border-gray-200/80 bg-white p-5 shadow-xs dark:border-slate-800 dark:bg-slate-900">
+              <div class="mb-2 flex items-center justify-between">
+                <span class="flex h-8 w-8 items-center justify-center rounded-xl bg-primary text-xs font-bold text-primary-foreground shadow-xs">
+                  {step.step}
+                </span>
+                <span class="rounded-md bg-gray-100 px-2 py-0.5 text-[10px] font-semibold text-gray-600 dark:bg-slate-800 dark:text-gray-400">
+                  {step.tag}
+                </span>
+              </div>
+              <h4 class="mb-1 text-sm font-bold text-gray-900 dark:text-white">{step.title}</h4>
+              <p class="text-xs leading-relaxed text-gray-600 dark:text-gray-400">{step.desc}</p>
             </div>
-            <h3 class={`mb-2 text-xl font-medium font-${lang === 'en' ? 'sans' : 'persian'}`}>
-              {item.title}
-            </h3>
-            <p class={`text-foreground/70 font-${lang === 'en' ? 'sans' : 'persian'}`}>
-              {item.desc}
-            </p>
-          </div>
-        ))
-      }
+          ))
+        }
+      </div>
     </div>
   </div>
 </section>
-
-<script is:inline>
-  (() => {
-    function initServicesTabs() {
-      const tabBtns = document.querySelectorAll('[data-tab-btn]');
-      const tabPanes = document.querySelectorAll('[data-tab-content]');
-
-      if (!tabBtns.length) return;
-
-      const activeClasses = ['bg-primary', 'text-primary-foreground', 'shadow-md', 'active-tab'];
-      const inactiveClasses = [
-        'bg-white',
-        'dark:bg-slate-800',
-        'text-foreground/80',
-        'border',
-        'border-gray-200',
-        'dark:border-slate-700',
-        'hover:bg-gray-50',
-        'dark:hover:bg-slate-700',
-      ];
-
-      tabBtns.forEach((btn) => {
-        btn.onclick = () => {
-          tabBtns.forEach((b) => {
-            b.classList.remove(...activeClasses);
-            b.classList.add(...inactiveClasses);
-            b.setAttribute('aria-pressed', 'false');
-          });
-          tabPanes.forEach((pane) => pane.classList.add('hidden'));
-
-          btn.classList.add(...activeClasses);
-          btn.classList.remove(...inactiveClasses);
-          btn.setAttribute('aria-pressed', 'true');
-
-          const targetId = btn.getAttribute('data-tab-btn');
-          const targetPane = document.querySelector(`[data-tab-content="${targetId}"]`);
-          if (targetPane) targetPane.classList.remove('hidden');
-        };
-      });
-    }
-
-    document.addEventListener('astro:page-load', initServicesTabs);
-    if (document.readyState === 'complete' || document.readyState === 'interactive') {
-      initServicesTabs();
-    }
-  })();
-</script>

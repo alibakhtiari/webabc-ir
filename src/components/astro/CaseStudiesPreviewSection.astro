@@ -1,0 +1,177 @@
+---
+import { getCollection } from 'astro:content';
+import { getDictionary } from '@/i18n/get-dictionary';
+import { languages, type SupportedLanguage } from '@/types/language';
+import { createTranslator } from '@/i18n/translate';
+import { PILLAR_LABELS, getProjectPillar } from '@/data/portfolio-meta';
+
+interface Props {
+  lang: SupportedLanguage;
+}
+
+const { lang } = Astro.props;
+const dictionary = await getDictionary(lang);
+const isRtl = languages[lang]?.direction === 'rtl';
+const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 'font-persian';
+const t = createTranslator(dictionary);
+
+const linkPath = (path: string) => {
+  if (!path || path === '/') return `/${lang}/`;
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return `/${lang}${cleanPath.endsWith('/') ? cleanPath : cleanPath + '/'}`;
+};
+
+const allProjects = await getCollection('portfolio');
+const localeProjects = allProjects
+  .filter((proj) => proj.id.startsWith(`${lang}/`))
+  .slice(0, 3)
+  .map((p) => {
+    const slug = p.id.replace(`${lang}/`, '').replace(/\.mdx?$/, '');
+    const pillar = getProjectPillar(slug, p.data.category);
+    return {
+      slug,
+      title: p.data.title,
+      client: p.data.client,
+      description: p.data.description,
+      pillarLabel: PILLAR_LABELS[lang]?.[pillar] || p.data.category,
+      results: (p.data.results || []).slice(0, 2),
+      technologies: (p.data.technologies || []).slice(0, 3),
+    };
+  });
+
+const sectionTitle =
+  lang === 'fa'
+    ? 'نمونه‌کارها و نتایج واقعی مشتریان وب اِی‌بی‌سی'
+    : lang === 'ar'
+      ? 'دراسات حالة ونتائج حقيقية لعملاء WebABC'
+      : 'Verified Client Case Studies & Measurable ROI';
+
+const sectionSubtitle =
+  lang === 'fa'
+    ? 'بیش از ۱۶ پروژه موفق با رشد چندبرابری ترافیک ارگانیک، سرعت لود زیر ۱ ثانیه و افزایش مستقیم فروش.'
+    : lang === 'ar'
+      ? 'أكثر من 16 دراسة حالة موثقة بمضاعفة الزيارات العضوية وتحسين معدل التحويل والمبيعات.'
+      : 'See how our custom web engineering and technical SEO campaigns have multiplied organic traffic and sales for real businesses.';
+---
+
+{
+  localeProjects.length > 0 && (
+    <section class={`relative overflow-hidden bg-background py-16 md:py-24 ${fontClass}`} dir={isRtl ? 'rtl' : 'ltr'}>
+      <div class="container mx-auto px-4 md:px-6">
+        <!-- Header Row -->
+        <div class="mb-12 flex flex-col items-center justify-between gap-6 text-center md:flex-row md:text-start">
+          <div class="max-w-2xl">
+            <span class="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary">
+              {
+                lang === 'fa'
+                  ? 'نمونه‌کارهای موفق · نتایج اثبات‌شده و بازگشت سرمایه'
+                  : lang === 'ar'
+                    ? 'دراسات الحالة · نتائج مثبتة وعائد الاستثمار'
+                    : 'Proven Case Studies · Social Proof & ROI'
+              }
+            </span>
+            <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
+              {sectionTitle}
+            </h2>
+            <p class="mt-2 text-base leading-relaxed text-gray-600 dark:text-gray-300">
+              {sectionSubtitle}
+            </p>
+          </div>
+
+          <div class="flex shrink-0 flex-wrap items-center gap-3">
+            <a
+              href={linkPath('/portfolio')}
+              class="inline-flex h-11 items-center gap-2 rounded-xl bg-primary px-5 text-sm font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/95 hover:shadow-lg"
+            >
+              <span>
+                {lang === 'fa'
+                  ? 'مشاهده همه ۱۶+ نمونه‌کار'
+                  : lang === 'ar'
+                    ? 'عرض جميع الأعمال (16+)'
+                    : 'View All 16+ Case Studies'}
+              </span>
+              <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3 Verified Case Study Cards -->
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          {localeProjects.map((item, idx) => (
+            <article class="group flex flex-col justify-between rounded-3xl border border-gray-100 bg-white p-7 shadow-lg transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-2xl dark:border-slate-800 dark:bg-slate-900">
+              <div>
+                <div class="mb-5 flex items-center justify-between border-b border-gray-100 pb-4 dark:border-slate-800">
+                  <span class="flex items-center gap-2 text-xs font-bold text-primary">
+                    <span class="flex h-6 w-6 items-center justify-center rounded-lg bg-primary/10 text-[11px]">
+                      0{idx + 1}
+                    </span>
+                    <span class="truncate max-w-[140px]">{item.client}</span>
+                  </span>
+                  <span class="rounded-full border border-gray-200 bg-gray-50 px-2.5 py-0.5 text-[10px] font-semibold text-gray-600 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300">
+                    {item.pillarLabel}
+                  </span>
+                </div>
+
+                <div class="space-y-4">
+                  <h3 class="text-lg font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+                    <a href={linkPath(`/portfolio/${item.slug}`)}>{item.title}</a>
+                  </h3>
+
+                  <p class="line-clamp-2 text-xs leading-relaxed text-gray-600 dark:text-gray-300 sm:text-sm">
+                    {item.description}
+                  </p>
+
+                  {item.results.length > 0 && (
+                    <div class="grid grid-cols-2 gap-3 pt-2">
+                      {item.results.map((res: any) => (
+                        <div class="rounded-2xl border border-gray-100 bg-gray-50/70 p-3 text-center dark:border-slate-800 dark:bg-slate-800/40">
+                          <div class="text-base font-extrabold text-emerald-600 dark:text-emerald-400">
+                            {res.value}
+                          </div>
+                          <div class="mt-0.5 truncate text-[11px] text-gray-500 dark:text-gray-400">
+                            {res.label}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {item.technologies.length > 0 && (
+                    <div class="flex flex-wrap gap-1.5 pt-2" dir="ltr">
+                      {item.technologies.map((tech: string) => (
+                        <span class="rounded-md border border-gray-200/80 bg-gray-50 px-2 py-0.5 text-[10px] font-medium text-gray-600 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div class="mt-6 flex items-center justify-between border-t border-gray-100 pt-4 dark:border-slate-800">
+                <button
+                  type="button"
+                  data-open-consultation
+                  class="cursor-pointer text-xs font-bold text-primary hover:underline"
+                >
+                  {lang === 'fa'
+                    ? 'مشاوره پروژه مشابه ←'
+                    : lang === 'ar'
+                      ? 'طلب استشارة لمشروع مشابه ←'
+                      : 'Request Similar Results →'}
+                </button>
+                <a
+                  href={linkPath(`/portfolio/${item.slug}`)}
+                  class="inline-flex items-center gap-1 text-xs font-semibold text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                >
+                  <span>{t('portfolio.card.viewCaseStudy', { fallback: 'Case Study' })}</span>
+                  <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

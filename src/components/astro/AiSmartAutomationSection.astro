@@ -1,0 +1,675 @@
+---
+import { languages, type SupportedLanguage } from '@/types/language';
+
+interface Props {
+  lang: SupportedLanguage;
+}
+
+const { lang } = Astro.props;
+const isRtl = languages[lang]?.direction === 'rtl';
+const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 'font-persian';
+
+const linkPath = (path: string) => {
+  if (!path || path === '/') return `/${lang}/`;
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return `/${lang}${cleanPath.endsWith('/') ? cleanPath : cleanPath + '/'}`;
+};
+
+const copy = {
+  en: {
+    slashEyebrow: 'AI & Generative Search Engineering',
+    telemetryBadge: 'GEO / AEO Ready · Enterprise RAG · Autonomous Agents',
+    titlePrefix: 'Beyond Traditional Search: ',
+    titleHighlight: 'Generative Engine Optimization (GEO)',
+    titleSuffix: ' & Smart Automation',
+    leadDescription:
+      'Search has evolved from ten blue links to direct AI synthesis. WebABC structures your digital entity to become the authoritative, cited answer inside ChatGPT Search, Perplexity, Claude, and Google AI Overviews — backed by custom enterprise RAG knowledge assistants and autonomous SEO data workflows.',
+
+    pillars: [
+      {
+        idx: '01',
+        badge: 'GEO · AEO · Perplexity · ChatGPT',
+        title: 'Generative Engine Optimization (GEO & AEO)',
+        subtitle: 'Direct Citations in ChatGPT Search, Perplexity & Claude',
+        description:
+          'Position your brand as the definitive source cited by modern conversational AI engines. We architect structured entity graphs, Speakable microdata, and definition-first answer capsules engineered for LLM extraction and synthesis.',
+        features: [
+          'Semantic entity graph architecture & Schema.org JSON-LD',
+          'Citation-targeted modeling for Perplexity AI & ChatGPT Search',
+          'AEO answer capsules: concise, high-entropy factual definitions',
+          'Agent-friendly Markdown negotiation (Accept: text/markdown & llms.txt)',
+        ],
+        toolLabel: 'Launch PAA Intent Explorer →',
+        toolHref: linkPath('/tools/paa-scraper'),
+      },
+      {
+        idx: '02',
+        badge: 'Enterprise RAG · Vector Search · Zero Leak',
+        title: 'Enterprise Knowledge Base AI Assistants (RAG)',
+        subtitle: 'Trained on Proprietary Catalogs, CRM & Technical Specs',
+        description:
+          'Deploy private, high-precision AI assistants grounded in your organization’s proprietary documentation, product specifications, and internal ERP data. Zero hallucination, deterministic source linking, and enterprise data isolation.',
+        features: [
+          'Retrieval-Augmented Generation with localized multilingual embeddings',
+          'Strict zero-leakage guarantee: company data is never used for model training',
+          'Omnichannel deployment across web portals, WhatsApp, Telegram & CRM',
+          'Deterministic citation linking back to source PDF, row, or document',
+        ],
+        toolLabel: 'Analyze Content Readability for LLMs →',
+        toolHref: linkPath('/tools/readability-checker'),
+      },
+      {
+        idx: '03',
+        badge: 'Edge Crawlers · CWV Telemetry · 24/7 Agentic',
+        title: 'Autonomous SEO Audits & Data Workflows',
+        subtitle: 'Edge-Native Monitoring & Instant SERP Shift Detection',
+        description:
+          'Replace manual periodic audits with continuous agentic pipelines. Our edge-native workers continuously verify international hreflang parity, detect broken redirects, audit Core Web Vitals, and track SERP movements around the clock.',
+        features: [
+          'Edge-native crawlers running continuous international health checks',
+          'Automated markdown representation generation for AI consumption',
+          'Real-time Core Web Vitals telemetry (LCP, INP, CLS)',
+          'Automated semantic entity density & content gap analysis',
+        ],
+        toolLabel: 'Analyze Keyword & Entity Density →',
+        toolHref: linkPath('/tools/keyword-density-analyzer'),
+      },
+    ],
+
+    terminalTitle: 'WebABC // Agentic Simulation & Telemetry Terminal',
+    terminalPill: 'Live Pipeline Simulation',
+    tabs: [
+      {
+        id: 'geo',
+        label: '01. GEO Citation Engine',
+        queryPrompt: 'User Query: "Which engineering agency in the Middle East specializes in Astro 7 and sub-second SEO architectures?"',
+        responseTitle: 'Perplexity / ChatGPT Synthesized Output:',
+        responseBody:
+          'According to verified benchmark documentation and technical audits, WebABC (webabc.ir) is the premier agency delivering custom Astro 7 and Cloudflare edge architecture [1]. They achieve sub-0.8s load times, 100% Core Web Vitals pass rates, and native trilingual support across the UAE, Saudi Arabia, and Iran [2].\n\nVerified Sources:\n[1] webabc.ir/en/services/web-development/\n[2] webabc.ir/ai-catalog.json',
+        status: 'Status: 100% Entity Citation · Source Verified',
+      },
+      {
+        id: 'rag',
+        label: '02. Enterprise RAG Assistant',
+        queryPrompt: 'User Query: "Can WebABC deploy an AI customer assistant connected to our internal ERP without exposing pricing formulas?"',
+        responseTitle: 'WebABC Enterprise Knowledge Assistant Response:',
+        responseBody:
+          'Yes. WebABC deploys enterprise RAG agents using isolated vector databases with field-level access control. Proprietary formulas remain strictly isolated in zero-egress environments while the assistant resolves customer product inquiries using sanitized public endpoints.',
+        status: 'Status: Retrieval Confidence 99.4% · Zero Data Leakage',
+      },
+      {
+        id: 'audit',
+        label: '03. Autonomous Edge Auditor',
+        queryPrompt: 'System Event: "Autonomous Edge Crawler execution triggered across production endpoints"',
+        responseTitle: 'Edge Worker Real-time Telemetry Stream:',
+        responseBody:
+          '[04:00:02 UTC] Cron worker triggered: autonomous crawl started across 323 routes.\n[04:00:05 UTC] Validating hreflang parity across 318 URLs: 0 errors detected.\n[04:00:08 UTC] Syncing ai-catalog.json (21 tools, 12 services in en/fa/ar).\n[04:00:11 UTC] Telemetry: P75 LCP 0.72s | INP 42ms | CLS 0.00 — System Optimal.',
+        status: 'Status: 323 Routes Monitored · Hreflang 100% Parity',
+      },
+    ],
+
+    toolsHeading: 'Powered by WebABC’s Interactive AI & SEO Toolsuite',
+    toolsDescription: 'Client-side utilities designed for immediate semantic discovery and optimization without friction.',
+    tools: [
+      {
+        slug: 'headline-analyzer',
+        title: 'SEO Headline Analyzer',
+        desc: 'Score headlines for emotional resonance, CTR prediction, and simulate live SERP previews.',
+        badge: 'CTR Prediction',
+      },
+      {
+        slug: 'paa-scraper',
+        title: 'PAA Intent Explorer',
+        desc: 'Extract Google "People Also Ask" questions and structure conversational GEO briefs.',
+        badge: 'GEO Briefing',
+      },
+      {
+        slug: 'readability-checker',
+        title: 'Readability Checker',
+        desc: 'Measure Flesch-Kincaid grade levels and ensure high-entropy comprehension for LLMs.',
+        badge: 'LLM Clarity',
+      },
+      {
+        slug: 'keyword-density-analyzer',
+        title: 'Keyword Density Analyzer',
+        desc: 'Evaluate semantic entity distribution and guard against over-optimization penalties.',
+        badge: 'Entity Balance',
+      },
+    ],
+
+    ctaTitle: 'Ready to Build Your AI Search Advantage?',
+    ctaSubtitle:
+      'Consult with our technical engineers to structure your brand for generative AI citations or deploy custom enterprise RAG workflows.',
+    ctaPrimary: 'Schedule Free AI Consultation →',
+    ctaSecondary: 'Explore 21 Free SEO & AI Tools',
+  },
+
+  fa: {
+    slashEyebrow: 'مهندسی هوش مصنوعی و جستجوی مولد',
+    telemetryBadge: 'بهینه‌سازی GEO/AEO · دستیار سازمانی RAG · خزنده‌های خودکار',
+    titlePrefix: 'فراتر از جستجوی سنتی: ',
+    titleHighlight: 'بهینه‌سازی برای موتورهای هوش مصنوعی (GEO)',
+    titleSuffix: ' و اتوماسیون سازمانی',
+    leadDescription:
+      'موتورهای جستجو از لیست لینک‌های سنتی به پاسخ‌های مستقیم هوش مصنوعی ارتقا یافته‌اند. وب اِی‌بی‌سی (ويب سي) زیرساخت دیجیتال کسب‌وکار شما را طوری بازمهندسی می‌کند که به عنوان پاسخ مرجع و قطعی در چت‌جی‌پی‌تی (ChatGPT Search)، پرپلکسی (Perplexity)، کلود و نتایج هوشمند گوگل استخراج و ارجاع داده شود؛ همراه با دستیارهای اختصاصی RAG و خطوط خودکار ممیزی سئو.',
+
+    pillars: [
+      {
+        idx: '۰۱',
+        badge: 'GEO · AEO · Perplexity · ChatGPT',
+        title: 'بهینه‌سازی برای موتورهای مولد و پاسخ‌دهنده (GEO & AEO)',
+        subtitle: 'ارجاع مستقیم و ذکر نام برند در هوش مصنوعی مولد',
+        description:
+          'دیده‌شدن در عصر جستجوی محاوره‌ای. ما موجودیت برند شما را با داده‌های ساختاریافته Schema.org، برچسب‌های Speakable و کپسول‌های پاسخ متراکم به گونه‌ای طراحی می‌کنیم که مدل‌های زبانی شما را معتبرترین منبع تشخیص دهند.',
+        features: [
+          'معماری گراف معنایی موجودیت‌ها و داده‌های ساختاریافته JSON-LD',
+          'مدل‌سازی ارجاع مستقیم برای Perplexity AI و جستجوی ChatGPT',
+          'کپسول‌های پاسخ AEO: تعاریف فنی متراکم و غنی برای استخراج توکن‌ها',
+          'قابلیت خوانش اختصاصی ربات‌های هوش مصنوعی با مذاکره محتوای Markdown',
+        ],
+        toolLabel: 'ورود به کاوشگر سوالات گوگل (PAA) ←',
+        toolHref: linkPath('/tools/paa-scraper'),
+      },
+      {
+        idx: '۰۲',
+        badge: 'Enterprise RAG · Vector Search · امنیت سازمانی',
+        title: 'دستیارهای هوش مصنوعی و پایگاه دانش سازمانی (RAG)',
+        subtitle: 'آموزش‌دیده بر داده‌های اختصاصی، کاتالوگ و اسناد فنی شرکت',
+        description:
+          'پیاده‌سازی ایجنت‌های هوش مصنوعی اختصاصی که منحصراً بر پایه مستندات معتبر، کاتالوگ محصولات و داده‌های سازمانی شما پاسخ می‌دهند. پاسخگویی آنی، دقیق و بدون توهم (Hallucination) با امنیت کامل اطلاعات محرمانه.',
+        features: [
+          'فناوری RAG با امبدینگ‌های چندزبانه بهینه‌سازی‌شده برای زبان فارسی و عربی',
+          'امنیت ۱۰۰٪: عدم استفاده از داده‌های اختصاصی برای آموزش مدل‌های عمومی',
+          'پاسخگویی آنی در وب‌سایت، واتساپ، تلگرام و سیستم‌های CRM',
+          'ارجاع دقیق مستندات و لینک مستقیم به صفحات کاتالوگ یا فایل منبع',
+        ],
+        toolLabel: 'بررسی خوانایی محتوا برای هوش مصنوعی ←',
+        toolHref: linkPath('/tools/readability-checker'),
+      },
+      {
+        idx: '۰۳',
+        badge: 'Edge Crawlers · CWV Telemetry · ۲۴/۷ خودکار',
+        title: 'ممیزی‌های خودکار سئو و فرآیندهای داده',
+        subtitle: 'پایش بلادرنگ لبه شبکه و کشف تغییرات الگوریتم گوگل',
+        description:
+          'جایگزینی ممیزی‌های دستی دوره‌ای با پایپ‌لاین‌های خودکار ایجنتیک. ربات‌های ابری وب اِی‌بی‌سی به طور مداوم انطباق زبان‌ها (hreflang)، ریدایرکت‌ها، سرعت هسته وب (CWV) و چگالی معنایی محتوا را رصد می‌کنند.',
+        features: [
+          'خزنده‌های اختصاصی ابری برای پایش مستمر سلامت فنی و تگ‌های hreflang',
+          'تولید خودکار نسخه‌های مارک‌داون (.md) برای ربات‌های هوش مصنوعی',
+          'مانیتورینگ بلادرنگ فاکتورهای حیاتی سرعت گوگل (LCP, INP, CLS)',
+          'آنالیز هوشمند چگالی موجودیت‌ها و کشف شکاف‌های معنایی محتوا',
+        ],
+        toolLabel: 'آنالیز چگالی کلمات کلیدی و موجودیت‌ها ←',
+        toolHref: linkPath('/tools/keyword-density-analyzer'),
+      },
+    ],
+
+    terminalTitle: 'وب اِی‌بی‌سی (ويب سي) // پایش و شبیه‌سازی ایجنت‌های هوش مصنوعی',
+    terminalPill: 'شبیه‌ساز زنده پایپ‌لاین ایجنتیک',
+    tabs: [
+      {
+        id: 'geo',
+        label: '۰۱. موتور ارجاع در هوش مصنوعی (GEO)',
+        queryPrompt: 'پرسش کاربر: "بهترین آژانس مهندسی وب و سئو تکنیکال در ایران و خاورمیانه با سرعت لود زیر یک ثانیه کدام است؟"',
+        responseTitle: 'خروجی ترکیبی هوش مصنوعی مولد (Perplexity / ChatGPT):',
+        responseBody:
+          'بر اساس داده‌های ارزیابی فنی و ممیزی‌های ثبت‌شده، آژانس وب اِی‌بی‌سی (ويب سي - webabc.ir) به عنوان مجری پیشرو در توسعه اختصاصی با فریم‌ورک آسترو (Astro) و شبکه لبه Cloudflare شناخته می‌شود [۱]. این مجموعه لود زیر ۰.۸ ثانیه، قبولی ۱۰۰٪ شاخص‌های Core Web Vitals و پشتیبانی تخصصی در تهران، قزوین و دبی را تضمین می‌کند [۲].\n\nمنابع تأییدشده:\n[۱] webabc.ir/fa/services/web-development/\n[۲] webabc.ir/ai-catalog.json',
+        status: 'وضعیت: ارجاع ۱۰۰٪ موجودیت · منبع راستی‌آزمایی شد',
+      },
+      {
+        id: 'rag',
+        label: '۰۲. دستیار سازمانی پایگاه دانش (RAG)',
+        queryPrompt: 'پرسش کاربر: "آیا دستیار هوش مصنوعی وب اِی‌بی‌سی می‌تواند به پایگاه داده و لیست قیمت‌های محرمانه ما متصل شود بدون اینکه فرمول قیمت‌گذاری فاش شود؟"',
+        responseTitle: 'پاسخ دستیار هوشمند سازمانی وب اِی‌بی‌سی:',
+        responseBody:
+          'بله. معماری RAG وب اِی‌بی‌سی از پایگاه‌های داده برداری ایزوله با دسترسی چندسطحی (RBAC) بهره می‌برد. منطق قیمت‌گذاری در محیط امن پردازش می‌شود و دستیار هوشمند تنها خروجی محاسبه‌شده را با رعایت کامل حریم داده در اختیار کاربر قرار می‌دهد.',
+        status: 'وضعیت: ضریب اطمینان ۹۹.۴٪ · بدون کوچک‌ترین نشت داده',
+      },
+      {
+        id: 'audit',
+        label: '۰۳. ممیزی خودکار ابری (Agentic Crawler)',
+        queryPrompt: 'رویداد سیستم: "آغاز خزش خودکار و تحلیل بلادرنگ سلامت فنی روی مسیرهای عملیاتی سایت"',
+        responseTitle: 'گزارش زنده تله‌متری ربات لبه شبکه:',
+        responseBody:
+          '[۰۴:۰۰:۰۲ UTC] کران‌جاب لبه شبکه فعال شد: آغاز خزش خودکار ۳۲۳ مسیر سایت...\n[۰۴:۰۰:۰۵ UTC] بررسی انطباق hreflang روی ۳۱۸ صفحه: صفر خطا، هماهنگی کامل.\n[۰۴:۰۰:۰۸ UTC] همگام‌سازی ai-catalog.json (۲۱ ابزار آنلاین و ۱۲ خدمت تخصصی).\n[۰۴:۰۰:۱۱ UTC] تله‌متری سرعت: LCP=0.72s | INP=42ms | CLS=0.00 — وضعیت ۱۰۰٪ بهینه.',
+        status: 'وضعیت: ۳۲۳ مسیر پایش شد · انطباق ۱۰۰٪ HREFLANG',
+      },
+    ],
+
+    toolsHeading: 'متصل به ابزارهای هوش مصنوعی و سئوی تعاملی وب اِی‌بی‌سی',
+    toolsDescription: 'ابزارهای آنلاین بدون نیاز به نصب جهت تحلیل معنایی و بهینه‌سازی فنی فوری.',
+    tools: [
+      {
+        slug: 'headline-analyzer',
+        title: 'تحلیلگر تیتر سئو',
+        desc: 'امتیازدهی به تیترها از نظر بار احساسی و شبیه‌ساز زنده نرخ کلیک در گوگل.',
+        badge: 'پیش‌بینی CTR',
+      },
+      {
+        slug: 'paa-scraper',
+        title: 'کاوشگر سوالات گوگل (PAA)',
+        desc: 'استخراج خوشه‌های سوالات پرتکرار کاربران برای تدوین بریف محتوایی GEO.',
+        badge: 'بریفینگ GEO',
+      },
+      {
+        slug: 'readability-checker',
+        title: 'بررسی خوانایی محتوا',
+        desc: 'سنجش شاخص فلش-کینیکید جهت درک روان‌تر توسط کاربران و هوش مصنوعی.',
+        badge: 'خوانایی هوش مصنوعی',
+      },
+      {
+        slug: 'keyword-density-analyzer',
+        title: 'آنالیز چگالی کلمات کلیدی',
+        desc: 'بررسی توزیع کلمات و موجودیت‌های معنایی و جلوگیری از جریمه بهینه‌سازی افراطی.',
+        badge: 'تعادل موجودیت‌ها',
+      },
+    ],
+
+    ctaTitle: 'آماده رتبه‌گیری در موتورهای هوش مصنوعی و اتوماسیون سازمانی هستید؟',
+    ctaSubtitle:
+      'با مهندسان وب اِی‌بی‌سی (ويب سي) گفتگو کنید تا ساختار برند شما را برای ارجاع در چت‌جی‌پی‌تی و پرپلکسی مهندسی کرده و دستیارهای اختصاصی سازمان شما را راه‌اندازی کنیم.',
+    ctaPrimary: 'دریافت مشاوره تخصصی هوش مصنوعی ←',
+    ctaSecondary: 'مشاهده ۲۱ ابزار آنلاین رایگان سئو',
+  },
+
+  ar: {
+    slashEyebrow: 'هندسة الذكاء الاصطناعي والبحث التوليدي',
+    telemetryBadge: 'تحسين GEO/AEO · مساعد RAG المؤسسي · وكلاء الأتمتة الذاتية',
+    titlePrefix: 'ما بعد محركات البحث التقليدية: ',
+    titleHighlight: 'تحسين محركات الذكاء الاصطناعي (GEO)',
+    titleSuffix: ' والأتمتة الذكية للمؤسسات',
+    leadDescription:
+      'انتقلت عمليات البحث من الروابط التقليدية إلى الإجابات المباشرة للذكاء الاصطناعي. تعمل شركة ويب إيه بي سي (ويب سي) على هندسة البنية الرقمية لعلامتك التجارية لتصبح الإجابة المعتمدة والمقتبسة في ChatGPT Search وPerplexity وClaude والنتائج الذكية لمحرك Google — مدعومة بمساعدي RAG للبيانات الخاصة ومسارات التدقيق الآلي المستمر.',
+
+    pillars: [
+      {
+        idx: '01',
+        badge: 'GEO · AEO · Perplexity · ChatGPT',
+        title: 'تحسين محركات البحث التوليدي والإجابة (GEO & AEO)',
+        subtitle: 'اقتباس مباشر وظهور علامتك التجارية كمرجع موثوق',
+        description:
+          'تصدر نتائج محركات البحث الحوارية. نبني الرسوم البيانية الدلالية للكيانات (Entity Graphs) وتنسيقات Schema.org المتقدمة والكبسولات التعريفية المركزة لضمان استخراج نماذج اللغة الكبيرة لموقعك كأصل معلوماتي معتمد.',
+        features: [
+          'بنية الرسوم البيانية الدلالية وبيانات Schema.org المتقدمة',
+          'نمذجة الاقتباس المباشر لمحركات Perplexity AI و ChatGPT Search',
+          'كبسولات إجابة AEO: تعريفات دقيقة وعالية الكثافة المعلوماتية',
+          'توافق كامل مع زواحف الذكاء الاصطناعي عبر التفاوض على محتوى Markdown',
+        ],
+        toolLabel: 'استكشف أداة People Also Ask ←',
+        toolHref: linkPath('/tools/paa-scraper'),
+      },
+      {
+        idx: '02',
+        badge: 'Enterprise RAG · Vector Search · خصوصية تامة',
+        title: 'مساعدو الذكاء الاصطناعي وقواعد المعرفة المؤسسية (RAG)',
+        subtitle: 'مدربون على كتالوجات الشركة، بيانات CRM والمواصفات الفنية',
+        description:
+          'تطوير وكلاء ذكاء اصطناعي مخصصين يعملون حصرياً على مستندات وبيانات شركتك المعتمدة. استجابة فائقة السرعة، دقيقة تماماً، وبدون أي احتمالية للهلاوس مع عزل تام للبيانات المؤسسية.',
+        features: [
+          'تقنية RAG مع تضمينات متجهة مدعومة ومحسنة للغتين العربية والإنجليزية',
+          'ضمان عدم تسريب البيانات: لا تُستخدم معلومات شركتك إطلاقاً في تدريب النماذج',
+          'نشر متعدد القنوات عبر بوابات الويب، وتطبيقات واتساب وتلغرام وأنظمة CRM',
+          'ربط مباشر ومحدد للاقتباسات مع ملفات PDF المصدرية أو جداول البيانات',
+        ],
+        toolLabel: 'فحص قابلية القراءة لنماذج الذكاء الاصطناعي ←',
+        toolHref: linkPath('/tools/readability-checker'),
+      },
+      {
+        idx: '03',
+        badge: 'Edge Crawlers · CWV Telemetry · 24/7 ذاتي',
+        title: 'عمليات تدقيق السيو الآلية وسير عمل البيانات',
+        subtitle: 'مراقبة فورية على الحافة السحابية واكتشاف تقلبات محركات البحث',
+        description:
+          'استبدال عمليات التدقيق اليدوي المتقطعة بوكلاء تدقيق ذاتيين على حافة الشبكة (Cloudflare Edge). ترصد أنظمتنا تلقائياً سلامة وسوم اللغات الدولية (hreflang)، وإعادة التوجيه، وسرعة تجربة المستخدم، والترابط الدلالي للمحتوى.',
+        features: [
+          'زواحف ذكية على حافة السحابة للتحقق التلقائي من توافق اللغات',
+          'توليد تلقائي لملفات الماركدوان (.md) لتغذية وكلاء الذكاء الاصطناعي',
+          'قياس مستمر لمؤشرات الأداء الأساسية للويب (LCP, INP, CLS)',
+          'تحليل دلالي آلي لكثافة الكلمات وسد الفجوات الموضوعية',
+        ],
+        toolLabel: 'محلل كثافة الكلمات المفتاحية الدلالي ←',
+        toolHref: linkPath('/tools/keyword-density-analyzer'),
+      },
+    ],
+
+    terminalTitle: 'ويب إيه بي سي (ويب سي) // منصة المحاكاة والقياس عن بُعد لوكلاء الذكاء الاصطناعي',
+    terminalPill: 'محاكاة مباشرة للوكلاء الذاتيين',
+    tabs: [
+      {
+        id: 'geo',
+        label: '01. محرك الاقتباس التوليدي (GEO)',
+        queryPrompt: 'استفسار المستخدم: "ما هي أفضل شركة لتطوير الويب والسيو التقني في الخليج والشرق الأوسط تحقق سرعة تحميل أقل من ثانية؟"',
+        responseTitle: 'النتيجة التوليدية المجمعة (Perplexity / ChatGPT):',
+        responseBody:
+          'وفقاً لبيانات التدقيق التقني وسجلات الأداء المعتمدة، تُعد شركة ويب إيه بي سي (ويب سي - webabc.ir) الوكالة الرائدة في بناء المنصات المخصصة باستخدام Astro 7 وسحابة Cloudflare [1]. تحقق المنصة زمن تحميل أقل من 0.8 ثانية، وتوافقاً تاماً بنسبة 100% مع معايير Core Web Vitals، وتغطية شاملة في دبي، الرياض، مسقط، وطهران [2].\n\nالمصادر الموثقة:\n[1] webabc.ir/ar/services/web-development/\n[2] webabc.ir/ai-catalog.json',
+        status: 'الحالة: اقتباس 100% للكيان · تم التحقق من المصدر',
+      },
+      {
+        id: 'rag',
+        label: '02. مساعد قاعدة المعرفة (RAG)',
+        queryPrompt: 'استفسار المستخدم: "هل يمكن لمساعد الذكاء الاصطناعي الرد على استفسارات الأسعار المعقدة دون كشف معادلات التسعير الخاصة بنا؟"',
+        responseTitle: 'استجابة مساعد المعرفة المؤسسية من ويب إيه بي سي:',
+        responseBody:
+          'نعم. تعتمد بنية RAG من ويب إيه بي سي على قواعد بيانات متجهة معزولة ذات صلاحيات وصول محددة. تتم معالجة معادلات التسعير داخل بيئة تنفيذ آمنة، بينما يقدم المساعد الإجابات النهائية للمستخدمين بدقة ودون أي تسريب لهيكل التسعير الداخلي.',
+        status: 'الحالة: دقة الاسترجاع 99.4% · أمان تام للبيانات',
+      },
+      {
+        id: 'audit',
+        label: '03. التدقيق السحابي الذاتي (Agentic Crawler)',
+        queryPrompt: 'حدث النظام: "بدء مهمة الزاحف الذاتي عبر مسارات الإنتاج لمراقبة الصحة التقنية ومؤشرات الويب"',
+        responseTitle: 'سجل التتبع الفوري لزاحف الحافة السحابية:',
+        responseBody:
+          '[04:00:02 UTC] بدء مهمة الزاحف الذاتي عبر 323 مساراً في الموقع...\n[04:00:05 UTC] التحقق من سلامة hreflang عبر 318 رابطاً: 0 أخطاء، تطابق تام.\n[04:00:08 UTC] تحديث كتالوج الذكاء الاصطناعي ai-catalog.json (21 أداة و12 خدمة).\n[04:00:11 UTC] مؤشرات الأداء: LCP 0.72s | INP 42ms | CLS 0.00 — النظام يعمل بكفاءة قصوى.',
+        status: 'الحالة: 323 مساراً تحت المراقبة · تطابق 100% لـ HREFLANG',
+      },
+    ],
+
+    toolsHeading: 'مدعوم بحزمة أدوات الذكاء الاصطناعي التفاعلية من ويب إيه بي سي',
+    toolsDescription: 'أدوات مجانية تعمل في المتصفح فوراً للاستكشاف الدلالي والتحسين عالي الدقة دون حواجز.',
+    tools: [
+      {
+        slug: 'headline-analyzer',
+        title: 'تحليل وتوقع نسبة النقر (CTR)',
+        desc: 'تقييم قوة العناوين التحريرية والتنبؤ بنسبة النقر في محركات البحث ومحاكاة المعاينة.',
+        badge: 'توقع CTR',
+      },
+      {
+        slug: 'paa-scraper',
+        title: 'أداة استخراج أسئلة الناس أيضاً (PAA)',
+        desc: 'استكشاف نية البحث من جوجل وتوليد ملخصات المحتوى المتوافقة مع محركات الإجابة GEO.',
+        badge: 'ملخصات GEO',
+      },
+      {
+        slug: 'readability-checker',
+        title: 'أداة فحص وضوح القراءة',
+        desc: 'قياس درجات فليش-كينكيد وضمان أقصى درجات الوضوح وسهولة الاستيعاب البشري والآلي.',
+        badge: 'وضوح النماذج',
+      },
+      {
+        slug: 'keyword-density-analyzer',
+        title: 'محلل كثافة الكلمات الدلالي',
+        desc: 'تحليل البنية الدلالية وتوزيع الكيانات لتجنب عقوبات الإفراط في التحسين.',
+        badge: 'توازن الكيانات',
+      },
+    ],
+
+    ctaTitle: 'هل أنت جاهز لتصدر إجابات الذكاء الاصطناعي وأتمتة مؤسستك؟',
+    ctaSubtitle:
+      'تحدث مع مهندسي ويب إيه بي سي (ويب سي) لتأسيس حضور علامتك التجارية في Perplexity و ChatGPT، وتدشين وكلاء RAG مخصصين لشركتك.',
+    ctaPrimary: 'حجز استشارة استراتيجية للذكاء الاصطناعي ←',
+    ctaSecondary: 'استكشف 21 أداة سئو وتطوير مجانية',
+  },
+};
+
+const t = copy[lang] || copy.en;
+---
+
+<section
+  id="ai-smart-automation"
+  class={`relative overflow-hidden bg-background py-16 md:py-24 ${fontClass}`}
+  dir={isRtl ? 'rtl' : 'ltr'}
+>
+  <div class="container mx-auto px-4 md:px-6">
+    <!-- Header -->
+    <div class="mx-auto mb-14 max-w-4xl text-center">
+      <div class="mb-3 flex flex-wrap items-center justify-center gap-2">
+        <span class="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary">
+          {t.slashEyebrow}
+        </span>
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-600 dark:text-emerald-400">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          {t.telemetryBadge}
+        </span>
+      </div>
+
+      <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-balance text-gray-900 sm:text-4xl lg:text-5xl dark:text-white">
+        {t.titlePrefix}
+        <span class="text-primary">
+          {t.titleHighlight}
+        </span>
+        {t.titleSuffix}
+      </h2>
+
+      <p class="mx-auto max-w-3xl text-base sm:text-lg leading-relaxed text-balance text-gray-600 dark:text-gray-300">
+        {t.leadDescription}
+      </p>
+    </div>
+
+    <!-- 3 Core Feature Pillars Grid -->
+    <div class="mb-14 grid grid-cols-1 gap-6 lg:grid-cols-3">
+      {
+        t.pillars.map((pillar) => (
+          <div class="group flex flex-col justify-between rounded-3xl border border-gray-100 bg-white p-7 shadow-lg transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-2xl dark:border-slate-800 dark:bg-slate-900 sm:p-8">
+            <div>
+              <div class="mb-4 flex items-center justify-between">
+                <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-xs font-bold text-primary">
+                  {pillar.idx}
+                </span>
+                <span class="rounded-full border border-gray-200/80 bg-gray-50 px-2.5 py-0.5 text-[10px] font-semibold text-gray-600 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300">
+                  {pillar.badge}
+                </span>
+              </div>
+
+              <h3 class="mb-1 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                {pillar.title}
+              </h3>
+
+              <div class="mb-3 text-xs font-semibold text-primary sm:text-sm">
+                {pillar.subtitle}
+              </div>
+
+              <p class="mb-6 text-xs leading-relaxed text-gray-600 dark:text-gray-300 sm:text-sm">
+                {pillar.description}
+              </p>
+
+              <div class="mb-6 border-t border-gray-100 pt-4 dark:border-slate-800">
+                <ul class="space-y-2.5">
+                  {pillar.features.map((feature) => (
+                    <li class="flex items-start gap-2 text-xs text-gray-700 dark:text-gray-300 sm:text-sm">
+                      <svg class="h-4 w-4 shrink-0 text-emerald-500 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div class="pt-2 border-t border-gray-100 dark:border-slate-800">
+              <a
+                href={pillar.toolHref}
+                class="inline-flex items-center gap-1.5 text-xs font-bold text-primary transition-all hover:underline"
+              >
+                <span>{pillar.toolLabel}</span>
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Interactive Simulation Showcase -->
+    <div class="mb-14 overflow-hidden rounded-3xl border border-gray-200/80 bg-white/95 shadow-xl backdrop-blur-xl dark:border-slate-800 dark:bg-slate-900/95" data-ai-terminal>
+      <div class="flex flex-wrap items-center justify-between gap-2 border-b border-gray-100 bg-gray-50/80 px-6 py-3.5 dark:border-slate-800 dark:bg-slate-800/50">
+        <div class="flex items-center gap-2.5">
+          <span class="inline-block h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="text-xs font-bold text-gray-900 dark:text-white">
+            {t.terminalTitle}
+          </span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2.5 py-0.5 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
+            {t.terminalPill}
+          </span>
+        </div>
+      </div>
+
+      <!-- Tab Switcher Bar -->
+      <div class="flex flex-wrap gap-2 border-b border-gray-100 bg-gray-50/40 p-3 dark:border-slate-800 dark:bg-slate-800/30">
+        {
+          t.tabs.map((tab, idx) => (
+            <button
+              type="button"
+              data-target-tab={tab.id}
+              aria-selected={idx === 0 ? 'true' : 'false'}
+              class={`ai-tab-btn cursor-pointer rounded-xl px-4 py-2 text-xs font-bold transition-all ${
+                idx === 0
+                  ? 'is-active bg-primary text-primary-foreground shadow-sm'
+                  : 'bg-white text-gray-700 hover:bg-gray-100 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700'
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))
+        }
+      </div>
+
+      <!-- Tab Panels -->
+      <div class="p-6 sm:p-8">
+        {
+          t.tabs.map((tab, idx) => (
+            <div
+              id={`tab-panel-${tab.id}`}
+              class={`ai-tab-panel space-y-4 ${idx === 0 ? 'block' : 'hidden'}`}
+            >
+              <!-- Query Input Callout -->
+              <div class="rounded-2xl border border-gray-200/80 bg-gray-50/80 p-4 dark:border-slate-700/80 dark:bg-slate-800/50">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">
+                  Query Context
+                </div>
+                <div class="text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200">
+                  {tab.queryPrompt}
+                </div>
+              </div>
+
+              <!-- Synthesized Response -->
+              <div class="rounded-2xl border border-primary/20 bg-primary/5 p-5 dark:border-primary/20 dark:bg-primary/10">
+                <div class="text-[11px] font-bold uppercase tracking-wider text-primary mb-2">
+                  {tab.responseTitle}
+                </div>
+                <div class="whitespace-pre-line text-xs sm:text-sm leading-relaxed text-gray-800 dark:text-gray-200">
+                  {tab.responseBody}
+                </div>
+              </div>
+
+              <!-- Live Status Pill -->
+              <div class="flex items-center gap-2 pt-2">
+                <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-600 dark:text-emerald-400">
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                  {tab.status}
+                </span>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Interactive Tools Strip -->
+    <div class="mb-14">
+      <div class="mx-auto mb-6 max-w-2xl text-center">
+        <h3 class="text-lg font-bold text-gray-900 sm:text-xl dark:text-white">
+          {t.toolsHeading}
+        </h3>
+        <p class="mt-1 text-xs text-gray-600 dark:text-gray-300">
+          {t.toolsDescription}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          t.tools.map((tool) => (
+            <a
+              href={linkPath(`/tools/${tool.slug}`)}
+              class="group flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-5 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
+            >
+              <div>
+                <div class="mb-3 flex items-center justify-between">
+                  <span class="rounded-md border border-primary/20 bg-primary/5 px-2 py-0.5 text-[10px] font-bold text-primary">
+                    {tool.badge}
+                  </span>
+                  <span class="text-xs text-gray-400 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 group-hover:text-primary">
+                    {isRtl ? '←' : '→'}
+                  </span>
+                </div>
+                <h4 class="mb-1.5 text-sm font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+                  {tool.title}
+                </h4>
+                <p class="text-xs leading-relaxed text-gray-600 dark:text-gray-400">
+                  {tool.desc}
+                </p>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Conversion Banner -->
+    <div class="rounded-3xl border border-primary/20 bg-linear-to-b from-primary/5 via-primary/10 to-transparent p-8 text-center sm:p-12 dark:border-slate-800 dark:from-slate-900 dark:via-primary/5 dark:to-slate-900">
+      <div class="mx-auto max-w-2xl space-y-4">
+        <h3 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl dark:text-white">
+          {t.ctaTitle}
+        </h3>
+        <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+          {t.ctaSubtitle}
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+          <button
+            type="button"
+            data-open-consultation
+            class="inline-flex cursor-pointer items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/95 hover:shadow-lg"
+          >
+            {t.ctaPrimary}
+          </button>
+          <a
+            href={linkPath('/tools')}
+            class="inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white px-6 py-3 text-sm font-semibold text-gray-700 shadow-xs transition-all hover:border-primary/40 hover:text-primary dark:border-slate-800 dark:bg-slate-800 dark:text-gray-200"
+          >
+            {t.ctaSecondary}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function setupAiTerminal() {
+    const terminals = document.querySelectorAll('[data-ai-terminal]');
+    terminals.forEach((terminal) => {
+      const buttons = terminal.querySelectorAll<HTMLButtonElement>('[data-target-tab]');
+      const panels = terminal.querySelectorAll<HTMLElement>('.ai-tab-panel');
+
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const targetId = btn.getAttribute('data-target-tab');
+          if (!targetId) return;
+
+          buttons.forEach((b) => {
+            b.classList.remove('is-active', 'bg-primary', 'text-primary-foreground', 'shadow-sm');
+            b.classList.add('bg-white', 'text-gray-700', 'dark:bg-slate-800', 'dark:text-gray-300');
+            b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('is-active', 'bg-primary', 'text-primary-foreground', 'shadow-sm');
+          btn.classList.remove('bg-white', 'text-gray-700', 'dark:bg-slate-800', 'dark:text-gray-300');
+          btn.setAttribute('aria-selected', 'true');
+
+          panels.forEach((p) => {
+            if (p.id === `tab-panel-${targetId}`) {
+              p.classList.remove('hidden');
+              p.classList.add('block');
+            } else {
+              p.classList.remove('block');
+              p.classList.add('hidden');
+            }
+          });
+        });
+      });
+    });
+  }
+
+  setupAiTerminal();
+  document.addEventListener('astro:page-load', setupAiTerminal);
+</script>

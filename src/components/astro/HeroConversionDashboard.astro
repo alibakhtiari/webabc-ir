@@ -1,0 +1,499 @@
+---
+import { languages, type SupportedLanguage } from '@/types/language';
+
+interface Props {
+  lang: SupportedLanguage;
+}
+
+const { lang } = Astro.props;
+const isRtl = languages[lang]?.direction === 'rtl';
+const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 'font-persian';
+const bodyFont = fontClass;
+const trackingTitle = isRtl ? 'tracking-normal' : 'tracking-wide';
+
+const t = {
+  chromeTitle:
+    lang === 'fa'
+      ? 'وب اِی‌بی‌سی // موتور جذب مشتری و رشد درآمد'
+      : lang === 'ar'
+        ? 'WebABC // محرك استقطاب العملاء ومضاعفة الأرباح'
+        : 'WebABC // Client Acquisition & Revenue Engine',
+  statusBadge:
+    lang === 'fa'
+      ? '● بازده: فعال'
+      : lang === 'ar'
+        ? '● العائد: نشط'
+        : '● ROI: ACTIVE',
+  roiBadge:
+    lang === 'fa'
+      ? '★ ۳.۴ برابر سودآوری'
+      : lang === 'ar'
+        ? '★ مضاعفة الأرباح: 3.4×'
+        : '★ 3.4× Revenue Value',
+
+  pipelineHeading:
+    lang === 'fa'
+      ? 'فرآیند تبدیل ورودی به فروش قطعی:'
+      : lang === 'ar'
+        ? 'مسار تحويل الزوار إلى مبيعات مؤكدة:'
+        : 'Client Revenue & Conversion Pipeline:',
+  pipelineBadge:
+    lang === 'fa'
+      ? '[ مسیر ۴ مرحله‌ای ]'
+      : lang === 'ar'
+        ? '[ مسار من 4 مراحل ]'
+        : '[ 4-Stage Pipeline ]',
+
+  s1Title:
+    lang === 'fa' ? '۰۱. وب‌سایت پرسرعت' : lang === 'ar' ? '01. موقع فائق السرعة' : '01. Ultra-Fast Site',
+  s1Metric:
+    lang === 'fa'
+      ? '⚡ لود زیر ۰.۸ث (CWV ۱۰۰٪)'
+      : lang === 'ar'
+        ? '⚡ تحميل أقل من 0.8ث (CWV 100%)'
+        : '⚡ < 0.8s Load (CWV 100%)',
+  s1Desc:
+    lang === 'fa'
+      ? 'حذف ۸۰٪ پرش کاربر از سایت'
+      : lang === 'ar'
+        ? 'القضاء على 80% من ارتداد الزوار'
+        : 'Instant load cuts bounce by 80%',
+  s1Sub:
+    lang === 'fa'
+      ? 'Astro 7 + Cloudflare Edge'
+      : lang === 'ar'
+        ? 'بنية Astro 7 وسحابة Cloudflare'
+        : 'Astro 7 + Cloudflare Edge',
+
+  s2Title:
+    lang === 'fa' ? '۰۲. رتبه ۱ نتایج گوگل' : lang === 'ar' ? '02. #1 في بحث جوجل' : '02. #1 on Google',
+  s2Metric:
+    lang === 'fa'
+      ? '🔍 کلمات کلیدی خریداران هدف'
+      : lang === 'ar'
+        ? '🔍 استهداف الكلمات الشرائية'
+        : '🔍 High-Intent Queries',
+  s2Desc:
+    lang === 'fa'
+      ? 'جذب ۶۸.۷٪ کلیک‌های ارزشمند بازار'
+      : lang === 'ar'
+        ? 'الاستحواذ على 68.7% من النقرات'
+        : 'Top 3 capture 68.7% of clicks',
+  s2Sub:
+    lang === 'fa'
+      ? 'سئو معنایی AEO و اعتبار دامنه'
+      : lang === 'ar'
+        ? 'سيو ذكاء اصطناعي AEO وقوة النطاق'
+        : 'Semantic AEO + Domain Authority',
+
+  s3Title:
+    lang === 'fa' ? '۰۳. دریافت لید و تماس' : lang === 'ar' ? '03. عملاء محتملون مستمرون' : '03. Qualified Leads',
+  s3Metric:
+    lang === 'fa'
+      ? '📈 بهینه‌سازی مسیر خرید (CRO)'
+      : lang === 'ar'
+        ? '📈 مسارات تحويل عالية الفعالية'
+        : '📈 High-Converting Funnel',
+  s3Desc:
+    lang === 'fa'
+      ? 'جریان مداوم تماس و سفارش مشتری'
+      : lang === 'ar'
+        ? 'تدفق مستمر للاتصالات والاستفسارات'
+        : 'Steady calls & buyer inquiries',
+  s3Sub:
+    lang === 'fa'
+      ? 'تجربه کاربری روان + ثبت لید خودکار'
+      : lang === 'ar'
+        ? 'تجربة مستخدم سلسة والتقاط فوري'
+        : 'Frictionless UX + Automated CRO',
+
+  s4Title:
+    lang === 'fa' ? '۰۴. ۳ برابر فروش و سود' : lang === 'ar' ? '04. 3 أضعاف الأرباح والعائد' : '04. 3× Revenue & ROI',
+  s4Badge:
+    lang === 'fa' ? '★ ۳×' : '★ 3×',
+  s4Metric:
+    lang === 'fa'
+      ? '▲ +۳۱۲٪ رشد قطعی درآمد'
+      : lang === 'ar'
+        ? '▲ +312% نمو الإيرادات والمبيعات'
+        : '▲ +312% Commercial Growth',
+  s4Desc:
+    lang === 'fa'
+      ? 'سودآوری صعودی ماه به ماه'
+      : lang === 'ar'
+        ? 'أرباح متصاعدة شهراً بعد شهر'
+        : 'Compounding month-over-month',
+  s4Sub:
+    lang === 'fa'
+      ? 'رشد مستمر بدون هزینه تبلیغات روزانه'
+      : lang === 'ar'
+        ? 'نمو دائم بدون تكاليف إعلانية متكررة'
+        : 'Zero reliance on expensive daily ads',
+
+  resultsHeading:
+    lang === 'fa'
+      ? 'نتایج اثبات‌شده و بازگشت سرمایه ملموس مشتریان:'
+      : lang === 'ar'
+        ? 'النتائج الموثقة وأثر الإيرادات المباشر للعملاء:'
+        : 'Proven Client Results & Revenue Impact:',
+
+  c1Metric:
+    lang === 'fa'
+      ? '▲ +۳۱۲٪ لید و فروش قطعی'
+      : lang === 'ar'
+        ? '▲ +312% مبيعات وعملاء مؤهلون'
+        : '▲ +312% Sales & Qualified Leads',
+  c1Desc:
+    lang === 'fa'
+      ? 'میانگین رشد تجاری کسب‌وکارها در ۹۰ روز اول.'
+      : lang === 'ar'
+        ? 'متوسط النمو التجاري المحقق خلال أول 90 يوماً.'
+        : 'Average commercial growth in first 90 days.',
+  c1Sub:
+    lang === 'fa'
+      ? 'تبدیل بازدیدکننده بی‌تفاوت به مشتری خریدار و عقد قرارداد.'
+      : lang === 'ar'
+        ? 'تحويل الزيارات العادية إلى عقود مبيعات ناجحة.'
+        : 'Turn passive visits into signed customer contracts.',
+
+  c2Metric:
+    lang === 'fa'
+      ? '★ ۳.۴ برابر بازگشت سرمایه و سود خالص'
+      : lang === 'ar'
+        ? '★ 3.4 أضعاف عائد الاستثمار المالي المؤكد'
+        : '★ 3.4× Verified Revenue Multiplier',
+  c2Desc:
+    lang === 'fa'
+      ? 'به ازای هر ۱ میلیون تومان، ۳.۴ میلیون تومان فروش نقدی.'
+      : lang === 'ar'
+        ? 'كل 1,000$ استثمار تحقق 3,400$+ أرباح صفقات مغلقة.'
+        : 'Every $1 invested delivers $3.40 in revenue.',
+  c2Sub:
+    lang === 'fa'
+      ? 'دارایی دیجیتال ارزشمند که بدون هزینه تبلیغات پیوسته می‌فروشد.'
+      : lang === 'ar'
+        ? 'أصول رقمية موثوقة تستمر بجلب الأرباح بدون إعلانات يومية.'
+        : 'High-authority asset compounding without ad spend.',
+
+  c3MetricLabel:
+    lang === 'fa'
+      ? '✓ نرخ تبدیل فروش:'
+      : lang === 'ar'
+        ? '✓ معدل التحويل التجاري:'
+        : '✓ Conversion Rate:',
+  c3Desc:
+    lang === 'fa'
+      ? 'سرعت زیر ۱ ثانیه + ساختار مدرن، بازدیدکننده را خریدار می‌کند.'
+      : lang === 'ar'
+        ? 'سرعة فائقة وتصميم مدروس يحولان الزائر إلى مشترٍ فوراً.'
+        : 'Sub-second speeds + CRO layout turn visitors into buyers.',
+  c3Sub:
+    lang === 'fa'
+      ? '۳ برابر فروش بیشتر از همان ترافیک فعلی بدون هزینه اضافه.'
+      : lang === 'ar'
+        ? 'مضاعفة المبيعات 3 مرات من نفس عدد الزوار الحالي.'
+        : '3× more sales from your existing traffic without ad spend.',
+
+  chartHeading:
+    lang === 'fa'
+      ? 'مقیاس ترافیک خریداران و رتبه‌های اول گوگل:'
+      : lang === 'ar'
+        ? 'نمو زيارات المشترين وصدارة نتائج جوجل:'
+        : 'Search Visibility & Traffic Growth:',
+  chartSubLabel:
+    lang === 'fa'
+      ? 'ورودی خریداران هدف:'
+      : lang === 'ar'
+        ? 'زيارات المشترين الفعليين:'
+        : 'High-Intent Buyers:',
+
+  kwHeading:
+    lang === 'fa'
+      ? 'کلمات کلیدی تجاری در رتبه ۱ صفحه اول گوگل:'
+      : lang === 'ar'
+        ? 'الكلمات المفتاحية التجارية المتصدرة للمرتبة الأولى:'
+        : 'Target Commercial Keywords Dominating Page #1:',
+  kw1Query:
+    lang === 'fa'
+      ? '«خدمات تخصصی و پروژه‌های باارزش شما»'
+      : lang === 'ar'
+        ? '"خدماتك وحلولك التجارية الكبرى"'
+        : '"your high-value commercial services"',
+  kw1Rank:
+    lang === 'fa' ? 'رتبه ۱ در گوگل' : lang === 'ar' ? 'المرتبة #1 في جوجل' : '#1 on Google',
+
+  kw2Query:
+    lang === 'fa'
+      ? '«سفارش طراحی سایت و پلتفرم اختصاصی»'
+      : lang === 'ar'
+        ? '"تصميم المواقع وتطوير الأنظمة المخصصة"'
+        : '"custom enterprise client solution"',
+  kw2Rank:
+    lang === 'fa' ? 'رتبه ۱ در گوگل' : lang === 'ar' ? 'المرتبة #1 في جوجل' : '#1 on Google',
+
+  g1:
+    lang === 'fa'
+      ? 'تضمین سرعت: ۰.۸ث یا آنالیز رایگان'
+      : lang === 'ar'
+        ? 'ضمان السرعة: 0.8ث أو تدقيق مجاني'
+        : '0.8s Guarantee or Free Audit',
+  g2:
+    lang === 'fa'
+      ? 'بدون قفل قرارداد · نتایج تضمینی'
+      : lang === 'ar'
+        ? 'عقود مرنة · نتائج مضمونة وملموسة'
+        : 'No Contract Lock-In · Results Guaranteed',
+  g3:
+    lang === 'fa'
+      ? 'مشاوره رایگان ۳۰ دقیقه‌ای · پاسخ < ۲ ساعت'
+      : lang === 'ar'
+        ? 'استشارة مجانية 30 دقيقة · رد فوري < 2س'
+        : 'Free 30-Min Strategy Call · SLA < 2H',
+};
+---
+
+<div
+  class={`w-full overflow-hidden rounded-2xl border border-gray-200/90 bg-white/95 shadow-xl backdrop-blur-xl transition-all dark:border-slate-800 dark:bg-slate-900/90 ${bodyFont}`}
+  dir={isRtl ? 'rtl' : 'ltr'}
+>
+  <!-- Window Chrome Header -->
+  <div
+    class="flex items-center justify-between gap-2 border-b border-gray-100 bg-gray-50/80 px-4 py-2.5 dark:border-slate-800 dark:bg-slate-800/50"
+    dir={isRtl ? 'rtl' : 'ltr'}
+  >
+    <div class="flex min-w-0 items-center gap-2.5">
+      <!-- Window dots -->
+      <div class="flex shrink-0 items-center gap-1.5" dir="ltr">
+        <span class="inline-block h-2.5 w-2.5 rounded-full bg-red-400/90" aria-hidden="true"></span>
+        <span class="inline-block h-2.5 w-2.5 rounded-full bg-amber-400/90" aria-hidden="true"></span>
+        <span class="inline-block h-2.5 w-2.5 rounded-full bg-emerald-400/90" aria-hidden="true"></span>
+      </div>
+      <span class="truncate text-xs font-semibold text-gray-800 dark:text-gray-200">
+        {t.chromeTitle}
+      </span>
+    </div>
+
+    <div class="flex shrink-0 items-center gap-2 text-xs">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
+        <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        {t.statusBadge}
+      </span>
+      <span class="hidden rounded-full border border-primary/20 bg-primary/10 px-2.5 py-0.5 text-[11px] font-bold text-primary sm:inline-flex">
+        {t.roiBadge}
+      </span>
+    </div>
+  </div>
+
+  <!-- Content Body -->
+  <div class="space-y-4 p-4 sm:p-5">
+    <!-- Section 1: 4-Stage Pipeline -->
+    <div>
+      <div class="mb-2 flex items-center justify-between">
+        <span class={`text-[11px] font-bold ${trackingTitle} text-gray-500 uppercase dark:text-gray-400`}>
+          {t.pipelineHeading}
+        </span>
+        <span class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
+          {t.pipelineBadge}
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- Stage 01 -->
+        <div class="group relative rounded-xl border border-gray-100 bg-gray-50/80 p-3 shadow-xs transition-all hover:border-emerald-500/50 hover:bg-white dark:border-slate-800 dark:bg-slate-800/40 dark:hover:border-emerald-500/50 dark:hover:bg-slate-800/70">
+          <div class="mb-1.5 flex items-center justify-between border-b border-gray-200/50 pb-1 dark:border-slate-700/50">
+            <span class="text-[11px] font-bold text-emerald-600 dark:text-emerald-400">{t.s1Title}</span>
+            <span class="text-xs text-emerald-500 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" aria-hidden="true">{isRtl ? '←' : '→'}</span>
+          </div>
+          <div class="text-xs font-bold text-gray-900 dark:text-white">{t.s1Metric}</div>
+          <div class="mt-0.5 text-[11px] leading-tight text-gray-600 dark:text-gray-300">{t.s1Desc}</div>
+          <div class="mt-1 text-[10px] text-gray-400 dark:text-gray-500">{t.s1Sub}</div>
+        </div>
+
+        <!-- Stage 02 -->
+        <div class="group relative rounded-xl border border-gray-100 bg-gray-50/80 p-3 shadow-xs transition-all hover:border-primary/50 hover:bg-white dark:border-slate-800 dark:bg-slate-800/40 dark:hover:border-primary/50 dark:hover:bg-slate-800/70">
+          <div class="mb-1.5 flex items-center justify-between border-b border-gray-200/50 pb-1 dark:border-slate-700/50">
+            <span class="text-[11px] font-bold text-primary">{t.s2Title}</span>
+            <span class="text-xs text-primary transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" aria-hidden="true">{isRtl ? '←' : '→'}</span>
+          </div>
+          <div class="text-xs font-bold text-gray-900 dark:text-white">{t.s2Metric}</div>
+          <div class="mt-0.5 text-[11px] leading-tight text-gray-600 dark:text-gray-300">{t.s2Desc}</div>
+          <div class="mt-1 text-[10px] text-gray-400 dark:text-gray-500">{t.s2Sub}</div>
+        </div>
+
+        <!-- Stage 03 -->
+        <div class="group relative rounded-xl border border-gray-100 bg-gray-50/80 p-3 shadow-xs transition-all hover:border-purple-500/50 hover:bg-white dark:border-slate-800 dark:bg-slate-800/40 dark:hover:border-purple-500/50 dark:hover:bg-slate-800/70">
+          <div class="mb-1.5 flex items-center justify-between border-b border-gray-200/50 pb-1 dark:border-slate-700/50">
+            <span class="text-[11px] font-bold text-purple-600 dark:text-purple-400">{t.s3Title}</span>
+            <span class="text-xs text-purple-500 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5" aria-hidden="true">{isRtl ? '←' : '→'}</span>
+          </div>
+          <div class="text-xs font-bold text-gray-900 dark:text-white">{t.s3Metric}</div>
+          <div class="mt-0.5 text-[11px] leading-tight text-gray-600 dark:text-gray-300">{t.s3Desc}</div>
+          <div class="mt-1 text-[10px] text-gray-400 dark:text-gray-500">{t.s3Sub}</div>
+        </div>
+
+        <!-- Stage 04 -->
+        <div class="group relative rounded-xl border border-gray-100 bg-gray-50/80 p-3 shadow-xs transition-all hover:border-amber-500/50 hover:bg-white dark:border-slate-800 dark:bg-slate-800/40 dark:hover:border-amber-500/50 dark:hover:bg-slate-800/70">
+          <div class="mb-1.5 flex items-center justify-between border-b border-gray-200/50 pb-1 dark:border-slate-700/50">
+            <span class="text-[11px] font-bold text-amber-600 dark:text-amber-400">{t.s4Title}</span>
+            <span class="text-[10px] font-bold text-amber-600 dark:text-amber-400">{t.s4Badge}</span>
+          </div>
+          <div class="text-xs font-bold text-gray-900 dark:text-white">{t.s4Metric}</div>
+          <div class="mt-0.5 text-[11px] leading-tight text-gray-600 dark:text-gray-300">{t.s4Desc}</div>
+          <div class="mt-1 text-[10px] text-gray-400 dark:text-gray-500">{t.s4Sub}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2: Results & Traffic Metrics -->
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-12">
+      <!-- Left: 3 High-Impact Result Cards -->
+      <div class="space-y-2.5 lg:col-span-6">
+        <div class={`text-[11px] font-bold ${trackingTitle} text-gray-500 uppercase dark:text-gray-400`}>
+          {t.resultsHeading}
+        </div>
+
+        <div class="rounded-xl border border-gray-100 bg-gray-50/60 p-3 shadow-xs dark:border-slate-800 dark:bg-slate-800/30">
+          <div class="text-xs sm:text-sm font-bold text-emerald-600 dark:text-emerald-400">
+            {t.c1Metric}
+          </div>
+          <div class="mt-0.5 text-[11px] font-semibold text-gray-800 dark:text-gray-200">
+            {t.c1Desc}
+          </div>
+          <div class="mt-0.5 text-[10px] text-gray-500 dark:text-gray-400">
+            {t.c1Sub}
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-gray-100 bg-gray-50/60 p-3 shadow-xs dark:border-slate-800 dark:bg-slate-800/30">
+          <div class="text-xs sm:text-sm font-bold text-primary">
+            {t.c2Metric}
+          </div>
+          <div class="mt-0.5 text-[11px] font-semibold text-gray-800 dark:text-gray-200">
+            {t.c2Desc}
+          </div>
+          <div class="mt-0.5 text-[10px] text-gray-500 dark:text-gray-400">
+            {t.c2Sub}
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-gray-100 bg-gray-50/60 p-3 shadow-xs dark:border-slate-800 dark:bg-slate-800/30">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="text-xs sm:text-sm font-bold text-purple-600 dark:text-purple-400">
+              {t.c3MetricLabel}
+            </span>
+            <span class="inline-flex items-center gap-1.5 text-xs font-bold" dir="ltr">
+              <span class="text-gray-400">2.1%</span>
+              <span class="text-primary">→</span>
+              <span class="text-emerald-600 dark:text-emerald-400 font-extrabold">6.8%</span>
+            </span>
+          </div>
+          <div class="mt-0.5 text-[11px] font-semibold text-gray-800 dark:text-gray-200">
+            {t.c3Desc}
+          </div>
+          <div class="mt-0.5 text-[10px] text-gray-500 dark:text-gray-400">
+            {t.c3Sub}
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Traffic Scaling Chart + #1 Google Keywords -->
+      <div class="flex flex-col justify-between rounded-xl border border-gray-100 bg-gray-50/60 p-3.5 shadow-xs dark:border-slate-800 dark:bg-slate-800/30 lg:col-span-6">
+        <div>
+          <div class={`text-[11px] font-bold ${trackingTitle} text-gray-500 uppercase dark:text-gray-400`}>
+            {t.chartHeading}
+          </div>
+          <div class="mt-1 flex flex-wrap items-center gap-2">
+            <span class="text-xs font-bold text-primary">
+              {t.chartSubLabel}
+            </span>
+            <span class="inline-flex items-center gap-1.5 text-xs font-bold" dir="ltr">
+              <span class="text-gray-400">150/mo</span>
+              <span class="text-primary">→</span>
+              <span class="text-emerald-600 dark:text-emerald-400 font-extrabold">24,800/mo</span>
+            </span>
+          </div>
+
+          <!-- Growth Bar Chart -->
+          <div class="mt-2.5 rounded-lg border border-gray-200/60 bg-white p-2.5 dark:border-slate-700/60 dark:bg-slate-900" dir="ltr">
+            <div class="flex h-20 items-end justify-between gap-1.5 sm:gap-2 pt-1">
+              <div class="flex flex-1 flex-col items-center justify-end">
+                <div class="w-full rounded-t bg-slate-200 dark:bg-slate-700 h-[10px]"></div>
+                <span class="mt-1 text-[9px] text-gray-400">M1</span>
+              </div>
+              <div class="flex flex-1 flex-col items-center justify-end">
+                <div class="w-full rounded-t bg-slate-300 dark:bg-slate-700 h-[16px]"></div>
+                <span class="mt-1 text-[9px] text-gray-400">M2</span>
+              </div>
+              <div class="flex flex-1 flex-col items-center justify-end">
+                <div class="w-full rounded-t bg-primary/40 h-[26px]"></div>
+                <span class="mt-1 text-[9px] text-gray-400">M3</span>
+              </div>
+              <div class="flex flex-1 flex-col items-center justify-end">
+                <div class="w-full rounded-t bg-primary/60 h-[38px]"></div>
+                <span class="mt-1 text-[9px] text-gray-400">M4</span>
+              </div>
+              <div class="flex flex-1 flex-col items-center justify-end">
+                <div class="w-full rounded-t bg-primary/80 h-[48px]"></div>
+                <span class="mt-1 text-[9px] text-gray-400">M5</span>
+              </div>
+              <div class="flex flex-1 flex-col items-center justify-end">
+                <div class="w-full rounded-t bg-emerald-500/70 h-[58px]"></div>
+                <span class="mt-1 text-[9px] text-gray-400">M6</span>
+              </div>
+              <div class="flex flex-1 flex-col items-center justify-end">
+                <div class="w-full rounded-t bg-emerald-500/90 h-[66px]"></div>
+                <span class="mt-1 text-[9px] text-gray-400">M7</span>
+              </div>
+              <div class="flex flex-1 flex-col items-center justify-end">
+                <span class="text-[9px] font-extrabold text-emerald-600 dark:text-emerald-400 animate-pulse pb-0.5">24.8k▲</span>
+                <div class="w-full rounded-t bg-emerald-500 shadow-md h-[74px]"></div>
+                <span class="mt-1 text-[9px] font-bold text-emerald-600 dark:text-emerald-400">M8</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Verified Keywords Tracker -->
+        <div class="mt-2.5 rounded-lg border border-gray-200/60 bg-white p-2.5 dark:border-slate-700/60 dark:bg-slate-900">
+          <div class="text-[10px] font-bold text-amber-600 uppercase dark:text-amber-400">
+            {t.kwHeading}
+          </div>
+          <div class="mt-1 flex items-center justify-between gap-1.5">
+            <span class="truncate text-xs font-semibold text-gray-800 dark:text-gray-200">
+              {t.kw1Query}
+            </span>
+            <span class="inline-flex shrink-0 items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
+              ✓ {t.kw1Rank}
+            </span>
+          </div>
+          <div class="mt-1 flex items-center justify-between gap-1.5">
+            <span class="truncate text-xs font-semibold text-gray-800 dark:text-gray-200">
+              {t.kw2Query}
+            </span>
+            <span class="inline-flex shrink-0 items-center gap-1 rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold text-primary">
+              ✓ {t.kw2Rank}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Risk-Reversal Guarantees -->
+    <div class="border-t border-gray-100 pt-3 dark:border-slate-800">
+      <div class="grid grid-cols-1 gap-2 sm:grid-cols-3">
+        <div class="flex items-center justify-center gap-1.5 rounded-xl border border-emerald-500/20 bg-emerald-500/5 px-2.5 py-1.5 text-center text-[11px] font-semibold text-emerald-700 dark:text-emerald-400">
+          <span class="font-bold">✓</span>
+          <span class="truncate">{t.g1}</span>
+        </div>
+        <div class="flex items-center justify-center gap-1.5 rounded-xl border border-primary/20 bg-primary/5 px-2.5 py-1.5 text-center text-[11px] font-semibold text-primary">
+          <span class="font-bold">✓</span>
+          <span class="truncate">{t.g2}</span>
+        </div>
+        <div class="flex items-center justify-center gap-1.5 rounded-xl border border-amber-500/20 bg-amber-500/5 px-2.5 py-1.5 text-center text-[11px] font-semibold text-amber-700 dark:text-amber-400">
+          <span class="font-bold">✓</span>
+          <span class="truncate">{t.g3}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

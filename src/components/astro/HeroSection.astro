@@ -2,7 +2,7 @@
 import { getDictionary } from '@/i18n/get-dictionary';
 import { languages, type SupportedLanguage } from '@/types/language';
 import { createTranslator } from '@/i18n/translate';
-import OptimizedImage from './OptimizedImage.astro';
+import HeroConversionDashboard from './HeroConversionDashboard.astro';
 
 interface Props {
   lang: SupportedLanguage;
@@ -12,7 +12,6 @@ const { lang } = Astro.props;
 const dictionary = await getDictionary(lang);
 const isRtl = languages[lang]?.direction === 'rtl';
 
-// Helper to translate strings
 const t = createTranslator(dictionary);
 const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 'font-persian';
 
@@ -21,16 +20,57 @@ const linkPath = (path: string) => {
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
   return `/${lang}${cleanPath.endsWith('/') ? cleanPath : cleanPath + '/'}`;
 };
+
+const trustStats =
+  lang === 'fa'
+    ? ['✓ مشاوره و آنالیز رایگان', '✓ پاسخگویی زیر ۲ ساعت', '✓ تضمین نمره سرعت و سئو', '✓ بدون قراردادهای قفل‌کننده']
+    : lang === 'ar'
+      ? ['✓ تدقيق واستشارة مجانية', '✓ رد خلال ساعتين', '✓ ضمان السرعة والسيو', '✓ عقود مرنة بدون التزام طويل']
+      : ['✓ Free 30-Min Strategy Call', '✓ Reply Under 2 Hours', '✓ CWV & Ranking Guarantee', '✓ No Long-Term Lock-In'];
+
+const auditPlaceholder =
+  lang === 'fa'
+    ? 'آدرس سایت شما (مثلاً yoursite.ir) برای آنالیز رایگان...'
+    : lang === 'ar'
+      ? 'أدخل رابط موقعك (مثل yoursite.com) للتدقيق المجاني...'
+      : 'Enter your website URL (e.g. yourcompany.com) for a free audit...';
+
+const auditBtnText =
+  lang === 'fa'
+    ? 'دریافت آنالیز رایگان'
+    : lang === 'ar'
+      ? 'احصل على تدقيق مجاني'
+      : 'Get Free Audit';
 ---
 
 <section
-  class="overflow-hidden bg-linear-to-b from-primary/10 via-background to-background pt-32 pb-20 font-sans md:pt-40 md:pb-32"
+  class="relative overflow-hidden bg-linear-to-b from-primary/10 via-background to-background pt-28 pb-16 font-sans md:pt-36 md:pb-24"
+  dir={isRtl ? 'rtl' : 'ltr'}
 >
-  <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
-      <div class="col-span-1 text-center lg:col-span-6 lg:text-start">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-8">
+      <!-- Left Column: High-Converting Value Proposition, Instant URL Audit & CTAs -->
+      <div class="col-span-1 space-y-6 text-center lg:col-span-5 lg:text-start">
+        <div class="inline-flex flex-wrap items-center justify-center gap-2 lg:justify-start">
+          <span class="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-bold text-primary">
+            {lang === 'fa'
+              ? 'سئو و طراحی اختصاصی سایت · وب اِی‌بی‌سی'
+              : lang === 'ar'
+                ? 'سيو وتصميم المواقع الاحترافية · WebABC'
+                : 'Web Engineering & Technical SEO · WebABC'}
+          </span>
+          <span class="inline-flex items-center gap-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2.5 py-1 text-xs font-bold text-emerald-600 dark:text-emerald-400">
+            <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            {lang === 'fa'
+              ? '★ رضایت ۴.۹ از ۵ · ۱۵۰+ پروژه موفق'
+              : lang === 'ar'
+                ? '★ تقييم 4.9/5 · أكثر من 150 عميل'
+                : '★ 4.9/5 Rating · 150+ Clients'}
+          </span>
+        </div>
+
         <h1
-          class={`text-4xl md:text-6xl font-bold mb-6 leading-normal text-gray-900 dark:text-white ${fontClass}`}
+          class={`text-3xl sm:text-4xl lg:text-[2.6rem] font-extrabold leading-tight tracking-tight text-gray-900 dark:text-white ${fontClass}`}
         >
           {
             t('home.hero.title', {
@@ -38,85 +78,152 @@ const linkPath = (path: string) => {
             })
           }
         </h1>
+
         <p
-          class={`text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto lg:mx-0 ${fontClass}`}
+          class={`text-base sm:text-lg leading-relaxed text-gray-600 dark:text-gray-300 max-w-xl mx-auto lg:mx-0 ${fontClass}`}
         >
           {
             t('home.hero.description', {
               fallback:
-                'We help businesses grow online with professional web development and SEO strategies that deliver real results.',
+                'WebABC is a full-service digital agency specializing in custom web development, technical SEO, and data-driven growth strategies for businesses across the Middle East.',
             })
           }
         </p>
-        <div class={`flex flex-col sm:flex-row gap-4 justify-center lg:justify-start ${fontClass}`}>
-          <a
-            href={linkPath('/services')}
-            class="rounded-lg bg-primary px-8 py-4 text-center font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+
+        <!-- CRO Micro-Funnel: Instant Website / SEO Audit Bar -->
+        <form
+          id="hero-instant-audit-form"
+          data-audit-msg={
+            lang === 'fa'
+              ? 'لطفاً سایت من ({url}) را آنالیز کرده و نقشه راه سئو و بهبود نرخ تبدیل را ارسال فرمایید.'
+              : lang === 'ar'
+                ? 'يرجى تدقيق موقعي ({url}) وإرسال خارطة طريق تحسين السيو ومعدل التحويل.'
+                : 'Please audit my website ({url}) and share an SEO & conversion roadmap.'
+          }
+          class="mx-auto flex max-w-xl flex-col gap-2 rounded-2xl border border-gray-200 bg-white/90 p-2 shadow-lg backdrop-blur-md sm:flex-row dark:border-slate-800 dark:bg-slate-900/90 lg:mx-0"
+        >
+          <label for="hero-audit-url" class="sr-only">{auditPlaceholder}</label>
+          <input
+            id="hero-audit-url"
+            type="text"
+            required
+            placeholder={auditPlaceholder}
+            class="h-11 w-full grow rounded-xl border-0 bg-transparent px-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-0 dark:text-white dark:placeholder:text-gray-500"
+            dir="ltr"
+          />
+          <button
+            type="submit"
+            class="inline-flex h-11 shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-xl bg-primary px-5 text-sm font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/95 hover:shadow-lg focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
-            {t('home.hero.primaryCta', { fallback: 'Explore Services' })}
+            <span>{auditBtnText}</span>
+            <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
+          </button>
+        </form>
+
+        <!-- Secondary Action Links -->
+        <div class={`flex flex-wrap items-center justify-center gap-3 lg:justify-start ${fontClass}`}>
+          <button
+            type="button"
+            data-open-consultation
+            class="inline-flex h-10 cursor-pointer items-center gap-1.5 rounded-xl border border-primary/20 bg-primary/10 px-4 text-xs font-bold text-primary transition-all hover:bg-primary hover:text-primary-foreground shadow-xs"
+          >
+            <span>{t('common.freeConsultation', { fallback: 'Free Consultation' })}</span>
+            <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
+          </button>
+
+          <a
+            href={linkPath('/tools/cost-calculator')}
+            class="inline-flex h-10 items-center gap-1.5 rounded-xl border border-gray-200 bg-white px-4 text-xs font-semibold text-gray-700 shadow-xs transition-all hover:border-primary/40 hover:text-primary dark:border-slate-800 dark:bg-slate-800 dark:text-gray-200"
+          >
+            <span>⚡</span>
+            <span>
+              {
+                lang === 'fa'
+                  ? 'محاسبه آنلاین هزینه پروژه'
+                  : lang === 'ar'
+                    ? 'حاسبة تكلفة المشروع الفورية'
+                    : 'Estimate Project Cost'
+              }
+            </span>
           </a>
+
           <a
             href={linkPath('/portfolio')}
-            class="flex items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-8 py-4 text-gray-700 transition-all hover:bg-gray-50 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700"
+            class="inline-flex h-10 items-center gap-1 rounded-xl border border-transparent px-3.5 text-xs font-semibold text-gray-600 transition-colors hover:text-primary dark:text-gray-300 dark:hover:text-primary"
           >
-            {t('home.hero.secondaryCta', { fallback: 'View Portfolio' })}
-            {
-              isRtl ? (
-                <svg
-                  aria-hidden="true"
-                  class="h-4 w-4"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  aria-hidden="true"
-                  class="h-4 w-4"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
-              )
-            }
+            <span>{t('home.hero.secondaryCta', { fallback: 'View Portfolio' })} (16+)</span>
+            <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
           </a>
         </div>
-      </div>
-      <div class="col-span-1 lg:col-span-6">
-        <div class="relative">
-          <div
-            class="absolute inset-0 -z-10 scale-110 transform rounded-full bg-linear-to-tr from-primary/20 to-secondary/20 blur-3xl"
-          >
-          </div>
-          <OptimizedImage
-            src="/images/homepage-hero.webp"
-            srcset="/images/homepage-hero-480.webp 480w, /images/homepage-hero-665.webp 665w, /images/homepage-hero.webp 1024w"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 665px"
-            alt={t('home.hero.imageAlt', {
-              fallback: 'Digital marketing and web development illustration',
-            })}
-            width={665}
-            height={665}
-            class="h-auto w-full rounded-lg object-cover shadow-2xl"
-            loading="eager"
-            fetchpriority="high"
-          />
+
+        <!-- Risk-Reversal & SLA Guarantees -->
+        <div class="flex flex-wrap items-center justify-center gap-2 pt-1 lg:justify-start">
+          {
+            trustStats.map((stat, idx) => (
+              <span
+                class={`inline-flex items-center rounded-lg border px-2.5 py-1 text-xs font-medium ${
+                  idx === 0
+                    ? 'border-emerald-500/20 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 font-bold'
+                    : 'border-gray-100 bg-gray-50/80 text-gray-600 dark:border-slate-800 dark:bg-slate-800/50 dark:text-gray-300'
+                }`}
+              >
+                {stat}
+              </span>
+            ))
+          }
         </div>
+      </div>
+
+      <!-- Right Column: Interactive Client Conversion & ROI Dashboard -->
+      <div class="col-span-1 w-full lg:col-span-7">
+        <HeroConversionDashboard lang={lang} />
       </div>
     </div>
   </div>
 </section>
+
+<script is:inline>
+  (() => {
+    function initHeroAuditForm() {
+      const form = document.getElementById('hero-instant-audit-form');
+      const urlInput = document.getElementById('hero-audit-url');
+      if (!form || form.dataset.bound === 'true') return;
+      form.dataset.bound = 'true';
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const rawUrl = (urlInput && urlInput.value ? urlInput.value.trim() : '');
+        const modalMsgInput = document.getElementById('consultation-message');
+
+        if (modalMsgInput && rawUrl) {
+          const auditTemplate =
+            form.dataset.auditMsg ||
+            'Please audit my website ({url}) and share an SEO & conversion roadmap.';
+          modalMsgInput.value = auditTemplate.replace('{url}', rawUrl);
+        }
+        
+        const dialog = document.getElementById('consultation-modal');
+        if (dialog && typeof dialog.showModal === 'function') {
+          dialog.showModal();
+        }
+      });
+
+      // Bind data-open-consultation buttons
+      document.querySelectorAll('[data-open-consultation]').forEach((btn) => {
+        if (btn.dataset.bound === 'true') return;
+        btn.dataset.bound = 'true';
+        btn.addEventListener('click', () => {
+          const dialog = document.getElementById('consultation-modal');
+          if (dialog && typeof dialog.showModal === 'function') {
+            dialog.showModal();
+          }
+        });
+      });
+    }
+
+    document.addEventListener('astro:page-load', initHeroAuditForm);
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      initHeroAuditForm();
+    }
+  })();
+</script>
