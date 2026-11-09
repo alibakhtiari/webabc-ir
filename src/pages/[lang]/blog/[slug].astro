@@ -868,7 +868,7 @@ const activeServiceTool =
       <!-- Contextual Internal Linking: Related Services & Free Interactive Tools -->
       <section
         aria-label="Related Services and Tools"
-        class="my-12 overflow-hidden rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/5 via-white to-primary/10 p-6 md:p-8 shadow-sm dark:from-primary/10 dark:via-slate-900 dark:to-primary/5 dark:border-primary/30"
+        class="my-12 overflow-hidden rounded-3xl border border-primary/20 bg-linear-to-br from-primary/5 via-white to-primary/10 p-6 md:p-8 shadow-sm dark:from-primary/10 dark:via-slate-900 dark:to-primary/5 dark:border-primary/30"
       >
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div class="space-y-2 max-w-xl">
@@ -936,7 +936,7 @@ const activeServiceTool =
                   href={`/${supportedLang}/blog/${rel.slug}/`}
                   class="group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
                 >
-                  <div class="relative aspect-16/9 overflow-hidden bg-gray-100 dark:bg-slate-950">
+                  <div class="relative aspect-video overflow-hidden bg-gray-100 dark:bg-slate-950">
                     <OptimizedImage
                       src={rel.image}
                       alt={rel.title}
@@ -948,7 +948,7 @@ const activeServiceTool =
                     {(() => {
                       const relLabel = getCategoryLabel(rel.category, supportedLang);
                       return relLabel ? (
-                        <span class="absolute top-2.5 start-2.5 rounded-md bg-black/60 backdrop-blur-xs px-2 py-0.5 text-[10px] font-bold text-white uppercase">
+                        <span class="absolute top-2.5 inset-s-2.5 rounded-md bg-black/60 backdrop-blur-xs px-2 py-0.5 text-[10px] font-bold text-white uppercase">
                           {relLabel}
                         </span>
                       ) : null;
