@@ -38,7 +38,7 @@ const faqList = [1, 2, 3, 4]
 
   <!-- Services Details -->
   <section class="bg-white dark:bg-slate-950">
-    <div class="mx-auto max-w-6xl">
+    <div class="mx-auto max-w-7xl">
       <h2 class="mb-12 text-center font-persian text-3xl font-bold">
         {t('webDesign.ourServices', 'Web Design Offerings')}
       </h2>
@@ -75,7 +75,7 @@ const faqList = [1, 2, 3, 4]
       if (!results || !Array.isArray(results.items) || results.items.length === 0) return null;
       return (
         <section class="bg-white dark:bg-slate-950">
-          <div class="mx-auto max-w-6xl">
+          <div class="mx-auto max-w-7xl">
             <h2 class="mb-12 text-center font-persian text-3xl font-bold">{results.title}</h2>
             <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
               {results.items.map((item: any) => (
@@ -99,7 +99,7 @@ const faqList = [1, 2, 3, 4]
   <section
     class="rounded-3xl border border-gray-100 bg-gray-50/50 p-8 py-16 dark:border-slate-800 dark:bg-slate-900"
   >
-    <div class="mx-auto max-w-6xl">
+    <div class="mx-auto max-w-7xl">
       <h2 class="mb-16 text-center font-persian text-3xl font-bold">
         {t('webDesign.process.title', 'Our Design & Prototyping Process')}
       </h2>

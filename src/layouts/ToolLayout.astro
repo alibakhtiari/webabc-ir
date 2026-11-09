@@ -99,7 +99,7 @@ const defaultBreadcrumbs = breadcrumbs || [
   <section
     class="border-b border-gray-100 bg-linear-to-b from-primary/10 via-background to-background pt-24 pb-12 font-sans md:pt-40 md:pb-24 dark:border-slate-800"
   >
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-3xl text-center">
         <Breadcrumbs items={defaultBreadcrumbs} lang={lang} centered={true} />
         <h1
@@ -122,8 +122,8 @@ const defaultBreadcrumbs = breadcrumbs || [
   <!-- Supporting content: how it works + when to use (M4 depth) -->
   {
     guide && (
-      <section class={`container mx-auto mt-16 px-4 ${fontClass}`}>
-        <div class="mx-auto max-w-4xl space-y-10">
+      <section class={`container mx-auto max-w-7xl mt-16 px-4 sm:px-6 lg:px-8 ${fontClass}`}>
+        <div class="mx-auto max-w-7xl space-y-10">
           {guide.how && (
             <div class="space-y-3">
               <h2 class="text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">

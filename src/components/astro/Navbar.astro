@@ -60,12 +60,12 @@ const waDirectLabel =
       class="flex items-center justify-between rounded-full border border-white/20 bg-white/70 px-6 py-3 shadow-lg backdrop-blur-xl dark:border-slate-800/80 dark:bg-slate-900/80"
     >
       <!-- Brand Logo -->
-      <a href={linkPath('')} class="flex items-center space-x-2" aria-label={t('common.home')}>
-        <Logo class="xs:w-40 h-auto w-35 sm:w-45 xl:w-65" />
+      <a href={linkPath('')} class="flex items-center space-x-2 shrink-0" aria-label={t('common.home')}>
+        <Logo class="h-8 w-auto sm:h-9 xl:h-10 shrink-0" />
       </a>
 
       <!-- Desktop Navigation Menu -->
-      <nav class="mx-4 hidden grow items-center justify-center gap-6 xl:flex">
+      <nav class="mx-4 hidden grow items-center justify-center gap-4 xl:gap-6 lg:flex">
         <!-- Services Mega Menu -->
         <div class="group relative">
           <button
@@ -417,7 +417,7 @@ const waDirectLabel =
       </nav>
 
       <!-- Desktop Right-Side Actions -->
-      <div class="hidden items-center gap-4 xl:flex">
+      <div class="hidden items-center gap-3 xl:gap-4 lg:flex">
         <!-- Language Select -->
         <div class="group relative">
           <button
@@ -508,7 +508,7 @@ const waDirectLabel =
       </div>
 
       <!-- Mobile Controls -->
-      <div class="flex items-center gap-3 xl:hidden">
+      <div class="flex items-center gap-3 lg:hidden">
         <!-- Mobile Language Selector -->
         <div class="relative">
           <button

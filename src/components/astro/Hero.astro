@@ -35,7 +35,7 @@ const fontClass = lang === 'en' ? 'font-sans' : lang === 'ar' ? 'font-arabic' : 
 <section
   class={`relative overflow-hidden ${heroImage ? 'pt-28 pb-16 md:pt-32 md:pb-24' : 'pt-36 pb-20'} ${gradient} ${className}`}
 >
-  <div class={`relative z-10 container mx-auto px-4 ${heroImage ? 'max-w-6xl' : 'max-w-4xl'}`}>
+  <div class={`relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 ${heroImage ? 'max-w-7xl' : 'max-w-4xl'}`}>
     <Breadcrumbs items={breadcrumbs} lang={lang} centered={centered} />
 
     <div
