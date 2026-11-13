@@ -96,23 +96,23 @@ const guaranteeList = [
 
   <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Header -->
-    <div class="mx-auto mb-14 max-w-3xl text-center">
+    <div class="mx-auto mb-14 max-w-4xl text-center">
       <div class="mb-3 flex justify-center">
-        <span class="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1 text-xs font-semibold text-primary">
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary">
           <span class="h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></span>
           {t('benefits.sectionTag', { fallback: 'Why WebABC' })}
         </span>
       </div>
 
-      <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+      <h2 class="mb-4 text-3xl font-extrabold tracking-tight text-balance text-gray-900 sm:text-4xl lg:text-5xl dark:text-white">
         {t('benefits.sectionTitle.prefix', { fallback: 'Why Choose ' })}
-        <span class="bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+        <span class="text-primary">
           {t('benefits.sectionTitle.highlight', { fallback: 'WebABC' })}
         </span>
         {t('benefits.sectionTitle.suffix', { fallback: '?' })}
       </h2>
 
-      <p class="text-base text-gray-600 dark:text-gray-300 md:text-lg leading-relaxed">
+      <p class="mx-auto max-w-3xl text-base leading-relaxed text-gray-600 sm:text-lg dark:text-gray-300">
         {
           t('benefits.sectionDescription', {
             fallback:

@@ -25,6 +25,13 @@ WebABC is engineered for **sub-second speed, high-conversion CRO, and modern Gen
   - Section vertical rhythm: `py-16 md:py-24`.
 - **Zero Horizontal Overflow**: All wide grids, tables, and code snippets use `overflow-x-auto` or `break-words` with rigid viewport guardrails (`320px`, `390px`, `768px`, `1024px`, `1440px`).
 
+### Standardized Section Header Architecture
+- **Alignment**: Centered (`mx-auto mb-14 max-w-4xl text-center`). Eliminates legacy split/asymmetric desktop headers with large empty gaps.
+- **Eyebrow Badge**: `inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary` with live pulse dot indicator (`h-1.5 w-1.5 rounded-full bg-primary animate-pulse`).
+- **H2 Title Scale**: `mb-4 text-3xl font-extrabold tracking-tight text-balance text-gray-900 sm:text-4xl lg:text-5xl dark:text-white`. The central keyword phrase is emphasized with `<span class="text-primary">...</span>`.
+- **Subtitle / Description**: `mx-auto max-w-3xl text-base leading-relaxed text-gray-600 sm:text-lg dark:text-gray-300`.
+- **Section Bottom CTA**: Secondary discovery buttons ("View All Case Studies", "Explore 21 Free Tools") reside in a dedicated centered row (`mt-12 text-center`) below the card grid for balanced visual rhythm.
+
 ---
 
 ## 3. Typography & Fonts

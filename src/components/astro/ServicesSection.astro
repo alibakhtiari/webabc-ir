@@ -221,9 +221,10 @@ const processSteps = [
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
-    <div class="mx-auto mb-12 max-w-3xl text-center">
+    <div class="mx-auto mb-14 max-w-4xl text-center">
       <div class="mb-3 flex justify-center">
-        <span class="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary">
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary">
+          <span class="h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></span>
           {
             lang === 'fa'
               ? 'خدمات تخصصی دیجیتال · ۱۲ راهکار مهندسی'
@@ -242,7 +243,7 @@ const processSteps = [
         {t('services.sectionTitle.suffix', { fallback: ' Solutions for Your Business' })}
       </h2>
 
-      <p class="text-base sm:text-lg leading-relaxed text-balance text-gray-600 dark:text-gray-300">
+      <p class="mx-auto max-w-3xl text-base leading-relaxed text-gray-600 sm:text-lg dark:text-gray-300">
         {
           t('services.sectionDescription', {
             fallback:
