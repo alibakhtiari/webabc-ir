@@ -1,0 +1,12 @@
+---
+import Navbar from './astro/Navbar.astro';
+import { type SupportedLanguage } from '@/types/language';
+
+interface Props {
+  lang: SupportedLanguage;
+}
+
+const { lang } = Astro.props;
+---
+
+<Navbar lang={lang} />

@@ -1,0 +1,49 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  badge?: string;
+  glyph?: string;
+  lang?: string;
+  class?: string;
+}
+
+const {
+  title,
+  description,
+  href,
+  badge,
+  glyph = '⚡',
+  lang = 'en',
+  class: className = '',
+} = Astro.props;
+---
+
+<a
+  href={href}
+  class={`group flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-6 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 ${className}`}
+>
+  <div>
+    <div class="mb-3 flex items-center justify-between">
+      <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-lg">
+        {glyph}
+      </span>
+      {badge && (
+        <span class="rounded-md border border-primary/20 bg-primary/5 px-2 py-0.5 text-[11px] font-bold text-primary">
+          {badge}
+        </span>
+      )}
+    </div>
+    <h3 class="mb-2 text-base font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
+      {title}
+    </h3>
+    <p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300">
+      {description}
+    </p>
+  </div>
+  <div class="mt-4 pt-3 border-t border-gray-100 dark:border-slate-800 flex items-center justify-between text-xs font-bold text-primary">
+    <span>{lang === 'fa' ? 'اجرای رایگان ابزار' : lang === 'ar' ? 'تشغيل الأداة مجاناً' : 'Launch Free Tool'}</span>
+    <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">{lang === 'en' ? '→' : '←'}</span>
+  </div>
+</a>

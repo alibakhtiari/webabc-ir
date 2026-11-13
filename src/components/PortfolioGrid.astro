@@ -1,0 +1,61 @@
+---
+interface ProjectItem {
+  slug: string;
+  title: string;
+  description: string;
+  client: string;
+  category: string;
+  image?: string;
+  results?: Array<{ label: string; value: string }>;
+  technologies?: string[];
+}
+
+interface Props {
+  projects: ProjectItem[];
+  lang: string;
+  class?: string;
+}
+
+const { projects, lang, class: className = '' } = Astro.props;
+---
+
+<div class={`grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 ${className}`}>
+  {projects.map((proj) => (
+    <article class="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-gray-200/80 bg-white shadow-xs transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
+      <div class="p-6">
+        <span class="inline-block rounded-md bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary mb-3">
+          {proj.category}
+        </span>
+        <h3 class="text-xl font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white mb-2">
+          {proj.title}
+        </h3>
+        <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300 line-clamp-3 mb-4">
+          {proj.description}
+        </p>
+        {proj.results && proj.results.length > 0 && (
+          <div class="grid grid-cols-2 gap-2 pt-3 border-t border-gray-100 dark:border-slate-800 mb-4">
+            {proj.results.slice(0, 2).map((res) => (
+              <div class="rounded-lg bg-gray-50 p-2 text-center dark:bg-slate-800/60">
+                <div class="font-mono text-sm font-bold text-emerald-600 dark:text-emerald-400">
+                  {res.value}
+                </div>
+                <div class="text-[10px] text-gray-500 dark:text-gray-400 truncate">
+                  {res.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+      <div class="p-6 pt-0">
+        <a
+          href={`/${lang}/portfolio/${proj.slug}/`}
+          class="inline-flex w-full items-center justify-center gap-1.5 rounded-xl border border-gray-200 bg-gray-50 py-2.5 text-xs font-bold text-gray-700 transition-all hover:bg-primary hover:text-white hover:border-primary dark:border-slate-800 dark:bg-slate-800 dark:text-gray-200"
+        >
+          <span>{lang === 'fa' ? 'مطالعه نتایج و دستاوردها' : lang === 'ar' ? 'عرض دراسة الحالة' : 'View Full Case Study'}</span>
+          <span aria-hidden="true">{lang === 'en' ? '→' : '←'}</span>
+        </a>
+      </div>
+    </article>
+  ))}
+</div>
