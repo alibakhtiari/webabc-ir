@@ -126,6 +126,11 @@ export const STATIC_REDIRECTS: Record<string, string> = {
   '/en/blog/how-to-write-clickable-headlines': '/en/blog/seo-title-optimization-guide-2026/',
   '/fa/blog/how-to-write-clickable-headlines': '/fa/blog/seo-title-optimization-guide-2026/',
   '/ar/blog/how-to-write-clickable-headlines': '/ar/blog/seo-title-optimization-guide-2026/',
+
+  // Legacy unversioned seo-title-optimization-guide redirects directly to headline-analyzer tool
+  '/en/blog/seo-title-optimization-guide': '/en/tools/headline-analyzer/',
+  '/fa/blog/seo-title-optimization-guide': '/fa/tools/headline-analyzer/',
+  '/ar/blog/seo-title-optimization-guide': '/ar/tools/headline-analyzer/',
 };
 
 // ---------------------------------------------------------------------------

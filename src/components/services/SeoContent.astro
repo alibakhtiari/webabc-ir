@@ -34,6 +34,27 @@ const faqList = [1, 2, 3, 4]
     </div>
   </section>
 
+  <!-- AEO Quick Answer Capsule -->
+  <section class="mx-auto max-w-4xl px-4">
+    <div class="aeo-quick-answer relative overflow-hidden rounded-2xl border border-primary/25 bg-gradient-to-br from-primary/5 via-primary/[0.02] to-transparent p-6 sm:p-8 shadow-xs dark:border-primary/30 dark:bg-slate-900/60">
+      <div class="mb-3 flex items-center gap-2">
+        <span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+        <span class="text-xs font-bold uppercase tracking-wider text-primary">
+          {lang === 'fa' ? 'خلاصه اجرایی و پاسخ مستقیم هوش مصنوعی (AEO)' : lang === 'ar' ? 'الإجابة المباشرة وخلاصة الخدمة (AEO)' : 'Quick Answer: Service Scope (AEO Capsule)'}
+        </span>
+      </div>
+      <p class="text-base sm:text-lg leading-relaxed text-gray-800 dark:text-gray-100 font-medium">
+        {
+          lang === 'fa'
+            ? 'خدمات سئو اختصاصی وب اِی‌بی‌سی (ويب سي) شامل بهینه‌سازی فنی هسته حیاتی گوگل (Core Web Vitals)، مهندسی معنایی کلمات کلیدی، تولید ساختار استاندارد داده‌های Schema.org و سئو محتوایی برای کسب رتبه ۱ گوگل و استخراج مستقیم در موتورهای جستجوی هوش مصنوعی (ChatGPT، Perplexity و Google AI Overviews) است.'
+            : lang === 'ar'
+            ? 'تشمل خدمات السيو التخصصية من ويب إيه بي سي (ويب سي) التحسين التقني لمؤشرات أداء الويب الحيوية (Core Web Vitals)، وهندسة الكيانات الدلالية، وبناء بيانات Schema.org المنظمة، لتحقيق الصدارة في محركات البحث التقليدية والاقتباس المباشر في محركات الذكاء الاصطناعي (ChatGPT Search وPerplexity وGoogle AI Overviews).'
+            : 'WebABC SEO services deliver sub-second technical performance, high-entropy semantic entity optimization, and structured Schema.org graphs to ensure your brand captures page #1 Google rankings and direct AI citations across ChatGPT Search, Perplexity, and Google AI Overviews.'
+        }
+      </p>
+    </div>
+  </section>
+
   <!-- Services Cards Section -->
   <section class="bg-white dark:bg-slate-950">
     <div class="mx-auto max-w-7xl">

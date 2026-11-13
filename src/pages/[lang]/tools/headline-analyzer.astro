@@ -1027,6 +1027,13 @@ const faqSchema = buildFaqSchema(faqs);
       });
 
       analyzeBtn.addEventListener('click', analyzeHeadline);
+
+      // Pre-fill with optimized demo title on load for instant interactive preview
+      if (!input.value && I18N.demoTitle) {
+        input.value = I18N.demoTitle;
+        charCount.innerText = I18N.charCountFormat.replace('{cur}', input.value.trim().length);
+        analyzeHeadline();
+      }
     })();
   </script>
 
