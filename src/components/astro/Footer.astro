@@ -363,12 +363,14 @@ const phoneList = [
       <!-- Exact-match brand anchor to the locale homepage (brand query 2.5).
            The logo link above carries only an aria-label, so this visible
            "WebABC" link is additive — no existing nav label was removed. -->
-      <a
-        href={linkPath('')}
-        class="text-sm font-bold text-foreground/80 transition-colors hover:text-primary">WebABC</a
-      >
-      <p class={`text-foreground/70 mt-1 text-sm font-${lang === 'en' ? 'sans' : 'persian'}`}>
-        {t('common.copyright').replace('{year}', copyrightYear)}
+      <p class={`text-foreground/70 text-sm font-${lang === 'en' ? 'sans' : 'persian'} flex flex-wrap items-center justify-center gap-1.5`}>
+        <a
+          href={linkPath('')}
+          class="font-bold text-foreground/80 transition-colors hover:text-primary"
+          >WebABC</a
+        >
+        <span aria-hidden="true">·</span>
+        <span>{t('common.copyright').replace('{year}', copyrightYear)}</span>
       </p>
     </div>
   </div>

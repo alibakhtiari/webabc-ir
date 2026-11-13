@@ -205,7 +205,7 @@ worker.ts                      edge: geo-302, trailing-slash 301, .md noindex, c
 public/_redirects              redirect source #1
 public/llms.txt                language router; public/{lang}/llms.txt + llms-full.txt generated
 scripts/                       generators + gates (see §1)
-docs/audit/                    findings/, ACTION-PLAN.md, CTR baselines
+docs/audit/                    ACTION-PLAN.md, CTR baselines
 docs/BLOG-REWRITE-SPEC.md      binding content contract
 docs/GOOGLE-API-SETUP.md       credential restore procedure (no secrets in it)
 ```

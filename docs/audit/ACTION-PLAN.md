@@ -65,12 +65,14 @@ Shipped, verified against code and live tests, and locked. Kept as a permanent l
 | Tooling | Safe dependency updates & lint modernized | Safe minor/patch upgrades applied, TypeScript bumped to `6.0.3`, ESLint replaced with `astro check`, version bumped to `1.1.0`. | `add14c4` |
 | T3 | Remido title trim across en/fa/ar | Trimmed over-budget titles to cure SERP truncation: EN 65→58ch (`Remido – Kalimba E-Commerce & Warranty | WebABC Case Study`), FA 67→56ch, AR 61→54ch. Aligned in `llms-index.data.json`. | `f131abd` |
 | T2 | `(ويب سي)` brand in `/ar/` homepage title | Arabic homepage title updated to include brand string `(ويب سي)` (56 rendered characters) mirroring `/fa/` to capture 285 zero-click impressions at pos 4.9. | `f131abd` |
+| P-01 | Nov 7 Production Recovery & Content Refresh | Restored sitemap image assets (285 verified), corrected 9 localized editorial links, added AI catalog schema, fixed keyword density script (`ي`/`ك` and empty phrases), updated speed pricing guide and UTM guide across 3 locales. | `a1bf3af` |
+| P-02 | Pre-Publishing Checklist & Layout Standardization | Added `.aeo-quick-answer` definition blocks on SEO & Local SEO, interactive headline analyzer CRO demo, standardized `max-w-7xl` layout bounds across all pages/tools/services/CTA, enforced intrinsic SVG logo dimensions and minimum width, consolidated one-liner copyright footer. | `c0bb9fd` · `301121b` · `cf23547` |
 
 ---
 
 ### October 16 optimization release
 
-- **§0.1d / blog evidence correction (2026-10-16), commit `b12647b`:** Re-read latest October 14 GSC workbook; corrected competitor exclusion to Queries-only CTR (92/21,537 = 0.427%), documented equal 28-day decline (78→59 clicks; 24,572→6,299 impressions), and corrected `seo-best-practices` claims with inline Google evidence across en/fa/ar. Publish dates and prior links preserved; updatedDate advanced atomically. Manual validators accept legitimate modification dates; manifest covers nine EN posts. Version 1.3.0. Lint, full build, edge suite and edited-post checks pass. See [evidence review](./GSC-REVIEW-2026-10-16.md).
+- **§0.1d / blog evidence correction (2026-10-16), commit `b12647b`:** Re-read latest October 14 GSC workbook; corrected competitor exclusion to Queries-only CTR (92/21,537 = 0.427%), documented equal 28-day decline (78→59 clicks; 24,572→6,299 impressions), and corrected `seo-best-practices` claims with inline Google evidence across en/fa/ar. Publish dates and prior links preserved; updatedDate advanced atomically. Manual validators accept legitimate modification dates; manifest covers nine EN posts. Version 1.3.0. Lint, full build, edge suite and edited-post checks pass. (Evidence review recorded in commit `b12647b`).
 - **§0.1d deployment confirmed October 16:** Pushed through `65ed730`; Cloudflare Workers build `c7936cb3-ba40-4fba-ab6a-b16d46fb647f` succeeded. Live EN HTML returned `dateModified: 2026-10-16` and new AI-eligibility paragraph. Freeze three guide versions through November 13; read GSC after reporting lag. Below 100 impressions is inconclusive. At >=100 impressions with EN CTR <=0.297%, inspect query/snippet fit. This observation rule is not a causal claim.
 
 
@@ -85,6 +87,17 @@ Shipped, verified against code and live tests, and locked. Kept as a permanent l
 - **Content refresh:** Updated the existing speed-pricing and UTM campaign guides and the speed service in en/fa/ar. The pricing guide explains scope, quote comparison, and lab versus field verification. The UTM guide cites Google Analytics documentation for attribution and channel rules. The UTM builder preserves existing query parameters and fragments.
 - **Speed query baseline, Oct 10–Nov 6.** The exact FA query `قیمت بهینه سازی سرعت` produced zero clicks on 20 guide impressions at position 14.0 and zero clicks on 18 service impressions at 62.3. Compare the same query across both URLs 28 full days after deployment plus reporting lag. Record clicks, impressions, and position, and separate consultation clicks from verified inquiries.
 - **UTM baseline, Oct 10–Nov 6.** The EN builder had zero clicks on 903 impressions. Exact `url builder` had zero clicks on 347 impressions at position 30.3. Keep that query separate from campaign tagging intent. Check link generation on all three live tools within one day of deployment. Read the guide and tool separately after 28 full days plus reporting lag. Treat fewer than 100 target impressions as inconclusive for a snippet test.
+
+#### Search Console Baseline (November 6, 2026 cutoff)
+
+Web Search, domain property `sc-domain:webabc.ir`. Dates are inclusive and follow GSC's Pacific reporting calendar.
+
+| Property period | Clicks | Impressions | CTR | Avg. position |
+|---|---:|---:|---:|---:|
+| Oct 10–Nov 6 | 45 | 4,333 | 1.04% | 24.46 |
+| Sep 12–Oct 9 | 59 | 7,553 | 0.78% | 19.99 |
+| Oct 7–Nov 3 | 44 | 4,091 | 1.08% | 25.88 |
+| Sep 9–Oct 6 | 68 | 9,884 | 0.69% | 17.85 |
 
 ## 2. Active Falsifiability Clocks & Scheduled Roadmap
 
