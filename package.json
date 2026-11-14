@@ -40,5 +40,10 @@
     "sharp": "^0.35.5",
     "tailwindcss": "^4.3.5",
     "typescript": "^6.0.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "@emnapi/runtime": "1.11.3"
+    }
   }
 }
