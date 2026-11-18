@@ -681,13 +681,13 @@ const activeServiceTool =
       }
 
       <!-- Content Body -->
-      <article class="prose prose-lg mb-12 max-w-none font-persian dark:prose-invert">
+      <article class={`prose prose-lg mb-12 max-w-none ${fontClass} dark:prose-invert`}>
         <Content components={{ img: OptimizedImage }} />
       </article>
 
       <!-- EEAT Author Box Component -->
       <div
-        class="my-12 flex flex-col items-center gap-6 rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-xs md:flex-row md:items-start md:p-8 dark:border-slate-800 dark:bg-slate-900"
+        class={`my-12 flex flex-col items-center gap-6 rounded-2xl border border-gray-100 bg-white p-6 ${fontClass} shadow-xs md:flex-row md:items-start md:p-8 dark:border-slate-800 dark:bg-slate-900`}
       >
         <h2 class="sr-only">About the Author</h2>
         {
@@ -948,7 +948,7 @@ const activeServiceTool =
                     {(() => {
                       const relLabel = getCategoryLabel(rel.category, supportedLang);
                       return relLabel ? (
-                        <span class="absolute top-2.5 inset-s-2.5 rounded-md bg-black/60 backdrop-blur-xs px-2 py-0.5 text-[10px] font-bold text-white uppercase">
+                        <span class="absolute top-2.5 start-2.5 rounded-md bg-black/60 backdrop-blur-xs px-2 py-0.5 text-[10px] font-bold text-white uppercase">
                           {relLabel}
                         </span>
                       ) : null;
