@@ -2,9 +2,11 @@
 import { Picture } from 'astro:assets';
 import Layout from '@/layouts/Layout.astro';
 import Breadcrumbs from '@/components/astro/Breadcrumbs.astro';
+import FAQ from '@/components/astro/FAQ.astro';
 import { getLanguageStaticPaths, type SupportedLanguage, languages } from '@/types/language';
 import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
+import { breadcrumbId, canonicalPageUrl, webpageId, websiteId } from '@/utils/schemaIds';
 import enterpriseHeroImg from '@/assets/images/services/enterprise-automation.webp';
 
 export const getStaticPaths = getLanguageStaticPaths;
@@ -35,18 +37,53 @@ const heroSubtitle = t('enterpriseAutomation.heroSubtitle', {
 
 const breadcrumbs = [
   { label: t('common.home', { fallback: 'Home' }), url: `/${supportedLang}/` },
+  { label: t('services.title', { fallback: 'Services' }), url: `/${supportedLang}/services/` },
   { label: pageTitle },
 ];
+
+const pageUrl = canonicalPageUrl(`/${supportedLang}/enterprise-automation/`);
+const inLang = supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR';
+
+const faqItems = [
+  { question: t('enterpriseAutomation.q1'), answer: t('enterpriseAutomation.a1') },
+  { question: t('enterpriseAutomation.q2'), answer: t('enterpriseAutomation.a2') },
+  { question: t('enterpriseAutomation.q3'), answer: t('enterpriseAutomation.a3') },
+  { question: t('enterpriseAutomation.q4'), answer: t('enterpriseAutomation.a4') },
+];
+
+const quickAnswer =
+  supportedLang === 'fa'
+    ? 'اتوماسیون سازمانی و یکپارچه‌سازی اختصاصی CRM و ERP (سپیدار، راهکاران، زوهو و Salesforce) خدمتی مهندسی برای اتصال دوطرفه وب‌سایت، انبار، حسابداری و پورتال مشتریان B2B است که ثبت دستی سفارش‌ها را حذف کرده، پیش‌فاکتور تا فاکتور رسمی را خودکار می‌سازد و با صف‌های رویداد پایدار مانع از دست رفتن داده‌های فروش می‌شود.'
+    : supportedLang === 'ar'
+      ? 'أتمتة المؤسسات وتكامل أنظمة ERP وCRM المخصص (Zoho وSalesforce وOdoo والأنظمة المحاسبية) هي خدمة هندسية تربط الموقع الإلكتروني بالمخزون والمحاسبة وبوابات عملاء الشركات ثنائياً، لإلغاء الإدخال اليدوي وأتمتة مسار عروض الأسعار والفواتير عبر طوابير أحداث موثوقة.'
+      : 'Enterprise automation and custom CRM/ERP integration connects your web storefront and B2B client portal bi-directionally with ERP, inventory, and accounting systems (including Sepidar, Rahkaran, Zoho, Odoo, and Salesforce), automating quote-to-invoice workflows and eliminating manual data-entry bottlenecks through resilient event queues.';
 
 const enterpriseSchema = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'Service',
-      '@id': `https://webabc.ir/${supportedLang}/enterprise-automation/#service`,
-      url: `https://webabc.ir/${supportedLang}/enterprise-automation/`,
+      '@type': 'WebPage',
+      '@id': webpageId(pageUrl),
+      url: pageUrl,
       name: pageTitle,
       description: pageDescription,
+      inLanguage: inLang,
+      isPartOf: { '@id': websiteId(supportedLang) },
+      about: { '@id': 'https://webabc.ir/#organization' },
+      breadcrumb: { '@id': breadcrumbId(pageUrl) },
+      mainEntity: { '@id': `${pageUrl}#service` },
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['h1', '.aeo-quick-answer'],
+      },
+    },
+    {
+      '@type': 'Service',
+      '@id': `${pageUrl}#service`,
+      url: pageUrl,
+      name: pageTitle,
+      description: pageDescription,
+      mainEntityOfPage: { '@id': webpageId(pageUrl) },
       provider: {
         '@id': 'https://webabc.ir/#organization',
       },
@@ -60,44 +97,6 @@ const enterpriseSchema = {
           priceCurrency: supportedLang === 'fa' ? 'IRR' : 'USD',
         },
       },
-    },
-    {
-      '@type': 'FAQPage',
-      '@id': `https://webabc.ir/${supportedLang}/enterprise-automation/#faq`,
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: t('enterpriseAutomation.q1'),
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: t('enterpriseAutomation.a1'),
-          },
-        },
-        {
-          '@type': 'Question',
-          name: t('enterpriseAutomation.q2'),
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: t('enterpriseAutomation.a2'),
-          },
-        },
-        {
-          '@type': 'Question',
-          name: t('enterpriseAutomation.q3'),
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: t('enterpriseAutomation.a3'),
-          },
-        },
-        {
-          '@type': 'Question',
-          name: t('enterpriseAutomation.q4'),
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: t('enterpriseAutomation.a4'),
-          },
-        },
-      ],
     },
   ],
 };
@@ -127,13 +126,13 @@ const enterpriseSchema = {
 
           <!-- Badges -->
           <div class="flex flex-wrap items-center gap-2 pt-1">
-            <span class="inline-flex items-center gap-1 rounded-md border border-emerald-500/20 bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-600 dark:text-emerald-400">
+            <span class="inline-flex items-center gap-1 rounded-md border border-emerald-500/20 bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-700 dark:text-emerald-400">
               ✓ ERP & CRM Middleware
             </span>
-            <span class="inline-flex items-center gap-1 rounded-md border border-blue-500/20 bg-blue-500/10 px-2.5 py-1 text-xs font-medium text-blue-600 dark:text-blue-400">
+            <span class="inline-flex items-center gap-1 rounded-md border border-blue-500/20 bg-blue-500/10 px-2.5 py-1 text-xs font-medium text-blue-700 dark:text-blue-400">
               ✓ B2B Quote-to-Invoice
             </span>
-            <span class="inline-flex items-center gap-1 rounded-md border border-purple-500/20 bg-purple-500/10 px-2.5 py-1 text-xs font-medium text-purple-600 dark:text-purple-400">
+            <span class="inline-flex items-center gap-1 rounded-md border border-purple-500/20 bg-purple-500/10 px-2.5 py-1 text-xs font-medium text-purple-700 dark:text-purple-400">
               ✓ Resilient Event Queues
             </span>
           </div>
@@ -142,21 +141,26 @@ const enterpriseSchema = {
           <div class={`flex flex-col sm:flex-row gap-3 pt-2 ${fontClass}`}>
             <a
               href={`/${supportedLang}/consultation/`}
-              class="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 text-sm font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary"
+              class="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 text-sm font-bold text-primary-foreground shadow-md transition-colors hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary"
             >
               <span>{t('enterpriseAutomation.consultationBtn')}</span>
               <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
             </a>
             <a
-              href="#cases"
-              class="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-6 text-sm font-semibold text-gray-700 transition-all hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700"
+              href={`/${supportedLang}/tools/cost-calculator/`}
+              class="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-6 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700"
             >
-              <span>{t('enterpriseAutomation.exploreCases')}</span>
-              <span aria-hidden="true">↓</span>
+              <span>
+                {supportedLang === 'fa'
+                  ? 'برآورد هزینه پورتال و اتوماسیون'
+                  : supportedLang === 'ar'
+                    ? 'حاسبة تكلفة الأتمتة'
+                    : 'Estimate Portal & API Scope'}
+              </span>
             </a>
             <a
               href="tel:+989125811880"
-              class="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-4 text-sm font-semibold text-primary transition-all hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700"
+              class="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-4 text-sm font-semibold text-primary transition-colors hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700"
               title={supportedLang === 'fa' ? 'تماس مستقیم با سرپرست فنی' : 'Direct Call'}
             >
               <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -185,7 +189,17 @@ const enterpriseSchema = {
     </div>
   </section>
 
-  <div class={`mx-auto w-full max-w-7xl px-4 pt-16 pb-20 sm:px-6 lg:px-8 ${fontClass}`}>
+  <div class={`mx-auto w-full max-w-7xl px-4 pt-12 pb-20 sm:px-6 lg:px-8 ${fontClass}`}>
+    <!-- AEO Quick Answer Capsule -->
+    <aside
+      aria-label={supportedLang === 'fa' ? 'خلاصه اتوماسیون سازمانی' : supportedLang === 'ar' ? 'ملخص الخدمة' : 'Quick Overview'}
+      class="aeo-quick-answer mb-16 rounded-2xl border-s-4 border-primary bg-primary/5 p-6 dark:bg-slate-900/80"
+    >
+      <p class="text-sm leading-relaxed text-gray-800 sm:text-base dark:text-gray-200">
+        {quickAnswer}
+      </p>
+    </aside>
+
     <!-- Section: The Bottlenecks -->
     <div>
       <div class="text-center">
@@ -198,7 +212,7 @@ const enterpriseSchema = {
       </div>
 
       <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-2xl border border-red-100 bg-red-50/40 p-6 transition-all hover:shadow-md dark:border-red-950/40 dark:bg-red-950/10">
+        <div class="rounded-2xl border border-red-100 bg-red-50/40 p-6 transition-shadow hover:shadow-md dark:border-red-950/40 dark:bg-red-950/10">
           <div class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">[BOTTLENECK 01]</div>
           <h3 class="mt-2 text-base font-bold text-gray-900 dark:text-white">
             {t('enterpriseAutomation.pain1Title')}
@@ -208,7 +222,7 @@ const enterpriseSchema = {
           </p>
         </div>
 
-        <div class="rounded-2xl border border-red-100 bg-red-50/40 p-6 transition-all hover:shadow-md dark:border-red-950/40 dark:bg-red-950/10">
+        <div class="rounded-2xl border border-red-100 bg-red-50/40 p-6 transition-shadow hover:shadow-md dark:border-red-950/40 dark:bg-red-950/10">
           <div class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">[BOTTLENECK 02]</div>
           <h3 class="mt-2 text-base font-bold text-gray-900 dark:text-white">
             {t('enterpriseAutomation.pain2Title')}
@@ -218,7 +232,7 @@ const enterpriseSchema = {
           </p>
         </div>
 
-        <div class="rounded-2xl border border-red-100 bg-red-50/40 p-6 transition-all hover:shadow-md dark:border-red-950/40 dark:bg-red-950/10">
+        <div class="rounded-2xl border border-red-100 bg-red-50/40 p-6 transition-shadow hover:shadow-md dark:border-red-950/40 dark:bg-red-950/10">
           <div class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">[BOTTLENECK 03]</div>
           <h3 class="mt-2 text-base font-bold text-gray-900 dark:text-white">
             {t('enterpriseAutomation.pain3Title')}
@@ -228,7 +242,7 @@ const enterpriseSchema = {
           </p>
         </div>
 
-        <div class="rounded-2xl border border-red-100 bg-red-50/40 p-6 transition-all hover:shadow-md dark:border-red-950/40 dark:bg-red-950/10">
+        <div class="rounded-2xl border border-red-100 bg-red-50/40 p-6 transition-shadow hover:shadow-md dark:border-red-950/40 dark:bg-red-950/10">
           <div class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">[BOTTLENECK 04]</div>
           <h3 class="mt-2 text-base font-bold text-gray-900 dark:text-white">
             {t('enterpriseAutomation.pain4Title')}
@@ -252,7 +266,7 @@ const enterpriseSchema = {
       </div>
 
       <div class="mt-10 grid gap-6 md:grid-cols-2">
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs transition-all hover:border-primary/50 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs transition-colors hover:border-primary/50 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
           <div class="flex items-center justify-between border-b border-gray-100 pb-3 dark:border-slate-800" dir={isRtl ? 'rtl' : 'ltr'}>
             <span class="text-xs font-semibold text-primary">INTEGRATION 01 · ERP MIDDLEWARE & BI-DIRECTIONAL SYNC</span>
             <span class="inline-flex rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">Zero Loss</span>
@@ -267,7 +281,7 @@ const enterpriseSchema = {
           </div>
         </div>
 
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs transition-all hover:border-primary/50 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs transition-colors hover:border-primary/50 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
           <div class="flex items-center justify-between border-b border-gray-100 pb-3 dark:border-slate-800" dir={isRtl ? 'rtl' : 'ltr'}>
             <span class="text-xs font-semibold text-primary">INTEGRATION 02 · CRM PIPELINES & OMNICHANNEL LEADS</span>
             <span class="inline-flex rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">Automated</span>
@@ -282,7 +296,7 @@ const enterpriseSchema = {
           </div>
         </div>
 
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs transition-all hover:border-primary/50 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs transition-colors hover:border-primary/50 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
           <div class="flex items-center justify-between border-b border-gray-100 pb-3 dark:border-slate-800" dir={isRtl ? 'rtl' : 'ltr'}>
             <span class="text-xs font-semibold text-primary">INTEGRATION 03 · B2B SELF-SERVICE CLIENT PORTAL</span>
             <span class="inline-flex rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">High Retention</span>
@@ -297,7 +311,7 @@ const enterpriseSchema = {
           </div>
         </div>
 
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs transition-all hover:border-primary/50 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs transition-colors hover:border-primary/50 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
           <div class="flex items-center justify-between border-b border-gray-100 pb-3 dark:border-slate-800" dir={isRtl ? 'rtl' : 'ltr'}>
             <span class="text-xs font-semibold text-primary">INTEGRATION 04 · QUOTE-TO-INVOICE & RESILIENT QUEUES</span>
             <span class="inline-flex rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">99.99% Uptime</span>
@@ -332,7 +346,7 @@ const enterpriseSchema = {
 
       <div class="mt-10 space-y-8">
         <!-- Case 1: Mapfan -->
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-slate-800 dark:bg-slate-900 sm:p-8">
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900 sm:p-8">
           <div class="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 pb-4 dark:border-slate-800">
             <div>
               <span class="text-xs font-semibold text-primary uppercase">Case 01 · Industrial Automation & Portals</span>
@@ -340,7 +354,7 @@ const enterpriseSchema = {
                 {t('enterpriseAutomation.case1Name')}
               </h3>
             </div>
-            <span class="inline-flex items-center rounded-full bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-600 dark:text-blue-400">
+            <span class="inline-flex items-center rounded-full bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-700 dark:text-blue-400">
               {t('enterpriseAutomation.case1Badge')}
             </span>
           </div>
@@ -365,7 +379,7 @@ const enterpriseSchema = {
             </div>
 
             <div class="rounded-xl border border-blue-500/30 bg-blue-50/40 p-4 dark:border-blue-500/20 dark:bg-blue-950/20">
-              <div class="text-xs font-bold text-blue-600 dark:text-blue-400">
+              <div class="text-xs font-bold text-blue-700 dark:text-blue-400">
                 [03 · {t('enterpriseAutomation.case1ResultLabel')}]
               </div>
               <p class="mt-2 text-sm leading-relaxed font-semibold text-gray-900 dark:text-white">
@@ -386,7 +400,7 @@ const enterpriseSchema = {
         </div>
 
         <!-- Case 2: Ramzarz Negaran -->
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-slate-800 dark:bg-slate-900 sm:p-8">
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900 sm:p-8">
           <div class="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 pb-4 dark:border-slate-800">
             <div>
               <span class="text-xs font-semibold text-primary uppercase">Case 02 · Fintech & Real-Time Sync</span>
@@ -394,7 +408,7 @@ const enterpriseSchema = {
                 {t('enterpriseAutomation.case2Name')}
               </h3>
             </div>
-            <span class="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+            <span class="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-700 dark:text-emerald-400">
               {t('enterpriseAutomation.case2Badge')}
             </span>
           </div>
@@ -419,7 +433,7 @@ const enterpriseSchema = {
             </div>
 
             <div class="rounded-xl border border-emerald-500/30 bg-emerald-50/40 p-4 dark:border-emerald-500/20 dark:bg-emerald-950/20">
-              <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400">
+              <div class="text-xs font-bold text-emerald-700 dark:text-emerald-400">
                 [03 · {t('enterpriseAutomation.case2ResultLabel')}]
               </div>
               <p class="mt-2 text-sm leading-relaxed font-semibold text-gray-900 dark:text-white">
@@ -440,7 +454,7 @@ const enterpriseSchema = {
         </div>
 
         <!-- Case 3: Mehromah Qazvin -->
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-slate-800 dark:bg-slate-900 sm:p-8">
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900 sm:p-8">
           <div class="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 pb-4 dark:border-slate-800">
             <div>
               <span class="text-xs font-semibold text-primary uppercase">Case 03 · Medical B2B Automation</span>
@@ -448,7 +462,7 @@ const enterpriseSchema = {
                 {t('enterpriseAutomation.case3Name')}
               </h3>
             </div>
-            <span class="inline-flex items-center rounded-full bg-purple-500/10 px-3 py-1 text-xs font-semibold text-purple-600 dark:text-purple-400">
+            <span class="inline-flex items-center rounded-full bg-purple-500/10 px-3 py-1 text-xs font-semibold text-purple-700 dark:text-purple-400">
               {t('enterpriseAutomation.case3Badge')}
             </span>
           </div>
@@ -473,7 +487,7 @@ const enterpriseSchema = {
             </div>
 
             <div class="rounded-xl border border-purple-500/30 bg-purple-50/40 p-4 dark:border-purple-500/20 dark:bg-purple-950/20">
-              <div class="text-xs font-bold text-purple-600 dark:text-purple-400">
+              <div class="text-xs font-bold text-purple-700 dark:text-purple-400">
                 [03 · {t('enterpriseAutomation.case3ResultLabel')}]
               </div>
               <p class="mt-2 text-sm leading-relaxed font-semibold text-gray-900 dark:text-white">
@@ -495,55 +509,49 @@ const enterpriseSchema = {
       </div>
     </div>
 
-    <!-- Section: Enterprise FAQ -->
-    <div class="mt-20">
-      <div class="text-center">
-        <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white">
-          {t('enterpriseAutomation.faqSectionTitle')}
-        </h2>
-      </div>
+    <!-- Related Enterprise Services -->
+    <div class="mt-16 grid gap-4 sm:grid-cols-3">
+      <a
+        href={`/${supportedLang}/services/web-development/`}
+        class="rounded-2xl border border-gray-200 bg-white p-5 transition-colors hover:border-primary/50 dark:border-slate-800 dark:bg-slate-900"
+      >
+        <div class="text-xs font-semibold text-primary uppercase">Full-Stack Engineering</div>
+        <h3 class="mt-1 text-base font-bold text-gray-900 dark:text-white">
+          {supportedLang === 'fa' ? 'توسعه وب‌اپلیکیشن اختصاصی' : supportedLang === 'ar' ? 'تطوير تطبيقات الويب المخصصة' : 'Custom Web Application Development'}
+        </h3>
+      </a>
+      <a
+        href={`/${supportedLang}/industrial-web-design/`}
+        class="rounded-2xl border border-gray-200 bg-white p-5 transition-colors hover:border-primary/50 dark:border-slate-800 dark:bg-slate-900"
+      >
+        <div class="text-xs font-semibold text-primary uppercase">Manufacturing B2B</div>
+        <h3 class="mt-1 text-base font-bold text-gray-900 dark:text-white">
+          {supportedLang === 'fa' ? 'طراحی سایت صنعتی و کاتالوگ B2B' : supportedLang === 'ar' ? 'تصميم المواقع الصناعية وكتالوجات B2B' : 'Industrial Web Design & RFQ Catalogs'}
+        </h3>
+      </a>
+      <a
+        href={`/${supportedLang}/services/ecommerce/`}
+        class="rounded-2xl border border-gray-200 bg-white p-5 transition-colors hover:border-primary/50 dark:border-slate-800 dark:bg-slate-900"
+      >
+        <div class="text-xs font-semibold text-primary uppercase">Omnichannel Commerce</div>
+        <h3 class="mt-1 text-base font-bold text-gray-900 dark:text-white">
+          {supportedLang === 'fa' ? 'فروشگاه اینترنتی متصل به انبار' : supportedLang === 'ar' ? 'المتاجر الإلكترونية المتكاملة مع المخزون' : 'ERP-Synced E-Commerce Platforms'}
+        </h3>
+      </a>
+    </div>
 
-      <div class="mx-auto mt-8 max-w-3xl space-y-4">
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900">
-          <h3 class="text-base font-bold text-gray-900 dark:text-white">
-            {t('enterpriseAutomation.q1')}
-          </h3>
-          <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-            {t('enterpriseAutomation.a1')}
-          </p>
-        </div>
-
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900">
-          <h3 class="text-base font-bold text-gray-900 dark:text-white">
-            {t('enterpriseAutomation.q2')}
-          </h3>
-          <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-            {t('enterpriseAutomation.a2')}
-          </p>
-        </div>
-
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900">
-          <h3 class="text-base font-bold text-gray-900 dark:text-white">
-            {t('enterpriseAutomation.q3')}
-          </h3>
-          <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-            {t('enterpriseAutomation.a3')}
-          </p>
-        </div>
-
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900">
-          <h3 class="text-base font-bold text-gray-900 dark:text-white">
-            {t('enterpriseAutomation.q4')}
-          </h3>
-          <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-            {t('enterpriseAutomation.a4')}
-          </p>
-        </div>
-      </div>
+    <!-- Section: Interactive Enterprise FAQ -->
+    <div class="mx-auto mt-20 max-w-4xl">
+      <FAQ
+        faqList={faqItems}
+        lang={supportedLang}
+        title={t('enterpriseAutomation.faqSectionTitle')}
+        emitWebPage={false}
+      />
     </div>
 
     <!-- Bottom Conversion Banner -->
-    <div class="mt-20 rounded-2xl bg-linear-to-r from-primary/10 via-primary/5 to-transparent border border-primary/20 p-8 text-center sm:p-12 dark:bg-slate-900">
+    <div class="mt-16 rounded-2xl bg-linear-to-r from-primary/10 via-primary/5 to-transparent border border-primary/20 p-8 text-center sm:p-12 dark:bg-slate-900">
       <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white">
         {t('enterpriseAutomation.ctaTitle')}
       </h2>
@@ -553,14 +561,14 @@ const enterpriseSchema = {
       <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
         <a
           href={`/${supportedLang}/consultation/`}
-          class="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-8 text-sm font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary"
+          class="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-8 text-sm font-bold text-primary-foreground shadow-md transition-colors hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary"
         >
           <span>{t('enterpriseAutomation.ctaBtn')}</span>
           <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
         </a>
         <a
           href="tel:+989125811880"
-          class="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-6 text-sm font-semibold text-gray-700 transition-all hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700"
+          class="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-6 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700"
         >
           <svg class="h-4 w-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />

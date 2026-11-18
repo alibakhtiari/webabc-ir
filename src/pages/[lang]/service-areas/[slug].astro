@@ -23,8 +23,9 @@ export async function getStaticPaths() {
 const { lang, slug } = Astro.params;
 const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
+const fontClass =
+  supportedLang === 'fa' ? 'font-persian' : supportedLang === 'ar' ? 'font-arabic' : 'font-sans';
 
-// Helper to translate strings
 const t = createTranslator(dictionary);
 
 const serviceAreasData = dictionary['service-areas'] || {};
@@ -40,7 +41,7 @@ const titleText =
   `${t('service-areas.titlePrefix', { fallback: 'SEO & Web Design Services in' })} ${locationInfo.name}`;
 const descriptionText =
   locationInfo.description ||
-  `We provide professional localized services in ${locationInfo.name} to help your organization rank organically and load rapidly.`;
+  `We provide localized web engineering and SEO services in ${locationInfo.name} to help your organization rank organically and load rapidly.`;
 
 const breadcrumbs = [
   { label: t('common.home'), url: `/${supportedLang}/` },
@@ -58,17 +59,11 @@ const faqList = [1, 2, 3]
   }))
   .filter((item) => item.question && item.answer);
 
-// Location-level FAQs (per-location `faqs` on the location object, added
-// separately) merge into the global list. Guarded: no-op when absent. The
-// <FAQ> component below builds the FAQPage JSON-LD from the merged list, so
-// no second FAQPage block is emitted here.
 const locationFaqs = (Array.isArray(locationInfo.faqs) ? locationInfo.faqs : []).filter(
   (f: any) => f?.question && f?.answer
 );
 const allFaqs = [...faqList, ...locationFaqs];
 
-// City coords for GeoCoordinates. Country stays an ISO code (lang-neutral);
-// locality/country display names keep coming from localized locationInfo.
 const LOCATION_GEO: Record<string, { latitude: number; longitude: number; countryCode: string }> = {
   qazvin: { latitude: 36.27, longitude: 50.0, countryCode: 'IR' },
   tehran: { latitude: 35.69, longitude: 51.39, countryCode: 'IR' },
@@ -129,12 +124,6 @@ const locationSchema = {
   inLanguage: supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR',
 };
 
-// The FAQPage JSON-LD for this list is emitted by the <FAQ> component itself
-// (it builds its own schema from the merged list passed to it), so we
-// intentionally do NOT emit a second FAQPage script here — two FAQPage blocks
-// on one URL is duplicative.
-
-// Internal Linking: Map localized service names to exact service pages
 const getServiceLink = (srvName: string) => {
   const lower = srvName.toLowerCase();
   if (lower.includes('local seo') || lower.includes('سئو محلی') || lower.includes('السيو المحلي')) {
@@ -162,7 +151,6 @@ const getServiceLink = (srvName: string) => {
   return `/${supportedLang}/services/web-development/`;
 };
 
-// Internal Linking: Regional case studies and strategic pillar guides per service area
 interface RegionalResource {
   caseStudies: Array<{ title: string; slug: string; metric: string }>;
   guides: Array<{ title: string; slug: string; desc: string }>;
@@ -172,335 +160,189 @@ const REGIONAL_RESOURCES: Record<string, Record<SupportedLanguage, RegionalResou
   qazvin: {
     fa: {
       caseStudies: [
-        {
-          title: 'مجتمع تجاری مهروماه قزوین',
-          slug: 'mehromah-qazvin',
-          metric: 'رتبه ۱ نقشه + ۳۰۰ فروشگاه',
-        },
-        {
-          title: 'فروشگاه سهیل اکسسوری قزوین',
-          slug: 'soheil-accessory',
-          metric: 'فروشگاه آنلاین + سئو محلی قزوین',
-        },
+        { title: 'مجتمع تجاری مهروماه قزوین', slug: 'mehromah-qazvin', metric: 'رتبه ۱ نقشه گوگل + ۳۰۰ واحد تجاری' },
+        { title: 'فروشگاه سهیل اکسسوری قزوین', slug: 'soheil-accessory', metric: 'فروشگاه آنلاین + سئو محلی قزوین' },
       ],
       guides: [
-        {
-          title: 'راهنمای طراحی سایت در قزوین و سئو محلی ۲۰۲۶',
-          slug: 'qazvin-web-design-seo-guide-2026',
-          desc: 'توسعه وب شهرک‌های صنعتی کاسپین و لیا و سئو نقشه',
-        },
-        {
-          title: 'راهنمای خدمات سئو محلی ۲۰۲۶',
-          slug: 'local-seo-services-guide-2026',
-          desc: 'استراتژی رتبه ۱ نقشه گوگل، نشان و بلد',
-        },
-        {
-          title: 'تعرفه سئو و قیمت خدمات سئو در ۲۰۲۶',
-          slug: 'seo-services-pricing-guide-2026',
-          desc: 'جدول شفاف پکیج‌های سئو و بازگشت سرمایه',
-        },
+        { title: 'راهنمای طراحی سایت در قزوین و سئو محلی ۲۰۲۶', slug: 'qazvin-web-design-seo-guide-2026', desc: 'مهندسی دیجیتال شهرک‌های صنعتی کاسپین و لیا و سئو نقشه' },
+        { title: 'راهنمای خدمات سئو محلی ۲۰۲۶', slug: 'local-seo-services-guide-2026', desc: 'استراتژی رتبه ۱ نقشه گوگل، نشان و بلد' },
+        { title: 'تعرفه سئو و قیمت خدمات سئو در ۲۰۲۶', slug: 'seo-services-pricing-guide-2026', desc: 'جدول شفاف پکیج‌های سئو و بازگشت سرمایه' },
       ],
     },
     en: {
       caseStudies: [
-        {
-          title: 'Mehromah Commercial Mall',
-          slug: 'mehromah-qazvin',
-          metric: '#1 Shopping Hub + 300 Shops',
-        },
-        {
-          title: 'Soheil Accessory E-Commerce',
-          slug: 'soheil-accessory',
-          metric: 'Modern Store + Local Qazvin SEO',
-        },
+        { title: 'Mehromah Commercial Mall', slug: 'mehromah-qazvin', metric: '#1 Google Maps Qazvin + 300 Units' },
+        { title: 'Soheil Accessory E-Commerce', slug: 'soheil-accessory', metric: 'Modern Store + Local Qazvin SEO' },
       ],
       guides: [
-        {
-          title: 'Qazvin Web Design & Local SEO Guide 2026',
-          slug: 'qazvin-web-design-seo-guide-2026',
-          desc: 'Digital Engineering for Caspian & Liya Industrial Parks',
-        },
-        {
-          title: 'Local SEO Services Guide 2026',
-          slug: 'local-seo-services-guide-2026',
-          desc: 'Dominating Google Maps & Local 3-Pack',
-        },
-        {
-          title: 'SEO Services Pricing Guide 2026',
-          slug: 'seo-services-pricing-guide-2026',
-          desc: 'Cost Breakdown & Organic Search ROI Packages',
-        },
+        { title: 'Qazvin Web Design & Local SEO Guide 2026', slug: 'qazvin-web-design-seo-guide-2026', desc: 'Digital Engineering for Caspian & Liya Industrial Parks' },
+        { title: 'Local SEO Services Guide 2026', slug: 'local-seo-services-guide-2026', desc: 'Ranking in Google Maps & Local 3-Pack' },
+        { title: 'SEO Services Pricing Guide 2026', slug: 'seo-services-pricing-guide-2026', desc: 'Cost Breakdown & Organic Search ROI Packages' },
       ],
     },
     ar: {
       caseStudies: [
-        {
-          title: 'مجمع مهروماه التجاري',
-          slug: 'mehromah-qazvin',
-          metric: 'المركز الأول في الخرائط + 300 متجر',
-        },
-        {
-          title: 'متجر سهيل إكسسوري قزوين',
-          slug: 'soheil-accessory',
-          metric: 'متجر إلكتروني وسيو محلي',
-        },
+        { title: 'مجمع مهروماه التجاري', slug: 'mehromah-qazvin', metric: 'المركز الأول في الخرائط + 300 متجر' },
+        { title: 'متجر سهيل إكسسوري قزوين', slug: 'soheil-accessory', metric: 'متجر إلكتروني وسيو محلي' },
       ],
       guides: [
-        {
-          title: 'دليل تصميم المواقع والسيو المحلي في قزوين 2026',
-          slug: 'qazvin-web-design-seo-guide-2026',
-          desc: 'تطوير منصات مصانع كاسبيان وليا الصناعية',
-        },
-        {
-          title: 'دليل خدمات السيو المحلي 2026',
-          slug: 'local-seo-services-guide-2026',
-          desc: 'تصدر خرائط جوجل والنتائج المحلية',
-        },
-        {
-          title: 'دليل أسعار باقات السيو لعام 2026',
-          slug: 'seo-services-pricing-guide-2026',
-          desc: 'التكلفة وعائد الاستثمار لباقات السيو',
-        },
+        { title: 'دليل تصميم المواقع والسيو المحلي في قزوين 2026', slug: 'qazvin-web-design-seo-guide-2026', desc: 'تطوير منصات مصانع كاسبيان وليا الصناعية' },
+        { title: 'دليل خدمات السيو المحلي 2026', slug: 'local-seo-services-guide-2026', desc: 'تصدر خرائط جوجل والنتائج المحلية' },
+        { title: 'دليل أسعار باقات السيو لعام 2026', slug: 'seo-services-pricing-guide-2026', desc: 'التكلفة وعائد الاستثمار لباقات السيو' },
       ],
     },
   },
   tehran: {
     fa: {
       caseStudies: [
-        {
-          title: 'شرکت رمزارز نگاران',
-          slug: 'ramzarz-negaran',
-          metric: 'رتبه ۱ گوگل + ماشین‌حساب آنلاین',
-        },
-        {
-          title: 'کلینیک دندانپزشکی بهراد',
-          slug: 'behrad-dc',
-          metric: 'سئو پزشکی + ۲۳۰٪ نوبت آنلاین',
-        },
+        { title: 'شرکت رمزارز نگاران تهران', slug: 'ramzarz-negaran', metric: 'رتبه ۱ گوگل + ماشین‌حساب آنلاین' },
+        { title: 'کلینیک زیبایی تهامی تهران', slug: 'tahami-clinic', metric: '+۳۴۰٪ رشد ورودی ارگانیک گوگل' },
       ],
       guides: [
-        {
-          title: 'راهنمای خدمات سئو محلی ۲۰۲۶',
-          slug: 'local-seo-services-guide-2026',
-          desc: 'بهینه‌سازی نقشه گوگل، نشان و بلد در تهران',
-        },
-        {
-          title: 'سئو برای هوش مصنوعی (GEO و AEO)',
-          slug: 'ai-search-optimization-guide-2026',
-          desc: 'استناد در Google AI Overviews و ChatGPT',
-        },
-        {
-          title: 'راهنمای فروشگاه اینترنتی در تهران',
-          slug: 'tehran-ecommerce-web-design-guide-2026',
-          desc: 'هزینه‌ها، تسویه‌حساب و سئوی فروشگاهی',
-        },
+        { title: 'راهنمای طراحی فروشگاه اینترنتی در تهران ۲۰۲۶', slug: 'tehran-ecommerce-web-design-guide-2026', desc: 'هزینه‌ها، تجربه تسویه‌حساب موبایل و سئوی فروشگاهی' },
+        { title: 'راهنمای خدمات سئو محلی ۲۰۲۶', slug: 'local-seo-services-guide-2026', desc: 'بهینه‌سازی نقشه گوگل، نشان و بلد در مناطق تهران' },
+        { title: 'بهینه‌سازی موتورهای مولد (GEO و AEO)', slug: 'ai-search-optimization-guide-2026', desc: 'استناد مستقیم در Google AI Overviews و ChatGPT' },
       ],
     },
     en: {
       caseStudies: [
-        {
-          title: 'Ramzarz Negaran E-Commerce',
-          slug: 'ramzarz-negaran',
-          metric: '#1 Google Rank + Custom Tool',
-        },
-        {
-          title: 'Behrad Dental Clinic',
-          slug: 'behrad-dc',
-          metric: '+230% Online Bookings + Medical SEO',
-        },
+        { title: 'Ramzarz Negaran Platform', slug: 'ramzarz-negaran', metric: '#1 Google Rank + Live Calculator' },
+        { title: 'Tahami Aesthetic Clinic Tehran', slug: 'tahami-clinic', metric: '+340% Organic Search Growth' },
       ],
       guides: [
-        {
-          title: 'Local SEO Services Guide 2026',
-          slug: 'local-seo-services-guide-2026',
-          desc: 'Dominating Local Search & Maps',
-        },
-        {
-          title: 'Generative Engine Optimization (GEO)',
-          slug: 'ai-search-optimization-guide-2026',
-          desc: 'Getting Cited in AI Search Engines',
-        },
-        {
-          title: 'Tehran E-commerce Web Design',
-          slug: 'tehran-ecommerce-web-design-guide-2026',
-          desc: 'Store Costs, Checkout UX & SEO',
-        },
+        { title: 'Tehran E-Commerce Web Design Guide 2026', slug: 'tehran-ecommerce-web-design-guide-2026', desc: 'Store Costs, Checkout UX & Technical SEO' },
+        { title: 'Local SEO Services Guide 2026', slug: 'local-seo-services-guide-2026', desc: 'Google Maps & Local Search Execution' },
+        { title: 'Generative Engine Optimization (GEO) 2026', slug: 'ai-search-optimization-guide-2026', desc: 'Earning Citations in AI Search Engines' },
       ],
     },
     ar: {
       caseStudies: [
-        {
-          title: 'متجر رمزارز نگاران',
-          slug: 'ramzarz-negaran',
-          metric: 'المرتبة الأولى + أدوات تفاعلية',
-        },
-        {
-          title: 'عيادة بهراد لطب الأسنان',
-          slug: 'behrad-dc',
-          metric: 'سيو طبي + ۲۳۰٪ حجز إلكتروني',
-        },
+        { title: 'منصة رمزارز نكاران', slug: 'ramzarz-negaran', metric: 'المرتبة الأولى + حاسبة تفاعلية' },
+        { title: 'عيادة تهامي للتجميل طهران', slug: 'tahami-clinic', metric: '+340% نمو الزيارات العضوية' },
       ],
       guides: [
-        {
-          title: 'دليل خدمات السيو المحلي 2026',
-          slug: 'local-seo-services-guide-2026',
-          desc: 'تصدر نتائج خرائط جوجل والبحث المحلي',
-        },
-        {
-          title: 'دليل سيو الذكاء الاصطناعي (GEO)',
-          slug: 'ai-search-optimization-guide-2026',
-          desc: 'استراتيجيات الظهور في ردود AI',
-        },
-        {
-          title: 'دليل المتاجر الإلكترونية في طهران',
-          slug: 'tehran-ecommerce-web-design-guide-2026',
-          desc: 'التكاليف والدفع والسيو للمتاجر',
-        },
+        { title: 'دليل المتاجر الإلكترونية في طهران 2026', slug: 'tehran-ecommerce-web-design-guide-2026', desc: 'التكاليف وتجربة الدفع والسيو للمتاجر' },
+        { title: 'دليل خدمات السيو المحلي 2026', slug: 'local-seo-services-guide-2026', desc: 'تصدر نتائج خرائط جوجل والبحث المحلي' },
+        { title: 'دليل سيو الذكاء الاصطناعي (GEO)', slug: 'ai-search-optimization-guide-2026', desc: 'استراتيجيات الظهور في إجابات الذكاء الاصطناعي' },
       ],
     },
   },
   dubai: {
     fa: {
       caseStudies: [
-        {
-          title: 'شکلات دست‌ساز Chocoreto',
-          slug: 'chocoreto',
-          metric: 'ووکامرس لوکس + فروش بین‌المللی',
-        },
+        { title: 'شکلات دست‌ساز Chocoreto', slug: 'chocoreto', metric: 'فروشگاه لوکس دوزبانه + فروش بین‌المللی' },
+        { title: 'ماهسان ویزا (امارات، ترکیه و کانادا)', slug: 'mahsun-visa', metric: 'پورتال چندزبانه خدمات بین‌المللی' },
       ],
       guides: [
-        {
-          title: 'راهنمای طراحی سایت و سئو در دبی و امارات',
-          slug: 'dubai-uae-web-design-seo-guide-2026',
-          desc: 'استراتژی ورود به بازار دیجیتال دبی و امارات',
-        },
-        {
-          title: 'راهنمای خدمات سئو محلی ۲۰۲۶',
-          slug: 'local-seo-services-guide-2026',
-          desc: 'حضور در Google 3-Pack و نقشه‌های امارات',
-        },
-        {
-          title: 'تعرفه سئو و قیمت خدمات سئو در ۲۰۲۶',
-          slug: 'seo-services-pricing-guide-2026',
-          desc: 'پکیج‌های سئو و بازگشت سرمایه در دبی و امارات',
-        },
+        { title: 'راهنمای طراحی سایت و سئو در دبی و امارات ۲۰۲۶', slug: 'dubai-uae-web-design-seo-guide-2026', desc: 'تجربه کاربری دوزبانه عربی/انگلیسی و درگاه‌های امارات' },
+        { title: 'راهنمای سئو محلی در خاورمیانه', slug: 'local-seo-middle-east', desc: 'حضور در Google 3-Pack دبی و امارات' },
       ],
     },
     en: {
       caseStudies: [
-        {
-          title: 'Chocoreto Artisan Chocolates',
-          slug: 'chocoreto',
-          metric: 'Boutique E-Commerce + Global Reach',
-        },
+        { title: 'Chocoreto Artisan Chocolates', slug: 'chocoreto', metric: 'Boutique E-Commerce + Global Reach' },
+        { title: 'Mahsun Visa Global Portal', slug: 'mahsun-visa', metric: 'Multilingual UAE, Turkey & Canada Hub' },
       ],
       guides: [
-        {
-          title: 'Dubai & UAE Web Design & SEO Guide 2026',
-          slug: 'dubai-uae-web-design-seo-guide-2026',
-          desc: 'Winning in the UAE digital market',
-        },
-        {
-          title: 'Local SEO Services Guide 2026',
-          slug: 'local-seo-services-guide-2026',
-          desc: 'Dominating GCC Google Maps & 3-Pack',
-        },
-        {
-          title: 'SEO Services Pricing Guide 2026',
-          slug: 'seo-services-pricing-guide-2026',
-          desc: 'Cost Breakdown & Organic Search ROI Packages',
-        },
+        { title: 'Dubai & UAE Web Design & SEO Guide 2026', slug: 'dubai-uae-web-design-seo-guide-2026', desc: 'Bilingual Arabic/English UX & GCC payment rails' },
+        { title: 'Local SEO Strategies for the Middle East', slug: 'local-seo-middle-east', desc: 'Winning GCC Google Maps & localized search' },
       ],
     },
     ar: {
       caseStudies: [
-        {
-          title: 'شوكوريتو للشوكولاتة الفاخرة',
-          slug: 'chocoreto',
-          metric: 'متجر ووكامرس فاخر + زيادة التحويل',
-        },
+        { title: 'شوكوريتو للشوكولاتة الفاخرة', slug: 'chocoreto', metric: 'متجر إلكتروني فاخر + مبيعات دولية' },
+        { title: 'بوابة ماهسان فيزا الدولية', slug: 'mahsun-visa', metric: 'منصة متعددة اللغات للإمارات وكندا' },
       ],
       guides: [
-        {
-          title: 'دليل تصميم المواقع والسيو في دبي والإمارات 2026',
-          slug: 'dubai-uae-web-design-seo-guide-2026',
-          desc: 'استراتيجيات تصدر الأعمال في سوق دبي',
-        },
-        {
-          title: 'دليل خدمات السيو المحلي 2026',
-          slug: 'local-seo-services-guide-2026',
-          desc: 'تصدر خرائط جوجل للشركات في الإمارات',
-        },
-        {
-          title: 'دليل أسعار باقات السيو لعام 2026',
-          slug: 'seo-services-pricing-guide-2026',
-          desc: 'أسعار خدمات السيو في الإمارات والخليج وعائد الاستثمار',
-        },
+        { title: 'دليل تصميم المواقع والسيو في دبي والإمارات 2026', slug: 'dubai-uae-web-design-seo-guide-2026', desc: 'واجهات ثنائية اللغة وبوابات الدفع في الإمارات' },
+        { title: 'استراتيجيات السيو المحلي في الشرق الأوسط', slug: 'local-seo-middle-east', desc: 'تصدر خرائط جوجل للشركات في دبي والخليج' },
       ],
     },
   },
   muscat: {
     fa: {
       caseStudies: [
-        {
-          title: 'فرش دستباف ODYPS در اروپا و عمان',
-          slug: 'odyps',
-          metric: 'فروشگاه چندزبانه فرش لوکس',
-        },
+        { title: 'فرش دستباف ODYPS در مسقط و اروپا', slug: 'odyps', metric: '+۲۱۰٪ رشد ارگانیک + سرعت ۹۶/۱۰۰' },
       ],
       guides: [
-        {
-          title: 'راهنمای طراحی سایت و سئو در عمان و مسقط',
-          slug: 'oman-web-design-seo-guide-2026',
-          desc: 'فرصت‌های رشد کسب‌وکارها در مسقط و عمان',
-        },
-        {
-          title: 'راهنمای خدمات سئو محلی ۲۰۲۶',
-          slug: 'local-seo-services-guide-2026',
-          desc: 'سئو نقشه گوگل در مسقط و منطقه خلیج فارس',
-        },
+        { title: 'راهنمای طراحی سایت و سئو در عمان و مسقط ۲۰۲۶', slug: 'oman-web-design-seo-guide-2026', desc: 'معماری دوزبانه عربی/انگلیسی و درگاه‌های عمانی' },
+        { title: 'راهنمای خدمات سئو محلی ۲۰۲۶', slug: 'local-seo-services-guide-2026', desc: 'سئو نقشه گوگل در مسقط و منطقه خلیج فارس' },
       ],
     },
     en: {
       caseStudies: [
-        {
-          title: 'ODYPS Luxury Rugs Europe & Oman',
-          slug: 'odyps',
-          metric: 'Multilingual E-Commerce Platform',
-        },
+        { title: 'ODYPS Luxury Rugs Oman & Europe', slug: 'odyps', metric: '+210% Organic Growth · PSI 96/100' },
       ],
       guides: [
-        {
-          title: 'Oman & Muscat Web Design & SEO Guide 2026',
-          slug: 'oman-web-design-seo-guide-2026',
-          desc: 'Digital expansion strategies in Muscat',
-        },
-        {
-          title: 'Local SEO Services Guide 2026',
-          slug: 'local-seo-services-guide-2026',
-          desc: 'Local search domination in Oman & GCC',
-        },
+        { title: 'Oman & Muscat Web Design & SEO Guide 2026', slug: 'oman-web-design-seo-guide-2026', desc: 'Bilingual layouts, Omani payment gateways & Muscat SEO' },
+        { title: 'Local SEO Services Guide 2026', slug: 'local-seo-services-guide-2026', desc: 'Local search execution across Oman & GCC' },
       ],
     },
     ar: {
       caseStudies: [
-        {
-          title: 'سجاد أوديبس الفاخر في مسقط وأوروبا',
-          slug: 'odyps',
-          metric: 'متجر إلكتروني متعدد اللغات',
-        },
+        { title: 'سجاد أوديبس الفاخر في مسقط وأوروبا', slug: 'odyps', metric: '+210% نمو عضوي · سرعة 96/100' },
       ],
       guides: [
-        {
-          title: 'دليل تصميم المواقع والسيو في سلطنة عمان ومسقط 2026',
-          slug: 'oman-web-design-seo-guide-2026',
-          desc: 'دليل النمو الرقمي وتتصدر السوق العماني',
-        },
-        {
-          title: 'دليل خدمات السيو المحلي 2026',
-          slug: 'local-seo-services-guide-2026',
-          desc: 'تصدر خرائط جوجل للأنشطة في مسقط',
-        },
+        { title: 'دليل تصميم المواقع والسيو في عمان ومسقط 2026', slug: 'oman-web-design-seo-guide-2026', desc: 'بوابات الدفع العمانية وصفحات مسقط المحلية' },
+        { title: 'دليل خدمات السيو المحلي 2026', slug: 'local-seo-services-guide-2026', desc: 'تصدر خرائط جوجل للأنشطة التجارية في مسقط' },
+      ],
+    },
+  },
+  riyadh: {
+    fa: {
+      caseStudies: [
+        { title: 'پلتفرم چندزبانه ODYPS (خلیج فارس)', slug: 'odyps', metric: 'معماری RTL/LTR بومی + سرعت ۹۶/۱۰۰' },
+      ],
+      guides: [
+        { title: 'استراتژی سئو محلی در خاورمیانه: ریاض، دبی و مسقط', slug: 'local-seo-middle-east', desc: 'سئوی دوزبانه عربی/انگلیسی همگام با بازار عربستان' },
+        { title: 'تعرفه خدمات سئو در سال ۲۰۲۶', slug: 'seo-services-pricing-guide-2026', desc: 'مقایسه بسته‌های سئو محلی و سازمانی' },
+      ],
+    },
+    en: {
+      caseStudies: [
+        { title: 'ODYPS Multilingual GCC Storefront', slug: 'odyps', metric: 'Native RTL/LTR Parity · PSI 96/100' },
+      ],
+      guides: [
+        { title: 'Local SEO Strategies for Riyadh & the Middle East', slug: 'local-seo-middle-east', desc: 'Bilingual Arabic/English schemas and Google Maps in KSA' },
+        { title: 'SEO Services Pricing Guide 2026', slug: 'seo-services-pricing-guide-2026', desc: 'Transparent local map and enterprise SEO retainers' },
+      ],
+    },
+    ar: {
+      caseStudies: [
+        { title: 'منصة أوديبس متعددة اللغات للخليج', slug: 'odyps', metric: 'دعم أصيل للعربية والإنجليزية · سرعة 96/100' },
+      ],
+      guides: [
+        { title: 'استراتيجيات السيو المحلي في الرياض والشرق الأوسط', slug: 'local-seo-middle-east', desc: 'حزم السيو المحلي وبوابات Mada المتوافقة مع رؤية 2030' },
+        { title: 'دليل أسعار باقات السيو لعام 2026', slug: 'seo-services-pricing-guide-2026', desc: 'مقارنة شاملة لباقات السيو المحلي والمؤسسي في الرياض' },
+      ],
+    },
+  },
+  'abu-dhabi': {
+    fa: {
+      caseStudies: [
+        { title: 'پورتال بین‌المللی ماهسان ویزا', slug: 'mahsun-visa', metric: 'زیرساخت چندزبانه سریع و امن' },
+      ],
+      guides: [
+        { title: 'راهنمای طراحی سایت و سئو در امارات ۲۰۲۶', slug: 'dubai-uae-web-design-seo-guide-2026', desc: 'استانداردهای امنیتی و دوزبانه برای شرکت‌های ابوظبی و امارات' },
+        { title: 'سئو محلی در خاورمیانه', slug: 'local-seo-middle-east', desc: 'بهینه‌سازی نقشه گوگل و جستجوی سازمانی در امارات' },
+      ],
+    },
+    en: {
+      caseStudies: [
+        { title: 'Mahsun Visa Multi-Region Portal', slug: 'mahsun-visa', metric: 'High-Speed Bilingual Architecture' },
+      ],
+      guides: [
+        { title: 'UAE Web Design & Enterprise SEO Guide 2026', slug: 'dubai-uae-web-design-seo-guide-2026', desc: 'Bilingual governance and corporate UX across Abu Dhabi & UAE' },
+        { title: 'Local SEO Strategies for the Middle East', slug: 'local-seo-middle-east', desc: 'Entity & LocalBusiness schema for UAE organizations' },
+      ],
+    },
+    ar: {
+      caseStudies: [
+        { title: 'بوابة ماهسان فيزا الإقليمية', slug: 'mahsun-visa', metric: 'بنية ثنائية اللغة عالية الأمان' },
+      ],
+      guides: [
+        { title: 'دليل تصميم المواقع والسيو في الإمارات وأبوظبي 2026', slug: 'dubai-uae-web-design-seo-guide-2026', desc: 'معايير الأمان المؤسسي والواجهات ثنائية اللغة في أبوظبي' },
+        { title: 'استراتيجيات السيو المحلي في الشرق الأوسط', slug: 'local-seo-middle-east', desc: 'تحسين خرائط جوجل والكيانات المؤسسية في الإمارات' },
       ],
     },
   },
@@ -508,27 +350,9 @@ const REGIONAL_RESOURCES: Record<string, Record<SupportedLanguage, RegionalResou
 
 const regionalData = (slug && REGIONAL_RESOURCES[slug]?.[supportedLang]) || {
   caseStudies: [],
-  guides: [
-    {
-      title:
-        supportedLang === 'fa'
-          ? 'راهنمای خدمات سئو محلی ۲۰۲۶'
-          : supportedLang === 'ar'
-            ? 'دليل خدمات السيو المحلي 2026'
-            : 'Local SEO Services Guide 2026',
-      slug: 'local-seo-services-guide-2026',
-      desc:
-        supportedLang === 'fa'
-          ? 'استراتژی تصدر رتبه اول نقشه گوگل و جذب مشتریان محلی'
-          : supportedLang === 'ar'
-            ? 'استراتيجيات تصدر خرائط جوجل والنتائج المحلية'
-            : 'Dominate Google Maps 3-Pack and regional search',
-    },
-  ],
+  guides: [],
 };
 
-// Structural cross-linking (3.4): sibling service-area pages. Driven only by
-// the existing dictionary locations list (slug + name) — no invented NAP data.
 const siblingAreas = locationsList.filter((loc: any) => loc?.slug && loc.slug !== slug && loc.name);
 ---
 
@@ -547,8 +371,18 @@ const siblingAreas = locationsList.filter((loc: any) => loc?.slug && loc.slug !=
   />
 
   <!-- Details and AEO Panel -->
-  <section class="bg-white py-16 font-persian font-sans dark:bg-slate-950">
+  <section class={`bg-white py-16 ${fontClass} dark:bg-slate-950`}>
     <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <!-- AEO Quick Answer Capsule -->
+      <aside class="aeo-quick-answer mb-12 rounded-2xl border-s-4 border-primary bg-primary/5 p-6 dark:bg-slate-900/80">
+        <div class="mb-1.5 text-xs font-bold uppercase tracking-wider text-primary">
+          {supportedLang === 'fa' ? `خلاصه خدمات وب اِی‌بی‌سی در ${locationInfo.name}` : supportedLang === 'ar' ? `ملخص خدمات ويب إيه بي سي في ${locationInfo.name}` : `WebABC Regional Summary: ${locationInfo.name}`}
+        </div>
+        <p class="text-sm leading-relaxed font-medium text-gray-800 sm:text-base dark:text-gray-100">
+          {descriptionText} {locationInfo.localNotes || ''}
+        </p>
+      </aside>
+
       <div class="mb-12 grid grid-cols-1 gap-12 lg:grid-cols-3">
         <!-- Main Content Pane -->
         <div class="space-y-12 lg:col-span-2">
@@ -572,7 +406,7 @@ const siblingAreas = locationsList.filter((loc: any) => loc?.slug && loc.slug !=
                   {locationInfo.services.map((serv: string) => (
                     <a
                       href={getServiceLink(serv)}
-                      class="group dark:hover:bg-slate-850 flex items-center justify-between rounded-xl border border-gray-100 bg-gray-50 p-4 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:bg-white hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-primary/40"
+                      class="group flex items-center justify-between rounded-xl border border-gray-100 bg-gray-50 p-4 transition-colors hover:border-primary/40 hover:bg-white hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:hover:border-primary/40"
                     >
                       <div class="flex items-center gap-3">
                         <div class="rounded-lg bg-white p-1.5 text-primary shadow-xs transition-colors group-hover:bg-primary group-hover:text-white dark:bg-slate-800">
@@ -584,18 +418,14 @@ const siblingAreas = locationsList.filter((loc: any) => loc?.slug && loc.slug !=
                             stroke-width="2.5"
                             viewBox="0 0 24 24"
                           >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M5 13l4 4L19 7"
-                            />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                           </svg>
                         </div>
                         <span class="font-semibold text-gray-800 transition-colors group-hover:text-primary dark:text-gray-200">
                           {serv}
                         </span>
                       </div>
-                      <span class="text-xs font-bold text-gray-400 transition-transform group-hover:translate-x-0.5 group-hover:text-primary rtl:group-hover:-translate-x-0.5">
+                      <span class="text-xs font-bold text-gray-400 group-hover:text-primary" aria-hidden="true">
                         {languages[supportedLang]?.direction === 'rtl' ? '←' : '→'}
                       </span>
                     </a>
@@ -646,9 +476,13 @@ const siblingAreas = locationsList.filter((loc: any) => loc?.slug && loc.slug !=
             class="space-y-4 rounded-2xl border border-gray-100 bg-gray-50 p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900"
           >
             <h3
-              class="border-b border-gray-200 pb-3 text-lg font-bold text-gray-900 dark:border-slate-800 dark:text-white"
+              class="flex items-center gap-2 border-b border-gray-200 pb-3 text-lg font-bold text-gray-900 dark:border-slate-800 dark:text-white"
             >
-              📍 {locationInfo.name}
+              <svg aria-hidden="true" class="h-5 w-5 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-8-4.5-8-11a8 8 0 1116 0c0 6.5-8 11-8 11z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>{locationInfo.name}</span>
             </h3>
             <div class="space-y-4 text-sm">
               <div>
@@ -677,6 +511,14 @@ const siblingAreas = locationsList.filter((loc: any) => loc?.slug && loc.slug !=
                   {t('service-areas.languagesValue', { fallback: 'English, Arabic, Persian' })}
                 </div>
               </div>
+            </div>
+            <div class="pt-2">
+              <a
+                href={`/${supportedLang}/tools/cost-calculator/`}
+                class="inline-flex w-full items-center justify-center rounded-xl bg-primary px-4 py-2.5 text-xs font-bold text-primary-foreground transition-colors hover:bg-primary/90"
+              >
+                {supportedLang === 'fa' ? 'محاسبه آنلاین هزینه پروژه' : supportedLang === 'ar' ? 'حاسبة تكلفة المشروع الفورية' : 'Estimate Project Cost Online'}
+              </a>
             </div>
           </div>
         </div>
@@ -723,7 +565,7 @@ const siblingAreas = locationsList.filter((loc: any) => loc?.slug && loc.slug !=
                 ? 'بررسی پروژه‌های موفق، سنجه‌های عملکردی و استراتژی‌های اختصاصی برای این بازار.'
                 : supportedLang === 'ar'
                   ? 'استكشف المشاريع الرقمية الناجحة والبيانات التحليلية المناسبة لهذا السوق.'
-                  : 'Proven client outcomes, performance benchmarks, and local search strategies.'
+                  : 'Verified client outcomes, performance benchmarks, and local search strategies.'
             }
           </p>
         </div>
@@ -734,7 +576,9 @@ const siblingAreas = locationsList.filter((loc: any) => loc?.slug && loc.slug !=
             regionalData.caseStudies && regionalData.caseStudies.length > 0 && (
               <div class="space-y-4 rounded-3xl border border-gray-100 bg-gray-50/70 p-6 dark:border-slate-800 dark:bg-slate-900">
                 <h3 class="flex items-center gap-2 text-base font-bold text-gray-900 dark:text-white">
-                  <span>🏆</span>
+                  <svg aria-hidden="true" class="h-5 w-5 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                  </svg>
                   <span>
                     {supportedLang === 'fa'
                       ? 'پروژه‌های اجرایی'
@@ -747,7 +591,7 @@ const siblingAreas = locationsList.filter((loc: any) => loc?.slug && loc.slug !=
                   {regionalData.caseStudies.map((cs) => (
                     <a
                       href={`/${supportedLang}/portfolio/${cs.slug}/`}
-                      class="group flex items-center justify-between rounded-2xl border border-gray-200/80 bg-white p-4 shadow-xs transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md dark:border-slate-700 dark:bg-slate-800"
+                      class="group flex items-center justify-between rounded-2xl border border-gray-200/80 bg-white p-4 shadow-xs transition-colors hover:border-primary/40 hover:shadow-md dark:border-slate-700 dark:bg-slate-800"
                     >
                       <div>
                         <div class="font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
@@ -755,7 +599,7 @@ const siblingAreas = locationsList.filter((loc: any) => loc?.slug && loc.slug !=
                         </div>
                         <div class="mt-0.5 text-xs font-medium text-primary">{cs.metric}</div>
                       </div>
-                      <span class="text-sm font-bold text-gray-400 transition-transform group-hover:translate-x-0.5 group-hover:text-primary rtl:group-hover:-translate-x-0.5">
+                      <span class="text-sm font-bold text-gray-400 group-hover:text-primary" aria-hidden="true">
                         {languages[supportedLang]?.direction === 'rtl' ? '←' : '→'}
                       </span>
                     </a>
@@ -770,7 +614,9 @@ const siblingAreas = locationsList.filter((loc: any) => loc?.slug && loc.slug !=
             regionalData.guides && regionalData.guides.length > 0 && (
               <div class="space-y-4 rounded-3xl border border-gray-100 bg-gray-50/70 p-6 dark:border-slate-800 dark:bg-slate-900">
                 <h3 class="flex items-center gap-2 text-base font-bold text-gray-900 dark:text-white">
-                  <span>📚</span>
+                  <svg aria-hidden="true" class="h-5 w-5 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
                   <span>
                     {supportedLang === 'fa'
                       ? 'راهنماهای تحلیلی'
@@ -783,7 +629,7 @@ const siblingAreas = locationsList.filter((loc: any) => loc?.slug && loc.slug !=
                   {regionalData.guides.map((g) => (
                     <a
                       href={`/${supportedLang}/blog/${g.slug}/`}
-                      class="group flex items-center justify-between rounded-2xl border border-gray-200/80 bg-white p-4 shadow-xs transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md dark:border-slate-700 dark:bg-slate-800"
+                      class="group flex items-center justify-between rounded-2xl border border-gray-200/80 bg-white p-4 shadow-xs transition-colors hover:border-primary/40 hover:shadow-md dark:border-slate-700 dark:bg-slate-800"
                     >
                       <div>
                         <div class="font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
@@ -793,7 +639,7 @@ const siblingAreas = locationsList.filter((loc: any) => loc?.slug && loc.slug !=
                           {g.desc}
                         </div>
                       </div>
-                      <span class="text-sm font-bold text-gray-400 transition-transform group-hover:translate-x-0.5 group-hover:text-primary rtl:group-hover:-translate-x-0.5">
+                      <span class="text-sm font-bold text-gray-400 group-hover:text-primary" aria-hidden="true">
                         {languages[supportedLang]?.direction === 'rtl' ? '←' : '→'}
                       </span>
                     </a>
@@ -805,7 +651,7 @@ const siblingAreas = locationsList.filter((loc: any) => loc?.slug && loc.slug !=
         </div>
       </section>
 
-      <!-- Related Service Areas (sibling markets, structural cross-linking) -->
+      <!-- Related Service Areas -->
       {
         siblingAreas.length > 0 && (
           <nav
@@ -838,7 +684,7 @@ const siblingAreas = locationsList.filter((loc: any) => loc?.slug && loc.slug !=
               {siblingAreas.map((area: any) => (
                 <a
                   href={`/${supportedLang}/service-areas/${area.slug}/`}
-                  class="group flex items-center justify-between rounded-2xl border border-gray-200/80 bg-white p-4 shadow-xs transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md dark:border-slate-700 dark:bg-slate-800"
+                  class="group flex items-center justify-between rounded-2xl border border-gray-200/80 bg-white p-4 shadow-xs transition-colors hover:border-primary/40 hover:shadow-md dark:border-slate-700 dark:bg-slate-800"
                 >
                   <div>
                     <div class="font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
@@ -850,7 +696,7 @@ const siblingAreas = locationsList.filter((loc: any) => loc?.slug && loc.slug !=
                       </div>
                     )}
                   </div>
-                  <span class="text-sm font-bold text-gray-400 transition-transform group-hover:translate-x-0.5 group-hover:text-primary rtl:group-hover:-translate-x-0.5">
+                  <span class="text-sm font-bold text-gray-400 group-hover:text-primary" aria-hidden="true">
                     {languages[supportedLang]?.direction === 'rtl' ? '←' : '→'}
                   </span>
                 </a>
@@ -860,12 +706,12 @@ const siblingAreas = locationsList.filter((loc: any) => loc?.slug && loc.slug !=
         )
       }
 
-      <!-- Premium Consultation CTA Callout -->
+      <!-- Consultation CTA Callout -->
       <CTA
         lang={supportedLang}
-        title={t('service-areas.ctaTitle', { fallback: 'Dominate Local Search' })}
+        title={t('service-areas.ctaTitle', { fallback: 'Grow Your Regional Search Visibility' })}
         description={t('service-areas.ctaDescription', {
-          fallback: 'Get a custom optimization blueprint outline.',
+          fallback: 'Get a custom optimization blueprint tailored to your city.',
         })}
         buttonText={t('service-areas.ctaButton', { fallback: 'Get Started' })}
       />

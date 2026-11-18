@@ -9,8 +9,9 @@ interface Props {
 }
 
 const { lang, dictionary } = Astro.props;
+const isRtl = lang === 'fa' || lang === 'ar';
+const fontClass = lang === 'fa' ? 'font-persian' : lang === 'ar' ? 'font-arabic' : 'font-sans';
 
-// Translate helpers
 const t = createTranslator(dictionary);
 
 const faqList = [1, 2, 3, 4]
@@ -19,20 +20,76 @@ const faqList = [1, 2, 3, 4]
     answer: t(`webDevelopmentServices.faq.a${n}`, ''),
   }))
   .filter((item) => item.question && item.answer);
+
+const quickAnswer =
+  lang === 'fa'
+    ? 'توسعه وب اختصاصی وب اِی‌بی‌سی خدمتی مهندسی فول‌استک برای ساخت وب‌اپلیکیشن‌ها، پلتفرم‌های SaaS و پورتال‌های سازمانی با Astro، React، Next.js، Node.js و پایتون است که بدون وابستگی به افزونه‌های آماده، بارگذاری زیر یک ثانیه در شبکه لبه کلودفلر، امنیت سطح API و مالکیت کامل کد منبع را برای کسب‌وکارها تضمین می‌کند.'
+    : lang === 'ar'
+      ? 'تطوير الويب المخصص من ويب إيه بي سي هو خدمة هندسية متكاملة لبناء تطبيقات الويب ومنصات SaaS والبوابات المؤسسية باستخدام Astro وReact وNext.js وNode.js وPython، لتحقيق سرعة تحميل دون الثانية على شبكة Cloudflare Edge وأمان برمجي عالٍ وملكية كاملة للكود المصدري.'
+      : 'WebABC custom web development engineers full-stack web applications, SaaS platforms, and B2B portals using Astro, React, Next.js, TypeScript, Node.js, and Python—delivering sub-second Cloudflare Edge rendering, clean REST/GraphQL API integrations, and full source-code ownership without third-party plugin bloat.';
+
+const stackComparison =
+  lang === 'fa'
+    ? {
+        title: 'مقایسه معماری توسعه وب اختصاصی با سیستم‌های آماده',
+        headers: ['شاخص فنی', 'توسعه اختصاصی (Astro / Next.js)', 'وردپرس سفارشی', 'سایت‌سازهای آماده'],
+        rows: [
+          ['زمان بارگذاری (LCP)', 'زیر ۰.۸ ثانیه روی Edge', '۱.۲ تا ۲.۰ ثانیه (با کش بهینه)', '۲.۵ تا ۴.۵+ ثانیه'],
+          ['پاسخگویی تعاملی (INP)', 'کمتر از ۱۰۰ میلی‌ثانیه', '۱۰۰ تا ۲۰۰ میلی‌ثانیه', 'اغلب بالای ۲۰۰ میلی‌ثانیه'],
+          ['یکپارچه‌سازی ERP / API', 'دو طرفه نامحدود + صف رویداد', 'محدود به هوک‌های PHP/REST', 'بسیار محدود و بسته'],
+          ['سطح حمله امنیتی', 'حداقلی (بدون افزونه عمومی)', 'نیازمند نگهداری منظم افزونه‌ها', 'وابسته به پلتفرم میزبان'],
+          ['مالکیت کد و مقیاس‌پذیری', '۱۰۰٪ مالکیت کد منبع در Git', 'مالکیت قالب سفارشی', 'قفل‌شده در اشتراک ماهانه'],
+        ],
+      }
+    : lang === 'ar'
+      ? {
+          title: 'مقارنة معمارية: التطوير المخصص مقابل الأنظمة الجاهزة',
+          headers: ['المعيار التقني', 'برمجة مخصصة (Astro / Next.js)', 'ووردبريس مخصص', 'منصات السحب والإفلات'],
+          rows: [
+            ['سرعة التحميل (LCP)', 'أقل من 0.8 ثانية عبر Edge', '1.2 إلى 2.0 ثانية', '2.5 إلى 4.5+ ثانية'],
+            ['استجابة التفاعل (INP)', 'أقل من 100 مللي ثانية', '100 إلى 200 مللي ثانية', 'غالباً فوق 200 مللي ثانية'],
+            ['تكامل أنظمة ERP وAPI', 'ربط ثنائي غير محدود', 'مرتبط بواجهات ووردبريس', 'محدود ومغلق'],
+            ['الأمان وتقليل الثغرات', 'أعلى أمان (دون إضافات خارجية)', 'يتطلب تحديثات دورية', 'يعتمد على المنصة المستضيفة'],
+            ['ملكية الكود والتوسع', 'ملكية كاملة للكود المصدري Git', 'ملكية القالب المخصص', 'مقيد باشتراك المنصة'],
+          ],
+        }
+      : {
+          title: 'Architecture Comparison: Custom Engineering vs. CMS & Site Builders',
+          headers: ['Engineering Metric', 'Custom Stack (Astro / Next.js)', 'Custom WordPress', 'SaaS Site Builders'],
+          rows: [
+            ['Largest Contentful Paint (LCP)', '< 0.8s on Cloudflare Edge', '1.2s – 2.0s (tuned cache)', '2.5s – 4.5s+'],
+            ['Interaction to Next Paint (INP)', '< 100ms minimal JS hydration', '100ms – 200ms', 'Often > 200ms script load'],
+            ['ERP, CRM & Custom API Sync', 'Native bi-directional + queues', 'Bounded by PHP/REST hooks', 'Restricted to preset apps'],
+            ['Security Attack Surface', 'Minimal (zero public plugins)', 'Requires ongoing patch care', 'Vendor-controlled black box'],
+            ['Code Ownership & Portability', '100% Git repo ownership', 'Full theme/database control', 'Locked into platform tier'],
+          ],
+        };
 ---
 
-<div class="space-y-16 py-8">
+<div class={`space-y-16 py-8 ${fontClass}`}>
   <!-- What is Custom Web Development? -->
   <section class="bg-white dark:bg-slate-950">
     <div class="mx-auto max-w-4xl space-y-6 text-center">
-      <h2 class="font-persian text-3xl font-bold text-gray-900 dark:text-white">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white">
         {t('webDevelopmentServices.whatIs.title', 'What is Custom Web Development?')}
       </h2>
-      <div class="space-y-4 font-persian leading-relaxed text-gray-600 dark:text-gray-300">
+      <div class="space-y-4 leading-relaxed text-gray-600 dark:text-gray-300">
         <p class="text-lg">{t('webDevelopmentServices.whatIs.p1', '')}</p>
         <p>{t('webDevelopmentServices.whatIs.p2', '')}</p>
       </div>
     </div>
+  </section>
+
+  <!-- AEO Quick Answer Capsule -->
+  <section class="mx-auto max-w-4xl px-4">
+    <aside class="aeo-quick-answer rounded-2xl border-s-4 border-primary bg-primary/5 p-6 sm:p-8 dark:bg-slate-900/80">
+      <div class="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
+        {lang === 'fa' ? 'خلاصه اجرایی مهندسی وب (AEO)' : lang === 'ar' ? 'الملخص الهندسي المباشر (AEO)' : 'Quick Answer: Engineering Scope (AEO)'}
+      </div>
+      <p class="text-base leading-relaxed font-medium text-gray-800 dark:text-gray-100">
+        {quickAnswer}
+      </p>
+    </aside>
   </section>
 
   <!-- Services Grid Section -->
@@ -40,7 +97,7 @@ const faqList = [1, 2, 3, 4]
     class="rounded-3xl border border-gray-100 bg-gray-50/50 p-8 py-12 dark:border-slate-800 dark:bg-slate-900"
   >
     <div class="mx-auto max-w-7xl">
-      <h2 class="mb-12 text-center font-persian text-3xl font-bold">
+      <h2 class="mb-12 text-center text-3xl font-bold text-gray-900 dark:text-white">
         {t('webDevelopmentServices.ourServices', 'Development Offerings')}
       </h2>
 
@@ -64,13 +121,13 @@ const faqList = [1, 2, 3, 4]
                 y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg
             >
           </div>
-          <h3 class="mb-4 font-persian text-2xl font-bold">
+          <h3 class="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
             {t('webDevelopmentServices.frontendDev', 'Frontend Development')}
           </h3>
-          <p class="mb-6 font-persian text-gray-600 dark:text-gray-300">
+          <p class="mb-6 text-gray-600 dark:text-gray-300">
             {t('webDevelopmentServices.frontendDesc', '')}
           </p>
-          <div class="grid grid-cols-2 gap-3 font-persian text-sm">
+          <div class="grid grid-cols-2 gap-3 text-sm">
             {
               [
                 'uiuxDesign',
@@ -116,13 +173,13 @@ const faqList = [1, 2, 3, 4]
                 y2="18"></line></svg
             >
           </div>
-          <h3 class="mb-4 font-persian text-2xl font-bold">
+          <h3 class="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
             {t('webDevelopmentServices.backendDev', 'Backend Development')}
           </h3>
-          <p class="mb-6 font-persian text-gray-600 dark:text-gray-300">
+          <p class="mb-6 text-gray-600 dark:text-gray-300">
             {t('webDevelopmentServices.backendDesc', '')}
           </p>
-          <div class="grid grid-cols-2 gap-3 font-persian text-sm">
+          <div class="grid grid-cols-2 gap-3 text-sm">
             {
               ['restApi', 'python', 'nodejs', 'database', 'auth', 'cloudIntegration'].map(
                 (feature) => (
@@ -141,13 +198,41 @@ const faqList = [1, 2, 3, 4]
     </div>
   </section>
 
+  <!-- Architecture Comparison Table -->
+  <section class="mx-auto max-w-6xl">
+    <h2 class="mb-6 text-center text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white">
+      {stackComparison.title}
+    </h2>
+    <div class="overflow-x-auto rounded-2xl border border-gray-200 bg-white shadow-xs dark:border-slate-800 dark:bg-slate-900">
+      <table class="w-full border-collapse text-start text-sm">
+        <thead>
+          <tr class="border-b border-gray-200 bg-gray-50 dark:border-slate-800 dark:bg-slate-800/70">
+            {stackComparison.headers.map((h) => (
+              <th class="px-4 py-3.5 font-bold text-gray-900 dark:text-white">{h}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 dark:divide-slate-800">
+          {stackComparison.rows.map((r) => (
+            <tr class="hover:bg-gray-50/60 dark:hover:bg-slate-800/40">
+              <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">{r[0]}</td>
+              <td class="px-4 py-3 font-medium text-primary">{r[1]}</td>
+              <td class="px-4 py-3 text-gray-600 dark:text-gray-300">{r[2]}</td>
+              <td class="px-4 py-3 text-gray-500 dark:text-gray-400">{r[3]}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
   <!-- Technologies Section -->
   <section class="bg-white dark:bg-slate-950">
     <div class="mx-auto max-w-7xl">
-      <h2 class="mb-4 text-center font-persian text-3xl font-bold">
+      <h2 class="mb-4 text-center text-3xl font-bold text-gray-900 dark:text-white">
         {t('webDevelopmentServices.technologies.title', 'Our Tech Stack')}
       </h2>
-      <p class="mx-auto mb-12 max-w-2xl text-center font-persian text-gray-600 dark:text-gray-300">
+      <p class="mx-auto mb-12 max-w-2xl text-center text-gray-600 dark:text-gray-300">
         {t('webDevelopmentServices.technologies.description', '')}
       </p>
 
@@ -157,40 +242,26 @@ const faqList = [1, 2, 3, 4]
             {
               icon: 'Code2',
               key: 'frontend',
-              items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
+              items: ['Astro 7', 'React & Next.js', 'TypeScript', 'Tailwind CSS'],
             },
-            { icon: 'Server', key: 'backend', items: ['Node.js', 'Python', 'Express', 'Django'] },
+            { icon: 'Server', key: 'backend', items: ['Node.js', 'Python', 'Express / FastAPI', 'Cloudflare Workers'] },
             {
               icon: 'Database',
               key: 'database',
-              items: ['MongoDB', 'PostgreSQL', 'Redis', 'MySQL'],
+              items: ['PostgreSQL', 'MongoDB', 'Redis', 'MySQL / D1'],
             },
-            { icon: 'Cloud', key: 'devops', items: ['Docker', 'AWS', 'CI/CD', 'Vercel'] },
+            { icon: 'Cloud', key: 'devops', items: ['Cloudflare Edge', 'Docker', 'GitHub CI/CD', 'AWS / Vercel'] },
           ].map((tech) => (
             <div class="rounded-2xl border border-gray-100 bg-gray-50/50 p-6 text-center dark:border-slate-800 dark:bg-slate-900">
               <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-white text-primary shadow-xs dark:bg-slate-800">
                 {tech.icon === 'Code2' && (
-                  <svg
-                    aria-hidden="true"
-                    class="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <polyline points="16 18 22 12 16 6" />
                     <polyline points="8 6 2 12 8 18" />
                   </svg>
                 )}
                 {tech.icon === 'Server' && (
-                  <svg
-                    aria-hidden="true"
-                    class="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
                     <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
                     <line x1="6" y1="6" x2="6.01" y2="6" />
@@ -198,33 +269,19 @@ const faqList = [1, 2, 3, 4]
                   </svg>
                 )}
                 {tech.icon === 'Database' && (
-                  <svg
-                    aria-hidden="true"
-                    class="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <ellipse cx="12" cy="5" rx="9" ry="3" />
                     <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
                     <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3" />
                   </svg>
                 )}
                 {tech.icon === 'Cloud' && (
-                  <svg
-                    aria-hidden="true"
-                    class="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
                   </svg>
                 )}
               </div>
-              <h3 class="mb-3 font-persian font-bold text-gray-900 dark:text-white">
+              <h3 class="mb-3 font-bold text-gray-900 dark:text-white">
                 {t(`webDevelopmentServices.technologies.${tech.key}`, tech.key)}
               </h3>
               <ul class="space-y-1 text-sm text-gray-600 dark:text-gray-300">
@@ -239,125 +296,14 @@ const faqList = [1, 2, 3, 4]
     </div>
   </section>
 
-  <!-- Industries Section -->
-  <section class="rounded-3xl border border-primary/10 bg-primary/5 p-8 py-16">
-    <div class="mx-auto max-w-7xl">
-      <h2 class="mb-4 text-center font-persian text-3xl font-bold">
-        {t('webDevelopmentServices.industries.title', 'Industries We Serve')}
-      </h2>
-      <p class="mx-auto mb-12 max-w-2xl text-center font-persian text-gray-600 dark:text-gray-300">
-        {t('webDevelopmentServices.industries.description', '')}
-      </p>
-
-      <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
-        {
-          [
-            { icon: 'ShoppingCart', key: 'ecommerce' },
-            { icon: 'Stethoscope', key: 'healthcare' },
-            { icon: 'Briefcase', key: 'fintech' },
-            { icon: 'GraduationCap', key: 'education' },
-            { icon: 'Home', key: 'realEstate' },
-            { icon: 'Plane', key: 'travel' },
-          ].map((industry) => (
-            <div class="flex min-h-27.5 flex-col items-center justify-center rounded-xl border border-gray-100 bg-white p-4 text-center shadow-xs transition-all hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
-              <div class="mb-2 text-primary">
-                {industry.icon === 'ShoppingCart' && (
-                  <svg
-                    aria-hidden="true"
-                    class="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle cx="9" cy="21" r="1" />
-                    <circle cx="20" cy="21" r="1" />
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-                  </svg>
-                )}
-                {industry.icon === 'Stethoscope' && (
-                  <svg
-                    aria-hidden="true"
-                    class="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle cx="18" cy="5" r="3" />
-                    <path d="M3 5h4v14H3zM10 5h5v5h-5zM10 14h11v5H10z" />
-                  </svg>
-                )}
-                {industry.icon === 'Briefcase' && (
-                  <svg
-                    aria-hidden="true"
-                    class="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                  </svg>
-                )}
-                {industry.icon === 'GraduationCap' && (
-                  <svg
-                    aria-hidden="true"
-                    class="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                    <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
-                  </svg>
-                )}
-                {industry.icon === 'Home' && (
-                  <svg
-                    aria-hidden="true"
-                    class="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                    <polyline points="9 22 9 12 15 12 15 22" />
-                  </svg>
-                )}
-                {industry.icon === 'Plane' && (
-                  <svg
-                    aria-hidden="true"
-                    class="h-6 w-6"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M21 16V8a2 2 0 0 0-2-2h-3L11 2H9v4L6 8H3a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h3l3 2v4h2l5-4h3a2 2 0 0 0 2-2z" />
-                  </svg>
-                )}
-              </div>
-              <span class="font-persian text-xs font-semibold text-gray-800 dark:text-gray-100">
-                {t(`webDevelopmentServices.industries.${industry.key}`, industry.key)}
-              </span>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
   <!-- Process Section -->
   <section class="bg-white dark:bg-slate-950">
     <div class="mx-auto max-w-7xl">
       <div class="mb-12 text-center">
-        <h2 class="mb-4 font-persian text-3xl font-bold">
+        <h2 class="mb-4 text-3xl font-bold text-gray-900 dark:text-white">
           {t('webDevelopmentServices.process.title', 'Execution Process')}
         </h2>
-        <p class="mx-auto max-w-2xl font-persian text-gray-600 dark:text-gray-300">
+        <p class="mx-auto max-w-2xl text-gray-600 dark:text-gray-300">
           {t('webDevelopmentServices.process.description', '')}
         </p>
       </div>
@@ -371,71 +317,43 @@ const faqList = [1, 2, 3, 4]
             { icon: 'Rocket', step: 4 },
           ].map((item, index) => (
             <div class="relative">
-              <div class="flex h-full flex-col items-center rounded-2xl border border-gray-100 bg-white p-6 text-center shadow-xs transition-all hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+              <div class="flex h-full flex-col items-center rounded-2xl border border-gray-100 bg-white p-6 text-center shadow-xs transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
                 <div class="mb-4 flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
                   {item.icon === 'Code2' && (
-                    <svg
-                      aria-hidden="true"
-                      class="h-6 w-6"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                    >
+                    <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <polyline points="16 18 22 12 16 6" />
                       <polyline points="8 6 2 12 8 18" />
                     </svg>
                   )}
                   {item.icon === 'Layout' && (
-                    <svg
-                      aria-hidden="true"
-                      class="h-6 w-6"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                    >
+                    <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
                       <line x1="3" y1="9" x2="21" y2="9" />
                       <line x1="9" y1="21" x2="9" y2="9" />
                     </svg>
                   )}
                   {item.icon === 'ShieldCheck' && (
-                    <svg
-                      aria-hidden="true"
-                      class="h-6 w-6"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                    >
+                    <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                       <polyline points="9 11 11 13 15 9" />
                     </svg>
                   )}
                   {item.icon === 'Rocket' && (
-                    <svg
-                      aria-hidden="true"
-                      class="h-6 w-6"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                    >
+                    <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
                     </svg>
                   )}
                 </div>
-                <h3 class="mb-3 font-persian text-xl font-bold">
+                <h3 class="mb-3 text-xl font-bold text-gray-900 dark:text-white">
                   {t(`webDevelopmentServices.process.step${item.step}.title`, `Step ${item.step}`)}
                 </h3>
-                <p class="font-persian text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+                <p class="text-sm leading-relaxed text-gray-500 dark:text-gray-400">
                   {t(`webDevelopmentServices.process.step${item.step}.desc`, '')}
                 </p>
               </div>
               {index < 3 && (
-                <div class="absolute top-1/2 -right-4 z-10 hidden -translate-y-1/2 transform lg:block">
-                  <div class="h-0.5 w-8 bg-gray-200" />
+                <div class="absolute top-1/2 -end-4 z-10 hidden -translate-y-1/2 transform lg:block">
+                  <div class="h-0.5 w-8 bg-gray-200 dark:bg-slate-700" />
                 </div>
               )}
             </div>
@@ -445,11 +363,61 @@ const faqList = [1, 2, 3, 4]
     </div>
   </section>
 
+  <!-- Verified Case Studies & Planning Resources -->
+  <section class="mx-auto max-w-7xl">
+    <div class="grid gap-6 md:grid-cols-3">
+      <a
+        href={`/${lang}/portfolio/ramzarz-negaran/`}
+        class="rounded-2xl border border-gray-200 bg-white p-6 transition-colors hover:border-primary/50 dark:border-slate-800 dark:bg-slate-900"
+      >
+        <div class="text-xs font-bold uppercase text-primary">
+          {lang === 'fa' ? 'کیس‌استدی واقعی' : lang === 'ar' ? 'دراسة حالة' : 'Case Study · Fintech'}
+        </div>
+        <h3 class="mt-1 text-lg font-bold text-gray-900 dark:text-white">
+          {lang === 'fa' ? 'پلتفرم رمزارز نگاران + ماشین‌حساب زنده' : lang === 'ar' ? 'منصة رمزارز نكاران وحاسبة الربحية' : 'Ramzarz Negaran Platform & Live Calculator'}
+        </h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+          {lang === 'fa' ? 'رتبه ۱ گوگل در تجهیزات ماینینگ قانونی همراه با محاسبه‌گر لحظه‌ای درآمد.' : lang === 'ar' ? 'المرتبة الأولى في جوجل مع محرك حساب ربحية فوري.' : 'Rank #1 on Google with custom real-time profitability engineering.'}
+        </p>
+      </a>
+
+      <a
+        href={`/${lang}/blog/web-development-guide-2026/`}
+        class="rounded-2xl border border-gray-200 bg-white p-6 transition-colors hover:border-primary/50 dark:border-slate-800 dark:bg-slate-900"
+      >
+        <div class="text-xs font-bold uppercase text-primary">
+          {lang === 'fa' ? 'راهنمای معماری ۲۰۲۶' : lang === 'ar' ? 'دليل الهندسة 2026' : '2026 Engineering Guide'}
+        </div>
+        <h3 class="mt-1 text-lg font-bold text-gray-900 dark:text-white">
+          {lang === 'fa' ? 'راهنمای جامع توسعه وب و انتخاب پیمانکار' : lang === 'ar' ? 'دليل تطوير الويب واختيار المورد التقني' : 'Complete Web Development & Vendor Guide'}
+        </h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+          {lang === 'fa' ? 'بررسی مراحل اجرای پروژه از بریف فنی تا استقرار نهایی و تحویل کد.' : lang === 'ar' ? 'خطوات تنفيذ المشروع من التوصيف الفني حتى الإطلاق.' : 'Compare architectures, milestones, and technical acceptance criteria.'}
+        </p>
+      </a>
+
+      <a
+        href={`/${lang}/enterprise-automation/`}
+        class="rounded-2xl border border-gray-200 bg-white p-6 transition-colors hover:border-primary/50 dark:border-slate-800 dark:bg-slate-900"
+      >
+        <div class="text-xs font-bold uppercase text-primary">
+          {lang === 'fa' ? 'اتوماسیون سازمانی' : lang === 'ar' ? 'أتمتة المؤسسات' : 'Enterprise Systems'}
+        </div>
+        <h3 class="mt-1 text-lg font-bold text-gray-900 dark:text-white">
+          {lang === 'fa' ? 'یکپارچه‌سازی اختصاصی ERP و CRM' : lang === 'ar' ? 'تكامل أنظمة ERP وCRM المخصص' : 'Custom ERP & CRM Middleware'}
+        </h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+          {lang === 'fa' ? 'اتصال دوطرفه وب‌اپلیکیشن به سپیدار، راهکاران، زوهو و Salesforce.' : lang === 'ar' ? 'ربط ثنائي الاتجاه مع أنظمة المحاسبة والمخزون وبوابات الشركات.' : 'Bi-directional sync with Sepidar, Rahkaran, Zoho, Odoo, and Salesforce.'}
+        </p>
+      </a>
+    </div>
+  </section>
+
   <!-- FAQ Section -->
   {
     faqList.length > 0 && (
       <section class="mx-auto max-w-3xl">
-        <FAQ faqList={faqList} lang={lang} />
+        <FAQ faqList={faqList} lang={lang} emitWebPage={false} />
       </section>
     )
   }

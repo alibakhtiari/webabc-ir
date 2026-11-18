@@ -12,6 +12,7 @@ const { lang, dictionary } = Astro.props;
 
 // Translate helpers
 const t = createTranslator(dictionary);
+const fontClass = lang === 'fa' ? 'font-persian' : lang === 'ar' ? 'font-arabic' : 'font-sans';
 
 const faqList = [1, 2, 3, 4]
   .map((n) => ({
@@ -21,14 +22,14 @@ const faqList = [1, 2, 3, 4]
   .filter((item) => item.question && item.answer);
 ---
 
-<div class="space-y-16 py-8">
+<div class={`space-y-16 py-8 ${fontClass}`}>
   <!-- Intro Section -->
   <section class="bg-white dark:bg-slate-950">
     <div class="mx-auto max-w-4xl space-y-6 text-center">
-      <h2 class="font-persian text-3xl font-bold">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white">
         {t('seoService.intro.title', 'What Does Our SEO Service Actually Cover?')}
       </h2>
-      <p class="font-persian text-lg leading-relaxed text-gray-600 dark:text-gray-300">
+      <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-300">
         {t('seoService.intro.text', '')}
       </p>
     </div>
@@ -36,9 +37,9 @@ const faqList = [1, 2, 3, 4]
 
   <!-- AEO Quick Answer Capsule -->
   <section class="mx-auto max-w-4xl px-4">
-    <div class="aeo-quick-answer relative overflow-hidden rounded-2xl border border-primary/25 bg-gradient-to-br from-primary/5 via-primary/[0.02] to-transparent p-6 sm:p-8 shadow-xs dark:border-primary/30 dark:bg-slate-900/60">
+    <div class="aeo-quick-answer relative overflow-hidden rounded-2xl border border-primary/25 bg-linear-to-br from-primary/5 via-primary/[0.02] to-transparent p-6 sm:p-8 shadow-xs dark:border-primary/30 dark:bg-slate-900/60">
       <div class="mb-3 flex items-center gap-2">
-        <span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+        <span class="flex h-2 w-2 rounded-full bg-primary"></span>
         <span class="text-xs font-bold uppercase tracking-wider text-primary">
           {lang === 'fa' ? 'خلاصه اجرایی و پاسخ مستقیم هوش مصنوعی (AEO)' : lang === 'ar' ? 'الإجابة المباشرة وخلاصة الخدمة (AEO)' : 'Quick Answer: Service Scope (AEO Capsule)'}
         </span>
@@ -46,10 +47,10 @@ const faqList = [1, 2, 3, 4]
       <p class="text-base sm:text-lg leading-relaxed text-gray-800 dark:text-gray-100 font-medium">
         {
           lang === 'fa'
-            ? 'خدمات سئو اختصاصی وب اِی‌بی‌سی (ويب سي) شامل بهینه‌سازی فنی هسته حیاتی گوگل (Core Web Vitals)، مهندسی معنایی کلمات کلیدی، تولید ساختار استاندارد داده‌های Schema.org و سئو محتوایی برای کسب رتبه ۱ گوگل و استخراج مستقیم در موتورهای جستجوی هوش مصنوعی (ChatGPT، Perplexity و Google AI Overviews) است.'
+            ? 'خدمات سئو اختصاصی وب اِی‌بی‌سی (ويب سي) شامل بهینه‌سازی فنی هسته حیاتی گوگل (Core Web Vitals)، مهندسی معنایی کلمات کلیدی، تولید گراف استاندارد داده‌های Schema.org و سئو محتوایی برای کسب رتبه صفحه اول گوگل و استناد مستقیم در موتورهای جستجوی هوش مصنوعی (ChatGPT، Perplexity و Google AI Overviews) است.'
             : lang === 'ar'
             ? 'تشمل خدمات السيو التخصصية من ويب إيه بي سي (ويب سي) التحسين التقني لمؤشرات أداء الويب الحيوية (Core Web Vitals)، وهندسة الكيانات الدلالية، وبناء بيانات Schema.org المنظمة، لتحقيق الصدارة في محركات البحث التقليدية والاقتباس المباشر في محركات الذكاء الاصطناعي (ChatGPT Search وPerplexity وGoogle AI Overviews).'
-            : 'WebABC SEO services deliver sub-second technical performance, high-entropy semantic entity optimization, and structured Schema.org graphs to ensure your brand captures page #1 Google rankings and direct AI citations across ChatGPT Search, Perplexity, and Google AI Overviews.'
+            : 'WebABC SEO services combine sub-second Core Web Vitals remediation, semantic entity optimization, structured Schema.org JSON-LD graphs, and answer-first content engineering so your business earns durable Google organic rankings and direct citations across ChatGPT Search, Perplexity, and Google AI Overviews.'
         }
       </p>
     </div>
@@ -58,17 +59,17 @@ const faqList = [1, 2, 3, 4]
   <!-- Services Cards Section -->
   <section class="bg-white dark:bg-slate-950">
     <div class="mx-auto max-w-7xl">
-      <h2 class="mb-12 text-center font-persian text-3xl font-bold">
+      <h2 class="mb-12 text-center text-3xl font-bold text-gray-900 dark:text-white">
         {t('seoService.servicesTitle', 'Our SEO Services')}
       </h2>
 
       <div class="grid grid-cols-1 gap-10 md:grid-cols-2">
         <!-- Card 1: On-Page SEO -->
         <div
-          class="group rounded-2xl border border-transparent bg-blue-50/50 p-8 transition-all duration-300 hover:border-blue-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500/30"
+          class="group rounded-2xl border border-transparent bg-blue-50/50 p-8 transition-shadow duration-300 hover:border-blue-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500/30"
         >
           <div
-            class="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-blue-600 shadow-sm transition-transform group-hover:scale-110 dark:bg-slate-800"
+            class="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-blue-600 shadow-sm transition-transform group-hover:scale-105 dark:bg-slate-800"
           >
             <svg
               aria-hidden="true"
@@ -81,13 +82,13 @@ const faqList = [1, 2, 3, 4]
               ></line></svg
             >
           </div>
-          <h3 class="mb-4 font-persian text-xl font-bold text-gray-900 dark:text-white">
+          <h3 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
             {t('seoService.onPageSeo', 'On-Page SEO')}
           </h3>
-          <p class="mb-6 font-persian leading-relaxed text-gray-600 dark:text-gray-300">
+          <p class="mb-6 leading-relaxed text-gray-600 dark:text-gray-300">
             {t('seoService.contentStrategyDesc', 'Comprehensive content strategy and optimization')}
           </p>
-          <ul class="space-y-3 font-persian">
+          <ul class="space-y-3">
             {
               [
                 t('seoService.feature.keywordResearch', 'Keyword Research'),
@@ -115,10 +116,10 @@ const faqList = [1, 2, 3, 4]
 
         <!-- Card 2: Technical SEO -->
         <div
-          class="group rounded-2xl border border-transparent bg-green-50/50 p-8 transition-all duration-300 hover:border-green-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-green-500/30"
+          class="group rounded-2xl border border-transparent bg-green-50/50 p-8 transition-shadow duration-300 hover:border-green-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-green-500/30"
         >
           <div
-            class="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-green-600 shadow-sm transition-transform group-hover:scale-110 dark:bg-slate-800"
+            class="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-green-600 shadow-sm transition-transform group-hover:scale-105 dark:bg-slate-800"
           >
             <svg
               aria-hidden="true"
@@ -133,13 +134,13 @@ const faqList = [1, 2, 3, 4]
               ></path></svg
             >
           </div>
-          <h3 class="mb-4 font-persian text-xl font-bold text-gray-900 dark:text-white">
+          <h3 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
             {t('seoService.technicalSeo', 'Technical SEO')}
           </h3>
-          <p class="mb-6 font-persian leading-relaxed text-gray-600 dark:text-gray-300">
+          <p class="mb-6 leading-relaxed text-gray-600 dark:text-gray-300">
             {t('seoService.technicalSeoDesc', 'Optimizing site structure and performance')}
           </p>
-          <ul class="space-y-3 font-persian">
+          <ul class="space-y-3">
             {
               [
                 t('seoService.feature.pageSpeed', 'Page Speed Optimization'),
@@ -167,10 +168,10 @@ const faqList = [1, 2, 3, 4]
 
         <!-- Card 3: Off-Page SEO -->
         <div
-          class="group rounded-2xl border border-transparent bg-purple-50/50 p-8 transition-all duration-300 hover:border-purple-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-purple-500/30"
+          class="group rounded-2xl border border-transparent bg-purple-50/50 p-8 transition-shadow duration-300 hover:border-purple-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-purple-500/30"
         >
           <div
-            class="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-purple-600 shadow-sm transition-transform group-hover:scale-110 dark:bg-slate-800"
+            class="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-purple-600 shadow-sm transition-transform group-hover:scale-105 dark:bg-slate-800"
           >
             <svg
               aria-hidden="true"
@@ -183,13 +184,13 @@ const faqList = [1, 2, 3, 4]
                 d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg
             >
           </div>
-          <h3 class="mb-4 font-persian text-xl font-bold text-gray-900 dark:text-white">
+          <h3 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
             {t('seoService.offPageSeo', 'Off-Page SEO')}
           </h3>
-          <p class="mb-6 font-persian leading-relaxed text-gray-600 dark:text-gray-300">
+          <p class="mb-6 leading-relaxed text-gray-600 dark:text-gray-300">
             {t('seoService.offPageSeoDesc', 'Building authority and backlinks')}
           </p>
-          <ul class="space-y-3 font-persian">
+          <ul class="space-y-3">
             {
               [
                 t('seoService.feature.linkProfile', 'Link Profile Analysis'),
@@ -217,10 +218,10 @@ const faqList = [1, 2, 3, 4]
 
         <!-- Card 4: Local SEO -->
         <div
-          class="group rounded-2xl border border-transparent bg-amber-50/50 p-8 transition-all duration-300 hover:border-amber-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-amber-500/30"
+          class="group rounded-2xl border border-transparent bg-amber-50/50 p-8 transition-shadow duration-300 hover:border-amber-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-amber-500/30"
         >
           <div
-            class="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-amber-600 shadow-sm transition-transform group-hover:scale-110 dark:bg-slate-800"
+            class="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-amber-600 shadow-sm transition-transform group-hover:scale-105 dark:bg-slate-800"
           >
             <svg
               aria-hidden="true"
@@ -233,13 +234,13 @@ const faqList = [1, 2, 3, 4]
                 d="M22 12A10 10 0 0 0 12 2v10z"></path></svg
             >
           </div>
-          <h3 class="mb-4 font-persian text-xl font-bold text-gray-900 dark:text-white">
+          <h3 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
             {t('seoService.localSeo', 'Local SEO')}
           </h3>
-          <p class="mb-6 font-persian leading-relaxed text-gray-600 dark:text-gray-300">
+          <p class="mb-6 leading-relaxed text-gray-600 dark:text-gray-300">
             {t('seoService.localSeoDesc', 'Dominating local search results')}
           </p>
-          <ul class="space-y-3 font-persian">
+          <ul class="space-y-3">
             {
               [
                 t('seoService.feature.gmb', 'Google Business Profile'),
@@ -267,7 +268,7 @@ const faqList = [1, 2, 3, 4]
           <div class="mt-6 pt-5 border-t border-amber-200/60 dark:border-slate-800">
             <a
               href={`/${lang}/services/local-seo/`}
-              class="inline-flex items-center gap-2 font-persian text-sm font-bold text-amber-700 transition-colors hover:text-amber-800 dark:text-amber-400 dark:hover:text-amber-300 group-hover:underline"
+              class="inline-flex items-center gap-2 text-sm font-bold text-amber-700 transition-colors hover:text-amber-800 dark:text-amber-400 dark:hover:text-amber-300 group-hover:underline"
             >
               <span>
                 {
@@ -278,7 +279,7 @@ const faqList = [1, 2, 3, 4]
                       : 'View Local SEO Services'
                 }
               </span>
-              <span class="inline-block transition-transform group-hover:translate-x-1" aria-hidden="true">
+              <span class="inline-block transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1" aria-hidden="true">
                 {lang === 'en' ? '→' : '←'}
               </span>
             </a>
@@ -288,15 +289,65 @@ const faqList = [1, 2, 3, 4]
     </div>
   </section>
 
+  <!-- Free Diagnostic Tools & Pricing Guide Cross-Links -->
+  <section class="mx-auto max-w-7xl">
+    <div class="grid gap-6 md:grid-cols-3">
+      <a
+        href={`/${lang}/tools/headline-analyzer/`}
+        class="rounded-2xl border border-gray-200 bg-white p-6 transition-colors hover:border-primary/50 dark:border-slate-800 dark:bg-slate-900"
+      >
+        <div class="text-xs font-bold uppercase tracking-wider text-primary">
+          {lang === 'fa' ? 'ابزار رایگان سئو' : lang === 'ar' ? 'أداة مجانية' : 'Free SEO Utility'}
+        </div>
+        <h3 class="mt-1 text-lg font-bold text-gray-900 dark:text-white">
+          {lang === 'fa' ? 'تحلیلگر تیتر و پیش‌نمایش SERP گوگل' : lang === 'ar' ? 'محلل العناوين ومعاينة نتائج جوجل' : 'Headline Analyzer & SERP Simulator'}
+        </h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+          {lang === 'fa' ? 'پیش از انتشار، عرض پیکسلی و نرخ کلیک تگ عنوان خود را در دسکتاپ و موبایل بسنجید.' : lang === 'ar' ? 'اختبر عرض البكسل ونسبة النقر لعناوين صفحاتك قبل النشر مجاناً.' : 'Audit pixel truncation and CTR strength across desktop and mobile SERPs.'}
+        </p>
+      </a>
+
+      <a
+        href={`/${lang}/tools/schema-generator/`}
+        class="rounded-2xl border border-gray-200 bg-white p-6 transition-colors hover:border-primary/50 dark:border-slate-800 dark:bg-slate-900"
+      >
+        <div class="text-xs font-bold uppercase tracking-wider text-primary">
+          {lang === 'fa' ? 'ابزار داده‌های ساختاریافته' : lang === 'ar' ? 'أداة البيانات المنظمة' : 'Structured Data Tool'}
+        </div>
+        <h3 class="mt-1 text-lg font-bold text-gray-900 dark:text-white">
+          {lang === 'fa' ? 'سازنده اسکیمای JSON-LD استاندارد' : lang === 'ar' ? 'مولد ترميز سكيما JSON-LD' : 'Schema.org JSON-LD Generator'}
+        </h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+          {lang === 'fa' ? 'تولید آنی اسکیمای Organization، Service و FAQPage برای موتورهای پاسخگو.' : lang === 'ar' ? 'أنشئ أكواد JSON-LD الموثقة لصفحات الخدمات والأسئلة الشائعة فوراً.' : 'Generate valid Organization, Service, and FAQPage markup in seconds.'}
+        </p>
+      </a>
+
+      <a
+        href={`/${lang}/blog/seo-services-pricing-guide-2026/`}
+        class="rounded-2xl border border-gray-200 bg-white p-6 transition-colors hover:border-primary/50 dark:border-slate-800 dark:bg-slate-900"
+      >
+        <div class="text-xs font-bold uppercase tracking-wider text-primary">
+          {lang === 'fa' ? 'راهنمای شفاف تعرفه' : lang === 'ar' ? 'دليل الأسعار' : '2026 Pricing Benchmark'}
+        </div>
+        <h3 class="mt-1 text-lg font-bold text-gray-900 dark:text-white">
+          {lang === 'fa' ? 'راهنمای قیمت خدمات سئو در سال ۲۰۲۶' : lang === 'ar' ? 'دليل أسعار باقات السيو لعام 2026' : 'SEO Services Pricing & ROI Guide 2026'}
+        </h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+          {lang === 'fa' ? 'مقایسه هزینه ممیزی تکنیکال، ریتینر ماهانه و فرمول بازگشت سرمایه.' : lang === 'ar' ? 'تعرّف على تكلفة التدقيق التقني والعقود الشهرية وحساب العائد.' : 'Compare technical audit bands, monthly retainers, and organic ROI math.'}
+        </p>
+      </a>
+    </div>
+  </section>
+
   <!-- Results Section -->
   <section
     class="rounded-3xl border border-gray-100 bg-gray-50/50 p-8 py-16 dark:border-slate-800 dark:bg-slate-900"
   >
-    <div class="mx-auto max-w-2xl space-y-6 text-center">
-      <h2 class="font-persian text-3xl font-bold">
+    <div class="mx-auto max-w-4xl space-y-6 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white">
         {t('seoService.results.title', 'Results Our Clients Have Seen')}
       </h2>
-      <p class="font-persian leading-relaxed text-gray-600 dark:text-gray-300">
+      <p class="mx-auto max-w-2xl leading-relaxed text-gray-600 dark:text-gray-300">
         {
           t(
             'seoService.results.description',
@@ -313,7 +364,7 @@ const faqList = [1, 2, 3, 4]
               {items.map((item: any) => (
                 <a
                   href={`/${lang}/portfolio/${item.slug}/`}
-                  class="flex flex-col rounded-2xl border border-gray-100 bg-white p-6 shadow-xs transition-all duration-300 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
+                  class="flex flex-col rounded-2xl border border-gray-100 bg-white p-6 shadow-xs transition-shadow duration-300 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
                 >
                   <div class="mb-2 text-2xl font-bold text-primary">{item.metric}</div>
                   <div class="mb-3 text-sm text-gray-500 dark:text-gray-400">{item.label}</div>
@@ -326,7 +377,7 @@ const faqList = [1, 2, 3, 4]
       }
       <a
         href={`/${lang}/portfolio/`}
-        class="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+        class="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-bold text-primary-foreground shadow-md transition-colors hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
       >
         {t('seoService.results.cta', 'View Case Studies')}
       </a>
@@ -336,23 +387,23 @@ const faqList = [1, 2, 3, 4]
   <!-- Process Section -->
   <section class="bg-white dark:bg-slate-950">
     <div class="mx-auto max-w-7xl">
-      <h2 class="mb-12 text-center font-persian text-3xl font-bold">
+      <h2 class="mb-12 text-center text-3xl font-bold text-gray-900 dark:text-white">
         {t('seoService.process.title', 'Our SEO Process')}
       </h2>
 
       <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
         <div
-          class="group relative rounded-2xl border border-transparent bg-gray-50/50 p-8 transition-all hover:border-gray-100 hover:bg-white hover:shadow-xl dark:bg-slate-900 dark:hover:border-slate-700 dark:hover:bg-slate-800"
+          class="group relative rounded-2xl border border-transparent bg-gray-50/50 p-8 transition-shadow hover:border-gray-100 hover:bg-white hover:shadow-xl dark:bg-slate-900 dark:hover:border-slate-700 dark:hover:bg-slate-800"
         >
           <div
-            class="absolute -top-4 -left-4 flex h-12 w-12 rotate-3 items-center justify-center rounded-xl bg-blue-500 text-xl font-bold text-white shadow-lg transition-transform group-hover:scale-110 group-hover:rotate-6"
+            class="absolute -top-4 -start-4 flex h-12 w-12 rotate-3 items-center justify-center rounded-xl bg-blue-600 text-xl font-bold text-white shadow-lg transition-transform group-hover:scale-105"
           >
             01
           </div>
-          <h3 class="mt-2 mb-4 font-persian text-xl font-bold text-gray-900 dark:text-white">
+          <h3 class="mt-2 mb-4 text-xl font-bold text-gray-900 dark:text-white">
             {t('seoService.process.step1.title', 'Research & Analysis')}
           </h3>
-          <p class="font-persian leading-relaxed text-gray-600 dark:text-gray-300">
+          <p class="leading-relaxed text-gray-600 dark:text-gray-300">
             {
               t(
                 'seoService.process.step1.description',
@@ -363,17 +414,17 @@ const faqList = [1, 2, 3, 4]
         </div>
 
         <div
-          class="group relative rounded-2xl border border-transparent bg-gray-50/50 p-8 transition-all hover:border-gray-100 hover:bg-white hover:shadow-xl dark:bg-slate-900 dark:hover:border-slate-700 dark:hover:bg-slate-800"
+          class="group relative rounded-2xl border border-transparent bg-gray-50/50 p-8 transition-shadow hover:border-gray-100 hover:bg-white hover:shadow-xl dark:bg-slate-900 dark:hover:border-slate-700 dark:hover:bg-slate-800"
         >
           <div
-            class="absolute -top-4 -left-4 flex h-12 w-12 rotate-3 items-center justify-center rounded-xl bg-green-500 text-xl font-bold text-white shadow-lg transition-transform group-hover:scale-110 group-hover:rotate-6"
+            class="absolute -top-4 -start-4 flex h-12 w-12 rotate-3 items-center justify-center rounded-xl bg-emerald-600 text-xl font-bold text-white shadow-lg transition-transform group-hover:scale-105"
           >
             02
           </div>
-          <h3 class="mt-2 mb-4 font-persian text-xl font-bold text-gray-900 dark:text-white">
+          <h3 class="mt-2 mb-4 text-xl font-bold text-gray-900 dark:text-white">
             {t('seoService.process.step2.title', 'Implementation')}
           </h3>
-          <p class="font-persian leading-relaxed text-gray-600 dark:text-gray-300">
+          <p class="leading-relaxed text-gray-600 dark:text-gray-300">
             {
               t(
                 'seoService.process.step2.description',
@@ -384,17 +435,17 @@ const faqList = [1, 2, 3, 4]
         </div>
 
         <div
-          class="group relative rounded-2xl border border-transparent bg-gray-50/50 p-8 transition-all hover:border-gray-100 hover:bg-white hover:shadow-xl dark:bg-slate-900 dark:hover:border-slate-700 dark:hover:bg-slate-800"
+          class="group relative rounded-2xl border border-transparent bg-gray-50/50 p-8 transition-shadow hover:border-gray-100 hover:bg-white hover:shadow-xl dark:bg-slate-900 dark:hover:border-slate-700 dark:hover:bg-slate-800"
         >
           <div
-            class="absolute -top-4 -left-4 flex h-12 w-12 rotate-3 items-center justify-center rounded-xl bg-purple-500 text-xl font-bold text-white shadow-lg transition-transform group-hover:scale-110 group-hover:rotate-6"
+            class="absolute -top-4 -start-4 flex h-12 w-12 rotate-3 items-center justify-center rounded-xl bg-purple-600 text-xl font-bold text-white shadow-lg transition-transform group-hover:scale-105"
           >
             03
           </div>
-          <h3 class="mt-2 mb-4 font-persian text-xl font-bold text-gray-900 dark:text-white">
+          <h3 class="mt-2 mb-4 text-xl font-bold text-gray-900 dark:text-white">
             {t('seoService.process.step3.title', 'Monitor & Optimize')}
           </h3>
-          <p class="font-persian leading-relaxed text-gray-600 dark:text-gray-300">
+          <p class="leading-relaxed text-gray-600 dark:text-gray-300">
             {
               t(
                 'seoService.process.step3.description',
@@ -411,7 +462,7 @@ const faqList = [1, 2, 3, 4]
   {
     faqList.length > 0 && (
       <section class="mx-auto max-w-3xl">
-        <FAQ faqList={faqList} lang={lang} />
+        <FAQ faqList={faqList} lang={lang} emitWebPage={false} />
       </section>
     )
   }

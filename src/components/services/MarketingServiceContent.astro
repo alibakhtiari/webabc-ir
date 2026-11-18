@@ -10,8 +10,8 @@ interface Props {
 }
 
 const { slug, lang, dictionary } = Astro.props;
+const fontClass = lang === 'fa' ? 'font-persian' : lang === 'ar' ? 'font-arabic' : 'font-sans';
 
-// Translate helpers
 const t = createTranslator(dictionary);
 
 const ns = slug === 'content-creation' ? 'contentCreation' : 'linkBuilding';
@@ -23,62 +23,116 @@ const faqList = [1, 2, 3, 4]
   }))
   .filter((item) => item.question && item.answer);
 
-// Content features definitions
 const contentCreationFeatures = [
-  { key: 'blogging', icon: 'FileText', color: 'text-blue-500' },
-  { key: 'copywriting', icon: 'PenTool', color: 'text-green-500' },
-  { key: 'strategy', icon: 'BarChart', color: 'text-purple-500' },
-  { key: 'social', icon: 'Share2', color: 'text-pink-500' },
-  { key: 'email', icon: 'Mail', color: 'text-orange-500' },
-  { key: 'editing', icon: 'Edit3', color: 'text-indigo-500' },
+  { key: 'blogging', icon: 'FileText', color: 'text-blue-600' },
+  { key: 'copywriting', icon: 'PenTool', color: 'text-emerald-600' },
+  { key: 'strategy', icon: 'BarChart', color: 'text-purple-600' },
+  { key: 'social', icon: 'Share2', color: 'text-pink-600' },
+  { key: 'email', icon: 'Mail', color: 'text-amber-600' },
+  { key: 'editing', icon: 'Edit3', color: 'text-indigo-600' },
 ];
 
 const linkBuildingFeatures = [
-  { key: 'guestPosting', icon: 'Users', color: 'text-blue-500' },
-  { key: 'brokenLink', icon: 'Link2', color: 'text-red-500' },
-  { key: 'outreach', icon: 'Share2', color: 'text-green-500' },
-  { key: 'unlinkedMentions', icon: 'Search', color: 'text-purple-500' },
-  { key: 'authority', icon: 'TrendingUp', color: 'text-orange-500' },
-  { key: 'audit', icon: 'Shield', color: 'text-indigo-500' },
+  { key: 'guestPosting', icon: 'Users', color: 'text-blue-600' },
+  { key: 'brokenLink', icon: 'Link2', color: 'text-rose-600' },
+  { key: 'outreach', icon: 'Share2', color: 'text-emerald-600' },
+  { key: 'unlinkedMentions', icon: 'Search', color: 'text-purple-600' },
+  { key: 'authority', icon: 'TrendingUp', color: 'text-amber-600' },
+  { key: 'audit', icon: 'Shield', color: 'text-indigo-600' },
 ];
 
 const features = slug === 'content-creation' ? contentCreationFeatures : linkBuildingFeatures;
+
+const quickAnswer =
+  slug === 'content-creation'
+    ? lang === 'fa'
+      ? 'خدمات تولید محتوای سئوشده و استراتژی محتوایی وب اِی‌بی‌سی شامل طراحی خوشه‌های موضوعی (Topic Clusters)، نگارش راهنماهای تخصصی پاسخ‌محور (Answer-First) و کپی‌رایتینگ صفحات فرود به سه زبان فارسی، عربی و انگلیسی است تا صفحات شما هم در نتایج ارگانیک گوگل رتبه بگیرند و هم در پاسخ‌های ChatGPT و Perplexity استناد شوند.'
+      : lang === 'ar'
+        ? 'تجمع خدمات كتابة المحتوى الاستراتيجي في ويب إيه بي سي بين هندسة العناقيد الموضوعية (Topic Clusters) وصياغة الأدلة المبنية على الإجابة المباشرة (GEO) وكتابة صفحات الهبوط باللغات العربية والإنجليزية والفارسية، لتصدر نتائج جوجل وكسب الاقتباس المباشر في ChatGPT وPerplexity.'
+        : 'WebABC SEO content strategy and GEO writing engineers topical authority clusters, answer-first pillar guides, and conversion landing copy across English, Arabic, and Persian—structuring self-contained data passages and FAQ schemas that rank on Google and earn citations in ChatGPT, Perplexity, and AI Overviews.'
+    : lang === 'fa'
+      ? 'خدمات لینک‌سازی کلاه‌سفید و روابط عمومی دیجیتال وب اِی‌بی‌سی با ممیزی پروفایل بک‌لینک، انتشار مقالات مهمان و رپورتاژهای تحریریه در رسانه‌های مرتبط، بازیابی اشاره‌های بدون لینک به برند و توزیع طبیعی انکورتکست، اعتبار دامنه شما را بدون ریسک جریمه الگوریتمی گوگل تقویت می‌کند.'
+      : lang === 'ar'
+        ? 'تعتمد خدمات بناء الروابط الخلفية (White-Hat Link Building) في ويب إيه بي سي على تدقيق ملف الروابط، ونشر المقالات التحريرية في مواقع موثوقة ذات صلة، واسترداد إشارات العلامة التجارية، وتوزيع النص الرابط طبيعياً لرفع سلطة النطاق بأمان دون مخاطر عقوبات جوجل.'
+        : 'WebABC white-hat link building and digital PR acquires editorial backlinks on topically relevant publications, reclaims unlinked brand mentions, repairs broken authority links, and audits anchor-text ratios—strengthening domain authority safely without PBNs or spam-policy risk.';
+
+const deliverables =
+  slug === 'content-creation'
+    ? [
+        {
+          url: `/${lang}/tools/readability-checker/`,
+          tag: lang === 'fa' ? 'ابزار رایگان خوانایی' : lang === 'ar' ? 'أداة وضوح القراءة' : 'Free Writing Utility',
+          title: lang === 'fa' ? 'بررسی‌کننده خوانایی و ساختار جملات' : lang === 'ar' ? 'أداة فحص سهولة القراءة' : 'Content Readability Checker',
+        },
+        {
+          url: `/${lang}/tools/keyword-density-analyzer/`,
+          tag: lang === 'fa' ? 'آنالیز معنایی' : lang === 'ar' ? 'كثافة الكلمات' : 'On-Page Balance',
+          title: lang === 'fa' ? 'تحلیلگر تراکم کلمات کلیدی' : lang === 'ar' ? 'محلل كثافة الكلمات المفتاحية' : 'Keyword Density Analyzer',
+        },
+        {
+          url: `/${lang}/blog/ai-search-optimization-guide-2026/`,
+          tag: lang === 'fa' ? 'راهنمای GEO ۲۰۲۶' : lang === 'ar' ? 'دليل GEO 2026' : 'GEO Citation Guide',
+          title: lang === 'fa' ? 'راهنمای بهینه‌سازی محتوا برای موتورهای هوش مصنوعی' : lang === 'ar' ? 'دليل تحسين المحتوى لمحركات الذكاء الاصطناعي' : 'Generative Engine Optimization (GEO) Guide',
+        },
+      ]
+    : [
+        {
+          url: `/${lang}/blog/link-building-strategies-guide-2026/`,
+          tag: lang === 'fa' ? 'راهنمای لینک‌سازی ۲۰۲۶' : lang === 'ar' ? 'دليل الروابط 2026' : '2026 Authority Playbook',
+          title: lang === 'fa' ? 'استراتژی‌های مدرن لینک‌سازی و انکورتکست' : lang === 'ar' ? 'استراتيجيات بناء الروابط وسلطة النطاق' : 'Modern Link Building & Anchor Strategy Guide',
+        },
+        {
+          url: `/${lang}/services/seo/`,
+          tag: lang === 'fa' ? 'سئوی جامع' : lang === 'ar' ? 'السيو الشامل' : 'Full-Stack SEO',
+          title: lang === 'fa' ? 'خدمات سئو تکنیکال و رشد ارگانیک' : lang === 'ar' ? 'خدمات السيو التقني والنمو العضوي' : 'Technical SEO & Entity Architecture',
+        },
+        {
+          url: `/${lang}/tools/utm-builder/`,
+          tag: lang === 'fa' ? 'ردیابی کمپین PR' : lang === 'ar' ? 'تتبع الحملات' : 'Campaign Attribution',
+          title: lang === 'fa' ? 'سازنده استاندارد لینک UTM کمپین‌ها' : lang === 'ar' ? 'منشئ روابط تتبع الحملات UTM' : 'UTM Campaign URL Builder',
+        },
+      ];
 ---
 
-<div class="space-y-16 py-8">
+<div class={`space-y-16 py-8 ${fontClass}`}>
   <!-- Intro Section -->
   <section class="bg-white dark:bg-slate-950">
     <div class="mx-auto max-w-4xl space-y-6 text-center">
-      <h2 class="font-persian text-3xl font-bold">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white">
         {t(`${ns}.intro.title`, 'What This Service Includes')}
       </h2>
-      <p class="font-persian text-lg leading-relaxed text-gray-600 dark:text-gray-300">
+      <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-300">
         {t(`${ns}.intro.text`, '')}
       </p>
     </div>
   </section>
 
+  <!-- AEO Quick Answer Capsule -->
+  <section class="mx-auto max-w-4xl px-4">
+    <aside class="aeo-quick-answer rounded-2xl border-s-4 border-primary bg-primary/5 p-6 sm:p-8 dark:bg-slate-900/80">
+      <div class="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
+        {lang === 'fa' ? 'خلاصه اجرایی خدمت (AEO)' : lang === 'ar' ? 'خلاصة الخدمة المباشرة (AEO)' : 'Quick Answer: Service Scope (AEO)'}
+      </div>
+      <p class="text-base leading-relaxed font-medium text-gray-800 dark:text-gray-100">
+        {quickAnswer}
+      </p>
+    </aside>
+  </section>
+
   <!-- Services Details -->
   <section class="bg-white dark:bg-slate-950">
     <div class="mx-auto max-w-7xl">
-      <h2 class="mb-12 text-center font-persian text-3xl font-bold">
+      <h2 class="mb-12 text-center text-3xl font-bold text-gray-900 dark:text-white">
         {t(`${ns}.ourServices`, 'Our Services')}
       </h2>
 
       <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {
           features.map(({ key, icon, color }) => (
-            <div class="flex flex-col rounded-2xl border border-gray-100 bg-white p-6 shadow-xs transition-all hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
+            <div class="flex flex-col rounded-2xl border border-gray-100 bg-white p-6 shadow-xs transition-shadow hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
               <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gray-50 text-primary dark:bg-slate-800">
                 {icon === 'FileText' && (
-                  <svg
-                    aria-hidden="true"
-                    class={`h-8 w-8 ${color}`}
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg aria-hidden="true" class={`h-8 w-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
                     <polyline points="14 2 14 8 20 8" />
                     <line x1="16" y1="13" x2="8" y2="13" />
@@ -86,40 +140,20 @@ const features = slug === 'content-creation' ? contentCreationFeatures : linkBui
                   </svg>
                 )}
                 {icon === 'PenTool' && (
-                  <svg
-                    aria-hidden="true"
-                    class={`h-8 w-8 ${color}`}
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <svg aria-hidden="true" class={`h-8 w-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M12 19l7-7 3 3-7 7-3-3z" />
+                    <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
                   </svg>
                 )}
                 {icon === 'BarChart' && (
-                  <svg
-                    aria-hidden="true"
-                    class={`h-8 w-8 ${color}`}
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg aria-hidden="true" class={`h-8 w-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <line x1="18" y1="20" x2="18" y2="10" />
                     <line x1="12" y1="20" x2="12" y2="4" />
                     <line x1="6" y1="20" x2="6" y2="14" />
                   </svg>
                 )}
                 {icon === 'Share2' && (
-                  <svg
-                    aria-hidden="true"
-                    class={`h-8 w-8 ${color}`}
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg aria-hidden="true" class={`h-8 w-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <circle cx="18" cy="5" r="3" />
                     <circle cx="6" cy="12" r="3" />
                     <circle cx="18" cy="19" r="3" />
@@ -128,40 +162,19 @@ const features = slug === 'content-creation' ? contentCreationFeatures : linkBui
                   </svg>
                 )}
                 {icon === 'Mail' && (
-                  <svg
-                    aria-hidden="true"
-                    class={`h-8 w-8 ${color}`}
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg aria-hidden="true" class={`h-8 w-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                     <polyline points="22,6 12,13 2,6" />
                   </svg>
                 )}
                 {icon === 'Edit3' && (
-                  <svg
-                    aria-hidden="true"
-                    class={`h-8 w-8 ${color}`}
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg aria-hidden="true" class={`h-8 w-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M12 20h9" />
                     <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
                   </svg>
                 )}
                 {icon === 'Users' && (
-                  <svg
-                    aria-hidden="true"
-                    class={`h-8 w-8 ${color}`}
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg aria-hidden="true" class={`h-8 w-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                     <circle cx="9" cy="7" r="4" />
                     <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
@@ -169,61 +182,33 @@ const features = slug === 'content-creation' ? contentCreationFeatures : linkBui
                   </svg>
                 )}
                 {icon === 'Link2' && (
-                  <svg
-                    aria-hidden="true"
-                    class={`h-8 w-8 ${color}`}
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg aria-hidden="true" class={`h-8 w-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3" />
                     <line x1="8" y1="12" x2="16" y2="12" />
                   </svg>
                 )}
                 {icon === 'Search' && (
-                  <svg
-                    aria-hidden="true"
-                    class={`h-8 w-8 ${color}`}
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg aria-hidden="true" class={`h-8 w-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <circle cx="11" cy="11" r="8" />
                     <line x1="21" y1="21" x2="16.65" y2="16.65" />
                   </svg>
                 )}
                 {icon === 'TrendingUp' && (
-                  <svg
-                    aria-hidden="true"
-                    class={`h-8 w-8 ${color}`}
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg aria-hidden="true" class={`h-8 w-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
                     <polyline points="17 6 23 6 23 12" />
                   </svg>
                 )}
                 {icon === 'Shield' && (
-                  <svg
-                    aria-hidden="true"
-                    class={`h-8 w-8 ${color}`}
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg aria-hidden="true" class={`h-8 w-8 ${color}`} fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                   </svg>
                 )}
               </div>
-              <h3 class="mb-3 font-persian text-xl font-bold">
+              <h3 class="mb-3 text-xl font-bold text-gray-900 dark:text-white">
                 {t(`${ns}.features.${key}.title`, key)}
               </h3>
-              <p class="grow font-persian text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+              <p class="grow text-sm leading-relaxed text-gray-600 dark:text-gray-300">
                 {t(`${ns}.features.${key}.description`, '')}
               </p>
             </div>
@@ -238,14 +223,14 @@ const features = slug === 'content-creation' ? contentCreationFeatures : linkBui
     class="rounded-3xl border border-gray-100 bg-gray-50/50 p-8 py-16 dark:border-slate-800 dark:bg-slate-900"
   >
     <div class="mx-auto max-w-4xl">
-      <h2 class="mb-12 text-center font-persian text-3xl font-bold">
+      <h2 class="mb-12 text-center text-3xl font-bold text-gray-900 dark:text-white">
         {t(`${ns}.process.title`, 'Our Process')}
       </h2>
 
       <div class="mx-auto max-w-2xl space-y-8">
         {
           [1, 2, 3, 4, 5].map((step) => (
-            <div class="flex items-start gap-6 font-persian">
+            <div class="flex items-start gap-6">
               <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-xl font-bold text-primary-foreground shadow-xs">
                 {step}
               </div>
@@ -264,11 +249,26 @@ const features = slug === 'content-creation' ? contentCreationFeatures : linkBui
     </div>
   </section>
 
+  <!-- Related Tools & Guides -->
+  <section class="mx-auto max-w-5xl">
+    <div class="grid gap-6 md:grid-cols-3">
+      {deliverables.map((d) => (
+        <a
+          href={d.url}
+          class="rounded-2xl border border-gray-200 bg-white p-6 transition-colors hover:border-primary/50 dark:border-slate-800 dark:bg-slate-900"
+        >
+          <div class="text-xs font-bold uppercase text-primary">{d.tag}</div>
+          <h3 class="mt-1.5 text-base font-bold text-gray-900 dark:text-white">{d.title}</h3>
+        </a>
+      ))}
+    </div>
+  </section>
+
   <!-- FAQ Section -->
   {
     faqList.length > 0 && (
       <section class="mx-auto max-w-3xl">
-        <FAQ faqList={faqList} lang={lang} />
+        <FAQ faqList={faqList} lang={lang} emitWebPage={false} />
       </section>
     )
   }

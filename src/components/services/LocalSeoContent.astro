@@ -50,7 +50,10 @@ const tiers = [
   <section class="bg-white dark:bg-slate-950">
     <div class="mx-auto max-w-4xl space-y-6 text-center">
       <div class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary">
-        <span>📍</span>
+        <svg aria-hidden="true" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-8-4.5-8-11a8 8 0 1116 0c0 6.5-8 11-8 11z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
         <span>
           {lang === 'fa' ? 'تسلط بر نقشه و جستجوی شهری' : lang === 'ar' ? 'تصدر الخرائط والبحث الجغرافي' : 'Local Search & Map Dominance'}
         </span>
@@ -80,9 +83,9 @@ const tiers = [
       </div>
 
       <!-- AEO Quick Answer Capsule -->
-      <div class="aeo-quick-answer mt-8 text-start rounded-2xl border border-primary/25 bg-gradient-to-br from-primary/5 via-primary/[0.02] to-transparent p-6 sm:p-7 shadow-xs dark:border-primary/30 dark:bg-slate-900/60">
+      <div class="aeo-quick-answer mt-8 text-start rounded-2xl border border-primary/25 bg-linear-to-br from-primary/5 via-primary/[0.02] to-transparent p-6 sm:p-7 shadow-xs dark:border-primary/30 dark:bg-slate-900/60">
         <div class="mb-2.5 flex items-center gap-2">
-          <span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+          <span class="flex h-2 w-2 rounded-full bg-primary"></span>
           <span class="text-xs font-bold uppercase tracking-wider text-primary">
             {lang === 'fa' ? 'خلاصه اجرایی و پاسخ مستقیم هوش مصنوعی (AEO)' : lang === 'ar' ? 'الإجابة المباشرة وخلاصة الخدمة (AEO)' : 'Quick Answer: Local SEO Scope (AEO Capsule)'}
           </span>
@@ -93,7 +96,7 @@ const tiers = [
               ? 'خدمات سئو محلی (Local SEO) وب اِی‌بی‌سی تمرکز بر تسلط بر بسته ۳تایی گوگل مپ (Google 3-Pack)، اپلیکیشن‌های مسیریابی نشان و بلد، یکپارچگی ۱۰۰٪ اطلاعات تماس و آدرس (NAP) و ثبت اسکیمای LocalBusiness برای جذب مشتریان محلی با قصد خرید بالا در بازارهای هدف تهران، قزوین، البرز و کشورهای منطقه دارد.'
               : lang === 'ar'
               ? 'تركز خدمات السيو الجغرافي والمحلي (Local SEO) من ويب إيه بي سي على تصدر حزمة الخرائط الثلاثية في Google Maps، وتطبيقات الملاحة المحلية، وتطابق بيانات NAP بنسبة 100%، وتضمين بيانات LocalBusiness المنظمة لضمان وصول العملاء المحليين في مسقط ودبي والرياض وطهران.'
-              : 'WebABC Local SEO services optimize your business for the Google Maps 3-Pack, local navigation apps (Neshan & Balad), strict 100% NAP citation integrity, and LocalBusiness structured data to dominate high-intent geographic searches across Tehran, Qazvin, Dubai, and Muscat.'
+              : 'WebABC Local SEO services optimize your business for the Google Maps 3-Pack, regional navigation apps (Neshan & Balad), strict 100% NAP citation integrity, and LocalBusiness structured data to capture high-intent geographic searches across Tehran, Qazvin, Dubai, Riyadh, and Muscat.'
           }
         </p>
       </div>
@@ -119,19 +122,12 @@ const tiers = [
       <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         <!-- Pillar 1: Technical Local Audit -->
         <div
-          class="group rounded-2xl border border-transparent bg-blue-50/50 p-6 transition-all duration-300 hover:border-blue-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500/30"
+          class="group rounded-2xl border border-transparent bg-blue-50/50 p-6 transition-shadow duration-300 hover:border-blue-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500/30"
         >
           <div
-            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-blue-600 shadow-sm transition-transform group-hover:scale-110 dark:bg-slate-800"
+            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-blue-600 shadow-sm transition-transform group-hover:scale-105 dark:bg-slate-800"
           >
-            <svg
-              aria-hidden="true"
-              class="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-            >
+            <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
             </svg>
           </div>
@@ -145,19 +141,12 @@ const tiers = [
 
         <!-- Pillar 2: Google Business Profile (GBP) -->
         <div
-          class="group rounded-2xl border border-transparent bg-emerald-50/50 p-6 transition-all duration-300 hover:border-emerald-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-emerald-500/30"
+          class="group rounded-2xl border border-transparent bg-emerald-50/50 p-6 transition-shadow duration-300 hover:border-emerald-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-emerald-500/30"
         >
           <div
-            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-emerald-600 shadow-sm transition-transform group-hover:scale-110 dark:bg-slate-800"
+            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-emerald-600 shadow-sm transition-transform group-hover:scale-105 dark:bg-slate-800"
           >
-            <svg
-              aria-hidden="true"
-              class="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-            >
+            <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="10"></circle>
               <line x1="2" y1="12" x2="22" y2="12"></line>
               <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
@@ -173,19 +162,12 @@ const tiers = [
 
         <!-- Pillar 3: Domestic Maps (Neshan & Balad) -->
         <div
-          class="group rounded-2xl border border-transparent bg-indigo-50/50 p-6 transition-all duration-300 hover:border-indigo-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-indigo-500/30"
+          class="group rounded-2xl border border-transparent bg-indigo-50/50 p-6 transition-shadow duration-300 hover:border-indigo-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-indigo-500/30"
         >
           <div
-            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-indigo-600 shadow-sm transition-transform group-hover:scale-110 dark:bg-slate-800"
+            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-indigo-600 shadow-sm transition-transform group-hover:scale-105 dark:bg-slate-800"
           >
-            <svg
-              aria-hidden="true"
-              class="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-            >
+            <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
             </svg>
           </div>
@@ -199,19 +181,12 @@ const tiers = [
 
         <!-- Pillar 4: NAP Consistency & Local Citations -->
         <div
-          class="group rounded-2xl border border-transparent bg-amber-50/50 p-6 transition-all duration-300 hover:border-amber-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-amber-500/30"
+          class="group rounded-2xl border border-transparent bg-amber-50/50 p-6 transition-shadow duration-300 hover:border-amber-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-amber-500/30"
         >
           <div
-            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-amber-600 shadow-sm transition-transform group-hover:scale-110 dark:bg-slate-800"
+            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-amber-600 shadow-sm transition-transform group-hover:scale-105 dark:bg-slate-800"
           >
-            <svg
-              aria-hidden="true"
-              class="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-            >
+            <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-12a9 9 0 0 1 18 0z"></path>
               <circle cx="12" cy="10" r="3"></circle>
             </svg>
@@ -226,19 +201,12 @@ const tiers = [
 
         <!-- Pillar 5: Review & Reputation Management -->
         <div
-          class="group rounded-2xl border border-transparent bg-rose-50/50 p-6 transition-all duration-300 hover:border-rose-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-rose-500/30"
+          class="group rounded-2xl border border-transparent bg-rose-50/50 p-6 transition-shadow duration-300 hover:border-rose-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-rose-500/30"
         >
           <div
-            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-rose-600 shadow-sm transition-transform group-hover:scale-110 dark:bg-slate-800"
+            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-rose-600 shadow-sm transition-transform group-hover:scale-105 dark:bg-slate-800"
           >
-            <svg
-              aria-hidden="true"
-              class="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-            >
+            <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
           </div>
@@ -252,19 +220,12 @@ const tiers = [
 
         <!-- Pillar 6: Geo Keywords & 'Near Me' Search -->
         <div
-          class="group rounded-2xl border border-transparent bg-purple-50/50 p-6 transition-all duration-300 hover:border-purple-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-purple-500/30"
+          class="group rounded-2xl border border-transparent bg-purple-50/50 p-6 transition-shadow duration-300 hover:border-purple-100/50 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 dark:hover:border-purple-500/30"
         >
           <div
-            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-purple-600 shadow-sm transition-transform group-hover:scale-110 dark:bg-slate-800"
+            class="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-white text-purple-600 shadow-sm transition-transform group-hover:scale-105 dark:bg-slate-800"
           >
-            <svg
-              aria-hidden="true"
-              class="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-            >
+            <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
@@ -285,7 +246,10 @@ const tiers = [
     <div class="mx-auto max-w-7xl">
       <div class="mb-12 text-center">
         <div class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-3.5 py-1 text-xs font-bold text-emerald-700 dark:text-emerald-400">
-          <span>💰</span>
+          <svg aria-hidden="true" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-2.21 0-4 .895-4 2s1.79 2 4 2 4 .895 4 2-1.79 2-4 2m0-8V6m0 12v-2" />
+            <circle cx="12" cy="12" r="9" />
+          </svg>
           <span>{lang === 'fa' ? 'تعرفه مصوب و شفاف' : lang === 'ar' ? 'أسعار واضحة وموثقة' : 'Transparent Pricing'}</span>
         </div>
         <h2 class="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
@@ -315,14 +279,14 @@ const tiers = [
             const isPopular = tier.popular;
             return (
               <div
-                class={`relative flex flex-col rounded-3xl bg-white p-8 transition-all duration-300 dark:bg-slate-900 ${
+                class={`relative flex flex-col rounded-3xl bg-white p-8 transition-shadow duration-300 dark:bg-slate-900 ${
                   isPopular
                     ? 'border-2 border-primary shadow-xl ring-2 ring-primary/20 dark:border-primary'
                     : 'border border-gray-100 shadow-sm hover:shadow-lg dark:border-slate-800'
                 }`}
               >
                 {isPopular && (
-                  <div class="absolute -top-3.5 start-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-bold text-primary-foreground shadow-md">
+                  <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-bold text-primary-foreground shadow-md">
                     {lang === 'fa' ? 'محبوب‌ترین پکیج رقابتی' : lang === 'ar' ? 'الباقة الأكثر طلباً' : 'Most Popular Retainer'}
                   </div>
                 )}
@@ -371,7 +335,7 @@ const tiers = [
 
                 <a
                   href={`/${lang}/contact/`}
-                  class={`inline-flex w-full items-center justify-center rounded-xl py-3 text-sm font-bold transition-all ${
+                  class={`inline-flex w-full items-center justify-center rounded-xl py-3 text-sm font-bold transition-colors ${
                     isPopular
                       ? 'bg-primary text-primary-foreground shadow-md hover:bg-primary/90'
                       : 'border border-gray-200 bg-white text-gray-800 hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700'
@@ -389,12 +353,12 @@ const tiers = [
       <div class="mt-10 text-center">
         <a
           href={pricingData?.ctaUrl || `/${lang}/blog/seo-services-pricing-guide-2026/`}
-          class="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-bold text-gray-900 shadow-sm border border-gray-200 transition-all hover:border-primary hover:text-primary dark:border-slate-800 dark:bg-slate-900 dark:text-white dark:hover:text-primary"
+          class="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-bold text-gray-900 shadow-sm border border-gray-200 transition-colors hover:border-primary hover:text-primary dark:border-slate-800 dark:bg-slate-900 dark:text-white dark:hover:text-primary"
         >
           <span>
             {t('localSeo.pricing.cta', 'View Comprehensive 2026 SEO Pricing Guide')}
           </span>
-          <span class="text-primary transition-transform group-hover:translate-x-1" aria-hidden="true">
+          <span class="text-primary" aria-hidden="true">
             {lang === 'en' ? '→' : '←'}
           </span>
         </a>
@@ -406,7 +370,9 @@ const tiers = [
   <section class="mx-auto max-w-7xl space-y-12">
     <div class="text-center">
       <div class="inline-flex items-center gap-1.5 rounded-full bg-blue-500/10 px-3.5 py-1 text-xs font-bold text-blue-700 dark:text-blue-400">
-        <span>🏢</span>
+        <svg aria-hidden="true" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4" />
+        </svg>
         <span>{lang === 'fa' ? 'نتایج و سوابق اثبات‌شده' : lang === 'ar' ? 'نتائج مثبتة وموثقة' : 'Verifiable Local Track Record'}</span>
       </div>
       <h2 class="mt-3 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
@@ -428,7 +394,10 @@ const tiers = [
           {localProofData.points.map((point: any) => (
             <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900">
               <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                📍
+                <svg aria-hidden="true" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-8-4.5-8-11a8 8 0 1116 0c0 6.5-8 11-8 11z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
               </div>
               <h3 class="mb-2 text-lg font-bold text-gray-900 dark:text-white">
                 {point.title}
@@ -454,7 +423,7 @@ const tiers = [
               ? 'بزرگ‌ترین مرکز خرید و پارکینگ هوشمند قزوین با بیش از ۳۰۰ واحد تجاری و تصاحب رتبه ۱ جستجوهای مراکز تجاری'
               : lang === 'ar'
               ? 'أكبر مركز تسوق ومواقف ذكية في قزوين وتصدر نتائج البحث مع أكثر من 300 متجر تجاري'
-              : 'Premier commercial retail & smart parking hub (+300 retail units) capturing top regional search visibility',
+              : 'Commercial retail & smart parking hub (+300 retail units) capturing top regional search visibility',
           },
           {
             slug: 'behrad-dc',
@@ -464,7 +433,7 @@ const tiers = [
               ? 'افزایش ۲۳۰ درصدی نوبت‌دهی آنلاین و تصدر نتایج دندانپزشکی در منطقه شاهین ویلا و البرز'
               : lang === 'ar'
               ? 'زيادة حجز المواعيد بنسبة 230% وتصدر نتائج البحث الطبي لطب الأسنان في كرج'
-              : '230% surge in patient appointments through targeted geo-intent keyword dominance in Karaj',
+              : '230% growth in patient appointments through targeted geo-intent keyword optimization in Karaj',
           },
           {
             slug: 'tahami-clinic',
@@ -474,12 +443,12 @@ const tiers = [
               ? 'سئوی محلی تخصصی و تسلط بر جستجوهای جراحی زیبایی و درماتولوژی با رشد ۳۴۰ درصدی ورودی ارگانیک در تهران'
               : lang === 'ar'
               ? 'تصدر عبارات جراحة التجميل والجلدية عالية المنافسة مع نمو 340% في الزيارات العضوية بطهران'
-              : 'Dominating competitive aesthetic and dermatology queries across Tehran with +340% organic traffic growth',
+              : 'Ranking across competitive aesthetic and dermatology queries in Tehran with +340% organic traffic growth',
           },
         ].map((cs) => (
           <a
             href={`/${lang}/portfolio/${cs.slug}/`}
-            class="group block rounded-2xl border border-gray-100 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
+            class="group block rounded-2xl border border-gray-100 bg-white p-6 transition-colors hover:border-primary/30 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
           >
             <div class="mb-2">
               <span class="inline-block rounded-md bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">
@@ -510,8 +479,8 @@ const tiers = [
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {
           [1, 2, 3, 4].map((step) => (
-            <div class="group relative rounded-2xl border border-gray-100/80 bg-white p-8 transition-all hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
-              <div class="absolute -top-4 -left-4 flex h-12 w-12 rotate-3 items-center justify-center rounded-xl bg-primary text-xl font-bold text-primary-foreground shadow-lg transition-transform group-hover:scale-110 group-hover:rotate-6">
+            <div class="group relative rounded-2xl border border-gray-100/80 bg-white p-8 transition-shadow hover:shadow-xl dark:border-slate-800 dark:bg-slate-900">
+              <div class="absolute -top-4 -start-4 flex h-12 w-12 rotate-3 items-center justify-center rounded-xl bg-primary text-xl font-bold text-primary-foreground shadow-lg transition-transform group-hover:scale-105">
                 0{step}
               </div>
               <h3 class="mt-2 mb-4 text-xl font-bold text-gray-900 dark:text-white">
@@ -544,7 +513,7 @@ const tiers = [
           <div class="grid grid-cols-1 gap-3 pt-4 text-start sm:grid-cols-2">
             {rightForBullets.map((bullet: string) => (
               <div class="flex items-center gap-2 rounded-xl bg-white p-3 text-xs font-medium text-gray-700 shadow-2xs dark:bg-slate-800 dark:text-gray-200">
-                <span class="text-emerald-500">✓</span>
+                <span class="text-emerald-600">✓</span>
                 <span>{bullet}</span>
               </div>
             ))}
@@ -575,7 +544,7 @@ const tiers = [
           {
             slug: 'tehran',
             name: lang === 'fa' ? 'تهران' : lang === 'ar' ? 'طهران' : 'Tehran',
-            desc: lang === 'fa' ? 'سئو محلی در پایتخت، تسلط بر جستجوهای مناطق ۲۲ گانه و نقشه گوگل' : lang === 'ar' ? 'سيو محلي متقدم للمؤسسات والشركات في العاصمة الإيرانية' : 'Local business dominance across Tehran districts & Google Maps Pack',
+            desc: lang === 'fa' ? 'سئو محلی در پایتخت، تسلط بر جستجوهای مناطق ۲۲ گانه و نقشه گوگل' : lang === 'ar' ? 'سيو محلي متقدم للمؤسسات والشركات في العاصمة الإيرانية' : 'Local business visibility across Tehran districts & Google Maps Pack',
           },
           {
             slug: 'qazvin',
@@ -585,7 +554,7 @@ const tiers = [
           {
             slug: 'dubai',
             name: lang === 'fa' ? 'دبی و امارات' : lang === 'ar' ? 'دبي والإمارات' : 'Dubai & UAE',
-            desc: lang === 'fa' ? 'سئو دوزبانه انگلیسی/عربی، Google Maps و 2GIS در بازار فوق‌رقابتی امارات' : lang === 'ar' ? 'تصدر نتائج البحث في دبي والشارقة وخرائط جوجل والمنصات المحلية' : 'Bilingual English & Arabic Local SEO for the ultra-competitive UAE market',
+            desc: lang === 'fa' ? 'سئو دوزبانه انگلیسی/عربی، Google Maps و 2GIS در بازار فوق‌رقابتی امارات' : lang === 'ar' ? 'تصدر نتائج البحث في دبي والشارقة وخرائط جوجل والمنصات المحلية' : 'Bilingual English & Arabic Local SEO for the competitive UAE market',
           },
           {
             slug: 'muscat',
@@ -605,13 +574,13 @@ const tiers = [
         ].map((loc) => (
           <a
             href={`/${lang}/service-areas/${loc.slug}/`}
-            class="group block rounded-2xl border border-gray-100 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
+            class="group block rounded-2xl border border-gray-100 bg-white p-6 transition-colors hover:border-primary/30 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
           >
             <div class="mb-3 flex items-center justify-between">
               <h3 class="text-xl font-bold text-gray-900 transition-colors group-hover:text-primary dark:text-white">
                 {loc.name}
               </h3>
-              <span class="text-primary transition-transform group-hover:translate-x-1" aria-hidden="true">
+              <span class="text-primary" aria-hidden="true">
                 {lang === 'en' ? '→' : '←'}
               </span>
             </div>
@@ -658,12 +627,12 @@ const tiers = [
             slug: 'dubai-uae-web-design-seo-guide-2026',
             title: lang === 'fa' ? 'راهنمای طراحی سایت و سئو در دبی و امارات' : lang === 'ar' ? 'دليل تصميم المواقع والسيو في دبي والإمارات 2026' : 'Dubai & UAE Web Design & SEO Guide 2026',
             tag: lang === 'fa' ? 'بازار بین‌المللی خلیج فارس' : lang === 'ar' ? 'سوق دبي والإمارات' : 'GCC Market Expansion',
-            desc: lang === 'fa' ? 'معماری دوزبانه انگلیسی و عربی، درگاه‌های پرداخت منطقه‌ای و سئوی تجاری در امارات' : lang === 'ar' ? 'تصميم ثنائي اللغة فائق السرعة، بوابات الدفع الخليجية وتصدر البحث المؤسسي' : 'Bilingual Arabic/English architecture, GCC payment rails, and enterprise search dominance',
+            desc: lang === 'fa' ? 'معماری دوزبانه انگلیسی و عربی، درگاه‌های پرداخت منطقه‌ای و سئوی تجاری در امارات' : lang === 'ar' ? 'تصميم ثنائي اللغة فائق السرعة، بوابات الدفع الخليجية وتصدر البحث المؤسسي' : 'Bilingual Arabic/English architecture, GCC payment rails, and enterprise search visibility',
           },
         ].map((g) => (
           <a
             href={`/${lang}/blog/${g.slug}/`}
-            class="group block rounded-2xl border border-gray-100 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
+            class="group block rounded-2xl border border-gray-100 bg-white p-6 transition-colors hover:border-primary/30 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
           >
             <div class="mb-2">
               <span class="inline-block rounded-md bg-secondary/10 px-2.5 py-1 text-xs font-semibold text-secondary">
@@ -686,7 +655,7 @@ const tiers = [
   {
     faqList.length > 0 && (
       <section class="mx-auto max-w-3xl">
-        <FAQ faqList={faqList} lang={lang} />
+        <FAQ faqList={faqList} lang={lang} emitWebPage={false} />
       </section>
     )
   }

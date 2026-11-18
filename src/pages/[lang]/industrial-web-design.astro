@@ -2,9 +2,11 @@
 import { Picture } from 'astro:assets';
 import Layout from '@/layouts/Layout.astro';
 import Breadcrumbs from '@/components/astro/Breadcrumbs.astro';
+import FAQ from '@/components/astro/FAQ.astro';
 import { getLanguageStaticPaths, type SupportedLanguage, languages } from '@/types/language';
 import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
+import { breadcrumbId, canonicalPageUrl, webpageId, websiteId } from '@/utils/schemaIds';
 import industrialHeroImg from '@/assets/images/services/industrial-web-design.webp';
 
 export const getStaticPaths = getLanguageStaticPaths;
@@ -33,18 +35,52 @@ const heroSubtitle = t('industrial.heroSubtitle', {
 
 const breadcrumbs = [
   { label: t('common.home', { fallback: 'Home' }), url: `/${supportedLang}/` },
+  { label: t('services.title', { fallback: 'Services' }), url: `/${supportedLang}/services/` },
   { label: pageTitle },
 ];
+
+const pageUrl = canonicalPageUrl(`/${supportedLang}/industrial-web-design/`);
+const inLang = supportedLang === 'en' ? 'en-US' : supportedLang === 'ar' ? 'ar-SA' : 'fa-IR';
+
+const faqItems = [
+  { question: t('industrial.q1'), answer: t('industrial.a1') },
+  { question: t('industrial.q2'), answer: t('industrial.a2') },
+  { question: t('industrial.q3'), answer: t('industrial.a3') },
+];
+
+const quickAnswer =
+  supportedLang === 'fa'
+    ? 'طراحی سایت صنعتی و سئوی B2B خدمتی مهندسی ویژه کارخانه‌ها، تولیدکنندگان و شرکت‌های بازرگانی است که کاتالوگ‌های فنی، برگه‌های مشخصات (Datasheet)، فرم‌های استعلام قیمت عمده (RFQ) و اسکیمای استاندارد محصولات صنعتی را روی معماری فوق‌سریع پیاده‌سازی می‌کند تا خریداران سازمانی و مدیران تدارکات مستقیماً از طریق گوگل و موتورهای هوش مصنوعی جذب شوند.'
+    : supportedLang === 'ar'
+      ? 'تصميم المواقع الصناعية وسيو الشركات (B2B) هو خدمة هندسية مخصصة للمصانع والمنشآت الإنتاجية تحوّل الكتالوجات الفنية وملفات المواصفات ونماذج طلب عروض الأسعار (RFQ) إلى منصة رقمية فائقة السرعة مدعومة ببيانات منظمة، لاستقطاب مديري المشتريات وعقود التوريد مباشرة من جوجل ومحركات البحث الذكية.'
+      : 'Industrial web design and B2B manufacturing SEO is a specialized engineering service that pairs sub-second catalog architecture, searchable technical datasheets, multi-SKU Request-for-Quote (RFQ) workflows, and Schema.org Product/Service JSON-LD so factories and industrial suppliers capture procurement leads directly from Google and AI answer engines.';
 
 const industrialSchema = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'Service',
-      '@id': `https://webabc.ir/${supportedLang}/industrial-web-design/#service`,
-      url: `https://webabc.ir/${supportedLang}/industrial-web-design/`,
+      '@type': 'WebPage',
+      '@id': webpageId(pageUrl),
+      url: pageUrl,
       name: pageTitle,
       description: pageDescription,
+      inLanguage: inLang,
+      isPartOf: { '@id': websiteId(supportedLang) },
+      about: { '@id': 'https://webabc.ir/#organization' },
+      breadcrumb: { '@id': breadcrumbId(pageUrl) },
+      mainEntity: { '@id': `${pageUrl}#service` },
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['h1', '.aeo-quick-answer'],
+      },
+    },
+    {
+      '@type': 'Service',
+      '@id': `${pageUrl}#service`,
+      url: pageUrl,
+      name: pageTitle,
+      description: pageDescription,
+      mainEntityOfPage: { '@id': webpageId(pageUrl) },
       provider: {
         '@id': 'https://webabc.ir/#organization',
       },
@@ -58,36 +94,6 @@ const industrialSchema = {
           priceCurrency: supportedLang === 'fa' ? 'IRR' : 'USD',
         },
       },
-    },
-    {
-      '@type': 'FAQPage',
-      '@id': `https://webabc.ir/${supportedLang}/industrial-web-design/#faq`,
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: t('industrial.q1'),
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: t('industrial.a1'),
-          },
-        },
-        {
-          '@type': 'Question',
-          name: t('industrial.q2'),
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: t('industrial.a2'),
-          },
-        },
-        {
-          '@type': 'Question',
-          name: t('industrial.q3'),
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: t('industrial.a3'),
-          },
-        },
-      ],
     },
   ],
 };
@@ -117,13 +123,13 @@ const industrialSchema = {
 
           <!-- Architecture Badges -->
           <div class="flex flex-wrap items-center gap-2 pt-1">
-            <span class="inline-flex items-center gap-1 rounded-md border border-emerald-500/20 bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-600 dark:text-emerald-400">
+            <span class="inline-flex items-center gap-1 rounded-md border border-emerald-500/20 bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-700 dark:text-emerald-400">
               ✓ B2B RFQ Architecture
             </span>
-            <span class="inline-flex items-center gap-1 rounded-md border border-blue-500/20 bg-blue-500/10 px-2.5 py-1 text-xs font-medium text-blue-600 dark:text-blue-400">
+            <span class="inline-flex items-center gap-1 rounded-md border border-blue-500/20 bg-blue-500/10 px-2.5 py-1 text-xs font-medium text-blue-700 dark:text-blue-400">
               ✓ Specs Catalog Engine
             </span>
-            <span class="inline-flex items-center gap-1 rounded-md border border-purple-500/20 bg-purple-500/10 px-2.5 py-1 text-xs font-medium text-purple-600 dark:text-purple-400">
+            <span class="inline-flex items-center gap-1 rounded-md border border-purple-500/20 bg-purple-500/10 px-2.5 py-1 text-xs font-medium text-purple-700 dark:text-purple-400">
               ✓ Industrial Schema JSON-LD
             </span>
           </div>
@@ -132,21 +138,26 @@ const industrialSchema = {
           <div class={`flex flex-col sm:flex-row gap-3 pt-2 ${fontClass}`}>
             <a
               href={`/${supportedLang}/consultation/`}
-              class="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 text-sm font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary"
+              class="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 text-sm font-bold text-primary-foreground shadow-md transition-colors hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary"
             >
               <span>{t('industrial.rfqButton')}</span>
               <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
             </a>
             <a
-              href="#cases"
-              class="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-6 text-sm font-semibold text-gray-700 transition-all hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700"
+              href={`/${supportedLang}/tools/cost-calculator/`}
+              class="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-6 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700"
             >
-              <span>{t('industrial.exploreCases')}</span>
-              <span aria-hidden="true">↓</span>
+              <span>
+                {supportedLang === 'fa'
+                  ? 'برآورد آنلاین هزینه سایت صنعتی'
+                  : supportedLang === 'ar'
+                    ? 'حاسبة تكلفة الموقع الصناعي'
+                    : 'Estimate B2B Project Cost'}
+              </span>
             </a>
             <a
               href="tel:+989125811880"
-              class="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-4 text-sm font-semibold text-primary transition-all hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700"
+              class="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-4 text-sm font-semibold text-primary transition-colors hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700"
               title={supportedLang === 'fa' ? 'تماس مستقیم با سرپرست فنی' : 'Direct Call'}
             >
               <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -175,7 +186,17 @@ const industrialSchema = {
     </div>
   </section>
 
-  <div class={`mx-auto w-full max-w-7xl px-4 pt-16 pb-20 sm:px-6 lg:px-8 ${fontClass}`}>
+  <div class={`mx-auto w-full max-w-7xl px-4 pt-12 pb-20 sm:px-6 lg:px-8 ${fontClass}`}>
+    <!-- AEO Quick Answer Capsule -->
+    <aside
+      aria-label={supportedLang === 'fa' ? 'خلاصه مهندسی سایت صنعتی' : supportedLang === 'ar' ? 'ملخص الخدمة' : 'Quick Overview'}
+      class="aeo-quick-answer mb-16 rounded-2xl border-s-4 border-primary bg-primary/5 p-6 dark:bg-slate-900/80"
+    >
+      <p class="text-sm leading-relaxed text-gray-800 sm:text-base dark:text-gray-200">
+        {quickAnswer}
+      </p>
+    </aside>
+
     <!-- Section: Why Traditional Industrial Sites Fail -->
     <div>
       <div class="text-center">
@@ -188,7 +209,7 @@ const industrialSchema = {
       </div>
 
       <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <div class="rounded-2xl border border-red-100 bg-red-50/40 p-6 transition-all hover:shadow-md dark:border-red-950/40 dark:bg-red-950/10">
+        <div class="rounded-2xl border border-red-100 bg-red-50/40 p-6 transition-shadow hover:shadow-md dark:border-red-950/40 dark:bg-red-950/10">
           <div class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">[PROBLEM 01]</div>
           <h3 class="mt-2 text-base font-bold text-gray-900 dark:text-white">
             {t('industrial.pain1Title')}
@@ -198,7 +219,7 @@ const industrialSchema = {
           </p>
         </div>
 
-        <div class="rounded-2xl border border-red-100 bg-red-50/40 p-6 transition-all hover:shadow-md dark:border-red-950/40 dark:bg-red-950/10">
+        <div class="rounded-2xl border border-red-100 bg-red-50/40 p-6 transition-shadow hover:shadow-md dark:border-red-950/40 dark:bg-red-950/10">
           <div class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">[PROBLEM 02]</div>
           <h3 class="mt-2 text-base font-bold text-gray-900 dark:text-white">
             {t('industrial.pain2Title')}
@@ -208,7 +229,7 @@ const industrialSchema = {
           </p>
         </div>
 
-        <div class="rounded-2xl border border-red-100 bg-red-50/40 p-6 transition-all hover:shadow-md dark:border-red-950/40 dark:bg-red-950/10">
+        <div class="rounded-2xl border border-red-100 bg-red-50/40 p-6 transition-shadow hover:shadow-md dark:border-red-950/40 dark:bg-red-950/10">
           <div class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">[PROBLEM 03]</div>
           <h3 class="mt-2 text-base font-bold text-gray-900 dark:text-white">
             {t('industrial.pain3Title')}
@@ -218,7 +239,7 @@ const industrialSchema = {
           </p>
         </div>
 
-        <div class="rounded-2xl border border-red-100 bg-red-50/40 p-6 transition-all hover:shadow-md dark:border-red-950/40 dark:bg-red-950/10">
+        <div class="rounded-2xl border border-red-100 bg-red-50/40 p-6 transition-shadow hover:shadow-md dark:border-red-950/40 dark:bg-red-950/10">
           <div class="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">[PROBLEM 04]</div>
           <h3 class="mt-2 text-base font-bold text-gray-900 dark:text-white">
             {t('industrial.pain4Title')}
@@ -242,7 +263,7 @@ const industrialSchema = {
       </div>
 
       <div class="mt-10 grid gap-6 md:grid-cols-2">
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs transition-all hover:border-primary/50 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs transition-colors hover:border-primary/50 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
           <div class="flex items-center justify-between border-b border-gray-100 pb-3 dark:border-slate-800" dir={isRtl ? 'rtl' : 'ltr'}>
             <span class="text-xs font-semibold text-primary">ENGINE 01 · RFQ ARCHITECTURE</span>
             <span class="inline-flex rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">Interactive</span>
@@ -257,7 +278,7 @@ const industrialSchema = {
           </div>
         </div>
 
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs transition-all hover:border-primary/50 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs transition-colors hover:border-primary/50 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
           <div class="flex items-center justify-between border-b border-gray-100 pb-3 dark:border-slate-800" dir={isRtl ? 'rtl' : 'ltr'}>
             <span class="text-xs font-semibold text-primary">ENGINE 02 · SPECS & DATASHEETS</span>
             <span class="inline-flex rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">Dynamic</span>
@@ -272,7 +293,7 @@ const industrialSchema = {
           </div>
         </div>
 
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs transition-all hover:border-primary/50 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs transition-colors hover:border-primary/50 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
           <div class="flex items-center justify-between border-b border-gray-100 pb-3 dark:border-slate-800" dir={isRtl ? 'rtl' : 'ltr'}>
             <span class="text-xs font-semibold text-primary">ENGINE 03 · B2B TECHNICAL SEO</span>
             <span class="inline-flex rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">High Intent</span>
@@ -287,7 +308,7 @@ const industrialSchema = {
           </div>
         </div>
 
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs transition-all hover:border-primary/50 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs transition-colors hover:border-primary/50 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
           <div class="flex items-center justify-between border-b border-gray-100 pb-3 dark:border-slate-800" dir={isRtl ? 'rtl' : 'ltr'}>
             <span class="text-xs font-semibold text-primary">ENGINE 04 · INDUSTRIAL JSON-LD</span>
             <span class="inline-flex rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">Schema.org</span>
@@ -322,7 +343,7 @@ const industrialSchema = {
 
       <div class="mt-10 space-y-8">
         <!-- Case 1: Tehran Enamel -->
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-slate-800 dark:bg-slate-900 sm:p-8">
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900 sm:p-8">
           <div class="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 pb-4 dark:border-slate-800">
             <div>
               <span class="text-xs font-semibold text-primary uppercase">Case 01 · Industrial Metallurgy</span>
@@ -330,7 +351,7 @@ const industrialSchema = {
                 {t('industrial.case1Name')}
               </h3>
             </div>
-            <span class="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+            <span class="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-700 dark:text-emerald-400">
               {t('industrial.case1Badge')}
             </span>
           </div>
@@ -355,7 +376,7 @@ const industrialSchema = {
             </div>
 
             <div class="rounded-xl border border-emerald-500/30 bg-emerald-50/40 p-4 dark:border-emerald-500/20 dark:bg-emerald-950/20">
-              <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400">
+              <div class="text-xs font-bold text-emerald-700 dark:text-emerald-400">
                 [03 · {t('industrial.case1ResultLabel')}]
               </div>
               <p class="mt-2 text-sm leading-relaxed font-semibold text-gray-900 dark:text-white">
@@ -376,7 +397,7 @@ const industrialSchema = {
         </div>
 
         <!-- Case 2: Mapfan -->
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-slate-800 dark:bg-slate-900 sm:p-8">
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900 sm:p-8">
           <div class="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 pb-4 dark:border-slate-800">
             <div>
               <span class="text-xs font-semibold text-primary uppercase">Case 02 · Plant Automation</span>
@@ -384,7 +405,7 @@ const industrialSchema = {
                 {t('industrial.case2Name')}
               </h3>
             </div>
-            <span class="inline-flex items-center rounded-full bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-600 dark:text-blue-400">
+            <span class="inline-flex items-center rounded-full bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-700 dark:text-blue-400">
               {t('industrial.case2Badge')}
             </span>
           </div>
@@ -409,7 +430,7 @@ const industrialSchema = {
             </div>
 
             <div class="rounded-xl border border-blue-500/30 bg-blue-50/40 p-4 dark:border-blue-500/20 dark:bg-blue-950/20">
-              <div class="text-xs font-bold text-blue-600 dark:text-blue-400">
+              <div class="text-xs font-bold text-blue-700 dark:text-blue-400">
                 [03 · {t('industrial.case2ResultLabel')}]
               </div>
               <p class="mt-2 text-sm leading-relaxed font-semibold text-gray-900 dark:text-white">
@@ -430,7 +451,7 @@ const industrialSchema = {
         </div>
 
         <!-- Case 3: Zeytoun Masoud -->
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-slate-800 dark:bg-slate-900 sm:p-8">
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900 sm:p-8">
           <div class="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 pb-4 dark:border-slate-800">
             <div>
               <span class="text-xs font-semibold text-primary uppercase">Case 03 · B2B Bulk Processing</span>
@@ -438,7 +459,7 @@ const industrialSchema = {
                 {t('industrial.case3Name')}
               </h3>
             </div>
-            <span class="inline-flex items-center rounded-full bg-purple-500/10 px-3 py-1 text-xs font-semibold text-purple-600 dark:text-purple-400">
+            <span class="inline-flex items-center rounded-full bg-purple-500/10 px-3 py-1 text-xs font-semibold text-purple-700 dark:text-purple-400">
               {t('industrial.case3Badge')}
             </span>
           </div>
@@ -463,7 +484,7 @@ const industrialSchema = {
             </div>
 
             <div class="rounded-xl border border-purple-500/30 bg-purple-50/40 p-4 dark:border-purple-500/20 dark:bg-purple-950/20">
-              <div class="text-xs font-bold text-purple-600 dark:text-purple-400">
+              <div class="text-xs font-bold text-purple-700 dark:text-purple-400">
                 [03 · {t('industrial.case3ResultLabel')}]
               </div>
               <p class="mt-2 text-sm leading-relaxed font-semibold text-gray-900 dark:text-white">
@@ -485,46 +506,55 @@ const industrialSchema = {
       </div>
     </div>
 
-    <!-- Section: Industrial FAQ -->
-    <div class="mt-20">
-      <div class="text-center">
-        <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white">
-          {t('industrial.faqSectionTitle')}
-        </h2>
-      </div>
-
-      <div class="mx-auto mt-8 max-w-3xl space-y-4">
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900">
-          <h3 class="text-base font-bold text-gray-900 dark:text-white">
-            {t('industrial.q1')}
-          </h3>
-          <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-            {t('industrial.a1')}
-          </p>
+    <!-- Related Enterprise Capabilities -->
+    <div class="mt-16 grid gap-4 sm:grid-cols-3">
+      <a
+        href={`/${supportedLang}/export-web-design/`}
+        class="rounded-2xl border border-gray-200 bg-white p-5 transition-colors hover:border-primary/50 dark:border-slate-800 dark:bg-slate-900"
+      >
+        <div class="text-xs font-semibold text-primary uppercase">
+          {supportedLang === 'fa' ? 'صادرات و تجارت بین‌الملل' : supportedLang === 'ar' ? 'التصدير الدولي' : 'Global Export Track'}
         </div>
-
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900">
-          <h3 class="text-base font-bold text-gray-900 dark:text-white">
-            {t('industrial.q2')}
-          </h3>
-          <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-            {t('industrial.a2')}
-          </p>
+        <h3 class="mt-1 text-base font-bold text-gray-900 dark:text-white">
+          {supportedLang === 'fa' ? 'طراحی سایت صادراتی چندزبانه' : supportedLang === 'ar' ? 'تصميم مواقع التصدير متعددة اللغات' : 'Multilingual Export Web Design'}
+        </h3>
+      </a>
+      <a
+        href={`/${supportedLang}/enterprise-automation/`}
+        class="rounded-2xl border border-gray-200 bg-white p-5 transition-colors hover:border-primary/50 dark:border-slate-800 dark:bg-slate-900"
+      >
+        <div class="text-xs font-semibold text-primary uppercase">
+          {supportedLang === 'fa' ? 'اتصال ERP و CRM' : supportedLang === 'ar' ? 'تكامل ERP و CRM' : 'ERP & CRM Middleware'}
         </div>
-
-        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-xs dark:border-slate-800 dark:bg-slate-900">
-          <h3 class="text-base font-bold text-gray-900 dark:text-white">
-            {t('industrial.q3')}
-          </h3>
-          <p class="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-            {t('industrial.a3')}
-          </p>
+        <h3 class="mt-1 text-base font-bold text-gray-900 dark:text-white">
+          {supportedLang === 'fa' ? 'اتوماسیون سازمانی و سپیدار/راهکاران' : supportedLang === 'ar' ? 'أتمتة المؤسسات وربط الأنظمة' : 'Enterprise Automation & Portals'}
+        </h3>
+      </a>
+      <a
+        href={`/${supportedLang}/service-areas/qazvin/`}
+        class="rounded-2xl border border-gray-200 bg-white p-5 transition-colors hover:border-primary/50 dark:border-slate-800 dark:bg-slate-900"
+      >
+        <div class="text-xs font-semibold text-primary uppercase">
+          {supportedLang === 'fa' ? 'قطب صنعتی کاسپین و لیا' : supportedLang === 'ar' ? 'المدن الصناعية' : 'Industrial Zones Hub'}
         </div>
-      </div>
+        <h3 class="mt-1 text-base font-bold text-gray-900 dark:text-white">
+          {supportedLang === 'fa' ? 'طراحی سایت صنعتی در قزوین و تهران' : supportedLang === 'ar' ? 'حلول المصانع في قزوين وطهران' : 'Qazvin & Tehran Manufacturing Hub'}
+        </h3>
+      </a>
+    </div>
+
+    <!-- Section: Interactive Industrial FAQ -->
+    <div class="mx-auto mt-20 max-w-4xl">
+      <FAQ
+        faqList={faqItems}
+        lang={supportedLang}
+        title={t('industrial.faqSectionTitle')}
+        emitWebPage={false}
+      />
     </div>
 
     <!-- Bottom Conversion Banner -->
-    <div class="mt-20 rounded-2xl bg-linear-to-r from-primary/10 via-primary/5 to-transparent border border-primary/20 p-8 text-center sm:p-12 dark:bg-slate-900">
+    <div class="mt-16 rounded-2xl bg-linear-to-r from-primary/10 via-primary/5 to-transparent border border-primary/20 p-8 text-center sm:p-12 dark:bg-slate-900">
       <h2 class="text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white">
         {t('industrial.ctaTitle')}
       </h2>
@@ -534,14 +564,14 @@ const industrialSchema = {
       <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
         <a
           href={`/${supportedLang}/consultation/`}
-          class="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-8 text-sm font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary"
+          class="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-8 text-sm font-bold text-primary-foreground shadow-md transition-colors hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary"
         >
           <span>{t('industrial.ctaBtn')}</span>
           <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
         </a>
         <a
           href="tel:+989125811880"
-          class="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-6 text-sm font-semibold text-gray-700 transition-all hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700"
+          class="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-6 text-sm font-semibold text-gray-700 transition-colors hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700"
         >
           <svg class="h-4 w-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />

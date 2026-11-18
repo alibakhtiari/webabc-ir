@@ -11,8 +11,8 @@ interface Props {
 const { lang, dictionary } = Astro.props;
 
 const isRtl = lang === 'fa' || lang === 'ar';
+const fontClass = lang === 'fa' ? 'font-persian' : lang === 'ar' ? 'font-arabic' : 'font-sans';
 
-// Translate helpers
 const t = createTranslator(dictionary);
 
 const faqList = [1, 2, 3, 4]
@@ -21,54 +21,77 @@ const faqList = [1, 2, 3, 4]
     answer: t(`webDesign.faq.a${n}`, ''),
   }))
   .filter((item) => item.question && item.answer);
+
+const quickAnswer =
+  lang === 'fa'
+    ? 'طراحی وب و رابط کاربری (UI/UX) در وب اِی‌بی‌سی فرآیند مهندسی دیزاین سیستم‌های اختصاصی در فیگما، معماری اطلاعات نتیجه‌محور، دسترس‌پذیری استاندارد WCAG 2.2 و چیدمان دوجهته بومی (فارسی، عربی و انگلیسی) است که پیش از نگارش کد، مسیر تبدیل بازدیدکننده به مشتری را با سرعت بارگذاری زیر یک ثانیه هم‌راستا می‌کند.'
+    : lang === 'ar'
+      ? 'يركز تصميم المواقع وواجهات المستخدم (UI/UX) في ويب إيه بي سي على بناء أنظمة تصميم مخصصة في Figma، وهندسة معلومات ترفع معدل التحويل، والتوافق مع معايير الوصول WCAG 2.2 ودعم الاتجاهين RTL وLTR، لضمان تجربة رقمية سريعة تحوّل الزوار إلى عملاء فعليين.'
+      : 'WebABC web design and UI/UX prototyping builds token-based Figma design systems, conversion-oriented information architecture, WCAG 2.2 AA accessible contrast, and native RTL/LTR layouts engineered from day one for sub-second Core Web Vitals and measurable lead generation.';
 ---
 
-<div class="space-y-16 py-8">
+<div class={`space-y-16 py-8 ${fontClass}`}>
   <!-- Intro Section -->
   <section class="bg-white dark:bg-slate-950">
     <div class="mx-auto max-w-4xl space-y-6 text-center">
-      <h2 class="font-persian text-3xl font-bold">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white">
         {t('webDesign.intro.title', 'What Makes Web Design Different From Web Development?')}
       </h2>
-      <p class="font-persian text-lg leading-relaxed text-gray-600 dark:text-gray-300">
+      <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-300">
         {t('webDesign.intro.text', '')}
       </p>
     </div>
   </section>
 
+  <!-- AEO Quick Answer Capsule -->
+  <section class="mx-auto max-w-4xl px-4">
+    <aside class="aeo-quick-answer rounded-2xl border-s-4 border-primary bg-primary/5 p-6 sm:p-8 dark:bg-slate-900/80">
+      <div class="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
+        {lang === 'fa' ? 'خلاصه اجرایی طراحی سایت و UI/UX (AEO)' : lang === 'ar' ? 'خلاصة تصميم المواقع وتجربة المستخدم (AEO)' : 'Quick Answer: UI/UX Web Design Scope (AEO)'}
+      </div>
+      <p class="text-base leading-relaxed font-medium text-gray-800 dark:text-gray-100">
+        {quickAnswer}
+      </p>
+    </aside>
+  </section>
+
   <!-- Services Details -->
   <section class="bg-white dark:bg-slate-950">
     <div class="mx-auto max-w-7xl">
-      <h2 class="mb-12 text-center font-persian text-3xl font-bold">
+      <h2 class="mb-12 text-center text-3xl font-bold text-gray-900 dark:text-white">
         {t('webDesign.ourServices', 'Web Design Offerings')}
       </h2>
 
       <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {
-          [{ key: 'uiux' }, { key: 'responsive' }, { key: 'wordpress' }, { key: 'react' }, { key: 'ecommerce' }, { key: 'seo' }].map(
-            ({ key }) => (
-              <div class="flex flex-col rounded-2xl border border-gray-100 bg-white p-6 shadow-xs transition-all duration-300 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
-                <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-2xl font-bold text-primary">
-                  ✦
-                </div>
-                <h3 class="mb-3 font-persian text-xl font-bold text-gray-900 dark:text-white">
-                  {t(`webDesign.features.${key}.title`, key)}
-                </h3>
-                <p class="grow font-persian text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-                  {t(`webDesign.features.${key}.description`, '')}
-                </p>
+          [
+            { key: 'uiux', path: 'M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z' },
+            { key: 'responsive', path: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z' },
+            { key: 'wordpress', path: 'M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z' },
+            { key: 'react', path: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
+            { key: 'ecommerce', path: 'M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z' },
+            { key: 'seo', path: 'M13 7h8m0 0v8m0-8l-8 8-4-4-6 6' },
+          ].map(({ key, path }) => (
+            <div class="flex flex-col rounded-2xl border border-gray-100 bg-white p-6 shadow-xs transition-shadow duration-300 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
+              <div class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={path} />
+                </svg>
               </div>
-            )
-          )
+              <h3 class="mb-3 text-xl font-bold text-gray-900 dark:text-white">
+                {t(`webDesign.features.${key}.title`, key)}
+              </h3>
+              <p class="grow text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                {t(`webDesign.features.${key}.description`, '')}
+              </p>
+            </div>
+          ))
         }
       </div>
     </div>
   </section>
 
-  <!-- Client Results: proof the service page was missing. Entries come from
-    the locale's web-design.json `results` (titles + metrics quoted verbatim
-    from each portfolio case's own `results:` frontmatter), so copy cannot
-    drift from the case pages. Guarded: no-op when absent. -->
+  <!-- Client Results -->
   {
     (() => {
       const results = (dictionary?.webDesign as any)?.results;
@@ -76,12 +99,12 @@ const faqList = [1, 2, 3, 4]
       return (
         <section class="bg-white dark:bg-slate-950">
           <div class="mx-auto max-w-7xl">
-            <h2 class="mb-12 text-center font-persian text-3xl font-bold">{results.title}</h2>
+            <h2 class="mb-12 text-center text-3xl font-bold text-gray-900 dark:text-white">{results.title}</h2>
             <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
               {results.items.map((item: any) => (
                 <a
                   href={`/${lang}/portfolio/${item.slug}/`}
-                  class="flex flex-col rounded-2xl border border-gray-100 bg-white p-6 shadow-xs transition-all duration-300 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
+                  class="flex flex-col rounded-2xl border border-gray-100 bg-white p-6 shadow-xs transition-shadow duration-300 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"
                 >
                   <div class="mb-2 text-3xl font-bold text-primary">{item.metric}</div>
                   <div class="mb-3 text-sm text-gray-500 dark:text-gray-400">{item.label}</div>
@@ -95,116 +118,120 @@ const faqList = [1, 2, 3, 4]
     })()
   }
 
-  <!-- Process Timeline -->
+  <!-- Process Timeline (Logical RTL/LTR Safe) -->
   <section
     class="rounded-3xl border border-gray-100 bg-gray-50/50 p-8 py-16 dark:border-slate-800 dark:bg-slate-900"
   >
     <div class="mx-auto max-w-7xl">
-      <h2 class="mb-16 text-center font-persian text-3xl font-bold">
+      <h2 class="mb-16 text-center text-3xl font-bold text-gray-900 dark:text-white">
         {t('webDesign.process.title', 'Our Design & Prototyping Process')}
       </h2>
 
-      <div class="relative mx-auto max-w-4xl">
-        <!-- Timeline Center Line -->
-        <div
-          class="absolute top-0 bottom-0 left-4 w-0.5 transform bg-primary/20 lg:left-1/2 lg:-translate-x-1/2"
-        >
-        </div>
-
-        <!-- Alternating steps -->
-        <div class="space-y-12">
-          {
-            [1, 2, 3, 4, 5].map((step) => {
-              const isLeft = step % 2 !== 0;
-              return (
-                <div class="relative flex flex-col items-start lg:flex-row">
-                  <div
-                    class={`w-full lg:w-1/2 ${isLeft ? 'lg:pe-12 lg:text-end' : 'lg:order-last lg:ps-12'}`}
-                  >
-                    <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-xs transition-shadow hover:shadow-md dark:border-slate-800/50 dark:bg-slate-900">
-                      <h3 class="mb-2 font-persian text-xl font-bold">
-                        {t(`webDesign.process.step${step}.title`, `Step ${step}`)}
-                      </h3>
-                      <p class="font-persian text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-                        {t(`webDesign.process.step${step}.description`, '')}
-                      </p>
-                    </div>
-                  </div>
-                  <div class="absolute top-4 left-4 z-10 flex h-8 w-8 -translate-x-1/2 transform items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground shadow-md lg:left-1/2">
-                    {step}
-                  </div>
-                  <div class="hidden lg:block lg:w-1/2" />
-                </div>
-              );
-            })
-          }
-        </div>
+      <div class="mx-auto grid max-w-5xl gap-6 md:grid-cols-2 lg:grid-cols-5">
+        {
+          [1, 2, 3, 4, 5].map((step) => (
+            <div class="flex flex-col rounded-2xl border border-gray-100 bg-white p-6 shadow-xs transition-shadow hover:shadow-md dark:border-slate-800/80 dark:bg-slate-900">
+              <div class="mb-4 flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground shadow-sm">
+                {step}
+              </div>
+              <h3 class="mb-2 text-lg font-bold text-gray-900 dark:text-white">
+                {t(`webDesign.process.step${step}.title`, `Step ${step}`)}
+              </h3>
+              <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                {t(`webDesign.process.step${step}.description`, '')}
+              </p>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
 
-  <!-- Complementary Services -->
+  <!-- Complementary Services & Interactive UI Tools -->
   <section
     class="rounded-3xl border border-gray-100 bg-gray-50/50 p-8 py-12 dark:border-slate-800 dark:bg-slate-900"
   >
-    <div class="mx-auto max-w-4xl">
-      <h2 class="mb-12 text-center font-persian text-3xl font-bold">
-        {t('common.complementaryServices', 'Complementary Services')}
+    <div class="mx-auto max-w-5xl">
+      <h2 class="mb-12 text-center text-3xl font-bold text-gray-900 dark:text-white">
+        {t('common.complementaryServices', 'Complementary Services & UI Tools')}
       </h2>
-      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
         <!-- Content Creation Card -->
         <a
           href={`/${lang}/services/content-creation/`}
-          class="group flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-8 shadow-xs transition-all duration-300 hover:shadow-md focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-800 dark:bg-slate-900"
+          class="group flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-6 shadow-xs transition-shadow duration-300 hover:shadow-md focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-800 dark:bg-slate-900"
         >
           <div class="space-y-4">
-            <div class="flex items-center gap-4">
-              <div
-                class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-transform group-hover:scale-105 dark:bg-slate-800"
-              >
-                ✍️
+            <div class="flex items-center gap-3">
+              <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 dark:bg-slate-800">
+                <svg aria-hidden="true" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
               </div>
-              <h3 class="font-persian text-xl font-bold text-gray-900 dark:text-white">
+              <h3 class="text-lg font-bold text-gray-900 dark:text-white">
                 {t('services.contentCreationTitle', 'Content Creation')}
               </h3>
             </div>
-            <p class="font-persian text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
               {t('services.contentCreationDescription', '')}
             </p>
           </div>
-          <div
-            class="mt-6 flex items-center font-persian text-sm font-bold text-blue-600 transition-transform group-hover:translate-x-1"
-          >
-            {t('common.learnMore', 'Learn More')}
-            {isRtl ? '←' : '→'}
+          <div class="mt-6 flex items-center gap-1 text-sm font-bold text-blue-600">
+            <span>{t('common.learnMore', 'Learn More')}</span>
+            <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
           </div>
         </a>
 
-        <!-- Link Building Card -->
+        <!-- UI/UX Audit Card -->
         <a
-          href={`/${lang}/services/link-building/`}
-          class="group flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-8 shadow-xs transition-all duration-300 hover:shadow-md focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-800 dark:bg-slate-900"
+          href={`/${lang}/services/ui-ux-audit/`}
+          class="group flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-6 shadow-xs transition-shadow duration-300 hover:shadow-md focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-800 dark:bg-slate-900"
         >
           <div class="space-y-4">
-            <div class="flex items-center gap-4">
-              <div
-                class="flex h-12 w-12 items-center justify-center rounded-xl bg-purple-50 text-purple-600 transition-transform group-hover:scale-105 dark:bg-slate-800"
-              >
-                🔗
+            <div class="flex items-center gap-3">
+              <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 dark:bg-slate-800">
+                <svg aria-hidden="true" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                </svg>
               </div>
-              <h3 class="font-persian text-xl font-bold text-gray-900 dark:text-white">
-                {t('services.linkBuildingTitle', 'Link Building')}
+              <h3 class="text-lg font-bold text-gray-900 dark:text-white">
+                {lang === 'fa' ? 'ممیزی تخصصی UI/UX' : lang === 'ar' ? 'تدقيق تجربة المستخدم UI/UX' : 'UI/UX Diagnostic Audit'}
               </h3>
             </div>
-            <p class="font-persian text-sm leading-relaxed text-gray-600 dark:text-gray-300">
-              {t('services.linkBuildingDescription', '')}
+            <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+              {lang === 'fa' ? 'ارزیابی تخصصی گلوگاه‌های نرخ تبدیل و دسترس‌پذیری در سایت فعلی شما.' : lang === 'ar' ? 'تحليل نقاط الاحتكاك وعوائق التحويل في واجهة موقعك الحالي.' : 'Uncover conversion friction and WCAG 2.2 accessibility gaps on your live site.'}
             </p>
           </div>
-          <div
-            class="mt-6 flex items-center font-persian text-sm font-bold text-purple-600 transition-transform group-hover:translate-x-1"
-          >
-            {t('common.learnMore', 'Learn More')}
-            {isRtl ? '←' : '→'}
+          <div class="mt-6 flex items-center gap-1 text-sm font-bold text-indigo-600">
+            <span>{t('common.learnMore', 'Learn More')}</span>
+            <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
+          </div>
+        </a>
+
+        <!-- Color Contrast Tool Card -->
+        <a
+          href={`/${lang}/tools/color-contrast-checker/`}
+          class="group flex flex-col justify-between rounded-2xl border border-gray-100 bg-white p-6 shadow-xs transition-shadow duration-300 hover:shadow-md focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-800 dark:bg-slate-900"
+        >
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 dark:bg-slate-800">
+                <svg aria-hidden="true" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 dark:text-white">
+                {lang === 'fa' ? 'ابزار سنجش کنتراست WCAG' : lang === 'ar' ? 'فاحص تباين الألوان WCAG' : 'WCAG Contrast Checker'}
+              </h3>
+            </div>
+            <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+              {lang === 'fa' ? 'تست رایگان نسبت کنتراست پالت رنگی برند شما طبق استاندارد AA و AAA.' : lang === 'ar' ? 'اختبر تباين ألوان علامتك التجارية مجاناً وفق معايير الوصول.' : 'Test your brand palette against WCAG AA and AAA contrast ratios instantly.'}
+            </p>
+          </div>
+          <div class="mt-6 flex items-center gap-1 text-sm font-bold text-emerald-600">
+            <span>{t('common.learnMore', 'Learn More')}</span>
+            <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
           </div>
         </a>
       </div>
@@ -215,7 +242,7 @@ const faqList = [1, 2, 3, 4]
   {
     faqList.length > 0 && (
       <section class="mx-auto max-w-3xl">
-        <FAQ faqList={faqList} lang={lang} />
+        <FAQ faqList={faqList} lang={lang} emitWebPage={false} />
       </section>
     )
   }

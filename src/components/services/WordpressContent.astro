@@ -9,8 +9,8 @@ interface Props {
 }
 
 const { lang, dictionary } = Astro.props;
+const fontClass = lang === 'fa' ? 'font-persian' : lang === 'ar' ? 'font-arabic' : 'font-sans';
 
-// Translate helpers
 const t = createTranslator(dictionary);
 
 const faqList = [1, 2, 3, 4]
@@ -19,19 +19,72 @@ const faqList = [1, 2, 3, 4]
     answer: t(`wordpress.faq.a${n}`, ''),
   }))
   .filter((item) => item.question && item.answer);
+
+const quickAnswer =
+  lang === 'fa'
+    ? 'طراحی سایت وردپرس و ووکامرس در وب اِی‌بی‌سی بر پایه کدنویسی قالب اختصاصی سبک، حذف صفحه‌سازهای سنگین و افزونه‌های غیرضروری، بهینه‌سازی Core Web Vitals و پیاده‌سازی اسکیمای استاندارد انجام می‌شود تا مدیریت آسان محتوا را با سرعت بارگذاری بالا و امنیت پایدار ترکیب کند.'
+    : lang === 'ar'
+      ? 'يعتمد تطوير ووردبريس وووكومرس في ويب إيه بي سي على برمجة قوالب مخصصة خفيفة الوزن دون منشئات صفحات ثقيلة، مع تحسين مؤشرات Core Web Vitals وتأمين قاعدة البيانات وربط بوابات الدفع، للجمع بين سهولة إدارة المحتوى وسرعة التحميل العالية.'
+      : 'WebABC custom WordPress and WooCommerce development replaces bloated marketplace templates and heavy page builders with hand-coded themes, lean purpose-built plugins, Core Web Vitals tuning, and structured Schema.org markup—giving your team editorial flexibility without sacrificing speed or security.';
+
+const wpComparison =
+  lang === 'fa'
+    ? {
+        title: 'تفاوت وردپرس اختصاصی وب اِی‌بی‌سی با قالب‌های آماده مارکتی',
+        headers: ['ویژگی فنی', 'قالب اختصاصی WebABC', 'قالب آماده + صفحه‌ساز سنگین'],
+        rows: [
+          ['حجم CSS و جاوااسکریپت', 'فقط کدهای موردنیاز همان صفحه (<80KB)', 'بارگذاری ده‌ها فایل بلااستفاده (>800KB)'],
+          ['تعداد افزونه‌های فعال', 'حداقل افزونه‌های استاندارد و اختصاصی', '۲۰ تا ۴۰+ افزونه متداخل و پرریسک'],
+          ['امتیاز Core Web Vitals موبایل', 'بهینه‌شده برای عبور از آستانه سبز گوگل', 'افت شدید LCP و INP در ترافیک واقعی'],
+          ['امنیت و به‌روزرسانی', 'سطح حمله کوچک و کد تمیز قابل نگهداری', 'آسیب‌پذیری مکرر در افزونه‌های نال یا قدیمی'],
+        ],
+      }
+    : lang === 'ar'
+      ? {
+          title: 'الفرق بين ووردبريس المخصص من WebABC والقوالب الجاهزة',
+          headers: ['المعيار التقني', 'قالب مخصص من WebABC', 'قالب تجاري جاهز + منشئ صفحات ثقيل'],
+          rows: [
+            ['حجم ملفات CSS وJS', 'ملفات خفيفة مخصصة للصفحة (<80KB)', 'تحميل عشرات السكربتات غير المستخدمة (>800KB)'],
+            ['عدد الإضافات النشطة', 'الحد الأدنى من الإضافات الموثوقة والمخصصة', '20 إلى 40+ إضافة متضاربة'],
+            ['أداء الجوال Core Web Vitals', 'مهيأ لاجتياز معايير جوجل الخضراء', 'بطء ملحوظ في LCP وINP على الجوال'],
+            ['الأمان والصيانة', 'سطح هجوم منخفض وكود نظيف سهل التحديث', 'ثغرات متكررة بسبب الإضافات المهملة'],
+          ],
+        }
+      : {
+          title: 'Hand-Coded WordPress vs. Generic Marketplace Templates',
+          headers: ['Technical Dimension', 'WebABC Custom Theme Build', 'Marketplace Theme + Page Builder'],
+          rows: [
+            ['CSS & JS Payload', 'Scoped page assets (< 80KB compressed)', '800KB+ unused widget stylesheets & scripts'],
+            ['Plugin Footprint', 'Lean, vetted plugins + custom PHP modules', '25–40+ overlapping third-party plugins'],
+            ['Mobile Core Web Vitals', 'Engineered for green LCP (<2.5s) & INP (<200ms)', 'Frequent layout shifts and main-thread lag'],
+            ['Security & Upgrade Safety', 'Small attack surface, clean core updates', 'High vulnerability exposure on plugin updates'],
+          ],
+        };
 ---
 
-<div class="space-y-16 py-8">
+<div class={`space-y-16 py-8 ${fontClass}`}>
   <!-- Intro Section -->
   <section class="bg-white dark:bg-slate-950">
     <div class="mx-auto max-w-4xl space-y-6 text-center">
-      <h2 class="font-persian text-3xl font-bold">
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white">
         {t('wordpress.introTitle', 'What Is Professional WordPress Development?')}
       </h2>
-      <p class="font-persian text-lg leading-relaxed text-gray-600 dark:text-gray-300">
+      <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-300">
         {t('wordpress.introText', '')}
       </p>
     </div>
+  </section>
+
+  <!-- AEO Quick Answer Capsule -->
+  <section class="mx-auto max-w-4xl px-4">
+    <aside class="aeo-quick-answer rounded-2xl border-s-4 border-primary bg-primary/5 p-6 sm:p-8 dark:bg-slate-900/80">
+      <div class="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
+        {lang === 'fa' ? 'خلاصه اجرایی وردپرس اختصاصی (AEO)' : lang === 'ar' ? 'خلاصة تطوير ووردبريس (AEO)' : 'Quick Answer: WordPress Engineering (AEO)'}
+      </div>
+      <p class="text-base leading-relaxed font-medium text-gray-800 dark:text-gray-100">
+        {quickAnswer}
+      </p>
+    </aside>
   </section>
 
   <!-- Features Section -->
@@ -43,24 +96,16 @@ const faqList = [1, 2, 3, 4]
           class="rounded-2xl border border-gray-100 bg-white p-8 shadow-xs transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
         >
           <div class="mb-6 text-primary">
-            <svg
-              aria-hidden="true"
-              class="h-12 w-12"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              ><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line
-                x1="3"
-                y1="9"
-                x2="21"
-                y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg
-            >
+            <svg aria-hidden="true" class="h-12 w-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+              <line x1="9" y1="21" x2="9" y2="9"></line>
+            </svg>
           </div>
-          <h3 class="mb-4 font-persian text-2xl font-bold">
+          <h3 class="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
             {t('wordpress.customTheme', 'Custom Themes')}
           </h3>
-          <p class="font-persian leading-relaxed text-gray-600 dark:text-gray-300">
+          <p class="leading-relaxed text-gray-600 dark:text-gray-300">
             {t('wordpress.customThemeDesc', '')}
           </p>
         </div>
@@ -70,21 +115,16 @@ const faqList = [1, 2, 3, 4]
           class="rounded-2xl border border-gray-100 bg-white p-8 shadow-xs transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
         >
           <div class="mb-6 text-primary">
-            <svg
-              aria-hidden="true"
-              class="h-12 w-12"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              ><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path
-                d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg
-            >
+            <svg aria-hidden="true" class="h-12 w-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
           </div>
-          <h3 class="mb-4 font-persian text-2xl font-bold">
+          <h3 class="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
             {t('wordpress.woocommerce', 'WooCommerce Setup')}
           </h3>
-          <p class="font-persian leading-relaxed text-gray-600 dark:text-gray-300">
+          <p class="leading-relaxed text-gray-600 dark:text-gray-300">
             {t('wordpress.woocommerceDesc', '')}
           </p>
         </div>
@@ -94,22 +134,15 @@ const faqList = [1, 2, 3, 4]
           class="rounded-2xl border border-gray-100 bg-white p-8 shadow-xs transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
         >
           <div class="mb-6 text-primary">
-            <svg
-              aria-hidden="true"
-              class="h-12 w-12"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              ><circle cx="12" cy="12" r="3"></circle><path
-                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"
-              ></path></svg
-            >
+            <svg aria-hidden="true" class="h-12 w-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
           </div>
-          <h3 class="mb-4 font-persian text-2xl font-bold">
+          <h3 class="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
             {t('wordpress.pluginDev', 'Plugin Development')}
           </h3>
-          <p class="font-persian leading-relaxed text-gray-600 dark:text-gray-300">
+          <p class="leading-relaxed text-gray-600 dark:text-gray-300">
             {t('wordpress.pluginDevDesc', '')}
           </p>
         </div>
@@ -119,28 +152,46 @@ const faqList = [1, 2, 3, 4]
           class="rounded-2xl border border-gray-100 bg-white p-8 shadow-xs transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
         >
           <div class="mb-6 text-primary">
-            <svg
-              aria-hidden="true"
-              class="h-12 w-12"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              ><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line
-                x1="12"
-                y1="18"
-                x2="12.01"
-                y2="18"></line></svg
-            >
+            <svg aria-hidden="true" class="h-12 w-12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+              <line x1="12" y1="18" x2="12.01" y2="18"></line>
+            </svg>
           </div>
-          <h3 class="mb-4 font-persian text-2xl font-bold">
+          <h3 class="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
             {t('wordpress.responsive', 'Responsive Layout')}
           </h3>
-          <p class="font-persian leading-relaxed text-gray-600 dark:text-gray-300">
+          <p class="leading-relaxed text-gray-600 dark:text-gray-300">
             {t('wordpress.responsiveDesc', '')}
           </p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="mx-auto max-w-5xl">
+    <h2 class="mb-6 text-center text-2xl font-bold text-gray-900 sm:text-3xl dark:text-white">
+      {wpComparison.title}
+    </h2>
+    <div class="overflow-x-auto rounded-2xl border border-gray-200 bg-white shadow-xs dark:border-slate-800 dark:bg-slate-900">
+      <table class="w-full border-collapse text-start text-sm">
+        <thead>
+          <tr class="border-b border-gray-200 bg-gray-50 dark:border-slate-800 dark:bg-slate-800/70">
+            {wpComparison.headers.map((h) => (
+              <th class="px-4 py-3.5 font-bold text-gray-900 dark:text-white">{h}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 dark:divide-slate-800">
+          {wpComparison.rows.map((r) => (
+            <tr class="hover:bg-gray-50/60 dark:hover:bg-slate-800/40">
+              <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">{r[0]}</td>
+              <td class="px-4 py-3 font-medium text-primary">{r[1]}</td>
+              <td class="px-4 py-3 text-gray-600 dark:text-gray-300">{r[2]}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   </section>
 
@@ -149,7 +200,7 @@ const faqList = [1, 2, 3, 4]
     class="rounded-3xl border border-gray-100 bg-gray-50/50 py-16 dark:border-slate-800 dark:bg-slate-900"
   >
     <div class="mx-auto max-w-7xl px-4">
-      <h2 class="mb-12 text-center font-persian text-3xl font-bold">
+      <h2 class="mb-12 text-center text-3xl font-bold text-gray-900 dark:text-white">
         {t('wordpress.processTitle', 'Our WordPress Development Process')}
       </h2>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -159,10 +210,10 @@ const faqList = [1, 2, 3, 4]
               <div class="mb-4 flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 font-bold text-primary">
                 {n}
               </div>
-              <h3 class="mb-2 font-persian font-bold text-gray-800 dark:text-gray-100">
+              <h3 class="mb-2 font-bold text-gray-800 dark:text-gray-100">
                 {t(`wordpress.process${n}Title`, '')}
               </h3>
-              <p class="font-persian text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+              <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
                 {t(`wordpress.process${n}Desc`, '')}
               </p>
             </div>
@@ -172,15 +223,62 @@ const faqList = [1, 2, 3, 4]
     </div>
   </section>
 
-  <!-- Is This Right For You Section -->
-  <section class="bg-white dark:bg-slate-950">
+  <!-- Is This Right For You + Case Study & Pricing Resources -->
+  <section class="mx-auto max-w-6xl space-y-10">
     <div class="mx-auto max-w-3xl space-y-4 text-center">
-      <h2 class="font-persian text-2xl font-bold">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
         {t('wordpress.rightForTitle', 'Is WordPress Right for Your Business?')}
       </h2>
-      <p class="font-persian leading-relaxed text-gray-600 dark:text-gray-300">
+      <p class="leading-relaxed text-gray-600 dark:text-gray-300">
         {t('wordpress.rightForText', '')}
       </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-3">
+      <a
+        href={`/${lang}/portfolio/remido/`}
+        class="rounded-2xl border border-gray-200 bg-white p-6 transition-colors hover:border-primary/50 dark:border-slate-800 dark:bg-slate-900"
+      >
+        <div class="text-xs font-bold uppercase text-primary">
+          {lang === 'fa' ? 'نمونه‌کار ووکامرس اختصاصی' : lang === 'ar' ? 'دراسة حالة ووكومرس' : 'WooCommerce Case Study'}
+        </div>
+        <h3 class="mt-1 text-lg font-bold text-gray-900 dark:text-white">
+          {lang === 'fa' ? 'فروشگاه و سامانه اصالت کالای رمیدو (Remido)' : lang === 'ar' ? 'متجر وبوابة ضمان ريميدو (Remido)' : 'Remido Store & Serial Warranty Portal'}
+        </h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+          {lang === 'fa' ? 'توسعه افزونه اختصاصی ثبت گارانتی و استعلام اصالت کالا روی ووکامرس.' : lang === 'ar' ? 'تطوير نظام تحقق من الأصالة والضمان مدمج مع ووكومرس.' : 'Custom WooCommerce build with automated serial-number warranty verification.'}
+        </p>
+      </a>
+
+      <a
+        href={`/${lang}/tools/cost-calculator/`}
+        class="rounded-2xl border border-gray-200 bg-white p-6 transition-colors hover:border-primary/50 dark:border-slate-800 dark:bg-slate-900"
+      >
+        <div class="text-xs font-bold uppercase text-primary">
+          {lang === 'fa' ? 'ماشین‌حساب آنلاین' : lang === 'ar' ? 'حاسبة فورية' : 'Interactive Estimator'}
+        </div>
+        <h3 class="mt-1 text-lg font-bold text-gray-900 dark:text-white">
+          {lang === 'fa' ? 'محاسبه آنلاین هزینه طراحی سایت وردپرس' : lang === 'ar' ? 'حاسبة تكلفة تصميم موقع ووردبريس' : 'WordPress Website Cost Calculator'}
+        </h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+          {lang === 'fa' ? 'امکانات موردنیاز خود را انتخاب کنید و برآورد شفاف هزینه دریافت کنید.' : lang === 'ar' ? 'احسب ميزانية مشروع ووردبريس أو ووكومرس الخاص بك فوراً.' : 'Select pages, multilingual scope, and WooCommerce add-ons for an instant range.'}
+        </p>
+      </a>
+
+      <a
+        href={`/${lang}/blog/wordpress-website-cost-guide-2026/`}
+        class="rounded-2xl border border-gray-200 bg-white p-6 transition-colors hover:border-primary/50 dark:border-slate-800 dark:bg-slate-900"
+      >
+        <div class="text-xs font-bold uppercase text-primary">
+          {lang === 'fa' ? 'راهنمای تعرفه ۱۴۰۵' : lang === 'ar' ? 'دليل الأسعار 2026' : '2026 Cost Breakdown'}
+        </div>
+        <h3 class="mt-1 text-lg font-bold text-gray-900 dark:text-white">
+          {lang === 'fa' ? 'راهنمای کامل هزینه طراحی سایت وردپرس' : lang === 'ar' ? 'دليل تكلفة مواقع ووردبريس في 2026' : 'WordPress Website Cost Guide 2026'}
+        </h3>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">
+          {lang === 'fa' ? 'بررسی جزءبه‌جزء هزینه قالب سفارشی، هاست، لایسنس‌ها و نگهداری سالانه.' : lang === 'ar' ? 'تفصيل تكاليف القالب المخصص والاستضافة والصيانة السنوية.' : 'Itemized breakdown of theme development, hosting, plugins, and care plans.'}
+        </p>
+      </a>
     </div>
   </section>
 
@@ -188,7 +286,7 @@ const faqList = [1, 2, 3, 4]
   {
     faqList.length > 0 && (
       <section class="mx-auto max-w-3xl">
-        <FAQ faqList={faqList} lang={lang} />
+        <FAQ faqList={faqList} lang={lang} emitWebPage={false} />
       </section>
     )
   }

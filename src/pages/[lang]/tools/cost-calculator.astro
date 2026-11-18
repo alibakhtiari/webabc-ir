@@ -1,6 +1,6 @@
 ---
 import ToolLayout from '@/layouts/ToolLayout.astro';
-import { getLanguageStaticPaths, type SupportedLanguage } from '@/types/language';
+import { getLanguageStaticPaths, type SupportedLanguage, languages } from '@/types/language';
 import { getDictionary } from '@/i18n/get-dictionary';
 import { createTranslator } from '@/i18n/translate';
 
@@ -9,8 +9,10 @@ export const getStaticPaths = getLanguageStaticPaths;
 const { lang } = Astro.params;
 const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
+const isRtl = languages[supportedLang]?.direction === 'rtl';
+const fontClass =
+  supportedLang === 'fa' ? 'font-persian' : supportedLang === 'ar' ? 'font-arabic' : 'font-sans';
 
-// Helper to translate strings
 const t = createTranslator(dictionary);
 
 const titleText = t('costCalculator.title', { fallback: 'Website Cost Estimator' });
@@ -19,46 +21,151 @@ const descriptionText = t('costCalculator.description', {
     'Estimate the cost of your web development or SEO campaign in seconds with our interactive calculator.',
 });
 
+const faqItems =
+  supportedLang === 'fa'
+    ? [
+        {
+          question: 'هزینه طراحی سایت وردپرس در سال ۱۴۰۵ (۲۰۲۶) چقدر است؟',
+          answer:
+            'هزینه طراحی سایت وردپرس حرفه‌ای بر اساس تعداد صفحات و اختصاصی بودن قالب معمولاً از حدود ۸۵۰ تا ۲,۸۰۰ دلار (معادل ریالی روز بازار ایران برای قالب‌های سفارشی و فروشگاهی ووکامرس) متغیر است و امکانات چندزبانه یا سئو پیشرفته به صورت شفاف به پایه اضافه می‌شوند.',
+        },
+        {
+          question: 'تفاوت قیمت طراحی سایت وردپرسی با کدنویسی اختصاصی (Astro / Next.js) چیست؟',
+          answer:
+            'سایت‌های وردپرسی هزینه اولیه پایین‌تر و پنل مدیریت آماده دارند، در حالی که توسعه اختصاصی با Astro و Next.js هزینه مهندسی بالاتری دارد اما سرعت بارگذاری زیر یک ثانیه، امنیت بدون افزونه و قابلیت اتصال نامحدود به ERP و CRM را فراهم می‌کند.',
+        },
+        {
+          question: 'چه عواملی بیشترین تاثیر را در افزایش قیمت طراحی سایت فروشگاهی دارند؟',
+          answer:
+            'تعداد قالب‌های اختصاصی، اتصال دوطرفه به نرم‌افزارهای حسابداری و انبارداری (مانند سپیدار و راهکاران)، معماری چندزبانه راست‌به‌چپ و چپ‌به‌راست، درگاه‌های پرداخت چندگانه و پیاده‌سازی اسکیمای پیشرفته محصولات بیشترین سهم را در بودجه دارند.',
+        },
+        {
+          question: 'چگونه پس از محاسبه آنلاین هزینه طراحی سایت پیش‌فاکتور رسمی دریافت کنم؟',
+          answer:
+            'کافی است گزینه‌های پروژه خود را در ماشین‌حساب بالا انتخاب کرده و روی دکمه «رزرو مشاوره و دریافت پیش‌فاکتور» کلیک کنید تا مشخصات انتخابی شما مستقیماً در فرم مشاوره درج و برای تیم فنی ارسال شود.',
+        },
+      ]
+    : supportedLang === 'ar'
+      ? [
+          {
+            question: 'كم تبلغ تكلفة تصميم موقع إلكتروني احترافي في عام 2026؟',
+            answer:
+              'تتراوح تكلفة موقع الأعمال الاحترافي المبني على ووردبريس المخصص بين 800 و2,800 دولار أمريكي، بينما تبدأ المتاجر الإلكترونية المتكاملة والمنصات المخصصة عبر Astro وNext.js من 1,500 إلى 8,000+ دولار حسب عدد الصفحات والتكاملات البرمجية.',
+          },
+          {
+            question: 'ما الفرق في التكلفة بين ووردبريس والبرمجة المخصصة (Astro / Next.js)؟',
+            answer:
+              'يوفر ووردبريس تكلفة تأسيس أقل ولوحة إدارة محتوى جاهزة، بينما تتطلب البرمجة المخصصة استثماراً أولياً أعلى مقابل سرعة تحميل دون الثانية، وأمان خالٍ من ثغرات الإضافات، وربط مرن مع أنظمة ERP وCRM.',
+          },
+          {
+            question: 'ما أبرز العوامل التي ترفع تكلفة تصميم المتاجر الإلكترونية؟',
+            answer:
+              'بنية تعدد اللغات (العربية والإنجليزية)، وربط بوابات الدفع الخليجية والمحلية (Mada وTabby وTamara وStripe)، ومزامنة المخزون والمحاسبة، وتطبيق بيانات المنتجات المنظمة SEO هي المحركات الرئيسية للتكلفة.',
+          },
+          {
+            question: 'كيف أحصل على عرض سعر رسمي ومفصل بعد استخدام الحاسبة؟',
+            answer:
+              'اختر نوع الموقع وعدد الصفحات والمزايا المطلوبة في الحاسبة أعلاه ثم اضغط على زر حجز الاستشارة، ليتم نقل تقديرك تلقائياً إلى نموذج التواصل ومراجعته مع مهندسينا مجاناً.',
+          },
+        ]
+      : [
+          {
+            question: 'How much does a professional website cost in 2026?',
+            answer:
+              'Custom-themed WordPress business websites typically range from $800 to $2,800, full WooCommerce or Shopify stores run $1,800 to $6,500, and custom full-stack Astro or Next.js web applications range from $1,500 to $12,000+ depending on page scope and API integrations.',
+          },
+          {
+            question: 'Why does custom Astro or Next.js development cost more than WordPress?',
+            answer:
+              'WordPress reuses an existing CMS core and database schema, lowering initial setup hours. Custom Astro or Next.js engineering hand-builds frontend components, edge routing, and typed API integrations from scratch for sub-second Core Web Vitals and zero plugin maintenance.',
+          },
+          {
+            question: 'Which features increase website development budgets the most?',
+            answer:
+              'True multilingual RTL/LTR parity (English, Arabic, and Persian), e-commerce checkout and ERP inventory synchronization, custom calculators or client portals, and structured technical SEO/GEO entity graphs are the primary scope multipliers.',
+          },
+          {
+            question: 'How do I turn this instant estimate into a fixed-scope proposal?',
+            answer:
+              'Select your platform, page count, and add-on modules above, then click Book Consultation—your exact configuration and estimated budget pre-fill directly into our consultation request form for a free technical scoping review.',
+          },
+        ];
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name:
-        supportedLang === 'fa'
-          ? 'هزینه طراحی سایت در سال ۲۰۲۶ چقدر است؟'
-          : supportedLang === 'ar'
-            ? 'كم تبلغ تكلفة تصميم موقع إلكتروني؟'
-            : 'How much does web development cost in 2026?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text:
-          supportedLang === 'fa'
-            ? 'هزینه طراحی سایت بر اساس تعداد صفحات، اختصاصی یا قالبی بودن دیزاین و امکانات تجارت الکترونیک یا سئو از ۱۰ میلیون تومان برای قالب‌های ساده تا بالای ۵۰ میلیون تومان برای سامانه‌های اختصاصی متغیر است.'
-            : supportedLang === 'ar'
-              ? 'تبدأ تكلفة موقع الشركة الاحترافي القائم على قالب مخصص من 1000 إلى 3000 دولار، بينما تبدأ الحلول المخصصة من 3500 دولار فأكثر.'
-              : 'Professional business websites typically range from $1,000 to $3,500 for custom templates or $3,500 to $12,000+ for enterprise custom web applications.',
-      },
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
     },
-  ],
+  })),
 };
 
+const quickAnswer =
+  supportedLang === 'fa'
+    ? 'ماشین‌حساب آنلاین هزینه طراحی سایت وب اِی‌بی‌سی بر اساس چهار متغیر واقعی پروژه‌های مهندسی وب—نوع پلتفرم (وردپرس، کدنویسی اختصاصی Astro/Next.js یا فروشگاه اینترنتی)، تعداد صفحات، چندزبانه بودن و ماژول‌های سئو، سرعت و امنیت—بازه شفاف بودجه پروژه شما را در لحظه محاسبه می‌کند.'
+    : supportedLang === 'ar'
+      ? 'تحسب أداة تقدير تكلفة تصميم المواقع من ويب إيه بي سي ميزانية مشروعك فوريّاً بناءً على المتغيرات الهندسية الفعلية: نوع المنصة (ووردبريس، برمجة مخصصة Astro/Next.js، أو متجر إلكتروني)، وعدد الصفحات، ودعم تعدد اللغات، وإضافات السيو والسرعة والأمان.'
+      : 'The WebABC Website Cost Calculator estimates your 2026 web design and development budget in real time using transparent agency scoping variables: base platform (WordPress, custom Astro/Next.js code, or e-commerce), page count, multilingual RTL/LTR parity, technical SEO/GEO setup, Core Web Vitals tuning, and WAF security.';
+
+const costBenchmarks =
+  supportedLang === 'fa'
+    ? {
+        title: 'جدول مرجع تعرفه طراحی سایت در سال ۱۴۰۵ (۲۰۲۶) بر اساس نوع پروژه',
+        headers: ['نوع وب‌سایت', 'پشته فنی پیشنهادی', 'زمان تحویل معمول', 'بازه بودجه تخمینی'],
+        rows: [
+          ['سایت شرکتی و خدماتی استاندارد', 'وردپرس اختصاصی بدون صفحه‌ساز سنگین', '۲ تا ۴ هفته', '$850 – $2,200'],
+          ['فروشگاه اینترنتی حرفه‌ای', 'ووکامرس سفارشی / Shopify', '۴ تا ۶ هفته', '$1,800 – $5,500'],
+          ['سایت شرکتی و صادراتی چندزبانه', 'Astro 7 + Cloudflare Edge (EN/FA/AR)', '۴ تا ۷ هفته', '$2,000 – $6,000'],
+          ['وب‌اپلیکیشن و پورتال سازمانی B2B', 'Next.js / Astro + Node.js + اتصال ERP', '۶ تا ۱۲ هفته', '$3,500 – $12,000+'],
+        ],
+      }
+    : supportedLang === 'ar'
+      ? {
+          title: 'جدول نطاقات أسعار تصميم وتطوير المواقع لعام 2026',
+          headers: ['نوع المشروع', 'التقنية الموصى بها', 'مدة التنفيذ المعتادة', 'النطاق التقديري (USD)'],
+          rows: [
+            ['موقع تعريفي للشركات والخدمات', 'ووردبريس بقالب مخصص خفيف', '2 إلى 4 أسابيع', '$850 – $2,200'],
+            ['متجر إلكتروني متكامل', 'WooCommerce مخصص أو Shopify', '4 إلى 6 أسابيع', '$1,800 – $5,500'],
+            ['منصة تصدير متعددة اللغات (AR/EN/FA)', 'Astro 7 + Cloudflare Edge', '4 إلى 7 أسابيع', '$2,000 – $6,000'],
+            ['بوابة مؤسسية وتكامل ERP/CRM', 'Next.js / Astro + واجهات API مخصصة', '6 إلى 12 أسبوعاً', '$3,500 – $12,000+'],
+          ],
+        }
+      : {
+          title: '2026 Website Development Cost Benchmarks by Project Tier',
+          headers: ['Project Tier', 'Recommended Stack', 'Typical Timeline', 'Estimated Budget (USD)'],
+          rows: [
+            ['Corporate & Service Website', 'Hand-Coded Custom WordPress', '2 – 4 Weeks', '$850 – $2,200'],
+            ['Full E-Commerce Storefront', 'Custom WooCommerce / Shopify', '4 – 6 Weeks', '$1,800 – $5,500'],
+            ['Multilingual Export Platform', 'Astro 7 + Cloudflare Edge (EN/AR/FA)', '4 – 7 Weeks', '$2,000 – $6,000'],
+            ['Custom Web App & ERP Portal', 'Next.js / Astro + Node.js / Python API', '6 – 12 Weeks', '$3,500 – $12,000+'],
+          ],
+        };
+
 const guideDict = dictionary.costCalculator?.guide;
-const guide = guideDict ? {
-  how: {
-    title: t('costCalculator.guide.how.title', { fallback: 'How It Works' }),
-    paragraphs: Array.isArray(guideDict.how?.paragraphs) ? guideDict.how.paragraphs : [],
-  },
-  useCases: {
-    title: t('costCalculator.guide.useCases.title', { fallback: 'When to Use This Tool' }),
-    items: Array.isArray(guideDict.useCases?.items) ? guideDict.useCases.items : [],
-  },
-} : undefined;
+const guide = guideDict
+  ? {
+      how: {
+        title: t('costCalculator.guide.how.title', { fallback: 'How It Works' }),
+        paragraphs: Array.isArray(guideDict.how?.paragraphs) ? guideDict.how.paragraphs : [],
+      },
+      useCases: {
+        title: t('costCalculator.guide.useCases.title', { fallback: 'When to Use This Tool' }),
+        items: Array.isArray(guideDict.useCases?.items) ? guideDict.useCases.items : [],
+      },
+    }
+  : undefined;
 
+const quoteTemplate =
+  supportedLang === 'fa'
+    ? 'درخواست پیش‌فاکتور از ماشین‌حساب سایت: نوع پروژه: {type} | تعداد صفحات: {pages} | امکانات اضافه: {addons} | برآورد اولیه: {total}'
+    : supportedLang === 'ar'
+      ? 'طلب عرض سعر من حاسبة التكلفة: نوع المشروع: {type} | عدد الصفحات: {pages} | الإضافات: {addons} | التقدير الأولي: {total}'
+      : 'Quote request from Cost Calculator: Platform: {type} | Pages: {pages} | Add-ons: {addons} | Estimated Budget: {total}';
 ---
-
-
 
 <ToolLayout
   title={titleText}
@@ -69,39 +176,55 @@ const guide = guideDict ? {
   faqSchema={faqSchema}
   guide={guide}
 >
+  <!-- AEO Quick Answer Capsule -->
+  <section class={`container mx-auto mt-8 px-4 ${fontClass}`}>
+    <aside class="aeo-quick-answer mx-auto max-w-5xl rounded-2xl border-s-4 border-primary bg-primary/5 p-5 sm:p-6 dark:bg-slate-900/80">
+      <p class="text-sm leading-relaxed font-medium text-gray-800 sm:text-base dark:text-gray-100">
+        {quickAnswer}
+      </p>
+    </aside>
+  </section>
+
   <!-- Main Calculator Workspace -->
-  <section class="container mx-auto mt-12 px-4 font-sans">
+  <section class={`container mx-auto mt-10 px-4 ${fontClass}`}>
     <div class="mx-auto grid max-w-7xl grid-cols-1 gap-8 lg:grid-cols-12">
       <!-- Interactive Controls -->
       <div class="space-y-6 lg:col-span-8">
         <!-- Step 1: Website Type -->
         <div
-          class="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-sm dark:border-slate-800 dark:bg-slate-900"
+          class="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
         >
           <h2 class="text-base font-bold text-gray-800 dark:text-gray-100"
             >{t('costCalculator.stepProjectType', { fallback: '1. Project Type' })}</h2
           >
           <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
             <label
-              class="relative flex cursor-pointer flex-col items-center space-y-2 rounded-xl border border-gray-200 bg-white p-4 text-center text-gray-900 transition-all hover:border-primary dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              class="relative flex cursor-pointer flex-col items-center space-y-2 rounded-xl border border-gray-200 bg-white p-4 text-center text-gray-900 transition-colors hover:border-primary has-[:checked]:border-primary has-[:checked]:bg-primary/5 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
             >
               <input
                 type="radio"
                 name="site-type"
                 value="wordpress"
-                class="absolute top-4 right-4"
+                data-label={supportedLang === 'fa' ? 'وردپرس اختصاصی' : supportedLang === 'ar' ? 'ووردبريس مخصص' : 'Custom WordPress'}
+                class="absolute top-4 end-4 accent-primary"
                 checked
               />
-              <span class="text-xl">WordPress</span>
+              <span class="text-lg font-bold">WordPress</span>
               <span class="text-xs text-gray-500 dark:text-gray-400"
                 >{t('costCalculator.siteTypeWordPressSub', { fallback: 'Flexible CMS & Blog' })}</span
               >
             </label>
             <label
-              class="relative flex cursor-pointer flex-col items-center space-y-2 rounded-xl border border-gray-200 bg-white p-4 text-center text-gray-900 transition-all hover:border-primary dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              class="relative flex cursor-pointer flex-col items-center space-y-2 rounded-xl border border-gray-200 bg-white p-4 text-center text-gray-900 transition-colors hover:border-primary has-[:checked]:border-primary has-[:checked]:bg-primary/5 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
             >
-              <input type="radio" name="site-type" value="custom" class="absolute top-4 right-4" />
-              <span class="text-xl"
+              <input
+                type="radio"
+                name="site-type"
+                value="custom"
+                data-label={supportedLang === 'fa' ? 'کدنویسی اختصاصی (Astro/Next.js)' : supportedLang === 'ar' ? 'برمجة مخصصة (Astro/Next.js)' : 'Custom Code (Astro/Next.js)'}
+                class="absolute top-4 end-4 accent-primary"
+              />
+              <span class="text-lg font-bold"
                 >{t('costCalculator.siteTypeCustom', { fallback: 'Custom Coding' })}</span
               >
               <span class="text-xs text-gray-500 dark:text-gray-400"
@@ -109,15 +232,16 @@ const guide = guideDict ? {
               >
             </label>
             <label
-              class="relative flex cursor-pointer flex-col items-center space-y-2 rounded-xl border border-gray-200 bg-white p-4 text-center text-gray-900 transition-all hover:border-primary dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              class="relative flex cursor-pointer flex-col items-center space-y-2 rounded-xl border border-gray-200 bg-white p-4 text-center text-gray-900 transition-colors hover:border-primary has-[:checked]:border-primary has-[:checked]:bg-primary/5 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
             >
               <input
                 type="radio"
                 name="site-type"
                 value="ecommerce"
-                class="absolute top-4 right-4"
+                data-label={supportedLang === 'fa' ? 'فروشگاه اینترنتی' : supportedLang === 'ar' ? 'متجر إلكتروني' : 'E-Commerce Store'}
+                class="absolute top-4 end-4 accent-primary"
               />
-              <span class="text-xl"
+              <span class="text-lg font-bold"
                 >{t('costCalculator.siteTypeEcommerce', { fallback: 'E-commerce' })}</span
               >
               <span class="text-xs text-gray-500 dark:text-gray-400"
@@ -131,11 +255,11 @@ const guide = guideDict ? {
 
         <!-- Step 2: Page count slider -->
         <div
-          class="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-sm dark:border-slate-800 dark:bg-slate-900"
+          class="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
         >
           <div class="flex items-center justify-between">
-            <h2 class="text-base font-bold text-gray-800 dark:text-gray-100"
-              >{t('costCalculator.stepNumberOfPages', { fallback: '2. Number of Pages' })}</h2
+            <label for="page-count-slider" class="text-base font-bold text-gray-800 dark:text-gray-100"
+              >{t('costCalculator.stepNumberOfPages', { fallback: '2. Number of Pages' })}</label
             >
             <span
               id="page-count-val"
@@ -157,20 +281,21 @@ const guide = guideDict ? {
 
         <!-- Step 3: Additional Features -->
         <div
-          class="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-sm dark:border-slate-800 dark:bg-slate-900"
+          class="space-y-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
         >
           <h2 class="text-base font-bold text-gray-800 dark:text-gray-100"
             >{t('costCalculator.stepFeatures', { fallback: '3. Features & Addons' })}</h2
           >
           <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
             <label
-              class="flex cursor-pointer items-center gap-3 rounded-xl border border-gray-100 p-3 transition-all hover:bg-gray-50/50 dark:border-slate-800 dark:hover:bg-slate-800/50"
+              class="flex cursor-pointer items-center gap-3 rounded-xl border border-gray-100 p-3 transition-colors hover:bg-gray-50/50 has-[:checked]:border-primary/50 has-[:checked]:bg-primary/5 dark:border-slate-800 dark:hover:bg-slate-800/50"
             >
               <input
                 type="checkbox"
                 id="feature-multilingual"
                 value="500"
-                class="h-4 w-4 rounded text-primary"
+                data-addon-name={t('costCalculator.multilingualLabel', { fallback: 'Multilingual (RTL/LTR)' })}
+                class="h-4 w-4 rounded accent-primary"
               />
               <div class="flex flex-col">
                 <span class="text-sm font-semibold text-gray-800 dark:text-gray-100"
@@ -184,13 +309,14 @@ const guide = guideDict ? {
               </div>
             </label>
             <label
-              class="flex cursor-pointer items-center gap-3 rounded-xl border border-gray-100 p-3 transition-all hover:bg-gray-50/50 dark:border-slate-800 dark:hover:bg-slate-800/50"
+              class="flex cursor-pointer items-center gap-3 rounded-xl border border-gray-100 p-3 transition-colors hover:bg-gray-50/50 has-[:checked]:border-primary/50 has-[:checked]:bg-primary/5 dark:border-slate-800 dark:hover:bg-slate-800/50"
             >
               <input
                 type="checkbox"
                 id="feature-seo"
                 value="400"
-                class="h-4 w-4 rounded text-primary"
+                data-addon-name={t('costCalculator.advancedSeo', { fallback: 'Advanced SEO Setup' })}
+                class="h-4 w-4 rounded accent-primary"
               />
               <div class="flex flex-col">
                 <span class="text-sm font-semibold text-gray-800 dark:text-gray-100"
@@ -204,13 +330,14 @@ const guide = guideDict ? {
               </div>
             </label>
             <label
-              class="flex cursor-pointer items-center gap-3 rounded-xl border border-gray-100 p-3 transition-all hover:bg-gray-50/50 dark:border-slate-800 dark:hover:bg-slate-800/50"
+              class="flex cursor-pointer items-center gap-3 rounded-xl border border-gray-100 p-3 transition-colors hover:bg-gray-50/50 has-[:checked]:border-primary/50 has-[:checked]:bg-primary/5 dark:border-slate-800 dark:hover:bg-slate-800/50"
             >
               <input
                 type="checkbox"
                 id="feature-speed"
                 value="300"
-                class="h-4 w-4 rounded text-primary"
+                data-addon-name={t('costCalculator.speedOptimization', { fallback: 'Speed Optimization' })}
+                class="h-4 w-4 rounded accent-primary"
               />
               <div class="flex flex-col">
                 <span class="text-sm font-semibold text-gray-800 dark:text-gray-100"
@@ -224,13 +351,14 @@ const guide = guideDict ? {
               </div>
             </label>
             <label
-              class="flex cursor-pointer items-center gap-3 rounded-xl border border-gray-100 p-3 transition-all hover:bg-gray-50/50 dark:border-slate-800 dark:hover:bg-slate-800/50"
+              class="flex cursor-pointer items-center gap-3 rounded-xl border border-gray-100 p-3 transition-colors hover:bg-gray-50/50 has-[:checked]:border-primary/50 has-[:checked]:bg-primary/5 dark:border-slate-800 dark:hover:bg-slate-800/50"
             >
               <input
                 type="checkbox"
                 id="feature-security"
                 value="250"
-                class="h-4 w-4 rounded text-primary"
+                data-addon-name={t('costCalculator.wafSecurity', { fallback: 'WAF & Security Shield' })}
+                class="h-4 w-4 rounded accent-primary"
               />
               <div class="flex flex-col">
                 <span class="text-sm font-semibold text-gray-800 dark:text-gray-100"
@@ -250,10 +378,13 @@ const guide = guideDict ? {
       <!-- Sticky Pricing Summary Widget -->
       <div class="lg:col-span-4">
         <div
-          class="sticky top-28 space-y-6 rounded-2xl border border-gray-100 bg-white p-6 font-persian shadow-lg dark:border-slate-800 dark:bg-slate-900"
+          id="calculator-summary-card"
+          data-lang={supportedLang}
+          data-quote-template={quoteTemplate}
+          class="sticky top-28 space-y-6 rounded-2xl border border-gray-100 bg-white p-6 shadow-lg dark:border-slate-800 dark:bg-slate-900"
         >
           <h2
-            class="border-b border-gray-50 pb-4 text-lg font-bold text-gray-800 dark:text-gray-100"
+            class="border-b border-gray-100 pb-4 text-lg font-bold text-gray-800 dark:border-slate-800 dark:text-gray-100"
           >
             {t('costCalculator.estimateBreakdown', { fallback: 'Estimate Breakdown' })}
           </h2>
@@ -263,7 +394,7 @@ const guide = guideDict ? {
               <span class="text-gray-500 dark:text-gray-400"
                 >{t('costCalculator.baseTypeCost', { fallback: 'Base Type Cost:' })}</span
               >
-              <span class="font-semibold text-gray-700 dark:text-gray-200" id="base-cost-text"
+              <span dir="ltr" class="font-semibold text-gray-700 dark:text-gray-200" id="base-cost-text"
                 >$800</span
               >
             </div>
@@ -271,7 +402,7 @@ const guide = guideDict ? {
               <span class="text-gray-500 dark:text-gray-400"
                 >{t('costCalculator.pagesCost', { fallback: 'Pages Cost:' })}</span
               >
-              <span class="font-semibold text-gray-700 dark:text-gray-200" id="pages-cost-text"
+              <span dir="ltr" class="font-semibold text-gray-700 dark:text-gray-200" id="pages-cost-text"
                 >$250</span
               >
             </div>
@@ -279,35 +410,73 @@ const guide = guideDict ? {
               <span class="text-gray-500 dark:text-gray-400"
                 >{t('costCalculator.addonsCost', { fallback: 'Addons & Features:' })}</span
               >
-              <span class="font-semibold text-gray-700 dark:text-gray-200" id="addons-cost-text"
+              <span dir="ltr" class="font-semibold text-gray-700 dark:text-gray-200" id="addons-cost-text"
                 >$0</span
               >
             </div>
           </div>
 
           <div
-            class="flex flex-col items-center justify-center space-y-2 border-t border-gray-100 pt-6"
+            class="flex flex-col items-center justify-center space-y-2 border-t border-gray-100 pt-6 dark:border-slate-800"
           >
             <span class="text-xs font-medium text-gray-500 dark:text-gray-400"
               >{t('costCalculator.estimatedBudget', { fallback: 'Estimated Budget' })}</span
             >
-            <span class="text-4xl font-extrabold text-primary" id="total-price-text">$1,050</span>
+            <span dir="ltr" class="text-4xl font-extrabold text-primary" id="total-price-text">$1,050</span>
+            <span id="local-currency-hint" class="text-xs font-medium text-gray-500 dark:text-gray-400">
+              {
+                supportedLang === 'fa'
+                  ? 'معادل ریالی/تومانی طبق توافق پروژه محاسبه می‌شود'
+                  : supportedLang === 'ar'
+                    ? 'متاح الدفع بالدرهم الإماراتي أو الريال أو الدولار'
+                    : 'Transparent fixed-milestone billing'
+              }
+            </span>
           </div>
 
           <button
             type="button"
-            class="w-full rounded-xl bg-primary py-3 text-sm font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            id="book-calculator-consultation-btn"
+            class="w-full min-h-12 cursor-pointer rounded-xl bg-primary py-3 text-sm font-bold text-primary-foreground shadow-md transition-colors hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
-            {t('costCalculator.bookConsultation', { fallback: 'Book Consultation' })}
+            {t('costCalculator.bookConsultation', { fallback: 'Book Consultation & Lock Quote' })}
           </button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SEO Guide Content -->
-  <section class="container mx-auto mt-16 px-4 font-sans">
-    <div class="mx-auto max-w-7xl space-y-8">
+  <!-- 2026 Website Cost Benchmarks Table + Guide + Interactive FAQ -->
+  <section class={`container mx-auto mt-16 px-4 ${fontClass}`}>
+    <div class="mx-auto max-w-7xl space-y-14">
+      <!-- Cost Comparison Table -->
+      <div>
+        <h2 class="mb-6 text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">
+          {costBenchmarks.title}
+        </h2>
+        <div class="overflow-x-auto rounded-2xl border border-gray-200 bg-white shadow-xs dark:border-slate-800 dark:bg-slate-900">
+          <table class="w-full border-collapse text-start text-sm">
+            <thead>
+              <tr class="border-b border-gray-200 bg-gray-50 dark:border-slate-800 dark:bg-slate-800/70">
+                {costBenchmarks.headers.map((h) => (
+                  <th class="px-4 py-3.5 font-bold text-gray-900 dark:text-white">{h}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 dark:divide-slate-800">
+              {costBenchmarks.rows.map((r) => (
+                <tr class="hover:bg-gray-50/60 dark:hover:bg-slate-800/40">
+                  <td class="px-4 py-3 font-semibold text-gray-900 dark:text-white">{r[0]}</td>
+                  <td class="px-4 py-3 text-gray-700 dark:text-gray-300">{r[1]}</td>
+                  <td class="px-4 py-3 text-gray-600 dark:text-gray-400">{r[2]}</td>
+                  <td dir="ltr" class="px-4 py-3 font-bold text-primary text-start">{r[3]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       <div class="space-y-3">
         <h2 class="text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">
           {t('costCalculator.howMuchTitle', { fallback: 'How Much Does a Website Really Cost?' })}
@@ -315,7 +484,7 @@ const guide = guideDict ? {
         <p class="leading-relaxed text-gray-600 dark:text-gray-300">
           {t('costCalculator.howMuchBody', {
             fallback:
-              'This free website cost calculator gives you an instant price estimate based on the same variables agencies use in a real quote: platform (WordPress, custom code, or e-commerce), page count, and add-on features like multilingual support, advanced SEO setup, speed optimization, and security hardening. Adjust any option to see the estimated budget update in real time.',
+              'This free website cost calculator gives you an instant price estimate based on the same variables agencies use in a real quote: platform (WordPress, custom code, or e-commerce), page count, and add-on features like multilingual support, advanced SEO setup, speed optimization, and security hardening.',
           })}
         </p>
       </div>
@@ -330,7 +499,7 @@ const guide = guideDict ? {
           <p class="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
             {t('costCalculator.wpVsCustomBody', {
               fallback:
-                'WordPress is faster and cheaper to launch with a flexible CMS and blog. Custom-coded sites (Next.js, Astro) cost more upfront but load faster and scale better for complex, high-traffic projects.',
+                'WordPress is faster and lower-cost to launch with a flexible CMS. Custom-coded sites (Next.js, Astro) load faster and scale cleaner for complex, high-traffic applications.',
             })}
           </p>
         </div>
@@ -343,7 +512,7 @@ const guide = guideDict ? {
           <p class="text-xs leading-relaxed text-gray-500 dark:text-gray-400">
             {t('costCalculator.priceUpBody', {
               fallback:
-                'Page count, e-commerce functionality, multilingual (RTL/LTR) support, and advanced SEO setup are the biggest cost multipliers. Speed and security hardening add a smaller, fixed premium.',
+                'Page count, e-commerce functionality, multilingual (RTL/LTR) support, and advanced SEO setup are the primary cost multipliers.',
             })}
           </p>
         </div>
@@ -365,59 +534,94 @@ const guide = guideDict ? {
                 <span>
                   برای مشاهده جدول کامل تعرفه‌ها،{' '}
                   <a
+                    href={`/${supportedLang}/blog/wordpress-website-cost-guide-2026/`}
+                    class="font-semibold text-primary hover:underline"
+                  >
+                    راهنمای هزینه طراحی سایت وردپرس ۲۰۲۶
+                  </a>{' '}
+                  و{' '}
+                  <a
                     href={`/${supportedLang}/blog/website-development-cost-calculator-guide-2026/`}
                     class="font-semibold text-primary hover:underline"
                   >
-                    راهنمای محاسبه هزینه طراحی سایت ۲۰۲۶
+                    فرمول محاسبه هزینه وب‌سایت
                   </a>{' '}
-                  را مطالعه کنید، یا برای دریافت پیش‌فاکتور دقیق{' '}
-                  <a
-                    href={`/${supportedLang}/contact/`}
-                    class="font-semibold text-primary hover:underline"
-                  >
-                    مشاوره رایگان رزرو کنید
-                  </a>
-                  .
+                  را مطالعه کنید.
                 </span>
               ) : supportedLang === 'ar' ? (
                 <span>
                   للاطلاع على التكاليف التفصيلية، اقرأ{' '}
                   <a
+                    href={`/${supportedLang}/blog/wordpress-website-cost-guide-2026/`}
+                    class="font-semibold text-primary hover:underline"
+                  >
+                    دليل تكلفة موقع ووردبريس 2026
+                  </a>{' '}
+                  و{' '}
+                  <a
                     href={`/${supportedLang}/blog/website-development-cost-calculator-guide-2026/`}
                     class="font-semibold text-primary hover:underline"
                   >
-                    دليل حاسبة وتكلفة تصميم المواقع 2026
+                    دليل حاسبة تكلفة المواقع
                   </a>
-                  ، أو{' '}
-                  <a
-                    href={`/${supportedLang}/contact/`}
-                    class="font-semibold text-primary hover:underline"
-                  >
-                    احجز استشارة مجانية
-                  </a>{' '}
-                  للحصول على عرض سعر مفصل.
+                  .
                 </span>
               ) : (
                 <span>
-                  For full cost benchmarks, read our comprehensive{' '}
+                  For itemized benchmarks, read our{' '}
+                  <a
+                    href={`/${supportedLang}/blog/wordpress-website-cost-guide-2026/`}
+                    class="font-semibold text-primary hover:underline"
+                  >
+                    WordPress Cost Guide 2026
+                  </a>{' '}
+                  and{' '}
                   <a
                     href={`/${supportedLang}/blog/website-development-cost-calculator-guide-2026/`}
                     class="font-semibold text-primary hover:underline"
                   >
-                    2026 Web Development Cost Guide
+                    Cost Calculator Formula Guide
                   </a>
-                  , or{' '}
-                  <a
-                    href={`/${supportedLang}/contact/`}
-                    class="font-semibold text-primary hover:underline"
-                  >
-                    book a free consultation
-                  </a>{' '}
-                  for an exact proposal.
+                  .
                 </span>
               )
             }
           </p>
+        </div>
+      </div>
+
+      <!-- Visible Accessible FAQ Block matching faqSchema -->
+      <div class="mx-auto max-w-4xl rounded-2xl border border-gray-100 bg-white p-6 shadow-xs sm:p-8 dark:border-slate-800 dark:bg-slate-900">
+        <h2 class="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
+          {
+            supportedLang === 'fa'
+              ? 'سوالات متداول درباره هزینه طراحی سایت در سال ۱۴۰۵ (۲۰۲۶)'
+              : supportedLang === 'ar'
+                ? 'الأسئلة الشائعة حول تكلفة تصميم وتطوير المواقع (2026)'
+                : 'Frequently Asked Questions: Website Pricing in 2026'
+          }
+        </h2>
+        <div class="divide-y divide-gray-100 dark:divide-slate-800">
+          {faqItems.map((item) => (
+            <details class="group py-4 first:pt-0 last:pb-0">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-bold text-gray-900 hover:text-primary dark:text-gray-100">
+                <span>{item.question}</span>
+                <svg
+                  aria-hidden="true"
+                  class="h-5 w-5 shrink-0 text-gray-500 transition-transform duration-200 group-open:rotate-180"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                {item.answer}
+              </p>
+            </details>
+          ))}
         </div>
       </div>
     </div>
@@ -439,57 +643,92 @@ const guide = guideDict ? {
     const pagesCostText = document.getElementById('pages-cost-text');
     const addonsCostText = document.getElementById('addons-cost-text');
     const totalPriceText = document.getElementById('total-price-text');
+    const summaryCard = document.getElementById('calculator-summary-card');
+    const bookBtn = document.getElementById('book-calculator-consultation-btn');
+
+    let currentState = {
+      typeLabel: 'WordPress',
+      pages: 5,
+      addons: [],
+      totalFormatted: '$1,050',
+    };
 
     function calculatePrice() {
-      // 1. Get radio site-type value
+      if (!slider || !pageValText) return;
       let basePrice = 800;
       let selectedType = 'wordpress';
+      let selectedLabel = 'WordPress';
       siteTypeRadios.forEach((radio) => {
         if (radio.checked) {
           selectedType = radio.value;
+          selectedLabel = radio.dataset.label || radio.value;
         }
       });
 
-      if (selectedType === 'wordpress') {
-        basePrice = 800;
-      } else if (selectedType === 'custom') {
-        basePrice = 1500;
-      } else if (selectedType === 'ecommerce') {
-        basePrice = 1800;
-      }
+      if (selectedType === 'wordpress') basePrice = 800;
+      else if (selectedType === 'custom') basePrice = 1500;
+      else if (selectedType === 'ecommerce') basePrice = 1800;
 
-      // 2. Page multiplier
-      const pageCount = parseInt(slider.value);
+      const pageCount = parseInt(slider.value, 10) || 5;
       pageValText.innerText = `${pageCount} ${
         pageCount > 1 ? pageValText.dataset.pagesMany : pageValText.dataset.pagesOne
       }`;
       const pagesCost = pageCount * 50;
 
-      // 3. Checkbox additions
       let addonsCost = 0;
-      if (featureMultilingual.checked) addonsCost += parseFloat(featureMultilingual.value);
-      if (featureSEO.checked) addonsCost += parseFloat(featureSEO.value);
-      if (featureSpeed.checked) addonsCost += parseFloat(featureSpeed.value);
-      if (featureSecurity.checked) addonsCost += parseFloat(featureSecurity.value);
+      const activeAddons = [];
+      [featureMultilingual, featureSEO, featureSpeed, featureSecurity].forEach((chk) => {
+        if (chk && chk.checked) {
+          addonsCost += parseFloat(chk.value);
+          if (chk.dataset.addonName) activeAddons.push(chk.dataset.addonName);
+        }
+      });
 
-      // Sum total
       const total = basePrice + pagesCost + addonsCost;
 
-      // Update markup
-      baseCostText.innerText = `$${basePrice.toLocaleString()}`;
-      pagesCostText.innerText = `$${pagesCost.toLocaleString()}`;
-      addonsCostText.innerText = `$${addonsCost.toLocaleString()}`;
-      totalPriceText.innerText = `$${total.toLocaleString()}`;
+      if (baseCostText) baseCostText.innerText = `$${basePrice.toLocaleString()}`;
+      if (pagesCostText) pagesCostText.innerText = `$${pagesCost.toLocaleString()}`;
+      if (addonsCostText) addonsCostText.innerText = `$${addonsCost.toLocaleString()}`;
+      if (totalPriceText) totalPriceText.innerText = `$${total.toLocaleString()}`;
+
+      currentState = {
+        typeLabel: selectedLabel,
+        pages: pageCount,
+        addons: activeAddons,
+        totalFormatted: `$${total.toLocaleString()}`,
+      };
     }
 
-    // Bind change listeners
     siteTypeRadios.forEach((radio) => radio.addEventListener('change', calculatePrice));
-    slider.addEventListener('input', calculatePrice);
+    if (slider) slider.addEventListener('input', calculatePrice);
     [featureMultilingual, featureSEO, featureSpeed, featureSecurity].forEach((chk) => {
-      chk.addEventListener('change', calculatePrice);
+      if (chk) chk.addEventListener('change', calculatePrice);
     });
 
-    // Run initial calculation
+    if (bookBtn) {
+      bookBtn.addEventListener('click', () => {
+        const dialog = document.getElementById('consultation-modal');
+        const msgInput = document.getElementById('consultation-message');
+        const tpl =
+          (summaryCard && summaryCard.dataset.quoteTemplate) ||
+          'Platform: {type} | Pages: {pages} | Add-ons: {addons} | Estimated Budget: {total}';
+        const addonsStr = currentState.addons.length ? currentState.addons.join(', ') : '—';
+        if (msgInput) {
+          msgInput.value = tpl
+            .replace('{type}', currentState.typeLabel)
+            .replace('{pages}', String(currentState.pages))
+            .replace('{addons}', addonsStr)
+            .replace('{total}', currentState.totalFormatted);
+        }
+        if (dialog && typeof dialog.showModal === 'function') {
+          dialog.showModal();
+        } else {
+          const activeLang = (summaryCard && summaryCard.dataset.lang) || 'en';
+          window.location.href = `/${activeLang}/contact/`;
+        }
+      });
+    }
+
     calculatePrice();
   })();
 </script>

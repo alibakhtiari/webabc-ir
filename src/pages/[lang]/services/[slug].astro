@@ -35,6 +35,8 @@ const { lang, slug } = Astro.params;
 const supportedLang = lang as SupportedLanguage;
 const dictionary = await getDictionary(supportedLang);
 const isRtl = languages[supportedLang]?.direction === 'rtl';
+const fontClass =
+  supportedLang === 'fa' ? 'font-persian' : supportedLang === 'ar' ? 'font-arabic' : 'font-sans';
 
 // Helper to translate strings
 const t = createTranslator(dictionary);
@@ -70,7 +72,7 @@ const pageSchema = createServiceSchema(
   <!-- Inject Schema into Layout Head -->
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(pageSchema)} />
 
-  <!-- Premium Side-Image Hero Section -->
+  <!-- Side-Image Hero Section -->
   <ServiceHero
     title={pageTitle}
     subtitle={pageDesc}
@@ -81,15 +83,23 @@ const pageSchema = createServiceSchema(
     <!-- Action buttons -->
     <a
       href={`/${supportedLang}/contact/`}
-      class="rounded-xl bg-primary px-6 py-3 font-persian text-sm font-bold text-primary-foreground shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+      class={`rounded-xl bg-primary px-6 py-3 ${fontClass} text-sm font-bold text-primary-foreground shadow-md transition-colors hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2`}
     >
       {t('common.freeConsultation', { fallback: 'Free Consultation' })}
     </a>
     <a
-      href={`/${supportedLang}/portfolio/`}
-      class="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-6 py-3 font-persian text-sm font-bold text-gray-700 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-50 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700"
+      href={`/${supportedLang}/tools/cost-calculator/`}
+      class={`inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-6 py-3 ${fontClass} text-sm font-bold text-gray-700 shadow-xs transition-colors hover:bg-gray-50 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-200 dark:hover:bg-slate-700`}
     >
-      {t('common.viewPortfolio', { fallback: 'View Portfolio' })}
+      <span>
+        {
+          supportedLang === 'fa'
+            ? 'محاسبه آنلاین هزینه'
+            : supportedLang === 'ar'
+              ? 'حاسبة التكلفة الفورية'
+              : 'Estimate Project Cost'
+        }
+      </span>
       {
         isRtl ? (
           <svg
@@ -108,6 +118,7 @@ const pageSchema = createServiceSchema(
             class="h-4 w-4 shrink-0"
             fill="none"
             stroke="currentColor"
+            stroke-width="2"
             viewBox="0 0 24 24"
           >
             <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -118,7 +129,7 @@ const pageSchema = createServiceSchema(
   </ServiceHero>
 
   <!-- Detailed Content Section -->
-  <section class="py-16 font-sans">
+  <section class={`py-16 ${fontClass}`}>
     <div class="container mx-auto max-w-7xl space-y-12 px-4 sm:px-6 lg:px-8">
       {slug === 'seo' && <SeoContent lang={supportedLang} dictionary={dictionary} />}
       {slug === 'local-seo' && <LocalSeoContent lang={supportedLang} dictionary={dictionary} />}
@@ -143,13 +154,13 @@ const pageSchema = createServiceSchema(
         )
       }
 
-      <!-- Premium Consultation CTA -->
+      <!-- Consultation CTA -->
       <CTA
         lang={supportedLang}
         title={serviceData.cta?.title ||
-          t('services.ctaTitle', { fallback: 'Ready to Elevate Your Digital Footprint?' })}
+          t('services.ctaTitle', { fallback: 'Ready to Scale Your Digital Infrastructure?' })}
         description={serviceData.cta?.description ||
-          t('services.ctaDescription', { fallback: 'Contact our team for a tailored approach.' })}
+          t('services.ctaDescription', { fallback: 'Contact our engineering team for a scoped roadmap.' })}
         buttonText={t('common.contactUs', { fallback: 'Contact Us' })}
       />
     </div>
