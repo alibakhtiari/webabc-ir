@@ -477,7 +477,7 @@ async function test() {
         }
       })
       .filter(Boolean)
-      .flatMap((d) => (Array.isArray(d) ? d : [d]));
+      .flatMap((d) => (Array.isArray(d) ? d : Array.isArray(d['@graph']) ? d['@graph'] : [d]));
   const pageHtml = async (p) => {
     const res = await worker.fetch(
       new Request(`https://webabc.ir${p}`, { headers: { Accept: 'text/html' } }),
