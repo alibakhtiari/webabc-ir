@@ -11,6 +11,7 @@ interface Props {
 const { lang } = Astro.props;
 const dictionary = await getDictionary(lang);
 const isRtl = languages[lang]?.direction === 'rtl';
+const fontClass = lang === 'fa' ? 'font-persian' : lang === 'ar' ? 'font-arabic' : 'font-sans';
 
 const copyrightYear = new Intl.DateTimeFormat(
   lang === 'fa' ? 'fa-IR' : lang === 'ar' ? 'ar-SA' : 'en-US',
@@ -52,12 +53,12 @@ const phoneList = [
           </a>
 
           <p
-            class={`text-sm leading-relaxed text-foreground/70 font-${lang === 'en' ? 'sans' : 'persian'}`}
+            class={`text-sm leading-relaxed text-foreground/70 ${fontClass}`}
           >
             {t('common.aboutCompany')}
           </p>
           <div
-            class={`space-y-2 pt-1 font-${lang === 'en' ? 'sans' : 'persian'} text-sm text-foreground/80`}
+            class={`space-y-2 pt-1 ${fontClass} text-sm text-foreground/80`}
           >
             {
               phoneList.map((p) => (
@@ -197,7 +198,7 @@ const phoneList = [
 
       <div class="grid grid-cols-1 gap-8 sm:grid-cols-3 md:col-span-3">
         <div>
-          <h3 class={`text-lg font-medium mb-4 font-${lang === 'en' ? 'sans' : 'persian'}`}>
+          <h3 class={`text-lg font-medium mb-4 ${fontClass}`}>
             {t('common.services')}
           </h3>
           <ul class="space-y-2">
@@ -263,7 +264,7 @@ const phoneList = [
           </ul>
         </div>
         <div>
-          <h3 class={`text-lg font-medium mb-4 font-${lang === 'en' ? 'sans' : 'persian'}`}>
+          <h3 class={`text-lg font-medium mb-4 ${fontClass}`}>
             {t('common.company')}
           </h3>
           <ul class="space-y-2">
@@ -320,12 +321,26 @@ const phoneList = [
           </ul>
         </div>
         <div>
-          <h3 class={`text-lg font-medium mb-4 font-${lang === 'en' ? 'sans' : 'persian'}`}>
+          <h3 class={`text-lg font-medium mb-4 ${fontClass}`}>
             <a href={linkPath('/tools')} class="transition-colors hover:text-primary"
               >{t('common.tools')}</a
             >
           </h3>
           <ul class="space-y-2">
+            <li>
+              <a
+                href={linkPath('/tools/cost-calculator')}
+                class="text-foreground/70 transition-colors hover:text-primary"
+                >{t('costCalculator.title', { fallback: 'Website Cost Calculator' })}</a
+              >
+            </li>
+            <li>
+              <a
+                href={linkPath('/tools/schema-generator')}
+                class="text-foreground/70 transition-colors hover:text-primary"
+                >{t('schemaGenerator.title', { fallback: 'Schema Markup Generator' })}</a
+              >
+            </li>
             <li>
               <a
                 href={linkPath('/tools/meta-generator')}
@@ -363,7 +378,7 @@ const phoneList = [
       <!-- Exact-match brand anchor to the locale homepage (brand query 2.5).
            The logo link above carries only an aria-label, so this visible
            "WebABC" link is additive — no existing nav label was removed. -->
-      <p class={`text-foreground/70 text-sm font-${lang === 'en' ? 'sans' : 'persian'} flex flex-wrap items-center justify-center gap-1.5`}>
+      <p class={`text-foreground/70 text-sm ${fontClass} flex flex-wrap items-center justify-center gap-1.5`}>
         <a
           href={linkPath('')}
           class="font-bold text-foreground/80 transition-colors hover:text-primary"

@@ -10,8 +10,8 @@ interface Props {
 const { lang } = Astro.props;
 const dictionary = await getDictionary(lang);
 const isRtl = languages[lang]?.direction === 'rtl';
+const fontClass = lang === 'fa' ? 'font-persian' : lang === 'ar' ? 'font-arabic' : 'font-sans';
 
-// Helper to translate strings
 const t = createTranslator(dictionary);
 
 const linkPath = (path: string) => {
@@ -21,49 +21,42 @@ const linkPath = (path: string) => {
 };
 ---
 
-<section id="contact" class="relative overflow-hidden py-20 font-sans md:py-24">
+<section id="contact" class={`relative overflow-hidden py-20 ${fontClass} md:py-24`}>
   <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="relative overflow-hidden rounded-3xl bg-primary p-8 md:p-12 lg:p-16">
-      <!-- Background elements -->
-        <div class="absolute inset-0 overflow-hidden">
-          <div class="absolute top-0 right-0 h-64 w-64 rounded-full bg-white/10 blur-3xl"></div>
-          <div class="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-white/5 blur-3xl"></div>
-        </div>
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute top-0 end-0 h-64 w-64 rounded-full bg-white/10 blur-3xl"></div>
+        <div class="absolute bottom-0 start-0 h-80 w-80 rounded-full bg-white/5 blur-3xl"></div>
+      </div>
 
-        <div class="relative z-10 text-center">
-          <h2
-            class={`text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4 text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}
-          >
-            {t('cta.title')}
-          </h2>
+      <div class="relative z-10 text-center">
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4 text-balance">
+          {t('cta.title')}
+        </h2>
 
-          <p
-            class={`text-white/90 text-base sm:text-lg mb-8 max-w-3xl mx-auto leading-relaxed text-balance font-${lang === 'en' ? 'sans' : 'persian'}`}
-          >
-            {t('cta.description')}
-          </p>
+        <p class="text-white/90 text-base sm:text-lg mb-8 max-w-3xl mx-auto leading-relaxed text-balance">
+          {t('cta.description')}
+        </p>
 
-          <div
-            class={`flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 font-${lang === 'en' ? 'sans' : 'persian'}`}
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
+          <button
+            type="button"
+            id="cta-consultation-btn"
+            class={`min-h-12 cursor-pointer px-6 py-3 rounded-full bg-white text-primary font-bold transition-colors shadow-md hover:bg-gray-50 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary flex items-center gap-2 ${isRtl ? 'flex-row-reverse' : ''}`}
           >
-            <button
-              type="button"
-              id="cta-consultation-btn"
-              class={`px-6 py-3 rounded-full bg-white text-primary font-medium transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 flex items-center gap-2 ${isRtl ? 'flex-row-reverse' : ''}`}
-            >
-              <span>{t('cta.primaryButton')}</span>
-            </button>
-            <a
-              href={linkPath('/contact')}
-              class="rounded-full border border-white/30 bg-transparent px-6 py-3 text-white transition-all duration-300 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-            >
-              <span>{t('cta.secondaryButton')}</span>
-            </a>
-          </div>
+            <span>{t('cta.primaryButton')}</span>
+          </button>
+          <a
+            href={linkPath('/contact')}
+            class="inline-flex min-h-12 items-center justify-center rounded-full border border-white/40 bg-transparent px-6 py-3 font-semibold text-white transition-colors hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-primary"
+          >
+            <span>{t('cta.secondaryButton')}</span>
+          </a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 <script is:inline>
   (() => {

@@ -12,10 +12,8 @@ const { lang } = Astro.props;
 const dictionary = await getDictionary(lang);
 const isRtl = languages[lang]?.direction === 'rtl';
 
-// Helper to translate strings
 const t = createTranslator(dictionary);
 
-// Generate relative paths correctly based on lang with trailing slashes
 const linkPath = (path: string) => {
   if (!path || path === '/') return `/${lang}/`;
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
@@ -25,6 +23,7 @@ const linkPath = (path: string) => {
 const navItems = [
   { key: 'service-areas', label: 'common.serviceAreas', href: '/service-areas' },
   { key: 'portfolio', label: 'common.portfolio', href: '/portfolio' },
+  { key: 'tools', label: 'common.tools', href: '/tools' },
   { key: 'blog', label: 'common.blog', href: '/blog' },
   { key: 'about', label: 'common.about', href: '/about' },
   { key: 'contact', label: 'common.contact', href: '/contact' },
@@ -49,23 +48,44 @@ const waDirectLabel =
     : lang === 'ar'
       ? 'أو تحدث معنا مباشرة عبر واتساب'
       : 'Or Chat Directly on WhatsApp';
+
+const formFeedback = {
+  success:
+    lang === 'fa'
+      ? 'درخواست شما با موفقیت ثبت شد! کارشناسان ما به‌زودی با شما تماس می‌گیرند.'
+      : lang === 'ar'
+        ? 'تم إرسال طلبك بنجاح! سيتواصل معك فريقنا قريباً.'
+        : 'Request submitted! Our engineering team will contact you shortly.',
+  error:
+    lang === 'fa'
+      ? 'ارسال درخواست انجام نشد. لطفاً دوباره تلاش کنید.'
+      : lang === 'ar'
+        ? 'تعذر إرسال الطلب. يرجى المحاولة مرة أخرى.'
+        : 'Could not send request. Please try again.',
+  network:
+    lang === 'fa'
+      ? 'خطا در ارتباط شبکه. لطفاً اتصال خود را بررسی کنید یا از واتساپ پیام دهید.'
+      : lang === 'ar'
+        ? 'خطأ في الشبكة. يرجى المحاولة مجدداً أو مراسلتنا عبر واتساب.'
+        : 'Network error. Please try again or reach us via WhatsApp.',
+};
 ---
 
 <header
   id="main-header"
-  class="fixed top-0 right-0 left-0 z-50 px-4 py-3 transition-all duration-300 ease-in-out"
+  class="fixed top-0 right-0 left-0 z-50 px-4 py-3 transition-colors duration-300"
 >
   <div class="mx-auto max-w-7xl">
     <div
-      class="flex items-center justify-between rounded-full border border-white/20 bg-white/70 px-6 py-3 shadow-lg backdrop-blur-xl dark:border-slate-800/80 dark:bg-slate-900/80"
+      class="flex items-center justify-between rounded-full border border-white/20 bg-white/75 px-6 py-3 shadow-lg backdrop-blur-xl dark:border-slate-800/80 dark:bg-slate-900/85"
     >
       <!-- Brand Logo -->
-      <a href={linkPath('')} class="flex items-center space-x-2 shrink-0" aria-label={t('common.home')}>
+      <a href={linkPath('')} class="flex items-center gap-2 shrink-0" aria-label={t('common.home')}>
         <Logo class="h-8 w-auto min-w-[140px] sm:min-w-[160px] md:min-w-[180px] sm:h-9 xl:h-10 shrink-0" />
       </a>
 
       <!-- Desktop Navigation Menu -->
-      <nav class="mx-4 hidden grow items-center justify-center gap-4 xl:gap-6 lg:flex">
+      <nav class="mx-4 hidden grow items-center justify-center gap-3.5 xl:gap-5 lg:flex">
         <!-- Services Mega Menu -->
         <div class="group relative">
           <button
@@ -74,7 +94,7 @@ const waDirectLabel =
             aria-expanded="false"
             aria-haspopup="true"
             aria-controls="desktop-services-panel"
-            class={`flex items-center gap-1 text-sm font-medium text-foreground/80 hover:text-primary transition-colors ${fontClass}`}
+            class={`flex cursor-pointer items-center gap-1 text-sm font-medium text-foreground/80 hover:text-primary transition-colors ${fontClass}`}
           >
             {t('common.services')}
             <svg
@@ -94,7 +114,7 @@ const waDirectLabel =
           <!-- Mega Menu dropdown content -->
           <div
             id="desktop-services-panel"
-            class={`absolute top-full ${isRtl ? '-right-25' : '-left-25'} mt-2 w-180 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 group-focus-within:translate-y-0 z-50`}
+            class={`absolute top-full ${isRtl ? '-right-25' : '-left-25'} mt-2 w-185 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-opacity duration-200 z-50 ${fontClass}`}
           >
             <div
               class="rounded-2xl border border-gray-100 bg-white p-6 shadow-2xl dark:border-slate-800 dark:bg-slate-900"
@@ -118,7 +138,7 @@ const waDirectLabel =
                         d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
                       ></path></svg
                     >
-                    <p class="font-persian text-sm font-bold text-primary">
+                    <p class="text-sm font-bold text-primary">
                       {t('common.seoServices', { fallback: 'SEO Services' })}
                     </p>
                   </div>
@@ -126,7 +146,7 @@ const waDirectLabel =
                     <li>
                       <a
                         href={linkPath('/services/seo')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                        class="block text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
                       >
                         <span class="block font-semibold"
                           >{t('services.seoTitle', { fallback: 'SEO Optimization' })}</span
@@ -141,7 +161,7 @@ const waDirectLabel =
                     <li>
                       <a
                         href={linkPath('/services/local-seo')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                        class="block text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
                       >
                         <span class="block font-semibold"
                           >{t('services.localSeoTitle', { fallback: 'Local SEO' })}</span
@@ -156,7 +176,7 @@ const waDirectLabel =
                     <li>
                       <a
                         href={linkPath('/services/link-building')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                        class="block text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
                       >
                         <span class="block font-semibold"
                           >{t('services.linkBuildingTitle', { fallback: 'Link Building' })}</span
@@ -173,7 +193,7 @@ const waDirectLabel =
                     <li>
                       <a
                         href={linkPath('/services/content-creation')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                        class="block text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
                       >
                         <span class="block font-semibold"
                           >{
@@ -209,7 +229,7 @@ const waDirectLabel =
                         stroke-width="2"
                         d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg
                     >
-                    <p class="font-persian text-sm font-bold text-primary">
+                    <p class="text-sm font-bold text-primary">
                       {t('common.developmentServices', { fallback: 'Development' })}
                     </p>
                   </div>
@@ -217,7 +237,7 @@ const waDirectLabel =
                     <li>
                       <a
                         href={linkPath('/services/web-development')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                        class="block text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
                       >
                         <span class="block font-semibold"
                           >{t('services.webDevTitle', { fallback: 'Web Development' })}</span
@@ -234,7 +254,7 @@ const waDirectLabel =
                     <li>
                       <a
                         href={linkPath('/services/wordpress-development')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                        class="block text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
                       >
                         <span class="block font-semibold"
                           >{
@@ -249,7 +269,7 @@ const waDirectLabel =
                     <li>
                       <a
                         href={linkPath('/services/web-design')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                        class="block text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
                       >
                         <span class="block font-semibold"
                           >{t('common.webDesignAndDevelopment', { fallback: 'Web Design' })}</span
@@ -257,7 +277,7 @@ const waDirectLabel =
                         <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
                           >{
                             t('services.webDevDescription', {
-                              fallback: 'Premium layouts & prototypes',
+                              fallback: 'UI/UX layouts & prototypes',
                             })
                           }</span
                         >
@@ -266,7 +286,7 @@ const waDirectLabel =
                     <li>
                       <a
                         href={linkPath('/services/ecommerce')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                        class="block text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
                       >
                         <span class="block font-semibold"
                           >{t('ecommerce.title', { fallback: 'E-commerce' })}</span
@@ -281,7 +301,7 @@ const waDirectLabel =
                   </ul>
                 </div>
 
-                <!-- Support Services Column -->
+                <!-- Support & Optimization Column -->
                 <div class="space-y-4">
                   <div
                     class="mb-2 flex items-center gap-2 border-b border-gray-100 pb-2 dark:border-slate-800"
@@ -299,55 +319,47 @@ const waDirectLabel =
                         d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
                       ></path></svg
                     >
-                    <p class="font-persian text-sm font-bold text-primary">
-                      {t('common.supportServices', { fallback: 'Support' })}
+                    <p class="text-sm font-bold text-primary">
+                      {t('common.supportServices', { fallback: 'Support & B2B' })}
                     </p>
                   </div>
                   <ul class="space-y-3">
                     <li>
                       <a
-                        href={linkPath('/services/website-maintenance')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
-                      >
-                        <span class="block font-semibold"
-                          >{t('maintenance.title', { fallback: 'Maintenance' })}</span
-                        >
-                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
-                          >{
-                            t('maintenance.subtitle', {
-                              fallback: 'Backup, updates & uptime monitoring',
-                            })
-                          }</span
-                        >
-                      </a>
-                    </li>
-                    <li>
-                      <a
                         href={linkPath('/services/speed-optimization')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                        class="block text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
                       >
                         <span class="block font-semibold"
-                          >{t('speedOptimization.title', { fallback: 'Speed Optimization' })}</span
+                          >{lang === 'fa' ? 'افزایش سرعت سایت' : lang === 'ar' ? 'تحسين سرعة الموقع' : 'Speed Optimization'}</span
                         >
                         <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
-                          >{
-                            t('speedOptimization.subtitle', { fallback: 'Core Web Vitals tuning' })
-                          }</span
+                          >Core Web Vitals (LCP, INP)</span
                         >
                       </a>
                     </li>
                     <li>
                       <a
                         href={linkPath('/services/ui-ux-audit')}
-                        class="block font-persian text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                        class="block text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
                       >
                         <span class="block font-semibold"
-                          >{t('uiUxAudit.title', { fallback: 'UI/UX Audit' })}</span
+                          >{lang === 'fa' ? 'ممیزی UI/UX و CRO' : lang === 'ar' ? 'تدقيق UI/UX والتحويل' : 'UI/UX & CRO Audit'}</span
                         >
                         <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
-                          >{
-                            t('uiUxAudit.subtitle', { fallback: 'Usability, flows & audit report' })
-                          }</span
+                          >{lang === 'fa' ? 'رفع گلوگاه‌های تبدیل' : lang === 'ar' ? 'تحسين مسار المبيعات' : 'Usability & funnel fixes'}</span
+                        >
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href={linkPath('/services/website-maintenance')}
+                        class="block text-sm text-gray-700 transition-colors hover:text-primary dark:text-gray-200 dark:hover:text-primary"
+                      >
+                        <span class="block font-semibold"
+                          >{lang === 'fa' ? 'پشتیبانی و امنیت سایت' : lang === 'ar' ? 'صيانة وأمان المواقع' : 'Maintenance & Security'}</span
+                        >
+                        <span class="line-clamp-1 text-[11px] text-gray-500 dark:text-gray-400"
+                          >{lang === 'fa' ? 'بکاپ، آپتایم و به‌روزرسانی' : lang === 'ar' ? 'نسخ احتياطي وحماية مستمرة' : 'Backups, WAF & 24/7 uptime'}</span
                         >
                       </a>
                     </li>
@@ -355,48 +367,38 @@ const waDirectLabel =
                 </div>
               </div>
 
+              <!-- Enterprise B2B Strip + View All -->
               <div
-                class="mt-6 flex justify-end border-t border-gray-100 pt-4 dark:border-slate-800"
+                class="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-gray-100 pt-4 text-xs dark:border-slate-800"
               >
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="font-bold text-gray-400 uppercase">B2B:</span>
+                  <a
+                    href={linkPath('/industrial-web-design')}
+                    class="rounded-md bg-gray-50 px-2.5 py-1 font-semibold text-gray-700 transition-colors hover:bg-primary/10 hover:text-primary dark:bg-slate-800 dark:text-gray-200"
+                  >
+                    {lang === 'fa' ? 'طراحی سایت صنعتی' : lang === 'ar' ? 'المواقع الصناعية' : 'Industrial B2B'}
+                  </a>
+                  <a
+                    href={linkPath('/export-web-design')}
+                    class="rounded-md bg-gray-50 px-2.5 py-1 font-semibold text-gray-700 transition-colors hover:bg-primary/10 hover:text-primary dark:bg-slate-800 dark:text-gray-200"
+                  >
+                    {lang === 'fa' ? 'طراحی سایت صادراتی' : lang === 'ar' ? 'مواقع التصدير' : 'Export & Multilingual'}
+                  </a>
+                  <a
+                    href={linkPath('/enterprise-automation')}
+                    class="rounded-md bg-gray-50 px-2.5 py-1 font-semibold text-gray-700 transition-colors hover:bg-primary/10 hover:text-primary dark:bg-slate-800 dark:text-gray-200"
+                  >
+                    {lang === 'fa' ? 'اتوماسیون ERP/CRM' : lang === 'ar' ? 'أتمتة ERP/CRM' : 'ERP/CRM Automation'}
+                  </a>
+                </div>
+
                 <a
                   href={linkPath('/services')}
-                  class="inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline"
+                  class="inline-flex items-center gap-1 font-bold text-primary hover:underline"
                 >
-                  {t('common.viewAll')}
-                  {t('common.services')}
-                  {
-                    isRtl ? (
-                      <svg
-                        aria-hidden="true"
-                        class="h-3 w-3"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                        />
-                      </svg>
-                    ) : (
-                      <svg
-                        aria-hidden="true"
-                        class="h-3 w-3"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M14 5l7 7m0 0l-7 7m7-7H3"
-                        />
-                      </svg>
-                    )
-                  }
+                  <span>{t('common.viewAll')} {t('common.services')}</span>
+                  <span aria-hidden="true">{isRtl ? '←' : '→'}</span>
                 </a>
               </div>
             </div>
@@ -426,7 +428,7 @@ const waDirectLabel =
             aria-expanded="false"
             aria-haspopup="true"
             aria-controls="desktop-lang-panel"
-            class="flex items-center gap-1 text-sm font-medium text-foreground/80 transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            class="flex cursor-pointer items-center gap-1 text-sm font-medium text-foreground/80 transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
             <svg
               aria-hidden="true"
@@ -445,7 +447,7 @@ const waDirectLabel =
           </button>
           <div
             id="desktop-lang-panel"
-            class="invisible absolute top-full right-0 z-50 mt-2 w-28 rounded-md border border-gray-100 bg-white py-1 opacity-0 shadow-lg transition-all duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100 dark:border-slate-800 dark:bg-slate-900"
+            class="invisible absolute top-full end-0 z-50 mt-2 w-28 rounded-md border border-gray-100 bg-white py-1 opacity-0 shadow-lg transition-opacity duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100 dark:border-slate-800 dark:bg-slate-900"
           >
             {
               Object.keys(languages).map((l) => (
@@ -501,7 +503,7 @@ const waDirectLabel =
         <button
           type="button"
           id="open-consultation-btn"
-          class="cursor-pointer rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          class={`cursor-pointer rounded-xl bg-primary px-4 py-2 text-sm font-bold text-primary-foreground transition-colors hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${fontClass}`}
         >
           {t('common.freeConsultation')}
         </button>
@@ -509,14 +511,13 @@ const waDirectLabel =
 
       <!-- Mobile Controls -->
       <div class="flex items-center gap-3 lg:hidden">
-        <!-- Mobile Language Selector -->
         <div class="relative">
           <button
             type="button"
             id="mobile-lang-btn"
             aria-expanded="false"
             aria-controls="mobile-lang-dropdown"
-            class="flex items-center gap-1.5 rounded-full border border-gray-100 bg-white/80 px-3 py-1.5 text-sm font-semibold text-gray-700 shadow-xs transition-all hover:bg-gray-100 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800/80 dark:text-gray-200 dark:hover:bg-slate-700"
+            class="flex min-h-11 items-center gap-1.5 rounded-full border border-gray-100 bg-white/80 px-3 py-1.5 text-sm font-semibold text-gray-700 shadow-xs transition-colors hover:bg-gray-100 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-800/80 dark:text-gray-200 dark:hover:bg-slate-700"
           >
             <svg
               aria-hidden="true"
@@ -535,7 +536,7 @@ const waDirectLabel =
           </button>
           <div
             id="mobile-lang-dropdown"
-            class="absolute top-full right-0 z-50 mt-2 hidden w-32 rounded-xl border border-gray-100 bg-white py-1 shadow-xl dark:border-slate-800 dark:bg-slate-900"
+            class="absolute top-full end-0 z-50 mt-2 hidden w-32 rounded-xl border border-gray-100 bg-white py-1 shadow-xl dark:border-slate-800 dark:bg-slate-900"
           >
             {
               Object.entries(languages).map(([code, meta]) => (
@@ -554,7 +555,7 @@ const waDirectLabel =
         <button
           type="button"
           id="mobile-menu-btn"
-          class="rounded-lg p-2 text-foreground/80 hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+          class="flex h-11 w-11 items-center justify-center rounded-lg text-foreground/80 hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           aria-label="Toggle Menu"
           aria-expanded="false"
           aria-controls="mobile-drawer"
@@ -576,8 +577,7 @@ const waDirectLabel =
     </div>
   </div>
 
-  <!-- Mobile Dropdown drawer Menu (z-[60] keeps the whole drawer, panel included,
-       above the fixed site header at z-50 so the close row stays visible/clickable) -->
+  <!-- Mobile Dropdown drawer Menu -->
   <div
     id="mobile-drawer"
     role="dialog"
@@ -594,13 +594,14 @@ const waDirectLabel =
           <div
             class="flex items-center justify-between border-b border-gray-100 pb-4 dark:border-slate-800"
           >
-            <a href={linkPath('')} class="flex items-center space-x-2">
+            <a href={linkPath('')} class="flex items-center gap-2">
               <Logo class="h-8 w-auto min-w-[130px] shrink-0" />
             </a>
             <button
               type="button"
               id="mobile-drawer-close"
-              class="cursor-pointer text-gray-500 hover:text-gray-700 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-200"
+              aria-label="Close Menu"
+              class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg text-gray-500 hover:text-gray-700 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-200"
             >
               <svg
                 aria-hidden="true"
@@ -644,26 +645,10 @@ const waDirectLabel =
                 <div
                   class="grid grid-cols-2 gap-2 border-s border-gray-100 ps-3 dark:border-slate-800"
                 >
-                  <a
-                    href={linkPath('/services/seo')}
-                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                    >{t('services.seoTitle')}</a
-                  >
-                  <a
-                    href={linkPath('/services/local-seo')}
-                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                    >{t('services.localSeoTitle')}</a
-                  >
-                  <a
-                    href={linkPath('/services/link-building')}
-                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                    >{t('services.linkBuildingTitle')}</a
-                  >
-                  <a
-                    href={linkPath('/services/content-creation')}
-                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                    >{t('services.contentCreationTitle')}</a
-                  >
+                  <a href={linkPath('/services/seo')} class="py-1.5 text-sm text-foreground/80 hover:text-primary">{t('services.seoTitle')}</a>
+                  <a href={linkPath('/services/local-seo')} class="py-1.5 text-sm text-foreground/80 hover:text-primary">{t('services.localSeoTitle')}</a>
+                  <a href={linkPath('/services/link-building')} class="py-1.5 text-sm text-foreground/80 hover:text-primary">{t('services.linkBuildingTitle')}</a>
+                  <a href={linkPath('/services/content-creation')} class="py-1.5 text-sm text-foreground/80 hover:text-primary">{t('services.contentCreationTitle')}</a>
                 </div>
               </div>
 
@@ -675,60 +660,42 @@ const waDirectLabel =
                 <div
                   class="grid grid-cols-2 gap-2 border-s border-gray-100 ps-3 dark:border-slate-800"
                 >
-                  <a
-                    href={linkPath('/services/web-development')}
-                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                    >{t('services.webDevTitle')}</a
-                  >
-                  <a
-                    href={linkPath('/services/wordpress-development')}
-                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                    >{t('wordpress.wordpressAndWoocommerce')}</a
-                  >
-                  <a
-                    href={linkPath('/services/web-design')}
-                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                    >{t('common.webDesignAndDevelopment')}</a
-                  >
-                  <a
-                    href={linkPath('/services/ecommerce')}
-                    class="py-1.5 text-sm text-foreground/80 hover:text-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                    >{t('ecommerce.title', { fallback: 'E-commerce' })}</a
-                  >
+                  <a href={linkPath('/services/web-development')} class="py-1.5 text-sm text-foreground/80 hover:text-primary">{t('services.webDevTitle')}</a>
+                  <a href={linkPath('/services/wordpress-development')} class="py-1.5 text-sm text-foreground/80 hover:text-primary">{t('wordpress.wordpressAndWoocommerce')}</a>
+                  <a href={linkPath('/services/web-design')} class="py-1.5 text-sm text-foreground/80 hover:text-primary">{t('common.webDesignAndDevelopment')}</a>
+                  <a href={linkPath('/services/ecommerce')} class="py-1.5 text-sm text-foreground/80 hover:text-primary">{t('ecommerce.title', { fallback: 'E-commerce' })}</a>
+                </div>
+              </div>
+
+              <!-- Support & B2B Subgroup -->
+              <div class="space-y-2 ps-3">
+                <p class="text-xs font-bold tracking-wider text-muted-foreground uppercase">
+                  {t('common.supportServices', { fallback: 'Support & Enterprise B2B' })}
+                </p>
+                <div
+                  class="grid grid-cols-2 gap-2 border-s border-gray-100 ps-3 dark:border-slate-800"
+                >
+                  <a href={linkPath('/services/speed-optimization')} class="py-1.5 text-sm text-foreground/80 hover:text-primary">{lang === 'fa' ? 'افزایش سرعت' : lang === 'ar' ? 'تسريع الموقع' : 'Speed Optimization'}</a>
+                  <a href={linkPath('/services/ui-ux-audit')} class="py-1.5 text-sm text-foreground/80 hover:text-primary">{lang === 'fa' ? 'ممیزی UI/UX' : lang === 'ar' ? 'تدقيق UI/UX' : 'UI/UX Audit'}</a>
+                  <a href={linkPath('/services/website-maintenance')} class="py-1.5 text-sm text-foreground/80 hover:text-primary">{lang === 'fa' ? 'پشتیبانی سایت' : lang === 'ar' ? 'صيانة المواقع' : 'Maintenance'}</a>
+                  <a href={linkPath('/industrial-web-design')} class="py-1.5 text-sm text-foreground/80 hover:text-primary">{lang === 'fa' ? 'سایت صنعتی' : lang === 'ar' ? 'مواقع صناعية' : 'Industrial B2B'}</a>
+                  <a href={linkPath('/export-web-design')} class="py-1.5 text-sm text-foreground/80 hover:text-primary">{lang === 'fa' ? 'سایت صادراتی' : lang === 'ar' ? 'مواقع التصدير' : 'Export Portals'}</a>
+                  <a href={linkPath('/enterprise-automation')} class="py-1.5 text-sm text-foreground/80 hover:text-primary">{lang === 'fa' ? 'اتوماسیون ERP' : lang === 'ar' ? 'أتمتة ERP' : 'ERP Automation'}</a>
                 </div>
               </div>
             </div>
 
-            <a
-              href={linkPath('/portfolio')}
-              aria-current={isActive('/portfolio') ? 'page' : undefined}
-              class={`block text-lg font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm ${isActive('/portfolio') ? 'text-primary' : 'text-gray-900 dark:text-gray-100 hover:text-primary'}`}
-              >{t('common.portfolio')}</a
-            >
-            <a
-              href={linkPath('/service-areas')}
-              aria-current={isActive('/service-areas') ? 'page' : undefined}
-              class={`block text-lg font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm ${isActive('/service-areas') ? 'text-primary' : 'text-gray-900 dark:text-gray-100 hover:text-primary'}`}
-              >{t('common.serviceAreas')}</a
-            >
-            <a
-              href={linkPath('/blog')}
-              aria-current={isActive('/blog') ? 'page' : undefined}
-              class={`block text-lg font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm ${isActive('/blog') ? 'text-primary' : 'text-gray-900 dark:text-gray-100 hover:text-primary'}`}
-              >{t('common.blog')}</a
-            >
-            <a
-              href={linkPath('/about')}
-              aria-current={isActive('/about') ? 'page' : undefined}
-              class={`block text-lg font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm ${isActive('/about') ? 'text-primary' : 'text-gray-900 dark:text-gray-100 hover:text-primary'}`}
-              >{t('common.about')}</a
-            >
-            <a
-              href={linkPath('/contact')}
-              aria-current={isActive('/contact') ? 'page' : undefined}
-              class={`block text-lg font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm ${isActive('/contact') ? 'text-primary' : 'text-gray-900 dark:text-gray-100 hover:text-primary'}`}
-              >{t('common.contact')}</a
-            >
+            {
+              navItems.map((item) => (
+                <a
+                  href={linkPath(item.href)}
+                  aria-current={isActive(item.href) ? 'page' : undefined}
+                  class={`block text-lg font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-sm ${isActive(item.href) ? 'text-primary' : 'text-gray-900 dark:text-gray-100 hover:text-primary'}`}
+                >
+                  {t(item.label)}
+                </a>
+              ))
+            }
           </div>
         </div>
 
@@ -742,7 +709,7 @@ const waDirectLabel =
                 <a
                   href={`/${code}${currentPathWithoutLang}`}
                   aria-current={lang === code ? 'true' : undefined}
-                  class={`rounded-lg border px-4 py-2 text-xs font-bold transition-all ${lang === code ? 'border-primary bg-primary text-primary-foreground' : 'border-gray-200 bg-white text-gray-600 hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700'}`}
+                  class={`rounded-lg border px-4 py-2 text-xs font-bold transition-colors ${lang === code ? 'border-primary bg-primary text-primary-foreground' : 'border-gray-200 bg-white text-gray-600 hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700'}`}
                 >
                   {meta.nativeName}
                 </a>
@@ -808,13 +775,13 @@ const waDirectLabel =
 <!-- Native HTML5 Dialog for Consultation Form -->
 <dialog
   id="consultation-modal"
-  class="fixed inset-0 m-auto max-h-[90vh] w-[calc(100%-2rem)] max-w-lg overflow-y-auto rounded-3xl border border-gray-100 bg-white p-0 font-persian shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-xs dark:border-slate-800 dark:bg-slate-900"
+  class={`fixed inset-0 m-auto max-h-[90vh] w-[calc(100%-2rem)] max-w-lg overflow-y-auto rounded-3xl border border-gray-100 bg-white p-0 ${fontClass} shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-xs dark:border-slate-800 dark:bg-slate-900`}
 >
   <div class="relative p-6 text-foreground sm:p-8">
     <button
       type="button"
       id="close-modal-btn"
-      class="absolute top-4 right-4 cursor-pointer rounded-full p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-gray-400 dark:hover:bg-slate-800 dark:hover:text-gray-200"
+      class="absolute top-4 end-4 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-gray-500 hover:bg-gray-100 hover:text-gray-700 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:text-gray-400 dark:hover:bg-slate-800 dark:hover:text-gray-200"
       aria-label={t('consultation.cancel', { fallback: 'Close' })}
     >
       <svg aria-hidden="true" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -837,7 +804,13 @@ const waDirectLabel =
         }
       </p>
     </div>
-    <form id="consultation-form" class="space-y-4">
+    <form
+      id="consultation-form"
+      data-msg-success={formFeedback.success}
+      data-msg-error={formFeedback.error}
+      data-msg-network={formFeedback.network}
+      class="space-y-4"
+    >
       <div>
         <label
           for="consultation-name"
@@ -909,21 +882,21 @@ const waDirectLabel =
       <button
         type="submit"
         id="consultation-submit-btn"
-        class="h-11 w-full cursor-pointer rounded-xl bg-primary font-bold text-primary-foreground shadow-md transition-all hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-60"
+        class="h-11 w-full cursor-pointer rounded-xl bg-primary font-bold text-primary-foreground shadow-md transition-colors hover:bg-primary/95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-60"
       >
         {t('consultation.sendRequest', { fallback: 'Send Request' })}
       </button>
 
       <div class="relative flex items-center justify-center py-1">
         <div class="border-t border-gray-200 dark:border-slate-800 w-full"></div>
-        <span class="bg-white dark:bg-slate-900 px-3 text-xs text-gray-400 font-medium">{isRtl ? 'یا' : 'OR'}</span>
+        <span class="bg-white dark:bg-slate-900 px-3 text-xs text-gray-400 font-medium">{lang === 'fa' ? 'یا' : lang === 'ar' ? 'أو' : 'OR'}</span>
       </div>
 
       <a
         href={navWhatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-sm font-bold text-emerald-600 transition-all hover:bg-emerald-500 hover:text-white dark:text-emerald-400 dark:hover:text-white"
+        class="flex h-11 w-full items-center justify-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-sm font-bold text-emerald-700 transition-colors hover:bg-emerald-500 hover:text-white dark:text-emerald-400 dark:hover:text-white"
       >
         <svg class="h-4 w-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-1.002 3.66 3.745-.993zm11.233-6.793c-.274-.137-1.625-.802-1.876-.893-.252-.092-.435-.137-.618.137-.183.274-.709.893-.869 1.076-.16.183-.32.206-.594.069-.274-.137-1.157-.426-2.204-1.36-.816-.728-1.367-1.628-1.527-1.902-.16-.274-.017-.422.12-.558.123-.122.274-.32.411-.48.137-.16.183-.274.274-.457.091-.183.046-.343-.023-.48-.069-.137-.618-1.486-.847-2.036-.223-.536-.45-.463-.618-.472-.16-.008-.343-.01-.526-.01-.183 0-.48.069-.731.343-.251.274-.96.938-.96 2.288 0 1.35.983 2.653 1.12 2.836.137.184 1.935 2.955 4.689 4.144.655.283 1.166.452 1.564.578.658.209 1.258.179 1.732.108.529-.079 1.625-.664 1.854-1.303.229-.639.229-1.187.16-1.303-.069-.115-.252-.183-.526-.32z"/>
@@ -944,13 +917,9 @@ const waDirectLabel =
 
 <script is:inline>
   (() => {
-    // setupNavbar re-runs on every astro:page-load (SPA navigation swaps the
-    // navbar DOM), so document-level listeners are registered exactly once and
-    // resolve their targets fresh on each event instead of closing over stale nodes.
     let documentListenersBound = false;
 
     function setupNavbar() {
-      // Mobile Menu Drawer Control
       const mobileBtn = document.getElementById('mobile-menu-btn');
       const drawer = document.getElementById('mobile-drawer');
       const drawerCloseBtn = document.getElementById('mobile-drawer-close');
@@ -1002,7 +971,6 @@ const waDirectLabel =
         drawer.addEventListener('keydown', trapDrawerFocus);
       }
 
-      // Desktop hover/focus dropdowns: keep aria-expanded in sync with CSS state
       document.querySelectorAll('#desktop-services-btn, #desktop-lang-btn').forEach((btn) => {
         const group = btn.closest('.group');
         if (!group) return;
@@ -1015,7 +983,6 @@ const waDirectLabel =
         sync();
       });
 
-      // Mobile Language Dropdown Toggle
       const mobileLangBtn = document.getElementById('mobile-lang-btn');
       const mobileLangDropdown = document.getElementById('mobile-lang-dropdown');
       if (mobileLangBtn && mobileLangDropdown) {
@@ -1026,7 +993,6 @@ const waDirectLabel =
         };
       }
 
-      // Theme Toggle Controls
       const themeToggle = document.getElementById('theme-toggle');
       const themeToggleMobile = document.getElementById('theme-toggle-mobile');
 
@@ -1037,8 +1003,6 @@ const waDirectLabel =
           (themeToggle && themeToggle.dataset.labelLight) || 'Switch to light mode';
         const activeLabel = isDark ? labelLight : labelDark;
 
-        // In dark mode: show Sun icon (to switch to light), hide Moon icon
-        // In light mode: show Moon icon (to switch to dark), hide Sun icon
         document
           .querySelectorAll(
             '#theme-toggle [data-icon="sun"], #theme-toggle-mobile [data-icon="sun"]'
@@ -1071,7 +1035,7 @@ const waDirectLabel =
           localStorage.setItem('theme', nextDark ? 'dark' : 'light');
         } catch (e) {}
         const meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.setAttribute('content', nextDark ? '#020617' : '#4361ee');
+        if (meta) meta.setAttribute('content', nextDark ? '#020617' : '#2d59c3');
         syncThemeUI();
       }
 
@@ -1080,7 +1044,6 @@ const waDirectLabel =
 
       syncThemeUI();
 
-      // Dialog Controls
       const dialog = document.getElementById('consultation-modal');
       const openBtn = document.getElementById('open-consultation-btn');
       const openMobileBtn = document.getElementById('open-consultation-btn-mobile');
@@ -1103,11 +1066,13 @@ const waDirectLabel =
         };
       }
 
-      // Consultation Form AJAX Submission
       if (consultForm && consultSubmitBtn && consultResponseMsg) {
         consultForm.onsubmit = async (e) => {
           e.preventDefault();
           const origText = consultSubmitBtn.textContent;
+          const msgSuccess = consultForm.dataset.msgSuccess || 'Request submitted!';
+          const msgError = consultForm.dataset.msgError || 'Could not send request.';
+          const msgNetwork = consultForm.dataset.msgNetwork || 'Network error. Please try again.';
           consultSubmitBtn.disabled = true;
           consultSubmitBtn.textContent = '...';
           consultResponseMsg.classList.add('hidden');
@@ -1128,37 +1093,34 @@ const waDirectLabel =
             });
 
             if (res.ok) {
-              consultResponseMsg.textContent = 'Request submitted successfully!';
+              consultResponseMsg.textContent = msgSuccess;
               consultResponseMsg.className =
-                'text-center text-sm text-green-600 dark:text-green-400 block';
+                'text-center text-sm text-emerald-600 dark:text-emerald-400 block';
               consultForm.reset();
               setTimeout(() => {
                 if (dialog && dialog.open) dialog.close();
                 consultResponseMsg.classList.add('hidden');
                 consultSubmitBtn.disabled = false;
                 consultSubmitBtn.textContent = origText;
-              }, 2000);
+              }, 2200);
             } else {
               const data = await res.json().catch(() => ({}));
-              consultResponseMsg.textContent =
-                data.error || 'Failed to send request. Please try again.';
+              consultResponseMsg.textContent = data.error || msgError;
               consultResponseMsg.className =
-                'text-center text-sm text-red-600 dark:text-red-400 block';
+                'text-center text-sm text-rose-600 dark:text-rose-400 block';
               consultSubmitBtn.disabled = false;
               consultSubmitBtn.textContent = origText;
             }
           } catch (err) {
-            consultResponseMsg.textContent = 'Network error. Please try again.';
+            consultResponseMsg.textContent = msgNetwork;
             consultResponseMsg.className =
-              'text-center text-sm text-red-600 dark:text-red-400 block';
+              'text-center text-sm text-rose-600 dark:text-rose-400 block';
             consultSubmitBtn.disabled = false;
             consultSubmitBtn.textContent = origText;
           }
         };
       }
 
-      // Document-level listeners: registered once (see flag above). Each handler
-      // looks up the current navbar DOM so SPA navigations never go stale.
       if (!documentListenersBound) {
         documentListenersBound = true;
         document.addEventListener('click', (e) => {
