@@ -1,6 +1,6 @@
 {
-  "title": "WordPress & WooCommerce Development Services | WebABC",
-  "subtitle": "Custom WordPress & WooCommerce development — fast, secure, SEO-optimized stores built for growth. Get a free consultation today.",
+  "title": "Custom WordPress & WooCommerce Development | WebABC",
+  "subtitle": "Hand-coded WordPress themes, high-speed WooCommerce stores, and custom plugins built without page-builder bloat for strong Core Web Vitals and SEO.",
   "wordpressAndWoocommerce": "WordPress & WooCommerce",
   "wpServices": "WordPress Services",
   "ourServices": "Our Services",
@@ -12,7 +12,16 @@
   "pricing": "Pricing",
   "pricingTitle": "WordPress Website Design Plans",
   "pricingDescription": "Various WordPress website design plans tailored to the needs and budget of different businesses",
-  "faq": "FAQ",
+  "faq": {
+    "q1": "Should I choose WordPress or a custom-coded website?",
+    "a1": "WordPress is faster and cheaper to launch with a flexible CMS for content-heavy sites. If you need a highly custom application or maximum performance, our custom web development service may be a better fit — we'll help you decide during the consultation.",
+    "q2": "Can you migrate my existing WooCommerce store without downtime?",
+    "a2": "Yes. We stage the new store, test payments and inventory sync fully, then cut over during a low-traffic window with 301 redirects mapped for every product and category URL.",
+    "q3": "Do you build custom themes or use page builders?",
+    "a3": "We hand-code custom themes for performance and full design control, rather than relying on bloated page-builder plugins that slow down Core Web Vitals scores.",
+    "q4": "What ongoing WordPress maintenance do I need?",
+    "a4": "Core, theme, and plugin updates, security scanning, and backups. We offer a dedicated Website Maintenance plan if you'd rather not manage this yourself."
+  },
   "faqTitle": "Frequently Asked Questions",
   "faqDescription": "Answers to common questions about WordPress and WooCommerce website design services",
   "portfolio": "Portfolio",
@@ -49,15 +58,5 @@
   "process4Title": "Launch & Support",
   "process4Desc": "Post-launch, we monitor uptime and performance, with ongoing maintenance plans covering core, theme, and plugin updates, security scanning, and backups.",
   "rightForTitle": "Is WordPress Right for Your Business?",
-  "rightForText": "WordPress is the right choice if you need a content-heavy site your team can update without a developer, a WooCommerce store with standard e-commerce needs, or a fast launch on a defined budget. If you need a highly custom web application, real-time features, or performance beyond what a CMS architecture allows, our custom web development service is usually the better fit — we'll help you figure out which one during a free consultation.",
-  "faq": {
-    "q1": "Should I choose WordPress or a custom-coded website?",
-    "a1": "WordPress is faster and cheaper to launch with a flexible CMS for content-heavy sites. If you need a highly custom application or maximum performance, our custom web development service may be a better fit — we'll help you decide during the consultation.",
-    "q2": "Can you migrate my existing WooCommerce store without downtime?",
-    "a2": "Yes. We stage the new store, test payments and inventory sync fully, then cut over during a low-traffic window with 301 redirects mapped for every product and category URL.",
-    "q3": "Do you build custom themes or use page builders?",
-    "a3": "We hand-code custom themes for performance and full design control, rather than relying on bloated page-builder plugins that slow down Core Web Vitals scores.",
-    "q4": "What ongoing WordPress maintenance do I need?",
-    "a4": "Core, theme, and plugin updates, security scanning, and backups. We offer a dedicated Website Maintenance plan if you'd rather not manage this yourself."
-  }
+  "rightForText": "WordPress is the right choice if you need a content-heavy site your team can update without a developer, a WooCommerce store with standard e-commerce needs, or a fast launch on a defined budget. If you need a highly custom web application, real-time features, or performance beyond what a CMS architecture allows, our custom web development service is usually the better fit — we'll help you figure out which one during a free consultation."
 }
