@@ -19,11 +19,13 @@ const KEY_PAGES = {
     'free-seo-developer-tools-guide-2026',
     'dubai-uae-web-design-seo-guide-2026',
     'website-maintenance-security-guide-2026',
-    // GSC-driven posts
+    // GSC-driven & GEO technical posts
     'best-title-tag-checker-tools-2026',
     'tehran-ecommerce-web-design-guide-2026',
     'seo-services-pricing-guide-2026',
     'qazvin-web-design-seo-guide-2026',
+    'schema-markup-json-ld-seo-guide-2026',
+    'multilingual-seo-hreflang-rtl-guide-2026',
   ],
   fa: [
     'website-development-cost-calculator-guide-2026',
@@ -34,6 +36,8 @@ const KEY_PAGES = {
     'tehran-ecommerce-web-design-guide-2026',
     'seo-services-pricing-guide-2026',
     'qazvin-web-design-seo-guide-2026',
+    'schema-markup-json-ld-seo-guide-2026',
+    'multilingual-seo-hreflang-rtl-guide-2026',
   ],
   ar: [
     'website-development-cost-calculator-guide-2026',
@@ -44,6 +48,8 @@ const KEY_PAGES = {
     'tehran-ecommerce-web-design-guide-2026',
     'seo-services-pricing-guide-2026',
     'qazvin-web-design-seo-guide-2026',
+    'schema-markup-json-ld-seo-guide-2026',
+    'multilingual-seo-hreflang-rtl-guide-2026',
   ],
 };
 

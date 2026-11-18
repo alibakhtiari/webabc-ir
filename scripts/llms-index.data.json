@@ -17,6 +17,26 @@
         "d": "Inquiry form and direct consultation request."
       },
       {
+        "t": "Enterprise Automation & CRM/ERP Integration",
+        "u": "/en/enterprise-automation/",
+        "d": "Custom ERP/CRM integration (Sepidar, Rahkaran, Zoho, Salesforce), B2B portals, and automated quote-to-invoice pipelines."
+      },
+      {
+        "t": "Export Web Design & Multilingual International SEO",
+        "u": "/en/export-web-design/",
+        "d": "Trilingual web architecture (EN/FA/AR), reciprocal hreflang clusters, and international SEO for exporters."
+      },
+      {
+        "t": "Industrial Web Design & B2B Manufacturing SEO",
+        "u": "/en/industrial-web-design/",
+        "d": "Technical product catalogs, RFQ quote workflows, and B2B search optimization for industrial manufacturers."
+      },
+      {
+        "t": "Direct Engineering & SEO Consultation",
+        "u": "/en/consultation/",
+        "d": "Direct consultation with senior web engineers and technical SEO leads with itemized scope and timeline."
+      },
+      {
         "t": "FAQ",
         "u": "/en/faq/",
         "d": "Answer Engine Optimized (AEO) FAQs regarding project timelines, pricing, and tech stacks."
@@ -54,6 +74,26 @@
         "d": "برای دریافت مشاوره رایگان طراحی سایت و سئو، همین امروز با کارشناسان وب اِی‌بی‌سی تماس بگیرید. آماده همکاری هستیم."
       },
       {
+        "t": "اتوماسیون سازمانی و یکپارچه‌سازی ERP و CRM",
+        "u": "/fa/enterprise-automation/",
+        "d": "اتصال اختصاصی به سپیدار، راهکاران، Zoho و Salesforce، پرتال نمایندگان B2B و اتوماسیون فرایند پیش‌فاکتور تا تسویه."
+      },
+      {
+        "t": "طراحی سایت صادراتی و سئو بین‌المللی چندزبانه",
+        "u": "/fa/export-web-design/",
+        "d": "معماری وب سه‌زبانه (فارسی، انگلیسی، عربی)، خوشه‌های استاندارد hreflang و سئو صادراتی برای بازارهای خلیج فارس و بین‌الملل."
+      },
+      {
+        "t": "طراحی سایت صنعتی و سئوی کارخانجات B2B",
+        "u": "/fa/industrial-web-design/",
+        "d": "طراحی کاتالوگ دیجیتال مشخصات فنی، سامانه استعلام قیمت (RFQ) و سئوی تخصصی B2B ویژه کارخانجات و صنایع تولیدی."
+      },
+      {
+        "t": "مشاوره مستقیم مهندسی وب و سئو",
+        "u": "/fa/consultation/",
+        "d": "مشاوره تخصصی و مستقیم با تیم مهندسی توسعه وب و سئو تکنیکال وب اِی‌بی‌سی همراه با برآورد دقیق زمان و هزینه."
+      },
+      {
         "t": "پرسش‌های متداول",
         "u": "/fa/faq/",
         "d": "پاسخ به سوالات رایج درباره خدمات طراحی سایت، سئو و نگهداری وب. تمام آنچه پیش از همکاری با WebABC باید بدانید."
@@ -89,6 +129,26 @@
         "t": "التواصل والاستشارة",
         "u": "/ar/contact/",
         "d": "هل لديك مشروع في ذهنك؟ اتصل بفريق ويب إيه بي سي اليوم للحصول على استشارة مجانية حول تصميم الويب وتحسين محركات البحث."
+      },
+      {
+        "t": "أتمتة المؤسسات وتكامل أنظمة ERP و CRM",
+        "u": "/ar/enterprise-automation/",
+        "d": "ربط برمجي مخصص مع أنظمة ERP وCRM (Zoho وSalesforce وSepidar وRahkaran) وبوابات عملاء B2B وأتمتة مسارات الفوترة."
+      },
+      {
+        "t": "تصميم مواقع التصدير والسيو الدولي متعدد اللغات",
+        "u": "/ar/export-web-design/",
+        "d": "بنية مواقع ثلاثية اللغات (العربية، الإنجليزية، الفارسية) مع تهيئة hreflang والسيو الدولي لشركات التصدير في الخليج والعالم."
+      },
+      {
+        "t": "تصميم المواقع الصناعية وسيو المصانع B2B",
+        "u": "/ar/industrial-web-design/",
+        "d": "كتالوجات المواصفات الفنية الرقمية، أنظمة طلب عروض الأسعار (RFQ)، وتحسين محركات البحث للمصانع والشركات الصناعية."
+      },
+      {
+        "t": "استشارة هندسية وتقنية مباشرة لتطوير الويب والسيو",
+        "u": "/ar/consultation/",
+        "d": "جلسة استشارية مباشرة مع كبار مهندسي تطوير الويب والسيو التقني لتحديد نطاق المشروع والجدول الزمني والتكلفة."
       },
       {
         "t": "الأسئلة الشائعة",
@@ -827,89 +887,89 @@
         "d": "In-depth articles on SEO, modern Astro web development, and digital marketing strategies."
       },
       {
-        "t": "SEO Checklist 2026 / ۱۴۰۵: Complete Step-by-Step Audit Guide",
+        "t": "SEO Checklist 2026: Complete Step-by-Step Audit & Ranking",
         "u": "/en/blog/seo-checklist-2026/",
         "d": "The 2026 SEO checklist serious teams audit by: technical SEO, on-page content, Core Web Vitals, AEO, local search, off-page authority, and monitoring."
       },
       {
-        "t": "Best Free SEO & Developer Tools in 2026",
+        "t": "Best Free SEO & Developer Tools in 2026: The Ultimate",
         "u": "/en/blog/free-seo-developer-tools-guide-2026/",
         "d": "Master the best free SEO and developer tools in 2026: step-by-step workflows for title optimization, headline scoring, schema generation, and SERP previews."
       },
       {
-        "t": "Dubai & UAE Web Design and SEO Guide 2026",
+        "t": "Dubai & UAE Web Design and SEO Guide 2026: Dominating Search",
         "u": "/en/blog/dubai-uae-web-design-seo-guide-2026/",
         "d": "Guide to web design and SEO in Dubai and the UAE: bilingual English and Arabic UX, luxury visual standards, local search execution, and GCC payment rails"
       },
       {
-        "t": "Oman & Muscat Web Design and SEO Guide 2026",
+        "t": "Oman Web Design & SEO Guide 2026: Winning Muscat Search",
         "u": "/en/blog/oman-web-design-seo-guide-2026/",
         "d": "Guide to web design and local SEO in Oman: bilingual Arabic and English layouts, regional payment gateways, Muscat district pages, and Gulf search tactics."
       },
       {
-        "t": "Website Development Cost Calculator & Pricing Guide 2026",
+        "t": "Website Cost Calculator Guide 2026: Pricing & Formulas",
         "u": "/en/blog/website-development-cost-calculator-guide-2026/",
         "d": "Learn how a website cost calculator works: the formulas behind each estimate, the inputs to gather, worked examples, and how to sanity-check the output."
       },
       {
-        "t": "WordPress vs. Custom Web Development 2026",
+        "t": "WordPress vs Custom Development 2026: Architecture Guide",
         "u": "/en/blog/wordpress-vs-custom-development-guide-2026/",
         "d": "Architectural comparison of WordPress vs custom development: how the two stacks differ on performance, security, maintainability, and scaling in 2026."
       },
       {
-        "t": "Website Speed Optimization Pricing & Core Web Vitals ROI Guide 2026",
+        "t": "Website Speed Optimization Cost and Quote Guide",
         "u": "/en/blog/website-speed-optimization-pricing-guide-2026/",
-        "d": "Complete guide to website speed optimization costs and Core Web Vitals pricing in 2026. Explore service rates for WordPress, WooCommerce, and custom web apps."
+        "d": "Compare website speed optimization quotes for WordPress, online stores, and custom apps. See what affects scope, what to request, and how to verify results."
       },
       {
-        "t": "Trilingual Website Maintenance and Security Guide 2026",
+        "t": "Website Maintenance & Security Guide 2026: Protection",
         "u": "/en/blog/website-maintenance-security-guide-2026/",
         "d": "Master website maintenance and security in 2026. Learn automated backup scheduling, SSL renewals, malware scans, database optimization, and uptime protocols."
       },
       {
         "t": "SEO Best Practices for 2026: The Definitive Search Guide",
         "u": "/en/blog/seo-best-practices/",
-        "d": "Stay ahead with SEO best practices for 2026. Discover latest strategies for Core Web Vitals, AI search optimization (AEO), and technical SEO to boost rankings."
+        "d": "SEO best practices for 2026: 8 proven steps covering Core Web Vitals, AEO/AI search, E-E-A-T and technical SEO to boost rankings. Free checklist included."
       },
       {
-        "t": "Local SEO Strategies for Middle East",
+        "t": "Local SEO Strategies for Middle East Businesses",
         "u": "/en/blog/local-seo-middle-east/",
         "d": "Unlock local search success in Dubai, Abu Dhabi, Riyadh, Tehran, and Muscat. Master localization, multi-language schemas, and Google Maps optimizations."
       },
       {
-        "t": "Local SEO Services Guide 2026 (EN)",
+        "t": "Local SEO Guide 2026: Rank #1 on Google Maps & 3-Pack",
         "u": "/en/blog/local-seo-services-guide-2026/",
         "d": "Rank #1 on Google Maps in 2026: Local 3-Pack tactics, Google Business Profile optimization, NAP consistency, schema, and reviews that win nearby buyers."
       },
       {
-        "t": "WordPress Cost Calculator Guide 2026 (EN)",
+        "t": "WordPress Website Cost Guide 2026: Pricing",
         "u": "/en/blog/wordpress-website-cost-guide-2026/",
         "d": "WordPress website cost in 2026: pricing for brochure sites, custom portals, WooCommerce stores, hosting, plugin licenses, and annual maintenance budgets."
       },
       {
-        "t": "Title Tag Checker Tools Compared 2026",
+        "t": "6 Best Free Title Tag Checker Tools Compared [2026]",
         "u": "/en/blog/best-title-tag-checker-tools-2026/",
         "d": "We tested 6 free title tag checker tools for 2026. Titles of 40–60 characters earn 8.9% higher CTR (Backlinko) — compare pixel preview, scoring and more."
       },
       {
-        "t": "Tehran E-commerce Web Design Guide 2026",
+        "t": "Tehran E-commerce Web Design: Costs, UX & SEO [2026]",
         "u": "/en/blog/tehran-ecommerce-web-design-guide-2026/",
         "d": "Selling online in Tehran in 2026? With 70.22% of carts abandoned globally (Baymard), checkout UX decides revenue — costs, mobile UX and how Tehran stores rank."
       },
       {
-        "t": "SEO Services Pricing Guide 2026",
+        "t": "SEO Services Pricing Guide 2026: Costs, ROI & Packages",
         "u": "/en/blog/seo-services-pricing-guide-2026/",
         "d": "Transparent SEO services pricing guide for 2026. Compare technical SEO audits, monthly retainers, local SEO map packs, and calculate organic search ROI."
       },
       {
-        "t": "Qazvin Web Design & Local SEO Guide 2026",
+        "t": "Qazvin Web Design & Local SEO Guide for 2026 Growth",
         "u": "/en/blog/qazvin-web-design-seo-guide-2026/",
         "d": "Strategic guide to custom web design and local SEO in Qazvin for 2026. Digital engineering for Caspian and Liya industrial zones, Google Maps, and B2B growth."
       },
       {
         "t": "Keyword Density Analyzer Script: Formula and Code",
         "u": "/en/blog/keyword-density-analyzer-script/",
-        "d": "Write a keyword density analyzer script: the density formula, a defensible target range, per-field counting rules, and the mistakes that make the number lie."
+        "d": "Build a JavaScript keyword density analyzer that counts exact phrases in visible text. Check the formula by hand and compare matches across page fields."
       },
       {
         "t": "Moz Title Checker Alternatives: 5 Free Options",
@@ -989,7 +1049,7 @@
       {
         "t": "Modern Web Design Trends for 2026",
         "u": "/en/blog/web-design-trends/",
-        "d": "Explore cutting-edge web design trends for 2026. From minimalist layouts to accessibility-first design, learn how to create stunning websites that convert."
+        "d": "Practical web design trends for 2026: modular Bento grids, fluid typography, WCAG 2.2 accessibility, and token-driven layouts that improve conversion."
       },
       {
         "t": "Website Cost Drivers 2026: What You Are Paying For",
@@ -1017,14 +1077,24 @@
         "d": "WordPress or custom development? Compare cost, timeline, team fit, and maintenance load side by side, then pick the right platform for your business in 2026."
       },
       {
-        "t": "UTM Campaign Tracking & URL Builder Guide (2026)",
+        "t": "UTM Builder & Campaign URL Tracking Guide 2026",
         "u": "/en/blog/utm-builder-campaign-tracking-guide-2026/",
-        "d": "Complete guide to UTM parameter taxonomy, campaign naming conventions, and GA4 revenue attribution."
+        "d": "Master UTM parameters, campaign URL building, and GA4 attribution in 2026. Learn parameter taxonomies, avoid tracking mistakes, and track ROI accurately."
       },
       {
-        "t": "Core Web Vitals & INP Optimization Guide (2026)",
+        "t": "Core Web Vitals Guide 2026: Master INP, LCP & CLS",
         "u": "/en/blog/core-web-vitals-inp-guide-2026/",
-        "d": "Comprehensive developer guide to optimizing INP, sub-second LCP breakdown, and Core Web Vitals for search & AI engines."
+        "d": "Complete 2026 guide to Google Core Web Vitals. Master Interaction to Next Paint (INP), eliminate LCP delays, prevent CLS layout shifts, and boost SEO rankings."
+      },
+      {
+        "t": "Schema Markup & JSON-LD Guide 2026: Entity SEO & AEO",
+        "u": "/en/blog/schema-markup-json-ld-seo-guide-2026/",
+        "d": "Implement Schema.org JSON-LD in 2026: build connected @id entity graphs, validate FAQPage and Service markup, and earn Google and AI search citations."
+      },
+      {
+        "t": "Multilingual SEO, Hreflang & RTL Architecture Guide 2026",
+        "u": "/en/blog/multilingual-seo-hreflang-rtl-guide-2026/",
+        "d": "Engineer multilingual websites in 2026: configure reciprocal hreflang clusters, build CSS logical RTL/LTR layouts, and scale Arabic, Persian, and English SEO."
       }
     ],
     "fa": [
@@ -1034,34 +1104,34 @@
         "d": "مقالات تخصصی درباره سئو، توسعه وب مدرن با Astro و استراتژی‌های بازاریابی دیجیتال."
       },
       {
-        "t": "راهنمای جامع خدمات سئو محلی ۲۰۲۶",
+        "t": "راهنمای سئو محلی ۲۰۲۶: رتبه ۱ نقشه گوگل و بسته ۳تایی",
         "u": "/fa/blog/local-seo-services-guide-2026/",
         "d": "راهنمای جامع سئو محلی ۲۰۲۶: راهکارهای رتبه‌گیری در نقشه گوگل، بهینه‌سازی پروفایل کسب‌وکار، یکپارچگی NAP و اسکیمای LocalBusiness برای جذب مشتریان نزدیک وفادار."
       },
       {
-        "t": "محاسبه آنلاین هزینه طراحی سایت وردپرس ۱۴۰۵",
+        "t": "محاسبه آنلاین هزینه طراحی سایت وردپرس ۲۰۲۶",
         "u": "/fa/blog/wordpress-website-cost-guide-2026/",
         "d": "هزینه وب‌سایت وردپرس در ۲۰۲۶: تعرفه سایت‌های معرفی، پورتال‌های اختصاصی، فروشگاه‌های ووکامرس، میزبانی، مجوز افزونه‌ها و بودجه نگهداری و به‌روزرسانی سالانه."
       },
       {
-        "t": "راهنمای سئوی وردپرس ۲۰۲۶",
+        "t": "راهنمای سئوی وردپرس ۲۰۲۶: رتبه بالاتر در گوگل",
         "u": "/fa/blog/wordpress-seo-optimization-guide-2026/",
         "d": "سئوی وردپرس در ۲۰۲۶ را مسلط شوید: راه‌اندازی فنی، Rank Math در برابر Yoast، سرعت Core Web Vitals، اسکیما، لینک‌سازی داخلی و hreflang برای رتبه‌های بالاتر."
       },
       {
-        "t": "هزینه طراحی سایت در سال ۲۰۲۶",
+        "t": "هزینه طراحی سایت در سال ۲۰۲۶ چقدر است؟ راهنمای قیمت",
         "u": "/fa/blog/how-much-does-a-website-cost-2026/",
         "d": "هزینه طراحی سایت در سال ۲۰۲۶ چقدر است؟ مقایسه بازه‌های قیمت هر نوع سایت، وردپرس در برابر توسعه اختصاصی، دامنه فروشگاه اینترنتی و عوامل پشت پیش‌فاکتورها."
       },
       {
-        "t": "راهنمای ماشین‌حساب هزینه توسعه وب‌سایت ۲۰۲۶",
+        "t": "محاسبه هزینه طراحی سایت ۱۴۰۵/۲۰۲۶: فرمول و تعرفه",
         "u": "/fa/blog/website-development-cost-calculator-guide-2026/",
         "d": "ببینید محاسبه‌گر هزینه وب‌سایت چگونه کار می‌کند: فرمول‌های پشت هر برآورد، داده‌هایی که باید جمع‌آوری کنید، مثال‌های کاربردی و راهی برای سنجش صحت خروجی."
       },
       {
-        "t": "راهنمای قیمت بهینه‌سازی سرعت سایت و بازگشت سرمایه ۲۰۲۶",
+        "t": "هزینه بهینه‌سازی سرعت سایت و مقایسه پیشنهادها",
         "u": "/fa/blog/website-speed-optimization-pricing-guide-2026/",
-        "d": "راهنمای کامل هزینه بهینه‌سازی سرعت سایت و قیمت Core Web Vitals در ۲۰۲۶؛ بازه تعرفه وردپرس، فروشگاه و وب‌اپ اختصاصی، همراه با معیارها و برآورد بازگشت سرمایه."
+        "d": "هزینه بهینه‌سازی سرعت سایت را برای وردپرس، فروشگاه و وب‌اپ مقایسه کنید. عوامل قیمت، مواردی که باید در پیشنهاد بخواهید و روش سنجش نتیجه را گام‌به‌گام بخوانید."
       },
       {
         "t": "مقایسه 6 ابزار رایگان بررسی تگ عنوان در 2026",
@@ -1074,19 +1144,19 @@
         "d": "فروش آنلاین در تهران در سال ۲۰۲۶؟ با رهاسازی ۷۰٫۲۲٪ سبدهای خرید در جهان (Baymard)، تجربه تسویه‌حساب سرنوشت درآمد شماست — هزینه، UX موبایل و راهنمای سئو."
       },
       {
-        "t": "راهنمای تعرفه سئو و قیمت خدمات سئو ۲۰۲۶",
+        "t": "راهنمای قیمت خدمات سئو ۲۰۲۶: هزینه‌ها، ROI و پکیج‌ها",
         "u": "/fa/blog/seo-services-pricing-guide-2026/",
         "d": "راهنمای شفاف قیمت خدمات سئو در سال ۲۰۲۶؛ مقایسه ممیزی فنی، ریتینر ماهانه، سئو محلی و بسته‌های نقشه گوگل به‌همراه فرمول محاسبه بازگشت سرمایه و نکات انتخاب پکیج."
       },
       {
-        "t": "راهنمای طراحی سایت در قزوین و سئو محلی ۲۰۲۶",
+        "t": "طراحی سایت در قزوین و سئو محلی ۲۰۲۶: راهنمای رشد",
         "u": "/fa/blog/qazvin-web-design-seo-guide-2026/",
         "d": "راهنمای راهبردی طراحی سایت اختصاصی و سئو محلی در قزوین برای سال ۲۰۲۶؛ مهندسی دیجیتال شهرک‌های صنعتی کاسپین و لیا، بهینه‌سازی نقشه گوگل و راهبرد رشد تجاری B2B."
       },
       {
         "t": "اسکریپت تحلیل‌گر چگالی کلمه کلیدی: فرمول و کد",
         "u": "/fa/blog/keyword-density-analyzer-script/",
-        "d": "اسکریپت تحلیل‌گر چگالی کلمه کلیدی بنویسید: فرمول چگالی، بازه هدف قابل‌دفاع، قواعد شمارش برای هر فیلد، اشتباهات رایج و زمانی که باید عدد را نادیده گرفت."
+        "d": "با جاوااسکریپت تحلیل‌گر چگالی کلمه کلیدی بسازید. فرمول را با نمونه عددی بررسی کنید، عبارت‌ها را در متن قابل‌نمایش بشمارید و نتیجه هر فیلد را جداگانه بسنجید."
       },
       {
         "t": "جایگزین‌های چکر عنوان موز: ۵ ابزار رایگان",
@@ -1176,7 +1246,7 @@
       {
         "t": "چگونه عنوان سئو بنویسیم که CTR را بالا ببرد [۲۰۲۶]",
         "u": "/fa/blog/seo-title-optimization-guide-2026/",
-        "d": "بر آستانه پیکسل و تفاوت عرض پیکسل با تعداد کاراکتر در عنوان سئو مسلط شوید و پیش از انتشار با پیش‌نمایش سرپ آن را بسنجید تا نرخ کلیک مقاله وبلاگ بیشینه شود."
+        "d": "بر آستانه پیکسل و تفاوت عرض پیکسل با تعداد کاراکتر در تگ عنوان مسلط شوید، پیش از انتشار در پیش‌نمایش سرپ بسنجید و با بررسی‌کننده رایگان نرخ کلیک را بیشینه کنید."
       },
       {
         "t": "راهنمای ممیزی سئوی تکنیکال ۲۰۲۶: معماری و ایندکس",
@@ -1224,14 +1294,24 @@
         "d": "مقایسه معماری وردپرس و توسعه اختصاصی: تفاوت دو پشته در عملکرد، امنیت، نگهداری و مقیاس‌پذیری در سال ۲۰۲۶ و چارچوب تصمیم‌گیری گام‌به‌گام برای انتخاب پروژه شما."
       },
       {
-        "t": "راهنمای جامع ساخت لینک UTM و ردیابی کمپین در گوگل آنالیتیکس (۲۰۲۶)",
+        "t": "راهنمای ساخت لینک UTM و ردیابی کمپین در ۲۰۲۶",
         "u": "/fa/blog/utm-builder-campaign-tracking-guide-2026/",
-        "d": "راهنمای استانداردسازی پارامترهای UTM، نام‌گذاری ساختاریافته و تحلیل نرخ بازگشت سرمایه در GA4."
+        "d": "راهنمای جامع و کامل ساخت لینک UTM و ردیابی کمپین‌های بازاریابی در گوگل آنالیتیکس ۴. با پارامترها، اشتباهات متداول و ردیابی دقیق نرخ بازگشت سرمایه آشنا شوید."
       },
       {
-        "t": "راهنمای جامع بهینه‌سازی Core Web Vitals و شاخص INP (۲۰۲۶)",
+        "t": "راهنمای جامع Core Web Vitals ۲۰۲۶: بهینه‌سازی INP و LCP",
         "u": "/fa/blog/core-web-vitals-inp-guide-2026/",
-        "d": "راهنمای فنی بهینه‌سازی زمان پاسخ‌دهی تعاملی (INP)، کاهش تاخیر LCP، و پایداری بصری برای سئو و موتورهای هوش مصنوعی."
+        "d": "راهنمای کامل معیارهای Core Web Vitals گوگل در ۲۰۲۶. نحوه بهینه‌سازی معیار جدید INP، رفع تاخیرهای LCP، تثبیت چیدمان CLS و ارتقای رتبه سئو را گام‌به‌گام بیاموزید."
+      },
+      {
+        "t": "راهنمای اسکیما و JSON-LD در ۲۰۲۶: سئوی موجودیت و AEO",
+        "u": "/fa/blog/schema-markup-json-ld-seo-guide-2026/",
+        "d": "آموزش پیاده‌سازی اسکیما JSON-LD در سال ۲۰۲۶: طراحی گراف موجودیت‌های @id، اعتبارسنجی FAQPage و Service و کسب استناد مستقیم در گوگل و موتورهای هوش مصنوعی."
+      },
+      {
+        "t": "راهنمای سئوی چندزبانه، Hreflang و معماری RTL در ۲۰۲۶",
+        "u": "/fa/blog/multilingual-seo-hreflang-rtl-guide-2026/",
+        "d": "مهندسی سایت چندزبانه و صادراتی در ۲۰۲۶: پیاده‌سازی اصولی تگ‌های متقابل hreflang، چیدمان استاندارد RTL/LTR در CSS و سئوی عربی، انگلیسی و فارسی برای بازار جهانی."
       }
     ],
     "ar": [
@@ -1241,34 +1321,34 @@
         "d": "مقالات متعمقة في السيو وتطوير الويب الحديث باستخدام Astro واستراتيجيات التسويق الرقمي."
       },
       {
-        "t": "دليل خدمات السيو المحلي لعام 2026",
+        "t": "دليل السيو المحلي 2026: تصدر خرائط جوجل ونتيجة 3-Pack",
         "u": "/ar/blog/local-seo-services-guide-2026/",
         "d": "تصدر خرائط جوجل في 2026: تكتيكات الحزمة المحلية، تحسين ملف جوجل التجاري، تطابق بيانات NAP، أكواد Schema المنظمة وتقييمات العملاء لجذب الزبائن القريبين من موقعك."
       },
       {
-        "t": "دليل حاسبة وتكلفة تصميم مواقع ووردبريس 2026",
+        "t": "تكلفة موقع ووردبريس 2026: الأسعار والميزانية",
         "u": "/ar/blog/wordpress-website-cost-guide-2026/",
         "d": "تكلفة موقع ووردبريس في 2026: أسعار المواقع التعريفية والبوابات المخصصة ومتاجر ووكامرس، والاستضافة ورخص الإضافات وميزانية الصيانة والتحديث السنوي للموقع."
       },
       {
-        "t": "دليل سيو ووردبريس الشامل 2026",
+        "t": "دليل تحسين سيو ووردبريس 2026: تصدر نتائج جوجل",
         "u": "/ar/blog/wordpress-seo-optimization-guide-2026/",
         "d": "أتقن سيو ووردبريس في 2026: الإعداد التقني، Rank Math مقابل Yoast، سرعة Core Web Vitals، السكيما، والروابط الداخلية وhreflang للصعود إلى ترتيب أعلى في جوجل."
       },
       {
-        "t": "كم تكلفة تصميم موقع إلكتروني في 2026؟",
+        "t": "كم تكلفة الموقع الإلكتروني في 2026؟ دليل الأسعار",
         "u": "/ar/blog/how-much-does-a-website-cost-2026/",
         "d": "كم تكلفة موقع إلكتروني في 2026؟ قارن نطاقات تكلفة التطوير حسب نوع الموقع، ووردبريس مقابل البرمجة المخصصة، ونطاقات المتاجر والعوامل التي تصنع عروض الأسعار."
       },
       {
-        "t": "دليل حاسبة تكلفة تطوير المواقع 2026",
+        "t": "دليل حاسبة تكلفة تصميم وتطوير المواقع لعام 2026: تفصيل شفاف",
         "u": "/ar/blog/website-development-cost-calculator-guide-2026/",
         "d": "اعرف كيف تعمل حاسبة تكلفة الموقع: القواعد خلف كل تقدير، والمدخلات التي تجمعها قبل الحساب، وأمثلة تطبيقية، والطريقة التي تفحص بها صحة الخروج قبل أي عرض سعر."
       },
       {
-        "t": "دليل أسعار تحسين سرعة المواقع وعائد الاستثمار 2026",
+        "t": "تكلفة تحسين سرعة الموقع وكيف تقارن العروض",
         "u": "/ar/blog/website-speed-optimization-pricing-guide-2026/",
-        "d": "دليل شامل لتكلفة تسريع المواقع وأسعار Core Web Vitals في 2026: نطاقات أسعار ووردبريس والمتاجر والتطبيقات المخصصة، ومعايير القياس وحساب العائد الاستثماري."
+        "d": "قارن عروض تحسين سرعة مواقع ووردبريس والمتاجر وتطبيقات الويب. تعرّف إلى عوامل التكلفة وما تطلبه في عرض السعر وكيف تتحقق من النتائج بعد تنفيذ العمل على موقعك."
       },
       {
         "t": "أفضل 6 أدوات مجانية لفحص Title Tag [2026]",
@@ -1281,19 +1361,19 @@
         "d": "تبيع عبر الإنترنت في طهران عام 2026؟ مع تخلٍّ عالمي عن السلات بنسبة 70.22% (Baymard)، تجربة الدفع تحسم إيرادك — التكلفة، وتجربة الجوال، وترتيبات جوجل."
       },
       {
-        "t": "دليل أسعار باقات السيو لعام 2026",
+        "t": "أسعار خدمات السيو 2026: التكلفة والROI والباقات",
         "u": "/ar/blog/seo-services-pricing-guide-2026/",
         "d": "دليل شفاف لأسعار خدمات السيو في 2026: مقارنة التدقيق الفني وريتايمر النمو الشهري وحزم السيو المحلي، مع معادلة لحساب عائد الاستثمار من تحسين محركات البحث."
       },
       {
-        "t": "دليل تصميم المواقع والسيو المحلي في قزوين 2026",
+        "t": "تصميم المواقع والسيو المحلي في قزوين: دليل النمو 2026",
         "u": "/ar/blog/qazvin-web-design-seo-guide-2026/",
         "d": "دليل راهبردي لتصميم المواقع المخصصة والسيو المحلي في قزوين لعام 2026: هندسة رقمية لمدن الصناعية كاسبيان وليا، وتحسين خرائط جوجل، ونمو تجاري B2B للصادرات."
       },
       {
         "t": "سكريبت محلل كثافة الكلمات المفتاحية: المعادلة والكود",
         "u": "/ar/blog/keyword-density-analyzer-script/",
-        "d": "اكتب سكريبتاً لمحلل كثافة الكلمات المفتاحية: المعادلة، ونطاق مستهدف يمكن الدفاع عنه، وقواعد العدّ لكل حقل على حدة، والأخطاء التي تجعل الرقم يكذب وكيف تتجاهله."
+        "d": "أنشئ محلل كثافة الكلمات المفتاحية بجافاسكريبت. احسب النسبة يدوياً في مثال عملي، وعدّ العبارات في النص الظاهر، ثم قارن التطابقات بين الحقول المختلفة في الصفحة."
       },
       {
         "t": "بدائل أداة فحص موز للعناوين: 5 خيارات مجانية",
@@ -1381,9 +1461,9 @@
         "d": "قائمة تحقق السيو لعام 2026 التي يعتمد عليها الفرق الجادة في التدقيق: السيو التقني، محتوى الصفحة، مؤشرات الموقع، تحسين محركات الإجابة، البحث المحلي والسلطة."
       },
       {
-        "t": "كيف تكتب عناوين السيو التي ترفع معدل النقر [2026]",
+        "t": "كيف تكتب عناوين SEO ترفع معدل النقر [2026]",
         "u": "/ar/blog/seo-title-optimization-guide-2026/",
-        "d": "أتقن تحسين تگ عنوان السيو، وحدود البكسل مقابل عدد الحروف، ومعاينة نتائج البحث قبل النشر. استخدم أداة فحص عناوين السيو للمدونة مجاناً لزيادة معدل النقر."
+        "d": "أتقن تحسين تگ العنوان، وحدود البكسل مقابل عدد الحروف، ومعاينة مقتطفات نتائج البحث قبل النشر. استخدم أداة فحص عناوين السيو للمدونة مجاناً لزيادة معدل النقر."
       },
       {
         "t": "دليل تدقيق السيو التقني 2026: الهيكلية والأرشفة",
@@ -1431,14 +1511,24 @@
         "d": "مقارنة معمارية بين ووردبريس والتطوير المخصص: كيف يختلف المخزنان في الأداء والأمان والصيانة والتوسع خلال عام 2026، مع إطار قرار من صفحة واحدة يناسب مشروعك."
       },
       {
-        "t": "دليل تتبع الحملات التسويقية وبناء روابط UTM في جوجل أناليتكس (2026)",
+        "t": "دليل بناء روابط UTM وتتبع الحملات التسويقية 2026",
         "u": "/ar/blog/utm-builder-campaign-tracking-guide-2026/",
-        "d": "دليل شامل لمعايير تسمية معلمات UTM، وهندسة تتبع الحملات، وتحليل عائد الاستثمار في GA4."
+        "d": "دليل شامل ومفصل لبناء روابط UTM وتتبع الحملات التسويقية في تحليلات جوجل 4. تعرف على معلمات الروابط، وتجنب أخطاء التتبع، وقس عائد الاستثمار الإعلاني بدقة."
       },
       {
-        "t": "دليل تحسين مؤشرات أداء الويب الأساسية Core Web Vitals وINP (2026)",
+        "t": "دليل مؤشرات أداء الويب 2026: تحسين INP و LCP و CLS",
         "u": "/ar/blog/core-web-vitals-inp-guide-2026/",
-        "d": "دليل تقني لتحسين مؤشر التفاعل مع الطلاء التالي (INP) وتقليل زمن استجابة LCP لتصدر نتائج البحث ومحركات الذكاء الاصطناعي."
+        "d": "دليل شامل لمؤشرات أداء الويب الأساسية من جوجل لعام 2026. تعلم تحسين مقياس INP الجديد، وحل تأخيرات LCP، وتثبيت CLS، وتسريع موقعك لتعزيز تصدر نتائج البحث."
+      },
+      {
+        "t": "دليل البيانات المنظمة JSON-LD لعام 2026: سيو الكيانات وAEO",
+        "u": "/ar/blog/schema-markup-json-ld-seo-guide-2026/",
+        "d": "دليل تطبيق Schema.org JSON-LD في 2026: بناء رسم الكيانات المترابط عبر @id، والتحقق من FAQPage وService، وكسب الاقتباس في جوجل ومحركات الذكاء الاصطناعي."
+      },
+      {
+        "t": "دليل السيو متعدد اللغات وHreflang وهندسة RTL لعام 2026",
+        "u": "/ar/blog/multilingual-seo-hreflang-rtl-guide-2026/",
+        "d": "هندسة المواقع متعددة اللغات في 2026: ضبط عناقيد hreflang المتبادلة، وبناء تخطيطات CSS المنطقية لاتجاهي RTL وLTR، وتوسيع السيو العربي والإنجليزي والفارسي."
       }
     ]
   }
