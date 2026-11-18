@@ -81,6 +81,8 @@ function createOrganizationSchema(
       'Answer Engine Optimization (AEO)',
       'Generative Engine Optimization (GEO)',
       'E-commerce Web Development',
+      'Multilingual Hreflang & RTL Web Engineering',
+      'B2B Industrial & Export Web Design',
     ],
     openingHoursSpecification: [
       {
@@ -112,7 +114,11 @@ function createWebsiteSchema(url: string, lang: string) {
     url: `${url}/${lang}/`,
     name: 'WebABC',
     alternateName:
-      lang === 'fa' ? 'وب اِی‌بی‌سی (ويب سي)' : lang === 'ar' ? 'ويب إيه بي سي (ويب سي)' : 'WebABC Web & SEO Agency',
+      lang === 'fa'
+        ? 'وب اِی‌بی‌سی (ويب سي)'
+        : lang === 'ar'
+          ? 'ويب إيه بي سي (ويب سي)'
+          : 'WebABC Web & SEO Agency',
     inLanguage: lang === 'en' ? 'en-US' : lang === 'ar' ? 'ar-SA' : 'fa-IR',
     publisher: { '@id': `${url}/#organization` },
   };
@@ -142,7 +148,6 @@ const {
 
 const supportedLang = (lang as SupportedLanguage) in languages ? (lang as SupportedLanguage) : 'en';
 const languageMeta = languages[supportedLang] || languages.en;
-const isRtl = languageMeta.direction === 'rtl';
 const dictionary = await getDictionary(supportedLang);
 
 const siteUrl = 'https://webabc.ir';
@@ -312,21 +317,11 @@ const websiteSchema = createWebsiteSchema(siteUrl, supportedLang);
     />
     <link rel="describedby" href={`/${supportedLang}/llms.txt`} />
     <link rel="llms-txt" href="/llms.txt" />
-    {/* The 404 document is the one page with no markdown sibling: it is
-        served with a 404 status (verified: /en/404/ -> 404), so shipping an
-        index.md for it would answer 200 for a not-found document. Every other
-        route has a real sibling -- generate-markdown-representations.mjs
-        covers blog, portfolio, tools, services, hubs, cities, homepages,
-        about and the blog index. Crawlers still get markdown on 404s: worker
-       .ts answers Accept: text/markdown for unknown paths with a dedicated
-        recovery body. */}
-    {slug !== '404' && (
-      <link
-        rel="alternate"
-        type="text/markdown"
-        href={`${canonicalPath}index.md`}
-      />
-    )}
+    {
+      slug !== '404' && (
+        <link rel="alternate" type="text/markdown" href={`${canonicalPath}index.md`} />
+      )
+    }
     <meta name="is-agentic-site-type" content="business" />
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -334,8 +329,8 @@ const websiteSchema = createWebsiteSchema(siteUrl, supportedLang);
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#4361ee" />
-    <meta name="twitter:site" content="@aliib1991" />
+    <meta name="theme-color" content="#2d59c3" />
+    <meta name="twitter:site" content="@webabc_ir" />
     <meta name="twitter:creator" content="@aliib1991" />
     <script is:inline>
       (function () {
@@ -347,7 +342,7 @@ const websiteSchema = createWebsiteSchema(siteUrl, supportedLang);
           root.classList.toggle('dark', dark);
           root.style.colorScheme = dark ? 'dark' : 'light';
           const meta = document.querySelector('meta[name="theme-color"]');
-          if (meta) meta.setAttribute('content', dark ? '#020617' : '#4361ee');
+          if (meta) meta.setAttribute('content', dark ? '#020617' : '#2d59c3');
         } catch (e) {}
       })();
     </script>
@@ -361,7 +356,7 @@ const websiteSchema = createWebsiteSchema(siteUrl, supportedLang);
   >
     <a
       href="#main-content"
-      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-100 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-primary-foreground focus:shadow-lg"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:start-2 focus:z-100 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-primary-foreground focus:shadow-lg"
     >
       {dictionary.common?.skipToContent || 'Skip to main content'}
     </a>

@@ -3,36 +3,86 @@ Allow: /
 Disallow: /private/
 Disallow: /api/
 
-# AI crawlers — explicitly allowed (GEO: this site wants to be cited by LLMs).
-# Grouped separately from the wildcard rule so intent is unambiguous.
+# AI search, answer, and citation crawlers — explicitly allowed for GEO/AEO
+# while preserving /private/ and /api/ exclusions per RFC 9309 group rules.
 User-agent: GPTBot
 Allow: /
+Disallow: /private/
+Disallow: /api/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /private/
+Disallow: /api/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /private/
+Disallow: /api/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /private/
+Disallow: /api/
 
 User-agent: Claude-SearchBot
 Allow: /
+Disallow: /private/
+Disallow: /api/
 
 User-agent: Claude-User
 Allow: /
+Disallow: /private/
+Disallow: /api/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /private/
+Disallow: /api/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /private/
+Disallow: /api/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /private/
+Disallow: /api/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /private/
+Disallow: /api/
+
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /private/
+Disallow: /api/
+
+User-agent: Amazonbot
+Allow: /
+Disallow: /private/
+Disallow: /api/
+
+User-agent: YouBot
+Allow: /
+Disallow: /private/
+Disallow: /api/
+
+User-agent: DuckAssistBot
+Allow: /
+Disallow: /private/
+Disallow: /api/
 
 User-agent: CCBot
 Allow: /
+Disallow: /private/
+Disallow: /api/
 
 User-agent: Bytespider
 Allow: /
+Disallow: /private/
+Disallow: /api/
 
 Sitemap: https://webabc.ir/sitemap-index.xml

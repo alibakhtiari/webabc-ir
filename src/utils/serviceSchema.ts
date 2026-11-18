@@ -32,6 +32,10 @@ export function createServiceSchema(
         mainEntity: {
           '@id': `${canonicalUrl}#service`,
         },
+        speakable: {
+          '@type': 'SpeakableSpecification',
+          cssSelector: ['h1', '.aeo-quick-answer'],
+        },
       },
       {
         '@type': 'Service',

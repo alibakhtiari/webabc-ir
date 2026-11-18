@@ -54,21 +54,28 @@ const finalCtaHref =
     ? `/${lang}/services/${toolCfg.serviceSlug}/`
     : `/${lang}/services/web-development/`);
 
+const canonicalToolUrl = `https://webabc.ir/${lang}/tools/${cleanSlug}/`;
 const webAppSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
-  '@id': `https://webabc.ir/${lang}/tools/${cleanSlug}/#webapp`,
-  url: `https://webabc.ir/${lang}/tools/${cleanSlug}/`,
+  '@id': `${canonicalToolUrl}#webapp`,
+  url: canonicalToolUrl,
   name: title,
   description: description,
   applicationCategory: finalCategory,
   operatingSystem: 'All',
   browserRequirements: 'Requires HTML5 support',
   inLanguage: lang === 'en' ? 'en-US' : lang === 'ar' ? 'ar-SA' : 'fa-IR',
+  isAccessibleForFree: true,
   offers: {
     '@type': 'Offer',
     price: '0',
     priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+  },
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['h1', '.tool-hero-desc', '.aeo-quick-answer'],
   },
   // Join the canonical Organization entity that <Layout /> emits as
   // `#organization` (see Layout.astro createOrganizationSchema) so this
@@ -108,7 +115,7 @@ const defaultBreadcrumbs = breadcrumbs || [
           {title}
         </h1>
         <p
-          class={`text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-300 ${fontClass}`}
+          class={`tool-hero-desc text-lg leading-relaxed text-gray-600 md:text-xl dark:text-gray-300 ${fontClass}`}
         >
           {description}
         </p>
@@ -119,11 +126,11 @@ const defaultBreadcrumbs = breadcrumbs || [
   <!-- Tool Workspace / Content -->
   <slot />
 
-  <!-- Supporting content: how it works + when to use (M4 depth) -->
+  <!-- Supporting content: how it works + when to use (M4 depth; class max-w-4xl space-y-10 matched by generate-markdown-representations.mjs) -->
   {
     guide && (
       <section class={`container mx-auto max-w-7xl mt-16 px-4 sm:px-6 lg:px-8 ${fontClass}`}>
-        <div class="mx-auto max-w-7xl space-y-10">
+        <div class="mx-auto max-w-4xl space-y-10">
           {guide.how && (
             <div class="space-y-3">
               <h2 class="text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">
